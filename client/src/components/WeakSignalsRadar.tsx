@@ -1,0 +1,142 @@
+/*
+ * DESIGN: Intelligence Dashboard — Weak Signals
+ * Grid of signal cards with urgency indicators
+ */
+import { WEAK_SIGNALS, SRT_LEVELS } from "@/data/reportData";
+import { AlertTriangle, AlertCircle, Info } from "lucide-react";
+
+const RADAR_BG = "https://private-us-east-1.manuscdn.com/sessionFile/v7uKuw67xnKHKY8cq65BNf/sandbox/TAGv8ZfRAyZfV9Lj7wYGNr-img-2_1770928026000_na1fn_cmFkYXItYmc.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvdjd1S3V3Njd4bktIS1k4Y3E2NUJOZi9zYW5kYm94L1RBR3Y4WmZSQXlaZlY5TGo3d1lHTnItaW1nLTJfMTc3MDkyODAyNjAwMF9uYTFmbl9jbUZrWVhJdFltYy5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=JzbVkgmDDlD6niekdkpPYW1T~wh-zLB0yRpsOSXaMJavyKyxipJo3-syc~xmMJ-Ipsvg51wwZ7mIYA58OpIZuMbOJSqQ7vsQHptay8010mSFEm3LFOVw1o7cAiVNHwAbT9ufh8~X5N8uqHro0Bwc0irb6ilF0wb2fXVdctzs8UM8C74krueKCQgpdQj1AAArv1pmUziDfdGxgDs1g~zjQIEQzZnwNSeeq-7MS2AUDW5lfeURKPHMJHiVuUgiuhbODZmB8tKzQppq7wu-TmF9XJS7pDoO90Qt~bzvmXqIR3ShobqkG9z1XlKPNNd4v-FseIaQUyJMtR5hRpqmDJ2L3Q__";
+
+function getUrgencyConfig(urgency: string) {
+  if (urgency === "high") return {
+    icon: AlertTriangle,
+    label: "Высокая",
+    color: "text-red-400",
+    bg: "bg-red-400/10",
+    border: "border-red-400/20",
+    dot: "bg-red-400",
+  };
+  return {
+    icon: AlertCircle,
+    label: "Средняя",
+    color: "text-amber-400",
+    bg: "bg-amber-400/10",
+    border: "border-amber-400/20",
+    dot: "bg-amber-400",
+  };
+}
+
+function getLevelColor(id: number): string {
+  const level = SRT_LEVELS.find((l) => l.id === id);
+  return level?.color || "#666";
+}
+
+function getLevelName(id: number): string {
+  const level = SRT_LEVELS.find((l) => l.id === id);
+  return level?.short || "";
+}
+
+export default function WeakSignalsRadar() {
+  const highCount = WEAK_SIGNALS.filter((s) => s.urgency === "high").length;
+  const mediumCount = WEAK_SIGNALS.filter((s) => s.urgency === "medium").length;
+
+  return (
+    <div className="container">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        {/* Left: Radar image + summary */}
+        <div className="lg:col-span-4">
+          <div className="sticky top-20">
+            <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-2">
+              Слабые сигналы
+            </p>
+            <h3 className="text-2xl font-heading font-bold text-foreground mb-2">
+              Сигналы на радаре
+            </h3>
+            <p className="text-sm text-muted-foreground mb-6">
+              Ранние индикаторы будущих структурных изменений, зафиксированные в отчётах.
+            </p>
+
+            {/* Radar image */}
+            <div className="relative w-full aspect-square max-w-[280px] mx-auto mb-6">
+              <img
+                src={RADAR_BG}
+                alt="Radar"
+                className="w-full h-full object-contain opacity-60"
+              />
+              {/* Overlay dots for signals */}
+              {WEAK_SIGNALS.map((signal, i) => {
+                const angle = (i / WEAK_SIGNALS.length) * Math.PI * 2 - Math.PI / 2;
+                const radius = signal.urgency === "high" ? 30 : 38;
+                const x = 50 + radius * Math.cos(angle);
+                const y = 50 + radius * Math.sin(angle);
+                const urgency = getUrgencyConfig(signal.urgency);
+                return (
+                  <div
+                    key={signal.id}
+                    className={`absolute w-2.5 h-2.5 rounded-full ${urgency.dot} pulse-signal`}
+                    style={{
+                      left: `${x}%`,
+                      top: `${y}%`,
+                      transform: "translate(-50%, -50%)",
+                      animationDelay: `${i * 200}ms`,
+                    }}
+                  />
+                );
+              })}
+            </div>
+
+            {/* Summary stats */}
+            <div className="flex gap-4 justify-center">
+              <div className="text-center">
+                <div className="text-2xl font-heading font-bold text-red-400">{highCount}</div>
+                <div className="text-[10px] font-mono text-muted-foreground">Высокая срочность</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-heading font-bold text-amber-400">{mediumCount}</div>
+                <div className="text-[10px] font-mono text-muted-foreground">Средняя срочность</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Signal cards */}
+        <div className="lg:col-span-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {WEAK_SIGNALS.map((signal) => {
+              const urgency = getUrgencyConfig(signal.urgency);
+              const UrgencyIcon = urgency.icon;
+              return (
+                <div
+                  key={signal.id}
+                  className={`
+                    bg-card/60 backdrop-blur-sm border rounded-lg p-4 transition-all duration-300
+                    hover:border-primary/20 ${urgency.border}
+                  `}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span
+                      className="text-[10px] font-mono px-1.5 py-0.5 rounded border border-border/40"
+                      style={{ color: getLevelColor(signal.level), borderColor: `${getLevelColor(signal.level)}33` }}
+                    >
+                      {signal.level}·{getLevelName(signal.level)}
+                    </span>
+                    <div className={`flex items-center gap-1 ${urgency.color}`}>
+                      <UrgencyIcon className="w-3 h-3" />
+                      <span className="text-[10px] font-mono">{urgency.label}</span>
+                    </div>
+                  </div>
+                  <h4 className="text-sm font-heading font-semibold text-foreground mb-1.5 leading-snug">
+                    {signal.title}
+                  </h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {signal.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
