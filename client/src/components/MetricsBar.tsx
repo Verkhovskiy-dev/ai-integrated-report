@@ -1,6 +1,7 @@
 /*
  * DESIGN: Intelligence Dashboard — Key Metrics Hero Section
  * Big numbers with glow effects, hero background image
+ * Mobile-first responsive
  */
 import { useEffect, useState } from "react";
 import { FileText, Zap, TrendingUp, Radio, Building2, Link } from "lucide-react";
@@ -54,39 +55,42 @@ export default function MetricsBar() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
       </div>
 
-      <div className="container relative z-10 pt-16 pb-12">
+      <div className="container relative z-10 pt-10 pb-8 sm:pt-16 sm:pb-12">
         {/* Title */}
-        <div className="mb-10">
-          <p className="text-xs font-mono text-primary/80 tracking-widest uppercase mb-2">
+        <div className="mb-6 sm:mb-10">
+          <p className="text-[10px] sm:text-xs font-mono text-primary/80 tracking-widest uppercase mb-1.5 sm:mb-2">
             Интегрированный стратегический отчёт
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight mb-3">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight mb-2 sm:mb-3">
             AI Daily Reports
           </h2>
-          <p className="text-base text-muted-foreground max-w-2xl leading-relaxed">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
             Агрегированный анализ <span className="text-primary font-medium">14 ежедневных отчётов</span> по
             Структуре Разделения Труда (СРТ) в сфере AI, технологий и кибербезопасности.
-            Период: <span className="font-mono text-foreground/80">30 января — 12 февраля 2026</span>.
+            <span className="hidden sm:inline"> Период: <span className="font-mono text-foreground/80">30 января — 12 февраля 2026</span>.</span>
+          </p>
+          <p className="text-xs text-muted-foreground mt-1 sm:hidden font-mono">
+            30 января — 12 февраля 2026
           </p>
         </div>
 
         {/* Metrics Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
           {KEY_METRICS.map((metric, i) => {
             const Icon = ICON_MAP[metric.icon];
             return (
               <div
                 key={metric.label}
-                className="relative group bg-card/60 backdrop-blur-sm border border-border/50 rounded-lg p-4 hover:border-primary/30 transition-all duration-300"
+                className="relative group bg-card/60 backdrop-blur-sm border border-border/50 rounded-lg p-2.5 sm:p-4 hover:border-primary/30 transition-all duration-300"
                 style={{ animationDelay: `${i * 100}ms` }}
               >
-                <div className="flex items-center gap-2 mb-2">
-                  {Icon && <Icon className="w-3.5 h-3.5 text-primary/60" />}
-                  <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-1 sm:mb-2">
+                  {Icon && <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary/60" />}
+                  <span className="text-[8px] sm:text-[10px] font-mono text-muted-foreground uppercase tracking-wider truncate">
                     {metric.label}
                   </span>
                 </div>
-                <div className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
+                <div className="text-lg sm:text-2xl lg:text-3xl font-heading font-bold text-foreground">
                   <AnimatedNumber target={metric.value} suffix={metric.suffix} />
                 </div>
                 {/* Subtle glow on hover */}

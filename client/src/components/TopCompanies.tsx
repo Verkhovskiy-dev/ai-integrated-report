@@ -1,6 +1,7 @@
 /*
  * DESIGN: Intelligence Dashboard — Top Companies
  * Horizontal bar chart of company mentions
+ * Mobile-first responsive
  */
 import { TOP_COMPANIES } from "@/data/reportData";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
@@ -25,36 +26,36 @@ export default function TopCompanies() {
   const maxMentions = Math.max(...TOP_COMPANIES.map((c) => c.mentions));
 
   return (
-    <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-lg p-6">
-      <div className="mb-6">
+    <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-lg p-4 sm:p-6">
+      <div className="mb-4 sm:mb-6">
         <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-1">
           Ключевые игроки
         </p>
-        <h3 className="text-lg font-heading font-bold text-foreground">
+        <h3 className="text-base sm:text-lg font-heading font-bold text-foreground">
           Топ компаний по упоминаниям
         </h3>
       </div>
 
-      <div className="space-y-2.5">
+      <div className="space-y-2 sm:space-y-2.5">
         {TOP_COMPANIES.map((company, i) => {
           const barWidth = (company.mentions / maxMentions) * 100;
           const catColor = CATEGORY_COLORS[company.category] || "#666";
 
           return (
             <div key={company.name} className="group">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 {/* Rank */}
-                <span className="text-[10px] font-mono text-muted-foreground w-4 text-right shrink-0">
+                <span className="text-[9px] sm:text-[10px] font-mono text-muted-foreground w-3 sm:w-4 text-right shrink-0">
                   {i + 1}
                 </span>
 
                 {/* Company name */}
-                <span className="text-xs font-medium text-foreground w-28 shrink-0 truncate">
+                <span className="text-[11px] sm:text-xs font-medium text-foreground w-20 sm:w-28 shrink-0 truncate">
                   {company.name}
                 </span>
 
                 {/* Bar */}
-                <div className="flex-1 h-5 bg-muted/30 rounded-sm overflow-hidden relative">
+                <div className="flex-1 h-4 sm:h-5 bg-muted/30 rounded-sm overflow-hidden relative">
                   <div
                     className="h-full rounded-sm transition-all duration-700 ease-out"
                     style={{
@@ -66,16 +67,16 @@ export default function TopCompanies() {
                 </div>
 
                 {/* Count */}
-                <span className="text-xs font-mono text-foreground w-6 text-right shrink-0">
+                <span className="text-[11px] sm:text-xs font-mono text-foreground w-5 sm:w-6 text-right shrink-0">
                   {company.mentions}
                 </span>
 
                 {/* Trend */}
                 <div className="shrink-0">{getTrendIcon(company.trend)}</div>
 
-                {/* Category badge */}
+                {/* Category badge — hidden on small mobile */}
                 <span
-                  className="text-[9px] font-mono px-1.5 py-0.5 rounded shrink-0 hidden sm:inline"
+                  className="text-[8px] sm:text-[9px] font-mono px-1 sm:px-1.5 py-0.5 rounded shrink-0 hidden sm:inline"
                   style={{ color: catColor, backgroundColor: `${catColor}15` }}
                 >
                   {company.category}

@@ -1,6 +1,7 @@
 /*
  * DESIGN: Intelligence Dashboard — Cross-Level Connections
  * Visualize connections between СРТ levels
+ * Mobile: wrapping level badges, compact layout
  */
 import { CROSS_LEVEL_CONNECTIONS, SRT_LEVELS } from "@/data/reportData";
 
@@ -16,6 +17,29 @@ function getLevelName(id: number): string {
   return level?.short || "";
 }
 
+function LevelBadge({ id, bold }: { id: number; bold?: boolean }) {
+  return (
+    <span
+      className={`text-[10px] sm:text-xs font-mono px-1.5 sm:px-2 py-0.5 sm:py-1 rounded border whitespace-nowrap ${bold ? "font-medium" : ""}`}
+      style={{
+        color: getLevelColor(id),
+        borderColor: `${getLevelColor(id)}${bold ? "40" : "30"}`,
+        backgroundColor: `${getLevelColor(id)}${bold ? "10" : "08"}`,
+      }}
+    >
+      {id}·{getLevelName(id)}
+    </span>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary/40 shrink-0" viewBox="0 0 16 16" fill="none">
+      <path d="M3 8h10M10 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export default function CrossLevelConnections() {
   return (
     <div className="container">
@@ -26,79 +50,43 @@ export default function CrossLevelConnections() {
           <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/95 to-background" />
         </div>
 
-        <div className="relative z-10 p-6 lg:p-10">
-          <div className="mb-8">
+        <div className="relative z-10 p-4 sm:p-6 lg:p-10">
+          <div className="mb-5 sm:mb-8">
             <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-2">
               Межуровневые связи
             </p>
-            <h3 className="text-2xl font-heading font-bold text-foreground mb-2">
+            <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
               Каскадные эффекты между уровнями СРТ
             </h3>
-            <p className="text-sm text-muted-foreground max-w-xl">
-              Ключевые причинно-следственные цепочки, связывающие события на разных уровнях Структуры Разделения Труда.
+            <p className="text-xs sm:text-sm text-muted-foreground max-w-xl">
+              Ключевые причинно-следственные цепочки, связывающие события на разных уровнях.
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {CROSS_LEVEL_CONNECTIONS.map((conn) => (
               <div
                 key={conn.id}
-                className="bg-card/40 backdrop-blur-sm border border-border/40 rounded-lg p-4 hover:border-primary/20 transition-all duration-300"
+                className="bg-card/40 backdrop-blur-sm border border-border/40 rounded-lg p-3 sm:p-4 hover:border-primary/20 transition-all duration-300"
               >
                 {/* Connection path visualization */}
-                <div className="flex items-center gap-2 mb-3 flex-wrap">
-                  {/* From level */}
-                  <span
-                    className="text-xs font-mono font-medium px-2 py-1 rounded border"
-                    style={{
-                      color: getLevelColor(conn.from),
-                      borderColor: `${getLevelColor(conn.from)}40`,
-                      backgroundColor: `${getLevelColor(conn.from)}10`,
-                    }}
-                  >
-                    {conn.from}·{getLevelName(conn.from)}
-                  </span>
-
-                  {/* Through levels */}
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-2.5 sm:mb-3 flex-wrap">
+                  <LevelBadge id={conn.from} bold />
                   {conn.through.map((lvl) => (
-                    <span key={lvl} className="flex items-center gap-2">
-                      <svg className="w-4 h-4 text-primary/40" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M10 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                      <span
-                        className="text-xs font-mono px-2 py-1 rounded border"
-                        style={{
-                          color: getLevelColor(lvl),
-                          borderColor: `${getLevelColor(lvl)}30`,
-                          backgroundColor: `${getLevelColor(lvl)}08`,
-                        }}
-                      >
-                        {lvl}·{getLevelName(lvl)}
-                      </span>
+                    <span key={lvl} className="flex items-center gap-1.5 sm:gap-2">
+                      <ArrowIcon />
+                      <LevelBadge id={lvl} />
                     </span>
                   ))}
-
-                  {/* To level */}
-                  <svg className="w-4 h-4 text-primary/40" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8h10M10 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span
-                    className="text-xs font-mono font-medium px-2 py-1 rounded border"
-                    style={{
-                      color: getLevelColor(conn.to),
-                      borderColor: `${getLevelColor(conn.to)}40`,
-                      backgroundColor: `${getLevelColor(conn.to)}10`,
-                    }}
-                  >
-                    {conn.to}·{getLevelName(conn.to)}
-                  </span>
+                  <ArrowIcon />
+                  <LevelBadge id={conn.to} bold />
                 </div>
 
                 {/* Title and description */}
-                <h4 className="text-sm font-heading font-semibold text-foreground mb-1">
+                <h4 className="text-xs sm:text-sm font-heading font-semibold text-foreground mb-1">
                   {conn.title}
                 </h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
                   {conn.description}
                 </p>
               </div>
