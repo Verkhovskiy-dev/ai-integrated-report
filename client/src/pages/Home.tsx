@@ -6,6 +6,7 @@
  */
 import { useState } from "react";
 import Header from "@/components/Header";
+import NewsTicker from "@/components/NewsTicker";
 import MetricsBar from "@/components/MetricsBar";
 import HeatmapSection from "@/components/HeatmapSection";
 import StrategicInsights from "@/components/StrategicInsights";
@@ -30,6 +31,9 @@ export default function Home() {
       <Header activeSection={activeSection} onSectionChange={setActiveSection} />
 
       <main className="relative z-10">
+        {/* Bloomberg-style News Ticker */}
+        <NewsTicker />
+
         {/* Hero / Metrics Bar */}
         <MetricsBar />
 
