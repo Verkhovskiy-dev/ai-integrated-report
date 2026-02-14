@@ -6,7 +6,7 @@
 import { useState } from "react";
 import {
   Activity, Radio, TrendingUp, Network, Clock, LayoutGrid,
-  Lightbulb, Target, Menu, X
+  Lightbulb, Target, Menu, X, GraduationCap
 } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -17,6 +17,7 @@ const NAV_ITEMS = [
   { id: "connections", label: "Связи", icon: Network },
   { id: "signals", label: "Сигналы", icon: Radio },
   { id: "positions", label: "Узлы", icon: Target },
+  { id: "programs", label: "Программы", icon: GraduationCap },
   { id: "timeline", label: "Хронология", icon: Clock },
 ];
 

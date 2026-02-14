@@ -1,10 +1,12 @@
 /*
  * DESIGN: Intelligence Dashboard — Nodal Positions Map
  * 5 key positions in AI economy 2026 with visual cards
+ * Education recommendations now include SKOLKOVO program links
  * Mobile-first responsive design
  */
 import { NODAL_POSITIONS, EDUCATION_RECOMMENDATIONS } from "@/data/insightsData";
 import { Target, BookOpen, ArrowRight } from "lucide-react";
+import { ProgramBadgeGroup } from "@/components/ProgramBadge";
 
 export default function NodalPositions() {
   return (
@@ -111,6 +113,14 @@ export default function NodalPositions() {
                   </li>
                 ))}
               </ul>
+              {/* Program links for this recommendation category */}
+              {rec.relevantPrograms && rec.relevantPrograms.length > 0 && (
+                <ProgramBadgeGroup
+                  programKeys={rec.relevantPrograms}
+                  compact={true}
+                  label="→"
+                />
+              )}
             </div>
           ))}
         </div>

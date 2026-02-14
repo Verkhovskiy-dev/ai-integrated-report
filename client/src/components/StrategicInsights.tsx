@@ -2,6 +2,7 @@
  * DESIGN: Intelligence Dashboard — Strategic Insights
  * Expandable insight cards with evidence, conclusions, and education implications
  * Mobile-first responsive design
+ * Now includes native SKOLKOVO program links in education sections
  */
 import { useState } from "react";
 import {
@@ -9,6 +10,7 @@ import {
   ChevronDown, ChevronUp, Lightbulb, BookOpen, AlertTriangle
 } from "lucide-react";
 import { STRATEGIC_INSIGHTS, type StrategicInsight } from "@/data/insightsData";
+import { ProgramBadgeGroup } from "@/components/ProgramBadge";
 
 const ICON_MAP: Record<string, typeof Building> = {
   Building, Bot, Landmark, Brain, ShieldAlert, Layers, GraduationCap,
@@ -119,7 +121,7 @@ function InsightCard({ insight, isExpanded, onToggle }: {
             </p>
           </div>
 
-          {/* Education implication */}
+          {/* Education implication with program links */}
           <div className="px-4 sm:px-5 py-3 sm:py-4 bg-primary/5 border-t border-primary/10">
             <div className="flex items-center gap-2 mb-2.5">
               <BookOpen className="w-3.5 h-3.5 text-primary" />
@@ -130,6 +132,14 @@ function InsightCard({ insight, isExpanded, onToggle }: {
             <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed">
               {insight.educationImplication}
             </p>
+            {/* Program links */}
+            {insight.relevantPrograms && insight.relevantPrograms.length > 0 && (
+              <ProgramBadgeGroup
+                programKeys={insight.relevantPrograms}
+                label="Программы →"
+                compact={false}
+              />
+            )}
           </div>
         </div>
       )}

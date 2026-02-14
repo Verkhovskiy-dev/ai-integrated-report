@@ -1,11 +1,13 @@
 /*
  * DESIGN: Intelligence Dashboard — Structural Shifts
  * Cards showing FROM → TO transitions with level badges
+ * Now includes SKOLKOVO program links in mechanism section
  * Mobile-first responsive
  */
 import { useState } from "react";
 import { ArrowRight, ArrowDown, ChevronDown, ChevronUp } from "lucide-react";
 import { STRUCTURAL_SHIFTS, SRT_LEVELS } from "@/data/reportData";
+import { ProgramBadgeGroup } from "@/components/ProgramBadge";
 
 function getLevelColor(id: number): string {
   const level = SRT_LEVELS.find((l) => l.id === id);
@@ -128,6 +130,14 @@ export default function StructuralShifts() {
                     <span className="text-foreground/70 font-medium">Механизм:</span>{" "}
                     {shift.mechanism}
                   </p>
+                  {/* Program links */}
+                  {(shift as any).relevantPrograms && (shift as any).relevantPrograms.length > 0 && (
+                    <ProgramBadgeGroup
+                      programKeys={(shift as any).relevantPrograms}
+                      compact={true}
+                      label="Программы →"
+                    />
+                  )}
                 </div>
               )}
             </div>

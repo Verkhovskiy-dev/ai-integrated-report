@@ -3,6 +3,45 @@
 // 7 key structural insights from 14 AI Daily Reports
 // ============================================================
 
+export interface ProgramLink {
+  name: string;
+  url: string;
+  shortName?: string;
+}
+
+export const SKOLKOVO_PROGRAMS: Record<string, ProgramLink> = {
+  aiShift: {
+    name: "«Переход в ИИ: трансформация бизнес-процессов»",
+    shortName: "Переход в ИИ",
+    url: "https://www.skolkovo.ru/programmes/cdto/",
+  },
+  intensiveAI: {
+    name: "«Интенсив по генеративным алгоритмам и ИИ»",
+    shortName: "Интенсив по ИИ",
+    url: "https://www.skolkovo.ru/programmes/intensiv-po-generativnym-algoritmam-i-ii/",
+  },
+  intensiveAgents: {
+    name: "«Онлайн-интенсив по разработке ИИ-продуктов»",
+    shortName: "Интенсив по агентам",
+    url: "https://www.skolkovo.ru/programmes/onlajn-intensiv-po-razrabotke-ii-produktov/",
+  },
+  dataDriven: {
+    name: "«Переход в data-driven управление»",
+    shortName: "Data-Driven",
+    url: "https://www.skolkovo.ru/programmes/praktikum-po-postroeniyu-data-driven-sistemy-upravleniya/",
+  },
+  ubnd: {
+    name: "«Управление бизнесом с помощью ИИ и данных»",
+    shortName: "УБНД",
+    url: "https://www.skolkovo.ru/programmes/upravlenie-biznesom-na-dannyh/",
+  },
+  aiMarketing: {
+    name: "«ИИ в маркетинге»",
+    shortName: "ИИ в маркетинге",
+    url: "https://www.skolkovo.ru/programmes/ii-v-marketinge/",
+  },
+};
+
 export interface StrategicInsight {
   id: number;
   title: string;
@@ -13,6 +52,8 @@ export interface StrategicInsight {
   evidence: string[];
   nonObviousConclusion: string;
   educationImplication: string;
+  /** Program keys from SKOLKOVO_PROGRAMS that are relevant to this insight */
+  relevantPrograms: string[];
 }
 
 export const STRATEGIC_INSIGHTS: StrategicInsight[] = [
@@ -31,7 +72,8 @@ export const STRATEGIC_INSIGHTS: StrategicInsight[] = [
       "Delta Electronics достигает $100 млрд капитализации, обгоняя Foxconn",
     ],
     nonObviousConclusion: "Параллельно с «бумом инфраструктуры» Bloomberg фиксирует «loan meltdown» для софтверных компаний — средний SaaS-слой становится «донором» для инфраструктурных игроков. Трансформация — это не «добавить AI к бизнесу», а перестройка всей цепочки стоимости.",
-    educationImplication: "Модуль по инфраструктурной грамотности: compute, энергия, память и охлаждение — стратегические ресурсы, определяющие конкурентоспособность.",
+    educationImplication: "Модуль по инфраструктурной грамотности: compute, энергия, память и охлаждение — стратегические ресурсы, определяющие конкурентоспособность. Эти темы глубоко разбираются в программе СКОЛКОВО «Управление бизнесом с помощью ИИ и данных» и в программе «Переход в ИИ».",
+    relevantPrograms: ["ubnd", "aiShift"],
   },
   {
     id: 2,
@@ -47,7 +89,8 @@ export const STRATEGIC_INSIGHTS: StrategicInsight[] = [
       "CEO-гайд по управлению рисками агентных систем (MIT Tech Review)",
     ],
     nonObviousConclusion: "Возникает новая профессиональная вертикаль «Agent Ops» — аналог DevOps/MLOps для агентных систем: управление правами, политики доступа, аудит действий, мониторинг «целевого дрейфа».",
-    educationImplication: "Модуль по «Agentic AI Governance»: архитектура безопасности, стандарты OWASP/NIST/SAIF, практики boundary-control.",
+    educationImplication: "Модуль по «Agentic AI Governance»: архитектура безопасности, стандарты OWASP/NIST/SAIF, практики boundary-control. Практические навыки создания агентных систем — в «Онлайн-интенсиве по разработке ИИ-продуктов» СКОЛКОВО.",
+    relevantPrograms: ["intensiveAgents", "intensiveAI"],
   },
   {
     id: 3,
@@ -63,7 +106,8 @@ export const STRATEGIC_INSIGHTS: StrategicInsight[] = [
       "Сотрудники Google требуют прекращения контрактов с ICE/CBP",
     ],
     nonObviousConclusion: "Формируется «тройной замок» регулирования: государство-заказчик создаёт стандарты через закупки; государство-регулятор — через законы; сотрудники — через внутренний активизм. Compliance становится стратегической функцией.",
-    educationImplication: "Модуль по «AI Governance и регуляторный ландшафт»: фискальные, экспортные и комплаенс-режимы как определяющие бизнес-модели.",
+    educationImplication: "Модуль по «AI Governance и регуляторный ландшафт»: фискальные, экспортные и комплаенс-режимы как определяющие бизнес-модели. Стратегический контекст для руководителей — в программе «Переход в ИИ» СКОЛКОВО.",
+    relevantPrograms: ["aiShift", "ubnd"],
   },
   {
     id: 4,
@@ -79,7 +123,8 @@ export const STRATEGIC_INSIGHTS: StrategicInsight[] = [
       "MIT Tech Review: «What AI remembers about you is privacy's next frontier»",
     ],
     nonObviousConclusion: "Возникает «конкуренция за контекст»: кто первым получит доступ к наибольшему объёму данных через «память агента», тот создаст непреодолимый lock-in. Выбор AI-платформы = решение «кому мы отдаём институциональную память».",
-    educationImplication: "Модуль по «Data Governance в эпоху агентного AI»: сегментация памяти, provenance, контроль контекста, политики удаления.",
+    educationImplication: "Модуль по «Data Governance в эпоху агентного AI»: сегментация памяти, provenance, контроль контекста, политики удаления. Практический подход к data-driven управлению — в программе «Управление бизнесом с помощью ИИ и данных».",
+    relevantPrograms: ["ubnd", "dataDriven"],
   },
   {
     id: 5,
@@ -94,7 +139,8 @@ export const STRATEGIC_INSIGHTS: StrategicInsight[] = [
       "a16z финансирует AI super PAC и одновременно инвестирует в Civitai",
     ],
     nonObviousConclusion: "Visa/Mastercard/PSP становятся регуляторами быстрее государства. Возникают два параллельных контура: легальный (банковские платежи + комплаенс) и теневой (криптовалюта + обход).",
-    educationImplication: "Понимание «платёжного комплаенса» как нового слоя корпоративного управления для компаний, работающих с GenAI.",
+    educationImplication: "Понимание «платёжного комплаенса» как нового слоя корпоративного управления для компаний, работающих с GenAI. Маркетинговые риски и возможности AI разбираются в программе «ИИ в маркетинге» СКОЛКОВО.",
+    relevantPrograms: ["aiMarketing", "aiShift"],
   },
   {
     id: 6,
@@ -110,7 +156,8 @@ export const STRATEGIC_INSIGHTS: StrategicInsight[] = [
       "Google: Gemini + Облако + Персональная память + Genie",
     ],
     nonObviousConclusion: "Компании «среднего слоя» под двойным давлением: сверху (платформы забирают маржу) и снизу (инфраструктура дорожает). Ожидается массовая консолидация «среднего слоя» в ближайшие 12–18 месяцев.",
-    educationImplication: "Модуль по стратегическому позиционированию: анализ цепочки создания ценности, определение «узловых позиций».",
+    educationImplication: "Модуль по стратегическому позиционированию: анализ цепочки создания ценности, определение «узловых позиций». Системный подход к data-driven трансформации — в программе «Переход в data-driven управление» СКОЛКОВО.",
+    relevantPrograms: ["dataDriven", "ubnd"],
   },
   {
     id: 7,
@@ -125,8 +172,9 @@ export const STRATEGIC_INSIGHTS: StrategicInsight[] = [
       "Компании переходят к «иконному use case» с ROI и выводом в прод за ≤3 мес.",
       "Block, Ocado, Amazon сокращают тысячи сотрудников в пользу AI-компетенций",
     ],
-    nonObviousConclusion: "Образовательные программы по цифровой трансформации в уникальной стратегической позиции: «поставщик компетенций» для организаций, которые не могут нанять специалистов на открытом рынке.",
-    educationImplication: "Практико-ориентированный подход: не «что такое AI», а «как развернуть агентную систему с boundary-control за 3 месяца».",
+    nonObviousConclusion: "Образовательные программы по цифровой трансформации в уникальной стратегической позиции: «поставщик компетенций» для организаций, которые не могут нанять специалистов на открытом рынке. Портфель программ СКОЛКОВО закрывает полный спектр — от стратегии до практики.",
+    educationImplication: "Практико-ориентированный подход: не «что такое AI», а «как развернуть агентную систему с boundary-control за 3 месяца». Полный спектр программ СКОЛКОВО: от стратегического «Перехода в ИИ» до практического «Интенсива по генеративным алгоритмам и ИИ» и «Интенсива по разработке ИИ-продуктов».",
+    relevantPrograms: ["aiShift", "intensiveAI", "intensiveAgents", "ubnd", "aiMarketing", "dataDriven"],
   },
 ];
 
@@ -182,7 +230,14 @@ export const NODAL_POSITIONS: NodalPosition[] = [
   },
 ];
 
-export const EDUCATION_RECOMMENDATIONS = [
+export interface EducationRecommendation {
+  category: string;
+  items: string[];
+  /** Program keys from SKOLKOVO_PROGRAMS relevant to this category */
+  relevantPrograms: string[];
+}
+
+export const EDUCATION_RECOMMENDATIONS: EducationRecommendation[] = [
   {
     category: "Обновить содержание модулей",
     items: [
@@ -190,6 +245,7 @@ export const EDUCATION_RECOMMENDATIONS = [
       "Практический модуль по Agentic AI (развёртывание агентных систем с governance)",
       "Расширенный блок по Data Governance с акцентом на «память агента»",
     ],
+    relevantPrograms: ["aiShift", "intensiveAgents", "ubnd"],
   },
   {
     category: "Изменить фокус проектных работ",
@@ -198,6 +254,7 @@ export const EDUCATION_RECOMMENDATIONS = [
       "Задания по анализу цепочки создания ценности и определению узловых позиций",
       "Кейсы по boundary-based security для агентных систем",
     ],
+    relevantPrograms: ["intensiveAI", "intensiveAgents", "dataDriven"],
   },
   {
     category: "Привлечь экспертов из новых областей",
@@ -206,5 +263,6 @@ export const EDUCATION_RECOMMENDATIONS = [
       "Инфраструктура вычислений (ДЦ, энергетика, охлаждение)",
       "Регуляторный ландшафт AI (практики compliance, не юристы-теоретики)",
     ],
+    relevantPrograms: ["aiShift", "aiMarketing", "ubnd"],
   },
 ];

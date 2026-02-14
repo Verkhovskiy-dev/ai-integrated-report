@@ -16,6 +16,7 @@ import TopCompanies from "@/components/TopCompanies";
 import ThemeFrequency from "@/components/ThemeFrequency";
 import NodalPositions from "@/components/NodalPositions";
 import Timeline from "@/components/Timeline";
+import ProgramsSection from "@/components/ProgramsSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -37,7 +38,7 @@ export default function Home() {
           <HeatmapSection />
         </section>
 
-        {/* Strategic Insights — NEW */}
+        {/* Strategic Insights — with program links */}
         <section id="insights" className="py-8 sm:py-12">
           <StrategicInsights />
         </section>
@@ -67,9 +68,14 @@ export default function Home() {
           <WeakSignalsRadar />
         </section>
 
-        {/* Nodal Positions + Education Recommendations — NEW */}
+        {/* Nodal Positions + Education Recommendations — with program links */}
         <section id="positions" className="py-8 sm:py-12">
           <NodalPositions />
+        </section>
+
+        {/* Programs — SKOLKOVO educational programs */}
+        <section id="programs" className="py-8 sm:py-12">
+          <ProgramsSection />
         </section>
 
         {/* Timeline */}
