@@ -8,6 +8,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import NewsTicker from "@/components/NewsTicker";
 import MetricsBar from "@/components/MetricsBar";
+import TrendCharts from "@/components/TrendCharts";
 import HeatmapSection from "@/components/HeatmapSection";
 import StrategicInsights from "@/components/StrategicInsights";
 import StructuralShifts from "@/components/StructuralShifts";
@@ -36,6 +37,9 @@ export default function Home() {
 
         {/* Hero / Metrics Bar */}
         <MetricsBar />
+
+        {/* Trend Momentum Charts — Accelerating vs Decelerating */}
+        <TrendCharts />
 
         {/* Heatmap: Activity by Level and Date */}
         <section id="heatmap" className="py-8 sm:py-12">
