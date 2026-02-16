@@ -15,15 +15,16 @@ import {
   CartesianGrid,
 } from "recharts";
 import { TrendingUp, TrendingDown, Flame, Snowflake } from "lucide-react";
-import { STRUCTURAL_SHIFTS, HEATMAP_DATA } from "@/data/reportData";
+import { useLiveData } from "@/contexts/LiveDataContext";
 
 // Generate synthetic momentum data from heatmap + shift metadata
 // Each shift is tied to specific SRT levels — we aggregate heatmap intensity for those levels
 function generateTrendData(
   shiftLevels: number[],
-  trend: string
+  trend: string,
+  heatmapData: { date: string; levels: Record<number, number> }[]
 ) {
-  const points = HEATMAP_DATA.map((day) => {
+  const points = heatmapData.map((day) => {
     const intensity = shiftLevels.reduce(
       (sum, lvl) => sum + (day.levels[lvl] || 0),
       0
@@ -191,8 +192,9 @@ function PanelChart({
   // Merge all trends into one dataset with separate series
   const mergedData = useMemo(() => {
     if (items.length === 0) return [];
-    return HEATMAP_DATA.map((day, dayIdx) => {
-      const point: Record<string, any> = { date: day.date };
+    const hData = items[0]?.data || [];
+    return hData.map((dayData, dayIdx) => {
+      const point: Record<string, any> = { date: dayData.date };
       items.forEach((item) => {
         point[item.title] = item.data[dayIdx]?.value || 0;
       });
@@ -269,13 +271,14 @@ function PanelChart({
 }
 
 export default function TrendCharts() {
+  const { structuralShifts: STRUCTURAL_SHIFTS, heatmapData: HEATMAP_DATA } = useLiveData();
   // Separate trends into accelerating and decelerating
   const { accelerating, decelerating } = useMemo(() => {
     const accel: TrendItem[] = [];
     const decel: TrendItem[] = [];
 
     STRUCTURAL_SHIFTS.forEach((shift) => {
-      const data = generateTrendData(shift.levels, shift.trend);
+      const data = generateTrendData(shift.levels, shift.trend, HEATMAP_DATA);
       const momentum = computeMomentum(data);
       const item: TrendItem = {
         id: shift.id,
@@ -299,7 +302,7 @@ export default function TrendCharts() {
     decel.sort((a, b) => a.momentum - b.momentum);
 
     return { accelerating: accel, decelerating: decel };
-  }, []);
+  }, [STRUCTURAL_SHIFTS, HEATMAP_DATA]);
 
   // If no decelerating trends in data, create synthetic ones from themes that appear less
   const effectiveDecelerating = useMemo(() => {
@@ -312,7 +315,7 @@ export default function TrendCharts() {
         trend: "decelerating",
         frequency: 4,
         levels: [7, 6],
-        data: generateTrendData([7, 6], "decelerating"),
+        data: generateTrendData([7, 6], "decelerating", HEATMAP_DATA),
         momentum: -18,
       },
       {
@@ -321,7 +324,7 @@ export default function TrendCharts() {
         trend: "decelerating",
         frequency: 3,
         levels: [5, 9],
-        data: generateTrendData([5, 9], "decelerating"),
+        data: generateTrendData([5, 9], "decelerating", HEATMAP_DATA),
         momentum: -24,
       },
       {
@@ -330,7 +333,7 @@ export default function TrendCharts() {
         trend: "decelerating",
         frequency: 3,
         levels: [4, 5],
-        data: generateTrendData([4, 5], "decelerating"),
+        data: generateTrendData([4, 5], "decelerating", HEATMAP_DATA),
         momentum: -15,
       },
       {
@@ -339,12 +342,12 @@ export default function TrendCharts() {
         trend: "decelerating",
         frequency: 2,
         levels: [6, 8],
-        data: generateTrendData([6, 8], "decelerating"),
+        data: generateTrendData([6, 8], "decelerating", HEATMAP_DATA),
         momentum: -21,
       },
     ];
     return syntheticItems;
-  }, [decelerating]);
+  }, [decelerating, HEATMAP_DATA]);
 
   return (
     <section className="py-6 sm:py-10">

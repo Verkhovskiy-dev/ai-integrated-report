@@ -6,7 +6,8 @@
  */
 import { useState } from "react";
 import { ArrowRight, ArrowDown, ChevronDown, ChevronUp } from "lucide-react";
-import { STRUCTURAL_SHIFTS, SRT_LEVELS } from "@/data/reportData";
+import { SRT_LEVELS } from "@/data/reportData";
+import { useLiveData } from "@/contexts/LiveDataContext";
 import { ProgramBadgeGroup } from "@/components/ProgramBadge";
 
 function getLevelColor(id: number): string {
@@ -26,6 +27,7 @@ function getTrendBadge(trend: string) {
 }
 
 export default function StructuralShifts() {
+  const { structuralShifts: STRUCTURAL_SHIFTS } = useLiveData();
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   return (

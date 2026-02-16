@@ -3,9 +3,10 @@
  * Horizontal bar chart of key themes
  * Mobile-first responsive
  */
-import { THEME_FREQUENCY } from "@/data/reportData";
+import { useLiveData } from "@/contexts/LiveDataContext";
 
 export default function ThemeFrequency() {
+  const { themeFrequency: THEME_FREQUENCY } = useLiveData();
   const maxCount = Math.max(...THEME_FREQUENCY.map((t) => t.count));
 
   return (

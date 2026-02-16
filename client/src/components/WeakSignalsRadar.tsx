@@ -4,7 +4,8 @@
  * Now includes SKOLKOVO program links on relevant signals
  * Mobile: single column, radar hidden on small screens
  */
-import { WEAK_SIGNALS, SRT_LEVELS } from "@/data/reportData";
+import { SRT_LEVELS } from "@/data/reportData";
+import { useLiveData } from "@/contexts/LiveDataContext";
 import { AlertTriangle, AlertCircle } from "lucide-react";
 import { ProgramBadgeGroup } from "@/components/ProgramBadge";
 
@@ -40,6 +41,7 @@ function getLevelName(id: number): string {
 }
 
 export default function WeakSignalsRadar() {
+  const { weakSignals: WEAK_SIGNALS } = useLiveData();
   const highCount = WEAK_SIGNALS.filter((s) => s.urgency === "high").length;
   const mediumCount = WEAK_SIGNALS.filter((s) => s.urgency === "medium").length;
 

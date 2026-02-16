@@ -4,13 +4,13 @@
  * Mobile-first responsive
  */
 import { useEffect, useState } from "react";
-import { FileText, Zap, TrendingUp, Radio, Building2, Link } from "lucide-react";
-import { KEY_METRICS } from "@/data/reportData";
+import { FileText, Zap, TrendingUp, Radio, Building2, Link, Network } from "lucide-react";
+import { useLiveData } from "@/contexts/LiveDataContext";
 
 const HERO_BG = "https://private-us-east-1.manuscdn.com/sessionFile/v7uKuw67xnKHKY8cq65BNf/sandbox/TAGv8ZfRAyZfV9Lj7wYGNr-img-1_1770928035000_na1fn_aGVyby1iZw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvdjd1S3V3Njd4bktIS1k4Y3E2NUJOZi9zYW5kYm94L1RBR3Y4WmZSQXlaZlY5TGo3d1lHTnItaW1nLTFfMTc3MDkyODAzNTAwMF9uYTFmbl9hR1Z5YnkxaVp3LnBuZz94LW9zcy1wcm9jZXNzPWltYWdlL3Jlc2l6ZSx3XzE5MjAsaF8xOTIwL2Zvcm1hdCx3ZWJwL3F1YWxpdHkscV84MCIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=T3OHAF4iqAqalao8ACPE2L-LG9yQ9~hw5DQA2gkkLnLdfhQ7SfW7PqR2X7hTqCTSJB5LKfgrbYkk5wfu~ScefUx2vWekH7-Q5Oi5M-AHe-1AwajwPTGF1QYwsvAqf1Io13k09tiWYmt5hCQVkI1vR7Z-x9eR5rUOLLTpuEpkqWWMxeChpxYwWGAd~74AG2JCw25zc-3rf21q-QjtnQVZ9tLFGpqoJMa7~3GFgSXeV3tS3tI8-EL0-xc6HnntpvcEBkO2G7Uvacu4FszFUIOb0K5krLfzHtjnVWOdpYzNwFIXMuSBX4v-lk4qoXe2GtaVQdldPoWlo3q~TGXyGI61LQ__";
 
 const ICON_MAP: Record<string, typeof FileText> = {
-  FileText, Zap, TrendingUp, Radio, Building2, Link,
+  FileText, Zap, TrendingUp, Radio, Building2, Link, Network,
 };
 
 function AnimatedNumber({ target, suffix }: { target: number; suffix: string }) {
@@ -43,6 +43,7 @@ function AnimatedNumber({ target, suffix }: { target: number; suffix: string }) 
 }
 
 export default function MetricsBar() {
+  const { keyMetrics: KEY_METRICS, isLive, reportDate, keyFocus } = useLiveData();
   return (
     <section className="relative overflow-hidden">
       {/* Hero Background */}
@@ -65,12 +66,22 @@ export default function MetricsBar() {
             AI Daily Reports
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
-            Агрегированный анализ <span className="text-primary font-medium">14 ежедневных отчётов</span> по
-            Структуре Разделения Труда (СРТ) в сфере AI, технологий и кибербезопасности.
-            <span className="hidden sm:inline"> Период: <span className="font-mono text-foreground/80">30 января — 12 февраля 2026</span>.</span>
+            {isLive ? (
+              <>Анализ по Структуре Разделения Труда (СРТ) в сфере AI, технологий и кибербезопасности.
+              <span className="hidden sm:inline"> Дата отчёта: <span className="font-mono text-foreground/80">{reportDate}</span>.</span></>
+            ) : (
+              <>Агрегированный анализ <span className="text-primary font-medium">14 ежедневных отчётов</span> по
+              Структуре Разделения Труда (СРТ) в сфере AI, технологий и кибербезопасности.
+              <span className="hidden sm:inline"> Период: <span className="font-mono text-foreground/80">30 января — 12 февраля 2026</span>.</span></>
+            )}
           </p>
+          {isLive && keyFocus && (
+            <p className="text-xs sm:text-sm text-primary/80 mt-2 max-w-2xl leading-relaxed italic">
+              Фокус дня: {keyFocus}
+            </p>
+          )}
           <p className="text-xs text-muted-foreground mt-1 sm:hidden font-mono">
-            30 января — 12 февраля 2026
+            {isLive ? reportDate : "30 января — 12 февраля 2026"}
           </p>
         </div>
 

@@ -3,7 +3,8 @@
  * Vertical timeline of key events with type color coding
  * Mobile: simplified layout without vertical line
  */
-import { KEY_EVENTS, EVENT_TYPE_COLORS, EVENT_TYPE_LABELS, SRT_LEVELS } from "@/data/reportData";
+import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS, SRT_LEVELS } from "@/data/reportData";
+import { useLiveData } from "@/contexts/LiveDataContext";
 
 function getLevelColor(id: number): string {
   const level = SRT_LEVELS.find((l) => l.id === id);
@@ -16,6 +17,7 @@ function getLevelName(id: number): string {
 }
 
 export default function Timeline() {
+  const { keyEvents: KEY_EVENTS } = useLiveData();
   // Group events by date
   const grouped = KEY_EVENTS.reduce<Record<string, typeof KEY_EVENTS>>((acc, event) => {
     if (!acc[event.date]) acc[event.date] = [];

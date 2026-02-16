@@ -3,7 +3,8 @@
  * Visualize connections between СРТ levels
  * Mobile: wrapping level badges, compact layout
  */
-import { CROSS_LEVEL_CONNECTIONS, SRT_LEVELS } from "@/data/reportData";
+import { SRT_LEVELS } from "@/data/reportData";
+import { useLiveData } from "@/contexts/LiveDataContext";
 
 const NETWORK_BG = "https://private-us-east-1.manuscdn.com/sessionFile/v7uKuw67xnKHKY8cq65BNf/sandbox/TAGv8ZfRAyZfV9Lj7wYGNr-img-3_1770928036000_na1fn_bmV0d29yay1wYXR0ZXJu.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvdjd1S3V3Njd4bktIS1k4Y3E2NUJOZi9zYW5kYm94L1RBR3Y4WmZSQXlaZlY5TGo3d1lHTnItaW1nLTNfMTc3MDkyODAzNjAwMF9uYTFmbl9ibVYwZDI5eWF5MXdZWFIwWlhKdS5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=l2i1-TKPKCMxV5epfGaypgxiWzh5WCeFd2s2R3bNAROSkiBJNfFT1xLNQRZf4BETQgRn2ZaYncJNdJEliAk0m8zE5UM1t5bCEKb~9ma7~4Ow6rHxhiv7DFUUPGdhf7MzadZk4EdE0cDNu-Le-Q5L0Yl9nzxHl0SzxruaauwNoU1Fv4tkLa969kgaAQCn17eNNz7LIf-YELQ7ToSp0tFOPufwKKoU~C0pwbBWJ8-6UmMQe0cuNY7Pt-t15nlBa6q5hRVa9OkmXPLwiKzUu6f3XqMAs1osIsFWCK6w5sMyRlD0KONx7YaIpXMcp~WWW~Hghafn9K9unwR8~HLkuyYx6g__";
 
@@ -41,6 +42,7 @@ function ArrowIcon() {
 }
 
 export default function CrossLevelConnections() {
+  const { crossLevelConnections: CROSS_LEVEL_CONNECTIONS } = useLiveData();
   return (
     <div className="container">
       <div className="relative overflow-hidden rounded-xl border border-border/30">

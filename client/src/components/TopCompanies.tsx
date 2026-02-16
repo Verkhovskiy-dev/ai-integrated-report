@@ -3,7 +3,7 @@
  * Horizontal bar chart of company mentions
  * Mobile-first responsive
  */
-import { TOP_COMPANIES } from "@/data/reportData";
+import { useLiveData } from "@/contexts/LiveDataContext";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 
 function getTrendIcon(trend: string) {
@@ -23,6 +23,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export default function TopCompanies() {
+  const { topCompanies: TOP_COMPANIES } = useLiveData();
   const maxMentions = Math.max(...TOP_COMPANIES.map((c) => c.mentions));
 
   return (

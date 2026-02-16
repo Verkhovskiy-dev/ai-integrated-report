@@ -4,7 +4,8 @@
  * Mobile: scrollable horizontally with sticky labels
  */
 import { useState } from "react";
-import { HEATMAP_DATA, SRT_LEVELS } from "@/data/reportData";
+import { SRT_LEVELS } from "@/data/reportData";
+import { useLiveData } from "@/contexts/LiveDataContext";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 function getHeatColor(value: number): string {
@@ -28,6 +29,7 @@ function getGroupLabel(group: string): string {
 }
 
 export default function HeatmapSection() {
+  const { heatmapData: HEATMAP_DATA } = useLiveData();
   const [hoveredCell, setHoveredCell] = useState<{ date: string; level: number } | null>(null);
 
   return (
