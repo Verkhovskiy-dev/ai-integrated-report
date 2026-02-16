@@ -55,10 +55,14 @@ function generateTrendData(
 
 // Compute momentum score: slope of last 7 days vs first 7 days
 function computeMomentum(data: { value: number }[]): number {
-  const mid = Math.floor(data.length / 2);
+  if (data.length < 2) return 0;
+  const mid = Math.floor(data.length / 2) || 1;
   const firstHalf = data.slice(0, mid).reduce((s, d) => s + d.value, 0) / mid;
-  const secondHalf = data.slice(mid).reduce((s, d) => s + d.value, 0) / (data.length - mid);
-  return Math.round(((secondHalf - firstHalf) / Math.max(firstHalf, 1)) * 100);
+  const secondLen = data.length - mid;
+  const secondHalf = secondLen > 0 ? data.slice(mid).reduce((s, d) => s + d.value, 0) / secondLen : firstHalf;
+  const base = Math.max(firstHalf, 1);
+  const result = Math.round(((secondHalf - firstHalf) / base) * 100);
+  return isNaN(result) ? 0 : result;
 }
 
 interface TrendItem {

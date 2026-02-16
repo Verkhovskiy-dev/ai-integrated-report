@@ -37,7 +37,7 @@ function AnimatedNumber({ target, suffix }: { target: number; suffix: string }) 
 
   return (
     <span className="font-mono font-medium tabular-nums">
-      {current}{suffix}
+      {target === 0 && suffix ? suffix : <>{current}{suffix}</>}
     </span>
   );
 }
