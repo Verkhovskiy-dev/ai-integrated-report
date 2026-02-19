@@ -3,11 +3,20 @@
  * Dark navy background, cyan/amber/magenta accents
  * Space Grotesk headings, IBM Plex Sans body, IBM Plex Mono data
  * Mobile-first responsive layout
+ *
+ * LAYOUT ORDER (user request):
+ * 1. Header + FilterBar (sticky)
+ * 2. NewsTicker (Bloomberg-style scrolling bar)
+ * 3. LatestNews — fresh events from latest report (FIRST SCREEN)
+ * 4. TrendCharts — momentum area charts (FIRST SCREEN)
+ * 5. MetricsBar — hero section with key numbers
+ * 6. Heatmap, Insights, Themes, Shifts, etc.
  */
 import { useState } from "react";
 import Header from "@/components/Header";
 import FilterBar from "@/components/FilterBar";
 import NewsTicker from "@/components/NewsTicker";
+import LatestNews from "@/components/LatestNews";
 import MetricsBar from "@/components/MetricsBar";
 import TrendCharts from "@/components/TrendCharts";
 import HeatmapSection from "@/components/HeatmapSection";
@@ -26,7 +35,7 @@ import SkolkovoRecommendations from "@/components/SkolkovoRecommendations";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState<string>("overview");
+  const [activeSection, setActiveSection] = useState<string>("news");
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
@@ -40,11 +49,14 @@ export default function Home() {
         {/* Bloomberg-style News Ticker */}
         <NewsTicker />
 
-        {/* Hero / Metrics Bar */}
-        <MetricsBar />
+        {/* === FIRST SCREEN: Fresh News === */}
+        <LatestNews />
 
-        {/* Trend Momentum Charts — Accelerating vs Decelerating */}
+        {/* === FIRST SCREEN: Trend Momentum Charts === */}
         <TrendCharts />
+
+        {/* Hero / Metrics Bar — moved below news & trends */}
+        <MetricsBar />
 
         {/* Heatmap: Activity by Level and Date */}
         <section id="heatmap" className="py-6 sm:py-10">
@@ -81,17 +93,17 @@ export default function Home() {
           <WeakSignalsRadar />
         </section>
 
-        {/* Week-over-Week Comparison — NEW */}
+        {/* Week-over-Week Comparison */}
         <section id="wow" className="py-6 sm:py-10">
           <WeekOverWeek />
         </section>
 
-        {/* Forecasts — NEW */}
+        {/* Forecasts */}
         <section id="forecasts" className="py-6 sm:py-10">
           <Forecasts />
         </section>
 
-        {/* Nodal Positions + Education Recommendations — with program links */}
+        {/* Nodal Positions + Education Recommendations */}
         <section id="positions" className="py-6 sm:py-10">
           <NodalPositions />
         </section>
@@ -101,7 +113,7 @@ export default function Home() {
           <ProgramsSection />
         </section>
 
-        {/* SKOLKOVO Recommendations — NEW */}
+        {/* SKOLKOVO Recommendations */}
         <section id="recommendations" className="py-6 sm:py-10">
           <SkolkovoRecommendations />
         </section>

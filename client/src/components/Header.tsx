@@ -6,12 +6,13 @@
 import { useState } from "react";
 import {
   Activity, Radio, TrendingUp, Network, Clock, LayoutGrid,
-  Lightbulb, Target, Menu, X, GraduationCap, BarChart3, Sparkles, BookOpen
+  Lightbulb, Target, Menu, X, GraduationCap, BarChart3, Sparkles, BookOpen, Newspaper
 } from "lucide-react";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import PdfExport from "@/components/PdfExport";
 
 const NAV_ITEMS = [
+  { id: "news", label: "Новости", icon: Newspaper },
   { id: "heatmap", label: "Обзор", icon: LayoutGrid },
   { id: "insights", label: "Инсайты", icon: Lightbulb },
   { id: "themes", label: "Темы", icon: Activity },
