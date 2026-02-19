@@ -16,6 +16,7 @@ import {
 } from "recharts";
 import { TrendingUp, TrendingDown, Flame, Snowflake } from "lucide-react";
 import { useLiveData } from "@/contexts/LiveDataContext";
+import { useFilters } from "@/contexts/FilterContext";
 
 // Generate synthetic momentum data from heatmap + shift metadata
 // Each shift is tied to specific SRT levels — we aggregate heatmap intensity for those levels
@@ -276,12 +277,21 @@ function PanelChart({
 
 export default function TrendCharts() {
   const { structuralShifts: STRUCTURAL_SHIFTS, heatmapData: HEATMAP_DATA } = useLiveData();
+  const { selectedLevels, searchQuery } = useFilters();
   // Separate trends into accelerating and decelerating
   const { accelerating, decelerating } = useMemo(() => {
     const accel: TrendItem[] = [];
     const decel: TrendItem[] = [];
 
-    STRUCTURAL_SHIFTS.forEach((shift) => {
+    STRUCTURAL_SHIFTS.filter((shift) => {
+      const hasLevel = shift.levels.some((l) => selectedLevels.includes(l));
+      if (!hasLevel) return false;
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        if (!shift.title.toLowerCase().includes(q)) return false;
+      }
+      return true;
+    }).forEach((shift) => {
       const data = generateTrendData(shift.levels, shift.trend, HEATMAP_DATA);
       const momentum = computeMomentum(data);
       const item: TrendItem = {
@@ -306,7 +316,7 @@ export default function TrendCharts() {
     decel.sort((a, b) => a.momentum - b.momentum);
 
     return { accelerating: accel, decelerating: decel };
-  }, [STRUCTURAL_SHIFTS, HEATMAP_DATA]);
+  }, [STRUCTURAL_SHIFTS, HEATMAP_DATA, selectedLevels, searchQuery]);
 
   // If no decelerating trends in data, create synthetic ones from themes that appear less
   const effectiveDecelerating = useMemo(() => {

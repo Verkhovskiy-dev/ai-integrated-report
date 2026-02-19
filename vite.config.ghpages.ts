@@ -5,7 +5,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "/ai-integrated-report/",
+  base: "/",
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),

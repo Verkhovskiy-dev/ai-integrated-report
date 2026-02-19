@@ -6,8 +6,10 @@
 import { useState } from "react";
 import {
   Activity, Radio, TrendingUp, Network, Clock, LayoutGrid,
-  Lightbulb, Target, Menu, X, GraduationCap
+  Lightbulb, Target, Menu, X, GraduationCap, BarChart3, Sparkles, BookOpen
 } from "lucide-react";
+import { useLiveData } from "@/contexts/LiveDataContext";
+import PdfExport from "@/components/PdfExport";
 
 const NAV_ITEMS = [
   { id: "heatmap", label: "Обзор", icon: LayoutGrid },
@@ -16,8 +18,11 @@ const NAV_ITEMS = [
   { id: "shifts", label: "Сдвиги", icon: TrendingUp },
   { id: "connections", label: "Связи", icon: Network },
   { id: "signals", label: "Сигналы", icon: Radio },
+  { id: "wow", label: "Недели", icon: BarChart3 },
+  { id: "forecasts", label: "Прогнозы", icon: Sparkles },
   { id: "positions", label: "Узлы", icon: Target },
   { id: "programs", label: "Программы", icon: GraduationCap },
+  { id: "recommendations", label: "Рекомендации", icon: BookOpen },
   { id: "timeline", label: "Хронология", icon: Clock },
 ];
 
@@ -28,6 +33,7 @@ interface HeaderProps {
 
 export default function Header({ activeSection, onSectionChange }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { reportDate, isLive } = useLiveData();
 
   const scrollTo = (id: string) => {
     onSectionChange(id);
@@ -47,9 +53,17 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
             <h1 className="text-sm font-semibold font-heading tracking-tight text-foreground">
               AI Strategic Intelligence
             </h1>
-            <p className="text-[10px] text-muted-foreground font-mono">
-              СРТ INTEGRATED REPORT — JAN 30 – FEB 12, 2026
-            </p>
+            <div className="flex items-center gap-2">
+              <p className="text-[10px] text-muted-foreground font-mono">
+                СРТ REPORT {reportDate ? `— ${reportDate}` : ""}
+              </p>
+              {isLive && (
+                <span className="flex items-center gap-1 text-[9px] font-mono text-emerald-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  LIVE
+                </span>
+              )}
+            </div>
           </div>
           <div className="sm:hidden">
             <h1 className="text-xs font-semibold font-heading tracking-tight text-foreground">
@@ -59,7 +73,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-0.5">
+        <nav className="hidden lg:flex items-center gap-0.5">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
@@ -68,7 +82,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
                 className={`
-                  flex items-center gap-1 px-2.5 py-1.5 rounded-md text-[11px] font-medium transition-all duration-200
+                  flex items-center gap-1 px-2 py-1.5 rounded-md text-[10px] font-medium transition-all duration-200
                   ${isActive
                     ? "bg-primary/15 text-primary border border-primary/20"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
@@ -80,21 +94,27 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
               </button>
             );
           })}
+          <div className="ml-1">
+            <PdfExport />
+          </div>
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        {/* Mobile: PDF + Menu */}
+        <div className="flex items-center gap-1.5 lg:hidden">
+          <PdfExport />
+          <button
+            className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-border/30 bg-background/95 backdrop-blur-xl">
-          <nav className="container py-3 grid grid-cols-2 gap-1.5">
+        <div className="lg:hidden border-t border-border/30 bg-background/95 backdrop-blur-xl max-h-[70vh] overflow-y-auto">
+          <nav className="container py-3 grid grid-cols-3 gap-1.5">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon;
               const isActive = activeSection === item.id;
@@ -103,7 +123,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
                   className={`
-                    flex items-center gap-2 px-3 py-2.5 rounded-lg text-xs font-medium transition-all duration-200
+                    flex flex-col items-center gap-1 px-2 py-2.5 rounded-lg text-[10px] font-medium transition-all duration-200
                     ${isActive
                       ? "bg-primary/15 text-primary border border-primary/20"
                       : "text-muted-foreground hover:text-foreground bg-muted/20 border border-transparent"

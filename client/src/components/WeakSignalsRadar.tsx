@@ -4,8 +4,10 @@
  * Now includes SKOLKOVO program links on relevant signals
  * Mobile: single column, radar hidden on small screens
  */
+import { useMemo } from "react";
 import { SRT_LEVELS } from "@/data/reportData";
 import { useLiveData } from "@/contexts/LiveDataContext";
+import { useFilters } from "@/contexts/FilterContext";
 import { AlertTriangle, AlertCircle } from "lucide-react";
 import { ProgramBadgeGroup } from "@/components/ProgramBadge";
 
@@ -42,8 +44,22 @@ function getLevelName(id: number): string {
 
 export default function WeakSignalsRadar() {
   const { weakSignals: WEAK_SIGNALS } = useLiveData();
-  const highCount = WEAK_SIGNALS.filter((s) => s.urgency === "high").length;
-  const mediumCount = WEAK_SIGNALS.filter((s) => s.urgency === "medium").length;
+  const { selectedLevels, searchQuery } = useFilters();
+
+  const filteredSignals = useMemo(() => {
+    return WEAK_SIGNALS.filter((s) => {
+      if (!selectedLevels.includes(s.level)) return false;
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        const text = `${s.title} ${s.description}`.toLowerCase();
+        if (!text.includes(q)) return false;
+      }
+      return true;
+    });
+  }, [WEAK_SIGNALS, selectedLevels, searchQuery]);
+
+  const highCount = filteredSignals.filter((s) => s.urgency === "high").length;
+  const mediumCount = filteredSignals.filter((s) => s.urgency === "medium").length;
 
   return (
     <div className="container">
@@ -133,7 +149,7 @@ export default function WeakSignalsRadar() {
         {/* Right: Signal cards */}
         <div className="lg:col-span-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
-            {WEAK_SIGNALS.map((signal) => {
+            {filteredSignals.map((signal) => {
               const urgency = getUrgencyConfig(signal.urgency);
               const UrgencyIcon = urgency.icon;
               const hasPrograms = (signal as any).relevantPrograms && (signal as any).relevantPrograms.length > 0;

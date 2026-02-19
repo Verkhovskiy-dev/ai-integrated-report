@@ -6,6 +6,7 @@
  */
 import { useState } from "react";
 import Header from "@/components/Header";
+import FilterBar from "@/components/FilterBar";
 import NewsTicker from "@/components/NewsTicker";
 import MetricsBar from "@/components/MetricsBar";
 import TrendCharts from "@/components/TrendCharts";
@@ -19,6 +20,9 @@ import ThemeFrequency from "@/components/ThemeFrequency";
 import NodalPositions from "@/components/NodalPositions";
 import Timeline from "@/components/Timeline";
 import ProgramsSection from "@/components/ProgramsSection";
+import WeekOverWeek from "@/components/WeekOverWeek";
+import Forecasts from "@/components/Forecasts";
+import SkolkovoRecommendations from "@/components/SkolkovoRecommendations";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -30,6 +34,7 @@ export default function Home() {
       <div className="fixed inset-0 pointer-events-none z-50 opacity-20 scan-line hidden sm:block" />
 
       <Header activeSection={activeSection} onSectionChange={setActiveSection} />
+      <FilterBar />
 
       <main className="relative z-10">
         {/* Bloomberg-style News Ticker */}
@@ -42,19 +47,19 @@ export default function Home() {
         <TrendCharts />
 
         {/* Heatmap: Activity by Level and Date */}
-        <section id="heatmap" className="py-8 sm:py-12">
+        <section id="heatmap" className="py-6 sm:py-10">
           <HeatmapSection />
         </section>
 
         {/* Strategic Insights — with program links */}
-        <section id="insights" className="py-8 sm:py-12">
+        <section id="insights" className="py-6 sm:py-10">
           <StrategicInsights />
         </section>
 
         {/* Two-column layout: Themes + Companies */}
-        <section id="themes" className="py-8 sm:py-12">
+        <section id="themes" className="py-6 sm:py-10">
           <div className="container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-6">
               <ThemeFrequency />
               <TopCompanies />
             </div>
@@ -62,32 +67,47 @@ export default function Home() {
         </section>
 
         {/* Structural Shifts */}
-        <section id="shifts" className="py-8 sm:py-12">
+        <section id="shifts" className="py-6 sm:py-10">
           <StructuralShifts />
         </section>
 
         {/* Cross-Level Connections */}
-        <section id="connections" className="py-8 sm:py-12">
+        <section id="connections" className="py-6 sm:py-10">
           <CrossLevelConnections />
         </section>
 
         {/* Weak Signals Radar */}
-        <section id="signals" className="py-8 sm:py-12">
+        <section id="signals" className="py-6 sm:py-10">
           <WeakSignalsRadar />
         </section>
 
+        {/* Week-over-Week Comparison — NEW */}
+        <section id="wow" className="py-6 sm:py-10">
+          <WeekOverWeek />
+        </section>
+
+        {/* Forecasts — NEW */}
+        <section id="forecasts" className="py-6 sm:py-10">
+          <Forecasts />
+        </section>
+
         {/* Nodal Positions + Education Recommendations — with program links */}
-        <section id="positions" className="py-8 sm:py-12">
+        <section id="positions" className="py-6 sm:py-10">
           <NodalPositions />
         </section>
 
         {/* Programs — SKOLKOVO educational programs */}
-        <section id="programs" className="py-8 sm:py-12">
+        <section id="programs" className="py-6 sm:py-10">
           <ProgramsSection />
         </section>
 
+        {/* SKOLKOVO Recommendations — NEW */}
+        <section id="recommendations" className="py-6 sm:py-10">
+          <SkolkovoRecommendations />
+        </section>
+
         {/* Timeline */}
-        <section id="timeline" className="py-8 sm:py-12">
+        <section id="timeline" className="py-6 sm:py-10">
           <Timeline />
         </section>
       </main>

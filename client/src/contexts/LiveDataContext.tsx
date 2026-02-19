@@ -323,24 +323,37 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
         if (!latestResp.ok) throw new Error(`HTTP ${latestResp.status}`);
         const latest: LiveReport = await latestResp.json();
 
-        // Try to fetch archive index
+        // Try to fetch archive manifest, then load all archive files
         let archiveReports: LiveReport[] = [];
         try {
-          // Try fetching known archive files based on date range
-          const latestDate = new Date(latest.date);
-          const archivePromises: Promise<LiveReport | null>[] = [];
-          for (let i = 1; i <= 14; i++) {
-            const d = new Date(latestDate);
-            d.setDate(d.getDate() - i);
-            const dateStr = d.toISOString().split("T")[0];
-            archivePromises.push(
-              fetch(`${base}data/archive/${dateStr}.json`)
+          // First try manifest-based loading
+          const manifestResp = await fetch(`${base}data/archive/manifest.json`);
+          if (manifestResp.ok) {
+            const manifest: string[] = await manifestResp.json();
+            const archivePromises = manifest.map((filename) =>
+              fetch(`${base}data/archive/${filename}`)
                 .then((r) => (r.ok ? r.json() : null))
                 .catch(() => null)
             );
+            const results = await Promise.all(archivePromises);
+            archiveReports = results.filter((r): r is LiveReport => r !== null);
+          } else {
+            // Fallback: try fetching by date range
+            const latestDate = new Date(latest.date);
+            const archivePromises: Promise<LiveReport | null>[] = [];
+            for (let i = 1; i <= 30; i++) {
+              const d = new Date(latestDate);
+              d.setDate(d.getDate() - i);
+              const dateStr = d.toISOString().split("T")[0];
+              archivePromises.push(
+                fetch(`${base}data/archive/${dateStr}.json`)
+                  .then((r) => (r.ok ? r.json() : null))
+                  .catch(() => null)
+              );
+            }
+            const results = await Promise.all(archivePromises);
+            archiveReports = results.filter((r): r is LiveReport => r !== null);
           }
-          const results = await Promise.all(archivePromises);
-          archiveReports = results.filter((r): r is LiveReport => r !== null);
         } catch {
           // Archive not available, that's ok
         }
