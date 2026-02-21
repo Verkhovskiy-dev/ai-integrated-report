@@ -51,9 +51,11 @@ export default function MetricsBar() {
         <img
           src={HERO_BG}
           alt=""
-          className="w-full h-full object-cover opacity-40"
+          className="w-full h-full object-cover opacity-30"
+          loading="eager"
+          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background/90 to-background" />
       </div>
 
       <div className="container relative z-10 pt-10 pb-8 sm:pt-16 sm:pb-12">
@@ -101,7 +103,7 @@ export default function MetricsBar() {
                     {metric.label}
                   </span>
                 </div>
-                <div className="text-lg sm:text-2xl lg:text-3xl font-heading font-bold text-foreground">
+                <div className="text-base sm:text-2xl lg:text-3xl font-heading font-bold text-foreground whitespace-nowrap">
                   <AnimatedNumber target={metric.value} suffix={metric.suffix} />
                 </div>
                 {/* Subtle glow on hover */}

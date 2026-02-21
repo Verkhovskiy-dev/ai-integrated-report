@@ -63,8 +63,8 @@ export default function WeakSignalsRadar() {
 
   return (
     <div className="container">
-      {/* Header + Summary for mobile */}
-      <div className="mb-5 sm:mb-0">
+      {/* Header + Summary for mobile — hidden on lg where left panel has its own header */}
+      <div className="mb-5 sm:mb-0 lg:hidden">
         <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-2">
           Слабые сигналы
         </p>
@@ -148,6 +148,15 @@ export default function WeakSignalsRadar() {
 
         {/* Right: Signal cards */}
         <div className="lg:col-span-8">
+          {filteredSignals.length === 0 ? (
+            <div className="bg-card/40 border border-border/30 rounded-xl p-6 sm:p-8 text-center">
+              <p className="text-sm text-muted-foreground">
+                {WEAK_SIGNALS.length === 0
+                  ? "Слабые сигналы формируются после накопления нескольких отчётов. Данные появятся автоматически."
+                  : "Нет сигналов, соответствующих фильтрам."}
+              </p>
+            </div>
+          ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
             {filteredSignals.map((signal) => {
               const urgency = getUrgencyConfig(signal.urgency);
@@ -190,6 +199,7 @@ export default function WeakSignalsRadar() {
               );
             })}
           </div>
+          )}
         </div>
       </div>
     </div>

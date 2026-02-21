@@ -72,8 +72,12 @@ export default function StructuralShifts() {
       </div>
 
       {filteredShifts.length === 0 ? (
-        <div className="bg-card/40 border border-border/30 rounded-xl p-6 text-center">
-          <p className="text-sm text-muted-foreground">Нет сдвигов, соответствующих фильтрам.</p>
+        <div className="bg-card/40 border border-border/30 rounded-xl p-6 sm:p-8 text-center">
+          <p className="text-sm text-muted-foreground">
+            {STRUCTURAL_SHIFTS.length === 0
+              ? "Структурные сдвиги формируются после накопления нескольких отчётов. Данные появятся автоматически."
+              : "Нет сдвигов, соответствующих фильтрам."}
+          </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
