@@ -1,0 +1,160 @@
+{
+  "date": "2026-02-21",
+  "generated_at": "2026-02-21T16:29:15.397Z",
+  "key_focus": "",
+  "srt_levels": [
+    {
+      "level": 9,
+      "name": "Денежная система",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 8,
+      "name": "Спонтанный порядок",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 7,
+      "name": "Институты знания",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 6,
+      "name": "Технологии производства знаний",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 5,
+      "name": "Разделение труда между фирмами",
+      "events": [
+        {
+          "title": "Offensive AI стал массовым",
+          "description": "Amazon описывает взлом >600 firewall с помощью широко доступных AI‑инструментов — это меняет базовую технологическую реальность угроз.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-20/hackers-used-ai-to-breach-600-firewalls-in-weeks-amazon-says"
+          ]
+        }
+      ],
+      "event_count": 1
+    },
+    {
+      "level": 4,
+      "name": "Железные технологии",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 3,
+      "name": "Социально-профессиональная структура",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 2,
+      "name": "Пространственная организация",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 1,
+      "name": "Природные ресурсы",
+      "events": [],
+      "event_count": 0
+    }
+  ],
+  "cross_level_links": [
+    {
+      "title": "Контур ДОСТУПА",
+      "description": "**Контур ДОСТУПА**: политика (Ур.8) → технологии age‑verification (Ур.6/4) → новые посредники идентичности (Ур.5) → перераспределение ренты внимания (Ур.9).",
+      "levels": [
+        9,
+        8,
+        6,
+        5
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-21/merz-s-cdu-calls-for-age-restrictions-on-social-media-networks"
+      ]
+    },
+    {
+      "title": "Контур ДОВЕРИЯ",
+      "description": "**Контур ДОВЕРИЯ**: дезинформация/AI‑контент → инфраструктурные протоколы верификации (Ур.4/6) → новые стандарты рынка (Ур.8) → новые условия монетизации и ответственности (Ур.9).",
+      "levels": [
+        9,
+        8,
+        4
+      ],
+      "sources": [
+        "https://www.technologyreview.com/2026/02/19/1133360/microsoft-has-a-new-plan-to-prove-whats-real-and-what-s-ai-online/"
+      ]
+    },
+    {
+      "title": "Контур РИСКА/БЕЗОПАСНОСТИ",
+      "description": "**Контур РИСКА/БЕЗОПАСНОСТИ**: массовый offensive AI (Ур.4) → встраивание защиты в модели (Ур.6) → переразделение отраслей security (Ур.5) + нацбезопасность платформ (Ур.8) → финстабильность/системный риск (Ур.9). ; ; --- ###",
+      "levels": [
+        9,
+        8,
+        6,
+        5,
+        4
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-20/hackers-used-ai-to-breach-600-firewalls-in-weeks-amazon-says",
+        "https://www.bloomberg.com/news/articles/2026-02-21/russia-s-fsb-says-ukraine-can-tap-front-line-data-via-telegram",
+        "https://www.bloomberg.com/news/videos/2026-02-21/how-ai-could-freeze-progress-masters-in-business-video"
+      ]
+    }
+  ],
+  "structural_shifts": [],
+  "radar_signals": [
+    {
+      "title": "Станет ли декларация safe‑AI “условием доступа”",
+      "description": "к госконтрактам/кредиту/страхованию (мягкое право → жесткий рыночный фильтр).",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMikgFBVV95cUxPTmRLSVppcElqbVZUSXYyck1mbjJBaWY0bHNLaVlIdVlOMl94ZVAtR1dORUhrMVd5MmxvZGxGV2NJaWxhTDQ2VkFIZzJDb0xmaFNPc0FsSTROVGlVQnNkVE5nQ244b3JyVGIxaVRBUFRSdUgwWWE4VE9kRkJjWURRR2dJNjhvWVFhS1QwcUpNdi10QQ?oc=5"
+      ]
+    },
+    {
+      "title": "Какая архитектура age‑verification выберется в Европе",
+      "description": "(через app stores / telco / eID) — от этого зависит, кто станет “новым центром власти” в цепочке (платформы, операторы, государство).",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-21/merz-s-cdu-calls-for-age-restrictions-on-social-media-networks"
+      ]
+    },
+    {
+      "title": "Грань ответственности AI‑провайдера",
+      "description": "(бан vs сообщение властям) — будет ли оформлен отраслевой стандарт эскалации.\n\nЕсли вы хотите “следующий шаг” без лишней теории: скажите, кого моделируем как главного актора (ЕС‑регулятор, американская платформа, провайдер identity/телко, AI‑лаборатория, инвестфонд) — и я соберу **карту интересов и ходов** по этим трем контурам (доступ/доверие/риск) на горизонте 3–6 месяцев.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-21/openai-flagged-canada-suspect-eight-months-before-mass-shooting"
+      ]
+    }
+  ],
+  "metrics": {
+    "total_events": 1,
+    "events_by_level": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0
+    },
+    "total_sources": 1,
+    "structural_shifts_count": 0,
+    "radar_signals_count": 3,
+    "cross_level_links_count": 3
+  }
+}
