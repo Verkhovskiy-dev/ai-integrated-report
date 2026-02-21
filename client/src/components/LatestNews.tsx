@@ -1,10 +1,9 @@
 /*
- * LatestNews: Compact card-based section showing the freshest events
- * from the latest report, grouped by SRT level. Designed to be the
- * very first content section after the header.
+ * LatestNews: Full event list — shows events 4+ (first 3 are in HeroSummary).
+ * Collapsible, shows 6 by default with "show all" toggle.
  */
-import { useMemo } from "react";
-import { Newspaper, ArrowUpRight, Zap } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Newspaper, ArrowUpRight, Zap, ChevronDown, ChevronUp } from "lucide-react";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
 
@@ -38,17 +37,15 @@ function guessType(text: string): string {
 export default function LatestNews() {
   const { latestReport, isLive, reportDate } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
+  const [expanded, setExpanded] = useState(false);
 
   const newsItems = useMemo(() => {
     if (!latestReport?.srt_levels) return [];
     const items: { title: string; level: number; levelName: string; type: string }[] = [];
 
     for (const srtLevel of latestReport.srt_levels) {
-      // Apply level filter
       if (selectedLevels.length > 0 && !selectedLevels.includes(srtLevel.level)) continue;
-
       for (const event of srtLevel.events) {
-        // Apply search filter
         if (searchQuery) {
           const q = searchQuery.toLowerCase();
           if (!event.title.toLowerCase().includes(q) && !event.description.toLowerCase().includes(q)) continue;
@@ -64,7 +61,12 @@ export default function LatestNews() {
     return items;
   }, [latestReport, selectedLevels, searchQuery]);
 
-  if (!isLive || newsItems.length === 0) return null;
+  // Skip first 3 (shown in HeroSummary)
+  const remainingItems = newsItems.slice(3);
+  const INITIAL_SHOW = 6;
+  const visibleItems = expanded ? remainingItems : remainingItems.slice(0, INITIAL_SHOW);
+
+  if (!isLive || remainingItems.length === 0) return null;
 
   return (
     <section id="news" className="py-4 sm:py-6">
@@ -77,10 +79,10 @@ export default function LatestNews() {
             </div>
             <div>
               <h3 className="text-sm sm:text-lg font-heading font-bold text-foreground">
-                Свежие события
+                Все события
               </h3>
               <p className="text-[9px] sm:text-[10px] font-mono text-muted-foreground">
-                {reportDate} · {newsItems.length} событий
+                {reportDate} · ещё {remainingItems.length} событий
               </p>
             </div>
           </div>
@@ -92,12 +94,11 @@ export default function LatestNews() {
 
         {/* News cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
-          {newsItems.slice(0, 12).map((item, idx) => (
+          {visibleItems.map((item, idx) => (
             <div
               key={idx}
               className="group relative bg-card/50 backdrop-blur-sm border border-border/40 rounded-lg p-3 hover:border-primary/30 transition-all duration-200"
             >
-              {/* Level badge + type icon */}
               <div className="flex items-center gap-2 mb-1.5">
                 <span
                   className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-mono font-medium"
@@ -112,22 +113,34 @@ export default function LatestNews() {
                   <span>Ур.{item.level} {item.levelName}</span>
                 </span>
               </div>
-
-              {/* Title */}
               <p className="text-xs sm:text-sm text-foreground leading-snug line-clamp-2 group-hover:text-primary transition-colors">
                 {item.title}
               </p>
-
-              {/* Hover arrow */}
               <ArrowUpRight className="absolute top-3 right-3 w-3 h-3 text-muted-foreground/0 group-hover:text-primary/60 transition-all" />
             </div>
           ))}
         </div>
 
-        {newsItems.length > 12 && (
-          <p className="text-center text-[10px] text-muted-foreground mt-3 font-mono">
-            + ещё {newsItems.length - 12} событий ниже в хронологии
-          </p>
+        {/* Expand/Collapse toggle */}
+        {remainingItems.length > INITIAL_SHOW && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="flex items-center justify-center gap-1.5 mx-auto mt-3 px-4 py-2 rounded-lg bg-card/50 border border-border/40 hover:border-primary/30 transition-colors"
+          >
+            {expanded ? (
+              <>
+                <ChevronUp className="w-3.5 h-3.5 text-primary/60" />
+                <span className="text-[10px] sm:text-xs font-mono text-muted-foreground">Свернуть</span>
+              </>
+            ) : (
+              <>
+                <ChevronDown className="w-3.5 h-3.5 text-primary/60" />
+                <span className="text-[10px] sm:text-xs font-mono text-muted-foreground">
+                  Показать ещё {remainingItems.length - INITIAL_SHOW}
+                </span>
+              </>
+            )}
+          </button>
         )}
       </div>
     </section>

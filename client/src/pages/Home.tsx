@@ -4,18 +4,20 @@
  * Space Grotesk headings, IBM Plex Sans body, IBM Plex Mono data
  * Mobile-first responsive layout
  *
- * LAYOUT ORDER (user request):
+ * LAYOUT ORDER:
  * 1. Header + FilterBar (sticky)
  * 2. NewsTicker (Bloomberg-style scrolling bar)
- * 3. LatestNews — fresh events from latest report (FIRST SCREEN)
- * 4. TrendCharts — momentum area charts (FIRST SCREEN)
- * 5. MetricsBar — hero section with key numbers
- * 6. Heatmap, Insights, Themes, Shifts, etc.
+ * 3. HeroSummary — executive summary first screen (metrics, top 3, momentum, insight)
+ * 4. LatestNews — remaining events (collapsible)
+ * 5. TrendCharts — detailed momentum panels
+ * 6. MetricsBar — hero section with key numbers
+ * 7. Heatmap, Insights, Themes, Shifts, etc.
  */
 import { useState } from "react";
 import Header from "@/components/Header";
 import FilterBar from "@/components/FilterBar";
 import NewsTicker from "@/components/NewsTicker";
+import HeroSummary from "@/components/HeroSummary";
 import LatestNews from "@/components/LatestNews";
 import MetricsBar from "@/components/MetricsBar";
 import TrendCharts from "@/components/TrendCharts";
@@ -49,13 +51,16 @@ export default function Home() {
         {/* Bloomberg-style News Ticker */}
         <NewsTicker />
 
-        {/* === FIRST SCREEN: Fresh News === */}
+        {/* === FIRST SCREEN: Executive Summary === */}
+        <HeroSummary />
+
+        {/* === Remaining Events (collapsible) === */}
         <LatestNews />
 
-        {/* === FIRST SCREEN: Trend Momentum Charts === */}
+        {/* === Detailed Trend Momentum Panels === */}
         <TrendCharts />
 
-        {/* Hero / Metrics Bar — moved below news & trends */}
+        {/* Hero / Metrics Bar */}
         <MetricsBar />
 
         {/* Heatmap: Activity by Level and Date */}

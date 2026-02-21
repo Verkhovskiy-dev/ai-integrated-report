@@ -493,7 +493,7 @@ export default function TrendCharts() {
   }, [decelerating, HEATMAP_DATA]);
 
   return (
-    <section className="py-6 sm:py-10">
+    <section id="trends" className="py-6 sm:py-10">
       <div className="container">
         {/* Section Header */}
         <div className="mb-5 sm:mb-8">
@@ -506,27 +506,6 @@ export default function TrendCharts() {
           <p className="text-xs sm:text-sm text-muted-foreground mt-1 max-w-xl">
             Визуальная динамика ключевых трендов за отчётный период. Интенсивность рассчитана по уровням СРТ.
           </p>
-        </div>
-
-        {/* Overview momentum bar chart — shows all trends at a glance */}
-        <div className="bg-card/40 backdrop-blur-sm border border-border/30 rounded-xl p-4 sm:p-5 mb-4 sm:mb-6">
-          <div className="flex items-center gap-2 mb-3">
-            <Activity className="w-4 h-4 text-primary/60" />
-            <h4 className="text-xs sm:text-sm font-heading font-semibold text-foreground">
-              Сравнение моментума
-            </h4>
-            <div className="flex items-center gap-3 ml-auto">
-              <div className="flex items-center gap-1">
-                <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span className="text-[9px] font-mono text-muted-foreground">Рост</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <div className="w-2 h-2 rounded-full bg-red-500" />
-                <span className="text-[9px] font-mono text-muted-foreground">Спад</span>
-              </div>
-            </div>
-          </div>
-          <MomentumOverview accelItems={effectiveAccelerating} decelItems={effectiveDecelerating} />
         </div>
 
         {/* Two-panel grid */}
