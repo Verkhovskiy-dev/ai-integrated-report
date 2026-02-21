@@ -35,9 +35,11 @@ export default function StructuralShifts() {
 
   const filteredShifts = useMemo(() => {
     return STRUCTURAL_SHIFTS.filter((shift) => {
-      // Level filter
-      const hasMatchingLevel = shift.levels.some((lvl) => selectedLevels.includes(lvl));
-      if (!hasMatchingLevel) return false;
+      // Level filter — empty array means show all
+      if (selectedLevels.length > 0) {
+        const hasMatchingLevel = shift.levels.some((lvl) => selectedLevels.includes(lvl));
+        if (!hasMatchingLevel) return false;
+      }
 
       // Search filter
       if (searchQuery) {

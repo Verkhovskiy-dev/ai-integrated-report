@@ -48,7 +48,7 @@ export default function WeakSignalsRadar() {
 
   const filteredSignals = useMemo(() => {
     return WEAK_SIGNALS.filter((s) => {
-      if (!selectedLevels.includes(s.level)) return false;
+      if (selectedLevels.length > 0 && !selectedLevels.includes(s.level)) return false;
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
         const text = `${s.title} ${s.description}`.toLowerCase();

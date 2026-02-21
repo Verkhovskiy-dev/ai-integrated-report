@@ -285,12 +285,18 @@ function buildTopCompanies(report: LiveReport) {
 // Build key metrics
 function buildKeyMetrics(report: LiveReport) {
   const m = report.metrics || {} as ReportMetrics;
+  // Compute from actual data when metrics object is empty
+  const totalEvents = m.total_events || report.srt_levels.reduce((sum, l) => sum + (l.event_count || l.events.length), 0);
+  const shiftsCount = m.structural_shifts_count || (report.structural_shifts || []).length;
+  const signalsCount = m.radar_signals_count || (report.radar_signals || []).length;
+  const linksCount = m.cross_level_links_count || (report.cross_level_links || []).length;
+  const sourcesCount = m.total_sources || report.srt_levels.reduce((sum, l) => sum + l.events.reduce((s, e) => s + (e.sources || []).length, 0), 0);
   return [
-    { label: "Событий", value: m.total_events || 0, suffix: "", icon: "Zap" },
-    { label: "Структурных сдвигов", value: m.structural_shifts_count || 0, suffix: "", icon: "TrendingUp" },
-    { label: "Слабых сигналов", value: m.radar_signals_count || 0, suffix: "", icon: "Radio" },
-    { label: "Межуровневых связей", value: m.cross_level_links_count || 0, suffix: "", icon: "Network" },
-    { label: "Источников", value: m.total_sources || 0, suffix: "+", icon: "Link" },
+    { label: "Событий", value: totalEvents, suffix: "", icon: "Zap" },
+    { label: "Структурных сдвигов", value: shiftsCount, suffix: "", icon: "TrendingUp" },
+    { label: "Слабых сигналов", value: signalsCount, suffix: "", icon: "Radio" },
+    { label: "Межуровневых связей", value: linksCount, suffix: "", icon: "Network" },
+    { label: "Источников", value: sourcesCount, suffix: sourcesCount > 0 ? "+" : "", icon: "Link" },
     { label: "Дата отчёта", value: 0, suffix: report.date, icon: "FileText" },
   ];
 }
