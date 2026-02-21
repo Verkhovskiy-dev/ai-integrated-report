@@ -1,6 +1,6 @@
 {
   "date": "2026-02-21",
-  "generated_at": "2026-02-21T16:23:09.573Z",
+  "generated_at": "2026-02-21T16:29:15.397Z",
   "key_focus": "",
   "srt_levels": [
     {
@@ -32,49 +32,14 @@
       "name": "Разделение труда между фирмами",
       "events": [
         {
-          "title": "Age‑verification становится технологическим стандартом, порожденным политикой",
-          "description": "реализация возрастного запрета (если пойдет дальше) требует инженерных механизмов доказательства возраста и исполнения запрета.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-21/merz-s-cdu-calls-for-age-restrictions-on-social-media-networks"
-          ]
-        },
-        {
-          "title": "Security‑by‑model",
-          "description": "Anthropic добавляет security‑функцию в Claude, превращая LLM в инструмент уязвимостного сканирования/secure coding практик.\n\n**Уровень 5 — Разделение труда между фирмами**",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-20/cyber-stocks-slide-as-anthropic-unveils-claude-code-security"
-          ]
-        },
-        {
-          "title": "LLM‑провайдеры заходят на поле кибербезопасности",
-          "description": "падение акций киберкомпаний после анонса Anthropic — рыночный сигнал перераспределения value chain от “чистых” security‑вендоров к платформам моделей.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-20/cyber-stocks-slide-as-anthropic-unveils-claude-code-security"
-          ]
-        },
-        {
-          "title": "Технологический допуск как двусторонняя сделка",
-          "description": "Вьетнам заявляет, что Трамп позволит доступ к restricted technology — это меняет распределение ролей стран в цепочках (допуск через переговоры/торговый баланс).\n\n**Уровень 4 — «Железные» технологии**",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-21/vietnam-says-trump-will-let-nation-access-restricted-technology"
-          ]
-        },
-        {
-          "title": "Offensive AI в commodity‑режиме",
-          "description": "Amazon сообщает, что хакеры с помощью широко доступных AI‑инструментов взломали более 600 firewall — базовая “технологическая реальность” атаки меняется.",
+          "title": "Offensive AI стал массовым",
+          "description": "Amazon описывает взлом >600 firewall с помощью широко доступных AI‑инструментов — это меняет базовую технологическую реальность угроз.",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-02-20/hackers-used-ai-to-breach-600-firewalls-in-weeks-amazon-says"
           ]
-        },
-        {
-          "title": "Trust‑инфраструктура как новый слой интернета",
-          "description": "Microsoft предлагает план доказательства “что реально, а что AI”, то есть борьба идет за протоколы происхождения/аттестации контента.",
-          "sources": [
-            "https://www.technologyreview.com/2026/02/19/1133360/microsoft-has-a-new-plan-to-prove-whats-real-and-what-s-ai-online/"
-          ]
         }
       ],
-      "event_count": 6
+      "event_count": 1
     },
     {
       "level": 4,
@@ -103,49 +68,93 @@
   ],
   "cross_level_links": [
     {
-      "title": "Возрастная политика (8) → age‑verification (6/4) → новые посредники идентичности (5) → перераспределение рекламно‑данных потоков (9)",
-      "description": "**Возрастная политика (8) → age‑verification (6/4) → новые посредники идентичности (5) → перераспределение рекламно‑данных потоков (9)**",
-      "levels": [],
+      "title": "Контур ДОСТУПА",
+      "description": "**Контур ДОСТУПА**: политика (Ур.8) → технологии age‑verification (Ур.6/4) → новые посредники идентичности (Ур.5) → перераспределение ренты внимания (Ур.9).",
+      "levels": [
+        9,
+        8,
+        6,
+        5
+      ],
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-02-21/merz-s-cdu-calls-for-age-restrictions-on-social-media-networks"
       ]
     },
     {
-      "title": "Commodity‑атаки AI (4) → встраивание защиты в LLM (6) → сдвиг рынка security‑ПО (5) → финансовая переоценка сектора (9)",
-      "description": "**Commodity‑атаки AI (4) → встраивание защиты в LLM (6) → сдвиг рынка security‑ПО (5) → финансовая переоценка сектора (9)** +",
-      "levels": [],
+      "title": "Контур ДОВЕРИЯ",
+      "description": "**Контур ДОВЕРИЯ**: дезинформация/AI‑контент → инфраструктурные протоколы верификации (Ур.4/6) → новые стандарты рынка (Ур.8) → новые условия монетизации и ответственности (Ур.9).",
+      "levels": [
+        9,
+        8,
+        4
+      ],
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-20/hackers-used-ai-to-breach-600-firewalls-in-weeks-amazon-says",
-        "https://www.bloomberg.com/news/articles/2026-02-20/cyber-stocks-slide-as-anthropic-unveils-claude-code-security"
+        "https://www.technologyreview.com/2026/02/19/1133360/microsoft-has-a-new-plan-to-prove-whats-real-and-what-s-ai-online/"
       ]
     },
     {
-      "title": "Глобальная декларация “safe AI” (8) → попытка стандартизировать практики (6/7) → но из‑за мягкого статуса растет поле для арбитража и параллельных режимов (9/8)",
-      "description": "**Глобальная декларация “safe AI” (8) → попытка стандартизировать практики (6/7) → но из‑за мягкого статуса растет поле для арбитража и параллельных режимов (9/8)** --- ###",
-      "levels": [],
+      "title": "Контур РИСКА/БЕЗОПАСНОСТИ",
+      "description": "**Контур РИСКА/БЕЗОПАСНОСТИ**: массовый offensive AI (Ур.4) → встраивание защиты в модели (Ур.6) → переразделение отраслей security (Ур.5) + нацбезопасность платформ (Ур.8) → финстабильность/системный риск (Ур.9). ; ; --- ###",
+      "levels": [
+        9,
+        8,
+        6,
+        5,
+        4
+      ],
       "sources": [
-        "https://news.google.com/rss/articles/CBMikgFBVV95cUxPTmRLSVppcElqbVZUSXYyck1mbjJBaWY0bHNLaVlIdVlOMl94ZVAtR1dORUhrMVd5MmxvZGxGV2NJaWxhTDQ2VkFIZzJDb0xmaFNPc0FsSTROVGlVQnNkVE5nQ244b3JyVGIxaVRBUFRSdUgwWWE4VE9kRkJjWURRR2dJNjhvWVFhS1QwcUpNdi10QQ?oc=5"
+        "https://www.bloomberg.com/news/articles/2026-02-20/hackers-used-ai-to-breach-600-firewalls-in-weeks-amazon-says",
+        "https://www.bloomberg.com/news/articles/2026-02-21/russia-s-fsb-says-ukraine-can-tap-front-line-data-via-telegram",
+        "https://www.bloomberg.com/news/videos/2026-02-21/how-ai-could-freeze-progress-masters-in-business-video"
       ]
     }
   ],
   "structural_shifts": [],
-  "radar_signals": [],
+  "radar_signals": [
+    {
+      "title": "Станет ли декларация safe‑AI “условием доступа”",
+      "description": "к госконтрактам/кредиту/страхованию (мягкое право → жесткий рыночный фильтр).",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMikgFBVV95cUxPTmRLSVppcElqbVZUSXYyck1mbjJBaWY0bHNLaVlIdVlOMl94ZVAtR1dORUhrMVd5MmxvZGxGV2NJaWxhTDQ2VkFIZzJDb0xmaFNPc0FsSTROVGlVQnNkVE5nQ244b3JyVGIxaVRBUFRSdUgwWWE4VE9kRkJjWURRR2dJNjhvWVFhS1QwcUpNdi10QQ?oc=5"
+      ]
+    },
+    {
+      "title": "Какая архитектура age‑verification выберется в Европе",
+      "description": "(через app stores / telco / eID) — от этого зависит, кто станет “новым центром власти” в цепочке (платформы, операторы, государство).",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-21/merz-s-cdu-calls-for-age-restrictions-on-social-media-networks"
+      ]
+    },
+    {
+      "title": "Грань ответственности AI‑провайдера",
+      "description": "(бан vs сообщение властям) — будет ли оформлен отраслевой стандарт эскалации.\n\nЕсли вы хотите “следующий шаг” без лишней теории: скажите, кого моделируем как главного актора (ЕС‑регулятор, американская платформа, провайдер identity/телко, AI‑лаборатория, инвестфонд) — и я соберу **карту интересов и ходов** по этим трем контурам (доступ/доверие/риск) на горизонте 3–6 месяцев.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-21/openai-flagged-canada-suspect-eight-months-before-mass-shooting"
+      ]
+    }
+  ],
   "metrics": {
-    "total_events": 6,
+    "total_events": 1,
     "events_by_level": {
       "1": 0,
       "2": 0,
       "3": 0,
       "4": 0,
-      "5": 6,
+      "5": 1,
       "6": 0,
       "7": 0,
       "8": 0,
       "9": 0
     },
-    "total_sources": 5,
+    "total_sources": 1,
     "structural_shifts_count": 0,
-    "radar_signals_count": 0,
+    "radar_signals_count": 3,
     "cross_level_links_count": 3
   }
 }
