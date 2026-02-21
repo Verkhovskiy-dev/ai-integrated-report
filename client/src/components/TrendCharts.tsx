@@ -1,8 +1,8 @@
 /*
  * DESIGN: "Командный Пункт" — Trend Momentum Charts
  * Two-panel layout: Accelerating (green/cyan) vs Decelerating (red/amber)
- * Area charts with sparkline-style mini-graphs per trend
- * Placed on the hero/first screen, above the fold
+ * Compact cards with momentum bars, level badges, and mini sparklines
+ * Mobile-first responsive
  */
 import { useMemo } from "react";
 import {
@@ -13,13 +13,15 @@ import {
   Tooltip,
   ResponsiveContainer,
   CartesianGrid,
+  BarChart,
+  Bar,
+  Cell,
 } from "recharts";
-import { TrendingUp, TrendingDown, Flame, Snowflake } from "lucide-react";
+import { TrendingUp, TrendingDown, Flame, Snowflake, Zap, Activity } from "lucide-react";
+import { SRT_LEVELS } from "@/data/reportData";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
 
-// Generate synthetic momentum data from heatmap + shift metadata
-// Each shift is tied to specific SRT levels — we aggregate heatmap intensity for those levels
 function generateTrendData(
   shiftLevels: number[],
   trend: string,
@@ -33,28 +35,24 @@ function generateTrendData(
     return { date: day.date, value: intensity };
   });
 
-  // For accelerating trends, add slight upward momentum in later days
   if (trend === "accelerating") {
     return points.map((p, i) => ({
       ...p,
       value: p.value + Math.round(i * 0.3),
     }));
   }
-  // For emerging, add moderate growth
   if (trend === "emerging") {
     return points.map((p, i) => ({
       ...p,
       value: p.value + Math.round(i * 0.15),
     }));
   }
-  // For decelerating/freezing — add downward pressure
   return points.map((p, i) => ({
     ...p,
     value: Math.max(1, p.value - Math.round(i * 0.2)),
   }));
 }
 
-// Compute momentum score: slope of last 7 days vs first 7 days
 function computeMomentum(data: { value: number }[]): number {
   if (data.length < 2) return 0;
   const mid = Math.floor(data.length / 2) || 1;
@@ -76,110 +74,200 @@ interface TrendItem {
   momentum: number;
 }
 
-// Custom tooltip
+function getLevelShort(id: number): string {
+  const level = SRT_LEVELS.find((l) => l.id === id);
+  return level?.short || `Ур.${id}`;
+}
+
+function getLevelColor(id: number): string {
+  const level = SRT_LEVELS.find((l) => l.id === id);
+  return level?.color || "#666";
+}
+
+// Custom tooltip for main chart
 function ChartTooltip({ active, payload, label }: any) {
   if (!active || !payload?.length) return null;
   return (
     <div className="bg-card/95 backdrop-blur-md border border-border/60 rounded-md px-3 py-2 shadow-xl">
       <p className="text-[10px] font-mono text-muted-foreground mb-0.5">{label}</p>
-      <p className="text-sm font-heading font-semibold text-foreground">
-        Интенсивность: <span className="font-mono">{payload[0].value}</span>
-      </p>
+      {payload.map((p: any, i: number) => (
+        <p key={i} className="text-xs font-heading text-foreground">
+          <span style={{ color: p.stroke }} className="mr-1">●</span>
+          {p.dataKey}: <span className="font-mono font-medium">{p.value}</span>
+        </p>
+      ))}
     </div>
   );
 }
 
-// Mini sparkline for each trend item
-function MiniSparkline({
-  data,
-  color,
-  gradientId,
-}: {
-  data: { date: string; value: number }[];
-  color: string;
-  gradientId: string;
-}) {
-  return (
-    <div className="w-full h-10 sm:h-12">
-      <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={data} margin={{ top: 2, right: 0, left: 0, bottom: 0 }}>
-          <defs>
-            <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={color} stopOpacity={0.4} />
-              <stop offset="100%" stopColor={color} stopOpacity={0.02} />
-            </linearGradient>
-          </defs>
-          <Area
-            type="monotone"
-            dataKey="value"
-            stroke={color}
-            strokeWidth={1.5}
-            fill={`url(#${gradientId})`}
-            dot={false}
-            animationDuration={1200}
-          />
-        </AreaChart>
-      </ResponsiveContainer>
-    </div>
-  );
-}
-
-// Single trend card
+// Redesigned trend card — compact, informative
 function TrendCard({
   item,
   type,
+  rank,
 }: {
   item: TrendItem;
   type: "accelerating" | "decelerating";
+  rank: number;
 }) {
   const isAccel = type === "accelerating";
-  const color = isAccel ? "#00d4ff" : "#ff6b6b";
+  const accentColor = isAccel ? "#10b981" : "#ef4444";
+  const accentBg = isAccel ? "bg-emerald-500" : "bg-red-500";
+  const accentText = isAccel ? "text-emerald-400" : "text-red-400";
   const accentBorder = isAccel
-    ? "border-cyan-500/20 hover:border-cyan-500/40"
-    : "border-red-500/20 hover:border-red-500/40";
-  const momentumColor = isAccel ? "text-emerald-400" : "text-red-400";
-  const gradientId = `trend-grad-${item.id}-${type}`;
+    ? "border-emerald-500/15 hover:border-emerald-500/30"
+    : "border-red-500/15 hover:border-red-500/30";
+  
+  // Momentum bar width (normalized to max ~40%)
+  const barWidth = Math.min(Math.abs(item.momentum) * 2.5, 100);
+  
+  // Trend label
+  const trendLabel = item.trend === "accelerating"
+    ? "Ускоряется"
+    : item.trend === "emerging"
+    ? "Формируется"
+    : item.trend === "decelerating"
+    ? "Замедляется"
+    : "Замораживается";
 
   return (
     <div
-      className={`bg-card/50 backdrop-blur-sm border ${accentBorder} rounded-lg p-3 sm:p-4 transition-all duration-300 group`}
+      className={`relative bg-card/50 backdrop-blur-sm border ${accentBorder} rounded-lg p-3 sm:p-3.5 transition-all duration-300 group overflow-hidden`}
     >
-      {/* Header */}
-      <div className="flex items-start justify-between gap-2 mb-2">
-        <h4 className="text-xs sm:text-sm font-heading font-semibold text-foreground leading-tight line-clamp-2">
-          {item.title}
-        </h4>
+      {/* Rank indicator */}
+      <div className={`absolute top-0 left-0 w-1 h-full ${accentBg} opacity-40 rounded-l-lg`} />
+      
+      {/* Top row: title + momentum badge */}
+      <div className="flex items-start justify-between gap-2 mb-2 pl-2">
+        <div className="flex-1 min-w-0">
+          <h4 className="text-xs sm:text-sm font-heading font-semibold text-foreground leading-tight truncate">
+            {item.title}
+          </h4>
+          <div className="flex items-center gap-2 mt-0.5">
+            {/* Level badges */}
+            {item.levels.slice(0, 3).map((lvl) => (
+              <span
+                key={lvl}
+                className="text-[8px] font-mono px-1 py-0.5 rounded border border-border/40"
+                style={{ color: getLevelColor(lvl), borderColor: `${getLevelColor(lvl)}33` }}
+              >
+                {lvl}·{getLevelShort(lvl)}
+              </span>
+            ))}
+          </div>
+        </div>
         <div
-          className={`flex items-center gap-1 shrink-0 px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] font-mono font-medium ${momentumColor} bg-current/5`}
+          className={`flex items-center gap-1 shrink-0 px-2 py-1 rounded-md text-xs sm:text-sm font-mono font-bold ${accentText}`}
+          style={{ backgroundColor: `${accentColor}15` }}
         >
           {isAccel ? (
-            <TrendingUp className="w-3 h-3" />
+            <TrendingUp className="w-3.5 h-3.5" />
           ) : (
-            <TrendingDown className="w-3 h-3" />
+            <TrendingDown className="w-3.5 h-3.5" />
           )}
-          <span>
-            {item.momentum > 0 ? "+" : ""}
-            {item.momentum}%
-          </span>
+          {item.momentum > 0 ? "+" : ""}
+          {item.momentum}%
         </div>
       </div>
 
-      {/* Sparkline */}
-      <MiniSparkline data={item.data} color={color} gradientId={gradientId} />
-
-      {/* Footer meta */}
-      <div className="flex items-center justify-between mt-1.5">
-        <span className="text-[8px] sm:text-[9px] font-mono text-muted-foreground uppercase tracking-wider">
-          {item.trend === "accelerating"
-            ? "Ускоряется"
-            : item.trend === "emerging"
-            ? "Формируется"
-            : "Замедляется"}
-        </span>
-        <span className="text-[8px] sm:text-[9px] font-mono text-muted-foreground">
-          Упоминаний: {item.frequency}
-        </span>
+      {/* Momentum bar */}
+      <div className="pl-2 mb-2">
+        <div className="w-full h-2 bg-border/20 rounded-full overflow-hidden">
+          <div
+            className={`h-full rounded-full transition-all duration-1000 ${accentBg}`}
+            style={{ 
+              width: `${barWidth}%`,
+              opacity: 0.7,
+            }}
+          />
+        </div>
       </div>
+
+      {/* Bottom row: trend label + frequency */}
+      <div className="flex items-center justify-between pl-2">
+        <div className="flex items-center gap-1.5">
+          <Activity className={`w-3 h-3 ${accentText} opacity-60`} />
+          <span className={`text-[9px] sm:text-[10px] font-mono uppercase tracking-wider ${accentText} opacity-80`}>
+            {trendLabel}
+          </span>
+        </div>
+        <div className="flex items-center gap-1">
+          <Zap className="w-3 h-3 text-muted-foreground opacity-50" />
+          <span className="text-[9px] sm:text-[10px] font-mono text-muted-foreground">
+            {item.frequency} упом.
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Overview bar chart showing all trends side by side
+function MomentumOverview({
+  accelItems,
+  decelItems,
+}: {
+  accelItems: TrendItem[];
+  decelItems: TrendItem[];
+}) {
+  const data = useMemo(() => {
+    const all = [
+      ...accelItems.map((item) => ({
+        name: item.title.length > 18 ? item.title.slice(0, 16) + "…" : item.title,
+        momentum: item.momentum,
+        fill: "#10b981",
+      })),
+      ...decelItems.map((item) => ({
+        name: item.title.length > 18 ? item.title.slice(0, 16) + "…" : item.title,
+        momentum: item.momentum,
+        fill: "#ef4444",
+      })),
+    ];
+    return all.sort((a, b) => b.momentum - a.momentum);
+  }, [accelItems, decelItems]);
+
+  return (
+    <div className="w-full h-40 sm:h-48">
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart data={data} layout="vertical" margin={{ top: 0, right: 16, left: 0, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" horizontal={false} />
+          <XAxis
+            type="number"
+            tick={{ fontSize: 9, fill: "rgba(255,255,255,0.3)", fontFamily: "'IBM Plex Mono', monospace" }}
+            axisLine={{ stroke: "rgba(255,255,255,0.08)" }}
+            tickLine={false}
+            domain={['dataMin', 'dataMax']}
+            tickFormatter={(v: number) => `${v > 0 ? '+' : ''}${v}%`}
+          />
+          <YAxis
+            type="category"
+            dataKey="name"
+            width={120}
+            tick={{ fontSize: 9, fill: "rgba(255,255,255,0.5)", fontFamily: "'IBM Plex Mono', monospace" }}
+            axisLine={false}
+            tickLine={false}
+          />
+          <Tooltip
+            content={({ active, payload }) => {
+              if (!active || !payload?.length) return null;
+              const d = payload[0].payload;
+              return (
+                <div className="bg-card/95 backdrop-blur-md border border-border/60 rounded-md px-3 py-2 shadow-xl">
+                  <p className="text-xs font-heading font-semibold text-foreground">{d.name}</p>
+                  <p className="text-xs font-mono" style={{ color: d.fill }}>
+                    Моментум: {d.momentum > 0 ? '+' : ''}{d.momentum}%
+                  </p>
+                </div>
+              );
+            }}
+          />
+          <Bar dataKey="momentum" radius={[0, 4, 4, 0]} barSize={14}>
+            {data.map((entry, index) => (
+              <Cell key={index} fill={entry.fill} fillOpacity={0.7} />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 }
@@ -194,7 +282,6 @@ function PanelChart({
 }) {
   const isAccel = type === "accelerating";
 
-  // Merge all trends into one dataset with separate series
   const mergedData = useMemo(() => {
     if (items.length === 0) return [];
     const hData = items[0]?.data || [];
@@ -212,7 +299,7 @@ function PanelChart({
     : ["#ff6b6b", "#ffb800", "#f97316", "#ef4444", "#ec4899"];
 
   return (
-    <div className="w-full h-36 sm:h-44 lg:h-48">
+    <div className="w-full h-32 sm:h-40 lg:h-44">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={mergedData} margin={{ top: 8, right: 8, left: -20, bottom: 0 }}>
           <defs>
@@ -278,7 +365,7 @@ function PanelChart({
 export default function TrendCharts() {
   const { structuralShifts: STRUCTURAL_SHIFTS, heatmapData: HEATMAP_DATA } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
-  // Separate trends into accelerating and decelerating
+
   const { accelerating, decelerating } = useMemo(() => {
     const accel: TrendItem[] = [];
     const decel: TrendItem[] = [];
@@ -313,14 +400,12 @@ export default function TrendCharts() {
       }
     });
 
-    // Sort by momentum
     accel.sort((a, b) => b.momentum - a.momentum);
     decel.sort((a, b) => a.momentum - b.momentum);
 
     return { accelerating: accel, decelerating: decel };
   }, [STRUCTURAL_SHIFTS, HEATMAP_DATA, selectedLevels, searchQuery]);
 
-  // If no accelerating trends in data, create synthetic ones from high-frequency themes
   const effectiveAccelerating = useMemo(() => {
     if (accelerating.length > 0) return accelerating;
     const syntheticItems: TrendItem[] = [
@@ -364,10 +449,8 @@ export default function TrendCharts() {
     return syntheticItems;
   }, [accelerating, HEATMAP_DATA]);
 
-  // If no decelerating trends in data, create synthetic ones from themes that appear less
   const effectiveDecelerating = useMemo(() => {
     if (decelerating.length > 0) return decelerating;
-    // Create synthetic decelerating items from lower-frequency themes
     const syntheticItems: TrendItem[] = [
       {
         id: 101,
@@ -425,15 +508,34 @@ export default function TrendCharts() {
           </p>
         </div>
 
+        {/* Overview momentum bar chart — shows all trends at a glance */}
+        <div className="bg-card/40 backdrop-blur-sm border border-border/30 rounded-xl p-4 sm:p-5 mb-4 sm:mb-6">
+          <div className="flex items-center gap-2 mb-3">
+            <Activity className="w-4 h-4 text-primary/60" />
+            <h4 className="text-xs sm:text-sm font-heading font-semibold text-foreground">
+              Сравнение моментума
+            </h4>
+            <div className="flex items-center gap-3 ml-auto">
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span className="text-[9px] font-mono text-muted-foreground">Рост</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 rounded-full bg-red-500" />
+                <span className="text-[9px] font-mono text-muted-foreground">Спад</span>
+              </div>
+            </div>
+          </div>
+          <MomentumOverview accelItems={effectiveAccelerating} decelItems={effectiveDecelerating} />
+        </div>
+
         {/* Two-panel grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {/* ===== ACCELERATING PANEL ===== */}
           <div className="relative bg-card/40 backdrop-blur-sm border border-emerald-500/15 rounded-xl overflow-hidden">
-            {/* Panel glow accent */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent" />
 
             <div className="p-4 sm:p-5">
-              {/* Panel header */}
               <div className="flex items-center gap-2.5 mb-4">
                 <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
                   <Flame className="w-4 h-4 text-emerald-400" />
@@ -457,9 +559,9 @@ export default function TrendCharts() {
               <PanelChart items={effectiveAccelerating} type="accelerating" />
 
               {/* Individual trend cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mt-4">
-                {effectiveAccelerating.map((item) => (
-                  <TrendCard key={item.id} item={item} type="accelerating" />
+              <div className="space-y-2 sm:space-y-2.5 mt-4">
+                {effectiveAccelerating.map((item, i) => (
+                  <TrendCard key={item.id} item={item} type="accelerating" rank={i + 1} />
                 ))}
               </div>
             </div>
@@ -467,11 +569,9 @@ export default function TrendCharts() {
 
           {/* ===== DECELERATING PANEL ===== */}
           <div className="relative bg-card/40 backdrop-blur-sm border border-red-500/15 rounded-xl overflow-hidden">
-            {/* Panel glow accent */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-400/50 to-transparent" />
 
             <div className="p-4 sm:p-5">
-              {/* Panel header */}
               <div className="flex items-center gap-2.5 mb-4">
                 <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20">
                   <Snowflake className="w-4 h-4 text-red-400" />
@@ -495,9 +595,9 @@ export default function TrendCharts() {
               <PanelChart items={effectiveDecelerating} type="decelerating" />
 
               {/* Individual trend cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mt-4">
-                {effectiveDecelerating.map((item) => (
-                  <TrendCard key={item.id} item={item} type="decelerating" />
+              <div className="space-y-2 sm:space-y-2.5 mt-4">
+                {effectiveDecelerating.map((item, i) => (
+                  <TrendCard key={item.id} item={item} type="decelerating" rank={i + 1} />
                 ))}
               </div>
             </div>
