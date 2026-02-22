@@ -14,6 +14,7 @@ import {
   KEY_EVENTS as STATIC_EVENTS,
   TOP_COMPANIES as STATIC_COMPANIES,
 } from "@/data/reportData";
+import { STRATEGIC_INSIGHTS as STATIC_INSIGHTS, type StrategicInsight } from "@/data/insightsData";
 
 // === Types matching the JSON from n8n ===
 interface ReportEvent {
@@ -93,6 +94,12 @@ export interface DashboardData {
   themeFrequency: typeof STATIC_THEMES;
   keyEvents: typeof STATIC_EVENTS;
   topCompanies: typeof STATIC_COMPANIES;
+
+  // Dynamic insights from insights.json
+  strategicInsights: StrategicInsight[];
+  insightsPeriod: string;
+  insightsGeneratedAt: string;
+  insightsLive: boolean;
 }
 
 const LiveDataContext = createContext<DashboardData | null>(null);
@@ -318,6 +325,10 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
     themeFrequency: STATIC_THEMES,
     keyEvents: STATIC_EVENTS,
     topCompanies: STATIC_COMPANIES,
+    strategicInsights: STATIC_INSIGHTS,
+    insightsPeriod: "",
+    insightsGeneratedAt: "",
+    insightsLive: false,
   });
 
   useEffect(() => {
@@ -365,6 +376,26 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           // Archive not available, that's ok
         }
 
+        // Fetch dynamic insights
+        let dynamicInsights: StrategicInsight[] = STATIC_INSIGHTS;
+        let insightsPeriod = "";
+        let insightsGeneratedAt = "";
+        let insightsLive = false;
+        try {
+          const insightsResp = await fetch(`${base}data/insights.json`);
+          if (insightsResp.ok) {
+            const insightsData = await insightsResp.json();
+            if (insightsData.insights && Array.isArray(insightsData.insights) && insightsData.insights.length > 0) {
+              dynamicInsights = insightsData.insights;
+              insightsPeriod = insightsData.period || "";
+              insightsGeneratedAt = insightsData.generated_at || "";
+              insightsLive = true;
+            }
+          }
+        } catch {
+          // insights.json not available, use static fallback
+        }
+
         // Transform data
         setState({
           isLive: true,
@@ -382,6 +413,10 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           themeFrequency: buildThemeFrequency(latest),
           keyEvents: buildKeyEvents(latest),
           topCompanies: buildTopCompanies(latest),
+          strategicInsights: dynamicInsights,
+          insightsPeriod,
+          insightsGeneratedAt,
+          insightsLive,
         });
       } catch (err) {
         console.warn("Live data unavailable, using static fallback:", err);

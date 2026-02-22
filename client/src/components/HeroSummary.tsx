@@ -17,7 +17,6 @@ import {
 } from "recharts";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
-import { STRATEGIC_INSIGHTS } from "@/data/insightsData";
 
 // ─── Helpers ────────────────────────────────────────────────────
 const LEVEL_NAMES: Record<number, string> = {
@@ -144,6 +143,7 @@ export default function HeroSummary() {
   const {
     latestReport, isLive, reportDate, keyFocus,
     keyMetrics, structuralShifts, heatmapData,
+    strategicInsights,
   } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
 
@@ -217,7 +217,7 @@ export default function HeroSummary() {
   }, [structuralShifts, heatmapData]);
 
   // ── Key insight ──
-  const keyInsight = STRATEGIC_INSIGHTS[0]; // "Великое перемещение стоимости"
+  const keyInsight = strategicInsights[0];
 
   // ── Compact metrics ──
   const compactMetrics = useMemo(() => {
@@ -225,11 +225,11 @@ export default function HeroSummary() {
     const linkCount = keyMetrics.find((m) => m.label.toLowerCase().includes("связ"))?.value || 3;
     return [
       { label: "событий", value: evtCount || totalEvents, suffix: "" },
-      { label: "инсайтов", value: STRATEGIC_INSIGHTS.length, suffix: "" },
+      { label: "инсайтов", value: strategicInsights.length, suffix: "" },
       { label: "трендов", value: momentumData.length, suffix: "" },
       { label: "связей", value: linkCount, suffix: "" },
     ];
-  }, [keyMetrics, totalEvents, momentumData]);
+  }, [keyMetrics, totalEvents, momentumData, strategicInsights]);
 
   if (!isLive && topEvents.length === 0) return null;
 
@@ -379,7 +379,7 @@ export default function HeroSummary() {
                   href="#insights"
                   className="inline-flex items-center gap-1 mt-2 text-[10px] sm:text-xs font-mono text-primary/70 hover:text-primary transition-colors"
                 >
-                  Все {STRATEGIC_INSIGHTS.length} инсайтов <ArrowRight className="w-3 h-3" />
+                  Все {strategicInsights.length} инсайтов <ArrowRight className="w-3 h-3" />
                 </a>
               </div>
             </div>

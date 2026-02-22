@@ -3,17 +3,21 @@
  * Expandable insight cards with evidence, conclusions, and education implications
  * Mobile-first responsive design
  * Now includes native SKOLKOVO program links in education sections
+ * Supports dynamic insights from insights.json with static fallback
  */
 import { useState } from "react";
 import {
   Building, Bot, Landmark, Brain, ShieldAlert, Layers, GraduationCap,
-  ChevronDown, ChevronUp, Lightbulb, BookOpen, AlertTriangle
+  ChevronDown, ChevronUp, Lightbulb, BookOpen, AlertTriangle,
+  Zap, Globe, Shield, TrendingUp, Database, RefreshCw,
 } from "lucide-react";
-import { STRATEGIC_INSIGHTS, type StrategicInsight } from "@/data/insightsData";
+import { type StrategicInsight } from "@/data/insightsData";
 import { ProgramBadgeGroup } from "@/components/ProgramBadge";
+import { useLiveData } from "@/contexts/LiveDataContext";
 
 const ICON_MAP: Record<string, typeof Building> = {
   Building, Bot, Landmark, Brain, ShieldAlert, Layers, GraduationCap,
+  Zap, Globe, Shield, TrendingUp, Database,
 };
 
 function InsightCard({ insight, isExpanded, onToggle }: {
@@ -149,24 +153,46 @@ function InsightCard({ insight, isExpanded, onToggle }: {
 
 export default function StrategicInsights() {
   const [expandedId, setExpandedId] = useState<number | null>(1);
+  const { strategicInsights, insightsPeriod, insightsGeneratedAt, insightsLive } = useLiveData();
+
+  // Format generated date for display
+  const generatedLabel = insightsGeneratedAt
+    ? new Date(insightsGeneratedAt).toLocaleDateString("ru-RU", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })
+    : "";
 
   return (
     <div className="container">
       <div className="mb-6 sm:mb-8">
-        <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-2">
-          Стратегические инсайты
-        </p>
+        <div className="flex items-center gap-2 mb-2">
+          <p className="text-xs font-mono text-primary/70 tracking-widest uppercase">
+            Стратегические инсайты
+          </p>
+          {insightsLive && (
+            <span className="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-400/80 bg-emerald-400/10 px-2 py-0.5 rounded-full border border-emerald-400/20">
+              <RefreshCw className="w-2.5 h-2.5" />
+              live
+            </span>
+          )}
+        </div>
         <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
-          7 ключевых выводов периода
+          {strategicInsights.length} ключевых выводов периода
         </h3>
         <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl leading-relaxed">
-          Структурные инсайты, выходящие за рамки отдельных новостей и отражающие глубинные сдвиги
-          в том, кто контролирует ключевые узлы создания ценности в AI-экономике.
+          {insightsPeriod || "Структурные инсайты, выходящие за рамки отдельных новостей и отражающие глубинные сдвиги в том, кто контролирует ключевые узлы создания ценности в AI-экономике."}
         </p>
+        {generatedLabel && (
+          <p className="text-[10px] font-mono text-muted-foreground/60 mt-1">
+            Обновлено: {generatedLabel}
+          </p>
+        )}
       </div>
 
       <div className="space-y-3 sm:space-y-4">
-        {STRATEGIC_INSIGHTS.map((insight) => (
+        {strategicInsights.map((insight) => (
           <InsightCard
             key={insight.id}
             insight={insight}
