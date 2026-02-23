@@ -311,7 +311,7 @@ export default function HeroSummary() {
                         {EVENT_ICONS[item.type] || "📌"} {lvPrefix}{item.level} {item.levelName}
                       </span>
                     </div>
-                    <p className="text-xs sm:text-sm text-foreground leading-snug line-clamp-2">
+                    <p className="text-xs sm:text-sm text-foreground leading-snug line-clamp-3">
                       {item.title}
                     </p>
                   </div>

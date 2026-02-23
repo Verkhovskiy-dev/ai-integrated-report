@@ -167,7 +167,7 @@ export default function LatestNews() {
                     )}
                   </div>
                   <p className={`text-xs sm:text-sm text-foreground leading-snug ${
-                    isCardExpanded ? "" : "line-clamp-2"
+                    isCardExpanded ? "" : "line-clamp-3"
                   } ${isExpandable && !isCardExpanded ? "group-hover:text-primary" : ""} transition-colors`}>
                     {item.title}
                   </p>
