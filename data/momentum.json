@@ -1,386 +1,127 @@
 [
   {
-    "date": "2026-02-13",
-    "generated_at": "2026-02-16T08:11:53.750546",
+    "date": "2026-02-23",
     "trends": [
       {
-        "name": "Инфраструктурное финансирование AI",
-        "momentum": 85,
-        "rationale": "Рост долгового финансирования дата-центров и выделение кредитного плеча под AI-инфраструктуру указывает на ускорение капитальных вложений.",
-        "levels": [
-          9,
-          2
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "Китайские open-weight модели",
+        "name": "AI-CapEx / дата-центровая инфраструктура",
         "momentum": 70,
-        "rationale": "Доминирование китайских open-weight моделей в глобальном трансфере знаний и их использование как базового слоя для стартапов свидетельствует о формировании новой инфраструктуры.",
+        "rationale": "DC buildout прямо назван драйвером спроса на AI‑память; торговые потоки электроники/машин растут. [Источник](https://www.bloomberg.com/news/articles/2026-02-23/sk-hynix-boss-pledges-to-boost-output-of-ai-memory-chips), [Источник](https://www.bloomberg.com/news/articles/2026-02-23/thai-exports-jump-most-in-four-years-on-ai-led-electronics-boom)",
         "levels": [
-          7,
+          2,
+          4,
           5,
           9
         ],
-        "category": "emerging"
-      },
-      {
-        "name": "Безопасность и управление агентами",
-        "momentum": 65,
-        "rationale": "Рост публикаций и практик по безопасности агентов и governance отражает переход от хайпа к операционной безопасности.",
-        "levels": [
-          3,
-          8
-        ],
-        "category": "emerging"
-      },
-      {
-        "name": "Оценка моделей через бенчмарки",
-        "momentum": 50,
-        "rationale": "Появление мета-оценок надежности бенчмарков и сдвиг валидации знаний с моделей на протоколы указывает на развитие методологий оценки.",
-        "levels": [
-          7
-        ],
         "category": "accelerating"
       },
       {
-        "name": "Удешевление и ускорение инференса",
-        "momentum": 55,
-        "rationale": "Внедрение новых форматов и предикторов длины ответа снижает стоимость serving’а, что способствует росту эффективности AI-систем.",
-        "levels": [
-          6
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "Реалтайм ASR с открытыми весами",
-        "momentum": 40,
-        "rationale": "Достижение паритета с Whisper в реальном времени открывает новые возможности для голосовых приложений с открытыми моделями.",
-        "levels": [
-          4
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "AI-страхи в сервисных отраслях",
-        "momentum": -45,
-        "rationale": "Распад рынков в логистике и недвижимости на фоне опасений замещения AI свидетельствует о снижении доверия и росте неопределенности.",
-        "levels": [
-          5
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "IPO в AI-секторе",
-        "momentum": -30,
-        "rationale": "Отложенные IPO и раскол по типам активов указывают на ухудшение условий рынка и снижение активности публичных размещений.",
-        "levels": [
-          9
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "Агентные сообщества как уязвимость",
-        "momentum": -35,
-        "rationale": "Массовое саморазвертывание агентов приводит к новым уязвимостям и рискам, что ограничивает позитивный импульс сообщества.",
-        "levels": [
-          8
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "Политизация извлечения знаний",
-        "momentum": -20,
-        "rationale": "Конфликты вокруг дистилляции знаний из закрытых моделей создают политические барьеры для свободного обмена технологиями.",
-        "levels": [
-          7
-        ],
-        "category": "decelerating"
-      }
-    ]
-  },
-  {
-    "date": "2026-02-17",
-    "generated_at": "2026-02-17T14:06:33.895979",
-    "trends": [
-      {
-        "name": "AI кредитный риск",
-        "momentum": -70,
-        "rationale": "Инвесторы обеспокоены возможным кредитным кризисом из-за AI-капзатрат, что снижает инвестиционный аппетит.",
-        "levels": [
-          9
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "Концентрация VC капитала",
-        "momentum": 60,
-        "rationale": "Thrive Capital привлекает более $10 млрд, расширяя финансирование AI-инфраструктуры и приложений.",
-        "levels": [
-          9
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "AI fatigue и смена денежного режима",
-        "momentum": -50,
-        "rationale": "Рынок устал от AI-нарратива, наблюдается ротация из техсектора и снижение хайпа вокруг AI.",
-        "levels": [
-          9
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "Открытые китайские модели как инфраструктура",
-        "momentum": 70,
-        "rationale": "Китайские модели Qwen, DeepSeek и Kimi становятся базовой инфраструктурой для глобальных билдеров по низкой цене.",
-        "levels": [
-          8
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "Безопасность multi-agent систем",
-        "momentum": 50,
-        "rationale": "Рост внимания к уязвимостям и утечкам данных в multi-agent системах требует новых стандартов безопасности.",
+        "name": "AI memory / HBM как стратегический bottleneck",
+        "momentum": 80,
+        "rationale": "Hynix публично обещает наращивать выпуск под взрывной спрос; это сигнал закрепления памяти как ключевого ограничения. [Источник](https://www.bloomberg.com/news/articles/2026-02-23/sk-hynix-boss-pledges-to-boost-output-of-ai-memory-chips)",
         "levels": [
           4,
-          8
-        ],
-        "category": "emerging"
-      },
-      {
-        "name": "Аудитируемость AI выводов",
-        "momentum": 60,
-        "rationale": "Сдвиг от доверия к выводу к необходимости трассируемости и аудита AI-решений становится критичным.",
-        "levels": [
-          7
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "Верифицируемые среды для RL",
-        "momentum": 40,
-        "rationale": "Использование конечных автоматов и программной проверки шагов помогает масштабировать обучение агентов.",
-        "levels": [
-          6
-        ],
-        "category": "emerging"
-      },
-      {
-        "name": "Рост цен и дефицит серверных компонентов",
-        "momentum": -40,
-        "rationale": "Увеличение спроса на MLCC и другие компоненты вызывает дефицит и рост цен, ограничивая развитие инфраструктуры.",
-        "levels": [
-          5
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "Вертикальная интеграция AI с энергией",
-        "momentum": 50,
-        "rationale": "Google и другие компании закрепляют энергетические решения (геотермальная генерация) под дата-центры AI.",
-        "levels": [
           5,
-          1
-        ],
-        "category": "emerging"
-      },
-      {
-        "name": "Методический поворот к проверяемым якорям",
-        "momentum": 45,
-        "rationale": "Новые подходы к оценке стратегического поведения LLM через фиксированные уровни game-AI набирают популярность.",
-        "levels": [
-          6
-        ],
-        "category": "emerging"
-      }
-    ]
-  },
-  {
-    "date": "2026-02-22",
-    "generated_at": "2026-02-22T10:27:30.584494Z",
-    "trends": [
-      {
-        "name": "AI scare trade",
-        "momentum": -60,
-        "rationale": "Инвесторы в США продают AI-софты и переоценивают бизнес-модели, что указывает на снижение доверия.",
-        "levels": [
-          9
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "Capital chases winners in China",
-        "momentum": 70,
-        "rationale": "Китайский капитал активно инвестирует в лидеров AI, демонстрируя растущий интерес и поддержку.",
-        "levels": [
-          9
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "OpenAI revenue growth expectations",
-        "momentum": 80,
-        "rationale": "Прогноз выручки OpenAI >$280 млрд к 2030 стимулирует рынок и ожидания роста индустрии.",
-        "levels": [
-          9
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "Financial engineering risk",
-        "momentum": -40,
-        "rationale": "Финансовая инженерия вызывает техриски, как показал кейс Pulse Secure, что снижает доверие.",
-        "levels": [
-          9
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "Private threat prevention on AI platforms",
-        "momentum": 65,
-        "rationale": "OpenAI вводит механизмы приватной превенции угроз, повышая безопасность платформ моделей.",
-        "levels": [
-          8
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "Age restrictions in social networks",
-        "momentum": 30,
-        "rationale": "Обсуждение возрастных ограничений в Германии отражает растущую регуляторную активность.",
-        "levels": [
-          8
-        ],
-        "category": "emerging"
-      },
-      {
-        "name": "Security integration in LLMs",
-        "momentum": 55,
-        "rationale": "Внедрение security-as-a-feature в LLM (Anthropic Claude) усиливает безопасность AI-моделей.",
-        "levels": [
-          6
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "AI-backed cyberattacks",
-        "momentum": 50,
-        "rationale": "Рост AI-кибератак и их предотвращение в ОАЭ указывают на усиление угроз и ответных мер.",
-        "levels": [
-          4
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "AI + Security hybrid competence",
-        "momentum": 45,
-        "rationale": "Формируется новая компетенция на стыке AI и безопасности, подтверждаемая рыночным интересом.",
-        "levels": [
-          3
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "Education scaling AI talent",
-        "momentum": 60,
-        "rationale": "Университеты и системы образования расширяют AI-программы в ответ на растущий кадровый спрос.",
-        "levels": [
-          7,
-          3
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "Antitrust scrutiny of platform power",
-        "momentum": -30,
-        "rationale": "Антимонопольные проверки ограничивают власть платформ, что может замедлить их доминирование.",
-        "levels": [
-          5
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "Geo-economic tech access exchange",
-        "momentum": 20,
-        "rationale": "Геоэкономический обмен технологиями становится предметом переговоров, что формирует новые правила.",
-        "levels": [
-          5
-        ],
-        "category": "emerging"
-      },
-      {
-        "name": "Wide availability of AI tools for attacks",
-        "momentum": -50,
-        "rationale": "Широкое использование AI-инструментов злоумышленниками увеличивает риски и давление на безопасность.",
-        "levels": [
-          4
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "Verification of AI content online",
-        "momentum": 40,
-        "rationale": "Microsoft продвигает технологии проверки подлинности AI-контента, повышая доверие к информации.",
-        "levels": [
-          6
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "Integration of LLMs in security vertical",
-        "momentum": 35,
-        "rationale": "LLM начинают закрывать задачи в сфере безопасности, расширяя применение AI в этой области.",
-        "levels": [
-          5
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "Private AI platforms as public safety proxies",
-        "momentum": 25,
-        "rationale": "Частные AI-платформы становятся предконтуром общественной безопасности без ясного мандата.",
-        "levels": [
-          8
-        ],
-        "category": "emerging"
-      },
-      {
-        "name": "Export control as trade item",
-        "momentum": 30,
-        "rationale": "Экспортный контроль технологий перестраивается в предмет торга, а не фиксированную барьерную политику.",
-        "levels": [
           2
         ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Перенос производственной роли в ЮВА (электроника под AI)",
+        "momentum": 55,
+        "rationale": "Таиланд фиксирует максимум за 4 года в экспорте/импорте на AI-led электронике и усиливает торгово‑политический контур (соглашение с США). [Источник](https://www.bloomberg.com/news/articles/2026-02-23/thai-exports-jump-most-in-four-years-on-ai-led-electronics-boom)",
+        "levels": [
+          5,
+          2,
+          9
+        ],
         "category": "emerging"
       },
       {
-        "name": "Microsoft recommits AI in gaming",
-        "momentum": 20,
-        "rationale": "Назначение AI-экзекьютива в Xbox сигнализирует о росте интеграции AI в консольный гейминг.",
+        "name": "Visual AI / мультимодальность в потребительских устройствах (wearables)",
+        "momentum": 45,
+        "rationale": "Apple обозначает Visual Intelligence как определяющую фичу носимых AI-девайсов — признак продуктовой ставки. [Источник](https://www.bloomberg.com/news/newsletters/2026-02-22/apple-s-ai-wearables-push-what-to-expect-from-march-4-low-end-macbook-launch)",
         "levels": [
+          4,
           5
         ],
         "category": "emerging"
       },
       {
-        "name": "Security as base model function",
+        "name": "AI в киберпреступности / AI-backed атаки",
         "momentum": 75,
-        "rationale": "Кибербезопасность переходит из отдельного рынка в базовую функцию AI-моделей, ускоряя интеграцию.",
+        "rationale": "ОАЭ говорят о “качественном сдвиге” в методах (террористические/враждебные акторы), а также растет публичная повестка про AI‑упрощение онлайн-мошенничеств. [Источник](https://www.bloomberg.com/news/articles/2026-02-22/uae-says-it-foiled-a-wave-of-cyberattacks-on-vital-sectors), [Источник](https://www.technologyreview.com/2026/02/12/1132386/ai-already-making-online-swindles-easier/)",
         "levels": [
-          9
+          8,
+          6,
+          3
         ],
         "category": "accelerating"
       },
       {
-        "name": "Synthetic data in medicine",
-        "momentum": 40,
-        "rationale": "Публикации и обсуждения синтетических данных в медицине стимулируют развитие AI в здравоохранении.",
+        "name": "Provenance / “что реально, что AI” (инфраструктура доверия)",
+        "momentum": 50,
+        "rationale": "Microsoft продвигает план верификации реальности/AI онлайн — сигнал консолидации практик. [Источник](https://www.technologyreview.com/2026/02/19/1133360/microsoft-has-a-new-plan-to-prove-what-s-real-and-what-s-ai-online/)",
         "levels": [
+          8,
+          6,
           7
         ],
-        "category": "accelerating"
+        "category": "emerging"
+      },
+      {
+        "name": "Агентные платформы (enterprise agents)",
+        "momentum": 30,
+        "rationale": "Исследовательский контур усиливает стандартизацию/индексацию агентных систем, но массовая прозрачность/документация safety остаются низкими (тормоз внедрения). [Источник](https://arxiv.org/abs/2602.17753)",
+        "levels": [
+          7,
+          8,
+          5
+        ],
+        "category": "stable"
+      },
+      {
+        "name": "“AI hype в публичных рынках” (мультипликаторы без доказанной отдачи)",
+        "momentum": -35,
+        "rationale": "заметен “AI scare trade” и скепсис к лидеру инфраструктуры (Nvidia), что указывает на охлаждение ожиданий. [Источник](https://www.bloomberg.com/news/articles/2026-02-22/nvidia-s-stock-is-so-stuck-even-blowout-earnings-may-not-lift-it), [Источник](https://www.bloomberg.com/news/articles/2026-02-22/china-defies-global-ai-scare-trade-as-investors-chase-winners)",
+        "levels": [
+          9
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "доминирование GPU как единственного узкого ресурса и главного “бенефициара” AI-волны.",
+        "momentum": -25,
+        "rationale": "Угасает: переход от «доминирование GPU как единственного узкого ресурса и главного “бенефициара” AI-волны.» к «более сложная конфигурация bottleneck, где **AI‑память** (HBM и др.) становится стратегическим ограничителем масштабирования DC.». Упоминаний в контексте перехода: 1",
+        "levels": [
+          4,
+          5,
+          2,
+          9
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "периферийная роль в AI‑нарративе (в центре США/Китай/ЕС, чипы — Тайвань/Корея).",
+        "momentum": -10,
+        "rationale": "Угасает: переход от «периферийная роль в AI‑нарративе (в центре США/Китай/ЕС, чипы — Тайвань/Корея).» к «рост роли Таиланда как узла экспортной электроники/машинного импорта под AI‑производство + попытка закрепить это торговым режимом с США.». Упоминаний в контексте перехода: 0",
+        "levels": [
+          5,
+          2,
+          9,
+          8
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "метрики “как хорошо отвечает модель” и разовые тесты.",
+        "momentum": -10,
+        "rationale": "Угасает: переход от «метрики “как хорошо отвечает модель” и разовые тесты.» к «оценивание как непрерывная функция управления: траектории, workflow‑стресс‑тесты, provenance‑память, индексы прозрачности.». Упоминаний в контексте перехода: 0",
+        "levels": [
+          7,
+          6,
+          8
+        ],
+        "category": "decelerating"
       }
     ]
   }
