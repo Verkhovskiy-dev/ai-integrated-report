@@ -1,9 +1,10 @@
 /*
  * LatestNews: Full event list — shows events 4+ (first 3 are in HeroSummary).
  * Collapsible, shows 6 by default with "show all" toggle.
+ * Each card is expandable to show full description and source links.
  */
 import { useMemo, useState } from "react";
-import { Newspaper, ArrowUpRight, Zap, ChevronDown, ChevronUp } from "lucide-react";
+import { Newspaper, Zap, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
 
@@ -34,14 +35,33 @@ function guessType(text: string): string {
   return "product";
 }
 
+function extractDomain(url: string): string {
+  try {
+    const u = new URL(url);
+    return u.hostname.replace("www.", "");
+  } catch {
+    return url;
+  }
+}
+
+interface NewsItem {
+  title: string;
+  description: string;
+  level: number;
+  levelName: string;
+  type: string;
+  sources: string[];
+}
+
 export default function LatestNews() {
   const { latestReport, isLive, reportDate } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
   const [expanded, setExpanded] = useState(false);
+  const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
   const newsItems = useMemo(() => {
     if (!latestReport?.srt_levels) return [];
-    const items: { title: string; level: number; levelName: string; type: string }[] = [];
+    const items: NewsItem[] = [];
 
     for (const srtLevel of latestReport.srt_levels) {
       if (selectedLevels.length > 0 && !selectedLevels.includes(srtLevel.level)) continue;
@@ -52,9 +72,11 @@ export default function LatestNews() {
         }
         items.push({
           title: event.title,
+          description: event.description || "",
           level: srtLevel.level,
           levelName: LEVEL_NAMES[srtLevel.level] || `Ур.${srtLevel.level}`,
           type: guessType(event.title + " " + event.description),
+          sources: (event as any).sources || [],
         });
       }
     }
@@ -67,6 +89,10 @@ export default function LatestNews() {
   const visibleItems = expanded ? remainingItems : remainingItems.slice(0, INITIAL_SHOW);
 
   if (!isLive || remainingItems.length === 0) return null;
+
+  const toggleCard = (idx: number) => {
+    setExpandedCard(expandedCard === idx ? null : idx);
+  };
 
   return (
     <section id="news" className="py-4 sm:py-6">
@@ -94,31 +120,86 @@ export default function LatestNews() {
 
         {/* News cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
-          {visibleItems.map((item, idx) => (
-            <div
-              key={idx}
-              className="group relative bg-card/50 backdrop-blur-sm border border-border/40 rounded-lg p-3 hover:border-primary/30 transition-all duration-200"
-            >
-              <div className="flex items-center gap-2 mb-1.5">
-                <span
-                  className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-mono font-medium"
-                  style={{
-                    color: LEVEL_COLORS[item.level],
-                    backgroundColor: `${LEVEL_COLORS[item.level]}15`,
-                    borderColor: `${LEVEL_COLORS[item.level]}30`,
-                    borderWidth: 1,
-                  }}
+          {visibleItems.map((item, idx) => {
+            const isCardExpanded = expandedCard === idx;
+            const hasDetails = item.description && item.description !== item.title;
+            const hasSources = item.sources.length > 0;
+            const isExpandable = hasDetails || hasSources;
+
+            return (
+              <div
+                key={idx}
+                className={`group relative bg-card/50 backdrop-blur-sm border rounded-lg overflow-hidden transition-all duration-200 ${
+                  isCardExpanded
+                    ? "border-primary/30 shadow-lg shadow-primary/5"
+                    : "border-border/40 hover:border-primary/20"
+                }`}
+              >
+                {/* Card header — clickable */}
+                <button
+                  onClick={() => isExpandable && toggleCard(idx)}
+                  className={`w-full text-left p-3 ${isExpandable ? "cursor-pointer" : "cursor-default"}`}
                 >
-                  {EVENT_TYPE_ICONS[item.type] || "📌"}
-                  <span>Ур.{item.level} {item.levelName}</span>
-                </span>
+                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                    <span
+                      className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-mono font-medium"
+                      style={{
+                        color: LEVEL_COLORS[item.level],
+                        backgroundColor: `${LEVEL_COLORS[item.level]}15`,
+                        borderColor: `${LEVEL_COLORS[item.level]}30`,
+                        borderWidth: 1,
+                      }}
+                    >
+                      {EVENT_TYPE_ICONS[item.type] || "📌"}
+                      <span>Ур.{item.level} {item.levelName}</span>
+                    </span>
+                    {isExpandable && (
+                      isCardExpanded ? (
+                        <ChevronUp className="w-3.5 h-3.5 text-primary/60 shrink-0" />
+                      ) : (
+                        <ChevronDown className="w-3.5 h-3.5 text-muted-foreground/40 shrink-0" />
+                      )
+                    )}
+                  </div>
+                  <p className={`text-xs sm:text-sm text-foreground leading-snug ${
+                    isCardExpanded ? "" : "line-clamp-2"
+                  } ${isExpandable && !isCardExpanded ? "group-hover:text-primary" : ""} transition-colors`}>
+                    {item.title}
+                  </p>
+                </button>
+
+                {/* Expanded content */}
+                {isCardExpanded && (
+                  <div className="px-3 pb-3 border-t border-border/20 pt-2 space-y-2">
+                    {/* Full description */}
+                    {hasDetails && (
+                      <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                        {item.description}
+                      </p>
+                    )}
+
+                    {/* Source links */}
+                    {hasSources && (
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {item.sources.map((src, sIdx) => (
+                          <a
+                            key={sIdx}
+                            href={src}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-muted/30 border border-border/30 text-[10px] text-primary/80 hover:text-primary hover:border-primary/30 transition-all"
+                          >
+                            <ExternalLink className="w-2.5 h-2.5" />
+                            {extractDomain(src)}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
-              <p className="text-xs sm:text-sm text-foreground leading-snug line-clamp-2 group-hover:text-primary transition-colors">
-                {item.title}
-              </p>
-              <ArrowUpRight className="absolute top-3 right-3 w-3 h-3 text-muted-foreground/0 group-hover:text-primary/60 transition-all" />
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Expand/Collapse toggle */}
