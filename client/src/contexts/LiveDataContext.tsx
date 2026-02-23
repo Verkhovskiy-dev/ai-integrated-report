@@ -432,6 +432,11 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
         } catch {
           // momentum.json not available
         }
+        // Fallback: if momentum.json is empty but report has momentum_trends, use those
+        if (momentumData.length === 0 && (latest as any).momentum_trends && (latest as any).momentum_trends.length > 0) {
+          momentumData = [{ date: latest.date, generated_at: latest.generated_at, trends: (latest as any).momentum_trends }];
+          momentumLive = true;
+        }
 
         // Transform data
         setState({
