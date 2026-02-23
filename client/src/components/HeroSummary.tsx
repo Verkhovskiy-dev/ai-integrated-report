@@ -69,7 +69,7 @@ function MetricsStrip({ metrics }: { metrics: { label: string; value: number; su
 // ─── Momentum Chart ─────────────────────────────────────────────
 function MomentumChart({ data }: { data: { name: string; momentum: number; fill: string }[] }) {
   return (
-    <div className="w-full h-36 sm:h-44">
+    <div className="w-full h-52 sm:h-64">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} layout="vertical" margin={{ top: 0, right: 16, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" horizontal={false} />
