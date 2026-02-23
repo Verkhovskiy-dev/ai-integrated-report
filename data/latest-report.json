@@ -8,26 +8,37 @@
       "name": "Денежная система",
       "events": [
         {
-          "title": "реальными товарными потоками AI-индустрии",
-          "description": "Появляется разрыв между **реальными товарными потоками AI-индустрии** (электроника/машины/сырье растут у Таиланда) и **финансовой оценкой AI-лидеров** (скепсис по Nvidia). Это признак перехода от “нарратива бесконечного роста” к режиму “проверки unit economics AI-инфраструктуры”.",
-          "sources": []
+          "title": "Появляется разрыв между реальными товарными потоками AI-индустрии (электроника/машины/сырье растут у Таиланда) и...",
+          "description": "Появляется разрыв между реальными товарными потоками AI-индустрии (электроника/машины/сырье растут у Таиланда) и финансовой оценкой AI-лидеров (скепсис по Nvidia). Это признак перехода от “нарратива бесконечного роста” к режиму “проверки unit economics AI-инфраструктуры”.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-23/thai-exports-jump-most-in-four-years-on-ai-led-electronics-boom",
+            "https://www.bloomberg.com/news/articles/2026-02-22/nvidia-s-stock-is-so-stuck-even-blowout-earnings-may-not-lift-it"
+          ],
+          "type": "trend"
         }
       ],
       "event_count": 1
     },
     {
       "level": 8,
-      "name": "Спонтанный порядок",
+      "name": "Институты “спонтанного порядка”",
       "events": [
         {
-          "title": "доверия к цифровому контенту",
-          "description": "Усиление спонтанных/де-факто стандартов **доверия к цифровому контенту** (provenance, “что реально, что AI”), как ответ на массовую AI-дезинформацию и мошенничества.",
-          "sources": []
+          "title": "Усиление спонтанных/де-факто стандартов доверия к цифровому контенту (provenance, “что реально, что AI”), как ответ на...",
+          "description": "Усиление спонтанных/де-факто стандартов доверия к цифровому контенту (provenance, “что реально, что AI”), как ответ на массовую AI-дезинформацию и мошенничества.",
+          "sources": [
+            "https://www.technologyreview.com/2026/02/19/1133360/microsoft-has-a-new-plan-to-prove-what-s-real-and-what-s-ai-online/"
+          ],
+          "type": "trend"
         },
         {
-          "title": "Одновременно растет “теневая” часть спонтанного порядка: AI упрощает преступлени",
+          "title": "Одновременно растет “теневая” часть спонтанного порядка",
           "description": "Одновременно растет “теневая” часть спонтанного порядка: AI упрощает преступления/скам, усиливается асимметрия нападение/защита.",
-          "sources": []
+          "sources": [
+            "https://www.technologyreview.com/2026/02/12/1132386/ai-already-making-online-swindles-easier/",
+            "https://www.bloomberg.com/news/articles/2026-02-22/uae-says-it-foiled-a-wave-of-cyberattacks-on-vital-sectors"
+          ],
+          "type": "event"
         }
       ],
       "event_count": 2
@@ -37,14 +48,21 @@
       "name": "Институты производства знаний",
       "events": [
         {
-          "title": "агентах как классе систем",
-          "description": "Ускоряется институционализация знания об **агентах как классе систем**: индексы/реестры, стандартизация disclosure, систематизация safety-фич.",
-          "sources": []
+          "title": "Ускоряется институционализация знания об агентах как классе систем",
+          "description": "Ускоряется институционализация знания об агентах как классе систем: индексы/реестры, стандартизация disclosure, систематизация safety-фич.",
+          "sources": [
+            "https://arxiv.org/abs/2602.17753"
+          ],
+          "type": "trend"
         },
         {
-          "title": "Сильный сдвиг в сторону “оценивание как дисциплина управления”, а не финальная п",
+          "title": "Сильный сдвиг в сторону “оценивание как дисциплина управления”, а не финальная проверка: от статических бенчмарков к...",
           "description": "Сильный сдвиг в сторону “оценивание как дисциплина управления”, а не финальная проверка: от статических бенчмарков к агентным, траекторным, стресс‑тестам.",
-          "sources": []
+          "sources": [
+            "https://arxiv.org/abs/2602.18029",
+            "https://arxiv.org/abs/2602.17990"
+          ],
+          "type": "event"
         }
       ],
       "event_count": 2
@@ -54,14 +72,22 @@
       "name": "Технологии производства знаний",
       "events": [
         {
-          "title": "“делаем агента” → “делаем измеримость/аудит/провенанс агента”",
-          "description": "В методологиях R&D фиксируется переход: **“делаем агента” → “делаем измеримость/аудит/провенанс агента”**.",
-          "sources": []
+          "title": "В методологиях R&D фиксируется переход",
+          "description": "В методологиях R&D фиксируется переход: “делаем агента” → “делаем измеримость/аудит/провенанс агента”.",
+          "sources": [
+            "https://arxiv.org/abs/2602.17913",
+            "https://arxiv.org/abs/2602.17831"
+          ],
+          "type": "event"
         },
         {
-          "title": "Параллельная ветка — “прибить галлюцинации/хрупкость” через нейросимволику/онтол",
+          "title": "Параллельная ветка — “прибить галлюцинации/хрупкость” через нейросимволику/онтологии/SMT: вместо “лучше prompt” —...",
           "description": "Параллельная ветка — “прибить галлюцинации/хрупкость” через нейросимволику/онтологии/SMT: вместо “лучше prompt” — “лучше формальная опора”.",
-          "sources": []
+          "sources": [
+            "https://arxiv.org/abs/2602.17826",
+            "https://arxiv.org/abs/2602.18095"
+          ],
+          "type": "event"
         }
       ],
       "event_count": 2
@@ -72,13 +98,20 @@
       "events": [
         {
           "title": "Переупаковка глобальной value chain AI",
-          "description": "**Переупаковка глобальной value chain AI**: ЮВА (Таиланд) усиливается как узел “электроника/машины/сырье”, Корея — как узел “HBM/AI‑память”, США — как зона спроса/регулирования/торговых режимов.",
-          "sources": []
+          "description": "Переупаковка глобальной value chain AI: ЮВА (Таиланд) усиливается как узел “электроника/машины/сырье”, Корея — как узел “HBM/AI‑память”, США — как зона спроса/регулирования/торговых режимов.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-23/thai-exports-jump-most-in-four-years-on-ai-led-electronics-boom",
+            "https://www.bloomberg.com/news/articles/2026-02-23/sk-hynix-boss-pledges-to-boost-output-of-ai-memory-chips"
+          ],
+          "type": "event"
         },
         {
-          "title": "На стороне конечных продуктов — усиление Apple как интегратора “device+sensor+vi",
+          "title": "На стороне конечных продуктов — усиление Apple как интегратора “device+sensor+visual AI” (вертикальная интеграция в...",
           "description": "На стороне конечных продуктов — усиление Apple как интегратора “device+sensor+visual AI” (вертикальная интеграция в потребительском контуре).",
-          "sources": []
+          "sources": [
+            "https://www.bloomberg.com/news/newsletters/2026-02-22/apple-s-ai-wearables-push-what-to-expect-from-march-4-low-end-macbook-launch"
+          ],
+          "type": "trend"
         }
       ],
       "event_count": 2
@@ -88,30 +121,36 @@
       "name": "«Железные» технологии",
       "events": [
         {
-          "title": "памяти (HBM/AI memory)",
-          "description": "Ускоряется дефицит/ценность **памяти (HBM/AI memory)** как узкого места наряду с GPU: Hynix подтверждает, что bottleneck смещается в сторону памяти/упаковки/поставок.",
+          "title": "Ускоряется дефицит/ценность памяти (HBM/AI memory) как узкого места наряду с GPU",
+          "description": "Ускоряется дефицит/ценность памяти (HBM/AI memory) как узкого места наряду с GPU: Hynix подтверждает, что bottleneck смещается в сторону памяти/упаковки/поставок. [Источник](https://www.bloomberg.com/news/articles/2026-02-23/sk-hynix-boss-pledges-to-boost-output-of-ai-memory-chips)",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-02-23/sk-hynix-boss-pledges-to-boost-output-of-ai-memory-chips"
-          ]
+          ],
+          "type": "trend"
         },
         {
-          "title": "визуальные модели/мультимодальность",
-          "description": "В прикладных AI‑устройствах усиливается ставка на **визуальные модели/мультимодальность** (Apple).",
+          "title": "В прикладных AI‑устройствах усиливается ставка на визуальные модели/мультимодальность (Apple)",
+          "description": "В прикладных AI‑устройствах усиливается ставка на визуальные модели/мультимодальность (Apple). [Источник](https://www.bloomberg.com/news/newsletters/2026-02-22/apple-s-ai-wearables-push-what-to-expect-from-march-4-low-end-macbook-launch)",
           "sources": [
             "https://www.bloomberg.com/news/newsletters/2026-02-22/apple-s-ai-wearables-push-what-to-expect-from-march-4-low-end-macbook-launch"
-          ]
+          ],
+          "type": "event"
         }
       ],
       "event_count": 2
     },
     {
       "level": 3,
-      "name": "Социально-профессиональная структура",
+      "name": "Социально‑профессиональная структура",
       "events": [
         {
-          "title": "AI security / provenance / agent evaluation engineer",
-          "description": "Растет спрос на гибридные роли: **AI security / provenance / agent evaluation engineer** (косвенно подтверждается и киберсдвигом в ОАЭ, и научным валом по trojans/jailbreak/agent eval).",
-          "sources": []
+          "title": "Растет спрос на гибридные роли",
+          "description": "Растет спрос на гибридные роли: AI security / provenance / agent evaluation engineer (косвенно подтверждается и киберсдвигом в ОАЭ, и научным валом по trojans/jailbreak/agent eval).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-22/uae-says-it-foiled-a-wave-of-cyberattacks-on-vital-sectors",
+            "https://arxiv.org/abs/2602.07152"
+          ],
+          "type": "event"
         }
       ],
       "event_count": 1
@@ -121,9 +160,13 @@
       "name": "Пространственная организация",
       "events": [
         {
-          "title": "Строительство дата-центров по миру тянет за собой перестройку индустриальной гео",
+          "title": "Строительство дата-центров по миру тянет за собой перестройку индустриальной географии: спрос на память, электронику,...",
           "description": "Строительство дата-центров по миру тянет за собой перестройку индустриальной географии: спрос на память, электронику, машины и сырье отражается в статистике внешней торговли Таиланда; производство памяти — в Корее.",
-          "sources": []
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-23/sk-hynix-boss-pledges-to-boost-output-of-ai-memory-chips",
+            "https://www.bloomberg.com/news/articles/2026-02-23/thai-exports-jump-most-in-four-years-on-ai-led-electronics-boom"
+          ],
+          "type": "event"
         }
       ],
       "event_count": 1
@@ -133,9 +176,12 @@
       "name": "Природные ресурсы",
       "events": [
         {
-          "title": "дата-центровый buildout",
-          "description": "В текущем пакете новостей прямых новых фактов про энергию/воду/климат нет, но **дата-центровый buildout** подразумевает рост давления на энергосистемы и охлаждение как базисное ограничение (это проявится на уровне 2–1 в следующих волнах данных).",
-          "sources": []
+          "title": "В текущем пакете новостей прямых новых фактов про энергию/воду/климат нет, но дата-центровый buildout подразумевает...",
+          "description": "В текущем пакете новостей прямых новых фактов про энергию/воду/климат нет, но дата-центровый buildout подразумевает рост давления на энергосистемы и охлаждение как базисное ограничение (это проявится на уровне 2–1 в следующих волнах данных). Косвенная привязка к DC buildout: [Источник](https://www.bloomberg.com/news/articles/2026-02-23/sk-hynix-boss-pledges-to-boost-output-of-ai-memory-chips)",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-23/sk-hynix-boss-pledges-to-boost-output-of-ai-memory-chips"
+          ],
+          "type": "trend"
         }
       ],
       "event_count": 1
@@ -391,5 +437,6 @@
       ],
       "category": "decelerating"
     }
-  ]
+  ],
+  "total_events": 14
 }
