@@ -64,6 +64,21 @@ interface ReportMetrics {
   cross_level_links_count: number;
 }
 
+// === Momentum types ===
+export interface MomentumTrend {
+  name: string;
+  momentum: number;
+  rationale: string;
+  levels: number[];
+  category: string;
+}
+
+export interface MomentumEntry {
+  date: string;
+  generated_at: string;
+  trends: MomentumTrend[];
+}
+
 export interface LiveReport {
   date: string;
   generated_at: string;
@@ -100,6 +115,10 @@ export interface DashboardData {
   insightsPeriod: string;
   insightsGeneratedAt: string;
   insightsLive: boolean;
+
+  // Dynamic momentum data from momentum.json
+  momentumData: MomentumEntry[];
+  momentumLive: boolean;
 }
 
 const LiveDataContext = createContext<DashboardData | null>(null);
@@ -329,6 +348,8 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
     insightsPeriod: "",
     insightsGeneratedAt: "",
     insightsLive: false,
+    momentumData: [],
+    momentumLive: false,
   });
 
   useEffect(() => {
@@ -396,6 +417,22 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           // insights.json not available, use static fallback
         }
 
+        // Fetch momentum data
+        let momentumData: MomentumEntry[] = [];
+        let momentumLive = false;
+        try {
+          const momResp = await fetch(`${base}data/momentum.json`);
+          if (momResp.ok) {
+            const momJson = await momResp.json();
+            if (Array.isArray(momJson) && momJson.length > 0) {
+              momentumData = momJson;
+              momentumLive = true;
+            }
+          }
+        } catch {
+          // momentum.json not available
+        }
+
         // Transform data
         setState({
           isLive: true,
@@ -417,6 +454,8 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           insightsPeriod,
           insightsGeneratedAt,
           insightsLive,
+          momentumData,
+          momentumLive,
         });
       } catch (err) {
         console.warn("Live data unavailable, using static fallback:", err);

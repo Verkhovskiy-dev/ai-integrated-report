@@ -9,7 +9,7 @@
 import { useMemo } from "react";
 import {
   FileText, Zap, TrendingUp, Link, Lightbulb, ArrowRight,
-  Flame, Snowflake, Activity, ChevronDown,
+  Activity, ChevronDown,
 } from "lucide-react";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
@@ -43,31 +43,7 @@ function guessType(text: string): string {
   return "product";
 }
 
-function generateTrendData(
-  shiftLevels: number[],
-  trend: string,
-  heatmapData: { date: string; levels: Record<number, number> }[]
-) {
-  const points = heatmapData.map((day) => {
-    const intensity = shiftLevels.reduce(
-      (sum, lvl) => sum + (day.levels[lvl] || 0), 0
-    );
-    return { date: day.date, value: intensity };
-  });
-  if (trend === "accelerating") return points.map((p, i) => ({ ...p, value: p.value + Math.round(i * 0.3) }));
-  if (trend === "emerging") return points.map((p, i) => ({ ...p, value: p.value + Math.round(i * 0.15) }));
-  return points.map((p, i) => ({ ...p, value: Math.max(1, p.value - Math.round(i * 0.2)) }));
-}
-function computeMomentum(data: { value: number }[]): number {
-  if (data.length < 2) return 0;
-  const mid = Math.floor(data.length / 2) || 1;
-  const firstHalf = data.slice(0, mid).reduce((s, d) => s + d.value, 0) / mid;
-  const secondLen = data.length - mid;
-  const secondHalf = secondLen > 0 ? data.slice(mid).reduce((s, d) => s + d.value, 0) / secondLen : firstHalf;
-  const base = Math.max(firstHalf, 1);
-  const result = Math.round(((secondHalf - firstHalf) / base) * 100);
-  return isNaN(result) ? 0 : result;
-}
+// generateTrendData and computeMomentum removed — momentum now comes from momentum.json via AI scoring
 
 // ─── Metrics Strip ──────────────────────────────────────────────
 function MetricsStrip({ metrics }: { metrics: { label: string; value: number; suffix: string }[] }) {
@@ -118,11 +94,17 @@ function MomentumChart({ data }: { data: { name: string; momentum: number; fill:
               if (!active || !payload?.length) return null;
               const d = payload[0].payload;
               return (
-                <div className="bg-card/95 backdrop-blur-md border border-border/60 rounded-md px-3 py-2 shadow-xl">
-                  <p className="text-xs font-heading font-semibold text-foreground">{d.name}</p>
+                <div className="bg-card/95 backdrop-blur-md border border-border/60 rounded-md px-3 py-2 shadow-xl max-w-xs">
+                  <p className="text-xs font-heading font-semibold text-foreground">{d.fullName || d.name}</p>
                   <p className="text-xs font-mono" style={{ color: d.fill }}>
-                    Моментум: {d.momentum > 0 ? "+" : ""}{d.momentum}%
+                    Моментум: {d.momentum > 0 ? "+" : ""}{d.momentum}
                   </p>
+                  {d.rationale && (
+                    <p className="text-[10px] text-muted-foreground mt-1 leading-snug">{d.rationale}</p>
+                  )}
+                  {d.dataPoints && (
+                    <p className="text-[9px] text-muted-foreground/60 mt-0.5 font-mono">на основе {d.dataPoints} отчётов</p>
+                  )}
                 </div>
               );
             }}
@@ -142,7 +124,7 @@ function MomentumChart({ data }: { data: { name: string; momentum: number; fill:
 export default function HeroSummary() {
   const {
     latestReport, isLive, reportDate, keyFocus,
-    keyMetrics, structuralShifts, heatmapData,
+    keyMetrics,
     strategicInsights,
   } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
@@ -172,49 +154,61 @@ export default function HeroSummary() {
 
   const totalEvents = topEvents.length;
 
-  // ── Momentum data ──
+  // ── Momentum data (from momentum.json with averaging) ──
+  const { momentumData: rawMomentum, momentumLive } = useLiveData();
   const momentumData = useMemo(() => {
-    // Build from structuralShifts or synthetic
-    interface TrendItem { title: string; momentum: number; isAccel: boolean }
-    const items: TrendItem[] = [];
+    if (rawMomentum.length > 0) {
+      // Aggregate: average momentum per trend across all available dates
+      const trendMap: Record<string, { totalMom: number; count: number; levels: number[]; category: string; rationale: string }> = {};
+      for (const entry of rawMomentum) {
+        for (const t of entry.trends) {
+          const key = t.name;
+          if (!trendMap[key]) {
+            trendMap[key] = { totalMom: 0, count: 0, levels: t.levels, category: t.category, rationale: t.rationale };
+          }
+          trendMap[key].totalMom += t.momentum;
+          trendMap[key].count += 1;
+          // Keep latest category and rationale
+          trendMap[key].category = t.category;
+          trendMap[key].rationale = t.rationale;
+        }
+      }
 
-    if (structuralShifts.length > 0) {
-      structuralShifts.forEach((shift) => {
-        const data = generateTrendData(shift.levels, shift.trend, heatmapData);
-        const momentum = computeMomentum(data);
-        items.push({
-          title: shift.title,
-          momentum,
-          isAccel: shift.trend === "accelerating" || shift.trend === "emerging",
-        });
-      });
-    } else {
-      // Synthetic
-      const synth = [
-        { title: "Агентные платформы", levels: [6, 8], trend: "accelerating", mom: 32 },
-        { title: "Безопасность агентов", levels: [7, 8], trend: "accelerating", mom: 28 },
-        { title: "AI-CapEx / Инфра", levels: [4, 9], trend: "emerging", mom: 22 },
-        { title: "Open-weight модели", levels: [7, 5], trend: "emerging", mom: 18 },
-        { title: "Закрытые API-модели", levels: [7, 6], trend: "decelerating", mom: -18 },
-        { title: "Классический SaaS", levels: [5, 9], trend: "decelerating", mom: -24 },
-        { title: "Монолитные облака", levels: [4, 5], trend: "decelerating", mom: -15 },
-        { title: "Prompt guardrails", levels: [6, 8], trend: "decelerating", mom: -21 },
-      ];
-      synth.forEach((s) => items.push({
-        title: s.title,
-        momentum: s.mom,
-        isAccel: s.trend === "accelerating" || s.trend === "emerging",
-      }));
+      // Build items with averaged momentum, take top 10 by absolute value
+      const items = Object.entries(trendMap)
+        .map(([name, data]) => {
+          const avgMom = Math.round(data.totalMom / data.count);
+          return {
+            name: name.length > 22 ? name.slice(0, 20) + "…" : name,
+            fullName: name,
+            momentum: avgMom,
+            fill: avgMom >= 0 ? "#10b981" : "#ef4444",
+            category: data.category,
+            rationale: data.rationale,
+            levels: data.levels,
+            dataPoints: data.count,
+          };
+        })
+        .sort((a, b) => Math.abs(b.momentum) - Math.abs(a.momentum))
+        .slice(0, 10)
+        .sort((a, b) => b.momentum - a.momentum);
+
+      return items;
     }
 
-    return items
-      .sort((a, b) => b.momentum - a.momentum)
-      .map((item) => ({
-        name: item.title.length > 20 ? item.title.slice(0, 18) + "…" : item.title,
-        momentum: item.momentum,
-        fill: item.isAccel ? "#10b981" : "#ef4444",
-      }));
-  }, [structuralShifts, heatmapData]);
+    // Fallback: synthetic data
+    const synth = [
+      { name: "Агентные платформы", momentum: 32, fill: "#10b981" },
+      { name: "Безопасность агентов", momentum: 28, fill: "#10b981" },
+      { name: "AI-CapEx / Инфра", momentum: 22, fill: "#10b981" },
+      { name: "Open-weight модели", momentum: 18, fill: "#10b981" },
+      { name: "Закрытые API-модели", momentum: -18, fill: "#ef4444" },
+      { name: "Классический SaaS", momentum: -24, fill: "#ef4444" },
+      { name: "Монолитные облака", momentum: -15, fill: "#ef4444" },
+      { name: "Prompt guardrails", momentum: -21, fill: "#ef4444" },
+    ];
+    return synth;
+  }, [rawMomentum]);
 
   // ── Key insight ──
   const keyInsight = strategicInsights[0];
@@ -323,6 +317,9 @@ export default function HeroSummary() {
               <h3 className="text-xs sm:text-sm font-heading font-semibold text-foreground">
                 Моментум трендов
               </h3>
+              {momentumLive && (
+                <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/15 text-[8px] font-mono text-emerald-400">AI</span>
+              )}
               <div className="flex items-center gap-3 ml-auto">
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 rounded-full bg-emerald-500" />
