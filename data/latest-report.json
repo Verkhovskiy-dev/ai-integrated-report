@@ -1,66 +1,60 @@
 {
-  "date": "2026-02-22",
-  "generated_at": "2026-02-22T10:27:30.584494Z",
-  "key_focus": "",
+  "date": "2026-02-17",
+  "generated_at": "2026-02-17T14:06:33.895979",
+  "key_focus": "Стратегический отчет по СРТ",
   "srt_levels": [
     {
       "level": 9,
       "name": "Денежная система",
       "events": [
         {
-          "title": "“AI scare trade”",
-          "description": "Формируется режим **“AI scare trade”**: инвесторы в США продают софт/переоценивают бизнес-модели из-за угрозы AI-дезинтермедиации и сдвига маржи в сторону обладателей моделей/инфры.",
+          "title": "Переход от “AI-эйфории” к “AI-кредитному риску”",
+          "description": "инвесторы боятся, что AI-капзатраты могут запустить кредитный кризис (30% респондентов в опросе BofA) — это сигнал, что финансирование AI начинает оцениваться через призму долговой устойчивости, а не только роста.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-22/china-defies-global-ai-scare-trade-as-investors-chase-winners"
+            "https://www.bloomberg.com/news/videos/2026-02-17/could-ai-overspending-spark-a-credit-crisis-video"
           ]
         },
         {
-          "title": "капитал “догоняет победителей”",
-          "description": "На этом фоне Китай демонстрирует иной паттерн: **капитал “догоняет победителей”**, т.е. ставка на тех, кто уже встроен в гос/индустриальные контуры и (вероятно) имеет доступ к данным/рынкам/госзаказу.",
+          "title": "Одновременно: концентрация “длинных денег” у VC-ядра сохраняется",
+          "description": "— Thrive Capital поднимает >$10 млрд, расширяя “военный бюджет” на AI‑приложения и инфраструктуру. Это означает, что капитал не уходит из AI, но меняет критерии: от публичного рынка (волатильность/ротация) к частному (контроль горизонта).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-22/china-defies-global-ai-scare-trade-as-investors-chase-winners"
+            "https://www.bloomberg.com/news/articles/2026-02-17/josh-kushner-s-thrive-capital-raises-10-billion-in-new-funding"
           ]
         },
         {
-          "title": ">$280 млрд к 2030",
-          "description": "OpenAI транслирует предельные ожидания роста: прогноз выручки **>$280 млрд к 2030** (как сигнал рынку о будущей “ренте базовой модели” и праве на часть value chain).",
+          "title": "Сигнал “рынок устал от AI-нарратива”",
+          "description": "фиксируется “AI fatigue”/ротация из техсектора. Это не конец AI, а смена денежного режима: требование доказуемой выручки/эффективности.,",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-20/openai-forecasts-its-revenue-will-top-280-billion-in-2030"
-          ]
-        },
-        {
-          "title": "Финансовая инженерия как источник техриска",
-          "description": "**Финансовая инженерия как источник техриска**: кейс Pulse Secure (давление private equity debt → увольнения → ухудшение безопасности → уязвимость к китайским хакерам) показывает, что “дешевый капитал” в инфраструктурном софте может конвертироваться в системные уязвимости.",
-          "sources": [
-            "https://www.bloomberg.com/news/features/2026-02-19/vpn-used-by-us-government-failed-to-stop-china-state-sponsored-hackers"
+            "https://www.bloomberg.com/news/videos/2026-02-17/edward-yardeni-senses-ai-fatigue-in-market-rotation-video",
+            "https://www.bloomberg.com/news/videos/2026-02-17/tech-stocks-dip-as-ai-doubts-linger-on-wall-street-video"
           ]
         }
       ],
-      "event_count": 4
+      "event_count": 3
     },
     {
       "level": 8,
       "name": "Спонтанный порядок",
       "events": [
         {
-          "title": "приватной превенции угроз на платформах моделей",
-          "description": "Переход к **приватной превенции угроз на платформах моделей**: OpenAI “flagged and banned” подозреваемую за 8 месяцев до массовой стрельбы, но не передала данные в полицию — конфликт норм: платформа как “частный регулятор” vs государственная система предотвращения преступлений.",
+          "title": "Открытые китайские модели становятся “де-факто инфраструктурой” для глобальных билдеров",
+          "description": "MIT Tech Review описывает, что Qwen/DeepSeek/Kimi и др. дают near-frontier по низкой цене, а их веса доступны (open-weight). Это перестраивает неформальные стандарты “на чем строить” и “кто задает базовые модели”.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-21/openai-flagged-canada-suspect-eight-months-before-mass-shooting"
+            "https://www.technologyreview.com/2026/02/12/1132811/whats-next-for-chinese-open-source-ai/"
           ]
         },
         {
-          "title": "возрастные ограничения соцсетей для несовершеннолетних",
-          "description": "Германия обсуждает **возрастные ограничения соцсетей для несовершеннолетних**, что затрагивает не только контент, но и (косвенно) AI-рекомендательные системы и рынок внимания; риск напряжения с US digital-services индустрией.",
+          "title": "Вирусный агент OpenClaw → массовая самоорганизация без зрелых норм безопасности",
+          "description": "всплеск использования и обсуждений, при этом эксперты указывают на уязвимости (prompt injection и др.). Спонтанный порядок “коммьюнити-пилит” опережает формальные регуляторные контуры.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-21/merz-s-cdu-calls-for-age-restrictions-on-social-media-networks"
+            "https://www.technologyreview.com/2026/02/11/1132768/is-a-secure-ai-assistant-possible/"
           ]
         },
         {
-          "title": "секьюритизации мессенджера Telegram",
-          "description": "Россия (ФСБ) сигнализирует о **секьюритизации мессенджера Telegram** (утечка данных с фронта) — шаг к ужесточению режима платформенной коммуникации как инфраструктуры войны.",
+          "title": "Политизация потребления AI",
+          "description": "кампания QuitGPT призывает отменять подписки ChatGPT, связывая продукт с политическими/этическими претензиями. Это новая форма “рыночного санкционирования” через репутацию и кошелек — институт спонтанного порядка, влияющий на монетизацию.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-21/russia-s-fsb-says-ukraine-can-tap-front-line-data-via-telegram"
+            "https://www.technologyreview.com/2026/02/10/1132577/a-quitgpt-campaign-is-urging-people-to-cancel-chatgpt-subscriptions/"
           ]
         }
       ],
@@ -71,117 +65,135 @@
       "name": "Институты производства знаний",
       "events": [
         {
-          "title": "Институты знания реагируют на кадровый спрос: университеты запускают новые AI-пр",
-          "description": "Институты знания реагируют на кадровый спрос: университеты запускают новые AI-программы/мажоры (пример: UNT, UCSB) как попытка “вшить” AI-компетенции в массовое образование и снизить дефицит кадров. ;",
+          "title": "Бенчмарки и оценка переходят в режим “неистощимых/верифицируемых” задач",
+          "description": "VeRA предлагает превращать задания в исполнимые спецификации с генератором и детерминированным верификатором (бесконечные verified‑варианты), что институционализирует борьбу с contamination/заучиванием.",
           "sources": [
-            "https://news.google.com/rss/articles/CBMiygFBVV95cUxQcXpFNnYydFZnMGk5eW5oZkJPSktyUFExRXVCcFdiNmt1eVpMOEh1RG4wcjFIeEVDYjJxemZraWZtd2ZqZmVJbGxBdlZVRjNfbDNFVVJKX3pfay1CMGRjUEx2Z2ZudGNaRS1vcEpXbVJLNHpNMGxYQWkxaW9ZRUUyX0wwSHd3QnNPeGR3NFhPQzk0NUFDMDFObngwc0FaUlRac2tWRXU3dUJLS3plb19GMXViT0RxT1NQOC12WC1uMjNBS0dsM1ZLY1FB",
-            "https://news.google.com/rss/articles/CBMimwFBVV95cUxPcjBYbkZvTUlHSzlIWlNBWHhfRHgyeUhMVU1yRjByeXFqaUtXUWwyb0MzejRSemd2RGl5NEd5TEtlSzNLd0RqRHdUMHNhS2JaOU1KQkwtZXd0QVBxM3YtT2YzdEpuX1luLU1rZEp6b3ZBcVpFY19aTlZCVk11MWlZWDNmZ2d3WEZxVUhROXc0Ynk4Vi0xbUM2Q0laRQ"
+            "https://arxiv.org/abs/2602.13217"
           ]
         },
         {
-          "title": "синтетических данных в медицине",
-          "description": "Появляются новые публикации/обсуждения вокруг **синтетических данных в медицине** (Nature), что меняет “сырье” для исследований и клинических испытаний.",
+          "title": "Смещение от “доверия к выводу” к “аудитируемости”",
+          "description": "тезис о том, что при удешевлении генерации узкое место — трассируемость claim→evidence (AAR-стандарт). Это новая логика легитимации знания.",
           "sources": [
-            "https://news.google.com/rss/articles/CBMiX0FVX3lxTFA4dndJV3ROVm51VXJMbzNMSUxGajIwUldzWXdoeEZqZHJHdDRyVFk3UDh5T2lYTUcyZ04tdDF6b3hXTGk5U2NuWFZRM1NXLUwzTEhxVjFiQWU0dXowVDdB"
+            "https://arxiv.org/abs/2602.13855"
+          ]
+        },
+        {
+          "title": "Нарастание “научной индустриализации агентов”",
+          "description": "лавина работ по агентным архитектурам, памяти, web‑агентам, multi-agent безопасности и т.п. (напр. SPILLage, OMNI-LEAK, DPBench) — признак формирования отдельного “цеха” научного производства вокруг agentic stack.,,",
+          "sources": [
+            "https://arxiv.org/abs/2602.13516",
+            "https://arxiv.org/abs/2602.13477",
+            "https://arxiv.org/abs/2602.13255"
           ]
         }
       ],
-      "event_count": 2
+      "event_count": 3
     },
     {
       "level": 6,
-      "name": "Технологии производства знаний",
+      "name": "Технологии производства знаний (методологии/практики/инструменты)",
       "events": [
         {
-          "title": "security-as-a-feature внутри LLM",
-          "description": "Сдвиг в сторону **security-as-a-feature внутри LLM**: Anthropic добавляет security-функцию в Claude (Claude Code security), рынок киберсофта реагирует распродажей акций — т.е. инвесторы ожидают замещения части “точечных” security-продуктов функционалом в моделях.",
+          "title": "“Верифицируемые среды” как способ масштабировать RL/пост-тренинг агентов",
+          "description": "AutoWebWorld строит web‑окружения как конечные автоматы (FSM) с программной проверкой шагов и задач — дешевый генератор траекторий.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-20/cyber-stocks-slide-as-anthropic-unveils-claude-code-security"
+            "https://arxiv.org/abs/2602.14296"
           ]
         },
         {
-          "title": "проверке подлинности/AI-контента онлайн",
-          "description": "Microsoft продвигает подходы к **проверке подлинности/AI-контента онлайн** (content authenticity), т.е. инструменты доверия становятся встроенным слоем интернета.",
+          "title": "Синтетика + верифицируемые награды для GUI-агентов",
+          "description": "GUI‑GENESIS реконструирует приложения в легкие веб‑среды и дает code-native rewards, снижая стоимость/латентность обучения.",
           "sources": [
-            "https://www.technologyreview.com/2026/02/19/1133360/microsoft-has-a-new-plan-to-prove-whats-real-and-what-s-ai-online/"
+            "https://arxiv.org/abs/2602.14093"
+          ]
+        },
+        {
+          "title": "Методический поворот к “проверяемым якорям” в оценке",
+          "description": "BotzoneBench предлагает оценку стратегического поведения LLM через фиксированные уровни game‑AI (абсолютная шкала, линейная стоимость).",
+          "sources": [
+            "https://arxiv.org/abs/2602.13214"
           ]
         }
       ],
-      "event_count": 2
+      "event_count": 3
     },
     {
       "level": 5,
       "name": "Разделение труда между фирмами",
       "events": [
         {
-          "title": "Интеграция LLM-провайдеров в вертикаль security",
-          "description": "**Интеграция LLM-провайдеров в вертикаль security**: если модель начинает “закрывать” часть задач (code+security), то провайдер модели претендует на долю бюджета, ранее распределенного между специализированными игроками.",
+          "title": "Вертикальная интеграция AI в “энергию/инфраструктуру”",
+          "description": "Google закрепляет геотермальную генерацию под дата-центры в Неваде — это закрепление энергоснабжения как части AI value chain.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-20/cyber-stocks-slide-as-anthropic-unveils-claude-code-security"
+            "https://www.bloomberg.com/news/articles/2026-02-17/google-secures-ormat-geothermal-power-for-nevada-data-centers"
           ]
         },
         {
-          "title": "Антимонопольная проверка власти платформы над создателями",
-          "description": "**Антимонопольная проверка власти платформы над создателями**: DOJ в рамках анализа сделки Netflix–WBD рассматривает, не использует ли Netflix антиконкурентное давление на создателей/переговорную силу. Это про контроль над каналами дистрибуции контента (и потенциально — над AI-производством/постпроизводством контента как будущей нормой).",
+          "title": "Рост цен/дефицит на компоненты серверов",
+          "description": "Murata обсуждает повышение цен на MLCC (критичная часть серверов) на фоне AI‑спроса — усиливается власть поставщиков “мелких, но узких” компонентов.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-21/doj-probes-netflix-s-power-over-filmmakers-in-warner-deal-review"
+            "https://www.bloomberg.com/news/articles/2026-02-17/murata-explores-raising-prices-of-ai-server-ceramic-capacitors"
           ]
         },
         {
-          "title": "Microsoft назначает AI-экзекьютива руководить Xbox и “recommit to console” — при",
-          "description": "Microsoft назначает AI-экзекьютива руководить Xbox и “recommit to console” — признак того, что AI-компетенция становится управленческим ядром даже в игровых/контентных направлениях (игры как “фабрика данных/контента/агентов”).",
+          "title": "Формирование “нового железного периметра” дата-центра",
+          "description": "стартап Mesh Optical привлекает $50 млн на оптику внутри дата-центров, масштабируя производство в США. Это указывает на борьбу за узкие места (interconnect) как на самостоятельный рынок.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-20/microsoft-names-ai-exec-sharma-to-run-xbox-recommits-to-console"
-          ]
-        },
-        {
-          "title": "Геоэкономический обмен “доступ к технологиям ↔ торговый баланс”: Вьетнам заявляе",
-          "description": "Геоэкономический обмен “доступ к технологиям ↔ торговый баланс”: Вьетнам заявляет, что Трамп согласился снять ограничения на доступ к продвинутым технологиям — экспортный контроль становится предметом сделки.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-21/vietnam-says-trump-will-let-nation-access-restricted-technology"
+            "https://www.bloomberg.com/news/articles/2026-02-17/spacex-alumni-raise-50-million-for-data-center-optical-tech"
           ]
         }
       ],
-      "event_count": 4
+      "event_count": 3
     },
     {
       "level": 4,
       "name": "«Железные» технологии",
       "events": [
         {
-          "title": "широко доступные AI-инструменты",
-          "description": "Практический факт: злоумышленники используют **широко доступные AI-инструменты** для взлома **600+ firewall** за недели (по данным Amazon) — “железный” эффект AI: автоматизация разведки/эксплуатации уязвимостей и рост темпа атак.",
+          "title": "Ре-архитектуризация вычислений под эффективность",
+          "description": "AMOR предлагает гибрид SSM+attention с “включением внимания по энтропии” (адаптивная вычислительная схема). Это линия на снижение стоимости инференса без тотального ухудшения качества.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-20/hackers-used-ai-to-breach-600-firewalls-in-weeks-amazon-says"
+            "https://arxiv.org/abs/2602.13215"
           ]
         },
         {
-          "title": "AI-backed cyberattacks",
-          "description": "ОАЭ заявляют о предотвращении волны **AI-backed cyberattacks** по жизненно важным секторам и называют это “качественным сдвигом” методов у террористических групп.",
+          "title": "Переход от “длинного CoT” к компрессии/ранней остановке/управлению рассуждением",
+          "description": "OneLatent (сжатие рассуждения в один латентный токен), statistical early stopping, on-policy SFT для краткости CoT — давление экономики инференса превращается в “железные” методы.,,",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-22/uae-says-it-foiled-a-wave-of-cyberattacks-on-vital-sectors"
+            "https://arxiv.org/abs/2602.13738",
+            "https://arxiv.org/abs/2602.13935",
+            "https://arxiv.org/abs/2602.13407"
+          ]
+        },
+        {
+          "title": "Безопасность multi-agent становится частью стека",
+          "description": "OMNI-LEAK показывает утечки данных через orchestrator‑паттерн даже при access control; SPILLage фиксирует поведенческое “перераскрытие” данных web‑агентами. Это превращает “архитектуру агента” в критический слой безопасности.,",
+          "sources": [
+            "https://arxiv.org/abs/2602.13477",
+            "https://arxiv.org/abs/2602.13516"
           ]
         }
       ],
-      "event_count": 2
+      "event_count": 3
     },
     {
       "level": 3,
-      "name": "Социально-профессиональная структура",
+      "name": "Социально‑профессиональная структура",
       "events": [
         {
-          "title": "“AI + Security”",
-          "description": "Закрепляется роль **“AI + Security”** как новой гибридной компетенции: рыночная реакция на Claude security-tool и сообщения об AI-атаках повышают спрос на специалистов, умеющих работать на стыке LLM/код/безопасность. ;",
+          "title": "Смещение дефицита компетенций",
+          "description": "от “prompting” к “agent security / boundary governance / auditability” (prompt injection, data leakage, tool governance, provenance). Это формирует спрос на новые роли: agent security engineer, AI governance/audit engineer, provenance architect. (Подтверждается корпусом материалов по OpenClaw/агентной безопасности и AAR‑аудитируемости.),",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-20/cyber-stocks-slide-as-anthropic-unveils-claude-code-security",
-            "https://www.bloomberg.com/news/articles/2026-02-22/uae-says-it-foiled-a-wave-of-cyberattacks-on-vital-sectors"
+            "https://www.technologyreview.com/2026/02/11/1132768/is-a-secure-ai-assistant-possible/",
+            "https://arxiv.org/abs/2602.13855"
           ]
         },
         {
-          "title": "Система образования масштабирует подготовку кадров под этот спрос (новые AI-спец",
-          "description": "Система образования масштабирует подготовку кадров под этот спрос (новые AI-специальности/программы).",
+          "title": "Конфликт “скорость внедрения vs ответственность” внутри гос/корп‑контуров",
+          "description": "пример Anthropic–Pentagon: задержка продления контракта из-за требований по guardrails против масс‑слежки/автономного оружия. Это переводит “этические требования” в трудовую/инженерную рутину.",
           "sources": [
-            "https://news.google.com/rss/articles/CBMiygFBVV95cUxQcXpFNnYydFZnMGk5eW5oZkJPSktyUFExRXVCcFdiNmt1eVpMOEh1RG4wcjFIeEVDYjJxemZraWZtd2ZqZmVJbGxBdlZVRjNfbDNFVVJKX3pfay1CMGRjUEx2Z2ZudGNaRS1vcEpXbVJLNHpNMGxYQWkxaW9ZRUUyX0wwSHd3QnNPeGR3NFhPQzk0NUFDMDFObngwc0FaUlRac2tWRXU3dUJLS3plb19GMXViT0RxT1NQOC12WC1uMjNBS0dsM1ZLY1FB"
+            "https://www.bloomberg.com/news/videos/2026-02-17/the-opening-trade-2-17-2026-video"
           ]
         }
       ],
@@ -192,23 +204,32 @@
       "name": "Пространственная организация",
       "events": [
         {
-          "title": "Перестраивается карта “доступа к продвинутым технологиям”: потенциальное снятие ",
-          "description": "Перестраивается карта “доступа к продвинутым технологиям”: потенциальное снятие США ограничений для Вьетнама — это изменение статуса страны в глобальных цепочках поставок/инфраструктуры (и конкуренция за “дружественные” производственные площадки).",
+          "title": "Перенос штаб-квартиры Palantir в Майами",
+          "description": "как элемент переразмещения тех‑управления и налогово‑регуляторных юрисдикций (Miami как новый “квази‑хаб”).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-21/vietnam-says-trump-will-let-nation-access-restricted-technology"
+            "https://www.bloomberg.com/news/articles/2026-02-17/palantir-moves-headquarters-to-miami-from-denver"
+          ]
+        },
+        {
+          "title": "Индия пытается закрепить роль compute/AI‑хаба через инфраструктуру дата-центров",
+          "description": "Adani планирует $100 млрд инвестиций в AI-ready DC до 2035. Это заявка на территориальный захват части мирового compute.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-17/adani-plans-to-invest-100-billion-in-ai-data-centers-by-2035"
           ]
         }
       ],
-      "event_count": 1
+      "event_count": 2
     },
     {
       "level": 1,
       "name": "Природные ресурсы",
       "events": [
         {
-          "title": "В предоставленном массиве прямых фактов про энергию/воду/дата-центры нет; однако",
-          "description": "В предоставленном массиве прямых фактов про энергию/воду/дата-центры нет; однако рост AI-кибератак косвенно повышает нагрузку на инфраструктуру “always-on” безопасности (SOC/логирование/хранение), что позже обычно проявляется в требованиях к дата-центрам и сетям.",
-          "sources": []
+          "title": "Энергия и охлаждение становятся “естественным ограничителем” AI",
+          "description": "Google берет геотермальную энергию для DC в Неваде — прямое связывание AI‑роста с геологией/энергоресурсом.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-17/google-secures-ormat-geothermal-power-for-nevada-data-centers"
+          ]
         }
       ],
       "event_count": 1
@@ -216,180 +237,20 @@
   ],
   "cross_level_links": [
     {
-      "title": "AI удешевляет нападение (Ур.4) → меняет рынок security (Ур.5) → меняет финансирование и оценки (Ур.9)",
-      "description": "**AI удешевляет нападение (Ур.4) → меняет рынок security (Ур.5) → меняет финансирование и оценки (Ур.9)**  \n   - AI-инструменты ускоряют компрометацию firewall (Ур.4).  \n   - В ответ LLM-провайдеры встраивают security-функции (Ур.6/5), рынок “чистых” security-компаний проседает (Ур.9).",
-      "levels": [
-        9,
-        6,
-        5,
-        4
-      ],
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-20/hackers-used-ai-to-breach-600-firewalls-in-weeks-amazon-says",
-        "https://www.bloomberg.com/news/articles/2026-02-20/cyber-stocks-slide-as-anthropic-unveils-claude-code-security"
-      ]
+      "title": "Энергетическое ограничение (Ур.1) → инфраструктурная стратегия (Ур.2/5) → финансовый режим (Ур.9)",
+      "description": "Дефицит/дороговизна энергии и компонентов (геотермальные сделки Google; рост цен Murata) поднимают капиталоемкость AI и усиливают страх “AI‑overspending → кредитный кризис”, что проявляется в рыночной ротации и переоценке рисков.,,"
     },
     {
-      "title": "Финансовое давление (Ур.9) → деградация поддерживающих функций (Ур.5/4) → рост уязвимостей (Ур.4) → новые требования к регулированию/координации (Ур.8)",
-      "description": "**Финансовое давление (Ур.9) → деградация поддерживающих функций (Ур.5/4) → рост уязвимостей (Ур.4) → новые требования к регулированию/координации (Ур.8)**  \n   - История Pulse Secure показывает, как структура капитала может разрушать способность держать безопасность.",
-      "levels": [
-        9,
-        8,
-        5,
-        4
-      ],
-      "sources": [
-        "https://www.bloomberg.com/news/features/2026-02-19/vpn-used-by-us-government-failed-to-stop-china-state-sponsored-hackers"
-      ]
+      "title": "Открытые китайские модели (Ур.8/7) → перестройка цепочек создания стоимости (Ур.5) → давление на монетизацию подписок (Ур.9)",
+      "description": "Open-weight + низкая цена меняют стандарт “базовой модели” для стартапов и инструментов (рост Qwen/китайских моделей в экосистемах), снижая власть закрытых API и обостряя “ценовую войну”. Это совпадает по времени с социальным давлением на подписки (QuitGPT), т.е. монетизация через consumer‑подписку становится политически/репутационно уязвимой.,"
     },
     {
-      "title": "Регуляторные и геополитические решения о “доступе к технологиям” (Ур.9/8) → перестройка географии производства и цепочек (Ур.2/5)",
-      "description": "**Регуляторные и геополитические решения о “доступе к технологиям” (Ур.9/8) → перестройка географии производства и цепочек (Ур.2/5)**  \n   - Вьетнам: доступ к “restricted technology” становится частью двусторонней сделки (верхние уровни), что затем переформатирует индустриальные цепочки и размещение компетенций.\n\n---\n\n##",
-      "levels": [
-        9,
-        2
-      ],
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-21/vietnam-says-trump-will-let-nation-access-restricted-technology"
-      ]
+      "title": "Взрыв агентности (Ур.4/6) → рост поверхностей атаки (Ур.6/8) → институционализация “boundary governance” (Ур.7/8)",
+      "description": "Web/GUI‑агенты и orchestrator‑паттерны создают новые классы утечек (OMNI‑LEAK, SPILLage) и уязвимостей (prompt injection), что толкает индустрию к стандартам: auditability, provenance‑графы, верифицируемые среды/награды, tool‑pinning.,,\n\n---"
     }
   ],
-  "structural_shifts": [
-    {
-      "title": "Кибербезопасность переходит из “рынка продуктов” в “функцию базовой модели”",
-      "from": "",
-      "to": "",
-      "through": "",
-      "levels": [
-        4,
-        6,
-        5,
-        9,
-        2,
-        2
-      ],
-      "trend": "accelerating",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-20/hackers-used-ai-to-breach-600-firewalls-in-weeks-amazon-says",
-        "https://www.bloomberg.com/news/articles/2026-02-20/cyber-stocks-slide-as-anthropic-unveils-claude-code-security"
-      ]
-    },
-    {
-      "title": "Экспортный контроль как предмет торга, а не как фиксированная “стена”",
-      "from": "",
-      "to": "",
-      "through": "",
-      "levels": [
-        9,
-        8,
-        5,
-        2,
-        2
-      ],
-      "trend": "emerging",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-21/vietnam-says-trump-will-let-nation-access-restricted-technology"
-      ]
-    },
-    {
-      "title": "Частные AI-платформы становятся “предконтуром” общественной безопасности — без ясного мандата",
-      "from": "",
-      "to": "",
-      "through": "",
-      "levels": [
-        8,
-        7,
-        5,
-        2
-      ],
-      "trend": "emerging",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-21/openai-flagged-canada-suspect-eight-months-before-mass-shooting"
-      ]
-    }
-  ],
-  "radar_signals": [
-    {
-      "title": "“AI scare trade”",
-      "description": "как ранний индикатор: если закрепится, капитал начнет системно перетекать из прикладного ПО в “инфру+модели+данные”, ускоряя монополизацию.",
-      "level_group": "upper",
-      "level_range": "7-9",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-22/china-defies-global-ai-scare-trade-as-investors-chase-winners"
-      ]
-    },
-    {
-      "title": "Антимонопольный фокус на власти над креаторами",
-      "description": "(Netflix/WBD): предвестник будущих разборок вокруг “AI-генерации контента” и условий труда/прав создателей.",
-      "level_group": "upper",
-      "level_range": "7-9",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-21/doj-probes-netflix-s-power-over-filmmakers-in-warner-deal-review"
-      ]
-    },
-    {
-      "title": "Нерешенный протокол “когда AI-платформа обязана сообщать государству”",
-      "description": "(кейс OpenAI/Канада) — возможен сдвиг к новым обязательным стандартам отчетности.",
-      "level_group": "upper",
-      "level_range": "7-9",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-21/openai-flagged-canada-suspect-eight-months-before-mass-shooting"
-      ]
-    },
-    {
-      "title": "Security-функции внутри LLM",
-      "description": "как продуктовая норма (Claude security tool) — сигнал к консолидации рынка и изменению контрактов SOC/DevSecOps.",
-      "level_group": "middle",
-      "level_range": "4-6",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-20/cyber-stocks-slide-as-anthropic-unveils-claude-code-security"
-      ]
-    },
-    {
-      "title": "Content authenticity / “что реально, а что AI”",
-      "description": "если Microsoft-инициативы станут стандартом, появится новый слой инфраструктуры доверия (и новый рынок соответствия).",
-      "level_group": "middle",
-      "level_range": "4-6",
-      "sources": [
-        "https://www.technologyreview.com/2026/02/19/1133360/microsoft-has-a-new-plan-to-prove-whats-real-and-what-s-ai-online/"
-      ]
-    },
-    {
-      "title": "География доступа к advanced tech",
-      "description": "(Вьетнам) — слабый сигнал к переносу части цепочек/инвестиций в “разблокированные” юрисдикции.",
-      "level_group": "lower",
-      "level_range": "1-3",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-21/vietnam-says-trump-will-let-nation-access-restricted-technology"
-      ]
-    },
-    {
-      "title": "AI-атаки по “vital sectors” (ОАЭ)",
-      "description": "— признак того, что критическая инфраструктура становится основным полем применения AI у атакующих; вероятны ускоренные закупки/строительство национальных SOC/киберкоманд.",
-      "level_group": "lower",
-      "level_range": "1-3",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-22/uae-says-it-foiled-a-wave-of-cyberattacks-on-vital-sectors"
-      ]
-    }
-  ],
-  "metrics": {
-    "total_events": 21,
-    "events_by_level": {
-      "9": 4,
-      "8": 3,
-      "7": 2,
-      "6": 2,
-      "5": 4,
-      "4": 2,
-      "3": 2,
-      "2": 1,
-      "1": 1
-    },
-    "total_sources": 16,
-    "structural_shifts_count": 3,
-    "radar_signals_count": 7,
-    "cross_level_links_count": 3
-  },
+  "structural_shifts": [],
+  "radar_signals": [],
+  "metrics": {},
   "categories": []
 }
