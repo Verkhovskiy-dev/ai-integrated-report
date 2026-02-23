@@ -2,10 +2,12 @@
  * DESIGN: Intelligence Dashboard — Heatmap
  * Activity intensity by СРТ level and date
  * Mobile: scrollable horizontally with sticky labels
+ * i18n support
  */
 import { useState } from "react";
 import { SRT_LEVELS } from "@/data/reportData";
 import { useLiveData } from "@/contexts/LiveDataContext";
+import { useTranslation } from "@/contexts/I18nContext";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 function getHeatColor(value: number): string {
@@ -22,27 +24,33 @@ function getGroupColor(group: string): string {
   return "#10b981";
 }
 
-function getGroupLabel(group: string): string {
-  if (group === "upper") return "Надстройка (9-7)";
-  if (group === "middle") return "Технологии (6-4)";
-  return "Базис (3-1)";
-}
-
 export default function HeatmapSection() {
   const { heatmapData: HEATMAP_DATA } = useLiveData();
+  const { t, locale } = useTranslation();
   const [hoveredCell, setHoveredCell] = useState<{ date: string; level: number } | null>(null);
+
+  function getGroupLabel(group: string): string {
+    if (group === "upper") return t.heatmap.legendUpper;
+    if (group === "middle") return t.heatmap.legendMiddle;
+    return t.heatmap.legendLower;
+  }
+
+  function getLevelShort(id: number): string {
+    const info = t.filter.cptLevels[id];
+    return info?.short || SRT_LEVELS.find((l) => l.id === id)?.short || "";
+  }
 
   return (
     <div className="container">
       <div className="mb-5 sm:mb-8">
         <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-2">
-          Тепловая карта активности
+          {t.heatmap.sectionLabel}
         </p>
         <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
-          Интенсивность по уровням СРТ
+          {t.heatmap.title}
         </h3>
         <p className="text-xs sm:text-sm text-muted-foreground max-w-xl">
-          Количество значимых событий по каждому уровню Структуры Разделения Труда за каждый день отчётного периода.
+          {t.heatmap.description}
         </p>
       </div>
 
@@ -58,7 +66,7 @@ export default function HeatmapSection() {
           </div>
         ))}
         <div className="flex items-center gap-1 ml-auto sm:ml-4">
-          <span className="text-[10px] text-muted-foreground mr-1">Инт.:</span>
+          <span className="text-[10px] text-muted-foreground mr-1">{t.heatmap.intensityLabel}</span>
           {[0, 1, 2, 3, 4].map((v) => (
             <div
               key={v}
@@ -95,7 +103,7 @@ export default function HeatmapSection() {
                 />
                 <span className="text-[10px] sm:text-xs text-muted-foreground group-hover:text-foreground transition-colors truncate">
                   <span className="font-mono text-foreground/60 mr-0.5 sm:mr-1">{level.id}</span>
-                  {level.short}
+                  {getLevelShort(level.id)}
                 </span>
               </div>
               {HEATMAP_DATA.map((d) => {
@@ -120,10 +128,10 @@ export default function HeatmapSection() {
                     </TooltipTrigger>
                     <TooltipContent className="bg-popover border-border text-popover-foreground">
                       <p className="font-mono text-xs">
-                        {d.date} — Ур. {level.id} ({level.short})
+                        {d.date} — {locale === "en" ? "L" : "Ур."} {level.id} ({getLevelShort(level.id)})
                       </p>
                       <p className="text-xs text-muted-foreground">
-                        Событий: <span className="text-primary font-medium">{value}</span>
+                        {t.heatmap.tooltipEvents} <span className="text-primary font-medium">{value}</span>
                       </p>
                     </TooltipContent>
                   </Tooltip>

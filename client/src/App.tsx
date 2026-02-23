@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LiveDataProvider } from "./contexts/LiveDataContext";
 import { FilterProvider } from "./contexts/FilterContext";
+import { I18nProvider } from "./contexts/I18nContext";
 import Home from "./pages/Home";
 
 function Router() {
@@ -22,14 +23,16 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="dark">
-        <LiveDataProvider>
-          <FilterProvider>
-            <TooltipProvider>
-              <Toaster />
-              <Router />
-            </TooltipProvider>
-          </FilterProvider>
-        </LiveDataProvider>
+        <I18nProvider>
+          <LiveDataProvider>
+            <FilterProvider>
+              <TooltipProvider>
+                <Toaster />
+                <Router />
+              </TooltipProvider>
+            </FilterProvider>
+          </LiveDataProvider>
+        </I18nProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );

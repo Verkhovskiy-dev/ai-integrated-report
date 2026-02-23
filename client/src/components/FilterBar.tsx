@@ -2,13 +2,15 @@
  * FilterBar: Search + intuitive SRT level filter
  * Always-visible toggle buttons with full level names, color coding,
  * event counts, and explanatory tooltip with detailed level descriptions.
+ * i18n support for all labels.
  */
 import { Search, X, Info, Layers } from "lucide-react";
 import { useFilters } from "@/contexts/FilterContext";
 import { useLiveData } from "@/contexts/LiveDataContext";
+import { useTranslation } from "@/contexts/I18nContext";
 import { useState, useMemo } from "react";
 
-const LEVELS = [
+const LEVELS_RU = [
   {
     level: 9, name: "Капитал", short: "Капитал", color: "#ef4444",
     desc: "Финансы, инвестиции, VC, IPO",
@@ -56,11 +58,63 @@ const LEVELS = [
   },
 ];
 
+const LEVELS_EN = [
+  {
+    level: 9, name: "Capital", short: "Capital", color: "#ef4444",
+    desc: "Finance, investments, VC, IPO",
+    full: "Venture capital, IPO, M&A, company valuations, investment flows into AI startups and infrastructure. Reflects where 'smart money' directs resources and which AI market segments are considered promising."
+  },
+  {
+    level: 8, name: "Institutions", short: "Institutions", color: "#f97316",
+    desc: "Government, regulation, geopolitics",
+    full: "Government AI regulation (EU AI Act, executive orders, standards), geopolitical rivalry (US–China–EU), sanctions, export controls. Defines the rules of the game and boundaries for all ecosystem participants."
+  },
+  {
+    level: 7, name: "Knowledge", short: "Knowledge", color: "#f59e0b",
+    desc: "Education, research, competencies",
+    full: "Academic research, publications, benchmarks, educational programs, new competency formation. Shows what knowledge is being created and how quickly it transitions from labs to industry."
+  },
+  {
+    level: 6, name: "Technologies", short: "Tech", color: "#22d3ee",
+    desc: "Models, platforms, AI services",
+    full: "Foundation models (GPT, Claude, Gemini, open-weight), AI platforms, agentic frameworks, development tools. The core of the technology stack — what directly creates 'intelligence' in products."
+  },
+  {
+    level: 5, name: "Value Chain", short: "V.Chain", color: "#06b6d4",
+    desc: "Value chains, SaaS",
+    full: "AI applications and SaaS products, AI integration into business processes, value chains. Shows how level 6 technologies transform into specific products and services for end users."
+  },
+  {
+    level: 4, name: "Hardware", short: "HW", color: "#0ea5e9",
+    desc: "Chips, GPUs, data centers, memory",
+    full: "GPUs (NVIDIA, AMD), specialized AI chips (TPU, Trainium), HBM memory, data centers, server infrastructure. The physical foundation of AI — without this level, no model can be trained or deployed."
+  },
+  {
+    level: 3, name: "Professions", short: "Prof.", color: "#10b981",
+    desc: "Labor market, skills, automation",
+    full: "Profession transformation, workplace automation, new roles (AI engineer, prompt engineer, CAIO), reskilling. Reflects AI's impact on the labor market and which skills are becoming critical."
+  },
+  {
+    level: 2, name: "Geography", short: "Geo", color: "#84cc16",
+    desc: "Regional AI hubs, localization",
+    full: "Formation of regional AI hubs (Southeast Asia, Middle East, India), chip manufacturing localization, data center relocation. Shows the geographic redistribution of the AI industry."
+  },
+  {
+    level: 1, name: "Resources", short: "Resources", color: "#a3e635",
+    desc: "Energy, water, rare metals",
+    full: "Data center energy consumption, water cooling, rare earth metals, nuclear energy for AI. The base physical layer — real-world constraints that determine the scalability of the entire AI ecosystem."
+  },
+];
+
 export default function FilterBar() {
   const { searchQuery, setSearchQuery, selectedLevels, toggleLevel, clearLevels, hasActiveFilters } = useFilters();
   const { latestReport } = useLiveData();
+  const { locale } = useTranslation();
   const [showInfo, setShowInfo] = useState(false);
   const [showLevels, setShowLevels] = useState(false);
+
+  const isEn = locale === "en";
+  const LEVELS = isEn ? LEVELS_EN : LEVELS_RU;
 
   // Count events per level from the latest report
   const levelCounts = useMemo(() => {
@@ -85,7 +139,7 @@ export default function FilterBar() {
           <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
           <input
             type="text"
-            placeholder="Поиск по трендам и событиям..."
+            placeholder={isEn ? "Search trends and events..." : "Поиск по трендам и событиям..."}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-8 pr-8 py-1.5 text-xs bg-muted/30 border border-border/40 rounded-md text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all"
@@ -107,8 +161,8 @@ export default function FilterBar() {
           }`}
         >
           <Layers className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">Уровни СРТ</span>
-          <span className="sm:hidden">СРТ</span>
+          <span className="hidden sm:inline">{isEn ? "DLS Levels" : "Уровни СРТ"}</span>
+          <span className="sm:hidden">{isEn ? "DLS" : "СРТ"}</span>
           {totalSelected > 0 && (
             <span className="ml-0.5 px-1.5 py-0.5 text-[9px] bg-primary/20 rounded-full font-mono">{totalSelected}/9</span>
           )}
@@ -118,7 +172,7 @@ export default function FilterBar() {
         <button
           onClick={() => setShowInfo(!showInfo)}
           className="p-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/30 transition-all"
-          title="Что такое уровни СРТ?"
+          title={isEn ? "What are DLS levels?" : "Что такое уровни СРТ?"}
         >
           <Info className="w-3.5 h-3.5" />
         </button>
@@ -129,7 +183,7 @@ export default function FilterBar() {
             onClick={() => { setSearchQuery(""); clearLevels(); }}
             className="text-[10px] text-muted-foreground hover:text-foreground underline whitespace-nowrap"
           >
-            Сбросить
+            {isEn ? "Reset" : "Сбросить"}
           </button>
         )}
       </div>
@@ -142,18 +196,19 @@ export default function FilterBar() {
               <Info className="w-4 h-4 text-primary shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-xs sm:text-sm font-heading font-semibold text-foreground mb-1">
-                  Структура Разделения Труда (СРТ)
+                  {isEn ? "Division of Labor Structure (DLS)" : "Структура Разделения Труда (СРТ)"}
                 </h4>
                 <p className="text-[10px] sm:text-xs text-muted-foreground leading-relaxed mb-1">
-                  СРТ — это 9-уровневая модель анализа AI-индустрии, разработанная для системного мониторинга.
-                  Каждый уровень описывает отдельный слой экосистемы: от физических ресурсов (уровень 1)
-                  до финансового капитала (уровень 9). Модель позволяет отслеживать, как изменения на одном
-                  уровне каскадно влияют на другие — например, дефицит GPU (ур.4) повышает стоимость обучения
-                  моделей (ур.6), что влияет на инвестиции (ур.9).
+                  {isEn
+                    ? "DLS is a 9-level model for analyzing the AI industry, designed for systematic monitoring. Each level describes a separate layer of the ecosystem: from physical resources (level 1) to financial capital (level 9). The model tracks how changes at one level cascade to others — for example, GPU shortages (L4) increase model training costs (L6), which affects investments (L9)."
+                    : "СРТ — это 9-уровневая модель анализа AI-индустрии, разработанная для системного мониторинга. Каждый уровень описывает отдельный слой экосистемы: от физических ресурсов (уровень 1) до финансового капитала (уровень 9). Модель позволяет отслеживать, как изменения на одном уровне каскадно влияют на другие — например, дефицит GPU (ур.4) повышает стоимость обучения моделей (ур.6), что влияет на инвестиции (ур.9)."
+                  }
                 </p>
                 <p className="text-[10px] sm:text-xs text-muted-foreground leading-relaxed">
-                  Фильтр позволяет сфокусироваться на интересующих уровнях — все секции дашборда
-                  будут показывать только события и тренды выбранных уровней.
+                  {isEn
+                    ? "The filter allows you to focus on levels of interest — all dashboard sections will show only events and trends for the selected levels."
+                    : "Фильтр позволяет сфокусироваться на интересующих уровнях — все секции дашборда будут показывать только события и тренды выбранных уровней."
+                  }
                 </p>
               </div>
             </div>
@@ -180,7 +235,7 @@ export default function FilterBar() {
               onClick={() => setShowInfo(false)}
               className="text-[10px] text-primary hover:underline"
             >
-              Понятно, закрыть
+              {isEn ? "Got it, close" : "Понятно, закрыть"}
             </button>
           </div>
         </div>
@@ -194,8 +249,8 @@ export default function FilterBar() {
             <div className="flex items-center justify-between mb-2">
               <span className="text-[10px] sm:text-xs font-mono text-muted-foreground">
                 {totalSelected === 0
-                  ? `Все уровни · ${totalEvents} событий`
-                  : `Выбрано ${totalSelected} из 9`}
+                  ? (isEn ? `All levels · ${totalEvents} events` : `Все уровни · ${totalEvents} событий`)
+                  : (isEn ? `Selected ${totalSelected} of 9` : `Выбрано ${totalSelected} из 9`)}
               </span>
               <div className="flex gap-2">
                 {totalSelected > 0 && (
@@ -203,7 +258,7 @@ export default function FilterBar() {
                     onClick={clearLevels}
                     className="text-[10px] text-muted-foreground hover:text-foreground underline"
                   >
-                    Показать все
+                    {isEn ? "Show all" : "Показать все"}
                   </button>
                 )}
               </div>
@@ -255,7 +310,7 @@ export default function FilterBar() {
                         className="text-[8px] sm:text-[9px] font-mono mt-0.5"
                         style={{ color: isActive ? `${color}cc` : `${color}40` }}
                       >
-                        {count} соб.
+                        {count} {isEn ? "ev." : "соб."}
                       </span>
                     )}
 

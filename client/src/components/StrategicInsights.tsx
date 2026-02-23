@@ -4,6 +4,7 @@
  * Mobile-first responsive design
  * Now includes native SKOLKOVO program links in education sections
  * Supports dynamic insights from insights.json with static fallback
+ * i18n support
  */
 import { useState } from "react";
 import {
@@ -14,16 +15,18 @@ import {
 import { type StrategicInsight } from "@/data/insightsData";
 import { ProgramBadgeGroup } from "@/components/ProgramBadge";
 import { useLiveData } from "@/contexts/LiveDataContext";
+import { useTranslation } from "@/contexts/I18nContext";
 
 const ICON_MAP: Record<string, typeof Building> = {
   Building, Bot, Landmark, Brain, ShieldAlert, Layers, GraduationCap,
   Zap, Globe, Shield, TrendingUp, Database,
 };
 
-function InsightCard({ insight, isExpanded, onToggle }: {
+function InsightCard({ insight, isExpanded, onToggle, isEn }: {
   insight: StrategicInsight;
   isExpanded: boolean;
   onToggle: () => void;
+  isEn: boolean;
 }) {
   const Icon = ICON_MAP[insight.icon] || Lightbulb;
 
@@ -61,7 +64,7 @@ function InsightCard({ insight, isExpanded, onToggle }: {
                 backgroundColor: `${insight.accentColor}10`,
               }}
             >
-              Инсайт {insight.id}
+              {isEn ? "Insight" : "Инсайт"} {insight.id}
             </span>
           </div>
 
@@ -99,7 +102,7 @@ function InsightCard({ insight, isExpanded, onToggle }: {
             <div className="flex items-center gap-2 mb-2.5">
               <div className="w-1 h-4 rounded-full" style={{ backgroundColor: insight.accentColor }} />
               <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
-                Доказательная база
+                {isEn ? "Evidence Base" : "Доказательная база"}
               </span>
             </div>
             <ul className="space-y-1.5">
@@ -117,7 +120,7 @@ function InsightCard({ insight, isExpanded, onToggle }: {
             <div className="flex items-center gap-2 mb-2.5">
               <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
               <span className="text-xs font-mono text-amber-400/80 uppercase tracking-wider">
-                Неочевидный вывод
+                {isEn ? "Non-Obvious Conclusion" : "Неочевидный вывод"}
               </span>
             </div>
             <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed">
@@ -130,7 +133,7 @@ function InsightCard({ insight, isExpanded, onToggle }: {
             <div className="flex items-center gap-2 mb-2.5">
               <BookOpen className="w-3.5 h-3.5 text-primary" />
               <span className="text-xs font-mono text-primary/80 uppercase tracking-wider">
-                Для образовательных программ
+                {isEn ? "For Educational Programs" : "Для образовательных программ"}
               </span>
             </div>
             <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed">
@@ -140,7 +143,7 @@ function InsightCard({ insight, isExpanded, onToggle }: {
             {insight.relevantPrograms && insight.relevantPrograms.length > 0 && (
               <ProgramBadgeGroup
                 programKeys={insight.relevantPrograms}
-                label="Программы →"
+                label={isEn ? "Programs →" : "Программы →"}
                 compact={false}
               />
             )}
@@ -154,10 +157,12 @@ function InsightCard({ insight, isExpanded, onToggle }: {
 export default function StrategicInsights() {
   const [expandedId, setExpandedId] = useState<number | null>(1);
   const { strategicInsights, insightsPeriod, insightsGeneratedAt, insightsLive } = useLiveData();
+  const { locale } = useTranslation();
+  const isEn = locale === "en";
 
   // Format generated date for display
   const generatedLabel = insightsGeneratedAt
-    ? new Date(insightsGeneratedAt).toLocaleDateString("ru-RU", {
+    ? new Date(insightsGeneratedAt).toLocaleDateString(isEn ? "en-US" : "ru-RU", {
         day: "numeric",
         month: "long",
         year: "numeric",
@@ -169,7 +174,7 @@ export default function StrategicInsights() {
       <div className="mb-6 sm:mb-8">
         <div className="flex items-center gap-2 mb-2">
           <p className="text-xs font-mono text-primary/70 tracking-widest uppercase">
-            Стратегические инсайты
+            {isEn ? "Strategic Insights" : "Стратегические инсайты"}
           </p>
           {insightsLive && (
             <span className="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-400/80 bg-emerald-400/10 px-2 py-0.5 rounded-full border border-emerald-400/20">
@@ -179,14 +184,18 @@ export default function StrategicInsights() {
           )}
         </div>
         <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
-          {strategicInsights.length} ключевых выводов периода
+          {isEn
+            ? `${strategicInsights.length} Key Conclusions of the Period`
+            : `${strategicInsights.length} ключевых выводов периода`}
         </h3>
         <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl leading-relaxed">
-          {insightsPeriod || "Структурные инсайты, выходящие за рамки отдельных новостей и отражающие глубинные сдвиги в том, кто контролирует ключевые узлы создания ценности в AI-экономике."}
+          {insightsPeriod || (isEn
+            ? "Structural insights that go beyond individual news and reflect deep shifts in who controls key value creation nodes in the AI economy."
+            : "Структурные инсайты, выходящие за рамки отдельных новостей и отражающие глубинные сдвиги в том, кто контролирует ключевые узлы создания ценности в AI-экономике.")}
         </p>
         {generatedLabel && (
           <p className="text-[10px] font-mono text-muted-foreground/60 mt-1">
-            Обновлено: {generatedLabel}
+            {isEn ? "Updated:" : "Обновлено:"} {generatedLabel}
           </p>
         )}
       </div>
@@ -198,6 +207,7 @@ export default function StrategicInsights() {
             insight={insight}
             isExpanded={expandedId === insight.id}
             onToggle={() => setExpandedId(expandedId === insight.id ? null : insight.id)}
+            isEn={isEn}
           />
         ))}
       </div>

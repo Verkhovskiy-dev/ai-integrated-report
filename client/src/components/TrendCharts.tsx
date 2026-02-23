@@ -2,7 +2,7 @@
  * DESIGN: "Командный Пункт" — Trend Momentum Charts
  * Two-panel layout: Accelerating (green/cyan) vs Decelerating (red/amber)
  * Compact cards with momentum bars, level badges, and mini sparklines
- * Mobile-first responsive
+ * Mobile-first responsive, i18n support
  */
 import { useMemo } from "react";
 import {
@@ -21,6 +21,7 @@ import { TrendingUp, TrendingDown, Flame, Snowflake, Zap, Activity } from "lucid
 import { SRT_LEVELS } from "@/data/reportData";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
+import { useTranslation } from "@/contexts/I18nContext";
 
 function generateTrendData(
   shiftLevels: number[],
@@ -74,11 +75,6 @@ interface TrendItem {
   momentum: number;
 }
 
-function getLevelShort(id: number): string {
-  const level = SRT_LEVELS.find((l) => l.id === id);
-  return level?.short || `Ур.${id}`;
-}
-
 function getLevelColor(id: number): string {
   const level = SRT_LEVELS.find((l) => l.id === id);
   return level?.color || "#666";
@@ -105,10 +101,14 @@ function TrendCard({
   item,
   type,
   rank,
+  isEn,
+  getLevelShort,
 }: {
   item: TrendItem;
   type: "accelerating" | "decelerating";
   rank: number;
+  isEn: boolean;
+  getLevelShort: (id: number) => string;
 }) {
   const isAccel = type === "accelerating";
   const accentColor = isAccel ? "#10b981" : "#ef4444";
@@ -123,12 +123,12 @@ function TrendCard({
   
   // Trend label
   const trendLabel = item.trend === "accelerating"
-    ? "Ускоряется"
+    ? (isEn ? "Accelerating" : "Ускоряется")
     : item.trend === "emerging"
-    ? "Формируется"
+    ? (isEn ? "Emerging" : "Формируется")
     : item.trend === "decelerating"
-    ? "Замедляется"
-    : "Замораживается";
+    ? (isEn ? "Decelerating" : "Замедляется")
+    : (isEn ? "Freezing" : "Замораживается");
 
   return (
     <div
@@ -194,7 +194,7 @@ function TrendCard({
         <div className="flex items-center gap-1">
           <Zap className="w-3 h-3 text-muted-foreground opacity-50" />
           <span className="text-[9px] sm:text-[10px] font-mono text-muted-foreground">
-            {item.frequency} упом.
+            {item.frequency} {isEn ? "ment." : "упом."}
           </span>
         </div>
       </div>
@@ -206,9 +206,11 @@ function TrendCard({
 function MomentumOverview({
   accelItems,
   decelItems,
+  isEn,
 }: {
   accelItems: TrendItem[];
   decelItems: TrendItem[];
+  isEn: boolean;
 }) {
   const data = useMemo(() => {
     const all = [
@@ -255,7 +257,7 @@ function MomentumOverview({
                 <div className="bg-card/95 backdrop-blur-md border border-border/60 rounded-md px-3 py-2 shadow-xl">
                   <p className="text-xs font-heading font-semibold text-foreground">{d.name}</p>
                   <p className="text-xs font-mono" style={{ color: d.fill }}>
-                    Моментум: {d.momentum > 0 ? '+' : ''}{d.momentum}%
+                    {isEn ? "Momentum" : "Моментум"}: {d.momentum > 0 ? '+' : ''}{d.momentum}%
                   </p>
                 </div>
               );
@@ -365,6 +367,12 @@ function PanelChart({
 export default function TrendCharts() {
   const { structuralShifts: STRUCTURAL_SHIFTS, heatmapData: HEATMAP_DATA } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
+  const { t, locale } = useTranslation();
+  const isEn = locale === "en";
+
+  function getLevelShort(id: number): string {
+    return t.filter.cptLevels[id]?.short || SRT_LEVELS.find((l) => l.id === id)?.short || `Lv.${id}`;
+  }
 
   const { accelerating, decelerating } = useMemo(() => {
     const accel: TrendItem[] = [];
@@ -411,7 +419,7 @@ export default function TrendCharts() {
     const syntheticItems: TrendItem[] = [
       {
         id: 201,
-        title: "Агентные платформы",
+        title: isEn ? "Agentic Platforms" : "Агентные платформы",
         trend: "accelerating",
         frequency: 15,
         levels: [6, 8],
@@ -420,7 +428,7 @@ export default function TrendCharts() {
       },
       {
         id: 202,
-        title: "Безопасность агентов",
+        title: isEn ? "Agent Security" : "Безопасность агентов",
         trend: "accelerating",
         frequency: 12,
         levels: [7, 8],
@@ -429,7 +437,7 @@ export default function TrendCharts() {
       },
       {
         id: 203,
-        title: "AI-CapEx / Инфраструктура",
+        title: isEn ? "AI CapEx / Infrastructure" : "AI-CapEx / Инфраструктура",
         trend: "emerging",
         frequency: 10,
         levels: [4, 9],
@@ -438,7 +446,7 @@ export default function TrendCharts() {
       },
       {
         id: 204,
-        title: "Open-weight модели",
+        title: isEn ? "Open-weight Models" : "Open-weight модели",
         trend: "emerging",
         frequency: 8,
         levels: [7, 5],
@@ -447,14 +455,14 @@ export default function TrendCharts() {
       },
     ];
     return syntheticItems;
-  }, [accelerating, HEATMAP_DATA]);
+  }, [accelerating, HEATMAP_DATA, isEn]);
 
   const effectiveDecelerating = useMemo(() => {
     if (decelerating.length > 0) return decelerating;
     const syntheticItems: TrendItem[] = [
       {
         id: 101,
-        title: "Закрытые API-модели",
+        title: isEn ? "Closed API Models" : "Закрытые API-модели",
         trend: "decelerating",
         frequency: 4,
         levels: [7, 6],
@@ -463,7 +471,7 @@ export default function TrendCharts() {
       },
       {
         id: 102,
-        title: "Классический SaaS",
+        title: isEn ? "Classic SaaS" : "Классический SaaS",
         trend: "decelerating",
         frequency: 3,
         levels: [5, 9],
@@ -472,7 +480,7 @@ export default function TrendCharts() {
       },
       {
         id: 103,
-        title: "Монолитные облачные решения",
+        title: isEn ? "Monolithic Cloud Solutions" : "Монолитные облачные решения",
         trend: "decelerating",
         frequency: 3,
         levels: [4, 5],
@@ -490,7 +498,7 @@ export default function TrendCharts() {
       },
     ];
     return syntheticItems;
-  }, [decelerating, HEATMAP_DATA]);
+  }, [decelerating, HEATMAP_DATA, isEn]);
 
   return (
     <section id="trends" className="py-6 sm:py-10">
@@ -498,13 +506,13 @@ export default function TrendCharts() {
         {/* Section Header */}
         <div className="mb-5 sm:mb-8">
           <p className="text-[10px] sm:text-xs font-mono text-primary/80 tracking-widest uppercase mb-1">
-            Динамика трендов
+            {t.trends.sectionLabel}
           </p>
           <h3 className="text-lg sm:text-2xl font-heading font-bold text-foreground">
-            Моментум структурных сдвигов
+            {t.trends.title}
           </h3>
           <p className="text-xs sm:text-sm text-muted-foreground mt-1 max-w-xl">
-            Визуальная динамика ключевых трендов за отчётный период. Интенсивность рассчитана по уровням СРТ.
+            {t.trends.description}
           </p>
         </div>
 
@@ -521,7 +529,7 @@ export default function TrendCharts() {
                 </div>
                 <div>
                   <h4 className="text-sm sm:text-base font-heading font-semibold text-emerald-300">
-                    Набирающие обороты
+                    {isEn ? "Gaining Momentum" : "Набирающие обороты"}
                   </h4>
                   <p className="text-[9px] sm:text-[10px] font-mono text-emerald-400/60 uppercase tracking-wider">
                     Accelerating / Emerging
@@ -529,7 +537,7 @@ export default function TrendCharts() {
                 </div>
                 <div className="ml-auto px-2 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/15">
                   <span className="text-[10px] sm:text-xs font-mono font-medium text-emerald-400">
-                    {effectiveAccelerating.length} трендов
+                    {effectiveAccelerating.length} {isEn ? "trends" : "трендов"}
                   </span>
                 </div>
               </div>
@@ -540,7 +548,7 @@ export default function TrendCharts() {
               {/* Individual trend cards */}
               <div className="space-y-2 sm:space-y-2.5 mt-4">
                 {effectiveAccelerating.map((item, i) => (
-                  <TrendCard key={item.id} item={item} type="accelerating" rank={i + 1} />
+                  <TrendCard key={item.id} item={item} type="accelerating" rank={i + 1} isEn={isEn} getLevelShort={getLevelShort} />
                 ))}
               </div>
             </div>
@@ -557,7 +565,7 @@ export default function TrendCharts() {
                 </div>
                 <div>
                   <h4 className="text-sm sm:text-base font-heading font-semibold text-red-300">
-                    Затухающие
+                    {isEn ? "Fading" : "Затухающие"}
                   </h4>
                   <p className="text-[9px] sm:text-[10px] font-mono text-red-400/60 uppercase tracking-wider">
                     Decelerating / Freezing
@@ -565,7 +573,7 @@ export default function TrendCharts() {
                 </div>
                 <div className="ml-auto px-2 py-1 rounded-md bg-red-500/10 border border-red-500/15">
                   <span className="text-[10px] sm:text-xs font-mono font-medium text-red-400">
-                    {effectiveDecelerating.length} трендов
+                    {effectiveDecelerating.length} {isEn ? "trends" : "трендов"}
                   </span>
                 </div>
               </div>
@@ -576,7 +584,7 @@ export default function TrendCharts() {
               {/* Individual trend cards */}
               <div className="space-y-2 sm:space-y-2.5 mt-4">
                 {effectiveDecelerating.map((item, i) => (
-                  <TrendCard key={item.id} item={item} type="decelerating" rank={i + 1} />
+                  <TrendCard key={item.id} item={item} type="decelerating" rank={i + 1} isEn={isEn} getLevelShort={getLevelShort} />
                 ))}
               </div>
             </div>

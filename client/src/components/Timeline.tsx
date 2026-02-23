@@ -2,22 +2,25 @@
  * DESIGN: Intelligence Dashboard — Timeline
  * Vertical timeline of key events with type color coding
  * Mobile: simplified layout without vertical line
+ * i18n support
  */
-import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS, SRT_LEVELS } from "@/data/reportData";
+import { EVENT_TYPE_COLORS, SRT_LEVELS } from "@/data/reportData";
 import { useLiveData } from "@/contexts/LiveDataContext";
+import { useTranslation } from "@/contexts/I18nContext";
 
 function getLevelColor(id: number): string {
   const level = SRT_LEVELS.find((l) => l.id === id);
   return level?.color || "#666";
 }
 
-function getLevelName(id: number): string {
-  const level = SRT_LEVELS.find((l) => l.id === id);
-  return level?.short || "";
-}
-
 export default function Timeline() {
   const { keyEvents: KEY_EVENTS } = useLiveData();
+  const { t } = useTranslation();
+
+  function getLevelName(id: number): string {
+    return t.filter.cptLevels[id]?.short || SRT_LEVELS.find((l) => l.id === id)?.short || "";
+  }
+
   // Group events by date
   const grouped = KEY_EVENTS.reduce<Record<string, typeof KEY_EVENTS>>((acc, event) => {
     if (!acc[event.date]) acc[event.date] = [];
@@ -31,19 +34,19 @@ export default function Timeline() {
     <div className="container">
       <div className="mb-5 sm:mb-8">
         <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-2">
-          Хронология событий
+          {t.timeline.sectionLabel}
         </p>
         <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
-          Ключевые события периода
+          {t.timeline.title}
         </h3>
         <p className="text-xs sm:text-sm text-muted-foreground max-w-xl">
-          Наиболее значимые события, зафиксированные в ежедневных отчётах.
+          {t.timeline.description}
         </p>
       </div>
 
       {/* Event type legend */}
       <div className="flex flex-wrap gap-2 sm:gap-3 mb-5 sm:mb-8">
-        {Object.entries(EVENT_TYPE_LABELS).map(([type, label]) => (
+        {Object.entries(t.timeline.eventTypes).map(([type, label]) => (
           <div key={type} className="flex items-center gap-1 sm:gap-1.5">
             <div
               className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full"
@@ -81,6 +84,7 @@ export default function Timeline() {
 
                   {grouped[date].map((event, i) => {
                     const typeColor = EVENT_TYPE_COLORS[event.type] || "#666";
+                    const typeLabel = t.timeline.eventTypes[event.type] || event.type;
                     return (
                       <div
                         key={i}
@@ -94,13 +98,13 @@ export default function Timeline() {
                               backgroundColor: `${typeColor}15`,
                             }}
                           >
-                            {EVENT_TYPE_LABELS[event.type]}
+                            {typeLabel}
                           </span>
                           <span
                             className="text-[8px] sm:text-[9px] font-mono px-1 sm:px-1.5 py-0.5 rounded border border-border/30"
                             style={{ color: getLevelColor(event.level) }}
                           >
-                            Ур.{event.level} {getLevelName(event.level)}
+                            {t.timeline.levelPrefix}{event.level} {getLevelName(event.level)}
                           </span>
                         </div>
                         <p className="text-[11px] sm:text-xs text-foreground/90 leading-relaxed">

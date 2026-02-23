@@ -5,6 +5,7 @@
  * 2. Top 3 events — most important news
  * 3. Momentum overview — horizontal bar chart of all trends
  * 4. Key insight of the day — one highlighted card
+ * i18n support
  */
 import { useMemo } from "react";
 import {
@@ -17,11 +18,16 @@ import {
 } from "recharts";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
+import { useTranslation } from "@/contexts/I18nContext";
 
 // ─── Helpers ────────────────────────────────────────────────────
-const LEVEL_NAMES: Record<number, string> = {
+const LEVEL_NAMES_RU: Record<number, string> = {
   9: "Капитал", 8: "Институты", 7: "Знания", 6: "Технологии",
   5: "Value Chain", 4: "Hardware", 3: "Профессии", 2: "География", 1: "Ресурсы",
+};
+const LEVEL_NAMES_EN: Record<number, string> = {
+  9: "Capital", 8: "Institutions", 7: "Knowledge", 6: "Technology",
+  5: "Value Chain", 4: "Hardware", 3: "Professions", 2: "Geography", 1: "Resources",
 };
 const LEVEL_COLORS: Record<number, string> = {
   9: "#ef4444", 8: "#f97316", 7: "#f59e0b", 6: "#22d3ee",
@@ -42,8 +48,6 @@ function guessType(text: string): string {
   if (/рынок|market|маржа/i.test(t)) return "market";
   return "product";
 }
-
-// generateTrendData and computeMomentum removed — momentum now comes from momentum.json via AI scoring
 
 // ─── Metrics Strip ──────────────────────────────────────────────
 function MetricsStrip({ metrics }: { metrics: { label: string; value: number; suffix: string }[] }) {
@@ -67,7 +71,7 @@ function MetricsStrip({ metrics }: { metrics: { label: string; value: number; su
 }
 
 // ─── Momentum Chart ─────────────────────────────────────────────
-function MomentumChart({ data }: { data: { name: string; momentum: number; fill: string }[] }) {
+function MomentumChart({ data, isEn }: { data: { name: string; momentum: number; fill: string; fullName?: string; rationale?: string; dataPoints?: number }[]; isEn: boolean }) {
   return (
     <div className="w-full h-52 sm:h-64">
       <ResponsiveContainer width="100%" height="100%">
@@ -97,13 +101,15 @@ function MomentumChart({ data }: { data: { name: string; momentum: number; fill:
                 <div className="bg-card/95 backdrop-blur-md border border-border/60 rounded-md px-3 py-2 shadow-xl max-w-xs">
                   <p className="text-xs font-heading font-semibold text-foreground">{d.fullName || d.name}</p>
                   <p className="text-xs font-mono" style={{ color: d.fill }}>
-                    Моментум: {d.momentum > 0 ? "+" : ""}{d.momentum}
+                    {isEn ? "Momentum" : "Моментум"}: {d.momentum > 0 ? "+" : ""}{d.momentum}
                   </p>
                   {d.rationale && (
                     <p className="text-[10px] text-muted-foreground mt-1 leading-snug">{d.rationale}</p>
                   )}
                   {d.dataPoints && (
-                    <p className="text-[9px] text-muted-foreground/60 mt-0.5 font-mono">на основе {d.dataPoints} отчётов</p>
+                    <p className="text-[9px] text-muted-foreground/60 mt-0.5 font-mono">
+                      {isEn ? `based on ${d.dataPoints} reports` : `на основе ${d.dataPoints} отчётов`}
+                    </p>
                   )}
                 </div>
               );
@@ -128,6 +134,11 @@ export default function HeroSummary() {
     strategicInsights,
   } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
+  const { t, locale } = useTranslation();
+  const isEn = locale === "en";
+
+  const LEVEL_NAMES = isEn ? LEVEL_NAMES_EN : LEVEL_NAMES_RU;
+  const lvPrefix = isEn ? "Lv." : "Ур.";
 
   // ── Top 3 events ──
   const topEvents = useMemo(() => {
@@ -144,13 +155,13 @@ export default function HeroSummary() {
           title: event.title,
           description: event.description,
           level: srtLevel.level,
-          levelName: LEVEL_NAMES[srtLevel.level] || `Ур.${srtLevel.level}`,
+          levelName: LEVEL_NAMES[srtLevel.level] || `${lvPrefix}${srtLevel.level}`,
           type: guessType(event.title + " " + event.description),
         });
       }
     }
     return items;
-  }, [latestReport, selectedLevels, searchQuery]);
+  }, [latestReport, selectedLevels, searchQuery, isEn]);
 
   const totalEvents = topEvents.length;
 
@@ -158,7 +169,6 @@ export default function HeroSummary() {
   const { momentumData: rawMomentum, momentumLive } = useLiveData();
   const momentumData = useMemo(() => {
     if (rawMomentum.length > 0) {
-      // Aggregate: average momentum per trend across all available dates
       const trendMap: Record<string, { totalMom: number; count: number; levels: number[]; category: string; rationale: string }> = {};
       for (const entry of rawMomentum) {
         for (const t of entry.trends) {
@@ -168,13 +178,11 @@ export default function HeroSummary() {
           }
           trendMap[key].totalMom += t.momentum;
           trendMap[key].count += 1;
-          // Keep latest category and rationale
           trendMap[key].category = t.category;
           trendMap[key].rationale = t.rationale;
         }
       }
 
-      // Build items with averaged momentum, take top 10 by absolute value
       const items = Object.entries(trendMap)
         .map(([name, data]) => {
           const avgMom = Math.round(data.totalMom / data.count);
@@ -197,18 +205,29 @@ export default function HeroSummary() {
     }
 
     // Fallback: synthetic data
-    const synth = [
-      { name: "Агентные платформы", momentum: 32, fill: "#10b981" },
-      { name: "Безопасность агентов", momentum: 28, fill: "#10b981" },
-      { name: "AI-CapEx / Инфра", momentum: 22, fill: "#10b981" },
-      { name: "Open-weight модели", momentum: 18, fill: "#10b981" },
-      { name: "Закрытые API-модели", momentum: -18, fill: "#ef4444" },
-      { name: "Классический SaaS", momentum: -24, fill: "#ef4444" },
-      { name: "Монолитные облака", momentum: -15, fill: "#ef4444" },
-      { name: "Prompt guardrails", momentum: -21, fill: "#ef4444" },
-    ];
+    const synth = isEn
+      ? [
+          { name: "Agentic Platforms", momentum: 32, fill: "#10b981" },
+          { name: "Agent Security", momentum: 28, fill: "#10b981" },
+          { name: "AI-CapEx / Infra", momentum: 22, fill: "#10b981" },
+          { name: "Open-weight Models", momentum: 18, fill: "#10b981" },
+          { name: "Closed API Models", momentum: -18, fill: "#ef4444" },
+          { name: "Classic SaaS", momentum: -24, fill: "#ef4444" },
+          { name: "Monolithic Cloud", momentum: -15, fill: "#ef4444" },
+          { name: "Prompt Guardrails", momentum: -21, fill: "#ef4444" },
+        ]
+      : [
+          { name: "Агентные платформы", momentum: 32, fill: "#10b981" },
+          { name: "Безопасность агентов", momentum: 28, fill: "#10b981" },
+          { name: "AI-CapEx / Инфра", momentum: 22, fill: "#10b981" },
+          { name: "Open-weight модели", momentum: 18, fill: "#10b981" },
+          { name: "Закрытые API-модели", momentum: -18, fill: "#ef4444" },
+          { name: "Классический SaaS", momentum: -24, fill: "#ef4444" },
+          { name: "Монолитные облака", momentum: -15, fill: "#ef4444" },
+          { name: "Prompt guardrails", momentum: -21, fill: "#ef4444" },
+        ];
     return synth;
-  }, [rawMomentum]);
+  }, [rawMomentum, isEn]);
 
   // ── Key insight ──
   const keyInsight = strategicInsights[0];
@@ -218,12 +237,12 @@ export default function HeroSummary() {
     const evtCount = keyMetrics.find((m) => m.label.toLowerCase().includes("событ"))?.value || totalEvents;
     const linkCount = keyMetrics.find((m) => m.label.toLowerCase().includes("связ"))?.value || 3;
     return [
-      { label: "событий", value: evtCount || totalEvents, suffix: "" },
-      { label: "инсайтов", value: strategicInsights.length, suffix: "" },
-      { label: "трендов", value: momentumData.length, suffix: "" },
-      { label: "связей", value: linkCount, suffix: "" },
+      { label: isEn ? "events" : "событий", value: evtCount || totalEvents, suffix: "" },
+      { label: isEn ? "insights" : "инсайтов", value: strategicInsights.length, suffix: "" },
+      { label: isEn ? "trends" : "трендов", value: momentumData.length, suffix: "" },
+      { label: isEn ? "links" : "связей", value: linkCount, suffix: "" },
     ];
-  }, [keyMetrics, totalEvents, momentumData, strategicInsights]);
+  }, [keyMetrics, totalEvents, momentumData, strategicInsights, isEn]);
 
   if (!isLive && topEvents.length === 0) return null;
 
@@ -261,10 +280,10 @@ export default function HeroSummary() {
             <div className="flex items-center gap-2 mb-3">
               <FileText className="w-4 h-4 text-primary/60" />
               <h3 className="text-xs sm:text-sm font-heading font-semibold text-foreground">
-                Главные события
+                {isEn ? "Top Events" : "Главные события"}
               </h3>
               <span className="ml-auto text-[9px] font-mono text-muted-foreground">
-                {totalEvents} всего
+                {totalEvents} {isEn ? "total" : "всего"}
               </span>
             </div>
 
@@ -289,7 +308,7 @@ export default function HeroSummary() {
                           borderWidth: 1,
                         }}
                       >
-                        {EVENT_ICONS[item.type] || "📌"} Ур.{item.level} {item.levelName}
+                        {EVENT_ICONS[item.type] || "📌"} {lvPrefix}{item.level} {item.levelName}
                       </span>
                     </div>
                     <p className="text-xs sm:text-sm text-foreground leading-snug line-clamp-2">
@@ -305,7 +324,7 @@ export default function HeroSummary() {
                 href="#news"
                 className="flex items-center justify-center gap-1 mt-3 text-[10px] sm:text-xs font-mono text-primary/70 hover:text-primary transition-colors"
               >
-                Ещё {totalEvents - 3} событий <ArrowRight className="w-3 h-3" />
+                {isEn ? `${totalEvents - 3} more events` : `Ещё ${totalEvents - 3} событий`} <ArrowRight className="w-3 h-3" />
               </a>
             )}
           </div>
@@ -315,7 +334,7 @@ export default function HeroSummary() {
             <div className="flex items-center gap-2 mb-3">
               <Activity className="w-4 h-4 text-primary/60" />
               <h3 className="text-xs sm:text-sm font-heading font-semibold text-foreground">
-                Моментум трендов
+                {isEn ? "Trend Momentum" : "Моментум трендов"}
               </h3>
               {momentumLive && (
                 <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/15 text-[8px] font-mono text-emerald-400">AI</span>
@@ -323,20 +342,20 @@ export default function HeroSummary() {
               <div className="flex items-center gap-3 ml-auto">
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                  <span className="text-[8px] font-mono text-muted-foreground">Рост</span>
+                  <span className="text-[8px] font-mono text-muted-foreground">{isEn ? "Growth" : "Рост"}</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-2 h-2 rounded-full bg-red-500" />
-                  <span className="text-[8px] font-mono text-muted-foreground">Спад</span>
+                  <span className="text-[8px] font-mono text-muted-foreground">{isEn ? "Decline" : "Спад"}</span>
                 </div>
               </div>
             </div>
-            <MomentumChart data={momentumData} />
+            <MomentumChart data={momentumData} isEn={isEn} />
             <a
               href="#trends"
               className="flex items-center justify-center gap-1 mt-2 text-[10px] sm:text-xs font-mono text-primary/70 hover:text-primary transition-colors"
             >
-              Подробная динамика <ArrowRight className="w-3 h-3" />
+              {isEn ? "Detailed dynamics" : "Подробная динамика"} <ArrowRight className="w-3 h-3" />
             </a>
           </div>
         </div>
@@ -360,7 +379,7 @@ export default function HeroSummary() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-[9px] font-mono text-primary/60 uppercase tracking-wider">
-                    Ключевой инсайт
+                    {isEn ? "Key Insight" : "Ключевой инсайт"}
                   </span>
                   <span className="px-1.5 py-0.5 rounded bg-primary/10 text-[8px] font-mono text-primary">
                     №{keyInsight.id}
@@ -376,7 +395,7 @@ export default function HeroSummary() {
                   href="#insights"
                   className="inline-flex items-center gap-1 mt-2 text-[10px] sm:text-xs font-mono text-primary/70 hover:text-primary transition-colors"
                 >
-                  Все {strategicInsights.length} инсайтов <ArrowRight className="w-3 h-3" />
+                  {isEn ? `All ${strategicInsights.length} insights` : `Все ${strategicInsights.length} инсайтов`} <ArrowRight className="w-3 h-3" />
                 </a>
               </div>
             </div>

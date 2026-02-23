@@ -1,22 +1,24 @@
 /*
  * DESIGN: Intelligence Dashboard — Theme Frequency
  * Horizontal bar chart of key themes
- * Mobile-first responsive
+ * Mobile-first responsive, i18n support
  */
 import { useLiveData } from "@/contexts/LiveDataContext";
+import { useTranslation } from "@/contexts/I18nContext";
 
 export default function ThemeFrequency() {
   const { themeFrequency: THEME_FREQUENCY } = useLiveData();
+  const { t } = useTranslation();
   const maxCount = Math.max(...THEME_FREQUENCY.map((t) => t.count));
 
   return (
     <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-lg p-4 sm:p-6">
       <div className="mb-4 sm:mb-6">
         <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-1">
-          Частотный анализ
+          {t.themeFrequency.sectionLabel}
         </p>
         <h3 className="text-base sm:text-lg font-heading font-bold text-foreground">
-          Ключевые темы периода
+          {t.themeFrequency.title}
         </h3>
       </div>
 

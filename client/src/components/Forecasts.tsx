@@ -1,5 +1,6 @@
 import { Sparkles, ArrowUpRight, ArrowDownRight, AlertTriangle } from "lucide-react";
 import { useLiveData, type LiveReport } from "@/contexts/LiveDataContext";
+import { useTranslation } from "@/contexts/I18nContext";
 
 interface ForecastItem {
   title: string;
@@ -9,7 +10,7 @@ interface ForecastItem {
   basedOn: string;
 }
 
-function generateForecasts(reports: LiveReport[]): ForecastItem[] {
+function generateForecasts(reports: LiveReport[], isEn: boolean): ForecastItem[] {
   if (reports.length < 2) return [];
   const levelTrends: Record<number, number[]> = {};
   const sorted = [...reports].sort((a, b) => a.date.localeCompare(b.date));
@@ -20,10 +21,16 @@ function generateForecasts(reports: LiveReport[]): ForecastItem[] {
     }
   }
   const forecasts: ForecastItem[] = [];
-  const LEVEL_NAMES: Record<number, string> = {
+  const LEVEL_NAMES_RU: Record<number, string> = {
     9: "Капитал", 8: "Институты", 7: "Знания", 6: "Технологии",
     5: "Value Chain", 4: "Hardware", 3: "Профессии", 2: "География", 1: "Ресурсы",
   };
+  const LEVEL_NAMES_EN: Record<number, string> = {
+    9: "Capital", 8: "Institutions", 7: "Knowledge", 6: "Technology",
+    5: "Value Chain", 4: "Hardware", 3: "Professions", 2: "Geography", 1: "Resources",
+  };
+  const LEVEL_NAMES = isEn ? LEVEL_NAMES_EN : LEVEL_NAMES_RU;
+
   for (const [levelStr, counts] of Object.entries(levelTrends)) {
     const level = Number(levelStr);
     if (counts.length < 2) continue;
@@ -37,24 +44,36 @@ function generateForecasts(reports: LiveReport[]): ForecastItem[] {
       const direction = changePct > 0 ? "up" as const : "down" as const;
       const confidence = Math.min(90, 50 + Math.abs(changePct) * 0.5);
       forecasts.push({
-        title: `Ур.${level} ${LEVEL_NAMES[level]}: ${direction === "up" ? "рост" : "снижение"} активности`,
+        title: isEn
+          ? `Lv.${level} ${LEVEL_NAMES[level]}: activity ${direction === "up" ? "growth" : "decline"}`
+          : `Ур.${level} ${LEVEL_NAMES[level]}: ${direction === "up" ? "рост" : "снижение"} активности`,
         direction,
         confidence: Math.round(confidence),
-        description: direction === "up"
-          ? `Ожидается продолжение роста событий на уровне ${LEVEL_NAMES[level]} (+${Math.round(changePct)}% за последние отчёты).`
-          : `Активность на уровне ${LEVEL_NAMES[level]} снижается (${Math.round(changePct)}%). Возможна стабилизация.`,
-        basedOn: `${counts.length} отчётов, тренд ${Math.round(changePct)}%`,
+        description: isEn
+          ? (direction === "up"
+            ? `Continued growth expected at ${LEVEL_NAMES[level]} level (+${Math.round(changePct)}% in recent reports).`
+            : `Activity at ${LEVEL_NAMES[level]} level is declining (${Math.round(changePct)}%). Stabilization possible.`)
+          : (direction === "up"
+            ? `Ожидается продолжение роста событий на уровне ${LEVEL_NAMES[level]} (+${Math.round(changePct)}% за последние отчёты).`
+            : `Активность на уровне ${LEVEL_NAMES[level]} снижается (${Math.round(changePct)}%). Возможна стабилизация.`),
+        basedOn: isEn
+          ? `${counts.length} reports, trend ${Math.round(changePct)}%`
+          : `${counts.length} отчётов, тренд ${Math.round(changePct)}%`,
       });
     }
   }
   const latestReport = sorted[sorted.length - 1];
   if (latestReport.cross_level_links.length > 2) {
     forecasts.push({
-      title: "Усиление межуровневых связей",
+      title: isEn ? "Strengthening cross-level connections" : "Усиление межуровневых связей",
       direction: "up",
       confidence: 65,
-      description: "Количество межуровневых связей растёт, что указывает на системную интеграцию трендов.",
-      basedOn: `${latestReport.cross_level_links.length} связей в последнем отчёте`,
+      description: isEn
+        ? "The number of cross-level connections is growing, indicating systemic trend integration."
+        : "Количество межуровневых связей растёт, что указывает на системную интеграцию трендов.",
+      basedOn: isEn
+        ? `${latestReport.cross_level_links.length} links in latest report`
+        : `${latestReport.cross_level_links.length} связей в последнем отчёте`,
     });
   }
   return forecasts.sort((a, b) => b.confidence - a.confidence).slice(0, 6);
@@ -62,18 +81,28 @@ function generateForecasts(reports: LiveReport[]): ForecastItem[] {
 
 export default function Forecasts() {
   const { archiveReports, latestReport } = useLiveData();
+  const { t, locale } = useTranslation();
+  const isEn = locale === "en";
   const allReports = latestReport ? [...archiveReports.filter((r) => r.date !== latestReport.date), latestReport] : archiveReports;
-  const forecasts = generateForecasts(allReports);
+  const forecasts = generateForecasts(allReports, isEn);
 
   return (
     <div className="container">
       <div className="mb-5 sm:mb-8">
-        <p className="text-xs font-mono text-amber-400/70 tracking-widest uppercase mb-2">Прогнозы</p>
-        <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">Прогнозы на основе трендов</h3>
-        <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl">Автоматические прогнозы на основе анализа динамики событий по уровням СРТ.</p>
+        <p className="text-xs font-mono text-amber-400/70 tracking-widest uppercase mb-2">
+          {t.forecasts.sectionLabel}
+        </p>
+        <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
+          {t.forecasts.title}
+        </h3>
+        <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl">
+          {t.forecasts.description}
+        </p>
       </div>
       {forecasts.length === 0 ? (
-        <div className="text-center py-12 text-muted-foreground text-sm">Недостаточно данных для прогнозов.</div>
+        <div className="text-center py-12 text-muted-foreground text-sm">
+          {isEn ? "Insufficient data for forecasts." : "Недостаточно данных для прогнозов."}
+        </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {forecasts.map((f, idx) => (
@@ -81,7 +110,7 @@ export default function Forecasts() {
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-1.5">
                   {f.direction === "up" ? <ArrowUpRight className="w-4 h-4 text-emerald-400" /> : f.direction === "down" ? <ArrowDownRight className="w-4 h-4 text-red-400" /> : <AlertTriangle className="w-4 h-4 text-amber-400" />}
-                  <span className="text-xs font-mono text-muted-foreground">Уверенность: {f.confidence}%</span>
+                  <span className="text-xs font-mono text-muted-foreground">{isEn ? "Confidence" : "Уверенность"}: {f.confidence}%</span>
                 </div>
                 <Sparkles className="w-3.5 h-3.5 text-amber-400/50" />
               </div>

@@ -2,9 +2,11 @@
  * DESIGN: Intelligence Dashboard — Cross-Level Connections
  * Visualize connections between СРТ levels
  * Mobile: wrapping level badges, compact layout
+ * i18n support
  */
 import { SRT_LEVELS } from "@/data/reportData";
 import { useLiveData } from "@/contexts/LiveDataContext";
+import { useTranslation } from "@/contexts/I18nContext";
 
 const NETWORK_BG = "https://private-us-east-1.manuscdn.com/sessionFile/v7uKuw67xnKHKY8cq65BNf/sandbox/TAGv8ZfRAyZfV9Lj7wYGNr-img-3_1770928036000_na1fn_bmV0d29yay1wYXR0ZXJu.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvdjd1S3V3Njd4bktIS1k4Y3E2NUJOZi9zYW5kYm94L1RBR3Y4WmZSQXlaZlY5TGo3d1lHTnItaW1nLTNfMTc3MDkyODAzNjAwMF9uYTFmbl9ibVYwZDI5eWF5MXdZWFIwWlhKdS5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=l2i1-TKPKCMxV5epfGaypgxiWzh5WCeFd2s2R3bNAROSkiBJNfFT1xLNQRZf4BETQgRn2ZaYncJNdJEliAk0m8zE5UM1t5bCEKb~9ma7~4Ow6rHxhiv7DFUUPGdhf7MzadZk4EdE0cDNu-Le-Q5L0Yl9nzxHl0SzxruaauwNoU1Fv4tkLa969kgaAQCn17eNNz7LIf-YELQ7ToSp0tFOPufwKKoU~C0pwbBWJ8-6UmMQe0cuNY7Pt-t15nlBa6q5hRVa9OkmXPLwiKzUu6f3XqMAs1osIsFWCK6w5sMyRlD0KONx7YaIpXMcp~WWW~Hghafn9K9unwR8~HLkuyYx6g__";
 
@@ -13,12 +15,7 @@ function getLevelColor(id: number): string {
   return level?.color || "#666";
 }
 
-function getLevelName(id: number): string {
-  const level = SRT_LEVELS.find((l) => l.id === id);
-  return level?.short || "";
-}
-
-function LevelBadge({ id, bold }: { id: number; bold?: boolean }) {
+function LevelBadge({ id, bold, getLevelName }: { id: number; bold?: boolean; getLevelName: (id: number) => string }) {
   return (
     <span
       className={`text-[10px] sm:text-xs font-mono px-1.5 sm:px-2 py-0.5 sm:py-1 rounded border whitespace-nowrap ${bold ? "font-medium" : ""}`}
@@ -43,6 +40,14 @@ function ArrowIcon() {
 
 export default function CrossLevelConnections() {
   const { crossLevelConnections: CROSS_LEVEL_CONNECTIONS } = useLiveData();
+  const { t, locale } = useTranslation();
+
+  const isEn = locale === "en";
+
+  function getLevelName(id: number): string {
+    return t.filter.cptLevels[id]?.short || SRT_LEVELS.find((l) => l.id === id)?.short || "";
+  }
+
   return (
     <div className="container">
       <div className="relative overflow-hidden rounded-xl border border-border/30">
@@ -55,13 +60,13 @@ export default function CrossLevelConnections() {
         <div className="relative z-10 p-4 sm:p-6 lg:p-10">
           <div className="mb-5 sm:mb-8">
             <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-2">
-              Межуровневые связи
+              {t.crossLevel.sectionLabel}
             </p>
             <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
-              Каскадные эффекты между уровнями СРТ
+              {t.crossLevel.title}
             </h3>
             <p className="text-xs sm:text-sm text-muted-foreground max-w-xl">
-              Ключевые причинно-следственные цепочки, связывающие события на разных уровнях.
+              {t.crossLevel.description}
             </p>
           </div>
 
@@ -73,15 +78,15 @@ export default function CrossLevelConnections() {
               >
                 {/* Connection path visualization */}
                 <div className="flex items-center gap-1.5 sm:gap-2 mb-2.5 sm:mb-3 flex-wrap">
-                  <LevelBadge id={conn.from} bold />
+                  <LevelBadge id={conn.from} bold getLevelName={getLevelName} />
                   {conn.through.map((lvl) => (
                     <span key={lvl} className="flex items-center gap-1.5 sm:gap-2">
                       <ArrowIcon />
-                      <LevelBadge id={lvl} />
+                      <LevelBadge id={lvl} getLevelName={getLevelName} />
                     </span>
                   ))}
                   <ArrowIcon />
-                  <LevelBadge id={conn.to} bold />
+                  <LevelBadge id={conn.to} bold getLevelName={getLevelName} />
                 </div>
 
                 {/* Title and description */}

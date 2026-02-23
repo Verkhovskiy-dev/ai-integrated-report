@@ -2,16 +2,13 @@
  * LatestNews: Full event list — shows events 4+ (first 3 are in HeroSummary).
  * Collapsible, shows 6 by default with "show all" toggle.
  * Each card is expandable to show full description and source links.
+ * i18n support
  */
 import { useMemo, useState } from "react";
 import { Newspaper, Zap, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
-
-const LEVEL_NAMES: Record<number, string> = {
-  9: "Капитал", 8: "Институты", 7: "Знания", 6: "Технологии",
-  5: "Value Chain", 4: "Hardware", 3: "Профессии", 2: "География", 1: "Ресурсы",
-};
+import { useTranslation } from "@/contexts/I18nContext";
 
 const LEVEL_COLORS: Record<number, string> = {
   9: "#ef4444", 8: "#f97316", 7: "#f59e0b", 6: "#22d3ee",
@@ -56,8 +53,16 @@ interface NewsItem {
 export default function LatestNews() {
   const { latestReport, isLive, reportDate } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
+  const { t, locale } = useTranslation();
+  const isEn = locale === "en";
   const [expanded, setExpanded] = useState(false);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
+
+  const LEVEL_NAMES: Record<number, string> = isEn
+    ? { 9: "Capital", 8: "Institutions", 7: "Knowledge", 6: "Technology", 5: "Value Chain", 4: "Hardware", 3: "Professions", 2: "Geography", 1: "Resources" }
+    : { 9: "Капитал", 8: "Институты", 7: "Знания", 6: "Технологии", 5: "Value Chain", 4: "Hardware", 3: "Профессии", 2: "География", 1: "Ресурсы" };
+
+  const lvPrefix = isEn ? "Lv." : "Ур.";
 
   const newsItems = useMemo(() => {
     if (!latestReport?.srt_levels) return [];
@@ -74,14 +79,14 @@ export default function LatestNews() {
           title: event.title,
           description: event.description || "",
           level: srtLevel.level,
-          levelName: LEVEL_NAMES[srtLevel.level] || `Ур.${srtLevel.level}`,
+          levelName: LEVEL_NAMES[srtLevel.level] || `${lvPrefix}${srtLevel.level}`,
           type: guessType(event.title + " " + event.description),
           sources: (event as any).sources || [],
         });
       }
     }
     return items;
-  }, [latestReport, selectedLevels, searchQuery]);
+  }, [latestReport, selectedLevels, searchQuery, isEn]);
 
   // Skip first 3 (shown in HeroSummary)
   const remainingItems = newsItems.slice(3);
@@ -105,10 +110,10 @@ export default function LatestNews() {
             </div>
             <div>
               <h3 className="text-sm sm:text-lg font-heading font-bold text-foreground">
-                Все события
+                {isEn ? "All Events" : "Все события"}
               </h3>
               <p className="text-[9px] sm:text-[10px] font-mono text-muted-foreground">
-                {reportDate} · ещё {remainingItems.length} событий
+                {reportDate} · {isEn ? `${remainingItems.length} more events` : `ещё ${remainingItems.length} событий`}
               </p>
             </div>
           </div>
@@ -151,7 +156,7 @@ export default function LatestNews() {
                       }}
                     >
                       {EVENT_TYPE_ICONS[item.type] || "📌"}
-                      <span>Ур.{item.level} {item.levelName}</span>
+                      <span>{lvPrefix}{item.level} {item.levelName}</span>
                     </span>
                     {isExpandable && (
                       isCardExpanded ? (
@@ -211,13 +216,15 @@ export default function LatestNews() {
             {expanded ? (
               <>
                 <ChevronUp className="w-3.5 h-3.5 text-primary/60" />
-                <span className="text-[10px] sm:text-xs font-mono text-muted-foreground">Свернуть</span>
+                <span className="text-[10px] sm:text-xs font-mono text-muted-foreground">
+                  {isEn ? "Collapse" : "Свернуть"}
+                </span>
               </>
             ) : (
               <>
                 <ChevronDown className="w-3.5 h-3.5 text-primary/60" />
                 <span className="text-[10px] sm:text-xs font-mono text-muted-foreground">
-                  Показать ещё {remainingItems.length - INITIAL_SHOW}
+                  {isEn ? `Show ${remainingItems.length - INITIAL_SHOW} more` : `Показать ещё ${remainingItems.length - INITIAL_SHOW}`}
                 </span>
               </>
             )}

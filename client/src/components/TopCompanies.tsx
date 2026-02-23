@@ -1,9 +1,10 @@
 /*
  * DESIGN: Intelligence Dashboard — Top Companies
  * Horizontal bar chart of company mentions
- * Mobile-first responsive
+ * Mobile-first responsive, i18n support
  */
 import { useLiveData } from "@/contexts/LiveDataContext";
+import { useTranslation } from "@/contexts/I18nContext";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 
 function getTrendIcon(trend: string) {
@@ -24,16 +25,17 @@ const CATEGORY_COLORS: Record<string, string> = {
 
 export default function TopCompanies() {
   const { topCompanies: TOP_COMPANIES } = useLiveData();
+  const { t } = useTranslation();
   const maxMentions = Math.max(...TOP_COMPANIES.map((c) => c.mentions));
 
   return (
     <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-lg p-4 sm:p-6">
       <div className="mb-4 sm:mb-6">
         <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-1">
-          Ключевые игроки
+          {t.topCompanies.sectionLabel}
         </p>
         <h3 className="text-base sm:text-lg font-heading font-bold text-foreground">
-          Топ компаний по упоминаниям
+          {t.topCompanies.title}
         </h3>
       </div>
 

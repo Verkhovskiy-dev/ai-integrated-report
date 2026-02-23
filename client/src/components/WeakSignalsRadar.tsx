@@ -3,48 +3,52 @@
  * Grid of signal cards with urgency indicators
  * Now includes SKOLKOVO program links on relevant signals
  * Mobile: single column, radar hidden on small screens
+ * i18n support
  */
 import { useMemo } from "react";
 import { SRT_LEVELS } from "@/data/reportData";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
+import { useTranslation } from "@/contexts/I18nContext";
 import { AlertTriangle, AlertCircle } from "lucide-react";
 import { ProgramBadgeGroup } from "@/components/ProgramBadge";
 
 const RADAR_BG = "https://private-us-east-1.manuscdn.com/sessionFile/v7uKuw67xnKHKY8cq65BNf/sandbox/TAGv8ZfRAyZfV9Lj7wYGNr-img-2_1770928026000_na1fn_cmFkYXItYmc.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvdjd1S3V3Njd4bktIS1k4Y3E2NUJOZi9zYW5kYm94L1RBR3Y4WmZSQXlaZlY5TGo3d1lHTnItaW1nLTJfMTc3MDkyODAyNjAwMF9uYTFmbl9jbUZrWVhJdFltYy5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=JzbVkgmDDlD6niekdkpPYW1T~wh-zLB0yRpsOSXaMJavyKyxipJo3-syc~xmMJ-Ipsvg51wwZ7mIYA58OpIZuMbOJSqQ7vsQHptay8010mSFEm3LFOVw1o7cAiVNHwAbT9ufh8~X5N8uqHro0Bwc0irb6ilF0wb2fXVdctzs8UM8C74krueKCQgpdQj1AAArv1pmUziDfdGxgDs1g~zjQIEQzZnwNSeeq-7MS2AUDW5lfeURKPHMJHiVuUgiuhbODZmB8tKzQppq7wu-TmF9XJS7pDoO90Qt~bzvmXqIR3ShobqkG9z1XlKPNNd4v-FseIaQUyJMtR5hRpqmDJ2L3Q__";
-
-function getUrgencyConfig(urgency: string) {
-  if (urgency === "high") return {
-    icon: AlertTriangle,
-    label: "Высокая",
-    color: "text-red-400",
-    bg: "bg-red-400/10",
-    border: "border-red-400/20",
-    dot: "bg-red-400",
-  };
-  return {
-    icon: AlertCircle,
-    label: "Средняя",
-    color: "text-amber-400",
-    bg: "bg-amber-400/10",
-    border: "border-amber-400/20",
-    dot: "bg-amber-400",
-  };
-}
 
 function getLevelColor(id: number): string {
   const level = SRT_LEVELS.find((l) => l.id === id);
   return level?.color || "#666";
 }
 
-function getLevelName(id: number): string {
-  const level = SRT_LEVELS.find((l) => l.id === id);
-  return level?.short || "";
-}
-
 export default function WeakSignalsRadar() {
   const { weakSignals: WEAK_SIGNALS } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
+  const { t, locale } = useTranslation();
+
+  const isEn = locale === "en";
+
+  function getLevelName(id: number): string {
+    return t.filter.cptLevels[id]?.short || SRT_LEVELS.find((l) => l.id === id)?.short || "";
+  }
+
+  function getUrgencyConfig(urgency: string) {
+    if (urgency === "high") return {
+      icon: AlertTriangle,
+      label: isEn ? "High" : "Высокая",
+      color: "text-red-400",
+      bg: "bg-red-400/10",
+      border: "border-red-400/20",
+      dot: "bg-red-400",
+    };
+    return {
+      icon: AlertCircle,
+      label: isEn ? "Medium" : "Средняя",
+      color: "text-amber-400",
+      bg: "bg-amber-400/10",
+      border: "border-amber-400/20",
+      dot: "bg-amber-400",
+    };
+  }
 
   const filteredSignals = useMemo(() => {
     return WEAK_SIGNALS.filter((s) => {
@@ -66,24 +70,24 @@ export default function WeakSignalsRadar() {
       {/* Header + Summary for mobile — hidden on lg where left panel has its own header */}
       <div className="mb-5 sm:mb-0 lg:hidden">
         <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-2">
-          Слабые сигналы
+          {t.signals.sectionLabel}
         </p>
         <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
-          Сигналы на радаре
+          {isEn ? "Signals on Radar" : "Сигналы на радаре"}
         </h3>
         <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-0">
-          Ранние индикаторы будущих структурных изменений.
+          {isEn ? "Early indicators of future structural changes." : "Ранние индикаторы будущих структурных изменений."}
         </p>
 
         {/* Mobile summary stats */}
         <div className="flex gap-4 sm:hidden mb-4">
           <div className="flex items-center gap-2">
             <AlertTriangle className="w-3.5 h-3.5 text-red-400" />
-            <span className="text-xs text-muted-foreground">Высокая: <span className="text-red-400 font-medium">{highCount}</span></span>
+            <span className="text-xs text-muted-foreground">{isEn ? "High" : "Высокая"}: <span className="text-red-400 font-medium">{highCount}</span></span>
           </div>
           <div className="flex items-center gap-2">
             <AlertCircle className="w-3.5 h-3.5 text-amber-400" />
-            <span className="text-xs text-muted-foreground">Средняя: <span className="text-amber-400 font-medium">{mediumCount}</span></span>
+            <span className="text-xs text-muted-foreground">{isEn ? "Medium" : "Средняя"}: <span className="text-amber-400 font-medium">{mediumCount}</span></span>
           </div>
         </div>
       </div>
@@ -94,13 +98,13 @@ export default function WeakSignalsRadar() {
           <div className="sticky top-20">
             <div className="hidden lg:block">
               <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-2">
-                Слабые сигналы
+                {t.signals.sectionLabel}
               </p>
               <h3 className="text-2xl font-heading font-bold text-foreground mb-2">
-                Сигналы на радаре
+                {isEn ? "Signals on Radar" : "Сигналы на радаре"}
               </h3>
               <p className="text-sm text-muted-foreground mb-6">
-                Ранние индикаторы будущих структурных изменений, зафиксированные в отчётах.
+                {isEn ? "Early indicators of future structural changes identified in reports." : "Ранние индикаторы будущих структурных изменений, зафиксированные в отчётах."}
               </p>
             </div>
 
@@ -136,11 +140,11 @@ export default function WeakSignalsRadar() {
             <div className="flex gap-4 justify-center">
               <div className="text-center">
                 <div className="text-2xl font-heading font-bold text-red-400">{highCount}</div>
-                <div className="text-[10px] font-mono text-muted-foreground">Высокая срочность</div>
+                <div className="text-[10px] font-mono text-muted-foreground">{isEn ? "High urgency" : "Высокая срочность"}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-heading font-bold text-amber-400">{mediumCount}</div>
-                <div className="text-[10px] font-mono text-muted-foreground">Средняя срочность</div>
+                <div className="text-[10px] font-mono text-muted-foreground">{isEn ? "Medium urgency" : "Средняя срочность"}</div>
               </div>
             </div>
           </div>
@@ -152,8 +156,12 @@ export default function WeakSignalsRadar() {
             <div className="bg-card/40 border border-border/30 rounded-xl p-6 sm:p-8 text-center">
               <p className="text-sm text-muted-foreground">
                 {WEAK_SIGNALS.length === 0
-                  ? "Слабые сигналы формируются после накопления нескольких отчётов. Данные появятся автоматически."
-                  : "Нет сигналов, соответствующих фильтрам."}
+                  ? (isEn
+                      ? "Weak signals are formed after accumulating several reports. Data will appear automatically."
+                      : "Слабые сигналы формируются после накопления нескольких отчётов. Данные появятся автоматически.")
+                  : (isEn
+                      ? "No signals match the selected filters."
+                      : "Нет сигналов, соответствующих фильтрам.")}
               </p>
             </div>
           ) : (
@@ -193,6 +201,7 @@ export default function WeakSignalsRadar() {
                     <ProgramBadgeGroup
                       programKeys={(signal as any).relevantPrograms}
                       compact={true}
+                      label={isEn ? "Programs →" : "Программы →"}
                     />
                   )}
                 </div>

@@ -2,26 +2,30 @@
  * DESIGN: Intelligence Dashboard — Nodal Positions Map
  * 5 key positions in AI economy 2026 with visual cards
  * Education recommendations now include SKOLKOVO program links
- * Mobile-first responsive design
+ * Mobile-first responsive design, i18n support
  */
 import { NODAL_POSITIONS, EDUCATION_RECOMMENDATIONS } from "@/data/insightsData";
 import { Target, BookOpen, ArrowRight } from "lucide-react";
 import { ProgramBadgeGroup } from "@/components/ProgramBadge";
+import { useTranslation } from "@/contexts/I18nContext";
 
 export default function NodalPositions() {
+  const { t, locale } = useTranslation();
+  const isEn = locale === "en";
+
   return (
     <div className="container">
       {/* Nodal Positions */}
       <div className="mb-10 sm:mb-14">
         <div className="mb-6 sm:mb-8">
           <p className="text-xs font-mono text-primary/70 tracking-widest uppercase mb-2">
-            Сводная карта
+            {t.nodal.sectionLabel}
           </p>
           <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
-            5 узловых позиций AI-экономики 2026
+            {t.nodal.title}
           </h3>
           <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl leading-relaxed">
-            Ключевые узлы, за контроль которых идёт основная борьба в AI-индустрии.
+            {t.nodal.description}
           </p>
         </div>
 
@@ -54,13 +58,13 @@ export default function NodalPositions() {
 
               {/* Controllers */}
               <p className="text-[11px] text-muted-foreground mb-2 leading-relaxed">
-                <span className="text-foreground/60 font-medium">Кто контролирует:</span>{" "}
+                <span className="text-foreground/60 font-medium">{t.nodal.controllers}</span>{" "}
                 {pos.controllers}
               </p>
 
               {/* Stakes */}
               <p className="text-[11px] text-muted-foreground mb-3 leading-relaxed">
-                <span className="text-foreground/60 font-medium">Что на кону:</span>{" "}
+                <span className="text-foreground/60 font-medium">{t.nodal.stakes}</span>{" "}
                 {pos.stakes}
               </p>
 
@@ -88,10 +92,10 @@ export default function NodalPositions() {
           </div>
           <div>
             <h3 className="text-base sm:text-lg font-heading font-bold text-foreground">
-              Рекомендации для образовательных программ
+              {t.education.title}
             </h3>
             <p className="text-xs text-muted-foreground">
-              На основании выявленных инсайтов
+              {t.education.subtitle}
             </p>
           </div>
         </div>

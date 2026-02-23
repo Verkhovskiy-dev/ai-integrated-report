@@ -1,5 +1,6 @@
 import { BarChart3, TrendingUp, TrendingDown, Minus } from "lucide-react";
 import { useLiveData, type LiveReport } from "@/contexts/LiveDataContext";
+import { useTranslation } from "@/contexts/I18nContext";
 
 function getWeekNumber(dateStr: string): number {
   const d = new Date(dateStr);
@@ -42,13 +43,15 @@ function computeWeekMetrics(weekNum: number, reports: LiveReport[]): WeekMetrics
   return { weekNum, totalEvents, avgEventsPerDay: reports.length > 0 ? Math.round(totalEvents / reports.length) : 0, topLevels, reportCount: reports.length };
 }
 
-const LEVEL_NAMES: Record<number, string> = {
-  9: "Капитал", 8: "Институты", 7: "Знания", 6: "Технологии",
-  5: "Value Chain", 4: "Hardware", 3: "Профессии", 2: "География", 1: "Ресурсы",
-};
-
 export default function WeekOverWeek() {
   const { archiveReports, latestReport } = useLiveData();
+  const { t, locale } = useTranslation();
+  const isEn = locale === "en";
+
+  const LEVEL_NAMES: Record<number, string> = isEn
+    ? { 9: "Capital", 8: "Institutions", 7: "Knowledge", 6: "Technology", 5: "Value Chain", 4: "Hardware", 3: "Professions", 2: "Geography", 1: "Resources" }
+    : { 9: "Капитал", 8: "Институты", 7: "Знания", 6: "Технологии", 5: "Value Chain", 4: "Hardware", 3: "Профессии", 2: "География", 1: "Ресурсы" };
+
   const allReports = latestReport ? [...archiveReports.filter((r) => r.date !== latestReport.date), latestReport] : archiveReports;
   const weeks = groupByWeek(allReports);
   const weekNums = Array.from(weeks.keys()).sort((a, b) => a - b);
@@ -57,10 +60,16 @@ export default function WeekOverWeek() {
     return (
       <div className="container">
         <div className="mb-5 sm:mb-8">
-          <p className="text-xs font-mono text-cyan-400/70 tracking-widest uppercase mb-2">Сравнение недель</p>
+          <p className="text-xs font-mono text-cyan-400/70 tracking-widest uppercase mb-2">
+            {isEn ? "Week Comparison" : "Сравнение недель"}
+          </p>
           <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">Week-over-Week</h3>
         </div>
-        <div className="text-center py-12 text-muted-foreground text-sm">Недостаточно данных для сравнения недель. Нужно минимум 2 отчёта из разных недель.</div>
+        <div className="text-center py-12 text-muted-foreground text-sm">
+          {isEn
+            ? "Insufficient data for week comparison. At least 2 reports from different weeks are needed."
+            : "Недостаточно данных для сравнения недель. Нужно минимум 2 отчёта из разных недель."}
+        </div>
       </div>
     );
   }
@@ -77,53 +86,73 @@ export default function WeekOverWeek() {
     val < 0 ? <TrendingDown className="w-3.5 h-3.5 text-red-400" /> :
     <Minus className="w-3.5 h-3.5 text-muted-foreground" />;
 
+  const lvPrefix = isEn ? "Lv." : "Ур.";
+
   return (
     <div className="container">
       <div className="mb-5 sm:mb-8">
-        <p className="text-xs font-mono text-cyan-400/70 tracking-widest uppercase mb-2">Сравнение недель</p>
+        <p className="text-xs font-mono text-cyan-400/70 tracking-widest uppercase mb-2">
+          {isEn ? "Week Comparison" : "Сравнение недель"}
+        </p>
         <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">Week-over-Week</h3>
-        <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl">Сравнение ключевых метрик между неделей {prevWeekNum} и неделей {currentWeekNum}.</p>
+        <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl">
+          {isEn
+            ? `Comparison of key metrics between week ${prevWeekNum} and week ${currentWeekNum}.`
+            : `Сравнение ключевых метрик между неделей ${prevWeekNum} и неделей ${currentWeekNum}.`}
+        </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <div className="p-4 rounded-lg border border-border/40 bg-muted/10">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[10px] font-mono text-muted-foreground uppercase">Всего событий</span>
+            <span className="text-[10px] font-mono text-muted-foreground uppercase">
+              {isEn ? "Total Events" : "Всего событий"}
+            </span>
             <ChangeIcon val={eventsChange} />
           </div>
           <div className="flex items-baseline gap-2">
             <span className="text-2xl font-heading font-bold text-foreground">{current.totalEvents}</span>
             <span className={`text-xs font-mono ${eventsChange >= 0 ? "text-emerald-400" : "text-red-400"}`}>{eventsChange >= 0 ? "+" : ""}{eventsChange}%</span>
           </div>
-          <div className="text-[10px] text-muted-foreground mt-1">Было: {prev.totalEvents} (нед. {prevWeekNum})</div>
+          <div className="text-[10px] text-muted-foreground mt-1">
+            {isEn ? `Was: ${prev.totalEvents} (wk ${prevWeekNum})` : `Было: ${prev.totalEvents} (нед. ${prevWeekNum})`}
+          </div>
         </div>
         <div className="p-4 rounded-lg border border-border/40 bg-muted/10">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[10px] font-mono text-muted-foreground uppercase">Среднее/день</span>
+            <span className="text-[10px] font-mono text-muted-foreground uppercase">
+              {isEn ? "Avg/Day" : "Среднее/день"}
+            </span>
             <ChangeIcon val={avgChange} />
           </div>
           <div className="flex items-baseline gap-2">
             <span className="text-2xl font-heading font-bold text-foreground">{current.avgEventsPerDay}</span>
             <span className={`text-xs font-mono ${avgChange >= 0 ? "text-emerald-400" : "text-red-400"}`}>{avgChange >= 0 ? "+" : ""}{avgChange}%</span>
           </div>
-          <div className="text-[10px] text-muted-foreground mt-1">Было: {prev.avgEventsPerDay} (нед. {prevWeekNum})</div>
+          <div className="text-[10px] text-muted-foreground mt-1">
+            {isEn ? `Was: ${prev.avgEventsPerDay} (wk ${prevWeekNum})` : `Было: ${prev.avgEventsPerDay} (нед. ${prevWeekNum})`}
+          </div>
         </div>
         <div className="p-4 rounded-lg border border-border/40 bg-muted/10">
-          <span className="text-[10px] font-mono text-muted-foreground uppercase">Топ уровни (нед. {currentWeekNum})</span>
+          <span className="text-[10px] font-mono text-muted-foreground uppercase">
+            {isEn ? `Top levels (wk ${currentWeekNum})` : `Топ уровни (нед. ${currentWeekNum})`}
+          </span>
           <div className="mt-2 space-y-1.5">
             {current.topLevels.map((tl) => (
               <div key={tl.level} className="flex items-center justify-between">
-                <span className="text-xs text-foreground">Ур.{tl.level} {LEVEL_NAMES[tl.level]}</span>
+                <span className="text-xs text-foreground">{lvPrefix}{tl.level} {LEVEL_NAMES[tl.level]}</span>
                 <span className="text-xs font-mono text-primary">{tl.count}</span>
               </div>
             ))}
           </div>
         </div>
         <div className="p-4 rounded-lg border border-border/40 bg-muted/10">
-          <span className="text-[10px] font-mono text-muted-foreground uppercase">Топ уровни (нед. {prevWeekNum})</span>
+          <span className="text-[10px] font-mono text-muted-foreground uppercase">
+            {isEn ? `Top levels (wk ${prevWeekNum})` : `Топ уровни (нед. ${prevWeekNum})`}
+          </span>
           <div className="mt-2 space-y-1.5">
             {prev.topLevels.map((tl) => (
               <div key={tl.level} className="flex items-center justify-between">
-                <span className="text-xs text-foreground">Ур.{tl.level} {LEVEL_NAMES[tl.level]}</span>
+                <span className="text-xs text-foreground">{lvPrefix}{tl.level} {LEVEL_NAMES[tl.level]}</span>
                 <span className="text-xs font-mono text-muted-foreground">{tl.count}</span>
               </div>
             ))}
@@ -131,8 +160,13 @@ export default function WeekOverWeek() {
         </div>
       </div>
       <div className="mt-3 flex items-center gap-4 text-[10px] text-muted-foreground">
-        <span className="flex items-center gap-1"><BarChart3 className="w-3 h-3" />Неделя {currentWeekNum}: {current.reportCount} отчётов</span>
-        <span>Неделя {prevWeekNum}: {prev.reportCount} отчётов</span>
+        <span className="flex items-center gap-1">
+          <BarChart3 className="w-3 h-3" />
+          {isEn ? `Week ${currentWeekNum}: ${current.reportCount} reports` : `Неделя ${currentWeekNum}: ${current.reportCount} отчётов`}
+        </span>
+        <span>
+          {isEn ? `Week ${prevWeekNum}: ${prev.reportCount} reports` : `Неделя ${prevWeekNum}: ${prev.reportCount} отчётов`}
+        </span>
       </div>
     </div>
   );

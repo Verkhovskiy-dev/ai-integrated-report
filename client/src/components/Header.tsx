@@ -2,6 +2,7 @@
  * DESIGN: Intelligence Dashboard Header
  * Sticky top bar with navigation, dark glass effect
  * Mobile: hamburger menu; Desktop: horizontal nav
+ * Now with i18n support and language switcher
  */
 import { useState } from "react";
 import {
@@ -9,23 +10,63 @@ import {
   Lightbulb, Target, Menu, X, GraduationCap, BarChart3, Sparkles, BookOpen, Newspaper
 } from "lucide-react";
 import { useLiveData } from "@/contexts/LiveDataContext";
+import { useTranslation } from "@/contexts/I18nContext";
 import PdfExport from "@/components/PdfExport";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
-const NAV_ITEMS = [
-  { id: "news", label: "Новости", icon: Newspaper },
-  { id: "heatmap", label: "Обзор", icon: LayoutGrid },
-  { id: "insights", label: "Инсайты", icon: Lightbulb },
-  { id: "themes", label: "Темы", icon: Activity },
-  { id: "shifts", label: "Сдвиги", icon: TrendingUp },
-  { id: "connections", label: "Связи", icon: Network },
-  { id: "signals", label: "Сигналы", icon: Radio },
-  { id: "wow", label: "Недели", icon: BarChart3 },
-  { id: "forecasts", label: "Прогнозы", icon: Sparkles },
-  { id: "positions", label: "Узлы", icon: Target },
-  { id: "programs", label: "Программы", icon: GraduationCap },
-  { id: "recommendations", label: "Рекомендации", icon: BookOpen },
-  { id: "timeline", label: "Хронология", icon: Clock },
+interface NavItem {
+  id: string;
+  labelKey: string;
+  icon: typeof Activity;
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { id: "news", labelKey: "news", icon: Newspaper },
+  { id: "heatmap", labelKey: "overview", icon: LayoutGrid },
+  { id: "insights", labelKey: "insights", icon: Lightbulb },
+  { id: "themes", labelKey: "themes", icon: Activity },
+  { id: "shifts", labelKey: "shifts", icon: TrendingUp },
+  { id: "connections", labelKey: "connections", icon: Network },
+  { id: "signals", labelKey: "signals", icon: Radio },
+  { id: "wow", labelKey: "weeks", icon: BarChart3 },
+  { id: "forecasts", labelKey: "forecasts", icon: Sparkles },
+  { id: "positions", labelKey: "nodes", icon: Target },
+  { id: "programs", labelKey: "programs", icon: GraduationCap },
+  { id: "recommendations", labelKey: "recommendations", icon: BookOpen },
+  { id: "timeline", labelKey: "timeline", icon: Clock },
 ];
+
+const NAV_LABELS_RU: Record<string, string> = {
+  news: "Новости",
+  overview: "Обзор",
+  insights: "Инсайты",
+  themes: "Темы",
+  shifts: "Сдвиги",
+  connections: "Связи",
+  signals: "Сигналы",
+  weeks: "Недели",
+  forecasts: "Прогнозы",
+  nodes: "Узлы",
+  programs: "Программы",
+  recommendations: "Рекомендации",
+  timeline: "Хронология",
+};
+
+const NAV_LABELS_EN: Record<string, string> = {
+  news: "News",
+  overview: "Overview",
+  insights: "Insights",
+  themes: "Themes",
+  shifts: "Shifts",
+  connections: "Links",
+  signals: "Signals",
+  weeks: "Weeks",
+  forecasts: "Forecasts",
+  nodes: "Nodes",
+  programs: "Programs",
+  recommendations: "Recs",
+  timeline: "Timeline",
+};
 
 interface HeaderProps {
   activeSection: string;
@@ -35,6 +76,10 @@ interface HeaderProps {
 export default function Header({ activeSection, onSectionChange }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { reportDate, isLive } = useLiveData();
+  const { locale } = useTranslation();
+
+  const navLabels = locale === "en" ? NAV_LABELS_EN : NAV_LABELS_RU;
+  const reportLabel = locale === "en" ? "DLS REPORT" : "СРТ REPORT";
 
   const scrollTo = (id: string) => {
     onSectionChange(id);
@@ -56,7 +101,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
             </h1>
             <div className="flex items-center gap-2">
               <p className="text-[10px] text-muted-foreground font-mono">
-                СРТ REPORT {reportDate ? `— ${reportDate}` : ""}
+                {reportLabel} {reportDate ? `— ${reportDate}` : ""}
               </p>
               {isLive && (
                 <span className="flex items-center gap-1 text-[9px] font-mono text-emerald-400">
@@ -91,17 +136,19 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                 `}
               >
                 <Icon className="w-3 h-3" />
-                <span>{item.label}</span>
+                <span>{navLabels[item.labelKey] || item.labelKey}</span>
               </button>
             );
           })}
-          <div className="ml-1">
+          <div className="ml-1 flex items-center gap-1.5">
+            <LanguageSwitcher />
             <PdfExport />
           </div>
         </nav>
 
-        {/* Mobile: PDF + Menu */}
+        {/* Mobile: Lang + PDF + Menu */}
         <div className="flex items-center gap-1.5 lg:hidden">
+          <LanguageSwitcher />
           <PdfExport />
           <button
             className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
@@ -132,7 +179,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                   `}
                 >
                   <Icon className="w-4 h-4" />
-                  <span>{item.label}</span>
+                  <span>{navLabels[item.labelKey] || item.labelKey}</span>
                 </button>
               );
             })}
