@@ -40,7 +40,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState<string>("news");
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground relative overflow-x-clip">
       {/* Subtle scan line overlay */}
       <div className="fixed inset-0 pointer-events-none z-50 opacity-20 scan-line hidden sm:block" />
 

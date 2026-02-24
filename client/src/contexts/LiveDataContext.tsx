@@ -4,6 +4,7 @@
  * and falls back to static data from reportData.ts if unavailable.
  */
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { useTranslation } from "./I18nContext";
 import {
   HEATMAP_DATA as STATIC_HEATMAP,
   KEY_METRICS as STATIC_METRICS,
@@ -328,6 +329,7 @@ function buildKeyMetrics(report: LiveReport) {
 }
 
 export function LiveDataProvider({ children }: { children: ReactNode }) {
+  const { locale } = useTranslation();
   const [state, setState] = useState<DashboardData>({
     isLive: false,
     loading: true,
@@ -357,8 +359,13 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
       const base = getBasePath();
 
       try {
-        // Fetch latest report
-        const latestResp = await fetch(`${base}data/latest-report.json`);
+        // Fetch latest report (use EN version if locale is EN)
+        const reportFile = locale === 'en' ? 'latest-report.en.json' : 'latest-report.json';
+        let latestResp = await fetch(`${base}data/${reportFile}`);
+        // Fallback to RU version if EN not available
+        if (!latestResp.ok && locale === 'en') {
+          latestResp = await fetch(`${base}data/latest-report.json`);
+        }
         if (!latestResp.ok) throw new Error(`HTTP ${latestResp.status}`);
         const latest: LiveReport = await latestResp.json();
 
@@ -474,7 +481,7 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
     }
 
     fetchData();
-  }, []);
+  }, [locale]);
 
   return <LiveDataContext.Provider value={state}>{children}</LiveDataContext.Provider>;
 }
