@@ -100,5 +100,102 @@
         "category": "decay"
       }
     ]
+  },
+  {
+    "date": "2026-02-24",
+    "generated_at": "2026-02-24T05:36:11.606Z",
+    "trends": [
+      {
+        "name": "Агентные AI‑платформы (tool use, планирование, оркестрация)",
+        "momentum": 0,
+        "rationale": "быстрый рост методологий (TAPE, APF, orchestration) и стандартов интерфейса (MCP). [Источник](https://arxiv.org/abs/2602.19633) [Источник](https://arxiv.org/abs/2602.19065) [Источник](https://arxiv.org/abs/2602.18764)",
+        "levels": [],
+        "category": "stable"
+      },
+      {
+        "name": "Безопасность AI‑агентов (security/governance/редтиминг автономии)",
+        "momentum": 0,
+        "rationale": "эмпирические отчеты о провалах автономных агентов в “живых” средах усиливают запрос на governance и security‑инжиниринг. [Источник](https://arxiv.org/abs/2602.20021)",
+        "levels": [],
+        "category": "stable"
+      },
+      {
+        "name": "AI‑CapEx / инфраструктура дата‑центров",
+        "momentum": 0,
+        "rationale": "спрос на компоненты подключения к сети дает рекордные заказы и бэклоги у производителей электрооборудования. [Источник](https://www.bloomberg.com/news/articles/2026-02-23/data-center-rush-spurs-earnings-windfall-for-power-gear-makers)",
+        "levels": [],
+        "category": "stable"
+      },
+      {
+        "name": "Суверенный AI / геоэкономическое размежевание (US–China) через “экстракцию моделей”",
+        "momentum": 0,
+        "rationale": "обвинения в illicit extraction повышают вероятность правовых и торговых барьеров вокруг моделей/данных/доступа. [Источник](https://www.bloomberg.com/news/articles/2026-02-23/anthropic-says-deepseek-minimax-distilled-ai-models-for-gains)",
+        "levels": [],
+        "category": "stable"
+      },
+      {
+        "name": "Закрытые API‑модели как “рентный слой” (монетизация через подписки)",
+        "momentum": 0,
+        "rationale": "“QuitGPT” сигнализирует об усталости пользователей от качества/поведения и о риске churn при отсутствии доказуемой полезности. [Источник](https://www.technologyreview.com/2026/02/10/1132577/a-quitgpt-campaign-is-urging-people-to-cancel-chatgpt-subscriptions/)",
+        "levels": [],
+        "category": "stable"
+      },
+      {
+        "name": "“AI‑налог” и фискальная перераспределительная политика вокруг AI",
+        "momentum": 0,
+        "rationale": "пока это дискурс аналитиков/инвесторов, но уже формирует ожидания и язык политики (windfall). [Источник](https://www.bloomberg.com/news/articles/2026-02-24/citrini-report-author-calls-for-ai-tax-after-scare-trade-selloff)",
+        "levels": [],
+        "category": "stable"
+      },
+      {
+        "name": "Legacy‑modernization (Cobol и др.) как ключевой рынок внедрения LLM",
+        "momentum": 0,
+        "rationale": "влияние одного заявления Anthropic на капитализацию IBM показывает, что рынок верит в быстрое замещение/пересборку цепочки стоимости. [Источник](https://www.bloomberg.com/news/articles/2026-02-23/ibm-shares-plunge-as-anthropic-touts-cobol-modernization-efforts)",
+        "levels": [],
+        "category": "stable"
+      },
+      {
+        "name": "Классический SaaS (особенно “не-дифференцированный”)",
+        "momentum": 0,
+        "rationale": "“scare trade” и предупреждения о банкротствах/волатильности в софтвере отражают ожидание эрозии маржи и ценности. [Источник](https://www.bloomberg.com/news/articles/2026-02-23/black-swan-s-taleb-warns-on-software-bankruptcies-more-volatility) [Источник](https://www.bloomberg.com/news/articles/2026-02-23/software-payments-shares-tumble-after-citrini-post-on-ai-risks)",
+        "levels": [],
+        "category": "stable"
+      },
+      {
+        "name": "AI как драйвер прибыли отдельных фирм и “growth story”.",
+        "momentum": -25,
+        "rationale": "Угасает: переход от «AI как драйвер прибыли отдельных фирм и “growth story”.» к «AI как источник перераспределяемой ренты (windfall) и объект фискальной политики (AI‑налог) для компенсации занятости.». Упоминаний в контексте перехода: 1",
+        "levels": [
+          9,
+          7,
+          3
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "генерация текста/кода как единичный акт.",
+        "momentum": -25,
+        "rationale": "Угасает: переход от «генерация текста/кода как единичный акт.» к «производственные контуры: tool orchestration + схемы (MCP) + внешние солверы/верификаторы + AVR/Act‑Verify‑Refine.». Упоминаний в контексте перехода: 1",
+        "levels": [
+          6,
+          4,
+          7,
+          8
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "стойкие ренты на старых языках/платформах (Cobol на IBM).",
+        "momentum": -25,
+        "rationale": "Угасает: переход от «стойкие ренты на старых языках/платформах (Cobol на IBM).» к «ускоренная конверсия legacy‑кода агентами и снижение барьеров миграции.». Упоминаний в контексте перехода: 1",
+        "levels": [
+          5,
+          4,
+          9,
+          3
+        ],
+        "category": "decelerating"
+      }
+    ]
   }
 ]
