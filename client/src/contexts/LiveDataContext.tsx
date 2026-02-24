@@ -243,8 +243,8 @@ function guessEventType(title: string, desc: string): string {
 }
 
 // Build theme frequency from events
-function buildThemeFrequency(report: LiveReport) {
-  const themeKeywords: Record<string, string[]> = {
+function buildThemeFrequency(report: LiveReport, locale: string = 'ru') {
+  const themeKeywordsRu: Record<string, string[]> = {
     "Безопасность агентов": ["безопасност", "security", "injection", "guardrail", "audit"],
     "AI-CapEx / Инфраструктура": ["capex", "инфраструктур", "дата-центр", "data center", "dc"],
     "Чипы и память (HBM)": ["чип", "chip", "hbm", "память", "memory", "полупроводник"],
@@ -256,6 +256,19 @@ function buildThemeFrequency(report: LiveReport) {
     "Дата-центры / Энергия": ["энерг", "energy", "cooling", "power", "электр"],
     "Рынок труда AI": ["труд", "labor", "профессии", "jobs", "hiring", "layoff"],
   };
+  const themeKeywordsEn: Record<string, string[]> = {
+    "Agent Safety": ["safety", "security", "injection", "guardrail", "audit"],
+    "AI-CapEx / Infrastructure": ["capex", "infrastructure", "data center", "dc", "compute"],
+    "Chips & Memory (HBM)": ["chip", "hbm", "memory", "semiconductor", "gpu"],
+    "Open-weight Models": ["open-weight", "open-source", "open source", "deepseek", "llama"],
+    "AI Regulation": ["regulat", "law", "compliance", "eu ai act", "govern"],
+    "Geopolitics (US-China)": ["geopolit", "china", "us-china", "sanction", "tariff"],
+    "Agentic Platforms": ["agent", "agentic", "mcp", "platform", "tool"],
+    "Cybersecurity": ["cyber", "hack", "malware", "phishing", "threat"],
+    "Data Centers / Energy": ["energy", "cooling", "power", "electric", "data center"],
+    "AI Labor Market": ["labor", "jobs", "hiring", "layoff", "workforce"],
+  };
+  const themeKeywords = locale === 'en' ? themeKeywordsEn : themeKeywordsRu;
 
   const colors = ["#ef4444", "#22d3ee", "#f59e0b", "#10b981", "#8b5cf6", "#f97316", "#06b6d4", "#ec4899", "#84cc16", "#a855f7"];
 
@@ -310,7 +323,7 @@ function buildTopCompanies(report: LiveReport) {
 }
 
 // Build key metrics
-function buildKeyMetrics(report: LiveReport) {
+function buildKeyMetrics(report: LiveReport, locale: string = 'ru') {
   const m = report.metrics || {} as ReportMetrics;
   // Compute from actual data when metrics object is empty
   const totalEvents = m.total_events || report.srt_levels.reduce((sum, l) => sum + (l.event_count || l.events.length), 0);
@@ -318,13 +331,14 @@ function buildKeyMetrics(report: LiveReport) {
   const signalsCount = m.radar_signals_count || (report.radar_signals || []).length;
   const linksCount = m.cross_level_links_count || (report.cross_level_links || []).length;
   const sourcesCount = m.total_sources || report.srt_levels.reduce((sum, l) => sum + l.events.reduce((s, e) => s + (e.sources || []).length, 0), 0);
+  const isEn = locale === 'en';
   return [
-    { label: "Событий", value: totalEvents, suffix: "", icon: "Zap" },
-    { label: "Структурных сдвигов", value: shiftsCount, suffix: "", icon: "TrendingUp" },
-    { label: "Слабых сигналов", value: signalsCount, suffix: "", icon: "Radio" },
-    { label: "Межуровневых связей", value: linksCount, suffix: "", icon: "Network" },
-    { label: "Источников", value: sourcesCount, suffix: sourcesCount > 0 ? "+" : "", icon: "Link" },
-    { label: "Дата отчёта", value: 0, suffix: report.date, icon: "FileText" },
+    { label: isEn ? "Events" : "Событий", value: totalEvents, suffix: "", icon: "Zap" },
+    { label: isEn ? "Structural Shifts" : "Структурных сдвигов", value: shiftsCount, suffix: "", icon: "TrendingUp" },
+    { label: isEn ? "Weak Signals" : "Слабых сигналов", value: signalsCount, suffix: "", icon: "Radio" },
+    { label: isEn ? "Cross-level Links" : "Межуровневых связей", value: linksCount, suffix: "", icon: "Network" },
+    { label: isEn ? "Sources" : "Источников", value: sourcesCount, suffix: sourcesCount > 0 ? "+" : "", icon: "Link" },
+    { label: isEn ? "Report Date" : "Дата отчёта", value: 0, suffix: report.date, icon: "FileText" },
   ];
 }
 
@@ -410,7 +424,11 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
         let insightsGeneratedAt = "";
         let insightsLive = false;
         try {
-          const insightsResp = await fetch(`${base}data/insights.json`);
+          const insightsFile = locale === 'en' ? 'insights.en.json' : 'insights.json';
+          let insightsResp = await fetch(`${base}data/${insightsFile}`);
+          if (!insightsResp.ok && locale === 'en') {
+            insightsResp = await fetch(`${base}data/insights.json`);
+          }
           if (insightsResp.ok) {
             const insightsData = await insightsResp.json();
             if (insightsData.insights && Array.isArray(insightsData.insights) && insightsData.insights.length > 0) {
@@ -455,11 +473,11 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           reportDate: latest.date,
           keyFocus: latest.key_focus,
           heatmapData: buildHeatmap(archiveReports, latest),
-          keyMetrics: buildKeyMetrics(latest),
+          keyMetrics: buildKeyMetrics(latest, locale),
           structuralShifts: (latest.structural_shifts || []).length > 0 ? transformShifts(latest) : STATIC_SHIFTS,
           weakSignals: (latest.radar_signals || []).length > 0 ? transformSignals(latest) : STATIC_SIGNALS,
           crossLevelConnections: transformConnections(latest),
-          themeFrequency: buildThemeFrequency(latest),
+          themeFrequency: buildThemeFrequency(latest, locale),
           keyEvents: buildKeyEvents(latest),
           topCompanies: buildTopCompanies(latest),
           strategicInsights: dynamicInsights,
