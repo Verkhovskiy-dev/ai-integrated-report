@@ -5,30 +5,166 @@
  * Now includes native SKOLKOVO program links in education sections
  * Supports dynamic insights from insights.json with static fallback
  * i18n support
+ * Role-based filtering with 6 professional roles
  */
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import {
   Building, Bot, Landmark, Brain, ShieldAlert, Layers, GraduationCap,
   ChevronDown, ChevronUp, Lightbulb, BookOpen, AlertTriangle,
   Zap, Globe, Shield, TrendingUp, Database, RefreshCw,
+  Users, Briefcase, Code2, BarChart3, UserCog, Heart,
 } from "lucide-react";
 import { type StrategicInsight } from "@/data/insightsData";
 import { ProgramBadgeGroup } from "@/components/ProgramBadge";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
 
+/* ------------------------------------------------------------------ */
+/*  Role definitions & relevance mapping                               */
+/* ------------------------------------------------------------------ */
+
+export type RoleKey = "all" | "entrepreneur" | "ceo" | "manager" | "cto" | "product" | "hr";
+
+interface RoleMeta {
+  labelRu: string;
+  labelEn: string;
+  icon: typeof Briefcase;
+  /** Keywords in insight text that signal relevance to this role */
+  keywords: RegExp;
+  /** Accent colour (tailwind-compatible) */
+  color: string;
+}
+
+const ROLES: Record<RoleKey, RoleMeta> = {
+  all: {
+    labelRu: "Все роли",
+    labelEn: "All Roles",
+    icon: Users,
+    keywords: /./i, // matches everything
+    color: "primary",
+  },
+  entrepreneur: {
+    labelRu: "Предприниматель",
+    labelEn: "Entrepreneur",
+    icon: Briefcase,
+    keywords: /рынок|market|бизнес|business|стоимост|value|капитал|capital|инвестиц|invest|конкурен|compet|стратег|strateg|масштаб|scale|startup|стартап|предприним|entrepren|маржа|margin|revenue|выручк|клиент|customer|продаж|sales|прибыл|profit|экономик|econom|цепочк.*стоимост|value.?chain|lock.?in|консолидац|consolidat/i,
+    color: "amber",
+  },
+  ceo: {
+    labelRu: "CEO",
+    labelEn: "CEO",
+    icon: BarChart3,
+    keywords: /стратег|strateg|управлен|manag|governance|регулир|regulat|compliance|комплаенс|институт|institut|государств|govern|фискал|fiscal|трансформац|transform|цепочк|chain|позиц|position|контрол|control|стоимост|value|капитал|capital|инфраструктур|infrastruct|вертикальн|vertical|интеграц|integrat|риск|risk|CEO|C-level|руковод|leader|безопасност|security|агент|agent|AI|ИИ/i,
+    color: "cyan",
+  },
+  manager: {
+    labelRu: "Менеджер",
+    labelEn: "Manager",
+    icon: UserCog,
+    keywords: /управлен|manag|процесс|process|команд|team|операцион|operat|эффективност|efficien|ROI|внедрен|implement|пилот|pilot|use.?case|кейс|case|проект|project|оптимиз|optimiz|автоматиз|automat|масштаб|scale|KPI|метрик|metric|продуктивност|productiv/i,
+    color: "neon-green",
+  },
+  cto: {
+    labelRu: "CTO",
+    labelEn: "CTO",
+    icon: Code2,
+    keywords: /технолог|technolog|инфраструктур|infrastruct|архитектур|architect|платформ|platform|API|MCP|агент|agent|модел|model|compute|вычислен|чип|chip|память|memory|HBM|GPU|безопасност|security|DevOps|MLOps|open.?source|open.?weight|дата.?центр|data.?center|компилятор|compiler|kernel|верификац|verif|tool|инструмент|фреймворк|framework|стек|stack|железн|hardware/i,
+    color: "magenta",
+  },
+  product: {
+    labelRu: "Продакт",
+    labelEn: "Product Manager",
+    icon: Lightbulb,
+    keywords: /продукт|product|пользовател|user|UX|интерфейс|interface|фич|feature|клиент|customer|рынок|market|монетизац|monetiz|платформ|platform|данн|data|контекст|context|персонализац|personaliz|lock.?in|экосистем|ecosystem|SaaS|приложен|app|сервис|service|use.?case|кейс|case/i,
+    color: "amber",
+  },
+  hr: {
+    labelRu: "HR",
+    labelEn: "HR",
+    icon: Heart,
+    keywords: /образован|educat|компетенц|competen|кадр|talent|профессион|profession|труд|labor|занятост|employ|переподготовк|retrain|навык|skill|обучен|train|курс|course|программ.*подготовк|training.?program|сокращен|layoff|рынок.*труда|labor.?market|Agent.?Ops|DevOps|специалист|specialist|дефицит|shortage|наём|hiring/i,
+    color: "magenta",
+  },
+};
+
+const ROLE_KEYS: RoleKey[] = ["all", "entrepreneur", "ceo", "manager", "cto", "product", "hr"];
+
+/**
+ * Role-specific framing for the "education implication" section.
+ * Returns a short contextual line prepended to the original educationImplication.
+ */
+function getRoleTakeaway(role: RoleKey, insight: StrategicInsight, isEn: boolean): string | null {
+  if (role === "all") return null;
+
+  const text = `${insight.title} ${insight.subtitle} ${insight.summary} ${insight.nonObviousConclusion}`.toLowerCase();
+
+  const takeaways: Record<Exclude<RoleKey, "all">, { ru: string; en: string }[]> = {
+    entrepreneur: [
+      { ru: "💡 Для предпринимателя: оцените, как этот сдвиг меняет вашу цепочку создания ценности и где открываются новые ниши.", en: "💡 For entrepreneurs: assess how this shift changes your value chain and where new niches are emerging." },
+    ],
+    ceo: [
+      { ru: "🎯 Для CEO: этот инсайт требует стратегического пересмотра позиционирования компании и управления рисками.", en: "🎯 For CEOs: this insight calls for a strategic reassessment of company positioning and risk management." },
+    ],
+    manager: [
+      { ru: "⚙️ Для менеджера: определите конкретные процессы и use-cases, которые можно трансформировать с учётом этого тренда.", en: "⚙️ For managers: identify specific processes and use-cases that can be transformed based on this trend." },
+    ],
+    cto: [
+      { ru: "🔧 Для CTO: оцените технологический стек и инфраструктурные решения в свете этого структурного сдвига.", en: "🔧 For CTOs: evaluate your technology stack and infrastructure decisions in light of this structural shift." },
+    ],
+    product: [
+      { ru: "🚀 Для продакт-менеджера: этот тренд влияет на roadmap — пересмотрите приоритеты фич и стратегию монетизации.", en: "🚀 For product managers: this trend impacts your roadmap — reassess feature priorities and monetization strategy." },
+    ],
+    hr: [
+      { ru: "👥 Для HR: этот сдвиг формирует новые требования к компетенциям — пересмотрите программы развития и найма.", en: "👥 For HR: this shift creates new competency requirements — reassess development and hiring programs." },
+    ],
+  };
+
+  const options = takeaways[role];
+  return options ? (isEn ? options[0].en : options[0].ru) : null;
+}
+
+/**
+ * Score how relevant an insight is to a given role.
+ * Higher score = more relevant.
+ */
+function scoreInsightForRole(insight: StrategicInsight, role: RoleKey): number {
+  if (role === "all") return 1;
+  const meta = ROLES[role];
+  const corpus = [
+    insight.title,
+    insight.subtitle,
+    insight.summary,
+    ...insight.evidence,
+    insight.nonObviousConclusion,
+    insight.educationImplication,
+  ].join(" ");
+
+  const matches = corpus.match(meta.keywords);
+  return matches ? matches.length : 0;
+}
+
+/* ------------------------------------------------------------------ */
+/*  ICON_MAP                                                           */
+/* ------------------------------------------------------------------ */
+
 const ICON_MAP: Record<string, typeof Building> = {
   Building, Bot, Landmark, Brain, ShieldAlert, Layers, GraduationCap,
   Zap, Globe, Shield, TrendingUp, Database,
 };
 
-function InsightCard({ insight, isExpanded, onToggle, isEn }: {
+/* ------------------------------------------------------------------ */
+/*  InsightCard                                                        */
+/* ------------------------------------------------------------------ */
+
+function InsightCard({ insight, isExpanded, onToggle, isEn, role }: {
   insight: StrategicInsight;
   isExpanded: boolean;
   onToggle: () => void;
   isEn: boolean;
+  role: RoleKey;
 }) {
   const Icon = ICON_MAP[insight.icon] || Lightbulb;
+  const roleTakeaway = getRoleTakeaway(role, insight, isEn);
 
   return (
     <div
@@ -128,6 +264,15 @@ function InsightCard({ insight, isExpanded, onToggle, isEn }: {
             </p>
           </div>
 
+          {/* Role-specific takeaway (shown when a specific role is selected) */}
+          {roleTakeaway && (
+            <div className="px-4 sm:px-5 py-3 sm:py-4 bg-cyan-400/5 border-t border-cyan-400/10">
+              <p className="text-xs sm:text-sm text-foreground/90 leading-relaxed font-medium">
+                {roleTakeaway}
+              </p>
+            </div>
+          )}
+
           {/* Education implication with program links */}
           <div className="px-4 sm:px-5 py-3 sm:py-4 bg-primary/5 border-t border-primary/10">
             <div className="flex items-center gap-2 mb-2.5">
@@ -154,11 +299,79 @@ function InsightCard({ insight, isExpanded, onToggle, isEn }: {
   );
 }
 
+/* ------------------------------------------------------------------ */
+/*  RoleSwitcher                                                       */
+/* ------------------------------------------------------------------ */
+
+function RoleSwitcher({
+  activeRole,
+  onRoleChange,
+  isEn,
+}: {
+  activeRole: RoleKey;
+  onRoleChange: (role: RoleKey) => void;
+  isEn: boolean;
+}) {
+  return (
+    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+      {ROLE_KEYS.map((key) => {
+        const meta = ROLES[key];
+        const RIcon = meta.icon;
+        const isActive = activeRole === key;
+        return (
+          <button
+            key={key}
+            onClick={() => onRoleChange(key)}
+            className={`
+              inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2
+              rounded-lg text-[11px] sm:text-xs font-medium
+              border transition-all duration-200
+              ${isActive
+                ? "bg-primary/15 border-primary/40 text-primary shadow-[0_0_12px_rgba(34,211,238,0.15)]"
+                : "bg-card/40 border-border/40 text-muted-foreground hover:border-border hover:text-foreground hover:bg-card/60"
+              }
+            `}
+          >
+            <RIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <span>{isEn ? meta.labelEn : meta.labelRu}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Main Component                                                     */
+/* ------------------------------------------------------------------ */
+
 export default function StrategicInsights() {
   const [expandedId, setExpandedId] = useState<number | null>(1);
+  const [activeRole, setActiveRole] = useState<RoleKey>("all");
   const { strategicInsights, insightsPeriod, insightsGeneratedAt, insightsLive } = useLiveData();
   const { locale } = useTranslation();
   const isEn = locale === "en";
+
+  // Filter and sort insights by role relevance
+  const filteredInsights = useMemo(() => {
+    if (activeRole === "all") return strategicInsights;
+
+    // Score each insight for the selected role
+    const scored = strategicInsights.map((insight) => ({
+      insight,
+      score: scoreInsightForRole(insight, activeRole),
+    }));
+
+    // Filter out insights with zero relevance, then sort by score descending
+    const relevant = scored.filter((s) => s.score > 0);
+
+    // If nothing matches (unlikely), show all
+    if (relevant.length === 0) return strategicInsights;
+
+    return relevant
+      .sort((a, b) => b.score - a.score)
+      .map((s) => s.insight);
+  }, [strategicInsights, activeRole]);
 
   // Format generated date for display
   const generatedLabel = insightsGeneratedAt
@@ -200,14 +413,30 @@ export default function StrategicInsights() {
         )}
       </div>
 
+      {/* Role Switcher */}
+      <div className="mb-5 sm:mb-6">
+        <p className="text-[10px] sm:text-xs font-mono text-muted-foreground/70 uppercase tracking-wider mb-2">
+          {isEn ? "View by Role" : "Фильтр по роли"}
+        </p>
+        <RoleSwitcher activeRole={activeRole} onRoleChange={setActiveRole} isEn={isEn} />
+        {activeRole !== "all" && (
+          <p className="text-[10px] sm:text-xs text-muted-foreground/60 mt-2">
+            {isEn
+              ? `Showing ${filteredInsights.length} of ${strategicInsights.length} insights most relevant for ${ROLES[activeRole].labelEn}`
+              : `${filteredInsights.length} из ${strategicInsights.length} инсайтов, наиболее релевантных для роли «${ROLES[activeRole].labelRu}»`}
+          </p>
+        )}
+      </div>
+
       <div className="space-y-3 sm:space-y-4">
-        {strategicInsights.map((insight) => (
+        {filteredInsights.map((insight) => (
           <InsightCard
             key={insight.id}
             insight={insight}
             isExpanded={expandedId === insight.id}
             onToggle={() => setExpandedId(expandedId === insight.id ? null : insight.id)}
             isEn={isEn}
+            role={activeRole}
           />
         ))}
       </div>
