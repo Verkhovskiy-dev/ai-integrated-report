@@ -80,6 +80,36 @@ export interface MomentumEntry {
   trends: MomentumTrend[];
 }
 
+// === Trend from report.trends[] ===
+export interface ReportTrend {
+  name: string;
+  momentum: number;
+  rationale: string;
+  levels: number[];
+  category: string;
+}
+
+// === Raw structural shift (from/to only, no title/trend) ===
+export interface RawStructuralShift {
+  from: string;
+  to: string;
+  levels: number[];
+  sources: string[];
+}
+
+// === Transformed trend for TrendCharts ===
+export interface TrendDynamic {
+  id: number;
+  name: string;
+  momentum: number;
+  rationale: string;
+  levels: number[];
+  category: string; // accelerating | emerging | decelerating
+  // Matched structural shift context (for decelerating trends)
+  shiftFrom?: string;
+  shiftTo?: string;
+}
+
 export interface LiveReport {
   date: string;
   generated_at: string;
@@ -89,6 +119,7 @@ export interface LiveReport {
   structural_shifts: StructuralShift[];
   radar_signals: RadarSignal[];
   metrics: ReportMetrics;
+  trends?: ReportTrend[];
 }
 
 // === Dashboard-compatible types ===
@@ -120,6 +151,12 @@ export interface DashboardData {
   // Dynamic momentum data from momentum.json
   momentumData: MomentumEntry[];
   momentumLive: boolean;
+
+  // Trend dynamics from report.trends[]
+  trendDynamics: TrendDynamic[];
+  trendDynamicsLive: boolean;
+  // Raw structural shifts for context matching
+  rawStructuralShifts: RawStructuralShift[];
 }
 
 const LiveDataContext = createContext<DashboardData | null>(null);
@@ -366,6 +403,9 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
     insightsLive: false,
     momentumData: [],
     momentumLive: false,
+    trendDynamics: [],
+    trendDynamicsLive: false,
+    rawStructuralShifts: [],
   });
 
   useEffect(() => {
@@ -463,6 +503,44 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           momentumLive = true;
         }
 
+        // Build trendDynamics from report.trends[]
+        const rawTrends: ReportTrend[] = (latest as any).trends || [];
+        const rawShifts: RawStructuralShift[] = (latest.structural_shifts || []).map(s => ({
+          from: (s as any).from || '',
+          to: (s as any).to || '',
+          levels: s.levels || [],
+          sources: (s as any).sources || [],
+        }));
+        const trendDynamics: TrendDynamic[] = rawTrends.map((t, idx) => {
+          const td: TrendDynamic = {
+            id: idx + 1,
+            name: t.name,
+            momentum: t.momentum,
+            rationale: t.rationale,
+            levels: t.levels,
+            category: t.category,
+          };
+          // Match structural shifts to decelerating trends
+          if (t.category === 'decelerating') {
+            // First try exact name match with shift.from
+            let matched = rawShifts.find(s => s.from === t.name);
+            if (!matched) {
+              // Fallback: match by levels overlap (>=50% of trend levels)
+              const tLevels = new Set(t.levels);
+              matched = rawShifts.find(s => {
+                const overlap = s.levels.filter(l => tLevels.has(l)).length;
+                return overlap >= Math.ceil(t.levels.length * 0.5);
+              });
+            }
+            if (matched) {
+              td.shiftFrom = matched.from;
+              td.shiftTo = matched.to;
+            }
+          }
+          return td;
+        });
+        const trendDynamicsLive = trendDynamics.length > 0;
+
         // Transform data
         setState({
           isLive: true,
@@ -486,6 +564,9 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           insightsLive,
           momentumData,
           momentumLive,
+          trendDynamics,
+          trendDynamicsLive,
+          rawStructuralShifts: rawShifts,
         });
       } catch (err) {
         console.warn("Live data unavailable, using static fallback:", err);

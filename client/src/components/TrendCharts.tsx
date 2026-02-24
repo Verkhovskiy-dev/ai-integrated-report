@@ -1,10 +1,11 @@
 /*
  * DESIGN: "Командный Пункт" — Trend Momentum Charts
  * Two-panel layout: Accelerating (green/cyan) vs Decelerating (red/amber)
- * Compact cards with momentum bars, level badges, and mini sparklines
+ * Compact cards with momentum bars, level badges, rationale, and mini sparklines
+ * Uses real data from report.trends[], momentum.json, and structural_shifts[]
  * Mobile-first responsive, i18n support
  */
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import {
   AreaChart,
   Area,
@@ -17,70 +18,46 @@ import {
   Bar,
   Cell,
 } from "recharts";
-import { TrendingUp, TrendingDown, Flame, Snowflake, Zap, Activity } from "lucide-react";
+import {
+  TrendingUp,
+  TrendingDown,
+  Flame,
+  Snowflake,
+  Zap,
+  Activity,
+  ChevronDown,
+  ChevronUp,
+  ArrowRight,
+  Info,
+} from "lucide-react";
 import { SRT_LEVELS } from "@/data/reportData";
-import { useLiveData } from "@/contexts/LiveDataContext";
+import { useLiveData, type TrendDynamic, type MomentumEntry } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
 import { useTranslation } from "@/contexts/I18nContext";
 
-function generateTrendData(
-  shiftLevels: number[],
-  trend: string,
-  heatmapData: { date: string; levels: Record<number, number> }[]
-) {
-  const points = heatmapData.map((day) => {
-    const intensity = shiftLevels.reduce(
-      (sum, lvl) => sum + (day.levels[lvl] || 0),
-      0
-    );
-    return { date: day.date, value: intensity };
-  });
-
-  if (trend === "accelerating") {
-    return points.map((p, i) => ({
-      ...p,
-      value: p.value + Math.round(i * 0.3),
-    }));
-  }
-  if (trend === "emerging") {
-    return points.map((p, i) => ({
-      ...p,
-      value: p.value + Math.round(i * 0.15),
-    }));
-  }
-  return points.map((p, i) => ({
-    ...p,
-    value: Math.max(1, p.value - Math.round(i * 0.2)),
-  }));
-}
-
-function computeMomentum(data: { value: number }[]): number {
-  if (data.length < 2) return 0;
-  const mid = Math.floor(data.length / 2) || 1;
-  const firstHalf = data.slice(0, mid).reduce((s, d) => s + d.value, 0) / mid;
-  const secondLen = data.length - mid;
-  const secondHalf = secondLen > 0 ? data.slice(mid).reduce((s, d) => s + d.value, 0) / secondLen : firstHalf;
-  const base = Math.max(firstHalf, 1);
-  const result = Math.round(((secondHalf - firstHalf) / base) * 100);
-  return isNaN(result) ? 0 : result;
-}
-
-interface TrendItem {
-  id: number;
-  title: string;
-  trend: string;
-  frequency: number;
-  levels: number[];
-  data: { date: string; value: number }[];
-  momentum: number;
-}
+/* ─── helpers ─── */
 
 function getLevelColor(id: number): string {
   const level = SRT_LEVELS.find((l) => l.id === id);
   return level?.color || "#666";
 }
 
-// Custom tooltip for main chart
+/** Build per-trend historical momentum from momentum.json entries */
+function buildMomentumHistory(
+  trendName: string,
+  momentumData: MomentumEntry[]
+): { date: string; value: number }[] {
+  const points: { date: string; value: number }[] = [];
+  for (const entry of momentumData) {
+    const match = entry.trends.find((t) => t.name === trendName);
+    if (match) {
+      points.push({ date: entry.date, value: match.momentum });
+    }
+  }
+  return points;
+}
+
+/* ─── Custom tooltip for main chart ─── */
 function ChartTooltip({ active, payload, label }: any) {
   if (!active || !payload?.length) return null;
   return (
@@ -96,20 +73,25 @@ function ChartTooltip({ active, payload, label }: any) {
   );
 }
 
-// Redesigned trend card — compact, informative
+/* ─── TrendCard: compact card with momentum, rationale, shift context ─── */
 function TrendCard({
   item,
   type,
   rank,
   isEn,
   getLevelShort,
+  historyPoints,
+  t,
 }: {
-  item: TrendItem;
+  item: TrendDynamic;
   type: "accelerating" | "decelerating";
   rank: number;
   isEn: boolean;
   getLevelShort: (id: number) => string;
+  historyPoints: { date: string; value: number }[];
+  t: any;
 }) {
+  const [showRationale, setShowRationale] = useState(false);
   const isAccel = type === "accelerating";
   const accentColor = isAccel ? "#10b981" : "#ef4444";
   const accentBg = isAccel ? "bg-emerald-500" : "bg-red-500";
@@ -117,39 +99,40 @@ function TrendCard({
   const accentBorder = isAccel
     ? "border-emerald-500/15 hover:border-emerald-500/30"
     : "border-red-500/15 hover:border-red-500/30";
-  
-  // Momentum bar width (normalized to max ~40%)
-  const barWidth = Math.min(Math.abs(item.momentum) * 2.5, 100);
-  
-  // Trend label
-  const trendLabel = item.trend === "accelerating"
-    ? (isEn ? "Accelerating" : "Ускоряется")
-    : item.trend === "emerging"
-    ? (isEn ? "Emerging" : "Формируется")
-    : item.trend === "decelerating"
-    ? (isEn ? "Decelerating" : "Замедляется")
-    : (isEn ? "Freezing" : "Замораживается");
+
+  // Momentum bar width (normalized to max ~100%)
+  const barWidth = Math.min(Math.abs(item.momentum) * 1.2, 100);
+
+  // Trend label from i18n
+  const trendLabel =
+    t.trends.trendLabels[item.category] ||
+    (isEn ? item.category : item.category);
 
   return (
     <div
       className={`relative bg-card/50 backdrop-blur-sm border ${accentBorder} rounded-lg p-3 sm:p-3.5 transition-all duration-300 group overflow-hidden`}
     >
       {/* Rank indicator */}
-      <div className={`absolute top-0 left-0 w-1 h-full ${accentBg} opacity-40 rounded-l-lg`} />
-      
+      <div
+        className={`absolute top-0 left-0 w-1 h-full ${accentBg} opacity-40 rounded-l-lg`}
+      />
+
       {/* Top row: title + momentum badge */}
       <div className="flex items-start justify-between gap-2 mb-2 pl-2">
         <div className="flex-1 min-w-0">
-          <h4 className="text-xs sm:text-sm font-heading font-semibold text-foreground leading-tight truncate">
-            {item.title}
+          <h4 className="text-xs sm:text-sm font-heading font-semibold text-foreground leading-tight line-clamp-2">
+            {item.name}
           </h4>
-          <div className="flex items-center gap-2 mt-0.5">
+          <div className="flex items-center gap-2 mt-0.5 flex-wrap">
             {/* Level badges */}
-            {item.levels.slice(0, 3).map((lvl) => (
+            {item.levels.slice(0, 4).map((lvl) => (
               <span
                 key={lvl}
                 className="text-[8px] font-mono px-1 py-0.5 rounded border border-border/40"
-                style={{ color: getLevelColor(lvl), borderColor: `${getLevelColor(lvl)}33` }}
+                style={{
+                  color: getLevelColor(lvl),
+                  borderColor: `${getLevelColor(lvl)}33`,
+                }}
               >
                 {lvl}·{getLevelShort(lvl)}
               </span>
@@ -175,7 +158,7 @@ function TrendCard({
         <div className="w-full h-2 bg-border/20 rounded-full overflow-hidden">
           <div
             className={`h-full rounded-full transition-all duration-1000 ${accentBg}`}
-            style={{ 
+            style={{
               width: `${barWidth}%`,
               opacity: 0.7,
             }}
@@ -183,44 +166,155 @@ function TrendCard({
         </div>
       </div>
 
-      {/* Bottom row: trend label + frequency */}
+      {/* Mini sparkline or simple indicator for history */}
+      {historyPoints.length > 2 ? (
+        <div className="pl-2 mb-2 h-10">
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart
+              data={historyPoints}
+              margin={{ top: 2, right: 4, left: 0, bottom: 0 }}
+            >
+              <defs>
+                <linearGradient
+                  id={`spark-grad-${item.id}`}
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="1"
+                >
+                  <stop
+                    offset="0%"
+                    stopColor={accentColor}
+                    stopOpacity={0.3}
+                  />
+                  <stop
+                    offset="100%"
+                    stopColor={accentColor}
+                    stopOpacity={0.02}
+                  />
+                </linearGradient>
+              </defs>
+              <Area
+                type="monotone"
+                dataKey="value"
+                stroke={accentColor}
+                strokeWidth={1.5}
+                fill={`url(#spark-grad-${item.id})`}
+                dot={false}
+              />
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+      ) : historyPoints.length > 0 ? (
+        <div className="pl-2 mb-2 flex items-center gap-2">
+          <div className="flex items-center gap-1">
+            {historyPoints.map((pt, i) => (
+              <div key={i} className="flex items-center gap-1">
+                <div
+                  className="w-2 h-2 rounded-full"
+                  style={{ backgroundColor: accentColor, opacity: 0.5 + (i / historyPoints.length) * 0.5 }}
+                />
+                <span className="text-[9px] font-mono text-muted-foreground">
+                  {pt.value > 0 ? "+" : ""}{pt.value}
+                </span>
+              </div>
+            ))}
+          </div>
+          <span className="text-[8px] font-mono text-muted-foreground/50">
+            {historyPoints.length} {t.trends.dataPoints}
+          </span>
+        </div>
+      ) : null}
+
+      {/* Bottom row: trend label + rationale toggle */}
       <div className="flex items-center justify-between pl-2">
         <div className="flex items-center gap-1.5">
           <Activity className={`w-3 h-3 ${accentText} opacity-60`} />
-          <span className={`text-[9px] sm:text-[10px] font-mono uppercase tracking-wider ${accentText} opacity-80`}>
+          <span
+            className={`text-[9px] sm:text-[10px] font-mono uppercase tracking-wider ${accentText} opacity-80`}
+          >
             {trendLabel}
           </span>
         </div>
-        <div className="flex items-center gap-1">
-          <Zap className="w-3 h-3 text-muted-foreground opacity-50" />
-          <span className="text-[9px] sm:text-[10px] font-mono text-muted-foreground">
-            {item.frequency} {isEn ? "ment." : "упом."}
-          </span>
-        </div>
+        {item.rationale && (
+          <button
+            onClick={() => setShowRationale(!showRationale)}
+            className="flex items-center gap-1 text-[9px] sm:text-[10px] font-mono text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Info className="w-3 h-3" />
+            {showRationale ? t.trends.hideRationale : t.trends.showRationale}
+            {showRationale ? (
+              <ChevronUp className="w-3 h-3" />
+            ) : (
+              <ChevronDown className="w-3 h-3" />
+            )}
+          </button>
+        )}
       </div>
+
+      {/* Expandable rationale */}
+      {showRationale && item.rationale && (
+        <div className="mt-2 pl-2 pr-1 pt-2 border-t border-border/20">
+          <p className="text-[10px] sm:text-xs text-muted-foreground leading-relaxed">
+            {item.rationale}
+          </p>
+        </div>
+      )}
+
+      {/* Structural shift context for decelerating trends */}
+      {showRationale && item.shiftFrom && item.shiftTo && (
+        <div className="mt-2 pl-2 pr-1 pt-2 border-t border-border/20">
+          <div className="flex items-center gap-1 mb-1">
+            <ArrowRight className="w-3 h-3 text-amber-400/70" />
+            <span className="text-[9px] font-mono uppercase tracking-wider text-amber-400/70">
+              {t.trends.structuralShift}
+            </span>
+          </div>
+          <div className="space-y-1">
+            <div className="flex items-start gap-1">
+              <span className="text-[9px] font-mono text-red-400/60 shrink-0 mt-0.5">
+                {t.trends.shiftFrom}
+              </span>
+              <span className="text-[10px] text-muted-foreground leading-tight">
+                {item.shiftFrom}
+              </span>
+            </div>
+            <div className="flex items-start gap-1">
+              <span className="text-[9px] font-mono text-emerald-400/60 shrink-0 mt-0.5">
+                {t.trends.shiftTo}
+              </span>
+              <span className="text-[10px] text-muted-foreground leading-tight">
+                {item.shiftTo}
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-// Overview bar chart showing all trends side by side
+/* ─── Overview bar chart showing all trends side by side ─── */
 function MomentumOverview({
   accelItems,
   decelItems,
   isEn,
 }: {
-  accelItems: TrendItem[];
-  decelItems: TrendItem[];
+  accelItems: TrendDynamic[];
+  decelItems: TrendDynamic[];
   isEn: boolean;
 }) {
   const data = useMemo(() => {
     const all = [
       ...accelItems.map((item) => ({
-        name: item.title.length > 18 ? item.title.slice(0, 16) + "…" : item.title,
+        name:
+          item.name.length > 22 ? item.name.slice(0, 20) + "…" : item.name,
         momentum: item.momentum,
         fill: "#10b981",
       })),
       ...decelItems.map((item) => ({
-        name: item.title.length > 18 ? item.title.slice(0, 16) + "…" : item.title,
+        name:
+          item.name.length > 22 ? item.name.slice(0, 20) + "…" : item.name,
         momentum: item.momentum,
         fill: "#ef4444",
       })),
@@ -228,24 +322,44 @@ function MomentumOverview({
     return all.sort((a, b) => b.momentum - a.momentum);
   }, [accelItems, decelItems]);
 
+  if (data.length === 0) return null;
+
+  const chartHeight = Math.max(160, data.length * 28);
+
   return (
-    <div className="w-full h-40 sm:h-48">
+    <div className="w-full" style={{ height: chartHeight }}>
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data} layout="vertical" margin={{ top: 0, right: 16, left: 0, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" horizontal={false} />
+        <BarChart
+          data={data}
+          layout="vertical"
+          margin={{ top: 0, right: 16, left: 0, bottom: 0 }}
+        >
+          <CartesianGrid
+            strokeDasharray="3 3"
+            stroke="rgba(255,255,255,0.04)"
+            horizontal={false}
+          />
           <XAxis
             type="number"
-            tick={{ fontSize: 9, fill: "rgba(255,255,255,0.3)", fontFamily: "'IBM Plex Mono', monospace" }}
+            tick={{
+              fontSize: 9,
+              fill: "rgba(255,255,255,0.3)",
+              fontFamily: "'IBM Plex Mono', monospace",
+            }}
             axisLine={{ stroke: "rgba(255,255,255,0.08)" }}
             tickLine={false}
-            domain={['dataMin', 'dataMax']}
-            tickFormatter={(v: number) => `${v > 0 ? '+' : ''}${v}%`}
+            domain={["dataMin", "dataMax"]}
+            tickFormatter={(v: number) => `${v > 0 ? "+" : ""}${v}%`}
           />
           <YAxis
             type="category"
             dataKey="name"
-            width={120}
-            tick={{ fontSize: 9, fill: "rgba(255,255,255,0.5)", fontFamily: "'IBM Plex Mono', monospace" }}
+            width={140}
+            tick={{
+              fontSize: 8,
+              fill: "rgba(255,255,255,0.5)",
+              fontFamily: "'IBM Plex Mono', monospace",
+            }}
             axisLine={false}
             tickLine={false}
           />
@@ -255,9 +369,13 @@ function MomentumOverview({
               const d = payload[0].payload;
               return (
                 <div className="bg-card/95 backdrop-blur-md border border-border/60 rounded-md px-3 py-2 shadow-xl">
-                  <p className="text-xs font-heading font-semibold text-foreground">{d.name}</p>
+                  <p className="text-xs font-heading font-semibold text-foreground">
+                    {d.name}
+                  </p>
                   <p className="text-xs font-mono" style={{ color: d.fill }}>
-                    {isEn ? "Momentum" : "Моментум"}: {d.momentum > 0 ? '+' : ''}{d.momentum}%
+                    {isEn ? "Momentum" : "Моментум"}:{" "}
+                    {d.momentum > 0 ? "+" : ""}
+                    {d.momentum}%
                   </p>
                 </div>
               );
@@ -274,36 +392,81 @@ function MomentumOverview({
   );
 }
 
-// Main combined area chart for a panel
+/* ─── Panel area chart: real historical momentum from momentum.json ─── */
 function PanelChart({
   items,
+  momentumData,
   type,
 }: {
-  items: TrendItem[];
+  items: TrendDynamic[];
+  momentumData: MomentumEntry[];
   type: "accelerating" | "decelerating";
 }) {
   const isAccel = type === "accelerating";
 
   const mergedData = useMemo(() => {
-    if (items.length === 0) return [];
-    const hData = items[0]?.data || [];
-    return hData.map((dayData, dayIdx) => {
-      const point: Record<string, any> = { date: dayData.date };
+    if (items.length === 0 || momentumData.length === 0) return [];
+
+    // Build date-keyed map of momentum values per trend
+    const dates = momentumData.map((e) => e.date).sort();
+    return dates.map((date) => {
+      const entry = momentumData.find((e) => e.date === date);
+      const point: Record<string, any> = { date };
       items.forEach((item) => {
-        point[item.title] = item.data[dayIdx]?.value || 0;
+        const match = entry?.trends.find((t) => t.name === item.name);
+        point[item.name] = match?.momentum ?? null;
       });
       return point;
     });
-  }, [items]);
+  }, [items, momentumData]);
 
   const colors = isAccel
-    ? ["#00d4ff", "#00ff88", "#22d3ee", "#10b981", "#06b6d4"]
-    : ["#ff6b6b", "#ffb800", "#f97316", "#ef4444", "#ec4899"];
+    ? ["#00d4ff", "#00ff88", "#22d3ee", "#10b981", "#06b6d4", "#34d399", "#a7f3d0", "#67e8f9"]
+    : ["#ff6b6b", "#ffb800", "#f97316", "#ef4444", "#ec4899", "#fb923c", "#fca5a5", "#fbbf24"];
+
+  // If fewer than 3 data points, show a simple indicator instead
+  if (mergedData.length < 3) {
+    return (
+      <div className="w-full h-16 flex items-center justify-center">
+        <div className="flex items-center gap-3 flex-wrap justify-center">
+          {mergedData.map((pt, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-border/10"
+            >
+              <span className="text-[9px] font-mono text-muted-foreground">
+                {pt.date}
+              </span>
+              <div className="flex gap-1">
+                {items.slice(0, 3).map((item, j) => {
+                  const val = pt[item.name];
+                  if (val == null) return null;
+                  return (
+                    <span
+                      key={j}
+                      className="text-[9px] font-mono font-medium"
+                      style={{ color: colors[j % colors.length] }}
+                    >
+                      {val > 0 ? "+" : ""}
+                      {val}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full h-32 sm:h-40 lg:h-44">
       <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={mergedData} margin={{ top: 8, right: 8, left: -20, bottom: 0 }}>
+        <AreaChart
+          data={mergedData}
+          margin={{ top: 8, right: 8, left: -20, bottom: 0 }}
+        >
           <defs>
             {items.map((item, i) => (
               <linearGradient
@@ -334,13 +497,21 @@ function PanelChart({
           />
           <XAxis
             dataKey="date"
-            tick={{ fontSize: 9, fill: "rgba(255,255,255,0.35)", fontFamily: "'IBM Plex Mono', monospace" }}
+            tick={{
+              fontSize: 9,
+              fill: "rgba(255,255,255,0.35)",
+              fontFamily: "'IBM Plex Mono', monospace",
+            }}
             axisLine={{ stroke: "rgba(255,255,255,0.08)" }}
             tickLine={false}
             interval="preserveStartEnd"
           />
           <YAxis
-            tick={{ fontSize: 9, fill: "rgba(255,255,255,0.25)", fontFamily: "'IBM Plex Mono', monospace" }}
+            tick={{
+              fontSize: 9,
+              fill: "rgba(255,255,255,0.25)",
+              fontFamily: "'IBM Plex Mono', monospace",
+            }}
             axisLine={false}
             tickLine={false}
           />
@@ -349,11 +520,12 @@ function PanelChart({
             <Area
               key={item.id}
               type="monotone"
-              dataKey={item.title}
+              dataKey={item.name}
               stroke={colors[i % colors.length]}
               strokeWidth={2}
               fill={`url(#panel-grad-${type}-${item.id})`}
               dot={false}
+              connectNulls
               animationDuration={1500}
               animationBegin={i * 200}
             />
@@ -364,141 +536,90 @@ function PanelChart({
   );
 }
 
+/* ─── Empty state component ─── */
+function EmptyState({ message }: { message: string }) {
+  return (
+    <div className="flex items-center justify-center py-12 px-4">
+      <div className="text-center">
+        <Activity className="w-8 h-8 text-muted-foreground/30 mx-auto mb-3" />
+        <p className="text-sm text-muted-foreground/60 font-mono">{message}</p>
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MAIN COMPONENT
+   ═══════════════════════════════════════════════════════════ */
 export default function TrendCharts() {
-  const { structuralShifts: STRUCTURAL_SHIFTS, heatmapData: HEATMAP_DATA } = useLiveData();
+  const { trendDynamics, momentumData, trendDynamicsLive } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
   const { t, locale } = useTranslation();
   const isEn = locale === "en";
 
   function getLevelShort(id: number): string {
-    return t.filter.cptLevels[id]?.short || SRT_LEVELS.find((l) => l.id === id)?.short || `Lv.${id}`;
+    return (
+      t.filter.cptLevels[id]?.short ||
+      SRT_LEVELS.find((l) => l.id === id)?.short ||
+      `Lv.${id}`
+    );
   }
 
+  // Filter and split trends into accelerating vs decelerating
   const { accelerating, decelerating } = useMemo(() => {
-    const accel: TrendItem[] = [];
-    const decel: TrendItem[] = [];
+    const accel: TrendDynamic[] = [];
+    const decel: TrendDynamic[] = [];
 
-    STRUCTURAL_SHIFTS.filter((shift) => {
-      if (selectedLevels.length > 0) {
-        const hasLevel = shift.levels.some((l) => selectedLevels.includes(l));
-        if (!hasLevel) return false;
-      }
-      if (searchQuery) {
-        const q = searchQuery.toLowerCase();
-        if (!shift.title.toLowerCase().includes(q)) return false;
-      }
-      return true;
-    }).forEach((shift) => {
-      const data = generateTrendData(shift.levels, shift.trend, HEATMAP_DATA);
-      const momentum = computeMomentum(data);
-      const item: TrendItem = {
-        id: shift.id,
-        title: shift.title,
-        trend: shift.trend,
-        frequency: shift.frequency,
-        levels: shift.levels,
-        data,
-        momentum,
-      };
-
-      if (shift.trend === "accelerating" || shift.trend === "emerging") {
-        accel.push(item);
-      } else {
-        decel.push(item);
-      }
-    });
+    trendDynamics
+      .filter((td) => {
+        if (selectedLevels.length > 0) {
+          const hasLevel = td.levels.some((l) => selectedLevels.includes(l));
+          if (!hasLevel) return false;
+        }
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          if (!td.name.toLowerCase().includes(q)) return false;
+        }
+        return true;
+      })
+      .forEach((td) => {
+        if (
+          td.category === "accelerating" ||
+          td.category === "emerging"
+        ) {
+          accel.push(td);
+        } else if (
+          td.category === "decelerating" ||
+          td.category === "freezing"
+        ) {
+          decel.push(td);
+        }
+      });
 
     accel.sort((a, b) => b.momentum - a.momentum);
     decel.sort((a, b) => a.momentum - b.momentum);
 
     return { accelerating: accel, decelerating: decel };
-  }, [STRUCTURAL_SHIFTS, HEATMAP_DATA, selectedLevels, searchQuery]);
+  }, [trendDynamics, selectedLevels, searchQuery]);
 
-  const effectiveAccelerating = useMemo(() => {
-    if (accelerating.length > 0) return accelerating;
-    const syntheticItems: TrendItem[] = [
-      {
-        id: 201,
-        title: isEn ? "Agentic Platforms" : "Агентные платформы",
-        trend: "accelerating",
-        frequency: 15,
-        levels: [6, 8],
-        data: generateTrendData([6, 8], "accelerating", HEATMAP_DATA),
-        momentum: 32,
-      },
-      {
-        id: 202,
-        title: isEn ? "Agent Security" : "Безопасность агентов",
-        trend: "accelerating",
-        frequency: 12,
-        levels: [7, 8],
-        data: generateTrendData([7, 8], "accelerating", HEATMAP_DATA),
-        momentum: 28,
-      },
-      {
-        id: 203,
-        title: isEn ? "AI CapEx / Infrastructure" : "AI-CapEx / Инфраструктура",
-        trend: "emerging",
-        frequency: 10,
-        levels: [4, 9],
-        data: generateTrendData([4, 9], "accelerating", HEATMAP_DATA),
-        momentum: 22,
-      },
-      {
-        id: 204,
-        title: isEn ? "Open-weight Models" : "Open-weight модели",
-        trend: "emerging",
-        frequency: 8,
-        levels: [7, 5],
-        data: generateTrendData([7, 5], "accelerating", HEATMAP_DATA),
-        momentum: 18,
-      },
-    ];
-    return syntheticItems;
-  }, [accelerating, HEATMAP_DATA, isEn]);
-
-  const effectiveDecelerating = useMemo(() => {
-    if (decelerating.length > 0) return decelerating;
-    const syntheticItems: TrendItem[] = [
-      {
-        id: 101,
-        title: isEn ? "Closed API Models" : "Закрытые API-модели",
-        trend: "decelerating",
-        frequency: 4,
-        levels: [7, 6],
-        data: generateTrendData([7, 6], "decelerating", HEATMAP_DATA),
-        momentum: -18,
-      },
-      {
-        id: 102,
-        title: isEn ? "Classic SaaS" : "Классический SaaS",
-        trend: "decelerating",
-        frequency: 3,
-        levels: [5, 9],
-        data: generateTrendData([5, 9], "decelerating", HEATMAP_DATA),
-        momentum: -24,
-      },
-      {
-        id: 103,
-        title: isEn ? "Monolithic Cloud Solutions" : "Монолитные облачные решения",
-        trend: "decelerating",
-        frequency: 3,
-        levels: [4, 5],
-        data: generateTrendData([4, 5], "decelerating", HEATMAP_DATA),
-        momentum: -15,
-      },
-      {
-        id: 104,
-        title: "Prompt-based guardrails",
-        trend: "decelerating",
-        frequency: 2,
-        levels: [6, 8],
-        data: generateTrendData([6, 8], "decelerating", HEATMAP_DATA),
-        momentum: -21,
-      },
-    ];
-    return syntheticItems;
-  }, [decelerating, HEATMAP_DATA, isEn]);
+  // If no real data at all, show empty state
+  if (!trendDynamicsLive) {
+    return (
+      <section id="trends" className="py-6 sm:py-10">
+        <div className="container">
+          <div className="mb-5 sm:mb-8">
+            <p className="text-[10px] sm:text-xs font-mono text-primary/80 tracking-widest uppercase mb-1">
+              {t.trends.sectionLabel}
+            </p>
+            <h3 className="text-lg sm:text-2xl font-heading font-bold text-foreground">
+              {t.trends.title}
+            </h3>
+          </div>
+          <EmptyState message={t.trends.noData} />
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="trends" className="py-6 sm:py-10">
@@ -529,27 +650,51 @@ export default function TrendCharts() {
                 </div>
                 <div>
                   <h4 className="text-sm sm:text-base font-heading font-semibold text-emerald-300">
-                    {isEn ? "Gaining Momentum" : "Набирающие обороты"}
+                    {t.trends.acceleratingTitle}
                   </h4>
                   <p className="text-[9px] sm:text-[10px] font-mono text-emerald-400/60 uppercase tracking-wider">
-                    Accelerating / Emerging
+                    {t.trends.acceleratingSub}
                   </p>
                 </div>
                 <div className="ml-auto px-2 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/15">
                   <span className="text-[10px] sm:text-xs font-mono font-medium text-emerald-400">
-                    {effectiveAccelerating.length} {isEn ? "trends" : "трендов"}
+                    {accelerating.length}{" "}
+                    {isEn ? "trends" : "трендов"}
                   </span>
                 </div>
               </div>
 
-              {/* Combined area chart */}
-              <PanelChart items={effectiveAccelerating} type="accelerating" />
+              {/* Combined area chart from real momentum history */}
+              <PanelChart
+                items={accelerating}
+                momentumData={momentumData}
+                type="accelerating"
+              />
 
               {/* Individual trend cards */}
               <div className="space-y-2 sm:space-y-2.5 mt-4">
-                {effectiveAccelerating.map((item, i) => (
-                  <TrendCard key={item.id} item={item} type="accelerating" rank={i + 1} isEn={isEn} getLevelShort={getLevelShort} />
+                {accelerating.map((item, i) => (
+                  <TrendCard
+                    key={item.id}
+                    item={item}
+                    type="accelerating"
+                    rank={i + 1}
+                    isEn={isEn}
+                    getLevelShort={getLevelShort}
+                    historyPoints={buildMomentumHistory(
+                      item.name,
+                      momentumData
+                    )}
+                    t={t}
+                  />
                 ))}
+                {accelerating.length === 0 && (
+                  <p className="text-xs text-muted-foreground/50 font-mono text-center py-4">
+                    {isEn
+                      ? "No accelerating trends match filters"
+                      : "Нет ускоряющихся трендов по фильтрам"}
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -565,27 +710,51 @@ export default function TrendCharts() {
                 </div>
                 <div>
                   <h4 className="text-sm sm:text-base font-heading font-semibold text-red-300">
-                    {isEn ? "Fading" : "Затухающие"}
+                    {t.trends.deceleratingTitle}
                   </h4>
                   <p className="text-[9px] sm:text-[10px] font-mono text-red-400/60 uppercase tracking-wider">
-                    Decelerating / Freezing
+                    {t.trends.deceleratingSub}
                   </p>
                 </div>
                 <div className="ml-auto px-2 py-1 rounded-md bg-red-500/10 border border-red-500/15">
                   <span className="text-[10px] sm:text-xs font-mono font-medium text-red-400">
-                    {effectiveDecelerating.length} {isEn ? "trends" : "трендов"}
+                    {decelerating.length}{" "}
+                    {isEn ? "trends" : "трендов"}
                   </span>
                 </div>
               </div>
 
-              {/* Combined area chart */}
-              <PanelChart items={effectiveDecelerating} type="decelerating" />
+              {/* Combined area chart from real momentum history */}
+              <PanelChart
+                items={decelerating}
+                momentumData={momentumData}
+                type="decelerating"
+              />
 
               {/* Individual trend cards */}
               <div className="space-y-2 sm:space-y-2.5 mt-4">
-                {effectiveDecelerating.map((item, i) => (
-                  <TrendCard key={item.id} item={item} type="decelerating" rank={i + 1} isEn={isEn} getLevelShort={getLevelShort} />
+                {decelerating.map((item, i) => (
+                  <TrendCard
+                    key={item.id}
+                    item={item}
+                    type="decelerating"
+                    rank={i + 1}
+                    isEn={isEn}
+                    getLevelShort={getLevelShort}
+                    historyPoints={buildMomentumHistory(
+                      item.name,
+                      momentumData
+                    )}
+                    t={t}
+                  />
                 ))}
+                {decelerating.length === 0 && (
+                  <p className="text-xs text-muted-foreground/50 font-mono text-center py-4">
+                    {isEn
+                      ? "No decelerating trends match filters"
+                      : "Нет затухающих трендов по фильтрам"}
+                  </p>
+                )}
               </div>
             </div>
           </div>

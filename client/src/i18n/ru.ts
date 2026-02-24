@@ -154,6 +154,14 @@ export const ru = {
     } as Record<string, string>,
     mentions: "упом.",
     momentum: "Моментум:",
+    rationale: "Обоснование",
+    showRationale: "Подробнее",
+    hideRationale: "Свернуть",
+    structuralShift: "Структурный сдвиг",
+    shiftFrom: "От:",
+    shiftTo: "К:",
+    noData: "Нет данных о трендах. Данные появятся после генерации отчёта.",
+    dataPoints: "точ. данных",
   },
 
   // ===== Structural Shifts =====

@@ -156,6 +156,14 @@ export const en: typeof ru = {
     } as Record<string, string>,
     mentions: "mentions",
     momentum: "Momentum:",
+    rationale: "Rationale",
+    showRationale: "Details",
+    hideRationale: "Collapse",
+    structuralShift: "Structural Shift",
+    shiftFrom: "From:",
+    shiftTo: "To:",
+    noData: "No trend data available. Data will appear after report generation.",
+    dataPoints: "data pts",
   },
 
   // ===== Structural Shifts =====
