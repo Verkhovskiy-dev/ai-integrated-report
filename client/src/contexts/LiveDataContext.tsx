@@ -503,14 +503,22 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           momentumLive = true;
         }
 
-        // Build trendDynamics from report.trends[]
-        const rawTrends: ReportTrend[] = (latest as any).trends || [];
-        const rawShifts: RawStructuralShift[] = (latest.structural_shifts || []).map(s => ({
-          from: (s as any).from || '',
-          to: (s as any).to || '',
-          levels: s.levels || [],
-          sources: (s as any).sources || [],
-        }));
+        // Build trendDynamics from report.momentum_trends[] (or fallback to .trends[])
+        const rawTrends: ReportTrend[] = (latest as any).momentum_trends || (latest as any).trends || [];
+
+        // Collect structural shifts with from/to from latest + archives
+        const allShiftSources = [
+          ...(latest.structural_shifts || []),
+          ...archiveReports.flatMap(r => (r as any).structural_shifts || []),
+        ];
+        const rawShifts: RawStructuralShift[] = allShiftSources
+          .filter((s: any) => s.from && s.to)
+          .map((s: any) => ({
+            from: s.from || '',
+            to: s.to || '',
+            levels: s.levels || [],
+            sources: s.sources || [],
+          }));
         const trendDynamics: TrendDynamic[] = rawTrends.map((t, idx) => {
           const td: TrendDynamic = {
             id: idx + 1,
