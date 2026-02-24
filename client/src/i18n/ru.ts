@@ -151,6 +151,7 @@ export const ru = {
       emerging: "Формируется",
       decelerating: "Замедляется",
       freezing: "Замораживается",
+      stable: "Стабильный",
     } as Record<string, string>,
     mentions: "упом.",
     momentum: "Моментум:",

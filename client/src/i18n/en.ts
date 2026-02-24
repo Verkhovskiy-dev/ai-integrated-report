@@ -153,6 +153,7 @@ export const en: typeof ru = {
       emerging: "Emerging",
       decelerating: "Decelerating",
       freezing: "Freezing",
+      stable: "Stable",
     } as Record<string, string>,
     mentions: "mentions",
     momentum: "Momentum:",

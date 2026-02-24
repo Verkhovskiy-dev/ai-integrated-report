@@ -593,6 +593,16 @@ export default function TrendCharts() {
           td.category === "freezing"
         ) {
           decel.push(td);
+        } else {
+          // "stable" or unknown category: split by momentum value
+          if (td.momentum > 0) {
+            accel.push(td);
+          } else if (td.momentum < 0) {
+            decel.push(td);
+          } else {
+            // momentum === 0: put in accelerating panel as neutral
+            accel.push(td);
+          }
         }
       });
 
