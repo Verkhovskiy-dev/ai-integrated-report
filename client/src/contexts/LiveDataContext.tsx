@@ -209,14 +209,18 @@ function getBasePath(): string {
 
 // Transform live report into structural shifts format
 function transformShifts(report: LiveReport) {
-  return (report.structural_shifts || []).map((shift, idx) => ({
+  // Filter out malformed entries: require non-empty from AND to fields
+  const validShifts = (report.structural_shifts || []).filter(
+    (shift) => shift.from && shift.from.trim().length > 0 && shift.to && shift.to.trim().length > 0
+  );
+  return validShifts.map((shift, idx) => ({
     id: idx + 1,
     title: shift.title,
     from: shift.from || "",
     to: shift.to || "",
     mechanism: shift.through || "",
     levels: shift.levels && shift.levels.length > 0 ? shift.levels : [5, 6],
-    frequency: Math.max(1, Math.round((report.metrics?.total_events || 1) / Math.max(1, (report.structural_shifts || []).length))),
+    frequency: Math.max(1, Math.round((report.metrics?.total_events || 1) / Math.max(1, validShifts.length))),
     trend: shift.trend as "accelerating" | "emerging" | "decelerating",
     relevantPrograms: [] as string[],
   }));
