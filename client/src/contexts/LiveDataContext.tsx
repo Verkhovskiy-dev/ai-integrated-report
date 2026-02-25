@@ -65,6 +65,44 @@ interface ReportMetrics {
   cross_level_links_count: number;
 }
 
+// === Known field names that should NEVER be trend names ===
+const INVALID_TREND_NAMES = new Set([
+  'Моментум', 'Обоснование', 'Уровни СРТ', 'Категория',
+  'momentum', 'rationale', 'levels', 'category', 'name',
+  'sources', 'Источники',
+]);
+
+/** Validate a single trend entry: must have a real name and numeric momentum */
+function isValidTrend(t: any): t is ReportTrend {
+  if (!t || typeof t !== 'object') return false;
+  if (typeof t.name !== 'string' || t.name.trim().length === 0) return false;
+  if (INVALID_TREND_NAMES.has(t.name.trim())) return false;
+  if (typeof t.momentum !== 'number' || !isFinite(t.momentum)) return false;
+  return true;
+}
+
+/**
+ * Sanitize a trends field: ensure it's an array of valid trend objects.
+ * Handles cases where trends is an object (single trend) instead of array,
+ * or where field names leak in as trend entries.
+ */
+function sanitizeTrends(raw: any): ReportTrend[] {
+  if (!raw) return [];
+  let arr: any[];
+  if (Array.isArray(raw)) {
+    arr = raw;
+  } else if (typeof raw === 'object' && raw.name && typeof raw.momentum === 'number') {
+    // Single trend object instead of array — wrap it
+    arr = [raw];
+  } else if (typeof raw === 'object') {
+    // Object whose keys might be trend objects — try to extract values
+    arr = Object.values(raw);
+  } else {
+    return [];
+  }
+  return arr.filter(isValidTrend);
+}
+
 // === Momentum types ===
 export interface MomentumTrend {
   name: string;
@@ -490,21 +528,32 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           if (momResp.ok) {
             const momJson = await momResp.json();
             if (Array.isArray(momJson) && momJson.length > 0) {
-              momentumData = momJson;
-              momentumLive = true;
+              // Validate each momentum entry's trends array
+              momentumData = momJson.map((entry: any) => ({
+                ...entry,
+                trends: sanitizeTrends(entry.trends),
+              })).filter((entry: MomentumEntry) => entry.trends.length > 0);
+              momentumLive = momentumData.length > 0;
             }
           }
         } catch {
           // momentum.json not available
         }
         // Fallback: if momentum.json is empty but report has momentum_trends, use those
-        if (momentumData.length === 0 && (latest as any).momentum_trends && (latest as any).momentum_trends.length > 0) {
-          momentumData = [{ date: latest.date, generated_at: latest.generated_at, trends: (latest as any).momentum_trends }];
-          momentumLive = true;
+        if (momentumData.length === 0 && (latest as any).momentum_trends) {
+          const fallbackTrends = sanitizeTrends((latest as any).momentum_trends);
+          if (fallbackTrends.length > 0) {
+            momentumData = [{ date: latest.date, generated_at: latest.generated_at, trends: fallbackTrends }];
+            momentumLive = true;
+          }
         }
 
-        // Build trendDynamics from report.momentum_trends[] (or fallback to .trends[])
-        const rawTrends: ReportTrend[] = (latest as any).momentum_trends || (latest as any).trends || [];
+        // Build trendDynamics from report.momentum_trends[] (preferred) or .trends[] (fallback)
+        // Always sanitize to filter out malformed entries (field names as trend names, etc.)
+        const rawMomentumTrends = sanitizeTrends((latest as any).momentum_trends);
+        const rawReportTrends = sanitizeTrends((latest as any).trends);
+        // Prefer momentum_trends if it has valid entries; fall back to trends
+        const rawTrends: ReportTrend[] = rawMomentumTrends.length > 0 ? rawMomentumTrends : rawReportTrends;
 
         // Collect structural shifts with from/to from latest + archives
         const allShiftSources = [

@@ -37,6 +37,21 @@ import { useTranslation } from "@/contexts/I18nContext";
 
 /* ─── helpers ─── */
 
+/** Known field names that should never appear as trend names */
+const INVALID_TREND_NAMES = new Set([
+  'Моментум', 'Обоснование', 'Уровни СРТ', 'Категория',
+  'momentum', 'rationale', 'levels', 'category', 'name',
+  'sources', 'Источники',
+]);
+
+/** Check if a trend entry is valid for rendering */
+function isRenderableTrend(td: TrendDynamic): boolean {
+  if (!td.name || typeof td.name !== 'string' || td.name.trim().length === 0) return false;
+  if (INVALID_TREND_NAMES.has(td.name.trim())) return false;
+  if (typeof td.momentum !== 'number' || !isFinite(td.momentum)) return false;
+  return true;
+}
+
 function getLevelColor(id: number): string {
   const level = SRT_LEVELS.find((l) => l.id === id);
   return level?.color || "#666";
@@ -573,6 +588,8 @@ export default function TrendCharts() {
     const decel: TrendDynamic[] = [];
 
     trendDynamics
+      // First: filter out any malformed/invalid trend entries
+      .filter(isRenderableTrend)
       .filter((td) => {
         if (selectedLevels.length > 0) {
           const hasLevel = td.levels.some((l) => selectedLevels.includes(l));
