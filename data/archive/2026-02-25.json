@@ -1,0 +1,406 @@
+{
+  "date": "2026-02-25",
+  "generated_at": "2026-02-25T16:18:21.328Z",
+  "key_focus": "",
+  "srt_levels": [
+    {
+      "level": 9,
+      "name": "Денежная система",
+      "events": [
+        {
+          "title": "Рынок переходит в режим “low tolerance” к сбоям AI‑нарратива",
+          "description": "Рынок переходит в режим “low tolerance” к сбоям AI‑нарратива: Bloomberg отмечает, что инвесторы нервничают по перспективам AI; даже при “tremendous numbers” рынок “fickle”, а на ленте доминируют страхи про AI‑disruption и “staying power” тяжелых инвестиций. Это ключ: стоимость капитала начинает зависеть от признаков *устойчивости цикла*, а не от темпов роста.",
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-02-25/nvidia-earnings-to-come-with-no-patience-for-ai-hiccups-video"
+          ]
+        },
+        {
+          "title": "Одновременно удерживается противоположный полюс: капитал продолжает охотно кредитовать инфраструктурный пояс — бонды Wesco (junk) привлекли около $6 млрд заявок и выросли после размещения",
+          "description": "Одновременно удерживается противоположный полюс: капитал продолжает охотно кредитовать инфраструктурный пояс — бонды Wesco (junk) привлекли около $6 млрд заявок и выросли после размещения. Это означает расщепление: equity становится капризнее, а debt под “лопаты” пока доступен.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-24/wesco-junk-bond-deal-draws-6-billion-demand-on-data-center-boom"
+          ]
+        },
+        {
+          "title": "AI‑страх проникает в private/secondary",
+          "description": "AI‑страх проникает в private/secondary, то есть в машинерию ликвидности венчура/PE: scrutiny в secondary‑рынке из‑за ожиданий, что AI “плохая новость” для software‑гигантов.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-25/ai-disruption-fears-prompt-scrutiny-in-booming-secondary-market"
+          ]
+        },
+        {
+          "title": "“Предел upside” артикулируется публично: Seaport‑аналитик с рейтингом sell на Nvidia говорит о “little scope” для meaningful upside",
+          "description": "“Предел upside” артикулируется публично: Seaport‑аналитик с рейтингом sell на Nvidia говорит о “little scope” для meaningful upside. Это сигнал насыщения ожиданий по “ядру” цепочки.",
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-02-25/nvidia-won-t-deliver-much-upside-says-goldberg-video"
+          ]
+        }
+      ],
+      "event_count": 4
+    },
+    {
+      "level": 8,
+      "name": "Спонтанный порядок",
+      "events": [
+        {
+          "title": "Ослабление добровольных safety‑норм продолжается: Anthropic “loosened” commitment к guardrails ради гонки",
+          "description": "Ослабление добровольных safety‑норм продолжается: Anthropic “loosened” commitment к guardrails ради гонки. Это подрывает доверительный капитал отрасли именно в момент, когда рынки “без терпения” к негативным сигналам.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-25/anthropic-adds-caveat-to-ai-safety-policy-in-race-against-rivals"
+          ]
+        },
+        {
+          "title": "Инцидентный фон усиливает давление: сообщения о том, что злоумышленник использовал Claude для атак на мексиканские госагентства и кражи данных",
+          "description": "Инцидентный фон усиливает давление: сообщения о том, что злоумышленник использовал Claude для атак на мексиканские госагентства и кражи данных.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-25/hacker-used-anthropic-s-claude-to-steal-sensitive-mexican-data"
+          ]
+        }
+      ],
+      "event_count": 2
+    },
+    {
+      "level": 7,
+      "name": "Институты производства знаний",
+      "events": [
+        {
+          "title": "Параллельно растет “метрическая инфраструктура” поведения моделей под давлением (alignment benchmarks), что превращает репутационные заявления в измеримые профили",
+          "description": "Параллельно растет “метрическая инфраструктура” поведения моделей под давлением (alignment benchmarks), что превращает репутационные заявления в измеримые профили. Например, Pressure Reveals Character — 904 сценария, multi‑turn, tool access.",
+          "sources": [
+            "https://arxiv.org/abs/2602.20813"
+          ]
+        }
+      ],
+      "event_count": 1
+    },
+    {
+      "level": 6,
+      "name": "Технологии производства знаний",
+      "events": [
+        {
+          "title": "Дефицит/стоимость compute подталкивают к системным ускорителям inference: CHESS заявляет реконструкцию контекста и ускорение throughput до 4.56× при использовании 1% KV‑cache",
+          "description": "Дефицит/стоимость compute подталкивают к системным ускорителям inference: CHESS заявляет реконструкцию контекста и ускорение throughput до 4.56× при использовании 1% KV‑cache. Это технологический ответ на “staying power” CapEx: чем дороже мощность, тем выше ценность эффективности.",
+          "sources": [
+            "https://arxiv.org/abs/2602.20732"
+          ]
+        }
+      ],
+      "event_count": 1
+    },
+    {
+      "level": 5,
+      "name": "Разделение труда между фирмами",
+      "events": [
+        {
+          "title": "“Builders over coders” оформляется как рыночная переразметка бенефициаров: UBS предлагает смещать ставки на майнеров, энергетику, индустрию",
+          "description": "“Builders over coders” оформляется как рыночная переразметка бенефициаров: UBS предлагает смещать ставки на майнеров, энергетику, индустрию.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-25/ubs-global-wealth-cio-says-ditch-coders-for-builders-as-ai-booms"
+          ]
+        },
+        {
+          "title": "Delta Electronics показывает, что рента растет в power/cooling для AI‑дата‑центров (record profit на спросе)",
+          "description": "Delta Electronics показывает, что рента растет в power/cooling для AI‑дата‑центров (record profit на спросе).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-25/delta-electronics-profit-hits-record-on-ai-infrastructure-surge"
+          ]
+        },
+        {
+          "title": "Банки фиксируют вертикаль сделок: Citi формирует команду под AI‑инфраструктуру",
+          "description": "Банки фиксируют вертикаль сделок: Citi формирует команду под AI‑инфраструктуру.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-25/citigroup-assembles-banking-team-focused-on-ai-infrastructure"
+          ]
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 4,
+      "name": "«Железные» технологии",
+      "events": [
+        {
+          "title": "Уязвимости shared KV cache (OptiLeak) делают эффективность multi‑tenant serving потенциально несовместимой с приватностью: это может стать источником “hiccup”, который рынок начнет наказывать через регуляторный/контрактный риск (особенно в enterprise)",
+          "description": "Уязвимости shared KV cache (OptiLeak) делают эффективность multi‑tenant serving потенциально несовместимой с приватностью: это может стать источником “hiccup”, который рынок начнет наказывать через регуляторный/контрактный риск (особенно в enterprise).",
+          "sources": [
+            "https://arxiv.org/abs/2602.20595"
+          ]
+        }
+      ],
+      "event_count": 1
+    },
+    {
+      "level": 3,
+      "name": "Социально-профессиональная структура",
+      "events": [
+        {
+          "title": "Сдвиг ренты к “строителям” означает рост спроса на компетенции: энергетика, теплотехника, электрика, эксплуатация DC, supply chain — на фоне относительного обесценивания части “чистого софт‑роста”",
+          "description": "Сдвиг ренты к “строителям” означает рост спроса на компетенции: энергетика, теплотехника, электрика, эксплуатация DC, supply chain — на фоне относительного обесценивания части “чистого софт‑роста”. (Формулировка UBS как маркер.)",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-25/ubs-global-wealth-cio-says-ditch-coders-for-builders-as-ai-booms"
+          ]
+        }
+      ],
+      "event_count": 1
+    },
+    {
+      "level": 2,
+      "name": "Пространственная организация",
+      "events": [
+        {
+          "title": "Zoho обсуждает собственные дата‑центры в ОАЭ/Саудовской Аравии/ЮАР: расширение географии compute — попытка контролировать стоимость/доступность/юрисдикции",
+          "description": "Zoho обсуждает собственные дата‑центры в ОАЭ/Саудовской Аравии/ЮАР: расширение географии compute — попытка контролировать стоимость/доступность/юрисдикции.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-25/billionaire-backed-zoho-plans-more-mideast-africa-data-centers"
+          ]
+        }
+      ],
+      "event_count": 1
+    },
+    {
+      "level": 1,
+      "name": "Природные ресурсы",
+      "events": [
+        {
+          "title": "Рост Delta на liquid cooling/power systems подтверждает: ограничения энергии/тепла — базовый лимит AI‑масштабирования",
+          "description": "Рост Delta на liquid cooling/power systems подтверждает: ограничения энергии/тепла — базовый лимит AI‑масштабирования.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-02-25/delta-electronics-profit-hits-record-on-ai-infrastructure-surge"
+          ]
+        }
+      ],
+      "event_count": 1
+    }
+  ],
+  "events": [
+    {
+      "title": "Рынок переходит в режим “low tolerance” к сбоям AI‑нарратива",
+      "description": "Рынок переходит в режим “low tolerance” к сбоям AI‑нарратива: Bloomberg отмечает, что инвесторы нервничают по перспективам AI; даже при “tremendous numbers” рынок “fickle”, а на ленте доминируют страхи про AI‑disruption и “staying power” тяжелых инвестиций. Это ключ: стоимость капитала начинает зависеть от признаков *устойчивости цикла*, а не от темпов роста.",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-02-25/nvidia-earnings-to-come-with-no-patience-for-ai-hiccups-video"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Одновременно удерживается противоположный полюс: капитал продолжает охотно кредитовать инфраструктурный пояс — бонды Wesco (junk) привлекли около $6 млрд заявок и выросли после размещения",
+      "description": "Одновременно удерживается противоположный полюс: капитал продолжает охотно кредитовать инфраструктурный пояс — бонды Wesco (junk) привлекли около $6 млрд заявок и выросли после размещения. Это означает расщепление: equity становится капризнее, а debt под “лопаты” пока доступен.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-24/wesco-junk-bond-deal-draws-6-billion-demand-on-data-center-boom"
+      ],
+      "level": 9
+    },
+    {
+      "title": "AI‑страх проникает в private/secondary",
+      "description": "AI‑страх проникает в private/secondary, то есть в машинерию ликвидности венчура/PE: scrutiny в secondary‑рынке из‑за ожиданий, что AI “плохая новость” для software‑гигантов.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/ai-disruption-fears-prompt-scrutiny-in-booming-secondary-market"
+      ],
+      "level": 9
+    },
+    {
+      "title": "“Предел upside” артикулируется публично: Seaport‑аналитик с рейтингом sell на Nvidia говорит о “little scope” для meaningful upside",
+      "description": "“Предел upside” артикулируется публично: Seaport‑аналитик с рейтингом sell на Nvidia говорит о “little scope” для meaningful upside. Это сигнал насыщения ожиданий по “ядру” цепочки.",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-02-25/nvidia-won-t-deliver-much-upside-says-goldberg-video"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Ослабление добровольных safety‑норм продолжается: Anthropic “loosened” commitment к guardrails ради гонки",
+      "description": "Ослабление добровольных safety‑норм продолжается: Anthropic “loosened” commitment к guardrails ради гонки. Это подрывает доверительный капитал отрасли именно в момент, когда рынки “без терпения” к негативным сигналам.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/anthropic-adds-caveat-to-ai-safety-policy-in-race-against-rivals"
+      ],
+      "level": 8
+    },
+    {
+      "title": "Инцидентный фон усиливает давление: сообщения о том, что злоумышленник использовал Claude для атак на мексиканские госагентства и кражи данных",
+      "description": "Инцидентный фон усиливает давление: сообщения о том, что злоумышленник использовал Claude для атак на мексиканские госагентства и кражи данных.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/hacker-used-anthropic-s-claude-to-steal-sensitive-mexican-data"
+      ],
+      "level": 8
+    },
+    {
+      "title": "Параллельно растет “метрическая инфраструктура” поведения моделей под давлением (alignment benchmarks), что превращает репутационные заявления в измеримые профили",
+      "description": "Параллельно растет “метрическая инфраструктура” поведения моделей под давлением (alignment benchmarks), что превращает репутационные заявления в измеримые профили. Например, Pressure Reveals Character — 904 сценария, multi‑turn, tool access.",
+      "sources": [
+        "https://arxiv.org/abs/2602.20813"
+      ],
+      "level": 7
+    },
+    {
+      "title": "Дефицит/стоимость compute подталкивают к системным ускорителям inference: CHESS заявляет реконструкцию контекста и ускорение throughput до 4.56× при использовании 1% KV‑cache",
+      "description": "Дефицит/стоимость compute подталкивают к системным ускорителям inference: CHESS заявляет реконструкцию контекста и ускорение throughput до 4.56× при использовании 1% KV‑cache. Это технологический ответ на “staying power” CapEx: чем дороже мощность, тем выше ценность эффективности.",
+      "sources": [
+        "https://arxiv.org/abs/2602.20732"
+      ],
+      "level": 6
+    },
+    {
+      "title": "“Builders over coders” оформляется как рыночная переразметка бенефициаров: UBS предлагает смещать ставки на майнеров, энергетику, индустрию",
+      "description": "“Builders over coders” оформляется как рыночная переразметка бенефициаров: UBS предлагает смещать ставки на майнеров, энергетику, индустрию.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/ubs-global-wealth-cio-says-ditch-coders-for-builders-as-ai-booms"
+      ],
+      "level": 5
+    },
+    {
+      "title": "Delta Electronics показывает, что рента растет в power/cooling для AI‑дата‑центров (record profit на спросе)",
+      "description": "Delta Electronics показывает, что рента растет в power/cooling для AI‑дата‑центров (record profit на спросе).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/delta-electronics-profit-hits-record-on-ai-infrastructure-surge"
+      ],
+      "level": 5
+    },
+    {
+      "title": "Банки фиксируют вертикаль сделок: Citi формирует команду под AI‑инфраструктуру",
+      "description": "Банки фиксируют вертикаль сделок: Citi формирует команду под AI‑инфраструктуру.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/citigroup-assembles-banking-team-focused-on-ai-infrastructure"
+      ],
+      "level": 5
+    },
+    {
+      "title": "Уязвимости shared KV cache (OptiLeak) делают эффективность multi‑tenant serving потенциально несовместимой с приватностью: это может стать источником “hiccup”, который рынок начнет наказывать через регуляторный/контрактный риск (особенно в enterprise)",
+      "description": "Уязвимости shared KV cache (OptiLeak) делают эффективность multi‑tenant serving потенциально несовместимой с приватностью: это может стать источником “hiccup”, который рынок начнет наказывать через регуляторный/контрактный риск (особенно в enterprise).",
+      "sources": [
+        "https://arxiv.org/abs/2602.20595"
+      ],
+      "level": 4
+    },
+    {
+      "title": "Сдвиг ренты к “строителям” означает рост спроса на компетенции: энергетика, теплотехника, электрика, эксплуатация DC, supply chain — на фоне относительного обесценивания части “чистого софт‑роста”",
+      "description": "Сдвиг ренты к “строителям” означает рост спроса на компетенции: энергетика, теплотехника, электрика, эксплуатация DC, supply chain — на фоне относительного обесценивания части “чистого софт‑роста”. (Формулировка UBS как маркер.)",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/ubs-global-wealth-cio-says-ditch-coders-for-builders-as-ai-booms"
+      ],
+      "level": 3
+    },
+    {
+      "title": "Zoho обсуждает собственные дата‑центры в ОАЭ/Саудовской Аравии/ЮАР: расширение географии compute — попытка контролировать стоимость/доступность/юрисдикции",
+      "description": "Zoho обсуждает собственные дата‑центры в ОАЭ/Саудовской Аравии/ЮАР: расширение географии compute — попытка контролировать стоимость/доступность/юрисдикции.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/billionaire-backed-zoho-plans-more-mideast-africa-data-centers"
+      ],
+      "level": 2
+    },
+    {
+      "title": "Рост Delta на liquid cooling/power systems подтверждает: ограничения энергии/тепла — базовый лимит AI‑масштабирования",
+      "description": "Рост Delta на liquid cooling/power systems подтверждает: ограничения энергии/тепла — базовый лимит AI‑масштабирования.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/delta-electronics-profit-hits-record-on-ai-infrastructure-surge"
+      ],
+      "level": 1
+    }
+  ],
+  "trends": [
+    {
+      "name": "“Рынок без терпения к AI hiccups” (volatility‑режим вокруг AI‑лидеров)",
+      "momentum": 60,
+      "rationale": "Bloomberg фиксирует нервозность и “fickle” реакцию даже при сильных числах — это смена режима оценки риска.",
+      "levels": [
+        9,
+        5
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Upside‑насыщение по Nvidia (ожидания vs реальность)",
+      "momentum": -20,
+      "rationale": "публичный sell‑тезис о слабом upside усиливает “потолок сюрприза”.",
+      "levels": [
+        9
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "AI‑инфраструктура как кредитная тема",
+      "momentum": 85,
+      "rationale": "$6 млрд спроса на бонды Wesco.",
+      "levels": [
+        9,
+        5,
+        2,
+        1
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "AI‑disruption‑discount в private/secondary",
+      "momentum": 55,
+      "rationale": "AI‑страхи мигрируют в private market secondary.",
+      "levels": [
+        9,
+        5
+      ],
+      "category": "emerging"
+    }
+  ],
+  "cross_level_links": [],
+  "structural_shifts": [],
+  "radar_signals": [],
+  "metrics": {
+    "total_events": 15,
+    "events_by_level": {
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 3,
+      "6": 1,
+      "7": 1,
+      "8": 2,
+      "9": 4
+    },
+    "total_sources": 13,
+    "structural_shifts_count": 0,
+    "radar_signals_count": 0,
+    "cross_level_links_count": 0,
+    "momentum_trends_count": 4
+  },
+  "categories": [],
+  "momentum_trends": [
+    {
+      "name": "“Рынок без терпения к AI hiccups” (volatility‑режим вокруг AI‑лидеров)",
+      "momentum": 60,
+      "rationale": "Bloomberg фиксирует нервозность и “fickle” реакцию даже при сильных числах — это смена режима оценки риска.",
+      "levels": [
+        9,
+        5
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Upside‑насыщение по Nvidia (ожидания vs реальность)",
+      "momentum": -20,
+      "rationale": "публичный sell‑тезис о слабом upside усиливает “потолок сюрприза”.",
+      "levels": [
+        9
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "AI‑инфраструктура как кредитная тема",
+      "momentum": 85,
+      "rationale": "$6 млрд спроса на бонды Wesco.",
+      "levels": [
+        9,
+        5,
+        2,
+        1
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "AI‑disruption‑discount в private/secondary",
+      "momentum": 55,
+      "rationale": "AI‑страхи мигрируют в private market secondary.",
+      "levels": [
+        9,
+        5
+      ],
+      "category": "emerging"
+    }
+  ]
+}
