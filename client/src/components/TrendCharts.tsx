@@ -57,7 +57,96 @@ function getLevelColor(id: number): string {
   return level?.color || "#666";
 }
 
-/** Build per-trend historical momentum from momentum.json entries */
+/**
+ * Normalize a trend name for fuzzy matching:
+ * - lowercase
+ * - replace all dashes/hyphens (including unicode en-dash, em-dash) with space
+ * - collapse whitespace
+ * - remove punctuation like «», (), /, etc.
+ */
+function normalizeTrendName(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[\u2010-\u2015\u2212\-–—]/g, ' ')  // all dash variants → space
+    .replace(/[«»""''()\[\]{}\/:;,\.!?]/g, ' ')   // remove punctuation
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Extract significant keywords from a normalized trend name.
+ * Filters out very short words and common stop words.
+ */
+function extractKeywords(normalized: string): string[] {
+  const stopWords = new Set([
+    'и', 'в', 'на', 'по', 'от', 'до', 'за', 'из', 'к', 'с', 'о', 'у',
+    'как', 'что', 'для', 'при', 'через', 'т', 'ч', 'др', 'vs', 'и',
+    'the', 'a', 'an', 'of', 'in', 'on', 'at', 'to', 'for', 'with', 'as',
+  ]);
+  return normalized
+    .split(' ')
+    .filter(w => w.length > 2 && !stopWords.has(w));
+}
+
+/**
+ * Compute similarity between two trend names using keyword overlap.
+ * Returns a score between 0 and 1.
+ */
+function trendNameSimilarity(name1: string, name2: string): number {
+  const norm1 = normalizeTrendName(name1);
+  const norm2 = normalizeTrendName(name2);
+
+  // Exact normalized match
+  if (norm1 === norm2) return 1.0;
+
+  const kw1 = extractKeywords(norm1);
+  const kw2 = extractKeywords(norm2);
+
+  if (kw1.length === 0 || kw2.length === 0) return 0;
+
+  // Count overlapping keywords (partial match: one contains the other)
+  let matches = 0;
+  for (const w1 of kw1) {
+    for (const w2 of kw2) {
+      if (w1 === w2 || w1.includes(w2) || w2.includes(w1)) {
+        matches++;
+        break;
+      }
+    }
+  }
+
+  // Jaccard-like similarity
+  const maxLen = Math.max(kw1.length, kw2.length);
+  return matches / maxLen;
+}
+
+/**
+ * Find the best matching trend in a momentum entry for a given trend name.
+ * Returns the matching trend or null if similarity is below threshold.
+ */
+function findBestMatch(
+  trendName: string,
+  trends: { name: string; momentum: number }[],
+  threshold: number = 0.4
+): { name: string; momentum: number } | null {
+  // First try exact match
+  const exact = trends.find(t => t.name === trendName);
+  if (exact) return exact;
+
+  // Fuzzy match
+  let bestScore = 0;
+  let bestMatch: { name: string; momentum: number } | null = null;
+  for (const t of trends) {
+    const score = trendNameSimilarity(trendName, t.name);
+    if (score > bestScore && score >= threshold) {
+      bestScore = score;
+      bestMatch = t;
+    }
+  }
+  return bestMatch;
+}
+
+/** Build per-trend historical momentum from momentum.json entries (with fuzzy matching) */
 function buildMomentumHistory(
   trendName: string,
   momentumData: MomentumEntry[]
@@ -65,9 +154,19 @@ function buildMomentumHistory(
   const points: { date: string; value: number }[] = [];
   for (const entry of momentumData) {
     const trends = Array.isArray(entry.trends) ? entry.trends : [];
-    const match = trends.find((t) => t.name === trendName);
-    if (match) {
+    const match = findBestMatch(trendName, trends);
+    if (match && typeof match.momentum === 'number' && match.momentum !== 0) {
       points.push({ date: entry.date, value: match.momentum });
+    }
+  }
+  // If we got no points with non-zero filter, try again including zeros
+  if (points.length === 0) {
+    for (const entry of momentumData) {
+      const trends = Array.isArray(entry.trends) ? entry.trends : [];
+      const match = findBestMatch(trendName, trends);
+      if (match) {
+        points.push({ date: entry.date, value: match.momentum });
+      }
     }
   }
   return points;
@@ -183,7 +282,7 @@ function TrendCard({
       </div>
 
       {/* Mini sparkline or simple indicator for history */}
-      {historyPoints.length > 2 ? (
+      {historyPoints.length >= 2 ? (
         <div className="pl-2 mb-2 h-10">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
@@ -216,7 +315,7 @@ function TrendCard({
                 stroke={accentColor}
                 strokeWidth={1.5}
                 fill={`url(#spark-grad-${item.id})`}
-                dot={false}
+                dot={{ r: 2, fill: accentColor }}
               />
             </AreaChart>
           </ResponsiveContainer>
@@ -423,15 +522,19 @@ function PanelChart({
   const mergedData = useMemo(() => {
     if (items.length === 0 || momentumData.length === 0) return [];
 
-    // Build date-keyed map of momentum values per trend
+    // Build date-keyed map of momentum values per trend using fuzzy matching
     const dates = momentumData.map((e) => e.date).sort();
     return dates.map((date) => {
       const entry = momentumData.find((e) => e.date === date);
       const point: Record<string, any> = { date };
+      const trends = Array.isArray(entry?.trends) ? entry.trends : [];
       items.forEach((item) => {
-        const trends = Array.isArray(entry?.trends) ? entry.trends : [];
-        const match = trends.find((t) => t.name === item.name);
-        point[item.name] = match?.momentum ?? null;
+        const match = findBestMatch(item.name, trends);
+        if (match && typeof match.momentum === 'number') {
+          point[item.name] = match.momentum;
+        } else {
+          point[item.name] = null;
+        }
       });
       return point;
     });
@@ -441,42 +544,22 @@ function PanelChart({
     ? ["#00d4ff", "#00ff88", "#22d3ee", "#10b981", "#06b6d4", "#34d399", "#a7f3d0", "#67e8f9"]
     : ["#ff6b6b", "#ffb800", "#f97316", "#ef4444", "#ec4899", "#fb923c", "#fca5a5", "#fbbf24"];
 
-  // If fewer than 3 data points, show a simple indicator instead
-  if (mergedData.length < 3) {
+  // Check how many data points actually have non-null values
+  const hasData = mergedData.some((pt) =>
+    items.some((item) => pt[item.name] != null)
+  );
+
+  if (!hasData || mergedData.length === 0) {
     return (
       <div className="w-full h-16 flex items-center justify-center">
-        <div className="flex items-center gap-3 flex-wrap justify-center">
-          {mergedData.map((pt, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-border/10"
-            >
-              <span className="text-[9px] font-mono text-muted-foreground">
-                {pt.date}
-              </span>
-              <div className="flex gap-1">
-                {items.slice(0, 3).map((item, j) => {
-                  const val = pt[item.name];
-                  if (val == null) return null;
-                  return (
-                    <span
-                      key={j}
-                      className="text-[9px] font-mono font-medium"
-                      style={{ color: colors[j % colors.length] }}
-                    >
-                      {val > 0 ? "+" : ""}
-                      {val}
-                    </span>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
+        <span className="text-[10px] font-mono text-muted-foreground/40">
+          No historical data available
+        </span>
       </div>
     );
   }
 
+  // Always show the area chart if we have data (even with 2 points we can draw a line)
   return (
     <div className="w-full h-32 sm:h-40 lg:h-44">
       <ResponsiveContainer width="100%" height="100%">
@@ -541,7 +624,7 @@ function PanelChart({
               stroke={colors[i % colors.length]}
               strokeWidth={2}
               fill={`url(#panel-grad-${type}-${item.id})`}
-              dot={false}
+              dot={{ r: 3, fill: colors[i % colors.length], strokeWidth: 0 }}
               connectNulls
               animationDuration={1500}
               animationBegin={i * 200}
