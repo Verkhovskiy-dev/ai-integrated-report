@@ -195,22 +195,12 @@
   },
   {
     "date": "2026-02-25",
-    "generated_at": "2026-02-25T16:54:09.743Z",
+    "generated_at": "2026-02-25T17:01:20.780Z",
     "trends": [
       {
-        "name": "Режим “no patience for AI hiccups” (дисциплина ожиданий вокруг AI‑лидеров)",
-        "momentum": 60,
-        "rationale": "рынок “fickle” даже при сильных числах; доминируют страхи по disruption и устойчивости инвестиций.",
-        "levels": [
-          9,
-          5
-        ],
-        "category": "emerging"
-      },
-      {
-        "name": "AI‑CapEx/инфраструктура как кредитная тема",
+        "name": "AI-CapEx / инфраструктура дата-центров (долг, поставщики)",
         "momentum": 85,
-        "rationale": "$6 млрд спроса на junk‑бонды Wesco.",
+        "rationale": "$6 млрд спроса на бонды Wesco + институционализация в банках (Citi). ;",
         "levels": [
           9,
           5,
@@ -220,29 +210,9 @@
         "category": "accelerating"
       },
       {
-        "name": "Дисконт software‑cashflows из‑за AI в private/secondary",
-        "momentum": 55,
-        "rationale": "AI‑страхи “creeping into private markets”.",
-        "levels": [
-          9,
-          5
-        ],
-        "category": "emerging"
-      },
-      {
-        "name": "Voluntary safety pledges",
-        "momentum": -45,
-        "rationale": "Anthropic ослабляет ключевое обязательство.",
-        "levels": [
-          8,
-          7
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "Power & liquid cooling как core‑узкое место",
+        "name": "Power/cooling как узкое место AI",
         "momentum": 75,
-        "rationale": "рекордная прибыль Delta на спросе со стороны AI‑DC.",
+        "rationale": "рекордная прибыль Delta на спросе со стороны AI-DC.",
         "levels": [
           1,
           2,
@@ -251,23 +221,77 @@
         "category": "accelerating"
       },
       {
-        "name": "достаточно показывать рост и “AI story”.",
-        "momentum": -70,
-        "rationale": "Угасает: переход от «достаточно показывать рост и “AI story”.» к «требуется подтверждать устойчивость CapEx‑цикла и отсутствие “hiccups”; рынок может наказать даже при сильных цифрах. [Источник](https://www.bloomberg.com/news/videos/2026-02-25/nvidia-earnings-to-come-with-no-patience-for-ai-hiccups-video)». Упоминаний в контексте перехода: 4",
+        "name": "“No patience for AI hiccups” (жесткость рынка к сбоям)",
+        "momentum": 60,
+        "rationale": "рынок нервный, реакция “fickle”, сомнения в устойчивости инвестиций доминируют.",
         "levels": [
           9,
+          5
+        ],
+        "category": "emerging"
+      },
+      {
+        "name": "AI-disruption-discount в private/secondary",
+        "momentum": 55,
+        "rationale": "scrutiny в secondary из-за AI-рисков для софта.",
+        "levels": [
+          9,
+          5
+        ],
+        "category": "emerging"
+      },
+      {
+        "name": "Экспорт нефтесервисных мощностей (frack fleets abroad)",
+        "momentum": 40,
+        "rationale": "структурный сдвиг загрузки отрасли при замедлении shale в США; это меняет географию энерго-производства и косвенно базу для энергоемкого AI.",
+        "levels": [
+          2,
+          1,
+          5
+        ],
+        "category": "emerging"
+      },
+      {
+        "name": "Voluntary safety pledges",
+        "momentum": -45,
+        "rationale": "Anthropic ослабляет обязательство по guardrails.",
+        "levels": [
           8,
+          7
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "“Nvidia как главный прокси AI”.",
+        "momentum": -10,
+        "rationale": "Угасает: переход от «“Nvidia как главный прокси AI”.» к «“AI как связка compute + энергия + охлаждение + география”.». Упоминаний в контексте перехода: 0",
+        "levels": [
+          9,
+          5,
+          2,
+          1
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "рост перекрывает неопределенности.",
+        "momentum": -80,
+        "rationale": "Угасает: переход от «рост перекрывает неопределенности.» к «рынок требует устойчивости и безаварийного исполнения, иначе переоценка даже при сильных числах.». Упоминаний в контексте перехода: 5",
+        "levels": [
+          9,
           5
         ],
         "category": "decelerating"
       },
       {
-        "name": "единый “AI‑risk on” для всей цепочки.",
-        "momentum": -25,
-        "rationale": "Угасает: переход от «единый “AI‑risk on” для всей цепочки.» к «более капризная реакция на публичных лидеров (Nvidia) при продолжающемся кредитовании инфраструктурных бенефициаров (Wesco).». Упоминаний в контексте перехода: 1",
+        "name": "US shale как внутренний драйвер загрузки нефтесервиса.",
+        "momentum": -40,
+        "rationale": "Угасает: переход от «US shale как внутренний драйвер загрузки нефтесервиса.» к «экспорт fracking-флотов на внешние рынки → рост роли других регионов в предложении энергии → изменение энергетической базы для data-center-экономики.». Упоминаний в контексте перехода: 2",
         "levels": [
           9,
-          5
+          5,
+          2,
+          1
         ],
         "category": "decelerating"
       }
