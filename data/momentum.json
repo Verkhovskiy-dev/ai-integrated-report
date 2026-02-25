@@ -103,96 +103,91 @@
   },
   {
     "date": "2026-02-24",
-    "generated_at": "2026-02-24T05:36:11.606Z",
+    "generated_at": "2026-02-25T15:36:41.968Z",
     "trends": [
       {
-        "name": "Агентные AI‑платформы (tool use, планирование, оркестрация)",
-        "momentum": 0,
-        "rationale": "быстрый рост методологий (TAPE, APF, orchestration) и стандартов интерфейса (MCP). [Источник](https://arxiv.org/abs/2602.19633) [Источник](https://arxiv.org/abs/2602.19065) [Источник](https://arxiv.org/abs/2602.18764)",
-        "levels": [],
-        "category": "stable"
-      },
-      {
-        "name": "Безопасность AI‑агентов (security/governance/редтиминг автономии)",
-        "momentum": 0,
-        "rationale": "эмпирические отчеты о провалах автономных агентов в “живых” средах усиливают запрос на governance и security‑инжиниринг. [Источник](https://arxiv.org/abs/2602.20021)",
-        "levels": [],
-        "category": "stable"
-      },
-      {
-        "name": "AI‑CapEx / инфраструктура дата‑центров",
-        "momentum": 0,
-        "rationale": "спрос на компоненты подключения к сети дает рекордные заказы и бэклоги у производителей электрооборудования. [Источник](https://www.bloomberg.com/news/articles/2026-02-23/data-center-rush-spurs-earnings-windfall-for-power-gear-makers)",
-        "levels": [],
-        "category": "stable"
-      },
-      {
-        "name": "Суверенный AI / геоэкономическое размежевание (US–China) через “экстракцию моделей”",
-        "momentum": 0,
-        "rationale": "обвинения в illicit extraction повышают вероятность правовых и торговых барьеров вокруг моделей/данных/доступа. [Источник](https://www.bloomberg.com/news/articles/2026-02-23/anthropic-says-deepseek-minimax-distilled-ai-models-for-gains)",
-        "levels": [],
-        "category": "stable"
-      },
-      {
-        "name": "Закрытые API‑модели как “рентный слой” (монетизация через подписки)",
-        "momentum": 0,
-        "rationale": "“QuitGPT” сигнализирует об усталости пользователей от качества/поведения и о риске churn при отсутствии доказуемой полезности. [Источник](https://www.technologyreview.com/2026/02/10/1132577/a-quitgpt-campaign-is-urging-people-to-cancel-chatgpt-subscriptions/)",
-        "levels": [],
-        "category": "stable"
-      },
-      {
-        "name": "“AI‑налог” и фискальная перераспределительная политика вокруг AI",
-        "momentum": 0,
-        "rationale": "пока это дискурс аналитиков/инвесторов, но уже формирует ожидания и язык политики (windfall). [Источник](https://www.bloomberg.com/news/articles/2026-02-24/citrini-report-author-calls-for-ai-tax-after-scare-trade-selloff)",
-        "levels": [],
-        "category": "stable"
-      },
-      {
-        "name": "Legacy‑modernization (Cobol и др.) как ключевой рынок внедрения LLM",
-        "momentum": 0,
-        "rationale": "влияние одного заявления Anthropic на капитализацию IBM показывает, что рынок верит в быстрое замещение/пересборку цепочки стоимости. [Источник](https://www.bloomberg.com/news/articles/2026-02-23/ibm-shares-plunge-as-anthropic-touts-cobol-modernization-efforts)",
-        "levels": [],
-        "category": "stable"
-      },
-      {
-        "name": "Классический SaaS (особенно “не-дифференцированный”)",
-        "momentum": 0,
-        "rationale": "“scare trade” и предупреждения о банкротствах/волатильности в софтвере отражают ожидание эрозии маржи и ценности. [Источник](https://www.bloomberg.com/news/articles/2026-02-23/black-swan-s-taleb-warns-on-software-bankruptcies-more-volatility) [Источник](https://www.bloomberg.com/news/articles/2026-02-23/software-payments-shares-tumble-after-citrini-post-on-ai-risks)",
-        "levels": [],
-        "category": "stable"
-      },
-      {
-        "name": "AI как драйвер прибыли отдельных фирм и “growth story”.",
-        "momentum": -25,
-        "rationale": "Угасает: переход от «AI как драйвер прибыли отдельных фирм и “growth story”.» к «AI как источник перераспределяемой ренты (windfall) и объект фискальной политики (AI‑налог) для компенсации занятости.». Упоминаний в контексте перехода: 1",
+        "name": "AI‑CapEx / дата‑центровая инфраструктура (долг + поставщики)",
+        "momentum": 85,
+        "rationale": "переподписка бондов Wesco и институционализация в Citi. ;",
         "levels": [
           9,
-          7,
-          3
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "генерация текста/кода как единичный акт.",
-        "momentum": -25,
-        "rationale": "Угасает: переход от «генерация текста/кода как единичный акт.» к «производственные контуры: tool orchestration + схемы (MCP) + внешние солверы/верификаторы + AVR/Act‑Verify‑Refine.». Упоминаний в контексте перехода: 1",
-        "levels": [
-          6,
-          4,
-          7,
-          8
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "стойкие ренты на старых языках/платформах (Cobol на IBM).",
-        "momentum": -25,
-        "rationale": "Угасает: переход от «стойкие ренты на старых языках/платформах (Cobol на IBM).» к «ускоренная конверсия legacy‑кода агентами и снижение барьеров миграции.». Упоминаний в контексте перехода: 1",
-        "levels": [
           5,
-          4,
+          2,
+          1
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "“Builders > Coders” (перенос ренты в физическую экономику AI)",
+        "momentum": 65,
+        "rationale": "тезис UBS становится инвестиционной рамкой мейнстрима, подкрепляемой прибылями поставщиков питания/охлаждения. ;",
+        "levels": [
+          3,
+          5,
+          1
+        ],
+        "category": "emerging"
+      },
+      {
+        "name": "AI‑disruption‑discount в private/secondary",
+        "momentum": 50,
+        "rationale": "“страх AI” переходит в частные рынки, влияя на ликвидность и ценообразование долей.",
+        "levels": [
           9,
-          3
+          5
+        ],
+        "category": "emerging"
+      },
+      {
+        "name": "Upside‑скепсис по “ядру” (Nvidia) при сохранении инфра‑бума",
+        "momentum": -15,
+        "rationale": "публичный тезис о “little scope for meaningful upside” — признак насыщения ожиданий, хотя инфра‑цепочка продолжает расти.",
+        "levels": [
+          9,
+          5
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "Safety pledges / добровольные guardrails",
+        "momentum": -45,
+        "rationale": "Anthropic ослабляет pledge, подтверждая, что pledge‑режим не выдерживает гонку.",
+        "levels": [
+          8,
+          7
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "Инфраструктурные уязвимости multi‑tenant LLM serving (KV cache leakage)",
+        "momentum": 70,
+        "rationale": "OptiLeak снижает стоимость атак, повышая вероятность регуляторной/корпоративной реакции (изоляция/сертификация).",
+        "levels": [
+          4,
+          8,
+          5
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "рынок платит за “ядро” (Nvidia) как главный источник upside.",
+        "momentum": -25,
+        "rationale": "Угасает: переход от «рынок платит за “ядро” (Nvidia) как главный источник upside.» к «рынок начинает сомневаться в upside ядра и расширяет бенефициаров на весь инфраструктурный пояс (электрика/охлаждение/поставщики/долг).». Упоминаний в контексте перехода: 1",
+        "levels": [
+          9,
+          5,
+          2,
+          1
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "“AI съест софт” — в основном narrative публичного рынка.",
+        "momentum": -10,
+        "rationale": "Угасает: переход от «“AI съест софт” — в основном narrative публичного рынка.» к «пересчет риска происходит в secondary/private — то есть внутри машины ликвидности венчура/PE.». Упоминаний в контексте перехода: 0",
+        "levels": [
+          9,
+          5
         ],
         "category": "decelerating"
       }
