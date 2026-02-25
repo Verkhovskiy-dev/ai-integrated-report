@@ -513,5 +513,98 @@
       ],
       "category": "decelerating"
     }
+  ],
+  "trends": [
+    {
+      "name": "Agent AI platforms (tool use, planning, orchestration)",
+      "momentum": 0,
+      "rationale": "rapid growth of methodologies (TAPE, APF, orchestration) and interface standards (MCP). [Source](https://arxiv.org/abs/2602.19633) [Source](https://arxiv.org/abs/2602.19065) [Source](https://arxiv.org/abs/2602.18764)",
+      "levels": [],
+      "category": "stable"
+    },
+    {
+      "name": "Security of AI agents (security/governance/redteaming autonomy)",
+      "momentum": 0,
+      "rationale": "Empirical reports on failures of autonomous agents in \"live\" environments reinforce the demand for governance and security engineering. [Source](https://arxiv.org/abs/2602.20021)",
+      "levels": [],
+      "category": "stable"
+    },
+    {
+      "name": "AI-CapEx / data center infrastructure",
+      "momentum": 0,
+      "rationale": "Demand for network connection components is driving record orders and backlogs for electrical equipment manufacturers. [Source](https://www.bloomberg.com/news/articles/2026-02-23/data-center-rush-spurs-earnings-windfall-for-power-gear-makers)",
+      "levels": [],
+      "category": "stable"
+    },
+    {
+      "name": "Sovereign AI / geoeconomic delineation (US–China) through “model extraction”",
+      "momentum": 0,
+      "rationale": "Accusations of illicit extraction increase the likelihood of legal and trade barriers around models/data/access. [Source](https://www.bloomberg.com/news/articles/2026-02-23/anthropic-says-deepseek-minimax-distilled-ai-models-for-gains)",
+      "levels": [],
+      "category": "stable"
+    },
+    {
+      "name": "Closed API models as a \"rental layer\" (monetization through subscriptions)",
+      "momentum": 0,
+      "rationale": "“QuitGPT” signals user fatigue with quality/behavior and the risk of churn in the absence of demonstrable utility. [Source](https://www.technologyreview.com/2026/02/10/1132577/a-quitgpt-campaign-is-urging-people-to-cancel-chatgpt-subscriptions/)",
+      "levels": [],
+      "category": "stable"
+    },
+    {
+      "name": "\"AI Tax\" and Fiscal Redistributive Policy Around AI",
+      "momentum": 0,
+      "rationale": "So far, this is the discourse of analysts/investors, but it is already shaping expectations and the language of policy (windfall). [Source](https://www.bloomberg.com/news/articles/2026-02-24/citrini-report-author-calls-for-ai-tax-after-scare-trade-selloff)",
+      "levels": [],
+      "category": "stable"
+    },
+    {
+      "name": "Legacy modernization (Cobol, etc.) as a key market for LLM implementation",
+      "momentum": 0,
+      "rationale": "The impact of a single statement by Anthropic on IBM's market capitalization shows that the market believes in the rapid replacement/reassembly of the value chain. [Source](https://www.bloomberg.com/news/articles/2026-02-23/ibm-shares-plunge-as-anthropic-touts-cobol-modernization-efforts)",
+      "levels": [],
+      "category": "stable"
+    },
+    {
+      "name": "Classic SaaS (especially \"non-differentiated\")",
+      "momentum": 0,
+      "rationale": "“Scare trade” and warnings about bankruptcies/volatility in software reflect expectations of margin and value erosion. [Source](https://www.bloomberg.com/news/articles/2026-02-23/black-swan-s-taleb-warns-on-software-bankruptcies-more-volatility) [Source](https://www.bloomberg.com/news/articles/2026-02-23/software-payments-shares-tumble-after-citrini-post-on-ai-risks)",
+      "levels": [],
+      "category": "stable"
+    },
+    {
+      "name": "AI as a profit driver for individual companies and a “growth story.”",
+      "momentum": -25,
+      "rationale": "Fading: the transition from \"AI as a driver of profits for individual firms and a 'growth story'\" to \"AI as a source of redistributable rent (windfall) and an object of fiscal policy (AI tax) to compensate for employment.\" Mentions in the context of the transition: 1",
+      "levels": [
+        9,
+        7,
+        3
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "text/code generation as a single act.",
+      "momentum": -25,
+      "rationale": "Fading out: the transition from \"text/code generation as a single act\" to \"production loops: tool orchestration + schemas (MCP) + external solvers/verifiers + AVR/Act-Verify-Refine.\" Mentions in the context of the transition: 1",
+      "levels": [
+        6,
+        4,
+        7,
+        8
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Stable rents on old languages/platforms (Cobol on IBM).",
+      "momentum": -25,
+      "rationale": "Fading: the transition from \"stable rents on old languages/platforms (Cobol on IBM)\" to \"accelerated conversion of legacy code by agents and reduction of migration barriers.\" Mentions in the context of transition: 1",
+      "levels": [
+        5,
+        4,
+        9,
+        3
+      ],
+      "category": "decelerating"
+    }
   ]
 }
