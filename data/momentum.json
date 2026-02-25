@@ -195,12 +195,12 @@
   },
   {
     "date": "2026-02-25",
-    "generated_at": "2026-02-25T16:18:21.328Z",
+    "generated_at": "2026-02-25T16:54:09.743Z",
     "trends": [
       {
-        "name": "“Рынок без терпения к AI hiccups” (volatility‑режим вокруг AI‑лидеров)",
+        "name": "Режим “no patience for AI hiccups” (дисциплина ожиданий вокруг AI‑лидеров)",
         "momentum": 60,
-        "rationale": "Bloomberg фиксирует нервозность и “fickle” реакцию даже при сильных числах — это смена режима оценки риска.",
+        "rationale": "рынок “fickle” даже при сильных числах; доминируют страхи по disruption и устойчивости инвестиций.",
         "levels": [
           9,
           5
@@ -208,18 +208,9 @@
         "category": "emerging"
       },
       {
-        "name": "Upside‑насыщение по Nvidia (ожидания vs реальность)",
-        "momentum": -20,
-        "rationale": "публичный sell‑тезис о слабом upside усиливает “потолок сюрприза”.",
-        "levels": [
-          9
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "AI‑инфраструктура как кредитная тема",
+        "name": "AI‑CapEx/инфраструктура как кредитная тема",
         "momentum": 85,
-        "rationale": "$6 млрд спроса на бонды Wesco.",
+        "rationale": "$6 млрд спроса на junk‑бонды Wesco.",
         "levels": [
           9,
           5,
@@ -229,14 +220,56 @@
         "category": "accelerating"
       },
       {
-        "name": "AI‑disruption‑discount в private/secondary",
+        "name": "Дисконт software‑cashflows из‑за AI в private/secondary",
         "momentum": 55,
-        "rationale": "AI‑страхи мигрируют в private market secondary.",
+        "rationale": "AI‑страхи “creeping into private markets”.",
         "levels": [
           9,
           5
         ],
         "category": "emerging"
+      },
+      {
+        "name": "Voluntary safety pledges",
+        "momentum": -45,
+        "rationale": "Anthropic ослабляет ключевое обязательство.",
+        "levels": [
+          8,
+          7
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "Power & liquid cooling как core‑узкое место",
+        "momentum": 75,
+        "rationale": "рекордная прибыль Delta на спросе со стороны AI‑DC.",
+        "levels": [
+          1,
+          2,
+          5
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "достаточно показывать рост и “AI story”.",
+        "momentum": -70,
+        "rationale": "Угасает: переход от «достаточно показывать рост и “AI story”.» к «требуется подтверждать устойчивость CapEx‑цикла и отсутствие “hiccups”; рынок может наказать даже при сильных цифрах. [Источник](https://www.bloomberg.com/news/videos/2026-02-25/nvidia-earnings-to-come-with-no-patience-for-ai-hiccups-video)». Упоминаний в контексте перехода: 4",
+        "levels": [
+          9,
+          8,
+          5
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "единый “AI‑risk on” для всей цепочки.",
+        "momentum": -25,
+        "rationale": "Угасает: переход от «единый “AI‑risk on” для всей цепочки.» к «более капризная реакция на публичных лидеров (Nvidia) при продолжающемся кредитовании инфраструктурных бенефициаров (Wesco).». Упоминаний в контексте перехода: 1",
+        "levels": [
+          9,
+          5
+        ],
+        "category": "decelerating"
       }
     ]
   }
