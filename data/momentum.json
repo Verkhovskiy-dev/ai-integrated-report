@@ -202,256 +202,132 @@
     "date": "2026-02-25",
     "trends": [
       {
-        "name": "Моментум",
-        "momentum": 0,
-        "rationale": "Моментум: **+85**",
-        "levels": [],
-        "category": "emerging"
+        "name": "AI-CapEx / датацентровая инфраструктура",
+        "momentum": 85,
+        "rationale": "закупка Meta на 6 ГВт и ажиотажный спрос на облигации под датацентровый бум показывают ускорение индустриального цикла AI.",
+        "levels": [
+          1,
+          2,
+          4,
+          9
+        ],
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-02-24/meta-to-spend-tens-of-billions-of-dollars-on-amd-gear-buy-stock",
+          "https://www.bloomberg.com/news/articles/2026-02-24/wesco-junk-bond-deal-draws-6-billion-demand-on-data-center-boom"
+        ]
       },
       {
-        "name": "Обоснование",
-        "momentum": 0,
-        "rationale": "Обоснование: закупка Meta на 6 ГВт и ажиотажный спрос на облигации под датацентровый бум показывают ускорение индустриального цикла AI.",
-        "levels": [],
-        "category": "emerging"
+        "name": "Диверсификация чипов (AMD/стартапы) против Nvidia-центра",
+        "momentum": 70,
+        "rationale": "Mega-deal Meta↔AMD + крупный раунд MatX на $500M усиливают мультивендорный сдвиг.",
+        "levels": [
+          4,
+          5,
+          9
+        ],
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-02-24/meta-to-spend-tens-of-billions-of-dollars-on-amd-gear-buy-stock",
+          "https://www.bloomberg.com/news/videos/2026-02-24/google-alum-raises-500m-to-compete-with-nvidia-video"
+        ]
       },
       {
-        "name": "Уровни СРТ",
-        "momentum": 0,
-        "rationale": "Уровни СРТ: **1,2,4,9**",
-        "levels": [],
-        "category": "emerging"
+        "name": "Экспортный контроль compute (США↔Китай) как структурный ограничитель",
+        "momentum": 45,
+        "rationale": "даже после разрешения поставок H200 — «ноль продаж» в Китай; значит, ограничения реализуются практиками комплаенса/страха вторичных санкций.",
+        "levels": [
+          4,
+          5,
+          9
+        ],
+        "category": "stable",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-02-24/nvidia-has-sold-zero-h200s-to-china-top-us-export-enforcer-says"
+        ]
       },
       {
-        "name": "Категория",
-        "momentum": 0,
-        "rationale": "Категория: **accelerating**",
-        "levels": [],
-        "category": "emerging"
+        "name": "Агентные платформы (web/GUI/tool-use) в проде",
+        "momentum": 55,
+        "rationale": "поток исследований по GUI-агентам/интерфейсам/защитам + кадровые движения в Amazon вокруг web agents.",
+        "levels": [
+          6,
+          5,
+          3
+        ],
+        "category": "emerging",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-02-24/amazon-lab-leader-who-led-web-agents-effort-is-leaving-company",
+          "https://arxiv.org/abs/2602.20502"
+        ]
       },
       {
-        "name": "Моментум",
-        "momentum": 0,
-        "rationale": "Моментум: **+70**",
-        "levels": [],
-        "category": "emerging"
+        "name": "Safety как конкурентный компромисс (race-to-ship)",
+        "momentum": 40,
+        "rationale": "Anthropic формально ослабляет safety-политику ради конкурентоспособности — рынок поощряет скорость, а не строгость.",
+        "levels": [
+          8,
+          5
+        ],
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-02-25/anthropic-adds-caveat-to-ai-safety-policy-in-race-against-rivals"
+        ]
       },
       {
-        "name": "Обоснование",
-        "momentum": 0,
-        "rationale": "Обоснование: Mega-deal Meta↔AMD + крупный раунд MatX на $500M усиливают мультивендорный сдвиг.",
-        "levels": [],
-        "category": "emerging"
+        "name": "Государственное принуждение к доступу/использованию frontier AI (в т.ч. военное)",
+        "momentum": 65,
+        "rationale": "угроза Пентагона применить закон для принуждения Anthropic — это усиление государства как «супер-заказчика».",
+        "levels": [
+          8,
+          9,
+          5
+        ],
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-02-24/pentagon-threatens-to-end-anthropic-work-in-feud-over-ai-terms"
+        ]
       },
       {
-        "name": "Уровни СРТ",
-        "momentum": 0,
-        "rationale": "Уровни СРТ: **4,5,9**",
-        "levels": [],
-        "category": "emerging"
+        "name": "AI-замещение офисных/инженерных функций (внутрифирменная автоматизация)",
+        "momentum": 60,
+        "rationale": "WiseTech публично планирует -30% персонала, связывая это с AI и «концом эпохи ручного кодинга».",
+        "levels": [
+          3,
+          5,
+          6
+        ],
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-02-24/wisetech-to-cut-2-000-jobs-as-ai-ends-era-of-manual-coding"
+        ]
       },
       {
-        "name": "Категория",
-        "momentum": 0,
-        "rationale": "Категория: **accelerating**",
-        "levels": [],
-        "category": "emerging"
+        "name": "«Классический SaaS умирает от LLM»",
+        "momentum": -20,
+        "rationale": "Workday фиксирует, что лидеры AI (Anthropic, OpenAI) сами используют enterprise‑софтовые платформы — скорее интеграция, чем замещение «в ноль».",
+        "levels": [
+          5
+        ],
+        "category": "decelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-02-24/workday-ceo-says-anthropic-and-openai-use-his-company-s-software"
+        ]
       },
       {
-        "name": "Моментум",
-        "momentum": 0,
-        "rationale": "Моментум: **+45**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Обоснование",
-        "momentum": 0,
-        "rationale": "Обоснование: даже после разрешения поставок H200 — «ноль продаж» в Китай; значит, ограничения реализуются практиками комплаенса/страха вторичных санкций.",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Уровни СРТ",
-        "momentum": 0,
-        "rationale": "Уровни СРТ: **4,5,9**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Категория",
-        "momentum": 0,
-        "rationale": "Категория: **stable (high)** / **accelerating** в политической части",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Моментум",
-        "momentum": 0,
-        "rationale": "Моментум: **+55**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Обоснование",
-        "momentum": 0,
-        "rationale": "Обоснование: поток исследований по GUI-агентам/интерфейсам/защитам + кадровые движения в Amazon вокруг web agents.",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Уровни СРТ",
-        "momentum": 0,
-        "rationale": "Уровни СРТ: **6,5,3**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Категория",
-        "momentum": 0,
-        "rationale": "Категория: **emerging → accelerating**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Моментум",
-        "momentum": 0,
-        "rationale": "Моментум: **+40**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Обоснование",
-        "momentum": 0,
-        "rationale": "Обоснование: Anthropic формально ослабляет safety-политику ради конкурентоспособности — рынок поощряет скорость, а не строгость.",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Уровни СРТ",
-        "momentum": 0,
-        "rationale": "Уровни СРТ: **8,5**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Категория",
-        "momentum": 0,
-        "rationale": "Категория: **accelerating (risky)**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Моментум",
-        "momentum": 0,
-        "rationale": "Моментум: **+65**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Обоснование",
-        "momentum": 0,
-        "rationale": "Обоснование: угроза Пентагона применить закон для принуждения Anthropic — это усиление государства как «супер-заказчика».",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Уровни СРТ",
-        "momentum": 0,
-        "rationale": "Уровни СРТ: **8,9,5**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Категория",
-        "momentum": 0,
-        "rationale": "Категория: **accelerating**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Моментум",
-        "momentum": 0,
-        "rationale": "Моментум: **+60**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Обоснование",
-        "momentum": 0,
-        "rationale": "Обоснование: WiseTech публично планирует -30% персонала, связывая это с AI и «концом эпохи ручного кодинга».",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Уровни СРТ",
-        "momentum": 0,
-        "rationale": "Уровни СРТ: **3,5,6**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Категория",
-        "momentum": 0,
-        "rationale": "Категория: **accelerating**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Моментум",
-        "momentum": 0,
-        "rationale": "Моментум: **-20**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Обоснование",
-        "momentum": 0,
-        "rationale": "Обоснование: Workday фиксирует, что лидеры AI (Anthropic, OpenAI) сами используют enterprise‑софтовые платформы — скорее интеграция, чем замещение «в ноль».",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Уровни СРТ",
-        "momentum": 0,
-        "rationale": "Уровни СРТ: **5**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Категория",
-        "momentum": 0,
-        "rationale": "Категория: **decelerating**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Моментум",
-        "momentum": 0,
-        "rationale": "Моментум: **+35**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Обоснование",
-        "momentum": 0,
-        "rationale": "Обоснование: сюжет про «AI Squid Game» в Корее (стартапы против чеболей) показывает, что нац‑контуры моделей становятся полем внутренней промышленной политики.",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Уровни СРТ",
-        "momentum": 0,
-        "rationale": "Уровни СРТ: **7,8,9,5**",
-        "levels": [],
-        "category": "emerging"
-      },
-      {
-        "name": "Категория",
-        "momentum": 0,
-        "rationale": "Категория: **emerging**",
-        "levels": [],
-        "category": "emerging"
+        "name": "Суверенный AI / национальные foundation models (Корея и др.)",
+        "momentum": 35,
+        "rationale": "сюжет про «AI Squid Game» в Корее (стартапы против чеболей) показывает, что нац‑контуры моделей становятся полем внутренней промышленной политики.",
+        "levels": [
+          7,
+          8,
+          9,
+          5
+        ],
+        "category": "emerging",
+        "sources": [
+          "https://www.bloomberg.com/news/features/2026-02-24/south-korea-s-ai-startups-challenge-sk-lg-for-tech-dominance"
+        ]
       }
     ]
   }
