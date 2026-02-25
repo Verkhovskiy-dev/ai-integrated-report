@@ -254,7 +254,8 @@ export default function HeroSummary() {
     if (rawMomentum.length > 0) {
       const trendMap: Record<string, { totalMom: number; count: number; levels: number[]; category: string; rationale: string }> = {};
       for (const entry of rawMomentum) {
-        for (const t of entry.trends) {
+        const trends = Array.isArray(entry.trends) ? entry.trends : [];
+        for (const t of trends) {
           const key = t.name;
           if (!trendMap[key]) {
             trendMap[key] = { totalMom: 0, count: 0, levels: t.levels, category: t.category, rationale: t.rationale };

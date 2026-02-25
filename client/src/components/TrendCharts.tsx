@@ -49,7 +49,8 @@ function buildMomentumHistory(
 ): { date: string; value: number }[] {
   const points: { date: string; value: number }[] = [];
   for (const entry of momentumData) {
-    const match = entry.trends.find((t) => t.name === trendName);
+    const trends = Array.isArray(entry.trends) ? entry.trends : [];
+    const match = trends.find((t) => t.name === trendName);
     if (match) {
       points.push({ date: entry.date, value: match.momentum });
     }
@@ -413,7 +414,8 @@ function PanelChart({
       const entry = momentumData.find((e) => e.date === date);
       const point: Record<string, any> = { date };
       items.forEach((item) => {
-        const match = entry?.trends.find((t) => t.name === item.name);
+        const trends = Array.isArray(entry?.trends) ? entry.trends : [];
+        const match = trends.find((t) => t.name === item.name);
         point[item.name] = match?.momentum ?? null;
       });
       return point;
