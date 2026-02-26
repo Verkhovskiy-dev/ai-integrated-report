@@ -1,0 +1,506 @@
+{
+  "date": "2026-02-26",
+  "generated_at": "2026-02-26T10:01:29.407Z",
+  "key_focus": "",
+  "srt_levels": [
+    {
+      "level": 9,
+      "name": "Денежная система",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 8,
+      "name": "Спонтанный порядок",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 7,
+      "name": "Институты производства знаний",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 6,
+      "name": "Технологии производства знаний",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 5,
+      "name": "Разделение труда между фирмами",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 4,
+      "name": "«Железные» технологии",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 3,
+      "name": "Социально-профессиональная структура",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 2,
+      "name": "Пространственная организация",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 1,
+      "name": "Природные ресурсы",
+      "events": [],
+      "event_count": 0
+    }
+  ],
+  "events": [],
+  "trends": [
+    {
+      "name": "AI-CapEx / инфраструктура (GPU, DC, networking)",
+      "momentum": 0,
+      "rationale": "** спрос остается сильным, но рынок нервно реагирует на «недостаточно впечатляющие» прогнозы Nvidia, что охлаждает ожидания и делает CapEx более селективным.",
+      "levels": [
+        9,
+        5,
+        4,
+        2
+      ],
+      "category": "stable"
+    },
+    {
+      "name": "Экспортный контроль чипов / лицензируемый доступ",
+      "momentum": 0,
+      "rationale": "** режим лицензий на H200 в Китай закрепляет модель «дозированного допуска», усиливая роль государства в цепочке поставок.",
+      "levels": [
+        9,
+        8,
+        5,
+        4
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Агентные AI-платформы (оркестрация, multi-agent, routing)",
+      "momentum": 0,
+      "rationale": "** волна работ про routing под бюджет, стабильный agentic RL, memory-архитектуры и оркестрацию свидетельствует о переходе от “чатботов” к производственным агентным конвейерам.",
+      "levels": [
+        6,
+        4,
+        5,
+        7
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Безопасность AI-агентов / stateful defense-in-depth",
+      "momentum": 0,
+      "rationale": "** реальные инциденты (взлом через Claude) + новые методы stateful trust для agentic RAG и “beyond refusal” показывают, что security становится обязательным инженерным слоем.",
+      "levels": [
+        8,
+        7,
+        6,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Закрытые API-модели как единственный центр силы",
+      "momentum": 0,
+      "rationale": "** рост практик multi-model orchestration/SLM+expert и удешевления инференса снижает монополию «одного большого API» в прикладных системах, даже если лидеры остаются сильными.",
+      "levels": [
+        5,
+        6,
+        4
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Классический SaaS (без глубокой AI-пересборки ценности)",
+      "momentum": 0,
+      "rationale": "** слабый прогноз Salesforce и «AI anxiety» - сигнал давления на традиционные модели роста и возможного перетока маржи к новым AI-слоям.",
+      "levels": [
+        9,
+        5
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Суверенный AI / китайская конкурентоспособность в AI",
+      "momentum": 0,
+      "rationale": "** с одной стороны, идет гонка и давление санкционной инфраструктуры; с другой - рынок наказывает за «AI lag» (Baidu), что может замедлять инвестиционный цикл и форсировать open-source/компрессию как обходной путь.",
+      "levels": [
+        9,
+        8,
+        5,
+        7,
+        4
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Physical AI / роботизация (humanoid, склады, «автономные» линии)",
+      "momentum": 0,
+      "rationale": "** одновременно есть медийный подъем темы, но реальные внедрения показывают хрупкость экономики rollout (Ocado) и зависимость от скрытого человеческого труда (humanoid).",
+      "levels": [
+        5,
+        3,
+        2
+      ],
+      "category": "stable"
+    },
+    {
+      "name": "капитализация «за участие в AI» + доверие к нарративу.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «капитализация «за участие в AI» + доверие к нарративу.» к «капитализация «за доказуемую эффективность/надежность/стоимость».». Упоминаний в контексте перехода: 0",
+      "levels": [
+        9,
+        7,
+        6,
+        5
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "глобальные поставки ускорителей как функция цены и спроса.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «глобальные поставки ускорителей как функция цены и спроса.» к «поставки как функция геополитической политики и индивидуальных лицензий.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        9,
+        8,
+        5,
+        4,
+        2
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "safety = policies/refusal/ручные ограничения.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «safety = policies/refusal/ручные ограничения.» к «safety = инженерные оверлеи (statefulness, routing, rewriting, steering) + публичная отчетность о предотвращенных злоупотреблениях.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        8,
+        7,
+        6,
+        5,
+        4
+      ],
+      "category": "decelerating"
+    }
+  ],
+  "cross_level_links": [
+    {
+      "title": "Финансовая селективность (Ур.9) → стандартизация доказуемости (Ур.7-6) → перестройка продуктовых цепочек (Ур.5).",
+      "description": "Финансовая селективность (Ур.9) → стандартизация доказуемости (Ур.7-6) → перестройка продуктовых цепочек (Ур.5).   Когда капитал дороже и «AI-премия» условна (ротация, private credit risk), индустрия ускоряет создание бенчмарков/сертификаций/метрик надежности и cost-aware routing, чтобы переводить обещания в проверяемые KPI.",
+      "levels": [
+        9,
+        7,
+        6,
+        5
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-02-26/richards-private-credit-software-defaults-could-hit-15-video",
+        "https://arxiv.org/abs/2602.21368",
+        "https://arxiv.org/abs/2602.21227"
+      ]
+    },
+    {
+      "title": "Геополитический контроль compute (Ур.9/8) → технологическая сегментация железа (Ур.4) → региональная дифференциация моделей/экосистем (Ур.5/7).",
+      "description": "Геополитический контроль compute (Ур.9/8) → технологическая сегментация железа (Ур.4) → региональная дифференциация моделей/экосистем (Ур.5/7).   Лицензирование H200 в Китай задает режим «дефицита по разрешению», что стимулирует локальные альтернативы, оптимизацию/компрессию и организационные обходы (multi-model routing, SLM, sparsity).",
+      "levels": [
+        9,
+        8,
+        7,
+        5,
+        4
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-26/nvidia-gets-us-license-for-small-amount-of-h200-exports-to-china",
+        "https://arxiv.org/abs/2602.21233"
+      ]
+    },
+    {
+      "title": "Инциденты злоупотреблений (Ур.8) → научные «оверлеи» безопасности (Ур.6-7) → новые обязательства провайдеров (Ур.5) и конфликт с силовым спросом.",
+      "description": "Инциденты злоупотреблений (Ур.8) → научные «оверлеи» безопасности (Ур.6-7) → новые обязательства провайдеров (Ур.5) и конфликт с силовым спросом.   Взломы/инфлюенс-операции повышают цену «fail-open поведения», что приводит к появлению stateful defense, переписывающих редакторов, reliability-gates - и одновременно к столкновению с заказчиками, которым нужны «снятые ограничения».",
+      "levels": [
+        8,
+        7,
+        6,
+        5
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/hacker-used-anthropic-s-claude-to-steal-sensitive-mexican-data",
+        "https://arxiv.org/abs/2602.21447",
+        "https://www.bloomberg.com/news/features/2026-02-26/pentagon-pressures-anthropic-to-drop-ai-guardrails-in-military-standoff"
+      ]
+    }
+  ],
+  "structural_shifts": [
+    {
+      "title": "От AI-хайпа к AI-аудиту» (финансовая дисциплина через метрики)**",
+      "from": "капитализация «за участие в AI» + доверие к нарративу.",
+      "to": "капитализация «за доказуемую эффективность/надежность/стоимость».",
+      "through": "удорожание капитала и рост кредитных рисков в софте → спрос на измеримость (reliability certification, benchmarks, routing under budget).",
+      "levels": [
+        9,
+        7,
+        6,
+        5
+      ],
+      "trend": "accelerating",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-02-26/richards-private-credit-software-defaults-could-hit-15-video",
+        "https://arxiv.org/abs/2602.21368"
+      ]
+    },
+    {
+      "title": "Лицензируемая глобализация compute» (дозированный доступ вместо рынка)**",
+      "from": "глобальные поставки ускорителей как функция цены и спроса.",
+      "to": "поставки как функция геополитической политики и индивидуальных лицензий.",
+      "through": "экспортный контроль + разрешительный режим на конкретные SKU/объемы.",
+      "levels": [
+        9,
+        8,
+        5,
+        4,
+        2
+      ],
+      "trend": "accelerating",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-26/nvidia-gets-us-license-for-small-amount-of-h200-exports-to-china"
+      ]
+    },
+    {
+      "title": "Безопасность как производственная функция» (не политика, а инженерный слой)**",
+      "from": "safety = policies/refusal/ручные ограничения.",
+      "to": "safety = инженерные оверлеи (statefulness, routing, rewriting, steering) + публичная отчетность о предотвращенных злоупотреблениях.",
+      "through": "рост атак/инцидентов + рост агентности → нужен слой управляемости без потери utility.",
+      "levels": [
+        8,
+        7,
+        6,
+        5,
+        4
+      ],
+      "trend": "accelerating",
+      "sources": [
+        "https://arxiv.org/abs/2602.21496",
+        "https://arxiv.org/abs/2602.21447",
+        "https://www.bloomberg.com/news/articles/2026-02-26/openai-says-chatgpt-refused-to-help-chinese-influence-operations"
+      ]
+    }
+  ],
+  "radar_signals": [
+    {
+      "title": "IPO-повестка с оговоркой “AI bubble risk”",
+      "description": "HKEX отдельно артикулирует риск пузыря AI и делает ставку на «диверсификацию заявителей». Если биржи начнут институционально дисконтировать AI-истории - это удар по финансированию второй линии стартапов.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-02-26/hkex-sees-diverse-ipos-amid-ai-bubble-risk-video"
+      ]
+    },
+    {
+      "title": "Военный заказчик против guardrails",
+      "description": "если DoD добьется прецедента снятия ограничений - это может расколоть рынок на «коммерчески-безопасные» и «силовые» стеки моделей/контуров поставки.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/features/2026-02-26/pentagon-pressures-anthropic-to-drop-ai-guardrails-in-military-standoff"
+      ]
+    },
+    {
+      "title": "Компрессия как новая “платформа” (2-bit, speculative, sparse attention)",
+      "description": "AngelSlim от Tencent - сигнал, что «стоимость токена» становится стратегическим полем конкуренции, особенно в юрисдикциях с ограниченным доступом к топ-GPU.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://arxiv.org/abs/2602.21233"
+      ]
+    },
+    {
+      "title": "Proactive agents на мобильных пока слабые (низкие success rate)",
+      "description": "бенчмарк ProactiveMobile фиксирует разрыв между “reactive tool use” и “proactive intent inference” - ниша для новых продуктов/OS-интеграций.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://arxiv.org/abs/2602.21858"
+      ]
+    },
+    {
+      "title": "Сокращения в автоматизации складов",
+      "description": "Ocado показывает, что «физический AI» и роботизация могут давать откат не из-за модели, а из-за экономики rollout и зависимости от крупного клиента. Это предупреждение для всего physical AI нарратива.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-26/ocado-to-cut-jobs-as-its-automated-warehouse-rollout-stutters"
+      ]
+    },
+    {
+      "title": "“Скрытый труд” в humanoid/роботах",
+      "description": "сигнал о том, что многие «демо-роботы» опираются на невидимую человеческую прослойку (данные/teleop/разметка), что может ударить по unit economics при масштабировании.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.technologyreview.com/2026/02/23/1133508/the-human-work-behind-humanoid-robots-is-being-hidden/"
+      ]
+    }
+  ],
+  "metrics": {
+    "total_events": 0,
+    "events_by_level": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0
+    },
+    "total_sources": 0,
+    "structural_shifts_count": 3,
+    "radar_signals_count": 6,
+    "cross_level_links_count": 3,
+    "momentum_trends_count": 11
+  },
+  "categories": [],
+  "momentum_trends": [
+    {
+      "name": "AI-CapEx / инфраструктура (GPU, DC, networking)",
+      "momentum": 0,
+      "rationale": "** спрос остается сильным, но рынок нервно реагирует на «недостаточно впечатляющие» прогнозы Nvidia, что охлаждает ожидания и делает CapEx более селективным.",
+      "levels": [
+        9,
+        5,
+        4,
+        2
+      ],
+      "category": "stable"
+    },
+    {
+      "name": "Экспортный контроль чипов / лицензируемый доступ",
+      "momentum": 0,
+      "rationale": "** режим лицензий на H200 в Китай закрепляет модель «дозированного допуска», усиливая роль государства в цепочке поставок.",
+      "levels": [
+        9,
+        8,
+        5,
+        4
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Агентные AI-платформы (оркестрация, multi-agent, routing)",
+      "momentum": 0,
+      "rationale": "** волна работ про routing под бюджет, стабильный agentic RL, memory-архитектуры и оркестрацию свидетельствует о переходе от “чатботов” к производственным агентным конвейерам.",
+      "levels": [
+        6,
+        4,
+        5,
+        7
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Безопасность AI-агентов / stateful defense-in-depth",
+      "momentum": 0,
+      "rationale": "** реальные инциденты (взлом через Claude) + новые методы stateful trust для agentic RAG и “beyond refusal” показывают, что security становится обязательным инженерным слоем.",
+      "levels": [
+        8,
+        7,
+        6,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Закрытые API-модели как единственный центр силы",
+      "momentum": 0,
+      "rationale": "** рост практик multi-model orchestration/SLM+expert и удешевления инференса снижает монополию «одного большого API» в прикладных системах, даже если лидеры остаются сильными.",
+      "levels": [
+        5,
+        6,
+        4
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Классический SaaS (без глубокой AI-пересборки ценности)",
+      "momentum": 0,
+      "rationale": "** слабый прогноз Salesforce и «AI anxiety» - сигнал давления на традиционные модели роста и возможного перетока маржи к новым AI-слоям.",
+      "levels": [
+        9,
+        5
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Суверенный AI / китайская конкурентоспособность в AI",
+      "momentum": 0,
+      "rationale": "** с одной стороны, идет гонка и давление санкционной инфраструктуры; с другой - рынок наказывает за «AI lag» (Baidu), что может замедлять инвестиционный цикл и форсировать open-source/компрессию как обходной путь.",
+      "levels": [
+        9,
+        8,
+        5,
+        7,
+        4
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Physical AI / роботизация (humanoid, склады, «автономные» линии)",
+      "momentum": 0,
+      "rationale": "** одновременно есть медийный подъем темы, но реальные внедрения показывают хрупкость экономики rollout (Ocado) и зависимость от скрытого человеческого труда (humanoid).",
+      "levels": [
+        5,
+        3,
+        2
+      ],
+      "category": "stable"
+    },
+    {
+      "name": "капитализация «за участие в AI» + доверие к нарративу.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «капитализация «за участие в AI» + доверие к нарративу.» к «капитализация «за доказуемую эффективность/надежность/стоимость».». Упоминаний в контексте перехода: 0",
+      "levels": [
+        9,
+        7,
+        6,
+        5
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "глобальные поставки ускорителей как функция цены и спроса.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «глобальные поставки ускорителей как функция цены и спроса.» к «поставки как функция геополитической политики и индивидуальных лицензий.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        9,
+        8,
+        5,
+        4,
+        2
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "safety = policies/refusal/ручные ограничения.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «safety = policies/refusal/ручные ограничения.» к «safety = инженерные оверлеи (statefulness, routing, rewriting, steering) + публичная отчетность о предотвращенных злоупотреблениях.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        8,
+        7,
+        6,
+        5,
+        4
+      ],
+      "category": "decelerating"
+    }
+  ]
+}
