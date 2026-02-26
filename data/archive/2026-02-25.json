@@ -1,6 +1,6 @@
 {
   "date": "2026-02-25",
-  "generated_at": "2026-02-25T17:01:20.780Z",
+  "generated_at": "2026-02-26T05:01:47.105Z",
   "key_focus": "",
   "srt_levels": [
     {
@@ -8,59 +8,48 @@
       "name": "Денежная система",
       "events": [
         {
-          "title": "Режим “no patience for AI hiccups”",
-          "description": "Режим “no patience for AI hiccups”: рынок нервный по AI-outlook; даже при сильных цифрах Nvidia реакция может быть непредсказуемой (“fickle”), на ленте доминируют сомнения в “staying power” тяжелых инвестиций и страхи AI-disruption.",
+          "title": "“Теплая” реакция рынка на сильный прогноз Nvidia",
+          "description": "“Теплая” реакция рынка на сильный прогноз Nvidia показывает, что инвесторы начали дисконтировать риск перегрева AI-CapEx и смещения маржи (рост есть, но премия за “бесконечный” рост падает).",
           "sources": [
-            "https://www.bloomberg.com/news/videos/2026-02-25/nvidia-earnings-to-come-with-no-patience-for-ai-hiccups-video"
+            "https://www.bloomberg.com/news/articles/2026-02-25/nvidia-s-rosy-revenue-forecast-shows-the-ai-boom-remains-strong"
           ]
         },
         {
-          "title": "Насыщение upside по Nvidia",
-          "description": "Насыщение upside по Nvidia как по “ядру” compute-цикла: Seaport-аналитик (sell) говорит о слабом потенциале meaningful upside.",
+          "title": "Baidu: -$11 млрд капитализации / -20% за месяц",
+          "description": "Baidu: -$11 млрд капитализации / -20% за месяц - сигнал, что в Китае инвесторы требуют материальных результатов AI-монетизации, а не “обещаний модели”. Это сдвигает финансирование от “AI-хайпа” к “AI-P&L”.",
           "sources": [
-            "https://www.bloomberg.com/news/videos/2026-02-25/nvidia-won-t-deliver-much-upside-says-goldberg-video"
+            "https://www.bloomberg.com/news/articles/2026-02-25/baidu-s-swift-11-billion-selloff-shows-struggle-to-meet-ai-hype"
           ]
         },
         {
-          "title": "Debt-аппетит к инфраструктурным бенефициарам сохраняется",
-          "description": "Debt-аппетит к инфраструктурным бенефициарам сохраняется: Wesco разместила junk-долг с ~$6 млрд спроса; бумаги выросли после размещения.",
+          "title": "Софтовый сектор под давлением (Salesforce, Snowflake, Zoom) + увольнения C3.ai",
+          "description": "Софтовый сектор под давлением (Salesforce, Snowflake, Zoom) + увольнения C3.ai - рынок начинает считать, что часть классического enterprise-SaaS будет коммодитизироваться агентами/новыми AI-конкурентами, и это отражается в гайденсе/марже/штате.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-24/wesco-junk-bond-deal-draws-6-billion-demand-on-data-center-boom"
-          ]
-        },
-        {
-          "title": "AI-дисконты мигрируют в private/secondary",
-          "description": "AI-дисконты мигрируют в private/secondary (пересчет риска software-денежных потоков).",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-25/ai-disruption-fears-prompt-scrutiny-in-booming-secondary-market"
-          ]
-        },
-        {
-          "title": "Банковская институционализация AI-инфры",
-          "description": "Банковская институционализация AI-инфры: Citi формирует специализированную группу под AI-инфраструктурный бум.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-25/citigroup-assembles-banking-team-focused-on-ai-infrastructure"
+            "https://www.bloomberg.com/news/articles/2026-02-25/salesforce-gives-disappointing-revenue-outlook-feeds-ai-anxiety",
+            "https://www.bloomberg.com/news/articles/2026-02-25/snowflake-gives-revenue-outlook-that-fails-to-impress-investors",
+            "https://www.bloomberg.com/news/articles/2026-02-25/zoom-gives-weaker-profit-outlook-in-push-to-expand-product-suite",
+            "https://www.bloomberg.com/news/articles/2026-02-25/c3-ai-layoffs-to-hit-quarter-of-company-after-ceo-transition"
           ]
         }
       ],
-      "event_count": 5
+      "event_count": 3
     },
     {
       "level": 8,
       "name": "Спонтанный порядок",
       "events": [
         {
-          "title": "Деградация добровольных safety-норм",
-          "description": "Деградация добровольных safety-норм: Anthropic ослабляет hallmark safety pledge ради гонки.",
+          "title": "Кейс: хакер использовал Claude для атак на мексиканские госагентства",
+          "description": "Кейс: хакер использовал Claude для атак на мексиканские госагентства - усиливает давление на провайдеров LLM по линии “misuse/abuse”, и фактически подталкивает отрасль к новым неформальным стандартам: logging, KYC, мониторинг инструментов, ограничения tool-use.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-25/anthropic-adds-caveat-to-ai-safety-policy-in-race-against-rivals"
+            "https://www.bloomberg.com/news/articles/2026-02-25/hacker-used-anthropic-s-claude-to-steal-sensitive-mexican-data"
           ]
         },
         {
-          "title": "Инцидентность как фактор доверия",
-          "description": "Инцидентность как фактор доверия: киберисследователи связывают использование Claude со взломами мексиканских госорганов и утечкой данных.",
+          "title": "Конфликт Пентагона с Anthropic вокруг “guardrails”",
+          "description": "Конфликт Пентагона с Anthropic вокруг “guardrails” - институционализация нового правила игры: “в военном контуре” требования к ограничениям модели могут быть противоположны гражданским safety-нормам, что раскалывает “единый” спонтанный порядок индустрии на контуры.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-25/hacker-used-anthropic-s-claude-to-steal-sensitive-mexican-data"
+            "https://www.bloomberg.com/news/features/2026-02-26/pentagon-pressures-anthropic-to-drop-ai-guardrails-in-military-standoff"
           ]
         }
       ],
@@ -71,10 +60,13 @@
       "name": "Институты производства знаний",
       "events": [
         {
-          "title": "Усиление “доказательных” подходов к поведению моделей (alignment under pressure): Pressure Reveals Character (904 multi-turn сценария) - попытка нормировать то, что раньше было pledge-коммуникацией",
-          "description": "Усиление “доказательных” подходов к поведению моделей (alignment under pressure): Pressure Reveals Character (904 multi-turn сценария) - попытка нормировать то, что раньше было pledge-коммуникацией.",
+          "title": "На arXiv заметна консолидация в сторону agentic systems как новой дисциплины: стабильное agentic RL (ARLArena), бюджет-aware routing, надежностная сертификация агентов, stateful trust для agentic RAG и т.д",
+          "description": "На arXiv заметна консолидация в сторону agentic systems как новой дисциплины: стабильное agentic RL (ARLArena), бюджет-aware routing, надежностная сертификация агентов, stateful trust для agentic RAG и т.д. Это означает: валидация знания смещается от “модель ответила” к “система выполнила workflow под ограничениями стоимости/риска”. Примеры: ARLArena, Budget-Aware Agentic Routing, Reliability Certification, MMA-RAG^T",
           "sources": [
-            "https://arxiv.org/abs/2602.20813"
+            "https://arxiv.org/abs/2602.21534",
+            "https://arxiv.org/abs/2602.21227",
+            "https://arxiv.org/abs/2602.21368",
+            "https://arxiv.org/abs/2602.21447"
           ]
         }
       ],
@@ -85,38 +77,47 @@
       "name": "Технологии производства знаний",
       "events": [
         {
-          "title": "Compute-дефицит капитализируется через эффективность: CHESS (KV-cache co-design) заявляет throughput до 4.56× при 1% KV",
-          "description": "Compute-дефицит капитализируется через эффективность: CHESS (KV-cache co-design) заявляет throughput до 4.56× при 1% KV. Это технологическая линия поддержки “staying power” AI-инвестиций.",
+          "title": "Растет пакет “инженерии управляемости” на inference-time: sparse steering для alignment, динамическое steering для VLM, подавление language priors для снижения галлюцинаций (NoLan)",
+          "description": "Растет пакет “инженерии управляемости” на inference-time: sparse steering для alignment, динамическое steering для VLM, подавление language priors для снижения галлюцинаций (NoLan).",
           "sources": [
-            "https://arxiv.org/abs/2602.20732"
+            "https://arxiv.org/abs/2602.21215",
+            "https://arxiv.org/abs/2602.21704",
+            "https://arxiv.org/abs/2602.22144"
+          ]
+        },
+        {
+          "title": "Усиливается методологический слой “аудита/трейсов/детерминированного исполнения” в multi-model orchestration (ACAR с immutable artifacts) - признак перехода к индустриальным требованиям повторяемости",
+          "description": "Усиливается методологический слой “аудита/трейсов/детерминированного исполнения” в multi-model orchestration (ACAR с immutable artifacts) - признак перехода к индустриальным требованиям повторяемости.",
+          "sources": [
+            "https://arxiv.org/abs/2602.21231"
           ]
         }
       ],
-      "event_count": 1
+      "event_count": 2
     },
     {
       "level": 5,
       "name": "Разделение труда между фирмами",
       "events": [
         {
-          "title": "Ротация капитала к “builders”",
-          "description": "Ротация капитала к “builders” (физическая экономика): UBS предлагает смещать ставки от “coders” к майнерам, энергетикам и индустриалам.",
+          "title": "Nvidia получила лицензию США на “малое количество” H200 в Китай",
+          "description": "Nvidia получила лицензию США на “малое количество” H200 в Китай - это не просто поставка, а механизм дозированной реинтеграции Китая в американскую GPU-цепочку через лицензирование (управление объемом/клиентами).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-25/ubs-global-wealth-cio-says-ditch-coders-for-builders-as-ai-booms"
+            "https://www.bloomberg.com/news/articles/2026-02-26/nvidia-gets-us-license-for-small-amount-of-h200-exports-to-china"
           ]
         },
         {
-          "title": "Поставщики power/cooling фиксируют рост",
-          "description": "Поставщики power/cooling фиксируют рост: Delta Electronics - рекордная прибыль на спросе на power systems и liquid cooling для AI-дата-центров.",
+          "title": "При этом США-чиновник заявлял, что H200 в Китай “продано ноль” спустя два месяца после разрешения - показывает, что экспортный контроль теперь работает как операционный тормоз (лицензия ≠ фактический поток)",
+          "description": "При этом США-чиновник заявлял, что H200 в Китай “продано ноль” спустя два месяца после разрешения - показывает, что экспортный контроль теперь работает как операционный тормоз (лицензия ≠ фактический поток).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-25/delta-electronics-profit-hits-record-on-ai-infrastructure-surge"
+            "https://www.bloomberg.com/news/articles/2026-02-24/nvidia-has-sold-zero-h200s-to-china-top-us-export-enforcer-says"
           ]
         },
         {
-          "title": "Гео-реаллокация нефтесервисных мощностей",
-          "description": "Гео-реаллокация нефтесервисных мощностей: US fracking компании отправляют простаивающее оборудование за рубеж из-за замедления роста shale. Это структурно означает экспорт части “энергетической производственной функции США” и потенциальное усиление добычи/доступности углеводородов в других регионах.",
+          "title": "AMD ↔ Nutanix: покупка акций + совместная инженерия и продажи",
+          "description": "AMD ↔ Nutanix: покупка акций + совместная инженерия и продажи - укрепление альтернативной связки “compute vendor ↔ infra/software platform”, т.е. попытка AMD выстроить свою экосистемную воронку против Nvidia+облаков.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-25/us-frack-fleets-find-new-life-abroad-as-shale-slump-persists"
+            "https://www.bloomberg.com/news/articles/2026-02-25/amd-to-buy-150-million-of-nutanix-stock-in-new-partnership"
           ]
         }
       ],
@@ -127,17 +128,17 @@
       "name": "«Железные» технологии",
       "events": [
         {
-          "title": "Контур инфраструктурной безопасности serving: OptiLeak (shared KV caches) снижает стоимость prompt-reconstruction атак - риск, который может материализоваться как “AI hiccup” уже на уровне enterprise-контрактов и регулирования",
-          "description": "Контур инфраструктурной безопасности serving: OptiLeak (shared KV caches) снижает стоимость prompt-reconstruction атак - риск, который может материализоваться как “AI hiccup” уже на уровне enterprise-контрактов и регулирования.",
+          "title": "“H200 less advanced” как предмет лицензирования фиксирует: конкретные SKU GPU становятся геополитическим инструментом (не абстрактные “чипы”, а именно продуктовые линии)",
+          "description": "“H200 less advanced” как предмет лицензирования фиксирует: конкретные SKU GPU становятся геополитическим инструментом (не абстрактные “чипы”, а именно продуктовые линии).",
           "sources": [
-            "https://arxiv.org/abs/2602.20595"
+            "https://www.bloomberg.com/news/articles/2026-02-26/nvidia-gets-us-license-for-small-amount-of-h200-exports-to-china"
           ]
         },
         {
-          "title": "Ответная протоколизация: OpenPort Protocol задает governance-спеку tool access (least privilege, auditability, write-gating)",
-          "description": "Ответная протоколизация: OpenPort Protocol задает governance-спеку tool access (least privilege, auditability, write-gating).",
+          "title": "Энергетический аспект compute институционализируется: Трамп созывает Amazon/Google/Meta подписать pledge “платить за электричество” дата-центров - это фактически переводит “энергозатраты AI” в обязательство уровня высшей политики/инфраструктурного контракта",
+          "description": "Энергетический аспект compute институционализируется: Трамп созывает Amazon/Google/Meta подписать pledge “платить за электричество” дата-центров - это фактически переводит “энергозатраты AI” в обязательство уровня высшей политики/инфраструктурного контракта.",
           "sources": [
-            "https://arxiv.org/abs/2602.20196"
+            "https://www.bloomberg.com/news/articles/2026-02-25/trump-summons-amazon-google-meta-to-sign-power-cost-pledge"
           ]
         }
       ],
@@ -148,293 +149,280 @@
       "name": "Социально-профессиональная структура",
       "events": [
         {
-          "title": "Сдвиг ренты к инфраструктурным профессиям (“builders”) усиливается на фоне роста спроса на эксплуатацию DC и энергоконтуры",
-          "description": "Сдвиг ренты к инфраструктурным профессиям (“builders”) усиливается на фоне роста спроса на эксплуатацию DC и энергоконтуры. Маркер - тезис UBS.",
+          "title": "Сокращения C3.ai (-26%)",
+          "description": "Сокращения C3.ai (-26%) - сигнал перераспределения спроса на роли: от “продавцов AI-платформ” к командам, которые дают измеримый эффект/интеграцию в процессы.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-25/ubs-global-wealth-cio-says-ditch-coders-for-builders-as-ai-booms"
+            "https://www.bloomberg.com/news/articles/2026-02-25/c3-ai-layoffs-to-hit-quarter-of-company-after-ceo-transition"
+          ]
+        },
+        {
+          "title": "История про “скрытый человеческий труд” в гуманоидной робототехнике усиливает тренд: рост роли операторов данных/телеметрии/разметчиков/инструкторов роботов, но при этом этот труд “в тени” и плохо институционализирован",
+          "description": "История про “скрытый человеческий труд” в гуманоидной робототехнике усиливает тренд: рост роли операторов данных/телеметрии/разметчиков/инструкторов роботов, но при этом этот труд “в тени” и плохо институционализирован.",
+          "sources": [
+            "https://www.technologyreview.com/2026/02/23/1133508/the-human-work-behind-humanoid-robots-is-being-hidden/"
           ]
         }
       ],
-      "event_count": 1
+      "event_count": 2
     },
     {
       "level": 2,
       "name": "Пространственная организация",
       "events": [
         {
-          "title": "Zoho обсуждает расширение DC в ОАЭ/Саудовской Аравии/ЮАР - перенос compute-мощностей в новые юрисдикции/энергетические зоны",
-          "description": "Zoho обсуждает расширение DC в ОАЭ/Саудовской Аравии/ЮАР - перенос compute-мощностей в новые юрисдикции/энергетические зоны.",
+          "title": "Белый дом прямо связывает Big Tech и стоимость энергии дата-центров - это про локализацию compute рядом с энергетикой и про переговоры с юрисдикциями/сетевыми операторами",
+          "description": "Белый дом прямо связывает Big Tech и стоимость энергии дата-центров - это про локализацию compute рядом с энергетикой и про переговоры с юрисдикциями/сетевыми операторами.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-25/billionaire-backed-zoho-plans-more-mideast-africa-data-centers"
-          ]
-        },
-        {
-          "title": "Экспорт frack-флотов из США - это тоже про пространственную организацию: сервисная инфраструктура добычи перемещается на внешние площадки",
-          "description": "Экспорт frack-флотов из США - это тоже про пространственную организацию: сервисная инфраструктура добычи перемещается на внешние площадки.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-25/us-frack-fleets-find-new-life-abroad-as-shale-slump-persists"
+            "https://www.bloomberg.com/news/articles/2026-02-25/trump-summons-amazon-google-meta-to-sign-power-cost-pledge"
           ]
         }
       ],
-      "event_count": 2
+      "event_count": 1
     },
     {
       "level": 1,
       "name": "Природные ресурсы",
       "events": [
         {
-          "title": "Питание/охлаждение дата-центров (энергия/тепло/вода) - физический лимит AI: рост Delta на liquid cooling/power подтверждает материализацию этого ограничения",
-          "description": "Питание/охлаждение дата-центров (энергия/тепло/вода) - физический лимит AI: рост Delta на liquid cooling/power подтверждает материализацию этого ограничения.",
+          "title": "“Платить за электричество дата-центров” поднимает базовое ограничение: электроэнергия становится ресурсом-дросселем для AI-роста, сопоставимым по значимости с GPU",
+          "description": "“Платить за электричество дата-центров” поднимает базовое ограничение: электроэнергия становится ресурсом-дросселем для AI-роста, сопоставимым по значимости с GPU.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-25/delta-electronics-profit-hits-record-on-ai-infrastructure-surge"
-          ]
-        },
-        {
-          "title": "Замедление shale - сигнал о возможном изменении траектории предложения нефти/газа в США; косвенно это может менять стоимость энергии (через глобальную переразметку добычи и экспорт нефтесервисных мощностей)",
-          "description": "Замедление shale - сигнал о возможном изменении траектории предложения нефти/газа в США; косвенно это может менять стоимость энергии (через глобальную переразметку добычи и экспорт нефтесервисных мощностей).",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-02-25/us-frack-fleets-find-new-life-abroad-as-shale-slump-persists"
+            "https://www.bloomberg.com/news/articles/2026-02-25/trump-summons-amazon-google-meta-to-sign-power-cost-pledge"
           ]
         }
       ],
-      "event_count": 2
+      "event_count": 1
     }
   ],
   "events": [
     {
-      "title": "Режим “no patience for AI hiccups”",
-      "description": "Режим “no patience for AI hiccups”: рынок нервный по AI-outlook; даже при сильных цифрах Nvidia реакция может быть непредсказуемой (“fickle”), на ленте доминируют сомнения в “staying power” тяжелых инвестиций и страхи AI-disruption.",
+      "title": "“Теплая” реакция рынка на сильный прогноз Nvidia",
+      "description": "“Теплая” реакция рынка на сильный прогноз Nvidia показывает, что инвесторы начали дисконтировать риск перегрева AI-CapEx и смещения маржи (рост есть, но премия за “бесконечный” рост падает).",
       "sources": [
-        "https://www.bloomberg.com/news/videos/2026-02-25/nvidia-earnings-to-come-with-no-patience-for-ai-hiccups-video"
+        "https://www.bloomberg.com/news/articles/2026-02-25/nvidia-s-rosy-revenue-forecast-shows-the-ai-boom-remains-strong"
       ],
       "level": 9
     },
     {
-      "title": "Насыщение upside по Nvidia",
-      "description": "Насыщение upside по Nvidia как по “ядру” compute-цикла: Seaport-аналитик (sell) говорит о слабом потенциале meaningful upside.",
+      "title": "Baidu: -$11 млрд капитализации / -20% за месяц",
+      "description": "Baidu: -$11 млрд капитализации / -20% за месяц - сигнал, что в Китае инвесторы требуют материальных результатов AI-монетизации, а не “обещаний модели”. Это сдвигает финансирование от “AI-хайпа” к “AI-P&L”.",
       "sources": [
-        "https://www.bloomberg.com/news/videos/2026-02-25/nvidia-won-t-deliver-much-upside-says-goldberg-video"
+        "https://www.bloomberg.com/news/articles/2026-02-25/baidu-s-swift-11-billion-selloff-shows-struggle-to-meet-ai-hype"
       ],
       "level": 9
     },
     {
-      "title": "Debt-аппетит к инфраструктурным бенефициарам сохраняется",
-      "description": "Debt-аппетит к инфраструктурным бенефициарам сохраняется: Wesco разместила junk-долг с ~$6 млрд спроса; бумаги выросли после размещения.",
+      "title": "Софтовый сектор под давлением (Salesforce, Snowflake, Zoom) + увольнения C3.ai",
+      "description": "Софтовый сектор под давлением (Salesforce, Snowflake, Zoom) + увольнения C3.ai - рынок начинает считать, что часть классического enterprise-SaaS будет коммодитизироваться агентами/новыми AI-конкурентами, и это отражается в гайденсе/марже/штате.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-24/wesco-junk-bond-deal-draws-6-billion-demand-on-data-center-boom"
+        "https://www.bloomberg.com/news/articles/2026-02-25/salesforce-gives-disappointing-revenue-outlook-feeds-ai-anxiety",
+        "https://www.bloomberg.com/news/articles/2026-02-25/snowflake-gives-revenue-outlook-that-fails-to-impress-investors",
+        "https://www.bloomberg.com/news/articles/2026-02-25/zoom-gives-weaker-profit-outlook-in-push-to-expand-product-suite",
+        "https://www.bloomberg.com/news/articles/2026-02-25/c3-ai-layoffs-to-hit-quarter-of-company-after-ceo-transition"
       ],
       "level": 9
     },
     {
-      "title": "AI-дисконты мигрируют в private/secondary",
-      "description": "AI-дисконты мигрируют в private/secondary (пересчет риска software-денежных потоков).",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/ai-disruption-fears-prompt-scrutiny-in-booming-secondary-market"
-      ],
-      "level": 9
-    },
-    {
-      "title": "Банковская институционализация AI-инфры",
-      "description": "Банковская институционализация AI-инфры: Citi формирует специализированную группу под AI-инфраструктурный бум.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/citigroup-assembles-banking-team-focused-on-ai-infrastructure"
-      ],
-      "level": 9
-    },
-    {
-      "title": "Деградация добровольных safety-норм",
-      "description": "Деградация добровольных safety-норм: Anthropic ослабляет hallmark safety pledge ради гонки.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/anthropic-adds-caveat-to-ai-safety-policy-in-race-against-rivals"
-      ],
-      "level": 8
-    },
-    {
-      "title": "Инцидентность как фактор доверия",
-      "description": "Инцидентность как фактор доверия: киберисследователи связывают использование Claude со взломами мексиканских госорганов и утечкой данных.",
+      "title": "Кейс: хакер использовал Claude для атак на мексиканские госагентства",
+      "description": "Кейс: хакер использовал Claude для атак на мексиканские госагентства - усиливает давление на провайдеров LLM по линии “misuse/abuse”, и фактически подталкивает отрасль к новым неформальным стандартам: logging, KYC, мониторинг инструментов, ограничения tool-use.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-02-25/hacker-used-anthropic-s-claude-to-steal-sensitive-mexican-data"
       ],
       "level": 8
     },
     {
-      "title": "Усиление “доказательных” подходов к поведению моделей (alignment under pressure): Pressure Reveals Character (904 multi-turn сценария) - попытка нормировать то, что раньше было pledge-коммуникацией",
-      "description": "Усиление “доказательных” подходов к поведению моделей (alignment under pressure): Pressure Reveals Character (904 multi-turn сценария) - попытка нормировать то, что раньше было pledge-коммуникацией.",
+      "title": "Конфликт Пентагона с Anthropic вокруг “guardrails”",
+      "description": "Конфликт Пентагона с Anthropic вокруг “guardrails” - институционализация нового правила игры: “в военном контуре” требования к ограничениям модели могут быть противоположны гражданским safety-нормам, что раскалывает “единый” спонтанный порядок индустрии на контуры.",
       "sources": [
-        "https://arxiv.org/abs/2602.20813"
+        "https://www.bloomberg.com/news/features/2026-02-26/pentagon-pressures-anthropic-to-drop-ai-guardrails-in-military-standoff"
+      ],
+      "level": 8
+    },
+    {
+      "title": "На arXiv заметна консолидация в сторону agentic systems как новой дисциплины: стабильное agentic RL (ARLArena), бюджет-aware routing, надежностная сертификация агентов, stateful trust для agentic RAG и т.д",
+      "description": "На arXiv заметна консолидация в сторону agentic systems как новой дисциплины: стабильное agentic RL (ARLArena), бюджет-aware routing, надежностная сертификация агентов, stateful trust для agentic RAG и т.д. Это означает: валидация знания смещается от “модель ответила” к “система выполнила workflow под ограничениями стоимости/риска”. Примеры: ARLArena, Budget-Aware Agentic Routing, Reliability Certification, MMA-RAG^T",
+      "sources": [
+        "https://arxiv.org/abs/2602.21534",
+        "https://arxiv.org/abs/2602.21227",
+        "https://arxiv.org/abs/2602.21368",
+        "https://arxiv.org/abs/2602.21447"
       ],
       "level": 7
     },
     {
-      "title": "Compute-дефицит капитализируется через эффективность: CHESS (KV-cache co-design) заявляет throughput до 4.56× при 1% KV",
-      "description": "Compute-дефицит капитализируется через эффективность: CHESS (KV-cache co-design) заявляет throughput до 4.56× при 1% KV. Это технологическая линия поддержки “staying power” AI-инвестиций.",
+      "title": "Растет пакет “инженерии управляемости” на inference-time: sparse steering для alignment, динамическое steering для VLM, подавление language priors для снижения галлюцинаций (NoLan)",
+      "description": "Растет пакет “инженерии управляемости” на inference-time: sparse steering для alignment, динамическое steering для VLM, подавление language priors для снижения галлюцинаций (NoLan).",
       "sources": [
-        "https://arxiv.org/abs/2602.20732"
+        "https://arxiv.org/abs/2602.21215",
+        "https://arxiv.org/abs/2602.21704",
+        "https://arxiv.org/abs/2602.22144"
       ],
       "level": 6
     },
     {
-      "title": "Ротация капитала к “builders”",
-      "description": "Ротация капитала к “builders” (физическая экономика): UBS предлагает смещать ставки от “coders” к майнерам, энергетикам и индустриалам.",
+      "title": "Усиливается методологический слой “аудита/трейсов/детерминированного исполнения” в multi-model orchestration (ACAR с immutable artifacts) - признак перехода к индустриальным требованиям повторяемости",
+      "description": "Усиливается методологический слой “аудита/трейсов/детерминированного исполнения” в multi-model orchestration (ACAR с immutable artifacts) - признак перехода к индустриальным требованиям повторяемости.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/ubs-global-wealth-cio-says-ditch-coders-for-builders-as-ai-booms"
+        "https://arxiv.org/abs/2602.21231"
+      ],
+      "level": 6
+    },
+    {
+      "title": "Nvidia получила лицензию США на “малое количество” H200 в Китай",
+      "description": "Nvidia получила лицензию США на “малое количество” H200 в Китай - это не просто поставка, а механизм дозированной реинтеграции Китая в американскую GPU-цепочку через лицензирование (управление объемом/клиентами).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-26/nvidia-gets-us-license-for-small-amount-of-h200-exports-to-china"
       ],
       "level": 5
     },
     {
-      "title": "Поставщики power/cooling фиксируют рост",
-      "description": "Поставщики power/cooling фиксируют рост: Delta Electronics - рекордная прибыль на спросе на power systems и liquid cooling для AI-дата-центров.",
+      "title": "При этом США-чиновник заявлял, что H200 в Китай “продано ноль” спустя два месяца после разрешения - показывает, что экспортный контроль теперь работает как операционный тормоз (лицензия ≠ фактический поток)",
+      "description": "При этом США-чиновник заявлял, что H200 в Китай “продано ноль” спустя два месяца после разрешения - показывает, что экспортный контроль теперь работает как операционный тормоз (лицензия ≠ фактический поток).",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/delta-electronics-profit-hits-record-on-ai-infrastructure-surge"
+        "https://www.bloomberg.com/news/articles/2026-02-24/nvidia-has-sold-zero-h200s-to-china-top-us-export-enforcer-says"
       ],
       "level": 5
     },
     {
-      "title": "Гео-реаллокация нефтесервисных мощностей",
-      "description": "Гео-реаллокация нефтесервисных мощностей: US fracking компании отправляют простаивающее оборудование за рубеж из-за замедления роста shale. Это структурно означает экспорт части “энергетической производственной функции США” и потенциальное усиление добычи/доступности углеводородов в других регионах.",
+      "title": "AMD ↔ Nutanix: покупка акций + совместная инженерия и продажи",
+      "description": "AMD ↔ Nutanix: покупка акций + совместная инженерия и продажи - укрепление альтернативной связки “compute vendor ↔ infra/software platform”, т.е. попытка AMD выстроить свою экосистемную воронку против Nvidia+облаков.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/us-frack-fleets-find-new-life-abroad-as-shale-slump-persists"
+        "https://www.bloomberg.com/news/articles/2026-02-25/amd-to-buy-150-million-of-nutanix-stock-in-new-partnership"
       ],
       "level": 5
     },
     {
-      "title": "Контур инфраструктурной безопасности serving: OptiLeak (shared KV caches) снижает стоимость prompt-reconstruction атак - риск, который может материализоваться как “AI hiccup” уже на уровне enterprise-контрактов и регулирования",
-      "description": "Контур инфраструктурной безопасности serving: OptiLeak (shared KV caches) снижает стоимость prompt-reconstruction атак - риск, который может материализоваться как “AI hiccup” уже на уровне enterprise-контрактов и регулирования.",
+      "title": "“H200 less advanced” как предмет лицензирования фиксирует: конкретные SKU GPU становятся геополитическим инструментом (не абстрактные “чипы”, а именно продуктовые линии)",
+      "description": "“H200 less advanced” как предмет лицензирования фиксирует: конкретные SKU GPU становятся геополитическим инструментом (не абстрактные “чипы”, а именно продуктовые линии).",
       "sources": [
-        "https://arxiv.org/abs/2602.20595"
+        "https://www.bloomberg.com/news/articles/2026-02-26/nvidia-gets-us-license-for-small-amount-of-h200-exports-to-china"
       ],
       "level": 4
     },
     {
-      "title": "Ответная протоколизация: OpenPort Protocol задает governance-спеку tool access (least privilege, auditability, write-gating)",
-      "description": "Ответная протоколизация: OpenPort Protocol задает governance-спеку tool access (least privilege, auditability, write-gating).",
+      "title": "Энергетический аспект compute институционализируется: Трамп созывает Amazon/Google/Meta подписать pledge “платить за электричество” дата-центров - это фактически переводит “энергозатраты AI” в обязательство уровня высшей политики/инфраструктурного контракта",
+      "description": "Энергетический аспект compute институционализируется: Трамп созывает Amazon/Google/Meta подписать pledge “платить за электричество” дата-центров - это фактически переводит “энергозатраты AI” в обязательство уровня высшей политики/инфраструктурного контракта.",
       "sources": [
-        "https://arxiv.org/abs/2602.20196"
+        "https://www.bloomberg.com/news/articles/2026-02-25/trump-summons-amazon-google-meta-to-sign-power-cost-pledge"
       ],
       "level": 4
     },
     {
-      "title": "Сдвиг ренты к инфраструктурным профессиям (“builders”) усиливается на фоне роста спроса на эксплуатацию DC и энергоконтуры",
-      "description": "Сдвиг ренты к инфраструктурным профессиям (“builders”) усиливается на фоне роста спроса на эксплуатацию DC и энергоконтуры. Маркер - тезис UBS.",
+      "title": "Сокращения C3.ai (-26%)",
+      "description": "Сокращения C3.ai (-26%) - сигнал перераспределения спроса на роли: от “продавцов AI-платформ” к командам, которые дают измеримый эффект/интеграцию в процессы.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/ubs-global-wealth-cio-says-ditch-coders-for-builders-as-ai-booms"
+        "https://www.bloomberg.com/news/articles/2026-02-25/c3-ai-layoffs-to-hit-quarter-of-company-after-ceo-transition"
       ],
       "level": 3
     },
     {
-      "title": "Zoho обсуждает расширение DC в ОАЭ/Саудовской Аравии/ЮАР - перенос compute-мощностей в новые юрисдикции/энергетические зоны",
-      "description": "Zoho обсуждает расширение DC в ОАЭ/Саудовской Аравии/ЮАР - перенос compute-мощностей в новые юрисдикции/энергетические зоны.",
+      "title": "История про “скрытый человеческий труд” в гуманоидной робототехнике усиливает тренд: рост роли операторов данных/телеметрии/разметчиков/инструкторов роботов, но при этом этот труд “в тени” и плохо институционализирован",
+      "description": "История про “скрытый человеческий труд” в гуманоидной робототехнике усиливает тренд: рост роли операторов данных/телеметрии/разметчиков/инструкторов роботов, но при этом этот труд “в тени” и плохо институционализирован.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/billionaire-backed-zoho-plans-more-mideast-africa-data-centers"
+        "https://www.technologyreview.com/2026/02/23/1133508/the-human-work-behind-humanoid-robots-is-being-hidden/"
+      ],
+      "level": 3
+    },
+    {
+      "title": "Белый дом прямо связывает Big Tech и стоимость энергии дата-центров - это про локализацию compute рядом с энергетикой и про переговоры с юрисдикциями/сетевыми операторами",
+      "description": "Белый дом прямо связывает Big Tech и стоимость энергии дата-центров - это про локализацию compute рядом с энергетикой и про переговоры с юрисдикциями/сетевыми операторами.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/trump-summons-amazon-google-meta-to-sign-power-cost-pledge"
       ],
       "level": 2
     },
     {
-      "title": "Экспорт frack-флотов из США - это тоже про пространственную организацию: сервисная инфраструктура добычи перемещается на внешние площадки",
-      "description": "Экспорт frack-флотов из США - это тоже про пространственную организацию: сервисная инфраструктура добычи перемещается на внешние площадки.",
+      "title": "“Платить за электричество дата-центров” поднимает базовое ограничение: электроэнергия становится ресурсом-дросселем для AI-роста, сопоставимым по значимости с GPU",
+      "description": "“Платить за электричество дата-центров” поднимает базовое ограничение: электроэнергия становится ресурсом-дросселем для AI-роста, сопоставимым по значимости с GPU.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/us-frack-fleets-find-new-life-abroad-as-shale-slump-persists"
-      ],
-      "level": 2
-    },
-    {
-      "title": "Питание/охлаждение дата-центров (энергия/тепло/вода) - физический лимит AI: рост Delta на liquid cooling/power подтверждает материализацию этого ограничения",
-      "description": "Питание/охлаждение дата-центров (энергия/тепло/вода) - физический лимит AI: рост Delta на liquid cooling/power подтверждает материализацию этого ограничения.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/delta-electronics-profit-hits-record-on-ai-infrastructure-surge"
-      ],
-      "level": 1
-    },
-    {
-      "title": "Замедление shale - сигнал о возможном изменении траектории предложения нефти/газа в США; косвенно это может менять стоимость энергии (через глобальную переразметку добычи и экспорт нефтесервисных мощностей)",
-      "description": "Замедление shale - сигнал о возможном изменении траектории предложения нефти/газа в США; косвенно это может менять стоимость энергии (через глобальную переразметку добычи и экспорт нефтесервисных мощностей).",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/us-frack-fleets-find-new-life-abroad-as-shale-slump-persists"
+        "https://www.bloomberg.com/news/articles/2026-02-25/trump-summons-amazon-google-meta-to-sign-power-cost-pledge"
       ],
       "level": 1
     }
   ],
   "trends": [
     {
-      "name": "AI-CapEx / инфраструктура дата-центров (долг, поставщики)",
-      "momentum": 85,
-      "rationale": "$6 млрд спроса на бонды Wesco + институционализация в банках (Citi). ;",
+      "name": "AI-CapEx / инфраструктура compute (GPU + DC)",
+      "momentum": 65,
+      "rationale": "Nvidia говорит, что клиенты “racing to invest in AI compute”, но рынок реагирует сдержанно - рост продолжается, но без эйфории.",
       "levels": [
-        9,
+        4,
         5,
-        2,
-        1
+        9
       ],
-      "category": "accelerating"
+      "category": "stable"
     },
     {
-      "name": "Power/cooling как узкое место AI",
-      "momentum": 75,
-      "rationale": "рекордная прибыль Delta на спросе со стороны AI-DC.",
+      "name": "Энергетическое ограничение AI (power-as-bottleneck)",
+      "momentum": 80,
+      "rationale": "Белый дом переводит тему энергии дата-центров в формат публичного обязательства Big Tech - сильный институциональный ускоритель.",
       "levels": [
         1,
         2,
-        5
+        8,
+        9
       ],
       "category": "accelerating"
     },
     {
-      "name": "“No patience for AI hiccups” (жесткость рынка к сбоям)",
-      "momentum": 60,
-      "rationale": "рынок нервный, реакция “fickle”, сомнения в устойчивости инвестиций доминируют.",
-      "levels": [
-        9,
-        5
-      ],
-      "category": "emerging"
-    },
-    {
-      "name": "AI-disruption-discount в private/secondary",
+      "name": "Экспортный контроль чипов / лицензирование поставок в Китай",
       "momentum": 55,
-      "rationale": "scrutiny в secondary из-за AI-рисков для софта.",
+      "rationale": "лицензия на небольшой объем H200 подтверждает, что режим “управляемого крана” закрепляется.",
       "levels": [
         9,
-        5
+        8,
+        5,
+        4
       ],
-      "category": "emerging"
+      "category": "stable"
     },
     {
-      "name": "Экспорт нефтесервисных мощностей (frack fleets abroad)",
-      "momentum": 40,
-      "rationale": "структурный сдвиг загрузки отрасли при замедлении shale в США; это меняет географию энерго-производства и косвенно базу для энергоемкого AI.",
+      "name": "Агентные AI-платформы (workflow-агенты)",
+      "momentum": 70,
+      "rationale": "всплеск исследований по agentic RL, routing, memory, orchestration и др. указывает на переход из “демо” в “инженерную норму”.",
       "levels": [
-        2,
-        1,
+        6,
+        7,
         5
       ],
-      "category": "emerging"
+      "category": "accelerating"
     },
     {
-      "name": "Voluntary safety pledges",
-      "momentum": -45,
-      "rationale": "Anthropic ослабляет обязательство по guardrails.",
+      "name": "Безопасность AI-агентов / stateful defense",
+      "momentum": 85,
+      "rationale": "реальный инцидент злоупотребления Claude для взлома госструктур резко повышает спрос на defense-in-depth.",
       "levels": [
         8,
-        7
+        6,
+        5
       ],
-      "category": "decelerating"
+      "category": "accelerating"
     },
     {
-      "name": "“Nvidia как главный прокси AI”.",
-      "momentum": -10,
-      "rationale": "Угасает: переход от «“Nvidia как главный прокси AI”.» к «“AI как связка compute + энергия + охлаждение + география”.». Упоминаний в контексте перехода: 0",
+      "name": "Закрытые API-модели как “единый стандарт”",
+      "momentum": 15,
+      "rationale": "с одной стороны, усиливается спрос гос/обороны; с другой - растет давление из-за misuse и требования “контуров” (гражданский/военный), что фрагментирует рынок.",
       "levels": [
-        9,
+        8,
         5,
-        2,
-        1
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Классический enterprise SaaS (без радикальной AI-пересборки)",
+      "momentum": -45,
+      "rationale": "слабые прогнозы Salesforce/Snowflake/Zoom и нервозность инвесторов отражают ожидание перетока value из лицензий/seat-based в агентные функции/автоматизацию.",
+      "levels": [
+        5,
+        9
       ],
       "category": "decelerating"
     },
     {
-      "name": "рост перекрывает неопределенности.",
-      "momentum": -80,
-      "rationale": "Угасает: переход от «рост перекрывает неопределенности.» к «рынок требует устойчивости и безаварийного исполнения, иначе переоценка даже при сильных числах.». Упоминаний в контексте перехода: 5",
+      "name": "“AI-хайп без результатов” на китайском рынке публичных компаний",
+      "momentum": -35,
+      "rationale": "распродажа Baidu показывает, что капитал в Китае начинает жестче требовать доказательств монетизации AI.",
       "levels": [
         9,
         5
@@ -442,228 +430,286 @@
       "category": "decelerating"
     },
     {
-      "name": "US shale как внутренний драйвер загрузки нефтесервиса.",
-      "momentum": -40,
-      "rationale": "Угасает: переход от «US shale как внутренний драйвер загрузки нефтесервиса.» к «экспорт fracking-флотов на внешние рынки → рост роли других регионов в предложении энергии → изменение энергетической базы для data-center-экономики.». Упоминаний в контексте перехода: 2",
+      "name": "глобальная оптимизация закупок GPU/облака по цене и доступности.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «глобальная оптимизация закупок GPU/облака по цене и доступности.» к «режим “дозированного допуска” через лицензии, где объем и SKU - инструмент политики.». Упоминаний в контексте перехода: 0",
       "levels": [
         9,
+        8,
         5,
+        4
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "bottleneck = GPU/капитал.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «bottleneck = GPU/капитал.» к «bottleneck = GPU + энергомощность + политико-инфраструктурные договоренности.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        9,
+        8,
         2,
         1
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "оценка качества по чат-бенчмаркам/одиночным ответам.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «оценка качества по чат-бенчмаркам/одиночным ответам.» к «оценка по устойчивости workflow, стоимости эпизода, сертификации надежности, stateful-защите.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        8,
+        7,
+        6,
+        5
       ],
       "category": "decelerating"
     }
   ],
   "cross_level_links": [
     {
-      "title": "Связка 1: Ресурсный/энергетический цикл → AI-инфра-цикл (1/2 → 5 → 9)",
-      "description": "- Замедление роста shale высвобождает оборудование и компании переориентируют его на внешние рынки.",
+      "title": "Энергетический дроссель (Ур.1) → политика размещения дата-центров (Ур.2) → корпоративные обязательства (Ур.8/9)",
+      "description": "Энергетический дроссель (Ур.1) → политика размещения дата-центров (Ур.2) → корпоративные обязательства (Ур.8/9) - Дефицит/стоимость энергии для AI-кластеров (Ур.1) вынуждает менять географию и модели контрактования мощности (Ур.2), что оформляется через политические pledge и “квазиналог” на compute (Ур.8-9).",
       "levels": [
         9,
-        5,
-        1
-      ],
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/us-frack-fleets-find-new-life-abroad-as-shale-slump-persists"
-      ]
-    },
-    {
-      "title": "Связка 2: “No patience” на equity → перенос ренты к инфраструктуре (9 → 5 → 1)",
-      "description": "- Нервозность по Nvidia и сомнения в “staying power” инвестиций повышают требование к доказуемости устойчивости.",
-      "levels": [
-        9,
-        5,
-        1
-      ],
-      "sources": [
-        "https://www.bloomberg.com/news/videos/2026-02-25/nvidia-earnings-to-come-with-no-patience-for-ai-hiccups-video"
-      ]
-    },
-    {
-      "title": "Связка 3: Safety-декларации деградируют → безопасность протоколизируется (8 → 4/7)",
-      "description": "- Ослабление pledge у Anthropic + инциденты (Claude-взлом) ускоряют спрос на “инженерную” безопасность (протоколы, аудит).",
-      "levels": [
         8,
+        2,
+        1
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/trump-summons-amazon-google-meta-to-sign-power-cost-pledge"
+      ]
+    },
+    {
+      "title": "Экспортный контроль (Ур.9/8) → продуктовая сегментация GPU (Ур.4) → перестройка цепочек поставок (Ур.5)",
+      "description": "Экспортный контроль (Ур.9/8) → продуктовая сегментация GPU (Ур.4) → перестройка цепочек поставок (Ур.5) - Лицензия на “малое количество” H200 в Китай (Ур.9/8) закрепляет SKU-дифференциацию (Ур.4) и заставляет компании пересобирать планы закупок/облака/локальные альтернативы (Ур.5).",
+      "levels": [
+        9,
+        8,
+        5,
         4
       ],
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/anthropic-adds-caveat-to-ai-safety-policy-in-race-against-rivals",
-        "https://www.bloomberg.com/news/articles/2026-02-25/hacker-used-anthropic-s-claude-to-steal-sensitive-mexican-data",
-        "https://arxiv.org/abs/2602.20196"
+        "https://www.bloomberg.com/news/articles/2026-02-26/nvidia-gets-us-license-for-small-amount-of-h200-exports-to-china"
+      ]
+    },
+    {
+      "title": "Злоупотребления LLM (Ур.8) → инженерия stateful-defense/аудита (Ур.6) → изменение ролей в компаниях (Ур.3)",
+      "description": "Злоупотребления LLM (Ур.8) → инженерия stateful-defense/аудита (Ур.6) → изменение ролей в компаниях (Ур.3) - Взлом с использованием Claude (Ур.8) подталкивает к внедрению архитектур доверия/контроля (stateful trust, reliability gates) как стандартных модулей (Ур.6), что повышает спрос на security/assurance роли и снижает долю “чистых” prompt-ролей (Ур.3).",
+      "levels": [
+        8,
+        6,
+        3
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/hacker-used-anthropic-s-claude-to-steal-sensitive-mexican-data"
       ]
     }
   ],
   "structural_shifts": [
     {
-      "title": "AI-цикл становится инфраструктурно-энергетическим, а не только “чиповым",
-      "from": "“Nvidia как главный прокси AI”.",
-      "to": "“AI как связка compute + энергия + охлаждение + география”.",
-      "through": "рост power/cooling-поставщиков, кредитование инфры, тезис “builders”.",
+      "title": "Compute как регулируемый экспортный поток”, а не глобальный товар",
+      "from": "глобальная оптимизация закупок GPU/облака по цене и доступности.",
+      "to": "режим “дозированного допуска” через лицензии, где объем и SKU - инструмент политики.",
+      "through": "экспортный контроль + лицензирование “малых партий” + фактические задержки поставок.",
       "levels": [
         9,
+        8,
         5,
-        2,
-        1
+        4
       ],
-      "trend": "accelerating",
+      "trend": "emerging",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/delta-electronics-profit-hits-record-on-ai-infrastructure-surge",
-        "https://www.bloomberg.com/news/articles/2026-02-24/wesco-junk-bond-deal-draws-6-billion-demand-on-data-center-boom",
-        "https://www.bloomberg.com/news/articles/2026-02-25/ubs-global-wealth-cio-says-ditch-coders-for-builders-as-ai-booms"
+        "https://www.bloomberg.com/news/articles/2026-02-26/nvidia-gets-us-license-for-small-amount-of-h200-exports-to-china",
+        "https://www.bloomberg.com/news/articles/2026-02-24/nvidia-has-sold-zero-h200s-to-china-top-us-export-enforcer-says"
       ]
     },
     {
-      "title": "Режим рынка: от tolerance к “no patience for hiccups",
-      "from": "рост перекрывает неопределенности.",
-      "to": "рынок требует устойчивости и безаварийного исполнения, иначе переоценка даже при сильных числах.",
-      "through": "",
+      "title": "Энергия становится вторым лимитом масштабирования AI” (наряду с чипами)",
+      "from": "bottleneck = GPU/капитал.",
+      "to": "bottleneck = GPU + энергомощность + политико-инфраструктурные договоренности.",
+      "through": "государство переводит энергорасходы дата-центров в плоскость обязательств Big Tech.",
       "levels": [
         9,
+        8,
+        2,
+        1
+      ],
+      "trend": "emerging",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/trump-summons-amazon-google-meta-to-sign-power-cost-pledge"
+      ]
+    },
+    {
+      "title": "От LLM как продукта → к агентным системам как индустриальному стандарту (с аудитом, бюджетом, trust)",
+      "from": "оценка качества по чат-бенчмаркам/одиночным ответам.",
+      "to": "оценка по устойчивости workflow, стоимости эпизода, сертификации надежности, stateful-защите.",
+      "through": "рост злоупотреблений + требования госсектора/обороны + зрелость исследований по agentic RL/routing/defense.",
+      "levels": [
+        8,
+        7,
+        6,
         5
       ],
       "trend": "accelerating",
       "sources": [
-        "https://www.bloomberg.com/news/videos/2026-02-25/nvidia-earnings-to-come-with-no-patience-for-ai-hiccups-video"
-      ]
-    },
-    {
-      "title": "Глобальная переразметка энергетического сервиса (frack-экспорт) как скрытая предпосылка AI-инфры",
-      "from": "US shale как внутренний драйвер загрузки нефтесервиса.",
-      "to": "экспорт fracking-флотов на внешние рынки → рост роли других регионов в предложении энергии → изменение энергетической базы для data-center-экономики.",
-      "through": "",
-      "levels": [
-        9,
-        5,
-        2,
-        1
-      ],
-      "trend": "accelerating",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/us-frack-fleets-find-new-life-abroad-as-shale-slump-persists"
+        "https://www.bloomberg.com/news/articles/2026-02-25/hacker-used-anthropic-s-claude-to-steal-sensitive-mexican-data",
+        "https://arxiv.org/abs/2602.21368",
+        "https://arxiv.org/abs/2602.21227"
       ]
     }
   ],
   "radar_signals": [
     {
-      "title": "Энергосервис “ищет рынок”",
-      "description": "экспорт frack-оборудования - слабый сигнал будущей перестройки энергетических балансов и инвестиционных программ в развивающихся/вне-US регионах, что может ударно повлиять на цену электроэнергии/газа для DC (и на выбор географии AI-мощностей).",
-      "level_group": "lower",
-      "level_range": "1-3",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/us-frack-fleets-find-new-life-abroad-as-shale-slump-persists"
-      ]
-    },
-    {
-      "title": "Private/secondary переоценивает софт",
-      "description": "если дисконт закрепится, вырастет роль инфраструктурного долга и project-finance под DC.",
+      "title": "“Лицензия на малое количество” как новый стабильный режим",
+      "description": ", а не исключение: может стать шаблоном управления рынком (квоты/клиент-листы).",
       "level_group": "upper",
       "level_range": "7-9",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-02-25/ai-disruption-fears-prompt-scrutiny-in-booming-secondary-market"
+        "https://www.bloomberg.com/news/articles/2026-02-26/nvidia-gets-us-license-for-small-amount-of-h200-exports-to-china"
+      ]
+    },
+    {
+      "title": "Раскол safety-норм на гражданский и военный контуры",
+      "description": "(Пентагон vs Anthropic) - вероятен дрейф к двум классам моделей/политик доступа.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/features/2026-02-26/pentagon-pressures-anthropic-to-drop-ai-guardrails-in-military-standoff"
+      ]
+    },
+    {
+      "title": "Deterministic execution + auditable traces",
+      "description": "в оркестрации моделей (ACAR/TEAMLLM) - может стать “PCI-DSS”-аналогом для агентных систем в enterprise/госе.",
+      "level_group": "middle",
+      "level_range": "4-6",
+      "sources": [
+        "https://arxiv.org/abs/2602.21231"
+      ]
+    },
+    {
+      "title": "Inference-time alignment/steering",
+      "description": "(sparse steering, suppression of priors) - путь к снижению стоимости compliance без полного retrain.",
+      "level_group": "middle",
+      "level_range": "4-6",
+      "sources": [
+        "https://arxiv.org/abs/2602.21215",
+        "https://arxiv.org/abs/2602.22144"
+      ]
+    },
+    {
+      "title": "Политические соглашения по энергии дата-центров",
+      "description": "как предвестник переразмещения compute (рядом с генерацией/сетями) и новых “энергетических юрисдикций” для AI.",
+      "level_group": "lower",
+      "level_range": "1-3",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-02-25/trump-summons-amazon-google-meta-to-sign-power-cost-pledge"
       ]
     }
   ],
   "metrics": {
-    "total_events": 19,
+    "total_events": 17,
     "events_by_level": {
-      "1": 2,
-      "2": 2,
-      "3": 1,
+      "1": 1,
+      "2": 1,
+      "3": 2,
       "4": 2,
       "5": 3,
-      "6": 1,
+      "6": 2,
       "7": 1,
       "8": 2,
-      "9": 5
+      "9": 3
     },
-    "total_sources": 15,
+    "total_sources": 21,
     "structural_shifts_count": 3,
-    "radar_signals_count": 2,
+    "radar_signals_count": 5,
     "cross_level_links_count": 3,
-    "momentum_trends_count": 9
+    "momentum_trends_count": 11
   },
   "categories": [],
   "momentum_trends": [
     {
-      "name": "AI-CapEx / инфраструктура дата-центров (долг, поставщики)",
-      "momentum": 85,
-      "rationale": "$6 млрд спроса на бонды Wesco + институционализация в банках (Citi). ;",
+      "name": "AI-CapEx / инфраструктура compute (GPU + DC)",
+      "momentum": 65,
+      "rationale": "Nvidia говорит, что клиенты “racing to invest in AI compute”, но рынок реагирует сдержанно - рост продолжается, но без эйфории.",
       "levels": [
-        9,
+        4,
         5,
-        2,
-        1
+        9
       ],
-      "category": "accelerating"
+      "category": "stable"
     },
     {
-      "name": "Power/cooling как узкое место AI",
-      "momentum": 75,
-      "rationale": "рекордная прибыль Delta на спросе со стороны AI-DC.",
+      "name": "Энергетическое ограничение AI (power-as-bottleneck)",
+      "momentum": 80,
+      "rationale": "Белый дом переводит тему энергии дата-центров в формат публичного обязательства Big Tech - сильный институциональный ускоритель.",
       "levels": [
         1,
         2,
-        5
+        8,
+        9
       ],
       "category": "accelerating"
     },
     {
-      "name": "“No patience for AI hiccups” (жесткость рынка к сбоям)",
-      "momentum": 60,
-      "rationale": "рынок нервный, реакция “fickle”, сомнения в устойчивости инвестиций доминируют.",
-      "levels": [
-        9,
-        5
-      ],
-      "category": "emerging"
-    },
-    {
-      "name": "AI-disruption-discount в private/secondary",
+      "name": "Экспортный контроль чипов / лицензирование поставок в Китай",
       "momentum": 55,
-      "rationale": "scrutiny в secondary из-за AI-рисков для софта.",
+      "rationale": "лицензия на небольшой объем H200 подтверждает, что режим “управляемого крана” закрепляется.",
       "levels": [
         9,
-        5
+        8,
+        5,
+        4
       ],
-      "category": "emerging"
+      "category": "stable"
     },
     {
-      "name": "Экспорт нефтесервисных мощностей (frack fleets abroad)",
-      "momentum": 40,
-      "rationale": "структурный сдвиг загрузки отрасли при замедлении shale в США; это меняет географию энерго-производства и косвенно базу для энергоемкого AI.",
+      "name": "Агентные AI-платформы (workflow-агенты)",
+      "momentum": 70,
+      "rationale": "всплеск исследований по agentic RL, routing, memory, orchestration и др. указывает на переход из “демо” в “инженерную норму”.",
       "levels": [
-        2,
-        1,
+        6,
+        7,
         5
       ],
-      "category": "emerging"
+      "category": "accelerating"
     },
     {
-      "name": "Voluntary safety pledges",
-      "momentum": -45,
-      "rationale": "Anthropic ослабляет обязательство по guardrails.",
+      "name": "Безопасность AI-агентов / stateful defense",
+      "momentum": 85,
+      "rationale": "реальный инцидент злоупотребления Claude для взлома госструктур резко повышает спрос на defense-in-depth.",
       "levels": [
         8,
-        7
+        6,
+        5
       ],
-      "category": "decelerating"
+      "category": "accelerating"
     },
     {
-      "name": "“Nvidia как главный прокси AI”.",
-      "momentum": -10,
-      "rationale": "Угасает: переход от «“Nvidia как главный прокси AI”.» к «“AI как связка compute + энергия + охлаждение + география”.». Упоминаний в контексте перехода: 0",
+      "name": "Закрытые API-модели как “единый стандарт”",
+      "momentum": 15,
+      "rationale": "с одной стороны, усиливается спрос гос/обороны; с другой - растет давление из-за misuse и требования “контуров” (гражданский/военный), что фрагментирует рынок.",
       "levels": [
-        9,
+        8,
         5,
-        2,
-        1
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Классический enterprise SaaS (без радикальной AI-пересборки)",
+      "momentum": -45,
+      "rationale": "слабые прогнозы Salesforce/Snowflake/Zoom и нервозность инвесторов отражают ожидание перетока value из лицензий/seat-based в агентные функции/автоматизацию.",
+      "levels": [
+        5,
+        9
       ],
       "category": "decelerating"
     },
     {
-      "name": "рост перекрывает неопределенности.",
-      "momentum": -80,
-      "rationale": "Угасает: переход от «рост перекрывает неопределенности.» к «рынок требует устойчивости и безаварийного исполнения, иначе переоценка даже при сильных числах.». Упоминаний в контексте перехода: 5",
+      "name": "“AI-хайп без результатов” на китайском рынке публичных компаний",
+      "momentum": -35,
+      "rationale": "распродажа Baidu показывает, что капитал в Китае начинает жестче требовать доказательств монетизации AI.",
       "levels": [
         9,
         5
@@ -671,14 +717,38 @@
       "category": "decelerating"
     },
     {
-      "name": "US shale как внутренний драйвер загрузки нефтесервиса.",
-      "momentum": -40,
-      "rationale": "Угасает: переход от «US shale как внутренний драйвер загрузки нефтесервиса.» к «экспорт fracking-флотов на внешние рынки → рост роли других регионов в предложении энергии → изменение энергетической базы для data-center-экономики.». Упоминаний в контексте перехода: 2",
+      "name": "глобальная оптимизация закупок GPU/облака по цене и доступности.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «глобальная оптимизация закупок GPU/облака по цене и доступности.» к «режим “дозированного допуска” через лицензии, где объем и SKU - инструмент политики.». Упоминаний в контексте перехода: 0",
       "levels": [
         9,
+        8,
         5,
+        4
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "bottleneck = GPU/капитал.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «bottleneck = GPU/капитал.» к «bottleneck = GPU + энергомощность + политико-инфраструктурные договоренности.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        9,
+        8,
         2,
         1
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "оценка качества по чат-бенчмаркам/одиночным ответам.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «оценка качества по чат-бенчмаркам/одиночным ответам.» к «оценка по устойчивости workflow, стоимости эпизода, сертификации надежности, stateful-защите.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        8,
+        7,
+        6,
+        5
       ],
       "category": "decelerating"
     }
