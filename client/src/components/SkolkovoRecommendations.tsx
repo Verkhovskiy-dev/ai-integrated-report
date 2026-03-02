@@ -77,6 +77,33 @@ const PROGRAM_CONFIG: Record<string, {
     format_ru: "Длительная программа",
     format_en: "Long-term program",
   },
+  onlineIntensiveAI: {
+    keywords: ["онлайн", "online", "генератив", "модел", "llm", "gpt", "prompt", "нейросет", "дистанц", "remote"],
+    levels: [4, 5, 6, 7],
+    mastery: "beginner",
+    description_ru: "Онлайн-формат знакомства с генеративным ИИ: архитектуры, промптинг, практические инструменты — без отрыва от работы",
+    description_en: "Online introduction to generative AI: architectures, prompting, practical tools — without leaving work",
+    format_ru: "Онлайн · интенсив",
+    format_en: "Online · intensive",
+  },
+  aiNewMarkets: {
+    keywords: ["рынок", "market", "экспансия", "expansion", "выход", "entry", "международн", "global", "масштабир", "scale"],
+    levels: [5, 6, 7, 8],
+    mastery: "beginner",
+    description_ru: "Применение ИИ для анализа и выхода на новые рынки: инструменты, стратегии, практические кейсы",
+    description_en: "Using AI for market analysis and expansion: tools, strategies, practical cases",
+    format_ru: "2-3 дня · интенсив",
+    format_en: "2-3 days · intensive",
+  },
+  productDirector: {
+    keywords: ["продукт", "product", "cpo", "roadmap", "backlog", "discovery", "delivery", "метрик", "unit-econom", "монетизац"],
+    levels: [5, 6, 7, 8],
+    mastery: "advanced",
+    description_ru: "Комплексная программа для директоров по продукту: стратегия, метрики, AI-инструменты для продуктового управления",
+    description_en: "Comprehensive program for Chief Product Officers: strategy, metrics, AI tools for product management",
+    format_ru: "Длительная программа",
+    format_en: "Long-term program",
+  },
 };
 
 function computeRelevance(reports: LiveReport[], isEn: boolean): Record<string, ProgramWithLevel> {
@@ -170,7 +197,7 @@ export default function SkolkovoRecommendations() {
       color: "#22d3ee",
       borderColor: "border-cyan-500/30",
       bgColor: "bg-cyan-500/5",
-      programKeys: ["intensiveAI", "intensiveAgents", "ubnd", "aiMarketing"],
+      programKeys: ["intensiveAI", "intensiveAgents", "ubnd", "aiMarketing", "onlineIntensiveAI", "aiNewMarkets"],
       badge: isEn ? "2-3 days" : "2-3 дня",
     },
     {
@@ -183,7 +210,7 @@ export default function SkolkovoRecommendations() {
       color: "#a78bfa",
       borderColor: "border-violet-500/30",
       bgColor: "bg-violet-500/5",
-      programKeys: ["aiShift", "dataDriven"],
+      programKeys: ["aiShift", "dataDriven", "productDirector"],
     },
     {
       id: "professional",
