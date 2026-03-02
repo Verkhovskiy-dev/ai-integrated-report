@@ -13,32 +13,47 @@ export const SKOLKOVO_PROGRAMS: Record<string, ProgramLink> = {
   aiShift: {
     name: "«Переход в ИИ: трансформация бизнес-процессов»",
     shortName: "Переход в ИИ",
-    url: "https://www.skolkovo.ru/programmes/cdto/",
+    url: "https://www.skolkovo.ru/~sk-7ZVJt",
   },
   intensiveAI: {
     name: "«Интенсив по генеративным алгоритмам и ИИ»",
     shortName: "Интенсив по ИИ",
-    url: "https://www.skolkovo.ru/programmes/intensiv-po-generativnym-algoritmam-i-ii/",
+    url: "https://www.skolkovo.ru/~sk-wCora",
   },
   intensiveAgents: {
     name: "«Онлайн-интенсив по разработке ИИ-продуктов»",
     shortName: "Интенсив по агентам",
-    url: "https://www.skolkovo.ru/programmes/onlajn-intensiv-po-razrabotke-ii-produktov/",
+    url: "https://www.skolkovo.ru/~sk-QoLZT",
+  },
+  onlineIntensiveAI: {
+    name: "«Онлайн интенсив по ИИ»",
+    shortName: "Онлайн интенсив по ИИ",
+    url: "https://www.skolkovo.ru/~sk-eei2Y",
   },
   dataDriven: {
     name: "«Переход в data-driven управление»",
     shortName: "Data-Driven",
-    url: "https://www.skolkovo.ru/programmes/praktikum-po-postroeniyu-data-driven-sistemy-upravleniya/",
+    url: "https://www.skolkovo.ru/~sk-kwLAi",
   },
   ubnd: {
     name: "«Управление бизнесом с помощью ИИ и данных»",
     shortName: "УБНД",
-    url: "https://www.skolkovo.ru/programmes/upravlenie-biznesom-na-dannyh/",
+    url: "https://www.skolkovo.ru/~sk-dalgV",
   },
   aiMarketing: {
     name: "«ИИ в маркетинге»",
     shortName: "ИИ в маркетинге",
-    url: "https://www.skolkovo.ru/programmes/ii-v-marketinge/",
+    url: "https://www.skolkovo.ru/~sk-vqTJ0",
+  },
+  productDirector: {
+    name: "«Директор по продукту»",
+    shortName: "Директор по продукту",
+    url: "https://www.skolkovo.ru/~sk-WFMlp",
+  },
+  aiNewMarkets: {
+    name: "«ИИ для выхода на новые рынки»",
+    shortName: "ИИ для новых рынков",
+    url: "https://www.skolkovo.ru/~sk-8IiQC",
   },
 };
 
