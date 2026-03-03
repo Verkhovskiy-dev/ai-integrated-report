@@ -1,6 +1,6 @@
 {
   "date": "2026-03-03",
-  "generated_at": "2026-03-03T05:02:05.956Z",
+  "generated_at": "2026-03-03T10:02:00.681Z",
   "key_focus": "",
   "srt_levels": [
     {
@@ -8,660 +8,749 @@
       "name": "Денежная система",
       "events": [
         {
-          "title": "рост «геополитической премии за риск» в стоимости compute/облака в узлах MENA; вероятны страховые/хедж-инструменты и пересмотр SLA/penalty-структур в контрактах enterprise и госзаказа",
-          "description": "рост «геополитической премии за риск» в стоимости compute/облака в узлах MENA; вероятны страховые/хедж-инструменты и пересмотр SLA/penalty-структур в контрактах enterprise и госзаказа.",
+          "title": "Сдвиг финансирования AI: от equity к долговому и “кредитно-наказуемому” CapEx",
+          "description": "Сдвиг финансирования AI: от equity к долговому и “кредитно-наказуемому” CapEx",
+          "sources": []
+        },
+        {
+          "title": "S&P ухудшает прогноз SoftBank до *negative* из-за планов доп",
+          "description": "S&P ухудшает прогноз SoftBank до *negative* из-за планов доп. вложений $30 млрд в OpenAI, указывая на риск ликвидности и качества активов - это сигнал, что “ставки на frontier AI” начинают измеряться не только потенциалом, но и кредитной устойчивостью холдингов.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
+            "https://www.bloomberg.com/news/articles/2026-03-03/softbank-s-30-billion-openai-bet-spurs-s-p-credit-outlook-cut"
           ]
         },
         {
-          "title": "государственный спрос (defense procurement) становится «квази-валютой легитимности» для frontier-моделей; одновременно растет риск внезапного «blacklist shock» как финансового события (обрезание рынка госзаказа/подрядчиков)",
-          "description": "государственный спрос (defense procurement) становится «квази-валютой легитимности» для frontier-моделей; одновременно растет риск внезапного «blacklist shock» как финансового события (обрезание рынка госзаказа/подрядчиков).",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-03/senate-s-wyden-pledges-battle-over-pentagon-ban-on-anthropic"
-          ]
-        },
-        {
-          "title": "«AI CapEx» финансово стандартизируется через рынок высокодоходного долга; compute становится классом активов со своей кривой риска",
-          "description": "«AI CapEx» финансово стандартизируется через рынок высокодоходного долга; compute становится классом активов со своей кривой риска.",
+          "title": "Applied Digital пытается привлечь $2.15 млрд через junk bonds под AI-инфраструктуру - рост “AI-долга” как механизма развертывания compute",
+          "description": "Applied Digital пытается привлечь $2.15 млрд через junk bonds под AI-инфраструктуру - рост “AI-долга” как механизма развертывания compute.",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-03-02/applied-digital-adds-to-ai-junk-bond-surge-with-offering"
           ]
         },
         {
-          "title": "борьба за «поведенческий капитал» пользователя (данные, контекст, транзакции) становится денежным контуром: memory → удержание → конверсия",
-          "description": "борьба за «поведенческий капитал» пользователя (данные, контекст, транзакции) становится денежным контуром: memory → удержание → конверсия.",
+          "title": "Геополитическая цена инфраструктуры: война превращается в “риск премии” облака",
+          "description": "Геополитическая цена инфраструктуры: война превращается в “риск премии” облака",
           "sources": []
+        },
+        {
+          "title": "Удары дронами повреждают 3 дата-центра Amazon на Ближнем Востоке (ОАЭ и Бахрейн), AWS предупреждает о длительных сбоях",
+          "description": "Удары дронами повреждают 3 дата-центра Amazon на Ближнем Востоке (ОАЭ и Бахрейн), AWS предупреждает о длительных сбоях. Это прямое включение военных рисков в стоимость и архитектуру глобального AI/Cloud.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
+          ]
+        },
+        {
+          "title": "Экспортный контроль как денежно-технологический регулятор рынка",
+          "description": "Экспортный контроль как денежно-технологический регулятор рынка",
+          "sources": []
+        },
+        {
+          "title": "США рассматривают ограничение продаж Nvidia H200: максимум 75,000 чипов на одного китайского покупателя - попытка “квотировать” compute как стратегический ресурс",
+          "description": "США рассматривают ограничение продаж Nvidia H200: максимум 75,000 чипов на одного китайского покупателя - попытка “квотировать” compute как стратегический ресурс.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer"
+          ]
         }
       ],
-      "event_count": 4
+      "event_count": 7
     },
     {
       "level": 8,
       "name": "Спонтанный порядок",
       "events": [
         {
-          "title": "доверие к облаку как «нейтральной инфраструктуре» снижается; рынок вынужденно усиливает практики multi-cloud, DR (disaster recovery), активнее формируются неформальные нормы «geo-redundancy by default»",
-          "description": "доверие к облаку как «нейтральной инфраструктуре» снижается; рынок вынужденно усиливает практики multi-cloud, DR (disaster recovery), активнее формируются неформальные нормы «geo-redundancy by default».",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
-          ]
+          "title": "Политико-административный разрыв “рынка моделей”: государство ломает нейтральность поставщиков",
+          "description": "Политико-административный разрыв “рынка моделей”: государство ломает нейтральность поставщиков",
+          "sources": []
         },
         {
-          "title": "ломается неформальная норма «лучший продукт победит»; вместо этого - институциональный отбор через security-лейблы и политические решения",
-          "description": "ломается неформальная норма «лучший продукт победит»; вместо этого - институциональный отбор через security-лейблы и политические решения.",
+          "title": "Запрет Anthropic для федерального правительства и подрядчиков Пентагона становится предметом политической борьбы (Wyden обещает оспаривать)",
+          "description": "Запрет Anthropic для федерального правительства и подрядчиков Пентагона становится предметом политической борьбы (Wyden обещает оспаривать). Это меняет “правила доступа” к крупнейшему заказчику и разрушает предпосылку, что LLM-провайдеры конкурируют только качеством/ценой.",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-03-03/senate-s-wyden-pledges-battle-over-pentagon-ban-on-anthropic"
           ]
         },
         {
-          "title": "экспортный контроль превращается в устойчивый институт координации конкуренции (неформальный «правилогенератор» для цепочек поставок)",
-          "description": "экспортный контроль превращается в устойчивый институт координации конкуренции (неформальный «правилогенератор» для цепочек поставок).",
+          "title": "Снизу - рост легитимационных конфликтов (общественная реакция)",
+          "description": "Снизу - рост легитимационных конфликтов (общественная реакция)",
+          "sources": []
+        },
+        {
+          "title": "Крупная анти-AI акция в Лондоне в хабе King’s Cross (где офисы OpenAI/Meta/DeepMind) - сигнал формирования контр-движений, которые будут давить на регуляции, закупки и репутацию",
+          "description": "Крупная анти-AI акция в Лондоне в хабе King’s Cross (где офисы OpenAI/Meta/DeepMind) - сигнал формирования контр-движений, которые будут давить на регуляции, закупки и репутацию.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer"
+            "https://www.technologyreview.com/2026/03/02/1133814/i-checked-out-londons-biggest-ever-anti-ai-protest/"
           ]
         },
         {
-          "title": "государство сознательно «перенастраивает» спонтанный порядок рынка труда: Сингапур расширяет внутренний кадровый контур, США (штаты) сужают внешний приток",
-          "description": "государство сознательно «перенастраивает» спонтанный порядок рынка труда: Сингапур расширяет внутренний кадровый контур, США (штаты) сужают внешний приток.",
+          "title": "“AI-washing” как эрозия доверия к объяснениям реорганизации труда",
+          "description": "“AI-washing” как эрозия доверия к объяснениям реорганизации труда",
+          "sources": []
+        },
+        {
+          "title": "Обсуждение сокращений в Block и подозрения, что “AI позволяет делать больше меньшими силами” используется как риторика для cost-cutting - подрыв доверия к корпоративным объяснениям, что отражается на институтах найма/увольнения",
+          "description": "Обсуждение сокращений в Block и подозрения, что “AI позволяет делать больше меньшими силами” используется как риторика для cost-cutting - подрыв доверия к корпоративным объяснениям, что отражается на институтах найма/увольнения.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-03/singapore-s-ai-mission-includes-training-lawyers-prison-inmates",
-            "https://www.bloomberg.com/news/articles/2026-03-02/florida-universities-freeze-h-1b-hiring-amid-trump-s-immigration-crackdown"
+            "https://www.bloomberg.com/news/videos/2026-03-02/job-cuts-at-block-arouse-suspicions-of-ai-washing-video"
           ]
         }
       ],
-      "event_count": 4
+      "event_count": 6
     },
     {
       "level": 7,
       "name": "Институты производства знаний",
-      "events": [],
-      "event_count": 0
+      "events": [
+        {
+          "title": "Ускорение “фабрик бенчмарков” для агентности, надежности и судей (judge models)",
+          "description": "Ускорение “фабрик бенчмарков” для агентности, надежности и судей (judge models)",
+          "sources": []
+        },
+        {
+          "title": "Появляется целый слой работ про: агентные бенчмарки, верифицируемые траектории, судей, конфаундеры, trace-анализ: TraderBench (адверсариальные рынки), RubricBench, M-JudgeBench, CARE для агрегации судей, TraceSIR/TraceBench",
+          "description": "Появляется целый слой работ про: агентные бенчмарки, верифицируемые траектории, судей, конфаундеры, trace-анализ: TraderBench (адверсариальные рынки), RubricBench, M-JudgeBench, CARE для агрегации судей, TraceSIR/TraceBench.",
+          "sources": [
+            "https://arxiv.org/abs/2603.00285",
+            "https://arxiv.org/abs/2603.01562",
+            "https://arxiv.org/abs/2603.00546",
+            "https://arxiv.org/abs/2603.00039",
+            "https://arxiv.org/abs/2603.00623"
+          ]
+        },
+        {
+          "title": "Это институционализирует новый критерий знания: не “умный ответ”, а воспроизводимая надежность процесса",
+          "description": "Это институционализирует новый критерий знания: не “умный ответ”, а воспроизводимая надежность процесса.",
+          "sources": []
+        },
+        {
+          "title": "Перенос учебно-кадровой политики в национальные программы",
+          "description": "Перенос учебно-кадровой политики в национальные программы",
+          "sources": []
+        },
+        {
+          "title": "Сингапур обучает AI-навыкам юристов, бухгалтеров и даже заключенных - государство делает “массовую рескиллинг-инфраструктуру” частью конкурентоспособности",
+          "description": "Сингапур обучает AI-навыкам юристов, бухгалтеров и даже заключенных - государство делает “массовую рескиллинг-инфраструктуру” частью конкурентоспособности.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-03/singapore-s-ai-mission-includes-training-lawyers-prison-inmates"
+          ]
+        },
+        {
+          "title": "Ограничение академического импорта компетенций",
+          "description": "Ограничение академического импорта компетенций",
+          "sources": []
+        },
+        {
+          "title": "Университеты Флориды замораживают найм по H-1B на фоне ужесточения иммиграции; ранее аналогично делал Техас",
+          "description": "Университеты Флориды замораживают найм по H-1B на фоне ужесточения иммиграции; ранее аналогично делал Техас. Это ухудшает приток исследователей/инженеров и повышает внутреннюю “стоимость таланта”.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-02/florida-universities-freeze-h-1b-hiring-amid-trump-s-immigration-crackdown"
+          ]
+        }
+      ],
+      "event_count": 7
     },
     {
       "level": 6,
       "name": "Технологии производства знаний",
       "events": [
         {
-          "title": "ускоряется спрос на runtime-надежность агентных систем (observability, failover, policy enforcement «во время исполнения»), т.к",
-          "description": "ускоряется спрос на runtime-надежность агентных систем (observability, failover, policy enforcement «во время исполнения»), т.к. «model is not enough» при деградации инфраструктуры.",
+          "title": "Смена методологического центра: “runtime / trace / verifiable rewards” вместо “prompting”",
+          "description": "Смена методологического центра: “runtime / trace / verifiable rewards” вместо “prompting”",
+          "sources": []
+        },
+        {
+          "title": "AI Runtime Infrastructure как отдельный execution-слой над моделью и под приложением - превращение исполнения в поверхность оптимизации (память, отказы, политика)",
+          "description": "AI Runtime Infrastructure как отдельный execution-слой над моделью и под приложением - превращение исполнения в поверхность оптимизации (память, отказы, политика).",
           "sources": [
             "https://arxiv.org/abs/2603.00495"
           ]
         },
         {
-          "title": "растет значимость инженерии «safety harness»/контроля действий агентных систем (типобезопасные capability-ограничения, аудит действий), т.к",
-          "description": "растет значимость инженерии «safety harness»/контроля действий агентных систем (типобезопасные capability-ограничения, аудит действий), т.к. оборонный контур требует формализуемых гарантий.",
+          "title": "DenoiseFlow - uncertainty-aware, закрытый контур “sensing-regulating-correcting” для длинных агентных цепочек",
+          "description": "DenoiseFlow - uncertainty-aware, закрытый контур “sensing-regulating-correcting” для длинных агентных цепочек.",
           "sources": [
-            "https://arxiv.org/abs/2603.00991"
+            "https://arxiv.org/abs/2603.00532"
           ]
         },
         {
-          "title": "ускорение методологий «делать больше на меньшем compute» (квантизация, оптимизация CoT-бюджета)",
-          "description": "ускорение методологий «делать больше на меньшем compute» (квантизация, оптимизация CoT-бюджета).",
+          "title": "LOGIGEN - синтез верифицируемых задач через hard-compiled policy + deterministic state verification",
+          "description": "LOGIGEN - синтез верифицируемых задач через hard-compiled policy + deterministic state verification.",
           "sources": [
-            "https://arxiv.org/abs/2603.00578",
-            "https://arxiv.org/abs/2603.00040"
+            "https://arxiv.org/abs/2603.00540"
+          ]
+        },
+        {
+          "title": "Бенчмарки, где оценка “привязана к физическому/финансовому результату”, а не к LLM-судье",
+          "description": "Бенчмарки, где оценка “привязана к физическому/финансовому результату”, а не к LLM-судье",
+          "sources": []
+        },
+        {
+          "title": "TraderBench оценивает агентов по P&L/Sharpe и показывает, что “extended thinking” помогает retrieval, но почти не помогает торговле",
+          "description": "TraderBench оценивает агентов по P&L/Sharpe и показывает, что “extended thinking” помогает retrieval, но почти не помогает торговле. Это методологический удар по вере, что “больше рассуждений = лучше агент”.",
+          "sources": [
+            "https://arxiv.org/abs/2603.00285"
           ]
         }
       ],
-      "event_count": 3
+      "event_count": 6
     },
     {
       "level": 5,
       "name": "Разделение труда между фирмами",
       "events": [
         {
-          "title": "усиливается роль региональных DC-операторов, телекомов и интеграторов DR/BCP; крупные облака будут вынуждены делиться функциями (локальные партнеры, sovereign zones)",
-          "description": "усиливается роль региональных DC-операторов, телекомов и интеграторов DR/BCP; крупные облака будут вынуждены делиться функциями (локальные партнеры, sovereign zones).",
+          "title": "Перекройка цепочки “госзаказ ↔ поставщик модели”: рынок превращается в режим допуска",
+          "description": "Перекройка цепочки “госзаказ ↔ поставщик модели”: рынок превращается в режим допуска",
+          "sources": []
+        },
+        {
+          "title": "OpenAI заключает сделку, позволяющую Пентагону использовать технологии в секретных условиях; Altman признает, что переговоры были “rushed” и выглядели “sloppy/opportunistic”",
+          "description": "OpenAI заключает сделку, позволяющую Пентагону использовать технологии в секретных условиях; Altman признает, что переговоры были “rushed” и выглядели “sloppy/opportunistic”. Дополнение/контекст: MIT Tech Review описывает “компромисс” OpenAI как материализацию страхов Anthropic.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
+            "https://www.bloomberg.com/news/articles/2026-03-03/openai-ceo-says-pentagon-deal-looked-opportunistic-and-sloppy",
+            "https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/"
           ]
         },
         {
-          "title": "перераспределение ролей между OpenAI/Anthropic и оборонными интеграторами: кто становится «допущенным поставщиком» и кто строит контуры внедрения у подрядчиков",
-          "description": "перераспределение ролей между OpenAI/Anthropic и оборонными интеграторами: кто становится «допущенным поставщиком» и кто строит контуры внедрения у подрядчиков.",
+          "title": "Одновременно - запрет Anthropic в федеральном секторе",
+          "description": "Одновременно - запрет Anthropic в федеральном секторе. Итог: госрынок дробит конкуренцию и перераспределяет выручку/доступ.",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-03-03/senate-s-wyden-pledges-battle-over-pentagon-ban-on-anthropic"
           ]
         },
         {
-          "title": "усиливается специализация: одни компании - «финансовые оболочки» под DC/energy/real estate, другие - модельные/продуктовые; возникает больше стыков и контрактных зависимостей",
-          "description": "усиливается специализация: одни компании - «финансовые оболочки» под DC/energy/real estate, другие - модельные/продуктовые; возникает больше стыков и контрактных зависимостей.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-02/applied-digital-adds-to-ai-junk-bond-surge-with-offering"
-          ]
-        },
-        {
-          "title": "компании будут компенсировать кадровые ограничения инструментами автоматизации (coding agents) и перераспределением функций в глобальной цепочке труда",
-          "description": "компании будут компенсировать кадровые ограничения инструментами автоматизации (coding agents) и перераспределением функций в глобальной цепочке труда.",
+          "title": "Вертикали применения “AI в продуктах” становятся точками конкурентной войны",
+          "description": "Вертикали применения “AI в продуктах” становятся точками конкурентной войны",
           "sources": []
         },
         {
-          "title": "Meta пытается встроить AI прямо в торговый контур (исследование покупок), т.е",
-          "description": "Meta пытается встроить AI прямо в торговый контур (исследование покупок), т.е. смещение value chain в сторону commerce-поиска.",
+          "title": "Meta тестирует AI-инструмент shopping research, конкурируя с ChatGPT и Gemini",
+          "description": "Meta тестирует AI-инструмент shopping research, конкурируя с ChatGPT и Gemini.",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-03-03/meta-tests-ai-shopping-research-tool-to-rival-chatgpt-gemini"
           ]
+        },
+        {
+          "title": "Anthropic добавляет Memory для бесплатных пользователей (удержание спроса/переходов)",
+          "description": "Anthropic добавляет Memory для бесплатных пользователей (удержание спроса/переходов).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-03/anthropic-tries-to-win-users-from-chatgpt-with-memory-feature"
+          ]
+        },
+        {
+          "title": "“AI coding” как самостоятельный сверхдоходный сегмент",
+          "description": "“AI coding” как самостоятельный сверхдоходный сегмент",
+          "sources": []
+        },
+        {
+          "title": "Cursor достигает $2 млрд annualized revenue в феврале; удвоение за 3 месяца - превращение coding-assistant в отдельную индустрию и перераспределение маржи из классического dev-tooling",
+          "description": "Cursor достигает $2 млрд annualized revenue в феврале; удвоение за 3 месяца - превращение coding-assistant в отдельную индустрию и перераспределение маржи из классического dev-tooling.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion"
+          ]
         }
       ],
-      "event_count": 5
+      "event_count": 8
     },
     {
       "level": 4,
       "name": "«Железные» технологии",
       "events": [
         {
-          "title": "инфраструктурная избыточность (сетевые маршруты, энергоузлы, физзащита) становится «частью AI-стека», а не просто ИТ",
-          "description": "инфраструктурная избыточность (сетевые маршруты, энергоузлы, физзащита) становится «частью AI-стека», а не просто ИТ.",
+          "title": "Compute как “квотируемый” и “военно-уязвимый” ресурс",
+          "description": "Compute как “квотируемый” и “военно-уязвимый” ресурс",
+          "sources": []
+        },
+        {
+          "title": "Квоты на H200 для Китая",
+          "description": "Квоты на H200 для Китая.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer"
+          ]
+        },
+        {
+          "title": "Дрон-удары по дата-центрам AWS",
+          "description": "Дрон-удары по дата-центрам AWS.",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
           ]
         },
         {
-          "title": "фокус смещается от «чата» к автономным системам (drone swarming, voice-controlled autonomy), где требования к latency/надежности/интерфейсам существенно жестче",
-          "description": "фокус смещается от «чата» к автономным системам (drone swarming, voice-controlled autonomy), где требования к latency/надежности/интерфейсам существенно жестче.",
+          "title": "Новый “железный слой” - память/персонализация/структурные индексы",
+          "description": "Новый “железный слой” - память/персонализация/структурные индексы",
+          "sources": []
+        },
+        {
+          "title": "Semantic XPath (структурная память-дерево) радикально снижает токены по сравнению с in-context",
+          "description": "Semantic XPath (структурная память-дерево) радикально снижает токены по сравнению с in-context.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-02/anthropic-made-pitch-in-drone-swarm-contest-during-pentagon-feud"
+            "https://arxiv.org/abs/2603.01160"
           ]
         },
         {
-          "title": "аппаратные ограничения (H200 caps) вынуждают Китай усиливать альтернативные стеки/оптимизации и open-source траектории",
-          "description": "аппаратные ограничения (H200 caps) вынуждают Китай усиливать альтернативные стеки/оптимизации и open-source траектории.",
+          "title": "MemPO - оптимизация самоуправляемой памяти для long-horizon, минус 67% токенов при росте качества",
+          "description": "MemPO - оптимизация самоуправляемой памяти для long-horizon, минус 67% токенов при росте качества.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer",
-            "https://www.technologyreview.com/2026/02/12/1132811/whats-next-for-chinese-open-source-ai/"
-          ]
-        },
-        {
-          "title": "спрос на «рабочие» ассистенты (особенно coding) усиливает продуктовый слой вокруг них",
-          "description": "спрос на «рабочие» ассистенты (особенно coding) усиливает продуктовый слой вокруг них.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion"
-          ]
-        },
-        {
-          "title": "memory и agent runtime-инфраструктура становятся стандартными компонентами продукта (не просто модель)",
-          "description": "memory и agent runtime-инфраструктура становятся стандартными компонентами продукта (не просто модель).",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-03/anthropic-tries-to-win-users-from-chatgpt-with-memory-feature"
+            "https://arxiv.org/abs/2603.00680"
           ]
         }
       ],
-      "event_count": 5
+      "event_count": 6
     },
     {
       "level": 3,
       "name": "Социально-профессиональная структура",
       "events": [
         {
-          "title": "рост спроса на специалистов по resilience engineering, cloud security, incident response и «AI SRE»",
-          "description": "рост спроса на специалистов по resilience engineering, cloud security, incident response и «AI SRE».",
-          "sources": [
-            "https://www.bloomberg.com/news/videos/2026-03-02/cyber-risks-rise-amid-conflict-with-iran-video"
-          ]
+          "title": "Массовизация AI-компетенций как госзадача + одновременный дефицит “импортируемых” кадров",
+          "description": "Массовизация AI-компетенций как госзадача + одновременный дефицит “импортируемых” кадров",
+          "sources": []
         },
         {
-          "title": "укрепляется профессиональный слой «AI + defense compliance/clearance», а также продуктовые роли «gov/defense BD + security engineering»",
-          "description": "укрепляется профессиональный слой «AI + defense compliance/clearance», а также продуктовые роли «gov/defense BD + security engineering».",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-03/openai-ceo-says-pentagon-deal-looked-opportunistic-and-sloppy"
-          ]
-        },
-        {
-          "title": "массовая «AI-грамотность» для несофтовых профессий (право/учет/исправительная система) - явный сдвиг профструктуры",
-          "description": "массовая «AI-грамотность» для несофтовых профессий (право/учет/исправительная система) - явный сдвиг профструктуры.",
+          "title": "Сингапур расширяет обучение AI на широкие группы (включая заключенных) - рост “AI-грамотности” как базовой компетенции",
+          "description": "Сингапур расширяет обучение AI на широкие группы (включая заключенных) - рост “AI-грамотности” как базовой компетенции.",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-03-03/singapore-s-ai-mission-includes-training-lawyers-prison-inmates"
           ]
         },
         {
-          "title": "растет спрос на product/security специалистов по персональным данным и memory-policy",
-          "description": "растет спрос на product/security специалистов по персональным данным и memory-policy.",
+          "title": "Флорида ограничивает H-1B найм в университетах - снижение кадрового притока",
+          "description": "Флорида ограничивает H-1B найм в университетах - снижение кадрового притока.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-02/florida-universities-freeze-h-1b-hiring-amid-trump-s-immigration-crackdown"
+          ]
+        },
+        {
+          "title": "Трансформация профессий: программист → оператор/оркестратор агента",
+          "description": "Трансформация профессий: программист → оператор/оркестратор агента",
           "sources": []
-        }
-      ],
-      "event_count": 4
-    },
-    {
-      "level": 2,
-      "name": "Пространственная организация",
-      "events": [
-        {
-          "title": "MENA как площадка для compute/edge получает новый риск-профиль; вероятен перенос критичных нагрузок и изменение latency/стоимости для региональных клиентов",
-          "description": "MENA как площадка для compute/edge получает новый риск-профиль; вероятен перенос критичных нагрузок и изменение latency/стоимости для региональных клиентов.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
-          ]
         },
         {
-          "title": "пространственное разделение на public cloud vs classified environments; новые зоны размещения compute и данных",
-          "description": "пространственное разделение на public cloud vs classified environments; новые зоны размещения compute и данных.",
+          "title": "Всплеск доходов Cursor и рост agentic-инструментов сигнализируют, что “писать код” частично заменяется “задавать задачи, проверять, маршрутизировать, собирать”",
+          "description": "Всплеск доходов Cursor и рост agentic-инструментов сигнализируют, что “писать код” частично заменяется “задавать задачи, проверять, маршрутизировать, собирать”.",
           "sources": [
-            "https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/"
-          ]
-        },
-        {
-          "title": "переразмещение мощностей и закупок; дробление заказов на чипы, «обходная логистика» и региональные хабы compute",
-          "description": "переразмещение мощностей и закупок; дробление заказов на чипы, «обходная логистика» и региональные хабы compute.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer"
-          ]
-        },
-        {
-          "title": "Anthropic добавляет memory для Claude (в т.ч",
-          "description": "Anthropic добавляет memory для Claude (в т.ч. бесплатно) на фоне «unprecedented demand» в последние дни.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-03/anthropic-tries-to-win-users-from-chatgpt-with-memory-feature"
-          ]
-        },
-        {
-          "title": "Meta тестирует AI shopping research feature в чатботе (конкуренция с ChatGPT/Gemini)",
-          "description": "Meta тестирует AI shopping research feature в чатботе (конкуренция с ChatGPT/Gemini).",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-03/meta-tests-ai-shopping-research-tool-to-rival-chatgpt-gemini"
+            "https://www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion"
           ]
         }
       ],
       "event_count": 5
     },
     {
+      "level": 2,
+      "name": "Пространственная организация",
+      "events": [
+        {
+          "title": "Региональная уязвимость облака и необходимость multi-region как нормы",
+          "description": "Региональная уязвимость облака и необходимость multi-region как нормы",
+          "sources": []
+        },
+        {
+          "title": "Повреждение дата-центров в ОАЭ/Бахрейне → давление на архитектуры резервирования, на размещение и на страховку",
+          "description": "Повреждение дата-центров в ОАЭ/Бахрейне → давление на архитектуры резервирования, на размещение и на страховку.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
+          ]
+        },
+        {
+          "title": "Смещение центров роста AI-выручки в Китай",
+          "description": "Смещение центров роста AI-выручки в Китай",
+          "sources": []
+        },
+        {
+          "title": "MiniMax удваивает продажи в 2025, акции растут до +21% - укрепление китайских “OpenAI rivals” и локальных рынков капитала",
+          "description": "MiniMax удваивает продажи в 2025, акции растут до +21% - укрепление китайских “OpenAI rivals” и локальных рынков капитала.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-02/china-ai-pioneer-minimax-more-than-doubles-sales-in-hot-market"
+          ]
+        }
+      ],
+      "event_count": 4
+    },
+    {
       "level": 1,
       "name": "Природные ресурсы",
       "events": [
         {
-          "title": "Альтман: сделка OpenAI с Пентагоном выглядела «оппортунистичной и неряшливой/слoppy»",
-          "description": "Альтман: сделка OpenAI с Пентагоном выглядела «оппортунистичной и неряшливой/слoppy».",
+          "title": "Прямых сигналов про энергию/воду в массиве меньше, но война/удары выступают как “география риска”, влияющая на выбор территории под дата-центры (т.е",
+          "description": "Прямых сигналов про энергию/воду в массиве меньше, но война/удары выступают как “география риска”, влияющая на выбор территории под дата-центры (т.е. уровень 1 проявляется через уровень 2).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-03/openai-ceo-says-pentagon-deal-looked-opportunistic-and-sloppy"
-          ]
-        },
-        {
-          "title": "Сенатор Уайден обещает бороться с запретом на Anthropic для федерального правительства и подрядчиков Пентагона",
-          "description": "Сенатор Уайден обещает бороться с запретом на Anthropic для федерального правительства и подрядчиков Пентагона.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-03/senate-s-wyden-pledges-battle-over-pentagon-ban-on-anthropic"
-          ]
-        },
-        {
-          "title": "Контекст сделки OpenAI в MIT Tech Review: доступ военных к технологиям OpenAI в «классифицированных средах», переговоры «rushed»",
-          "description": "Контекст сделки OpenAI в MIT Tech Review: доступ военных к технологиям OpenAI в «классифицированных средах», переговоры «rushed».",
-          "sources": [
-            "https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/"
-          ]
-        },
-        {
-          "title": "Anthropic подавал предложение в $100 млн challenge по автономному drone swarming",
-          "description": "Anthropic подавал предложение в $100 млн challenge по автономному drone swarming.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-02/anthropic-made-pitch-in-drone-swarm-contest-during-pentagon-feud"
-          ]
-        },
-        {
-          "title": "Applied Digital размещает $2.15 млрд high-yield (junk) bonds под AI-инфраструктуру",
-          "description": "Applied Digital размещает $2.15 млрд high-yield (junk) bonds под AI-инфраструктуру.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-02/applied-digital-adds-to-ai-junk-bond-surge-with-offering"
-          ]
-        },
-        {
-          "title": "США рассматривают лимит: не более 75,000 Nvidia H200 на одного китайского клиента",
-          "description": "США рассматривают лимит: не более 75,000 Nvidia H200 на одного китайского клиента.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer"
-          ]
-        },
-        {
-          "title": "Сингапур обучает AI-навыкам юристов, бухгалтеров и даже заключенных",
-          "description": "Сингапур обучает AI-навыкам юристов, бухгалтеров и даже заключенных.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-03/singapore-s-ai-mission-includes-training-lawyers-prison-inmates"
-          ]
-        },
-        {
-          "title": "Университеты Флориды замораживают найм по H-1B на фоне иммиграционного ужесточения; аналогично ранее в Техасе",
-          "description": "Университеты Флориды замораживают найм по H-1B на фоне иммиграционного ужесточения; аналогично ранее в Техасе.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-02/florida-universities-freeze-h-1b-hiring-amid-trump-s-immigration-crackdown"
+            "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
           ]
         }
       ],
-      "event_count": 8
+      "event_count": 1
     }
   ],
   "events": [
     {
-      "title": "рост «геополитической премии за риск» в стоимости compute/облака в узлах MENA; вероятны страховые/хедж-инструменты и пересмотр SLA/penalty-структур в контрактах enterprise и госзаказа",
-      "description": "рост «геополитической премии за риск» в стоимости compute/облака в узлах MENA; вероятны страховые/хедж-инструменты и пересмотр SLA/penalty-структур в контрактах enterprise и госзаказа.",
+      "title": "Сдвиг финансирования AI: от equity к долговому и “кредитно-наказуемому” CapEx",
+      "description": "Сдвиг финансирования AI: от equity к долговому и “кредитно-наказуемому” CapEx",
+      "sources": [],
+      "level": 9
+    },
+    {
+      "title": "S&P ухудшает прогноз SoftBank до *negative* из-за планов доп",
+      "description": "S&P ухудшает прогноз SoftBank до *negative* из-за планов доп. вложений $30 млрд в OpenAI, указывая на риск ликвидности и качества активов - это сигнал, что “ставки на frontier AI” начинают измеряться не только потенциалом, но и кредитной устойчивостью холдингов.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
+        "https://www.bloomberg.com/news/articles/2026-03-03/softbank-s-30-billion-openai-bet-spurs-s-p-credit-outlook-cut"
       ],
       "level": 9
     },
     {
-      "title": "государственный спрос (defense procurement) становится «квази-валютой легитимности» для frontier-моделей; одновременно растет риск внезапного «blacklist shock» как финансового события (обрезание рынка госзаказа/подрядчиков)",
-      "description": "государственный спрос (defense procurement) становится «квази-валютой легитимности» для frontier-моделей; одновременно растет риск внезапного «blacklist shock» как финансового события (обрезание рынка госзаказа/подрядчиков).",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-03/senate-s-wyden-pledges-battle-over-pentagon-ban-on-anthropic"
-      ],
-      "level": 9
-    },
-    {
-      "title": "«AI CapEx» финансово стандартизируется через рынок высокодоходного долга; compute становится классом активов со своей кривой риска",
-      "description": "«AI CapEx» финансово стандартизируется через рынок высокодоходного долга; compute становится классом активов со своей кривой риска.",
+      "title": "Applied Digital пытается привлечь $2.15 млрд через junk bonds под AI-инфраструктуру - рост “AI-долга” как механизма развертывания compute",
+      "description": "Applied Digital пытается привлечь $2.15 млрд через junk bonds под AI-инфраструктуру - рост “AI-долга” как механизма развертывания compute.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-02/applied-digital-adds-to-ai-junk-bond-surge-with-offering"
       ],
       "level": 9
     },
     {
-      "title": "борьба за «поведенческий капитал» пользователя (данные, контекст, транзакции) становится денежным контуром: memory → удержание → конверсия",
-      "description": "борьба за «поведенческий капитал» пользователя (данные, контекст, транзакции) становится денежным контуром: memory → удержание → конверсия.",
+      "title": "Геополитическая цена инфраструктуры: война превращается в “риск премии” облака",
+      "description": "Геополитическая цена инфраструктуры: война превращается в “риск премии” облака",
       "sources": [],
       "level": 9
     },
     {
-      "title": "доверие к облаку как «нейтральной инфраструктуре» снижается; рынок вынужденно усиливает практики multi-cloud, DR (disaster recovery), активнее формируются неформальные нормы «geo-redundancy by default»",
-      "description": "доверие к облаку как «нейтральной инфраструктуре» снижается; рынок вынужденно усиливает практики multi-cloud, DR (disaster recovery), активнее формируются неформальные нормы «geo-redundancy by default».",
+      "title": "Удары дронами повреждают 3 дата-центра Amazon на Ближнем Востоке (ОАЭ и Бахрейн), AWS предупреждает о длительных сбоях",
+      "description": "Удары дронами повреждают 3 дата-центра Amazon на Ближнем Востоке (ОАЭ и Бахрейн), AWS предупреждает о длительных сбоях. Это прямое включение военных рисков в стоимость и архитектуру глобального AI/Cloud.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
       ],
+      "level": 9
+    },
+    {
+      "title": "Экспортный контроль как денежно-технологический регулятор рынка",
+      "description": "Экспортный контроль как денежно-технологический регулятор рынка",
+      "sources": [],
+      "level": 9
+    },
+    {
+      "title": "США рассматривают ограничение продаж Nvidia H200: максимум 75,000 чипов на одного китайского покупателя - попытка “квотировать” compute как стратегический ресурс",
+      "description": "США рассматривают ограничение продаж Nvidia H200: максимум 75,000 чипов на одного китайского покупателя - попытка “квотировать” compute как стратегический ресурс.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Политико-административный разрыв “рынка моделей”: государство ломает нейтральность поставщиков",
+      "description": "Политико-административный разрыв “рынка моделей”: государство ломает нейтральность поставщиков",
+      "sources": [],
       "level": 8
     },
     {
-      "title": "ломается неформальная норма «лучший продукт победит»; вместо этого - институциональный отбор через security-лейблы и политические решения",
-      "description": "ломается неформальная норма «лучший продукт победит»; вместо этого - институциональный отбор через security-лейблы и политические решения.",
+      "title": "Запрет Anthropic для федерального правительства и подрядчиков Пентагона становится предметом политической борьбы (Wyden обещает оспаривать)",
+      "description": "Запрет Anthropic для федерального правительства и подрядчиков Пентагона становится предметом политической борьбы (Wyden обещает оспаривать). Это меняет “правила доступа” к крупнейшему заказчику и разрушает предпосылку, что LLM-провайдеры конкурируют только качеством/ценой.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-03/senate-s-wyden-pledges-battle-over-pentagon-ban-on-anthropic"
       ],
       "level": 8
     },
     {
-      "title": "экспортный контроль превращается в устойчивый институт координации конкуренции (неформальный «правилогенератор» для цепочек поставок)",
-      "description": "экспортный контроль превращается в устойчивый институт координации конкуренции (неформальный «правилогенератор» для цепочек поставок).",
+      "title": "Снизу - рост легитимационных конфликтов (общественная реакция)",
+      "description": "Снизу - рост легитимационных конфликтов (общественная реакция)",
+      "sources": [],
+      "level": 8
+    },
+    {
+      "title": "Крупная анти-AI акция в Лондоне в хабе King’s Cross (где офисы OpenAI/Meta/DeepMind) - сигнал формирования контр-движений, которые будут давить на регуляции, закупки и репутацию",
+      "description": "Крупная анти-AI акция в Лондоне в хабе King’s Cross (где офисы OpenAI/Meta/DeepMind) - сигнал формирования контр-движений, которые будут давить на регуляции, закупки и репутацию.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer"
+        "https://www.technologyreview.com/2026/03/02/1133814/i-checked-out-londons-biggest-ever-anti-ai-protest/"
       ],
       "level": 8
     },
     {
-      "title": "государство сознательно «перенастраивает» спонтанный порядок рынка труда: Сингапур расширяет внутренний кадровый контур, США (штаты) сужают внешний приток",
-      "description": "государство сознательно «перенастраивает» спонтанный порядок рынка труда: Сингапур расширяет внутренний кадровый контур, США (штаты) сужают внешний приток.",
+      "title": "“AI-washing” как эрозия доверия к объяснениям реорганизации труда",
+      "description": "“AI-washing” как эрозия доверия к объяснениям реорганизации труда",
+      "sources": [],
+      "level": 8
+    },
+    {
+      "title": "Обсуждение сокращений в Block и подозрения, что “AI позволяет делать больше меньшими силами” используется как риторика для cost-cutting - подрыв доверия к корпоративным объяснениям, что отражается на институтах найма/увольнения",
+      "description": "Обсуждение сокращений в Block и подозрения, что “AI позволяет делать больше меньшими силами” используется как риторика для cost-cutting - подрыв доверия к корпоративным объяснениям, что отражается на институтах найма/увольнения.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-03/singapore-s-ai-mission-includes-training-lawyers-prison-inmates",
+        "https://www.bloomberg.com/news/videos/2026-03-02/job-cuts-at-block-arouse-suspicions-of-ai-washing-video"
+      ],
+      "level": 8
+    },
+    {
+      "title": "Ускорение “фабрик бенчмарков” для агентности, надежности и судей (judge models)",
+      "description": "Ускорение “фабрик бенчмарков” для агентности, надежности и судей (judge models)",
+      "sources": [],
+      "level": 7
+    },
+    {
+      "title": "Появляется целый слой работ про: агентные бенчмарки, верифицируемые траектории, судей, конфаундеры, trace-анализ: TraderBench (адверсариальные рынки), RubricBench, M-JudgeBench, CARE для агрегации судей, TraceSIR/TraceBench",
+      "description": "Появляется целый слой работ про: агентные бенчмарки, верифицируемые траектории, судей, конфаундеры, trace-анализ: TraderBench (адверсариальные рынки), RubricBench, M-JudgeBench, CARE для агрегации судей, TraceSIR/TraceBench.",
+      "sources": [
+        "https://arxiv.org/abs/2603.00285",
+        "https://arxiv.org/abs/2603.01562",
+        "https://arxiv.org/abs/2603.00546",
+        "https://arxiv.org/abs/2603.00039",
+        "https://arxiv.org/abs/2603.00623"
+      ],
+      "level": 7
+    },
+    {
+      "title": "Это институционализирует новый критерий знания: не “умный ответ”, а воспроизводимая надежность процесса",
+      "description": "Это институционализирует новый критерий знания: не “умный ответ”, а воспроизводимая надежность процесса.",
+      "sources": [],
+      "level": 7
+    },
+    {
+      "title": "Перенос учебно-кадровой политики в национальные программы",
+      "description": "Перенос учебно-кадровой политики в национальные программы",
+      "sources": [],
+      "level": 7
+    },
+    {
+      "title": "Сингапур обучает AI-навыкам юристов, бухгалтеров и даже заключенных - государство делает “массовую рескиллинг-инфраструктуру” частью конкурентоспособности",
+      "description": "Сингапур обучает AI-навыкам юристов, бухгалтеров и даже заключенных - государство делает “массовую рескиллинг-инфраструктуру” частью конкурентоспособности.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-03/singapore-s-ai-mission-includes-training-lawyers-prison-inmates"
+      ],
+      "level": 7
+    },
+    {
+      "title": "Ограничение академического импорта компетенций",
+      "description": "Ограничение академического импорта компетенций",
+      "sources": [],
+      "level": 7
+    },
+    {
+      "title": "Университеты Флориды замораживают найм по H-1B на фоне ужесточения иммиграции; ранее аналогично делал Техас",
+      "description": "Университеты Флориды замораживают найм по H-1B на фоне ужесточения иммиграции; ранее аналогично делал Техас. Это ухудшает приток исследователей/инженеров и повышает внутреннюю “стоимость таланта”.",
+      "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-02/florida-universities-freeze-h-1b-hiring-amid-trump-s-immigration-crackdown"
       ],
-      "level": 8
+      "level": 7
     },
     {
-      "title": "ускоряется спрос на runtime-надежность агентных систем (observability, failover, policy enforcement «во время исполнения»), т.к",
-      "description": "ускоряется спрос на runtime-надежность агентных систем (observability, failover, policy enforcement «во время исполнения»), т.к. «model is not enough» при деградации инфраструктуры.",
+      "title": "Смена методологического центра: “runtime / trace / verifiable rewards” вместо “prompting”",
+      "description": "Смена методологического центра: “runtime / trace / verifiable rewards” вместо “prompting”",
+      "sources": [],
+      "level": 6
+    },
+    {
+      "title": "AI Runtime Infrastructure как отдельный execution-слой над моделью и под приложением - превращение исполнения в поверхность оптимизации (память, отказы, политика)",
+      "description": "AI Runtime Infrastructure как отдельный execution-слой над моделью и под приложением - превращение исполнения в поверхность оптимизации (память, отказы, политика).",
       "sources": [
         "https://arxiv.org/abs/2603.00495"
       ],
       "level": 6
     },
     {
-      "title": "растет значимость инженерии «safety harness»/контроля действий агентных систем (типобезопасные capability-ограничения, аудит действий), т.к",
-      "description": "растет значимость инженерии «safety harness»/контроля действий агентных систем (типобезопасные capability-ограничения, аудит действий), т.к. оборонный контур требует формализуемых гарантий.",
+      "title": "DenoiseFlow - uncertainty-aware, закрытый контур “sensing-regulating-correcting” для длинных агентных цепочек",
+      "description": "DenoiseFlow - uncertainty-aware, закрытый контур “sensing-regulating-correcting” для длинных агентных цепочек.",
       "sources": [
-        "https://arxiv.org/abs/2603.00991"
+        "https://arxiv.org/abs/2603.00532"
       ],
       "level": 6
     },
     {
-      "title": "ускорение методологий «делать больше на меньшем compute» (квантизация, оптимизация CoT-бюджета)",
-      "description": "ускорение методологий «делать больше на меньшем compute» (квантизация, оптимизация CoT-бюджета).",
+      "title": "LOGIGEN - синтез верифицируемых задач через hard-compiled policy + deterministic state verification",
+      "description": "LOGIGEN - синтез верифицируемых задач через hard-compiled policy + deterministic state verification.",
       "sources": [
-        "https://arxiv.org/abs/2603.00578",
-        "https://arxiv.org/abs/2603.00040"
+        "https://arxiv.org/abs/2603.00540"
       ],
       "level": 6
     },
     {
-      "title": "усиливается роль региональных DC-операторов, телекомов и интеграторов DR/BCP; крупные облака будут вынуждены делиться функциями (локальные партнеры, sovereign zones)",
-      "description": "усиливается роль региональных DC-операторов, телекомов и интеграторов DR/BCP; крупные облака будут вынуждены делиться функциями (локальные партнеры, sovereign zones).",
+      "title": "Бенчмарки, где оценка “привязана к физическому/финансовому результату”, а не к LLM-судье",
+      "description": "Бенчмарки, где оценка “привязана к физическому/финансовому результату”, а не к LLM-судье",
+      "sources": [],
+      "level": 6
+    },
+    {
+      "title": "TraderBench оценивает агентов по P&L/Sharpe и показывает, что “extended thinking” помогает retrieval, но почти не помогает торговле",
+      "description": "TraderBench оценивает агентов по P&L/Sharpe и показывает, что “extended thinking” помогает retrieval, но почти не помогает торговле. Это методологический удар по вере, что “больше рассуждений = лучше агент”.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
+        "https://arxiv.org/abs/2603.00285"
+      ],
+      "level": 6
+    },
+    {
+      "title": "Перекройка цепочки “госзаказ ↔ поставщик модели”: рынок превращается в режим допуска",
+      "description": "Перекройка цепочки “госзаказ ↔ поставщик модели”: рынок превращается в режим допуска",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "OpenAI заключает сделку, позволяющую Пентагону использовать технологии в секретных условиях; Altman признает, что переговоры были “rushed” и выглядели “sloppy/opportunistic”",
+      "description": "OpenAI заключает сделку, позволяющую Пентагону использовать технологии в секретных условиях; Altman признает, что переговоры были “rushed” и выглядели “sloppy/opportunistic”. Дополнение/контекст: MIT Tech Review описывает “компромисс” OpenAI как материализацию страхов Anthropic.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-03/openai-ceo-says-pentagon-deal-looked-opportunistic-and-sloppy",
+        "https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/"
       ],
       "level": 5
     },
     {
-      "title": "перераспределение ролей между OpenAI/Anthropic и оборонными интеграторами: кто становится «допущенным поставщиком» и кто строит контуры внедрения у подрядчиков",
-      "description": "перераспределение ролей между OpenAI/Anthropic и оборонными интеграторами: кто становится «допущенным поставщиком» и кто строит контуры внедрения у подрядчиков.",
+      "title": "Одновременно - запрет Anthropic в федеральном секторе",
+      "description": "Одновременно - запрет Anthropic в федеральном секторе. Итог: госрынок дробит конкуренцию и перераспределяет выручку/доступ.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-03/senate-s-wyden-pledges-battle-over-pentagon-ban-on-anthropic"
       ],
       "level": 5
     },
     {
-      "title": "усиливается специализация: одни компании - «финансовые оболочки» под DC/energy/real estate, другие - модельные/продуктовые; возникает больше стыков и контрактных зависимостей",
-      "description": "усиливается специализация: одни компании - «финансовые оболочки» под DC/energy/real estate, другие - модельные/продуктовые; возникает больше стыков и контрактных зависимостей.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-02/applied-digital-adds-to-ai-junk-bond-surge-with-offering"
-      ],
-      "level": 5
-    },
-    {
-      "title": "компании будут компенсировать кадровые ограничения инструментами автоматизации (coding agents) и перераспределением функций в глобальной цепочке труда",
-      "description": "компании будут компенсировать кадровые ограничения инструментами автоматизации (coding agents) и перераспределением функций в глобальной цепочке труда.",
+      "title": "Вертикали применения “AI в продуктах” становятся точками конкурентной войны",
+      "description": "Вертикали применения “AI в продуктах” становятся точками конкурентной войны",
       "sources": [],
       "level": 5
     },
     {
-      "title": "Meta пытается встроить AI прямо в торговый контур (исследование покупок), т.е",
-      "description": "Meta пытается встроить AI прямо в торговый контур (исследование покупок), т.е. смещение value chain в сторону commerce-поиска.",
+      "title": "Meta тестирует AI-инструмент shopping research, конкурируя с ChatGPT и Gemini",
+      "description": "Meta тестирует AI-инструмент shopping research, конкурируя с ChatGPT и Gemini.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-03/meta-tests-ai-shopping-research-tool-to-rival-chatgpt-gemini"
       ],
       "level": 5
     },
     {
-      "title": "инфраструктурная избыточность (сетевые маршруты, энергоузлы, физзащита) становится «частью AI-стека», а не просто ИТ",
-      "description": "инфраструктурная избыточность (сетевые маршруты, энергоузлы, физзащита) становится «частью AI-стека», а не просто ИТ.",
+      "title": "Anthropic добавляет Memory для бесплатных пользователей (удержание спроса/переходов)",
+      "description": "Anthropic добавляет Memory для бесплатных пользователей (удержание спроса/переходов).",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
+        "https://www.bloomberg.com/news/articles/2026-03-03/anthropic-tries-to-win-users-from-chatgpt-with-memory-feature"
       ],
-      "level": 4
+      "level": 5
     },
     {
-      "title": "фокус смещается от «чата» к автономным системам (drone swarming, voice-controlled autonomy), где требования к latency/надежности/интерфейсам существенно жестче",
-      "description": "фокус смещается от «чата» к автономным системам (drone swarming, voice-controlled autonomy), где требования к latency/надежности/интерфейсам существенно жестче.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-02/anthropic-made-pitch-in-drone-swarm-contest-during-pentagon-feud"
-      ],
-      "level": 4
+      "title": "“AI coding” как самостоятельный сверхдоходный сегмент",
+      "description": "“AI coding” как самостоятельный сверхдоходный сегмент",
+      "sources": [],
+      "level": 5
     },
     {
-      "title": "аппаратные ограничения (H200 caps) вынуждают Китай усиливать альтернативные стеки/оптимизации и open-source траектории",
-      "description": "аппаратные ограничения (H200 caps) вынуждают Китай усиливать альтернативные стеки/оптимизации и open-source траектории.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer",
-        "https://www.technologyreview.com/2026/02/12/1132811/whats-next-for-chinese-open-source-ai/"
-      ],
-      "level": 4
-    },
-    {
-      "title": "спрос на «рабочие» ассистенты (особенно coding) усиливает продуктовый слой вокруг них",
-      "description": "спрос на «рабочие» ассистенты (особенно coding) усиливает продуктовый слой вокруг них.",
+      "title": "Cursor достигает $2 млрд annualized revenue в феврале; удвоение за 3 месяца - превращение coding-assistant в отдельную индустрию и перераспределение маржи из классического dev-tooling",
+      "description": "Cursor достигает $2 млрд annualized revenue в феврале; удвоение за 3 месяца - превращение coding-assistant в отдельную индустрию и перераспределение маржи из классического dev-tooling.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion"
       ],
+      "level": 5
+    },
+    {
+      "title": "Compute как “квотируемый” и “военно-уязвимый” ресурс",
+      "description": "Compute как “квотируемый” и “военно-уязвимый” ресурс",
+      "sources": [],
       "level": 4
     },
     {
-      "title": "memory и agent runtime-инфраструктура становятся стандартными компонентами продукта (не просто модель)",
-      "description": "memory и agent runtime-инфраструктура становятся стандартными компонентами продукта (не просто модель).",
+      "title": "Квоты на H200 для Китая",
+      "description": "Квоты на H200 для Китая.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-03/anthropic-tries-to-win-users-from-chatgpt-with-memory-feature"
+        "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer"
       ],
       "level": 4
     },
     {
-      "title": "рост спроса на специалистов по resilience engineering, cloud security, incident response и «AI SRE»",
-      "description": "рост спроса на специалистов по resilience engineering, cloud security, incident response и «AI SRE».",
+      "title": "Дрон-удары по дата-центрам AWS",
+      "description": "Дрон-удары по дата-центрам AWS.",
       "sources": [
-        "https://www.bloomberg.com/news/videos/2026-03-02/cyber-risks-rise-amid-conflict-with-iran-video"
+        "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
       ],
+      "level": 4
+    },
+    {
+      "title": "Новый “железный слой” - память/персонализация/структурные индексы",
+      "description": "Новый “железный слой” - память/персонализация/структурные индексы",
+      "sources": [],
+      "level": 4
+    },
+    {
+      "title": "Semantic XPath (структурная память-дерево) радикально снижает токены по сравнению с in-context",
+      "description": "Semantic XPath (структурная память-дерево) радикально снижает токены по сравнению с in-context.",
+      "sources": [
+        "https://arxiv.org/abs/2603.01160"
+      ],
+      "level": 4
+    },
+    {
+      "title": "MemPO - оптимизация самоуправляемой памяти для long-horizon, минус 67% токенов при росте качества",
+      "description": "MemPO - оптимизация самоуправляемой памяти для long-horizon, минус 67% токенов при росте качества.",
+      "sources": [
+        "https://arxiv.org/abs/2603.00680"
+      ],
+      "level": 4
+    },
+    {
+      "title": "Массовизация AI-компетенций как госзадача + одновременный дефицит “импортируемых” кадров",
+      "description": "Массовизация AI-компетенций как госзадача + одновременный дефицит “импортируемых” кадров",
+      "sources": [],
       "level": 3
     },
     {
-      "title": "укрепляется профессиональный слой «AI + defense compliance/clearance», а также продуктовые роли «gov/defense BD + security engineering»",
-      "description": "укрепляется профессиональный слой «AI + defense compliance/clearance», а также продуктовые роли «gov/defense BD + security engineering».",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-03/openai-ceo-says-pentagon-deal-looked-opportunistic-and-sloppy"
-      ],
-      "level": 3
-    },
-    {
-      "title": "массовая «AI-грамотность» для несофтовых профессий (право/учет/исправительная система) - явный сдвиг профструктуры",
-      "description": "массовая «AI-грамотность» для несофтовых профессий (право/учет/исправительная система) - явный сдвиг профструктуры.",
+      "title": "Сингапур расширяет обучение AI на широкие группы (включая заключенных) - рост “AI-грамотности” как базовой компетенции",
+      "description": "Сингапур расширяет обучение AI на широкие группы (включая заключенных) - рост “AI-грамотности” как базовой компетенции.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-03/singapore-s-ai-mission-includes-training-lawyers-prison-inmates"
       ],
       "level": 3
     },
     {
-      "title": "растет спрос на product/security специалистов по персональным данным и memory-policy",
-      "description": "растет спрос на product/security специалистов по персональным данным и memory-policy.",
+      "title": "Флорида ограничивает H-1B найм в университетах - снижение кадрового притока",
+      "description": "Флорида ограничивает H-1B найм в университетах - снижение кадрового притока.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-02/florida-universities-freeze-h-1b-hiring-amid-trump-s-immigration-crackdown"
+      ],
+      "level": 3
+    },
+    {
+      "title": "Трансформация профессий: программист → оператор/оркестратор агента",
+      "description": "Трансформация профессий: программист → оператор/оркестратор агента",
       "sources": [],
       "level": 3
     },
     {
-      "title": "MENA как площадка для compute/edge получает новый риск-профиль; вероятен перенос критичных нагрузок и изменение latency/стоимости для региональных клиентов",
-      "description": "MENA как площадка для compute/edge получает новый риск-профиль; вероятен перенос критичных нагрузок и изменение latency/стоимости для региональных клиентов.",
+      "title": "Всплеск доходов Cursor и рост agentic-инструментов сигнализируют, что “писать код” частично заменяется “задавать задачи, проверять, маршрутизировать, собирать”",
+      "description": "Всплеск доходов Cursor и рост agentic-инструментов сигнализируют, что “писать код” частично заменяется “задавать задачи, проверять, маршрутизировать, собирать”.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-02/cursor-recurring-revenue-doubles-in-three-months-to-2-billion"
+      ],
+      "level": 3
+    },
+    {
+      "title": "Региональная уязвимость облака и необходимость multi-region как нормы",
+      "description": "Региональная уязвимость облака и необходимость multi-region как нормы",
+      "sources": [],
+      "level": 2
+    },
+    {
+      "title": "Повреждение дата-центров в ОАЭ/Бахрейне → давление на архитектуры резервирования, на размещение и на страховку",
+      "description": "Повреждение дата-центров в ОАЭ/Бахрейне → давление на архитектуры резервирования, на размещение и на страховку.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
       ],
       "level": 2
     },
     {
-      "title": "пространственное разделение на public cloud vs classified environments; новые зоны размещения compute и данных",
-      "description": "пространственное разделение на public cloud vs classified environments; новые зоны размещения compute и данных.",
+      "title": "Смещение центров роста AI-выручки в Китай",
+      "description": "Смещение центров роста AI-выручки в Китай",
+      "sources": [],
+      "level": 2
+    },
+    {
+      "title": "MiniMax удваивает продажи в 2025, акции растут до +21% - укрепление китайских “OpenAI rivals” и локальных рынков капитала",
+      "description": "MiniMax удваивает продажи в 2025, акции растут до +21% - укрепление китайских “OpenAI rivals” и локальных рынков капитала.",
       "sources": [
-        "https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/"
+        "https://www.bloomberg.com/news/articles/2026-03-02/china-ai-pioneer-minimax-more-than-doubles-sales-in-hot-market"
       ],
       "level": 2
     },
     {
-      "title": "переразмещение мощностей и закупок; дробление заказов на чипы, «обходная логистика» и региональные хабы compute",
-      "description": "переразмещение мощностей и закупок; дробление заказов на чипы, «обходная логистика» и региональные хабы compute.",
+      "title": "Прямых сигналов про энергию/воду в массиве меньше, но война/удары выступают как “география риска”, влияющая на выбор территории под дата-центры (т.е",
+      "description": "Прямых сигналов про энергию/воду в массиве меньше, но война/удары выступают как “география риска”, влияющая на выбор территории под дата-центры (т.е. уровень 1 проявляется через уровень 2).",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer"
-      ],
-      "level": 2
-    },
-    {
-      "title": "Anthropic добавляет memory для Claude (в т.ч",
-      "description": "Anthropic добавляет memory для Claude (в т.ч. бесплатно) на фоне «unprecedented demand» в последние дни.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-03/anthropic-tries-to-win-users-from-chatgpt-with-memory-feature"
-      ],
-      "level": 2
-    },
-    {
-      "title": "Meta тестирует AI shopping research feature в чатботе (конкуренция с ChatGPT/Gemini)",
-      "description": "Meta тестирует AI shopping research feature в чатботе (конкуренция с ChatGPT/Gemini).",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-03/meta-tests-ai-shopping-research-tool-to-rival-chatgpt-gemini"
-      ],
-      "level": 2
-    },
-    {
-      "title": "Альтман: сделка OpenAI с Пентагоном выглядела «оппортунистичной и неряшливой/слoppy»",
-      "description": "Альтман: сделка OpenAI с Пентагоном выглядела «оппортунистичной и неряшливой/слoppy».",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-03/openai-ceo-says-pentagon-deal-looked-opportunistic-and-sloppy"
-      ],
-      "level": 1
-    },
-    {
-      "title": "Сенатор Уайден обещает бороться с запретом на Anthropic для федерального правительства и подрядчиков Пентагона",
-      "description": "Сенатор Уайден обещает бороться с запретом на Anthropic для федерального правительства и подрядчиков Пентагона.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-03/senate-s-wyden-pledges-battle-over-pentagon-ban-on-anthropic"
-      ],
-      "level": 1
-    },
-    {
-      "title": "Контекст сделки OpenAI в MIT Tech Review: доступ военных к технологиям OpenAI в «классифицированных средах», переговоры «rushed»",
-      "description": "Контекст сделки OpenAI в MIT Tech Review: доступ военных к технологиям OpenAI в «классифицированных средах», переговоры «rushed».",
-      "sources": [
-        "https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/"
-      ],
-      "level": 1
-    },
-    {
-      "title": "Anthropic подавал предложение в $100 млн challenge по автономному drone swarming",
-      "description": "Anthropic подавал предложение в $100 млн challenge по автономному drone swarming.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-02/anthropic-made-pitch-in-drone-swarm-contest-during-pentagon-feud"
-      ],
-      "level": 1
-    },
-    {
-      "title": "Applied Digital размещает $2.15 млрд high-yield (junk) bonds под AI-инфраструктуру",
-      "description": "Applied Digital размещает $2.15 млрд high-yield (junk) bonds под AI-инфраструктуру.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-02/applied-digital-adds-to-ai-junk-bond-surge-with-offering"
-      ],
-      "level": 1
-    },
-    {
-      "title": "США рассматривают лимит: не более 75,000 Nvidia H200 на одного китайского клиента",
-      "description": "США рассматривают лимит: не более 75,000 Nvidia H200 на одного китайского клиента.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer"
-      ],
-      "level": 1
-    },
-    {
-      "title": "Сингапур обучает AI-навыкам юристов, бухгалтеров и даже заключенных",
-      "description": "Сингапур обучает AI-навыкам юристов, бухгалтеров и даже заключенных.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-03/singapore-s-ai-mission-includes-training-lawyers-prison-inmates"
-      ],
-      "level": 1
-    },
-    {
-      "title": "Университеты Флориды замораживают найм по H-1B на фоне иммиграционного ужесточения; аналогично ранее в Техасе",
-      "description": "Университеты Флориды замораживают найм по H-1B на фоне иммиграционного ужесточения; аналогично ранее в Техасе.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-02/florida-universities-freeze-h-1b-hiring-amid-trump-s-immigration-crackdown"
+        "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
       ],
       "level": 1
     }
   ],
   "trends": [
     {
-      "name": "AI-CapEx / Инфраструктура (DC, compute) через долговые рынки",
-      "momentum": 0,
-      "rationale": "** размещение $2.15 млрд junk bonds под AI-инфру - признак масштабирования финансирования не только equity, но и high-yield debt.",
+      "name": "AI-CapEx и долговое финансирование инфраструктуры",
+      "momentum": 75,
+      "rationale": "рост крупных размещений долга под AI-инфраструктуру и давление на кредитные метрики крупных инвесторов.",
       "levels": [
-        9,
-        5,
-        2
-      ],
-      "category": "accelerating"
-    },
-    {
-      "name": "Геополитический риск дата-центров / cloud resilience",
-      "momentum": 0,
-      "rationale": "** физическое повреждение дата-центров AWS дронами и ожидание длительных сбоев переводят риск в «первый класс» архитектуры.",
-      "levels": [
-        2,
-        5,
-        8,
-        9
-      ],
-      "category": "emerging"
-    },
-    {
-      "name": "Экспортный контроль AI-чипов (гранулярные квоты на клиента)",
-      "momentum": 0,
-      "rationale": "** обсуждение caps на H200 «на одного китайского клиента» - переход от общих запретов к тонкой настройке потоков compute.",
-      "levels": [
-        8,
         9,
         5,
         4
@@ -669,21 +758,31 @@
       "category": "accelerating"
     },
     {
-      "name": "Defense/госзакупки как главный рынок легитимации frontier-AI",
-      "momentum": 0,
-      "rationale": "** сделка OpenAI в classified-средах + политический конфликт вокруг запрета Anthropic показывают, что доступ к госрынку становится структурным рычагом.",
+      "name": "Геополитическая уязвимость облаков (cloud resilience / sovereign placement)",
+      "momentum": 70,
+      "rationale": "физические атаки на дата-центры переводят надежность из “инженерной опции” в “стратегическую необходимость”.",
       "levels": [
-        8,
-        9,
-        5,
-        7
+        2,
+        4,
+        9
       ],
       "category": "accelerating"
     },
     {
-      "name": "Agent runtime / наблюдаемость / самовосстановление как отдельный слой (runtime infrastructure)",
-      "momentum": 0,
-      "rationale": "** оформляется как отдельная исследовательская/инженерная область «над моделью и под приложением».",
+      "name": "Экспортный контроль чипов как инструмент управления compute",
+      "momentum": 60,
+      "rationale": "обсуждение квот на H200 на одного китайского покупателя - усиление тонкой настройки ограничений (не просто запрет, а лимитирование масштаба).",
+      "levels": [
+        9,
+        4,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Агентные системы с runtime-слоем (observability/reliability/cost control)",
+      "momentum": 65,
+      "rationale": "формируется отдельный execution-слой (AI Runtime Infrastructure) и закрытые контуры надежности (DenoiseFlow) - это уже не “лабораторные” идеи, а типовая инженерия.",
       "levels": [
         6,
         4,
@@ -692,206 +791,202 @@
       "category": "emerging"
     },
     {
-      "name": "AI coding assistants как “денежный мотор” B2B",
-      "momentum": 0,
-      "rationale": "** Cursor достигает $2B annualized revenue run-rate - сигнал массового платного внедрения в разработке.",
+      "name": "“AI coding assistants” как супер-категория со своей экономикой",
+      "momentum": 85,
+      "rationale": "Cursor показывает масштабирование выручки до $2B ARR-rate - рынок готов платить за “ускорение труда разработчика” как за ядро.",
       "levels": [
         5,
         3,
-        9
+        6
       ],
       "category": "accelerating"
     },
     {
-      "name": "Long-term memory/персонализация в consumer-чатботах",
-      "momentum": 0,
-      "rationale": "** Anthropic дает memory бесплатно для удержания пользователей на фоне резкого всплеска спроса.",
+      "name": "Потребительская конкуренция через memory/персонализацию в чатботах",
+      "momentum": 45,
+      "rationale": "Anthropic выкатывает memory даже для free users как удержание и реакция на всплеск спроса.",
       "levels": [
         4,
-        5,
-        8
+        5
       ],
       "category": "emerging"
     },
     {
-      "name": "“Открытые веса” как китайский ответ на ограничения (open-source China AI)",
-      "momentum": 0,
-      "rationale": "** технологическая траектория китайского open-source описывается как продолжение поворотного момента после DeepSeek и последующих релизов; на фоне ужесточений по чипам мотивация растет.",
+      "name": "Нейтральность госрынка AI (идея “любой лучший провайдер может быть закуплен”)",
+      "momentum": -55,
+      "rationale": "запрет Anthropic и ускоренная classified-сделка OpenAI показывают переход к режиму допуска/запрета.",
       "levels": [
         8,
-        7,
-        4,
-        9
-      ],
-      "category": "emerging"
-    },
-    {
-      "name": "Иммиграционный приток AI-таланта в университеты США (через H-1B)",
-      "momentum": 0,
-      "rationale": "** заморозка H-1B найма во Флориде (и аналогия с Техасом) - институциональное сжатие канала кадров.",
-      "levels": [
-        7,
-        3,
-        8
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "“Классический SaaS без AI” как самостоятельная ценность",
-      "momentum": 0,
-      "rationale": "** рынок и медиа-повестка продолжают перетягиваться в agentic/coding/commerce; M&A в логистическом софте скорее сигнал укрупнения «под AI-надстройку», чем роста чистого SaaS.",
-      "levels": [
         5,
         9
       ],
       "category": "decelerating"
     },
     {
-      "name": "облако как универсальная, сравнительно взаимозаменяемая инфраструктура с рисками в основном кибер/операционными.",
-      "momentum": -25,
-      "rationale": "Угасает: переход от «облако как универсальная, сравнительно взаимозаменяемая инфраструктура с рисками в основном кибер/операционными.» к «облако как физически уязвимая и геополитически маркированная инфраструктура; надежность определяется территорией и конфликтом.». Упоминаний в контексте перехода: 1",
+      "name": "“AI-washing” как легитимационная стратегия увольнений",
+      "momentum": 20,
+      "rationale": "публичное подозрение к объяснениям “увольняем из-за AI” растет; это будет усиливать требования доказуемости эффектов автоматизации.",
+      "levels": [
+        8,
+        3,
+        5
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Глобальная мобильность академических кадров в США (H-1B как канал)",
+      "momentum": -45,
+      "rationale": "заморозка H-1B найма во Флориде (и прецеденты в Техасе) - сигнал охлаждения канала импорта компетенций.",
+      "levels": [
+        7,
+        3
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "compute как коммерческий ресурс, управляемый рынком облаков/чипов.",
+      "momentum": -55,
+      "rationale": "Угасает: переход от «compute как коммерческий ресурс, управляемый рынком облаков/чипов.» к «compute как стратегический актив: квоты, запреты, риск ударов, требования резервирования.». Упоминаний в контексте перехода: 3",
       "levels": [
         9,
-        8,
-        5,
-        3,
+        4,
         2
       ],
       "category": "decelerating"
     },
     {
-      "name": "конкуренция между labs преимущественно по качеству модели/продукта и коммерческим контрактам.",
-      "momentum": -40,
-      "rationale": "Угасает: переход от «конкуренция между labs преимущественно по качеству модели/продукта и коммерческим контрактам.» к «конкуренция по статусу supply-chain/security risk и доступу к defense/federal рынку; политический контур задает границы бизнеса.». Упоминаний в контексте перехода: 2",
+      "name": "конкуренция провайдеров LLM по качеству/цене и общим стандартам.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «конкуренция провайдеров LLM по качеству/цене и общим стандартам.» к «конкуренция через политико-административный допуск (запреты, classified deployment), где контракты зависят от статуса.». Упоминаний в контексте перехода: 0",
       "levels": [
         9,
         8,
-        7,
+        5
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "улучшение метрик за счет масштабирования модели/промптинга.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «улучшение метрик за счет масштабирования модели/промптинга.» к «системная инженерия агентности: runtime-инфра, trace-анализ, uncertainty-контуры, verifiable rewards, структурная память.». Упоминаний в контексте перехода: 0",
+      "levels": [
         6,
         5,
-        4,
-        3,
-        2
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "AI-инфраструктура как CAPEX бигтеха/венчура.",
-      "momentum": -25,
-      "rationale": "Угасает: переход от «AI-инфраструктура как CAPEX бигтеха/венчура.» к «инфраструктура как объект массового high-yield debt; появляется слой «провайдеров мощности» на долговом плече.». Упоминаний в контексте перехода: 1",
-      "levels": [
-        9,
-        5,
-        3,
-        2
+        4
       ],
       "category": "decelerating"
     }
   ],
   "cross_level_links": [
     {
-      "title": "Физическая атака на дата-центры (Уровень 2) → перестройка корпоративной кооперации (Уровень 5) → институционализация multi-cloud/geo-redundancy (Уровень 8) → рост премии риска в стоимости капитала и контрактов (Уровень 9).",
-      "description": "Физическая атака на дата-центры (Уровень 2) → перестройка корпоративной кооперации (Уровень 5) → институционализация multi-cloud/geo-redundancy (Уровень 8) → рост премии риска в стоимости капитала и контрактов (Уровень 9).   Основание: повреждение DC и предупреждение о длительных сбоях.",
+      "title": "Военный риск (2/1) → архитектуры надежности (4) → новые стандарты runtime/observability (6) → пересборка контрактов и страховок (9/8)",
+      "description": "Военный риск (2/1) → архитектуры надежности (4) → новые стандарты runtime/observability (6) → пересборка контрактов и страховок (9/8) - Удары по дата-центрам AWS (уровень 2) вынуждают усиливать multi-region, аварийные режимы, runtime-политики (уровни 4-6), что затем переупаковывается в финансовые условия, SLA, страхование и стоимость капитала (уровень 9).",
       "levels": [
         9,
         8,
-        5,
-        2
+        6,
+        4,
+        2,
+        1
       ],
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
       ]
     },
     {
-      "title": "Политическое решение о запрете/допуске поставщика (Уровень 8) → перераспределение рынков и ролей между AI-фирмами (Уровень 5) → технологические требования к “classified deployment” (Уровень 4/6) → изменение траекторий публикаций и трансфера знаний (Уровень 7).",
-      "description": "Политическое решение о запрете/допуске поставщика (Уровень 8) → перераспределение рынков и ролей между AI-фирмами (Уровень 5) → технологические требования к “classified deployment” (Уровень 4/6) → изменение траекторий публикаций и трансфера знаний (Уровень 7).   Основание: запрет на Anthropic и параллельная сделка OpenAI.,",
+      "title": "Экспортный контроль (9) → дефицит compute (4) → рост долга/CapEx (9) → усиление локальных экосистем (2/5)",
+      "description": "Экспортный контроль (9) → дефицит compute (4) → рост долга/CapEx (9) → усиление локальных экосистем (2/5) - Квотирование H200 (9) ограничивает масштабирование (4), толкает инфраструктуру в debt-financing (9), одновременно стимулируя Китай развивать альтернативных игроков/цепочки (5/2). +",
+      "levels": [
+        9,
+        5,
+        4,
+        2
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer",
+        "https://www.bloomberg.com/news/articles/2026-03-02/china-ai-pioneer-minimax-more-than-doubles-sales-in-hot-market"
+      ]
+    },
+    {
+      "title": "Госзакупки и запреты (8/5) → продуктовые приоритеты (5/4) → легитимационные конфликты (8)",
+      "description": "Госзакупки и запреты (8/5) → продуктовые приоритеты (5/4) → легитимационные конфликты (8) - Запрет Anthropic и сделка OpenAI с Пентагоном перестраивают конкуренцию (5/8). Это повышает значимость “режимов допуска” и compliance-стека (4/6) и одновременно подпитывает протестные/репутационные волны (8). + +",
       "levels": [
         8,
-        7,
-        6,
         5,
         4
       ],
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-03/senate-s-wyden-pledges-battle-over-pentagon-ban-on-anthropic",
-        "https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/"
-      ]
-    },
-    {
-      "title": "Экспортный контроль на чипы (Уровень 8/9) → давление на «железный» стек (Уровень 4) → ускорение методологий эффективности (Уровень 6) → усиление конкурентоспособности open-source/локальных экосистем (Уровень 8).",
-      "description": "Экспортный контроль на чипы (Уровень 8/9) → давление на «железный» стек (Уровень 4) → ускорение методологий эффективности (Уровень 6) → усиление конкурентоспособности open-source/локальных экосистем (Уровень 8).   Основание: планируемые caps на H200 в Китай + рост китайского open-source трека.,",
-      "levels": [
-        9,
-        8,
-        6,
-        4
-      ],
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer",
-        "https://www.technologyreview.com/2026/02/12/1132811/whats-next-for-chinese-open-source-ai/"
+        "https://www.bloomberg.com/news/articles/2026-03-03/openai-ceo-says-pentagon-deal-looked-opportunistic-and-sloppy",
+        "https://www.technologyreview.com/2026/03/02/1133814/i-checked-out-londons-biggest-ever-anti-ai-protest/"
       ]
     }
   ],
   "structural_shifts": [
     {
-      "title": "От глобального облака к геополитически сегментированному compute»**",
-      "from": "облако как универсальная, сравнительно взаимозаменяемая инфраструктура с рисками в основном кибер/операционными.",
-      "to": "облако как физически уязвимая и геополитически маркированная инфраструктура; надежность определяется территорией и конфликтом.",
-      "through": "атаки/конфликт → сбои → мультизонность/мультиклауд → пересборка контрактов и риск-ценообразование.",
+      "title": "Compute становится объектом геополитического нормирования и военной уязвимости",
+      "from": "compute как коммерческий ресурс, управляемый рынком облаков/чипов.",
+      "to": "compute как стратегический актив: квоты, запреты, риск ударов, требования резервирования.",
+      "through": "ы: экспортные ограничения (квоты H200), прямые разрушения инфраструктуры (дроны по ДЦ).",
       "levels": [
         9,
-        8,
-        5,
-        3,
+        4,
         2
       ],
       "trend": "emerging",
       "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-02/us-mulls-capping-nvidia-h200-sales-at-75-000-per-chinese-customer",
         "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
       ]
     },
     {
-      "title": "Госдопуск как главный протокол рынка frontier-AI»**",
-      "from": "конкуренция между labs преимущественно по качеству модели/продукта и коммерческим контрактам.",
-      "to": "конкуренция по статусу supply-chain/security risk и доступу к defense/federal рынку; политический контур задает границы бизнеса.",
-      "through": "blacklist/ban и classified deals → перераспределение спроса → усиление требований к контролируемости агентов.",
+      "title": "Госрынок AI переходит от нейтральной конкуренции к режиму допуска (ban/clearance procurement)",
+      "from": "конкуренция провайдеров LLM по качеству/цене и общим стандартам.",
+      "to": "конкуренция через политико-административный допуск (запреты, classified deployment), где контракты зависят от статуса.",
+      "through": "ы: запрет Anthropic; ускоренная сделка OpenAI для classified use.",
       "levels": [
         9,
         8,
-        7,
-        6,
-        5,
-        4,
-        3,
-        2
+        5
       ],
-      "trend": "emerging",
+      "trend": "accelerating",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-03/senate-s-wyden-pledges-battle-over-pentagon-ban-on-anthropic",
-        "https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/"
+        "https://www.bloomberg.com/news/articles/2026-03-03/openai-ceo-says-pentagon-deal-looked-opportunistic-and-sloppy"
       ]
     },
     {
-      "title": "Финансовизация AI-инфры: compute как долговой актив»**",
-      "from": "AI-инфраструктура как CAPEX бигтеха/венчура.",
-      "to": "инфраструктура как объект массового high-yield debt; появляется слой «провайдеров мощности» на долговом плече.",
-      "through": "волна размещений junk bonds под AI buildout.",
+      "title": "От “модели” к “исполняемой системе”: runtime, память, верификация как новый центр инженерии",
+      "from": "улучшение метрик за счет масштабирования модели/промптинга.",
+      "to": "системная инженерия агентности: runtime-инфра, trace-анализ, uncertainty-контуры, verifiable rewards, структурная память.",
+      "through": "ы: появление execution-layer (AI Runtime Infrastructure), методов closed-loop надежности (DenoiseFlow), структурных memory-модулей (Semantic XPath, MemPO).",
       "levels": [
-        9,
+        6,
         5,
-        3,
-        2
+        4
       ],
       "trend": "emerging",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-02/applied-digital-adds-to-ai-junk-bond-surge-with-offering"
+        "https://arxiv.org/abs/2603.00495",
+        "https://arxiv.org/abs/2603.00532",
+        "https://arxiv.org/abs/2603.01160",
+        "https://arxiv.org/abs/2603.00680"
       ]
     }
   ],
   "radar_signals": [
     {
-      "title": "Политическая волатильность “ban/allow” на уровне поставщиков AI",
-      "description": "как новый системный риск для enterprise-архитектур (vendor risk).",
+      "title": "Кредитные рейтинги как “регулятор” AI-экспансии",
+      "description": "негативный outlook SoftBank из-за OpenAI-ставки может стать прецедентом, где frontier-инвестиции ухудшают стоимость заимствований и тормозят гонку.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-03/softbank-s-30-billion-openai-bet-spurs-s-p-credit-outlook-cut"
+      ]
+    },
+    {
+      "title": "Политизация доступа к моделям",
+      "description": "запрет Anthropic может породить аналогичные кейсы “vendor disqualification” и в других юрисдикциях.",
       "level_group": "upper",
       "level_range": "7-9",
       "sources": [
@@ -899,101 +994,68 @@
       ]
     },
     {
-      "title": "Anti-AI протесты в Лондоне",
-      "description": "ранний индикатор того, что «социальная лицензия» на AI может стать институциональным ограничителем развертываний в хабах.",
-      "level_group": "upper",
-      "level_range": "7-9",
-      "sources": [
-        "https://www.technologyreview.com/2026/03/02/1133814/i-checked-out-londons-biggest-ever-anti-ai-protest/"
-      ]
-    },
-    {
-      "title": "Runtime-инфраструктура для агентов",
-      "description": "как отдельный слой между моделью и приложением (политики, recovery, cost/safety оптимизация).",
-      "level_group": "upper",
-      "level_range": "7-9",
-      "sources": [
-        "https://arxiv.org/abs/2603.00495"
-      ]
-    },
-    {
-      "title": "Переход к performance-grounded бенчмаркам для агентов в финансах",
-      "description": "(оценка по P&L/Sharpe без LLM-судей) - может стать шаблоном для других отраслей.",
-      "level_group": "upper",
-      "level_range": "7-9",
+      "title": "“Benchmark industrialization”",
+      "description": "рост специализированных бенчмарков агентности (finance, memory, cultural, embodied) - риск фрагментации стандартов и одновременный рост “индустрии измерения”. Пример: TraderBench.",
+      "level_group": "middle",
+      "level_range": "4-6",
       "sources": [
         "https://arxiv.org/abs/2603.00285"
       ]
     },
     {
-      "title": "Национальные программы массового upskilling (вплоть до заключенных)",
-      "description": "формирование нового «низового» кадрового слоя, который ускорит диффузию AI в сервисные отрасли.",
-      "level_group": "upper",
-      "level_range": "7-9",
+      "title": "Отказ от LLM-judge там, где можно измерять результат напрямую",
+      "description": "(финансы, планирование, пазлы с верификацией) - давление на текущие практики evaluation.",
+      "level_group": "middle",
+      "level_range": "4-6",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-03/singapore-s-ai-mission-includes-training-lawyers-prison-inmates"
+        "https://arxiv.org/abs/2603.00285"
       ]
     },
     {
-      "title": "Визовые ограничения в университетах",
-      "description": "как фактор деградации исследовательских контуров и ускорения «внутренней автоматизации» (через coding agents) вместо найма.",
-      "level_group": "upper",
-      "level_range": "7-9",
+      "title": "Нормализация атак на инфраструктуру",
+      "description": "как фактор выбора регионов и требований к резервированию.",
+      "level_group": "lower",
+      "level_range": "1-3",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-03/drone-strikes-damage-amazon-data-centers-in-the-uae-and-bahrain"
+      ]
+    },
+    {
+      "title": "Иммиграционные ограничения в академии",
+      "description": "как “медленный кризис” кадрового конвейера.",
+      "level_group": "lower",
+      "level_range": "1-3",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-02/florida-universities-freeze-h-1b-hiring-amid-trump-s-immigration-crackdown"
       ]
     }
   ],
   "metrics": {
-    "total_events": 38,
+    "total_events": 50,
     "events_by_level": {
-      "1": 8,
-      "2": 5,
-      "3": 4,
-      "4": 5,
-      "5": 5,
-      "6": 3,
-      "7": 0,
-      "8": 4,
-      "9": 4
+      "1": 1,
+      "2": 4,
+      "3": 5,
+      "4": 6,
+      "5": 8,
+      "6": 6,
+      "7": 7,
+      "8": 6,
+      "9": 7
     },
-    "total_sources": 18,
+    "total_sources": 25,
     "structural_shifts_count": 3,
     "radar_signals_count": 6,
     "cross_level_links_count": 3,
-    "momentum_trends_count": 13
+    "momentum_trends_count": 12
   },
   "categories": [],
   "momentum_trends": [
     {
-      "name": "AI-CapEx / Инфраструктура (DC, compute) через долговые рынки",
-      "momentum": 0,
-      "rationale": "** размещение $2.15 млрд junk bonds под AI-инфру - признак масштабирования финансирования не только equity, но и high-yield debt.",
+      "name": "AI-CapEx и долговое финансирование инфраструктуры",
+      "momentum": 75,
+      "rationale": "рост крупных размещений долга под AI-инфраструктуру и давление на кредитные метрики крупных инвесторов.",
       "levels": [
-        9,
-        5,
-        2
-      ],
-      "category": "accelerating"
-    },
-    {
-      "name": "Геополитический риск дата-центров / cloud resilience",
-      "momentum": 0,
-      "rationale": "** физическое повреждение дата-центров AWS дронами и ожидание длительных сбоев переводят риск в «первый класс» архитектуры.",
-      "levels": [
-        2,
-        5,
-        8,
-        9
-      ],
-      "category": "emerging"
-    },
-    {
-      "name": "Экспортный контроль AI-чипов (гранулярные квоты на клиента)",
-      "momentum": 0,
-      "rationale": "** обсуждение caps на H200 «на одного китайского клиента» - переход от общих запретов к тонкой настройке потоков compute.",
-      "levels": [
-        8,
         9,
         5,
         4
@@ -1001,21 +1063,31 @@
       "category": "accelerating"
     },
     {
-      "name": "Defense/госзакупки как главный рынок легитимации frontier-AI",
-      "momentum": 0,
-      "rationale": "** сделка OpenAI в classified-средах + политический конфликт вокруг запрета Anthropic показывают, что доступ к госрынку становится структурным рычагом.",
+      "name": "Геополитическая уязвимость облаков (cloud resilience / sovereign placement)",
+      "momentum": 70,
+      "rationale": "физические атаки на дата-центры переводят надежность из “инженерной опции” в “стратегическую необходимость”.",
       "levels": [
-        8,
-        9,
-        5,
-        7
+        2,
+        4,
+        9
       ],
       "category": "accelerating"
     },
     {
-      "name": "Agent runtime / наблюдаемость / самовосстановление как отдельный слой (runtime infrastructure)",
-      "momentum": 0,
-      "rationale": "** оформляется как отдельная исследовательская/инженерная область «над моделью и под приложением».",
+      "name": "Экспортный контроль чипов как инструмент управления compute",
+      "momentum": 60,
+      "rationale": "обсуждение квот на H200 на одного китайского покупателя - усиление тонкой настройки ограничений (не просто запрет, а лимитирование масштаба).",
+      "levels": [
+        9,
+        4,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Агентные системы с runtime-слоем (observability/reliability/cost control)",
+      "momentum": 65,
+      "rationale": "формируется отдельный execution-слой (AI Runtime Infrastructure) и закрытые контуры надежности (DenoiseFlow) - это уже не “лабораторные” идеи, а типовая инженерия.",
       "levels": [
         6,
         4,
@@ -1024,98 +1096,88 @@
       "category": "emerging"
     },
     {
-      "name": "AI coding assistants как “денежный мотор” B2B",
-      "momentum": 0,
-      "rationale": "** Cursor достигает $2B annualized revenue run-rate - сигнал массового платного внедрения в разработке.",
+      "name": "“AI coding assistants” как супер-категория со своей экономикой",
+      "momentum": 85,
+      "rationale": "Cursor показывает масштабирование выручки до $2B ARR-rate - рынок готов платить за “ускорение труда разработчика” как за ядро.",
       "levels": [
         5,
         3,
-        9
+        6
       ],
       "category": "accelerating"
     },
     {
-      "name": "Long-term memory/персонализация в consumer-чатботах",
-      "momentum": 0,
-      "rationale": "** Anthropic дает memory бесплатно для удержания пользователей на фоне резкого всплеска спроса.",
+      "name": "Потребительская конкуренция через memory/персонализацию в чатботах",
+      "momentum": 45,
+      "rationale": "Anthropic выкатывает memory даже для free users как удержание и реакция на всплеск спроса.",
       "levels": [
         4,
-        5,
-        8
+        5
       ],
       "category": "emerging"
     },
     {
-      "name": "“Открытые веса” как китайский ответ на ограничения (open-source China AI)",
-      "momentum": 0,
-      "rationale": "** технологическая траектория китайского open-source описывается как продолжение поворотного момента после DeepSeek и последующих релизов; на фоне ужесточений по чипам мотивация растет.",
+      "name": "Нейтральность госрынка AI (идея “любой лучший провайдер может быть закуплен”)",
+      "momentum": -55,
+      "rationale": "запрет Anthropic и ускоренная classified-сделка OpenAI показывают переход к режиму допуска/запрета.",
       "levels": [
         8,
-        7,
-        4,
-        9
-      ],
-      "category": "emerging"
-    },
-    {
-      "name": "Иммиграционный приток AI-таланта в университеты США (через H-1B)",
-      "momentum": 0,
-      "rationale": "** заморозка H-1B найма во Флориде (и аналогия с Техасом) - институциональное сжатие канала кадров.",
-      "levels": [
-        7,
-        3,
-        8
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "“Классический SaaS без AI” как самостоятельная ценность",
-      "momentum": 0,
-      "rationale": "** рынок и медиа-повестка продолжают перетягиваться в agentic/coding/commerce; M&A в логистическом софте скорее сигнал укрупнения «под AI-надстройку», чем роста чистого SaaS.",
-      "levels": [
         5,
         9
       ],
       "category": "decelerating"
     },
     {
-      "name": "облако как универсальная, сравнительно взаимозаменяемая инфраструктура с рисками в основном кибер/операционными.",
-      "momentum": -25,
-      "rationale": "Угасает: переход от «облако как универсальная, сравнительно взаимозаменяемая инфраструктура с рисками в основном кибер/операционными.» к «облако как физически уязвимая и геополитически маркированная инфраструктура; надежность определяется территорией и конфликтом.». Упоминаний в контексте перехода: 1",
+      "name": "“AI-washing” как легитимационная стратегия увольнений",
+      "momentum": 20,
+      "rationale": "публичное подозрение к объяснениям “увольняем из-за AI” растет; это будет усиливать требования доказуемости эффектов автоматизации.",
+      "levels": [
+        8,
+        3,
+        5
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Глобальная мобильность академических кадров в США (H-1B как канал)",
+      "momentum": -45,
+      "rationale": "заморозка H-1B найма во Флориде (и прецеденты в Техасе) - сигнал охлаждения канала импорта компетенций.",
+      "levels": [
+        7,
+        3
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "compute как коммерческий ресурс, управляемый рынком облаков/чипов.",
+      "momentum": -55,
+      "rationale": "Угасает: переход от «compute как коммерческий ресурс, управляемый рынком облаков/чипов.» к «compute как стратегический актив: квоты, запреты, риск ударов, требования резервирования.». Упоминаний в контексте перехода: 3",
       "levels": [
         9,
-        8,
-        5,
-        3,
+        4,
         2
       ],
       "category": "decelerating"
     },
     {
-      "name": "конкуренция между labs преимущественно по качеству модели/продукта и коммерческим контрактам.",
-      "momentum": -40,
-      "rationale": "Угасает: переход от «конкуренция между labs преимущественно по качеству модели/продукта и коммерческим контрактам.» к «конкуренция по статусу supply-chain/security risk и доступу к defense/federal рынку; политический контур задает границы бизнеса.». Упоминаний в контексте перехода: 2",
+      "name": "конкуренция провайдеров LLM по качеству/цене и общим стандартам.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «конкуренция провайдеров LLM по качеству/цене и общим стандартам.» к «конкуренция через политико-административный допуск (запреты, classified deployment), где контракты зависят от статуса.». Упоминаний в контексте перехода: 0",
       "levels": [
         9,
         8,
-        7,
+        5
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "улучшение метрик за счет масштабирования модели/промптинга.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «улучшение метрик за счет масштабирования модели/промптинга.» к «системная инженерия агентности: runtime-инфра, trace-анализ, uncertainty-контуры, verifiable rewards, структурная память.». Упоминаний в контексте перехода: 0",
+      "levels": [
         6,
         5,
-        4,
-        3,
-        2
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "AI-инфраструктура как CAPEX бигтеха/венчура.",
-      "momentum": -25,
-      "rationale": "Угасает: переход от «AI-инфраструктура как CAPEX бигтеха/венчура.» к «инфраструктура как объект массового high-yield debt; появляется слой «провайдеров мощности» на долговом плече.». Упоминаний в контексте перехода: 1",
-      "levels": [
-        9,
-        5,
-        3,
-        2
+        4
       ],
       "category": "decelerating"
     }
