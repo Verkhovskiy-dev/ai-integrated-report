@@ -1,43 +1,19 @@
 import { FileDown } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "@/contexts/I18nContext";
+import { useLiveData } from "@/contexts/LiveDataContext";
 
 export default function PdfExport() {
   const [exporting, setExporting] = useState(false);
   const { locale } = useTranslation();
+  const data = useLiveData();
   const isEn = locale === "en";
 
   const handleExport = async () => {
     setExporting(true);
     try {
-      const { default: html2canvas } = await import("html2canvas");
-      const { default: jsPDF } = await import("jspdf");
-
-      const root = document.getElementById("root");
-      if (!root) return;
-
-      const canvas = await html2canvas(root, {
-        scale: 1.5,
-        useCORS: true,
-        logging: false,
-        backgroundColor: "#0f0f23",
-        windowWidth: 1200,
-      });
-
-      const imgWidth = 210;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      const pdf = new jsPDF("p", "mm", "a4");
-      const pageHeight = 297;
-      let position = 0;
-
-      while (position < imgHeight) {
-        if (position > 0) pdf.addPage();
-        pdf.addImage(canvas.toDataURL("image/jpeg", 0.85), "JPEG", 0, -position, imgWidth, imgHeight);
-        position += pageHeight;
-      }
-
-      const date = new Date().toISOString().split("T")[0];
-      pdf.save(`ai-report-${date}.pdf`);
+      const { generatePdfReport } = await import("@/utils/pdfGenerator");
+      await generatePdfReport(data, locale);
     } catch (err) {
       console.error("PDF export failed:", err);
       alert(isEn ? "PDF export error. Please try again." : "Ошибка экспорта PDF. Попробуйте ещё раз.");
