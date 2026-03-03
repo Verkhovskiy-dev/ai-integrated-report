@@ -190,9 +190,12 @@ class PdfBuilder {
       this.doc.setDrawColor(...C.divider);
       this.doc.setLineWidth(0.3);
       this.doc.roundedRect(x, yBase, cardW, cardH, 2, 2, "S");
-      // Value
+      // Value — if value is 0 and suffix exists, show only suffix (e.g. date)
       this.setFont("bold", 14, C.primary);
-      this.doc.text(`${metrics[i].value}${metrics[i].suffix}`, x + cardW / 2, yBase + 9, { align: "center" });
+      const displayVal = metrics[i].value === 0 && metrics[i].suffix
+        ? metrics[i].suffix
+        : `${metrics[i].value}${metrics[i].suffix}`;
+      this.doc.text(displayVal, x + cardW / 2, yBase + 9, { align: "center" });
       // Label
       this.setFont("normal", 7, C.textMuted);
       this.doc.text(metrics[i].label, x + cardW / 2, yBase + 14.5, { align: "center" });
