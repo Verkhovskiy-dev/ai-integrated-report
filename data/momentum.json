@@ -1015,12 +1015,12 @@
   },
   {
     "date": "2026-03-04",
-    "generated_at": "2026-03-04T05:01:47.264Z",
+    "generated_at": "2026-03-04T10:01:42.751Z",
     "trends": [
       {
-        "name": "AI-CapEx / инфраструктура (compute buildout)",
-        "momentum": 65,
-        "rationale": "крупные размещения долга под расширение вычислений показывают устойчивый спрос на capacity даже при росте неопределенности.",
+        "name": "AI-CapEx / инфраструктура (датацентры, compute-подрядчики)",
+        "momentum": 72,
+        "rationale": "рынок переваривает неопределенность, но сделки по финансированию compute через high-yield подтверждают продолжение расширения мощностей.",
         "levels": [
           9,
           5,
@@ -1029,114 +1029,77 @@
         "category": "accelerating"
       },
       {
-        "name": "Финансиализация AI через high-yield / junk bonds",
-        "momentum": 55,
-        "rationale": "“AI-related debt remains firm” - закрепление долгового канала как системного механизма.",
+        "name": "Оптическая инфраструктура ДЦ (photonics/interconnect)",
+        "momentum": 65,
+        "rationale": "Nvidia заходит крупным чеком в Coherent - значит interconnect становится стратегическим узлом цепочки.",
         "levels": [
-          9
-        ],
-        "category": "emerging"
-      },
-      {
-        "name": "Defense-tech + AI (автономные системы, контракты, капитал)",
-        "momentum": 80,
-        "rationale": "$4B раунд Anduril при ~$60B valuation на фоне дискурса о “reshaping warfare”.",
-        "levels": [
-          9,
           5,
-          8
+          4
         ],
         "category": "accelerating"
       },
       {
-        "name": "Оптический interconnect / фотоника для дата-центров",
-        "momentum": 70,
-        "rationale": "$2B инвестиция Nvidia в Coherent - явная ставка на следующий bottleneck в DC.",
+        "name": "Оборонный AI и dual-use “classified deployment”",
+        "momentum": 78,
+        "rationale": "мегараунд Anduril + институционализация допуска LLM в классифицированные контуры ускоряют рынок.",
         "levels": [
-          4,
+          9,
+          8,
+          7,
           5
         ],
         "category": "accelerating"
       },
       {
-        "name": "Agent observability & runtime governance (рантайм-инфраструктура, трассировка, self-healing)",
-        "momentum": 60,
-        "rationale": "оформляется отдельный execution-layer и инструменты диагностики/анализа агентных трасс как новая инженерная норма.",
+        "name": "“Verification-first agents” (детерминированная проверка, verifiable rewards, tool verification)",
+        "momentum": 70,
+        "rationale": "лавина работ по verifiable data synthesis и tool-verified RL показывает, что отрасль лечит главную боль - надежность агентов.",
         "levels": [
           6,
-          7
-        ],
-        "category": "emerging"
-      },
-      {
-        "name": "Версифицируемое/проверяемое обучение агентов (constraints/tools as verifier)",
-        "momentum": 58,
-        "rationale": "LOGIGEN / CoVe / T^3RL - общий вектор: данные и RL через детерминированную проверку траекторий.",
-        "levels": [
-          6,
-          7
+          7,
+          8
         ],
         "category": "accelerating"
       },
       {
-        "name": "“Hottest AI trades” как рыночный нарратив (momentum equity)",
-        "momentum": -45,
-        "rationale": "риск-off на фоне oil/inflation приводит к unwind и уходу капитала из самых перегретых AI-ставок (особенно в Азии).",
+        "name": "AI runtime / agent observability & self-healing (рантайм-слой управления агентами)",
+        "momentum": 55,
+        "rationale": "оформляется отдельный слой инфраструктуры между моделью и приложением, включая fault-tolerance и policy enforcement.",
         "levels": [
-          9
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "Prediction markets (crypto roots) как массовый инструмент координации ожиданий",
-        "momentum": -25,
-        "rationale": "“fast start running out of steam” + усиление регуляторных обсуждений/guardrails - охлаждение.",
-        "levels": [
+          6,
           8,
-          9
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "Социальная легитимность AI (протесты/общественный конфликт)",
-        "momentum": 35,
-        "rationale": "крупнейший анти-AI протест в Лондоне - рост видимой политизации и общественной мобилизации.",
-        "levels": [
-          8,
-          2
+          5
         ],
         "category": "emerging"
       },
       {
-        "name": "LLM как продукт/API; контроль качества через пост-фактум логи и оффлайн-оценки.",
-        "momentum": -80,
-        "rationale": "Угасает: переход от «LLM как продукт/API; контроль качества через пост-фактум логи и оффлайн-оценки.» к «агент как процесс/исполнение, где оптимизируется *runtime* (стоимость, надежность, безопасность), а не только веса.». Упоминаний в контексте перехода: 7",
-        "levels": [
-          6,
-          5,
-          4
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "AI рост в основном через equity/венчур и “story stocks”.",
-        "momentum": -55,
-        "rationale": "Угасает: переход от «AI рост в основном через equity/венчур и “story stocks”.» к «compute-строительство как проектное финансирование под якорные контракты; junk-bond как стандартный инструмент.». Упоминаний в контексте перехода: 3",
+        "name": "“AI-трейд как перегретая ставка” (переоценка на макрошоках)",
+        "momentum": -35,
+        "rationale": "фонды снижают экспозицию в «самых горячих» AI-трейдах из-за инфляционных рисков от нефти/конфликта.",
         "levels": [
           9,
-          5,
-          2
+          1
         ],
         "category": "decelerating"
       },
       {
-        "name": "“AI company может контролировать, кто и как использует”.",
+        "name": "Crypto/prediction markets как массовый “институт ожиданий”",
+        "momentum": 15,
+        "rationale": "BTC отскакивает, но параллельно усиливается регуляторное давление на prediction markets, что ограничит рост.",
+        "levels": [
+          9,
+          8
+        ],
+        "category": "stable"
+      },
+      {
+        "name": "Китайский open-source/open-weight контур (через кадровые/репутационные события)",
         "momentum": -10,
-        "rationale": "Угасает: переход от «“AI company может контролировать, кто и как использует”.» к «государственный заказчик/Пентагон определяет применение; поставщик фиксирует контрактные рамки, но не владеет решением.». Упоминаний в контексте перехода: 0",
+        "rationale": "уход ключевого лидера Qwen - локальный, но чувствительный удар по уверенности экосистемы и предсказуемости дорожной карты.",
         "levels": [
-          9,
-          8,
           7,
+          8,
+          3,
           5
         ],
         "category": "decelerating"
