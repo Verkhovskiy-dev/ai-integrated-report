@@ -1,139 +1,200 @@
 {
-  "period": "2026-02-24",
-  "generated_at": "2026-02-24T13:39:47.272235Z",
+  "generated_at": "2026-03-02T09:02:27.906628Z",
+  "period": "2026-02-13 — 2026-03-01",
+  "insights_count": 7,
   "insights": [
     {
       "id": 1,
-      "title": "\"AI as a Tax and Social Object\"",
-      "subtitle": "Fiscal Management of AI Gains",
-      "icon": "ShieldAlert",
-      "accentColor": "#ef4444",
-      "summary": "AI ceases to be just a growth driver and becomes an object of fiscal policy through the introduction of an AI tax. This reflects a shift in the perception of AI as a source of redistributable rent to compensate for job losses and social risks.",
+      "title": "AI Infrastructure as a Credit Asset",
+      "subtitle": "Growth of debt financing for data centers and GPUs",
+      "icon": "Building",
+      "accentColor": "#10b981",
+      "summary": "Financing of the AI sector is shifting towards infrastructure assets with leverage, including data centers and Nvidia equipment. Separate public instruments for investing in AI infrastructure are emerging, reflecting a transition from the venture capital model to institutional capital.",
       "evidence": [
-        "Emergence of a political-financial framework for an AI tax to compensate for job losses",
-        "Discussion of taxing incremental AI gains in investor discourse",
-        "Shift of AI topic from growth to fiscal and social hedging"
+        "Nvidia data center financed through $3.8B high-yield/\"junk\" bonds",
+        "DayOne preparing ~$5B IPO for data centers",
+        "Blackstone launches publicly traded acquisition company to acquire data centers",
+        "OpenAI closes $110B round at $730B valuation with participation from Amazon, SoftBank, Nvidia",
+        "CoreWeave faces market pressure due to rising CapEx and losses"
       ],
-      "nonObviousConclusion": "The introduction of an AI tax may radically change incentives for investment and AI adoption, shifting the focus from profit maximization to socially responsible development. This will create new challenges for companies in managing tax risks and social legitimacy.",
-      "educationImplication": "It is necessary to develop competencies in AI economics and fiscal policy to prepare leaders capable of managing the socio-economic consequences of AI.",
+      "nonObviousConclusion": "Debt financing of AI infrastructure is becoming a distinct financial segment that may be vulnerable to credit cycles and revaluation risks, necessitating new risk management models and capital assessment approaches.",
+      "educationImplication": "Educational programs should include financial models and risk management in capital-intensive AI infrastructure projects.",
       "relevantPrograms": [
         "aiShift",
-        "dataDriven"
-      ]
+        "dataDriven",
+        "intensiveAI"
+      ],
+      "srtLevels": [
+        9,
+        5,
+        2
+      ],
+      "trendDirection": "strengthening"
     },
     {
       "id": 2,
-      "title": "\"Agent Engineering Instead of Chatbots\"",
-      "subtitle": "From Generation to Verification",
-      "icon": "Bot",
-      "accentColor": "#10b981",
-      "summary": "There is a transition from simple chatbots to complex agent systems with multi-level verification and quality control. Engineering now includes tool orchestration, MCP schemes, and Act-Verify-Refine cycles, which increase the reliability and reproducibility of AI products.",
+      "title": "Shift of Bottlenecks: From GPU to Memory and Energy",
+      "subtitle": "Memory and energy efficiency are becoming key bottlenecks.",
+      "icon": "Layers",
+      "accentColor": "#f59e0b",
+      "summary": "Shortage and rising prices of HBM memory and data center power supply are becoming the new bottlenecks in the AI industry, shifting the focus away from GPUs. Energy and cooling are now critical for AI scaling, as reflected in investments and technological innovations.",
       "evidence": [
-        "Mainstream agent engineering with a closed Act-Verify-Refine loop",
-        "Formal specification and integration of external solvers/verifiers",
-        "Growing demand for verification engineers of agent systems"
+        "Hynix confirms shortage of HBM/AI memory",
+        "Google secures geothermal energy for data centers in Nevada",
+        "Delta Electronics grows in liquid cooling and power systems for AI-DC",
+        "Solarvest doubles generation in SEA amid battery price decline",
+        "Trump urges Amazon/Google/Meta to pay for data center electricity"
       ],
-      "nonObviousConclusion": "This shift creates new professional niches and standards requiring interdisciplinary knowledge in ML, security, and QA. Companies that do not adapt to new methodologies risk losing competitiveness.",
-      "educationImplication": "It is necessary to implement programs on agent engineering and AI system verification, developing skills to work with complex production loops.",
+      "nonObviousConclusion": "The growth of AI necessitates the integration of energy and climate constraints into development strategies, which is shifting the traditional technological and geographical priorities of the industry.",
+      "educationImplication": "It is necessary to develop interdisciplinary programs that integrate AI, energy, and sustainable development.",
       "relevantPrograms": [
-        "intensiveAgents",
-        "aiShift"
-      ]
+        "aiShift",
+        "dataDriven",
+        "ubnd"
+      ],
+      "srtLevels": [
+        4,
+        2,
+        1
+      ],
+      "trendDirection": "strengthening"
     },
     {
       "id": 3,
-      "title": "\"Legacy Software Under AI Threat\"",
-      "subtitle": "Modernization and Rent Threat",
-      "icon": "Building",
-      "accentColor": "#f59e0b",
-      "summary": "Vertical integration of AI models and tools threatens traditional legacy software providers, especially in the Cobol and mainframe segment. Code modernization by agents lowers migration barriers and revalues long-standing competencies.",
+      "title": "Institutionalization of Agent Systems",
+      "subtitle": "From Models to Contractible, Verifiable Agents",
+      "icon": "Brain",
+      "accentColor": "#8b5cf6",
+      "summary": "A new layer of knowledge and technology institutions is emerging, focused on the measurability, auditing, and security of agent AI systems. Standards, protocols, benchmarks, and runtime enforcement mechanisms are being developed to ensure the reliability and compliance of agents.",
       "evidence": [
-        "Anthropic's statement on Cobol modernization and its impact on IBM",
-        "The threat of legacy development dequalification becomes a market fact",
-        "The market perceives AI as a risk to incumbent software rents"
+        "The emergence of Agent Behavioral Contracts, AgentContract-Bench, ESAA",
+        "Growth of research in agentic RL, budget-aware routing, reliability certification",
+        "Pressure Reveals Character and AMA-Bench as new benchmarks",
+        "OpenPort as a governance specification for tool access",
+        "Increasing demand for roles such as agent security engineer, AI governance/audit engineer"
       ],
-      "nonObviousConclusion": "The reduction of legacy software rents may lead to capital redistribution and changes in the IT industry landscape, stimulating growth of new players and services. Companies must invest in retraining and AI modernization integration.",
-      "educationImplication": "It is important to train specialists in AI modernization of legacy systems and managing the transition to the digital age.",
+      "nonObviousConclusion": "Agency ceases to be merely a functional characteristic of the model and becomes an object of engineering and regulatory control, thereby forming a new professional and technological paradigm.",
+      "educationImplication": "Educational programs should prepare specialists in auditing, security, and contracting of agent systems.",
       "relevantPrograms": [
-        "intensiveAI",
-        "aiShift"
-      ]
+        "intensiveAgents",
+        "aiShift",
+        "dataDriven"
+      ],
+      "srtLevels": [
+        6,
+        7,
+        3
+      ],
+      "trendDirection": "strengthening"
     },
     {
       "id": 4,
-      "title": "\"New Protocols and Conflicts in the LLM Industry\"",
-      "subtitle": "Model Borrowing and Protection",
-      "icon": "Shield",
-      "accentColor": "#ec4899",
-      "summary": "Escalation of conflicts around permissible borrowing in LLM leads to enhanced protection measures, including rate limits, watermarking, and legal sanctions. This changes informal norms of open science and benchmarking, creating new barriers to collaboration.",
+      "title": "The politico-ethical divide in AI",
+      "subtitle": "The conflict between ethics and government contracts is intensifying.",
+      "icon": "ShieldAlert",
+      "accentColor": "#ef4444",
+      "summary": "Discrepancies between ethical standards and the demands of government contracts related to surveillance and weaponry are leading to a split within the industry and the formation of new informal rules of the game, which affect reputation and access to government contracts.",
       "evidence": [
-        "Anthropic's statements about illegal extraction of results by Chinese DeepSeek and MiniMax",
-        "Increasing pressure on open science and benchmarking norms",
-        "Implementation of technical and legal model protection measures"
+        "Anthropic's dispute with the Pentagon over guardrails and surveillance",
+        "OpenAI gains access to the Pentagon's classified network",
+        "Trump bans government agencies from using Anthropic products",
+        "Support from tech workers for Anthropic in the dispute with the Pentagon",
+        "Growth of a horizontal coalition of tech workers"
       ],
-      "nonObviousConclusion": "Tightening control may slow innovation and knowledge exchange but simultaneously stimulates the development of new standards and compatibility protocols. This creates challenges for global cooperation and competition.",
-      "educationImplication": "It is necessary to train specialists in AI ethics, intellectual property, and legal regulation of AI technologies.",
+      "nonObviousConclusion": "Ethical and political conflicts are becoming drivers of market share redistribution and are shaping new institutional frameworks for the legitimation of AI technologies.",
+      "educationImplication": "It is important to include the study of ethics, politics, and regulatory aspects of AI in educational programs.",
       "relevantPrograms": [
         "aiShift",
-        "dataDriven"
-      ]
+        "intensiveAI",
+        "ubnd"
+      ],
+      "srtLevels": [
+        8,
+        7,
+        3
+      ],
+      "trendDirection": "strengthening"
     },
     {
       "id": 5,
-      "title": "\"Energy — The New Limit of AI Expansion\"",
-      "subtitle": "Infrastructure Bottlenecks",
-      "icon": "Globe",
-      "accentColor": "#22d3ee",
-      "summary": "Growth of AI infrastructure hits limits of power grids and power gear, becoming the new 'chip shortage.' This shifts focus from GPUs to energy infrastructure and creates risks for data center scaling.",
+      "title": "Restructuring of the labor market under AI",
+      "subtitle": "Growth in demand for new hybrid roles and reductions",
+      "icon": "GraduationCap",
+      "accentColor": "#ec4899",
+      "summary": "AI is reshaping the employment structure: there is a growing demand for agent security engineers, auditors, and traceability specialists, while at the same time, massive layoffs are occurring in traditional AI platforms and SaaS companies, legitimized through AI-driven productivity.",
       "evidence": [
-        "Backlogs in power gear and grid connection equipment",
-        "Shift of the screw in AI data center construction towards electricity",
-        "Energy and cooling as fundamental limits of AI expansion"
+        "IBM increases entry-level hiring with role restructuring under AI",
+        "Layoffs at C3.ai (-26%), Block (~50%), eBay (6%)",
+        "Rising demand for roles such as agent security engineer, provenance architect",
+        "Formation of the professional identity of the AI worker as a bearer of ethics",
+        "“Productivity panic” around AI coding agents"
       ],
-      "nonObviousConclusion": "Companies and regions with developed energy infrastructure will gain competitive advantage, and investments in energy will become critically important for the AI ecosystem. This may lead to geopolitical shifts in the distribution of AI resources.",
-      "educationImplication": "It is important to train specialists in energy and infrastructure for AI, including interdisciplinary knowledge in electronics and resource management.",
+      "nonObviousConclusion": "AI not only automates tasks but also transforms professional roles and social contracts, necessitating a rethinking of educational and workforce strategies.",
+      "educationImplication": "Preparation for new professions and retraining with a focus on AI safety, auditing, and ethics is necessary.",
       "relevantPrograms": [
-        "ubnd",
-        "dataDriven"
-      ]
+        "intensiveAgents",
+        "aiShift",
+        "ubnd"
+      ],
+      "srtLevels": [
+        3,
+        6
+      ],
+      "trendDirection": "strengthening"
     },
     {
       "id": 6,
-      "title": "\"Institutionalization of AI Safety\"",
-      "subtitle": "From Incidents to Control",
-      "icon": "ShieldAlert",
-      "accentColor": "#ef4444",
-      "summary": "Real AI incidents lead to increased regulatory pressure and institutional control of safety. This changes institutions of responsibility, disclosure, and interaction with law enforcement, making safety part of mandatory control.",
+      "title": "Geographical repackaging of AI chains",
+      "subtitle": "Southeast Asia and Korea as new manufacturing hubs",
+      "icon": "Globe",
+      "accentColor": "#22d3ee",
+      "summary": "The global AI value chain is being reoriented: Southeast Asia is becoming a hub for electronics and raw materials, Korea a node for memory production, and the USA a zone of demand and regulation. This is changing the landscape of the industrial geography of AI.",
       "evidence": [
-        "Canada summons OpenAI over ChatGPT case and mass shooting",
-        "Institutionalization of disclosure and interaction with law enforcement",
-        "Increasing requirements for guardrails in military AI procurement"
+        "Adani plans $100 billion investment in AI-ready data centers in India",
+        "Growth in exports of electronics, machinery, and raw materials in Thailand",
+        "Hynix and Murata confirm shortage and price increase for memory and components",
+        "Rapidus secures $1.7 billion for chip manufacturing in Japan",
+        "Lumen expands fiber network for Anthropic"
       ],
-      "nonObviousConclusion": "Strengthening control creates new barriers to rapid AI adoption but increases public trust and reduces risks. Companies must integrate compliance and safety into product strategy from the start.",
-      "educationImplication": "Programs on AI safety, law, and ethics are needed to prepare specialists capable of working under strict regulation.",
+      "nonObviousConclusion": "Territorial specialization and government investments are shaping new industrial clusters, which impact global competitiveness and political alliances in AI.",
+      "educationImplication": "Education should take into account geoeconomic aspects and the development of territorial AI clusters.",
       "relevantPrograms": [
-        "intensiveAI",
-        "aiShift"
-      ]
+        "aiShift",
+        "dataDriven",
+        "ubnd"
+      ],
+      "srtLevels": [
+        2,
+        5
+      ],
+      "trendDirection": "emerging"
     },
     {
       "id": 7,
-      "title": "\"Hardware Optimization through LLM\"",
-      "subtitle": "AI Improves Infrastructure",
-      "icon": "Brain",
-      "accentColor": "#8b5cf6",
-      "summary": "LLMs are beginning to be used to optimize compilation and GPU cores, improving infrastructure performance and reducing TCO of training and inference. This changes AI's role from resource consumer to active enhancer of the hardware stack.",
+      "title": "Growth of Cyber Risks and Security of Agent Systems",
+      "subtitle": "Vulnerabilities of local agents and multi-tenant infrastructure",
+      "icon": "Shield",
+      "accentColor": "#ef4444",
+      "summary": "The proliferation of agent systems is accompanied by new cyber risks, including attacks via prompt injection, data leaks, and vulnerabilities in shared KV cache. This necessitates the development of new security standards and access management protocols.",
       "evidence": [
-        "K-Search for GPU kernels and IntOpt for IR optimizations",
-        "LLM agents increase infrastructure performance",
-        "Reduction of training and inference costs through LLM optimization"
+        "Incidents involving the use of Claude for attacks on Mexican government agencies",
+        "ClawJacked vulnerability: local agents can be hijacked via WebSocket",
+        "OptiLeak demonstrates prompt leaks in multi-tenant serving",
+        "OpenPort offers a governance specification for tool access with least privilege",
+        "Rising demand for agent security and trust & safety engineers"
       ],
-      "nonObviousConclusion": "This shift may redistribute competitive advantages between cloud providers and hardware manufacturers, stimulating new innovations in hardware and software stacks.",
-      "educationImplication": "Training specialists at the intersection of AI and hardware engineering is important for developing and implementing optimizations.",
+      "nonObviousConclusion": "Security is becoming a key layer of AI infrastructure, and the spontaneous order of communities is insufficient without formalization and regulatory measures.",
+      "educationImplication": "The training program must include cybersecurity and risk management in agent AI systems.",
       "relevantPrograms": [
-        "intensiveAI",
-        "dataDriven"
-      ]
+        "intensiveAgents",
+        "aiShift"
+      ],
+      "srtLevels": [
+        8,
+        6,
+        3
+      ],
+      "trendDirection": "strengthening"
     }
   ]
 }
