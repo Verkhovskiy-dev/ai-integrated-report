@@ -13,7 +13,8 @@
  * 6. MetricsBar — hero section with key numbers
  * 7. Heatmap, Insights, Themes, Shifts, etc.
  */
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTranslation } from "@/contexts/I18nContext";
 import Header from "@/components/Header";
 import FilterBar from "@/components/FilterBar";
 import NewsTicker from "@/components/NewsTicker";
@@ -38,6 +39,13 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<string>("news");
+  const { locale } = useTranslation();
+
+  useEffect(() => {
+    document.title = locale === 'en'
+      ? 'AI Integrated Report \u2014 Strategic Dashboard'
+      : 'AI Integrated Report \u2014 \u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0414\u0430\u0448\u0431\u043e\u0440\u0434';
+  }, [locale]);
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-clip">
