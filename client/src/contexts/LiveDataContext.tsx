@@ -538,7 +538,8 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
         let momentumData: MomentumEntry[] = [];
         let momentumLive = false;
         try {
-          const momResp = await fetch(`${base}data/momentum.json`);
+          const momSuffix = locale === 'en' ? '.en' : '';
+          const momResp = await fetch(`${base}data/momentum${momSuffix}.json`);
           if (momResp.ok) {
             const momJson = await momResp.json();
             if (Array.isArray(momJson) && momJson.length > 0) {
