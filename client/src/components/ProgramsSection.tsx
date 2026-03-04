@@ -5,7 +5,8 @@
  * Mobile-first responsive design, i18n support
  */
 import { ExternalLink, GraduationCap, Calendar, ArrowRight } from "lucide-react";
-import { SKOLKOVO_PROGRAMS } from "@/data/insightsData";
+import { getSkolkovoPrograms } from "@/data/insightsDataLocalized";
+import type { Locale } from "@/contexts/I18nContext";
 import { useTranslation } from "@/contexts/I18nContext";
 
 interface ProgramCardData {
@@ -145,6 +146,7 @@ const PROGRAM_CARDS: ProgramCardData[] = [
 export default function ProgramsSection() {
   const { locale } = useTranslation();
   const isEn = locale === "en";
+  const SKOLKOVO_PROGRAMS = getSkolkovoPrograms(locale as Locale);
 
   return (
     <div className="container">

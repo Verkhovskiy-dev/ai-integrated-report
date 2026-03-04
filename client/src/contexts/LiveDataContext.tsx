@@ -7,15 +7,25 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import { useTranslation } from "./I18nContext";
 import {
   HEATMAP_DATA as STATIC_HEATMAP,
-  KEY_METRICS as STATIC_METRICS,
-  STRUCTURAL_SHIFTS as STATIC_SHIFTS,
-  WEAK_SIGNALS as STATIC_SIGNALS,
-  CROSS_LEVEL_CONNECTIONS as STATIC_CONNECTIONS,
-  THEME_FREQUENCY as STATIC_THEMES,
-  KEY_EVENTS as STATIC_EVENTS,
+  KEY_METRICS as STATIC_METRICS_RU,
+  STRUCTURAL_SHIFTS as STATIC_SHIFTS_RU,
+  WEAK_SIGNALS as STATIC_SIGNALS_RU,
+  CROSS_LEVEL_CONNECTIONS as STATIC_CONNECTIONS_RU,
+  THEME_FREQUENCY as STATIC_THEMES_RU,
+  KEY_EVENTS as STATIC_EVENTS_RU,
   TOP_COMPANIES as STATIC_COMPANIES,
 } from "@/data/reportData";
-import { STRATEGIC_INSIGHTS as STATIC_INSIGHTS, type StrategicInsight } from "@/data/insightsData";
+import { STRATEGIC_INSIGHTS as STATIC_INSIGHTS_RU, type StrategicInsight } from "@/data/insightsData";
+import {
+  getKeyMetrics as getLocalizedMetrics,
+  getKeyEvents as getLocalizedEvents,
+  getStructuralShifts as getLocalizedShifts,
+  getWeakSignals as getLocalizedSignals,
+  getCrossLevelConnections as getLocalizedConnections,
+  getThemeFrequency as getLocalizedThemes,
+} from "@/data/reportDataLocalized";
+import { getStrategicInsights as getLocalizedInsights } from "@/data/insightsDataLocalized";
+import type { Locale } from "./I18nContext";
 
 // === Types matching the JSON from n8n ===
 interface ReportEvent {
@@ -172,12 +182,12 @@ export interface DashboardData {
 
   // Transformed data for components
   heatmapData: typeof STATIC_HEATMAP;
-  keyMetrics: typeof STATIC_METRICS;
-  structuralShifts: typeof STATIC_SHIFTS;
-  weakSignals: typeof STATIC_SIGNALS;
-  crossLevelConnections: typeof STATIC_CONNECTIONS;
-  themeFrequency: typeof STATIC_THEMES;
-  keyEvents: typeof STATIC_EVENTS;
+  keyMetrics: typeof STATIC_METRICS_RU;
+  structuralShifts: typeof STATIC_SHIFTS_RU;
+  weakSignals: typeof STATIC_SIGNALS_RU;
+  crossLevelConnections: typeof STATIC_CONNECTIONS_RU;
+  themeFrequency: typeof STATIC_THEMES_RU;
+  keyEvents: typeof STATIC_EVENTS_RU;
   topCompanies: typeof STATIC_COMPANIES;
 
   // Dynamic insights from insights.json
@@ -290,7 +300,7 @@ function buildHeatmap(reports: LiveReport[], latest: LiveReport) {
 
 // Build key events from latest report
 function buildKeyEvents(report: LiveReport) {
-  const events: typeof STATIC_EVENTS = [];
+  const events: typeof STATIC_EVENTS_RU = [];
   const d = new Date(report.date);
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const dateLabel = `${months[d.getMonth()]} ${d.getDate()}`;
@@ -305,7 +315,7 @@ function buildKeyEvents(report: LiveReport) {
       });
     }
   }
-  return events.length > 0 ? events : STATIC_EVENTS;
+  return events.length > 0 ? events : STATIC_EVENTS_RU;
 }
 
 function guessEventType(title: string, desc: string): string {
@@ -366,7 +376,7 @@ function buildThemeFrequency(report: LiveReport, locale: string = 'ru') {
   });
 
   results.sort((a, b) => b.count - a.count);
-  return results.length > 0 ? results : STATIC_THEMES;
+  return results.length > 0 ? results : STATIC_THEMES_RU;
 }
 
 // Build top companies from events
@@ -432,14 +442,14 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
     reportDate: "",
     keyFocus: "",
     heatmapData: STATIC_HEATMAP,
-    keyMetrics: STATIC_METRICS,
-    structuralShifts: STATIC_SHIFTS,
-    weakSignals: STATIC_SIGNALS,
-    crossLevelConnections: STATIC_CONNECTIONS,
-    themeFrequency: STATIC_THEMES,
-    keyEvents: STATIC_EVENTS,
+    keyMetrics: getLocalizedMetrics(locale as Locale),
+    structuralShifts: getLocalizedShifts(locale as Locale),
+    weakSignals: getLocalizedSignals(locale as Locale),
+    crossLevelConnections: getLocalizedConnections(locale as Locale),
+    themeFrequency: getLocalizedThemes(locale as Locale),
+    keyEvents: getLocalizedEvents(locale as Locale),
     topCompanies: STATIC_COMPANIES,
-    strategicInsights: STATIC_INSIGHTS,
+    strategicInsights: getLocalizedInsights(locale as Locale),
     insightsPeriod: "",
     insightsGeneratedAt: "",
     insightsLive: false,
@@ -501,7 +511,7 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
         }
 
         // Fetch dynamic insights
-        let dynamicInsights: StrategicInsight[] = STATIC_INSIGHTS;
+        let dynamicInsights: StrategicInsight[] = getLocalizedInsights(locale as Locale);
         let insightsPeriod = "";
         let insightsGeneratedAt = "";
         let insightsLive = false;
@@ -613,8 +623,8 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           keyFocus: latest.key_focus,
           heatmapData: buildHeatmap(archiveReports, latest),
           keyMetrics: buildKeyMetrics(latest, locale),
-          structuralShifts: (latest.structural_shifts || []).length > 0 ? transformShifts(latest) : STATIC_SHIFTS,
-          weakSignals: (latest.radar_signals || []).length > 0 ? transformSignals(latest) : STATIC_SIGNALS,
+          structuralShifts: (latest.structural_shifts || []).length > 0 ? transformShifts(latest) : getLocalizedShifts(locale as Locale),
+          weakSignals: (latest.radar_signals || []).length > 0 ? transformSignals(latest) : getLocalizedSignals(locale as Locale),
           crossLevelConnections: transformConnections(latest),
           themeFrequency: buildThemeFrequency(latest, locale),
           keyEvents: buildKeyEvents(latest),

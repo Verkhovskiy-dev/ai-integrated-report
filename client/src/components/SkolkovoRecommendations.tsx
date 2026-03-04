@@ -1,7 +1,8 @@
 import { BookOpen, ExternalLink, Star, TrendingUp, Zap, GraduationCap, Rocket, Award, Clock, Users } from "lucide-react";
 import { useLiveData, type LiveReport } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
-import { SKOLKOVO_PROGRAMS } from "@/data/insightsData";
+import { getSkolkovoPrograms } from "@/data/insightsDataLocalized";
+import type { Locale } from "@/contexts/I18nContext";
 
 interface ProgramWithLevel {
   key: string;
@@ -106,7 +107,7 @@ const PROGRAM_CONFIG: Record<string, {
   },
 };
 
-function computeRelevance(reports: LiveReport[], isEn: boolean): Record<string, ProgramWithLevel> {
+function computeRelevance(reports: LiveReport[], isEn: boolean, SKOLKOVO_PROGRAMS: Record<string, { name: string; shortName: string; url: string }>): Record<string, ProgramWithLevel> {
   const allText = reports
     .flatMap((r) => r.srt_levels.flatMap((sl) => sl.events.map((e) => `${e.title} ${e.description}`)))
     .join(" ")
@@ -169,12 +170,13 @@ export default function SkolkovoRecommendations() {
   const { archiveReports, latestReport } = useLiveData();
   const { locale } = useTranslation();
   const isEn = locale === "en";
+  const SKOLKOVO_PROGRAMS = getSkolkovoPrograms(locale as Locale);
 
   const allReports = latestReport
     ? [...archiveReports.filter((r) => r.date !== latestReport.date), latestReport]
     : archiveReports;
 
-  const programScores = computeRelevance(allReports, isEn);
+  const programScores = computeRelevance(allReports, isEn, SKOLKOVO_PROGRAMS);
 
   const MASTERY_LEVELS: {
     id: string;

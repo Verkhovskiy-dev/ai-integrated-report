@@ -3,7 +3,9 @@
  * Used across dashboard sections to natively embed program references
  */
 import { ExternalLink } from "lucide-react";
-import { SKOLKOVO_PROGRAMS, type ProgramLink } from "@/data/insightsData";
+import { getSkolkovoPrograms } from "@/data/insightsDataLocalized";
+import { useTranslation } from "@/contexts/I18nContext";
+import type { Locale } from "@/contexts/I18nContext";
 
 interface ProgramBadgeProps {
   programKey: string;
@@ -11,7 +13,9 @@ interface ProgramBadgeProps {
 }
 
 export function ProgramBadge({ programKey, compact = false }: ProgramBadgeProps) {
-  const program = SKOLKOVO_PROGRAMS[programKey];
+  const { locale } = useTranslation();
+  const programs = getSkolkovoPrograms(locale as Locale);
+  const program = programs[programKey];
   if (!program) return null;
 
   return (
@@ -40,7 +44,9 @@ interface ProgramBadgeGroupProps {
 }
 
 export function ProgramBadgeGroup({ programKeys, compact = false, label }: ProgramBadgeGroupProps) {
-  const validKeys = programKeys.filter((k) => SKOLKOVO_PROGRAMS[k]);
+  const { locale } = useTranslation();
+  const programs = getSkolkovoPrograms(locale as Locale);
+  const validKeys = programKeys.filter((k) => programs[k]);
   if (validKeys.length === 0) return null;
 
   return (

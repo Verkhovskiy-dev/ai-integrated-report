@@ -6,11 +6,12 @@
 import type { DashboardData } from "@/contexts/LiveDataContext";
 import type { StrategicInsight } from "@/data/insightsData";
 import {
-  NODAL_POSITIONS,
-  EDUCATION_RECOMMENDATIONS,
-  SKOLKOVO_PROGRAMS,
-} from "@/data/insightsData";
-import { SRT_LEVELS, REPORT_PERIOD } from "@/data/reportData";
+  getNodalPositions,
+  getEducationRecommendations,
+  getSkolkovoPrograms,
+} from "@/data/insightsDataLocalized";
+import { getSrtLevels, REPORT_PERIOD } from "@/data/reportDataLocalized";
+import type { Locale } from "@/contexts/I18nContext";
 
 // ─── Types ───────────────────────────────────────────────────
 interface jsPDFInstance {
@@ -291,7 +292,8 @@ class PdfBuilder {
     // Rows
     for (const lvl of levels) {
       this.ensureSpace(cellH + 3);
-      const srtLevel = SRT_LEVELS.find(l => l.id === lvl);
+      const localSrtLevels = getSrtLevels(this.locale as Locale);
+      const srtLevel = localSrtLevels.find(l => l.id === lvl);
       this.setFont("normal", 5.5, C.textMuted);
       this.doc.text(srtLevel?.short || `L${lvl}`, MARGIN_L, this.y + 4);
 
@@ -364,6 +366,10 @@ export async function generatePdfReport(data: DashboardData, locale: string): Pr
   doc.addFont("Roboto-Bold.ttf", "Roboto", "bold");
 
   const isEn = locale === "en";
+  const SRT_LEVELS = getSrtLevels(locale as Locale);
+  const NODAL_POSITIONS = getNodalPositions(locale as Locale);
+  const EDUCATION_RECOMMENDATIONS = getEducationRecommendations(locale as Locale);
+  const SKOLKOVO_PROGRAMS = getSkolkovoPrograms(locale as Locale);
   const b = new PdfBuilder(doc, data, locale);
 
   // ═══════════════════════════════════════════════════════════

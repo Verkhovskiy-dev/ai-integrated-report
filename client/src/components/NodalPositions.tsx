@@ -4,7 +4,8 @@
  * Education recommendations now include SKOLKOVO program links
  * Mobile-first responsive design, i18n support
  */
-import { NODAL_POSITIONS, EDUCATION_RECOMMENDATIONS } from "@/data/insightsData";
+import { getNodalPositions, getEducationRecommendations } from "@/data/insightsDataLocalized";
+import type { Locale } from "@/contexts/I18nContext";
 import { Target, BookOpen, ArrowRight } from "lucide-react";
 import { ProgramBadgeGroup } from "@/components/ProgramBadge";
 import { useTranslation } from "@/contexts/I18nContext";
@@ -12,6 +13,8 @@ import { useTranslation } from "@/contexts/I18nContext";
 export default function NodalPositions() {
   const { t, locale } = useTranslation();
   const isEn = locale === "en";
+  const NODAL_POSITIONS = getNodalPositions(locale as Locale);
+  const EDUCATION_RECOMMENDATIONS = getEducationRecommendations(locale as Locale);
 
   return (
     <div className="container">
