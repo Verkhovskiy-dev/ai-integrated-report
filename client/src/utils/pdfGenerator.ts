@@ -79,12 +79,14 @@ class PdfBuilder {
   y: number = MARGIN_T;
   pageNum: number = 1;
   locale: string;
+  isEn: boolean;
   data: DashboardData;
 
   constructor(doc: jsPDFInstance, data: DashboardData, locale: string) {
     this.doc = doc;
     this.data = data;
     this.locale = locale;
+    this.isEn = locale === 'en';
   }
 
   // ─── Page background ──────────────────────────────────────
@@ -324,7 +326,9 @@ class PdfBuilder {
     this.doc.setFillColor(...color);
     this.doc.circle(x + 2, y, 1.5, "F");
     this.setFont("normal", 6, color);
-    const label = urgency === "high" ? "Высокая" : urgency === "medium" ? "Средняя" : "Низкая";
+    const label = this.isEn
+      ? (urgency === "high" ? "High" : urgency === "medium" ? "Medium" : "Low")
+      : (urgency === "high" ? "Высокая" : urgency === "medium" ? "Средняя" : "Низкая");
     this.doc.text(label, x + 5, y + 1);
   }
 
@@ -574,7 +578,7 @@ export async function generatePdfReport(data: DashboardData, locale: string): Pr
     // SRT levels
     const levelNames = shift.levels.map(l => SRT_LEVELS.find(s => s.id === l)?.short || `L${l}`).join(", ");
     b.setFont("normal", 6, C.textMuted);
-    doc.text(`СРТ: ${levelNames}`, MARGIN_L + 35, b.y);
+    doc.text(`${isEn ? 'DLS' : 'СРТ'}: ${levelNames}`, MARGIN_L + 35, b.y);
 
     b.y += 6;
     b.divider();
@@ -765,7 +769,7 @@ export async function generatePdfReport(data: DashboardData, locale: string): Pr
       const progNames = rec.relevantPrograms
         .map(k => SKOLKOVO_PROGRAMS[k]?.shortName || k)
         .join(" | ");
-      doc.text(`СКОЛКОВО: ${progNames}`, MARGIN_L + 8, b.y);
+      doc.text(`${isEn ? 'SKOLKOVO' : 'СКОЛКОВО'}: ${progNames}`, MARGIN_L + 8, b.y);
       b.y += 5;
     }
     b.y += 3;
