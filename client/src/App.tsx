@@ -7,6 +7,8 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { LiveDataProvider } from "./contexts/LiveDataContext";
 import { FilterProvider } from "./contexts/FilterContext";
 import { I18nProvider } from "./contexts/I18nContext";
+import { ViewModeProvider } from "./contexts/ViewModeContext";
+import { ExecutiveDataProvider } from "./contexts/ExecutiveDataContext";
 import Home from "./pages/Home";
 
 function Router() {
@@ -24,6 +26,8 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider defaultTheme="dark">
         <I18nProvider>
+          <ViewModeProvider>
+          <ExecutiveDataProvider>
           <LiveDataProvider>
             <FilterProvider>
               <TooltipProvider>
@@ -32,6 +36,8 @@ function App() {
               </TooltipProvider>
             </FilterProvider>
           </LiveDataProvider>
+          </ExecutiveDataProvider>
+          </ViewModeProvider>
         </I18nProvider>
       </ThemeProvider>
     </ErrorBoundary>

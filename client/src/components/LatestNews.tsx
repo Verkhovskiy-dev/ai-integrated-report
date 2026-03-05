@@ -2,13 +2,16 @@
  * LatestNews: Full event list — shows events 4+ (first 3 are in HeroSummary).
  * Collapsible, shows 6 by default with "show all" toggle.
  * Each card is expandable to show full description and source links.
- * i18n support
+ * i18n support + Executive mode support
  */
 import { useMemo, useState } from "react";
 import { Newspaper, Zap, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
 import { useTranslation } from "@/contexts/I18nContext";
+import { useViewMode } from "@/contexts/ViewModeContext";
+import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
+import { ExecutiveEventCardLocalized } from "@/components/ExecutiveEventCard";
 
 const LEVEL_COLORS: Record<number, string> = {
   9: "#ef4444", 8: "#f97316", 7: "#f59e0b", 6: "#22d3ee",
@@ -54,6 +57,8 @@ export default function LatestNews() {
   const { latestReport, isLive, reportDate } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
   const { t, locale } = useTranslation();
+  const { isExecutive } = useViewMode();
+  const { getEventExplanation } = useExecutiveData();
   const isEn = locale === "en";
   const [expanded, setExpanded] = useState(false);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
@@ -117,9 +122,16 @@ export default function LatestNews() {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/15">
-            <Zap className="w-3 h-3 text-emerald-400" />
-            <span className="text-[10px] font-mono text-emerald-400">LIVE</span>
+          <div className="flex items-center gap-2">
+            {isExecutive && (
+              <span className="px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20 text-[9px] font-mono text-amber-400">
+                {isEn ? "Executive View" : "Для руководителя"}
+              </span>
+            )}
+            <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/15">
+              <Zap className="w-3 h-3 text-emerald-400" />
+              <span className="text-[10px] font-mono text-emerald-400">LIVE</span>
+            </div>
           </div>
         </div>
 
@@ -129,7 +141,8 @@ export default function LatestNews() {
             const isCardExpanded = expandedCard === idx;
             const hasDetails = item.description && item.description !== item.title;
             const hasSources = item.sources.length > 0;
-            const isExpandable = hasDetails || hasSources;
+            const explanation = isExecutive ? getEventExplanation(item.title) : undefined;
+            const isExpandable = hasDetails || hasSources || !!explanation;
 
             return (
               <div
@@ -176,8 +189,17 @@ export default function LatestNews() {
                 {/* Expanded content */}
                 {isCardExpanded && (
                   <div className="px-3 pb-3 border-t border-border/20 pt-2 space-y-2">
-                    {/* Full description */}
-                    {hasDetails && (
+                    {/* Executive explanation (shown in executive mode) */}
+                    {isExecutive && explanation && (
+                      <ExecutiveEventCardLocalized
+                        explanation={explanation}
+                        accentColor={LEVEL_COLORS[item.level]}
+                        isEn={isEn}
+                      />
+                    )}
+
+                    {/* Full description (shown in expert mode or if no executive explanation) */}
+                    {(!isExecutive || !explanation) && hasDetails && (
                       <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
                         {item.description}
                       </p>

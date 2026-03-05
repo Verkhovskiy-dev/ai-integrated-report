@@ -13,6 +13,7 @@ import { useLiveData } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
 import PdfExport from "@/components/PdfExport";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ViewModeSwitcher from "@/components/ViewModeSwitcher";
 
 interface NavItem {
   id: string;
@@ -141,6 +142,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
             );
           })}
           <div className="ml-1 flex items-center gap-1.5">
+            <ViewModeSwitcher />
             <LanguageSwitcher />
             <PdfExport />
           </div>
@@ -148,6 +150,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
 
         {/* Mobile: Lang + PDF + Menu */}
         <div className="flex items-center gap-1.5 lg:hidden">
+          <ViewModeSwitcher />
           <LanguageSwitcher />
           <PdfExport />
           <button

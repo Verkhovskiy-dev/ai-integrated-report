@@ -18,6 +18,8 @@ import { type StrategicInsight } from "@/data/insightsData";
 import { ProgramBadgeGroup } from "@/components/ProgramBadge";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
+import { useViewMode } from "@/contexts/ViewModeContext";
+import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
 
 /* ------------------------------------------------------------------ */
 /*  Role definitions & relevance mapping                               */
@@ -156,12 +158,14 @@ const ICON_MAP: Record<string, typeof Building> = {
 /*  InsightCard                                                        */
 /* ------------------------------------------------------------------ */
 
-function InsightCard({ insight, isExpanded, onToggle, isEn, role }: {
+function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, executiveAdvice }: {
   insight: StrategicInsight;
   isExpanded: boolean;
   onToggle: () => void;
   isEn: boolean;
   role: RoleKey;
+  isExecutive: boolean;
+  executiveAdvice?: { ceo: string; cto: string; cdo: string } | null;
 }) {
   const Icon = ICON_MAP[insight.icon] || Lightbulb;
   const roleTakeaway = getRoleTakeaway(role, insight, isEn);
@@ -273,6 +277,32 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role }: {
             </div>
           )}
 
+          {/* Executive role-based advice ("Что это значит для вас") */}
+          {isExecutive && executiveAdvice && (
+            <div className="px-4 sm:px-5 py-3 sm:py-4 bg-gradient-to-r from-amber-500/5 to-cyan-500/5 border-t border-amber-400/15">
+              <div className="flex items-center gap-2 mb-3">
+                <Users className="w-3.5 h-3.5 text-amber-400" />
+                <span className="text-xs font-mono text-amber-400/80 uppercase tracking-wider">
+                  {isEn ? "What This Means for You" : "Что это значит для вас"}
+                </span>
+              </div>
+              <div className="space-y-3">
+                <div className="flex items-start gap-2">
+                  <span className="text-[10px] font-mono text-cyan-400 bg-cyan-400/10 px-1.5 py-0.5 rounded shrink-0 mt-0.5">CEO</span>
+                  <p className="text-[11px] sm:text-xs text-foreground/80 leading-relaxed">{executiveAdvice.ceo}</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded shrink-0 mt-0.5">CTO</span>
+                  <p className="text-[11px] sm:text-xs text-foreground/80 leading-relaxed">{executiveAdvice.cto}</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-[10px] font-mono text-purple-400 bg-purple-400/10 px-1.5 py-0.5 rounded shrink-0 mt-0.5">CDO</span>
+                  <p className="text-[11px] sm:text-xs text-foreground/80 leading-relaxed">{executiveAdvice.cdo}</p>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Education implication with program links */}
           <div className="px-4 sm:px-5 py-3 sm:py-4 bg-primary/5 border-t border-primary/10">
             <div className="flex items-center gap-2 mb-2.5">
@@ -350,6 +380,8 @@ export default function StrategicInsights() {
   const [activeRole, setActiveRole] = useState<RoleKey>("all");
   const { strategicInsights, insightsPeriod, insightsGeneratedAt, insightsLive } = useLiveData();
   const { locale } = useTranslation();
+  const { isExecutive } = useViewMode();
+  const { getRoleAdvice } = useExecutiveData();
   const isEn = locale === "en";
 
   // Filter and sort insights by role relevance
@@ -437,6 +469,8 @@ export default function StrategicInsights() {
             onToggle={() => setExpandedId(expandedId === insight.id ? null : insight.id)}
             isEn={isEn}
             role={activeRole}
+            isExecutive={isExecutive}
+            executiveAdvice={isExecutive ? getRoleAdvice(insight.id) : null}
           />
         ))}
       </div>
