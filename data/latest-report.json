@@ -1,6 +1,6 @@
 {
   "date": "2026-03-07",
-  "generated_at": "2026-03-07T10:01:38.104Z",
+  "generated_at": "2026-03-07T17:01:44.996Z",
   "key_focus": "",
   "srt_levels": [
     {
@@ -8,59 +8,54 @@
       "name": "Денежная система",
       "events": [
         {
-          "title": "Сбой/переформатирование AI-CapEx финансирования",
-          "description": "Сбой/переформатирование AI-CapEx финансирования: OpenAI и Oracle прекратили планы расширения «флагманского» дата-центра в Техасе после затяжных переговоров о финансировании и из-за меняющихся потребностей OpenAI. Это сигнал: капитал становится более «условным» (covenants/структурирование), а требования к окупаемости и гибкости мощности растут.",
+          "title": "Рынок заранее строит платежный контур под “экономику AI-агентов”",
+          "description": "Рынок заранее строит платежный контур под “экономику AI-агентов”: Circle и Stripe инвестируют в платежные системы, рассчитанные на сценарий массовых микротранзакций автономных агентов со “счетом” в stablecoins. Это попытка заранее занять позицию “денежного слоя” для машинных рынков, где карточные рельсы слишком дорогие/медленные.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-06/oracle-and-openai-end-plans-to-expand-flagship-data-center"
+            "https://www.bloomberg.com/news/articles/2026-03-07/stablecoin-firms-bet-big-on-ai-agent-payments-that-barely-exist"
           ]
         },
         {
-          "title": "Переупаковка риска и переоценка софта",
-          "description": "Переупаковка риска и переоценка софта: на рынках одновременно живут две крайности - «AI-пузырь» и «software может пойти к нулю», что отражает смену финансовых моделей оценки (от SaaS-мультипликаторов к оценке инфраструктурных и data/compute-рентоносных активов).",
+          "title": "Финансирование AI-инфраструктуры входит в фазу “проектного стресса”",
+          "description": "Финансирование AI-инфраструктуры входит в фазу “проектного стресса”: Oracle и OpenAI отменяют расширение флагманского дата-центра в Техасе из-за затяжных переговоров о финансировании и меняющихся потребностей OpenAI; площадку может перехватить Meta, а Nvidia - помогает посредничать. Это признак, что AI-CapEx становится похож на энергетику/инфраструктуру: сложные SPV-сделки, длинные контракты, высокая стоимость капитала. /",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-07/henry-blodget-on-ai-hysteria-software-and-bubbles"
+            "https://www.bloomberg.com/news/articles/2026-03-06/oracle-and-openai-end-plans-to-expand-flagship-data-center",
+            "https://www.bloomberg.com/news/videos/2026-03-06/oracle-openai-end-plans-to-expand-flagship-data-center-video"
           ]
         },
         {
-          "title": "Долг вместо equity в софте на фоне AI-неопределенности",
-          "description": "Долг вместо equity в софте на фоне AI-неопределенности: private credit продолжает финансировать сделки (пример - $750 млн debt deal под buyout Nexthink), несмотря на «unease over AI-driven disruption» - это признак, что кредиторы считают часть софта «достаточно защищенной», но цена риска уже вшита в условия.",
+          "title": "Риск-премия войны перекладывается в стоимость compute",
+          "description": "Риск-премия войны перекладывается в стоимость compute: конфликт (Иран) вызывает турбулентность на энергорынках и повышает восприятие дата-центров как цели/риска, особенно в регионах с геополитической хрупкостью. Это прямо “монетизируется” в цене размещения, страховании и финансировании DC. /",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-06/blue-owl-leads-750-million-debt-deal-for-vista-nexthink-buyout"
-          ]
-        },
-        {
-          "title": "Окно ликвидности для AI-чипмейкеров",
-          "description": "Окно ликвидности для AI-чипмейкеров: Cerebras возвращается к попытке IPO (Morgan Stanley как лидер) - рынок капитала начинает снова открываться для «железа» и инфраструктурных историй, даже если прикладной софт под давлением.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-06/ai-chipmaker-cerebras-said-to-tap-morgan-stanley-for-ipo-return"
+            "https://www.bloomberg.com/news/articles/2026-03-06/trump-demands-iran-relent-while-us-aims-to-calm-energy-markets",
+            "https://www.bloomberg.com/news/videos/2026-03-06/data-centers-are-inevitable-target-in-conflict-video"
           ]
         }
       ],
-      "event_count": 4
+      "event_count": 3
     },
     {
       "level": 8,
       "name": "Спонтанный порядок",
       "events": [
         {
-          "title": "Маркетплейс как новый механизм координации AI-экосистемы",
-          "description": "Маркетплейс как новый механизм координации AI-экосистемы: Anthropic запускает marketplace для корпоративных клиентов (аналог «Amazon-подобной витрины» для стороннего софта). Это попытка перенести координацию с API/модели на уровень распределения приложений и доверия.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-06/anthropic-unveils-amazon-inspired-marketplace-for-ai-software"
-          ]
-        },
-        {
-          "title": "Кризис open-source репутации/модерации из-за AI-контента",
-          "description": "Кризис open-source репутации/модерации из-за AI-контента: maintainers (пример matplotlib) вводят правила/барьеры для AI-сгенерированных contribution - «спонтанный порядок» OSS перестраивается из-за атак масштабом (поток PR, токсичность, harassment, перегрузка ревью).",
+          "title": "Open-source входит в режим “анти-спама” против AI-контрибьюторов",
+          "description": "Open-source входит в режим “анти-спама” против AI-контрибьюторов: сопровождающие matplotlib вводят политику обязательной маркировки AI-кода из-за лавины вкладов. Это сдвиг норм сообщества: “код как дар” → “код как мусор/атака”, меняются репутационные механизмы и барьеры входа.",
           "sources": [
             "https://www.technologyreview.com/2026/03/05/1133962/online-harassment-is-entering-its-ai-era/"
           ]
         },
         {
-          "title": "«Киберпреступность» как драйвер ужесточения инструментов государства",
-          "description": "«Киберпреступность» как драйвер ужесточения инструментов государства: указ Трампа по борьбе с киберпреступностью усиливает спрос на «robust tools» и может нормализовать более агрессивные практики наблюдения/атрибуции/пресечения.",
+          "title": "Эскалация информационного загрязнения → ответ в виде стандартов «что реально»",
+          "description": "Эскалация информационного загрязнения → ответ в виде стандартов «что реально»: Microsoft продвигает план верификации/подтверждения подлинности контента в сети. Это попытка создать новый слой доверия (и, вероятно, новые gatekeepers) для медиа/идентичности.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-06/trump-signs-order-to-bolster-efforts-to-combat-cybercrime"
+            "https://www.technologyreview.com/2026/02/19/1133360/microsoft-has-a-new-plan-to-prove-whats-real-and-what-s-ai-online/"
+          ]
+        },
+        {
+          "title": "Рост общественного сопротивления AI как фактор городской/территориальной политики",
+          "description": "Рост общественного сопротивления AI как фактор городской/территориальной политики: протесты против AI в Лондоне (район King’s Cross) показывают, что “социальная лицензия” на AI-инфраструктуру/офисы становится ограничением, а не фоном.",
+          "sources": [
+            "https://www.technologyreview.com/2026/03/02/1133814/i-checked-out-londons-biggest-ever-anti-ai-protest/"
           ]
         }
       ],
@@ -71,24 +66,24 @@
       "name": "Институты производства знаний",
       "events": [
         {
-          "title": "Военно-государственная легитимация и «закрытая» траектория AI",
-          "description": "Военно-государственная легитимация и «закрытая» траектория AI: конфликт DoD-Anthropic выводит в публичную плоскость вопрос: можно ли де-факто делать массовую AI-аналитику коммерческих данных о гражданах; правовая база неоднозначна, но практика расширяется.",
-          "sources": [
-            "https://www.technologyreview.com/2026/03/06/1134012/is-the-pentagon-allowed-to-surveil-americans-with-ai/"
-          ]
-        },
-        {
-          "title": "Редкий институтционный «штраф»",
-          "description": "Редкий институтционный «штраф»: Пентагон объявил Anthropic «supply-chain risk» - до этого такой ярлык почти ассоциировался с компаниями «враждебных стран» (пример Huawei). Это меняет режим допуска к госзаказу и статус компании на рынке доверия.",
+          "title": "Оборонный сектор “перепаковывает” легитимность AI-игроков через процедуру supply-chain risk",
+          "description": "Оборонный сектор “перепаковывает” легитимность AI-игроков через процедуру supply-chain risk: Пентагон объявляет Anthropic риском для цепочки поставок; Bloomberg отмечает, что такой ярлык ранее ассоциировался с компаниями уровня Huawei. Это институциональный механизм исключения/допуска к госзаказу и классифицированным средам.",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-03-06/anthropic-risks-pariah-status-after-pentagon-calls-it-a-supply-chain-risk"
           ]
         },
         {
-          "title": "Рост формального образования/переупаковка компетенций",
-          "description": "Рост формального образования/переупаковка компетенций: университеты открывают AI-программы и пересобирают правила использования AI студентами - институциональное догоняние массового внедрения.",
+          "title": "Вопрос законности массового AI-наблюдения остается “не закрыт”",
+          "description": "Вопрос законности массового AI-наблюдения остается “не закрыт”: MIT Tech Review поднимает правовую неопределенность - может ли Пентагон проводить массовую слежку по американцам с AI. Это риск будущего институционального кризиса (суды/Конгресс/регуляторы).",
           "sources": [
-            "https://news.google.com/rss/articles/CBMisAFBVV95cUxNcThTMF90SEJCRXlTdnpLblNraFJiRlNkRnJxVHNpQ3pETE5Xb2hIQkp5aDJqdnE5eVRsVHc1S05wZUd3UGJCbGExaE5SckVsM0kzYWZxZW5PUDE0NDNCcm94UG1CVjBzRHdHU2lFTUplVmw5QWVPSTJvQk15YmlFYVZRRGJESmR2ZktVQ09kU3QyNEpXd1RkWkNmcEZEUHc0Mjh4RzJTeHo3VVdVNjROYQ?oc=5"
+            "https://www.technologyreview.com/2026/03/06/1134012/is-the-pentagon-allowed-to-surveil-americans-with-ai/"
+          ]
+        },
+        {
+          "title": "Кадрово-образовательная реакция",
+          "description": "Кадрово-образовательная реакция: Китай заявляет, что будет использовать AI для создания рабочих мест на фоне рекордного числа выпускников (12,7 млн). Это “институционализация” AI как инструмента макрорынка труда.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-07/china-turns-to-ai-as-jobseeker-numbers-top-belgium-s-population"
           ]
         }
       ],
@@ -99,17 +94,17 @@
       "name": "Технологии производства знаний",
       "events": [
         {
-          "title": "Переход к agentic security как «производственной методологии»",
-          "description": "Переход к agentic security как «производственной методологии»: OpenAI выпускает security-агента для поиска/патча уязвимостей в больших базах данных (research preview). Это превращает кибербезопасность из «ручного анализа» в полуавтономный конвейер.",
+          "title": "AI как инструмент кибербезопасности становится продуктом-агентом",
+          "description": "AI как инструмент кибербезопасности становится продуктом-агентом: OpenAI выпускает security-агента для поиска/патча уязвимостей в больших БД (research preview), прямо претендуя на кусок рынка “legacy cyber”.",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-03-06/openai-releases-ai-agent-security-tool-for-research-preview"
           ]
         },
         {
-          "title": "Корпоративный переход от пилотов к продакшену",
-          "description": "Корпоративный переход от пилотов к продакшену: фиксируется «operational AI gap» и сдвиг бюджетов к внедрению, включая эксперименты с агентами.",
+          "title": "Ускорение “AI в атаке”",
+          "description": "Ускорение “AI в атаке”: Microsoft фиксирует, что хакеры используют AI на всех стадиях кибератак - это толкает индустрию к agent-vs-agent security, где методы защиты тоже должны быть агентными.",
           "sources": [
-            "https://www.technologyreview.com/2026/03/04/1133642/bridging-the-operational-ai-gap/"
+            "https://news.google.com/rss/articles/CBMiqwFBVV95cUxONDZmeGFneE5hbEpzRTRGRlJ3d0JVdnNSRjhSbmtVU05JXzM5d1NONVFRWVlkNktQalptdVZTYzNIWjAxZWJqOEl4U1FGeVRNakEzTnYwbDEyYl9WVTAwbzR6Q20wcHZnQTNUa2hJcEtySkc0NmRlYlM0QWQ3RUxrM3Zxa01xcnoza3FnbnpoTVQtMnBVSlBTa3AzeEYtaGxteVc2Vk9keUFTeUXSAbABQVVfeXFMT2RTWEFNMFFBZGtYd2JVVDUwdVpndWxrLVJzcFJhR1g4UzZxS1V4N0hOUVBHeEt6c3FfS2hjNjU0dDF5ZURSR2ZYQ29yQW85YVFSMUhhSnlfS2hWVmNySllqLUVxOWVCbnlGd3JSWkkyM3hKeFI5Rm9VZGZZTHgtakhwM3g0dmZqZVhHOERDVGI4T2pVSllTU2U2bGtDMU03WDg0ZzhpUmw3YUVyODA5TWw?oc=5"
           ]
         }
       ],
@@ -120,24 +115,26 @@
       "name": "Разделение труда между фирмами",
       "events": [
         {
-          "title": "Ре-композиция цепочки “compute → DC → модели → арендаторы мощности”",
-          "description": "Ре-композиция цепочки “compute → DC → модели → арендаторы мощности”: после остановки расширения OpenAI/Oracle площадкой интересуется Meta; Nvidia, по данным Bloomberg, помогала фасилитировать обсуждения. Это важный сдвиг: поставщик чипов становится брокером/координатором размещения мощностей, а спрос на DC - более «портируемым» между арендаторами.",
+          "title": "Переразметка оборонного рынка AI-поставщиков",
+          "description": "Переразметка оборонного рынка AI-поставщиков: конфликт Пентагона и Anthropic + быстрый “компромисс” OpenAI на работу в классифицированных средах означает, что DoD фактически формирует новый “клуб допущенных” и заставляет компании выбирать конфигурацию комплаенса/контроля. /",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-06/oracle-and-openai-end-plans-to-expand-flagship-data-center"
+            "https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/",
+            "https://www.bloomberg.com/news/articles/2026-03-06/anthropic-risks-pariah-status-after-pentagon-calls-it-a-supply-chain-risk"
           ]
         },
         {
-          "title": "SaaS/legacy software под угрозой замещения “моделью + агентом”",
-          "description": "SaaS/legacy software под угрозой замещения “моделью + агентом”: сам факт «software selloff hysteria» и дискуссии о том, что AI может «обнулить» часть legacy-софта - сигнал перераспределения ренты от прикладных вендоров к платформам/инфраструктуре.",
+          "title": "Инфраструктурная цепочка переходит к модели “перехвата площадок”",
+          "description": "Инфраструктурная цепочка переходит к модели “перехвата площадок”: отмена проекта Oracle/OpenAI и возможный заход Meta на аренду расширения в Abilene показывает, что DC-мощности становятся торгуемым активом/опционом между гиперскейлерами и AI-лабораториями. Nvidia выступает не только поставщиком GPU, но и “координатором сделок” в экосистеме. /",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-07/henry-blodget-on-ai-hysteria-software-and-bubbles"
+            "https://www.bloomberg.com/news/articles/2026-03-06/oracle-and-openai-end-plans-to-expand-flagship-data-center",
+            "https://www.bloomberg.com/news/videos/2026-03-06/oracle-openai-end-plans-to-expand-flagship-data-center-video"
           ]
         },
         {
-          "title": "Агентные вертикали в медицине",
-          "description": "Агентные вертикали в медицине: Salesforce партнерится с HealthEx, Verily и Viz.ai для healthcare AI agents - формируются отраслевые коалиции вокруг данных и workflow-интеграции.",
+          "title": "Европейский ВПК/космос собирает консорциумы под суверенную связь",
+          "description": "Европейский ВПК/космос собирает консорциумы под суверенную связь: Airbus + Rheinmetall + OHB рассматривают совместную заявку на Starlink-подобный сервис для Бундесвера - это сборка вертикали “космос-связь-оборона” внутри ЕС.",
           "sources": [
-            "https://news.google.com/rss/articles/CBMixAFBVV95cUxOaGpmZXBvN08wNE5FTU1XYldBTHE5empUbHFsM1REWk9CMXVPTGpQMnJDZ1NYZlAyZnFpeFR0OHdvd0p0VjNrSXFqY3BVaEhIcllKelhHRnRzeHpVdHhSdTJiZFBYenBlLTl4M05uVS0tNXBNQzdLbnBza2lqVlQyYWd2QmhKbktReS1FR2NtS2p3ZllCckxXZWswUlNzT0UzaXVkcmtoQlRkZGljRTZYNWhXLTlER2hBa2YyNGRIMFQ5blB4?oc=5"
+            "https://www.bloomberg.com/news/articles/2026-03-07/airbus-teams-up-with-rheinmetall-ohb-for-military-satellites"
           ]
         }
       ],
@@ -148,45 +145,40 @@
       "name": "«Железные» технологии",
       "events": [
         {
-          "title": "Глобальный режим контроля AI-чипов",
-          "description": "Глобальный режим контроля AI-чипов: США рассматривают правила, при которых поставки AI-чипов Nvidia/AMD «куда угодно» потребуют американского одобрения - это попытка сделать экспортный контроль универсальным, а не региональным.",
+          "title": "Чиповая гонка расширяется",
+          "description": "Чиповая гонка расширяется: Cerebras вновь готовит IPO (через Morgan Stanley), Rebellions публично заявляет о конкуренции с Nvidia/AMD. Это сигнал: рынок ждет “вторую волну” специализированных ускорителей и пытается финансировать альтернативы лидерскому стеку. /",
           "sources": [
-            "https://www.bloomberg.com/news/videos/2026-03-06/bloomberg-tech-3-6-2026-video"
-          ]
-        },
-        {
-          "title": "Новые игроки в чипах",
-          "description": "Новые игроки в чипах: Rebellions заявляет о конкуренции с Nvidia/AMD - сигнал, что «окно возможностей» для специализированных ускорителей остается, но будет зависеть от доступа к рынкам/производству/экспортных режимов.",
-          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-06/ai-chipmaker-cerebras-said-to-tap-morgan-stanley-for-ipo-return",
             "https://www.bloomberg.com/news/videos/2026-03-07/rebellions-eyes-competition-with-nvidia-amd-in-ai-chips-video"
           ]
         },
         {
-          "title": "Энергосистема как часть AI-стека",
-          "description": "Энергосистема как часть AI-стека: HD Hyundai Electric ускоряет экспансию в США, ожидая спрос на трансформаторы и switchgear из-за AI «supercycle» - электросетевое оборудование становится бутылочным горлышком AI-инфраструктуры.",
+          "title": "Экспортный контроль может стать “глобальным режимом разрешений”",
+          "description": "Экспортный контроль может стать “глобальным режимом разрешений”: обсуждаются правила, при которых поставки AI-чипов Nvidia/AMD “куда угодно” потребуют одобрения США - это попытка превратить чипы в управляемый стратегический ресурс, как оружие.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-06/top-korea-power-firm-revs-up-us-growth-betting-on-ai-supercycle"
+            "https://www.bloomberg.com/news/videos/2026-03-06/bloomberg-tech-3-6-2026-video"
           ]
         }
       ],
-      "event_count": 3
+      "event_count": 2
     },
     {
       "level": 3,
       "name": "Социально-профессиональная структура",
       "events": [
         {
-          "title": "Государство пытается «поглотить» избыток выпускников через AI-повестку",
-          "description": "Государство пытается «поглотить» избыток выпускников через AI-повестку: Китай заявляет о намерении использовать AI для создания рабочих мест на фоне 12.7 млн выпускников-соискателей. Это не про «технологию», а про управление социальной структурой и занятостью через новую индустриальную политику.",
+          "title": "Сдвиг компетенций в сторону “agentic security / AI-SecOps”",
+          "description": "Сдвиг компетенций в сторону “agentic security / AI-SecOps”: выпуск OpenAI security-агента и параллельный рост AI-кибератак подталкивают спрос на специалистов, которые умеют строить процессы “агенты находят → агенты чинят → люди утверждают”. /",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-07/china-turns-to-ai-as-jobseeker-numbers-top-belgium-s-population"
+            "https://www.bloomberg.com/news/articles/2026-03-06/openai-releases-ai-agent-security-tool-for-research-preview",
+            "https://news.google.com/rss/articles/CBMiqwFBVV95cUxONDZmeGFneE5hbEpzRTRGRlJ3d0JVdnNSRjhSbmtVU05JXzM5d1NONVFRWVlkNktQalptdVZTYzNIWjAxZWJqOEl4U1FGeVRNakEzTnYwbDEyYl9WVTAwbzR6Q20wcHZnQTNUa2hJcEtySkc0NmRlYlM0QWQ3RUxrM3Zxa01xcnoza3FnbnpoTVQtMnBVSlBTa3AzeEYtaGxteVc2Vk9keUFTeUXSAbABQVVfeXFMT2RTWEFNMFFBZGtYd2JVVDUwdVpndWxrLVJzcFJhR1g4UzZxS1V4N0hOUVBHeEt6c3FfS2hjNjU0dDF5ZURSR2ZYQ29yQW85YVFSMUhhSnlfS2hWVmNySllqLUVxOWVCbnlGd3JSWkkyM3hKeFI5Rm9VZGZZTHgtakhwM3g0dmZqZVhHOERDVGI4T2pVSllTU2U2bGtDMU03WDg0ZzhpUmw3YUVyODA5TWw?oc=5"
           ]
         },
         {
-          "title": "Разрыв между «страхом замещения» и статистикой",
-          "description": "Разрыв между «страхом замещения» и статистикой: обсуждается, что данные пока не показывают массового вытеснения рабочих мест AI, несмотря на волны сокращений, связываемых с AI-перераспределением затрат.",
+          "title": "Макро-переопределение занятости",
+          "description": "Макро-переопределение занятости: Китай, столкнувшись с огромной волной выпускников, институционально “прикрепляет” AI к политике занятости. Это меняет роль AI: из “инструмента повышения эффективности” в “инструмент социальной стабильности”.",
           "sources": [
-            "https://www.bloomberg.com/news/videos/2026-03-06/data-doesn-t-show-ai-taking-jobs-just-yet-video"
+            "https://www.bloomberg.com/news/articles/2026-03-07/china-turns-to-ai-as-jobseeker-numbers-top-belgium-s-population"
           ]
         }
       ],
@@ -197,17 +189,17 @@
       "name": "Пространственная организация",
       "events": [
         {
-          "title": "Военный риск как фактор размещения дата-центров",
-          "description": "Военный риск как фактор размещения дата-центров: конфликт вокруг Ирана подсвечивает, что DC в регионе Персидского залива становятся «неизбежной целью» - география compute начинает определяться не только ценой энергии, но и военной уязвимостью.",
+          "title": "Дата-центры как военная/геополитическая инфраструктура",
+          "description": "Дата-центры как военная/геополитическая инфраструктура: тезис о неизбежности атак на DC в конфликтах меняет критерии выбора географии: безопасность, удаленность от театров военных действий, доступ к защищенным сетям, союзнические юрисдикции.",
           "sources": [
             "https://www.bloomberg.com/news/videos/2026-03-06/data-centers-are-inevitable-target-in-conflict-video"
           ]
         },
         {
-          "title": "Переезд/перенацеливание площадок и арендаторов",
-          "description": "Переезд/перенацеливание площадок и арендаторов (Texas): отмена расширения OpenAI/Oracle и потенциальный приход Meta - пример того, как одна площадка может сменить «якорного» потребителя, если финансовая конструкция не сходится.",
+          "title": "Европейская “суверенная орбита”",
+          "description": "Европейская “суверенная орбита”: проект Bundeswehr-интернета формирует размещение спутниковых/наземных сегментов в ЕС и завязку на местных подрядчиков.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-06/oracle-and-openai-end-plans-to-expand-flagship-data-center"
+            "https://www.bloomberg.com/news/articles/2026-03-07/airbus-teams-up-with-rheinmetall-ohb-for-military-satellites"
           ]
         }
       ],
@@ -218,15 +210,15 @@
       "name": "Природные ресурсы",
       "events": [
         {
-          "title": "Гонка за критическими минералами как фундамент AI+электрификации",
-          "description": "Гонка за критическими минералами как фундамент AI+электрификации: акцент на роли Африки в «новой экономике» критических минералов - это базисная перестройка сырьевой зависимости для энергетики, электроники и оборонки.",
+          "title": "Энергетика и минералы как фундамент AI",
+          "description": "Энергетика и минералы как фундамент AI: гонка за критическими минералами (в т.ч. в Африке) - это не фон, а базис чипов/энергосетей/электрификации, без которого AI-инфраструктура не масштабируется.",
           "sources": [
             "https://www.bloomberg.com/news/videos/2026-03-07/critical-minerals-africa-s-role-in-new-global-economy-video"
           ]
         },
         {
-          "title": "Энергорынки под давлением войны",
-          "description": "Энергорынки под давлением войны: США пытаются «успокоить» энергетические рынки на фоне конфликта с Ираном - косвенно это влияет на стоимость эксплуатации compute.",
+          "title": "Энергориски войны",
+          "description": "Энергориски войны: конфликт на Ближнем Востоке повышает стоимость и неопределенность энергии, что напрямую бьет по экономике DC (PPA, стоимость охлаждения, надежность).",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-03-06/trump-demands-iran-relent-while-us-aims-to-calm-energy-markets"
           ]
@@ -237,192 +229,182 @@
   ],
   "events": [
     {
-      "title": "Сбой/переформатирование AI-CapEx финансирования",
-      "description": "Сбой/переформатирование AI-CapEx финансирования: OpenAI и Oracle прекратили планы расширения «флагманского» дата-центра в Техасе после затяжных переговоров о финансировании и из-за меняющихся потребностей OpenAI. Это сигнал: капитал становится более «условным» (covenants/структурирование), а требования к окупаемости и гибкости мощности растут.",
+      "title": "Рынок заранее строит платежный контур под “экономику AI-агентов”",
+      "description": "Рынок заранее строит платежный контур под “экономику AI-агентов”: Circle и Stripe инвестируют в платежные системы, рассчитанные на сценарий массовых микротранзакций автономных агентов со “счетом” в stablecoins. Это попытка заранее занять позицию “денежного слоя” для машинных рынков, где карточные рельсы слишком дорогие/медленные.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-06/oracle-and-openai-end-plans-to-expand-flagship-data-center"
+        "https://www.bloomberg.com/news/articles/2026-03-07/stablecoin-firms-bet-big-on-ai-agent-payments-that-barely-exist"
       ],
       "level": 9
     },
     {
-      "title": "Переупаковка риска и переоценка софта",
-      "description": "Переупаковка риска и переоценка софта: на рынках одновременно живут две крайности - «AI-пузырь» и «software может пойти к нулю», что отражает смену финансовых моделей оценки (от SaaS-мультипликаторов к оценке инфраструктурных и data/compute-рентоносных активов).",
+      "title": "Финансирование AI-инфраструктуры входит в фазу “проектного стресса”",
+      "description": "Финансирование AI-инфраструктуры входит в фазу “проектного стресса”: Oracle и OpenAI отменяют расширение флагманского дата-центра в Техасе из-за затяжных переговоров о финансировании и меняющихся потребностей OpenAI; площадку может перехватить Meta, а Nvidia - помогает посредничать. Это признак, что AI-CapEx становится похож на энергетику/инфраструктуру: сложные SPV-сделки, длинные контракты, высокая стоимость капитала. /",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-07/henry-blodget-on-ai-hysteria-software-and-bubbles"
+        "https://www.bloomberg.com/news/articles/2026-03-06/oracle-and-openai-end-plans-to-expand-flagship-data-center",
+        "https://www.bloomberg.com/news/videos/2026-03-06/oracle-openai-end-plans-to-expand-flagship-data-center-video"
       ],
       "level": 9
     },
     {
-      "title": "Долг вместо equity в софте на фоне AI-неопределенности",
-      "description": "Долг вместо equity в софте на фоне AI-неопределенности: private credit продолжает финансировать сделки (пример - $750 млн debt deal под buyout Nexthink), несмотря на «unease over AI-driven disruption» - это признак, что кредиторы считают часть софта «достаточно защищенной», но цена риска уже вшита в условия.",
+      "title": "Риск-премия войны перекладывается в стоимость compute",
+      "description": "Риск-премия войны перекладывается в стоимость compute: конфликт (Иран) вызывает турбулентность на энергорынках и повышает восприятие дата-центров как цели/риска, особенно в регионах с геополитической хрупкостью. Это прямо “монетизируется” в цене размещения, страховании и финансировании DC. /",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-06/blue-owl-leads-750-million-debt-deal-for-vista-nexthink-buyout"
+        "https://www.bloomberg.com/news/articles/2026-03-06/trump-demands-iran-relent-while-us-aims-to-calm-energy-markets",
+        "https://www.bloomberg.com/news/videos/2026-03-06/data-centers-are-inevitable-target-in-conflict-video"
       ],
       "level": 9
     },
     {
-      "title": "Окно ликвидности для AI-чипмейкеров",
-      "description": "Окно ликвидности для AI-чипмейкеров: Cerebras возвращается к попытке IPO (Morgan Stanley как лидер) - рынок капитала начинает снова открываться для «железа» и инфраструктурных историй, даже если прикладной софт под давлением.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-06/ai-chipmaker-cerebras-said-to-tap-morgan-stanley-for-ipo-return"
-      ],
-      "level": 9
-    },
-    {
-      "title": "Маркетплейс как новый механизм координации AI-экосистемы",
-      "description": "Маркетплейс как новый механизм координации AI-экосистемы: Anthropic запускает marketplace для корпоративных клиентов (аналог «Amazon-подобной витрины» для стороннего софта). Это попытка перенести координацию с API/модели на уровень распределения приложений и доверия.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-06/anthropic-unveils-amazon-inspired-marketplace-for-ai-software"
-      ],
-      "level": 8
-    },
-    {
-      "title": "Кризис open-source репутации/модерации из-за AI-контента",
-      "description": "Кризис open-source репутации/модерации из-за AI-контента: maintainers (пример matplotlib) вводят правила/барьеры для AI-сгенерированных contribution - «спонтанный порядок» OSS перестраивается из-за атак масштабом (поток PR, токсичность, harassment, перегрузка ревью).",
+      "title": "Open-source входит в режим “анти-спама” против AI-контрибьюторов",
+      "description": "Open-source входит в режим “анти-спама” против AI-контрибьюторов: сопровождающие matplotlib вводят политику обязательной маркировки AI-кода из-за лавины вкладов. Это сдвиг норм сообщества: “код как дар” → “код как мусор/атака”, меняются репутационные механизмы и барьеры входа.",
       "sources": [
         "https://www.technologyreview.com/2026/03/05/1133962/online-harassment-is-entering-its-ai-era/"
       ],
       "level": 8
     },
     {
-      "title": "«Киберпреступность» как драйвер ужесточения инструментов государства",
-      "description": "«Киберпреступность» как драйвер ужесточения инструментов государства: указ Трампа по борьбе с киберпреступностью усиливает спрос на «robust tools» и может нормализовать более агрессивные практики наблюдения/атрибуции/пресечения.",
+      "title": "Эскалация информационного загрязнения → ответ в виде стандартов «что реально»",
+      "description": "Эскалация информационного загрязнения → ответ в виде стандартов «что реально»: Microsoft продвигает план верификации/подтверждения подлинности контента в сети. Это попытка создать новый слой доверия (и, вероятно, новые gatekeepers) для медиа/идентичности.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-06/trump-signs-order-to-bolster-efforts-to-combat-cybercrime"
+        "https://www.technologyreview.com/2026/02/19/1133360/microsoft-has-a-new-plan-to-prove-whats-real-and-what-s-ai-online/"
       ],
       "level": 8
     },
     {
-      "title": "Военно-государственная легитимация и «закрытая» траектория AI",
-      "description": "Военно-государственная легитимация и «закрытая» траектория AI: конфликт DoD-Anthropic выводит в публичную плоскость вопрос: можно ли де-факто делать массовую AI-аналитику коммерческих данных о гражданах; правовая база неоднозначна, но практика расширяется.",
+      "title": "Рост общественного сопротивления AI как фактор городской/территориальной политики",
+      "description": "Рост общественного сопротивления AI как фактор городской/территориальной политики: протесты против AI в Лондоне (район King’s Cross) показывают, что “социальная лицензия” на AI-инфраструктуру/офисы становится ограничением, а не фоном.",
       "sources": [
-        "https://www.technologyreview.com/2026/03/06/1134012/is-the-pentagon-allowed-to-surveil-americans-with-ai/"
+        "https://www.technologyreview.com/2026/03/02/1133814/i-checked-out-londons-biggest-ever-anti-ai-protest/"
       ],
-      "level": 7
+      "level": 8
     },
     {
-      "title": "Редкий институтционный «штраф»",
-      "description": "Редкий институтционный «штраф»: Пентагон объявил Anthropic «supply-chain risk» - до этого такой ярлык почти ассоциировался с компаниями «враждебных стран» (пример Huawei). Это меняет режим допуска к госзаказу и статус компании на рынке доверия.",
+      "title": "Оборонный сектор “перепаковывает” легитимность AI-игроков через процедуру supply-chain risk",
+      "description": "Оборонный сектор “перепаковывает” легитимность AI-игроков через процедуру supply-chain risk: Пентагон объявляет Anthropic риском для цепочки поставок; Bloomberg отмечает, что такой ярлык ранее ассоциировался с компаниями уровня Huawei. Это институциональный механизм исключения/допуска к госзаказу и классифицированным средам.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-06/anthropic-risks-pariah-status-after-pentagon-calls-it-a-supply-chain-risk"
       ],
       "level": 7
     },
     {
-      "title": "Рост формального образования/переупаковка компетенций",
-      "description": "Рост формального образования/переупаковка компетенций: университеты открывают AI-программы и пересобирают правила использования AI студентами - институциональное догоняние массового внедрения.",
+      "title": "Вопрос законности массового AI-наблюдения остается “не закрыт”",
+      "description": "Вопрос законности массового AI-наблюдения остается “не закрыт”: MIT Tech Review поднимает правовую неопределенность - может ли Пентагон проводить массовую слежку по американцам с AI. Это риск будущего институционального кризиса (суды/Конгресс/регуляторы).",
       "sources": [
-        "https://news.google.com/rss/articles/CBMisAFBVV95cUxNcThTMF90SEJCRXlTdnpLblNraFJiRlNkRnJxVHNpQ3pETE5Xb2hIQkp5aDJqdnE5eVRsVHc1S05wZUd3UGJCbGExaE5SckVsM0kzYWZxZW5PUDE0NDNCcm94UG1CVjBzRHdHU2lFTUplVmw5QWVPSTJvQk15YmlFYVZRRGJESmR2ZktVQ09kU3QyNEpXd1RkWkNmcEZEUHc0Mjh4RzJTeHo3VVdVNjROYQ?oc=5"
+        "https://www.technologyreview.com/2026/03/06/1134012/is-the-pentagon-allowed-to-surveil-americans-with-ai/"
       ],
       "level": 7
     },
     {
-      "title": "Переход к agentic security как «производственной методологии»",
-      "description": "Переход к agentic security как «производственной методологии»: OpenAI выпускает security-агента для поиска/патча уязвимостей в больших базах данных (research preview). Это превращает кибербезопасность из «ручного анализа» в полуавтономный конвейер.",
+      "title": "Кадрово-образовательная реакция",
+      "description": "Кадрово-образовательная реакция: Китай заявляет, что будет использовать AI для создания рабочих мест на фоне рекордного числа выпускников (12,7 млн). Это “институционализация” AI как инструмента макрорынка труда.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-07/china-turns-to-ai-as-jobseeker-numbers-top-belgium-s-population"
+      ],
+      "level": 7
+    },
+    {
+      "title": "AI как инструмент кибербезопасности становится продуктом-агентом",
+      "description": "AI как инструмент кибербезопасности становится продуктом-агентом: OpenAI выпускает security-агента для поиска/патча уязвимостей в больших БД (research preview), прямо претендуя на кусок рынка “legacy cyber”.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-06/openai-releases-ai-agent-security-tool-for-research-preview"
       ],
       "level": 6
     },
     {
-      "title": "Корпоративный переход от пилотов к продакшену",
-      "description": "Корпоративный переход от пилотов к продакшену: фиксируется «operational AI gap» и сдвиг бюджетов к внедрению, включая эксперименты с агентами.",
+      "title": "Ускорение “AI в атаке”",
+      "description": "Ускорение “AI в атаке”: Microsoft фиксирует, что хакеры используют AI на всех стадиях кибератак - это толкает индустрию к agent-vs-agent security, где методы защиты тоже должны быть агентными.",
       "sources": [
-        "https://www.technologyreview.com/2026/03/04/1133642/bridging-the-operational-ai-gap/"
+        "https://news.google.com/rss/articles/CBMiqwFBVV95cUxONDZmeGFneE5hbEpzRTRGRlJ3d0JVdnNSRjhSbmtVU05JXzM5d1NONVFRWVlkNktQalptdVZTYzNIWjAxZWJqOEl4U1FGeVRNakEzTnYwbDEyYl9WVTAwbzR6Q20wcHZnQTNUa2hJcEtySkc0NmRlYlM0QWQ3RUxrM3Zxa01xcnoza3FnbnpoTVQtMnBVSlBTa3AzeEYtaGxteVc2Vk9keUFTeUXSAbABQVVfeXFMT2RTWEFNMFFBZGtYd2JVVDUwdVpndWxrLVJzcFJhR1g4UzZxS1V4N0hOUVBHeEt6c3FfS2hjNjU0dDF5ZURSR2ZYQ29yQW85YVFSMUhhSnlfS2hWVmNySllqLUVxOWVCbnlGd3JSWkkyM3hKeFI5Rm9VZGZZTHgtakhwM3g0dmZqZVhHOERDVGI4T2pVSllTU2U2bGtDMU03WDg0ZzhpUmw3YUVyODA5TWw?oc=5"
       ],
       "level": 6
     },
     {
-      "title": "Ре-композиция цепочки “compute → DC → модели → арендаторы мощности”",
-      "description": "Ре-композиция цепочки “compute → DC → модели → арендаторы мощности”: после остановки расширения OpenAI/Oracle площадкой интересуется Meta; Nvidia, по данным Bloomberg, помогала фасилитировать обсуждения. Это важный сдвиг: поставщик чипов становится брокером/координатором размещения мощностей, а спрос на DC - более «портируемым» между арендаторами.",
+      "title": "Переразметка оборонного рынка AI-поставщиков",
+      "description": "Переразметка оборонного рынка AI-поставщиков: конфликт Пентагона и Anthropic + быстрый “компромисс” OpenAI на работу в классифицированных средах означает, что DoD фактически формирует новый “клуб допущенных” и заставляет компании выбирать конфигурацию комплаенса/контроля. /",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-06/oracle-and-openai-end-plans-to-expand-flagship-data-center"
+        "https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/",
+        "https://www.bloomberg.com/news/articles/2026-03-06/anthropic-risks-pariah-status-after-pentagon-calls-it-a-supply-chain-risk"
       ],
       "level": 5
     },
     {
-      "title": "SaaS/legacy software под угрозой замещения “моделью + агентом”",
-      "description": "SaaS/legacy software под угрозой замещения “моделью + агентом”: сам факт «software selloff hysteria» и дискуссии о том, что AI может «обнулить» часть legacy-софта - сигнал перераспределения ренты от прикладных вендоров к платформам/инфраструктуре.",
+      "title": "Инфраструктурная цепочка переходит к модели “перехвата площадок”",
+      "description": "Инфраструктурная цепочка переходит к модели “перехвата площадок”: отмена проекта Oracle/OpenAI и возможный заход Meta на аренду расширения в Abilene показывает, что DC-мощности становятся торгуемым активом/опционом между гиперскейлерами и AI-лабораториями. Nvidia выступает не только поставщиком GPU, но и “координатором сделок” в экосистеме. /",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-07/henry-blodget-on-ai-hysteria-software-and-bubbles"
+        "https://www.bloomberg.com/news/articles/2026-03-06/oracle-and-openai-end-plans-to-expand-flagship-data-center",
+        "https://www.bloomberg.com/news/videos/2026-03-06/oracle-openai-end-plans-to-expand-flagship-data-center-video"
       ],
       "level": 5
     },
     {
-      "title": "Агентные вертикали в медицине",
-      "description": "Агентные вертикали в медицине: Salesforce партнерится с HealthEx, Verily и Viz.ai для healthcare AI agents - формируются отраслевые коалиции вокруг данных и workflow-интеграции.",
+      "title": "Европейский ВПК/космос собирает консорциумы под суверенную связь",
+      "description": "Европейский ВПК/космос собирает консорциумы под суверенную связь: Airbus + Rheinmetall + OHB рассматривают совместную заявку на Starlink-подобный сервис для Бундесвера - это сборка вертикали “космос-связь-оборона” внутри ЕС.",
       "sources": [
-        "https://news.google.com/rss/articles/CBMixAFBVV95cUxOaGpmZXBvN08wNE5FTU1XYldBTHE5empUbHFsM1REWk9CMXVPTGpQMnJDZ1NYZlAyZnFpeFR0OHdvd0p0VjNrSXFqY3BVaEhIcllKelhHRnRzeHpVdHhSdTJiZFBYenBlLTl4M05uVS0tNXBNQzdLbnBza2lqVlQyYWd2QmhKbktReS1FR2NtS2p3ZllCckxXZWswUlNzT0UzaXVkcmtoQlRkZGljRTZYNWhXLTlER2hBa2YyNGRIMFQ5blB4?oc=5"
+        "https://www.bloomberg.com/news/articles/2026-03-07/airbus-teams-up-with-rheinmetall-ohb-for-military-satellites"
       ],
       "level": 5
     },
     {
-      "title": "Глобальный режим контроля AI-чипов",
-      "description": "Глобальный режим контроля AI-чипов: США рассматривают правила, при которых поставки AI-чипов Nvidia/AMD «куда угодно» потребуют американского одобрения - это попытка сделать экспортный контроль универсальным, а не региональным.",
+      "title": "Чиповая гонка расширяется",
+      "description": "Чиповая гонка расширяется: Cerebras вновь готовит IPO (через Morgan Stanley), Rebellions публично заявляет о конкуренции с Nvidia/AMD. Это сигнал: рынок ждет “вторую волну” специализированных ускорителей и пытается финансировать альтернативы лидерскому стеку. /",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-06/ai-chipmaker-cerebras-said-to-tap-morgan-stanley-for-ipo-return",
+        "https://www.bloomberg.com/news/videos/2026-03-07/rebellions-eyes-competition-with-nvidia-amd-in-ai-chips-video"
+      ],
+      "level": 4
+    },
+    {
+      "title": "Экспортный контроль может стать “глобальным режимом разрешений”",
+      "description": "Экспортный контроль может стать “глобальным режимом разрешений”: обсуждаются правила, при которых поставки AI-чипов Nvidia/AMD “куда угодно” потребуют одобрения США - это попытка превратить чипы в управляемый стратегический ресурс, как оружие.",
       "sources": [
         "https://www.bloomberg.com/news/videos/2026-03-06/bloomberg-tech-3-6-2026-video"
       ],
       "level": 4
     },
     {
-      "title": "Новые игроки в чипах",
-      "description": "Новые игроки в чипах: Rebellions заявляет о конкуренции с Nvidia/AMD - сигнал, что «окно возможностей» для специализированных ускорителей остается, но будет зависеть от доступа к рынкам/производству/экспортных режимов.",
+      "title": "Сдвиг компетенций в сторону “agentic security / AI-SecOps”",
+      "description": "Сдвиг компетенций в сторону “agentic security / AI-SecOps”: выпуск OpenAI security-агента и параллельный рост AI-кибератак подталкивают спрос на специалистов, которые умеют строить процессы “агенты находят → агенты чинят → люди утверждают”. /",
       "sources": [
-        "https://www.bloomberg.com/news/videos/2026-03-07/rebellions-eyes-competition-with-nvidia-amd-in-ai-chips-video"
+        "https://www.bloomberg.com/news/articles/2026-03-06/openai-releases-ai-agent-security-tool-for-research-preview",
+        "https://news.google.com/rss/articles/CBMiqwFBVV95cUxONDZmeGFneE5hbEpzRTRGRlJ3d0JVdnNSRjhSbmtVU05JXzM5d1NONVFRWVlkNktQalptdVZTYzNIWjAxZWJqOEl4U1FGeVRNakEzTnYwbDEyYl9WVTAwbzR6Q20wcHZnQTNUa2hJcEtySkc0NmRlYlM0QWQ3RUxrM3Zxa01xcnoza3FnbnpoTVQtMnBVSlBTa3AzeEYtaGxteVc2Vk9keUFTeUXSAbABQVVfeXFMT2RTWEFNMFFBZGtYd2JVVDUwdVpndWxrLVJzcFJhR1g4UzZxS1V4N0hOUVBHeEt6c3FfS2hjNjU0dDF5ZURSR2ZYQ29yQW85YVFSMUhhSnlfS2hWVmNySllqLUVxOWVCbnlGd3JSWkkyM3hKeFI5Rm9VZGZZTHgtakhwM3g0dmZqZVhHOERDVGI4T2pVSllTU2U2bGtDMU03WDg0ZzhpUmw3YUVyODA5TWw?oc=5"
       ],
-      "level": 4
+      "level": 3
     },
     {
-      "title": "Энергосистема как часть AI-стека",
-      "description": "Энергосистема как часть AI-стека: HD Hyundai Electric ускоряет экспансию в США, ожидая спрос на трансформаторы и switchgear из-за AI «supercycle» - электросетевое оборудование становится бутылочным горлышком AI-инфраструктуры.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-06/top-korea-power-firm-revs-up-us-growth-betting-on-ai-supercycle"
-      ],
-      "level": 4
-    },
-    {
-      "title": "Государство пытается «поглотить» избыток выпускников через AI-повестку",
-      "description": "Государство пытается «поглотить» избыток выпускников через AI-повестку: Китай заявляет о намерении использовать AI для создания рабочих мест на фоне 12.7 млн выпускников-соискателей. Это не про «технологию», а про управление социальной структурой и занятостью через новую индустриальную политику.",
+      "title": "Макро-переопределение занятости",
+      "description": "Макро-переопределение занятости: Китай, столкнувшись с огромной волной выпускников, институционально “прикрепляет” AI к политике занятости. Это меняет роль AI: из “инструмента повышения эффективности” в “инструмент социальной стабильности”.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-07/china-turns-to-ai-as-jobseeker-numbers-top-belgium-s-population"
       ],
       "level": 3
     },
     {
-      "title": "Разрыв между «страхом замещения» и статистикой",
-      "description": "Разрыв между «страхом замещения» и статистикой: обсуждается, что данные пока не показывают массового вытеснения рабочих мест AI, несмотря на волны сокращений, связываемых с AI-перераспределением затрат.",
-      "sources": [
-        "https://www.bloomberg.com/news/videos/2026-03-06/data-doesn-t-show-ai-taking-jobs-just-yet-video"
-      ],
-      "level": 3
-    },
-    {
-      "title": "Военный риск как фактор размещения дата-центров",
-      "description": "Военный риск как фактор размещения дата-центров: конфликт вокруг Ирана подсвечивает, что DC в регионе Персидского залива становятся «неизбежной целью» - география compute начинает определяться не только ценой энергии, но и военной уязвимостью.",
+      "title": "Дата-центры как военная/геополитическая инфраструктура",
+      "description": "Дата-центры как военная/геополитическая инфраструктура: тезис о неизбежности атак на DC в конфликтах меняет критерии выбора географии: безопасность, удаленность от театров военных действий, доступ к защищенным сетям, союзнические юрисдикции.",
       "sources": [
         "https://www.bloomberg.com/news/videos/2026-03-06/data-centers-are-inevitable-target-in-conflict-video"
       ],
       "level": 2
     },
     {
-      "title": "Переезд/перенацеливание площадок и арендаторов",
-      "description": "Переезд/перенацеливание площадок и арендаторов (Texas): отмена расширения OpenAI/Oracle и потенциальный приход Meta - пример того, как одна площадка может сменить «якорного» потребителя, если финансовая конструкция не сходится.",
+      "title": "Европейская “суверенная орбита”",
+      "description": "Европейская “суверенная орбита”: проект Bundeswehr-интернета формирует размещение спутниковых/наземных сегментов в ЕС и завязку на местных подрядчиков.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-06/oracle-and-openai-end-plans-to-expand-flagship-data-center"
+        "https://www.bloomberg.com/news/articles/2026-03-07/airbus-teams-up-with-rheinmetall-ohb-for-military-satellites"
       ],
       "level": 2
     },
     {
-      "title": "Гонка за критическими минералами как фундамент AI+электрификации",
-      "description": "Гонка за критическими минералами как фундамент AI+электрификации: акцент на роли Африки в «новой экономике» критических минералов - это базисная перестройка сырьевой зависимости для энергетики, электроники и оборонки.",
+      "title": "Энергетика и минералы как фундамент AI",
+      "description": "Энергетика и минералы как фундамент AI: гонка за критическими минералами (в т.ч. в Африке) - это не фон, а базис чипов/энергосетей/электрификации, без которого AI-инфраструктура не масштабируется.",
       "sources": [
         "https://www.bloomberg.com/news/videos/2026-03-07/critical-minerals-africa-s-role-in-new-global-economy-video"
       ],
       "level": 1
     },
     {
-      "title": "Энергорынки под давлением войны",
-      "description": "Энергорынки под давлением войны: США пытаются «успокоить» энергетические рынки на фоне конфликта с Ираном - косвенно это влияет на стоимость эксплуатации compute.",
+      "title": "Энергориски войны",
+      "description": "Энергориски войны: конфликт на Ближнем Востоке повышает стоимость и неопределенность энергии, что напрямую бьет по экономике DC (PPA, стоимость охлаждения, надежность).",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-06/trump-demands-iran-relent-while-us-aims-to-calm-energy-markets"
       ],
@@ -431,148 +413,142 @@
   ],
   "trends": [
     {
-      "name": "AI-CapEx / дата-центры “гипермасштаба”",
-      "momentum": 35,
-      "rationale": "спрос огромный, но сделки становятся финансово хрупкими - пример срыв расширения OpenAI/Oracle.",
+      "name": "Агентные AI-платформы (enterprise agentic AI)",
+      "momentum": 65,
+      "rationale": "платежные и security-игроки уже строят продукты “под агентов”, пусть массовый рынок еще не сложился. /",
+      "levels": [
+        6,
+        5,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Платежи для AI-агентов (stablecoin rails / machine-to-machine payments)",
+      "momentum": 55,
+      "rationale": "Circle/Stripe инвестируют опережающе, формируя денежную инфраструктуру под будущие машинные рынки.",
       "levels": [
         9,
         5,
+        6
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "AI-CapEx / дата-центры как мегапроекты",
+      "momentum": 35,
+      "rationale": "потребность растет, но появляется “фрикция сделки” (финансирование/партнерства/изменение требований), что замедляет линейное расширение.",
+      "levels": [
+        9,
         2,
         1
       ],
       "category": "stable"
     },
     {
-      "name": "Агентные AI-платформы (agentic enterprise)",
-      "momentum": 70,
-      "rationale": "рост внедрения и переход “в прод”, плюс появление прикладных агентов (security).",
+      "name": "Милитаризация AI и режимы допуска (classified AI, supply-chain trust)",
+      "momentum": 75,
+      "rationale": "DoD маркирует Anthropic как риск, OpenAI ускоренно заключает сделку по классифицированному использованию - формируется новый контур рынка. /",
       "levels": [
-        6,
+        7,
+        8,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Экспортный контроль AI-чипов как глобальный разрешительный режим",
+      "momentum": 60,
+      "rationale": "обсуждение правил, ограничивающих поставки “по всему миру без одобрения США”, усиливает тренд к чипам как объекту геостратегического управления.",
+      "levels": [
+        9,
         5,
         4
       ],
       "category": "accelerating"
     },
     {
-      "name": "Безопасность AI-агентов / agent security",
-      "momentum": 65,
-      "rationale": "безопасность становится продуктом «агентом против уязвимостей», а не только процессом/консалтингом.",
+      "name": "Альтернативные AI-чипы и IPO-окно для специализированных ускорителей",
+      "momentum": 30,
+      "rationale": "Cerebras снова идет к IPO, стартапы (Rebellions) заявляют о конкуренции с Nvidia/AMD, но доминирование лидеров сохраняет высокие барьеры. /",
       "levels": [
-        6,
-        5,
-        8
+        4,
+        9,
+        5
       ],
       "category": "emerging"
     },
     {
-      "name": "Закрытые API-модели как “центр ренты”",
-      "momentum": 20,
-      "rationale": "остаются мощными, но давление идет со стороны стоимости инфраструктуры и попыток сместить ренту на marketplace/дистрибуцию и вертикальные решения.",
+      "name": "Legacy cybersecurity (не-AI) под давлением agentic security",
+      "momentum": -25,
+      "rationale": "OpenAI прямо позиционирует агента как инструмент, который может снизить спрос на “старые” киберфирмы; параллельно злоумышленники тоже усиливаются AI.",
       "levels": [
-        5,
-        9,
-        8
-      ],
-      "category": "stable"
-    },
-    {
-      "name": "Классический SaaS (без глубокой AI-пересборки)",
-      "momentum": -45,
-      "rationale": "рыночный нарратив о потенциальном обнулении legacy-софта усиливается; финансирование сделок возможно, но под сомнение поставлена долгосрочная маржа.",
-      "levels": [
-        9,
-        5
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "Экспортный контроль AI-чипов (расширение на “весь мир”)",
-      "momentum": 60,
-      "rationale": "обсуждаются правила, требующие американского разрешения на поставки «куда угодно» - сильный сдвиг в сторону глобального лицензирования.",
-      "levels": [
-        9,
-        8,
-        4,
-        2
-      ],
-      "category": "accelerating"
-    },
-    {
-      "name": "“Supply-chain trust” как политический инструмент против AI-вендоров",
-      "momentum": 75,
-      "rationale": "designation Anthropic как supply-chain risk - прецедент, который может масштабироваться на других поставщиков.",
-      "levels": [
-        7,
-        8,
-        9,
-        5
-      ],
-      "category": "accelerating"
-    },
-    {
-      "name": "Open-source как “самоорганизующийся R&D контур”",
-      "momentum": -20,
-      "rationale": "OSS не исчезает, но растут транзакционные издержки (модерация, спам, harassment), что снижает скорость добровольной кооперации.",
-      "levels": [
-        8,
         6,
-        3
+        5
       ],
       "category": "decelerating"
     },
     {
-      "name": "Электросетевая инфраструктура под AI-рост (трансформаторы/switchgear)",
-      "momentum": 55,
-      "rationale": "производители power equipment наращивают присутствие в США, ожидая AI-суперцикл потребления.",
+      "name": "Open-source как бесконфликтный механизм координации",
+      "momentum": -35,
+      "rationale": "лавина AI-контента ломает прежние репутационные и проверочные механизмы; появляются запреты/маркировка/усиление модерации.",
       "levels": [
-        1,
+        8,
+        7
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "“AI-дата-центры в геополитически рискованных регионах”",
+      "momentum": -45,
+      "rationale": "тезис о DC как “неизбежной цели” в конфликте повышает риск-премию для Персидского залива/смежных зон и будет выталкивать размещение в более защищенные юрисдикции.",
+      "levels": [
         2,
-        5,
+        1,
         9
       ],
-      "category": "emerging"
-    },
-    {
-      "name": "DC-проекты как долгие двусторонние конструкции (арендатор-якорь + оператор/девелопер + финансирование под фиксированный план).",
-      "momentum": -10,
-      "rationale": "Угасает: переход от «DC-проекты как долгие двусторонние конструкции (арендатор-якорь + оператор/девелопер + финансирование под фиксированный план).» к «DC как “переливаемый актив”: один крупный арендатор не сошелся по условиям - приходит другой (Meta вместо OpenAI), при участии «инфраструктурных брокеров» (вплоть до Nvidia).». Упоминаний в контексте перехода: 0",
-      "levels": [
-        9,
-        5,
-        4,
-        2
-      ],
       "category": "decelerating"
     },
     {
-      "name": "AI-лабы как коммерческие поставщики (регулирование - в основном гражданское/рынок).",
-      "momentum": -10,
-      "rationale": "Угасает: переход от «AI-лабы как коммерческие поставщики (регулирование - в основном гражданское/рынок).» к «AI-лабы как элементы критической инфраструктуры, где государство может навесить ярлык риска, влияющий на доступ к рынкам и контрактам.». Упоминаний в контексте перехода: 0",
+      "name": "коммерческие лаборатории продают API/решения, а госзаказ - один из клиентов.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «коммерческие лаборатории продают API/решения, а госзаказ - один из клиентов.» к «DoD формирует “режим допуска” (supply-chain trust, classified deployment), который разделяет игроков на допущенных/ограниченных.». Упоминаний в контексте перехода: 1",
       "levels": [
-        9,
         8,
         7,
+        6,
         5
       ],
       "category": "decelerating"
     },
     {
-      "name": "“open contribution” с человеческой модерацией как нормой.",
-      "momentum": -10,
-      "rationale": "Угасает: переход от «“open contribution” с человеческой модерацией как нормой.» к «“gated OSS”: новые правила, запреты/ограничения для AI-кода, рост нагрузки на maintainers и репутационные механизмы.». Упоминаний в контексте перехода: 0",
+      "name": "рост облаков по относительно стандартным шаблонам расширения мощностей.",
+      "momentum": -55,
+      "rationale": "Угасает: переход от «рост облаков по относительно стандартным шаблонам расширения мощностей.» к «дата-центры как мегапроекты с проектным финансированием, георисками, энергетическими ограничениями и возможностью “перепродажи/перехвата” площадок конкурентами.». Упоминаний в контексте перехода: 3",
       "levels": [
-        8,
-        7,
+        9,
+        5,
+        2,
+        1
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "платежи обслуживают людей и корпоративные биллинги (карты/ACH/Swift).",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «платежи обслуживают людей и корпоративные биллинги (карты/ACH/Swift).» к «платежи проектируются под автономных агентов и микротранзакции, где stablecoins - кандидат в расчетный актив.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        9,
         6,
-        3
+        5
       ],
       "category": "decelerating"
     }
   ],
   "cross_level_links": [
     {
-      "title": "Война/энергориски (Ур.1-2) → пересборка инфраструктурных инвестиций (Ур.9)",
-      "description": "Война/энергориски (Ур.1-2) → пересборка инфраструктурных инвестиций (Ур.9) - Геополитическая турбулентность и цена энергии поднимают стоимость владения DC и риск страхуемости объектов (Ур.1-2), что делает сделки типа «расширение DC на десятки млрд» более хрупкими по финансированию (Ур.9). Пример - срыв расширения OpenAI/Oracle. +",
+      "title": "Война/энергия (Ур.1) → риски размещения DC (Ур.2) → пересборка сделок/финансирования AI-инфры (Ур.9)",
+      "description": "Война/энергия (Ур.1) → риски размещения DC (Ур.2) → пересборка сделок/финансирования AI-инфры (Ур.9) - Энерготурбулентность и военные риски поднимают требования к надежности и страхуемости DC, что приводит к срыву/переформатированию крупных проектов (пример: отмена расширения Oracle/OpenAI). /",
       "levels": [
         9,
         2,
@@ -580,111 +556,131 @@
       ],
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-06/oracle-and-openai-end-plans-to-expand-flagship-data-center",
-        "https://www.bloomberg.com/news/articles/2026-03-06/trump-demands-iran-relent-while-us-aims-to-calm-energy-markets"
+        "https://www.bloomberg.com/news/videos/2026-03-06/data-centers-are-inevitable-target-in-conflict-video"
       ]
     },
     {
-      "title": "Экспортный контроль чипов (Ур.4) → география compute и альянсы (Ур.2-5) → институты доверия (Ур.8-7)",
-      "description": "Экспортный контроль чипов (Ур.4) → география compute и альянсы (Ур.2-5) → институты доверия (Ур.8-7) - Если поставки AI-чипов требуют «американского разрешения куда угодно» (Ур.4), компании начнут строить цепочки поставок и размещение мощностей так, чтобы оставаться в «допущенной зоне» (Ур.2-5), что усилит «политизацию» статуса поставщиков (Ур.7) - как видно в кейсе Anthropic/DoD. +",
+      "title": "Госинституты/безопасность (Ур.7-8) → рынок поставщиков (Ур.5) → продуктовая стратегия моделей и агентности (Ур.6-4)",
+      "description": "Госинституты/безопасность (Ур.7-8) → рынок поставщиков (Ур.5) → продуктовая стратегия моделей и агентности (Ур.6-4) - Обозначение Anthropic как supply-chain risk и параллельный “ускоренный” допуск OpenAI в классифицированные среды стимулируют компании проектировать модели/инфраструктуру под требования DoD (изоляция, контроль цепочки поставок, аудит). /",
       "levels": [
         8,
         7,
-        5,
-        4,
-        2
-      ],
-      "sources": [
-        "https://www.bloomberg.com/news/videos/2026-03-06/bloomberg-tech-3-6-2026-video",
-        "https://www.bloomberg.com/news/articles/2026-03-06/anthropic-risks-pariah-status-after-pentagon-calls-it-a-supply-chain-risk"
-      ]
-    },
-    {
-      "title": "Агентные инструменты (Ур.6) → угрозы legacy-софту (Ур.5) → переоценка рынком (Ур.9)",
-      "description": "Агентные инструменты (Ур.6) → угрозы legacy-софту (Ур.5) → переоценка рынком (Ур.9) - Когда security-работы автоматизируются агентами (Ур.6), часть функционала «старых» кибервендоров и enterprise-софта становится заменяемой (Ур.5), что немедленно транслируется в рыночные нарративы «software to zero» (Ур.9). +",
-      "levels": [
-        9,
         6,
-        5
-      ],
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-06/openai-releases-ai-agent-security-tool-for-research-preview",
-        "https://www.bloomberg.com/news/articles/2026-03-07/henry-blodget-on-ai-hysteria-software-and-bubbles"
-      ]
-    }
-  ],
-  "structural_shifts": [
-    {
-      "title": "AI-инфраструктура переходит от “стройки под якоря” к “портируемому спросу на мощность",
-      "from": "DC-проекты как долгие двусторонние конструкции (арендатор-якорь + оператор/девелопер + финансирование под фиксированный план).",
-      "to": "DC как “переливаемый актив”: один крупный арендатор не сошелся по условиям - приходит другой (Meta вместо OpenAI), при участии «инфраструктурных брокеров» (вплоть до Nvidia).",
-      "through": "усложнение финансирования и неопределенность потребностей моделей → нужна гибкость контрактов, мощности и технологического стека.",
-      "levels": [
-        9,
         5,
-        4,
-        2
+        4
       ],
-      "trend": "emerging",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-06/oracle-and-openai-end-plans-to-expand-flagship-data-center"
-      ]
-    },
-    {
-      "title": "Доверие к AI-компаниям становится элементом оборонного режима поставок (supply-chain security)",
-      "from": "AI-лабы как коммерческие поставщики (регулирование - в основном гражданское/рынок).",
-      "to": "AI-лабы как элементы критической инфраструктуры, где государство может навесить ярлык риска, влияющий на доступ к рынкам и контрактам.",
-      "through": "использование AI в наблюдении/разведке/оборонке → требования к происхождению, контролю, цепочке поставок и compliance.",
-      "levels": [
-        9,
-        8,
-        7,
-        5
-      ],
-      "trend": "emerging",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-06/anthropic-risks-pariah-status-after-pentagon-calls-it-a-supply-chain-risk",
-        "https://www.technologyreview.com/2026/03/06/1134012/is-the-pentagon-allowed-to-surveil-americans-with-ai/"
+        "https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/"
       ]
     },
     {
-      "title": "Спонтанный порядок open-source ломается об масштаб AI-генерации и переходит к режиму “контроль входа",
-      "from": "“open contribution” с человеческой модерацией как нормой.",
-      "to": "“gated OSS”: новые правила, запреты/ограничения для AI-кода, рост нагрузки на maintainers и репутационные механизмы.",
-      "through": "снижение стоимости производства кода → рост спама/harassment → дефицит внимания ревьюеров → институционализация фильтров.",
+      "title": "Агентные транзакции (Ур.6) → запрос на новый денежный слой (Ур.9)",
+      "description": "Агентные транзакции (Ур.6) → запрос на новый денежный слой (Ур.9) - Идея “миллионы платежей в день между агентами” толкает платежные компании к stablecoin-rail’ам; это может изменить комиссионную экономику и роль банков/эквайринга в AI-рынках.",
+      "levels": [
+        9,
+        6
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-07/stablecoin-firms-bet-big-on-ai-agent-payments-that-barely-exist"
+      ]
+    },
+    {
+      "title": "AI-спам в open source (Ур.8) → изменение правил производства знаний (Ур.7)",
+      "description": "AI-спам в open source (Ур.8) → изменение правил производства знаний (Ур.7) - Нормы участия и проверки кода меняются: больше формализации, маркировки, “происхождения” артефактов. Это приближает open source к регуляторным режимам (аудит/traceability).",
       "levels": [
         8,
-        7,
-        6,
-        3
+        7
       ],
-      "trend": "accelerating",
       "sources": [
         "https://www.technologyreview.com/2026/03/05/1133962/online-harassment-is-entering-its-ai-era/"
       ]
     }
   ],
+  "structural_shifts": [
+    {
+      "title": "**“Оборонный комплаенс” как новый рынок-разделитель для frontier AI",
+      "from": "коммерческие лаборатории продают API/решения, а госзаказ - один из клиентов.",
+      "to": "DoD формирует “режим допуска” (supply-chain trust, classified deployment), который разделяет игроков на допущенных/ограниченных.",
+      "through": "ярлыки supply-chain risk + сделки по доступу в классифицированные среды + правовая неопределенность массового AI-наблюдения.",
+      "levels": [
+        8,
+        7,
+        6,
+        5
+      ],
+      "trend": "emerging",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-06/anthropic-risks-pariah-status-after-pentagon-calls-it-a-supply-chain-risk",
+        "https://www.technologyreview.com/2026/03/02/1133850/openais-compromise-with-the-pentagon-is-what-anthropic-feared/",
+        "https://www.technologyreview.com/2026/03/06/1134012/is-the-pentagon-allowed-to-surveil-americans-with-ai/"
+      ]
+    },
+    {
+      "title": "**AI-инфраструктура становится “квазигосэнергетикой”: капиталоёмкость, сделки, энерго- и военные риски",
+      "from": "рост облаков по относительно стандартным шаблонам расширения мощностей.",
+      "to": "дата-центры как мегапроекты с проектным финансированием, георисками, энергетическими ограничениями и возможностью “перепродажи/перехвата” площадок конкурентами.",
+      "through": "срыв расширения Oracle/OpenAI + потенциальный заход Meta + посредничество Nvidia + рост восприятия DC как военной цели.",
+      "levels": [
+        9,
+        5,
+        2,
+        1
+      ],
+      "trend": "accelerating",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-06/oracle-and-openai-end-plans-to-expand-flagship-data-center",
+        "https://www.bloomberg.com/news/videos/2026-03-06/oracle-openai-end-plans-to-expand-flagship-data-center-video",
+        "https://www.bloomberg.com/news/videos/2026-03-06/data-centers-are-inevitable-target-in-conflict-video"
+      ]
+    },
+    {
+      "title": "**Заранее строится “денежный слой” для машинных рынков (agent-to-agent payments)",
+      "from": "платежи обслуживают людей и корпоративные биллинги (карты/ACH/Swift).",
+      "to": "платежи проектируются под автономных агентов и микротранзакции, где stablecoins - кандидат в расчетный актив.",
+      "through": "стратегические инвестиции Circle/Stripe в инфраструктуру под еще не существующий массовый спрос (“опережающее занятие позиции”).",
+      "levels": [
+        9,
+        6,
+        5
+      ],
+      "trend": "emerging",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-07/stablecoin-firms-bet-big-on-ai-agent-payments-that-barely-exist"
+      ]
+    }
+  ],
   "radar_signals": [
     {
-      "title": "Универсализация экспортного контроля чипов",
-      "description": "(разрешительный режим «куда угодно») - потенциально меняет архитектуру глобальных цепочек поставок AI.",
+      "title": "Stablecoin-регуляторика на подходе",
+      "description": "“новая SEC crypto measure” на рассмотрении Белого дома может перекроить классификацию токенов - это способ либо ускорить, либо “задушить” платежные рельсы для агентных транзакций.",
       "level_group": "upper",
       "level_range": "7-9",
       "sources": [
-        "https://www.bloomberg.com/news/videos/2026-03-06/bloomberg-tech-3-6-2026-video"
+        "https://www.bloomberg.com/news/videos/2026-03-06/sec-crypto-measure-under-review-video"
       ]
     },
     {
-      "title": "Marketplace-модель у AI-лабораторий",
-      "description": "как замена классическим «партнерским каталогам» SaaS - если взлетит, поменяет каналы дистрибуции enterprise-софта.",
+      "title": "Правовой фронт по AI-наблюдению",
+      "description": "отсутствие ясности в праве по массовой слежке с AI - потенциальный триггер для крупных расследований/ограничений, влияющих на весь GovTech/Defense AI.",
       "level_group": "upper",
       "level_range": "7-9",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-06/anthropic-unveils-amazon-inspired-marketplace-for-ai-software"
+        "https://www.technologyreview.com/2026/03/06/1134012/is-the-pentagon-allowed-to-surveil-americans-with-ai/"
       ]
     },
     {
-      "title": "Security-агенты как “новая база” ИБ",
-      "description": "если agent-first security даст измеримый эффект, начнется переток бюджетов от услуг/инструментов к платформам агентов.",
+      "title": "Nvidia как “системный интегратор экосистемы”, а не только поставщик GPU",
+      "description": "(посредничество в DC-сделках) - зарождается роль “координатора” цепочек поставок AI.",
+      "level_group": "middle",
+      "level_range": "4-6",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-03-06/oracle-openai-end-plans-to-expand-flagship-data-center-video"
+      ]
+    },
+    {
+      "title": "Agentic security",
+      "description": "как новый стандартный продуктовый класс (OpenAI выпускает агента под уязвимости) - это может быстро обрушить часть традиционного рынка сканеров/VA, если появится доверие к авто-ремедиации.",
       "level_group": "middle",
       "level_range": "4-6",
       "sources": [
@@ -692,17 +688,8 @@
       ]
     },
     {
-      "title": "IPO-окно для «AI-железа»",
-      "description": "Cerebras - индикатор, что рынок готов платить за дифференцированный compute, даже если application-слой дешевеет.",
-      "level_group": "middle",
-      "level_range": "4-6",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-06/ai-chipmaker-cerebras-said-to-tap-morgan-stanley-for-ipo-return"
-      ]
-    },
-    {
-      "title": "Электросетевое оборудование как узкое место",
-      "description": "(трансформаторы/switchgear) - может стать тем же bottleneck, что и GPU в 2023-2024.",
+      "title": "Энергетическое “бутылочное горлышко”",
+      "description": "корейский производитель энергетического оборудования наращивает присутствие в США на ставке “AI supercycle” (трансформаторы/распределение). Это ранний индикатор дефицита сетевой инфраструктуры как главного ограничителя AI.",
       "level_group": "lower",
       "level_range": "1-3",
       "sources": [
@@ -710,171 +697,165 @@
       ]
     },
     {
-      "title": "Военная уязвимость DC-кластеров",
-      "description": "(особенно в «энергетически выгодных» регионах) - начинает входить в инвестиционные модели и страхование.",
+      "title": "Критические минералы и Африка",
+      "description": "как поле перераздела влияния (связь с чипами/энергопереходом/обороной).",
       "level_group": "lower",
       "level_range": "1-3",
       "sources": [
-        "https://www.bloomberg.com/news/videos/2026-03-06/data-centers-are-inevitable-target-in-conflict-video"
+        "https://www.bloomberg.com/news/videos/2026-03-07/critical-minerals-africa-s-role-in-new-global-economy-video"
       ]
     }
   ],
   "metrics": {
-    "total_events": 24,
+    "total_events": 22,
     "events_by_level": {
       "1": 2,
       "2": 2,
       "3": 2,
-      "4": 3,
+      "4": 2,
       "5": 3,
       "6": 2,
       "7": 3,
       "8": 3,
-      "9": 4
+      "9": 3
     },
-    "total_sources": 21,
+    "total_sources": 19,
     "structural_shifts_count": 3,
     "radar_signals_count": 6,
-    "cross_level_links_count": 3,
+    "cross_level_links_count": 4,
     "momentum_trends_count": 12
   },
   "categories": [],
   "momentum_trends": [
     {
-      "name": "AI-CapEx / дата-центры “гипермасштаба”",
-      "momentum": 35,
-      "rationale": "спрос огромный, но сделки становятся финансово хрупкими - пример срыв расширения OpenAI/Oracle.",
+      "name": "Агентные AI-платформы (enterprise agentic AI)",
+      "momentum": 65,
+      "rationale": "платежные и security-игроки уже строят продукты “под агентов”, пусть массовый рынок еще не сложился. /",
+      "levels": [
+        6,
+        5,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Платежи для AI-агентов (stablecoin rails / machine-to-machine payments)",
+      "momentum": 55,
+      "rationale": "Circle/Stripe инвестируют опережающе, формируя денежную инфраструктуру под будущие машинные рынки.",
       "levels": [
         9,
         5,
+        6
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "AI-CapEx / дата-центры как мегапроекты",
+      "momentum": 35,
+      "rationale": "потребность растет, но появляется “фрикция сделки” (финансирование/партнерства/изменение требований), что замедляет линейное расширение.",
+      "levels": [
+        9,
         2,
         1
       ],
       "category": "stable"
     },
     {
-      "name": "Агентные AI-платформы (agentic enterprise)",
-      "momentum": 70,
-      "rationale": "рост внедрения и переход “в прод”, плюс появление прикладных агентов (security).",
+      "name": "Милитаризация AI и режимы допуска (classified AI, supply-chain trust)",
+      "momentum": 75,
+      "rationale": "DoD маркирует Anthropic как риск, OpenAI ускоренно заключает сделку по классифицированному использованию - формируется новый контур рынка. /",
       "levels": [
-        6,
+        7,
+        8,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Экспортный контроль AI-чипов как глобальный разрешительный режим",
+      "momentum": 60,
+      "rationale": "обсуждение правил, ограничивающих поставки “по всему миру без одобрения США”, усиливает тренд к чипам как объекту геостратегического управления.",
+      "levels": [
+        9,
         5,
         4
       ],
       "category": "accelerating"
     },
     {
-      "name": "Безопасность AI-агентов / agent security",
-      "momentum": 65,
-      "rationale": "безопасность становится продуктом «агентом против уязвимостей», а не только процессом/консалтингом.",
+      "name": "Альтернативные AI-чипы и IPO-окно для специализированных ускорителей",
+      "momentum": 30,
+      "rationale": "Cerebras снова идет к IPO, стартапы (Rebellions) заявляют о конкуренции с Nvidia/AMD, но доминирование лидеров сохраняет высокие барьеры. /",
       "levels": [
-        6,
-        5,
-        8
+        4,
+        9,
+        5
       ],
       "category": "emerging"
     },
     {
-      "name": "Закрытые API-модели как “центр ренты”",
-      "momentum": 20,
-      "rationale": "остаются мощными, но давление идет со стороны стоимости инфраструктуры и попыток сместить ренту на marketplace/дистрибуцию и вертикальные решения.",
+      "name": "Legacy cybersecurity (не-AI) под давлением agentic security",
+      "momentum": -25,
+      "rationale": "OpenAI прямо позиционирует агента как инструмент, который может снизить спрос на “старые” киберфирмы; параллельно злоумышленники тоже усиливаются AI.",
       "levels": [
-        5,
-        9,
-        8
-      ],
-      "category": "stable"
-    },
-    {
-      "name": "Классический SaaS (без глубокой AI-пересборки)",
-      "momentum": -45,
-      "rationale": "рыночный нарратив о потенциальном обнулении legacy-софта усиливается; финансирование сделок возможно, но под сомнение поставлена долгосрочная маржа.",
-      "levels": [
-        9,
-        5
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "Экспортный контроль AI-чипов (расширение на “весь мир”)",
-      "momentum": 60,
-      "rationale": "обсуждаются правила, требующие американского разрешения на поставки «куда угодно» - сильный сдвиг в сторону глобального лицензирования.",
-      "levels": [
-        9,
-        8,
-        4,
-        2
-      ],
-      "category": "accelerating"
-    },
-    {
-      "name": "“Supply-chain trust” как политический инструмент против AI-вендоров",
-      "momentum": 75,
-      "rationale": "designation Anthropic как supply-chain risk - прецедент, который может масштабироваться на других поставщиков.",
-      "levels": [
-        7,
-        8,
-        9,
-        5
-      ],
-      "category": "accelerating"
-    },
-    {
-      "name": "Open-source как “самоорганизующийся R&D контур”",
-      "momentum": -20,
-      "rationale": "OSS не исчезает, но растут транзакционные издержки (модерация, спам, harassment), что снижает скорость добровольной кооперации.",
-      "levels": [
-        8,
         6,
-        3
+        5
       ],
       "category": "decelerating"
     },
     {
-      "name": "Электросетевая инфраструктура под AI-рост (трансформаторы/switchgear)",
-      "momentum": 55,
-      "rationale": "производители power equipment наращивают присутствие в США, ожидая AI-суперцикл потребления.",
+      "name": "Open-source как бесконфликтный механизм координации",
+      "momentum": -35,
+      "rationale": "лавина AI-контента ломает прежние репутационные и проверочные механизмы; появляются запреты/маркировка/усиление модерации.",
       "levels": [
-        1,
+        8,
+        7
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "“AI-дата-центры в геополитически рискованных регионах”",
+      "momentum": -45,
+      "rationale": "тезис о DC как “неизбежной цели” в конфликте повышает риск-премию для Персидского залива/смежных зон и будет выталкивать размещение в более защищенные юрисдикции.",
+      "levels": [
         2,
-        5,
+        1,
         9
       ],
-      "category": "emerging"
-    },
-    {
-      "name": "DC-проекты как долгие двусторонние конструкции (арендатор-якорь + оператор/девелопер + финансирование под фиксированный план).",
-      "momentum": -10,
-      "rationale": "Угасает: переход от «DC-проекты как долгие двусторонние конструкции (арендатор-якорь + оператор/девелопер + финансирование под фиксированный план).» к «DC как “переливаемый актив”: один крупный арендатор не сошелся по условиям - приходит другой (Meta вместо OpenAI), при участии «инфраструктурных брокеров» (вплоть до Nvidia).». Упоминаний в контексте перехода: 0",
-      "levels": [
-        9,
-        5,
-        4,
-        2
-      ],
       "category": "decelerating"
     },
     {
-      "name": "AI-лабы как коммерческие поставщики (регулирование - в основном гражданское/рынок).",
-      "momentum": -10,
-      "rationale": "Угасает: переход от «AI-лабы как коммерческие поставщики (регулирование - в основном гражданское/рынок).» к «AI-лабы как элементы критической инфраструктуры, где государство может навесить ярлык риска, влияющий на доступ к рынкам и контрактам.». Упоминаний в контексте перехода: 0",
+      "name": "коммерческие лаборатории продают API/решения, а госзаказ - один из клиентов.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «коммерческие лаборатории продают API/решения, а госзаказ - один из клиентов.» к «DoD формирует “режим допуска” (supply-chain trust, classified deployment), который разделяет игроков на допущенных/ограниченных.». Упоминаний в контексте перехода: 1",
       "levels": [
-        9,
         8,
         7,
+        6,
         5
       ],
       "category": "decelerating"
     },
     {
-      "name": "“open contribution” с человеческой модерацией как нормой.",
-      "momentum": -10,
-      "rationale": "Угасает: переход от «“open contribution” с человеческой модерацией как нормой.» к «“gated OSS”: новые правила, запреты/ограничения для AI-кода, рост нагрузки на maintainers и репутационные механизмы.». Упоминаний в контексте перехода: 0",
+      "name": "рост облаков по относительно стандартным шаблонам расширения мощностей.",
+      "momentum": -55,
+      "rationale": "Угасает: переход от «рост облаков по относительно стандартным шаблонам расширения мощностей.» к «дата-центры как мегапроекты с проектным финансированием, георисками, энергетическими ограничениями и возможностью “перепродажи/перехвата” площадок конкурентами.». Упоминаний в контексте перехода: 3",
       "levels": [
-        8,
-        7,
+        9,
+        5,
+        2,
+        1
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "платежи обслуживают людей и корпоративные биллинги (карты/ACH/Swift).",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «платежи обслуживают людей и корпоративные биллинги (карты/ACH/Swift).» к «платежи проектируются под автономных агентов и микротранзакции, где stablecoins - кандидат в расчетный актив.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        9,
         6,
-        3
+        5
       ],
       "category": "decelerating"
     }
