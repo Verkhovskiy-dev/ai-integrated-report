@@ -93,12 +93,12 @@ export default function LatestNews() {
     return items;
   }, [latestReport, selectedLevels, searchQuery, isEn]);
 
-  // Skip first 3 (shown in HeroSummary)
-  const remainingItems = newsItems.slice(3);
+  // Show ALL events (including first 3 also shown in HeroSummary)
+  const allItems = newsItems;
   const INITIAL_SHOW = 6;
-  const visibleItems = expanded ? remainingItems : remainingItems.slice(0, INITIAL_SHOW);
+  const visibleItems = expanded ? allItems : allItems.slice(0, INITIAL_SHOW);
 
-  if (!isLive || remainingItems.length === 0) return null;
+  if (!isLive || allItems.length === 0) return null;
 
   const toggleCard = (idx: number) => {
     setExpandedCard(expandedCard === idx ? null : idx);
@@ -118,7 +118,7 @@ export default function LatestNews() {
                 {isEn ? "All Events" : "Все события"}
               </h3>
               <p className="text-[9px] sm:text-[10px] font-mono text-muted-foreground">
-                {reportDate} · {isEn ? `${remainingItems.length} more events` : `ещё ${remainingItems.length} событий`}
+                {reportDate} · {isEn ? `${allItems.length} events` : `${allItems.length} событий`}
               </p>
             </div>
           </div>
@@ -230,7 +230,7 @@ export default function LatestNews() {
         </div>
 
         {/* Expand/Collapse toggle */}
-        {remainingItems.length > INITIAL_SHOW && (
+        {allItems.length > INITIAL_SHOW && (
           <button
             onClick={() => setExpanded(!expanded)}
             className="flex items-center justify-center gap-1.5 mx-auto mt-3 px-4 py-2 rounded-lg bg-card/50 border border-border/40 hover:border-primary/30 transition-colors"
@@ -246,7 +246,7 @@ export default function LatestNews() {
               <>
                 <ChevronDown className="w-3.5 h-3.5 text-primary/60" />
                 <span className="text-[10px] sm:text-xs font-mono text-muted-foreground">
-                  {isEn ? `Show ${remainingItems.length - INITIAL_SHOW} more` : `Показать ещё ${remainingItems.length - INITIAL_SHOW}`}
+                  {isEn ? `Show ${allItems.length - INITIAL_SHOW} more` : `Показать ещё ${allItems.length - INITIAL_SHOW}`}
                 </span>
               </>
             )}

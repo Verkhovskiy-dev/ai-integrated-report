@@ -7,10 +7,10 @@
  * 4. Key insight of the day — one highlighted card
  * i18n support
  */
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import {
   FileText, Zap, TrendingUp, Link, Lightbulb, ArrowRight,
-  Activity, ChevronDown,
+  Activity, ChevronDown, ChevronUp,
 } from "lucide-react";
 import {
   ScatterChart, Scatter, XAxis, YAxis, ZAxis, Tooltip, ResponsiveContainer,
@@ -19,6 +19,9 @@ import {
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
 import { useTranslation } from "@/contexts/I18nContext";
+import { useViewMode } from "@/contexts/ViewModeContext";
+import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
+import { ExecutiveEventCardLocalized } from "@/components/ExecutiveEventCard";
 
 // ─── Helpers ────────────────────────────────────────────────────
 const LEVEL_NAMES_RU: Record<number, string> = {
@@ -188,7 +191,10 @@ export default function HeroSummary() {
   } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
   const { t, locale } = useTranslation();
+  const { isExecutive } = useViewMode();
+  const { getEventExplanation } = useExecutiveData();
   const isEn = locale === "en";
+  const [expandedHeroEvent, setExpandedHeroEvent] = useState<number | null>(null);
 
   const LEVEL_NAMES = isEn ? LEVEL_NAMES_EN : LEVEL_NAMES_RU;
   const lvPrefix = isEn ? "Lv." : "Ур.";
@@ -379,35 +385,83 @@ export default function HeroSummary() {
             </div>
 
             <div className="space-y-2">
-              {topEvents.slice(0, 3).map((item, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-start gap-3 p-2.5 bg-background/40 border border-border/20 rounded-lg group hover:border-primary/20 transition-colors"
-                >
-                  {/* Rank */}
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 border border-primary/20 shrink-0 mt-0.5">
-                    <span className="text-[10px] font-mono font-bold text-primary">{idx + 1}</span>
+              {topEvents.slice(0, 3).map((item, idx) => {
+                const isItemExpanded = expandedHeroEvent === idx;
+                const explanation = isExecutive ? getEventExplanation(item.title) : undefined;
+                const hasDetails = item.description && item.description !== item.title;
+                const isExpandable = hasDetails || !!explanation;
+
+                return (
+                  <div
+                    key={idx}
+                    className={`bg-background/40 border rounded-lg overflow-hidden transition-all duration-200 ${
+                      isItemExpanded
+                        ? "border-primary/30 shadow-lg shadow-primary/5"
+                        : "border-border/20 hover:border-primary/20"
+                    }`}
+                  >
+                    {/* Clickable header */}
+                    <button
+                      onClick={() => isExpandable && setExpandedHeroEvent(isItemExpanded ? null : idx)}
+                      className={`w-full text-left flex items-start gap-3 p-2.5 group ${isExpandable ? "cursor-pointer" : "cursor-default"}`}
+                    >
+                      {/* Rank */}
+                      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 border border-primary/20 shrink-0 mt-0.5">
+                        <span className="text-[10px] font-mono font-bold text-primary">{idx + 1}</span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-1.5 mb-0.5">
+                          <span
+                            className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[8px] font-mono"
+                            style={{
+                              color: LEVEL_COLORS[item.level],
+                              backgroundColor: `${LEVEL_COLORS[item.level]}15`,
+                              borderColor: `${LEVEL_COLORS[item.level]}30`,
+                              borderWidth: 1,
+                            }}
+                          >
+                            {EVENT_ICONS[item.type] || "📌"} {lvPrefix}{item.level} {item.levelName}
+                          </span>
+                          {isExpandable && (
+                            <span className="ml-auto">
+                              {isItemExpanded
+                                ? <ChevronUp className="w-3.5 h-3.5 text-primary/60" />
+                                : <ChevronDown className="w-3.5 h-3.5 text-muted-foreground/40" />
+                              }
+                            </span>
+                          )}
+                        </div>
+                        <p className={`text-xs sm:text-sm text-foreground leading-snug ${
+                          isItemExpanded ? "" : "line-clamp-3"
+                        } ${isExpandable && !isItemExpanded ? "group-hover:text-primary" : ""} transition-colors`}>
+                          {item.title}
+                        </p>
+                      </div>
+                    </button>
+
+                    {/* Expanded content */}
+                    {isItemExpanded && (
+                      <div className="px-3 pb-3 border-t border-border/20 pt-2 ml-9">
+                        {/* Executive explanation */}
+                        {isExecutive && explanation && (
+                          <ExecutiveEventCardLocalized
+                            explanation={explanation}
+                            accentColor={LEVEL_COLORS[item.level]}
+                            isEn={isEn}
+                          />
+                        )}
+
+                        {/* Expert mode: show full description */}
+                        {(!isExecutive || !explanation) && hasDetails && (
+                          <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                            {item.description}
+                          </p>
+                        )}
+                      </div>
+                    )}
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-1.5 mb-0.5">
-                      <span
-                        className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[8px] font-mono"
-                        style={{
-                          color: LEVEL_COLORS[item.level],
-                          backgroundColor: `${LEVEL_COLORS[item.level]}15`,
-                          borderColor: `${LEVEL_COLORS[item.level]}30`,
-                          borderWidth: 1,
-                        }}
-                      >
-                        {EVENT_ICONS[item.type] || "📌"} {lvPrefix}{item.level} {item.levelName}
-                      </span>
-                    </div>
-                    <p className="text-xs sm:text-sm text-foreground leading-snug line-clamp-3">
-                      {item.title}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {totalEvents > 3 && (
