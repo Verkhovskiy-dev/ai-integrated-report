@@ -865,7 +865,60 @@
       ]
     }
   ],
-  "structural_shifts": [],
+  "structural_shifts": [
+    {
+      "title": "**AI-инфраструктура становится \"суверенным активом\", а не просто облаком",
+      "from": "доминирования гиперскейлеров и «абстрактного облака».",
+      "to": "региональных/национальных контуров compute (UK-датацентры; европейская военная связь), где важны юрисдикция, безопасность, энергетика, кадры, политическая легитимация.",
+      "through": "рост AI-CapEx + геополитические/оборонные требования + общественная легитимация через governance.",
+      "levels": [
+        9,
+        8,
+        5,
+        4,
+        2
+      ],
+      "trend": "accelerating",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-09/nscale-raises-2-billion-and-adds-sandberg-clegg-to-board",
+        "https://www.bloomberg.com/news/articles/2026-03-07/airbus-teams-up-with-rheinmetall-ohb-for-military-satellites"
+      ]
+    },
+    {
+      "title": "**\"Верифицируемая агентность\": отделение разговорного интеллекта от исполняемого контура",
+      "from": "агента как \"LLM + инструменты\", где доверие держится на бренде.",
+      "to": "агентам, где исполнение ограничено схемами, а безопасность/guardrails можно доказуемо засвидетельствовать (TEE-аттестации).",
+      "through": "рост ставок на автономные действия → необходимость детерминизма, воспроизводимости и проверяемости.",
+      "levels": [
+        9,
+        8,
+        7,
+        6
+      ],
+      "trend": "accelerating",
+      "sources": [
+        "https://arxiv.org/abs/2603.06394",
+        "https://arxiv.org/abs/2603.05786"
+      ]
+    },
+    {
+      "title": "**Финансовый слой под агентные транзакции и \"рынки всего\" входит в конфликт с политической легитимностью",
+      "from": "финтеха как интерфейса для людей.",
+      "to": "финтеху как расчетному слою для агентов и событийных рынков.",
+      "through": "ожидание массовых микроплатежей между агентами + расширение prediction markets → усиление регуляторного/политического риска (особенно на «войне»).",
+      "levels": [
+        9,
+        8,
+        5
+      ],
+      "trend": "accelerating",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-07/stablecoin-firms-bet-big-on-ai-agent-payments-that-barely-exist",
+        "https://www.bloomberg.com/news/articles/2026-03-07/polymarket-founder-says-war-bets-are-facing-growing-resistance",
+        "https://www.bloomberg.com/news/videos/2026-03-09/robinhood-ceo-on-tokenization-and-prediction-markets-video"
+      ]
+    }
+  ],
   "radar_signals": [
     {
       "title": "TEE/крипто-аттестации “proof-of-guardrail”",
