@@ -2034,136 +2034,106 @@
   },
   {
     "date": "2026-03-12",
-    "generated_at": "2026-03-12T05:01:34.111Z",
+    "generated_at": "2026-03-12T10:01:57.740Z",
     "trends": [
       {
-        "name": "AI-CapEx / Data Center бум в Азии",
-        "momentum": 75,
-        "rationale": "Bridge Data до S$5 млрд в Сингапуре - прямой сигнал ускорения инфраструктурной фазы.",
+        "name": "Суверенный AI / национализация compute и hardware",
+        "momentum": 72,
+        "rationale": "Индия одновременно двигает фонд на чипы и экспортно-локализационные стимулы по смартфонам - это комплексная политика входа в hardware-СРТ.",
         "levels": [
+          9,
+          5,
           2,
-          4,
-          9
+          4
         ],
         "category": "accelerating"
       },
       {
-        "name": "Долговое финансирование AI (Big Tech bonds for AI)",
-        "momentum": 70,
-        "rationale": "рекордный евробонд Amazon под AI - нормализация долга как топлива AI.",
+        "name": "Агентные AI-платформы (computer-use / GUI agents)",
+        "momentum": 85,
+        "rationale": "массовая популярность OpenClaw в Китае и коммерциализация поверх open-source показывают переход к агентам как массовому продукту.",
         "levels": [
-          9,
+          8,
+          6,
           5,
           4
         ],
         "category": "accelerating"
       },
       {
-        "name": "“AI ROI skepticism” в enterprise software",
-        "momentum": 35,
-        "rationale": "слабый спрос на долг Salesforce + публичный нарратив о неопределенности ROI.",
+        "name": "Безопасность AI-агентов (tool verification, provenance, execution security)",
+        "momentum": 78,
+        "rationale": "появляются практичные протоколы верификации действий (tool receipts) и стандартизация учета (AIBOM), а также исследования уязвимостей MCP.,",
         "levels": [
-          9,
-          5
-        ],
-        "category": "emerging"
-      },
-      {
-        "name": "Агентные “computer-use” стеки (OpenClaw-тип)",
-        "momentum": 80,
-        "rationale": "массовая популярность и коммерциализация/“gold rush” вокруг OpenClaw.",
-        "levels": [
-          8,
+          7,
           6,
-          4,
-          5
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "Security для агентных протоколов и toolchains (MCP, receipts, auditing)",
-        "momentum": 65,
-        "rationale": "рост исследований MCP-уязвимостей и практичных механизмов верификации исполнения.",
-        "levels": [
-          6,
-          8,
-          4
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "AI-driven layoffs / реструктуризация в SaaS",
-        "momentum": 55,
-        "rationale": "Atlassian -1600 как маркер “AI shift” в операционных моделях софта.",
-        "levels": [
-          3,
-          5
-        ],
-        "category": "accelerating"
-      },
-      {
-        "name": "“Закрытые IPO-иконы” и серые пред-IPO рынки (SPV)",
-        "momentum": 45,
-        "rationale": "рост спроса на доли OpenAI/SpaceX через SPV при непрозрачности владения.",
-        "levels": [
-          9,
           8
         ],
-        "category": "emerging"
+        "category": "accelerating"
       },
       {
-        "name": "Классический SaaS “как раньше” (без радикальной AI-пересборки ценности)",
-        "momentum": -25,
-        "rationale": "давление рынка капитала на софт-эмитентов из-за AI-неопределенности и пересмотра стоимости.",
+        "name": "AI-CapEx / дата-центры как самостоятельные “AI-игроки”",
+        "momentum": 60,
+        "rationale": "Bridge Data Centres планирует до $3.9 млрд AI-инвестиций в Сингапуре - DC-оператор расширяет роль от инфраструктуры к AI development.",
         "levels": [
           5,
+          2,
           9
         ],
-        "category": "decelerating"
+        "category": "stable"
       },
       {
-        "name": "“Нерегулируемая крипто-эпоха” (FTX-стиля)",
-        "momentum": -60,
-        "rationale": "продолжение юридического давления (SBF) закрепляет институциональный разворот к regulated rails.",
-        "levels": [
-          9
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "чат-модель + ручные проверки человеком; основной риск - галлюцинации текста.",
-        "momentum": -55,
-        "rationale": "Угасает: переход от «чат-модель + ручные проверки человеком; основной риск - галлюцинации текста.» к «agent-стек с tool calls, локальными исполнителями, памятью, протоколами (MCP) и цепочками делегирования; основной риск - неправильное/поддельное исполнение и supply-chain инструментов.». Упоминаний в контексте перехода: 3",
+        "name": "Open-weight / open-source модели и инструменты как драйвер инноваций",
+        "momentum": 55,
+        "rationale": "OpenClaw как открытый агентный стек запускает рынок надстроек/переупаковки; параллельно растет научная база по агентным компонентам памяти/аудита.",
         "levels": [
           8,
           6,
-          4,
+          7
+        ],
+        "category": "stable"
+      },
+      {
+        "name": "Закрытые API-модели как единственный канал “frontier value”",
+        "momentum": -10,
+        "rationale": "часть ценности смещается в open ecosystems (OpenClaw) и в “обвязки/аудит/исполнение”, где модель - лишь компонент; монополия API как “центра” размывается.",
+        "levels": [
+          5,
+          8,
+          6
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "Классический SaaS (без радикальной AI-пересборки)",
+        "momentum": -35,
+        "rationale": "слабый спрос на долг Salesforce на фоне AI-опасений и сокращения у Atlassian - рынок закладывает давление на маржу/рост и на структуру затрат.",
+        "levels": [
+          9,
+          5,
           3
         ],
         "category": "decelerating"
       },
       {
-        "name": "венчур/акции/нарратив роста.",
-        "momentum": -10,
-        "rationale": "Угасает: переход от «венчур/акции/нарратив роста.» к «евробонды/кредит как топливо AI CapEx + дисциплина долгового рынка → публичный фокус на окупаемости.». Упоминаний в контексте перехода: 0",
+        "name": "Инвестиционный “AI-контент” (video generation)",
+        "momentum": 67,
+        "rationale": "PixVerse поднимает $300 млн и становится unicorn, Netflix покупает AI-киностудию до $600 млн - идет закрепление AI-контента в крупных медиа-цепочках.",
         "levels": [
           9,
           5,
-          4,
-          3
+          4
         ],
-        "category": "decelerating"
+        "category": "accelerating"
       },
       {
-        "name": "IDE/assistants как feature крупных платформ.",
-        "momentum": -10,
-        "rationale": "Угасает: переход от «IDE/assistants как feature крупных платформ.» к «самостоятельные гиганты developer-агентности (оценки на десятки млрд), которые могут диктовать стандарты workflow и перетягивать value capture.». Упоминаний в контексте перехода: 0",
+        "name": "“AI ROI skepticism” на публичных рынках",
+        "momentum": 30,
+        "rationale": "обсуждение окупаемости AI-инвестиций у инвесторов (Goldman) и слабый спрос на долг software-гигантов - это еще не разворот, но явный рост скепсиса.",
         "levels": [
-          9,
-          5,
-          3
+          9
         ],
-        "category": "decelerating"
+        "category": "emerging"
       }
     ]
   }
