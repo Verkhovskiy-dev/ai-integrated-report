@@ -2552,5 +2552,97 @@
         "category": "decelerating"
       }
     ]
+  },
+  {
+    "date": "2026-03-16",
+    "generated_at": "2026-03-16T05:01:39.974Z",
+    "trends": [
+      {
+        "name": "Агентные AI-платформы (enterprise agentic services)",
+        "momentum": 75,
+        "rationale": "Alibaba выводит агентный сервис для компаний; вокруг агентности в Китае формируется массовый рынок.",
+        "levels": [
+          5,
+          8,
+          6
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Китайский AI-капитал и “суверенные чемпионы”",
+        "momentum": 70,
+        "rationale": "Moonshot поднимает раунд на $18B оценке; HK-IPO контур для техно-AI/био-AI активов.",
+        "levels": [
+          9,
+          5,
+          7
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Eval-инфраструктура для агентов (траектории, доменные тесты, safety-метрики)",
+        "momentum": 65,
+        "rationale": "появление новых бенчмарков/метрик (CRYSTAL, AgentFuel) и доказательства “слепых зон” стандартных метрик (AgentDrift).,",
+        "levels": [
+          7,
+          6,
+          8
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Budget-aware / efficient inference (early-exit, balanced thinking, online speculative decoding)",
+        "momentum": 55,
+        "rationale": "сразу несколько независимых подходов к снижению “лишнего рассуждения” и ускорению инференса.,",
+        "levels": [
+          6,
+          4,
+          5
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Гетерогенные GPU-кластеры и phase/modality disaggregation для MLLM",
+        "momentum": 50,
+        "rationale": "HeteroServe показывает измеримую экономию и техническую состоятельность разреза по модальностям.",
+        "levels": [
+          4,
+          2,
+          9
+        ],
+        "category": "emerging"
+      },
+      {
+        "name": "Physical AI / роботизация следующего поколения (low-latency policies)",
+        "momentum": 45,
+        "rationale": "фокус на производстве и на радикальном ускорении политик (one-step flow) как условии реального внедрения.",
+        "levels": [
+          4,
+          5,
+          3
+        ],
+        "category": "emerging"
+      },
+      {
+        "name": "Крипто как инфраструктура транзакций/расчетов для AI-экономики в санкционных регионах",
+        "momentum": -20,
+        "rationale": "в Иране BTC “в лимбо”, внимание уходит в old-economy активы - крипто не становится главным обходным механизмом.",
+        "levels": [
+          9
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "Надежность оборонного ПО (темпы поставки capabilities) как ограничитель милитаризации AI",
+        "momentum": -35,
+        "rationale": "на примере F-35 фиксируется стагнация софт-апгрейдов, что указывает на системный bottleneck в поставке ПО.",
+        "levels": [
+          3,
+          5,
+          8
+        ],
+        "category": "decelerating"
+      }
+    ]
   }
 ]
