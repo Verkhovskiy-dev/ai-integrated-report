@@ -1,0 +1,63 @@
+name: Validate Report Data
+
+# Run on every push that touches data files in gh-pages branch
+on:
+  push:
+    branches:
+      - gh-pages
+    paths:
+      - 'data/latest-report.json'
+      - 'data/latest-report.en.json'
+      - 'data/archive/*.json'
+
+jobs:
+  validate:
+    name: Validate latest-report.json
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Checkout validation script from main
+        run: |
+          git fetch origin main
+          git checkout origin/main -- scripts/validate_report.py
+
+      - name: Run validation
+        run: |
+          python3 scripts/validate_report.py data/latest-report.json
+
+      - name: Post summary
+        if: always()
+        run: |
+          python3 - <<'EOF'
+          import json, sys
+
+          with open("data/latest-report.json") as f:
+              data = json.load(f)
+
+          total = 0
+          with_src = 0
+          for level in data.get("srt_levels", []):
+              for ev in level.get("events", []):
+                  total += 1
+                  if ev.get("sources"):
+                      with_src += 1
+
+          pct = with_src / total * 100 if total else 0
+          print(f"Report date: {data.get('date', 'unknown')}")
+          print(f"Events: {total} total, {with_src} with sources ({pct:.0f}%)")
+
+          if pct < 50:
+              print("::warning::Less than 50% of events have source URLs!")
+          else:
+              print("::notice::Source coverage is acceptable.")
+          EOF
