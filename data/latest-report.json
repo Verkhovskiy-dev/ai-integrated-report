@@ -1,6 +1,6 @@
 {
-  "date": "2026-03-18",
-  "generated_at": "2026-03-18T17:01:32.990Z",
+  "date": "2026-03-19",
+  "generated_at": "2026-03-19T05:01:54.096Z",
   "key_focus": "",
   "srt_levels": [
     {
@@ -8,578 +8,663 @@
       "name": "Денежная система",
       "events": [
         {
-          "title": "Переход к “энергетическому CapEx-суверенитету” AI-инфры",
-          "description": "Переход к “энергетическому CapEx-суверенитету” AI-инфры: Google привязывает дата-центр в Мичигане к 20-летнему контракту на электроэнергию и обязуется оплатить расширение “чистой” генерации - это превращает электроэнергию в долгосрочный финансовый дериватив для AI-производства (не просто Opex облака, а инфраструктурный актив).",
+          "title": "формируется разрыв между *нарративной* капитализацией «агентов» и *требованием финансового контура* (unit economics, понятная доля value chain)",
+          "description": "формируется разрыв между *нарративной* капитализацией «агентов» и *требованием финансового контура* (unit economics, понятная доля value chain). Рынок перестает платить за «обещание агентности» без модели извлечения ренты.",
           "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-18/tencent-s-sales-rise-13-in-boost-for-broader-ai-ambitions",
+            "https://www.bloomberg.com/news/articles/2026-03-19/alibaba-ai-business-is-free-call-option-first-eagle-fund-says"
+          ]
+        },
+        {
+          "title": "возникает «госзаказ 2.0» - не только закупка ПО/интеграции, а финансирование контуров обучения/дообучения и защищенной инфраструктуры",
+          "description": "возникает «госзаказ 2.0» - не только закупка ПО/интеграции, а финансирование контуров обучения/дообучения и защищенной инфраструктуры. Это перестраивает денежные потоки в AI: часть frontier-капекса/opex может легитимно переноситься в оборонные бюджеты.",
+          "sources": []
+        },
+        {
+          "title": "AI-capex смещается: деньги нужны не только на GPU/модели, но на память (HBM/DRAM), фабрики и электричество на десятилетия вперед",
+          "description": "AI-capex смещается: деньги нужны не только на GPU/модели, но на память (HBM/DRAM), фабрики и электричество на десятилетия вперед.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-18/micron-gives-upbeat-forecast-after-demand-soars-for-memory-chips",
             "https://www.bloomberg.com/news/articles/2026-03-18/google-ties-data-center-to-20-year-power-deal-solar-investment"
           ]
         },
         {
-          "title": "Рост цен на AI compute как симптом перераспределения ренты вверх по цепочке (compute → cloud)",
-          "description": "Рост цен на AI compute как симптом перераспределения ренты вверх по цепочке (compute → cloud): Alibaba повышает цены на AI computing/storage до 34% - рынок переходит от “гонки субсидий” к фазе “монетизации дефицита”.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-18/alibaba-hikes-ai-computing-prices-up-to-34-after-demand-soars"
-          ]
-        },
-        {
-          "title": "Сигналы охлаждения в private credit",
-          "description": "Сигналы охлаждения в private credit важны как риск-фактор для AI-инфраструктурного пузыря: Pimco говорит о “cooling” в private credit - это потенциальный удар по финансированию дата-центров/энергопроектов и поздним раундам AI.",
-          "sources": [
-            "https://www.bloomberg.com/news/videos/2026-03-18/pimco-s-stracke-addresses-private-credit-market-concerns-video",
-            "https://www.bloomberg.com/news/articles/2026-03-18/is-an-ai-bubble-set-to-burst-navigating-the-artificial-intelligence-boom"
-          ]
+          "title": "рост производительности перераспределяет денежные потоки от фонда оплаты труда к капексу/opex AI (лицензии, compute, интеграция)",
+          "description": "рост производительности перераспределяет денежные потоки от фонда оплаты труда к капексу/opex AI (лицензии, compute, интеграция).",
+          "sources": []
         }
       ],
-      "event_count": 3
+      "event_count": 4
     },
     {
       "level": 8,
       "name": "Спонтанный порядок",
       "events": [
         {
-          "title": "Фрагментация агентных бенчмарков → попытка стандартизации как “протокольного мира”",
-          "description": "Фрагментация агентных бенчмарков → попытка стандартизации как “протокольного мира”: предлагается CUBE - стандарт унификации agent-бенчмарков поверх MCP/Gym, чтобы убрать “integration tax”. Это типичный институт спонтанного порядка: стандарт рождается снизу как ответ на хаос экосистемы.",
+          "title": "«agentic» как мода порождает волну предпринимательского «золотоискательства» и серых практик в экосистемах (см",
+          "description": "«agentic» как мода порождает волну предпринимательского «золотоискательства» и серых практик в экосистемах (см. ниже про OpenClaw-крафт), но публичные рынки начинают отсеивать «моду» от устойчивого порядка.",
           "sources": [
-            "https://arxiv.org/abs/2603.15798"
+            "https://www.technologyreview.com/2026/03/11/1134179/china-openclaw-gold-rush/"
           ]
         },
         {
-          "title": "Спонтанные рынки предсказаний входят в конфликт с государственными режимами легитимности",
-          "description": "Спонтанные рынки предсказаний входят в конфликт с государственными режимами легитимности: Kalshi спорит с уголовными обвинениями в Аризоне (“не азартная игра”) - важный прецедент для того, как будут легализовываться “рынки ожиданий” (которые могут стать инфраструктурой для агентных финансовых решений).",
+          "title": "усиливается институт «закрытых контуров доверия» (secure enclaves, clearance, аудит), что снижает роль чисто рыночной самоорганизации; вместо нее - режимы допуска/комплаенса",
+          "description": "усиливается институт «закрытых контуров доверия» (secure enclaves, clearance, аудит), что снижает роль чисто рыночной самоорганизации; вместо нее - режимы допуска/комплаенса.",
+          "sources": []
+        },
+        {
+          "title": "климат/углеродный комплаенс начинает работать как «внешний регулятор» спонтанного порядка: кто не может закрыть энергопрофиль - тот теряет темп масштабирования",
+          "description": "климат/углеродный комплаенс начинает работать как «внешний регулятор» спонтанного порядка: кто не может закрыть энергопрофиль - тот теряет темп масштабирования.",
           "sources": [
-            "https://www.bloomberg.com/news/videos/2026-03-18/kalshi-ceo-calls-arizona-charges-total-overstep-video"
+            "https://www.bloomberg.com/news/articles/2026-03-18/meeting-surging-demand-for-ai-memory-chips-has-a-climate-cost"
           ]
         },
         {
-          "title": "Репутационные/социальные риски prediction markets в условиях войны",
-          "description": "Репутационные/социальные риски prediction markets в условиях войны (угрозы репортеру со стороны пользователей Polymarket) - давление на неформальные нормы поведения платформ и на будущие режимы модерации/комплаенса.",
-          "sources": [
-            "https://www.bloomberg.com/news/newsletters/2026-03-18/polymarket-gamblers-threaten-reporter-over-coverage-of-the-war-in-iran"
-          ]
+          "title": "меняются корпоративные нормы: AI внедряется как инструмент управленческой оптимизации численности",
+          "description": "меняются корпоративные нормы: AI внедряется как инструмент управленческой оптимизации численности.",
+          "sources": []
         }
       ],
-      "event_count": 3
+      "event_count": 4
     },
     {
       "level": 7,
       "name": "Институты производства знаний",
-      "events": [
-        {
-          "title": "Секьюритизация академических связей ЕС↔Китай",
-          "description": "Секьюритизация академических связей ЕС↔Китай: партнерства китайских структур с европейскими университетами вызывают security concerns, фокус - cybersecurity research. Это меняет каналы трансфера знаний: от “университет-глобальный” к “университет-юрисдикционный”.",
-          "sources": [
-            "https://www.bloomberg.com/news/newsletters/2026-03-18/chinese-partnerships-with-european-universities-stir-security-concerns"
-          ]
-        },
-        {
-          "title": "Оборонный контур превращается в отдельный “инкубатор данных/моделей”",
-          "description": "Оборонный контур превращается в отдельный “инкубатор данных/моделей”: Пентагон планирует secure environments для обучения genAI на секретных данных (military-specific модели). Это институционально отделяет “гражданскую” и “классифицированную” линии развития моделей.",
-          "sources": [
-            "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/",
-            "https://www.technologyreview.com/2026/03/16/1134315/where-openais-technology-could-show-up-in-iran/"
-          ]
-        }
-      ],
-      "event_count": 2
+      "events": [],
+      "event_count": 0
     },
     {
       "level": 6,
       "name": "Технологии производства знаний",
       "events": [
         {
-          "title": "Сдвиг к “runtime governance” и управлению траекториями агента",
-          "description": "Сдвиг к “runtime governance” и управлению траекториями агента: формализация governance как политики на путях (path-dependent) - это методологический разворот от статических правил/ACL к непрерывному оцениванию поведения агента во времени.",
+          "title": "появляется методический разворот к *валидации поведения* агентных систем (greybox/фаззинг через последовательности tool-вызовов)",
+          "description": "появляется методический разворот к *валидации поведения* агентных систем (greybox/фаззинг через последовательности tool-вызовов).",
           "sources": [
-            "https://arxiv.org/abs/2603.16586"
+            "https://arxiv.org/abs/2603.17639"
           ]
         },
         {
-          "title": "Взрыв работ по памяти/маршрутизации памяти/селективной записи",
-          "description": "Взрыв работ по памяти/маршрутизации памяти/селективной записи как ответ на рост “контекстного долга” агентных систем: NextMem (латентная фактическая память), Compiled Memory (Atlas: переписывание system prompt как “доставка опыта”), write-time gating (селективная запись вместо read-time фильтрации), cost-sensitive store routing, CraniMem",
-          "sources": [
-            "https://arxiv.org/abs/2603.15634",
-            "https://arxiv.org/abs/2603.15666",
-            "https://arxiv.org/abs/2603.15994",
-            "https://arxiv.org/abs/2603.15658",
-            "https://arxiv.org/abs/2603.15642"
-          ]
+          "title": "рост практик обучения/валидации в «secure-by-design» средах; вероятно, стандартизация процедур red-teaming/логирования/атрибуции действий",
+          "description": "рост практик обучения/валидации в «secure-by-design» средах; вероятно, стандартизация процедур red-teaming/логирования/атрибуции действий.",
+          "sources": []
         },
         {
-          "title": "Стандартизация оценки “реальной полезности” для enterprise",
-          "description": "Стандартизация оценки “реальной полезности” для enterprise: AIDABench (end-to-end data analytics задачи; лучший результат ~59% pass@1) показывает, что “аналитический агент” пока далек от надежности человека.",
+          "title": "методологии оптимизации смещаются к эффективности (сокращение токенов/трасс, reward за information-dense reasoning)",
+          "description": "методологии оптимизации смещаются к эффективности (сокращение токенов/трасс, reward за information-dense reasoning).",
           "sources": [
-            "https://arxiv.org/abs/2603.15636"
-          ]
-        },
-        {
-          "title": "Практики RL для агентных задач усложняются (траектории, двухуровневые награды, неизвестные схемы БД)",
-          "description": "Практики RL для агентных задач усложняются (траектории, двухуровневые награды, неизвестные схемы БД): TRUST-SQL (POMDP + tool-grounded протокол), Agentic SQL/ATR/CSMR",
-          "sources": [
-            "https://arxiv.org/abs/2603.16448",
-            "https://arxiv.org/abs/2603.16161"
+            "https://arxiv.org/abs/2603.17310"
           ]
         }
       ],
-      "event_count": 4
+      "event_count": 3
     },
     {
       "level": 5,
       "name": "Разделение труда между фирмами",
       "events": [
         {
-          "title": "Переток AI-инфры в США как новая география контрактов",
-          "description": "Переток AI-инфры в США как новая география контрактов: Fluidstack выходит из €10 млрд проекта дата-центра во Франции и “пивотит” в США из-за более крупных контрактов там - сигнал, что заказы/денежный поток сильнее политических “витринных” проектов.",
+          "title": "Факт-сигнал",
+          "description": "Факт-сигнал: Tencent просел в капитализации: инвесторов не убедила «agentic AI»-повестка и отсутствие ясной монетизации; компания также заявила о планах сократить buybacks.  \nКонтр-сигнал: Xiaomi растет на «buzz» вокруг релиза AI-моделей + обновление SU7 EV (AI вплетается в hardware/consumer story, понятный рынку).  \nЕще один сигнал: Alibaba AI трактуется инвесторами как «бесплатный call option» - AI пока не «встроен» в оценку как базовый денежный поток.\n\n🔴 Верхние уровни (9-8-7):",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-18/fluidstack-drops-out-of-marquee-10-billion-ai-project-in-france"
+            "https://www.bloomberg.com/news/articles/2026-03-18/tencent-s-sales-rise-13-in-boost-for-broader-ai-ambitions",
+            "https://www.bloomberg.com/news/articles/2026-03-19/xiaomi-shares-jump-on-ai-model-buzz-upcoming-su7-model-facelift",
+            "https://www.bloomberg.com/news/articles/2026-03-19/alibaba-ai-business-is-free-call-option-first-eagle-fund-says"
           ]
         },
         {
-          "title": "Полупроводниковая кооперация по памяти для AI усиливается",
-          "description": "Полупроводниковая кооперация по памяти для AI усиливается: Samsung согласилась поставлять next-gen AI memory и сотрудничать с AMD - перераспределение критической компетенции в сторону HBM/памяти как узкого места.",
+          "title": "китайские платформы вынуждены выбирать: быть «облаком+модели» (инфраструктурная рента), «сервисом» (монетизация через сценарии), или «встраиванием в device/EV» (как Xiaomi)",
+          "description": "китайские платформы вынуждены выбирать: быть «облаком+модели» (инфраструктурная рента), «сервисом» (монетизация через сценарии), или «встраиванием в device/EV» (как Xiaomi).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-18/samsung-agrees-to-supply-next-generation-ai-memory-to-amd"
+            "https://www.bloomberg.com/news/articles/2026-03-19/xiaomi-shares-jump-on-ai-model-buzz-upcoming-su7-model-facelift"
           ]
         },
         {
-          "title": "Китайские платформы наращивают инвестиции в агентные системы",
-          "description": "Китайские платформы наращивают инвестиции в агентные системы: Tencent планирует как минимум удвоить AI-инвестиции до >36 млрд юаней в 2026, делая ставку на OpenClaw-style agents.",
+          "title": "формируется новая цепочка кооперации: frontier lab ↔ defense integrator ↔ secure cloud/data center ↔ поставщики средств контроля (логирование, policy enforcement)",
+          "description": "формируется новая цепочка кооперации: frontier lab ↔ defense integrator ↔ secure cloud/data center ↔ поставщики средств контроля (логирование, policy enforcement).",
+          "sources": []
+        },
+        {
+          "title": "дата-центры и энергетика становятся «равноправным звеном» value chain наряду с моделями; Google фактически покупает/строит условия производства (энергия) как фактор конкурентного преимущества",
+          "description": "дата-центры и энергетика становятся «равноправным звеном» value chain наряду с моделями; Google фактически покупает/строит условия производства (энергия) как фактор конкурентного преимущества.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-18/tencent-s-sales-rise-13-in-boost-for-broader-ai-ambitions"
+            "https://www.bloomberg.com/news/articles/2026-03-18/google-ties-data-center-to-20-year-power-deal-solar-investment"
           ]
         },
         {
-          "title": "Перепаковка монетизации enterprise-софта под AI",
-          "description": "Перепаковка монетизации enterprise-софта под AI: SAP формирует новые команды и переводит pricing к use-based, реагируя на угрозу подписочной модели.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-18/sap-ceo-pushes-ai-turnaround-with-new-teams-use-based-pricing"
-          ]
+          "title": "банки становятся крупными заказчиками агентных/автоматизационных систем и одновременно площадками для их «докручивания» под комплаенс",
+          "description": "банки становятся крупными заказчиками агентных/автоматизационных систем и одновременно площадками для их «докручивания» под комплаенс.",
+          "sources": []
         }
       ],
-      "event_count": 4
+      "event_count": 5
     },
     {
       "level": 4,
       "name": "«Железные» технологии",
       "events": [
         {
-          "title": "“Energy stack” становится частью AI stack",
-          "description": "“Energy stack” становится частью AI stack: AI-бум ведет США к достижению мощности производства battery systems для 100% domestic demand - инфраструктура сглаживания энергопиков дата-центров становится элементом технологического базиса.",
+          "title": "агентность требует надежной памяти/учета действий/ограничений полномочий - это становится частью технологического стека, а не «надстройкой»",
+          "description": "агентность требует надежной памяти/учета действий/ограничений полномочий - это становится частью технологического стека, а не «надстройкой».",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-18/ai-boom-drives-us-to-build-enough-battery-systems-for-domestic-demand"
+            "https://arxiv.org/abs/2603.17781",
+            "https://arxiv.org/abs/2603.17170"
           ]
         },
         {
-          "title": "Рост роли agent security как продукта",
-          "description": "Рост роли agent security как продукта: Xbow (AI для поиска уязвимостей) оценена >$1B - безопасность превращается в одну из “верхних строк” value chain AI.",
+          "title": "требуются техрешения для управляемости автономии: доказуемое runtime-governance/логирование/принудительное ограничение действий",
+          "description": "требуются техрешения для управляемости автономии: доказуемое runtime-governance/логирование/принудительное ограничение действий. Академические заделы под это появляются (например, криптографическое runtime governance).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-18/ai-security-startup-xbow-now-valued-at-more-than-1-billion"
+            "https://arxiv.org/abs/2603.16938"
           ]
+        },
+        {
+          "title": "«железные» стандарты сдвигаются в сторону memory bandwidth/памяти, а не только FLOPS; это поддержано сигналами Micron и климат-статьей",
+          "description": "«железные» стандарты сдвигаются в сторону memory bandwidth/памяти, а не только FLOPS; это поддержано сигналами Micron и климат-статьей.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-18/micron-gives-upbeat-forecast-after-demand-soars-for-memory-chips",
+            "https://www.bloomberg.com/news/articles/2026-03-18/meeting-surging-demand-for-ai-memory-chips-has-a-climate-cost"
+          ]
+        },
+        {
+          "title": "требуется надежность/аудит/безопасность (особенно на фоне киберинцидентов вокруг корпоративных систем)",
+          "description": "требуется надежность/аудит/безопасность (особенно на фоне киберинцидентов вокруг корпоративных систем).",
+          "sources": []
         }
       ],
-      "event_count": 2
+      "event_count": 4
     },
     {
       "level": 3,
       "name": "Социально-профессиональная структура",
       "events": [
         {
-          "title": "Дефицит “AI governance / AI ops” кадров виден по управленческой турбулентности",
-          "description": "Дефицит “AI governance / AI ops” кадров виден по управленческой турбулентности: уход AI-chief Standard Chartered < чем через год - показатель, что роль “AI трансформации” в банках пока плохо институционализирована (непонятны KPI/мандат/риски).",
+          "title": "растет спрос на роли «agent security / agent QA / memory governance инженеров», а не только на prompt/LLM app dev",
+          "description": "растет спрос на роли «agent security / agent QA / memory governance инженеров», а не только на prompt/LLM app dev. Это видно по фокусу работ на безопасность агентов и управляемую память.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-18/stanchart-s-ai-chief-exiting-less-than-a-year-after-joining"
+            "https://arxiv.org/abs/2603.17639",
+            "https://arxiv.org/abs/2603.17787"
           ]
         },
         {
-          "title": "Банки “оцифровывают эффект” AI как управленческий KPI",
-          "description": "Банки “оцифровывают эффект” AI как управленческий KPI: UniCredit оценивает €400-500 млн net cost cuts за ~5 лет - AI становится нормируемым источником производительности (встроится в бюджеты/оргструктуры).",
+          "title": "дефицит кадров «AI security + defense domain + compliance», появление карьерных треков «model ops in classified»",
+          "description": "дефицит кадров «AI security + defense domain + compliance», появление карьерных треков «model ops in classified».",
+          "sources": []
+        },
+        {
+          "title": "---\n\n## Сдвиг E",
+          "description": "",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-18/unicredit-sees-up-to-500-million-in-ai-cost-cuts-in-next-years"
+            "https://www.bloomberg.com/news/articles/2026-03-19/us-tells-companies-to-secure-microsoft-system-after-stryker-hack",
+            "https://arxiv.org/abs/2603.17639"
           ]
         }
       ],
-      "event_count": 2
+      "event_count": 3
     },
     {
       "level": 2,
       "name": "Пространственная организация",
       "events": [
         {
-          "title": "Закрепление дата-центров за конкретной энергогеографией",
-          "description": "Закрепление дата-центров за конкретной энергогеографией: проект Google в Мичигане с 20-летним power deal показывает, что размещение DC теперь определяется не только сетью/землей, но и долгими контрактами на генерацию.",
+          "title": "Китай как зона высокой предпринимательской турбулентности вокруг open-source agentic tooling (OpenClaw)",
+          "description": "Китай как зона высокой предпринимательской турбулентности вокруг open-source agentic tooling (OpenClaw).",
+          "sources": [
+            "https://www.technologyreview.com/2026/03/11/1134179/china-openclaw-gold-rush/"
+          ]
+        },
+        {
+          "title": "Micron: спрос на память для AI растет, но это требует сверхкапекса (capex > $25B в фискальном году) и давит на восприятие инвесторами",
+          "description": "Micron: спрос на память для AI растет, но это требует сверхкапекса (capex > $25B в фискальном году) и давит на восприятие инвесторами.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-18/micron-gives-upbeat-forecast-after-demand-soars-for-memory-chips"
+          ]
+        },
+        {
+          "title": "Рост производства memory-чипов под AI увеличивает климатический след полупроводникового сектора",
+          "description": "Рост производства memory-чипов под AI увеличивает климатический след полупроводникового сектора.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-18/meeting-surging-demand-for-ai-memory-chips-has-a-climate-cost"
+          ]
+        },
+        {
+          "title": "NTT Global Data Centers планирует удвоение мощности до 4 ГВт на фоне AI-бума",
+          "description": "NTT Global Data Centers планирует удвоение мощности до 4 ГВт на фоне AI-бума.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-18/ntt-global-data-centers-plans-to-double-capacity-in-ai-boom"
+          ]
+        },
+        {
+          "title": "Google привязывает дата-центр к 20-летнему контракту на электроэнергию и инвестициям в чистую генерацию (фактически «энергетическая вертикальная интеграция»)",
+          "description": "Google привязывает дата-центр к 20-летнему контракту на электроэнергию и инвестициям в чистую генерацию (фактически «энергетическая вертикальная интеграция»).",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-03-18/google-ties-data-center-to-20-year-power-deal-solar-investment"
           ]
         },
         {
-          "title": "Франция vs США в борьбе за AI-инфру",
-          "description": "Франция vs США в борьбе за AI-инфру: уход Fluidstack из французского мегапроекта - индикатор, что “европейская витрина AI” проигрывает “американской контрактной машине” (закупки, скорость, предсказуемость).",
+          "title": "география дата-центров перестраивается вокруг доступной мощности (ГВт) и долгих контрактов",
+          "description": "география дата-центров перестраивается вокруг доступной мощности (ГВт) и долгих контрактов.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-18/fluidstack-drops-out-of-marquee-10-billion-ai-project-in-france"
+            "https://www.bloomberg.com/news/articles/2026-03-18/ntt-global-data-centers-plans-to-double-capacity-in-ai-boom",
+            "https://www.bloomberg.com/news/articles/2026-03-18/google-ties-data-center-to-20-year-power-deal-solar-investment"
           ]
         }
       ],
-      "event_count": 2
+      "event_count": 6
     },
     {
       "level": 1,
       "name": "Природные ресурсы",
       "events": [
         {
-          "title": "Материальный поворот инвест-нарратива на фоне войны",
-          "description": "Материальный поворот инвест-нарратива на фоне войны: Bloomberg фиксирует, что война с Ираном возвращает внимание к металлам/минералам/энергии - это поднимает “ресурсный базис” обратно в верхние финансовые рассуждения об AI.",
+          "title": "---\n\n## Сдвиг B",
+          "description": "",
           "sources": [
-            "https://www.bloomberg.com/news/videos/2026-03-18/what-investors-need-to-consider-during-iran-war-video"
+            "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/",
+            "https://www.technologyreview.com/2026/03/12/1134243/defense-official-military-use-ai-chatbots-targeting-decisions/"
+          ]
+        },
+        {
+          "title": "---\n\n## Сдвиг D",
+          "description": "",
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-03-19/hsbc-weighs-job-cuts-from-multiyear-ai-fueled-overhaul-video",
+            "https://www.bloomberg.com/news/articles/2026-03-18/podcast-ai-is-being-built-to-replace-you-not-help-you"
           ]
         }
       ],
-      "event_count": 1
+      "event_count": 2
     }
   ],
   "events": [
     {
-      "title": "Переход к “энергетическому CapEx-суверенитету” AI-инфры",
-      "description": "Переход к “энергетическому CapEx-суверенитету” AI-инфры: Google привязывает дата-центр в Мичигане к 20-летнему контракту на электроэнергию и обязуется оплатить расширение “чистой” генерации - это превращает электроэнергию в долгосрочный финансовый дериватив для AI-производства (не просто Opex облака, а инфраструктурный актив).",
+      "title": "формируется разрыв между *нарративной* капитализацией «агентов» и *требованием финансового контура* (unit economics, понятная доля value chain)",
+      "description": "формируется разрыв между *нарративной* капитализацией «агентов» и *требованием финансового контура* (unit economics, понятная доля value chain). Рынок перестает платить за «обещание агентности» без модели извлечения ренты.",
       "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-18/tencent-s-sales-rise-13-in-boost-for-broader-ai-ambitions",
+        "https://www.bloomberg.com/news/articles/2026-03-19/alibaba-ai-business-is-free-call-option-first-eagle-fund-says"
+      ],
+      "level": 9
+    },
+    {
+      "title": "возникает «госзаказ 2.0» - не только закупка ПО/интеграции, а финансирование контуров обучения/дообучения и защищенной инфраструктуры",
+      "description": "возникает «госзаказ 2.0» - не только закупка ПО/интеграции, а финансирование контуров обучения/дообучения и защищенной инфраструктуры. Это перестраивает денежные потоки в AI: часть frontier-капекса/opex может легитимно переноситься в оборонные бюджеты.",
+      "sources": [],
+      "level": 9
+    },
+    {
+      "title": "AI-capex смещается: деньги нужны не только на GPU/модели, но на память (HBM/DRAM), фабрики и электричество на десятилетия вперед",
+      "description": "AI-capex смещается: деньги нужны не только на GPU/модели, но на память (HBM/DRAM), фабрики и электричество на десятилетия вперед.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-18/micron-gives-upbeat-forecast-after-demand-soars-for-memory-chips",
         "https://www.bloomberg.com/news/articles/2026-03-18/google-ties-data-center-to-20-year-power-deal-solar-investment"
       ],
       "level": 9
     },
     {
-      "title": "Рост цен на AI compute как симптом перераспределения ренты вверх по цепочке (compute → cloud)",
-      "description": "Рост цен на AI compute как симптом перераспределения ренты вверх по цепочке (compute → cloud): Alibaba повышает цены на AI computing/storage до 34% - рынок переходит от “гонки субсидий” к фазе “монетизации дефицита”.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-18/alibaba-hikes-ai-computing-prices-up-to-34-after-demand-soars"
-      ],
+      "title": "рост производительности перераспределяет денежные потоки от фонда оплаты труда к капексу/opex AI (лицензии, compute, интеграция)",
+      "description": "рост производительности перераспределяет денежные потоки от фонда оплаты труда к капексу/opex AI (лицензии, compute, интеграция).",
+      "sources": [],
       "level": 9
     },
     {
-      "title": "Сигналы охлаждения в private credit",
-      "description": "Сигналы охлаждения в private credit важны как риск-фактор для AI-инфраструктурного пузыря: Pimco говорит о “cooling” в private credit - это потенциальный удар по финансированию дата-центров/энергопроектов и поздним раундам AI.",
+      "title": "«agentic» как мода порождает волну предпринимательского «золотоискательства» и серых практик в экосистемах (см",
+      "description": "«agentic» как мода порождает волну предпринимательского «золотоискательства» и серых практик в экосистемах (см. ниже про OpenClaw-крафт), но публичные рынки начинают отсеивать «моду» от устойчивого порядка.",
       "sources": [
-        "https://www.bloomberg.com/news/videos/2026-03-18/pimco-s-stracke-addresses-private-credit-market-concerns-video",
-        "https://www.bloomberg.com/news/articles/2026-03-18/is-an-ai-bubble-set-to-burst-navigating-the-artificial-intelligence-boom"
-      ],
-      "level": 9
-    },
-    {
-      "title": "Фрагментация агентных бенчмарков → попытка стандартизации как “протокольного мира”",
-      "description": "Фрагментация агентных бенчмарков → попытка стандартизации как “протокольного мира”: предлагается CUBE - стандарт унификации agent-бенчмарков поверх MCP/Gym, чтобы убрать “integration tax”. Это типичный институт спонтанного порядка: стандарт рождается снизу как ответ на хаос экосистемы.",
-      "sources": [
-        "https://arxiv.org/abs/2603.15798"
+        "https://www.technologyreview.com/2026/03/11/1134179/china-openclaw-gold-rush/"
       ],
       "level": 8
     },
     {
-      "title": "Спонтанные рынки предсказаний входят в конфликт с государственными режимами легитимности",
-      "description": "Спонтанные рынки предсказаний входят в конфликт с государственными режимами легитимности: Kalshi спорит с уголовными обвинениями в Аризоне (“не азартная игра”) - важный прецедент для того, как будут легализовываться “рынки ожиданий” (которые могут стать инфраструктурой для агентных финансовых решений).",
+      "title": "усиливается институт «закрытых контуров доверия» (secure enclaves, clearance, аудит), что снижает роль чисто рыночной самоорганизации; вместо нее - режимы допуска/комплаенса",
+      "description": "усиливается институт «закрытых контуров доверия» (secure enclaves, clearance, аудит), что снижает роль чисто рыночной самоорганизации; вместо нее - режимы допуска/комплаенса.",
+      "sources": [],
+      "level": 8
+    },
+    {
+      "title": "климат/углеродный комплаенс начинает работать как «внешний регулятор» спонтанного порядка: кто не может закрыть энергопрофиль - тот теряет темп масштабирования",
+      "description": "климат/углеродный комплаенс начинает работать как «внешний регулятор» спонтанного порядка: кто не может закрыть энергопрофиль - тот теряет темп масштабирования.",
       "sources": [
-        "https://www.bloomberg.com/news/videos/2026-03-18/kalshi-ceo-calls-arizona-charges-total-overstep-video"
+        "https://www.bloomberg.com/news/articles/2026-03-18/meeting-surging-demand-for-ai-memory-chips-has-a-climate-cost"
       ],
       "level": 8
     },
     {
-      "title": "Репутационные/социальные риски prediction markets в условиях войны",
-      "description": "Репутационные/социальные риски prediction markets в условиях войны (угрозы репортеру со стороны пользователей Polymarket) - давление на неформальные нормы поведения платформ и на будущие режимы модерации/комплаенса.",
-      "sources": [
-        "https://www.bloomberg.com/news/newsletters/2026-03-18/polymarket-gamblers-threaten-reporter-over-coverage-of-the-war-in-iran"
-      ],
+      "title": "меняются корпоративные нормы: AI внедряется как инструмент управленческой оптимизации численности",
+      "description": "меняются корпоративные нормы: AI внедряется как инструмент управленческой оптимизации численности.",
+      "sources": [],
       "level": 8
     },
     {
-      "title": "Секьюритизация академических связей ЕС↔Китай",
-      "description": "Секьюритизация академических связей ЕС↔Китай: партнерства китайских структур с европейскими университетами вызывают security concerns, фокус - cybersecurity research. Это меняет каналы трансфера знаний: от “университет-глобальный” к “университет-юрисдикционный”.",
+      "title": "появляется методический разворот к *валидации поведения* агентных систем (greybox/фаззинг через последовательности tool-вызовов)",
+      "description": "появляется методический разворот к *валидации поведения* агентных систем (greybox/фаззинг через последовательности tool-вызовов).",
       "sources": [
-        "https://www.bloomberg.com/news/newsletters/2026-03-18/chinese-partnerships-with-european-universities-stir-security-concerns"
+        "https://arxiv.org/abs/2603.17639"
       ],
-      "level": 7
+      "level": 6
     },
     {
-      "title": "Оборонный контур превращается в отдельный “инкубатор данных/моделей”",
-      "description": "Оборонный контур превращается в отдельный “инкубатор данных/моделей”: Пентагон планирует secure environments для обучения genAI на секретных данных (military-specific модели). Это институционально отделяет “гражданскую” и “классифицированную” линии развития моделей.",
+      "title": "рост практик обучения/валидации в «secure-by-design» средах; вероятно, стандартизация процедур red-teaming/логирования/атрибуции действий",
+      "description": "рост практик обучения/валидации в «secure-by-design» средах; вероятно, стандартизация процедур red-teaming/логирования/атрибуции действий.",
+      "sources": [],
+      "level": 6
+    },
+    {
+      "title": "методологии оптимизации смещаются к эффективности (сокращение токенов/трасс, reward за information-dense reasoning)",
+      "description": "методологии оптимизации смещаются к эффективности (сокращение токенов/трасс, reward за information-dense reasoning).",
+      "sources": [
+        "https://arxiv.org/abs/2603.17310"
+      ],
+      "level": 6
+    },
+    {
+      "title": "Факт-сигнал",
+      "description": "Факт-сигнал: Tencent просел в капитализации: инвесторов не убедила «agentic AI»-повестка и отсутствие ясной монетизации; компания также заявила о планах сократить buybacks.  \nКонтр-сигнал: Xiaomi растет на «buzz» вокруг релиза AI-моделей + обновление SU7 EV (AI вплетается в hardware/consumer story, понятный рынку).  \nЕще один сигнал: Alibaba AI трактуется инвесторами как «бесплатный call option» - AI пока не «встроен» в оценку как базовый денежный поток.\n\n🔴 Верхние уровни (9-8-7):",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-18/tencent-s-sales-rise-13-in-boost-for-broader-ai-ambitions",
+        "https://www.bloomberg.com/news/articles/2026-03-19/xiaomi-shares-jump-on-ai-model-buzz-upcoming-su7-model-facelift",
+        "https://www.bloomberg.com/news/articles/2026-03-19/alibaba-ai-business-is-free-call-option-first-eagle-fund-says"
+      ],
+      "level": 5
+    },
+    {
+      "title": "китайские платформы вынуждены выбирать: быть «облаком+модели» (инфраструктурная рента), «сервисом» (монетизация через сценарии), или «встраиванием в device/EV» (как Xiaomi)",
+      "description": "китайские платформы вынуждены выбирать: быть «облаком+модели» (инфраструктурная рента), «сервисом» (монетизация через сценарии), или «встраиванием в device/EV» (как Xiaomi).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-19/xiaomi-shares-jump-on-ai-model-buzz-upcoming-su7-model-facelift"
+      ],
+      "level": 5
+    },
+    {
+      "title": "формируется новая цепочка кооперации: frontier lab ↔ defense integrator ↔ secure cloud/data center ↔ поставщики средств контроля (логирование, policy enforcement)",
+      "description": "формируется новая цепочка кооперации: frontier lab ↔ defense integrator ↔ secure cloud/data center ↔ поставщики средств контроля (логирование, policy enforcement).",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "дата-центры и энергетика становятся «равноправным звеном» value chain наряду с моделями; Google фактически покупает/строит условия производства (энергия) как фактор конкурентного преимущества",
+      "description": "дата-центры и энергетика становятся «равноправным звеном» value chain наряду с моделями; Google фактически покупает/строит условия производства (энергия) как фактор конкурентного преимущества.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-18/google-ties-data-center-to-20-year-power-deal-solar-investment"
+      ],
+      "level": 5
+    },
+    {
+      "title": "банки становятся крупными заказчиками агентных/автоматизационных систем и одновременно площадками для их «докручивания» под комплаенс",
+      "description": "банки становятся крупными заказчиками агентных/автоматизационных систем и одновременно площадками для их «докручивания» под комплаенс.",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "агентность требует надежной памяти/учета действий/ограничений полномочий - это становится частью технологического стека, а не «надстройкой»",
+      "description": "агентность требует надежной памяти/учета действий/ограничений полномочий - это становится частью технологического стека, а не «надстройкой».",
+      "sources": [
+        "https://arxiv.org/abs/2603.17781",
+        "https://arxiv.org/abs/2603.17170"
+      ],
+      "level": 4
+    },
+    {
+      "title": "требуются техрешения для управляемости автономии: доказуемое runtime-governance/логирование/принудительное ограничение действий",
+      "description": "требуются техрешения для управляемости автономии: доказуемое runtime-governance/логирование/принудительное ограничение действий. Академические заделы под это появляются (например, криптографическое runtime governance).",
+      "sources": [
+        "https://arxiv.org/abs/2603.16938"
+      ],
+      "level": 4
+    },
+    {
+      "title": "«железные» стандарты сдвигаются в сторону memory bandwidth/памяти, а не только FLOPS; это поддержано сигналами Micron и климат-статьей",
+      "description": "«железные» стандарты сдвигаются в сторону memory bandwidth/памяти, а не только FLOPS; это поддержано сигналами Micron и климат-статьей.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-18/micron-gives-upbeat-forecast-after-demand-soars-for-memory-chips",
+        "https://www.bloomberg.com/news/articles/2026-03-18/meeting-surging-demand-for-ai-memory-chips-has-a-climate-cost"
+      ],
+      "level": 4
+    },
+    {
+      "title": "требуется надежность/аудит/безопасность (особенно на фоне киберинцидентов вокруг корпоративных систем)",
+      "description": "требуется надежность/аудит/безопасность (особенно на фоне киберинцидентов вокруг корпоративных систем).",
+      "sources": [],
+      "level": 4
+    },
+    {
+      "title": "растет спрос на роли «agent security / agent QA / memory governance инженеров», а не только на prompt/LLM app dev",
+      "description": "растет спрос на роли «agent security / agent QA / memory governance инженеров», а не только на prompt/LLM app dev. Это видно по фокусу работ на безопасность агентов и управляемую память.",
+      "sources": [
+        "https://arxiv.org/abs/2603.17639",
+        "https://arxiv.org/abs/2603.17787"
+      ],
+      "level": 3
+    },
+    {
+      "title": "дефицит кадров «AI security + defense domain + compliance», появление карьерных треков «model ops in classified»",
+      "description": "дефицит кадров «AI security + defense domain + compliance», появление карьерных треков «model ops in classified».",
+      "sources": [],
+      "level": 3
+    },
+    {
+      "title": "---\n\n## Сдвиг E",
+      "description": "",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-19/us-tells-companies-to-secure-microsoft-system-after-stryker-hack",
+        "https://arxiv.org/abs/2603.17639"
+      ],
+      "level": 3
+    },
+    {
+      "title": "Китай как зона высокой предпринимательской турбулентности вокруг open-source agentic tooling (OpenClaw)",
+      "description": "Китай как зона высокой предпринимательской турбулентности вокруг open-source agentic tooling (OpenClaw).",
+      "sources": [
+        "https://www.technologyreview.com/2026/03/11/1134179/china-openclaw-gold-rush/"
+      ],
+      "level": 2
+    },
+    {
+      "title": "Micron: спрос на память для AI растет, но это требует сверхкапекса (capex > $25B в фискальном году) и давит на восприятие инвесторами",
+      "description": "Micron: спрос на память для AI растет, но это требует сверхкапекса (capex > $25B в фискальном году) и давит на восприятие инвесторами.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-18/micron-gives-upbeat-forecast-after-demand-soars-for-memory-chips"
+      ],
+      "level": 2
+    },
+    {
+      "title": "Рост производства memory-чипов под AI увеличивает климатический след полупроводникового сектора",
+      "description": "Рост производства memory-чипов под AI увеличивает климатический след полупроводникового сектора.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-18/meeting-surging-demand-for-ai-memory-chips-has-a-climate-cost"
+      ],
+      "level": 2
+    },
+    {
+      "title": "NTT Global Data Centers планирует удвоение мощности до 4 ГВт на фоне AI-бума",
+      "description": "NTT Global Data Centers планирует удвоение мощности до 4 ГВт на фоне AI-бума.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-18/ntt-global-data-centers-plans-to-double-capacity-in-ai-boom"
+      ],
+      "level": 2
+    },
+    {
+      "title": "Google привязывает дата-центр к 20-летнему контракту на электроэнергию и инвестициям в чистую генерацию (фактически «энергетическая вертикальная интеграция»)",
+      "description": "Google привязывает дата-центр к 20-летнему контракту на электроэнергию и инвестициям в чистую генерацию (фактически «энергетическая вертикальная интеграция»).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-18/google-ties-data-center-to-20-year-power-deal-solar-investment"
+      ],
+      "level": 2
+    },
+    {
+      "title": "география дата-центров перестраивается вокруг доступной мощности (ГВт) и долгих контрактов",
+      "description": "география дата-центров перестраивается вокруг доступной мощности (ГВт) и долгих контрактов.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-18/ntt-global-data-centers-plans-to-double-capacity-in-ai-boom",
+        "https://www.bloomberg.com/news/articles/2026-03-18/google-ties-data-center-to-20-year-power-deal-solar-investment"
+      ],
+      "level": 2
+    },
+    {
+      "title": "---\n\n## Сдвиг B",
+      "description": "",
       "sources": [
         "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/",
-        "https://www.technologyreview.com/2026/03/16/1134315/where-openais-technology-could-show-up-in-iran/"
+        "https://www.technologyreview.com/2026/03/12/1134243/defense-official-military-use-ai-chatbots-targeting-decisions/"
       ],
-      "level": 7
+      "level": 1
     },
     {
-      "title": "Сдвиг к “runtime governance” и управлению траекториями агента",
-      "description": "Сдвиг к “runtime governance” и управлению траекториями агента: формализация governance как политики на путях (path-dependent) - это методологический разворот от статических правил/ACL к непрерывному оцениванию поведения агента во времени.",
+      "title": "---\n\n## Сдвиг D",
+      "description": "",
       "sources": [
-        "https://arxiv.org/abs/2603.16586"
-      ],
-      "level": 6
-    },
-    {
-      "title": "Взрыв работ по памяти/маршрутизации памяти/селективной записи",
-      "description": "Взрыв работ по памяти/маршрутизации памяти/селективной записи как ответ на рост “контекстного долга” агентных систем: NextMem (латентная фактическая память), Compiled Memory (Atlas: переписывание system prompt как “доставка опыта”), write-time gating (селективная запись вместо read-time фильтрации), cost-sensitive store routing, CraniMem",
-      "sources": [
-        "https://arxiv.org/abs/2603.15634",
-        "https://arxiv.org/abs/2603.15666",
-        "https://arxiv.org/abs/2603.15994",
-        "https://arxiv.org/abs/2603.15658",
-        "https://arxiv.org/abs/2603.15642"
-      ],
-      "level": 6
-    },
-    {
-      "title": "Стандартизация оценки “реальной полезности” для enterprise",
-      "description": "Стандартизация оценки “реальной полезности” для enterprise: AIDABench (end-to-end data analytics задачи; лучший результат ~59% pass@1) показывает, что “аналитический агент” пока далек от надежности человека.",
-      "sources": [
-        "https://arxiv.org/abs/2603.15636"
-      ],
-      "level": 6
-    },
-    {
-      "title": "Практики RL для агентных задач усложняются (траектории, двухуровневые награды, неизвестные схемы БД)",
-      "description": "Практики RL для агентных задач усложняются (траектории, двухуровневые награды, неизвестные схемы БД): TRUST-SQL (POMDP + tool-grounded протокол), Agentic SQL/ATR/CSMR",
-      "sources": [
-        "https://arxiv.org/abs/2603.16448",
-        "https://arxiv.org/abs/2603.16161"
-      ],
-      "level": 6
-    },
-    {
-      "title": "Переток AI-инфры в США как новая география контрактов",
-      "description": "Переток AI-инфры в США как новая география контрактов: Fluidstack выходит из €10 млрд проекта дата-центра во Франции и “пивотит” в США из-за более крупных контрактов там - сигнал, что заказы/денежный поток сильнее политических “витринных” проектов.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-18/fluidstack-drops-out-of-marquee-10-billion-ai-project-in-france"
-      ],
-      "level": 5
-    },
-    {
-      "title": "Полупроводниковая кооперация по памяти для AI усиливается",
-      "description": "Полупроводниковая кооперация по памяти для AI усиливается: Samsung согласилась поставлять next-gen AI memory и сотрудничать с AMD - перераспределение критической компетенции в сторону HBM/памяти как узкого места.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-18/samsung-agrees-to-supply-next-generation-ai-memory-to-amd"
-      ],
-      "level": 5
-    },
-    {
-      "title": "Китайские платформы наращивают инвестиции в агентные системы",
-      "description": "Китайские платформы наращивают инвестиции в агентные системы: Tencent планирует как минимум удвоить AI-инвестиции до >36 млрд юаней в 2026, делая ставку на OpenClaw-style agents.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-18/tencent-s-sales-rise-13-in-boost-for-broader-ai-ambitions"
-      ],
-      "level": 5
-    },
-    {
-      "title": "Перепаковка монетизации enterprise-софта под AI",
-      "description": "Перепаковка монетизации enterprise-софта под AI: SAP формирует новые команды и переводит pricing к use-based, реагируя на угрозу подписочной модели.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-18/sap-ceo-pushes-ai-turnaround-with-new-teams-use-based-pricing"
-      ],
-      "level": 5
-    },
-    {
-      "title": "“Energy stack” становится частью AI stack",
-      "description": "“Energy stack” становится частью AI stack: AI-бум ведет США к достижению мощности производства battery systems для 100% domestic demand - инфраструктура сглаживания энергопиков дата-центров становится элементом технологического базиса.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-18/ai-boom-drives-us-to-build-enough-battery-systems-for-domestic-demand"
-      ],
-      "level": 4
-    },
-    {
-      "title": "Рост роли agent security как продукта",
-      "description": "Рост роли agent security как продукта: Xbow (AI для поиска уязвимостей) оценена >$1B - безопасность превращается в одну из “верхних строк” value chain AI.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-18/ai-security-startup-xbow-now-valued-at-more-than-1-billion"
-      ],
-      "level": 4
-    },
-    {
-      "title": "Дефицит “AI governance / AI ops” кадров виден по управленческой турбулентности",
-      "description": "Дефицит “AI governance / AI ops” кадров виден по управленческой турбулентности: уход AI-chief Standard Chartered < чем через год - показатель, что роль “AI трансформации” в банках пока плохо институционализирована (непонятны KPI/мандат/риски).",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-18/stanchart-s-ai-chief-exiting-less-than-a-year-after-joining"
-      ],
-      "level": 3
-    },
-    {
-      "title": "Банки “оцифровывают эффект” AI как управленческий KPI",
-      "description": "Банки “оцифровывают эффект” AI как управленческий KPI: UniCredit оценивает €400-500 млн net cost cuts за ~5 лет - AI становится нормируемым источником производительности (встроится в бюджеты/оргструктуры).",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-18/unicredit-sees-up-to-500-million-in-ai-cost-cuts-in-next-years"
-      ],
-      "level": 3
-    },
-    {
-      "title": "Закрепление дата-центров за конкретной энергогеографией",
-      "description": "Закрепление дата-центров за конкретной энергогеографией: проект Google в Мичигане с 20-летним power deal показывает, что размещение DC теперь определяется не только сетью/землей, но и долгими контрактами на генерацию.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-18/google-ties-data-center-to-20-year-power-deal-solar-investment"
-      ],
-      "level": 2
-    },
-    {
-      "title": "Франция vs США в борьбе за AI-инфру",
-      "description": "Франция vs США в борьбе за AI-инфру: уход Fluidstack из французского мегапроекта - индикатор, что “европейская витрина AI” проигрывает “американской контрактной машине” (закупки, скорость, предсказуемость).",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-18/fluidstack-drops-out-of-marquee-10-billion-ai-project-in-france"
-      ],
-      "level": 2
-    },
-    {
-      "title": "Материальный поворот инвест-нарратива на фоне войны",
-      "description": "Материальный поворот инвест-нарратива на фоне войны: Bloomberg фиксирует, что война с Ираном возвращает внимание к металлам/минералам/энергии - это поднимает “ресурсный базис” обратно в верхние финансовые рассуждения об AI.",
-      "sources": [
-        "https://www.bloomberg.com/news/videos/2026-03-18/what-investors-need-to-consider-during-iran-war-video"
+        "https://www.bloomberg.com/news/videos/2026-03-19/hsbc-weighs-job-cuts-from-multiyear-ai-fueled-overhaul-video",
+        "https://www.bloomberg.com/news/articles/2026-03-18/podcast-ai-is-being-built-to-replace-you-not-help-you"
       ],
       "level": 1
     }
   ],
   "trends": [
     {
-      "name": "AI-CapEx / Энергоинфраструктура для compute",
-      "momentum": 85,
-      "rationale": "20-летние power deals для DC и рост роли накопителей показывают закрепление энергоконтуров как базы AI.",
+      "name": "AI-CapEx (память/фабрики/дата-центры/энергия)",
+      "momentum": 90,
+      "rationale": "Micron повышает capex под спрос на AI-память; NTT удваивает мощности дата-центров; Google заключает 20-летний энергоконтракт.,",
       "levels": [
         1,
         2,
         4,
+        5,
         9
       ],
       "category": "accelerating"
     },
     {
-      "name": "Рост цен на compute / монетизация дефицита",
-      "momentum": 70,
-      "rationale": "Alibaba повышает цены до 34%, индустрия пытается отбить инвестиции и фиксирует рыночную власть облака.",
-      "levels": [],
-      "category": "accelerating"
-    },
-    {
-      "name": "Агентные AI-платформы (OpenClaw-style)",
+      "name": "«Энергетическая вертикальная интеграция» Big Tech (PPA/собственная генерация)",
       "momentum": 75,
-      "rationale": "Tencent удваивает инвестиции в AI под агентные сценарии; рынок акций в Китае реагирует на нарратив “next ChatGPT”.",
-      "levels": [],
+      "rationale": "20-летний контракт Google с обязательством финансировать новую clean power - закрепление энергии как стратегического актива.",
+      "levels": [
+        1,
+        2,
+        5,
+        9
+      ],
       "category": "accelerating"
     },
     {
-      "name": "AI-security (автоматизированный offensive/defensive security с AI)",
-      "momentum": 65,
-      "rationale": "Xbow >$1B подтверждает, что безопасность становится отдельной “золотой жилой” AI-рынка.",
-      "levels": [],
-      "category": "accelerating"
-    },
-    {
-      "name": "Runtime governance / комплаенс по траекториям агента",
+      "name": "Agentic AI как массовый рынок (особенно Китай)",
       "momentum": 45,
-      "rationale": "появляется формализация “policies on paths” как общий язык для управления агентами; пока это больше research/early внедрения.",
-      "levels": [],
-      "category": "emerging"
-    },
-    {
-      "name": "Оборонный/классифицированный AI как отдельная линия развития",
-      "momentum": 60,
-      "rationale": "планы Пентагона на secure training environments для обучения на секретных данных - институциональный рывок.",
-      "levels": [],
-      "category": "accelerating"
-    },
-    {
-      "name": "Классический SaaS pricing (подписка) → давление со стороны AI / переход к consumption",
-      "momentum": -25,
-      "rationale": "SAP прямо готовит use-based pricing как ответ на угрозу legacy subscription модели - это сигнал эрозии старой схемы монетизации.",
-      "levels": [],
-      "category": "decelerating"
-    },
-    {
-      "name": "Легитимность prediction markets (между “финансами” и “гэмблингом”)",
-      "momentum": 10,
-      "rationale": "уголовные кейсы и военные сюжеты повышают внимание регулятора; рынок растет, но может упереться в запреты/лицензирование.",
-      "levels": [],
+      "rationale": "сохраняется хайп и предпринимательский «gold rush», но рынок наказывает отсутствие монетизации (Tencent), т.е. рост идет с фрикцией.",
+      "levels": [
+        5,
+        8,
+        9
+      ],
       "category": "stable"
     },
     {
-      "name": "Private credit как “топливо” для AI-инфраструктуры",
-      "momentum": -35,
-      "rationale": "Pimco говорит о “cooling”; если это продолжится, появится разрыв между потребностью в CapEx и доступностью длинного долга.",
-      "levels": [],
+      "name": "Security/Assurance для AI-агентов (валидация, авторизация, аудит)",
+      "momentum": 80,
+      "rationale": "растет поле исследований и практик (greybox validation, task-scoped authorization), параллельно усиливается кибердавление на корпсистемы (Microsoft tool warning).,",
+      "levels": [
+        4,
+        6,
+        8
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Суверенный/оборонный AI (classified training environments)",
+      "momentum": 70,
+      "rationale": "Пентагон обсуждает инфраструктуру обучения на секретных данных - это институционализирует «суверенные контуры» моделей.",
+      "levels": [
+        2,
+        7,
+        8,
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Корпоративные сокращения middle/back office через AI",
+      "momentum": 60,
+      "rationale": "HSBC рассматривает многолетние сокращения, прямо связывая их с AI-реформой.",
+      "levels": [
+        3,
+        5,
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "«AI как free option» в оценке конгломератов (не монетизировано → не учитывается рынком)",
+      "momentum": -10,
+      "rationale": "тезис по Alibaba - AI потенциал не встроен в цену; инвесторы пока не верят в превращение AI в устойчивый cash flow без ясной модели.",
+      "levels": [
+        9,
+        5
+      ],
       "category": "decelerating"
     },
     {
-      "name": "compute как масштабируемая облачная услуга, оптимизируемая внутри дата-центра.",
+      "name": "Регуляторное ужесточение по «сексуальным дипфейкам»",
+      "momentum": 55,
+      "rationale": "ЕС движется к запрету инструментов, создающих nonconsensual sexual images, после инцидентов вокруг Grok.",
+      "levels": [
+        8,
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Классический SaaS / долговые сделки под софт - давление от AI-disruption",
+      "momentum": -35,
+      "rationale": "банки остановили размещение долга Qualtrics на $5.3B на фоне тревоги инвесторов о AI-дизрапшне.",
+      "levels": [
+        5,
+        9
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "рынок платит за демонстрации возможностей/«агентный хайп».",
       "momentum": -25,
-      "rationale": "Угасает: переход от «compute как масштабируемая облачная услуга, оптимизируемая внутри дата-центра.» к «compute как *энерго-инфраструктурный проект* с длинными power-контрактами, батареями/накопителями и привязкой к региональной генерации.». Упоминаний в контексте перехода: 1",
+      "rationale": "Угасает: переход от «рынок платит за демонстрации возможностей/«агентный хайп».» к «рынок и регуляторы требуют управляемости: память с governance, точная авторизация, атрибуция, безопасность.». Упоминаний в контексте перехода: 1",
+      "levels": [
+        9,
+        8,
+        6,
+        4,
+        3
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "«GPU как главный дефицит».",
+      "momentum": -10,
+      "rationale": "Угасает: переход от ««GPU как главный дефицит».» к ««memory + power + дата-центры в ГВт + долгие PPA-контракты» как главный ограничитель масштаба.». Упоминаний в контексте перехода: 0",
       "levels": [
         9,
         5,
         4,
+        3,
         2,
         1
       ],
       "category": "decelerating"
     },
     {
-      "name": "глобальные каналы трансфера знаний через университеты и международные коллаборации.",
-      "momentum": -40,
-      "rationale": "Угасает: переход от «глобальные каналы трансфера знаний через университеты и международные коллаборации.» к «разделение на режимы допуска (classified vs civilian; trusted vs risky партнерства), где знание становится объектом безопасности.». Упоминаний в контексте перехода: 2",
-      "levels": [
-        8,
-        7,
-        6,
-        5
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "безопасность как статическая alignment/ACL/политики доступа.",
-      "momentum": -25,
-      "rationale": "Угасает: переход от «безопасность как статическая alignment/ACL/политики доступа.» к «безопасность как непрерывная оценка траекторий, прав/разрешений и вероятности нарушений на каждом шаге (path-based compliance).». Упоминаний в контексте перехода: 1",
+      "name": "модели обучаются/развиваются преимущественно в коммерческом публичном контуре.",
+      "momentum": -55,
+      "rationale": "Угасает: переход от «модели обучаются/развиваются преимущественно в коммерческом публичном контуре.» к «двухконтурная система: коммерческий контур + классифицированный контур обучения/эксплуатации, со своей инфраструктурой и институтами допуска.». Упоминаний в контексте перехода: 3",
       "levels": [
         9,
         8,
-        6
+        7,
+        3,
+        2
       ],
       "category": "decelerating"
     }
   ],
   "cross_level_links": [
     {
-      "title": "Энергетическое ограничение (У1) → география DC (У2) → межфирменные стратегии (У5) → денежные контуры (У9)",
-      "description": "Энергетическое ограничение (У1) → география DC (У2) → межфирменные стратегии (У5) → денежные контуры (У9)   Дефицит/волатильность энергии и потребность в “чистом” power вынуждают заключать 20-летние контракты и инвестировать в генерацию (Google), что делает AI-инфру инфраструктурным классом активов и требует длинного капитала.",
-      "levels": [
-        9,
-        5,
-        2,
-        1
-      ],
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-18/google-ties-data-center-to-20-year-power-deal-solar-investment"
-      ]
-    },
-    {
-      "title": "Оборонные институты знания (У7) → технологические практики (У6) → рынки/цепочки (У5) → режимы легитимности (У8/У9)",
-      "description": "Оборонные институты знания (У7) → технологические практики (У6) → рынки/цепочки (У5) → режимы легитимности (У8/У9)   Secure training на classified data формирует отдельные pipeline, требования к комплаенсу, сертификации и “гражданско-военному” разделению труда; это затем давит на рынок поставщиков моделей/облаков.",
-      "levels": [
-        9,
-        8,
-        7,
-        6,
-        5
-      ],
-      "sources": [
-        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
-      ]
-    },
-    {
-      "title": "Рост агентности и риска (У4/У6) → необходимость runtime-governance (У6/У8) → финансовая ответственность (У9)",
-      "description": "Рост агентности и риска (У4/У6) → необходимость runtime-governance (У6/У8) → финансовая ответственность (У9)   Когда агенты получают экономическую агентность (торговля, контракты), появляется запрос на “политики на путях” и вероятностные нарушения комплаенса; далее это превращается в страхование/резервы/аудит как финансовый продукт.",
-      "levels": [
-        9,
-        8,
-        6,
-        4
-      ],
-      "sources": []
-    }
-  ],
-  "structural_shifts": [
-    {
-      "title": "От облачного Opex к инфраструктурному CapEx-энергоальянсу",
-      "from": "compute как масштабируемая облачная услуга, оптимизируемая внутри дата-центра.",
-      "to": "compute как *энерго-инфраструктурный проект* с длинными power-контрактами, батареями/накопителями и привязкой к региональной генерации.",
-      "through": "рост спроса AI + ограничения сети/генерации → компании берут на себя стоимость расширения “clean power” и фиксируют долгие тарифы.",
+      "title": "Энергия/память (Ур.1-2-4) → реструктуризация value chain (Ур.5) → финансовая переоценка AI (Ур.9)",
+      "description": "Энергия/память (Ур.1-2-4) → реструктуризация value chain (Ур.5) → финансовая переоценка AI (Ур.9)   Дефицит мощности и рост капекса на память/фабрики заставляют компании закреплять долгие энергетические контракты и расширять дата-центры (Ур.2), что меняет конкурентные позиции и ожидания инвесторов по маржинальности.,",
       "levels": [
         9,
         5,
@@ -587,211 +672,341 @@
         2,
         1
       ],
-      "trend": "accelerating",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-18/google-ties-data-center-to-20-year-power-deal-solar-investment",
-        "https://www.bloomberg.com/news/articles/2026-03-18/ai-boom-drives-us-to-build-enough-battery-systems-for-domestic-demand"
+        "https://www.bloomberg.com/news/articles/2026-03-18/micron-gives-upbeat-forecast-after-demand-soars-for-memory-chips"
       ]
     },
     {
-      "title": "Юрисдикционное расслоение знания: академия/индустрия/оборона",
-      "from": "глобальные каналы трансфера знаний через университеты и международные коллаборации.",
-      "to": "разделение на режимы допуска (classified vs civilian; trusted vs risky партнерства), где знание становится объектом безопасности.",
-      "through": "security concerns по коллаборациям ЕС↔Китай + расширение оборонного запроса на обучение моделей на секретных данных.",
+      "title": "Гос-институты и безопасность (Ур.8-9) → технологические требования (Ур.4-6) → новая профструктура (Ур.3)",
+      "description": "Гос-институты и безопасность (Ур.8-9) → технологические требования (Ур.4-6) → новая профструктура (Ур.3)   Переход к обучению на классифицированных данных требует доказуемых механизмов governance/логирования/контроля, что тянет новые роли и компетенции.,",
       "levels": [
+        9,
         8,
+        6,
+        4,
+        3
+      ],
+      "sources": [
+        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/",
+        "https://arxiv.org/abs/2603.16938"
+      ]
+    },
+    {
+      "title": "Финансовый скепсис (Ур.9) → давление на «agentic AI» продуктовую упаковку (Ур.5-4) → стандартизация практик надежности (Ур.6-7)",
+      "description": "Финансовый скепсис (Ур.9) → давление на «agentic AI» продуктовую упаковку (Ур.5-4) → стандартизация практик надежности (Ур.6-7)   Реакция рынка на Tencent показывает: «агентность» должна быть встроена в понятный экономический контур; это стимулирует индустрию к формализации памяти, авторизации, атрибуции.,,",
+      "levels": [
+        9,
         7,
         6,
-        5
+        5,
+        4
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-18/tencent-s-sales-rise-13-in-boost-for-broader-ai-ambitions",
+        "https://arxiv.org/abs/2603.17170",
+        "https://arxiv.org/abs/2603.17445"
+      ]
+    }
+  ],
+  "structural_shifts": [
+    {
+      "title": "От narrative-AI к audited-AI (доказуемо управляемым агентам)»**",
+      "from": "рынок платит за демонстрации возможностей/«агентный хайп».",
+      "to": "рынок и регуляторы требуют управляемости: память с governance, точная авторизация, атрибуция, безопасность.",
+      "through": "провалы монетизации (Tencent) + рост рисков (корп. киберинциденты) + оборонный заказчик как «требовательный покупатель».",
+      "levels": [
+        9,
+        8,
+        6,
+        4,
+        3
       ],
       "trend": "accelerating",
       "sources": [
-        "https://www.bloomberg.com/news/newsletters/2026-03-18/chinese-partnerships-with-european-universities-stir-security-concerns",
+        "https://www.bloomberg.com/news/articles/2026-03-18/tencent-s-sales-rise-13-in-boost-for-broader-ai-ambitions",
+        "https://www.bloomberg.com/news/articles/2026-03-19/us-tells-companies-to-secure-microsoft-system-after-stryker-hack",
         "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
       ]
     },
     {
-      "title": "Агентная экономика требует новых институтов контроля: от “политики в промпте” к runtime governance",
-      "from": "безопасность как статическая alignment/ACL/политики доступа.",
-      "to": "безопасность как непрерывная оценка траекторий, прав/разрешений и вероятности нарушений на каждом шаге (path-based compliance).",
-      "through": "рост автономности, многотурновости и “непредсказуемых путей” агентных систем → формализация управления выполнением.",
+      "title": "Энергетико-памятный поворот AI-инфраструктуры»**",
+      "from": "«GPU как главный дефицит».",
+      "to": "«memory + power + дата-центры в ГВт + долгие PPA-контракты» как главный ограничитель масштаба.",
+      "through": "рост спроса на HBM/память → капекс фабрик → рост климат/энерго-ограничений → долгие энергосделки.",
       "levels": [
         9,
-        8,
-        6
+        5,
+        4,
+        3,
+        2,
+        1
       ],
       "trend": "accelerating",
       "sources": [
-        "https://arxiv.org/abs/2603.16586"
+        "https://www.bloomberg.com/news/articles/2026-03-18/micron-gives-upbeat-forecast-after-demand-soars-for-memory-chips",
+        "https://www.bloomberg.com/news/articles/2026-03-18/google-ties-data-center-to-20-year-power-deal-solar-investment"
+      ]
+    },
+    {
+      "title": "Военный контур как отдельная зона разделения труда для frontier AI»**",
+      "from": "модели обучаются/развиваются преимущественно в коммерческом публичном контуре.",
+      "to": "двухконтурная система: коммерческий контур + классифицированный контур обучения/эксплуатации, со своей инфраструктурой и институтами допуска.",
+      "through": "потребность в доменно-специфическом обучении на секретных данных + требования надежности/комплаенса.",
+      "levels": [
+        9,
+        8,
+        7,
+        3,
+        2
+      ],
+      "trend": "emerging",
+      "sources": [
+        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
       ]
     }
   ],
   "radar_signals": [
     {
-      "title": "Криптодонаты и политическое влияние",
-      "description": "призывы в UK запретить crypto donations из-за опасений иностранного влияния - это предвестник ужесточения “денежных входов” в политику, что позже может перейти в регулирование agent-to-agent платежей/крипто-рельс для автономных систем.",
+      "title": "Переоценка «agentic» активов публичным рынком",
+      "description": "инвесторы начинают требовать схем монетизации и контроля рисков, иначе - наказание капитализацией (пример Tencent).",
       "level_group": "upper",
       "level_range": "7-9",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-18/uk-urged-to-ban-crypto-donations-as-us-and-others-seek-influence"
+        "https://www.bloomberg.com/news/articles/2026-03-18/tencent-s-sales-rise-13-in-boost-for-broader-ai-ambitions"
       ]
     },
     {
-      "title": "Prediction markets на войне",
-      "description": "конфликт легитимности и социального поведения вокруг рынков предсказаний (Kalshi/Polymarket) может привести к лицензированию, KYC и новым режимам “информационных финансов”.",
+      "title": "Классифицированное обучение как «новый рынок»",
+      "description": "если Пентагон запустит стандартизированные secure training environments, это станет шаблоном для союзников и создаст глобальный институт.",
       "level_group": "upper",
       "level_range": "7-9",
       "sources": [
-        "https://www.bloomberg.com/news/videos/2026-03-18/kalshi-ceo-calls-arizona-charges-total-overstep-video",
-        "https://www.bloomberg.com/news/newsletters/2026-03-18/polymarket-gamblers-threaten-reporter-over-coverage-of-the-war-in-iran"
+        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
       ]
     },
     {
-      "title": "Стандарты бенчмарков агентов (CUBE)",
-      "description": "если сообщество примет протокол, это изменит рынок “оценка/сертификация/закупки” и снизит барьеры для новых игроков.",
+      "title": "EU запрет на AI для nonconsensual sexual images",
+      "description": "точечное регулирование генеративных моделей по конкретным злоупотреблениям (быстрое ужесточение по категориям риска).",
       "level_group": "upper",
       "level_range": "7-9",
       "sources": [
-        "https://arxiv.org/abs/2603.15798"
+        "https://www.bloomberg.com/news/articles/2026-03-18/eu-moves-to-ban-ai-that-creates-non-consensual-sexual-images"
       ]
     },
     {
-      "title": "Массовый поворот к memory engineering",
-      "description": "(селективная запись, компиляция опыта, маршрутизация памяти) - возможен переход к “memory middleware” как отдельному слою индустрии.",
+      "title": "Memory governance как стандарт предприятия",
+      "description": "исследования про governed/shared memory для multi-agent workflow сигнализируют, что «память» станет инфраструктурным слоем наподобие IAM/observability.",
       "level_group": "upper",
       "level_range": "7-9",
-      "sources": []
+      "sources": [
+        "https://arxiv.org/abs/2603.17787"
+      ]
     },
     {
-      "title": "Батарейные системы как инфраструктурный компаньон дата-центров",
-      "description": "достижение США по domestic capacity - сигнал, что next bottleneck будет не только GPU, но и grid/battery/cooling.",
+      "title": "Task-scoped authorization (после OAuth)",
+      "description": "PAuth указывает на будущую перестройку интернет-авторизации под агентный веб.",
       "level_group": "upper",
       "level_range": "7-9",
-      "sources": []
+      "sources": [
+        "https://arxiv.org/abs/2603.17170"
+      ]
+    },
+    {
+      "title": "Greybox-валидация агентов",
+      "description": "fuzzing по tool-sequence как новый класс AppSec для агентов.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://arxiv.org/abs/2603.17639"
+      ]
+    },
+    {
+      "title": "Долгие энергоконтракты дата-центров",
+      "description": "20-летние сделки и масштаб в ГВт - признак закрепления территорий под AI.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-18/google-ties-data-center-to-20-year-power-deal-solar-investment"
+      ]
+    },
+    {
+      "title": "Климатическая цена memory-бума",
+      "description": "возможны будущие углеродные ограничения именно по полупроводникам и дата-центрам.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-18/meeting-surging-demand-for-ai-memory-chips-has-a-climate-cost"
+      ]
+    },
+    {
+      "title": "AI-реорганизация занятости в финсекторе",
+      "description": "сигналы по HSBC - ранний маркер волны в других банках.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-03-19/hsbc-weighs-job-cuts-from-multiyear-ai-fueled-overhaul-video"
+      ]
     }
   ],
   "metrics": {
-    "total_events": 23,
+    "total_events": 31,
     "events_by_level": {
-      "1": 1,
-      "2": 2,
-      "3": 2,
-      "4": 2,
-      "5": 4,
-      "6": 4,
-      "7": 2,
-      "8": 3,
-      "9": 3
+      "1": 2,
+      "2": 6,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 3,
+      "7": 0,
+      "8": 4,
+      "9": 4
     },
-    "total_sources": 28,
+    "total_sources": 19,
     "structural_shifts_count": 3,
-    "radar_signals_count": 5,
+    "radar_signals_count": 9,
     "cross_level_links_count": 3,
     "momentum_trends_count": 12
   },
   "categories": [],
   "momentum_trends": [
     {
-      "name": "AI-CapEx / Энергоинфраструктура для compute",
-      "momentum": 85,
-      "rationale": "20-летние power deals для DC и рост роли накопителей показывают закрепление энергоконтуров как базы AI.",
+      "name": "AI-CapEx (память/фабрики/дата-центры/энергия)",
+      "momentum": 90,
+      "rationale": "Micron повышает capex под спрос на AI-память; NTT удваивает мощности дата-центров; Google заключает 20-летний энергоконтракт.,",
       "levels": [
         1,
         2,
         4,
+        5,
         9
       ],
       "category": "accelerating"
     },
     {
-      "name": "Рост цен на compute / монетизация дефицита",
-      "momentum": 70,
-      "rationale": "Alibaba повышает цены до 34%, индустрия пытается отбить инвестиции и фиксирует рыночную власть облака.",
-      "levels": [],
-      "category": "accelerating"
-    },
-    {
-      "name": "Агентные AI-платформы (OpenClaw-style)",
+      "name": "«Энергетическая вертикальная интеграция» Big Tech (PPA/собственная генерация)",
       "momentum": 75,
-      "rationale": "Tencent удваивает инвестиции в AI под агентные сценарии; рынок акций в Китае реагирует на нарратив “next ChatGPT”.",
-      "levels": [],
+      "rationale": "20-летний контракт Google с обязательством финансировать новую clean power - закрепление энергии как стратегического актива.",
+      "levels": [
+        1,
+        2,
+        5,
+        9
+      ],
       "category": "accelerating"
     },
     {
-      "name": "AI-security (автоматизированный offensive/defensive security с AI)",
-      "momentum": 65,
-      "rationale": "Xbow >$1B подтверждает, что безопасность становится отдельной “золотой жилой” AI-рынка.",
-      "levels": [],
-      "category": "accelerating"
-    },
-    {
-      "name": "Runtime governance / комплаенс по траекториям агента",
+      "name": "Agentic AI как массовый рынок (особенно Китай)",
       "momentum": 45,
-      "rationale": "появляется формализация “policies on paths” как общий язык для управления агентами; пока это больше research/early внедрения.",
-      "levels": [],
-      "category": "emerging"
-    },
-    {
-      "name": "Оборонный/классифицированный AI как отдельная линия развития",
-      "momentum": 60,
-      "rationale": "планы Пентагона на secure training environments для обучения на секретных данных - институциональный рывок.",
-      "levels": [],
-      "category": "accelerating"
-    },
-    {
-      "name": "Классический SaaS pricing (подписка) → давление со стороны AI / переход к consumption",
-      "momentum": -25,
-      "rationale": "SAP прямо готовит use-based pricing как ответ на угрозу legacy subscription модели - это сигнал эрозии старой схемы монетизации.",
-      "levels": [],
-      "category": "decelerating"
-    },
-    {
-      "name": "Легитимность prediction markets (между “финансами” и “гэмблингом”)",
-      "momentum": 10,
-      "rationale": "уголовные кейсы и военные сюжеты повышают внимание регулятора; рынок растет, но может упереться в запреты/лицензирование.",
-      "levels": [],
+      "rationale": "сохраняется хайп и предпринимательский «gold rush», но рынок наказывает отсутствие монетизации (Tencent), т.е. рост идет с фрикцией.",
+      "levels": [
+        5,
+        8,
+        9
+      ],
       "category": "stable"
     },
     {
-      "name": "Private credit как “топливо” для AI-инфраструктуры",
-      "momentum": -35,
-      "rationale": "Pimco говорит о “cooling”; если это продолжится, появится разрыв между потребностью в CapEx и доступностью длинного долга.",
-      "levels": [],
+      "name": "Security/Assurance для AI-агентов (валидация, авторизация, аудит)",
+      "momentum": 80,
+      "rationale": "растет поле исследований и практик (greybox validation, task-scoped authorization), параллельно усиливается кибердавление на корпсистемы (Microsoft tool warning).,",
+      "levels": [
+        4,
+        6,
+        8
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Суверенный/оборонный AI (classified training environments)",
+      "momentum": 70,
+      "rationale": "Пентагон обсуждает инфраструктуру обучения на секретных данных - это институционализирует «суверенные контуры» моделей.",
+      "levels": [
+        2,
+        7,
+        8,
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Корпоративные сокращения middle/back office через AI",
+      "momentum": 60,
+      "rationale": "HSBC рассматривает многолетние сокращения, прямо связывая их с AI-реформой.",
+      "levels": [
+        3,
+        5,
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "«AI как free option» в оценке конгломератов (не монетизировано → не учитывается рынком)",
+      "momentum": -10,
+      "rationale": "тезис по Alibaba - AI потенциал не встроен в цену; инвесторы пока не верят в превращение AI в устойчивый cash flow без ясной модели.",
+      "levels": [
+        9,
+        5
+      ],
       "category": "decelerating"
     },
     {
-      "name": "compute как масштабируемая облачная услуга, оптимизируемая внутри дата-центра.",
+      "name": "Регуляторное ужесточение по «сексуальным дипфейкам»",
+      "momentum": 55,
+      "rationale": "ЕС движется к запрету инструментов, создающих nonconsensual sexual images, после инцидентов вокруг Grok.",
+      "levels": [
+        8,
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Классический SaaS / долговые сделки под софт - давление от AI-disruption",
+      "momentum": -35,
+      "rationale": "банки остановили размещение долга Qualtrics на $5.3B на фоне тревоги инвесторов о AI-дизрапшне.",
+      "levels": [
+        5,
+        9
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "рынок платит за демонстрации возможностей/«агентный хайп».",
       "momentum": -25,
-      "rationale": "Угасает: переход от «compute как масштабируемая облачная услуга, оптимизируемая внутри дата-центра.» к «compute как *энерго-инфраструктурный проект* с длинными power-контрактами, батареями/накопителями и привязкой к региональной генерации.». Упоминаний в контексте перехода: 1",
+      "rationale": "Угасает: переход от «рынок платит за демонстрации возможностей/«агентный хайп».» к «рынок и регуляторы требуют управляемости: память с governance, точная авторизация, атрибуция, безопасность.». Упоминаний в контексте перехода: 1",
+      "levels": [
+        9,
+        8,
+        6,
+        4,
+        3
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "«GPU как главный дефицит».",
+      "momentum": -10,
+      "rationale": "Угасает: переход от ««GPU как главный дефицит».» к ««memory + power + дата-центры в ГВт + долгие PPA-контракты» как главный ограничитель масштаба.». Упоминаний в контексте перехода: 0",
       "levels": [
         9,
         5,
         4,
+        3,
         2,
         1
       ],
       "category": "decelerating"
     },
     {
-      "name": "глобальные каналы трансфера знаний через университеты и международные коллаборации.",
-      "momentum": -40,
-      "rationale": "Угасает: переход от «глобальные каналы трансфера знаний через университеты и международные коллаборации.» к «разделение на режимы допуска (classified vs civilian; trusted vs risky партнерства), где знание становится объектом безопасности.». Упоминаний в контексте перехода: 2",
-      "levels": [
-        8,
-        7,
-        6,
-        5
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "безопасность как статическая alignment/ACL/политики доступа.",
-      "momentum": -25,
-      "rationale": "Угасает: переход от «безопасность как статическая alignment/ACL/политики доступа.» к «безопасность как непрерывная оценка траекторий, прав/разрешений и вероятности нарушений на каждом шаге (path-based compliance).». Упоминаний в контексте перехода: 1",
+      "name": "модели обучаются/развиваются преимущественно в коммерческом публичном контуре.",
+      "momentum": -55,
+      "rationale": "Угасает: переход от «модели обучаются/развиваются преимущественно в коммерческом публичном контуре.» к «двухконтурная система: коммерческий контур + классифицированный контур обучения/эксплуатации, со своей инфраструктурой и институтами допуска.». Упоминаний в контексте перехода: 3",
       "levels": [
         9,
         8,
-        6
+        7,
+        3,
+        2
       ],
       "category": "decelerating"
     }
