@@ -1,5 +1,4 @@
 name: Validate Report Data
-
 # Run on every push that touches data files in gh-pages branch
 on:
   push:
@@ -20,6 +19,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: gh-pages
+          fetch-depth: 15
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -32,18 +33,19 @@ jobs:
           git checkout origin/main -- scripts/validate_report.py
 
       - name: Run validation
+        id: validate
         run: |
           python3 scripts/validate_report.py data/latest-report.json
+          echo "valid=true" >> $GITHUB_OUTPUT
+        continue-on-error: true
 
       - name: Post summary
         if: always()
         run: |
           python3 - <<'EOF'
           import json, sys
-
           with open("data/latest-report.json") as f:
               data = json.load(f)
-
           total = 0
           with_src = 0
           for level in data.get("srt_levels", []):
@@ -51,13 +53,66 @@ jobs:
                   total += 1
                   if ev.get("sources"):
                       with_src += 1
-
           pct = with_src / total * 100 if total else 0
           print(f"Report date: {data.get('date', 'unknown')}")
+          print(f"Generated at: {data.get('generated_at', 'unknown')}")
           print(f"Events: {total} total, {with_src} with sources ({pct:.0f}%)")
-
-          if pct < 50:
+          if total == 0:
+              print("::error::CRITICAL - Report has 0 events! AIwatcher generation bug detected.")
+          elif pct < 50:
               print("::warning::Less than 50% of events have source URLs!")
           else:
               print("::notice::Source coverage is acceptable.")
           EOF
+
+      - name: Auto-revert if events are empty
+        if: steps.validate.outcome == 'failure'
+        run: |
+          # Check if this is a critical empty-events failure
+          EVENTS=$(python3 -c "
+          import json
+          with open('data/latest-report.json') as f:
+              data = json.load(f)
+          total = sum(len(l.get('events',[])) for l in data.get('srt_levels',[]))
+          print(total)
+          ")
+          echo "Events count: $EVENTS"
+
+          if [ "$EVENTS" = "0" ]; then
+            echo "::error::CRITICAL: 0 events detected. Auto-reverting to previous good commit..."
+
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git config user.name "GitHub Actions"
+
+            # Find the last commit with non-empty events (skip current HEAD)
+            GOOD_COMMIT=""
+            for HASH in $(git log --format="%H" HEAD~1..HEAD~12 2>/dev/null || git log --format="%H" --skip=1 -12); do
+              COUNT=$(git show $HASH:data/latest-report.json 2>/dev/null | python3 -c "
+          import json,sys
+          try:
+              d=json.load(sys.stdin)
+              t=sum(len(l.get('events',[])) for l in d.get('srt_levels',[]))
+              print(t)
+          except: print(0)
+          " 2>/dev/null || echo "0")
+              if [ "$COUNT" -gt "0" ] 2>/dev/null; then
+                GOOD_COMMIT=$HASH
+                echo "Found good commit: $HASH with $COUNT events"
+                break
+              fi
+            done
+
+            if [ -n "$GOOD_COMMIT" ]; then
+              git show $GOOD_COMMIT:data/latest-report.json > data/latest-report.json
+              git show $GOOD_COMMIT:data/latest-report.en.json > data/latest-report.en.json 2>/dev/null || true
+              git add data/latest-report.json data/latest-report.en.json
+              git commit -m "auto-revert: restore non-empty report from ${GOOD_COMMIT:0:8} (AIwatcher pushed empty events)"
+              git push origin gh-pages
+              echo "::notice::Auto-reverted to $GOOD_COMMIT"
+            else
+              echo "::warning::Could not find a good commit to revert to in recent history"
+            fi
+          else
+            echo "Events exist ($EVENTS), validation failed due to source coverage. Manual review needed."
+            exit 1
+          fi

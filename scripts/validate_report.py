@@ -114,7 +114,12 @@ def validate(report_path: str) -> tuple[bool, list[str], list[str]]:
                     events_bad_urls.append((title, url))
 
     if total_events == 0:
-        errors.append("Report contains no events in srt_levels")
+        # Critical: ALL levels are empty — this is a generation bug, not a data issue
+        errors.append(
+            "CRITICAL: All srt_levels have empty events arrays. "
+            "This indicates a bug in the AIwatcher generation script — "
+            "the report was generated but events were not populated."
+        )
         return False, errors, warnings
 
     fraction = events_with_sources / total_events
