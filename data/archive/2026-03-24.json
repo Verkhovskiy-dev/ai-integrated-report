@@ -1,0 +1,977 @@
+{
+  "date": "2026-03-24",
+  "generated_at": "2026-03-24T05:01:35.246Z",
+  "key_focus": "",
+  "srt_levels": [
+    {
+      "level": 9,
+      "name": "Денежная система",
+      "events": [
+        {
+          "title": "Появляется специализированный финансовый инструмент для ставок/хеджа на долговой риск «пятерки» hyperscalers из-за беспрецедентного заимствования под AI-инфраструктуру: JPMorgan предлагает клиентам новый CDS-basket",
+          "description": "Появляется специализированный финансовый инструмент для ставок/хеджа на долговой риск «пятерки» hyperscalers из-за беспрецедентного заимствования под AI-инфраструктуру: JPMorgan предлагает клиентам новый CDS-basket. Это означает, что AI-CapEx стал настолько велик, что порождает вторичный рынок рисков (страхование/шорт) как отдельный слой денежной системы.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-23/jpmorgan-offers-clients-a-new-cds-basket-to-hedge-ai-debt-risk"
+          ]
+        },
+        {
+          "title": "Капитал продолжает «перетекать» в compute/инфраструктуру: британский девелопер дата-центров Nscale достигает оценки $14.6B и поднимает $2B, усиливая европейский контур AI-инфраструктуры как класса активов",
+          "description": "Капитал продолжает «перетекать» в compute/инфраструктуру: британский девелопер дата-центров Nscale достигает оценки $14.6B и поднимает $2B, усиливая европейский контур AI-инфраструктуры как класса активов.",
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-03-23/nscale-reaches-14-6b-valuation-adds-sandberg-to-board-video"
+          ]
+        },
+        {
+          "title": "Чиповые проекты становятся центром капиталовложений и долгих ставок (Terafab/IPO/новые чипы под агентность)",
+          "description": "Чиповые проекты становятся центром капиталовложений и долгих ставок (Terafab/IPO/новые чипы под агентность).",
+          "sources": []
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 8,
+      "name": "Спонтанный порядок",
+      "events": [
+        {
+          "title": "Формируется новая «норма рынка»: AI-инфраструктура трактуется как индустрия с понятным профилем риска, по которому можно строить деривативы и публичные истории роста (IPO/борд-структуры/звездные директора)",
+          "description": "Формируется новая «норма рынка»: AI-инфраструктура трактуется как индустрия с понятным профилем риска, по которому можно строить деривативы и публичные истории роста (IPO/борд-структуры/звездные директора). Признаки: подготовка к IPO у Nvidia-backed Firmus (директора «под публичность»).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-23/nvidia-backed-firmus-names-three-directors-ahead-of-mooted-ipo"
+          ]
+        },
+        {
+          "title": "FCC вводит запрет на импорт новых моделей foreign-produced consumer wireless routers по линии нацбезопасности",
+          "description": "FCC вводит запрет на импорт новых моделей foreign-produced consumer wireless routers по линии нацбезопасности. Это переводит «домашний роутер» из товарной категории в объект критической инфраструктуры, ломая прежнюю рыночную норму глобальной взаимозаменяемости.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-23/fcc-bans-all-foreign-made-routers-citing-security-risks"
+          ]
+        },
+        {
+          "title": "Meta acqui-hire команды Dreamer (AI агенты для пользователей)",
+          "description": "Meta acqui-hire команды Dreamer (AI агенты для пользователей). Это сигнал, что рынок «агентных UX» становится зоной жесткой конкуренции за команды и скорость вывода.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-23/meta-hires-former-google-stripe-execs-behind-ai-startup-dreamer"
+          ]
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 7,
+      "name": "Институты производства знаний",
+      "events": [
+        {
+          "title": "Академический контур фиксирует концепт «товаризации токенов» (tokens as commodity) и проектирование token futures (стандартизированный контракт на «Standard Inference Token»)",
+          "description": "Академический контур фиксирует концепт «товаризации токенов» (tokens as commodity) и проектирование token futures (стандартизированный контракт на «Standard Inference Token»). Это претензия на институционализацию стоимости inference как биржевого товара.",
+          "sources": [
+            "https://arxiv.org/abs/2603.21690"
+          ]
+        },
+        {
+          "title": "Смещение языка продукта: «agentic AI и inference computing» как отдельная категория назначения чипа",
+          "description": "Смещение языка продукта: «agentic AI и inference computing» как отдельная категория назначения чипа.",
+          "sources": []
+        },
+        {
+          "title": "OpenAI «бросает все» на построение fully automated researcher (агент-исследователь)",
+          "description": "OpenAI «бросает все» на построение fully automated researcher (агент-исследователь). Это рефрейминг миссии: не «чат», а автоматизированное производство нового знания.",
+          "sources": [
+            "https://www.technologyreview.com/2026/03/20/1134438/openai-is-throwing-everything-into-building-a-fully-automated-researcher/"
+          ]
+        },
+        {
+          "title": "Пентагон планирует secure environments для обучения/дообучения военных версий моделей на classified data",
+          "description": "Пентагон планирует secure environments для обучения/дообучения военных версий моделей на classified data. Это институционализация «закрытых контуров знания» для государства.",
+          "sources": [
+            "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
+          ]
+        }
+      ],
+      "event_count": 4
+    },
+    {
+      "level": 6,
+      "name": "Технологии производства знаний",
+      "events": [
+        {
+          "title": "В исследованиях и индустрии ускоряется линия на управление latency/cost (маршрутизация запросов cloud-edge-device, «consistency-aware routing»)",
+          "description": "В исследованиях и индустрии ускоряется линия на управление latency/cost (маршрутизация запросов cloud-edge-device, «consistency-aware routing»). Это методологически поддерживает идею «токен как unit-экономика».",
+          "sources": [
+            "https://arxiv.org/abs/2603.21237"
+          ]
+        },
+        {
+          "title": "На arXiv лавинообразно растут практики «агентных конвейеров» и контроля качества: proactive error forecasting для MAS (PROMAS)",
+          "description": "На arXiv лавинообразно растут практики «агентных конвейеров» и контроля качества: proactive error forecasting для MAS (PROMAS).",
+          "sources": [
+            "https://arxiv.org/abs/2603.20260"
+          ]
+        },
+        {
+          "title": "Стресс-тесты коммуникаций embodied multi-agent under latency/packet loss (AgentComm-Bench) - сближение с реальными сетевыми условиями",
+          "description": "Стресс-тесты коммуникаций embodied multi-agent under latency/packet loss (AgentComm-Bench) - сближение с реальными сетевыми условиями.",
+          "sources": [
+            "https://arxiv.org/abs/2603.20285"
+          ]
+        },
+        {
+          "title": "Усложнение governance для multi-agent knowledge ecosystems (governance-aware vector subscriptions)",
+          "description": "Усложнение governance для multi-agent knowledge ecosystems (governance-aware vector subscriptions).",
+          "sources": [
+            "https://arxiv.org/abs/2603.20833"
+          ]
+        },
+        {
+          "title": "Появляются примитивы «reasoning provenance» (AER) как инфраструктура аудита поведения агентов",
+          "description": "Появляются примитивы «reasoning provenance» (AER) как инфраструктура аудита поведения агентов.",
+          "sources": [
+            "https://arxiv.org/abs/2603.21692"
+          ]
+        }
+      ],
+      "event_count": 5
+    },
+    {
+      "level": 5,
+      "name": "Разделение труда между фирмами",
+      "events": [
+        {
+          "title": "Усиливается специализация: «дата-центровые компании» и «финансовые институты» становятся отдельными ключевыми игроками AI-цепочки (compute как актив; риск как продукт)",
+          "description": "Усиливается специализация: «дата-центровые компании» и «финансовые институты» становятся отдельными ключевыми игроками AI-цепочки (compute как актив; риск как продукт).",
+          "sources": []
+        },
+        {
+          "title": "Пересборка цепочек: запрет роутеров - сигнал к reshoring/ally-shoring, росту роли доверенных поставщиков и сертификационных контуров (телеком/IoT)",
+          "description": "Пересборка цепочек: запрет роутеров - сигнал к reshoring/ally-shoring, росту роли доверенных поставщиков и сертификационных контуров (телеком/IoT).",
+          "sources": []
+        },
+        {
+          "title": "Логика «делаем сами» усиливается у платформ и квази-платформ (Alibaba; Musk-экосистема)",
+          "description": "Логика «делаем сами» усиливается у платформ и квази-платформ (Alibaba; Musk-экосистема). Риск: конфликт с существующими foundry/EDA/поставщиками, но стратегический выигрыш - контроль над сроками/стоимостью/экспортными ограничениями.",
+          "sources": []
+        },
+        {
+          "title": "Разделение труда смещается: компании начинают покупать не «модели», а команды, которые умеют собирать агентные продукты, и инфраструктуру наблюдаемости/контроля",
+          "description": "Разделение труда смещается: компании начинают покупать не «модели», а команды, которые умеют собирать агентные продукты, и инфраструктуру наблюдаемости/контроля.",
+          "sources": []
+        }
+      ],
+      "event_count": 4
+    },
+    {
+      "level": 4,
+      "name": "«Железные» технологии",
+      "events": [
+        {
+          "title": "Сдвиг от «просто больших моделей» к «инфраструктуре их поставки»: routing, edge inference, latency-aware системы",
+          "description": "Сдвиг от «просто больших моделей» к «инфраструктуре их поставки»: routing, edge inference, latency-aware системы.",
+          "sources": [
+            "https://arxiv.org/abs/2603.21237"
+          ]
+        },
+        {
+          "title": "«Edge-узлы» (роутеры) становятся политически управляемыми компонентами compute/данных",
+          "description": "«Edge-узлы» (роутеры) становятся политически управляемыми компонентами compute/данных.",
+          "sources": []
+        },
+        {
+          "title": "Alibaba запускает новый дизайн чипа под agentic AI/inference, расширяя портфель полупроводников под AI-амбиций - это усиление китайской вертикали «облако + модели + чипы»",
+          "description": "Alibaba запускает новый дизайн чипа под agentic AI/inference, расширяя портфель полупроводников под AI-амбиций - это усиление китайской вертикали «облако + модели + чипы».",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-24/alibaba-unveils-new-chip-design-to-meet-surging-demand-for-ai"
+          ]
+        },
+        {
+          "title": "Илон Маск заявляет о совместном (Tesla+SpaceX) advanced chip manufacturing facility в Остине (Austin, Texas)",
+          "description": "Илон Маск заявляет о совместном (Tesla+SpaceX) advanced chip manufacturing facility в Остине (Austin, Texas). Это попытка собрать собственный «контур производства» для robotics/AI/space DC.",
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-03-23/musk-says-tesla-spacex-chip-project-to-start-in-texas-video"
+          ]
+        }
+      ],
+      "event_count": 4
+    },
+    {
+      "level": 3,
+      "name": "Социально-профессиональная структура",
+      "events": [
+        {
+          "title": "Усиливается спрос на роли: agent product engineers, AI security (agents), ML ops/observability для reasoning provenance, специалисты по secure ML (classified)",
+          "description": "Усиливается спрос на роли: agent product engineers, AI security (agents), ML ops/observability для reasoning provenance, специалисты по secure ML (classified). (Косвенно следует из Meta acqui-hire и defense-secure training.)",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-23/meta-hires-former-google-stripe-execs-behind-ai-startup-dreamer",
+            "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
+          ]
+        },
+        {
+          "title": "Рост Iran-linked cyberattacks и тезис, что AI делает атаки быстрее/мощнее - это превращает AI security в базовый слой для бизнеса",
+          "description": "Рост Iran-linked cyberattacks и тезис, что AI делает атаки быстрее/мощнее - это превращает AI security в базовый слой для бизнеса.",
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-03-23/iran-war-drives-surge-in-cyberattacks-video",
+            "https://www.bloomberg.com/news/videos/2026-03-23/open-interest-3-23-2026-video"
+          ]
+        },
+        {
+          "title": "Нидерландский Минфин блокирует часть систем после обнаружения взлома - демонстрация уязвимости госинфраструктуры",
+          "description": "Нидерландский Минфин блокирует часть систем после обнаружения взлома - демонстрация уязвимости госинфраструктуры.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-23/dutch-finance-ministry-blocks-computer-systems-after-hack"
+          ]
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 2,
+      "name": "Пространственная организация",
+      "events": [
+        {
+          "title": "Европа через Nscale демонстрирует рост собственной compute-инфраструктуры (не только как потребителя американских API)",
+          "description": "Европа через Nscale демонстрирует рост собственной compute-инфраструктуры (не только как потребителя американских API).",
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-03-23/nscale-reaches-14-6b-valuation-adds-sandberg-to-board-video"
+          ]
+        },
+        {
+          "title": "Усиление разрыва юрисдикций: «что можно поставить в США» и «что можно поставить в других зонах» - это уже разные рынки оборудования",
+          "description": "Усиление разрыва юрисдикций: «что можно поставить в США» и «что можно поставить в других зонах» - это уже разные рынки оборудования.",
+          "sources": []
+        },
+        {
+          "title": "Техас как узел промышленного возврата/нового размещения (Austin)",
+          "description": "Техас как узел промышленного возврата/нового размещения (Austin).",
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-03-23/musk-says-tesla-spacex-chip-project-to-start-in-texas-video"
+          ]
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 1,
+      "name": "Природные ресурсы",
+      "events": [
+        {
+          "title": "Энергетический аспект становится центральным: NextEra обсуждает рост спроса на электроэнергию из-за AI",
+          "description": "Энергетический аспект становится центральным: NextEra обсуждает рост спроса на электроэнергию из-за AI.",
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-03-23/nextera-ceo-ketchum-on-energy-demand-ai-power-needs-video"
+          ]
+        },
+        {
+          "title": "«Микроэнергетика» и бытовая генерация: Amazon и Lidl продвигают plug-in solar в UK при поддержке правительства, что в логике СРТ выглядит как расширение энергетического базиса цифровой экономики (в т.ч",
+          "description": "«Микроэнергетика» и бытовая генерация: Amazon и Lidl продвигают plug-in solar в UK при поддержке правительства, что в логике СРТ выглядит как расширение энергетического базиса цифровой экономики (в т.ч. edge/домашних устройств).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-24/amazon-and-lidl-to-sell-plug-in-solar-in-uk-to-help-lower-bills"
+          ]
+        },
+        {
+          "title": "Под эту интеграцию неминуемо упираемся в энергию/воду/охлаждение; параллельно обсуждается AI-driven power demand",
+          "description": "Под эту интеграцию неминуемо упираемся в энергию/воду/охлаждение; параллельно обсуждается AI-driven power demand.",
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-03-23/nextera-ceo-ketchum-on-energy-demand-ai-power-needs-video"
+          ]
+        }
+      ],
+      "event_count": 3
+    }
+  ],
+  "events": [
+    {
+      "title": "Появляется специализированный финансовый инструмент для ставок/хеджа на долговой риск «пятерки» hyperscalers из-за беспрецедентного заимствования под AI-инфраструктуру: JPMorgan предлагает клиентам новый CDS-basket",
+      "description": "Появляется специализированный финансовый инструмент для ставок/хеджа на долговой риск «пятерки» hyperscalers из-за беспрецедентного заимствования под AI-инфраструктуру: JPMorgan предлагает клиентам новый CDS-basket. Это означает, что AI-CapEx стал настолько велик, что порождает вторичный рынок рисков (страхование/шорт) как отдельный слой денежной системы.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-23/jpmorgan-offers-clients-a-new-cds-basket-to-hedge-ai-debt-risk"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Капитал продолжает «перетекать» в compute/инфраструктуру: британский девелопер дата-центров Nscale достигает оценки $14.6B и поднимает $2B, усиливая европейский контур AI-инфраструктуры как класса активов",
+      "description": "Капитал продолжает «перетекать» в compute/инфраструктуру: британский девелопер дата-центров Nscale достигает оценки $14.6B и поднимает $2B, усиливая европейский контур AI-инфраструктуры как класса активов.",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-03-23/nscale-reaches-14-6b-valuation-adds-sandberg-to-board-video"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Чиповые проекты становятся центром капиталовложений и долгих ставок (Terafab/IPO/новые чипы под агентность)",
+      "description": "Чиповые проекты становятся центром капиталовложений и долгих ставок (Terafab/IPO/новые чипы под агентность).",
+      "sources": [],
+      "level": 9
+    },
+    {
+      "title": "Формируется новая «норма рынка»: AI-инфраструктура трактуется как индустрия с понятным профилем риска, по которому можно строить деривативы и публичные истории роста (IPO/борд-структуры/звездные директора)",
+      "description": "Формируется новая «норма рынка»: AI-инфраструктура трактуется как индустрия с понятным профилем риска, по которому можно строить деривативы и публичные истории роста (IPO/борд-структуры/звездные директора). Признаки: подготовка к IPO у Nvidia-backed Firmus (директора «под публичность»).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-23/nvidia-backed-firmus-names-three-directors-ahead-of-mooted-ipo"
+      ],
+      "level": 8
+    },
+    {
+      "title": "FCC вводит запрет на импорт новых моделей foreign-produced consumer wireless routers по линии нацбезопасности",
+      "description": "FCC вводит запрет на импорт новых моделей foreign-produced consumer wireless routers по линии нацбезопасности. Это переводит «домашний роутер» из товарной категории в объект критической инфраструктуры, ломая прежнюю рыночную норму глобальной взаимозаменяемости.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-23/fcc-bans-all-foreign-made-routers-citing-security-risks"
+      ],
+      "level": 8
+    },
+    {
+      "title": "Meta acqui-hire команды Dreamer (AI агенты для пользователей)",
+      "description": "Meta acqui-hire команды Dreamer (AI агенты для пользователей). Это сигнал, что рынок «агентных UX» становится зоной жесткой конкуренции за команды и скорость вывода.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-23/meta-hires-former-google-stripe-execs-behind-ai-startup-dreamer"
+      ],
+      "level": 8
+    },
+    {
+      "title": "Академический контур фиксирует концепт «товаризации токенов» (tokens as commodity) и проектирование token futures (стандартизированный контракт на «Standard Inference Token»)",
+      "description": "Академический контур фиксирует концепт «товаризации токенов» (tokens as commodity) и проектирование token futures (стандартизированный контракт на «Standard Inference Token»). Это претензия на институционализацию стоимости inference как биржевого товара.",
+      "sources": [
+        "https://arxiv.org/abs/2603.21690"
+      ],
+      "level": 7
+    },
+    {
+      "title": "Смещение языка продукта: «agentic AI и inference computing» как отдельная категория назначения чипа",
+      "description": "Смещение языка продукта: «agentic AI и inference computing» как отдельная категория назначения чипа.",
+      "sources": [],
+      "level": 7
+    },
+    {
+      "title": "OpenAI «бросает все» на построение fully automated researcher (агент-исследователь)",
+      "description": "OpenAI «бросает все» на построение fully automated researcher (агент-исследователь). Это рефрейминг миссии: не «чат», а автоматизированное производство нового знания.",
+      "sources": [
+        "https://www.technologyreview.com/2026/03/20/1134438/openai-is-throwing-everything-into-building-a-fully-automated-researcher/"
+      ],
+      "level": 7
+    },
+    {
+      "title": "Пентагон планирует secure environments для обучения/дообучения военных версий моделей на classified data",
+      "description": "Пентагон планирует secure environments для обучения/дообучения военных версий моделей на classified data. Это институционализация «закрытых контуров знания» для государства.",
+      "sources": [
+        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
+      ],
+      "level": 7
+    },
+    {
+      "title": "В исследованиях и индустрии ускоряется линия на управление latency/cost (маршрутизация запросов cloud-edge-device, «consistency-aware routing»)",
+      "description": "В исследованиях и индустрии ускоряется линия на управление latency/cost (маршрутизация запросов cloud-edge-device, «consistency-aware routing»). Это методологически поддерживает идею «токен как unit-экономика».",
+      "sources": [
+        "https://arxiv.org/abs/2603.21237"
+      ],
+      "level": 6
+    },
+    {
+      "title": "На arXiv лавинообразно растут практики «агентных конвейеров» и контроля качества: proactive error forecasting для MAS (PROMAS)",
+      "description": "На arXiv лавинообразно растут практики «агентных конвейеров» и контроля качества: proactive error forecasting для MAS (PROMAS).",
+      "sources": [
+        "https://arxiv.org/abs/2603.20260"
+      ],
+      "level": 6
+    },
+    {
+      "title": "Стресс-тесты коммуникаций embodied multi-agent under latency/packet loss (AgentComm-Bench) - сближение с реальными сетевыми условиями",
+      "description": "Стресс-тесты коммуникаций embodied multi-agent under latency/packet loss (AgentComm-Bench) - сближение с реальными сетевыми условиями.",
+      "sources": [
+        "https://arxiv.org/abs/2603.20285"
+      ],
+      "level": 6
+    },
+    {
+      "title": "Усложнение governance для multi-agent knowledge ecosystems (governance-aware vector subscriptions)",
+      "description": "Усложнение governance для multi-agent knowledge ecosystems (governance-aware vector subscriptions).",
+      "sources": [
+        "https://arxiv.org/abs/2603.20833"
+      ],
+      "level": 6
+    },
+    {
+      "title": "Появляются примитивы «reasoning provenance» (AER) как инфраструктура аудита поведения агентов",
+      "description": "Появляются примитивы «reasoning provenance» (AER) как инфраструктура аудита поведения агентов.",
+      "sources": [
+        "https://arxiv.org/abs/2603.21692"
+      ],
+      "level": 6
+    },
+    {
+      "title": "Усиливается специализация: «дата-центровые компании» и «финансовые институты» становятся отдельными ключевыми игроками AI-цепочки (compute как актив; риск как продукт)",
+      "description": "Усиливается специализация: «дата-центровые компании» и «финансовые институты» становятся отдельными ключевыми игроками AI-цепочки (compute как актив; риск как продукт).",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "Пересборка цепочек: запрет роутеров - сигнал к reshoring/ally-shoring, росту роли доверенных поставщиков и сертификационных контуров (телеком/IoT)",
+      "description": "Пересборка цепочек: запрет роутеров - сигнал к reshoring/ally-shoring, росту роли доверенных поставщиков и сертификационных контуров (телеком/IoT).",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "Логика «делаем сами» усиливается у платформ и квази-платформ (Alibaba; Musk-экосистема)",
+      "description": "Логика «делаем сами» усиливается у платформ и квази-платформ (Alibaba; Musk-экосистема). Риск: конфликт с существующими foundry/EDA/поставщиками, но стратегический выигрыш - контроль над сроками/стоимостью/экспортными ограничениями.",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "Разделение труда смещается: компании начинают покупать не «модели», а команды, которые умеют собирать агентные продукты, и инфраструктуру наблюдаемости/контроля",
+      "description": "Разделение труда смещается: компании начинают покупать не «модели», а команды, которые умеют собирать агентные продукты, и инфраструктуру наблюдаемости/контроля.",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "Сдвиг от «просто больших моделей» к «инфраструктуре их поставки»: routing, edge inference, latency-aware системы",
+      "description": "Сдвиг от «просто больших моделей» к «инфраструктуре их поставки»: routing, edge inference, latency-aware системы.",
+      "sources": [
+        "https://arxiv.org/abs/2603.21237"
+      ],
+      "level": 4
+    },
+    {
+      "title": "«Edge-узлы» (роутеры) становятся политически управляемыми компонентами compute/данных",
+      "description": "«Edge-узлы» (роутеры) становятся политически управляемыми компонентами compute/данных.",
+      "sources": [],
+      "level": 4
+    },
+    {
+      "title": "Alibaba запускает новый дизайн чипа под agentic AI/inference, расширяя портфель полупроводников под AI-амбиций - это усиление китайской вертикали «облако + модели + чипы»",
+      "description": "Alibaba запускает новый дизайн чипа под agentic AI/inference, расширяя портфель полупроводников под AI-амбиций - это усиление китайской вертикали «облако + модели + чипы».",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-24/alibaba-unveils-new-chip-design-to-meet-surging-demand-for-ai"
+      ],
+      "level": 4
+    },
+    {
+      "title": "Илон Маск заявляет о совместном (Tesla+SpaceX) advanced chip manufacturing facility в Остине (Austin, Texas)",
+      "description": "Илон Маск заявляет о совместном (Tesla+SpaceX) advanced chip manufacturing facility в Остине (Austin, Texas). Это попытка собрать собственный «контур производства» для robotics/AI/space DC.",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-03-23/musk-says-tesla-spacex-chip-project-to-start-in-texas-video"
+      ],
+      "level": 4
+    },
+    {
+      "title": "Усиливается спрос на роли: agent product engineers, AI security (agents), ML ops/observability для reasoning provenance, специалисты по secure ML (classified)",
+      "description": "Усиливается спрос на роли: agent product engineers, AI security (agents), ML ops/observability для reasoning provenance, специалисты по secure ML (classified). (Косвенно следует из Meta acqui-hire и defense-secure training.)",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-23/meta-hires-former-google-stripe-execs-behind-ai-startup-dreamer",
+        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
+      ],
+      "level": 3
+    },
+    {
+      "title": "Рост Iran-linked cyberattacks и тезис, что AI делает атаки быстрее/мощнее - это превращает AI security в базовый слой для бизнеса",
+      "description": "Рост Iran-linked cyberattacks и тезис, что AI делает атаки быстрее/мощнее - это превращает AI security в базовый слой для бизнеса.",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-03-23/iran-war-drives-surge-in-cyberattacks-video",
+        "https://www.bloomberg.com/news/videos/2026-03-23/open-interest-3-23-2026-video"
+      ],
+      "level": 3
+    },
+    {
+      "title": "Нидерландский Минфин блокирует часть систем после обнаружения взлома - демонстрация уязвимости госинфраструктуры",
+      "description": "Нидерландский Минфин блокирует часть систем после обнаружения взлома - демонстрация уязвимости госинфраструктуры.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-23/dutch-finance-ministry-blocks-computer-systems-after-hack"
+      ],
+      "level": 3
+    },
+    {
+      "title": "Европа через Nscale демонстрирует рост собственной compute-инфраструктуры (не только как потребителя американских API)",
+      "description": "Европа через Nscale демонстрирует рост собственной compute-инфраструктуры (не только как потребителя американских API).",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-03-23/nscale-reaches-14-6b-valuation-adds-sandberg-to-board-video"
+      ],
+      "level": 2
+    },
+    {
+      "title": "Усиление разрыва юрисдикций: «что можно поставить в США» и «что можно поставить в других зонах» - это уже разные рынки оборудования",
+      "description": "Усиление разрыва юрисдикций: «что можно поставить в США» и «что можно поставить в других зонах» - это уже разные рынки оборудования.",
+      "sources": [],
+      "level": 2
+    },
+    {
+      "title": "Техас как узел промышленного возврата/нового размещения (Austin)",
+      "description": "Техас как узел промышленного возврата/нового размещения (Austin).",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-03-23/musk-says-tesla-spacex-chip-project-to-start-in-texas-video"
+      ],
+      "level": 2
+    },
+    {
+      "title": "Энергетический аспект становится центральным: NextEra обсуждает рост спроса на электроэнергию из-за AI",
+      "description": "Энергетический аспект становится центральным: NextEra обсуждает рост спроса на электроэнергию из-за AI.",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-03-23/nextera-ceo-ketchum-on-energy-demand-ai-power-needs-video"
+      ],
+      "level": 1
+    },
+    {
+      "title": "«Микроэнергетика» и бытовая генерация: Amazon и Lidl продвигают plug-in solar в UK при поддержке правительства, что в логике СРТ выглядит как расширение энергетического базиса цифровой экономики (в т.ч",
+      "description": "«Микроэнергетика» и бытовая генерация: Amazon и Lidl продвигают plug-in solar в UK при поддержке правительства, что в логике СРТ выглядит как расширение энергетического базиса цифровой экономики (в т.ч. edge/домашних устройств).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-24/amazon-and-lidl-to-sell-plug-in-solar-in-uk-to-help-lower-bills"
+      ],
+      "level": 1
+    },
+    {
+      "title": "Под эту интеграцию неминуемо упираемся в энергию/воду/охлаждение; параллельно обсуждается AI-driven power demand",
+      "description": "Под эту интеграцию неминуемо упираемся в энергию/воду/охлаждение; параллельно обсуждается AI-driven power demand.",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-03-23/nextera-ceo-ketchum-on-energy-demand-ai-power-needs-video"
+      ],
+      "level": 1
+    }
+  ],
+  "trends": [
+    {
+      "name": "AI-CapEx / дата-центры как класс активов",
+      "momentum": 85,
+      "rationale": "оценка Nscale $14.6B и крупный раунд финансирования показывают ускорение инфраструктурного инвест-цикла.",
+      "levels": [
+        9,
+        5,
+        2,
+        1
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Финансовые инструменты для хеджа AI-долга hyperscalers",
+      "momentum": 70,
+      "rationale": "появление CDS-basket - признак зрелости рынка рисков AI-инфраструктуры.",
+      "levels": [
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Агентные AI-платформы (consumer/enterprise)",
+      "momentum": 65,
+      "rationale": "Meta покупает команду Dreamer под персональные агенты; OpenAI переориентируется на automated researcher.",
+      "levels": [
+        5,
+        6,
+        7,
+        3
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Суверенный/вертикально интегрированный чип-дизайн под agentic/inference",
+      "momentum": 60,
+      "rationale": "Alibaba выводит новый чип под agentic/inference; Маск заявляет о фабрике в Техасе.",
+      "levels": [
+        4,
+        5,
+        2,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Экспортно-регуляторная фрагментация consumer/edge-сетей (router bans)",
+      "momentum": 75,
+      "rationale": "запрет FCC на импорт новых моделей зарубежных роутеров - сильный регуляторный поворот.",
+      "levels": [
+        8,
+        5,
+        4,
+        2
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "AI в обороне (classified environments / training on classified data)",
+      "momentum": 80,
+      "rationale": "Пентагон планирует защищенные среды для обучения моделей на секретных данных - это расширение госрынка и смена требований к поставщикам.",
+      "levels": [
+        7,
+        8,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "AI-driven cyber (эскалация атак и спрос на AI security)",
+      "momentum": 55,
+      "rationale": "сообщения о всплеске Iran-linked кибератак и тезис о роли AI в усилении угроз.",
+      "levels": [
+        8,
+        5,
+        6
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Consumer электроника как драйвер роста (игровые консоли премиум-сегмента)",
+      "momentum": -35,
+      "rationale": "Nintendo сокращает выпуск Switch 2 более чем на 30% из-за слабого спроса в США - сигнал охлаждения потребительского спроса на дорогие устройства.",
+      "levels": [
+        5,
+        2
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Японские consumer electronics активы → перераспределение в пользу китайских игроков",
+      "momentum": 30,
+      "rationale": "Sony близка к сделке продажи мажоритарной доли home entertainment бизнесу TCL (~$1B) - симптом перестройки глобального разделения труда в consumer hardware.",
+      "levels": [
+        5,
+        2,
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "AI как R&D и cloud-сервис; риски скрыты внутри балансов hyperscalers.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «AI как R&D и cloud-сервис; риски скрыты внутри балансов hyperscalers.» к «AI-инфраструктура как отдельный класс активов и рисков, с деривативами/IPO-логикой.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        9,
+        6,
+        5,
+        2
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "потребительские роутеры как глобальный commodity, оптимизация по цене.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «потребительские роутеры как глобальный commodity, оптимизация по цене.» к «роутеры/edge как критическая инфраструктура с импортными запретами и политической сертификацией.». Упоминаний в контексте перехода: 1",
+      "levels": [
+        8,
+        5,
+        4,
+        2
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "LLM как инструмент помощи человеку (copilot).",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «LLM как инструмент помощи человеку (copilot).» к «агентные системы как автономные производители исследований/решений; для государства - закрытые контуры обучения на classified data.». Упоминаний в контексте перехода: 1",
+      "levels": [
+        8,
+        7,
+        6,
+        5,
+        3
+      ],
+      "category": "decelerating"
+    }
+  ],
+  "cross_level_links": [
+    {
+      "title": "AI-CapEx (Ур.9) → деривативы/хедж (Ур.9) → рост инфраструктурных игроков (Ур.5/2)",
+      "description": "AI-CapEx (Ур.9) → деривативы/хедж (Ур.9) → рост инфраструктурных игроков (Ур.5/2)   «Борговой бум hyperscalers под AI» порождает инструменты хеджа (CDS-basket), что стабилизирует участие институционалов и делает дата-центры/compute «инвестклассом», поддерживая рост Nscale и аналогов.",
+      "levels": [
+        9,
+        5,
+        2
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-23/jpmorgan-offers-clients-a-new-cds-basket-to-hedge-ai-debt-risk",
+        "https://www.bloomberg.com/news/videos/2026-03-23/nscale-reaches-14-6b-valuation-adds-sandberg-to-board-video"
+      ]
+    },
+    {
+      "title": "Нацбезопасность (Ур.8) → запреты на железо (Ур.4) → перестройка цепочек (Ур.5) → территориальные зоны (Ур.2)",
+      "description": "Нацбезопасность (Ур.8) → запреты на железо (Ур.4) → перестройка цепочек (Ур.5) → территориальные зоны (Ур.2)   Запрет FCC на импорт новых моделей foreign роутеров переводит рынок в режим «доверенных контуров», подталкивая к локализации/сертификации и фрагментации поставок.",
+      "levels": [
+        8,
+        5,
+        4,
+        2
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-23/fcc-bans-all-foreign-made-routers-citing-security-risks"
+      ]
+    },
+    {
+      "title": "Энергетический дефицит/рост спроса (Ур.1) → размещение compute (Ур.2) → рост дата-центров как индустрии (Ур.5) → финансовые инструменты (Ур.9)",
+      "description": "Энергетический дефицит/рост спроса (Ур.1) → размещение compute (Ур.2) → рост дата-центров как индустрии (Ур.5) → финансовые инструменты (Ур.9)   AI растит спрос на мощность; это делает энергетику «бутылочным горлышком», а compute - дефицитным активом, который затем финансовизируется.",
+      "levels": [
+        9,
+        5,
+        2,
+        1
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-03-23/nextera-ceo-ketchum-on-energy-demand-ai-power-needs-video"
+      ]
+    },
+    {
+      "title": "Государство хочет закрытые контуры данных (Ур.7/8) → меняется архитектура продуктов (Ур.6/4) → новый рынок “secure training environments” (Ур.5)",
+      "description": "Государство хочет закрытые контуры данных (Ур.7/8) → меняется архитектура продуктов (Ур.6/4) → новый рынок “secure training environments” (Ур.5)   Планы Пентагона по training on classified data означают рост сегмента: защищенные дата-энклавы, особые MLOps, комплаенс и аудит.",
+      "levels": [
+        8,
+        7,
+        6,
+        5,
+        4
+      ],
+      "sources": [
+        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
+      ]
+    }
+  ],
+  "structural_shifts": [
+    {
+      "title": "Compute превращается из “внутренней статьи затрат” в финансовый рынок**",
+      "from": "AI как R&D и cloud-сервис; риски скрыты внутри балансов hyperscalers.",
+      "to": "AI-инфраструктура как отдельный класс активов и рисков, с деривативами/IPO-логикой.",
+      "through": "долговое финансирование AI-CapEx → потребность в хедже → финансовые продукты (CDS-basket) → повышение ликвидности и «инвестпригодности» сектора.",
+      "levels": [
+        9,
+        6,
+        5,
+        2
+      ],
+      "trend": "emerging",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-23/jpmorgan-offers-clients-a-new-cds-basket-to-hedge-ai-debt-risk",
+        "https://www.bloomberg.com/news/videos/2026-03-23/nscale-reaches-14-6b-valuation-adds-sandberg-to-board-video"
+      ]
+    },
+    {
+      "title": "Суверенизация “края сети” (edge) как политический разлом в СРТ**",
+      "from": "потребительские роутеры как глобальный commodity, оптимизация по цене.",
+      "to": "роутеры/edge как критическая инфраструктура с импортными запретами и политической сертификацией.",
+      "through": "логика нацбезопасности → запреты → перестройка цепочек → территориальные технологические зоны.",
+      "levels": [
+        8,
+        5,
+        4,
+        2
+      ],
+      "trend": "emerging",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-23/fcc-bans-all-foreign-made-routers-citing-security-risks"
+      ]
+    },
+    {
+      "title": "Агентность как новый производственный контур знания (в т.ч. государственный)**",
+      "from": "LLM как инструмент помощи человеку (copilot).",
+      "to": "агентные системы как автономные производители исследований/решений; для государства - закрытые контуры обучения на classified data.",
+      "through": "стратегический рефокус OpenAI на automated researcher + институциональная готовность defense к secure training → спрос на агенто-ориентированные методологии контроля/аудита (provenance, monitoring, MAS robustness).",
+      "levels": [
+        8,
+        7,
+        6,
+        5,
+        3
+      ],
+      "trend": "emerging",
+      "sources": [
+        "https://www.technologyreview.com/2026/03/20/1134438/openai-is-throwing-everything-into-building-a-fully-automated-researcher/",
+        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
+      ]
+    }
+  ],
+  "radar_signals": [
+    {
+      "title": "Токены как товар/деривативы на inference",
+      "description": "академически оформляется дизайн token futures и стандартизация «SIT». Если это подхватят банки/биржи, появится новый «денежный слой» под агентные транзакции и корпоративные бюджеты на inference.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://arxiv.org/abs/2603.21690"
+      ]
+    },
+    {
+      "title": "Secure training enclaves для classified data",
+      "description": "если Пентагон запустит стандарты/контуры, возникнет аналог «FedRAMP, но для обучения моделей», меняющий рынок госзаказа.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
+      ]
+    },
+    {
+      "title": "Reasoning provenance как обязательный слой enterprise-агентов",
+      "description": "AER как стандарт может стать тем, чем логирование/трейсинг стало для микросервисов - базовым условием допуска в критические процессы.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://arxiv.org/abs/2603.21692"
+      ]
+    },
+    {
+      "title": "Latency-реализм в multi-agent/embodied",
+      "description": "(packet loss, stale memory): если бенчмарки типа AgentComm-Bench станут нормой, изменятся требования к сетям, edge-архитектурам и протоколам взаимодействия агентов/роботов.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://arxiv.org/abs/2603.20285"
+      ]
+    },
+    {
+      "title": "Plug-in solar как массовый потребительский продукт",
+      "description": "может снизить политические/социальные барьеры к наращиванию электронагрузки «на местах» (пусть и косвенно), что важно для edge-устройств и домашней роботизации.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-24/amazon-and-lidl-to-sell-plug-in-solar-in-uk-to-help-lower-bills"
+      ]
+    }
+  ],
+  "metrics": {
+    "total_events": 32,
+    "events_by_level": {
+      "1": 3,
+      "2": 3,
+      "3": 3,
+      "4": 4,
+      "5": 4,
+      "6": 5,
+      "7": 4,
+      "8": 3,
+      "9": 3
+    },
+    "total_sources": 20,
+    "structural_shifts_count": 3,
+    "radar_signals_count": 5,
+    "cross_level_links_count": 4,
+    "momentum_trends_count": 12
+  },
+  "categories": [],
+  "momentum_trends": [
+    {
+      "name": "AI-CapEx / дата-центры как класс активов",
+      "momentum": 85,
+      "rationale": "оценка Nscale $14.6B и крупный раунд финансирования показывают ускорение инфраструктурного инвест-цикла.",
+      "levels": [
+        9,
+        5,
+        2,
+        1
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Финансовые инструменты для хеджа AI-долга hyperscalers",
+      "momentum": 70,
+      "rationale": "появление CDS-basket - признак зрелости рынка рисков AI-инфраструктуры.",
+      "levels": [
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Агентные AI-платформы (consumer/enterprise)",
+      "momentum": 65,
+      "rationale": "Meta покупает команду Dreamer под персональные агенты; OpenAI переориентируется на automated researcher.",
+      "levels": [
+        5,
+        6,
+        7,
+        3
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Суверенный/вертикально интегрированный чип-дизайн под agentic/inference",
+      "momentum": 60,
+      "rationale": "Alibaba выводит новый чип под agentic/inference; Маск заявляет о фабрике в Техасе.",
+      "levels": [
+        4,
+        5,
+        2,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Экспортно-регуляторная фрагментация consumer/edge-сетей (router bans)",
+      "momentum": 75,
+      "rationale": "запрет FCC на импорт новых моделей зарубежных роутеров - сильный регуляторный поворот.",
+      "levels": [
+        8,
+        5,
+        4,
+        2
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "AI в обороне (classified environments / training on classified data)",
+      "momentum": 80,
+      "rationale": "Пентагон планирует защищенные среды для обучения моделей на секретных данных - это расширение госрынка и смена требований к поставщикам.",
+      "levels": [
+        7,
+        8,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "AI-driven cyber (эскалация атак и спрос на AI security)",
+      "momentum": 55,
+      "rationale": "сообщения о всплеске Iran-linked кибератак и тезис о роли AI в усилении угроз.",
+      "levels": [
+        8,
+        5,
+        6
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Consumer электроника как драйвер роста (игровые консоли премиум-сегмента)",
+      "momentum": -35,
+      "rationale": "Nintendo сокращает выпуск Switch 2 более чем на 30% из-за слабого спроса в США - сигнал охлаждения потребительского спроса на дорогие устройства.",
+      "levels": [
+        5,
+        2
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Японские consumer electronics активы → перераспределение в пользу китайских игроков",
+      "momentum": 30,
+      "rationale": "Sony близка к сделке продажи мажоритарной доли home entertainment бизнесу TCL (~$1B) - симптом перестройки глобального разделения труда в consumer hardware.",
+      "levels": [
+        5,
+        2,
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "AI как R&D и cloud-сервис; риски скрыты внутри балансов hyperscalers.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «AI как R&D и cloud-сервис; риски скрыты внутри балансов hyperscalers.» к «AI-инфраструктура как отдельный класс активов и рисков, с деривативами/IPO-логикой.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        9,
+        6,
+        5,
+        2
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "потребительские роутеры как глобальный commodity, оптимизация по цене.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «потребительские роутеры как глобальный commodity, оптимизация по цене.» к «роутеры/edge как критическая инфраструктура с импортными запретами и политической сертификацией.». Упоминаний в контексте перехода: 1",
+      "levels": [
+        8,
+        5,
+        4,
+        2
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "LLM как инструмент помощи человеку (copilot).",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «LLM как инструмент помощи человеку (copilot).» к «агентные системы как автономные производители исследований/решений; для государства - закрытые контуры обучения на classified data.». Упоминаний в контексте перехода: 1",
+      "levels": [
+        8,
+        7,
+        6,
+        5,
+        3
+      ],
+      "category": "decelerating"
+    }
+  ]
+}
