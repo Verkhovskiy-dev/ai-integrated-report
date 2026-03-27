@@ -1,6 +1,6 @@
 {
   "date": "2026-03-27",
-  "generated_at": "2026-03-27T10:01:27.267Z",
+  "generated_at": "2026-03-27T17:01:27.463Z",
   "key_focus": "",
   "srt_levels": [
     {
@@ -8,589 +8,855 @@
       "name": "Денежная система",
       "events": [
         {
-          "title": "Окно IPO как механизм финансирования фронтирных AI-лабораторий",
-          "description": "Окно IPO как механизм финансирования фронтирных AI-лабораторий: Anthropic рассматривает IPO уже к октябрю - сигнал, что венчур/стратегические раунды дополняются публичным рынком как способом финансировать compute и продуктовую экспансию.",
+          "title": "Долговая «надстройка» над AI-гонкой становится нормой",
+          "description": "Долговая «надстройка» над AI-гонкой становится нормой",
+          "sources": []
+        },
+        {
+          "title": "SoftBank привлек рекордный $40 млрд bridge loan для финансирования доли в OpenAI - это закрепляет модель «AI как мегапроект с долговым плечом», а не только венчур/кэшфлоу",
+          "description": "SoftBank привлек рекордный $40 млрд bridge loan для финансирования доли в OpenAI - это закрепляет модель «AI как мегапроект с долговым плечом», а не только венчур/кэшфлоу.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-27/claude-ai-maker-anthropic-said-to-weigh-ipo-as-soon-as-october"
+            "https://www.bloomberg.com/news/articles/2026-03-27/softbank-secures-record-40-billion-bridge-loan-for-openai-stake"
           ]
         },
         {
-          "title": "Война/нефть → перетоки капитала в «электрификацию»",
-          "description": "Война/нефть → перетоки капитала в «электрификацию»: рост нефти на фоне конфликта вокруг Ирана поддерживает инвестиционный кейс EV и, косвенно, спрос на батареи/магниты/силовую электронику (смещение ожиданий в автоцепочках и сырьевых рынках).",
+          "title": "Параллельно в публичных рынках - ожидания IPO Anthropic уже к октябрю, т.е",
+          "description": "Параллельно в публичных рынках - ожидания IPO Anthropic уже к октябрю, т.е. капитализация «фронтира» переходит в режим публичной ликвидности/оценки.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-26/byd-stock-rebound-gathers-pace-as-oil-shock-drives-ev-sales-boom",
-            "https://www.bloomberg.com/news/articles/2026-03-27/china-s-carmakers-return-to-growth-in-europe-with-ev-sales"
+            "https://www.bloomberg.com/news/videos/2026-03-27/anthropic-could-go-public-by-october-video"
           ]
         },
         {
-          "title": "Cost-of-inference как новая финансовая «волатильность»",
-          "description": "Cost-of-inference как новая финансовая «волатильность»: исследование про «ценовой разворот» у reasoning-моделей показывает, что листинг-цены API плохо отражают реальную себестоимость из-за вариативности thinking-токенов; это меняет финансовые модели закупок/тендеров и делает необходимым per-request cost monitoring.",
+          "title": "Макрориски (война/инфляция/нефть) напрямую переоценивают AI-capex",
+          "description": "Макрориски (война/инфляция/нефть) напрямую переоценивают AI-capex",
+          "sources": []
+        },
+        {
+          "title": "ФРС фиксирует: война с Ираном создает новые риски для инфляции и роста; «выигрыши от AI» при этом неопределенны - в терминах СРТ это рост стоимости капитала и неопределенность окупаемости compute",
+          "description": "ФРС фиксирует: война с Ираном создает новые риски для инфляции и роста; «выигрыши от AI» при этом неопределенны - в терминах СРТ это рост стоимости капитала и неопределенность окупаемости compute.",
           "sources": [
-            "https://arxiv.org/abs/2603.23971"
+            "https://www.bloomberg.com/news/videos/2026-03-27/fed-s-paulson-ai-gains-uncertain-war-creating-risks-video"
+          ]
+        },
+        {
+          "title": "Появление “малых финансовых контуров” под дата-центры (не только США/ЕС)",
+          "description": "Появление “малых финансовых контуров” под дата-центры (не только США/ЕС)",
+          "sources": []
+        },
+        {
+          "title": "Синдицированный кредит $300 млн",
+          "description": "Синдицированный кредит $300 млн от армянских банков под AI дата-центр Firebird - сигнал локализации финансирования compute в «периферийных» юрисдикциях.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-27/armenian-banks-to-jointly-loan-record-300-million-for-ai-center"
           ]
         }
       ],
-      "event_count": 3
+      "event_count": 7
     },
     {
       "level": 8,
       "name": "Спонтанный порядок",
       "events": [
         {
-          "title": "Сдвиг к “портируемости контекста” между ассистентами",
-          "description": "Сдвиг к “портируемости контекста” между ассистентами: Google Gemini добавляет инструмент переноса истории/контекста из других AI-приложений - формируется рынок «миграции пользователя» и нормы совместимости контекстов (де-факто стандарт).",
+          "title": "Суды становятся механизмом “рынка доступа” к госсектору",
+          "description": "Суды становятся механизмом “рынка доступа” к госсектору",
+          "sources": []
+        },
+        {
+          "title": "Anthropic получила судебный приказ, блокирующий запрет администрации Трампа на использование инструмента в правительстве США - формируется «судебный контур» как инструмент конкуренции за госзакупки AI",
+          "description": "Anthropic получила судебный приказ, блокирующий запрет администрации Трампа на использование инструмента в правительстве США - формируется «судебный контур» как инструмент конкуренции за госзакупки AI.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-26/google-gemini-adds-tool-to-make-it-easier-to-switch-from-chatgpt"
+            "https://www.bloomberg.com/news/articles/2026-03-26/anthropic-wins-court-order-blocking-trump-ban-on-use-of-ai-tool"
           ]
         },
         {
-          "title": "Открытое ПО как институциональная альтернатива коммерческим вертикалям",
-          "description": "Открытое ПО как институциональная альтернатива коммерческим вертикалям: кейс Berta - open-source клинический «scribe» с интеграцией в инфраструктуру провинциальной системы здравоохранения и радикальным снижением стоимости. Это укрепляет норму: «медицинский AI должен жить внутри периметра организации».",
-          "sources": [
-            "https://arxiv.org/abs/2603.23513"
-          ]
+          "title": "Новый спонтанный порядок: стандартизация оценки агентов и “трасс”",
+          "description": "Новый спонтанный порядок: стандартизация оценки агентов и “трасс”",
+          "sources": []
         },
         {
-          "title": "Бенчмарки для агентов становятся индустриальным “рынком доверия”",
-          "description": "Бенчмарки для агентов становятся индустриальным “рынком доверия”: появление EnterpriseArena (агент как CFO), VehicleMemBench, Environment Maps, Efficient Benchmarking of AI Agents и др. - это строительство инфраструктуры сравнимости/легитимации агентных систем.,,",
+          "title": "Волна работ про бенчмарки агентности/памяти/долгих горизонтов/стоимости: EnterpriseArena (CFO-аллокатор), VehicleMemBench, Efficient Benchmarking of AI Agents, AgentPex (валидация agentic traces), «pricing reversal» (реальная стоимость vs прайс)",
+          "description": "Волна работ про бенчмарки агентности/памяти/долгих горизонтов/стоимости: EnterpriseArena (CFO-аллокатор), VehicleMemBench, Efficient Benchmarking of AI Agents, AgentPex (валидация agentic traces), «pricing reversal» (реальная стоимость vs прайс). Это создает рынок репутации и сопоставимости, но уже вокруг *агентных стеков*, а не «голых» LLM.,,,",
           "sources": [
             "https://arxiv.org/abs/2603.23638",
             "https://arxiv.org/abs/2603.23840",
-            "https://arxiv.org/abs/2603.23610",
-            "https://arxiv.org/abs/2603.23749"
+            "https://arxiv.org/abs/2603.23749",
+            "https://arxiv.org/abs/2603.23806",
+            "https://arxiv.org/abs/2603.23971"
           ]
         }
       ],
-      "event_count": 3
+      "event_count": 4
     },
     {
       "level": 7,
       "name": "Институты производства знаний",
       "events": [
         {
-          "title": "Оборона “втягивает” AI-лаборатории в режим секретности/классифицированных данных",
-          "description": "Оборона “втягивает” AI-лаборатории в режим секретности/классифицированных данных: Пентагон планирует secure environments для обучения моделей на classified data. Это меняет режимы трансфера знаний (меньше публикаций, больше закрытых контуров, специальные допуски).",
+          "title": "Оборона “втягивает” frontier-лабы в режим закрытых контуров знания",
+          "description": "Оборона “втягивает” frontier-лабы в режим закрытых контуров знания",
+          "sources": []
+        },
+        {
+          "title": "Пентагон планирует secure environments для обучения GenAI на классифицированных данных - это институционализация закрытых «военных датасетов» как фактора конкурентоспособности",
+          "description": "Пентагон планирует secure environments для обучения GenAI на классифицированных данных - это институционализация закрытых «военных датасетов» как фактора конкурентоспособности.",
           "sources": [
             "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
           ]
         },
         {
-          "title": "Суд как институт распределения рынков AI",
-          "description": "Суд как институт распределения рынков AI: Anthropic добилась приостановки запрета на госиспользование её инструмента - суд становится механизмом доступа к крупнейшему заказчику (государству).",
+          "title": "OpenAI перестраивает исследовательскую повестку под «полностью автоматизированного исследователя» - институциональный сдвиг: R&D становится продуктом/сервисом (research-as-agent)",
+          "description": "OpenAI перестраивает исследовательскую повестку под «полностью автоматизированного исследователя» - институциональный сдвиг: R&D становится продуктом/сервисом (research-as-agent).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-26/anthropic-wins-court-order-blocking-trump-ban-on-use-of-ai-tool"
+            "https://www.technologyreview.com/2026/03/20/1134438/openai-is-throwing-everything-into-building-a-fully-automated-researcher/"
+          ]
+        },
+        {
+          "title": "Открытый контур знаний усиливается в критичных доменах (медицина)",
+          "description": "Открытый контур знаний усиливается в критичных доменах (медицина)",
+          "sources": []
+        },
+        {
+          "title": "Open-source медицинский скрайб Berta внедрен в Alberta Health Services, резко снижая стоимость vs коммерческие решения, и поддерживая суверенитет данных",
+          "description": "Open-source медицинский скрайб Berta внедрен в Alberta Health Services, резко снижая стоимость vs коммерческие решения, и поддерживая суверенитет данных.",
+          "sources": [
+            "https://arxiv.org/abs/2603.23513"
           ]
         }
       ],
-      "event_count": 2
+      "event_count": 5
     },
     {
       "level": 6,
       "name": "Технологии производства знаний",
       "events": [
         {
-          "title": "Переход от “агент = LLM+tools” к “агент = world model + память + проверка”",
-          "description": "Переход от “агент = LLM+tools” к “агент = world model + память + проверка”: Environment Maps и AI-Supervisor предлагают устойчивые графовые/мировые модели как общую память и базу планирования/верификации.",
+          "title": "Методологический поворот: “мир-модель”/память/верификация для агентов",
+          "description": "Методологический поворот: “мир-модель”/память/верификация для агентов",
+          "sources": []
+        },
+        {
+          "title": "Environment Maps: графовая «персистентная» репрезентация среды для long-horizon агентов, почти удваивает успех на WebArena",
+          "description": "Environment Maps: графовая «персистентная» репрезентация среды для long-horizon агентов, почти удваивает успех на WebArena.",
           "sources": [
-            "https://arxiv.org/abs/2603.23610",
+            "https://arxiv.org/abs/2603.23610"
+          ]
+        },
+        {
+          "title": "AI-Supervisor: multi-agent оркестрация исследования с knowledge graph как общей памятью и консенсус-механизмом",
+          "description": "AI-Supervisor: multi-agent оркестрация исследования с knowledge graph как общей памятью и консенсус-механизмом.",
+          "sources": [
             "https://arxiv.org/abs/2603.24402"
           ]
         },
         {
-          "title": "Удешевление и стандартизация оценки агентов/LLM",
-          "description": "Удешевление и стандартизация оценки агентов/LLM: Efficient Benchmarking of AI Agents и CAT для медицинского тестирования - методологии, которые снижают стоимость оценивания и ускоряют цикл «модель → проверка → внедрение».",
-          "sources": [
-            "https://arxiv.org/abs/2603.23749",
-            "https://arxiv.org/abs/2603.23506"
-          ]
-        },
-        {
-          "title": "Безопасность как инженерная дисциплина “на трассах исполнения”",
-          "description": "Безопасность как инженерная дисциплина “на трассах исполнения”: Cognitive Firewall (edge+cloud+детерминистский guard) - практический шаблон защиты браузерных агентов от indirect prompt injection.",
+          "title": "Cognitive Firewall: гибрид edge+cloud защита от indirect prompt injection, ASR <1% и огромный выигрыш по латентности против cloud-only",
+          "description": "Cognitive Firewall: гибрид edge+cloud защита от indirect prompt injection, ASR <1% и огромный выигрыш по латентности против cloud-only.",
           "sources": [
             "https://arxiv.org/abs/2603.23791"
           ]
+        },
+        {
+          "title": "Переоценка метрик: стоимость, токены “размышления”, адаптивное тестирование",
+          "description": "Переоценка метрик: стоимость, токены “размышления”, адаптивное тестирование",
+          "sources": []
+        },
+        {
+          "title": "«Price reversal»: дешевле по прайсу ≠ дешевле по факту из-за thinking tokens и вариативности",
+          "description": "«Price reversal»: дешевле по прайсу ≠ дешевле по факту из-за thinking tokens и вариативности.",
+          "sources": [
+            "https://arxiv.org/abs/2603.23971"
+          ]
+        },
+        {
+          "title": "CAT/IRT для оценки LLM в медицине: 1.3% айтемов дают корреляцию 0.988 с полной оценкой - ускорение институциональной сертификации/мониторинга",
+          "description": "CAT/IRT для оценки LLM в медицине: 1.3% айтемов дают корреляцию 0.988 с полной оценкой - ускорение институциональной сертификации/мониторинга.",
+          "sources": [
+            "https://arxiv.org/abs/2603.23506"
+          ]
         }
       ],
-      "event_count": 3
+      "event_count": 7
     },
     {
       "level": 5,
       "name": "Разделение труда между фирмами",
       "events": [
         {
-          "title": "Apple превращает iPhone в AI-платформу через “плюрализм ассистентов”",
-          "description": "Apple превращает iPhone в AI-платформу через “плюрализм ассистентов”: планы открыть Siri для сторонних AI-ассистентов - это переразметка value chain (Apple - платформа/оркестратор, модели - внешний слой конкуренции).",
+          "title": "Вертикальная интеграция “модель → датацентр → энергия”",
+          "description": "Вертикальная интеграция “модель → датацентр → энергия”",
+          "sources": []
+        },
+        {
+          "title": "Meta финансирует 7 газовых электростанций для крупнейшего дата-центра - компания берет на себя функцию энергогенерации как часть AI value chain",
+          "description": "Meta финансирует 7 газовых электростанций для крупнейшего дата-центра - компания берет на себя функцию энергогенерации как часть AI value chain.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-26/apple-plans-to-open-up-siri-to-rival-ai-assistants-beyond-chatgpt-in-ios-27"
+            "https://www.bloomberg.com/news/articles/2026-03-27/meta-funds-seven-entergy-gas-plants-to-power-biggest-data-center"
           ]
         },
         {
-          "title": "Борьба за кадры как симптом передела цепочки “устройство+модель”",
-          "description": "Борьба за кадры как симптом передела цепочки “устройство+модель”: Apple выдает редкие бонусы дизайнерам iPhone, чтобы остановить уход в AI-стартапы (в т.ч. строящие устройства). Это признак, что AI-компании лезут вверх по цепочке в hardware.",
+          "title": "Передел compute-ёмкостей и контрактов в пользу hyperscalers",
+          "description": "Передел compute-ёмкостей и контрактов в пользу hyperscalers",
+          "sources": []
+        },
+        {
+          "title": "Microsoft занимает проект дата-центра на 900 МВт, который планировался под Oracle/OpenAI, после того как они «ушли» - это перераспределение мощности и переговорной силы в compute-цепочке",
+          "description": "Microsoft занимает проект дата-центра на 900 МВт, который планировался под Oracle/OpenAI, после того как они «ушли» - это перераспределение мощности и переговорной силы в compute-цепочке.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-26/apple-gives-iphone-designers-rare-bonuses-to-fight-openai-poaching"
+            "https://www.bloomberg.com/news/articles/2026-03-27/microsoft-rents-data-center-project-developed-for-oracle-openai"
           ]
         },
         {
-          "title": "Китайские автопроизводители восстанавливают рост в Европе",
-          "description": "Китайские автопроизводители восстанавливают рост в Европе - давление на западных incumbents и возможная реорганизация европейской автоцепочки (локализация, тарифные/нетарифные барьеры, технологические альянсы).",
+          "title": "Сдвиг в game/3D экосистеме: Unity режет “периферию”",
+          "description": "Сдвиг в game/3D экосистеме: Unity режет “периферию”",
+          "sources": []
+        },
+        {
+          "title": "Unity собирается продать издательский бизнес и закрыть рекламу ради фокуса на “лучший бизнес” - косвенно это укрепляет специализацию на core tools для real-time/симуляций (важно для embodied/цифровых двойников)",
+          "description": "Unity собирается продать издательский бизнес и закрыть рекламу ради фокуса на “лучший бизнес” - косвенно это укрепляет специализацию на core tools для real-time/симуляций (важно для embodied/цифровых двойников).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-27/china-s-carmakers-return-to-growth-in-europe-with-ev-sales"
+            "https://www.bloomberg.com/news/videos/2026-03-27/brown-foreman-up-blue-owl-falls-stock-movers-video"
           ]
         }
       ],
-      "event_count": 3
+      "event_count": 6
     },
     {
       "level": 4,
       "name": "«Железные» технологии",
       "events": [
         {
-          "title": "Алгоритмические прорывы меняют “профиль спроса” на память/хранилища для AI",
-          "description": "Алгоритмические прорывы меняют “профиль спроса” на память/хранилища для AI: Google заявляет о компрессионной технике для LLM/vector search, что провоцирует распродажу memory-акций и «разделяет» сегменты памяти/стораджей по чувствительности к алгоритмам.",
+          "title": "Бутылочное горлышко смещается: CPU/память/хранилище снова в центре",
+          "description": "Бутылочное горлышко смещается: CPU/память/хранилище снова в центре",
+          "sources": []
+        },
+        {
+          "title": "Nvidia и Arm возвращают CPU в центр AI-эпохи (CPU как узел orchestration/IO/инференса и “обвязки” ускорителей)",
+          "description": "Nvidia и Arm возвращают CPU в центр AI-эпохи (CPU как узел orchestration/IO/инференса и “обвязки” ускорителей).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-27/ai-breakthrough-from-google-exposes-divide-in-memory-stocks",
-            "https://www.bloomberg.com/news/articles/2026-03-26/memory-stock-boom-seen-resilient-to-threat-from-new-google-tech"
+            "https://www.bloomberg.com/news/newsletters/2026-03-27/nvidia-arm-return-the-cpu-to-prominence-for-the-ai-age"
           ]
         },
         {
-          "title": "Дефицит гелия как “железный” узкий ресурс для передовой литографии и полупроводников",
-          "description": "Дефицит гелия как “железный” узкий ресурс для передовой литографии и полупроводников: эскалация вокруг Ормузского пролива усиливает перебои; гелий критичен для semiconductor production и advanced lithography.",
+          "title": "«AI breakthrough от Google» вызывает распродажу в memory chips и «разделяет» storage-ставки - рынок начинает различать типы памяти/хранилища под новые архитектуры/паттерны доступа",
+          "description": "«AI breakthrough от Google» вызывает распродажу в memory chips и «разделяет» storage-ставки - рынок начинает различать типы памяти/хранилища под новые архитектуры/паттерны доступа.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-27/ai-breakthrough-from-google-exposes-divide-in-memory-stocks"
+          ]
+        },
+        {
+          "title": "Материальные ограничения чипов: helium как стратегический ресурс",
+          "description": "Материальные ограничения чипов: helium как стратегический ресурс",
+          "sources": []
+        },
+        {
+          "title": "Обсуждается дефицит гелия из-за войны/Ормуза; гелий важен для semiconductor и advanced lithography, при этом в Северной Америке добыча развита слабо, стратегический резерв США был распродан",
+          "description": "Обсуждается дефицит гелия из-за войны/Ормуза; гелий важен для semiconductor и advanced lithography, при этом в Северной Америке добыча развита слабо, стратегический резерв США был распродан.",
           "sources": [
             "https://www.bloomberg.com/news/videos/2026-03-27/a-helium-shortage-that-affects-more-than-balloons-video"
           ]
-        },
-        {
-          "title": "Чип-безопасность и контроль утечек GPU",
-          "description": "Чип-безопасность и контроль утечек GPU: законопроект в США усиливает требования к чипмейкерам по предотвращению контрабанды AI-чипов в Китай после кейса Super Micro.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-26/chip-security-bill-advances-in-house-following-super-micro-case"
-          ]
         }
       ],
-      "event_count": 3
+      "event_count": 5
     },
     {
       "level": 3,
       "name": "Социально-профессиональная структура",
       "events": [
         {
-          "title": "Кадровый дефицит на стыке AI и hardware/industrial design",
-          "description": "Кадровый дефицит на стыке AI и hardware/industrial design: «поaching» дизайнеров iPhone в AI-стартапы фиксирует новую премию за компетенции “device+AI”.",
+          "title": "Появляется роль “AI как сотрудник” в финансах",
+          "description": "Появляется роль “AI как сотрудник” в финансах",
+          "sources": []
+        },
+        {
+          "title": "Фонд с «Eve» как AI brain (по описанию) - нормализация AI как операционного участника (аналитик/трейдер/ассистент принятия решений)",
+          "description": "Фонд с «Eve» как AI brain (по описанию) - нормализация AI как операционного участника (аналитик/трейдер/ассистент принятия решений).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-26/apple-gives-iphone-designers-rare-bonuses-to-fight-openai-poaching"
+            "https://www.bloomberg.com/news/articles/2026-03-27/meet-eve-the-ai-brain-behind-an-ex-coatue-trader-s-new-fund"
           ]
         },
         {
-          "title": "Ремилитаризация Европы меняет структуру занятости в индустрии",
-          "description": "Ремилитаризация Европы меняет структуру занятости в индустрии: Deutz разворачивается в defense и ожидает рост выручки - промышленность перераспределяет инженерные компетенции в пользу оборонных заказов.",
+          "title": "Оборонная специализация усиливается",
+          "description": "Оборонная специализация усиливается",
+          "sources": []
+        },
+        {
+          "title": "Рост defense-tech нарратива (Anduril-like роль) и обсуждение AI на поле боя - повышает спрос на профили: secure ML, ISR/автономия, safety+compliance.,",
+          "description": "Рост defense-tech нарратива (Anduril-like роль) и обсуждение AI на поле боя - повышает спрос на профили: secure ML, ISR/автономия, safety+compliance.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-27/german-engine-maker-s-defense-pivot-to-yield-revenue-jump"
+            "https://www.bloomberg.com/news/articles/2026-03-27/canada-ex-defense-minister-s-startup-juno-sees-anduril-type-role",
+            "https://www.bloomberg.com/news/videos/2026-03-27/bloomberg-tech-asia-3-27-2026-video"
           ]
         }
       ],
-      "event_count": 2
+      "event_count": 4
     },
     {
       "level": 2,
       "name": "Пространственная организация",
       "events": [
         {
-          "title": "Тайвань стабилизирует тарифы на электроэнергию “несмотря на войну”",
-          "description": "Тайвань стабилизирует тарифы на электроэнергию “несмотря на войну”: удержание цен - попытка сохранить конкурентоспособность чип-хаба и ограничить инфляцию; энергетическая политика становится инструментом защиты полупроводниковой географии.",
+          "title": "Compute следует за энергией и контрактами",
+          "description": "Compute следует за энергией и контрактами",
+          "sources": []
+        },
+        {
+          "title": "Meta «привязывает» дата-центр к газовой генерации (локальная энергетическая база)",
+          "description": "Meta «привязывает» дата-центр к газовой генерации (локальная энергетическая база).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-27/chip-hub-taiwan-keeps-power-prices-unchanged-despite-iran-war"
+            "https://www.bloomberg.com/news/articles/2026-03-27/meta-funds-seven-entergy-gas-plants-to-power-biggest-data-center"
           ]
         },
         {
-          "title": "Роботакси и экспансия в Ближний Восток",
-          "description": "Роботакси и экспансия в Ближний Восток: Pony AI называет Middle East приоритетом - перестройка географии спроса на автономность (богатые юрисдикции + инфраструктурные мегапроекты).",
+          "title": "Microsoft перехватывает 900 МВт проекта - концентрация мощностей у hyperscaler усиливает централизацию",
+          "description": "Microsoft перехватывает 900 МВт проекта - концентрация мощностей у hyperscaler усиливает централизацию.",
           "sources": [
-            "https://www.bloomberg.com/news/videos/2026-03-27/pony-ai-ceo-middle-east-market-remains-a-priority-video"
+            "https://www.bloomberg.com/news/articles/2026-03-27/microsoft-rents-data-center-project-developed-for-oracle-openai"
+          ]
+        },
+        {
+          "title": "Тайвань удерживает тарифы на электроэнергию несмотря на войну",
+          "description": "Тайвань удерживает тарифы на электроэнергию несмотря на войну",
+          "sources": []
+        },
+        {
+          "title": "Это фактически субсидирование стабильности chip hub через энергоцены (пространственная конкурентоспособность производства)",
+          "description": "Это фактически субсидирование стабильности chip hub через энергоцены (пространственная конкурентоспособность производства).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-27/chip-hub-taiwan-keeps-power-prices-unchanged-despite-iran-war"
           ]
         }
       ],
-      "event_count": 2
+      "event_count": 5
     },
     {
       "level": 1,
       "name": "Природные ресурсы",
       "events": [
         {
-          "title": "Стратегическая уязвимость цепочек из-за редких газов",
-          "description": "Стратегическая уязвимость цепочек из-за редких газов: дефицит гелия - пример, как природный ресурс становится ограничителем для передовой микроэлектроники.",
+          "title": "Энергия и сырье становятся ограничителями AI",
+          "description": "Энергия и сырье становятся ограничителями AI",
+          "sources": []
+        },
+        {
+          "title": "Газовая генерация для дата-центров (Meta) и риски нефти/инфляции (война) связывают AI с углеводородной базой.,",
+          "description": "Газовая генерация для дата-центров (Meta) и риски нефти/инфляции (война) связывают AI с углеводородной базой.",
           "sources": [
-            "https://www.bloomberg.com/news/videos/2026-03-27/a-helium-shortage-that-affects-more-than-balloons-video"
+            "https://www.bloomberg.com/news/articles/2026-03-27/meta-funds-seven-entergy-gas-plants-to-power-biggest-data-center",
+            "https://www.bloomberg.com/news/videos/2026-03-27/fed-s-paulson-ai-gains-uncertain-war-creating-risks-video"
           ]
         },
         {
-          "title": "Удары по портовой нефтяной инфраструктуре РФ",
-          "description": "Удары по портовой нефтяной инфраструктуре РФ (Приморск, Усть-Луга) - риск для логистики энергоэкспорта, а через нефть/цены - для всех энергоемких отраслей, включая дата-центры и производство чипов.",
+          "title": "Гелий как ресурсный риск для литографии",
+          "description": "Гелий как ресурсный риск для литографии.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-03-27/russia-s-key-baltic-oil-ports-on-fire-again-satellite-data-show"
+            "https://www.bloomberg.com/news/videos/2026-03-27/a-helium-shortage-that-affects-more-than-balloons-video"
           ]
         }
       ],
-      "event_count": 2
+      "event_count": 3
     }
   ],
   "events": [
     {
-      "title": "Окно IPO как механизм финансирования фронтирных AI-лабораторий",
-      "description": "Окно IPO как механизм финансирования фронтирных AI-лабораторий: Anthropic рассматривает IPO уже к октябрю - сигнал, что венчур/стратегические раунды дополняются публичным рынком как способом финансировать compute и продуктовую экспансию.",
+      "title": "Долговая «надстройка» над AI-гонкой становится нормой",
+      "description": "Долговая «надстройка» над AI-гонкой становится нормой",
+      "sources": [],
+      "level": 9
+    },
+    {
+      "title": "SoftBank привлек рекордный $40 млрд bridge loan для финансирования доли в OpenAI - это закрепляет модель «AI как мегапроект с долговым плечом», а не только венчур/кэшфлоу",
+      "description": "SoftBank привлек рекордный $40 млрд bridge loan для финансирования доли в OpenAI - это закрепляет модель «AI как мегапроект с долговым плечом», а не только венчур/кэшфлоу.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-27/claude-ai-maker-anthropic-said-to-weigh-ipo-as-soon-as-october"
+        "https://www.bloomberg.com/news/articles/2026-03-27/softbank-secures-record-40-billion-bridge-loan-for-openai-stake"
       ],
       "level": 9
     },
     {
-      "title": "Война/нефть → перетоки капитала в «электрификацию»",
-      "description": "Война/нефть → перетоки капитала в «электрификацию»: рост нефти на фоне конфликта вокруг Ирана поддерживает инвестиционный кейс EV и, косвенно, спрос на батареи/магниты/силовую электронику (смещение ожиданий в автоцепочках и сырьевых рынках).",
+      "title": "Параллельно в публичных рынках - ожидания IPO Anthropic уже к октябрю, т.е",
+      "description": "Параллельно в публичных рынках - ожидания IPO Anthropic уже к октябрю, т.е. капитализация «фронтира» переходит в режим публичной ликвидности/оценки.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-26/byd-stock-rebound-gathers-pace-as-oil-shock-drives-ev-sales-boom",
-        "https://www.bloomberg.com/news/articles/2026-03-27/china-s-carmakers-return-to-growth-in-europe-with-ev-sales"
+        "https://www.bloomberg.com/news/videos/2026-03-27/anthropic-could-go-public-by-october-video"
       ],
       "level": 9
     },
     {
-      "title": "Cost-of-inference как новая финансовая «волатильность»",
-      "description": "Cost-of-inference как новая финансовая «волатильность»: исследование про «ценовой разворот» у reasoning-моделей показывает, что листинг-цены API плохо отражают реальную себестоимость из-за вариативности thinking-токенов; это меняет финансовые модели закупок/тендеров и делает необходимым per-request cost monitoring.",
+      "title": "Макрориски (война/инфляция/нефть) напрямую переоценивают AI-capex",
+      "description": "Макрориски (война/инфляция/нефть) напрямую переоценивают AI-capex",
+      "sources": [],
+      "level": 9
+    },
+    {
+      "title": "ФРС фиксирует: война с Ираном создает новые риски для инфляции и роста; «выигрыши от AI» при этом неопределенны - в терминах СРТ это рост стоимости капитала и неопределенность окупаемости compute",
+      "description": "ФРС фиксирует: война с Ираном создает новые риски для инфляции и роста; «выигрыши от AI» при этом неопределенны - в терминах СРТ это рост стоимости капитала и неопределенность окупаемости compute.",
       "sources": [
-        "https://arxiv.org/abs/2603.23971"
+        "https://www.bloomberg.com/news/videos/2026-03-27/fed-s-paulson-ai-gains-uncertain-war-creating-risks-video"
       ],
       "level": 9
     },
     {
-      "title": "Сдвиг к “портируемости контекста” между ассистентами",
-      "description": "Сдвиг к “портируемости контекста” между ассистентами: Google Gemini добавляет инструмент переноса истории/контекста из других AI-приложений - формируется рынок «миграции пользователя» и нормы совместимости контекстов (де-факто стандарт).",
+      "title": "Появление “малых финансовых контуров” под дата-центры (не только США/ЕС)",
+      "description": "Появление “малых финансовых контуров” под дата-центры (не только США/ЕС)",
+      "sources": [],
+      "level": 9
+    },
+    {
+      "title": "Синдицированный кредит $300 млн",
+      "description": "Синдицированный кредит $300 млн от армянских банков под AI дата-центр Firebird - сигнал локализации финансирования compute в «периферийных» юрисдикциях.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-26/google-gemini-adds-tool-to-make-it-easier-to-switch-from-chatgpt"
+        "https://www.bloomberg.com/news/articles/2026-03-27/armenian-banks-to-jointly-loan-record-300-million-for-ai-center"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Суды становятся механизмом “рынка доступа” к госсектору",
+      "description": "Суды становятся механизмом “рынка доступа” к госсектору",
+      "sources": [],
+      "level": 8
+    },
+    {
+      "title": "Anthropic получила судебный приказ, блокирующий запрет администрации Трампа на использование инструмента в правительстве США - формируется «судебный контур» как инструмент конкуренции за госзакупки AI",
+      "description": "Anthropic получила судебный приказ, блокирующий запрет администрации Трампа на использование инструмента в правительстве США - формируется «судебный контур» как инструмент конкуренции за госзакупки AI.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/anthropic-wins-court-order-blocking-trump-ban-on-use-of-ai-tool"
       ],
       "level": 8
     },
     {
-      "title": "Открытое ПО как институциональная альтернатива коммерческим вертикалям",
-      "description": "Открытое ПО как институциональная альтернатива коммерческим вертикалям: кейс Berta - open-source клинический «scribe» с интеграцией в инфраструктуру провинциальной системы здравоохранения и радикальным снижением стоимости. Это укрепляет норму: «медицинский AI должен жить внутри периметра организации».",
-      "sources": [
-        "https://arxiv.org/abs/2603.23513"
-      ],
+      "title": "Новый спонтанный порядок: стандартизация оценки агентов и “трасс”",
+      "description": "Новый спонтанный порядок: стандартизация оценки агентов и “трасс”",
+      "sources": [],
       "level": 8
     },
     {
-      "title": "Бенчмарки для агентов становятся индустриальным “рынком доверия”",
-      "description": "Бенчмарки для агентов становятся индустриальным “рынком доверия”: появление EnterpriseArena (агент как CFO), VehicleMemBench, Environment Maps, Efficient Benchmarking of AI Agents и др. - это строительство инфраструктуры сравнимости/легитимации агентных систем.,,",
+      "title": "Волна работ про бенчмарки агентности/памяти/долгих горизонтов/стоимости: EnterpriseArena (CFO-аллокатор), VehicleMemBench, Efficient Benchmarking of AI Agents, AgentPex (валидация agentic traces), «pricing reversal» (реальная стоимость vs прайс)",
+      "description": "Волна работ про бенчмарки агентности/памяти/долгих горизонтов/стоимости: EnterpriseArena (CFO-аллокатор), VehicleMemBench, Efficient Benchmarking of AI Agents, AgentPex (валидация agentic traces), «pricing reversal» (реальная стоимость vs прайс). Это создает рынок репутации и сопоставимости, но уже вокруг *агентных стеков*, а не «голых» LLM.,,,",
       "sources": [
         "https://arxiv.org/abs/2603.23638",
         "https://arxiv.org/abs/2603.23840",
-        "https://arxiv.org/abs/2603.23610",
-        "https://arxiv.org/abs/2603.23749"
+        "https://arxiv.org/abs/2603.23749",
+        "https://arxiv.org/abs/2603.23806",
+        "https://arxiv.org/abs/2603.23971"
       ],
       "level": 8
     },
     {
-      "title": "Оборона “втягивает” AI-лаборатории в режим секретности/классифицированных данных",
-      "description": "Оборона “втягивает” AI-лаборатории в режим секретности/классифицированных данных: Пентагон планирует secure environments для обучения моделей на classified data. Это меняет режимы трансфера знаний (меньше публикаций, больше закрытых контуров, специальные допуски).",
+      "title": "Оборона “втягивает” frontier-лабы в режим закрытых контуров знания",
+      "description": "Оборона “втягивает” frontier-лабы в режим закрытых контуров знания",
+      "sources": [],
+      "level": 7
+    },
+    {
+      "title": "Пентагон планирует secure environments для обучения GenAI на классифицированных данных - это институционализация закрытых «военных датасетов» как фактора конкурентоспособности",
+      "description": "Пентагон планирует secure environments для обучения GenAI на классифицированных данных - это институционализация закрытых «военных датасетов» как фактора конкурентоспособности.",
       "sources": [
         "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
       ],
       "level": 7
     },
     {
-      "title": "Суд как институт распределения рынков AI",
-      "description": "Суд как институт распределения рынков AI: Anthropic добилась приостановки запрета на госиспользование её инструмента - суд становится механизмом доступа к крупнейшему заказчику (государству).",
+      "title": "OpenAI перестраивает исследовательскую повестку под «полностью автоматизированного исследователя» - институциональный сдвиг: R&D становится продуктом/сервисом (research-as-agent)",
+      "description": "OpenAI перестраивает исследовательскую повестку под «полностью автоматизированного исследователя» - институциональный сдвиг: R&D становится продуктом/сервисом (research-as-agent).",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-26/anthropic-wins-court-order-blocking-trump-ban-on-use-of-ai-tool"
+        "https://www.technologyreview.com/2026/03/20/1134438/openai-is-throwing-everything-into-building-a-fully-automated-researcher/"
       ],
       "level": 7
     },
     {
-      "title": "Переход от “агент = LLM+tools” к “агент = world model + память + проверка”",
-      "description": "Переход от “агент = LLM+tools” к “агент = world model + память + проверка”: Environment Maps и AI-Supervisor предлагают устойчивые графовые/мировые модели как общую память и базу планирования/верификации.",
+      "title": "Открытый контур знаний усиливается в критичных доменах (медицина)",
+      "description": "Открытый контур знаний усиливается в критичных доменах (медицина)",
+      "sources": [],
+      "level": 7
+    },
+    {
+      "title": "Open-source медицинский скрайб Berta внедрен в Alberta Health Services, резко снижая стоимость vs коммерческие решения, и поддерживая суверенитет данных",
+      "description": "Open-source медицинский скрайб Berta внедрен в Alberta Health Services, резко снижая стоимость vs коммерческие решения, и поддерживая суверенитет данных.",
       "sources": [
-        "https://arxiv.org/abs/2603.23610",
+        "https://arxiv.org/abs/2603.23513"
+      ],
+      "level": 7
+    },
+    {
+      "title": "Методологический поворот: “мир-модель”/память/верификация для агентов",
+      "description": "Методологический поворот: “мир-модель”/память/верификация для агентов",
+      "sources": [],
+      "level": 6
+    },
+    {
+      "title": "Environment Maps: графовая «персистентная» репрезентация среды для long-horizon агентов, почти удваивает успех на WebArena",
+      "description": "Environment Maps: графовая «персистентная» репрезентация среды для long-horizon агентов, почти удваивает успех на WebArena.",
+      "sources": [
+        "https://arxiv.org/abs/2603.23610"
+      ],
+      "level": 6
+    },
+    {
+      "title": "AI-Supervisor: multi-agent оркестрация исследования с knowledge graph как общей памятью и консенсус-механизмом",
+      "description": "AI-Supervisor: multi-agent оркестрация исследования с knowledge graph как общей памятью и консенсус-механизмом.",
+      "sources": [
         "https://arxiv.org/abs/2603.24402"
       ],
       "level": 6
     },
     {
-      "title": "Удешевление и стандартизация оценки агентов/LLM",
-      "description": "Удешевление и стандартизация оценки агентов/LLM: Efficient Benchmarking of AI Agents и CAT для медицинского тестирования - методологии, которые снижают стоимость оценивания и ускоряют цикл «модель → проверка → внедрение».",
-      "sources": [
-        "https://arxiv.org/abs/2603.23749",
-        "https://arxiv.org/abs/2603.23506"
-      ],
-      "level": 6
-    },
-    {
-      "title": "Безопасность как инженерная дисциплина “на трассах исполнения”",
-      "description": "Безопасность как инженерная дисциплина “на трассах исполнения”: Cognitive Firewall (edge+cloud+детерминистский guard) - практический шаблон защиты браузерных агентов от indirect prompt injection.",
+      "title": "Cognitive Firewall: гибрид edge+cloud защита от indirect prompt injection, ASR <1% и огромный выигрыш по латентности против cloud-only",
+      "description": "Cognitive Firewall: гибрид edge+cloud защита от indirect prompt injection, ASR <1% и огромный выигрыш по латентности против cloud-only.",
       "sources": [
         "https://arxiv.org/abs/2603.23791"
       ],
       "level": 6
     },
     {
-      "title": "Apple превращает iPhone в AI-платформу через “плюрализм ассистентов”",
-      "description": "Apple превращает iPhone в AI-платформу через “плюрализм ассистентов”: планы открыть Siri для сторонних AI-ассистентов - это переразметка value chain (Apple - платформа/оркестратор, модели - внешний слой конкуренции).",
+      "title": "Переоценка метрик: стоимость, токены “размышления”, адаптивное тестирование",
+      "description": "Переоценка метрик: стоимость, токены “размышления”, адаптивное тестирование",
+      "sources": [],
+      "level": 6
+    },
+    {
+      "title": "«Price reversal»: дешевле по прайсу ≠ дешевле по факту из-за thinking tokens и вариативности",
+      "description": "«Price reversal»: дешевле по прайсу ≠ дешевле по факту из-за thinking tokens и вариативности.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-26/apple-plans-to-open-up-siri-to-rival-ai-assistants-beyond-chatgpt-in-ios-27"
+        "https://arxiv.org/abs/2603.23971"
+      ],
+      "level": 6
+    },
+    {
+      "title": "CAT/IRT для оценки LLM в медицине: 1.3% айтемов дают корреляцию 0.988 с полной оценкой - ускорение институциональной сертификации/мониторинга",
+      "description": "CAT/IRT для оценки LLM в медицине: 1.3% айтемов дают корреляцию 0.988 с полной оценкой - ускорение институциональной сертификации/мониторинга.",
+      "sources": [
+        "https://arxiv.org/abs/2603.23506"
+      ],
+      "level": 6
+    },
+    {
+      "title": "Вертикальная интеграция “модель → датацентр → энергия”",
+      "description": "Вертикальная интеграция “модель → датацентр → энергия”",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "Meta финансирует 7 газовых электростанций для крупнейшего дата-центра - компания берет на себя функцию энергогенерации как часть AI value chain",
+      "description": "Meta финансирует 7 газовых электростанций для крупнейшего дата-центра - компания берет на себя функцию энергогенерации как часть AI value chain.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-27/meta-funds-seven-entergy-gas-plants-to-power-biggest-data-center"
       ],
       "level": 5
     },
     {
-      "title": "Борьба за кадры как симптом передела цепочки “устройство+модель”",
-      "description": "Борьба за кадры как симптом передела цепочки “устройство+модель”: Apple выдает редкие бонусы дизайнерам iPhone, чтобы остановить уход в AI-стартапы (в т.ч. строящие устройства). Это признак, что AI-компании лезут вверх по цепочке в hardware.",
+      "title": "Передел compute-ёмкостей и контрактов в пользу hyperscalers",
+      "description": "Передел compute-ёмкостей и контрактов в пользу hyperscalers",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "Microsoft занимает проект дата-центра на 900 МВт, который планировался под Oracle/OpenAI, после того как они «ушли» - это перераспределение мощности и переговорной силы в compute-цепочке",
+      "description": "Microsoft занимает проект дата-центра на 900 МВт, который планировался под Oracle/OpenAI, после того как они «ушли» - это перераспределение мощности и переговорной силы в compute-цепочке.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-26/apple-gives-iphone-designers-rare-bonuses-to-fight-openai-poaching"
+        "https://www.bloomberg.com/news/articles/2026-03-27/microsoft-rents-data-center-project-developed-for-oracle-openai"
       ],
       "level": 5
     },
     {
-      "title": "Китайские автопроизводители восстанавливают рост в Европе",
-      "description": "Китайские автопроизводители восстанавливают рост в Европе - давление на западных incumbents и возможная реорганизация европейской автоцепочки (локализация, тарифные/нетарифные барьеры, технологические альянсы).",
+      "title": "Сдвиг в game/3D экосистеме: Unity режет “периферию”",
+      "description": "Сдвиг в game/3D экосистеме: Unity режет “периферию”",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "Unity собирается продать издательский бизнес и закрыть рекламу ради фокуса на “лучший бизнес” - косвенно это укрепляет специализацию на core tools для real-time/симуляций (важно для embodied/цифровых двойников)",
+      "description": "Unity собирается продать издательский бизнес и закрыть рекламу ради фокуса на “лучший бизнес” - косвенно это укрепляет специализацию на core tools для real-time/симуляций (важно для embodied/цифровых двойников).",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-27/china-s-carmakers-return-to-growth-in-europe-with-ev-sales"
+        "https://www.bloomberg.com/news/videos/2026-03-27/brown-foreman-up-blue-owl-falls-stock-movers-video"
       ],
       "level": 5
     },
     {
-      "title": "Алгоритмические прорывы меняют “профиль спроса” на память/хранилища для AI",
-      "description": "Алгоритмические прорывы меняют “профиль спроса” на память/хранилища для AI: Google заявляет о компрессионной технике для LLM/vector search, что провоцирует распродажу memory-акций и «разделяет» сегменты памяти/стораджей по чувствительности к алгоритмам.",
+      "title": "Бутылочное горлышко смещается: CPU/память/хранилище снова в центре",
+      "description": "Бутылочное горлышко смещается: CPU/память/хранилище снова в центре",
+      "sources": [],
+      "level": 4
+    },
+    {
+      "title": "Nvidia и Arm возвращают CPU в центр AI-эпохи (CPU как узел orchestration/IO/инференса и “обвязки” ускорителей)",
+      "description": "Nvidia и Arm возвращают CPU в центр AI-эпохи (CPU как узел orchestration/IO/инференса и “обвязки” ускорителей).",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-27/ai-breakthrough-from-google-exposes-divide-in-memory-stocks",
-        "https://www.bloomberg.com/news/articles/2026-03-26/memory-stock-boom-seen-resilient-to-threat-from-new-google-tech"
+        "https://www.bloomberg.com/news/newsletters/2026-03-27/nvidia-arm-return-the-cpu-to-prominence-for-the-ai-age"
       ],
       "level": 4
     },
     {
-      "title": "Дефицит гелия как “железный” узкий ресурс для передовой литографии и полупроводников",
-      "description": "Дефицит гелия как “железный” узкий ресурс для передовой литографии и полупроводников: эскалация вокруг Ормузского пролива усиливает перебои; гелий критичен для semiconductor production и advanced lithography.",
+      "title": "«AI breakthrough от Google» вызывает распродажу в memory chips и «разделяет» storage-ставки - рынок начинает различать типы памяти/хранилища под новые архитектуры/паттерны доступа",
+      "description": "«AI breakthrough от Google» вызывает распродажу в memory chips и «разделяет» storage-ставки - рынок начинает различать типы памяти/хранилища под новые архитектуры/паттерны доступа.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-27/ai-breakthrough-from-google-exposes-divide-in-memory-stocks"
+      ],
+      "level": 4
+    },
+    {
+      "title": "Материальные ограничения чипов: helium как стратегический ресурс",
+      "description": "Материальные ограничения чипов: helium как стратегический ресурс",
+      "sources": [],
+      "level": 4
+    },
+    {
+      "title": "Обсуждается дефицит гелия из-за войны/Ормуза; гелий важен для semiconductor и advanced lithography, при этом в Северной Америке добыча развита слабо, стратегический резерв США был распродан",
+      "description": "Обсуждается дефицит гелия из-за войны/Ормуза; гелий важен для semiconductor и advanced lithography, при этом в Северной Америке добыча развита слабо, стратегический резерв США был распродан.",
       "sources": [
         "https://www.bloomberg.com/news/videos/2026-03-27/a-helium-shortage-that-affects-more-than-balloons-video"
       ],
       "level": 4
     },
     {
-      "title": "Чип-безопасность и контроль утечек GPU",
-      "description": "Чип-безопасность и контроль утечек GPU: законопроект в США усиливает требования к чипмейкерам по предотвращению контрабанды AI-чипов в Китай после кейса Super Micro.",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-26/chip-security-bill-advances-in-house-following-super-micro-case"
-      ],
-      "level": 4
+      "title": "Появляется роль “AI как сотрудник” в финансах",
+      "description": "Появляется роль “AI как сотрудник” в финансах",
+      "sources": [],
+      "level": 3
     },
     {
-      "title": "Кадровый дефицит на стыке AI и hardware/industrial design",
-      "description": "Кадровый дефицит на стыке AI и hardware/industrial design: «поaching» дизайнеров iPhone в AI-стартапы фиксирует новую премию за компетенции “device+AI”.",
+      "title": "Фонд с «Eve» как AI brain (по описанию) - нормализация AI как операционного участника (аналитик/трейдер/ассистент принятия решений)",
+      "description": "Фонд с «Eve» как AI brain (по описанию) - нормализация AI как операционного участника (аналитик/трейдер/ассистент принятия решений).",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-26/apple-gives-iphone-designers-rare-bonuses-to-fight-openai-poaching"
+        "https://www.bloomberg.com/news/articles/2026-03-27/meet-eve-the-ai-brain-behind-an-ex-coatue-trader-s-new-fund"
       ],
       "level": 3
     },
     {
-      "title": "Ремилитаризация Европы меняет структуру занятости в индустрии",
-      "description": "Ремилитаризация Европы меняет структуру занятости в индустрии: Deutz разворачивается в defense и ожидает рост выручки - промышленность перераспределяет инженерные компетенции в пользу оборонных заказов.",
+      "title": "Оборонная специализация усиливается",
+      "description": "Оборонная специализация усиливается",
+      "sources": [],
+      "level": 3
+    },
+    {
+      "title": "Рост defense-tech нарратива (Anduril-like роль) и обсуждение AI на поле боя - повышает спрос на профили: secure ML, ISR/автономия, safety+compliance.,",
+      "description": "Рост defense-tech нарратива (Anduril-like роль) и обсуждение AI на поле боя - повышает спрос на профили: secure ML, ISR/автономия, safety+compliance.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-27/german-engine-maker-s-defense-pivot-to-yield-revenue-jump"
+        "https://www.bloomberg.com/news/articles/2026-03-27/canada-ex-defense-minister-s-startup-juno-sees-anduril-type-role",
+        "https://www.bloomberg.com/news/videos/2026-03-27/bloomberg-tech-asia-3-27-2026-video"
       ],
       "level": 3
     },
     {
-      "title": "Тайвань стабилизирует тарифы на электроэнергию “несмотря на войну”",
-      "description": "Тайвань стабилизирует тарифы на электроэнергию “несмотря на войну”: удержание цен - попытка сохранить конкурентоспособность чип-хаба и ограничить инфляцию; энергетическая политика становится инструментом защиты полупроводниковой географии.",
+      "title": "Compute следует за энергией и контрактами",
+      "description": "Compute следует за энергией и контрактами",
+      "sources": [],
+      "level": 2
+    },
+    {
+      "title": "Meta «привязывает» дата-центр к газовой генерации (локальная энергетическая база)",
+      "description": "Meta «привязывает» дата-центр к газовой генерации (локальная энергетическая база).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-27/meta-funds-seven-entergy-gas-plants-to-power-biggest-data-center"
+      ],
+      "level": 2
+    },
+    {
+      "title": "Microsoft перехватывает 900 МВт проекта - концентрация мощностей у hyperscaler усиливает централизацию",
+      "description": "Microsoft перехватывает 900 МВт проекта - концентрация мощностей у hyperscaler усиливает централизацию.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-27/microsoft-rents-data-center-project-developed-for-oracle-openai"
+      ],
+      "level": 2
+    },
+    {
+      "title": "Тайвань удерживает тарифы на электроэнергию несмотря на войну",
+      "description": "Тайвань удерживает тарифы на электроэнергию несмотря на войну",
+      "sources": [],
+      "level": 2
+    },
+    {
+      "title": "Это фактически субсидирование стабильности chip hub через энергоцены (пространственная конкурентоспособность производства)",
+      "description": "Это фактически субсидирование стабильности chip hub через энергоцены (пространственная конкурентоспособность производства).",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-03-27/chip-hub-taiwan-keeps-power-prices-unchanged-despite-iran-war"
       ],
       "level": 2
     },
     {
-      "title": "Роботакси и экспансия в Ближний Восток",
-      "description": "Роботакси и экспансия в Ближний Восток: Pony AI называет Middle East приоритетом - перестройка географии спроса на автономность (богатые юрисдикции + инфраструктурные мегапроекты).",
-      "sources": [
-        "https://www.bloomberg.com/news/videos/2026-03-27/pony-ai-ceo-middle-east-market-remains-a-priority-video"
-      ],
-      "level": 2
+      "title": "Энергия и сырье становятся ограничителями AI",
+      "description": "Энергия и сырье становятся ограничителями AI",
+      "sources": [],
+      "level": 1
     },
     {
-      "title": "Стратегическая уязвимость цепочек из-за редких газов",
-      "description": "Стратегическая уязвимость цепочек из-за редких газов: дефицит гелия - пример, как природный ресурс становится ограничителем для передовой микроэлектроники.",
+      "title": "Газовая генерация для дата-центров (Meta) и риски нефти/инфляции (война) связывают AI с углеводородной базой.,",
+      "description": "Газовая генерация для дата-центров (Meta) и риски нефти/инфляции (война) связывают AI с углеводородной базой.",
       "sources": [
-        "https://www.bloomberg.com/news/videos/2026-03-27/a-helium-shortage-that-affects-more-than-balloons-video"
+        "https://www.bloomberg.com/news/articles/2026-03-27/meta-funds-seven-entergy-gas-plants-to-power-biggest-data-center",
+        "https://www.bloomberg.com/news/videos/2026-03-27/fed-s-paulson-ai-gains-uncertain-war-creating-risks-video"
       ],
       "level": 1
     },
     {
-      "title": "Удары по портовой нефтяной инфраструктуре РФ",
-      "description": "Удары по портовой нефтяной инфраструктуре РФ (Приморск, Усть-Луга) - риск для логистики энергоэкспорта, а через нефть/цены - для всех энергоемких отраслей, включая дата-центры и производство чипов.",
+      "title": "Гелий как ресурсный риск для литографии",
+      "description": "Гелий как ресурсный риск для литографии.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-27/russia-s-key-baltic-oil-ports-on-fire-again-satellite-data-show"
+        "https://www.bloomberg.com/news/videos/2026-03-27/a-helium-shortage-that-affects-more-than-balloons-video"
       ],
       "level": 1
     }
   ],
   "trends": [
     {
-      "name": "агент = LLM + инструменты + краткосрочный контекст (высокая хрупкость на длинном горизонте).",
-      "momentum": -80,
-      "rationale": "Угасает: переход от «агент = LLM + инструменты + краткосрочный контекст (высокая хрупкость на длинном горизонте).» к «агент = структурированная карта среды/мира + накопительная память + верификация (графы, world model, consensus, trace-eval).». Упоминаний в контексте перехода: 5",
+      "name": "AI-CapEx / энергетическая вертикализация дата-центров",
+      "momentum": 85,
+      "rationale": "Meta прямо финансирует газовую генерацию под датацентр; перехват 900 МВт Microsoft показывает, что МВт - стратегический актив.",
       "levels": [
-        8,
-        6,
-        5
+        1,
+        2,
+        5,
+        9
       ],
-      "category": "decelerating"
+      "category": "accelerating"
     },
     {
-      "name": "safety = RLHF/фильтры ответов (контент-уровень).",
-      "momentum": -10,
-      "rationale": "Угасает: переход от «safety = RLHF/фильтры ответов (контент-уровень).» к «safety = детерминистские guards + split-compute + оценка trace-compliance (исполнение/инструменты/браузер).». Упоминаний в контексте перехода: 0",
-      "levels": [
-        8,
-        6,
-        4
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "узкое место = GPU/поставки чипов.",
-      "momentum": -25,
-      "rationale": "Угасает: переход от «узкое место = GPU/поставки чипов.» к «узкие места = энергетические тарифы (Тайвань), редкие газы (гелий), логистика нефти/портов.». Упоминаний в контексте перехода: 1",
+      "name": "Долговое финансирование “фронтира” (leverage в AI)",
+      "momentum": 70,
+      "rationale": "$40 млрд bridge loan SoftBank под OpenAI - институционализация долга как топлива гонки.",
       "levels": [
         9,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Публичные рынки для frontier-AI (IPO wave)",
+      "momentum": 55,
+      "rationale": "Anthropic рассматривает IPO уже к октябрю; одновременно OpenAI “в гонке IPO” (по формулировке сюжета).",
+      "levels": [
+        9,
+        8
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "“Defense-grade GenAI” и обучение на classified",
+      "momentum": 75,
+      "rationale": "Пентагон обсуждает secure training на классифицированных данных - это мощный институциональный рычаг спроса.",
+      "levels": [
+        7,
+        8,
+        2,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Агентные платформы (persistent memory / world models / long-horizon)",
+      "momentum": 65,
+      "rationale": "Environment Maps и AI-Supervisor фиксируют переход к устойчивым представлениям среды/знания как «основе агентности».",
+      "levels": [
+        6,
+        7,
+        8
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Безопасность AI-агентов (IPI, trace compliance, deterministic guardrails)",
+      "momentum": 60,
+      "rationale": "Cognitive Firewall (split compute) и AgentPex (поиск нарушений в трассах) - безопасность переезжает из “policy” в “архитектуру и контроль исполнения”.",
+      "levels": [
+        6,
+        8,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Универсальные “стоимостные” метрики LLM/агентов (thinking tokens, real cost)",
+      "momentum": 35,
+      "rationale": "показан разрыв прайса и фактической стоимости; это запускает спрос на FinOps-инструменты для выбора моделей.",
+      "levels": [
+        6,
+        8,
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "“Зеленый” нарратив AI-инфраструктуры",
+      "momentum": -25,
+      "rationale": "финансирование газовых станций под AI-DC усиливает fossil reliance; ESG-логика отступает перед гонкой мощности.",
+      "levels": [
+        1,
+        2,
+        8
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Стабильность глобальных цепочек полупроводниковых материалов (helium, etc.)",
+      "momentum": -40,
+      "rationale": "дефицит гелия на фоне войны и закрытий логистики показывает ухудшение предсказуемости supply chain.",
+      "levels": [
+        1,
         4,
         2,
-        1
+        9
       ],
       "category": "decelerating"
     }
   ],
   "cross_level_links": [
     {
-      "title": "Война/морские “chokepoints” (ур.1-2) → дефициты (гелий/нефть) → CapEx и архитектурные решения в compute (ур.4-5) → финансовые режимы (ур.9)",
-      "description": "Война/морские “chokepoints” (ур.1-2) → дефициты (гелий/нефть) → CapEx и архитектурные решения в compute (ур.4-5) → финансовые режимы (ур.9) - Закрытие/риск Ормуза усиливает нефть и дефициты (в т.ч. гелий), что повышает стоимость производства чипов и эксплуатации DC, стимулируя алгоритмическую экономию памяти/хранилищ (Google compression) и пересборку инвест-нарративов.,",
-      "levels": [
-        9,
-        5,
-        4,
-        2,
-        1
-      ],
+      "title": "Война/нефть → инфляция/ставки → стоимость AI-capex → смена энергетической стратегии",
+      "description": "Война/нефть → инфляция/ставки → стоимость AI-capex → смена энергетической стратегии - Геополитический шок (ур.1/9 через цены) повышает стоимость капитала (ур.9), что подталкивает компании к контролю энергии (ур.5/2): Meta финансирует газовые станции как часть датацентра.,",
+      "levels": [],
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-03-27/fed-s-paulson-ai-gains-uncertain-war-creating-risks-video",
+        "https://www.bloomberg.com/news/articles/2026-03-27/meta-funds-seven-entergy-gas-plants-to-power-biggest-data-center"
+      ]
+    },
+    {
+      "title": "Дефицит гелия/материальные риски → пересборка “железа” и цепочек поставок → институциональные меры",
+      "description": "Дефицит гелия/материальные риски → пересборка “железа” и цепочек поставок → институциональные меры - Угроза по гелию (ур.1) бьет по литографии/полупроводникам (ур.4), что усиливает стремление к промышленной автономии (ур.8/9) и инвестициям в критичные компоненты (см. редкоземельные магниты в США как аналогичный паттерн, хоть и не про AI напрямую).,",
+      "levels": [],
       "sources": [
         "https://www.bloomberg.com/news/videos/2026-03-27/a-helium-shortage-that-affects-more-than-balloons-video",
-        "https://www.bloomberg.com/news/articles/2026-03-27/ai-breakthrough-from-google-exposes-divide-in-memory-stocks"
+        "https://www.bloomberg.com/news/articles/2026-03-27/us-gets-another-magnet-plant-in-push-to-tackle-china-s-dominance"
       ]
     },
     {
-      "title": "Решения на уровне платформ (ур.5) → спонтанные стандарты переносимости (ур.8) → конкуренция ассистентов",
-      "description": "Решения на уровне платформ (ур.5) → спонтанные стандарты переносимости (ур.8) → конкуренция ассистентов - Apple открывает Siri для сторонних ассистентов (платформенный ход), Google вводит перенос контекста (снижение switching costs): вместе это формирует “рынок совместимости” и новые неформальные стандарты контекстного обмена.,",
-      "levels": [
-        8,
-        5
-      ],
+      "title": "Оборона и классифицированные данные → закрытые контуры знания → новая конкуренция на уровне методологий",
+      "description": "Оборона и классифицированные данные → закрытые контуры знания → новая конкуренция на уровне методологий - Решение Пентагона про обучение на classified (ур.7) требует secure compute/процессов (ур.2/6), меняет рынок: выигрывают те, кто может обеспечить compliance + надежную агентность (ур.8/5).",
+      "levels": [],
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-26/apple-plans-to-open-up-siri-to-rival-ai-assistants-beyond-chatgpt-in-ios-27",
-        "https://www.bloomberg.com/news/articles/2026-03-26/google-gemini-adds-tool-to-make-it-easier-to-switch-from-chatgpt"
-      ]
-    },
-    {
-      "title": "Оборона (ур.7-9) → закрытые контуры данных → требования к безопасности агентов (ур.6-4)",
-      "description": "Оборона (ур.7-9) → закрытые контуры данных → требования к безопасности агентов (ур.6-4) - Обучение на classified data делает критичной инженерную безопасность агентных контуров (верификация, guards, split-compute), иначе госзаказчик не сможет масштабировать внедрение.,",
-      "levels": [
-        9,
-        7,
-        6,
-        4
-      ],
-      "sources": [
-        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/",
-        "https://arxiv.org/abs/2603.23791"
+        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
       ]
     }
   ],
-  "structural_shifts": [
-    {
-      "title": "Агенты переходят от сессий к долговременной памяти и world models",
-      "from": "агент = LLM + инструменты + краткосрочный контекст (высокая хрупкость на длинном горизонте).",
-      "to": "агент = структурированная карта среды/мира + накопительная память + верификация (графы, world model, consensus, trace-eval).",
-      "through": "новые представления (Environment Maps, Research World Model), новые протоколы оценки и дешевые бенчмарки → индустриализация агентности.",
-      "levels": [
-        8,
-        6,
-        5
-      ],
-      "trend": "emerging",
-      "sources": [
-        "https://arxiv.org/abs/2603.23610",
-        "https://arxiv.org/abs/2603.24402",
-        "https://arxiv.org/abs/2603.23749"
-      ]
-    },
-    {
-      "title": "Безопасность смещается от “контент-фильтров” к контролю траекторий и исполнительных границ",
-      "from": "safety = RLHF/фильтры ответов (контент-уровень).",
-      "to": "safety = детерминистские guards + split-compute + оценка trace-compliance (исполнение/инструменты/браузер).",
-      "through": "рост indirect prompt injection/агентных уязвимостей → архитектуры Cognitive Firewall + инструменты типа AgentPex для проверки следов.",
-      "levels": [
-        8,
-        6,
-        4
-      ],
-      "trend": "accelerating",
-      "sources": [
-        "https://arxiv.org/abs/2603.23791",
-        "https://arxiv.org/abs/2603.23806"
-      ]
-    },
-    {
-      "title": "AI-инфраструктура становится функцией сырья/энергии, а не только GPU",
-      "from": "узкое место = GPU/поставки чипов.",
-      "to": "узкие места = энергетические тарифы (Тайвань), редкие газы (гелий), логистика нефти/портов.",
-      "through": "геополитические удары/морские риски → дефициты → рост цены владения compute → алгоритмическая экономия (компрессия памяти/стоража).",
-      "levels": [
-        9,
-        4,
-        2,
-        1
-      ],
-      "trend": "accelerating",
-      "sources": [
-        "https://www.bloomberg.com/news/videos/2026-03-27/a-helium-shortage-that-affects-more-than-balloons-video",
-        "https://www.bloomberg.com/news/articles/2026-03-27/chip-hub-taiwan-keeps-power-prices-unchanged-despite-iran-war",
-        "https://www.bloomberg.com/news/articles/2026-03-27/ai-breakthrough-from-google-exposes-divide-in-memory-stocks"
-      ]
-    }
-  ],
+  "structural_shifts": [],
   "radar_signals": [
     {
-      "title": "IPO Anthropic как прецедент “публичного финансирования compute”",
-      "description": "если окно откроется, другие фронтир-лабы начнут перестраивать корпоративную структуру/комплаенс под листинг.",
+      "title": "Debt-financed AI",
+      "description": "как системная норма (bridge loans под доли в frontier) → риск «финансового ускорителя» (margin/covenants) на весь сектор.",
       "level_group": "upper",
       "level_range": "7-9",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-27/claude-ai-maker-anthropic-said-to-weigh-ipo-as-soon-as-october"
+        "https://www.bloomberg.com/news/articles/2026-03-27/softbank-secures-record-40-billion-bridge-loan-for-openai-stake"
       ]
     },
     {
-      "title": "Судебная борьба за госзаказ AI",
-      "description": "прецеденты могут закрепить право/обязанность государства иметь доступ к конкурентному набору моделей, а не к одному поставщику.",
+      "title": "IPO-окно для frontier",
+      "description": "(Anthropic) - сигнал, что инвесторы требуют ликвидности и “public discipline” по юнит-экономике.",
       "level_group": "upper",
       "level_range": "7-9",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-26/anthropic-wins-court-order-blocking-trump-ban-on-use-of-ai-tool"
+        "https://www.bloomberg.com/news/videos/2026-03-27/anthropic-could-go-public-by-october-video"
       ]
     },
     {
-      "title": "Алгоритмическая компрессия памяти как “макро-фактор” для рынков полупроводников",
-      "description": "(не только технический апдейт): может разделить бенефициаров в DRAM/NAND/enterprise storage.",
+      "title": "Cost-truth",
+      "description": "«pricing reversal» и thinking tokens → появление FinOps-стандарта для агентных систем (метрики: $/task, variance, worst-case).",
       "level_group": "middle",
       "level_range": "4-6",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-27/ai-breakthrough-from-google-exposes-divide-in-memory-stocks"
+        "https://arxiv.org/abs/2603.23971"
       ]
     },
     {
-      "title": "Edge+cloud security для агентов",
-      "description": "Cognitive Firewall показывает, что победит не «самая умная модель», а архитектура, которая дешевле и безопаснее на границе действия.",
+      "title": "Security-by-architecture",
+      "description": "split edge/cloud + deterministic guard как новый паттерн для коммерческих браузер-агентов.",
       "level_group": "middle",
       "level_range": "4-6",
       "sources": [
@@ -598,8 +864,17 @@
       ]
     },
     {
-      "title": "Гелий как “тихий” стратегический ресурс",
-      "description": "если дефицит закрепится, появятся госрезервы/долгосрочные оффтейк-контракты - как раньше для нефти.",
+      "title": "Персистентная память/карты среды",
+      "description": "как обязательный слой для enterprise-агентов (не “nice to have”).",
+      "level_group": "middle",
+      "level_range": "4-6",
+      "sources": [
+        "https://arxiv.org/abs/2603.23610"
+      ]
+    },
+    {
+      "title": "Гелий",
+      "description": "как неочевидный ограничитель масштабирования chip supply.",
       "level_group": "lower",
       "level_range": "1-3",
       "sources": [
@@ -607,67 +882,133 @@
       ]
     },
     {
-      "title": "Энерготарифы Тайваня как инструмент промышленной политики",
-      "description": "возможны субсидии/перекрестное финансирование ради удержания chip hub.",
+      "title": "Энергетическая вертикализация",
+      "description": "(газовые станции под датацентры) - риск политической/ESG-реакции и регулирования.",
       "level_group": "lower",
       "level_range": "1-3",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-03-27/chip-hub-taiwan-keeps-power-prices-unchanged-despite-iran-war"
+        "https://www.bloomberg.com/news/articles/2026-03-27/meta-funds-seven-entergy-gas-plants-to-power-biggest-data-center"
       ]
     }
   ],
   "metrics": {
-    "total_events": 23,
+    "total_events": 46,
     "events_by_level": {
-      "1": 2,
-      "2": 2,
-      "3": 2,
-      "4": 3,
-      "5": 3,
-      "6": 3,
-      "7": 2,
-      "8": 3,
-      "9": 3
+      "1": 3,
+      "2": 5,
+      "3": 4,
+      "4": 5,
+      "5": 6,
+      "6": 7,
+      "7": 5,
+      "8": 4,
+      "9": 7
     },
-    "total_sources": 25,
-    "structural_shifts_count": 3,
-    "radar_signals_count": 6,
+    "total_sources": 27,
+    "structural_shifts_count": 0,
+    "radar_signals_count": 7,
     "cross_level_links_count": 3,
-    "momentum_trends_count": 3
+    "momentum_trends_count": 9
   },
   "categories": [],
   "momentum_trends": [
     {
-      "name": "агент = LLM + инструменты + краткосрочный контекст (высокая хрупкость на длинном горизонте).",
-      "momentum": -80,
-      "rationale": "Угасает: переход от «агент = LLM + инструменты + краткосрочный контекст (высокая хрупкость на длинном горизонте).» к «агент = структурированная карта среды/мира + накопительная память + верификация (графы, world model, consensus, trace-eval).». Упоминаний в контексте перехода: 5",
+      "name": "AI-CapEx / энергетическая вертикализация дата-центров",
+      "momentum": 85,
+      "rationale": "Meta прямо финансирует газовую генерацию под датацентр; перехват 900 МВт Microsoft показывает, что МВт - стратегический актив.",
       "levels": [
-        8,
-        6,
-        5
+        1,
+        2,
+        5,
+        9
       ],
-      "category": "decelerating"
+      "category": "accelerating"
     },
     {
-      "name": "safety = RLHF/фильтры ответов (контент-уровень).",
-      "momentum": -10,
-      "rationale": "Угасает: переход от «safety = RLHF/фильтры ответов (контент-уровень).» к «safety = детерминистские guards + split-compute + оценка trace-compliance (исполнение/инструменты/браузер).». Упоминаний в контексте перехода: 0",
-      "levels": [
-        8,
-        6,
-        4
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "узкое место = GPU/поставки чипов.",
-      "momentum": -25,
-      "rationale": "Угасает: переход от «узкое место = GPU/поставки чипов.» к «узкие места = энергетические тарифы (Тайвань), редкие газы (гелий), логистика нефти/портов.». Упоминаний в контексте перехода: 1",
+      "name": "Долговое финансирование “фронтира” (leverage в AI)",
+      "momentum": 70,
+      "rationale": "$40 млрд bridge loan SoftBank под OpenAI - институционализация долга как топлива гонки.",
       "levels": [
         9,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Публичные рынки для frontier-AI (IPO wave)",
+      "momentum": 55,
+      "rationale": "Anthropic рассматривает IPO уже к октябрю; одновременно OpenAI “в гонке IPO” (по формулировке сюжета).",
+      "levels": [
+        9,
+        8
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "“Defense-grade GenAI” и обучение на classified",
+      "momentum": 75,
+      "rationale": "Пентагон обсуждает secure training на классифицированных данных - это мощный институциональный рычаг спроса.",
+      "levels": [
+        7,
+        8,
+        2,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Агентные платформы (persistent memory / world models / long-horizon)",
+      "momentum": 65,
+      "rationale": "Environment Maps и AI-Supervisor фиксируют переход к устойчивым представлениям среды/знания как «основе агентности».",
+      "levels": [
+        6,
+        7,
+        8
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Безопасность AI-агентов (IPI, trace compliance, deterministic guardrails)",
+      "momentum": 60,
+      "rationale": "Cognitive Firewall (split compute) и AgentPex (поиск нарушений в трассах) - безопасность переезжает из “policy” в “архитектуру и контроль исполнения”.",
+      "levels": [
+        6,
+        8,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Универсальные “стоимостные” метрики LLM/агентов (thinking tokens, real cost)",
+      "momentum": 35,
+      "rationale": "показан разрыв прайса и фактической стоимости; это запускает спрос на FinOps-инструменты для выбора моделей.",
+      "levels": [
+        6,
+        8,
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "“Зеленый” нарратив AI-инфраструктуры",
+      "momentum": -25,
+      "rationale": "финансирование газовых станций под AI-DC усиливает fossil reliance; ESG-логика отступает перед гонкой мощности.",
+      "levels": [
+        1,
+        2,
+        8
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Стабильность глобальных цепочек полупроводниковых материалов (helium, etc.)",
+      "momentum": -40,
+      "rationale": "дефицит гелия на фоне войны и закрытий логистики показывает ухудшение предсказуемости supply chain.",
+      "levels": [
+        1,
         4,
         2,
-        1
+        9
       ],
       "category": "decelerating"
     }
