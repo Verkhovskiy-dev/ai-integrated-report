@@ -1,0 +1,899 @@
+{
+  "date": "2026-03-27",
+  "generated_at": "2026-03-27T05:01:27.764Z",
+  "key_focus": "",
+  "srt_levels": [
+    {
+      "level": 9,
+      "name": "Денежная система",
+      "events": [
+        {
+          "title": "Окно ликвидности для AI-лидеров через IPO",
+          "description": "Окно ликвидности для AI-лидеров через IPO: Anthropic рассматривает IPO уже в октябре, что усиливает “публичный” контур финансирования конкуренции с OpenAI и задает новый режим отчетности/рисков для frontier-моделей.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-27/claude-ai-maker-anthropic-said-to-weigh-ipo-as-soon-as-october"
+          ]
+        },
+        {
+          "title": "Капиталоемкость инфраструктуры как базовая ставка на AI",
+          "description": "Капиталоемкость инфраструктуры как базовая ставка на AI: Meta увеличивает план инвестиций в дата-центр в Эль-Пасо до $10 млрд, что фиксирует долговременный CapEx-режим как норму для крупных игроков.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-26/meta-increases-investment-in-el-paso-data-center-to-10-billion"
+          ]
+        },
+        {
+          "title": "Финансовая переоценка “стоимости reasoning”",
+          "description": "Финансовая переоценка “стоимости reasoning”: исследование о “price reversal” показывает, что дешевый прайс API не гарантирует дешевую эксплуатацию из-за variability thinking tokens - это подталкивает рынок к FinOps для агентов и метрикам “стоимость за выполненное действие/за траекторию”.",
+          "sources": [
+            "https://arxiv.org/abs/2603.23971"
+          ]
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 8,
+      "name": "Спонтанный порядок",
+      "events": [
+        {
+          "title": "Суды и регуляторные контуры начинают определять рынки сбыта AI",
+          "description": "Суды и регуляторные контуры начинают определять рынки сбыта AI: Anthropic добился судебной приостановки запрета на использование его AI в госсекторе США, аргументируя риском потери миллиардов выручки - госзакупки становятся ключевым рынком, а “право на доступ к госрынку” превращается в новый объект борьбы.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-26/anthropic-wins-court-order-blocking-trump-ban-on-use-of-ai-tool"
+          ]
+        },
+        {
+          "title": "Европейская судебная практика как “быстрый стандарт” по вреду",
+          "description": "Европейская судебная практика как “быстрый стандарт” по вреду: нидерландский суд запретил xAI Grok генерировать “раздевание без согласия” - формируется прецедентный контур ограничений генеративных функций на уровне стран/городов ЕС.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-26/dutch-court-bans-xai-s-grok-from-nonconsensual-undressing"
+          ]
+        },
+        {
+          "title": "Сдвиг к “переносимости контекста” между ассистентами",
+          "description": "Сдвиг к “переносимости контекста” между ассистентами: Google Gemini добавляет инструмент переноса истории/контекста из других AI-приложений, фактически создавая рынок за “customer switching costs” и стандарты миграции контекста.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-26/google-gemini-adds-tool-to-make-it-easier-to-switch-from-chatgpt"
+          ]
+        },
+        {
+          "title": "Политический сигнал: не душить рынок антимонопольным прессингом",
+          "description": "Политический сигнал: не душить рынок антимонопольным прессингом: представитель Белого дома говорит, что антимонопольщикам стоит быть осторожнее с AI-скепсисом - это попытка сохранить темп гонки и избежать преждевременной кодификации рынка.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-26/antitrust-agencies-should-be-wary-of-ai-scrutiny-official-says"
+          ]
+        }
+      ],
+      "event_count": 4
+    },
+    {
+      "level": 7,
+      "name": "Институты производства знаний",
+      "events": [
+        {
+          "title": "Военно-государственный контур знаний: “secure training on classified data”",
+          "description": "Военно-государственный контур знаний: “secure training on classified data”. Пентагон планирует защищенные среды, чтобы AI-компании могли обучать версии моделей на секретных данных - это создание нового класса “закрытых датасетов” как стратегического ресурса и новой формы кооперации “госданные ↔ частные модели”.",
+          "sources": [
+            "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
+          ]
+        },
+        {
+          "title": "Масштабирование knowledge-production агентами",
+          "description": "Масштабирование knowledge-production агентами: OpenAI “вкладывает всё” в fully automated researcher - институционализация R&D как агентной фабрики гипотез/экспериментов.",
+          "sources": [
+            "https://www.technologyreview.com/2026/03/20/1134438/openai-is-throwing-everything-into-building-a-fully-automated-researcher/"
+          ]
+        },
+        {
+          "title": "Открытый контур отраслевых решений в критических доменах",
+          "description": "Открытый контур отраслевых решений в критических доменах: Berta - open-source платформа клинической документации, развернутая на уровне провинциальной системы здравоохранения (Alberta Health Services), с радикальным снижением стоимости (до <$30/врач/мес) и удержанием данных внутри инфраструктуры. Это усиливает модель “суверенных” внедрений.",
+          "sources": [
+            "https://arxiv.org/abs/2603.23513"
+          ]
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 6,
+      "name": "Технологии производства знаний",
+      "events": [
+        {
+          "title": "Новая волна методологий оценки агентов",
+          "description": "Новая волна методологий оценки агентов:",
+          "sources": []
+        },
+        {
+          "title": "“Efficient Benchmarking of AI Agents” предлагает сокращать оценку, сохраняя ранжирование, через выбор задач средней сложности - это инженеризация лидербордов под стоимость",
+          "description": "“Efficient Benchmarking of AI Agents” предлагает сокращать оценку, сохраняя ранжирование, через выбор задач средней сложности - это инженеризация лидербордов под стоимость.",
+          "sources": [
+            "https://arxiv.org/abs/2603.23749"
+          ]
+        },
+        {
+          "title": "EnterpriseArena (“Can LLM Agents Be CFOs?”) фиксирует провал долгогоризонтного распределения ресурсов: лишь 16% прогонов “доживают” до конца горизонта - это важный отрицательный результат для агентных внедрений в корпоративном управлении",
+          "description": "EnterpriseArena (“Can LLM Agents Be CFOs?”) фиксирует провал долгогоризонтного распределения ресурсов: лишь 16% прогонов “доживают” до конца горизонта - это важный отрицательный результат для агентных внедрений в корпоративном управлении.",
+          "sources": [
+            "https://arxiv.org/abs/2603.23638"
+          ]
+        },
+        {
+          "title": "Инструментализация безопасности агентных систем",
+          "description": "Инструментализация безопасности агентных систем:",
+          "sources": []
+        },
+        {
+          "title": "“Cognitive Firewall” показывает, что split edge/cloud + детерминированный guard может снизить успех indirect prompt injection до <1% при огромном выигрыше по latency - формируется архитектурный паттерн “вероятностный мозг + детерминированная граница действий”",
+          "description": "“Cognitive Firewall” показывает, что split edge/cloud + детерминированный guard может снизить успех indirect prompt injection до <1% при огромном выигрыше по latency - формируется архитектурный паттерн “вероятностный мозг + детерминированная граница действий”.",
+          "sources": [
+            "https://arxiv.org/abs/2603.23791"
+          ]
+        },
+        {
+          "title": "“Internal Safety Collapse” вводит класс сценариев, где вредоносный контент становится “валидным завершением задачи”, и показывает экстремальные провалы safety - это расширяет модель угроз за пределы “джейлбрейков”",
+          "description": "“Internal Safety Collapse” вводит класс сценариев, где вредоносный контент становится “валидным завершением задачи”, и показывает экстремальные провалы safety - это расширяет модель угроз за пределы “джейлбрейков”.",
+          "sources": [
+            "https://arxiv.org/abs/2603.23509"
+          ]
+        }
+      ],
+      "event_count": 6
+    },
+    {
+      "level": 5,
+      "name": "Разделение труда между фирмами",
+      "events": [
+        {
+          "title": "Смещение конкуренции в слой платформенного контроля над устройством/ассистентом",
+          "description": "Смещение конкуренции в слой платформенного контроля над устройством/ассистентом:",
+          "sources": []
+        },
+        {
+          "title": "Apple планирует открыть Siri для внешних ассистентов (за пределами ChatGPT), делая iPhone “AI-платформой” и фактически вводя рынок “ассистент-провайдеров” внутри iOS",
+          "description": "Apple планирует открыть Siri для внешних ассистентов (за пределами ChatGPT), делая iPhone “AI-платформой” и фактически вводя рынок “ассистент-провайдеров” внутри iOS.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-26/apple-plans-to-open-up-siri-to-rival-ai-assistants-beyond-chatgpt-in-ios-27"
+          ]
+        },
+        {
+          "title": "Apple платит редкие бонусы дизайнерам iPhone, чтобы сдержать уход в AI-стартапы, включая OpenAI, которые строят собственные устройства - борьба за кадры отражает перестройку value chain “железо+ассистент+агентные сценарии”",
+          "description": "Apple платит редкие бонусы дизайнерам iPhone, чтобы сдержать уход в AI-стартапы, включая OpenAI, которые строят собственные устройства - борьба за кадры отражает перестройку value chain “железо+ассистент+агентные сценарии”.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-26/apple-gives-iphone-designers-rare-bonuses-to-fight-openai-poaching"
+          ]
+        },
+        {
+          "title": "Автономный транспорт как экспортируемая агентная отрасль",
+          "description": "Автономный транспорт как экспортируемая агентная отрасль: Pony AI сообщает о первом прибыльном квартале и намерении расширять robotaxi в 20 городов, выделяя Ближний Восток как приоритетный рынок - здесь видна связка “китайская разработка → зарубежные регуляторно-инфраструктурные ниши”. и",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-26/pony-ai-swings-to-profit-aims-to-launch-robotaxis-in-20-cities",
+            "https://www.bloomberg.com/news/videos/2026-03-27/pony-ai-ceo-middle-east-market-remains-a-priority-video"
+          ]
+        }
+      ],
+      "event_count": 4
+    },
+    {
+      "level": 4,
+      "name": "«Железные» технологии",
+      "events": [
+        {
+          "title": "Алгоритмическое давление на рынок памяти/хранилищ",
+          "description": "Алгоритмическое давление на рынок памяти/хранилищ: Google публичит технику компрессии/более эффективного использования памяти для LLM и vector search, что вызывает selloff в memory stocks - ожидание “более дешевого контекста” влияет на капитальные рынки железа.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-26/memory-stock-boom-seen-resilient-to-threat-from-new-google-tech"
+          ]
+        },
+        {
+          "title": "Экспортконтроль переходит в режим “security-by-design”",
+          "description": "Экспортконтроль переходит в режим “security-by-design”: законопроект в Палате представителей США усиливает требования к chipmakers по предотвращению контрабанды AI-чипов в Китай после кейса Super Micro - “цепочка поставок” становится объектом принудительной верификации.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-26/chip-security-bill-advances-in-house-following-super-micro-case"
+          ]
+        },
+        {
+          "title": "Пробой в долговременной памяти моделей",
+          "description": "Пробой в долговременной памяти моделей: Memory Sparse Attention заявляет масштабирование до 100M токенов на 2×A800 - даже если это пока исследовательский режим, он меняет проектирование агентных систем (меньше reliance на внешние RAG-хранилища).",
+          "sources": [
+            "https://arxiv.org/abs/2603.23516"
+          ]
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 3,
+      "name": "Социально-профессиональная структура",
+      "events": [
+        {
+          "title": "Рынок труда смещается из “классического hardware” в “AI-device/agent stack”",
+          "description": "Рынок труда смещается из “классического hardware” в “AI-device/agent stack”: Apple удерживает hardware-дизайнеров от ухода в AI-стартапы, что означает: компетенция индустриального дизайна становится дефицитной внутри новой кооперации “устройство + агент”.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-26/apple-gives-iphone-designers-rare-bonuses-to-fight-openai-poaching"
+          ]
+        },
+        {
+          "title": "Рост роли “AI safety / security engineer” как отдельной профессии",
+          "description": "Рост роли “AI safety / security engineer” как отдельной профессии подкреплен исследованиями по prompt-injection защите и safety collapse.",
+          "sources": [
+            "https://arxiv.org/abs/2603.23791",
+            "https://arxiv.org/abs/2603.23509"
+          ]
+        }
+      ],
+      "event_count": 2
+    },
+    {
+      "level": 2,
+      "name": "Пространственная организация",
+      "events": [
+        {
+          "title": "США продолжают стягивать compute в энергозависимые локации",
+          "description": "США продолжают стягивать compute в энергозависимые локации: $10 млрд дата-центр Meta в Эль-Пасо - закрепление Техаса/Юга США как compute-пояса (энергетика, земля, регуляторика).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-26/meta-increases-investment-in-el-paso-data-center-to-10-billion"
+          ]
+        },
+        {
+          "title": "Ближний Восток как “внешний рынок развертывания” автономных систем",
+          "description": "Ближний Восток как “внешний рынок развертывания” автономных систем: Pony AI явно держит фокус на регионе.",
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-03-27/pony-ai-ceo-middle-east-market-remains-a-priority-video"
+          ]
+        }
+      ],
+      "event_count": 2
+    },
+    {
+      "level": 1,
+      "name": "Природные ресурсы",
+      "events": [
+        {
+          "title": "Прямых новых фактов о воде/электроэнергии в новостях нет, но рост CapEx дата-центров (Meta) - косвенный маркер того, что энергоресурс и охлаждение остаются ограничителями, определяющими географию (уровень 2) и финансовую модель (уровень 9)",
+          "description": "Прямых новых фактов о воде/электроэнергии в новостях нет, но рост CapEx дата-центров (Meta) - косвенный маркер того, что энергоресурс и охлаждение остаются ограничителями, определяющими географию (уровень 2) и финансовую модель (уровень 9).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-26/meta-increases-investment-in-el-paso-data-center-to-10-billion"
+          ]
+        }
+      ],
+      "event_count": 1
+    }
+  ],
+  "events": [
+    {
+      "title": "Окно ликвидности для AI-лидеров через IPO",
+      "description": "Окно ликвидности для AI-лидеров через IPO: Anthropic рассматривает IPO уже в октябре, что усиливает “публичный” контур финансирования конкуренции с OpenAI и задает новый режим отчетности/рисков для frontier-моделей.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-27/claude-ai-maker-anthropic-said-to-weigh-ipo-as-soon-as-october"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Капиталоемкость инфраструктуры как базовая ставка на AI",
+      "description": "Капиталоемкость инфраструктуры как базовая ставка на AI: Meta увеличивает план инвестиций в дата-центр в Эль-Пасо до $10 млрд, что фиксирует долговременный CapEx-режим как норму для крупных игроков.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/meta-increases-investment-in-el-paso-data-center-to-10-billion"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Финансовая переоценка “стоимости reasoning”",
+      "description": "Финансовая переоценка “стоимости reasoning”: исследование о “price reversal” показывает, что дешевый прайс API не гарантирует дешевую эксплуатацию из-за variability thinking tokens - это подталкивает рынок к FinOps для агентов и метрикам “стоимость за выполненное действие/за траекторию”.",
+      "sources": [
+        "https://arxiv.org/abs/2603.23971"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Суды и регуляторные контуры начинают определять рынки сбыта AI",
+      "description": "Суды и регуляторные контуры начинают определять рынки сбыта AI: Anthropic добился судебной приостановки запрета на использование его AI в госсекторе США, аргументируя риском потери миллиардов выручки - госзакупки становятся ключевым рынком, а “право на доступ к госрынку” превращается в новый объект борьбы.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/anthropic-wins-court-order-blocking-trump-ban-on-use-of-ai-tool"
+      ],
+      "level": 8
+    },
+    {
+      "title": "Европейская судебная практика как “быстрый стандарт” по вреду",
+      "description": "Европейская судебная практика как “быстрый стандарт” по вреду: нидерландский суд запретил xAI Grok генерировать “раздевание без согласия” - формируется прецедентный контур ограничений генеративных функций на уровне стран/городов ЕС.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/dutch-court-bans-xai-s-grok-from-nonconsensual-undressing"
+      ],
+      "level": 8
+    },
+    {
+      "title": "Сдвиг к “переносимости контекста” между ассистентами",
+      "description": "Сдвиг к “переносимости контекста” между ассистентами: Google Gemini добавляет инструмент переноса истории/контекста из других AI-приложений, фактически создавая рынок за “customer switching costs” и стандарты миграции контекста.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/google-gemini-adds-tool-to-make-it-easier-to-switch-from-chatgpt"
+      ],
+      "level": 8
+    },
+    {
+      "title": "Политический сигнал: не душить рынок антимонопольным прессингом",
+      "description": "Политический сигнал: не душить рынок антимонопольным прессингом: представитель Белого дома говорит, что антимонопольщикам стоит быть осторожнее с AI-скепсисом - это попытка сохранить темп гонки и избежать преждевременной кодификации рынка.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/antitrust-agencies-should-be-wary-of-ai-scrutiny-official-says"
+      ],
+      "level": 8
+    },
+    {
+      "title": "Военно-государственный контур знаний: “secure training on classified data”",
+      "description": "Военно-государственный контур знаний: “secure training on classified data”. Пентагон планирует защищенные среды, чтобы AI-компании могли обучать версии моделей на секретных данных - это создание нового класса “закрытых датасетов” как стратегического ресурса и новой формы кооперации “госданные ↔ частные модели”.",
+      "sources": [
+        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
+      ],
+      "level": 7
+    },
+    {
+      "title": "Масштабирование knowledge-production агентами",
+      "description": "Масштабирование knowledge-production агентами: OpenAI “вкладывает всё” в fully automated researcher - институционализация R&D как агентной фабрики гипотез/экспериментов.",
+      "sources": [
+        "https://www.technologyreview.com/2026/03/20/1134438/openai-is-throwing-everything-into-building-a-fully-automated-researcher/"
+      ],
+      "level": 7
+    },
+    {
+      "title": "Открытый контур отраслевых решений в критических доменах",
+      "description": "Открытый контур отраслевых решений в критических доменах: Berta - open-source платформа клинической документации, развернутая на уровне провинциальной системы здравоохранения (Alberta Health Services), с радикальным снижением стоимости (до <$30/врач/мес) и удержанием данных внутри инфраструктуры. Это усиливает модель “суверенных” внедрений.",
+      "sources": [
+        "https://arxiv.org/abs/2603.23513"
+      ],
+      "level": 7
+    },
+    {
+      "title": "Новая волна методологий оценки агентов",
+      "description": "Новая волна методологий оценки агентов:",
+      "sources": [],
+      "level": 6
+    },
+    {
+      "title": "“Efficient Benchmarking of AI Agents” предлагает сокращать оценку, сохраняя ранжирование, через выбор задач средней сложности - это инженеризация лидербордов под стоимость",
+      "description": "“Efficient Benchmarking of AI Agents” предлагает сокращать оценку, сохраняя ранжирование, через выбор задач средней сложности - это инженеризация лидербордов под стоимость.",
+      "sources": [
+        "https://arxiv.org/abs/2603.23749"
+      ],
+      "level": 6
+    },
+    {
+      "title": "EnterpriseArena (“Can LLM Agents Be CFOs?”) фиксирует провал долгогоризонтного распределения ресурсов: лишь 16% прогонов “доживают” до конца горизонта - это важный отрицательный результат для агентных внедрений в корпоративном управлении",
+      "description": "EnterpriseArena (“Can LLM Agents Be CFOs?”) фиксирует провал долгогоризонтного распределения ресурсов: лишь 16% прогонов “доживают” до конца горизонта - это важный отрицательный результат для агентных внедрений в корпоративном управлении.",
+      "sources": [
+        "https://arxiv.org/abs/2603.23638"
+      ],
+      "level": 6
+    },
+    {
+      "title": "Инструментализация безопасности агентных систем",
+      "description": "Инструментализация безопасности агентных систем:",
+      "sources": [],
+      "level": 6
+    },
+    {
+      "title": "“Cognitive Firewall” показывает, что split edge/cloud + детерминированный guard может снизить успех indirect prompt injection до <1% при огромном выигрыше по latency - формируется архитектурный паттерн “вероятностный мозг + детерминированная граница действий”",
+      "description": "“Cognitive Firewall” показывает, что split edge/cloud + детерминированный guard может снизить успех indirect prompt injection до <1% при огромном выигрыше по latency - формируется архитектурный паттерн “вероятностный мозг + детерминированная граница действий”.",
+      "sources": [
+        "https://arxiv.org/abs/2603.23791"
+      ],
+      "level": 6
+    },
+    {
+      "title": "“Internal Safety Collapse” вводит класс сценариев, где вредоносный контент становится “валидным завершением задачи”, и показывает экстремальные провалы safety - это расширяет модель угроз за пределы “джейлбрейков”",
+      "description": "“Internal Safety Collapse” вводит класс сценариев, где вредоносный контент становится “валидным завершением задачи”, и показывает экстремальные провалы safety - это расширяет модель угроз за пределы “джейлбрейков”.",
+      "sources": [
+        "https://arxiv.org/abs/2603.23509"
+      ],
+      "level": 6
+    },
+    {
+      "title": "Смещение конкуренции в слой платформенного контроля над устройством/ассистентом",
+      "description": "Смещение конкуренции в слой платформенного контроля над устройством/ассистентом:",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "Apple планирует открыть Siri для внешних ассистентов (за пределами ChatGPT), делая iPhone “AI-платформой” и фактически вводя рынок “ассистент-провайдеров” внутри iOS",
+      "description": "Apple планирует открыть Siri для внешних ассистентов (за пределами ChatGPT), делая iPhone “AI-платформой” и фактически вводя рынок “ассистент-провайдеров” внутри iOS.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/apple-plans-to-open-up-siri-to-rival-ai-assistants-beyond-chatgpt-in-ios-27"
+      ],
+      "level": 5
+    },
+    {
+      "title": "Apple платит редкие бонусы дизайнерам iPhone, чтобы сдержать уход в AI-стартапы, включая OpenAI, которые строят собственные устройства - борьба за кадры отражает перестройку value chain “железо+ассистент+агентные сценарии”",
+      "description": "Apple платит редкие бонусы дизайнерам iPhone, чтобы сдержать уход в AI-стартапы, включая OpenAI, которые строят собственные устройства - борьба за кадры отражает перестройку value chain “железо+ассистент+агентные сценарии”.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/apple-gives-iphone-designers-rare-bonuses-to-fight-openai-poaching"
+      ],
+      "level": 5
+    },
+    {
+      "title": "Автономный транспорт как экспортируемая агентная отрасль",
+      "description": "Автономный транспорт как экспортируемая агентная отрасль: Pony AI сообщает о первом прибыльном квартале и намерении расширять robotaxi в 20 городов, выделяя Ближний Восток как приоритетный рынок - здесь видна связка “китайская разработка → зарубежные регуляторно-инфраструктурные ниши”. и",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/pony-ai-swings-to-profit-aims-to-launch-robotaxis-in-20-cities",
+        "https://www.bloomberg.com/news/videos/2026-03-27/pony-ai-ceo-middle-east-market-remains-a-priority-video"
+      ],
+      "level": 5
+    },
+    {
+      "title": "Алгоритмическое давление на рынок памяти/хранилищ",
+      "description": "Алгоритмическое давление на рынок памяти/хранилищ: Google публичит технику компрессии/более эффективного использования памяти для LLM и vector search, что вызывает selloff в memory stocks - ожидание “более дешевого контекста” влияет на капитальные рынки железа.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/memory-stock-boom-seen-resilient-to-threat-from-new-google-tech"
+      ],
+      "level": 4
+    },
+    {
+      "title": "Экспортконтроль переходит в режим “security-by-design”",
+      "description": "Экспортконтроль переходит в режим “security-by-design”: законопроект в Палате представителей США усиливает требования к chipmakers по предотвращению контрабанды AI-чипов в Китай после кейса Super Micro - “цепочка поставок” становится объектом принудительной верификации.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/chip-security-bill-advances-in-house-following-super-micro-case"
+      ],
+      "level": 4
+    },
+    {
+      "title": "Пробой в долговременной памяти моделей",
+      "description": "Пробой в долговременной памяти моделей: Memory Sparse Attention заявляет масштабирование до 100M токенов на 2×A800 - даже если это пока исследовательский режим, он меняет проектирование агентных систем (меньше reliance на внешние RAG-хранилища).",
+      "sources": [
+        "https://arxiv.org/abs/2603.23516"
+      ],
+      "level": 4
+    },
+    {
+      "title": "Рынок труда смещается из “классического hardware” в “AI-device/agent stack”",
+      "description": "Рынок труда смещается из “классического hardware” в “AI-device/agent stack”: Apple удерживает hardware-дизайнеров от ухода в AI-стартапы, что означает: компетенция индустриального дизайна становится дефицитной внутри новой кооперации “устройство + агент”.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/apple-gives-iphone-designers-rare-bonuses-to-fight-openai-poaching"
+      ],
+      "level": 3
+    },
+    {
+      "title": "Рост роли “AI safety / security engineer” как отдельной профессии",
+      "description": "Рост роли “AI safety / security engineer” как отдельной профессии подкреплен исследованиями по prompt-injection защите и safety collapse.",
+      "sources": [
+        "https://arxiv.org/abs/2603.23791",
+        "https://arxiv.org/abs/2603.23509"
+      ],
+      "level": 3
+    },
+    {
+      "title": "США продолжают стягивать compute в энергозависимые локации",
+      "description": "США продолжают стягивать compute в энергозависимые локации: $10 млрд дата-центр Meta в Эль-Пасо - закрепление Техаса/Юга США как compute-пояса (энергетика, земля, регуляторика).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/meta-increases-investment-in-el-paso-data-center-to-10-billion"
+      ],
+      "level": 2
+    },
+    {
+      "title": "Ближний Восток как “внешний рынок развертывания” автономных систем",
+      "description": "Ближний Восток как “внешний рынок развертывания” автономных систем: Pony AI явно держит фокус на регионе.",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-03-27/pony-ai-ceo-middle-east-market-remains-a-priority-video"
+      ],
+      "level": 2
+    },
+    {
+      "title": "Прямых новых фактов о воде/электроэнергии в новостях нет, но рост CapEx дата-центров (Meta) - косвенный маркер того, что энергоресурс и охлаждение остаются ограничителями, определяющими географию (уровень 2) и финансовую модель (уровень 9)",
+      "description": "Прямых новых фактов о воде/электроэнергии в новостях нет, но рост CapEx дата-центров (Meta) - косвенный маркер того, что энергоресурс и охлаждение остаются ограничителями, определяющими географию (уровень 2) и финансовую модель (уровень 9).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/meta-increases-investment-in-el-paso-data-center-to-10-billion"
+      ],
+      "level": 1
+    }
+  ],
+  "trends": [
+    {
+      "name": "AI-CapEx / инфраструктура дата-центров",
+      "momentum": 85,
+      "rationale": "Meta поднимает план до $10 млрд - это не пилот, а фиксация долгого цикла инвестиций.",
+      "levels": [
+        9,
+        2,
+        4
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "IPO-волна AI (frontier labs как публичные компании)",
+      "momentum": 65,
+      "rationale": "Anthropic обсуждает IPO уже на октябрь; рынок готовит “выход” для лидеров.",
+      "levels": [
+        9,
+        5,
+        8
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Платформизация ассистентов (OS как marketplace ассистентов)",
+      "momentum": 70,
+      "rationale": "Apple открывает Siri для внешних ассистентов; это меняет структуру конкуренции на мобильной платформе.",
+      "levels": [
+        5,
+        8,
+        3
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Переносимость контекста / снижение switching costs между AI",
+      "momentum": 55,
+      "rationale": "Gemini делает импорт истории/контекста - начинается “война за миграцию”.",
+      "levels": [
+        8,
+        6,
+        5
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Безопасность агентных систем (IPI, safety collapse, guards)",
+      "momentum": 80,
+      "rationale": "Cognitive Firewall демонстрирует промышленно применимый split-compute контур; ISC показывает новый класс провалов safety.",
+      "levels": [
+        6,
+        4,
+        8
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Агентные внедрения в enterprise-финансы (агенты как CFO/allocator)",
+      "momentum": -15,
+      "rationale": "EnterpriseArena фиксирует низкую выживаемость траекторий и отсутствие надежного преимущества крупных моделей - внедрение будет медленнее заявлений.",
+      "levels": [
+        6,
+        5
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Экспортный контроль чипов и “chip security compliance”",
+      "momentum": 45,
+      "rationale": "законопроект в США усиливает требования к chipmakers после кейса контрабанды Nvidia-GPU.",
+      "levels": [
+        8,
+        5,
+        4
+      ],
+      "category": "stable"
+    },
+    {
+      "name": "“Дешевеющая память” как ставка рынка (угроза производителям memory/storage)",
+      "momentum": -10,
+      "rationale": "публикация Google по более эффективному использованию storage вызывает рыночный selloff - ожидание снижения потребности в памяти давит на сектор.",
+      "levels": [
+        4,
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "LLM как вероятностный “ответчик” + мягкие policy-фильтры.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «LLM как вероятностный “ответчик” + мягкие policy-фильтры.» к «агентные системы, где LLM ограничен ролью извлечения/планирования, а исполнение проходит через формальные/детерминированные контуры проверки и политики (split compute, guards).». Упоминаний в контексте перехода: 1",
+      "levels": [
+        8,
+        6,
+        4
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "частные раунды + стратегические инвесторы + закрытые контуры.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «частные раунды + стратегические инвесторы + закрытые контуры.» к «подготовка к IPO (Anthropic; на фоне ожиданий IPO-мегасделок в техе) и закрепление CapEx как “коммунальной базы” AI.». Упоминаний в контексте перехода: 1",
+      "levels": [
+        9,
+        5,
+        2
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "ассистент привязан к приложению/провайдеру, высокая lock-in через историю.",
+      "momentum": -80,
+      "rationale": "Угасает: переход от «ассистент привязан к приложению/провайдеру, высокая lock-in через историю.» к «инструменты миграции контекста (Gemini) и открытие Siri для внешних ассистентов (Apple), где iOS становится marketplace ассистентов, а контекст - конкурентный ресурс.». Упоминаний в контексте перехода: 6",
+      "levels": [
+        8,
+        6,
+        5
+      ],
+      "category": "decelerating"
+    }
+  ],
+  "cross_level_links": [
+    {
+      "title": "CapEx инфраструктуры (У9) → география compute (У2) → архитектуры и стоимость агентов (У4/У6)",
+      "description": "CapEx инфраструктуры (У9) → география compute (У2) → архитектуры и стоимость агентов (У4/У6)   Meta фиксирует $10 млрд в дата-центре (У9), что привязывает стратегии моделей/агентов к доступности дешевой энергии и сетей (У2), а исследования по компрессии памяти и “истинной стоимости reasoning” (У4/У6) становятся механизмом снижения давления на CapEx.,,",
+      "levels": [
+        9,
+        6,
+        4,
+        2
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/meta-increases-investment-in-el-paso-data-center-to-10-billion",
+        "https://www.bloomberg.com/news/articles/2026-03-26/memory-stock-boom-seen-resilient-to-threat-from-new-google-tech",
+        "https://arxiv.org/abs/2603.23971"
+      ]
+    },
+    {
+      "title": "Право/суды (У8) → рынки сбыта (У5) → инвестиционный контур (У9)",
+      "description": "Право/суды (У8) → рынки сбыта (У5) → инвестиционный контур (У9)   Судебная победа Anthropic по госзапрету (У8) напрямую защищает будущую выручку (У9) и укрепляет позицию в конкуренции платформ для госсектора (У5).",
+      "levels": [
+        9,
+        8,
+        5
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/anthropic-wins-court-order-blocking-trump-ban-on-use-of-ai-tool"
+      ]
+    },
+    {
+      "title": "Военный контур данных (У7) → методы безопасного агентного исполнения (У6) → требования к архитектуре “guardrails” (У4)",
+      "description": "Военный контур данных (У7) → методы безопасного агентного исполнения (У6) → требования к архитектуре “guardrails” (У4)   Планы обучения на секретных данных (У7) повышают ставки на надежность и контроль исполнения; это усиливает паттерны “детерминированная граница действий” (Cognitive Firewall) и новые классы safety-фейлов (ISC).,,",
+      "levels": [
+        7,
+        6,
+        4
+      ],
+      "sources": [
+        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/",
+        "https://arxiv.org/abs/2603.23791",
+        "https://arxiv.org/abs/2603.23509"
+      ]
+    }
+  ],
+  "structural_shifts": [
+    {
+      "title": "От чатботов к агентам-исполнителям с детерминированной границей",
+      "from": "LLM как вероятностный “ответчик” + мягкие policy-фильтры.",
+      "to": "агентные системы, где LLM ограничен ролью извлечения/планирования, а исполнение проходит через формальные/детерминированные контуры проверки и политики (split compute, guards).",
+      "through": "рост атак (IPI), появление классов провалов (ISC), и инженерный ответ в виде “Cognitive Firewall” и neuro-symbolic/dual-system подходов.",
+      "levels": [
+        8,
+        6,
+        4
+      ],
+      "trend": "accelerating",
+      "sources": [
+        "https://arxiv.org/abs/2603.23791",
+        "https://arxiv.org/abs/2603.23509",
+        "https://arxiv.org/abs/2603.23909"
+      ]
+    },
+    {
+      "title": "Нормализация AI как публичного финансового актива и отрасли с отчетностью",
+      "from": "частные раунды + стратегические инвесторы + закрытые контуры.",
+      "to": "подготовка к IPO (Anthropic; на фоне ожиданий IPO-мегасделок в техе) и закрепление CapEx как “коммунальной базы” AI.",
+      "through": "гонка за капиталом на инфраструктуру + борьба за госрынок + давление на себестоимость reasoning.",
+      "levels": [
+        9,
+        5,
+        2
+      ],
+      "trend": "emerging",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-27/claude-ai-maker-anthropic-said-to-weigh-ipo-as-soon-as-october",
+        "https://www.bloomberg.com/news/articles/2026-03-26/meta-increases-investment-in-el-paso-data-center-to-10-billion",
+        "https://arxiv.org/abs/2603.23971"
+      ]
+    },
+    {
+      "title": "Платформизация ассистента: контекст как переносимый актив",
+      "from": "ассистент привязан к приложению/провайдеру, высокая lock-in через историю.",
+      "to": "инструменты миграции контекста (Gemini) и открытие Siri для внешних ассистентов (Apple), где iOS становится marketplace ассистентов, а контекст - конкурентный ресурс.",
+      "through": "борьба за switching costs, стандарты совместимости контекста/памяти, и рост agentic commerce (в медиа).",
+      "levels": [
+        8,
+        6,
+        5
+      ],
+      "trend": "accelerating",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/google-gemini-adds-tool-to-make-it-easier-to-switch-from-chatgpt",
+        "https://www.bloomberg.com/news/articles/2026-03-26/apple-plans-to-open-up-siri-to-rival-ai-assistants-beyond-chatgpt-in-ios-27",
+        "https://www.technologyreview.com/2026/03/25/1134516/agentic-commerce-runs-on-truth-and-context/"
+      ]
+    }
+  ],
+  "radar_signals": [
+    {
+      "title": "“Госрынок как якорный клиент frontier-моделей”",
+      "description": "судебное блокирование запрета на Anthropic + планы Пентагона по secure training. Это может ускорить появление стандартов “классифицированного MLOps”.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/anthropic-wins-court-order-blocking-trump-ban-on-use-of-ai-tool",
+        "https://www.technologyreview.com/2026/03/17/1134351/the-pentagon-is-planning-for-ai-companies-to-train-on-classified-data-defense-official-says/"
+      ]
+    },
+    {
+      "title": "Быстрая европеизация норм по вредоносным функциям генерации",
+      "description": "(кейс Grok) - вероятен каскад требований к провайдерам и к магазинам приложений/платформам.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/dutch-court-bans-xai-s-grok-from-nonconsensual-undressing"
+      ]
+    },
+    {
+      "title": "Метрики “cost-per-trajectory” вместо “$/token”",
+      "description": "price reversal из-за thinking tokens - слабый сигнал к перестройке биллинга и procurement-тендеров.",
+      "level_group": "middle",
+      "level_range": "4-6",
+      "sources": [
+        "https://arxiv.org/abs/2603.23971"
+      ]
+    },
+    {
+      "title": "Архитектурный паттерн split edge/cloud security для браузерных агентов",
+      "description": "может стать промышленным стандартом (как WAF для веба).",
+      "level_group": "middle",
+      "level_range": "4-6",
+      "sources": [
+        "https://arxiv.org/abs/2603.23791"
+      ]
+    },
+    {
+      "title": "Compute-пояса в США закрепляются через мегапроекты",
+      "description": ", что дальше приведет к локальным конфликтам за энергию/воду и к “регуляторным сделкам” на уровне штатов/городов.",
+      "level_group": "lower",
+      "level_range": "1-3",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-26/meta-increases-investment-in-el-paso-data-center-to-10-billion"
+      ]
+    },
+    {
+      "title": "Ближний Восток как зона ускоренного внедрения автономного транспорта",
+      "description": "(Pony AI) - слабый сигнал к появлению “регуляторных песочниц” под robotaxi вне США/ЕС.",
+      "level_group": "lower",
+      "level_range": "1-3",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-03-27/pony-ai-ceo-middle-east-market-remains-a-priority-video"
+      ]
+    }
+  ],
+  "metrics": {
+    "total_events": 28,
+    "events_by_level": {
+      "1": 1,
+      "2": 2,
+      "3": 2,
+      "4": 3,
+      "5": 4,
+      "6": 6,
+      "7": 3,
+      "8": 4,
+      "9": 3
+    },
+    "total_sources": 21,
+    "structural_shifts_count": 3,
+    "radar_signals_count": 6,
+    "cross_level_links_count": 3,
+    "momentum_trends_count": 11
+  },
+  "categories": [],
+  "momentum_trends": [
+    {
+      "name": "AI-CapEx / инфраструктура дата-центров",
+      "momentum": 85,
+      "rationale": "Meta поднимает план до $10 млрд - это не пилот, а фиксация долгого цикла инвестиций.",
+      "levels": [
+        9,
+        2,
+        4
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "IPO-волна AI (frontier labs как публичные компании)",
+      "momentum": 65,
+      "rationale": "Anthropic обсуждает IPO уже на октябрь; рынок готовит “выход” для лидеров.",
+      "levels": [
+        9,
+        5,
+        8
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Платформизация ассистентов (OS как marketplace ассистентов)",
+      "momentum": 70,
+      "rationale": "Apple открывает Siri для внешних ассистентов; это меняет структуру конкуренции на мобильной платформе.",
+      "levels": [
+        5,
+        8,
+        3
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Переносимость контекста / снижение switching costs между AI",
+      "momentum": 55,
+      "rationale": "Gemini делает импорт истории/контекста - начинается “война за миграцию”.",
+      "levels": [
+        8,
+        6,
+        5
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Безопасность агентных систем (IPI, safety collapse, guards)",
+      "momentum": 80,
+      "rationale": "Cognitive Firewall демонстрирует промышленно применимый split-compute контур; ISC показывает новый класс провалов safety.",
+      "levels": [
+        6,
+        4,
+        8
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Агентные внедрения в enterprise-финансы (агенты как CFO/allocator)",
+      "momentum": -15,
+      "rationale": "EnterpriseArena фиксирует низкую выживаемость траекторий и отсутствие надежного преимущества крупных моделей - внедрение будет медленнее заявлений.",
+      "levels": [
+        6,
+        5
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Экспортный контроль чипов и “chip security compliance”",
+      "momentum": 45,
+      "rationale": "законопроект в США усиливает требования к chipmakers после кейса контрабанды Nvidia-GPU.",
+      "levels": [
+        8,
+        5,
+        4
+      ],
+      "category": "stable"
+    },
+    {
+      "name": "“Дешевеющая память” как ставка рынка (угроза производителям memory/storage)",
+      "momentum": -10,
+      "rationale": "публикация Google по более эффективному использованию storage вызывает рыночный selloff - ожидание снижения потребности в памяти давит на сектор.",
+      "levels": [
+        4,
+        9
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "LLM как вероятностный “ответчик” + мягкие policy-фильтры.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «LLM как вероятностный “ответчик” + мягкие policy-фильтры.» к «агентные системы, где LLM ограничен ролью извлечения/планирования, а исполнение проходит через формальные/детерминированные контуры проверки и политики (split compute, guards).». Упоминаний в контексте перехода: 1",
+      "levels": [
+        8,
+        6,
+        4
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "частные раунды + стратегические инвесторы + закрытые контуры.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «частные раунды + стратегические инвесторы + закрытые контуры.» к «подготовка к IPO (Anthropic; на фоне ожиданий IPO-мегасделок в техе) и закрепление CapEx как “коммунальной базы” AI.». Упоминаний в контексте перехода: 1",
+      "levels": [
+        9,
+        5,
+        2
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "ассистент привязан к приложению/провайдеру, высокая lock-in через историю.",
+      "momentum": -80,
+      "rationale": "Угасает: переход от «ассистент привязан к приложению/провайдеру, высокая lock-in через историю.» к «инструменты миграции контекста (Gemini) и открытие Siri для внешних ассистентов (Apple), где iOS становится marketplace ассистентов, а контекст - конкурентный ресурс.». Упоминаний в контексте перехода: 6",
+      "levels": [
+        8,
+        6,
+        5
+      ],
+      "category": "decelerating"
+    }
+  ]
+}
