@@ -3583,39 +3583,105 @@
   },
   {
     "date": "2026-03-27",
-    "generated_at": "2026-03-27T10:01:27.267Z",
+    "generated_at": "2026-03-27T17:01:27.463Z",
     "trends": [
       {
-        "name": "агент = LLM + инструменты + краткосрочный контекст (высокая хрупкость на длинном горизонте).",
-        "momentum": -80,
-        "rationale": "Угасает: переход от «агент = LLM + инструменты + краткосрочный контекст (высокая хрупкость на длинном горизонте).» к «агент = структурированная карта среды/мира + накопительная память + верификация (графы, world model, consensus, trace-eval).». Упоминаний в контексте перехода: 5",
+        "name": "AI-CapEx / энергетическая вертикализация дата-центров",
+        "momentum": 85,
+        "rationale": "Meta прямо финансирует газовую генерацию под датацентр; перехват 900 МВт Microsoft показывает, что МВт - стратегический актив.",
         "levels": [
-          8,
-          6,
-          5
+          1,
+          2,
+          5,
+          9
         ],
-        "category": "decelerating"
+        "category": "accelerating"
       },
       {
-        "name": "safety = RLHF/фильтры ответов (контент-уровень).",
-        "momentum": -10,
-        "rationale": "Угасает: переход от «safety = RLHF/фильтры ответов (контент-уровень).» к «safety = детерминистские guards + split-compute + оценка trace-compliance (исполнение/инструменты/браузер).». Упоминаний в контексте перехода: 0",
-        "levels": [
-          8,
-          6,
-          4
-        ],
-        "category": "decelerating"
-      },
-      {
-        "name": "узкое место = GPU/поставки чипов.",
-        "momentum": -25,
-        "rationale": "Угасает: переход от «узкое место = GPU/поставки чипов.» к «узкие места = энергетические тарифы (Тайвань), редкие газы (гелий), логистика нефти/портов.». Упоминаний в контексте перехода: 1",
+        "name": "Долговое финансирование “фронтира” (leverage в AI)",
+        "momentum": 70,
+        "rationale": "$40 млрд bridge loan SoftBank под OpenAI - институционализация долга как топлива гонки.",
         "levels": [
           9,
+          5
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Публичные рынки для frontier-AI (IPO wave)",
+        "momentum": 55,
+        "rationale": "Anthropic рассматривает IPO уже к октябрю; одновременно OpenAI “в гонке IPO” (по формулировке сюжета).",
+        "levels": [
+          9,
+          8
+        ],
+        "category": "emerging"
+      },
+      {
+        "name": "“Defense-grade GenAI” и обучение на classified",
+        "momentum": 75,
+        "rationale": "Пентагон обсуждает secure training на классифицированных данных - это мощный институциональный рычаг спроса.",
+        "levels": [
+          7,
+          8,
+          2,
+          5
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Агентные платформы (persistent memory / world models / long-horizon)",
+        "momentum": 65,
+        "rationale": "Environment Maps и AI-Supervisor фиксируют переход к устойчивым представлениям среды/знания как «основе агентности».",
+        "levels": [
+          6,
+          7,
+          8
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Безопасность AI-агентов (IPI, trace compliance, deterministic guardrails)",
+        "momentum": 60,
+        "rationale": "Cognitive Firewall (split compute) и AgentPex (поиск нарушений в трассах) - безопасность переезжает из “policy” в “архитектуру и контроль исполнения”.",
+        "levels": [
+          6,
+          8,
+          5
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Универсальные “стоимостные” метрики LLM/агентов (thinking tokens, real cost)",
+        "momentum": 35,
+        "rationale": "показан разрыв прайса и фактической стоимости; это запускает спрос на FinOps-инструменты для выбора моделей.",
+        "levels": [
+          6,
+          8,
+          9
+        ],
+        "category": "emerging"
+      },
+      {
+        "name": "“Зеленый” нарратив AI-инфраструктуры",
+        "momentum": -25,
+        "rationale": "финансирование газовых станций под AI-DC усиливает fossil reliance; ESG-логика отступает перед гонкой мощности.",
+        "levels": [
+          1,
+          2,
+          8
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "Стабильность глобальных цепочек полупроводниковых материалов (helium, etc.)",
+        "momentum": -40,
+        "rationale": "дефицит гелия на фоне войны и закрытий логистики показывает ухудшение предсказуемости supply chain.",
+        "levels": [
+          1,
           4,
           2,
-          1
+          9
         ],
         "category": "decelerating"
       }
