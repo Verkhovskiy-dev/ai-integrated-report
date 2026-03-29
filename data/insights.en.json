@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-03-02T09:02:27.906628Z",
-  "period": "2026-02-13 — 2026-03-01",
+  "generated_at": "2026-03-29T15:30:00.000000Z",
+  "period": "2026-03-01 — 2026-03-27",
   "insights_count": 7,
   "insights": [
     {
       "id": 1,
-      "title": "AI Infrastructure as a Credit Asset",
-      "subtitle": "Growth of debt financing for data centers and GPUs",
+      "title": "Compute as Critical Infrastructure: From Venture Capital to Debt Financing",
+      "subtitle": "Mega data center projects transition to debt financing and government support",
       "icon": "Building",
       "accentColor": "#10b981",
-      "summary": "Financing of the AI sector is shifting towards infrastructure assets with leverage, including data centers and Nvidia equipment. Separate public instruments for investing in AI infrastructure are emerging, reflecting a transition from the venture capital model to institutional capital.",
+      "summary": "March 2026 marked a turning point: AI infrastructure financing is definitively shifting from venture capital to debt markets and government investments. SoftBank announces a $500 billion project to create mega data center campuses with integrated energy infrastructure. Simultaneously, bond instruments for Nvidia-backed data center financing emerge, multi-billion dollar loans proliferate across Asia, and governments begin treating AI infrastructure as critical national infrastructure requiring state support.",
       "evidence": [
-        "Nvidia data center financed through $3.8B high-yield/\"junk\" bonds",
-        "DayOne preparing ~$5B IPO for data centers",
-        "Blackstone launches publicly traded acquisition company to acquire data centers",
-        "OpenAI closes $110B round at $730B valuation with participation from Amazon, SoftBank, Nvidia",
-        "CoreWeave faces market pressure due to rising CapEx and losses"
+        "SoftBank announces $500 billion mega data center campus project with integrated energy base",
+        "Data centers financed through high-yield bonds worth $3.8-6 billion",
+        "Multi-billion dollar loans for hyperscalers in Asia (particularly Adani, Tata)",
+        "Governments begin treating data centers as critical infrastructure requiring state support",
+        "Emergence of a distinct class of investment instruments for AI infrastructure"
       ],
-      "nonObviousConclusion": "Debt financing of AI infrastructure is becoming a distinct financial segment that may be vulnerable to credit cycles and revaluation risks, necessitating new risk management models and capital assessment approaches.",
-      "educationImplication": "Educational programs should include financial models and risk management in capital-intensive AI infrastructure projects.",
+      "nonObviousConclusion": "The transition from venture to debt financing means AI infrastructure becomes vulnerable to credit cycles and macroeconomic shocks. This creates a new class of systemic risks: defaults on data center bonds could trigger cascading collapse of AI services. Simultaneously, government support transforms AI into a tool of geopolitical competition, where compute access becomes a matter of national security. This fundamentally changes the risk profile of the entire AI ecosystem.",
+      "educationImplication": "Educational programs must prepare specialists in infrastructure risk management, financial modeling of mega-projects, and understanding the interconnection between AI infrastructure and macroeconomics. It is essential to develop competencies in debt financing, credit risk analysis, and government policy regarding critical infrastructure.",
       "relevantPrograms": [
         "aiShift",
         "dataDriven",
@@ -33,48 +33,48 @@
     },
     {
       "id": 2,
-      "title": "Shift of Bottlenecks: From GPU to Memory and Energy",
-      "subtitle": "Memory and energy efficiency are becoming key bottlenecks.",
-      "icon": "Layers",
+      "title": "Energy and Cooling as the New Bottleneck: From GPU Shortage to Physical Constraints",
+      "subtitle": "Gigawatts of electricity and cooling systems become more critical than chips",
+      "icon": "Zap",
       "accentColor": "#f59e0b",
-      "summary": "Shortage and rising prices of HBM memory and data center power supply are becoming the new bottlenecks in the AI industry, shifting the focus away from GPUs. Energy and cooling are now critical for AI scaling, as reflected in investments and technological innovations.",
+      "summary": "While 2024-2025 saw GPU shortages as the primary bottleneck, March 2026 reveals that energy and cooling have taken its place. Projects requiring 10 GW of electricity and $33 billion in data center power supply are becoming standard. Google secures geothermal energy in Nevada, Amazon invests in nuclear plants for AI centers, and governments rewrite energy policy. This means AI development is now constrained not by algorithms but by physical planetary resources.",
       "evidence": [
-        "Hynix confirms shortage of HBM/AI memory",
+        "Projects requiring 10 GW of electricity and $33 billion for data center power supply",
         "Google secures geothermal energy for data centers in Nevada",
-        "Delta Electronics grows in liquid cooling and power systems for AI-DC",
-        "Solarvest doubles generation in SEA amid battery price decline",
-        "Trump urges Amazon/Google/Meta to pay for data center electricity"
+        "Amazon invests in nuclear plants to power AI centers",
+        "Trump demands Amazon, Google, Meta pay for data center electricity",
+        "Rising demand for liquid cooling systems (Delta Electronics, Coolant Systems)"
       ],
-      "nonObviousConclusion": "The growth of AI necessitates the integration of energy and climate constraints into development strategies, which is shifting the traditional technological and geographical priorities of the industry.",
-      "educationImplication": "It is necessary to develop interdisciplinary programs that integrate AI, energy, and sustainable development.",
+      "nonObviousConclusion": "The AI energy crisis means industry development is now constrained not by technology but by energy geopolitics. Countries with access to cheap energy (hydroelectric, geothermal, nuclear) will gain competitive advantage in AI. Simultaneously, this creates new environmental pressures: the AI industry could become the largest electricity consumer, displacing other sectors and households. This requires rethinking climate policy and energy sovereignty for nations.",
+      "educationImplication": "It is necessary to develop interdisciplinary programs combining AI, energy, climate science, and geopolitics. Specialists must understand not only the technology but also energy constraints, environmental consequences, and geopolitical aspects of AI development. It is critical to prepare personnel for managing AI energy infrastructure and analyzing climate risks.",
       "relevantPrograms": [
         "aiShift",
         "dataDriven",
         "ubnd"
       ],
       "srtLevels": [
-        4,
+        1,
         2,
-        1
+        4
       ],
       "trendDirection": "strengthening"
     },
     {
       "id": 3,
-      "title": "Institutionalization of Agent Systems",
-      "subtitle": "From Models to Contractible, Verifiable Agents",
+      "title": "The Agentic Revolution: From Chatbots to Autonomous Systems with Verification",
+      "subtitle": "A new technological stack emerges: MCP, tool-use, runtime verification, and persistent memory",
       "icon": "Brain",
       "accentColor": "#8b5cf6",
-      "summary": "A new layer of knowledge and technology institutions is emerging, focused on the measurability, auditing, and security of agent AI systems. Standards, protocols, benchmarks, and runtime enforcement mechanisms are being developed to ensure the reliability and compliance of agents.",
+      "summary": "The paradigm of AI interaction is fundamentally changing. While previously AI served as tools for text generation, they now become autonomous agents capable of executing tasks. A new technological stack emerges: interaction protocols (MCP), tool-use systems, runtime verification (proof-carrying agents), persistent memory, and contractibility. The financial sector becomes an early mass consumer of agentic AI for credit decisions, AML, and microstructure analysis.",
       "evidence": [
-        "The emergence of Agent Behavioral Contracts, AgentContract-Bench, ESAA",
-        "Growth of research in agentic RL, budget-aware routing, reliability certification",
-        "Pressure Reveals Character and AMA-Bench as new benchmarks",
-        "OpenPort as a governance specification for tool access",
-        "Increasing demand for roles such as agent security engineer, AI governance/audit engineer"
+        "Model Context Protocol (MCP) emerges as a standard for agent interaction",
+        "Growing research in runtime verification and proof-carrying agents",
+        "Financial companies begin using agentic AI for credit scoring and AML",
+        "Emergence of Agent Behavioral Contracts and AgentContract-Bench as standards",
+        "Rising demand for agent security engineers and AI governance engineers"
       ],
-      "nonObviousConclusion": "Agency ceases to be merely a functional characteristic of the model and becomes an object of engineering and regulatory control, thereby forming a new professional and technological paradigm.",
-      "educationImplication": "Educational programs should prepare specialists in auditing, security, and contracting of agent systems.",
+      "nonObviousConclusion": "Agency ceases to be merely a functional characteristic of a model and becomes an object of engineering and regulatory control. This means value shifts from 'knowledge' (what the model knows) to 'action' (what the agent can do). Simultaneously, this creates a new class of risks: autonomous agents can make errors or be compromised, requiring new verification and audit systems. The financial sector becomes a testing ground for these systems, potentially leading to new forms of financial crises.",
+      "educationImplication": "Educational programs must prepare specialists in developing, verifying, and auditing agentic systems. It is essential to develop competencies in MCP, tool-use architectures, runtime verification, and autonomous system risk management. Particular attention should be paid to financial applications of agentic AI and associated risks.",
       "relevantPrograms": [
         "intensiveAgents",
         "aiShift",
@@ -83,26 +83,26 @@
       "srtLevels": [
         6,
         7,
-        3
+        5
       ],
       "trendDirection": "strengthening"
     },
     {
       "id": 4,
-      "title": "The politico-ethical divide in AI",
-      "subtitle": "The conflict between ethics and government contracts is intensifying.",
+      "title": "Militarization and Sovereignization: AI as Strategic Weapon and National Infrastructure",
+      "subtitle": "A rigid division forms between civilian and defense sectors with export controls",
       "icon": "ShieldAlert",
       "accentColor": "#ef4444",
-      "summary": "Discrepancies between ethical standards and the demands of government contracts related to surveillance and weaponry are leading to a split within the industry and the formation of new informal rules of the game, which affect reputation and access to government contracts.",
+      "summary": "March 2026 marked the definitive transition of AI to the status of strategic weapon and critical national infrastructure. The Pentagon begins training models on classified data, OpenAI gains access to classified networks, and Palantir integrates into the core of the defense complex. Simultaneously, governments implement strict export controls on models and chips, create sovereign AI factories, and form separate defense sectors isolated from civilian use. Anthropic faces sanctions for refusing to integrate into the military sector.",
       "evidence": [
-        "Anthropic's dispute with the Pentagon over guardrails and surveillance",
-        "OpenAI gains access to the Pentagon's classified network",
+        "Pentagon discusses training models on classified data (classified training)",
+        "OpenAI gains access to Pentagon's classified network",
+        "Palantir integrates into the core of the U.S. defense complex",
         "Trump bans government agencies from using Anthropic products",
-        "Support from tech workers for Anthropic in the dispute with the Pentagon",
-        "Growth of a horizontal coalition of tech workers"
+        "Governments begin creating sovereign AI factories (Rapidus in Japan, Huawei in China)"
       ],
-      "nonObviousConclusion": "Ethical and political conflicts are becoming drivers of market share redistribution and are shaping new institutional frameworks for the legitimation of AI technologies.",
-      "educationImplication": "It is important to include the study of ethics, politics, and regulatory aspects of AI in educational programs.",
+      "nonObviousConclusion": "The division into civilian and defense sectors means the AI industry now has two parallel development trajectories. The defense sector will develop faster with greater funding but will be isolated from the civilian sector. This creates a new class of technological risks: military models could be used for cyberattacks, and leaks from the defense sector could destabilize civilian systems. Simultaneously, this intensifies geopolitical competition and may lead to a new form of technological cold war.",
+      "educationImplication": "Educational programs must include study of AI geopolitics, export controls, and ethics of military AI use. It is necessary to prepare specialists who understand both civilian and defense aspects of AI and can work in conditions of growing political polarization. It is important to develop critical thinking regarding AI use in military and intelligence applications.",
       "relevantPrograms": [
         "aiShift",
         "intensiveAI",
@@ -117,77 +117,80 @@
     },
     {
       "id": 5,
-      "title": "Restructuring of the labor market under AI",
-      "subtitle": "Growth in demand for new hybrid roles and reductions",
-      "icon": "GraduationCap",
+      "title": "Financialization of Compute: Bonds, Stablecoins, and M2M Economy",
+      "subtitle": "Computational power is packaged into financial instruments for agent transactions",
+      "icon": "DollarSign",
       "accentColor": "#ec4899",
-      "summary": "AI is reshaping the employment structure: there is a growing demand for agent security engineers, auditors, and traceability specialists, while at the same time, massive layoffs are occurring in traditional AI platforms and SaaS companies, legitimized through AI-driven productivity.",
+      "summary": "A transition occurs from venture financing to debt markets and project financing of compute. Computational power is packaged into financial instruments: bonds, off-balance structures, and even compute futures. Simultaneously, a new monetary layer based on stablecoins (M2M economy) is created for transactions between autonomous agents. This means compute becomes a financial asset traded on markets and requires new forms of financial regulation.",
       "evidence": [
-        "IBM increases entry-level hiring with role restructuring under AI",
-        "Layoffs at C3.ai (-26%), Block (~50%), eBay (6%)",
-        "Rising demand for roles such as agent security engineer, provenance architect",
-        "Formation of the professional identity of the AI worker as a bearer of ethics",
-        "“Productivity panic” around AI coding agents"
+        "Bond financing of data centers worth $3.8-6 billion",
+        "Emergence of off-balance structures for compute financing",
+        "Growing use of stablecoins for transactions between AI agents",
+        "Emergence of futures and derivatives on compute capacity",
+        "Governments begin regulating financial instruments based on compute"
       ],
-      "nonObviousConclusion": "AI not only automates tasks but also transforms professional roles and social contracts, necessitating a rethinking of educational and workforce strategies.",
-      "educationImplication": "Preparation for new professions and retraining with a focus on AI safety, auditing, and ethics is necessary.",
+      "nonObviousConclusion": "The financialization of compute means AI infrastructure becomes part of the financial system and subject to the same risks. Defaults on data center bonds could trigger a financial crisis. Simultaneously, the creation of M2M economy based on stablecoins means agents will have their own monetary layer, separated from traditional finance. This could lead to a parallel economy controlled by AI agents, requiring new forms of financial regulation and control.",
+      "educationImplication": "It is necessary to develop programs in financial modeling of AI infrastructure, financial risk management, and understanding the interconnection between AI and financial systems. Specialists must understand both traditional financial instruments and new forms of M2M financing. It is important to prepare personnel for working in conditions of growing financialization of AI and emergence of parallel financial systems.",
       "relevantPrograms": [
-        "intensiveAgents",
         "aiShift",
-        "ubnd"
+        "dataDriven",
+        "intensiveAI"
       ],
       "srtLevels": [
-        3,
-        6
+        9,
+        5,
+        2
       ],
       "trendDirection": "strengthening"
     },
     {
       "id": 6,
-      "title": "Geographical repackaging of AI chains",
-      "subtitle": "Southeast Asia and Korea as new manufacturing hubs",
-      "icon": "Globe",
+      "title": "Commoditization of Base Models: From Monopoly to Model Brokers and Edge AI",
+      "subtitle": "Open-source and open-weight solutions destroy the monopoly of closed APIs",
+      "icon": "Cpu",
       "accentColor": "#22d3ee",
-      "summary": "The global AI value chain is being reoriented: Southeast Asia is becoming a hub for electronics and raw materials, Korea a node for memory production, and the USA a zone of demand and regulation. This is changing the landscape of the industrial geography of AI.",
+      "summary": "Base LLMs lose their uniqueness and become commodities. Open-source and open-weight solutions (Llama, Mistral, Phi) destroy the monopoly of closed APIs. Value shifts to the level of routing (model brokers), integration, and specialized small models (edge AI). Companies begin using multiple models in parallel, selecting optimal ones by price and quality. This forces giants (OpenAI, Google, Anthropic) to seek new business models, transitioning from selling models to selling infrastructure and services.",
       "evidence": [
-        "Adani plans $100 billion investment in AI-ready data centers in India",
-        "Growth in exports of electronics, machinery, and raw materials in Thailand",
-        "Hynix and Murata confirm shortage and price increase for memory and components",
-        "Rapidus secures $1.7 billion for chip manufacturing in Japan",
-        "Lumen expands fiber network for Anthropic"
+        "Llama 3 and Mistral become standards for edge deployment",
+        "Emergence of model brokers (LiteLLM, Anyscale, Together AI)",
+        "Growing use of small language models for specialized tasks",
+        "Open-source solutions begin competing with closed APIs on quality",
+        "Giants begin investing in infrastructure and services rather than models"
       ],
-      "nonObviousConclusion": "Territorial specialization and government investments are shaping new industrial clusters, which impact global competitiveness and political alliances in AI.",
-      "educationImplication": "Education should take into account geoeconomic aspects and the development of territorial AI clusters.",
+      "nonObviousConclusion": "The commoditization of base models means competitive advantage no longer lies in the model itself but in infrastructure, integration, and specialized solutions. This leads to a new architecture: instead of one powerful model, companies use multiple specialized models coordinated through model brokers. This requires new skills in model orchestration and management of complex AI systems. Simultaneously, this lowers barriers to entry for new players, potentially leading to a more competitive and innovative market.",
+      "educationImplication": "Educational programs must prepare specialists in integration and orchestration of multiple models, development of edge AI solutions, and management of complex AI systems. It is essential to develop competencies in model brokers, AI cost optimization, and specialized small models. It is important to prepare personnel for working in conditions of growing commoditization of base models and emergence of new AI system architectures.",
       "relevantPrograms": [
         "aiShift",
         "dataDriven",
-        "ubnd"
+        "intensiveAI"
       ],
       "srtLevels": [
-        2,
-        5
+        6,
+        5,
+        3
       ],
-      "trendDirection": "emerging"
+      "trendDirection": "strengthening"
     },
     {
       "id": 7,
-      "title": "Growth of Cyber Risks and Security of Agent Systems",
-      "subtitle": "Vulnerabilities of local agents and multi-tenant infrastructure",
+      "title": "Cyber Risks of Agentic Systems: From Prompt Injection to Compromised Agents",
+      "subtitle": "Agent proliferation creates a new class of vulnerabilities requiring formalized security",
       "icon": "Shield",
       "accentColor": "#ef4444",
-      "summary": "The proliferation of agent systems is accompanied by new cyber risks, including attacks via prompt injection, data leaks, and vulnerabilities in shared KV cache. This necessitates the development of new security standards and access management protocols.",
+      "summary": "The proliferation of agentic systems is accompanied by new cyber risks. Attacks via prompt injection emerge, data leaks in multi-tenant infrastructure (OptiLeak), vulnerabilities of local agents (ClawJacked), and the possibility of compromising agents via WebSocket. Incidents involving Claude for attacks on Mexican government agencies demonstrate real threats. This requires development of new security standards, access management protocols (OpenPort), and formalization of governance for tool access.",
       "evidence": [
-        "Incidents involving the use of Claude for attacks on Mexican government agencies",
+        "Incidents involving Claude for attacks on Mexican government agencies",
         "ClawJacked vulnerability: local agents can be hijacked via WebSocket",
         "OptiLeak demonstrates prompt leaks in multi-tenant serving",
-        "OpenPort offers a governance specification for tool access with least privilege",
+        "OpenPort offers governance specification for tool access with least privilege",
         "Rising demand for agent security and trust & safety engineers"
       ],
-      "nonObviousConclusion": "Security is becoming a key layer of AI infrastructure, and the spontaneous order of communities is insufficient without formalization and regulatory measures.",
-      "educationImplication": "The training program must include cybersecurity and risk management in agent AI systems.",
+      "nonObviousConclusion": "Cyber risks of agentic systems mean security becomes a key layer of AI infrastructure, not an optional component. Spontaneous community order and best practices are insufficient without formalization and regulatory measures. This requires emergence of new professions (agent security engineer, trust & safety specialist) and new standards (OpenPort, AgentContract-Bench). Simultaneously, this creates a new class of attacks: instead of attacks on models, adversaries will attack infrastructure and tool-use mechanisms of agents.",
+      "educationImplication": "Educational programs must include cybersecurity and risk management in agentic AI systems as a mandatory component. It is necessary to prepare specialists in agent security, development of secure tool-use mechanisms, and auditing of agentic systems. It is important to develop competencies in threat modeling for agents, analysis of vulnerabilities in multi-tenant infrastructure, and formalization of governance for AI systems.",
       "relevantPrograms": [
         "intensiveAgents",
-        "aiShift"
+        "aiShift",
+        "dataDriven"
       ],
       "srtLevels": [
         8,
