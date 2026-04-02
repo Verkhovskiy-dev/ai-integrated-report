@@ -1,0 +1,884 @@
+{
+  "date": "2026-04-02",
+  "generated_at": "2026-04-02T05:01:20.353Z",
+  "key_focus": "",
+  "srt_levels": [
+    {
+      "level": 9,
+      "name": "Денежная система",
+      "events": [
+        {
+          "title": "переход к логике «фронтир как капиталоёмкий актив → окупаемость через закрытые модели и подписки/агентные seats»",
+          "description": "переход к логике «фронтир как капиталоёмкий актив → окупаемость через закрытые модели и подписки/агентные seats». Alibaba прямо маркирует profit-ориентацию.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-02/alibaba-unveils-third-closed-source-ai-model-in-focus-on-profit"
+          ]
+        },
+        {
+          "title": "AI-инвестиции превращаются в инфраструктурный CapEx с энергетическими деривативами/долгими контрактами; «денежная система» AI всё больше похожа на инфраструктуру/утилити (PPA, мощность, долговые структуры)",
+          "description": "AI-инвестиции превращаются в инфраструктурный CapEx с энергетическими деривативами/долгими контрактами; «денежная система» AI всё больше похожа на инфраструктуру/утилити (PPA, мощность, долговые структуры).",
+          "sources": []
+        },
+        {
+          "title": "формируется «денежная надстройка» фронтира: ликвидность/неликвидность долей, вторичные рынки, быстрая ротация ожиданий",
+          "description": "формируется «денежная надстройка» фронтира: ликвидность/неликвидность долей, вторичные рынки, быстрая ротация ожиданий. Это влияет на способность компаний финансировать compute и удерживать таланты.",
+          "sources": []
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 8,
+      "name": "Спонтанный порядок",
+      "events": [
+        {
+          "title": "усиливается конфликт между нормой open-инженерии (репутация/повторяемость) и нормой закрытого IP (маржинальность/контроль)",
+          "description": "усиливается конфликт между нормой open-инженерии (репутация/повторяемость) и нормой закрытого IP (маржинальность/контроль). Утечки кода подрывают доверие и ускоряют появление «сообществ аудита» и практик опербезопасности релизов.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-01/anthropic-executive-blames-claude-code-leak-on-process-errors"
+          ]
+        },
+        {
+          "title": "формируется новый «спонтанный порядок» вокруг норм обеспечения мощности: энергетические партнёрства становятся стандартной практикой для hyperscalers",
+          "description": "формируется новый «спонтанный порядок» вокруг норм обеспечения мощности: энергетические партнёрства становятся стандартной практикой для hyperscalers.",
+          "sources": []
+        },
+        {
+          "title": "рождаются новые нормы «спонтанного порядка» вокруг агентных систем: не просто “best practices”, а инфраструктура доверия (тесты инструментов, мониторинг, аудит траекторий)",
+          "description": "рождаются новые нормы «спонтанного порядка» вокруг агентных систем: не просто “best practices”, а инфраструктура доверия (тесты инструментов, мониторинг, аудит траекторий).",
+          "sources": []
+        },
+        {
+          "title": "репутационные сигналы (продуктовый успех Claude Code, затем утечка кода) становятся рыночными механизмами координации",
+          "description": "репутационные сигналы (продуктовый успех Claude Code, затем утечка кода) становятся рыночными механизмами координации.",
+          "sources": []
+        }
+      ],
+      "event_count": 4
+    },
+    {
+      "level": 7,
+      "name": "Институты производства знаний",
+      "events": [
+        {
+          "title": "🟡 Средние уровни (6-5-4): Технологии и разделение труда",
+          "description": "🟡 Средние уровни (6-5-4): Технологии и разделение труда",
+          "sources": []
+        },
+        {
+          "title": "прикладное знание всё сильнее «приземляется» на инженерии энергоснабжения и эксплуатации",
+          "description": "прикладное знание всё сильнее «приземляется» на инженерии энергоснабжения и эксплуатации.",
+          "sources": []
+        },
+        {
+          "title": "институты знания смещаются от «публикации метрики» к «публикации процедур аудита/репликации» (пример - AISI и Petri-подход)",
+          "description": "институты знания смещаются от «публикации метрики» к «публикации процедур аудита/репликации» (пример - AISI и Petri-подход).",
+          "sources": [
+            "https://arxiv.org/abs/2604.00788"
+          ]
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 6,
+      "name": "Технологии производства знаний",
+      "events": [
+        {
+          "title": "ускорение релизных циклов как методология (continuous delivery для агентов) - одновременно рост аварий/утечек",
+          "description": "ускорение релизных циклов как методология (continuous delivery для агентов) - одновременно рост аварий/утечек.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-01/anthropic-executive-blames-claude-code-leak-on-process-errors"
+          ]
+        },
+        {
+          "title": "доминирует методологический сдвиг: *evaluate/verify at system-level* (tool correctness + orchestration + monitoring), а не только качество генерации",
+          "description": "доминирует методологический сдвиг: *evaluate/verify at system-level* (tool correctness + orchestration + monitoring), а не только качество генерации.",
+          "sources": []
+        }
+      ],
+      "event_count": 2
+    },
+    {
+      "level": 5,
+      "name": "Разделение труда между фирмами",
+      "events": [
+        {
+          "title": "переразделение value chain: модели → агентные продукты → корпоративные процессы (комплаенс/контроль/продажи)",
+          "description": "переразделение value chain: модели → агентные продукты → корпоративные процессы (комплаенс/контроль/продажи). Anthropic «ставит» на массового агента, а не только на dev-рынок.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-01/anthropic-executive-sees-cowork-agent-as-bigger-than-claude-code"
+          ]
+        },
+        {
+          "title": "вертикальная интеграция: cloud/AI-провайдеры заходят в энергетическую цепочку как покупатели якорной мощности, меняя переговорную силу рынка",
+          "description": "вертикальная интеграция: cloud/AI-провайдеры заходят в энергетическую цепочку как покупатели якорной мощности, меняя переговорную силу рынка.",
+          "sources": []
+        },
+        {
+          "title": "возникает ниша для компаний/команд, продающих “agent QA”, “tool registry”, “governance stack”",
+          "description": "возникает ниша для компаний/команд, продающих “agent QA”, “tool registry”, “governance stack”.",
+          "sources": []
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 4,
+      "name": "«Железные» технологии",
+      "events": [
+        {
+          "title": "🟢 Нижние уровни (3-2-1): Базис",
+          "description": "🟢 Нижние уровни (3-2-1): Базис",
+          "sources": []
+        },
+        {
+          "title": "“железо” (GPU/кластера) становится вторичным по отношению к лимиту энергии/подключений (узкое место уходит вниз по СРТ)",
+          "description": "“железо” (GPU/кластера) становится вторичным по отношению к лимиту энергии/подключений (узкое место уходит вниз по СРТ).",
+          "sources": []
+        },
+        {
+          "title": "На вторичном рынке спрос на доли OpenAI «проседает», инвесторы быстро переключаются на Anthropic",
+          "description": "На вторичном рынке спрос на доли OpenAI «проседает», инвесторы быстро переключаются на Anthropic.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-01/openai-demand-sinks-on-secondary-market-as-anthropic-runs-hot"
+          ]
+        },
+        {
+          "title": "В Bloomberg-эфире озвучены оценки: OpenAI valuation ~$852B, Anthropic ~$380B (как часть дискурса о «punchy valuations»)",
+          "description": "В Bloomberg-эфире озвучены оценки: OpenAI valuation ~$852B, Anthropic ~$380B (как часть дискурса о «punchy valuations»).",
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-04-01/valuations-are-punchy-salesforce-s-drews-video"
+          ]
+        }
+      ],
+      "event_count": 4
+    },
+    {
+      "level": 3,
+      "name": "Социально-профессиональная структура",
+      "events": [
+        {
+          "title": "Microsoft в эксклюзивных переговорах с Chevron и Engine No",
+          "description": "Microsoft в эксклюзивных переговорах с Chevron и Engine No. 1 о долгосрочной сделке, которая «подопрёт» гигантскую электростанцию в Западном Техасе для питания кампуса ДЦ.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-31/microsoft-in-talks-with-chevron-engine-no-1-over-7-billion-texas-power-plant"
+          ]
+        },
+        {
+          "title": "У Microsoft CFO AI-расходы упираются в страх «пузыря» и необходимость управлять CapEx на ДЦ",
+          "description": "У Microsoft CFO AI-расходы упираются в страх «пузыря» и необходимость управлять CapEx на ДЦ.",
+          "sources": [
+            "https://www.bloomberg.com/news/features/2026-04-01/microsoft-s-ai-ambitions-rest-in-hands-of-satya-nadella-s-trusted-cfo"
+          ]
+        },
+        {
+          "title": "Morgan Stanley прямо связывает ландшафт M&A с AI-бумом и энергорисками",
+          "description": "Morgan Stanley прямо связывает ландшафт M&A с AI-бумом и энергорисками.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-01/ai-boom-energy-risks-shape-m-a-landscape-morgan-stanley-says"
+          ]
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 2,
+      "name": "Пространственная организация",
+      "events": [
+        {
+          "title": "закрепление новых географий AI-мощностей (Западный Техас как узел «энергия → ДЦ»)",
+          "description": "закрепление новых географий AI-мощностей (Западный Техас как узел «энергия → ДЦ»).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-03-31/microsoft-in-talks-with-chevron-engine-no-1-over-7-billion-texas-power-plant"
+          ]
+        }
+      ],
+      "event_count": 1
+    },
+    {
+      "level": 1,
+      "name": "Природные ресурсы",
+      "events": [
+        {
+          "title": "Критика того, что текущие AI-бенчмарки «сломаны» и не измеряют ценность в реальных социотехнических системах",
+          "description": "Критика того, что текущие AI-бенчмарки «сломаны» и не измеряют ценность в реальных социотехнических системах.",
+          "sources": [
+            "https://www.technologyreview.com/2026/03/31/1134833/ai-benchmarks-are-broken-heres-what-we-need-instead/"
+          ]
+        },
+        {
+          "title": "Появляются фреймворки надежности tool-using агентов: OpenTools - стандартизация схем инструментов, тест-сьюты, continuous monitoring, вклад сообщества",
+          "description": "Появляются фреймворки надежности tool-using агентов: OpenTools - стандартизация схем инструментов, тест-сьюты, continuous monitoring, вклад сообщества.",
+          "sources": [
+            "https://arxiv.org/abs/2604.00137"
+          ]
+        },
+        {
+          "title": "UK AI Security Institute публикует case-study по оценке alignment/саботажа в сценариях «агент-кодер внутри AI-лаба», с использованием Petri",
+          "description": "UK AI Security Institute публикует case-study по оценке alignment/саботажа в сценариях «агент-кодер внутри AI-лаба», с использованием Petri.",
+          "sources": [
+            "https://arxiv.org/abs/2604.00788"
+          ]
+        },
+        {
+          "title": "Системы triage «какие траектории агента смотреть» (Signals: trajectory sampling)",
+          "description": "Системы triage «какие траектории агента смотреть» (Signals: trajectory sampling).",
+          "sources": [
+            "https://arxiv.org/abs/2604.00356"
+          ]
+        },
+        {
+          "title": "Много работ про явное разделение decision/control слоя (decision-centric LLM systems)",
+          "description": "Много работ про явное разделение decision/control слоя (decision-centric LLM systems).",
+          "sources": [
+            "https://arxiv.org/abs/2604.00414"
+          ]
+        }
+      ],
+      "event_count": 5
+    }
+  ],
+  "events": [
+    {
+      "title": "переход к логике «фронтир как капиталоёмкий актив → окупаемость через закрытые модели и подписки/агентные seats»",
+      "description": "переход к логике «фронтир как капиталоёмкий актив → окупаемость через закрытые модели и подписки/агентные seats». Alibaba прямо маркирует profit-ориентацию.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-02/alibaba-unveils-third-closed-source-ai-model-in-focus-on-profit"
+      ],
+      "level": 9
+    },
+    {
+      "title": "AI-инвестиции превращаются в инфраструктурный CapEx с энергетическими деривативами/долгими контрактами; «денежная система» AI всё больше похожа на инфраструктуру/утилити (PPA, мощность, долговые структуры)",
+      "description": "AI-инвестиции превращаются в инфраструктурный CapEx с энергетическими деривативами/долгими контрактами; «денежная система» AI всё больше похожа на инфраструктуру/утилити (PPA, мощность, долговые структуры).",
+      "sources": [],
+      "level": 9
+    },
+    {
+      "title": "формируется «денежная надстройка» фронтира: ликвидность/неликвидность долей, вторичные рынки, быстрая ротация ожиданий",
+      "description": "формируется «денежная надстройка» фронтира: ликвидность/неликвидность долей, вторичные рынки, быстрая ротация ожиданий. Это влияет на способность компаний финансировать compute и удерживать таланты.",
+      "sources": [],
+      "level": 9
+    },
+    {
+      "title": "усиливается конфликт между нормой open-инженерии (репутация/повторяемость) и нормой закрытого IP (маржинальность/контроль)",
+      "description": "усиливается конфликт между нормой open-инженерии (репутация/повторяемость) и нормой закрытого IP (маржинальность/контроль). Утечки кода подрывают доверие и ускоряют появление «сообществ аудита» и практик опербезопасности релизов.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-01/anthropic-executive-blames-claude-code-leak-on-process-errors"
+      ],
+      "level": 8
+    },
+    {
+      "title": "формируется новый «спонтанный порядок» вокруг норм обеспечения мощности: энергетические партнёрства становятся стандартной практикой для hyperscalers",
+      "description": "формируется новый «спонтанный порядок» вокруг норм обеспечения мощности: энергетические партнёрства становятся стандартной практикой для hyperscalers.",
+      "sources": [],
+      "level": 8
+    },
+    {
+      "title": "рождаются новые нормы «спонтанного порядка» вокруг агентных систем: не просто “best practices”, а инфраструктура доверия (тесты инструментов, мониторинг, аудит траекторий)",
+      "description": "рождаются новые нормы «спонтанного порядка» вокруг агентных систем: не просто “best practices”, а инфраструктура доверия (тесты инструментов, мониторинг, аудит траекторий).",
+      "sources": [],
+      "level": 8
+    },
+    {
+      "title": "репутационные сигналы (продуктовый успех Claude Code, затем утечка кода) становятся рыночными механизмами координации",
+      "description": "репутационные сигналы (продуктовый успех Claude Code, затем утечка кода) становятся рыночными механизмами координации.",
+      "sources": [],
+      "level": 8
+    },
+    {
+      "title": "🟡 Средние уровни (6-5-4): Технологии и разделение труда",
+      "description": "🟡 Средние уровни (6-5-4): Технологии и разделение труда",
+      "sources": [],
+      "level": 7
+    },
+    {
+      "title": "прикладное знание всё сильнее «приземляется» на инженерии энергоснабжения и эксплуатации",
+      "description": "прикладное знание всё сильнее «приземляется» на инженерии энергоснабжения и эксплуатации.",
+      "sources": [],
+      "level": 7
+    },
+    {
+      "title": "институты знания смещаются от «публикации метрики» к «публикации процедур аудита/репликации» (пример - AISI и Petri-подход)",
+      "description": "институты знания смещаются от «публикации метрики» к «публикации процедур аудита/репликации» (пример - AISI и Petri-подход).",
+      "sources": [
+        "https://arxiv.org/abs/2604.00788"
+      ],
+      "level": 7
+    },
+    {
+      "title": "ускорение релизных циклов как методология (continuous delivery для агентов) - одновременно рост аварий/утечек",
+      "description": "ускорение релизных циклов как методология (continuous delivery для агентов) - одновременно рост аварий/утечек.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-01/anthropic-executive-blames-claude-code-leak-on-process-errors"
+      ],
+      "level": 6
+    },
+    {
+      "title": "доминирует методологический сдвиг: *evaluate/verify at system-level* (tool correctness + orchestration + monitoring), а не только качество генерации",
+      "description": "доминирует методологический сдвиг: *evaluate/verify at system-level* (tool correctness + orchestration + monitoring), а не только качество генерации.",
+      "sources": [],
+      "level": 6
+    },
+    {
+      "title": "переразделение value chain: модели → агентные продукты → корпоративные процессы (комплаенс/контроль/продажи)",
+      "description": "переразделение value chain: модели → агентные продукты → корпоративные процессы (комплаенс/контроль/продажи). Anthropic «ставит» на массового агента, а не только на dev-рынок.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-01/anthropic-executive-sees-cowork-agent-as-bigger-than-claude-code"
+      ],
+      "level": 5
+    },
+    {
+      "title": "вертикальная интеграция: cloud/AI-провайдеры заходят в энергетическую цепочку как покупатели якорной мощности, меняя переговорную силу рынка",
+      "description": "вертикальная интеграция: cloud/AI-провайдеры заходят в энергетическую цепочку как покупатели якорной мощности, меняя переговорную силу рынка.",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "возникает ниша для компаний/команд, продающих “agent QA”, “tool registry”, “governance stack”",
+      "description": "возникает ниша для компаний/команд, продающих “agent QA”, “tool registry”, “governance stack”.",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "🟢 Нижние уровни (3-2-1): Базис",
+      "description": "🟢 Нижние уровни (3-2-1): Базис",
+      "sources": [],
+      "level": 4
+    },
+    {
+      "title": "“железо” (GPU/кластера) становится вторичным по отношению к лимиту энергии/подключений (узкое место уходит вниз по СРТ)",
+      "description": "“железо” (GPU/кластера) становится вторичным по отношению к лимиту энергии/подключений (узкое место уходит вниз по СРТ).",
+      "sources": [],
+      "level": 4
+    },
+    {
+      "title": "На вторичном рынке спрос на доли OpenAI «проседает», инвесторы быстро переключаются на Anthropic",
+      "description": "На вторичном рынке спрос на доли OpenAI «проседает», инвесторы быстро переключаются на Anthropic.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-01/openai-demand-sinks-on-secondary-market-as-anthropic-runs-hot"
+      ],
+      "level": 4
+    },
+    {
+      "title": "В Bloomberg-эфире озвучены оценки: OpenAI valuation ~$852B, Anthropic ~$380B (как часть дискурса о «punchy valuations»)",
+      "description": "В Bloomberg-эфире озвучены оценки: OpenAI valuation ~$852B, Anthropic ~$380B (как часть дискурса о «punchy valuations»).",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-04-01/valuations-are-punchy-salesforce-s-drews-video"
+      ],
+      "level": 4
+    },
+    {
+      "title": "Microsoft в эксклюзивных переговорах с Chevron и Engine No",
+      "description": "Microsoft в эксклюзивных переговорах с Chevron и Engine No. 1 о долгосрочной сделке, которая «подопрёт» гигантскую электростанцию в Западном Техасе для питания кампуса ДЦ.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-31/microsoft-in-talks-with-chevron-engine-no-1-over-7-billion-texas-power-plant"
+      ],
+      "level": 3
+    },
+    {
+      "title": "У Microsoft CFO AI-расходы упираются в страх «пузыря» и необходимость управлять CapEx на ДЦ",
+      "description": "У Microsoft CFO AI-расходы упираются в страх «пузыря» и необходимость управлять CapEx на ДЦ.",
+      "sources": [
+        "https://www.bloomberg.com/news/features/2026-04-01/microsoft-s-ai-ambitions-rest-in-hands-of-satya-nadella-s-trusted-cfo"
+      ],
+      "level": 3
+    },
+    {
+      "title": "Morgan Stanley прямо связывает ландшафт M&A с AI-бумом и энергорисками",
+      "description": "Morgan Stanley прямо связывает ландшафт M&A с AI-бумом и энергорисками.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-01/ai-boom-energy-risks-shape-m-a-landscape-morgan-stanley-says"
+      ],
+      "level": 3
+    },
+    {
+      "title": "закрепление новых географий AI-мощностей (Западный Техас как узел «энергия → ДЦ»)",
+      "description": "закрепление новых географий AI-мощностей (Западный Техас как узел «энергия → ДЦ»).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-31/microsoft-in-talks-with-chevron-engine-no-1-over-7-billion-texas-power-plant"
+      ],
+      "level": 2
+    },
+    {
+      "title": "Критика того, что текущие AI-бенчмарки «сломаны» и не измеряют ценность в реальных социотехнических системах",
+      "description": "Критика того, что текущие AI-бенчмарки «сломаны» и не измеряют ценность в реальных социотехнических системах.",
+      "sources": [
+        "https://www.technologyreview.com/2026/03/31/1134833/ai-benchmarks-are-broken-heres-what-we-need-instead/"
+      ],
+      "level": 1
+    },
+    {
+      "title": "Появляются фреймворки надежности tool-using агентов: OpenTools - стандартизация схем инструментов, тест-сьюты, continuous monitoring, вклад сообщества",
+      "description": "Появляются фреймворки надежности tool-using агентов: OpenTools - стандартизация схем инструментов, тест-сьюты, continuous monitoring, вклад сообщества.",
+      "sources": [
+        "https://arxiv.org/abs/2604.00137"
+      ],
+      "level": 1
+    },
+    {
+      "title": "UK AI Security Institute публикует case-study по оценке alignment/саботажа в сценариях «агент-кодер внутри AI-лаба», с использованием Petri",
+      "description": "UK AI Security Institute публикует case-study по оценке alignment/саботажа в сценариях «агент-кодер внутри AI-лаба», с использованием Petri.",
+      "sources": [
+        "https://arxiv.org/abs/2604.00788"
+      ],
+      "level": 1
+    },
+    {
+      "title": "Системы triage «какие траектории агента смотреть» (Signals: trajectory sampling)",
+      "description": "Системы triage «какие траектории агента смотреть» (Signals: trajectory sampling).",
+      "sources": [
+        "https://arxiv.org/abs/2604.00356"
+      ],
+      "level": 1
+    },
+    {
+      "title": "Много работ про явное разделение decision/control слоя (decision-centric LLM systems)",
+      "description": "Много работ про явное разделение decision/control слоя (decision-centric LLM systems).",
+      "sources": [
+        "https://arxiv.org/abs/2604.00414"
+      ],
+      "level": 1
+    }
+  ],
+  "trends": [
+    {
+      "name": "Агентные AI-платформы (coworker/enterprise agents)",
+      "momentum": 75,
+      "rationale": "Anthropic публично ставит на Cowork как более массовый продукт, а кейсы «AI coworker» уже проявляют поведенческую норму внедрения.",
+      "levels": [
+        3,
+        5,
+        6,
+        8
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "AI-CapEx / энергетическая инфраструктура для ДЦ",
+      "momentum": 85,
+      "rationale": "Microsoft обсуждает долгосрочную опору на электростанцию под кампус ДЦ; управленчески это уже “core strategy”, а не эксперимент.",
+      "levels": [
+        1,
+        2,
+        5,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Закрытые/проприетарные модели (closed-source) как ставка на прибыль",
+      "momentum": 60,
+      "rationale": "Alibaba демонстративно ускоряет выпуск proprietary моделей и связывает это с profit-фокусом.",
+      "levels": [
+        5,
+        8,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Open-weight/open-source как доминирующая норма фронтира",
+      "momentum": -15,
+      "rationale": "на фронтире усиливается движение к закрытию (Alibaba), а утечки кода у лидеров повышают стимулы к ещё более жёсткому контролю, а не к открытости.",
+      "levels": [
+        8,
+        9,
+        7
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Reliability/observability/audit для агентных систем (tool tests, trajectory triage, госоценки)",
+      "momentum": 70,
+      "rationale": "появляются конкретные фреймворки (OpenTools) и государственные методики оценки (UK AISI), что обычно предшествует стандартизации рынка.,",
+      "levels": [
+        6,
+        7,
+        8,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "“Benchmark single-score” как главный компас прогресса",
+      "momentum": -35,
+      "rationale": "усиливается публичная критика “benchmarks are broken”, рынок смещается к системным/критериально-валидным оценкам.",
+      "levels": [
+        7,
+        6,
+        8
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Ротация капитала между frontier-игроками на вторичном рынке",
+      "momentum": 40,
+      "rationale": "фиксируется смена предпочтений secondary buyers от OpenAI к Anthropic; это признак высокой скорости «денежного голосования».",
+      "levels": [
+        9,
+        8
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "“Release fast” без усиления process/security (операционная зрелость)",
+      "momentum": -25,
+      "rationale": "утечка Claude Code прямо объясняется ошибками процесса на фоне быстрого релизного цикла, что обычно приводит к откату практик и усилению gatekeeping.",
+      "levels": [
+        6,
+        8,
+        5
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "LLM как демонстрация возможностей/публикация, рост через «лучше бенчмарки».",
+      "momentum": -70,
+      "rationale": "Угасает: переход от «LLM как демонстрация возможностей/публикация, рост через «лучше бенчмарки».» к «LLM/агент как продуктовый актив, окупаемый через закрытость и корпоративные внедрения; агент становится «сотрудником» в оргструктуре.». Упоминаний в контексте перехода: 4",
+      "levels": [
+        9,
+        8,
+        6,
+        5,
+        3
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "“Кто купил больше GPU - тот лидер”.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «“Кто купил больше GPU - тот лидер”.» к «“Кто обеспечил электричество/подключение/землю/регуляторику - тот масштабируется”.». Упоминаний в контексте перехода: 1",
+      "levels": [
+        9,
+        5,
+        2,
+        1
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "доверие через статические лидерборды и single-score.",
+      "momentum": -40,
+      "rationale": "Угасает: переход от «доверие через статические лидерборды и single-score.» к «доверие через воспроизводимые протоколы, мониторинг инструментов, трассируемые траектории, институты аудита (в т.ч. государственные).». Упоминаний в контексте перехода: 2",
+      "levels": [
+        8,
+        7,
+        6,
+        5
+      ],
+      "category": "decelerating"
+    }
+  ],
+  "cross_level_links": [
+    {
+      "title": "Ограничение энергии (Уровень 1/2) → вертикальная интеграция (Уровень 5) → финансовая инженерия (Уровень 9)",
+      "description": "Ограничение энергии (Уровень 1/2) → вертикальная интеграция (Уровень 5) → финансовая инженерия (Уровень 9)   Дефицит мощности/подключений заставляет hyperscalers заключать долгие энергетические сделки и фактически «покупать инфраструктурное будущее», как Microsoft с West Texas power plant.",
+      "levels": [
+        9,
+        5,
+        2,
+        1
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-31/microsoft-in-talks-with-chevron-engine-no-1-over-7-billion-texas-power-plant"
+      ]
+    },
+    {
+      "title": "Ускорение релизов (Уровень 6) → рост операционных рисков/утечек (Уровень 8) → давление на модель монетизации (Уровень 9)",
+      "description": "Ускорение релизов (Уровень 6) → рост операционных рисков/утечек (Уровень 8) → давление на модель монетизации (Уровень 9)   Leak Claude Code интерпретируется как побочный эффект fast release cycle (“process errors”), т.е. методология разработки напрямую разрушает институциональное доверие, а значит - денежную модель «продукт как защищённый IP».",
+      "levels": [
+        9,
+        8,
+        6
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-01/anthropic-executive-blames-claude-code-leak-on-process-errors"
+      ]
+    },
+    {
+      "title": "Агент в офисе (Уровень 3) → новая нормативность контроля труда (Уровень 8)",
+      "description": "Агент в офисе (Уровень 3) → новая нормативность контроля труда (Уровень 8)   «AI coworker, который напоминает и эскалирует» - это не просто фича, а внедрение новых норм управляемости/наблюдаемости труда через агента.",
+      "levels": [
+        8,
+        3
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-02/meet-the-new-ai-coworker-who-won-t-stop-snitching-to-your-boss"
+      ]
+    },
+    {
+      "title": "Кризис метрик (Уровень 7/6) → спрос на governance/reliability стеки (Уровень 5) → конкуренция экосистем (Уровень 8)",
+      "description": "Кризис метрик (Уровень 7/6) → спрос на governance/reliability стеки (Уровень 5) → конкуренция экосистем (Уровень 8)   Новые фреймворки (OpenTools, AISI-оценки, triage траекторий) - признаки, что рынок «перепрошивает» критерии качества с “benchmark score” на “auditability + reliability in deployment”.,,",
+      "levels": [
+        8,
+        7,
+        6,
+        5
+      ],
+      "sources": [
+        "https://arxiv.org/abs/2604.00137",
+        "https://arxiv.org/abs/2604.00788",
+        "https://arxiv.org/abs/2604.00356"
+      ]
+    }
+  ],
+  "structural_shifts": [
+    {
+      "title": "От гонки моделей к гонке агентных продуктовых линий (и закрытого IP)»**",
+      "from": "LLM как демонстрация возможностей/публикация, рост через «лучше бенчмарки».",
+      "to": "LLM/агент как продуктовый актив, окупаемый через закрытость и корпоративные внедрения; агент становится «сотрудником» в оргструктуре.",
+      "through": "давление на маржинальность + капиталовая нагрузка + конкуренция за enterprise seats; быстрые релизы → больше операционных рисков → усиление внутреннего контроля.",
+      "levels": [
+        9,
+        8,
+        6,
+        5,
+        3
+      ],
+      "trend": "accelerating",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-02/alibaba-unveils-third-closed-source-ai-model-in-focus-on-profit",
+        "https://www.bloomberg.com/news/articles/2026-04-01/anthropic-executive-sees-cowork-agent-as-bigger-than-claude-code"
+      ]
+    },
+    {
+      "title": "Энергетический лимит как главный регулятор темпа AI (compute follows power)»**",
+      "from": "“Кто купил больше GPU - тот лидер”.",
+      "to": "“Кто обеспечил электричество/подключение/землю/регуляторику - тот масштабируется”.",
+      "through": "долгие энергетические контракты и инфраструктурные сделки превращают AI в индустрию heavy-asset.",
+      "levels": [
+        9,
+        5,
+        2,
+        1
+      ],
+      "trend": "accelerating",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-31/microsoft-in-talks-with-chevron-engine-no-1-over-7-billion-texas-power-plant"
+      ]
+    },
+    {
+      "title": "Индустриализация доверия: от метрик к аудиту систем (tools, trajectories, verification)»**",
+      "from": "доверие через статические лидерборды и single-score.",
+      "to": "доверие через воспроизводимые протоколы, мониторинг инструментов, трассируемые траектории, институты аудита (в т.ч. государственные).",
+      "through": "агентные системы ломаются не в “ответе”, а в “контуре действий”; поэтому рынок строит новый слой контроля.",
+      "levels": [
+        8,
+        7,
+        6,
+        5
+      ],
+      "trend": "emerging",
+      "sources": [
+        "https://arxiv.org/abs/2604.00137",
+        "https://arxiv.org/abs/2604.00788"
+      ]
+    }
+  ],
+  "radar_signals": [
+    {
+      "title": "Ликвидность долей frontier-игроков становится рычагом конкуренции",
+      "description": "падение спроса на вторичке по OpenAI при “горячем” Anthropic может сигнализировать смену «денежной легитимности» лидера.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-01/openai-demand-sinks-on-secondary-market-as-anthropic-runs-hot"
+      ]
+    },
+    {
+      "title": "Государственные институты оценки (AISI) нормируют рынок",
+      "description": "стандарты alignment-оценок могут стать де-факто обязательными для госзакупок и enterprise compliance.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://arxiv.org/abs/2604.00788"
+      ]
+    },
+    {
+      "title": "Tool reliability как “open infrastructure”",
+      "description": "OpenTools намекает на будущие «реестры инструментов» и рейтинги качества инструментария как отдельного рынка.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://arxiv.org/abs/2604.00137"
+      ]
+    },
+    {
+      "title": "Decision-centric architecture",
+      "description": "выделение слоя принятия решений отдельно от генерации - потенциальный новый стандарт для enterprise-агентов (управляемость, диагностика).",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://arxiv.org/abs/2604.00414"
+      ]
+    },
+    {
+      "title": "“AI coworker” меняет трудовой контракт",
+      "description": "рост внутреннего сопротивления/профсоюзных/HR-политик вокруг агентного мониторинга может резко изменить дизайн продуктов.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-02/meet-the-new-ai-coworker-who-won-t-stop-snitching-to-your-boss"
+      ]
+    },
+    {
+      "title": "Энергетические якорные проекты",
+      "description": "если PPA/электростанции под ДЦ станут «нормой», это закрепит новые территориальные центры AI-производства (Техас/другие энергетические узлы).",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-03-31/microsoft-in-talks-with-chevron-engine-no-1-over-7-billion-texas-power-plant"
+      ]
+    }
+  ],
+  "metrics": {
+    "total_events": 28,
+    "events_by_level": {
+      "1": 5,
+      "2": 1,
+      "3": 3,
+      "4": 4,
+      "5": 3,
+      "6": 2,
+      "7": 3,
+      "8": 4,
+      "9": 3
+    },
+    "total_sources": 13,
+    "structural_shifts_count": 3,
+    "radar_signals_count": 6,
+    "cross_level_links_count": 4,
+    "momentum_trends_count": 11
+  },
+  "categories": [],
+  "momentum_trends": [
+    {
+      "name": "Агентные AI-платформы (coworker/enterprise agents)",
+      "momentum": 75,
+      "rationale": "Anthropic публично ставит на Cowork как более массовый продукт, а кейсы «AI coworker» уже проявляют поведенческую норму внедрения.",
+      "levels": [
+        3,
+        5,
+        6,
+        8
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "AI-CapEx / энергетическая инфраструктура для ДЦ",
+      "momentum": 85,
+      "rationale": "Microsoft обсуждает долгосрочную опору на электростанцию под кампус ДЦ; управленчески это уже “core strategy”, а не эксперимент.",
+      "levels": [
+        1,
+        2,
+        5,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Закрытые/проприетарные модели (closed-source) как ставка на прибыль",
+      "momentum": 60,
+      "rationale": "Alibaba демонстративно ускоряет выпуск proprietary моделей и связывает это с profit-фокусом.",
+      "levels": [
+        5,
+        8,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Open-weight/open-source как доминирующая норма фронтира",
+      "momentum": -15,
+      "rationale": "на фронтире усиливается движение к закрытию (Alibaba), а утечки кода у лидеров повышают стимулы к ещё более жёсткому контролю, а не к открытости.",
+      "levels": [
+        8,
+        9,
+        7
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Reliability/observability/audit для агентных систем (tool tests, trajectory triage, госоценки)",
+      "momentum": 70,
+      "rationale": "появляются конкретные фреймворки (OpenTools) и государственные методики оценки (UK AISI), что обычно предшествует стандартизации рынка.,",
+      "levels": [
+        6,
+        7,
+        8,
+        5
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "“Benchmark single-score” как главный компас прогресса",
+      "momentum": -35,
+      "rationale": "усиливается публичная критика “benchmarks are broken”, рынок смещается к системным/критериально-валидным оценкам.",
+      "levels": [
+        7,
+        6,
+        8
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Ротация капитала между frontier-игроками на вторичном рынке",
+      "momentum": 40,
+      "rationale": "фиксируется смена предпочтений secondary buyers от OpenAI к Anthropic; это признак высокой скорости «денежного голосования».",
+      "levels": [
+        9,
+        8
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "“Release fast” без усиления process/security (операционная зрелость)",
+      "momentum": -25,
+      "rationale": "утечка Claude Code прямо объясняется ошибками процесса на фоне быстрого релизного цикла, что обычно приводит к откату практик и усилению gatekeeping.",
+      "levels": [
+        6,
+        8,
+        5
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "LLM как демонстрация возможностей/публикация, рост через «лучше бенчмарки».",
+      "momentum": -70,
+      "rationale": "Угасает: переход от «LLM как демонстрация возможностей/публикация, рост через «лучше бенчмарки».» к «LLM/агент как продуктовый актив, окупаемый через закрытость и корпоративные внедрения; агент становится «сотрудником» в оргструктуре.». Упоминаний в контексте перехода: 4",
+      "levels": [
+        9,
+        8,
+        6,
+        5,
+        3
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "“Кто купил больше GPU - тот лидер”.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «“Кто купил больше GPU - тот лидер”.» к «“Кто обеспечил электричество/подключение/землю/регуляторику - тот масштабируется”.». Упоминаний в контексте перехода: 1",
+      "levels": [
+        9,
+        5,
+        2,
+        1
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "доверие через статические лидерборды и single-score.",
+      "momentum": -40,
+      "rationale": "Угасает: переход от «доверие через статические лидерборды и single-score.» к «доверие через воспроизводимые протоколы, мониторинг инструментов, трассируемые траектории, институты аудита (в т.ч. государственные).». Упоминаний в контексте перехода: 2",
+      "levels": [
+        8,
+        7,
+        6,
+        5
+      ],
+      "category": "decelerating"
+    }
+  ]
+}
