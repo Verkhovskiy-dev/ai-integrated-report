@@ -12,6 +12,7 @@ import {
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
 import PdfExport from "@/components/PdfExport";
+import QrCodeModal from "@/components/QrCodeModal";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import ViewModeSwitcher from "@/components/ViewModeSwitcher";
 
@@ -145,14 +146,16 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
             <ViewModeSwitcher />
             <LanguageSwitcher />
             <PdfExport />
+            <QrCodeModal />
           </div>
         </nav>
 
-        {/* Mobile: Lang + PDF + Menu */}
+        {/* Mobile: Lang + PDF + QR + Menu */}
         <div className="flex items-center gap-1.5 lg:hidden">
           <ViewModeSwitcher />
           <LanguageSwitcher />
           <PdfExport />
+          <QrCodeModal />
           <button
             className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

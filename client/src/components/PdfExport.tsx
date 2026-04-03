@@ -10,6 +10,12 @@ export default function PdfExport() {
   const isEn = locale === "en";
 
   const handleExport = async () => {
+    // Prevent export while data is still loading
+    if (data.loading) {
+      alert(isEn ? "Data is still loading. Please wait." : "Данные ещё загружаются. Пожалуйста, подождите.");
+      return;
+    }
+
     setExporting(true);
     try {
       const { generatePdfReport } = await import("@/utils/pdfGenerator");
@@ -25,9 +31,9 @@ export default function PdfExport() {
   return (
     <button
       onClick={handleExport}
-      disabled={exporting}
+      disabled={exporting || data.loading}
       title={isEn ? "Export to PDF" : "Экспорт в PDF"}
-      className={`flex items-center gap-1 px-2 py-1.5 text-[10px] font-medium rounded-md border transition-all ${exporting ? "opacity-50 cursor-wait border-border/30 text-muted-foreground" : "border-amber-500/30 text-amber-400 hover:bg-amber-500/10 hover:border-amber-500/50"}`}
+      className={`flex items-center gap-1 px-2 py-1.5 text-[10px] font-medium rounded-md border transition-all ${exporting || data.loading ? "opacity-50 cursor-wait border-border/30 text-muted-foreground" : "border-amber-500/30 text-amber-400 hover:bg-amber-500/10 hover:border-amber-500/50"}`}
     >
       <FileDown className={`w-3 h-3 ${exporting ? "animate-pulse" : ""}`} />
       <span>PDF</span>
