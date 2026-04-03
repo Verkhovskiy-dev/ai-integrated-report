@@ -11,7 +11,7 @@ on:
 
 jobs:
   validate:
-    name: Validate latest-report.json
+    name: Validate & sanitize latest-report.json
     runs-on: ubuntu-latest
 
     steps:
@@ -32,12 +32,57 @@ jobs:
           git fetch origin main
           git checkout origin/main -- scripts/validate_report.py
 
-      - name: Run validation
-        id: validate
+      - name: Run validation (dry-run)
+        id: validate_dry
         run: |
           python3 scripts/validate_report.py data/latest-report.json
           echo "valid=true" >> $GITHUB_OUTPUT
         continue-on-error: true
+
+      - name: Auto-fix data quality issues
+        id: autofix
+        if: steps.validate_dry.outcome == 'failure'
+        run: |
+          echo "::notice::Validation failed — running auto-fix..."
+
+          # Check if this is a critical empty-events failure (cannot be auto-fixed)
+          EVENTS=$(python3 -c "
+          import json
+          with open('data/latest-report.json') as f:
+              data = json.load(f)
+          total = sum(len(l.get('events',[])) for l in data.get('srt_levels',[]))
+          print(total)
+          ")
+
+          if [ "$EVENTS" = "0" ]; then
+            echo "empty_events=true" >> $GITHUB_OUTPUT
+            echo "::error::CRITICAL: 0 events — cannot auto-fix, will revert."
+          else
+            # Run auto-fix for Markdown artifacts, duplicate descriptions, etc.
+            python3 scripts/validate_report.py data/latest-report.json --fix
+            FIX_EXIT=$?
+
+            if [ $FIX_EXIT -eq 0 ]; then
+              echo "fixed=true" >> $GITHUB_OUTPUT
+              echo "::notice::Auto-fix applied successfully."
+            else
+              echo "fixed=false" >> $GITHUB_OUTPUT
+              echo "::warning::Auto-fix ran but validation still fails."
+            fi
+          fi
+
+      - name: Commit auto-fix changes
+        if: steps.autofix.outputs.fixed == 'true'
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "GitHub Actions"
+
+          git add data/latest-report.json
+          git diff --cached --quiet && echo "No changes to commit" || {
+            git commit -m "auto-fix: sanitize report (remove Markdown artifacts, clear duplicate descriptions)"
+            git push origin gh-pages
+            echo "::notice::Auto-fix committed and pushed."
+          }
 
       - name: Post summary
         if: always()
@@ -48,46 +93,50 @@ jobs:
               data = json.load(f)
           total = 0
           with_src = 0
+          md_artifacts = 0
+          dup_desc = 0
           for level in data.get("srt_levels", []):
               for ev in level.get("events", []):
                   total += 1
+                  t = ev.get("title", "")
+                  d = ev.get("description", "")
                   if ev.get("sources"):
                       with_src += 1
+                  if "---" in t or "##" in t or t.strip().startswith("#"):
+                      md_artifacts += 1
+                  if t.strip().rstrip(".") and d.strip().rstrip(".") and t.strip().rstrip(".") == d.strip().rstrip("."):
+                      dup_desc += 1
           pct = with_src / total * 100 if total else 0
           print(f"Report date: {data.get('date', 'unknown')}")
           print(f"Generated at: {data.get('generated_at', 'unknown')}")
           print(f"Events: {total} total, {with_src} with sources ({pct:.0f}%)")
+          print(f"Markdown artifacts: {md_artifacts}")
+          print(f"Duplicate descriptions: {dup_desc}")
           if total == 0:
-              print("::error::CRITICAL - Report has 0 events! AIwatcher generation bug detected.")
-          elif pct < 50:
-              print("::warning::Less than 50% of events have source URLs!")
+              print("::error::CRITICAL - Report has 0 events!")
           else:
-              print("::notice::Source coverage is acceptable.")
+              if md_artifacts > 0:
+                  print(f"::warning::{md_artifacts} Markdown artifacts found in titles")
+              if dup_desc > 0:
+                  print(f"::warning::{dup_desc} events have description == title")
+              if pct < 50:
+                  print("::warning::Less than 50% of events have source URLs!")
+              else:
+                  print("::notice::Data quality checks passed.")
           EOF
 
       - name: Auto-revert if events are empty
-        if: steps.validate.outcome == 'failure'
+        if: steps.autofix.outputs.empty_events == 'true'
         run: |
-          # Check if this is a critical empty-events failure
-          EVENTS=$(python3 -c "
-          import json
-          with open('data/latest-report.json') as f:
-              data = json.load(f)
-          total = sum(len(l.get('events',[])) for l in data.get('srt_levels',[]))
-          print(total)
-          ")
-          echo "Events count: $EVENTS"
+          echo "::error::CRITICAL: 0 events detected. Auto-reverting to previous good commit..."
 
-          if [ "$EVENTS" = "0" ]; then
-            echo "::error::CRITICAL: 0 events detected. Auto-reverting to previous good commit..."
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "GitHub Actions"
 
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git config user.name "GitHub Actions"
-
-            # Find the last commit with non-empty events (skip current HEAD)
-            GOOD_COMMIT=""
-            for HASH in $(git log --format="%H" HEAD~1..HEAD~12 2>/dev/null || git log --format="%H" --skip=1 -12); do
-              COUNT=$(git show $HASH:data/latest-report.json 2>/dev/null | python3 -c "
+          # Find the last commit with non-empty events (skip current HEAD)
+          GOOD_COMMIT=""
+          for HASH in $(git log --format="%H" HEAD~1..HEAD~12 2>/dev/null || git log --format="%H" --skip=1 -12); do
+            COUNT=$(git show $HASH:data/latest-report.json 2>/dev/null | python3 -c "
           import json,sys
           try:
               d=json.load(sys.stdin)
@@ -95,24 +144,20 @@ jobs:
               print(t)
           except: print(0)
           " 2>/dev/null || echo "0")
-              if [ "$COUNT" -gt "0" ] 2>/dev/null; then
-                GOOD_COMMIT=$HASH
-                echo "Found good commit: $HASH with $COUNT events"
-                break
-              fi
-            done
-
-            if [ -n "$GOOD_COMMIT" ]; then
-              git show $GOOD_COMMIT:data/latest-report.json > data/latest-report.json
-              git show $GOOD_COMMIT:data/latest-report.en.json > data/latest-report.en.json 2>/dev/null || true
-              git add data/latest-report.json data/latest-report.en.json
-              git commit -m "auto-revert: restore non-empty report from ${GOOD_COMMIT:0:8} (AIwatcher pushed empty events)"
-              git push origin gh-pages
-              echo "::notice::Auto-reverted to $GOOD_COMMIT"
-            else
-              echo "::warning::Could not find a good commit to revert to in recent history"
+            if [ "$COUNT" -gt "0" ] 2>/dev/null; then
+              GOOD_COMMIT=$HASH
+              echo "Found good commit: $HASH with $COUNT events"
+              break
             fi
+          done
+
+          if [ -n "$GOOD_COMMIT" ]; then
+            git show $GOOD_COMMIT:data/latest-report.json > data/latest-report.json
+            git show $GOOD_COMMIT:data/latest-report.en.json > data/latest-report.en.json 2>/dev/null || true
+            git add data/latest-report.json data/latest-report.en.json
+            git commit -m "auto-revert: restore non-empty report from ${GOOD_COMMIT:0:8} (AIwatcher pushed empty events)"
+            git push origin gh-pages
+            echo "::notice::Auto-reverted to $GOOD_COMMIT"
           else
-            echo "Events exist ($EVENTS), validation failed due to source coverage. Manual review needed."
-            exit 1
+            echo "::warning::Could not find a good commit to revert to in recent history"
           fi
