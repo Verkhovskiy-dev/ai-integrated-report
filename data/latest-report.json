@@ -1,6 +1,6 @@
 {
   "date": "2026-04-09",
-  "generated_at": "2026-04-09T10:01:41.037Z",
+  "generated_at": "2026-04-09T17:01:42.190Z",
   "key_focus": "",
   "srt_levels": [
     {
@@ -8,317 +8,504 @@
       "name": "Денежная система",
       "events": [
         {
-          "title": "Финансиализация compute-инфраструктуры",
-          "description": "Финансиализация compute-инфраструктуры: дата-центры под AI всё явнее оформляются как «инфраструктурный класс активов» с синдицированными кредитами и возможностью секьюритизации/перепродажи долга (Pimco/Oracle; банки/Meta). Это приближает AI к логике энергетики/недвижимости/инфраструктуры, где стоимость капитала и риски рефинансирования становятся частью конкурентного преимущества.",
+          "title": "Compute превращается в “долгосрочный контрактный товар” (AI-PPA аналог)",
+          "description": "Compute превращается в “долгосрочный контрактный товар” (AI-PPA аналог): Meta фиксирует поставку вычислений от CoreWeave до 2032 на сумму $21 млрд - это сдвиг к инфраструктурным обязательствам и “compute off-take” моделям финансирования.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-04-08/pimco-seeks-to-sell-parts-of-14-billion-oracle-data-center-debt",
-            "https://www.bloomberg.com/news/articles/2026-04-08/natixis-mufg-others-market-meta-s-3b-data-center-build"
+            "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-expands-meta-deal-for-ai-computing-to-21-billion"
           ]
         },
         {
-          "title": "Капитал начинает “наказывать” географии с дорогой энергией/сложным регулированием",
-          "description": "Капитал начинает “наказывать” географии с дорогой энергией/сложным регулированием: пауза Stargate UK - сигнал инвесторам и девелоперам, что даже лидер рынка ограничен базисом «энергия+регуляторика».",
+          "title": "Высокодоходный (junk) долг нормализуется как топливо AI-инфраструктуры",
+          "description": "Высокодоходный (junk) долг нормализуется как топливо AI-инфраструктуры: CoreWeave после расширения сделки выходит на рынок junk bonds, т.е. AI-compute становится collateral/кредитной историей.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-tapping-junk-debt-market-after-meta-ai-computing-deal"
+          ]
+        },
+        {
+          "title": "Капитальные структуры дата-центров “раскладываются” по институциональным портфелям",
+          "description": "Капитальные структуры дата-центров “раскладываются” по институциональным портфелям: Pimco пытается продать часть долга по финансированию $14 млрд дата-центра Oracle в Мичигане - сигнал формирования вторичного рынка “DC-debt” и пересборки рисков.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-08/pimco-seeks-to-sell-parts-of-14-billion-oracle-data-center-debt"
+          ]
+        },
+        {
+          "title": "OpenAI переходит в режим финансовой дисциплины перед IPO",
+          "description": "OpenAI переходит в режим финансовой дисциплины перед IPO: пауза проекта Stargate UK из-за стоимости энергии и “rein in spending”. Это симптом: compute/энергия уже ограничивают финансовые планы, а не только R&D-аппетит.",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs"
           ]
         },
         {
-          "title": "Ликвидность долей в frontier AI",
-          "description": "Ликвидность долей в frontier AI: нежелание сотрудников Anthropic продавать в tender offer усиливает модель «акции как дефицитный актив», но одновременно ограничивает вход крупных инвесторов по желаемым объемам (на фоне политико-регуляторных рисков вокруг компании).",
+          "title": "Коммерциализация внутреннего кремния как новая денежная машина гиперскейлеров",
+          "description": "Коммерциализация внутреннего кремния как новая денежная машина гиперскейлеров: Amazon рассматривает продажу своих AI-чипов наружу; CEO говорит, что silicon-подразделение на траектории >$20 млрд выручки/год. Это сдвиг к “chip-as-a-product”, а не только “chip for own cloud”.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-04-08/anthropic-completes-tender-offer-but-employees-hold-onto-shares"
+            "https://www.bloomberg.com/news/articles/2026-04-09/amazon-is-considering-selling-its-ai-chips-to-other-companies"
+          ]
+        },
+        {
+          "title": "Рынок приватных инвестиций продолжает абсорбировать «инфра- и техно»-риски",
+          "description": "Рынок приватных инвестиций продолжает абсорбировать «инфра- и техно»-риски: Mercer привлекает $3.8 млрд под private investments (косвенный индикатор устойчивости private capital, в т.ч. под инфраструктурные истории).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/marsh-s-mercer-raises-3-8-billion-for-private-investments"
           ]
         }
       ],
-      "event_count": 3
+      "event_count": 6
     },
     {
       "level": 8,
       "name": "Спонтанный порядок",
       "events": [
         {
-          "title": "Нормой становится “селективный доступ” к опасным capability",
-          "description": "Нормой становится “селективный доступ” к опасным capability: Anthropic ограничивает Mythos и строит режим предварительного теста защит у крупных игроков - фактически формируется рыночный протокол «responsible staged release» как неформальный стандарт.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-04-07/anthropic-lets-apple-amazon-test-more-powerful-mythos-ai-model"
-          ]
-        },
-        {
-          "title": "“Спонтанный порядок” ломается об гос. маркировки supply-chain risk",
-          "description": "“Спонтанный порядок” ломается об гос. маркировки supply-chain risk: даже без полного бана сама маркировка Пентагона действует как репутационно-закупочный фильтр, меняющий правила включения в цепочки поставок государства и подрядчиков.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-04-08/anthropic-fails-for-now-to-halt-us-label-as-a-supply-chain-risk"
-          ]
-        }
-      ],
-      "event_count": 2
-    },
-    {
-      "level": 7,
-      "name": "Институты производства знаний",
-      "events": [
-        {
-          "title": "Смещение от «просто улучшать базовые модели» к прикладным протоколам надежности/верификации/маршрутизации агентов видно по массе новых исследовательских артефактов: routing engines (AgentGate), agent orchestration OS, uncertainty frameworks (SELFDOUBT), verifiers для computer-use agents и т.п",
-          "description": "Смещение от «просто улучшать базовые модели» к прикладным протоколам надежности/верификации/маршрутизации агентов видно по массе новых исследовательских артефактов: routing engines (AgentGate), agent orchestration OS, uncertainty frameworks (SELFDOUBT), verifiers для computer-use agents и т.п. - знание становится операционализируемым в виде стандартов/тестов/рантаймов.,,",
+          "title": "Смещение “де-факто стандарта” в сторону агентных протоколов/оркестрации",
+          "description": "Смещение “де-факто стандарта” в сторону агентных протоколов/оркестрации: поток arXiv по routing/orchestration/eval (AgentGate, WildToolBench, ATANT и др.) показывает, что рынок вырабатывает неформальные стандарты: маршрутизация, память/континуитет, верификация траекторий, оценка tool-use в “дикой среде”. (AgentGate) (WildToolBench) (ATANT)",
           "sources": [
             "https://arxiv.org/abs/2604.06696",
-            "https://arxiv.org/abs/2604.06392",
-            "https://arxiv.org/abs/2604.06389",
-            "https://arxiv.org/abs/2604.06240"
-          ]
-        }
-      ],
-      "event_count": 1
-    },
-    {
-      "level": 6,
-      "name": "Технологии производства знаний",
-      "events": [
-        {
-          "title": "Усиливается линия “evaluation/verification as product”: появляются новые бенчмарки и методики, фиксирующие разрыв между лабораторной оценкой и реальной эксплуатацией (например, WildToolBench для tool-use «в дикой природе»)",
-          "description": "Усиливается линия “evaluation/verification as product”: появляются новые бенчмарки и методики, фиксирующие разрыв между лабораторной оценкой и реальной эксплуатацией (например, WildToolBench для tool-use «в дикой природе»). Это меняет то, *как* производится знание о качестве агентов: от static QA к многошаговой поведенческой диагностике.",
-          "sources": [
-            "https://arxiv.org/abs/2604.06185"
+            "https://arxiv.org/abs/2604.06185",
+            "https://arxiv.org/abs/2604.06710"
           ]
         },
         {
-          "title": "Разворачивается “test-time инженерия” (интервенции без переобучения, uncertainty из трейса, структурные гейты против галлюцинаций) как методологическая ось конкуренции, особенно когда доступ к logits/внутренностям закрыт.,",
-          "description": "Разворачивается “test-time инженерия” (интервенции без переобучения, uncertainty из трейса, структурные гейты против галлюцинаций) как методологическая ось конкуренции, особенно когда доступ к logits/внутренностям закрыт.",
+          "title": "Конференционный “центр гравитации” для стартапов/VC - Anthropic",
+          "description": "Конференционный “центр гравитации” для стартапов/VC - Anthropic: в обсуждениях на HumanX Anthropic выступает как «маркер индустрии» - важный институт репутации/легитимации (кто задаёт “правильный” язык и ориентиры).",
           "sources": [
-            "https://arxiv.org/abs/2604.06389",
-            "https://arxiv.org/abs/2604.06195"
-          ]
-        }
-      ],
-      "event_count": 2
-    },
-    {
-      "level": 5,
-      "name": "Разделение труда между фирмами",
-      "events": [
-        {
-          "title": "Вертикальная интеграция по инфраструктуре",
-          "description": "Вертикальная интеграция по инфраструктуре продолжается у крупных (Meta строит/финансирует DC; Oracle - DC как продукт/платформа), но финансирование идет через консорциумы банков и крупных управляющих (Pimco) → усиливается связка *Big Tech ↔ финансовый сектор ↔ энергетика/девелопмент*.",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-04-08/natixis-mufg-others-market-meta-s-3b-data-center-build",
-            "https://www.bloomberg.com/news/articles/2026-04-08/pimco-seeks-to-sell-parts-of-14-billion-oracle-data-center-debt"
+            "https://www.bloomberg.com/news/newsletters/2026-04-09/anthropic-dominates-the-discussion-at-the-humanx-ai-conference"
           ]
         },
         {
-          "title": "Географическое расслоение партнерств",
-          "description": "Географическое расслоение партнерств: если UK становится сложной площадкой для OpenAI (энергия/регуляторика), то ОАЭ через G42 позиционируется как узел размещения/экспансии даже при региональной турбулентности - конкуренция юрисдикций за compute.",
+          "title": "Политико-силовой контур вмешивается в рыночную репутацию поставщиков",
+          "description": "Политико-силовой контур вмешивается в рыночную репутацию поставщиков: суд временно оставляет в силе маркировку Anthropic как supply-chain risk со стороны Пентагона (даже при блокировках более широкого бана) - это меняет “неформальные правила доверия” на рынке госзаказа.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs",
-            "https://www.bloomberg.com/news/articles/2026-04-09/uae-s-g42-ai-champion-pushes-on-with-data-center-for-openai"
-          ]
-        },
-        {
-          "title": "Экспортный контроль/комплаенс как фактор цепочки поставок",
-          "description": "Экспортный контроль/комплаенс как фактор цепочки поставок: расследование Super Micro по серверам в Китай - сигнал, что поставщики “железа” становятся узким местом легальности (и значит - риска остановки поставок/контрактов).",
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-04-07/super-micro-launches-internal-probe-of-server-sales-to-china"
+            "https://www.bloomberg.com/news/articles/2026-04-08/anthropic-fails-for-now-to-halt-us-label-as-a-supply-chain-risk"
           ]
         }
       ],
       "event_count": 3
     },
     {
+      "level": 7,
+      "name": "Институты производства знаний",
+      "events": [
+        {
+          "title": "АрXiv фиксирует индустриальный разворот: от “модель лучше” к “система над моделью”",
+          "description": "АрXiv фиксирует индустриальный разворот: от “модель лучше” к “система над моделью” - верификаторы, протоколы, отказоустойчивость, оценка агентных систем, безопасность исполнения (ClawLess), проблемы broken benchmarks и т.п. Это смена легитимируемого знания: “инженерия надежности” вместо “лидерборд-гонки”. (ClawLess) (MIT Tech Review: про кризис бенчмарков)",
+          "sources": [
+            "https://arxiv.org/abs/2604.06284",
+            "https://www.technologyreview.com/2026/03/31/1134833/ai-benchmarks-are-broken-heres-what-we-need-instead/"
+          ]
+        },
+        {
+          "title": "Тезис “конец эры foundation models” появляется как оформленная позиция (knowledge artifact)",
+          "description": "Тезис “конец эры foundation models” появляется как оформленная позиция (knowledge artifact): статья на arXiv описывает структурную перестройку: open-weight, sovereign AI, “inference as infrastructure”, и связку с кейсом Pentаgon/Anthropic.",
+          "sources": [
+            "https://arxiv.org/abs/2604.06217"
+          ]
+        }
+      ],
+      "event_count": 2
+    },
+    {
+      "level": 6,
+      "name": "Технологии производства знаний",
+      "events": [
+        {
+          "title": "Переход от “accuracy” к “диагностике поведения и траекторий”",
+          "description": "Переход от “accuracy” к “диагностике поведения и траекторий”: новые бенчмарки/методики под агентность и real-world tool-use показывают, что индустрия учится измерять “провалы процесса”, а не только ответы. (WildToolBench: <15% accuracy у 57 моделей) (Universal Verifier / CUAVerifierBench)",
+          "sources": [
+            "https://arxiv.org/abs/2604.06185",
+            "https://arxiv.org/abs/2604.06240"
+          ]
+        },
+        {
+          "title": "Методологическая линия: дешёвые, одно-прохождевые сигналы неопределенности и “внутренней верификации”",
+          "description": "Методологическая линия: дешёвые, одно-прохождевые сигналы неопределенности и “внутренней верификации”: SELFDOUBT предлагает uncertainty без логитов/семплинга - важно для проприетарных API-моделей.",
+          "sources": [
+            "https://arxiv.org/abs/2604.06389"
+          ]
+        },
+        {
+          "title": "Сдвиг в сторону пост-трейнинга/тест-тайм интервенций вместо “ещё больше pretrain”",
+          "description": "Сдвиг в сторону пост-трейнинга/тест-тайм интервенций вместо “ещё больше pretrain”: StepFlow (интервенции информации потока), S^3 для diffusion-LM, CGD-PD и т.п. (StepFlow) (S^3) (CGD-PD)",
+          "sources": [
+            "https://arxiv.org/abs/2604.06695",
+            "https://arxiv.org/abs/2604.06260",
+            "https://arxiv.org/abs/2604.06196"
+          ]
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 5,
+      "name": "Разделение труда между фирмами",
+      "events": [
+        {
+          "title": "CoreWeave закрепляется как “инфра-специалист” для больших лабораторий/платформ",
+          "description": "CoreWeave закрепляется как “инфра-специалист” для больших лабораторий/платформ: расширение мегасделки с Meta усиливает специализацию: Meta как покупатель “полосы пропускания интеллекта”, CoreWeave как поставщик compute-мощности.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-expands-meta-deal-for-ai-computing-to-21-billion"
+          ]
+        },
+        {
+          "title": "Гиперскейлеры начинают конкурировать с чипмейкерами на внешнем рынке",
+          "description": "Гиперскейлеры начинают конкурировать с чипмейкерами на внешнем рынке: Amazon рассматривает продажу собственных AI-чипов сторонним компаниям - перестройка цепочки “чипы→облако” (вертикально интегрированный игрок начинает горизонтально монетизировать компонент).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/amazon-is-considering-selling-its-ai-chips-to-other-companies"
+          ]
+        },
+        {
+          "title": "Intel удерживает долю через “обещание совместимости” с Google",
+          "description": "Intel удерживает долю через “обещание совместимости” с Google: commitment Google продолжать использовать будущие Xeon - борьба за место CPU в дата-центровом стеке на фоне AI-ускорителей.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/intel-wins-google-commitment-to-use-xeon-chips-in-data-centers"
+          ]
+        },
+        {
+          "title": "RISC-V вталкивается в AI дата-центры через венчурный капитал",
+          "description": "RISC-V вталкивается в AI дата-центры через венчурный капитал: SiFive привлекает $400 млн на push в data centers. Это ставка на альтернативную ISA/экосистему в серверном сегменте.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/sifive-to-fuel-data-center-push-with-400-million-funding-round"
+          ]
+        },
+        {
+          "title": "Сервисная IT-индустрия адаптируется к “IT slump” через кост-каттинг",
+          "description": "Сервисная IT-индустрия адаптируется к “IT slump” через кост-каттинг: результаты TCS на фоне замедления спроса - косвенный сигнал, что классический аутсорсинг/IT-услуги испытывают давление (часть работ уходит в автоматизацию/AI).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/tcs-tops-profit-estimates-after-cost-cuts-to-cope-with-it-slump"
+          ]
+        }
+      ],
+      "event_count": 5
+    },
+    {
       "level": 4,
       "name": "«Железные» технологии",
       "events": [
         {
-          "title": "“Железо” в AI смещается от абстрактной модели к инфраструктуре inference/training как капиталоемкому объекту (DC в Ohio/Michigan; пауза в UK из-за энергии)",
-          "description": "“Железо” в AI смещается от абстрактной модели к инфраструктуре inference/training как капиталоемкому объекту (DC в Ohio/Michigan; пауза в UK из-за энергии). Технологический стек становится зависим от стоимости кВт⋅ч и доступности подключения к сетям не меньше, чем от качества GPU.",
+          "title": "Чип-пэкиджинг становится стратегическим узлом",
+          "description": "Чип-пэкиджинг становится стратегическим узлом: Samsung инвестирует $4 млрд в packaging во Вьетнаме - packaging как бутылочное горлышко AI-hardware (HBM/advanced packaging косвенно).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs",
-            "https://www.bloomberg.com/news/articles/2026-04-08/natixis-mufg-others-market-meta-s-3b-data-center-build"
+            "https://www.bloomberg.com/news/articles/2026-04-09/samsung-to-invest-4-billion-in-chip-packaging-site-in-vietnam"
+          ]
+        },
+        {
+          "title": "Инфраструктурные риски “наземной сети” → космический backhaul как контур устойчивости",
+          "description": "Инфраструктурные риски “наземной сети” → космический backhaul как контур устойчивости: Starlink используется для обхода иранского интернет-блэкаута - связь/доступ к сети становится элементом устойчивости цифровых систем (в т.ч. AI-сервисов и координации).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/how-elon-musk-s-starlink-is-being-used-to-evade-iran-s-internet-blackouts"
           ]
         }
       ],
-      "event_count": 1
+      "event_count": 2
     },
     {
       "level": 3,
       "name": "Социально-профессиональная структура",
       "events": [
         {
-          "title": "Возникает и закрепляется роль security/assurance вокруг моделей (киберриски от capability; “supply-chain risk” метки), что толкает рынок труда к компетенциям: governance, compliance, red teaming, DC energy procurement",
-          "description": "Возникает и закрепляется роль security/assurance вокруг моделей (киберриски от capability; “supply-chain risk” метки), что толкает рынок труда к компетенциям: governance, compliance, red teaming, DC energy procurement. (Фиксация через действия Anthropic и Пентагона.)",
+          "title": "Миграция исследователей из Big Tech в узкие стартап-ниши",
+          "description": "Миграция исследователей из Big Tech в узкие стартап-ниши: бывшие DeepMind-исследователи запускают стартап Eloorian (visual AI) - продолжение “фрагментации профессий” (не просто LLM-общего назначения, а зрение/перцепция как отдельная специализация).",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-04-07/anthropic-lets-apple-amazon-test-more-powerful-mythos-ai-model",
-            "https://www.bloomberg.com/news/articles/2026-04-08/anthropic-fails-for-now-to-halt-us-label-as-a-supply-chain-risk"
+            "https://www.bloomberg.com/news/articles/2026-04-09/ex-google-deepmind-researchers-debut-startup-called-elorian-focused-on-visual-ai"
+          ]
+        },
+        {
+          "title": "Расширение “гиг-контуров” обучения для робототехники/гуманоидов",
+          "description": "Расширение “гиг-контуров” обучения для робототехники/гуманоидов: домашние gig-workers тренируют гуманоидных роботов (через датасбор/демонстрации) - усиление периферийного труда в цепочке создания embodied-AI.",
+          "sources": [
+            "https://www.technologyreview.com/2026/04/01/1134863/humanoid-data-training-gig-economy-2026-breakthrough-technology/"
           ]
         }
       ],
-      "event_count": 1
+      "event_count": 2
     },
     {
       "level": 2,
       "name": "Пространственная организация",
       "events": [
         {
-          "title": "Перенастройка географии compute",
-          "description": "Перенастройка географии compute под энергию и регуляторику: UK получает отрицательный сигнал (пауза проекта). Одновременно Ближний Восток через G42 наращивает позиционирование как альтернативный узел размещения и экспорта мощности.",
+          "title": "Вьетнам усиливается как узел полупроводниковой цепочки (packaging)",
+          "description": "Вьетнам усиливается как узел полупроводниковой цепочки (packaging): инвестиция Samsung закрепляет перераспределение производственных стадий в ЮВА.",
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs",
+            "https://www.bloomberg.com/news/articles/2026-04-09/samsung-to-invest-4-billion-in-chip-packaging-site-in-vietnam"
+          ]
+        },
+        {
+          "title": "UK проигрывает размещение мощностей из-за энергии",
+          "description": "UK проигрывает размещение мощностей из-за энергии: пауза OpenAI Stargate UK именно по energy cost - сигнал, что юрисдикции конкурируют тарифами/доступом к энергии, а не только регуляторикой и кадрами.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs"
+          ]
+        },
+        {
+          "title": "UAE (G42) держит курс на кампусы ДЦ и экспансию в США несмотря на региональные атаки",
+          "description": "UAE (G42) держит курс на кампусы ДЦ и экспансию в США несмотря на региональные атаки: resilience-география и политическая диверсификация размещения.",
+          "sources": [
             "https://www.bloomberg.com/news/articles/2026-04-09/uae-s-g42-ai-champion-pushes-on-with-data-center-for-openai"
           ]
         }
       ],
-      "event_count": 1
+      "event_count": 3
     },
     {
       "level": 1,
       "name": "Природные ресурсы",
       "events": [
         {
-          "title": "Электроэнергия",
-          "description": "Электроэнергия становится лимитирующим ресурсом и фактически “ценовым регулятором” AI-экспансии: формально это причина паузы Stargate UK.",
+          "title": "Энергия становится ограничителем AI-инфраструктуры",
+          "description": "Энергия становится ограничителем AI-инфраструктуры: OpenAI прямо связывает паузу UK-проекта со стоимостью энергии.",
           "sources": [
             "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs"
           ]
+        },
+        {
+          "title": "Внешние энергетические шоки перенастраивают глобальный спрос (косвенно влияя на дата-центры)",
+          "description": "Внешние энергетические шоки перенастраивают глобальный спрос (косвенно влияя на дата-центры): рост экспорта китайских EV на фоне иранского нефтяного шока - макро-сигнал волатильности энергорынков, важной для AI-CapEx/OpEx.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/china-ev-exports-jump-to-record-as-iran-oil-shock-entices-buyers"
+          ]
         }
       ],
-      "event_count": 1
+      "event_count": 2
     }
   ],
   "events": [
     {
-      "title": "Финансиализация compute-инфраструктуры",
-      "description": "Финансиализация compute-инфраструктуры: дата-центры под AI всё явнее оформляются как «инфраструктурный класс активов» с синдицированными кредитами и возможностью секьюритизации/перепродажи долга (Pimco/Oracle; банки/Meta). Это приближает AI к логике энергетики/недвижимости/инфраструктуры, где стоимость капитала и риски рефинансирования становятся частью конкурентного преимущества.",
+      "title": "Compute превращается в “долгосрочный контрактный товар” (AI-PPA аналог)",
+      "description": "Compute превращается в “долгосрочный контрактный товар” (AI-PPA аналог): Meta фиксирует поставку вычислений от CoreWeave до 2032 на сумму $21 млрд - это сдвиг к инфраструктурным обязательствам и “compute off-take” моделям финансирования.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-08/pimco-seeks-to-sell-parts-of-14-billion-oracle-data-center-debt",
-        "https://www.bloomberg.com/news/articles/2026-04-08/natixis-mufg-others-market-meta-s-3b-data-center-build"
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-expands-meta-deal-for-ai-computing-to-21-billion"
       ],
       "level": 9
     },
     {
-      "title": "Капитал начинает “наказывать” географии с дорогой энергией/сложным регулированием",
-      "description": "Капитал начинает “наказывать” географии с дорогой энергией/сложным регулированием: пауза Stargate UK - сигнал инвесторам и девелоперам, что даже лидер рынка ограничен базисом «энергия+регуляторика».",
+      "title": "Высокодоходный (junk) долг нормализуется как топливо AI-инфраструктуры",
+      "description": "Высокодоходный (junk) долг нормализуется как топливо AI-инфраструктуры: CoreWeave после расширения сделки выходит на рынок junk bonds, т.е. AI-compute становится collateral/кредитной историей.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-tapping-junk-debt-market-after-meta-ai-computing-deal"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Капитальные структуры дата-центров “раскладываются” по институциональным портфелям",
+      "description": "Капитальные структуры дата-центров “раскладываются” по институциональным портфелям: Pimco пытается продать часть долга по финансированию $14 млрд дата-центра Oracle в Мичигане - сигнал формирования вторичного рынка “DC-debt” и пересборки рисков.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-08/pimco-seeks-to-sell-parts-of-14-billion-oracle-data-center-debt"
+      ],
+      "level": 9
+    },
+    {
+      "title": "OpenAI переходит в режим финансовой дисциплины перед IPO",
+      "description": "OpenAI переходит в режим финансовой дисциплины перед IPO: пауза проекта Stargate UK из-за стоимости энергии и “rein in spending”. Это симптом: compute/энергия уже ограничивают финансовые планы, а не только R&D-аппетит.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs"
       ],
       "level": 9
     },
     {
-      "title": "Ликвидность долей в frontier AI",
-      "description": "Ликвидность долей в frontier AI: нежелание сотрудников Anthropic продавать в tender offer усиливает модель «акции как дефицитный актив», но одновременно ограничивает вход крупных инвесторов по желаемым объемам (на фоне политико-регуляторных рисков вокруг компании).",
+      "title": "Коммерциализация внутреннего кремния как новая денежная машина гиперскейлеров",
+      "description": "Коммерциализация внутреннего кремния как новая денежная машина гиперскейлеров: Amazon рассматривает продажу своих AI-чипов наружу; CEO говорит, что silicon-подразделение на траектории >$20 млрд выручки/год. Это сдвиг к “chip-as-a-product”, а не только “chip for own cloud”.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-08/anthropic-completes-tender-offer-but-employees-hold-onto-shares"
+        "https://www.bloomberg.com/news/articles/2026-04-09/amazon-is-considering-selling-its-ai-chips-to-other-companies"
       ],
       "level": 9
     },
     {
-      "title": "Нормой становится “селективный доступ” к опасным capability",
-      "description": "Нормой становится “селективный доступ” к опасным capability: Anthropic ограничивает Mythos и строит режим предварительного теста защит у крупных игроков - фактически формируется рыночный протокол «responsible staged release» как неформальный стандарт.",
+      "title": "Рынок приватных инвестиций продолжает абсорбировать «инфра- и техно»-риски",
+      "description": "Рынок приватных инвестиций продолжает абсорбировать «инфра- и техно»-риски: Mercer привлекает $3.8 млрд под private investments (косвенный индикатор устойчивости private capital, в т.ч. под инфраструктурные истории).",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-07/anthropic-lets-apple-amazon-test-more-powerful-mythos-ai-model"
+        "https://www.bloomberg.com/news/articles/2026-04-09/marsh-s-mercer-raises-3-8-billion-for-private-investments"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Смещение “де-факто стандарта” в сторону агентных протоколов/оркестрации",
+      "description": "Смещение “де-факто стандарта” в сторону агентных протоколов/оркестрации: поток arXiv по routing/orchestration/eval (AgentGate, WildToolBench, ATANT и др.) показывает, что рынок вырабатывает неформальные стандарты: маршрутизация, память/континуитет, верификация траекторий, оценка tool-use в “дикой среде”. (AgentGate) (WildToolBench) (ATANT)",
+      "sources": [
+        "https://arxiv.org/abs/2604.06696",
+        "https://arxiv.org/abs/2604.06185",
+        "https://arxiv.org/abs/2604.06710"
       ],
       "level": 8
     },
     {
-      "title": "“Спонтанный порядок” ломается об гос. маркировки supply-chain risk",
-      "description": "“Спонтанный порядок” ломается об гос. маркировки supply-chain risk: даже без полного бана сама маркировка Пентагона действует как репутационно-закупочный фильтр, меняющий правила включения в цепочки поставок государства и подрядчиков.",
+      "title": "Конференционный “центр гравитации” для стартапов/VC - Anthropic",
+      "description": "Конференционный “центр гравитации” для стартапов/VC - Anthropic: в обсуждениях на HumanX Anthropic выступает как «маркер индустрии» - важный институт репутации/легитимации (кто задаёт “правильный” язык и ориентиры).",
+      "sources": [
+        "https://www.bloomberg.com/news/newsletters/2026-04-09/anthropic-dominates-the-discussion-at-the-humanx-ai-conference"
+      ],
+      "level": 8
+    },
+    {
+      "title": "Политико-силовой контур вмешивается в рыночную репутацию поставщиков",
+      "description": "Политико-силовой контур вмешивается в рыночную репутацию поставщиков: суд временно оставляет в силе маркировку Anthropic как supply-chain risk со стороны Пентагона (даже при блокировках более широкого бана) - это меняет “неформальные правила доверия” на рынке госзаказа.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-04-08/anthropic-fails-for-now-to-halt-us-label-as-a-supply-chain-risk"
       ],
       "level": 8
     },
     {
-      "title": "Смещение от «просто улучшать базовые модели» к прикладным протоколам надежности/верификации/маршрутизации агентов видно по массе новых исследовательских артефактов: routing engines (AgentGate), agent orchestration OS, uncertainty frameworks (SELFDOUBT), verifiers для computer-use agents и т.п",
-      "description": "Смещение от «просто улучшать базовые модели» к прикладным протоколам надежности/верификации/маршрутизации агентов видно по массе новых исследовательских артефактов: routing engines (AgentGate), agent orchestration OS, uncertainty frameworks (SELFDOUBT), verifiers для computer-use agents и т.п. - знание становится операционализируемым в виде стандартов/тестов/рантаймов.,,",
+      "title": "АрXiv фиксирует индустриальный разворот: от “модель лучше” к “система над моделью”",
+      "description": "АрXiv фиксирует индустриальный разворот: от “модель лучше” к “система над моделью” - верификаторы, протоколы, отказоустойчивость, оценка агентных систем, безопасность исполнения (ClawLess), проблемы broken benchmarks и т.п. Это смена легитимируемого знания: “инженерия надежности” вместо “лидерборд-гонки”. (ClawLess) (MIT Tech Review: про кризис бенчмарков)",
       "sources": [
-        "https://arxiv.org/abs/2604.06696",
-        "https://arxiv.org/abs/2604.06392",
-        "https://arxiv.org/abs/2604.06389",
-        "https://arxiv.org/abs/2604.06240"
+        "https://arxiv.org/abs/2604.06284",
+        "https://www.technologyreview.com/2026/03/31/1134833/ai-benchmarks-are-broken-heres-what-we-need-instead/"
       ],
       "level": 7
     },
     {
-      "title": "Усиливается линия “evaluation/verification as product”: появляются новые бенчмарки и методики, фиксирующие разрыв между лабораторной оценкой и реальной эксплуатацией (например, WildToolBench для tool-use «в дикой природе»)",
-      "description": "Усиливается линия “evaluation/verification as product”: появляются новые бенчмарки и методики, фиксирующие разрыв между лабораторной оценкой и реальной эксплуатацией (например, WildToolBench для tool-use «в дикой природе»). Это меняет то, *как* производится знание о качестве агентов: от static QA к многошаговой поведенческой диагностике.",
+      "title": "Тезис “конец эры foundation models” появляется как оформленная позиция (knowledge artifact)",
+      "description": "Тезис “конец эры foundation models” появляется как оформленная позиция (knowledge artifact): статья на arXiv описывает структурную перестройку: open-weight, sovereign AI, “inference as infrastructure”, и связку с кейсом Pentаgon/Anthropic.",
       "sources": [
-        "https://arxiv.org/abs/2604.06185"
+        "https://arxiv.org/abs/2604.06217"
+      ],
+      "level": 7
+    },
+    {
+      "title": "Переход от “accuracy” к “диагностике поведения и траекторий”",
+      "description": "Переход от “accuracy” к “диагностике поведения и траекторий”: новые бенчмарки/методики под агентность и real-world tool-use показывают, что индустрия учится измерять “провалы процесса”, а не только ответы. (WildToolBench: <15% accuracy у 57 моделей) (Universal Verifier / CUAVerifierBench)",
+      "sources": [
+        "https://arxiv.org/abs/2604.06185",
+        "https://arxiv.org/abs/2604.06240"
       ],
       "level": 6
     },
     {
-      "title": "Разворачивается “test-time инженерия” (интервенции без переобучения, uncertainty из трейса, структурные гейты против галлюцинаций) как методологическая ось конкуренции, особенно когда доступ к logits/внутренностям закрыт.,",
-      "description": "Разворачивается “test-time инженерия” (интервенции без переобучения, uncertainty из трейса, структурные гейты против галлюцинаций) как методологическая ось конкуренции, особенно когда доступ к logits/внутренностям закрыт.",
+      "title": "Методологическая линия: дешёвые, одно-прохождевые сигналы неопределенности и “внутренней верификации”",
+      "description": "Методологическая линия: дешёвые, одно-прохождевые сигналы неопределенности и “внутренней верификации”: SELFDOUBT предлагает uncertainty без логитов/семплинга - важно для проприетарных API-моделей.",
       "sources": [
-        "https://arxiv.org/abs/2604.06389",
-        "https://arxiv.org/abs/2604.06195"
+        "https://arxiv.org/abs/2604.06389"
       ],
       "level": 6
     },
     {
-      "title": "Вертикальная интеграция по инфраструктуре",
-      "description": "Вертикальная интеграция по инфраструктуре продолжается у крупных (Meta строит/финансирует DC; Oracle - DC как продукт/платформа), но финансирование идет через консорциумы банков и крупных управляющих (Pimco) → усиливается связка *Big Tech ↔ финансовый сектор ↔ энергетика/девелопмент*.",
+      "title": "Сдвиг в сторону пост-трейнинга/тест-тайм интервенций вместо “ещё больше pretrain”",
+      "description": "Сдвиг в сторону пост-трейнинга/тест-тайм интервенций вместо “ещё больше pretrain”: StepFlow (интервенции информации потока), S^3 для diffusion-LM, CGD-PD и т.п. (StepFlow) (S^3) (CGD-PD)",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-08/natixis-mufg-others-market-meta-s-3b-data-center-build",
-        "https://www.bloomberg.com/news/articles/2026-04-08/pimco-seeks-to-sell-parts-of-14-billion-oracle-data-center-debt"
+        "https://arxiv.org/abs/2604.06695",
+        "https://arxiv.org/abs/2604.06260",
+        "https://arxiv.org/abs/2604.06196"
+      ],
+      "level": 6
+    },
+    {
+      "title": "CoreWeave закрепляется как “инфра-специалист” для больших лабораторий/платформ",
+      "description": "CoreWeave закрепляется как “инфра-специалист” для больших лабораторий/платформ: расширение мегасделки с Meta усиливает специализацию: Meta как покупатель “полосы пропускания интеллекта”, CoreWeave как поставщик compute-мощности.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-expands-meta-deal-for-ai-computing-to-21-billion"
       ],
       "level": 5
     },
     {
-      "title": "Географическое расслоение партнерств",
-      "description": "Географическое расслоение партнерств: если UK становится сложной площадкой для OpenAI (энергия/регуляторика), то ОАЭ через G42 позиционируется как узел размещения/экспансии даже при региональной турбулентности - конкуренция юрисдикций за compute.",
+      "title": "Гиперскейлеры начинают конкурировать с чипмейкерами на внешнем рынке",
+      "description": "Гиперскейлеры начинают конкурировать с чипмейкерами на внешнем рынке: Amazon рассматривает продажу собственных AI-чипов сторонним компаниям - перестройка цепочки “чипы→облако” (вертикально интегрированный игрок начинает горизонтально монетизировать компонент).",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs",
-        "https://www.bloomberg.com/news/articles/2026-04-09/uae-s-g42-ai-champion-pushes-on-with-data-center-for-openai"
+        "https://www.bloomberg.com/news/articles/2026-04-09/amazon-is-considering-selling-its-ai-chips-to-other-companies"
       ],
       "level": 5
     },
     {
-      "title": "Экспортный контроль/комплаенс как фактор цепочки поставок",
-      "description": "Экспортный контроль/комплаенс как фактор цепочки поставок: расследование Super Micro по серверам в Китай - сигнал, что поставщики “железа” становятся узким местом легальности (и значит - риска остановки поставок/контрактов).",
+      "title": "Intel удерживает долю через “обещание совместимости” с Google",
+      "description": "Intel удерживает долю через “обещание совместимости” с Google: commitment Google продолжать использовать будущие Xeon - борьба за место CPU в дата-центровом стеке на фоне AI-ускорителей.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-07/super-micro-launches-internal-probe-of-server-sales-to-china"
+        "https://www.bloomberg.com/news/articles/2026-04-09/intel-wins-google-commitment-to-use-xeon-chips-in-data-centers"
       ],
       "level": 5
     },
     {
-      "title": "“Железо” в AI смещается от абстрактной модели к инфраструктуре inference/training как капиталоемкому объекту (DC в Ohio/Michigan; пауза в UK из-за энергии)",
-      "description": "“Железо” в AI смещается от абстрактной модели к инфраструктуре inference/training как капиталоемкому объекту (DC в Ohio/Michigan; пауза в UK из-за энергии). Технологический стек становится зависим от стоимости кВт⋅ч и доступности подключения к сетям не меньше, чем от качества GPU.",
+      "title": "RISC-V вталкивается в AI дата-центры через венчурный капитал",
+      "description": "RISC-V вталкивается в AI дата-центры через венчурный капитал: SiFive привлекает $400 млн на push в data centers. Это ставка на альтернативную ISA/экосистему в серверном сегменте.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs",
-        "https://www.bloomberg.com/news/articles/2026-04-08/natixis-mufg-others-market-meta-s-3b-data-center-build"
+        "https://www.bloomberg.com/news/articles/2026-04-09/sifive-to-fuel-data-center-push-with-400-million-funding-round"
+      ],
+      "level": 5
+    },
+    {
+      "title": "Сервисная IT-индустрия адаптируется к “IT slump” через кост-каттинг",
+      "description": "Сервисная IT-индустрия адаптируется к “IT slump” через кост-каттинг: результаты TCS на фоне замедления спроса - косвенный сигнал, что классический аутсорсинг/IT-услуги испытывают давление (часть работ уходит в автоматизацию/AI).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/tcs-tops-profit-estimates-after-cost-cuts-to-cope-with-it-slump"
+      ],
+      "level": 5
+    },
+    {
+      "title": "Чип-пэкиджинг становится стратегическим узлом",
+      "description": "Чип-пэкиджинг становится стратегическим узлом: Samsung инвестирует $4 млрд в packaging во Вьетнаме - packaging как бутылочное горлышко AI-hardware (HBM/advanced packaging косвенно).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/samsung-to-invest-4-billion-in-chip-packaging-site-in-vietnam"
       ],
       "level": 4
     },
     {
-      "title": "Возникает и закрепляется роль security/assurance вокруг моделей (киберриски от capability; “supply-chain risk” метки), что толкает рынок труда к компетенциям: governance, compliance, red teaming, DC energy procurement",
-      "description": "Возникает и закрепляется роль security/assurance вокруг моделей (киберриски от capability; “supply-chain risk” метки), что толкает рынок труда к компетенциям: governance, compliance, red teaming, DC energy procurement. (Фиксация через действия Anthropic и Пентагона.)",
+      "title": "Инфраструктурные риски “наземной сети” → космический backhaul как контур устойчивости",
+      "description": "Инфраструктурные риски “наземной сети” → космический backhaul как контур устойчивости: Starlink используется для обхода иранского интернет-блэкаута - связь/доступ к сети становится элементом устойчивости цифровых систем (в т.ч. AI-сервисов и координации).",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-07/anthropic-lets-apple-amazon-test-more-powerful-mythos-ai-model",
-        "https://www.bloomberg.com/news/articles/2026-04-08/anthropic-fails-for-now-to-halt-us-label-as-a-supply-chain-risk"
+        "https://www.bloomberg.com/news/articles/2026-04-09/how-elon-musk-s-starlink-is-being-used-to-evade-iran-s-internet-blackouts"
+      ],
+      "level": 4
+    },
+    {
+      "title": "Миграция исследователей из Big Tech в узкие стартап-ниши",
+      "description": "Миграция исследователей из Big Tech в узкие стартап-ниши: бывшие DeepMind-исследователи запускают стартап Eloorian (visual AI) - продолжение “фрагментации профессий” (не просто LLM-общего назначения, а зрение/перцепция как отдельная специализация).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/ex-google-deepmind-researchers-debut-startup-called-elorian-focused-on-visual-ai"
       ],
       "level": 3
     },
     {
-      "title": "Перенастройка географии compute",
-      "description": "Перенастройка географии compute под энергию и регуляторику: UK получает отрицательный сигнал (пауза проекта). Одновременно Ближний Восток через G42 наращивает позиционирование как альтернативный узел размещения и экспорта мощности.",
+      "title": "Расширение “гиг-контуров” обучения для робототехники/гуманоидов",
+      "description": "Расширение “гиг-контуров” обучения для робототехники/гуманоидов: домашние gig-workers тренируют гуманоидных роботов (через датасбор/демонстрации) - усиление периферийного труда в цепочке создания embodied-AI.",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs",
+        "https://www.technologyreview.com/2026/04/01/1134863/humanoid-data-training-gig-economy-2026-breakthrough-technology/"
+      ],
+      "level": 3
+    },
+    {
+      "title": "Вьетнам усиливается как узел полупроводниковой цепочки (packaging)",
+      "description": "Вьетнам усиливается как узел полупроводниковой цепочки (packaging): инвестиция Samsung закрепляет перераспределение производственных стадий в ЮВА.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/samsung-to-invest-4-billion-in-chip-packaging-site-in-vietnam"
+      ],
+      "level": 2
+    },
+    {
+      "title": "UK проигрывает размещение мощностей из-за энергии",
+      "description": "UK проигрывает размещение мощностей из-за энергии: пауза OpenAI Stargate UK именно по energy cost - сигнал, что юрисдикции конкурируют тарифами/доступом к энергии, а не только регуляторикой и кадрами.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs"
+      ],
+      "level": 2
+    },
+    {
+      "title": "UAE (G42) держит курс на кампусы ДЦ и экспансию в США несмотря на региональные атаки",
+      "description": "UAE (G42) держит курс на кампусы ДЦ и экспансию в США несмотря на региональные атаки: resilience-география и политическая диверсификация размещения.",
+      "sources": [
         "https://www.bloomberg.com/news/articles/2026-04-09/uae-s-g42-ai-champion-pushes-on-with-data-center-for-openai"
       ],
       "level": 2
     },
     {
-      "title": "Электроэнергия",
-      "description": "Электроэнергия становится лимитирующим ресурсом и фактически “ценовым регулятором” AI-экспансии: формально это причина паузы Stargate UK.",
+      "title": "Энергия становится ограничителем AI-инфраструктуры",
+      "description": "Энергия становится ограничителем AI-инфраструктуры: OpenAI прямо связывает паузу UK-проекта со стоимостью энергии.",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs"
+      ],
+      "level": 1
+    },
+    {
+      "title": "Внешние энергетические шоки перенастраивают глобальный спрос (косвенно влияя на дата-центры)",
+      "description": "Внешние энергетические шоки перенастраивают глобальный спрос (косвенно влияя на дата-центры): рост экспорта китайских EV на фоне иранского нефтяного шока - макро-сигнал волатильности энергорынков, важной для AI-CapEx/OpEx.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/china-ev-exports-jump-to-record-as-iran-oil-shock-entices-buyers"
       ],
       "level": 1
     }
   ],
   "trends": [
     {
-      "name": "AI-CapEx / дата-центры как инфраструктура",
+      "name": "AI-CapEx / инфраструктурные мегасделки compute (offtake-контракты)",
       "momentum": 85,
-      "rationale": "крупные долговые сделки и продажи займов под DC (Meta/Oracle) показывают ускорение строительства и финансового конвейера.",
+      "rationale": "$21B Meta-CoreWeave до 2032 и последующее долговое финансирование закрепляют инфраструктурную модель роста.",
       "levels": [
         9,
         5,
@@ -328,124 +515,132 @@
       "category": "accelerating"
     },
     {
-      "name": "Энергетические ограничения как ключевой bottleneck AI",
-      "momentum": 70,
-      "rationale": "пауза проекта OpenAI в UK прямо привязана к стоимости энергии и среде регулирования.",
+      "name": "Junk-финансирование AI-compute / секьюритизация мощностей",
+      "momentum": 60,
+      "rationale": "CoreWeave идёт в junk debt; формируется кредитный контур вокруг AI-compute.",
       "levels": [
-        1,
-        2,
-        5,
-        9
-      ],
-      "category": "accelerating"
-    },
-    {
-      "name": "Гео-диверсификация compute (Ближний Восток как хаб)",
-      "momentum": 45,
-      "rationale": "G42 продолжает кампус DC и экспансию несмотря на региональные риски - ставка на суверенную инфраструктуру и экспорт мощности.",
-      "levels": [
-        2,
         9,
         5
       ],
       "category": "emerging"
     },
     {
-      "name": "“Staged/limited release” frontier-моделей из-за киберрисков",
+      "name": "“Energy-constrained AI” (энергия как лимит размещения и темпа проектов)",
       "momentum": 55,
-      "rationale": "Anthropic ограничивает Mythos и дает доступ избранным для подготовки к возможным атакам - институционализация осторожного релиза.",
+      "rationale": "OpenAI ставит на паузу UK-ДЦ из-за energy costs; это прямой признак “энергетического потолка” в отдельных юрисдикциях.",
       "levels": [
-        8,
-        6,
-        5
+        1,
+        2,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Гиперскейлеры как внешние поставщики AI-чипов",
+      "momentum": 70,
+      "rationale": "Amazon рассматривает продажу своих AI-чипов на сторону и заявляет про >$20B/год траекторию silicon-юнита.",
+      "levels": [
+        5,
+        4,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "RISC-V/альтернативные ISA в дата-центрах AI",
+      "momentum": 35,
+      "rationale": "раунд SiFive $400M “под data center push” - пока умеренно, но встраивается в стратегию диверсификации архитектур.",
+      "levels": [
+        4,
+        5,
+        9
       ],
       "category": "emerging"
     },
     {
-      "name": "Регуляторная “переразметка” поставщиков AI (supply-chain risk)",
-      "momentum": 35,
-      "rationale": "судебное решение оставляет метку риска за Anthropic (пока), что поддерживает использование статуса как рычага доступа к рынкам.",
-      "levels": [
-        8,
-        5,
-        9
-      ],
-      "category": "stable"
-    },
-    {
-      "name": "UK/часть Зап. Европы как предпочтительная площадка для гипермасштабных AI-DC",
+      "name": "Классический IT-аутсорсинг/услуги под давлением (IT slump)",
       "momentum": -30,
-      "rationale": "пауза Stargate UK по энергии/регуляторике - негативный сигнал для новых проектов в этой юрисдикции.",
+      "rationale": "TCS бьёт ожидания за счёт cost cuts на фоне замедления спроса - признак стагнации/маржинального давления на услугах.",
       "levels": [
-        1,
-        2,
-        8
+        5,
+        3,
+        9
       ],
       "category": "decelerating"
     },
     {
-      "name": "Поставки “пограничного” железа в Китай (серверные вендоры под давлением контроля)",
-      "momentum": -45,
-      "rationale": "расследование Super Micro по продажам серверов в Китай усиливает ожидаемое ужесточение комплаенса/экспортного контроля и транзакционные издержки.",
+      "name": "Агентные платформы и оркестрация (routing, continuity, tool-use eval)",
+      "momentum": 65,
+      "rationale": "всплеск системных работ (AgentGate, ATANT, WildToolBench) фиксирует, что следующий фронтир - не модель, а управляемая система агентов.",
       "levels": [
+        6,
+        7,
+        8
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "“LLM-as-judge” как универсальная оценка (доверие к авто-оценке)",
+      "momentum": -45,
+      "rationale": "исследования показывают систематические разрывы judge-моделей с человеческими оценками (дезинформация), а также слабость judge-подходов в high-stakes (mental health). Это подталкивает к human-grounded и/или структурным верификаторам.",
+      "levels": [
+        6,
+        7
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Суверенный AI / open-weight как инструмент контроля",
+      "momentum": 40,
+      "rationale": "тезис оформляется как связка политического риска цепочек поставок и стратегии “держать веса” (суверенность). Пока больше дискурсивно-институционально, чем массово реализовано.",
+      "levels": [
+        9,
         8,
+        7
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "покупка облака “по потреблению” + краткосрочные capacity-решения.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «покупка облака “по потреблению” + краткосрочные capacity-решения.» к «многолетние обязательства (до 2032) и финансирование под них; compute становится аналогом энергоконтрактов/инфраструктурной концессии.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        9,
+        5,
+        2,
+        1
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "собственные чипы как внутренняя оптимизация себестоимости облака.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «собственные чипы как внутренняя оптимизация себестоимости облака.» к «чипы как внешняя продуктовая линейка (конкуренция с традиционными вендорами, изменение bargaining power).». Упоминаний в контексте перехода: 1",
+      "levels": [
+        9,
         5,
         4
       ],
       "category": "decelerating"
     },
     {
-      "name": "Ликвидность долей сотрудников в frontier-AI через вторичные сделки",
-      "momentum": 0,
-      "rationale": "tender offer Anthropic завершен, но предложение ограничено - рынок есть, но без явного ускорения оборота.",
-      "levels": [
-        9,
-        3
-      ],
-      "category": "stable"
-    },
-    {
-      "name": "рост LLM как продуктово-софтверная гонка, где DC - «внутренняя кухня» гиперскейлеров.",
+      "name": "доминирование метрик “модель vs модель” на статичных бенчмарках.",
       "momentum": -25,
-      "rationale": "Угасает: переход от «рост LLM как продуктово-софтверная гонка, где DC - «внутренняя кухня» гиперскейлеров.» к «DC/compute как инфраструктурный актив с проектным финансированием, вторичным оборотом долга и жесткой зависимостью от кВт⋅ч и разрешений.». Упоминаний в контексте перехода: 1",
-      "levels": [
-        9,
-        5,
-        2,
-        1
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "API/модели доступны широко, безопасность - через постфактум фильтры и policy.",
-      "momentum": -70,
-      "rationale": "Угасает: переход от «API/модели доступны широко, безопасность - через постфактум фильтры и policy.» к «staged release с ограниченным кругом тестирующих, особенно для моделей с потенциальной кибер-двойной применимостью.». Упоминаний в контексте перехода: 4",
+      "rationale": "Угасает: переход от «доминирование метрик “модель vs модель” на статичных бенчмарках.» к «инструментарий для оценки процессов: tool-use “in the wild”, верификаторы траекторий, continuity/memory, routing, формальная безопасность исполнения.». Упоминаний в контексте перехода: 1",
       "levels": [
         8,
-        6,
-        5
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "конкуренция по качеству/цене API и коммерческим контрактам.",
-      "momentum": -25,
-      "rationale": "Угасает: переход от «конкуренция по качеству/цене API и коммерческим контрактам.» к «конкуренция за “легитимность поставщика” (допуск к госзакупкам и подрядчикам), где статус/маркировка становится квазилицензией.». Упоминаний в контексте перехода: 1",
-      "levels": [
-        9,
-        8,
-        5
+        7,
+        6
       ],
       "category": "decelerating"
     }
   ],
   "cross_level_links": [
     {
-      "title": "Энергия (Ур.1) → география DC (Ур.2) → стратегии компаний (Ур.5) → финмодели (Ур.9)",
-      "description": "Энергия (Ур.1) → география DC (Ур.2) → стратегии компаний (Ур.5) → финмодели (Ур.9)   Дорогая энергия и регуляторика в UK (Ур.1/8) вынуждают OpenAI тормозить инфраструктурный проект (Ур.2/5), что усиливает перераспределение капитала в другие юрисдикции и повышает цену “энергетически выгодных” площадок (Ур.9).",
+      "title": "Энергетика (Ур.1) → география ДЦ (Ур.2) → финмодель (Ур.9):",
+      "description": "Энергетика (Ур.1) → география ДЦ (Ур.2) → финмодель (Ур.9): высокая стоимость энергии в UK (Ур.1) приводит к паузе Stargate UK (Ур.2), что связано с подготовкой OpenAI к IPO и сокращением CapEx (Ур.9).",
       "levels": [
         9,
-        5,
         2,
         1
       ],
@@ -454,85 +649,97 @@
       ]
     },
     {
-      "title": "Регуляторные/военные риски (Ур.8/9) → формат релизов моделей (Ур.8/6) → рынок доверия",
-      "description": "Регуляторные/военные риски (Ур.8/9) → формат релизов моделей (Ур.8/6) → рынок доверия   Ограниченный доступ к Mythos - попытка встроить “кибер-риски capability” в рыночный протокол релиза (Ур.8), то есть перевести безопасность из лозунга в процедуру поставки.",
+      "title": "Финансовые инструменты (Ур.9) → структура отрасли (Ур.5) → стандарты рынка (Ур.8):",
+      "description": "Финансовые инструменты (Ур.9) → структура отрасли (Ур.5) → стандарты рынка (Ур.8): контракт Meta-CoreWeave на $21B (Ур.9) делает модель “долгий compute-offtake” нормой; это закрепляет специализацию CoreWeave как независимого поставщика compute (Ур.5) и запускает рынок репутации/стандарта таких контрактов (Ур.8).",
       "levels": [
         9,
         8,
-        6
+        5
       ],
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-07/anthropic-lets-apple-amazon-test-more-powerful-mythos-ai-model"
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-expands-meta-deal-for-ai-computing-to-21-billion"
       ]
     },
     {
-      "title": "Финансиализация DC (Ур.9) → технологическая архитектура рынка (Ур.4/5)",
-      "description": "Финансиализация DC (Ур.9) → технологическая архитектура рынка (Ур.4/5)   Когда DC финансируется долгом, критичны предсказуемость загрузки, контракты, энерготарифы и регуляторный риск; это толкает компании к более жесткой “инфраструктурной” дисциплине размещения и к крупным, стандартизируемым проектам (как Meta/Oracle).,",
+      "title": "Политико-институциональные ярлыки (Ур.8/9) → спрос на открытые веса/суверенность (Ур.7/8) → системная инженерия (Ур.6):",
+      "description": "Политико-институциональные ярлыки (Ур.8/9) → спрос на открытые веса/суверенность (Ур.7/8) → системная инженерия (Ур.6): кейс Pentаgon vs Anthropic повышает транзакционные риски использования конкретного вендора, что подпитывает дискурс про open-weight/sovereign AI (Ур.7), а затем усиливает спрос на системные меры контроля/верификации/маршрутизации (Ур.6).",
       "levels": [
         9,
-        5,
-        4
+        8,
+        7,
+        6
       ],
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-08/pimco-seeks-to-sell-parts-of-14-billion-oracle-data-center-debt",
-        "https://www.bloomberg.com/news/articles/2026-04-08/natixis-mufg-others-market-meta-s-3b-data-center-build"
+        "https://www.bloomberg.com/news/articles/2026-04-08/anthropic-fails-for-now-to-halt-us-label-as-a-supply-chain-risk",
+        "https://arxiv.org/abs/2604.06217"
       ]
     }
   ],
   "structural_shifts": [
     {
-      "title": "AI как отрасль энергетико-финансовой инфраструктуры, а не только софта”**",
-      "from": "рост LLM как продуктово-софтверная гонка, где DC - «внутренняя кухня» гиперскейлеров.",
-      "to": "DC/compute как инфраструктурный актив с проектным финансированием, вторичным оборотом долга и жесткой зависимостью от кВт⋅ч и разрешений.",
-      "through": "рост потребления → долговое финансирование → требования к предсказуемости → чувствительность к энергии/регуляторике → география выигрывает/проигрывает.",
+      "title": "Compute как инфраструктурный commodity с долгими оффтейк-контрактами",
+      "from": "покупка облака “по потреблению” + краткосрочные capacity-решения.",
+      "to": "многолетние обязательства (до 2032) и финансирование под них; compute становится аналогом энергоконтрактов/инфраструктурной концессии.",
+      "through": "ы: мегасделка Meta-CoreWeave ($21B) → возможность CoreWeave привлекать junk debt → закрепление новой нормы финансирования AI-мощностей.",
       "levels": [
         9,
         5,
         2,
         1
       ],
-      "trend": "accelerating",
-      "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs",
-        "https://www.bloomberg.com/news/articles/2026-04-08/pimco-seeks-to-sell-parts-of-14-billion-oracle-data-center-debt",
-        "https://www.bloomberg.com/news/articles/2026-04-08/natixis-mufg-others-market-meta-s-3b-data-center-build"
-      ]
-    },
-    {
-      "title": "Управляемые релизы capability” как рыночный стандарт вместо ‘выложили всем’**",
-      "from": "API/модели доступны широко, безопасность - через постфактум фильтры и policy.",
-      "to": "staged release с ограниченным кругом тестирующих, особенно для моделей с потенциальной кибер-двойной применимостью.",
-      "through": "риски злоупотребления → давление клиентов/страховщиков/регуляторов → появление неформального протокола релиза (Ур.8), поддержанного инженерными практиками (Ур.6).",
-      "levels": [
-        8,
-        6,
-        5
-      ],
       "trend": "emerging",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-07/anthropic-lets-apple-amazon-test-more-powerful-mythos-ai-model"
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-expands-meta-deal-for-ai-computing-to-21-billion",
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-tapping-junk-debt-market-after-meta-ai-computing-deal"
       ]
     },
     {
-      "title": "Госмаркировки supply-chain risk” как инструмент переразметки рынка frontier AI**",
-      "from": "конкуренция по качеству/цене API и коммерческим контрактам.",
-      "to": "конкуренция за “легитимность поставщика” (допуск к госзакупкам и подрядчикам), где статус/маркировка становится квазилицензией.",
-      "through": "национальная безопасность → административные метки/реестры → эффекты второго порядка (страховка, комплаенс, репутация, ограничения партнерств).",
+      "title": "Гиперскейлеры выходят на рынок чипов как самостоятельные поставщики",
+      "from": "собственные чипы как внутренняя оптимизация себестоимости облака.",
+      "to": "чипы как внешняя продуктовая линейка (конкуренция с традиционными вендорами, изменение bargaining power).",
+      "through": "ы: заявленная готовность Amazon продавать AI-чипы другим + сигнал выручки silicon-юнита >$20B/год.",
       "levels": [
         9,
-        8,
-        5
+        5,
+        4
       ],
       "trend": "emerging",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-08/anthropic-fails-for-now-to-halt-us-label-as-a-supply-chain-risk"
+        "https://www.bloomberg.com/news/articles/2026-04-09/amazon-is-considering-selling-its-ai-chips-to-other-companies"
+      ]
+    },
+    {
+      "title": "Смена центра тяжести знания: от “лучшей модели” к “верифицируемой системе/агенту",
+      "from": "доминирование метрик “модель vs модель” на статичных бенчмарках.",
+      "to": "инструментарий для оценки процессов: tool-use “in the wild”, верификаторы траекторий, continuity/memory, routing, формальная безопасность исполнения.",
+      "through": "ы: появление WildToolBench (ни одна модель >15%), Universal Verifier, ATANT, ClawLess и т.д.",
+      "levels": [
+        8,
+        7,
+        6
+      ],
+      "trend": "emerging",
+      "sources": [
+        "https://arxiv.org/abs/2604.06185",
+        "https://arxiv.org/abs/2604.06240",
+        "https://arxiv.org/abs/2604.06710",
+        "https://arxiv.org/abs/2604.06284"
       ]
     }
   ],
   "radar_signals": [
     {
-      "title": "Вторичный рынок долга под AI-DC",
-      "description": "попытка Pimco продать часть $14B долга - сигнал появления “цены риска” для AI-инфраструктуры (если дисконт/спреды вырастут, это резко охладит CapEx).",
+      "title": "Секьюритизация AI-инфры через высокодоходный долг",
+      "description": "(junk bonds вокруг compute-провайдеров): может привести к пузырям/распаковке рисков, как в энергетике/недвижимости.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-tapping-junk-debt-market-after-meta-ai-computing-deal"
+      ]
+    },
+    {
+      "title": "Вторичный рынок долга дата-центров",
+      "description": "(Pimco/Oracle): появится “price discovery” на риск-премию AI-инфры.",
       "level_group": "upper",
       "level_range": "7-9",
       "sources": [
@@ -540,67 +747,67 @@
       ]
     },
     {
-      "title": "Нормативное закрепление “supply-chain risk”",
-      "description": "даже временные судебные решения создают прецеденты для закупочных политик.",
-      "level_group": "upper",
-      "level_range": "7-9",
+      "title": "Бенчмарки показывают провал agentic tool-use в реальности",
+      "description": "(WildToolBench <15%): это запускает волну “agent QA/verification” как индустрию (новые поставщики).",
+      "level_group": "middle",
+      "level_range": "4-6",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-08/anthropic-fails-for-now-to-halt-us-label-as-a-supply-chain-risk"
+        "https://arxiv.org/abs/2604.06185"
       ]
     },
     {
-      "title": "Селективные релизы моделей из-за киберрисков",
-      "description": "могут стать “дефолтом” для frontier capability.",
-      "level_group": "upper",
-      "level_range": "7-9",
+      "title": "Формальная “песочница” для агентов на уровне syscall/policy",
+      "description": "(ClawLess): если пойдёт в прод, это станет обязательным слоем для enterprise/госсектора.",
+      "level_group": "middle",
+      "level_range": "4-6",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-07/anthropic-lets-apple-amazon-test-more-powerful-mythos-ai-model"
+        "https://arxiv.org/abs/2604.06284"
       ]
     },
     {
-      "title": "Комплаенс по поставкам серверов/железа",
-      "description": "(Super Micro/Китай) - слабый сигнал ужесточения проверок в цепочке поставок AI compute.",
-      "level_group": "upper",
-      "level_range": "7-9",
+      "title": "Packаging-перенос в ЮВА",
+      "description": "(Samsung Vietnam): если packaging станет узким местом сильнее, чем литография, карта зависимости мира от новых “узлов сборки” резко вырастет.",
+      "level_group": "lower",
+      "level_range": "1-3",
       "sources": [
-        "https://www.bloomberg.com/news/articles/2026-04-07/super-micro-launches-internal-probe-of-server-sales-to-china"
+        "https://www.bloomberg.com/news/articles/2026-04-09/samsung-to-invest-4-billion-in-chip-packaging-site-in-vietnam"
       ]
     },
     {
-      "title": "Энергетический барьер в Европе",
-      "description": "пауза UK-проекта - ранний маркер, что европейские площадки могут проигрывать США/Ближнему Востоку по TCO compute.",
-      "level_group": "upper",
-      "level_range": "7-9",
+      "title": "Энерготарифы как регулятор размещения AI-мощностей",
+      "description": "(UK pause): страны с дешёвой/стабильной энергией получат структурное преимущество в AI-СРТ.",
+      "level_group": "lower",
+      "level_range": "1-3",
       "sources": [
         "https://www.bloomberg.com/news/articles/2026-04-09/openai-pauses-stargate-uk-data-center-effort-citing-energy-costs"
       ]
     }
   ],
   "metrics": {
-    "total_events": 15,
+    "total_events": 28,
     "events_by_level": {
-      "1": 1,
-      "2": 1,
-      "3": 1,
-      "4": 1,
-      "5": 3,
-      "6": 2,
-      "7": 1,
-      "8": 2,
-      "9": 3
+      "1": 2,
+      "2": 3,
+      "3": 2,
+      "4": 2,
+      "5": 5,
+      "6": 3,
+      "7": 2,
+      "8": 3,
+      "9": 6
     },
-    "total_sources": 14,
+    "total_sources": 28,
     "structural_shifts_count": 3,
-    "radar_signals_count": 5,
+    "radar_signals_count": 6,
     "cross_level_links_count": 3,
-    "momentum_trends_count": 11
+    "momentum_trends_count": 12
   },
   "categories": [],
   "momentum_trends": [
     {
-      "name": "AI-CapEx / дата-центры как инфраструктура",
+      "name": "AI-CapEx / инфраструктурные мегасделки compute (offtake-контракты)",
       "momentum": 85,
-      "rationale": "крупные долговые сделки и продажи займов под DC (Meta/Oracle) показывают ускорение строительства и финансового конвейера.",
+      "rationale": "$21B Meta-CoreWeave до 2032 и последующее долговое финансирование закрепляют инфраструктурную модель роста.",
       "levels": [
         9,
         5,
@@ -610,113 +817,122 @@
       "category": "accelerating"
     },
     {
-      "name": "Энергетические ограничения как ключевой bottleneck AI",
-      "momentum": 70,
-      "rationale": "пауза проекта OpenAI в UK прямо привязана к стоимости энергии и среде регулирования.",
+      "name": "Junk-финансирование AI-compute / секьюритизация мощностей",
+      "momentum": 60,
+      "rationale": "CoreWeave идёт в junk debt; формируется кредитный контур вокруг AI-compute.",
       "levels": [
-        1,
-        2,
-        5,
-        9
-      ],
-      "category": "accelerating"
-    },
-    {
-      "name": "Гео-диверсификация compute (Ближний Восток как хаб)",
-      "momentum": 45,
-      "rationale": "G42 продолжает кампус DC и экспансию несмотря на региональные риски - ставка на суверенную инфраструктуру и экспорт мощности.",
-      "levels": [
-        2,
         9,
         5
       ],
       "category": "emerging"
     },
     {
-      "name": "“Staged/limited release” frontier-моделей из-за киберрисков",
+      "name": "“Energy-constrained AI” (энергия как лимит размещения и темпа проектов)",
       "momentum": 55,
-      "rationale": "Anthropic ограничивает Mythos и дает доступ избранным для подготовки к возможным атакам - институционализация осторожного релиза.",
+      "rationale": "OpenAI ставит на паузу UK-ДЦ из-за energy costs; это прямой признак “энергетического потолка” в отдельных юрисдикциях.",
       "levels": [
-        8,
-        6,
-        5
+        1,
+        2,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Гиперскейлеры как внешние поставщики AI-чипов",
+      "momentum": 70,
+      "rationale": "Amazon рассматривает продажу своих AI-чипов на сторону и заявляет про >$20B/год траекторию silicon-юнита.",
+      "levels": [
+        5,
+        4,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "RISC-V/альтернативные ISA в дата-центрах AI",
+      "momentum": 35,
+      "rationale": "раунд SiFive $400M “под data center push” - пока умеренно, но встраивается в стратегию диверсификации архитектур.",
+      "levels": [
+        4,
+        5,
+        9
       ],
       "category": "emerging"
     },
     {
-      "name": "Регуляторная “переразметка” поставщиков AI (supply-chain risk)",
-      "momentum": 35,
-      "rationale": "судебное решение оставляет метку риска за Anthropic (пока), что поддерживает использование статуса как рычага доступа к рынкам.",
-      "levels": [
-        8,
-        5,
-        9
-      ],
-      "category": "stable"
-    },
-    {
-      "name": "UK/часть Зап. Европы как предпочтительная площадка для гипермасштабных AI-DC",
+      "name": "Классический IT-аутсорсинг/услуги под давлением (IT slump)",
       "momentum": -30,
-      "rationale": "пауза Stargate UK по энергии/регуляторике - негативный сигнал для новых проектов в этой юрисдикции.",
+      "rationale": "TCS бьёт ожидания за счёт cost cuts на фоне замедления спроса - признак стагнации/маржинального давления на услугах.",
       "levels": [
-        1,
-        2,
-        8
+        5,
+        3,
+        9
       ],
       "category": "decelerating"
     },
     {
-      "name": "Поставки “пограничного” железа в Китай (серверные вендоры под давлением контроля)",
-      "momentum": -45,
-      "rationale": "расследование Super Micro по продажам серверов в Китай усиливает ожидаемое ужесточение комплаенса/экспортного контроля и транзакционные издержки.",
+      "name": "Агентные платформы и оркестрация (routing, continuity, tool-use eval)",
+      "momentum": 65,
+      "rationale": "всплеск системных работ (AgentGate, ATANT, WildToolBench) фиксирует, что следующий фронтир - не модель, а управляемая система агентов.",
       "levels": [
+        6,
+        7,
+        8
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "“LLM-as-judge” как универсальная оценка (доверие к авто-оценке)",
+      "momentum": -45,
+      "rationale": "исследования показывают систематические разрывы judge-моделей с человеческими оценками (дезинформация), а также слабость judge-подходов в high-stakes (mental health). Это подталкивает к human-grounded и/или структурным верификаторам.",
+      "levels": [
+        6,
+        7
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Суверенный AI / open-weight как инструмент контроля",
+      "momentum": 40,
+      "rationale": "тезис оформляется как связка политического риска цепочек поставок и стратегии “держать веса” (суверенность). Пока больше дискурсивно-институционально, чем массово реализовано.",
+      "levels": [
+        9,
         8,
+        7
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "покупка облака “по потреблению” + краткосрочные capacity-решения.",
+      "momentum": -10,
+      "rationale": "Угасает: переход от «покупка облака “по потреблению” + краткосрочные capacity-решения.» к «многолетние обязательства (до 2032) и финансирование под них; compute становится аналогом энергоконтрактов/инфраструктурной концессии.». Упоминаний в контексте перехода: 0",
+      "levels": [
+        9,
+        5,
+        2,
+        1
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "собственные чипы как внутренняя оптимизация себестоимости облака.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «собственные чипы как внутренняя оптимизация себестоимости облака.» к «чипы как внешняя продуктовая линейка (конкуренция с традиционными вендорами, изменение bargaining power).». Упоминаний в контексте перехода: 1",
+      "levels": [
+        9,
         5,
         4
       ],
       "category": "decelerating"
     },
     {
-      "name": "Ликвидность долей сотрудников в frontier-AI через вторичные сделки",
-      "momentum": 0,
-      "rationale": "tender offer Anthropic завершен, но предложение ограничено - рынок есть, но без явного ускорения оборота.",
-      "levels": [
-        9,
-        3
-      ],
-      "category": "stable"
-    },
-    {
-      "name": "рост LLM как продуктово-софтверная гонка, где DC - «внутренняя кухня» гиперскейлеров.",
+      "name": "доминирование метрик “модель vs модель” на статичных бенчмарках.",
       "momentum": -25,
-      "rationale": "Угасает: переход от «рост LLM как продуктово-софтверная гонка, где DC - «внутренняя кухня» гиперскейлеров.» к «DC/compute как инфраструктурный актив с проектным финансированием, вторичным оборотом долга и жесткой зависимостью от кВт⋅ч и разрешений.». Упоминаний в контексте перехода: 1",
-      "levels": [
-        9,
-        5,
-        2,
-        1
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "API/модели доступны широко, безопасность - через постфактум фильтры и policy.",
-      "momentum": -70,
-      "rationale": "Угасает: переход от «API/модели доступны широко, безопасность - через постфактум фильтры и policy.» к «staged release с ограниченным кругом тестирующих, особенно для моделей с потенциальной кибер-двойной применимостью.». Упоминаний в контексте перехода: 4",
+      "rationale": "Угасает: переход от «доминирование метрик “модель vs модель” на статичных бенчмарках.» к «инструментарий для оценки процессов: tool-use “in the wild”, верификаторы траекторий, continuity/memory, routing, формальная безопасность исполнения.». Упоминаний в контексте перехода: 1",
       "levels": [
         8,
-        6,
-        5
-      ],
-      "category": "decelerating"
-    },
-    {
-      "name": "конкуренция по качеству/цене API и коммерческим контрактам.",
-      "momentum": -25,
-      "rationale": "Угасает: переход от «конкуренция по качеству/цене API и коммерческим контрактам.» к «конкуренция за “легитимность поставщика” (допуск к госзакупкам и подрядчикам), где статус/маркировка становится квазилицензией.». Упоминаний в контексте перехода: 1",
-      "levels": [
-        9,
-        8,
-        5
+        7,
+        6
       ],
       "category": "decelerating"
     }
