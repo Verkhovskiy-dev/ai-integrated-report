@@ -6,6 +6,9 @@
  * Supports dynamic insights from insights.json with static fallback
  * i18n support
  * Role-based filtering with 6 professional roles
+ *
+ * CHANGES (Priority 1.4): Progressive disclosure — all collapsed by default,
+ * showing only title + first sentence of summary. Full text on "Подробнее" click.
  */
 import { useState, useMemo } from "react";
 import {
@@ -31,9 +34,7 @@ interface RoleMeta {
   labelRu: string;
   labelEn: string;
   icon: typeof Briefcase;
-  /** Keywords in insight text that signal relevance to this role */
   keywords: RegExp;
-  /** Accent colour (tailwind-compatible) */
   color: string;
 }
 
@@ -42,7 +43,7 @@ const ROLES: Record<RoleKey, RoleMeta> = {
     labelRu: "Все роли",
     labelEn: "All Roles",
     icon: Users,
-    keywords: /./i, // matches everything
+    keywords: /./i,
     color: "primary",
   },
   entrepreneur: {
@@ -91,14 +92,8 @@ const ROLES: Record<RoleKey, RoleMeta> = {
 
 const ROLE_KEYS: RoleKey[] = ["all", "entrepreneur", "ceo", "manager", "cto", "product", "hr"];
 
-/**
- * Role-specific framing for the "education implication" section.
- * Returns a short contextual line prepended to the original educationImplication.
- */
 function getRoleTakeaway(role: RoleKey, insight: StrategicInsight, isEn: boolean): string | null {
   if (role === "all") return null;
-
-  const text = `${insight.title} ${insight.subtitle} ${insight.summary} ${insight.nonObviousConclusion}`.toLowerCase();
 
   const takeaways: Record<Exclude<RoleKey, "all">, { ru: string; en: string }[]> = {
     entrepreneur: [
@@ -125,10 +120,6 @@ function getRoleTakeaway(role: RoleKey, insight: StrategicInsight, isEn: boolean
   return options ? (isEn ? options[0].en : options[0].ru) : null;
 }
 
-/**
- * Score how relevant an insight is to a given role.
- * Higher score = more relevant.
- */
 function scoreInsightForRole(insight: StrategicInsight, role: RoleKey): number {
   if (role === "all") return 1;
   const meta = ROLES[role];
@@ -146,6 +137,15 @@ function scoreInsightForRole(insight: StrategicInsight, role: RoleKey): number {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Helper: extract first sentence from text                           */
+/* ------------------------------------------------------------------ */
+function firstSentence(text: string): string {
+  // Match first sentence ending with . or ! or ? followed by space or end
+  const match = text.match(/^[^.!?]*[.!?]/);
+  return match ? match[0] : text.slice(0, 120) + (text.length > 120 ? "…" : "");
+}
+
+/* ------------------------------------------------------------------ */
 /*  ICON_MAP                                                           */
 /* ------------------------------------------------------------------ */
 
@@ -155,7 +155,7 @@ const ICON_MAP: Record<string, typeof Building> = {
 };
 
 /* ------------------------------------------------------------------ */
-/*  InsightCard                                                        */
+/*  InsightCard — Progressive Disclosure                               */
 /* ------------------------------------------------------------------ */
 
 function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, executiveAdvice }: {
@@ -169,6 +169,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
 }) {
   const Icon = ICON_MAP[insight.icon] || Lightbulb;
   const roleTakeaway = getRoleTakeaway(role, insight, isEn);
+  const summaryPreview = firstSentence(insight.summary);
 
   return (
     <div
@@ -177,7 +178,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
         ${isExpanded ? "border-primary/40 glow-cyan" : "border-border/50 hover:border-border"}
       `}
     >
-      {/* Header — always visible */}
+      {/* Header — always visible, clickable */}
       <button
         onClick={onToggle}
         className="w-full text-left p-4 sm:p-5 flex items-start gap-3 sm:gap-4"
@@ -227,14 +228,22 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
         </div>
       </button>
 
-      {/* Summary — always visible */}
+      {/* Summary preview — always visible (first sentence only when collapsed) */}
       <div className="px-4 sm:px-5 pb-3 sm:pb-4">
         <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed">
-          {insight.summary}
+          {isExpanded ? insight.summary : summaryPreview}
         </p>
+        {!isExpanded && insight.summary.length > summaryPreview.length && (
+          <button
+            onClick={onToggle}
+            className="inline-flex items-center gap-1 mt-1.5 text-[10px] sm:text-xs font-mono text-primary/70 hover:text-primary transition-colors"
+          >
+            {isEn ? "Read more" : "Подробнее"} <ChevronDown className="w-3 h-3" />
+          </button>
+        )}
       </div>
 
-      {/* Expanded content */}
+      {/* Expanded content — hidden by default */}
       {isExpanded && (
         <div className="border-t border-border/30">
           {/* Evidence */}
@@ -268,7 +277,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
             </p>
           </div>
 
-          {/* Role-specific takeaway (shown when a specific role is selected) */}
+          {/* Role-specific takeaway */}
           {roleTakeaway && (
             <div className="px-4 sm:px-5 py-3 sm:py-4 bg-cyan-400/5 border-t border-cyan-400/10">
               <p className="text-xs sm:text-sm text-foreground/90 leading-relaxed font-medium">
@@ -277,7 +286,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
             </div>
           )}
 
-          {/* Executive role-based advice ("Что это значит для вас") */}
+          {/* Executive role-based advice */}
           {isExecutive && executiveAdvice && (
             <div className="px-4 sm:px-5 py-3 sm:py-4 bg-gradient-to-r from-amber-500/5 to-cyan-500/5 border-t border-amber-400/15">
               <div className="flex items-center gap-2 mb-3">
@@ -314,7 +323,6 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
             <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed">
               {insight.educationImplication}
             </p>
-            {/* Program links */}
             {insight.relevantPrograms && insight.relevantPrograms.length > 0 && (
               <ProgramBadgeGroup
                 programKeys={insight.relevantPrograms}
@@ -376,7 +384,8 @@ function RoleSwitcher({
 /* ------------------------------------------------------------------ */
 
 export default function StrategicInsights() {
-  const [expandedId, setExpandedId] = useState<number | null>(1);
+  // All insights collapsed by default (null = none expanded)
+  const [expandedId, setExpandedId] = useState<number | null>(null);
   const [activeRole, setActiveRole] = useState<RoleKey>("all");
   const { strategicInsights, insightsPeriod, insightsGeneratedAt, insightsLive } = useLiveData();
   const { locale } = useTranslation();
@@ -388,16 +397,12 @@ export default function StrategicInsights() {
   const filteredInsights = useMemo(() => {
     if (activeRole === "all") return strategicInsights;
 
-    // Score each insight for the selected role
     const scored = strategicInsights.map((insight) => ({
       insight,
       score: scoreInsightForRole(insight, activeRole),
     }));
 
-    // Filter out insights with zero relevance, then sort by score descending
     const relevant = scored.filter((s) => s.score > 0);
-
-    // If nothing matches (unlikely), show all
     if (relevant.length === 0) return strategicInsights;
 
     return relevant
@@ -405,7 +410,6 @@ export default function StrategicInsights() {
       .map((s) => s.insight);
   }, [strategicInsights, activeRole]);
 
-  // Format generated date for display
   const generatedLabel = insightsGeneratedAt
     ? new Date(insightsGeneratedAt).toLocaleDateString(isEn ? "en-US" : "ru-RU", {
         day: "numeric",

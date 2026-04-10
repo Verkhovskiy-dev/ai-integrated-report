@@ -19,6 +19,7 @@ import { useTranslation } from "@/contexts/I18nContext";
 import { useViewMode } from "@/contexts/ViewModeContext";
 import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
 import Header from "@/components/Header";
+import ExecutiveSummaryBar from "@/components/ExecutiveSummaryBar";
 import FilterBar from "@/components/FilterBar";
 import NewsTicker from "@/components/NewsTicker";
 import HeroSummary from "@/components/HeroSummary";
@@ -64,6 +65,7 @@ export default function Home() {
       <div className="fixed inset-0 pointer-events-none z-50 opacity-20 scan-line hidden sm:block" />
 
       <Header activeSection={activeSection} onSectionChange={setActiveSection} />
+      <ExecutiveSummaryBar />
       <FilterBar />
 
       <main className="relative z-10">

@@ -2,8 +2,10 @@
  * DESIGN: Bloomberg/Reuters-style News Ticker
  * Continuous horizontal scrolling marquee with trend indicators
  * Dark background, cyan text (#00ffcc), orange accents (#ff8c00)
- * Shows real-time user clock + hardcoded AI trends from dashboard data
+ * Shows real-time user clock + TOP-5 events from dashboard data
  * i18n support
+ *
+ * CHANGES (Priority 1.5): Limited to top-5 events, removed misleading per-item timestamps
  */
 import { useEffect, useState, useRef, useMemo } from "react";
 import { useLiveData } from "@/contexts/LiveDataContext";
@@ -33,32 +35,37 @@ function getStaticTickerItems(isEn: boolean): Omit<TickerItem, "id">[] {
       ];
 }
 
+/**
+ * Build ticker items from live report — limited to TOP 5 events
+ * sorted by level (highest first = most important).
+ */
 function buildTickerFromReport(report: any): Omit<TickerItem, "id">[] {
   if (!report || !report.srt_levels) return [];
-  const items: Omit<TickerItem, "id">[] = [];
   const categories = ["FINANCE", "MARKET", "TECH", "SECURITY", "MODELS", "INFRA", "REGULATION", "GEOPOLITICS", "AGENTS"];
+
+  // Collect all events with their level for sorting
+  const allEvents: { text: string; level: number; category: string }[] = [];
   for (const level of report.srt_levels) {
-    for (const event of level.events.slice(0, 2)) {
-      const cat = categories[9 - level.level] || "AI";
-      items.push({
+    const cat = categories[9 - level.level] || "AI";
+    for (const event of level.events) {
+      allEvents.push({
         text: event.title,
-        indicator: "up" as const,
-        highlight: level.level >= 7,
+        level: level.level,
         category: cat,
       });
     }
   }
-  if (report.structural_shifts) {
-    for (const shift of report.structural_shifts.slice(0, 3)) {
-      items.push({
-        text: `${shift.title}: ${shift.from} → ${shift.to}`,
-        indicator: shift.trend === "accelerating" ? "up" as const : "neutral" as const,
-        highlight: shift.trend === "accelerating",
-        category: "SHIFT",
-      });
-    }
-  }
-  return items;
+
+  // Sort by level descending (most important first), take top 5
+  allEvents.sort((a, b) => b.level - a.level);
+  const top5 = allEvents.slice(0, 5);
+
+  return top5.map((e) => ({
+    text: e.text,
+    indicator: "up" as const,
+    highlight: e.level >= 7,
+    category: e.category,
+  }));
 }
 
 function getIndicatorSymbol(indicator: "up" | "down" | "neutral"): string {
@@ -159,7 +166,7 @@ export default function NewsTicker() {
               >
                 {item.text}
               </span>
-              <span className="ticker-timestamp">• {mskTime}</span>
+              {/* Removed misleading per-item timestamp — was showing render time, not event time */}
               <span className="ticker-divider">│</span>
             </div>
           ))}

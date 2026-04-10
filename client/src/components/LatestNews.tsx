@@ -3,6 +3,11 @@
  * Collapsible, shows 6 by default with "show all" toggle.
  * Each card is expandable to show full description and source links.
  * i18n support + Executive mode support
+ *
+ * CHANGES (Priority 1.2 + 1.5):
+ * - Severity-based color coding: 1-3 grey, 4-6 yellow, 7-8 orange, 9 red
+ * - Visual hierarchy: higher-level events get more prominent styling
+ * - Skips first 3 events (already shown in HeroSummary) to remove duplication
  */
 import { useMemo, useState } from "react";
 import { Newspaper, Zap, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
@@ -13,10 +18,34 @@ import { useViewMode } from "@/contexts/ViewModeContext";
 import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
 import { ExecutiveEventCardLocalized } from "@/components/ExecutiveEventCard";
 
-const LEVEL_COLORS: Record<number, string> = {
-  9: "#ef4444", 8: "#f97316", 7: "#f59e0b", 6: "#22d3ee",
-  5: "#06b6d4", 4: "#0ea5e9", 3: "#10b981", 2: "#84cc16", 1: "#a3e635",
-};
+/* ── Severity-based color scheme ── */
+function getSeverityColor(level: number): string {
+  if (level >= 9) return "#ef4444";      // red — critical
+  if (level >= 7) return "#f97316";      // orange — high
+  if (level >= 4) return "#eab308";      // yellow — medium
+  return "#6b7280";                       // grey — low
+}
+
+function getSeverityBg(level: number): string {
+  if (level >= 9) return "rgba(239,68,68,0.08)";
+  if (level >= 7) return "rgba(249,115,22,0.06)";
+  if (level >= 4) return "rgba(234,179,8,0.05)";
+  return "rgba(107,114,128,0.04)";
+}
+
+function getSeverityBorder(level: number): string {
+  if (level >= 9) return "border-red-500/30";
+  if (level >= 7) return "border-orange-500/25";
+  if (level >= 4) return "border-yellow-500/20";
+  return "border-border/40";
+}
+
+function getSeverityLabel(level: number, isEn: boolean): string {
+  if (level >= 9) return isEn ? "CRITICAL" : "КРИТИЧНО";
+  if (level >= 7) return isEn ? "HIGH" : "ВЫСОКИЙ";
+  if (level >= 4) return isEn ? "MEDIUM" : "СРЕДНИЙ";
+  return isEn ? "LOW" : "НИЗКИЙ";
+}
 
 const EVENT_TYPE_ICONS: Record<string, string> = {
   investment: "💰", regulation: "⚖️", geopolitics: "🌐", government: "🏛️",
@@ -93,12 +122,12 @@ export default function LatestNews() {
     return items;
   }, [latestReport, selectedLevels, searchQuery, isEn]);
 
-  // Show ALL events (including first 3 also shown in HeroSummary)
-  const allItems = newsItems;
+  // Skip first 3 events (already shown in HeroSummary) to avoid duplication
+  const remainingItems = newsItems.slice(3);
   const INITIAL_SHOW = 6;
-  const visibleItems = expanded ? allItems : allItems.slice(0, INITIAL_SHOW);
+  const visibleItems = expanded ? remainingItems : remainingItems.slice(0, INITIAL_SHOW);
 
-  if (!isLive || allItems.length === 0) return null;
+  if (!isLive || remainingItems.length === 0) return null;
 
   const toggleCard = (idx: number) => {
     setExpandedCard(expandedCard === idx ? null : idx);
@@ -118,11 +147,25 @@ export default function LatestNews() {
                 {isEn ? "All Events" : "Все события"}
               </h3>
               <p className="text-[9px] sm:text-[10px] font-mono text-muted-foreground">
-                {reportDate} · {isEn ? `${allItems.length} events` : `${allItems.length} событий`}
+                {reportDate} · {isEn ? `${newsItems.length} events` : `${newsItems.length} событий`}
               </p>
             </div>
           </div>
           <div className="flex items-center gap-2">
+            {/* Severity legend */}
+            <div className="hidden sm:flex items-center gap-2">
+              {[
+                { label: isEn ? "Critical" : "Крит.", color: "#ef4444" },
+                { label: isEn ? "High" : "Выс.", color: "#f97316" },
+                { label: isEn ? "Medium" : "Сред.", color: "#eab308" },
+                { label: isEn ? "Low" : "Низ.", color: "#6b7280" },
+              ].map((s) => (
+                <div key={s.label} className="flex items-center gap-1">
+                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: s.color }} />
+                  <span className="text-[8px] font-mono text-muted-foreground">{s.label}</span>
+                </div>
+              ))}
+            </div>
             {isExecutive && (
               <span className="px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20 text-[9px] font-mono text-amber-400">
                 {isEn ? "Executive View" : "Для руководителя"}
@@ -143,6 +186,8 @@ export default function LatestNews() {
             const hasSources = item.sources.length > 0;
             const explanation = isExecutive ? getEventExplanation(item.title) : undefined;
             const isExpandable = hasDetails || hasSources || !!explanation;
+            const sevColor = getSeverityColor(item.level);
+            const sevBorder = getSeverityBorder(item.level);
 
             return (
               <div
@@ -150,27 +195,47 @@ export default function LatestNews() {
                 className={`group relative bg-card/50 backdrop-blur-sm border rounded-lg overflow-hidden transition-all duration-200 ${
                   isCardExpanded
                     ? "border-primary/30 shadow-lg shadow-primary/5"
-                    : "border-border/40 hover:border-primary/20"
+                    : sevBorder + " hover:border-primary/20"
                 }`}
+                style={{
+                  backgroundColor: getSeverityBg(item.level),
+                }}
               >
+                {/* Severity accent bar */}
+                <div
+                  className="absolute top-0 left-0 w-1 h-full rounded-l-lg"
+                  style={{ backgroundColor: sevColor }}
+                />
+
                 {/* Card header — clickable */}
                 <button
                   onClick={() => isExpandable && toggleCard(idx)}
-                  className={`w-full text-left p-3 ${isExpandable ? "cursor-pointer" : "cursor-default"}`}
+                  className={`w-full text-left p-3 pl-4 ${isExpandable ? "cursor-pointer" : "cursor-default"}`}
                 >
                   <div className="flex items-center justify-between gap-2 mb-1.5">
-                    <span
-                      className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-mono font-medium"
-                      style={{
-                        color: LEVEL_COLORS[item.level],
-                        backgroundColor: `${LEVEL_COLORS[item.level]}15`,
-                        borderColor: `${LEVEL_COLORS[item.level]}30`,
-                        borderWidth: 1,
-                      }}
-                    >
-                      {EVENT_TYPE_ICONS[item.type] || "📌"}
-                      <span>{lvPrefix}{item.level} {item.levelName}</span>
-                    </span>
+                    <div className="flex items-center gap-1.5">
+                      <span
+                        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-mono font-medium"
+                        style={{
+                          color: sevColor,
+                          backgroundColor: `${sevColor}15`,
+                          borderColor: `${sevColor}30`,
+                          borderWidth: 1,
+                        }}
+                      >
+                        {EVENT_TYPE_ICONS[item.type] || "📌"}
+                        <span>{lvPrefix}{item.level} {item.levelName}</span>
+                      </span>
+                      <span
+                        className="text-[7px] font-mono px-1 py-0.5 rounded"
+                        style={{
+                          color: sevColor,
+                          backgroundColor: `${sevColor}10`,
+                        }}
+                      >
+                        {getSeverityLabel(item.level, isEn)}
+                      </span>
+                    </div>
                     {isExpandable && (
                       isCardExpanded ? (
                         <ChevronUp className="w-3.5 h-3.5 text-primary/60 shrink-0" />
@@ -181,19 +246,21 @@ export default function LatestNews() {
                   </div>
                   <p className={`text-xs sm:text-sm text-foreground leading-snug ${
                     isCardExpanded ? "" : "line-clamp-3"
-                  } ${isExpandable && !isCardExpanded ? "group-hover:text-primary" : ""} transition-colors`}>
+                  } ${isExpandable && !isCardExpanded ? "group-hover:text-primary" : ""} transition-colors ${
+                    item.level >= 9 ? "font-semibold" : item.level >= 7 ? "font-medium" : ""
+                  }`}>
                     {item.title}
                   </p>
                 </button>
 
                 {/* Expanded content */}
                 {isCardExpanded && (
-                  <div className="px-3 pb-3 border-t border-border/20 pt-2 space-y-2">
+                  <div className="px-3 pb-3 border-t border-border/20 pt-2 space-y-2 ml-1">
                     {/* Executive explanation (shown in executive mode) */}
                     {isExecutive && explanation && (
                       <ExecutiveEventCardLocalized
                         explanation={explanation}
-                        accentColor={LEVEL_COLORS[item.level]}
+                        accentColor={sevColor}
                         isEn={isEn}
                       />
                     )}
@@ -230,7 +297,7 @@ export default function LatestNews() {
         </div>
 
         {/* Expand/Collapse toggle */}
-        {allItems.length > INITIAL_SHOW && (
+        {remainingItems.length > INITIAL_SHOW && (
           <button
             onClick={() => setExpanded(!expanded)}
             className="flex items-center justify-center gap-1.5 mx-auto mt-3 px-4 py-2 rounded-lg bg-card/50 border border-border/40 hover:border-primary/30 transition-colors"
@@ -246,7 +313,7 @@ export default function LatestNews() {
               <>
                 <ChevronDown className="w-3.5 h-3.5 text-primary/60" />
                 <span className="text-[10px] sm:text-xs font-mono text-muted-foreground">
-                  {isEn ? `Show ${allItems.length - INITIAL_SHOW} more` : `Показать ещё ${allItems.length - INITIAL_SHOW}`}
+                  {isEn ? `Show ${remainingItems.length - INITIAL_SHOW} more` : `Показать ещё ${remainingItems.length - INITIAL_SHOW}`}
                 </span>
               </>
             )}

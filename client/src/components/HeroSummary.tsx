@@ -32,9 +32,10 @@ const LEVEL_NAMES_EN: Record<number, string> = {
   9: "Capital", 8: "Institutions", 7: "Knowledge", 6: "Technology",
   5: "Value Chain", 4: "Hardware", 3: "Professions", 2: "Geography", 1: "Resources",
 };
+// Severity-based color coding: 9=red, 7-8=orange, 4-6=yellow, 1-3=grey
 const LEVEL_COLORS: Record<number, string> = {
-  9: "#ef4444", 8: "#f97316", 7: "#f59e0b", 6: "#22d3ee",
-  5: "#06b6d4", 4: "#0ea5e9", 3: "#10b981", 2: "#84cc16", 1: "#a3e635",
+  9: "#ef4444", 8: "#f97316", 7: "#f97316", 6: "#eab308",
+  5: "#eab308", 4: "#eab308", 3: "#6b7280", 2: "#6b7280", 1: "#6b7280",
 };
 const EVENT_ICONS: Record<string, string> = {
   investment: "💰", regulation: "⚖️", geopolitics: "🌐", government: "🏛️",
@@ -433,7 +434,9 @@ export default function HeroSummary() {
                         </div>
                         <p className={`text-xs sm:text-sm text-foreground leading-snug ${
                           isItemExpanded ? "" : "line-clamp-3"
-                        } ${isExpandable && !isItemExpanded ? "group-hover:text-primary" : ""} transition-colors`}>
+                        } ${isExpandable && !isItemExpanded ? "group-hover:text-primary" : ""} transition-colors ${
+                          item.level >= 9 ? "font-semibold" : item.level >= 7 ? "font-medium" : ""
+                        }`}>
                           {item.title}
                         </p>
                       </div>
