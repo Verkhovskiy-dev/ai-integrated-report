@@ -1,0 +1,934 @@
+{
+  "date": "2026-04-10",
+  "generated_at": "2026-04-10T05:01:40.390Z",
+  "key_focus": "",
+  "srt_levels": [
+    {
+      "level": 9,
+      "name": "Денежная система",
+      "events": [
+        {
+          "title": "Финансиализация “compute-as-a-utility”: долгосрочные оффтейк-контракты и долговое финансирование инфраструктуры.",
+          "description": "Финансиализация “compute-as-a-utility”: долгосрочные оффтейк-контракты и долговое финансирование инфраструктуры. Meta заключает с CoreWeave контракт на $21 млрд до 2032 - это фактически превращение вычислений в “сырьё” с многолетними обязательствами. CoreWeave после сделки выходит на рынок high-yield/«мусорного» долга - закрепление модели “строим GPU-капекс под гарантированные платежи гиперскейлера”.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-expands-meta-deal-for-ai-computing-to-21-billion",
+            "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-tapping-junk-debt-market-after-meta-ai-computing-deal"
+          ]
+        },
+        {
+          "title": "Конкуренция через “капитал + доступ к железу”: OpenAI убеждает инвесторов, что ранний рывок по вычислениям - ключевое преимущество над Anthropic.",
+          "description": "Конкуренция через “капитал + доступ к железу”: OpenAI убеждает инвесторов, что ранний рывок по вычислениям - ключевое преимущество над Anthropic. Это сигнал, что “денежное” преимущество становится структурным барьером входа на уровень 5 (цепочки поставок/контракты) и 4 (стек).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/openai-tells-investors-it-has-computing-advantage-over-anthropic"
+          ]
+        },
+        {
+          "title": "Энергетический шок (война с Ираном) как внешний ценовой драйвер для “электрификации” и хранения энергии",
+          "description": "Энергетический шок (война с Ираном) как внешний ценовой драйвер для “электрификации” и хранения энергии: рост спроса на батарейные системы и скачок EV-экспорта Китая. Это опосредованно усиливает AI-инфраструктуру (стабилизация сетей/накопители для дата-центров), а также капитализацию “энерго-железа”.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-10/china-battery-storage-maker-sees-profit-boost-from-iran-upheaval",
+            "https://www.bloomberg.com/news/articles/2026-04-09/china-ev-exports-jump-to-record-as-iran-oil-shock-entices-buyers"
+          ]
+        },
+        {
+          "title": "Мейнстриминг крипто-инструментов в финансовой системе",
+          "description": "Мейнстриминг крипто-инструментов в финансовой системе: Morgan Stanley запускает Bitcoin-ETF. Это важно не как “крипто-новость”, а как расширение легитимных каналов капитала/хеджирования в турбулентной геополитике, где AI-капекс конкурирует за ликвидность.",
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-04-09/bitcoin-etf-our-best-ever-launch-morgan-stanley-video"
+          ]
+        }
+      ],
+      "event_count": 4
+    },
+    {
+      "level": 8,
+      "name": "Спонтанный порядок",
+      "events": [
+        {
+          "title": "Бенчмарки как арена “мягкой власти” и сигналов рынку",
+          "description": "Бенчмарки как арена “мягкой власти” и сигналов рынку: “таинственная” видео-модель Alibaba выходит и “сметает” глобальные рейтинги - это демонстрация, что Китай способен производить фронтир-результаты вне публичных заранее анонсированных релизов, используя экосистемные каналы валидации (лидерборды/бенчмарки).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-10/stealth-alibaba-video-ai-model-tops-global-ranking-on-debut"
+          ]
+        },
+        {
+          "title": "Регуляторная фрагментация в США и ответ через суды",
+          "description": "Регуляторная фрагментация в США и ответ через суды: xAI судится с Колорадо из-за закона об anti-discrimination для автономных инструментов в найме. Это институциональный конфликт: вместо единых федеральных правил - “patchwork” штатов и судебное нормотворчество.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-10/elon-musk-s-xai-sues-colorado-over-ai-anti-discrimination-law"
+          ]
+        },
+        {
+          "title": "Сдвиг норм оценки агентных систем",
+          "description": "Сдвиг норм оценки агентных систем: на arXiv появляется WildToolBench (57 моделей, точность <15%) - легитимация тезиса, что “демо-агенты” не равны “производственным агентам”, и рынок должен менять критерии качества.",
+          "sources": [
+            "https://arxiv.org/abs/2604.06185"
+          ]
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 7,
+      "name": "Институты производства знаний",
+      "events": [
+        {
+          "title": "Китайский корпоративный R&D как “фабрика знания” в мультимодальности",
+          "description": "Китайский корпоративный R&D как “фабрика знания” в мультимодальности: Alibaba одновременно фигурирует как разработчик “скрытой” топ-модели и как инвестор в ShengShu (2 млрд юаней/≈$293 млн) - связка “знание → капитализация экосистемы → рынок”.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-10/stealth-alibaba-video-ai-model-tops-global-ranking-on-debut",
+            "https://www.bloomberg.com/news/articles/2026-04-10/alibaba-leads-300-million-bet-on-ai-video-generator-shengshu"
+          ]
+        },
+        {
+          "title": "Кризис доверия к традиционным бенчмаркам и поворот к “диагностическим” и “in-the-wild” оценкам",
+          "description": "Кризис доверия к традиционным бенчмаркам и поворот к “диагностическим” и “in-the-wild” оценкам:",
+          "sources": []
+        },
+        {
+          "title": "“AI benchmarks are broken” (публичная критика метрик и рамки “AI vs human”)",
+          "description": "“AI benchmarks are broken” (публичная критика метрик и рамки “AI vs human”).",
+          "sources": [
+            "https://www.technologyreview.com/2026/03/31/1134833/ai-benchmarks-are-broken-heres-what-we-need-instead/"
+          ]
+        },
+        {
+          "title": "DISSECT диагностирует perception-integration gap в scientific VLMs и разделяет режимы входа (Vision+Text, Text-only и т.п.)",
+          "description": "DISSECT диагностирует perception-integration gap в scientific VLMs и разделяет режимы входа (Vision+Text, Text-only и т.п.).",
+          "sources": [
+            "https://arxiv.org/abs/2604.06250"
+          ]
+        }
+      ],
+      "event_count": 4
+    },
+    {
+      "level": 6,
+      "name": "Технологии производства знаний",
+      "events": [
+        {
+          "title": "Переход к test-time scaling и “верификаторам” вместо бесконечного pretrain-scale",
+          "description": "Переход к test-time scaling и “верификаторам” вместо бесконечного pretrain-scale:",
+          "sources": []
+        },
+        {
+          "title": "StepFlow (интервенции по потоку информации без дообучения)",
+          "description": "StepFlow (интервенции по потоку информации без дообучения).",
+          "sources": [
+            "https://arxiv.org/abs/2604.06695"
+          ]
+        },
+        {
+          "title": "SELFDOUBT (single-pass uncertainty по trace; пригодно для закрытых API)",
+          "description": "SELFDOUBT (single-pass uncertainty по trace; пригодно для закрытых API).",
+          "sources": [
+            "https://arxiv.org/abs/2604.06389"
+          ]
+        },
+        {
+          "title": "Universal Verifier/практики построения проверяющих для computer-use agents (в т.ч",
+          "description": "Universal Verifier/практики построения проверяющих для computer-use agents (в т.ч. открытие инструментария).",
+          "sources": [
+            "https://arxiv.org/abs/2604.06240"
+          ]
+        },
+        {
+          "title": "Стандартизация агентных протоколов/оркестрации как новая “инженерия знания”",
+          "description": "Стандартизация агентных протоколов/оркестрации как новая “инженерия знания”: Qualixar OS заявляет поддержку множества провайдеров/фреймворков и протоколов (MCP, A2A), пытаясь стать “операционкой” для агентов.",
+          "sources": [
+            "https://arxiv.org/abs/2604.06392"
+          ]
+        }
+      ],
+      "event_count": 5
+    },
+    {
+      "level": 5,
+      "name": "Разделение труда между фирмами",
+      "events": [
+        {
+          "title": "Разделение “гиперскейлер ↔ независимый AI-облачник ↔ компонентщики”",
+          "description": "Разделение “гиперскейлер ↔ независимый AI-облачник ↔ компонентщики”:",
+          "sources": []
+        },
+        {
+          "title": "Meta покупает compute у CoreWeave, а не только строит сама - специализация “compute-поставщика” закрепляется контрактом до 2032",
+          "description": "Meta покупает compute у CoreWeave, а не только строит сама - специализация “compute-поставщика” закрепляется контрактом до 2032.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-expands-meta-deal-for-ai-computing-to-21-billion"
+          ]
+        },
+        {
+          "title": "Lumentum фиксирует ускорение спроса на оптику со стороны гиперскейлеров и видит заполнение заказов “через 2028” - “оптический слой” становится бутылочным горлышком AI-кластеров",
+          "description": "Lumentum фиксирует ускорение спроса на оптику со стороны гиперскейлеров и видит заполнение заказов “через 2028” - “оптический слой” становится бутылочным горлышком AI-кластеров.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-10/nvidia-backed-lumentum-sees-ai-filling-orders-through-2028"
+          ]
+        },
+        {
+          "title": "Китайская модель конкуренции в AI-видео: параллельно - скрытые internal-команды + венчурные ставки на внешних игроков (ShengShu).",
+          "description": "Китайская модель конкуренции в AI-видео: параллельно - скрытые internal-команды + венчурные ставки на внешних игроков (ShengShu). Это расширяет китайскую “популяцию” команд и ускоряет отбор победителей на уровне 8 (бенчмарки).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-10/alibaba-leads-300-million-bet-on-ai-video-generator-shengshu"
+          ]
+        }
+      ],
+      "event_count": 4
+    },
+    {
+      "level": 4,
+      "name": "«Железные» технологии",
+      "events": [
+        {
+          "title": "Оптические компоненты как критическое “железо” AI-экономики",
+          "description": "Оптические компоненты как критическое “железо” AI-экономики: рост заказов Lumentum до горизонта 2028 связан с масштабированием кластеров (интерконнекты/трансиверы).",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-10/nvidia-backed-lumentum-sees-ai-filling-orders-through-2028"
+          ]
+        },
+        {
+          "title": "“Видео-фронтир” как отдельная технологическая гонка",
+          "description": "“Видео-фронтир” как отдельная технологическая гонка: появление у Alibaba модели, лидирующей в глобальных видео-бенчмарках, сигнализирует, что diffusion/video-генерация становится конкурентным ядром наравне с LLM.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-10/stealth-alibaba-video-ai-model-tops-global-ranking-on-debut"
+          ]
+        },
+        {
+          "title": "Энергия как часть AI-стека",
+          "description": "Энергия как часть AI-стека: исследование про стресс энергосистем из-за концентрации дата-центров прогнозирует рост потребления ведущих фирм с ~118 TWh (2024) до 239-295 TWh (2030) и риски региональных PSI (Орегон, Вирджиния, Ирландия).",
+          "sources": [
+            "https://arxiv.org/abs/2604.06198"
+          ]
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 3,
+      "name": "Социально-профессиональная структура",
+      "events": [
+        {
+          "title": "Сдвиг спроса к ролям “agent engineer / verifier engineer / safety & compliance engineer”",
+          "description": "Сдвиг спроса к ролям “agent engineer / verifier engineer / safety & compliance engineer”: массив работ по верификации (Universal Verifier), uncertainty-гейтингу (SELFDOUBT), security-моделям агентов (ClawLess) указывает на институционализацию “инженеров контроля” как новой нормальной профессии.,",
+          "sources": [
+            "https://arxiv.org/abs/2604.06240",
+            "https://arxiv.org/abs/2604.06389",
+            "https://arxiv.org/abs/2604.06284"
+          ]
+        },
+        {
+          "title": "Новые трудовые конфликты в тех-ритейле (слабый, но показательный сигнал)",
+          "description": "Новые трудовые конфликты в тех-ритейле (слабый, но показательный сигнал): Apple закрывает первый профсоюзный магазин в США - индикатор напряжений вокруг контроля труда в “платформенных” корпорациях на фоне AI-перестройки процессов.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/apple-will-close-its-first-unionized-retail-location-in-the-us"
+          ]
+        }
+      ],
+      "event_count": 2
+    },
+    {
+      "level": 2,
+      "name": "Пространственная организация",
+      "events": [
+        {
+          "title": "Концентрация AI-мощностей порождает территориальные узкие места по электросети и земле",
+          "description": "Концентрация AI-мощностей порождает территориальные узкие места по электросети и земле:",
+          "sources": []
+        },
+        {
+          "title": "arXiv-работа фиксирует концентрацию compute-мощностей в Северной Америке/Зап.Европе/Asia-Pacific (>90% к 2030) и региональные уязвимости сетей",
+          "description": "arXiv-работа фиксирует концентрацию compute-мощностей в Северной Америке/Зап.Европе/Asia-Pacific (>90% к 2030) и региональные уязвимости сетей.",
+          "sources": [
+            "https://arxiv.org/abs/2604.06198"
+          ]
+        },
+        {
+          "title": "Texas Pacific Land привлекает внимание как “земля под дата-центры”; волатильность акций на новостях о крупнейшем акционере - признак того, что “земельный фактор” становится финансовым активом в AI-цепочке",
+          "description": "Texas Pacific Land привлекает внимание как “земля под дата-центры”; волатильность акций на новостях о крупнейшем акционере - признак того, что “земельный фактор” становится финансовым активом в AI-цепочке.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/texas-landowner-s-stock-sinks-as-ceo-of-largest-shareholder-dies"
+          ]
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 1,
+      "name": "Природные ресурсы",
+      "events": [
+        {
+          "title": "Энергетические шоки (Иран) меняют относительную стоимость электроэнергии/нефти",
+          "description": "Энергетические шоки (Иран) меняют относительную стоимость электроэнергии/нефти, что ускоряет спрос на EV и накопители; в AI-логике это усиливает значимость “энергетического суверенитета” для размещения дата-центров и для CapEx-планов.",
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-04-09/china-ev-exports-jump-to-record-as-iran-oil-shock-entices-buyers",
+            "https://www.bloomberg.com/news/articles/2026-04-10/china-battery-storage-maker-sees-profit-boost-from-iran-upheaval"
+          ]
+        }
+      ],
+      "event_count": 1
+    }
+  ],
+  "events": [
+    {
+      "title": "Финансиализация “compute-as-a-utility”: долгосрочные оффтейк-контракты и долговое финансирование инфраструктуры.",
+      "description": "Финансиализация “compute-as-a-utility”: долгосрочные оффтейк-контракты и долговое финансирование инфраструктуры. Meta заключает с CoreWeave контракт на $21 млрд до 2032 - это фактически превращение вычислений в “сырьё” с многолетними обязательствами. CoreWeave после сделки выходит на рынок high-yield/«мусорного» долга - закрепление модели “строим GPU-капекс под гарантированные платежи гиперскейлера”.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-expands-meta-deal-for-ai-computing-to-21-billion",
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-tapping-junk-debt-market-after-meta-ai-computing-deal"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Конкуренция через “капитал + доступ к железу”: OpenAI убеждает инвесторов, что ранний рывок по вычислениям - ключевое преимущество над Anthropic.",
+      "description": "Конкуренция через “капитал + доступ к железу”: OpenAI убеждает инвесторов, что ранний рывок по вычислениям - ключевое преимущество над Anthropic. Это сигнал, что “денежное” преимущество становится структурным барьером входа на уровень 5 (цепочки поставок/контракты) и 4 (стек).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/openai-tells-investors-it-has-computing-advantage-over-anthropic"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Энергетический шок (война с Ираном) как внешний ценовой драйвер для “электрификации” и хранения энергии",
+      "description": "Энергетический шок (война с Ираном) как внешний ценовой драйвер для “электрификации” и хранения энергии: рост спроса на батарейные системы и скачок EV-экспорта Китая. Это опосредованно усиливает AI-инфраструктуру (стабилизация сетей/накопители для дата-центров), а также капитализацию “энерго-железа”.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-10/china-battery-storage-maker-sees-profit-boost-from-iran-upheaval",
+        "https://www.bloomberg.com/news/articles/2026-04-09/china-ev-exports-jump-to-record-as-iran-oil-shock-entices-buyers"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Мейнстриминг крипто-инструментов в финансовой системе",
+      "description": "Мейнстриминг крипто-инструментов в финансовой системе: Morgan Stanley запускает Bitcoin-ETF. Это важно не как “крипто-новость”, а как расширение легитимных каналов капитала/хеджирования в турбулентной геополитике, где AI-капекс конкурирует за ликвидность.",
+      "sources": [
+        "https://www.bloomberg.com/news/videos/2026-04-09/bitcoin-etf-our-best-ever-launch-morgan-stanley-video"
+      ],
+      "level": 9
+    },
+    {
+      "title": "Бенчмарки как арена “мягкой власти” и сигналов рынку",
+      "description": "Бенчмарки как арена “мягкой власти” и сигналов рынку: “таинственная” видео-модель Alibaba выходит и “сметает” глобальные рейтинги - это демонстрация, что Китай способен производить фронтир-результаты вне публичных заранее анонсированных релизов, используя экосистемные каналы валидации (лидерборды/бенчмарки).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-10/stealth-alibaba-video-ai-model-tops-global-ranking-on-debut"
+      ],
+      "level": 8
+    },
+    {
+      "title": "Регуляторная фрагментация в США и ответ через суды",
+      "description": "Регуляторная фрагментация в США и ответ через суды: xAI судится с Колорадо из-за закона об anti-discrimination для автономных инструментов в найме. Это институциональный конфликт: вместо единых федеральных правил - “patchwork” штатов и судебное нормотворчество.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-10/elon-musk-s-xai-sues-colorado-over-ai-anti-discrimination-law"
+      ],
+      "level": 8
+    },
+    {
+      "title": "Сдвиг норм оценки агентных систем",
+      "description": "Сдвиг норм оценки агентных систем: на arXiv появляется WildToolBench (57 моделей, точность <15%) - легитимация тезиса, что “демо-агенты” не равны “производственным агентам”, и рынок должен менять критерии качества.",
+      "sources": [
+        "https://arxiv.org/abs/2604.06185"
+      ],
+      "level": 8
+    },
+    {
+      "title": "Китайский корпоративный R&D как “фабрика знания” в мультимодальности",
+      "description": "Китайский корпоративный R&D как “фабрика знания” в мультимодальности: Alibaba одновременно фигурирует как разработчик “скрытой” топ-модели и как инвестор в ShengShu (2 млрд юаней/≈$293 млн) - связка “знание → капитализация экосистемы → рынок”.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-10/stealth-alibaba-video-ai-model-tops-global-ranking-on-debut",
+        "https://www.bloomberg.com/news/articles/2026-04-10/alibaba-leads-300-million-bet-on-ai-video-generator-shengshu"
+      ],
+      "level": 7
+    },
+    {
+      "title": "Кризис доверия к традиционным бенчмаркам и поворот к “диагностическим” и “in-the-wild” оценкам",
+      "description": "Кризис доверия к традиционным бенчмаркам и поворот к “диагностическим” и “in-the-wild” оценкам:",
+      "sources": [],
+      "level": 7
+    },
+    {
+      "title": "“AI benchmarks are broken” (публичная критика метрик и рамки “AI vs human”)",
+      "description": "“AI benchmarks are broken” (публичная критика метрик и рамки “AI vs human”).",
+      "sources": [
+        "https://www.technologyreview.com/2026/03/31/1134833/ai-benchmarks-are-broken-heres-what-we-need-instead/"
+      ],
+      "level": 7
+    },
+    {
+      "title": "DISSECT диагностирует perception-integration gap в scientific VLMs и разделяет режимы входа (Vision+Text, Text-only и т.п.)",
+      "description": "DISSECT диагностирует perception-integration gap в scientific VLMs и разделяет режимы входа (Vision+Text, Text-only и т.п.).",
+      "sources": [
+        "https://arxiv.org/abs/2604.06250"
+      ],
+      "level": 7
+    },
+    {
+      "title": "Переход к test-time scaling и “верификаторам” вместо бесконечного pretrain-scale",
+      "description": "Переход к test-time scaling и “верификаторам” вместо бесконечного pretrain-scale:",
+      "sources": [],
+      "level": 6
+    },
+    {
+      "title": "StepFlow (интервенции по потоку информации без дообучения)",
+      "description": "StepFlow (интервенции по потоку информации без дообучения).",
+      "sources": [
+        "https://arxiv.org/abs/2604.06695"
+      ],
+      "level": 6
+    },
+    {
+      "title": "SELFDOUBT (single-pass uncertainty по trace; пригодно для закрытых API)",
+      "description": "SELFDOUBT (single-pass uncertainty по trace; пригодно для закрытых API).",
+      "sources": [
+        "https://arxiv.org/abs/2604.06389"
+      ],
+      "level": 6
+    },
+    {
+      "title": "Universal Verifier/практики построения проверяющих для computer-use agents (в т.ч",
+      "description": "Universal Verifier/практики построения проверяющих для computer-use agents (в т.ч. открытие инструментария).",
+      "sources": [
+        "https://arxiv.org/abs/2604.06240"
+      ],
+      "level": 6
+    },
+    {
+      "title": "Стандартизация агентных протоколов/оркестрации как новая “инженерия знания”",
+      "description": "Стандартизация агентных протоколов/оркестрации как новая “инженерия знания”: Qualixar OS заявляет поддержку множества провайдеров/фреймворков и протоколов (MCP, A2A), пытаясь стать “операционкой” для агентов.",
+      "sources": [
+        "https://arxiv.org/abs/2604.06392"
+      ],
+      "level": 6
+    },
+    {
+      "title": "Разделение “гиперскейлер ↔ независимый AI-облачник ↔ компонентщики”",
+      "description": "Разделение “гиперскейлер ↔ независимый AI-облачник ↔ компонентщики”:",
+      "sources": [],
+      "level": 5
+    },
+    {
+      "title": "Meta покупает compute у CoreWeave, а не только строит сама - специализация “compute-поставщика” закрепляется контрактом до 2032",
+      "description": "Meta покупает compute у CoreWeave, а не только строит сама - специализация “compute-поставщика” закрепляется контрактом до 2032.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-expands-meta-deal-for-ai-computing-to-21-billion"
+      ],
+      "level": 5
+    },
+    {
+      "title": "Lumentum фиксирует ускорение спроса на оптику со стороны гиперскейлеров и видит заполнение заказов “через 2028” - “оптический слой” становится бутылочным горлышком AI-кластеров",
+      "description": "Lumentum фиксирует ускорение спроса на оптику со стороны гиперскейлеров и видит заполнение заказов “через 2028” - “оптический слой” становится бутылочным горлышком AI-кластеров.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-10/nvidia-backed-lumentum-sees-ai-filling-orders-through-2028"
+      ],
+      "level": 5
+    },
+    {
+      "title": "Китайская модель конкуренции в AI-видео: параллельно - скрытые internal-команды + венчурные ставки на внешних игроков (ShengShu).",
+      "description": "Китайская модель конкуренции в AI-видео: параллельно - скрытые internal-команды + венчурные ставки на внешних игроков (ShengShu). Это расширяет китайскую “популяцию” команд и ускоряет отбор победителей на уровне 8 (бенчмарки).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-10/alibaba-leads-300-million-bet-on-ai-video-generator-shengshu"
+      ],
+      "level": 5
+    },
+    {
+      "title": "Оптические компоненты как критическое “железо” AI-экономики",
+      "description": "Оптические компоненты как критическое “железо” AI-экономики: рост заказов Lumentum до горизонта 2028 связан с масштабированием кластеров (интерконнекты/трансиверы).",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-10/nvidia-backed-lumentum-sees-ai-filling-orders-through-2028"
+      ],
+      "level": 4
+    },
+    {
+      "title": "“Видео-фронтир” как отдельная технологическая гонка",
+      "description": "“Видео-фронтир” как отдельная технологическая гонка: появление у Alibaba модели, лидирующей в глобальных видео-бенчмарках, сигнализирует, что diffusion/video-генерация становится конкурентным ядром наравне с LLM.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-10/stealth-alibaba-video-ai-model-tops-global-ranking-on-debut"
+      ],
+      "level": 4
+    },
+    {
+      "title": "Энергия как часть AI-стека",
+      "description": "Энергия как часть AI-стека: исследование про стресс энергосистем из-за концентрации дата-центров прогнозирует рост потребления ведущих фирм с ~118 TWh (2024) до 239-295 TWh (2030) и риски региональных PSI (Орегон, Вирджиния, Ирландия).",
+      "sources": [
+        "https://arxiv.org/abs/2604.06198"
+      ],
+      "level": 4
+    },
+    {
+      "title": "Сдвиг спроса к ролям “agent engineer / verifier engineer / safety & compliance engineer”",
+      "description": "Сдвиг спроса к ролям “agent engineer / verifier engineer / safety & compliance engineer”: массив работ по верификации (Universal Verifier), uncertainty-гейтингу (SELFDOUBT), security-моделям агентов (ClawLess) указывает на институционализацию “инженеров контроля” как новой нормальной профессии.,",
+      "sources": [
+        "https://arxiv.org/abs/2604.06240",
+        "https://arxiv.org/abs/2604.06389",
+        "https://arxiv.org/abs/2604.06284"
+      ],
+      "level": 3
+    },
+    {
+      "title": "Новые трудовые конфликты в тех-ритейле (слабый, но показательный сигнал)",
+      "description": "Новые трудовые конфликты в тех-ритейле (слабый, но показательный сигнал): Apple закрывает первый профсоюзный магазин в США - индикатор напряжений вокруг контроля труда в “платформенных” корпорациях на фоне AI-перестройки процессов.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/apple-will-close-its-first-unionized-retail-location-in-the-us"
+      ],
+      "level": 3
+    },
+    {
+      "title": "Концентрация AI-мощностей порождает территориальные узкие места по электросети и земле",
+      "description": "Концентрация AI-мощностей порождает территориальные узкие места по электросети и земле:",
+      "sources": [],
+      "level": 2
+    },
+    {
+      "title": "arXiv-работа фиксирует концентрацию compute-мощностей в Северной Америке/Зап.Европе/Asia-Pacific (>90% к 2030) и региональные уязвимости сетей",
+      "description": "arXiv-работа фиксирует концентрацию compute-мощностей в Северной Америке/Зап.Европе/Asia-Pacific (>90% к 2030) и региональные уязвимости сетей.",
+      "sources": [
+        "https://arxiv.org/abs/2604.06198"
+      ],
+      "level": 2
+    },
+    {
+      "title": "Texas Pacific Land привлекает внимание как “земля под дата-центры”; волатильность акций на новостях о крупнейшем акционере - признак того, что “земельный фактор” становится финансовым активом в AI-цепочке",
+      "description": "Texas Pacific Land привлекает внимание как “земля под дата-центры”; волатильность акций на новостях о крупнейшем акционере - признак того, что “земельный фактор” становится финансовым активом в AI-цепочке.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/texas-landowner-s-stock-sinks-as-ceo-of-largest-shareholder-dies"
+      ],
+      "level": 2
+    },
+    {
+      "title": "Энергетические шоки (Иран) меняют относительную стоимость электроэнергии/нефти",
+      "description": "Энергетические шоки (Иран) меняют относительную стоимость электроэнергии/нефти, что ускоряет спрос на EV и накопители; в AI-логике это усиливает значимость “энергетического суверенитета” для размещения дата-центров и для CapEx-планов.",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/china-ev-exports-jump-to-record-as-iran-oil-shock-entices-buyers",
+        "https://www.bloomberg.com/news/articles/2026-04-10/china-battery-storage-maker-sees-profit-boost-from-iran-upheaval"
+      ],
+      "level": 1
+    }
+  ],
+  "trends": [
+    {
+      "name": "AI-CapEx / “Compute as Infrastructure”",
+      "momentum": 92,
+      "rationale": "$21B контракт Meta-CoreWeave до 2032 + выход CoreWeave в high-yield закрепляют инфраструктурный цикл.",
+      "levels": [
+        9,
+        5,
+        4,
+        2
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "“Оптика/интерконнекты как узкое место AI-кластеров”",
+      "momentum": 75,
+      "rationale": "Lumentum видит заполнение заказов AI-спросом “через 2028”, что указывает на долгий хвост дефицита/очередей.",
+      "levels": [
+        4,
+        5,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Китайские мультимодальные модели (особенно AI-видео)",
+      "momentum": 83,
+      "rationale": "видео-модель Alibaba выходит на топ глобальных бенчмарков; параллельно Alibaba финансирует игрока ShengShu.",
+      "levels": [
+        7,
+        8,
+        5,
+        4,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Агентные AI-платформы и оркестрация (“Agent OS”)",
+      "momentum": 45,
+      "rationale": "появление претензий на универсальные рантаймы/протоколы (Qualixar OS), но рынок ещё не консолидирован стандартами.",
+      "levels": [
+        6,
+        8,
+        5
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Verifiers / uncertainty-gating / “проверяемость по умолчанию”",
+      "momentum": 68,
+      "rationale": "активный пласт работ по верификации и uncertainty без доступа к логитам (SELFDOUBT), плюс инженерные гайды по verifiers.",
+      "levels": [
+        6,
+        7,
+        8,
+        3
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "“Единые лидерборды/бенчмарки как главный компас прогресса”",
+      "momentum": -35,
+      "rationale": "усиливается критика “сломанных” бенчмарков и рост диагностических/полевых оценок; лидерборды остаются, но теряют монополию на легитимацию.",
+      "levels": [
+        8,
+        7
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Регуляторная фрагментация AI в США (штаты/суды)",
+      "momentum": 52,
+      "rationale": "иск xAI против закона Колорадо подтверждает, что контуры регулирования будут формироваться конфликтно и неравномерно по юрисдикциям.",
+      "levels": [
+        8,
+        9,
+        5
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Классический SaaS без AI-переупаковки",
+      "momentum": -18,
+      "rationale": "даже в “обычном” софте акцент на рост прибыли через усиление AI-использования (пример RealPage), что давит на SaaS-модели “как раньше”.",
+      "levels": [
+        5,
+        6
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "модельной конкуренции через релизы и венчурные раунды “под обещания”.",
+      "momentum": -70,
+      "rationale": "Угасает: переход от «модельной конкуренции через релизы и венчурные раунды “под обещания”.» к «инфраструктурной конкуренции через долгосрочные поставки compute и долговые рынки под гарантированные платежи гиперскейлеров.». Упоминаний в контексте перехода: 4",
+      "levels": [
+        9,
+        5,
+        4,
+        2
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "единой цифры бенчмарка как универсальной легитимации.",
+      "momentum": -40,
+      "rationale": "Угасает: переход от «единой цифры бенчмарка как универсальной легитимации.» к «многорежимным диагностическим оценкам (in-the-wild tool use, perception vs integration, verifier-based evaluation) и практикам построения проверяющих систем.». Упоминаний в контексте перехода: 2",
+      "levels": [
+        8,
+        7,
+        6,
+        3
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "точечных публичных релизов.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «точечных публичных релизов.» к «режиму “скрытые команды + быстрая рыночная капитализация + венчурное размножение претендентов” в AI-видео.». Упоминаний в контексте перехода: 1",
+      "levels": [
+        9,
+        8,
+        7,
+        5,
+        4
+      ],
+      "category": "decelerating"
+    }
+  ],
+  "cross_level_links": [
+    {
+      "title": "Энергия (У1) → география дата-центров (У2) → финансовые конструкции compute (У9).",
+      "description": "Энергия (У1) → география дата-центров (У2) → финансовые конструкции compute (У9).   Ожидаемый стресс региональных энергосистем из-за концентрации дата-центров (У2) повышает капитальную ценность “правильных” территорий и сетевой инфраструктуры (У1/У2), что стимулирует долгосрочные оффтейк-контракты на compute и долговое финансирование провайдеров (CoreWeave high-yield) (У9).,",
+      "levels": [
+        9,
+        2,
+        1
+      ],
+      "sources": [
+        "https://arxiv.org/abs/2604.06198",
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-tapping-junk-debt-market-after-meta-ai-computing-deal"
+      ]
+    },
+    {
+      "title": "Институциональная фрагментация регулирования (У8) → рост спроса на методы доказуемого контроля (У6) → новые профессии (У3).",
+      "description": "Институциональная фрагментация регулирования (У8) → рост спроса на методы доказуемого контроля (У6) → новые профессии (У3).   Суды/штатные законы (xAI vs Colorado) усиливают потребность в “встроенной доказуемости” (верификаторы, uncertainty-гейты, policy enforcement), что формирует рынок инструментов и кадров контроля.,",
+      "levels": [
+        8,
+        6,
+        3
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-10/elon-musk-s-xai-sues-colorado-over-ai-anti-discrimination-law",
+        "https://arxiv.org/abs/2604.06240"
+      ]
+    },
+    {
+      "title": "Бенчмарки (У8/У7) → конкурентная реорганизация фирм (У5) → технологический приоритет мультимодальности (У4).",
+      "description": "Бенчмарки (У8/У7) → конкурентная реорганизация фирм (У5) → технологический приоритет мультимодальности (У4).   Рывок “скрытой” видео-модели Alibaba на глобальных рейтингах меняет ожидания рынка (У8), подталкивает инвестиции (ShengShu) (У9/У5) и закрепляет видео-генерацию как стратегический стек (У4).,",
+      "levels": [
+        8,
+        7,
+        5,
+        4
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-10/stealth-alibaba-video-ai-model-tops-global-ranking-on-debut",
+        "https://www.bloomberg.com/news/articles/2026-04-10/alibaba-leads-300-million-bet-on-ai-video-generator-shengshu"
+      ]
+    }
+  ],
+  "structural_shifts": [
+    {
+      "title": "Compute как инфраструктурный товар” (contracted utility)",
+      "from": "модельной конкуренции через релизы и венчурные раунды “под обещания”.",
+      "to": "инфраструктурной конкуренции через долгосрочные поставки compute и долговые рынки под гарантированные платежи гиперскейлеров.",
+      "through": "оффтейк-контракты (Meta-CoreWeave $21B до 2032) + финансирование через high-yield → закрепление независимых compute-поставщиков в цепочке.",
+      "levels": [
+        9,
+        5,
+        4,
+        2
+      ],
+      "trend": "emerging",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-expands-meta-deal-for-ai-computing-to-21-billion",
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-tapping-junk-debt-market-after-meta-ai-computing-deal"
+      ]
+    },
+    {
+      "title": "Смена режима валидности: от лидербордов к диагностике и проверяемости",
+      "from": "единой цифры бенчмарка как универсальной легитимации.",
+      "to": "многорежимным диагностическим оценкам (in-the-wild tool use, perception vs integration, verifier-based evaluation) и практикам построения проверяющих систем.",
+      "through": "провалы на реалистичных бенчмарках (WildToolBench <15%) → спрос на verifiers/uncertainty gating → стандартизация практик.",
+      "levels": [
+        8,
+        7,
+        6,
+        3
+      ],
+      "trend": "emerging",
+      "sources": [
+        "https://arxiv.org/abs/2604.06185",
+        "https://arxiv.org/abs/2604.06250",
+        "https://arxiv.org/abs/2604.06240"
+      ]
+    },
+    {
+      "title": "Китайская мультимодальная волна как экосистемный, а не одиночный прорыв",
+      "from": "точечных публичных релизов.",
+      "to": "режиму “скрытые команды + быстрая рыночная капитализация + венчурное размножение претендентов” в AI-видео.",
+      "through": "топ-позиции в глобальных бенчмарках + параллельные инвестиции Alibaba Cloud в ShengShu → ускорение селекции победителей внутри Китая и усиление внешней конкурентной угрозы.",
+      "levels": [
+        9,
+        8,
+        7,
+        5,
+        4
+      ],
+      "trend": "accelerating",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-10/stealth-alibaba-video-ai-model-tops-global-ranking-on-debut",
+        "https://www.bloomberg.com/news/articles/2026-04-10/alibaba-leads-300-million-bet-on-ai-video-generator-shengshu"
+      ]
+    }
+  ],
+  "radar_signals": [
+    {
+      "title": "“Судебное нормотворчество” как стандартный путь AI-регулирования в США",
+      "description": "(xAI vs Colorado) - риск ускоренной фрагментации требований к агентам в HR/fintech/health.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-10/elon-musk-s-xai-sues-colorado-over-ai-anti-discrimination-law"
+      ]
+    },
+    {
+      "title": "Долговые рынки начинают “прайсить” AI-инфраструктуру как отдельный класс риска",
+      "description": "(CoreWeave high-yield).",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/coreweave-tapping-junk-debt-market-after-meta-ai-computing-deal"
+      ]
+    },
+    {
+      "title": "Verifiers как продуктовый слой",
+      "description": "(Universal Verifier; новые бенчмарки для агентов) - вероятно появление коммерческих “verification APIs” и стандартов аудита траекторий.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://arxiv.org/abs/2604.06240"
+      ]
+    },
+    {
+      "title": "Agent OS / orchestration-стек",
+      "description": "(Qualixar OS) - сигнал к будущей стандартизации протоколов (MCP/A2A) и разделению труда “оркестратор vs модель”.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://arxiv.org/abs/2604.06392"
+      ]
+    },
+    {
+      "title": "Земля/подключение к сети как стратегический актив AI-экономики",
+      "description": "(Texas Pacific Land в фокусе из-за дата-центров).",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-04-09/texas-landowner-s-stock-sinks-as-ceo-of-largest-shareholder-dies"
+      ]
+    },
+    {
+      "title": "Риск региональной перегрузки сетей от концентрации DC",
+      "description": "(Орегон, Вирджиния, Ирландия) как фактор будущих “регуляторных зон” для compute.",
+      "level_group": "upper",
+      "level_range": "7-9",
+      "sources": [
+        "https://arxiv.org/abs/2604.06198"
+      ]
+    }
+  ],
+  "metrics": {
+    "total_events": 29,
+    "events_by_level": {
+      "1": 1,
+      "2": 3,
+      "3": 2,
+      "4": 3,
+      "5": 4,
+      "6": 5,
+      "7": 4,
+      "8": 3,
+      "9": 4
+    },
+    "total_sources": 21,
+    "structural_shifts_count": 3,
+    "radar_signals_count": 6,
+    "cross_level_links_count": 3,
+    "momentum_trends_count": 11
+  },
+  "categories": [],
+  "momentum_trends": [
+    {
+      "name": "AI-CapEx / “Compute as Infrastructure”",
+      "momentum": 92,
+      "rationale": "$21B контракт Meta-CoreWeave до 2032 + выход CoreWeave в high-yield закрепляют инфраструктурный цикл.",
+      "levels": [
+        9,
+        5,
+        4,
+        2
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "“Оптика/интерконнекты как узкое место AI-кластеров”",
+      "momentum": 75,
+      "rationale": "Lumentum видит заполнение заказов AI-спросом “через 2028”, что указывает на долгий хвост дефицита/очередей.",
+      "levels": [
+        4,
+        5,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Китайские мультимодальные модели (особенно AI-видео)",
+      "momentum": 83,
+      "rationale": "видео-модель Alibaba выходит на топ глобальных бенчмарков; параллельно Alibaba финансирует игрока ShengShu.",
+      "levels": [
+        7,
+        8,
+        5,
+        4,
+        9
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "Агентные AI-платформы и оркестрация (“Agent OS”)",
+      "momentum": 45,
+      "rationale": "появление претензий на универсальные рантаймы/протоколы (Qualixar OS), но рынок ещё не консолидирован стандартами.",
+      "levels": [
+        6,
+        8,
+        5
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Verifiers / uncertainty-gating / “проверяемость по умолчанию”",
+      "momentum": 68,
+      "rationale": "активный пласт работ по верификации и uncertainty без доступа к логитам (SELFDOUBT), плюс инженерные гайды по verifiers.",
+      "levels": [
+        6,
+        7,
+        8,
+        3
+      ],
+      "category": "accelerating"
+    },
+    {
+      "name": "“Единые лидерборды/бенчмарки как главный компас прогресса”",
+      "momentum": -35,
+      "rationale": "усиливается критика “сломанных” бенчмарков и рост диагностических/полевых оценок; лидерборды остаются, но теряют монополию на легитимацию.",
+      "levels": [
+        8,
+        7
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "Регуляторная фрагментация AI в США (штаты/суды)",
+      "momentum": 52,
+      "rationale": "иск xAI против закона Колорадо подтверждает, что контуры регулирования будут формироваться конфликтно и неравномерно по юрисдикциям.",
+      "levels": [
+        8,
+        9,
+        5
+      ],
+      "category": "emerging"
+    },
+    {
+      "name": "Классический SaaS без AI-переупаковки",
+      "momentum": -18,
+      "rationale": "даже в “обычном” софте акцент на рост прибыли через усиление AI-использования (пример RealPage), что давит на SaaS-модели “как раньше”.",
+      "levels": [
+        5,
+        6
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "модельной конкуренции через релизы и венчурные раунды “под обещания”.",
+      "momentum": -70,
+      "rationale": "Угасает: переход от «модельной конкуренции через релизы и венчурные раунды “под обещания”.» к «инфраструктурной конкуренции через долгосрочные поставки compute и долговые рынки под гарантированные платежи гиперскейлеров.». Упоминаний в контексте перехода: 4",
+      "levels": [
+        9,
+        5,
+        4,
+        2
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "единой цифры бенчмарка как универсальной легитимации.",
+      "momentum": -40,
+      "rationale": "Угасает: переход от «единой цифры бенчмарка как универсальной легитимации.» к «многорежимным диагностическим оценкам (in-the-wild tool use, perception vs integration, verifier-based evaluation) и практикам построения проверяющих систем.». Упоминаний в контексте перехода: 2",
+      "levels": [
+        8,
+        7,
+        6,
+        3
+      ],
+      "category": "decelerating"
+    },
+    {
+      "name": "точечных публичных релизов.",
+      "momentum": -25,
+      "rationale": "Угасает: переход от «точечных публичных релизов.» к «режиму “скрытые команды + быстрая рыночная капитализация + венчурное размножение претендентов” в AI-видео.». Упоминаний в контексте перехода: 1",
+      "levels": [
+        9,
+        8,
+        7,
+        5,
+        4
+      ],
+      "category": "decelerating"
+    }
+  ]
+}
