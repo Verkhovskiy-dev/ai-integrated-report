@@ -165,12 +165,12 @@
   },
   {
     "date": "2026-04-15",
-    "generated_at": "2026-04-15T10:02:14.584Z",
+    "generated_at": "2026-04-15T12:21:25.000Z",
     "trends": [
       {
-        "name": "какой конфигурации СРТ: AI как стартаповая модель с доминированием equity/Venture + облачный API.",
-        "momentum": -55,
-        "rationale": "Угасает: переход от «какой конфигурации СРТ: AI как стартаповая модель с доминированием equity/Venture + облачный API.» к «какой новой конфигурации: AI как инфраструктурный сектор с долгом, ABS/REIT-подобным финансированием, государственными субсидиями и semicapex-вертикалями.». Упоминаний в контексте перехода: 3",
+        "name": "AI-CapEx / Инфраструктура",
+        "momentum": 92,
+        "rationale": "ASML повышает прогноз продаж на фоне AI-спроса, государства субсидируют photonics, а дата-центры получают новые формы секьюритизации и кредитного финансирования.",
         "levels": [
           9,
           5,
@@ -178,34 +178,159 @@
           2,
           1
         ],
-        "category": "decelerating"
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-04-15/asml-raises-2026-sales-forecast-as-ai-investment-fuels-growth",
+          "https://www.bloomberg.com/news/articles/2026-04-15/italy-gives-211-million-to-data-center-tech-firm-2d-photonics",
+          "https://www.bloomberg.com/news/articles/2026-04-14/china-s-data-centers-are-plugging-into-reit-style-financing-wave"
+        ]
       },
       {
-        "name": "какой конфигурации СРТ: ценность локализована в size/model capability.",
-        "momentum": -55,
-        "rationale": "Угасает: переход от «какой конфигурации СРТ: ценность локализована в size/model capability.» к «какой новой конфигурации: ценность распределена между моделью, памятью, benchmark-слоем, runtime, policy enforcement, multimodal routing и enterprise governance.». Упоминаний в контексте перехода: 3",
+        "name": "Агентные AI-платформы",
+        "momentum": 74,
+        "rationale": "Идет лавина новых benchmark’ов, runtime-архитектур и memory systems для production agents; рынок смещается от “чат-моделей” к агентным execution stacks.",
         "levels": [
-          7,
           6,
           5,
           4,
-          3
+          7
         ],
-        "category": "decelerating"
+        "category": "accelerating",
+        "sources": [
+          "https://arxiv.org/abs/2604.11978",
+          "https://arxiv.org/abs/2604.12129",
+          "https://arxiv.org/abs/2604.12213"
+        ]
       },
       {
-        "name": "какой конфигурации СРТ: роботика как дорогой лабораторный или индустриальный пилот.",
-        "momentum": -40,
-        "rationale": "Угасает: переход от «какой конфигурации СРТ: роботика как дорогой лабораторный или индустриальный пилот.» к «какой новой конфигурации: роботика как массово экспортируемый товар с e-commerce distribution и глобально распределенным data labor.». Упоминаний в контексте перехода: 2",
+        "name": "Безопасность AI-агентов",
+        "momentum": 81,
+        "rationale": "Mythos стал триггером для политической и финансовой реакции, а академический поток по policy enforcement, capability governance и safety drift резко уплотняется.",
+        "levels": [
+          7,
+          8,
+          9,
+          6,
+          4
+        ],
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-04-15/bessent-calls-anthropic-s-mythos-a-breakthrough-in-china-ai-race",
+          "https://arxiv.org/abs/2604.12177",
+          "https://arxiv.org/abs/2604.11839",
+          "https://arxiv.org/abs/2604.12384"
+        ]
+      },
+      {
+        "name": "Open-weight модели",
+        "momentum": 63,
+        "rationale": "Открытые модели Nvidia вызывают рыночное ралли и подпитывают экосистемное распространение capability, особенно в прикладных и исследовательских вертикалях.",
+        "levels": [
+          8,
+          7,
+          6,
+          4
+        ],
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-04-15/nvidia-new-ai-models-spark-rally-in-quantum-computing-stocks"
+        ]
+      },
+      {
+        "name": "Закрытые API-модели frontier-класса",
+        "momentum": 58,
+        "rationale": "Огромные оценки Anthropic и кредитная поддержка OpenAI подтверждают сохранение высокой капитализации закрытых frontier-моделей, хотя ценность уже смещается в сторону controlled deployment.",
+        "levels": [
+          9,
+          5,
+          4
+        ],
+        "category": "stable",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-04-14/anthropic-attracts-investor-offers-at-a-800-billion-valuation",
+          "https://www.bloomberg.com/news/articles/2026-04-15/softbank-lenders-ask-more-banks-to-join-40-billion-openai-loan"
+        ]
+      },
+      {
+        "name": "Суверенный AI / национальные технологические контуры",
+        "momentum": 69,
+        "rationale": "Похвала Mythos как инструмента гонки с Китаем, европейские субсидии в photonics и китайские внутренние механизмы финансирования compute усиливают национализацию AI-стеков.",
         "levels": [
           9,
           8,
-          7,
+          2,
+          5
+        ],
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-04-15/bessent-calls-anthropic-s-mythos-a-breakthrough-in-china-ai-race",
+          "https://www.bloomberg.com/news/articles/2026-04-15/italy-gives-211-million-to-data-center-tech-firm-2d-photonics",
+          "https://www.bloomberg.com/news/articles/2026-04-14/china-s-data-centers-are-plugging-into-reit-style-financing-wave"
+        ]
+      },
+      {
+        "name": "Humanoid / embodied AI",
+        "momentum": 71,
+        "rationale": "Unitree масштабирует глобальные продажи перед IPO, а embodied-data labor и research stack быстро растут.",
+        "levels": [
+          9,
           5,
+          4,
           3,
           2
         ],
-        "category": "decelerating"
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-04-15/tesla-s-chinese-robot-rival-ramps-up-global-push-ahead-of-ipo",
+          "https://www.technologyreview.com/2026/04/01/1134863/humanoid-data-training-gig-economy-2026-breakthrough-technology/"
+        ]
+      },
+      {
+        "name": "AI в медицине как consumer/general assistant",
+        "momentum": -18,
+        "rationale": "Исследование о том, что чатботы дают проблемные медицинские советы в 50% случаев, тормозит массовую легитимацию универсальных AI-медсоветников.",
+        "levels": [
+          7,
+          8,
+          3,
+          5
+        ],
+        "category": "decelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-04-14/ai-chatbots-give-misleading-medical-advice-50-of-the-time-study-finds"
+        ]
+      },
+      {
+        "name": "Классический смартфонный consumer electronics цикл",
+        "momentum": -36,
+        "rationale": "IDC фиксирует падение рынка смартфонов из-за memory crunch и войны; AI-инфраструктура начинает вытеснять прежние драйверы consumer hardware.",
+        "levels": [
+          1,
+          2,
+          4,
+          5
+        ],
+        "category": "decelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-04-15/memory-crunch-and-iran-war-lead-phone-market-decline-idc-says"
+        ]
+      },
+      {
+        "name": "Полностью автономные long-horizon агенты без жесткого governance-слоя",
+        "momentum": -9,
+        "rationale": "Исследования системно показывают деградацию на длинном горизонте, policy-invisible violations и слабое следование плану; рынок уходит от мечты об автономии “из коробки” к управляемым системам.",
+        "levels": [
+          6,
+          7,
+          4,
+          5
+        ],
+        "category": "decelerating",
+        "sources": [
+          "https://arxiv.org/abs/2604.11978",
+          "https://arxiv.org/abs/2604.12147",
+          "https://arxiv.org/abs/2604.12177"
+        ]
       }
     ]
   }
