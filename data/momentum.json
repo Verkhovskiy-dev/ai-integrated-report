@@ -165,12 +165,135 @@
   },
   {
     "date": "2026-04-15",
-    "generated_at": "2026-04-15T12:21:25.000Z",
+    "generated_at": "2026-04-15T17:02:49.241Z",
     "trends": [
       {
         "name": "AI-CapEx / Инфраструктура",
         "momentum": 92,
-        "rationale": "ASML повышает прогноз продаж на фоне AI-спроса, государства субсидируют photonics, а дата-центры получают новые формы секьюритизации и кредитного финансирования.",
+        "rationale": "Растут TSMC, ASML поднимает годовой прогноз, CoreWeave получает новые деньги и гарантированный спрос, в Европе и Норвегии разворачиваются новые инфраструктурные проекты [Источники](https://www.bloomberg.com/news/articles/2026-04-15/tsmc-rides-retail-frenzy-to-new-stock-highs-as-ai-boom-returns),,,.",
+        "levels": [
+          1,
+          2,
+          4,
+          5,
+          9
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Агентные AI-платформы",
+        "momentum": 74,
+        "rationale": "Исследовательский поток смещается к long-horizon агентам, memory systems, A2A routing и enterprise orchestration, а крупные корпорации параллельно двигают AI adoption в портфельных компаниях [Источники](https://arxiv.org/abs/2604.11978),,,.",
+        "levels": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Безопасность и governance AI-агентов",
+        "momentum": 81,
+        "rationale": "Всплеск работ по policy enforcement, least privilege, benchmark governance и safety drift указывает на переход от абстрактной “safety” к эксплуатационному контролю поведения [Источники](https://arxiv.org/abs/2604.12177),,,.",
+        "levels": [
+          6,
+          7,
+          8
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Суверенный AI / национальная инфраструктура",
+        "momentum": 68,
+        "rationale": "Испанский state-backed DC hub, европейские регуляторные инициативы и территориальная борьба за compute подтверждают укрепление суверенного AI не только на уровне моделей, но и на уровне инфраструктуры и доступа [Источники](https://www.bloomberg.com/news/articles/2026-04-15/solaria-eyes-stake-in-4-billion-telefonica-acs-data-center-jv),,.",
+        "levels": [
+          2,
+          5,
+          8,
+          9
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Закрытые API-модели / frontier labs",
+        "momentum": 63,
+        "rationale": "Предлагаемая оценка Anthropic в $800 млрд+ показывает, что рынок по-прежнему готов премировать закрытых frontier providers как стратегические активы.",
+        "levels": [
+          5,
+          7,
+          9
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Open-weight модели",
+        "momentum": 29,
+        "rationale": "В исследовательском массиве много работ на open-weight базах (Qwen, Llama, Gemma), что усиливает экосистему инструментов и прикладных экспериментов; однако в денежном центре цикла сейчас доминируют закрытые frontier valuations и cloud alliances [Источники](https://arxiv.org/abs/2604.11924),,.",
+        "levels": [
+          4,
+          6,
+          8
+        ],
+        "category": "emerging"
+      },
+      {
+        "name": "AI в госсекторе и критической инфраструктуре",
+        "momentum": 55,
+        "rationale": "DTCC migrating core systems to cloud, EU identity tooling, а также рост policy/governance-слоя показывают движение AI/cloud deeper into regulated and quasi-state infrastructures [Источники](https://www.bloomberg.com/news/articles/2026-04-15/stock-clearing-firm-dtcc-taps-amazon-to-aid-shift-to-cloud),.",
+        "levels": [
+          5,
+          8,
+          9
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "Классический SaaS как самостоятельный инвестиционный тезис",
+        "momentum": -34,
+        "rationale": "Сделка Thoma Bravo с Google Cloud показывает, что даже традиционный software-портфель теперь оценивается через способность быстро встроить AI, а не через старый SaaS multiple сам по себе.",
+        "levels": [
+          5,
+          9
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "Китайский венчурный предпринимательский драйв",
+        "momentum": -41,
+        "rationale": "Bloomberg фиксирует снижение риск-аппетита китайских стартап-основателей, что может ослаблять низовой инновационный слой даже при сильной промышленной базе.",
+        "levels": [
+          3,
+          8,
+          9
+        ],
+        "category": "decelerating"
+      },
+      {
+        "name": "Публичный рынок “AI по вывеске” / спекулятивные псевдо-AI истории",
+        "momentum": 47,
+        "rationale": "Взлет Allbirds после ребрендинга в AI-infrastructure показывает, что рынок снова готов награждать даже слабосвязанные с AI истории; это растет, но это скорее пузырный, чем продуктивный тренд.",
+        "levels": [
+          8,
+          9
+        ],
+        "category": "emerging"
+      },
+      {
+        "name": "Приватность, unlearning и trust-by-design",
+        "momentum": 58,
+        "rationale": "Privacy-led UX, right-to-be-forgotten frameworks, interactive unlearning и FHE inference - это уже не fringe, а формирующийся прикладной стек доверия [Источники](https://www.technologyreview.com/2026/04/15/1135530/building-trust-in-the-ai-era-with-privacy-led-ux/),,,.",
+        "levels": [
+          4,
+          6,
+          8
+        ],
+        "category": "accelerating"
+      },
+      {
+        "name": "какой конфигурации СРТ: AI рассматривался прежде всего как software/model race.",
+        "momentum": -25,
+        "rationale": "Угасает: переход от «какой конфигурации СРТ: AI рассматривался прежде всего как software/model race.» к «какой новой конфигурации: AI становится борьбой за распределение compute, power, data center geography, chip tooling и allied supply chains.». Упоминаний в контексте перехода: 1",
         "levels": [
           9,
           5,
@@ -178,159 +301,30 @@
           2,
           1
         ],
-        "category": "accelerating",
-        "sources": [
-          "https://www.bloomberg.com/news/articles/2026-04-15/asml-raises-2026-sales-forecast-as-ai-investment-fuels-growth",
-          "https://www.bloomberg.com/news/articles/2026-04-15/italy-gives-211-million-to-data-center-tech-firm-2d-photonics",
-          "https://www.bloomberg.com/news/articles/2026-04-14/china-s-data-centers-are-plugging-into-reit-style-financing-wave"
-        ]
+        "category": "decelerating"
       },
       {
-        "name": "Агентные AI-платформы",
-        "momentum": 74,
-        "rationale": "Идет лавина новых benchmark’ов, runtime-архитектур и memory systems для production agents; рынок смещается от “чат-моделей” к агентным execution stacks.",
-        "levels": [
-          6,
-          5,
-          4,
-          7
-        ],
-        "category": "accelerating",
-        "sources": [
-          "https://arxiv.org/abs/2604.11978",
-          "https://arxiv.org/abs/2604.12129",
-          "https://arxiv.org/abs/2604.12213"
-        ]
-      },
-      {
-        "name": "Безопасность AI-агентов",
-        "momentum": 81,
-        "rationale": "Mythos стал триггером для политической и финансовой реакции, а академический поток по policy enforcement, capability governance и safety drift резко уплотняется.",
-        "levels": [
-          7,
-          8,
-          9,
-          6,
-          4
-        ],
-        "category": "accelerating",
-        "sources": [
-          "https://www.bloomberg.com/news/articles/2026-04-15/bessent-calls-anthropic-s-mythos-a-breakthrough-in-china-ai-race",
-          "https://arxiv.org/abs/2604.12177",
-          "https://arxiv.org/abs/2604.11839",
-          "https://arxiv.org/abs/2604.12384"
-        ]
-      },
-      {
-        "name": "Open-weight модели",
-        "momentum": 63,
-        "rationale": "Открытые модели Nvidia вызывают рыночное ралли и подпитывают экосистемное распространение capability, особенно в прикладных и исследовательских вертикалях.",
+        "name": "какой конфигурации СРТ: агентность подавалась как UI-эффект поверх LLM.",
+        "momentum": -25,
+        "rationale": "Угасает: переход от «какой конфигурации СРТ: агентность подавалась как UI-эффект поверх LLM.» к «какой новой конфигурации: агентность становится отдельным индустриальным стеком с памятью, планированием, policy controls, A2A protocols и benchmark governance.». Упоминаний в контексте перехода: 1",
         "levels": [
           8,
           7,
           6,
           4
         ],
-        "category": "accelerating",
-        "sources": [
-          "https://www.bloomberg.com/news/articles/2026-04-15/nvidia-new-ai-models-spark-rally-in-quantum-computing-stocks"
-        ]
+        "category": "decelerating"
       },
       {
-        "name": "Закрытые API-модели frontier-класса",
-        "momentum": 58,
-        "rationale": "Огромные оценки Anthropic и кредитная поддержка OpenAI подтверждают сохранение высокой капитализации закрытых frontier-моделей, хотя ценность уже смещается в сторону controlled deployment.",
-        "levels": [
-          9,
-          5,
-          4
-        ],
-        "category": "stable",
-        "sources": [
-          "https://www.bloomberg.com/news/articles/2026-04-14/anthropic-attracts-investor-offers-at-a-800-billion-valuation",
-          "https://www.bloomberg.com/news/articles/2026-04-15/softbank-lenders-ask-more-banks-to-join-40-billion-openai-loan"
-        ]
-      },
-      {
-        "name": "Суверенный AI / национальные технологические контуры",
-        "momentum": 69,
-        "rationale": "Похвала Mythos как инструмента гонки с Китаем, европейские субсидии в photonics и китайские внутренние механизмы финансирования compute усиливают национализацию AI-стеков.",
+        "name": "какой конфигурации СРТ: AI финансировался как очередной венчурный/корпоративный цикл.",
+        "momentum": -25,
+        "rationale": "Угасает: переход от «какой конфигурации СРТ: AI финансировался как очередной венчурный/корпоративный цикл.» к «какой новой конфигурации: AI становится политически поддерживаемой, лоббируемой и регуляторно оформляемой макроиндустрией.». Упоминаний в контексте перехода: 1",
         "levels": [
           9,
           8,
-          2,
           5
         ],
-        "category": "accelerating",
-        "sources": [
-          "https://www.bloomberg.com/news/articles/2026-04-15/bessent-calls-anthropic-s-mythos-a-breakthrough-in-china-ai-race",
-          "https://www.bloomberg.com/news/articles/2026-04-15/italy-gives-211-million-to-data-center-tech-firm-2d-photonics",
-          "https://www.bloomberg.com/news/articles/2026-04-14/china-s-data-centers-are-plugging-into-reit-style-financing-wave"
-        ]
-      },
-      {
-        "name": "Humanoid / embodied AI",
-        "momentum": 71,
-        "rationale": "Unitree масштабирует глобальные продажи перед IPO, а embodied-data labor и research stack быстро растут.",
-        "levels": [
-          9,
-          5,
-          4,
-          3,
-          2
-        ],
-        "category": "accelerating",
-        "sources": [
-          "https://www.bloomberg.com/news/articles/2026-04-15/tesla-s-chinese-robot-rival-ramps-up-global-push-ahead-of-ipo",
-          "https://www.technologyreview.com/2026/04/01/1134863/humanoid-data-training-gig-economy-2026-breakthrough-technology/"
-        ]
-      },
-      {
-        "name": "AI в медицине как consumer/general assistant",
-        "momentum": -18,
-        "rationale": "Исследование о том, что чатботы дают проблемные медицинские советы в 50% случаев, тормозит массовую легитимацию универсальных AI-медсоветников.",
-        "levels": [
-          7,
-          8,
-          3,
-          5
-        ],
-        "category": "decelerating",
-        "sources": [
-          "https://www.bloomberg.com/news/articles/2026-04-14/ai-chatbots-give-misleading-medical-advice-50-of-the-time-study-finds"
-        ]
-      },
-      {
-        "name": "Классический смартфонный consumer electronics цикл",
-        "momentum": -36,
-        "rationale": "IDC фиксирует падение рынка смартфонов из-за memory crunch и войны; AI-инфраструктура начинает вытеснять прежние драйверы consumer hardware.",
-        "levels": [
-          1,
-          2,
-          4,
-          5
-        ],
-        "category": "decelerating",
-        "sources": [
-          "https://www.bloomberg.com/news/articles/2026-04-15/memory-crunch-and-iran-war-lead-phone-market-decline-idc-says"
-        ]
-      },
-      {
-        "name": "Полностью автономные long-horizon агенты без жесткого governance-слоя",
-        "momentum": -9,
-        "rationale": "Исследования системно показывают деградацию на длинном горизонте, policy-invisible violations и слабое следование плану; рынок уходит от мечты об автономии “из коробки” к управляемым системам.",
-        "levels": [
-          6,
-          7,
-          4,
-          5
-        ],
-        "category": "decelerating",
-        "sources": [
-          "https://arxiv.org/abs/2604.11978",
-          "https://arxiv.org/abs/2604.12147",
-          "https://arxiv.org/abs/2604.12177"
-        ]
+        "category": "decelerating"
       }
     ]
   }
