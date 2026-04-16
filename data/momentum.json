@@ -330,46 +330,170 @@
   },
   {
     "date": "2026-04-16",
-    "generated_at": "2026-04-16T05:02:09.347Z",
+    "generated_at": "2026-04-16T06:46:21.000Z",
     "trends": [
       {
-        "name": "модели как программный продукт, финансируемый венчуром и облачной выручкой",
-        "momentum": -40,
-        "rationale": "Угасает: переход от «модели как программный продукт, финансируемый венчуром и облачной выручкой» к «AI как инфраструктурный класс активов, финансируемый венчуром, публичными рынками, junk bonds и политическим лоббированием». Упоминаний в контексте перехода: 2",
+        "name": "AI-CapEx / дата-центры / вычислительная инфраструктура",
+        "momentum": 93,
+        "rationale": "Рекордный junk-bond на $5.7 млрд, $90 млрд план DC в Испании, продолжающийся рост valuation и chip-инвестиций указывают на взрывную фазу инфраструктурного расширения,.",
         "levels": [
           9,
           5,
-          4,
           2,
           1
         ],
-        "category": "decelerating"
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-04-15/google-linked-data-centers-selling-record-5-7-billion-junk-bond",
+          "https://www.bloomberg.com/news/features/2026-04-16/spain-s-90-billion-ai-data-center-plan-draws-amazon-web-services-microsoft"
+        ]
       },
       {
-        "name": "публикации, open imitation, относительно свободная циркуляция знаний и outputs",
-        "momentum": -70,
-        "rationale": "Угасает: переход от «публикации, open imitation, относительно свободная циркуляция знаний и outputs» к «санкционируемый доступ к моделям, защита inference outputs, национальные и корпоративные барьеры». Упоминаний в контексте перехода: 4",
+        "name": "Custom AI chips / вертикальная интеграция silicon stack",
+        "momentum": 84,
+        "rationale": "Meta-Broadcom расширяют сотрудничество, Musk запускает Terafab, ASML повышает прогноз продаж,.",
         "levels": [
-          9,
-          8,
-          7,
-          6,
-          5
+          4,
+          5,
+          9
         ],
-        "category": "decelerating"
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/videos/2026-04-15/bloomberg-tech-4-15-2026-video",
+          "https://www.bloomberg.com/news/articles/2026-04-16/musk-asks-suppliers-to-move-at-light-speed-on-terafab-project"
+        ]
       },
       {
-        "name": "фокус на toxicity, refusal, benchmark safety",
-        "momentum": -80,
-        "rationale": "Угасает: переход от «фокус на toxicity, refusal, benchmark safety» к «фокус на long-horizon failure, tool execution, memory governance, policy visibility, capability scoping». Упоминаний в контексте перехода: 7",
+        "name": "Агентные AI-платформы",
+        "momentum": 71,
+        "rationale": "Поток исследований про long-horizon agents, memory, routing, search and execution указывает на ускорение, хотя промышленная надежность еще не решена,,.",
+        "levels": [
+          4,
+          6,
+          7
+        ],
+        "category": "accelerating",
+        "sources": [
+          "https://arxiv.org/abs/2604.11978",
+          "https://arxiv.org/abs/2604.12126",
+          "https://arxiv.org/abs/2604.12213"
+        ]
+      },
+      {
+        "name": "Безопасность AI-агентов / enterprise governance",
+        "momentum": 88,
+        "rationale": "История с Mythos и вал benchmark/governance работ показывают резкое усиление внимания к operational safety, а не только model alignment,,.",
         "levels": [
           7,
           6,
           5,
-          4,
-          3
+          9
         ],
-        "category": "decelerating"
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/features/2026-04-16/how-anthropic-discovered-mythos-ai-was-too-dangerous-for-release",
+          "https://arxiv.org/abs/2604.12177",
+          "https://arxiv.org/abs/2604.11839"
+        ]
+      },
+      {
+        "name": "Закрытые API-модели frontier-класса",
+        "momentum": 79,
+        "rationale": "OpenAI и Anthropic притягивают колоссальный капитал, а опасные capability удерживаются от релиза, усиливая закрытый режим контроля,.",
+        "levels": [
+          7,
+          8,
+          9
+        ],
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/videos/2026-04-15/openai-s-852b-valuation-not-too-high-vinod-khosla-video",
+          "https://www.bloomberg.com/news/features/2026-04-16/how-anthropic-discovered-mythos-ai-was-too-dangerous-for-release"
+        ]
+      },
+      {
+        "name": "Open-weight модели",
+        "momentum": 34,
+        "rationale": "В исследовательском массиве много open-source и open benchmark активности, но денежный и политический центр тяжести сейчас уходит в закрытые frontier systems и controlled release.",
+        "levels": [
+          7,
+          8,
+          9
+        ],
+        "category": "emerging",
+        "sources": []
+      },
+      {
+        "name": "Экспортный контроль чипов и контроль capability transfer",
+        "momentum": 82,
+        "rationale": "Конгресс США уже обсуждает наказания не только за hardware transfer, но и за copying outputs/models, что расширяет режим techno-containment.",
+        "levels": [
+          9,
+          8,
+          5,
+          4
+        ],
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-04-16/us-house-to-weigh-penalties-on-ai-model-copying-by-chinese-firms"
+        ]
+      },
+      {
+        "name": "Суверенный AI / национальные capability-контуры",
+        "momentum": 68,
+        "rationale": "US-China competition, канадское включение в обсуждение Mythos и европейское строительство compute-контуров подтверждают рост технологического суверенитета,.",
+        "levels": [
+          9,
+          2,
+          5
+        ],
+        "category": "accelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-04-15/canada-s-champagne-to-discuss-anthropic-at-meeting-with-bessent",
+          "https://www.bloomberg.com/news/features/2026-04-16/spain-s-90-billion-ai-data-center-plan-draws-amazon-web-services-microsoft"
+        ]
+      },
+      {
+        "name": "Классический SaaS без глубокой AI-инфраструктуры",
+        "momentum": -28,
+        "rationale": "Рынок переоценивает именно инфраструктуру, frontier models и AI-enabled workflows; капитал все меньше вознаграждает обычный software growth без AI narrative. Косвенный симптом — спекулятивный AI rebranding даже у непрофильных компаний.",
+        "levels": [
+          5,
+          9
+        ],
+        "category": "decelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-04-15/ex-sneaker-firm-allbirds-soars-373-after-rebranding-as-ai-stock"
+        ]
+      },
+      {
+        "name": "Свободная глобальная диффузия AI-знания",
+        "momentum": -46,
+        "rationale": "Санкционная логика, withholding dangerous models и превращение outputs в объект контроля означают затухание прежней открытой диффузии,.",
+        "levels": [
+          7,
+          8,
+          9
+        ],
+        "category": "decelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/articles/2026-04-16/us-house-to-weigh-penalties-on-ai-model-copying-by-chinese-firms",
+          "https://www.bloomberg.com/news/features/2026-04-16/how-anthropic-discovered-mythos-ai-was-too-dangerous-for-release"
+        ]
+      },
+      {
+        "name": "Массовая готовность кадрового конвейера к AI-экономике",
+        "momentum": -22,
+        "rationale": "Индийский кейс показывает, что формальная CS-подготовка не успевает за потребностями AI-индустрии, а это ограничивает масштабирование внедрения.",
+        "levels": [
+          3,
+          7,
+          5
+        ],
+        "category": "decelerating",
+        "sources": [
+          "https://www.bloomberg.com/news/features/2026-04-16/the-ai-revolution-leaves-india-s-tech-graduates-unprepared-for-the-future"
+        ]
       }
     ]
   }
