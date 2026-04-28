@@ -62,37 +62,37 @@ interface EducationReport {
 
 /* ── Constants ── */
 const REGION_META: Record<string, { flag: string; label: string }> = {
-  USA: { flag: "\u{1F1FA}\u{1F1F8}", label: "\u0421\u0428\u0410" },
-  UK: { flag: "\u{1F1EC}\u{1F1E7}", label: "\u0412\u0435\u043B\u0438\u043A\u043E\u0431\u0440\u0438\u0442\u0430\u043D\u0438\u044F" },
-  EU: { flag: "\u{1F1EA}\u{1F1FA}", label: "\u0415\u0432\u0440\u043E\u043F\u0430" },
-  China: { flag: "\u{1F1E8}\u{1F1F3}", label: "\u041A\u0438\u0442\u0430\u0439" },
-  India: { flag: "\u{1F1EE}\u{1F1F3}", label: "\u0418\u043D\u0434\u0438\u044F" },
-  Saudi_Arabia: { flag: "\u{1F1F8}\u{1F1E6}", label: "\u0421\u0430\u0443\u0434\u043E\u0432\u0441\u043A\u0430\u044F \u0410\u0440\u0430\u0432\u0438\u044F" },
-  Russia: { flag: "\u{1F1F7}\u{1F1FA}", label: "\u0420\u043E\u0441\u0441\u0438\u044F" },
-  Other: { flag: "\u{1F30D}", label: "\u0414\u0440\u0443\u0433\u0438\u0435 \u0440\u0435\u0433\u0438\u043E\u043D\u044B" },
+  USA: { flag: "\u{1F1FA}\u{1F1F8}", label: "США" },
+  UK: { flag: "\u{1F1EC}\u{1F1E7}", label: "Великобритания" },
+  EU: { flag: "\u{1F1EA}\u{1F1FA}", label: "Европа" },
+  China: { flag: "\u{1F1E8}\u{1F1F3}", label: "Китай" },
+  India: { flag: "\u{1F1EE}\u{1F1F3}", label: "Индия" },
+  Saudi_Arabia: { flag: "\u{1F1F8}\u{1F1E6}", label: "Саудовская Аравия" },
+  Russia: { flag: "\u{1F1F7}\u{1F1FA}", label: "Россия" },
+  Other: { flag: "\u{1F30D}", label: "Другие регионы" },
 };
 
 const LEVEL_CONFIG: Record<string, { label: string; color: string; bg: string; border: string }> = {
   Beginner: {
-    label: "\u041D\u0430\u0447\u0430\u043B\u044C\u043D\u044B\u0439",
+    label: "Начальный",
     color: "text-emerald-400",
     bg: "bg-emerald-400/10",
     border: "border-emerald-400/30",
   },
   Applied_Short: {
-    label: "\u041F\u0440\u0438\u043A\u043B\u0430\u0434\u043D\u043E\u0439",
+    label: "Прикладной",
     color: "text-sky-400",
     bg: "bg-sky-400/10",
     border: "border-sky-400/30",
   },
   Intermediate: {
-    label: "\u0421\u0440\u0435\u0434\u043D\u0438\u0439",
+    label: "Средний",
     color: "text-amber-400",
     bg: "bg-amber-400/10",
     border: "border-amber-400/30",
   },
   Premium_Long: {
-    label: "\u041F\u0440\u0435\u043C\u0438\u0443\u043C",
+    label: "Премиум",
     color: "text-purple-400",
     bg: "bg-purple-400/10",
     border: "border-purple-400/30",
@@ -100,9 +100,9 @@ const LEVEL_CONFIG: Record<string, { label: string; color: string; bg: string; b
 };
 
 const MOMENTUM_CONFIG: Record<string, { label: string; color: string; bg: string; pulse: boolean; icon: typeof Flame }> = {
-  High: { label: "\u0412\u044B\u0441\u043E\u043A\u0438\u0439", color: "text-red-400", bg: "bg-red-400/10", pulse: true, icon: Flame },
-  Medium: { label: "\u0421\u0440\u0435\u0434\u043D\u0438\u0439", color: "text-amber-400", bg: "bg-amber-400/10", pulse: false, icon: TrendingUp },
-  Low: { label: "\u041D\u0438\u0437\u043A\u0438\u0439", color: "text-zinc-400", bg: "bg-zinc-400/10", pulse: false, icon: Clock },
+  High: { label: "Высокий", color: "text-red-400", bg: "bg-red-400/10", pulse: true, icon: Flame },
+  Medium: { label: "Средний", color: "text-amber-400", bg: "bg-amber-400/10", pulse: false, icon: TrendingUp },
+  Low: { label: "Низкий", color: "text-zinc-400", bg: "bg-zinc-400/10", pulse: false, icon: Clock },
 };
 
 /* ── Helper: fetch data ── */
@@ -168,7 +168,7 @@ function RegionCard({ regionKey, programs }: { regionKey: string; programs: Prog
           <div>
             <h3 className="text-sm sm:text-base font-heading font-semibold text-foreground">{meta.label}</h3>
             <p className="text-xs text-muted-foreground">
-              {programs.length} {programs.length === 1 ? "\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0430" : programs.length < 5 ? "\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B" : "\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C"}
+              {programs.length} {programs.length === 1 ? "программа" : programs.length < 5 ? "программы" : "программ"}
             </p>
           </div>
         </div>
@@ -224,7 +224,7 @@ function RegionCard({ regionKey, programs }: { regionKey: string; programs: Prog
                     className="inline-flex items-center gap-1 text-[10px] text-primary hover:text-primary/80 transition-colors shrink-0"
                   >
                     <ExternalLink className="w-3 h-3" />
-                    \u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435
+                    Подробнее
                   </a>
                 )}
               </div>
@@ -290,7 +290,7 @@ function RegionBarChart({ regions }: { regions: Record<string, Program[]> }) {
     <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6">
       <div className="flex items-center gap-2 mb-5">
         <BarChart3 className="w-4 h-4 text-primary" />
-        <h3 className="text-sm font-heading font-semibold text-foreground">\u0420\u0430\u0441\u043F\u0440\u0435\u0434\u0435\u043B\u0435\u043D\u0438\u0435 \u043F\u043E \u0440\u0435\u0433\u0438\u043E\u043D\u0430\u043C</h3>
+        <h3 className="text-sm font-heading font-semibold text-foreground">Распределение по регионам</h3>
       </div>
       <div className="space-y-3">
         {data.map((d) => (
@@ -327,7 +327,7 @@ function LevelDistribution({ regions }: { regions: Record<string, Program[]> }) 
     <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-6">
       <div className="flex items-center gap-2 mb-5">
         <BookOpen className="w-4 h-4 text-primary" />
-        <h3 className="text-sm font-heading font-semibold text-foreground">\u0423\u0440\u043E\u0432\u043D\u0438 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C</h3>
+        <h3 className="text-sm font-heading font-semibold text-foreground">Уровни программ</h3>
       </div>
       <div className="space-y-3">
         {levels.map(([level, count]) => {
@@ -355,9 +355,9 @@ function LevelDistribution({ regions }: { regions: Record<string, Program[]> }) 
 
 function ComparisonIndicator({ type }: { type: "advantage" | "gap" | "overlap" }) {
   const configs = {
-    advantage: { icon: ShieldCheck, label: "\u041F\u0440\u0435\u0438\u043C\u0443\u0449\u0435\u0441\u0442\u0432\u043E \u043A\u043E\u043D\u043A\u0443\u0440\u0435\u043D\u0442\u0430", color: "text-red-400", bg: "bg-red-400/10", border: "border-red-400/30" },
-    gap: { icon: Lightbulb, label: "\u0412\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u044C \u0421\u041A\u041E\u041B\u041A\u041E\u0412\u041E", color: "text-emerald-400", bg: "bg-emerald-400/10", border: "border-emerald-400/30" },
-    overlap: { icon: Layers, label: "\u041F\u0435\u0440\u0435\u0441\u0435\u0447\u0435\u043D\u0438\u0435", color: "text-amber-400", bg: "bg-amber-400/10", border: "border-amber-400/30" },
+    advantage: { icon: ShieldCheck, label: "Преимущество конкурента", color: "text-red-400", bg: "bg-red-400/10", border: "border-red-400/30" },
+    gap: { icon: Lightbulb, label: "Возможность СКОЛКОВО", color: "text-emerald-400", bg: "bg-emerald-400/10", border: "border-emerald-400/30" },
+    overlap: { icon: Layers, label: "Пересечение", color: "text-amber-400", bg: "bg-amber-400/10", border: "border-amber-400/30" },
   };
   const cfg = configs[type];
   const Icon = cfg.icon;
@@ -392,7 +392,7 @@ function SkolkovoComparisonCard({ comp }: { comp: SkolkovoComparison }) {
         <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-cyan-400/5 border border-cyan-400/10">
           <ArrowRightLeft className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
           <div className="flex-1 min-w-0">
-            <p className="text-[10px] text-cyan-400/70 uppercase tracking-wider">\u042D\u043A\u0432\u0438\u0432\u0430\u043B\u0435\u043D\u0442 \u0421\u041A\u041E\u041B\u041A\u041E\u0412\u041E</p>
+            <p className="text-[10px] text-cyan-400/70 uppercase tracking-wider">Эквивалент СКОЛКОВО</p>
             <p className="text-xs font-heading font-medium text-cyan-400">{comp.skolkovo_equivalent}</p>
           </div>
         </div>
@@ -441,14 +441,14 @@ function SkolkovoComparisonSection({ comparisons }: { comparisons: SkolkovoCompa
         {/* Section header */}
         <div className="flex items-center gap-2 mb-2">
           <Building2 className="w-4 h-4 text-cyan-400" />
-          <span className="text-[10px] font-mono text-cyan-400/60 uppercase tracking-widest">\u0421\u0440\u0430\u0432\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 \u0430\u043D\u0430\u043B\u0438\u0437</span>
+          <span className="text-[10px] font-mono text-cyan-400/60 uppercase tracking-widest">Сравнительный анализ</span>
         </div>
         <h3 className="text-lg sm:text-xl font-heading font-bold text-foreground mb-2">
-          \u0421\u041A\u041E\u041B\u041A\u041E\u0412\u041E: \u0421\u0440\u0430\u0432\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u044B\u0439 \u0430\u043D\u0430\u043B\u0438\u0437
+          СКОЛКОВО: Сравнительный анализ
         </h3>
         <p className="text-sm text-muted-foreground mb-6 max-w-2xl">
-          \u0421\u0440\u0430\u0432\u043D\u0435\u043D\u0438\u0435 \u043E\u0431\u043D\u0430\u0440\u0443\u0436\u0435\u043D\u043D\u044B\u0445 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C \u043A\u043E\u043D\u043A\u0443\u0440\u0435\u043D\u0442\u043E\u0432 \u0441 \u043F\u043E\u0440\u0442\u0444\u0435\u043B\u0435\u043C AI/\u0446\u0438\u0444\u0440\u043E\u0432\u044B\u0445 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C \u0428\u043A\u043E\u043B\u044B \u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F \u0421\u041A\u041E\u041B\u041A\u041E\u0412\u041E.
-          \u041F\u0440\u0435\u0438\u043C\u0443\u0449\u0435\u0441\u0442\u0432\u0430, \u0440\u0430\u0437\u0440\u044B\u0432\u044B \u0438 \u043F\u0435\u0440\u0435\u0441\u0435\u0447\u0435\u043D\u0438\u044F \u0441 \u043C\u0438\u0440\u043E\u0432\u044B\u043C\u0438 \u043B\u0438\u0434\u0435\u0440\u0430\u043C\u0438 \u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F.
+          Сравнение обнаруженных программ конкурентов с портфелем AI/цифровых программ Школы управления СКОЛКОВО.
+          Преимущества, разрывы и пересечения с мировыми лидерами образования.
         </p>
 
         {/* Summary stats row */}
@@ -456,28 +456,28 @@ function SkolkovoComparisonSection({ comparisons }: { comparisons: SkolkovoCompa
           <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl p-3 sm:p-4">
             <div className="flex items-center gap-2 mb-1">
               <Target className="w-4 h-4 text-cyan-400" />
-              <span className="text-xs text-muted-foreground">\u0421\u0440\u0430\u0432\u043D\u0435\u043D\u0438\u0439</span>
+              <span className="text-xs text-muted-foreground">Сравнений</span>
             </div>
             <span className="text-xl font-heading font-bold text-foreground">{comparisons.length}</span>
           </div>
           <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl p-3 sm:p-4">
             <div className="flex items-center gap-2 mb-1">
               <ShieldCheck className="w-4 h-4 text-red-400" />
-              <span className="text-xs text-muted-foreground">\u0423\u0433\u0440\u043E\u0437\u044B</span>
+              <span className="text-xs text-muted-foreground">Угрозы</span>
             </div>
             <span className="text-xl font-heading font-bold text-foreground">{withAdvantage}</span>
           </div>
           <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl p-3 sm:p-4">
             <div className="flex items-center gap-2 mb-1">
               <Lightbulb className="w-4 h-4 text-emerald-400" />
-              <span className="text-xs text-muted-foreground">\u0412\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u0438</span>
+              <span className="text-xs text-muted-foreground">Возможности</span>
             </div>
             <span className="text-xl font-heading font-bold text-foreground">{withGap}</span>
           </div>
           <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl p-3 sm:p-4">
             <div className="flex items-center gap-2 mb-1">
               <Layers className="w-4 h-4 text-amber-400" />
-              <span className="text-xs text-muted-foreground">\u041F\u0435\u0440\u0435\u0441\u0435\u0447\u0435\u043D\u0438\u044F</span>
+              <span className="text-xs text-muted-foreground">Пересечения</span>
             </div>
             <span className="text-xl font-heading font-bold text-foreground">{withOverlap}</span>
           </div>
@@ -487,7 +487,7 @@ function SkolkovoComparisonSection({ comparisons }: { comparisons: SkolkovoCompa
         <div className="bg-card/40 backdrop-blur-sm border border-cyan-400/10 rounded-xl p-4 sm:p-5 mb-6">
           <div className="flex items-center gap-2 mb-3">
             <Building2 className="w-4 h-4 text-cyan-400" />
-            <span className="text-xs font-heading font-semibold text-cyan-400">\u0411\u0435\u043D\u0447\u043C\u0430\u0440\u043A-\u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B \u0421\u041A\u041E\u041B\u041A\u041E\u0412\u041E</span>
+            <span className="text-xs font-heading font-semibold text-cyan-400">Бенчмарк-программы СКОЛКОВО</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {skolkovoPrograms.map((prog, idx) => (
@@ -515,7 +515,7 @@ function SkolkovoComparisonSection({ comparisons }: { comparisons: SkolkovoCompa
               onClick={() => setShowAll(!showAll)}
               className="px-4 py-2 rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground bg-muted/20 hover:bg-muted/40 border border-border/30 transition-all duration-200"
             >
-              {showAll ? "\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u043C\u0435\u043D\u044C\u0448\u0435" : `\u041F\u043E\u043A\u0430\u0437\u0430\u0442\u044C \u0432\u0441\u0435 (${comparisons.length})`}
+              {showAll ? "Показать меньше" : `Показать все (${comparisons.length})`}
             </button>
           </div>
         )}
@@ -532,7 +532,7 @@ export default function Education() {
   const [activeRegion, setActiveRegion] = useState<string | null>(null);
 
   useEffect(() => {
-    document.title = "AI Education Monitor \u2014 Business Schools";
+    document.title = "AI Education Monitor — Business Schools";
     const basePath = getBasePath();
     fetch(`${basePath}data/education-report.json`)
       .then((res) => {
@@ -568,7 +568,7 @@ export default function Education() {
           <div className="w-12 h-12 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center animate-pulse">
             <GraduationCap className="w-6 h-6 text-primary" />
           </div>
-          <p className="text-sm text-muted-foreground">\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430 \u0434\u0430\u043D\u043D\u044B\u0445...</p>
+          <p className="text-sm text-muted-foreground">Загрузка данных...</p>
         </div>
       </div>
     );
@@ -580,13 +580,13 @@ export default function Education() {
       <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
         <div className="text-center max-w-md px-4">
           <AlertTriangle className="w-12 h-12 text-amber-400 mx-auto mb-4" />
-          <h2 className="text-lg font-heading font-semibold mb-2">\u0414\u0430\u043D\u043D\u044B\u0435 \u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u043D\u044B</h2>
+          <h2 className="text-lg font-heading font-semibold mb-2">Данные недоступны</h2>
           <p className="text-sm text-muted-foreground mb-4">
-            \u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C \u043E\u0442\u0447\u0451\u0442 Education Monitor. {error && `\u041E\u0448\u0438\u0431\u043A\u0430: ${error}`}
+            Не удалось загрузить отчёт Education Monitor. {error && `Ошибка: ${error}`}
           </p>
           <Link href="/" className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors">
             <ArrowLeft className="w-4 h-4" />
-            \u0412\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u043D\u0430 \u0433\u043B\u0430\u0432\u043D\u0443\u044E
+            Вернуться на главную
           </Link>
         </div>
       </div>
@@ -619,7 +619,7 @@ export default function Education() {
               </h1>
               <div className="flex items-center gap-2">
                 <p className="text-[10px] text-muted-foreground font-mono">
-                  Business Schools \u2014 {formattedDate}
+                  Business Schools — {formattedDate}
                 </p>
               </div>
             </div>
@@ -630,7 +630,7 @@ export default function Education() {
           >
             <Activity className="w-3 h-3" />
             <span className="hidden sm:inline">AI Strategic Intelligence</span>
-            <span className="sm:hidden">\u0413\u043B\u0430\u0432\u043D\u0430\u044F</span>
+            <span className="sm:hidden">Главная</span>
           </Link>
         </div>
       </header>
@@ -646,21 +646,21 @@ export default function Education() {
                 <span className="w-8 h-px bg-primary/30" />
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-3">
-                \u041C\u043E\u043D\u0438\u0442\u043E\u0440\u0438\u043D\u0433 AI/ML \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C \u0432\u0435\u0434\u0443\u0449\u0438\u0445 \u0431\u0438\u0437\u043D\u0435\u0441-\u0448\u043A\u043E\u043B \u043C\u0438\u0440\u0430
+                Мониторинг AI/ML программ ведущих бизнес-школ мира
               </h2>
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                \u041E\u0442\u0441\u043B\u0435\u0436\u0438\u0432\u0430\u043D\u0438\u0435 \u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0445 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C \u043F\u043E \u0438\u0441\u043A\u0443\u0441\u0441\u0442\u0432\u0435\u043D\u043D\u043E\u043C\u0443 \u0438\u043D\u0442\u0435\u043B\u043B\u0435\u043A\u0442\u0443, \u043C\u0430\u0448\u0438\u043D\u043D\u043E\u043C\u0443 \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u044E \u0438 \u0446\u0438\u0444\u0440\u043E\u0432\u043E\u0439 \u0442\u0440\u0430\u043D\u0441\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438
-                \u0432 \u0432\u0435\u0434\u0443\u0449\u0438\u0445 \u0431\u0438\u0437\u043D\u0435\u0441-\u0448\u043A\u043E\u043B\u0430\u0445 \u043C\u0438\u0440\u0430. \u0422\u0440\u0435\u043D\u0434\u044B, \u043A\u043E\u043D\u043A\u0443\u0440\u0435\u043D\u0442\u043D\u044B\u0435 \u0441\u0438\u0433\u043D\u0430\u043B\u044B, \u0430\u043D\u0430\u043B\u0438\u0442\u0438\u043A\u0430 \u0438 \u0441\u0440\u0430\u0432\u043D\u0435\u043D\u0438\u0435 \u0441\u043E \u0421\u041A\u041E\u041B\u041A\u041E\u0412\u041E.
+                Отслеживание образовательных программ по искусственному интеллекту, машинному обучению и цифровой трансформации
+                в ведущих бизнес-школах мира. Тренды, конкурентные сигналы, аналитика и сравнение со СКОЛКОВО.
               </p>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4">
-              <StatCard icon={GraduationCap} value={data.meta.total_programs} label="\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C" accent="bg-primary/15" />
-              <StatCard icon={TrendingUp} value={data.meta.total_trends} label="\u0422\u0440\u0435\u043D\u0434\u043E\u0432" accent="bg-amber-400/15" />
-              <StatCard icon={AlertTriangle} value={data.meta.total_signals} label="\u0421\u0438\u0433\u043D\u0430\u043B\u043E\u0432" accent="bg-red-400/15" />
-              <StatCard icon={Globe} value={regionKeys.length} label="\u0420\u0435\u0433\u0438\u043E\u043D\u043E\u0432" accent="bg-purple-400/15" />
-              <StatCard icon={Building2} value={skolkovoComparisons.length} label="\u0421\u041A\u041E\u041B\u041A\u041E\u0412\u041E \u0441\u0440\u0430\u0432\u043D\u0435\u043D\u0438\u0439" accent="bg-cyan-400/15" />
+              <StatCard icon={GraduationCap} value={data.meta.total_programs} label="Программ" accent="bg-primary/15" />
+              <StatCard icon={TrendingUp} value={data.meta.total_trends} label="Трендов" accent="bg-amber-400/15" />
+              <StatCard icon={AlertTriangle} value={data.meta.total_signals} label="Сигналов" accent="bg-red-400/15" />
+              <StatCard icon={Globe} value={regionKeys.length} label="Регионов" accent="bg-purple-400/15" />
+              <StatCard icon={Building2} value={skolkovoComparisons.length} label="СКОЛКОВО сравнений" accent="bg-cyan-400/15" />
             </div>
           </div>
         </section>
@@ -680,10 +680,10 @@ export default function Education() {
           <div className="container">
             <div className="flex items-center gap-2 mb-2">
               <MapPin className="w-4 h-4 text-primary" />
-              <span className="text-[10px] font-mono text-primary/60 uppercase tracking-widest">\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B</span>
+              <span className="text-[10px] font-mono text-primary/60 uppercase tracking-widest">Программы</span>
             </div>
             <h3 className="text-lg sm:text-xl font-heading font-bold text-foreground mb-4">
-              \u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B \u043F\u043E \u0440\u0435\u0433\u0438\u043E\u043D\u0430\u043C
+              Программы по регионам
             </h3>
 
             {/* Region filter pills */}
@@ -696,7 +696,7 @@ export default function Education() {
                     : "bg-muted/30 text-muted-foreground hover:text-foreground border border-transparent"
                 }`}
               >
-                \u0412\u0441\u0435 \u0440\u0435\u0433\u0438\u043E\u043D\u044B
+                Все регионы
               </button>
               {regionKeys.map((key) => {
                 const meta = REGION_META[key];
@@ -737,10 +737,10 @@ export default function Education() {
           <div className="container">
             <div className="flex items-center gap-2 mb-2">
               <TrendingUp className="w-4 h-4 text-primary" />
-              <span className="text-[10px] font-mono text-primary/60 uppercase tracking-widest">\u0422\u0440\u0435\u043D\u0434\u044B</span>
+              <span className="text-[10px] font-mono text-primary/60 uppercase tracking-widest">Тренды</span>
             </div>
             <h3 className="text-lg sm:text-xl font-heading font-bold text-foreground mb-4">
-              \u041A\u043B\u044E\u0447\u0435\u0432\u044B\u0435 \u0442\u0440\u0435\u043D\u0434\u044B
+              Ключевые тренды
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               {data.trends.map((trend, idx) => (
@@ -755,10 +755,10 @@ export default function Education() {
           <div className="container">
             <div className="flex items-center gap-2 mb-2">
               <AlertTriangle className="w-4 h-4 text-amber-400" />
-              <span className="text-[10px] font-mono text-amber-400/60 uppercase tracking-widest">\u0421\u0438\u0433\u043D\u0430\u043B\u044B</span>
+              <span className="text-[10px] font-mono text-amber-400/60 uppercase tracking-widest">Сигналы</span>
             </div>
             <h3 className="text-lg sm:text-xl font-heading font-bold text-foreground mb-4">
-              \u041A\u043E\u043D\u043A\u0443\u0440\u0435\u043D\u0442\u043D\u044B\u0435 \u0441\u0438\u0433\u043D\u0430\u043B\u044B
+              Конкурентные сигналы
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
               {data.competitive_signals.map((signal, idx) => (
@@ -775,7 +775,7 @@ export default function Education() {
               <div className="bg-card/40 backdrop-blur-sm border border-border/30 rounded-xl p-4 sm:p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <Users className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-xs font-heading font-semibold text-muted-foreground">\u041F\u0440\u0438\u043C\u0435\u0447\u0430\u043D\u0438\u044F</span>
+                  <span className="text-xs font-heading font-semibold text-muted-foreground">Примечания</span>
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed">{data.notes}</p>
               </div>
@@ -790,7 +790,7 @@ export default function Education() {
           <div className="flex items-center gap-2">
             <GraduationCap className="w-4 h-4 text-primary/60" />
             <span className="text-[10px] text-muted-foreground font-mono">
-              AI Education Monitor \u2014 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u043E {formattedDate}
+              AI Education Monitor — обновлено {formattedDate}
             </span>
           </div>
           <div className="flex items-center gap-4">
@@ -798,10 +798,10 @@ export default function Education() {
               href="/"
               className="text-[10px] text-muted-foreground hover:text-primary transition-colors font-mono"
             >
-              \u2190 AI Strategic Intelligence
+              ← AI Strategic Intelligence
             </Link>
             <span className="text-[10px] text-muted-foreground/40 font-mono">
-              \u0414\u0430\u043D\u043D\u044B\u0435 \u043E\u0431\u043D\u043E\u0432\u043B\u044F\u044E\u0442\u0441\u044F 3 \u0440\u0430\u0437\u0430 \u0432 \u0434\u0435\u043D\u044C
+              Данные обновляются 3 раза в день
             </span>
           </div>
         </div>
