@@ -175,6 +175,50 @@
         "description": "Обзор ландшафта ИИ в Юго-Восточной Азии. Регуляторные особенности, локальные стартапы и возможности для международного бизнеса.",
         "url": "https://executive-education.nus.edu.sg/"
       }
+    ],
+    "Russia": [
+      {
+        "institution": "Школа управления СКОЛКОВО",
+        "program_name": "Цифровая трансформация бизнеса",
+        "level": "Premium_Long",
+        "description": "Флагманская программа СКОЛКОВО по цифровой трансформации, охватывающая стратегию данных, ИИ, управление изменениями и цифровые бизнес-модели. Программа ориентирована на руководителей высшего звена и владельцев бизнеса.",
+        "url": "https://www.skolkovo.ru/programmes/"
+      },
+      {
+        "institution": "Школа управления СКОЛКОВО",
+        "program_name": "AI для руководителей",
+        "level": "Applied_Short",
+        "description": "Короткая интенсивная программа для C-level руководителей по стратегическому применению ИИ в бизнесе. Практические кейсы, работа с LLM и генеративным ИИ.",
+        "url": "https://www.skolkovo.ru/programmes/"
+      },
+      {
+        "institution": "Высшая школа экономики (ВШЭ)",
+        "program_name": "Data Science и машинное обучение",
+        "level": "Intermediate",
+        "description": "Профессиональная переподготовка по Data Science с упором на практическое применение ML-моделей в бизнесе. ВКЛючает модули по NLP, компьютерному зрению и генеративному ИИ.",
+        "url": "https://www.hse.ru/ma/datasci/"
+      },
+      {
+        "institution": "РАНХиГС",
+        "program_name": "Искусственный интеллект для государственного управления",
+        "level": "Intermediate",
+        "description": "Программа повышения квалификации для госслужащих по применению ИИ в госуправлении. Фокус на автоматизации процессов, аналитике данных и этике ИИ.",
+        "url": "https://www.ranepa.ru/"
+      },
+      {
+        "institution": "Сбер Университет",
+        "program_name": "Agentic AI для бизнеса",
+        "level": "Applied_Short",
+        "description": "Новая программа Сбер Университета по агентному ИИ: проектирование автономных систем, мультиагентные архитектуры и интеграция с корпоративными системами.",
+        "url": "https://sberuniversity.ru/"
+      },
+      {
+        "institution": "Университет Иннополис",
+        "program_name": "AI и робототехника: магистратура",
+        "level": "Premium_Long",
+        "description": "Магистерская программа по ИИ и робототехнике с упором на практические проекты. Партнёрство с яндексом и крупными технологическими компаниями.",
+        "url": "https://innopolis.university/"
+      }
     ]
   },
   "trends": [
@@ -231,11 +275,104 @@
       "impact": "Высокий — прямой доступ к китайской tech-экосистеме, уникальное предложение для международных студентов"
     }
   ],
-  "notes": "Отчёт подготовлен на основе анализа RSS-лент, пресс-релизов и публикаций ведущих бизнес-школ мира. Данные актуальны на 28 апреля 2026 года. Наблюдается устойчивый тренд на интеграцию агентного ИИ и LLM в образовательные программы всех уровней.",
+  "notes": "Отчёт подготовлен на основе анализа RSS-лент, пресс-релизов и публикаций ведущих бизнес-школ мира, включая российские институции (СКОЛКОВО, ВШЭ, РАНХиГС, Сбер Университет, Иннополис). Добавлен сравнительный анализ с портфелем AI/цифровых программ Школы управления СКОЛКОВО.",
   "meta": {
-    "total_programs": 24,
+    "total_programs": 29,
     "total_trends": 5,
     "total_signals": 5,
-    "processed_at": "2026-04-28T10:00:00Z"
-  }
+    "processed_at": "2026-04-28T10:00:00Z",
+    "total_skolkovo_comparisons": 10
+  },
+  "skolkovo_comparison": [
+    {
+      "competitor_program": "AI for Business Leadership",
+      "competitor_institution": "Harvard Business School",
+      "competitor_region": "USA",
+      "skolkovo_equivalent": "Цифровая трансформация бизнеса",
+      "advantage": "Глобальный бренд Harvard, доступ к экосистеме Силиконовой долины, широкая сеть выпускников",
+      "gap": "Нет русскоязычной версии, не учитывает специфику российского рынка и регуляторной среды",
+      "overlap": "Прямое пересечение по тематике цифровой трансформации и стратегического применения ИИ"
+    },
+    {
+      "competitor_program": "Generative AI: Implications for Business Strategy",
+      "competitor_institution": "MIT Sloan School of Management",
+      "competitor_region": "USA",
+      "skolkovo_equivalent": "AI для руководителей",
+      "advantage": "Более глубокая техническая составляющая, прямой доступ к лабораториям MIT",
+      "gap": "Короткий формат не позволяет глубоко проработать внедрение; СКОЛКОВО может предложить сопровождение внедрения",
+      "overlap": ""
+    },
+    {
+      "competitor_program": "AI Transformation Programme",
+      "competitor_institution": "London Business School",
+      "competitor_region": "UK",
+      "skolkovo_equivalent": "Цифровая трансформация бизнеса",
+      "advantage": "Международная сеть выпускников, сильный модуль по этике ИИ",
+      "gap": "Высокая стоимость (££40,000+), нет фокуса на развивающихся рынках",
+      "overlap": "Полное пересечение по тематике цифровой трансформации"
+    },
+    {
+      "competitor_program": "AI Strategy for Business Leaders",
+      "competitor_institution": "INSEAD",
+      "competitor_region": "EU",
+      "skolkovo_equivalent": "AI для руководителей",
+      "advantage": "Три кампуса (Франция, Сингапур, Абу-Даби), мультикультурная среда",
+      "gap": "Нет глубокого погружения в российскую ИИ-экосистему (Яндекс, Сбер, VK)",
+      "overlap": "Пересечение по формату executive short program"
+    },
+    {
+      "competitor_program": "Machine Learning for Decision Making",
+      "competitor_institution": "Stanford Graduate School of Business",
+      "competitor_region": "USA",
+      "skolkovo_equivalent": "Data-Driven Management",
+      "advantage": "Доступ к передовым исследованиям Stanford AI Lab, сильная техническая база",
+      "gap": "Фокус на технологиях, меньше внимания управленческим решениям; СКОЛКОВО сильнее в бизнес-контексте",
+      "overlap": "Пересечение по теме data-driven принятия решений"
+    },
+    {
+      "competitor_program": "Global Executive MBA with AI Specialization",
+      "competitor_institution": "HEC Paris",
+      "competitor_region": "EU",
+      "skolkovo_equivalent": "Executive MBA with AI track",
+      "advantage": "Рейтинг FT Top-3, партнёрство с Google и Microsoft",
+      "gap": "Стоимость €90,000+, недоступно для большинства российских руководителей",
+      "overlap": "Прямой конкурент по формату EMBA + AI"
+    },
+    {
+      "competitor_program": "AI and Digital Transformation Executive Program",
+      "competitor_institution": "Tsinghua University PBC School of Finance",
+      "competitor_region": "China",
+      "skolkovo_equivalent": "Цифровая трансформация бизнеса",
+      "advantage": "Глубокая интеграция с китайской тех-экосистемой (Baidu, Alibaba, Tencent)",
+      "gap": "Нет фокуса на европейских/российских рынках; языковой барьер",
+      "overlap": "Пересечение по тематике цифровой трансформации"
+    },
+    {
+      "competitor_program": "AI for Business Impact",
+      "competitor_institution": "Oxford Saïd Business School",
+      "competitor_region": "UK",
+      "skolkovo_equivalent": "Data-Driven Management",
+      "advantage": "Сильный академический бренд, кейсы из финтеха и здравоохранения",
+      "gap": "Нет отраслевой специализации для российской промышленности и энергетики",
+      "overlap": ""
+    },
+    {
+      "competitor_program": "ISB Executive Education: AI for Leaders",
+      "competitor_institution": "Indian School of Business",
+      "competitor_region": "India",
+      "skolkovo_equivalent": "AI для руководителей",
+      "advantage": "Низкая стоимость, сильная техническая база индийского IT-сектора",
+      "gap": "Меньше фокуса на стратегическом уровне; СКОЛКОВО сильнее в executive-контексте",
+      "overlap": ""
+    },
+    {
+      "competitor_program": "Agentic AI for Enterprise",
+      "competitor_institution": "Columbia Business School",
+      "competitor_region": "USA",
+      "skolkovo_equivalent": "AI для руководителей",
+      "advantage": "Уникальный фокус на агентном ИИ — передовая тема 2026 года",
+      "gap": "СКОЛКОВО может добавить модуль по Agentic AI с российскими кейсами (Сбер, Яндекс)",
+      "overlap": "Частичное пересечение по теме ИИ для бизнеса"
+    }
+  ]
 }
