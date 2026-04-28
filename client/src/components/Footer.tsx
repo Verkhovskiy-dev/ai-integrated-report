@@ -6,6 +6,8 @@
 import { REPORT_PERIOD } from "@/data/reportData";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
+import { Link } from "wouter";
+import { GraduationCap } from "lucide-react";
 
 export default function Footer() {
   const { isLive, reportDate } = useLiveData();
@@ -30,7 +32,15 @@ export default function Footer() {
                     : `Период: ${REPORT_PERIOD.start} — ${REPORT_PERIOD.end} · ${REPORT_PERIOD.totalReports} отчётов`)}
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <Link
+              href="/education"
+              className="flex items-center gap-1 text-[9px] sm:text-[10px] font-mono text-muted-foreground/60 hover:text-primary transition-colors"
+            >
+              <GraduationCap className="w-3 h-3" />
+              <span>{isEn ? "Education Monitor" : "Education Monitor"}</span>
+            </Link>
+            <div className="flex items-center gap-2">
             <div className={`w-1.5 h-1.5 rounded-full ${isLive ? "bg-green-400" : "bg-amber-400"} pulse-signal`} />
             <span className="text-[9px] sm:text-[10px] font-mono text-muted-foreground">
               {isLive
@@ -41,6 +51,7 @@ export default function Footer() {
                     ? "Static data (fallback)"
                     : "Статические данные (fallback)")}
             </span>
+            </div>
           </div>
         </div>
       </div>

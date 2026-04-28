@@ -10,11 +10,13 @@ import { I18nProvider } from "./contexts/I18nContext";
 import { ViewModeProvider } from "./contexts/ViewModeContext";
 import { ExecutiveDataProvider } from "./contexts/ExecutiveDataContext";
 import Home from "./pages/Home";
+import Education from "./pages/Education";
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/education"} component={Education} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
