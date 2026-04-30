@@ -12,6 +12,7 @@ import {
   Flame, Clock, Users, Award, Building2, ArrowRightLeft, ShieldCheck,
   Target, Lightbulb, Layers
 } from "lucide-react";
+import EducationWhatsNew from "../components/EducationWhatsNew";
 
 /* ── Types ── */
 interface Program {
@@ -664,6 +665,9 @@ export default function Education() {
             </div>
           </div>
         </section>
+
+        {/* ── What's New: Dynamic Section ── */}
+        <EducationWhatsNew />
 
         {/* ── Regional Overview ── */}
         <section className="py-6 sm:py-10">
