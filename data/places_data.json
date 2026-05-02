@@ -1,0 +1,2233 @@
+{
+  "meta": {
+    "generated_at": "2026-05-02T11:08:55Z",
+    "version": "1.0.0",
+    "period": {
+      "month": 4,
+      "year": 2026,
+      "label": "Апрель 2026",
+      "start_date": "2026-04-01",
+      "end_date": "2026-04-30",
+      "total_events": 3599
+    },
+    "total_places": 56,
+    "places_by_level": {
+      "1": 6,
+      "2": 6,
+      "3": 7,
+      "4": 7,
+      "5": 6,
+      "6": 7,
+      "7": 5,
+      "8": 6,
+      "9": 6
+    },
+    "places_by_capacity": {
+      "small": 1,
+      "medium": 28,
+      "large": 27
+    },
+    "places_by_window": {
+      "open": 12,
+      "narrowing": 34,
+      "closing": 10
+    },
+    "places_by_confidence": {
+      "high": 25,
+      "medium": 27,
+      "low": 4
+    },
+    "turbulence_index": 12.5,
+    "signal_of_month": "Институционализация AI в денежной системе: инвестиции превращаются из венчурной истории в масштабную инфраструктурную и долговую архитектуру (REIT, junk bonds, проектное финансирование >$50B за месяц)",
+    "pipeline_version": "1.0.0",
+    "source": "1ni5CVTBZhzGPSRSDx41oR4dicET5bQeoZd1vlffycYc"
+  },
+  "places": [
+    {
+      "id": "srt1-energy-integrator",
+      "srt_level": 1,
+      "srt_level_name": "Природные ресурсы",
+      "name": "Интегратор энергоснабжения AI-инфраструктуры",
+      "description": "Компания/подразделение, объединяющее управление энергетикой и AI-вычислительной инфраструктурой для стабильного питания дата-центров.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 5000000000,
+        "active_players_count": 5,
+        "confidence": "high",
+        "reasoning": "Сопоставимо с рынком промышленной энергетики. Подтверждённые сделки Microsoft в Техасе, Oracle-Bloom 2.8 ГВт, X-Energy IPO."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Крупные игроки активно занимают позиции, но рынок достаточно велик для новых участников."
+      },
+      "entry_conditions": [
+        "Капитал >$500M",
+        "Доступ к энергетическим активам",
+        "Опыт в энергетике и AI-инфраструктуре"
+      ],
+      "key_players": [
+        "Microsoft",
+        "Meta",
+        "NextEra Energy",
+        "Oracle",
+        "X-Energy"
+      ],
+      "evidence": "Сделки Microsoft в Техасе, Oracle-Bloom 2.8 ГВт, X-Energy IPO",
+      "confidence": "high",
+      "audience_lens": [
+        "investor",
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt1-critical-minerals",
+      "srt_level": 1,
+      "srt_level_name": "Природные ресурсы",
+      "name": "Поставщик критических минералов для AI-цикла",
+      "description": "Компания, добывающая и перерабатывающая минералы (гелий, вольфрам, медь) для AI и связанных технологий.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 7200000000,
+        "active_players_count": 4,
+        "confidence": "high",
+        "reasoning": "CATL $4.4 млрд, USA Rare Earth $2.8 млрд — подтверждённые сделки за один месяц."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (>6 мес)",
+        "description": "Геополитические ограничения и дефицит ресурсов сужают окно для новых игроков."
+      },
+      "entry_conditions": [
+        "Доступ к месторождениям",
+        "Технологический опыт переработки",
+        "Геополитические связи"
+      ],
+      "key_players": [
+        "CATL",
+        "USA Rare Earth",
+        "Госкорпорации",
+        "Стратегические инвесторы"
+      ],
+      "evidence": "CATL $4.4 млрд, USA Rare Earth $2.8 млрд, рост интереса к вольфраму во Вьетнаме",
+      "confidence": "high",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt1-flexible-dc-operator",
+      "srt_level": 1,
+      "srt_level_name": "Природные ресурсы",
+      "name": "Оператор «гибких» дата-центров в регионах с профицитом ВИЭ",
+      "description": "Провайдер дата-центров, использующий периоды отрицательных/низких цен на электроэнергию для оптимизации себестоимости AI-инфраструктуры.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 200000000,
+        "active_players_count": 3,
+        "confidence": "medium",
+        "reasoning": "Нишевой рынок, аналогичный рынку colocation в ранней стадии. Подтверждённые сделки Firmus."
+      },
+      "window": {
+        "category": "open",
+        "label": "Краткосрочное (<6 мес)",
+        "description": "Окно открыто — рынок только формируется, крупные игроки ещё не вошли."
+      },
+      "entry_conditions": [
+        "Доступ к ВИЭ",
+        "Телеком-инфраструктура",
+        "Устойчивое законодательство региона"
+      ],
+      "key_players": [
+        "Firmus",
+        "Локальные девелоперы дата-центров",
+        "Энергетические компании"
+      ],
+      "evidence": "Отрицательные цены на электроэнергию в Польше, сделки Firmus",
+      "confidence": "medium",
+      "audience_lens": [
+        "founder",
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt1-cooling-efficiency",
+      "srt_level": 1,
+      "srt_level_name": "Природные ресурсы",
+      "name": "Специалисты по энергоэффективности и охлаждению AI",
+      "description": "Эксперты, создающие технологии охлаждения и энергоэффективного оборудования для дата-центров AI.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 150000000,
+        "active_players_count": 6,
+        "confidence": "medium",
+        "reasoning": "Аналогично рынку промышленного HVAC, но специализированному под AI-нагрузки."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Кратко- и среднесрочное (<18 мес)",
+        "description": "Спрос растёт быстрее предложения, но крупные HVAC-компании начинают входить."
+      },
+      "entry_conditions": [
+        "Техническая компетенция в HVAC",
+        "Опыт в энергетике",
+        "Опыт работы с AI-инфраструктурой"
+      ],
+      "key_players": [
+        "Инженерные фирмы",
+        "Стартапы охлаждения",
+        "Лаборатории"
+      ],
+      "evidence": "Техпланирование под экстремальную погоду, запросы на энергоэффективность",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt1-alternative-energy",
+      "srt_level": 1,
+      "srt_level_name": "Природные ресурсы",
+      "name": "Провайдеры альтернативной энергетики для AI",
+      "description": "Компании, создающие устойчивые источники энергии (малые АЭС, космическая солнечная энергия) для AI дата-центров.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 3000000000,
+        "active_players_count": 4,
+        "confidence": "medium",
+        "reasoning": "Рынок малых модульных реакторов оценивается в $10B+ к 2030. Проекты DOE и Meta подтверждают масштаб."
+      },
+      "window": {
+        "category": "closing",
+        "label": "Долгосрочное (>18 мес)",
+        "description": "Высокие барьеры входа и длительные циклы разработки ограничивают доступ."
+      },
+      "entry_conditions": [
+        "Высокие технологические требования",
+        "Капиталоёмкость >$1B",
+        "Государственная поддержка и лицензии"
+      ],
+      "key_players": [
+        "Antares (DOE)",
+        "Meta",
+        "Энергетические стартапы",
+        "Госкорпорации"
+      ],
+      "evidence": "Antares DOE, Meta космическая солнечная энергетика",
+      "confidence": "medium",
+      "audience_lens": [
+        "investor",
+        "founder"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt1-institutional-energy-investor",
+      "srt_level": 1,
+      "srt_level_name": "Природные ресурсы",
+      "name": "Институциональные инвесторы в энергетическую AI-инфраструктуру",
+      "description": "Фонды и банки, создающие финансовые инструменты для энергоинфраструктуры AI (junk bonds, проектное финансирование).",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 10240000000,
+        "active_players_count": 5,
+        "confidence": "high",
+        "reasoning": "CoreWeave $4.54 млрд + Google $5.7 млрд junk bonds — только за апрель. Рынок AI-энергофинансирования >$50B/год."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Кратко- и среднесрочное (<18 мес)",
+        "description": "Институциональные игроки активно входят, но объём рынка позволяет новым участникам."
+      },
+      "entry_conditions": [
+        "Финансовые ресурсы >$100M",
+        "Экспертиза в инфраструктурных проектах",
+        "Доступ к рынкам капитала"
+      ],
+      "key_players": [
+        "CoreWeave",
+        "Google",
+        "Инвестфонды",
+        "Банки"
+      ],
+      "evidence": "CoreWeave $4.54 млрд, Google $5.7 млрд junk bonds",
+      "confidence": "high",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt2-dc-reit",
+      "srt_level": 2,
+      "srt_level_name": "Пространственная организация",
+      "name": "Финансовые инструменты и REIT для дата-центров",
+      "description": "Специализированные фондовые инструменты и REIT, связанные с владением и управлением дата-центрами AI.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 4540000000,
+        "active_players_count": 4,
+        "confidence": "high",
+        "reasoning": "IPO AirTrunk и долговое финансирование $4.54 млрд подтверждают масштаб рынка DC REIT."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (6-18+ мес)",
+        "description": "Рынок институционализируется, но ещё есть место для специализированных REIT."
+      },
+      "entry_conditions": [
+        "Доступ к проектному финансированию",
+        "Владение дата-центровыми активами",
+        "Опыт управления недвижимостью"
+      ],
+      "key_players": [
+        "AirTrunk",
+        "Девелоперы дата-центров",
+        "Финансовые фонды",
+        "Институциональные инвесторы"
+      ],
+      "evidence": "IPO AirTrunk (Сингапур), долговое финансирование $4.54 млрд",
+      "confidence": "high",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt2-space-energy-dc",
+      "srt_level": 2,
+      "srt_level_name": "Пространственная организация",
+      "name": "Космическая энергетика и космические дата-центры",
+      "description": "Использование космических источников энергии и размещение вычислительных мощностей на орбите.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 2000000000,
+        "active_players_count": 3,
+        "confidence": "low",
+        "reasoning": "Рынок находится на ранней стадии, но проекты Meta и Blue Origin указывают на потенциал >$10B."
+      },
+      "window": {
+        "category": "closing",
+        "label": "Долгосрочное (>18 мес)",
+        "description": "Экстремально высокие барьеры входа, только для крупнейших игроков."
+      },
+      "entry_conditions": [
+        "Высокие капвложения >$5B",
+        "Технологический опыт в космосе",
+        "Партнерства с аэрокосмическими компаниями"
+      ],
+      "key_players": [
+        "Meta",
+        "Blue Origin",
+        "Anduril"
+      ],
+      "evidence": "Проекты Meta, Blue Origin планы по 8–12 запускам в 2026",
+      "confidence": "low",
+      "audience_lens": [
+        "investor",
+        "founder"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt2-regional-ai-hubs",
+      "srt_level": 2,
+      "srt_level_name": "Пространственная организация",
+      "name": "Региональные AI-хабы с интегрированной энергетикой и охлаждением",
+      "description": "Региональные кластеры дата-центров, использующие локальные энергетические и климатические преимущества.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 1500000000,
+        "active_players_count": 5,
+        "confidence": "medium",
+        "reasoning": "Расширение Microsoft в Австралии и планы в Норвегии/Испании указывают на рынок $5B+."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Гиперскейлеры активно занимают регионы, но локальные операторы имеют преимущества."
+      },
+      "entry_conditions": [
+        "Доступ к дешёвой энергии",
+        "Поддержка местных властей",
+        "Телеком-связь"
+      ],
+      "key_players": [
+        "Microsoft",
+        "Локальные операторы",
+        "Гиперскейлеры",
+        "Госструктуры"
+      ],
+      "evidence": "Microsoft Австралия, Норвегия и Испания как AI-узлы",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt2-sovereign-digital-circuits",
+      "srt_level": 2,
+      "srt_level_name": "Пространственная организация",
+      "name": "Локализованные и суверенные цифровые контуры",
+      "description": "Инфраструктуры с локальными режимами доступа к AI, правилами и хранением, обеспечивающие безопасность и комплаенс.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 500000000,
+        "active_players_count": 6,
+        "confidence": "medium",
+        "reasoning": "Аналогично рынку суверенных облаков. Фрагментация регуляций ускоряет формирование."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (6-18+ мес)",
+        "description": "Регуляторное давление нарастает, создавая спрос, но реализация требует времени."
+      },
+      "entry_conditions": [
+        "Комплаенс-экспертиза",
+        "Инфраструктура данных",
+        "Доверие пользователей и регуляторов"
+      ],
+      "key_players": [
+        "Госструктуры",
+        "Крупные корпорации",
+        "Локальные облачные провайдеры"
+      ],
+      "evidence": "Примеры регуляторных различий: США, Китай, Европа, Гонконг, Россия",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt2-behind-the-meter",
+      "srt_level": 2,
+      "srt_level_name": "Пространственная организация",
+      "name": "Энергетические и сетевые решения «за счётчиком»",
+      "description": "Локальные генераторы, батареи и решения для обхода ограничений сетей при быстром развертывании дата-центров.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 300000000,
+        "active_players_count": 5,
+        "confidence": "medium",
+        "reasoning": "Узкие места в электросетях США создают рынок bypass-решений, аналогичный distributed generation."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Кратко- и среднесрочное (<18 мес)",
+        "description": "Острая потребность рынка, но технологические решения ещё не стандартизированы."
+      },
+      "entry_conditions": [
+        "Технологии энергетики",
+        "Капитал",
+        "Партнерства с регуляторами"
+      ],
+      "key_players": [
+        "Microsoft",
+        "Apple",
+        "Девелоперы",
+        "Энергетические стартапы"
+      ],
+      "evidence": "Ускоренный запуск дата-центров с батареями и газом",
+      "confidence": "medium",
+      "audience_lens": [
+        "founder",
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt2-satellite-infrastructure",
+      "srt_level": 2,
+      "srt_level_name": "Пространственная организация",
+      "name": "Спутниковая инфраструктура для AI и облаков",
+      "description": "Размещение и эксплуатация спутниковых сетей для расширения покрытия AI-сервисов, создание новых узлов связи.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 11600000000,
+        "active_players_count": 3,
+        "confidence": "high",
+        "reasoning": "Сделка Amazon-Globalstar $11.6 млрд — одна из крупнейших в секторе за месяц."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (6-18+ мес)",
+        "description": "Олигопольный рынок с высокими барьерами, но растущий спрос создаёт ниши."
+      },
+      "entry_conditions": [
+        "Капвложения >$1B",
+        "Лицензии на спектр",
+        "Технологический опыт"
+      ],
+      "key_players": [
+        "Amazon",
+        "Globalstar",
+        "Blue Origin",
+        "Телеком-операторы"
+      ],
+      "evidence": "Сделка Amazon-Globalstar $11.6 млрд, планы Blue Origin",
+      "confidence": "high",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt3-agent-reliability-engineer",
+      "srt_level": 3,
+      "srt_level_name": "Социально-профессиональная структура",
+      "name": "Инженер надежности агентных систем",
+      "description": "Специалист по стабильности, безопасности и аудиту автономных AI-агентов.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 500000000,
+        "active_players_count": 8,
+        "confidence": "high",
+        "reasoning": "Аналогично рынку SRE/DevOps ($15B), но для AI-агентов. Рост вакансий подтверждает формирование."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (6-18+ мес)",
+        "description": "Профессия формируется, стандарты ещё не устоялись — есть время для входа."
+      },
+      "entry_conditions": [
+        "Знания ML и безопасности",
+        "Опыт с агентными системами",
+        "Red-teaming навыки"
+      ],
+      "key_players": [
+        "Anthropic",
+        "AI-инженеры",
+        "Специалисты по безопасности"
+      ],
+      "evidence": "Рост вакансий, проекты Anthropic, Universal Verifier, SELFDOUBT",
+      "confidence": "high",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt3-gig-robot-trainer",
+      "srt_level": 3,
+      "srt_level_name": "Социально-профессиональная структура",
+      "name": "Gig-robot trainer / домашний датасеттер для embodied AI",
+      "description": "Gig-работник, собирающий данные о движениях для обучения гуманоидных роботов.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 100000000,
+        "active_players_count": 4,
+        "confidence": "medium",
+        "reasoning": "Аналогично рынку data labeling ($1B+), но специализированному для физических данных."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Кратко- и среднесрочное (<18 мес)",
+        "description": "Рынок только формируется, низкие барьеры входа для платформ."
+      },
+      "entry_conditions": [
+        "Минимальные требования к работникам",
+        "Доступ к оборудованию захвата движений",
+        "Платформа координации"
+      ],
+      "key_players": [
+        "Gig-работники из развивающихся стран",
+        "Платформы данных",
+        "Robotics-стартапы"
+      ],
+      "evidence": "Gig-работники из Нигерии, описание gig-robot trainer апрель 2026, MIT Technology Review",
+      "confidence": "medium",
+      "audience_lens": [
+        "founder"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt3-ai-ops-supervisor",
+      "srt_level": 3,
+      "srt_level_name": "Социально-профессиональная структура",
+      "name": "AI-ops и агент-супервайзер",
+      "description": "Операторы и контролеры работы AI-агентов в бизнес-процессах.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 300000000,
+        "active_players_count": 6,
+        "confidence": "high",
+        "reasoning": "Аналогично рынку ITSM ($10B+). Автоматизация middle-management создаёт массовый спрос."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Роль формируется в крупных компаниях, стандартизация впереди."
+      },
+      "entry_conditions": [
+        "Навыки управления процессами",
+        "Знание AI-инструментов",
+        "Опыт ITSM"
+      ],
+      "key_players": [
+        "Kyndryl",
+        "ITSM-специалисты",
+        "Процессные менеджеры",
+        "AI governance специалисты"
+      ],
+      "evidence": "События апреля, Kyndryl сервисы управления агентами",
+      "confidence": "high",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt3-ai-audit-specialist",
+      "srt_level": 3,
+      "srt_level_name": "Социально-профессиональная структура",
+      "name": "Специалист по аудиту и контролю AI-систем",
+      "description": "Эксперт по формальной верификации и аудиту поведения AI-систем.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 200000000,
+        "active_players_count": 5,
+        "confidence": "medium",
+        "reasoning": "Аналогично рынку аудита кибербезопасности ($5B). Регуляторное давление ускоряет рост."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (>6 мес)",
+        "description": "Нормативные требования нарастают, создавая устойчивый спрос."
+      },
+      "entry_conditions": [
+        "Знание нормативов AI",
+        "Опыт верификации",
+        "Компетенции в ML и compliance"
+      ],
+      "key_players": [
+        "Кибербезопасность-компании",
+        "Compliance-консультанты",
+        "ML-инженеры с опытом аудита"
+      ],
+      "evidence": "События апреля, проекты по аудиту, Anthropic Mythos, Universal Verifier",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt3-ai-infrastructure-specialist",
+      "srt_level": 3,
+      "srt_level_name": "Социально-профессиональная структура",
+      "name": "Специалист по AI-инфраструктуре",
+      "description": "Инженеры, обеспечивающие работу вычислительной, энергетической и логистической инфраструктуры AI.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 1000000000,
+        "active_players_count": 10,
+        "confidence": "high",
+        "reasoning": "Масштабное строительство дата-центров создаёт дефицит кадров, аналогичный буму облачной инфраструктуры 2010-х."
+      },
+      "window": {
+        "category": "closing",
+        "label": "Долгосрочное (>18 мес)",
+        "description": "Устойчивый долгосрочный спрос, но конкуренция за кадры высока."
+      },
+      "entry_conditions": [
+        "Профильное образование",
+        "Опыт работы с инфраструктурой",
+        "Знание энергетики и supply chain"
+      ],
+      "key_players": [
+        "Инженеры",
+        "Энергетики",
+        "Supply chain специалисты",
+        "Oracle"
+      ],
+      "evidence": "События апреля, CFO Oracle о дефиците кадров",
+      "confidence": "high",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt3-ai-governance-lead",
+      "srt_level": 3,
+      "srt_level_name": "Социально-профессиональная структура",
+      "name": "AI governance lead / AI cyber operator",
+      "description": "Руководитель процессов безопасности и соответствия AI-систем в организациях.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 150000000,
+        "active_players_count": 7,
+        "confidence": "medium",
+        "reasoning": "Аналогично рынку CISO/DPO — каждая крупная организация будет нуждаться в AI governance lead."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Регуляторные требования UK NCSC и Anthropic ускоряют формирование роли."
+      },
+      "entry_conditions": [
+        "Опыт управления рисками",
+        "Знание AI и регуляторики",
+        "Кибербезопасность"
+      ],
+      "key_players": [
+        "Риск-менеджеры",
+        "Кибербезопасность-специалисты",
+        "Комплаенс-эксперты"
+      ],
+      "evidence": "Рост требований к контролю, регуляции, кибербезопасности AI (UK NCSC, Anthropic)",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt3-agent-workflow-architect",
+      "srt_level": 3,
+      "srt_level_name": "Социально-профессиональная структура",
+      "name": "Архитектор агентных рабочих процессов и проектировщик политик доступа",
+      "description": "Проектировщик схем взаимодействия человек-машина и политик доступа в AI-средах.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 100000000,
+        "active_players_count": 5,
+        "confidence": "medium",
+        "reasoning": "Аналогично рынку enterprise architecture ($3B), специализированному для AI-агентов."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (>6 мес)",
+        "description": "Усложнение AI-систем создаёт растущий спрос на архитекторов."
+      },
+      "entry_conditions": [
+        "Опыт проектирования IT-систем",
+        "Знание AI",
+        "Навыки безопасности"
+      ],
+      "key_players": [
+        "Системные архитекторы",
+        "Специалисты по безопасности",
+        "Enterprise architects"
+      ],
+      "evidence": "Усложнение AI-систем, необходимость объяснимого поведения агентов",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt4-silicon-photonics",
+      "srt_level": 4,
+      "srt_level_name": "«Железные» технологии",
+      "name": "Silicon photonics инженеры и разработчики",
+      "description": "Специалисты по разработке оптических чипов и интерконнектов для вычислительных платформ.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 2000000000,
+        "active_players_count": 4,
+        "confidence": "high",
+        "reasoning": "Партнерство Nvidia-Marvell и рост заказов Lumentum подтверждают масштаб рынка фотоники."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (6-18+ мес)",
+        "description": "Крупные полупроводниковые компании активно инвестируют, но ниши для стартапов остаются."
+      },
+      "entry_conditions": [
+        "Глубокие знания фотоники и микроэлектроники",
+        "R&D ресурсы",
+        "Партнерства с OEM"
+      ],
+      "key_players": [
+        "Nvidia",
+        "Marvell",
+        "Lumentum",
+        "Полупроводниковые стартапы"
+      ],
+      "evidence": "Nvidia-Marvell, Lumentum до 2028",
+      "confidence": "high",
+      "audience_lens": [
+        "founder",
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt4-memory-chip",
+      "srt_level": 4,
+      "srt_level_name": "«Железные» технологии",
+      "name": "AI-оптимизированные memory chip производители",
+      "description": "Производители специализированной памяти с высокой пропускной способностью и низкой задержкой для AI-вычислений.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 5000000000,
+        "active_players_count": 3,
+        "confidence": "high",
+        "reasoning": "Рост прибыли Samsung и SK Hynix, дефицит HBM подтверждают масштаб >$10B."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (>6 мес)",
+        "description": "Олигопольный рынок, но дефицит создаёт возможности для новых технологий."
+      },
+      "entry_conditions": [
+        "Доступ к техпроцессам",
+        "R&D бюджет >$500M",
+        "Партнерства с крупными производителями"
+      ],
+      "key_players": [
+        "Samsung",
+        "SK Hynix",
+        "Крупные производители памяти",
+        "Стартапы"
+      ],
+      "evidence": "Финансовые отчеты Samsung, планы листинга, дефицит HBM",
+      "confidence": "high",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt4-ai-chip-fab",
+      "srt_level": 4,
+      "srt_level_name": "«Железные» технологии",
+      "name": "Инженеры и операторы AI-ориентированных фабрик по чипам",
+      "description": "Специалисты запуска и управления фабриками AI-оптимизированных чипов.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 3000000000,
+        "active_players_count": 4,
+        "confidence": "medium",
+        "reasoning": "Запуск Terafab и стремление к вертикальной интеграции (Tesla) подтверждают рынок."
+      },
+      "window": {
+        "category": "closing",
+        "label": "Долгосрочное (>18 мес)",
+        "description": "Экстремально капиталоёмкий сегмент с длительными циклами строительства."
+      },
+      "entry_conditions": [
+        "Навыки в полупроводниках",
+        "Управление оборудованием",
+        "Капвложения >$5B"
+      ],
+      "key_players": [
+        "Tesla",
+        "Инженеры полупроводникового производства",
+        "TSMC",
+        "Intel"
+      ],
+      "evidence": "Запуск Terafab, запросы оборудования",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt4-dc-energy-infra",
+      "srt_level": 4,
+      "srt_level_name": "«Железные» технологии",
+      "name": "Разработчики и операторы энергоинфраструктуры AI-дата-центров",
+      "description": "Компании и специалисты по гибридным системам питания, космическому энергоснабжению.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 4000000000,
+        "active_players_count": 5,
+        "confidence": "high",
+        "reasoning": "Инвестиции Entergy и проекты Meta подтверждают масштаб рынка энергоинфраструктуры DC."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (>6 мес)",
+        "description": "Ограничения энергетики создают устойчивый спрос, крупные игроки входят."
+      },
+      "entry_conditions": [
+        "Экспертиза в энергетике",
+        "Партнерства с IT-компаниями",
+        "Капитал"
+      ],
+      "key_players": [
+        "Энергокомпании",
+        "Meta",
+        "Entergy",
+        "Стартапы",
+        "Инженеры-энергетики"
+      ],
+      "evidence": "Инвестиции Entergy, проекты Meta",
+      "confidence": "high",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt4-agent-memory-hardware",
+      "srt_level": 4,
+      "srt_level_name": "«Железные» технологии",
+      "name": "Инженеры и разработчики аппаратных решений для agent memory и governance layers",
+      "description": "Специалисты по созданию чипов и систем для долговременной памяти и безопасности AI-агентов.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 50000000,
+        "active_players_count": 3,
+        "confidence": "low",
+        "reasoning": "Рынок на ранней стадии. Публикации Springdrift и ShieldNet указывают на формирование."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Ниша только формируется, есть время для входа стартапам."
+      },
+      "entry_conditions": [
+        "Знания AI-архитектур",
+        "Аппаратная безопасность",
+        "R&D ресурсы"
+      ],
+      "key_players": [
+        "Стартапы AI hardware",
+        "R&D лаборатории",
+        "Исследователи"
+      ],
+      "evidence": "Публикации ShieldNet, Springdrift",
+      "confidence": "low",
+      "audience_lens": [
+        "founder"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt4-low-power-ai",
+      "srt_level": 4,
+      "srt_level_name": "«Железные» технологии",
+      "name": "Разработчики low-power AI hardware для периферии",
+      "description": "Производители чипов для AI на смартфонах и носимых устройствах.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 500000000,
+        "active_players_count": 4,
+        "confidence": "medium",
+        "reasoning": "Запуск Samsung и продвижение Qualcomm подтверждают рынок edge AI hardware."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Кратко-среднесрочное (<18 мес)",
+        "description": "Быстрый рост спроса на on-device AI создаёт окно для специализированных решений."
+      },
+      "entry_conditions": [
+        "Опыт в энергоэффективных архитектурах",
+        "Интеграция с мобильными платформами",
+        "Навыки оптимизации"
+      ],
+      "key_players": [
+        "Qualcomm",
+        "Apple",
+        "Samsung",
+        "Edge AI стартапы"
+      ],
+      "evidence": "Запуск Samsung, продвижение Qualcomm",
+      "confidence": "medium",
+      "audience_lens": [
+        "founder"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt4-chip-testing",
+      "srt_level": 4,
+      "srt_level_name": "«Железные» технологии",
+      "name": "Специалисты по тестированию и контролю качества AI-чипов",
+      "description": "Эксперты по тестированию и верификации качества AI-оборудования.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 200000000,
+        "active_players_count": 3,
+        "confidence": "medium",
+        "reasoning": "Дефицит тестовых мощностей (Advantest) указывает на растущий рынок."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Дефицит тестовых мощностей создаёт устойчивый спрос."
+      },
+      "entry_conditions": [
+        "Опыт тестирования чипов",
+        "Знание AI-специфик",
+        "Оборудование"
+      ],
+      "key_players": [
+        "Advantest",
+        "Компании по тестированию полупроводников",
+        "QA инженеры"
+      ],
+      "evidence": "Сообщения Advantest о дефиците тестовых мощностей",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt5-compute-as-a-service",
+      "srt_level": 5,
+      "srt_level_name": "Разделение труда между фирмами",
+      "name": "Compute-as-a-Service провайдер",
+      "description": "Фирмы, предоставляющие специализированные вычислительные мощности AI-лабораториям по долгосрочным контрактам.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 21000000000,
+        "active_players_count": 4,
+        "confidence": "high",
+        "reasoning": "$21 млрд контракт CoreWeave с Meta и multibillion контракт с Anthropic подтверждают масштаб."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (>6 мес)",
+        "description": "CoreWeave доминирует, но рынок достаточно велик для 3-5 крупных игроков."
+      },
+      "entry_conditions": [
+        "Инвестиции в масштабируемую инфраструктуру",
+        "Партнерства с AI-лабораториями",
+        "Капитал >$1B"
+      ],
+      "key_players": [
+        "CoreWeave",
+        "Специализированные cloud-провайдеры",
+        "Дата-центры",
+        "Инвестфонды"
+      ],
+      "evidence": "$21 млрд контракт CoreWeave с Meta, multibillion контракт с Anthropic",
+      "confidence": "high",
+      "audience_lens": [
+        "investor",
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt5-energy-operators-ai",
+      "srt_level": 5,
+      "srt_level_name": "Разделение труда между фирмами",
+      "name": "Энергетические операторы и инвесторы под AI-энергоцентры",
+      "description": "Компании, владеющие или инвестирующие в энергию (ВИЭ, storage) для AI-дата-центров.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 7000000000,
+        "active_players_count": 5,
+        "confidence": "high",
+        "reasoning": "Microsoft-Chevron $7 млрд и рост storage в Китае подтверждают масштаб."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (>6 мес)",
+        "description": "Энергетические шоки и дефицит мощности создают устойчивый спрос."
+      },
+      "entry_conditions": [
+        "Капиталоемкие проекты",
+        "Партнерства с AI-компаниями",
+        "Доступ к ресурсам"
+      ],
+      "key_players": [
+        "Microsoft",
+        "Chevron",
+        "Engine No.1",
+        "BigTech",
+        "Инфраструктурные фонды"
+      ],
+      "evidence": "Microsoft–Chevron $7 млрд, рост storage в Китае",
+      "confidence": "high",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt5-chip-sovereignty",
+      "srt_level": 5,
+      "srt_level_name": "Разделение труда между фирмами",
+      "name": "AI Chip Sovereignty Manufactures",
+      "description": "Производители AI-чипов, стремящиеся к суверенитету и снижению зависимости от глобальных цепочек (Rapidus).",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 4000000000,
+        "active_players_count": 3,
+        "confidence": "medium",
+        "reasoning": "Rapidus субсидии ¥631.5 млрд (~$4 млрд) подтверждают государственную поддержку суверенного производства."
+      },
+      "window": {
+        "category": "closing",
+        "label": "Долгосрочное (>18 мес)",
+        "description": "Экстремально капиталоёмкий сегмент, требующий государственной поддержки."
+      },
+      "entry_conditions": [
+        "Капвложения >$5B",
+        "Технологический уровень",
+        "Поддержка государства"
+      ],
+      "key_players": [
+        "Rapidus",
+        "Национальные проекты",
+        "Крупные производители",
+        "Стартапы"
+      ],
+      "evidence": "Rapidus субсидии ¥631.5 млрд (~$4 млрд)",
+      "confidence": "medium",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt5-infra-finance-secondary",
+      "srt_level": 5,
+      "srt_level_name": "Разделение труда между фирмами",
+      "name": "AI Infrastructure Finance and Secondary Market Operators",
+      "description": "Игроки на вторичном рынке долга и капитала дата-центров и AI-инфраструктуры.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 14000000000,
+        "active_players_count": 4,
+        "confidence": "high",
+        "reasoning": "Pimco продажи долга Oracle $14 млрд и AirTrunk REIT IPO подтверждают формирование вторичного рынка."
+      },
+      "window": {
+        "category": "open",
+        "label": "Кратко-среднесрочное (<18 мес)",
+        "description": "Рынок только формируется, институциональные инвесторы входят."
+      },
+      "entry_conditions": [
+        "Доступ к капиталу",
+        "Регуляторика",
+        "Наличие активов"
+      ],
+      "key_players": [
+        "Pimco",
+        "Blackstone",
+        "Банки",
+        "REIT структуры"
+      ],
+      "evidence": "Pimco продажи долга Oracle $14 млрд, AirTrunk REIT IPO",
+      "confidence": "high",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt5-agent-governance-platforms",
+      "srt_level": 5,
+      "srt_level_name": "Разделение труда между фирмами",
+      "name": "Agent Governance Platforms",
+      "description": "Поставщики систем управления, мониторинга и контроля AI-агентов (например, Kyndryl).",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 100000000,
+        "active_players_count": 5,
+        "confidence": "medium",
+        "reasoning": "Запуск Kyndryl сервиса и рост агентности AI подтверждают формирование рынка."
+      },
+      "window": {
+        "category": "open",
+        "label": "Кратко-среднесрочное (<18 мес)",
+        "description": "Рынок на ранней стадии, стандарты не устоялись — окно открыто."
+      },
+      "entry_conditions": [
+        "Технические компетенции в AgentOps",
+        "Партнерства с корпоративными клиентами",
+        "Безопасность"
+      ],
+      "key_players": [
+        "Kyndryl",
+        "IT-интеграторы",
+        "AI-стартапы"
+      ],
+      "evidence": "Запуск Kyndryl сервиса управления агентами",
+      "confidence": "medium",
+      "audience_lens": [
+        "founder",
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt5-industrial-ai-sensing",
+      "srt_level": 5,
+      "srt_level_name": "Разделение труда между фирмами",
+      "name": "Industrial AI Sensing & Inspection Integrators",
+      "description": "Компании, объединяющие AI с индустриальным контролем качества (Hexagon с Waygate).",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 1450000000,
+        "active_players_count": 4,
+        "confidence": "high",
+        "reasoning": "Сделка Hexagon-Waygate $1.45 млрд подтверждает масштаб рынка промышленного AI."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Конвергенция AI и промышленности ускоряется, крупные игроки входят."
+      },
+      "entry_conditions": [
+        "Экспертиза в оборудовании",
+        "AI-компетенции",
+        "Доступ к рынкам производства"
+      ],
+      "key_players": [
+        "Hexagon",
+        "Waygate",
+        "Индустриальные гиганты",
+        "AI-стартапы"
+      ],
+      "evidence": "Сделка Hexagon-Waygate $1.45 млрд",
+      "confidence": "high",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt6-model-customization",
+      "srt_level": 6,
+      "srt_level_name": "Технологии производства знаний",
+      "name": "Инженер кастомизации моделей и архитектуры внедрения",
+      "description": "Специалист по адаптации LLM под корпоративные данные и процессы, используя дообучение, RAG, контекстные хранилища.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 750000000,
+        "active_players_count": 8,
+        "confidence": "high",
+        "reasoning": "Сдвиг от универсальных моделей к кастомизации создаёт рынок, аналогичный enterprise software customization ($20B+)."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (>6 мес)",
+        "description": "Спрос растёт, но крупные cloud-провайдеры активно занимают позиции."
+      },
+      "entry_conditions": [
+        "Глубокое понимание LLM",
+        "Навыки работы с данными и интерфейсами",
+        "Cloud-экспертиза"
+      ],
+      "key_players": [
+        "ML-инженеры",
+        "Data engineers",
+        "Google Cloud",
+        "AWS",
+        "Kyndryl"
+      ],
+      "evidence": "Релизы Kyndryl по управлению агентами, MIT Tech Review",
+      "confidence": "high",
+      "audience_lens": [
+        "founder",
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt6-formal-verification",
+      "srt_level": 6,
+      "srt_level_name": "Технологии производства знаний",
+      "name": "Инженер формальной верификации и доказуемой надежности AI",
+      "description": "Разработчик методик формальной проверки рассуждений, кода и поведения AI-агентов.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 50000000,
+        "active_players_count": 4,
+        "confidence": "low",
+        "reasoning": "Рынок на ранней стадии, аналогичный формальной верификации ПО ($500M). Публикации указывают на рост."
+      },
+      "window": {
+        "category": "closing",
+        "label": "Долгосрочное (>18 мес)",
+        "description": "Высокие академические барьеры и длительные циклы разработки."
+      },
+      "entry_conditions": [
+        "Знания формальной логики",
+        "Программная верификация",
+        "ML-экспертиза"
+      ],
+      "key_players": [
+        "Microsoft Research",
+        "Формальные методы специалисты",
+        "SMT/theorem proving эксперты"
+      ],
+      "evidence": "Публикации IC3-Evolve, PRoSFI, EVOM",
+      "confidence": "low",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt6-agentops-engineer",
+      "srt_level": 6,
+      "srt_level_name": "Технологии производства знаний",
+      "name": "Операционный инженер AI-агентов (AgentOps)",
+      "description": "Специалист по мониторингу, диагностике и управлению жизненным циклом AI-агентов в продуктивной среде.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 100000000,
+        "active_players_count": 5,
+        "confidence": "medium",
+        "reasoning": "Аналогично рынку MLOps ($2B), но специализированному для агентных систем."
+      },
+      "window": {
+        "category": "open",
+        "label": "Краткосрочное (<6 мес)",
+        "description": "Рынок только формируется, стандарты не устоялись — окно широко открыто."
+      },
+      "entry_conditions": [
+        "Опыт в облачных инфраструктурах",
+        "Знание агентных систем",
+        "Навыки анализа логов"
+      ],
+      "key_players": [
+        "DevOps/SRE с AI навыками",
+        "Специалисты по наблюдаемости",
+        "Kyndryl"
+      ],
+      "evidence": "Запуск Signals, Kyndryl (апрель 2026)",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt6-agent-first-architect",
+      "srt_level": 6,
+      "srt_level_name": "Технологии производства знаний",
+      "name": "Архитектор agent-first процессов",
+      "description": "Аналитик и архитектор бизнес-процессов вокруг автономных AI-агентов, а не интеграции AI в старые процессы.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 100000000,
+        "active_players_count": 5,
+        "confidence": "medium",
+        "reasoning": "Аналогично рынку BPM-консалтинга ($5B), но для agent-first подхода."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Сдвиг к agent-first process redesign создаёт растущий спрос."
+      },
+      "entry_conditions": [
+        "Понимание AI",
+        "Бизнес-процессы",
+        "Проектирование систем"
+      ],
+      "key_players": [
+        "Бизнес-аналитики",
+        "Цифровые консультанты с навыками AI",
+        "MIT Tech Review"
+      ],
+      "evidence": "Публикации MIT Tech Review, исследования AgentForge, TREX",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt6-edge-ai-mobile",
+      "srt_level": 6,
+      "srt_level_name": "Технологии производства знаний",
+      "name": "Инженер по edge AI и мобильным агентам",
+      "description": "Разработчик и оптимизатор AI-моделей для смартфонов и устройств с ограниченными ресурсами.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 500000000,
+        "active_players_count": 5,
+        "confidence": "medium",
+        "reasoning": "Проекты Qualcomm+OpenAI и Samsung подтверждают масштаб рынка on-device AI."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Быстрый рост спроса на on-device AI, но крупные игроки активно входят."
+      },
+      "entry_conditions": [
+        "Навыки low-rank adaptation",
+        "Knowledge distillation",
+        "Inference optimization"
+      ],
+      "key_players": [
+        "Qualcomm",
+        "Samsung",
+        "Embedded инженеры",
+        "ML-инженеры"
+      ],
+      "evidence": "Рост акций Qualcomm, запуск Samsung",
+      "confidence": "medium",
+      "audience_lens": [
+        "founder"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt6-benchmark-governance",
+      "srt_level": 6,
+      "srt_level_name": "Технологии производства знаний",
+      "name": "Специалист по benchmark governance и evaluation science",
+      "description": "Эксперт по разработке методик оценки AI с учётом reliability, safety и operating layer.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 50000000,
+        "active_players_count": 6,
+        "confidence": "medium",
+        "reasoning": "Кризис классических бенчмарков создаёт спрос на новые методики оценки."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Рост stress-testing систем и требований к evaluation создаёт устойчивый спрос."
+      },
+      "entry_conditions": [
+        "Глубокое понимание AI-метрик",
+        "Статистика",
+        "Безопасность"
+      ],
+      "key_players": [
+        "Исследователи AI",
+        "Data scientists",
+        "Компании по оценке"
+      ],
+      "evidence": "Появление LABBench2, FinTrace, HORIZON, SafetyALFRED",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt6-agent-governance-engineer",
+      "srt_level": 6,
+      "srt_level_name": "Технологии производства знаний",
+      "name": "Инженер по инженерии управляемого агентного поведения (Agent Governance Engineer)",
+      "description": "Специалист по архитектурам разделения полномочий, контролю целостности и предотвращению саботажа в multi-agent системах.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 30000000,
+        "active_players_count": 4,
+        "confidence": "low",
+        "reasoning": "Рынок на ранней стадии. Проекты PolicyBank и PhantomPolicy указывают на формирование."
+      },
+      "window": {
+        "category": "closing",
+        "label": "Долгосрочное (>18 мес)",
+        "description": "Высокие академические барьеры, длительные циклы стандартизации."
+      },
+      "entry_conditions": [
+        "Опыт в безопасности",
+        "Formal methods",
+        "AI-экспертиза"
+      ],
+      "key_players": [
+        "Специалисты по безопасности",
+        "Разработчики multi-agent систем"
+      ],
+      "evidence": "Публикации по политике и безопасности агентов (PolicyBank, PhantomPolicy, CWAC, ARES)",
+      "confidence": "low",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt7-audit-reproducibility",
+      "srt_level": 7,
+      "srt_level_name": "Институты производства знаний",
+      "name": "Центры аудита и воспроизводимости AI",
+      "description": "Институты, занимающиеся аудитом, верификацией и воспроизводимостью AI-систем.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 100000000,
+        "active_players_count": 6,
+        "confidence": "medium",
+        "reasoning": "Кризис традиционных бенчмарков и требования регуляторов создают институциональный спрос."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Запросы регуляторов нарастают, создавая устойчивый спрос на аудит."
+      },
+      "entry_conditions": [
+        "Компетенции в ML",
+        "Программирование",
+        "Стандарты",
+        "Регуляторика"
+      ],
+      "key_players": [
+        "Лаборатории",
+        "Консалтинговые компании",
+        "Стартапы по аудиту",
+        "AISI"
+      ],
+      "evidence": "Рост проектов FactReview, OpenEval, AISI; запросы регуляторов",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt7-university-venture-bridge",
+      "srt_level": 7,
+      "srt_level_name": "Институты производства знаний",
+      "name": "Институциональные мосты «университет — венчур» для AI memory tech",
+      "description": "Лаборатории и spin-out компании, разрабатывающие когнитивную память и платформы расширения интеллекта с венчурным финансированием.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 100000000,
+        "active_players_count": 3,
+        "confidence": "medium",
+        "reasoning": "Привлечение $100 млн и поддержка Sequoia/Nvidia указывают на формирование крупного рынка."
+      },
+      "window": {
+        "category": "closing",
+        "label": "Долгосрочное (>18 мес)",
+        "description": "Высокие академические барьеры и длительные циклы коммерциализации."
+      },
+      "entry_conditions": [
+        "Высокий уровень исследований",
+        "Доступ к капиталу и партнёрам",
+        "Университетская база"
+      ],
+      "key_players": [
+        "Университетские исследователи",
+        "Венчурные фонды",
+        "AI-стартапы",
+        "Sequoia",
+        "Nvidia"
+      ],
+      "evidence": "Привлечение $100 млн, поддержка Sequoia/Nvidia, Harvard spin-out",
+      "confidence": "medium",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt7-agentic-benchmarks",
+      "srt_level": 7,
+      "srt_level_name": "Институты производства знаний",
+      "name": "Институты разработки и стандартизации бенчмарков agentic AI",
+      "description": "Организации, создающие стандарты и фреймворки для оценки надежности, безопасности и функций agentic систем.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 50000000,
+        "active_players_count": 5,
+        "confidence": "medium",
+        "reasoning": "Необходимость оценки agentic систем создаёт институциональный спрос на стандарты."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Стандарты формируются, есть время для участия в их создании."
+      },
+      "entry_conditions": [
+        "Экспертиза в agent-based системах",
+        "Безопасность",
+        "Тестирование"
+      ],
+      "key_players": [
+        "Академические группы",
+        "AI-компании",
+        "Консорциумы"
+      ],
+      "evidence": "Появление HORIZON, SIR-Bench, AISafetyBenchExplorer",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt7-ai-literacy-education",
+      "srt_level": 7,
+      "srt_level_name": "Институты производства знаний",
+      "name": "Образовательные институты AI-грамотности и подготовки кадров",
+      "description": "Программы и курсы, интегрирующие AI-навыки в профессиональное и массовое образование.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 200000000,
+        "active_players_count": 8,
+        "confidence": "high",
+        "reasoning": "Запрос на массовую AI-грамотность от госструктур и корпораций подтверждает масштаб."
+      },
+      "window": {
+        "category": "open",
+        "label": "Краткосрочное (<6 мес)",
+        "description": "Острый дефицит кадров и программ — окно широко открыто."
+      },
+      "entry_conditions": [
+        "Разработка учебных программ",
+        "Партнерства с индустрией",
+        "Доступ к аудитории"
+      ],
+      "key_players": [
+        "Госучреждения",
+        "Университеты",
+        "EdTech компании"
+      ],
+      "evidence": "Обучение госслужащих Нью-Йорка, инициативы Минтруда США",
+      "confidence": "high",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt7-legal-regulatory",
+      "srt_level": 7,
+      "srt_level_name": "Институты производства знаний",
+      "name": "Юридические и нормативные институты управления AI-знанием",
+      "description": "Структуры для правовой экспертизы, регулирования, отчетности и судебного урегулирования вопросов AI.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 500000000,
+        "active_players_count": 6,
+        "confidence": "high",
+        "reasoning": "Рост судебных споров (Маск vs Альтман) и нормативных требований подтверждают масштаб."
+      },
+      "window": {
+        "category": "closing",
+        "label": "Долгосрочное (>18 мес)",
+        "description": "Длительные циклы формирования правовых институтов."
+      },
+      "entry_conditions": [
+        "Экспертиза в AI и праве",
+        "Международные стандарты",
+        "Доступ к регуляторам"
+      ],
+      "key_players": [
+        "Правительственные органы",
+        "Юридические компании",
+        "Стандартизирующие организации"
+      ],
+      "evidence": "Суд Маск vs Альтман, законодательство Калифорнии, ЕС",
+      "confidence": "high",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt8-controlled-release",
+      "srt_level": 8,
+      "srt_level_name": "Спонтанный порядок",
+      "name": "Специалист по controlled release и trusted access management",
+      "description": "Управление селективным доступом к передовым AI-моделям, аудит пользователей, настройка уровней доступа и безопасность.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 100000000,
+        "active_players_count": 4,
+        "confidence": "medium",
+        "reasoning": "Кейсы Anthropic Mythos и координация OpenAI/Anthropic/Google подтверждают формирование."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Рост compliance-рисков создаёт устойчивый спрос на управление доступом."
+      },
+      "entry_conditions": [
+        "Глубокое понимание AI",
+        "Нормативы и безопасность",
+        "Compliance-экспертиза"
+      ],
+      "key_players": [
+        "Compliance-специалисты",
+        "Кибербезопасность",
+        "Юридические консультанты"
+      ],
+      "evidence": "Ограниченный релиз Mythos, переговоры с госструктурами США",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt8-agent-auditor",
+      "srt_level": 8,
+      "srt_level_name": "Спонтанный порядок",
+      "name": "Аудитор и мониторинг агентных систем",
+      "description": "Регулярный аудит, мониторинг и оценка безопасности AI-агентов в реальном времени с использованием новых инструментов.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 80000000,
+        "active_players_count": 5,
+        "confidence": "medium",
+        "reasoning": "Требования к доказуемой вредоостанавливаемости и рост инцидентов создают спрос."
+      },
+      "window": {
+        "category": "open",
+        "label": "Краткосрочное (<6 мес)",
+        "description": "Острая потребность рынка, инструменты только появляются — окно открыто."
+      },
+      "entry_conditions": [
+        "Навыки работы с AI системами",
+        "Аналитика данных",
+        "Security-инструменты"
+      ],
+      "key_players": [
+        "Кибербезопасность",
+        "QA",
+        "Compliance",
+        "Исследователи AI"
+      ],
+      "evidence": "AgentHazard, кейсы Mythos, банковские тесты",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt8-sovereign-ai-operator",
+      "srt_level": 8,
+      "srt_level_name": "Спонтанный порядок",
+      "name": "Оператор локальных и суверенных AI-контуров",
+      "description": "Создание и управление локальными, изолированными AI-средами для госсектора и регулируемых отраслей.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 1000000000,
+        "active_players_count": 5,
+        "confidence": "high",
+        "reasoning": "Проекты Microsoft в Японии и тесты Ирландии подтверждают масштаб суверенного AI."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Регуляторные ограничения создают устойчивый спрос, но реализация требует времени."
+      },
+      "entry_conditions": [
+        "Техническая компетенция в облаках",
+        "Знание регуляторики",
+        "Партнерства с госсектором"
+      ],
+      "key_players": [
+        "IT-компании",
+        "Системные интеграторы",
+        "Госсектор",
+        "Microsoft"
+      ],
+      "evidence": "Проекты Microsoft в Японии, тесты Ирландии",
+      "confidence": "high",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt8-agent-orchestration",
+      "srt_level": 8,
+      "srt_level_name": "Спонтанный порядок",
+      "name": "Координатор и оператор agent orchestration platform",
+      "description": "Управление платформами оркестрации агентных систем: права, память, маршрутизация, безопасность (Qualixar OS, Holos).",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 100000000,
+        "active_players_count": 5,
+        "confidence": "medium",
+        "reasoning": "Переход к комплексным agent-системам создаёт спрос на инфраструктуру управления."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Рынок формируется, стандарты не устоялись — есть время для входа."
+      },
+      "entry_conditions": [
+        "Опыт в ML Ops",
+        "Распределённые системы",
+        "DevOps-экспертиза"
+      ],
+      "key_players": [
+        "Разработчики ПО",
+        "Системные архитекторы",
+        "DevOps"
+      ],
+      "evidence": "Появление Agent OS, Holos, рост interest в agent orchestration",
+      "confidence": "medium",
+      "audience_lens": [
+        "founder",
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt8-infra-energy-investor",
+      "srt_level": 8,
+      "srt_level_name": "Спонтанный порядок",
+      "name": "Инфраструктурный инвестор и оператор AI-энергетических ресурсов",
+      "description": "Инвесторы и операторы в энергетике, земле, охлаждении и сетевой инфраструктуре для AI дата-центров.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 5000000000,
+        "active_players_count": 5,
+        "confidence": "high",
+        "reasoning": "IPO Madison Air, Blackstone IPO, Rapidus субсидии подтверждают масштаб инфраструктурных инвестиций."
+      },
+      "window": {
+        "category": "closing",
+        "label": "Долгосрочное (>18 мес)",
+        "description": "Крупные институциональные игроки уже заняли позиции."
+      },
+      "entry_conditions": [
+        "Финансовые ресурсы >$1B",
+        "Опыт инфраструктурных проектов",
+        "Доступ к земле и энергии"
+      ],
+      "key_players": [
+        "Капиталовладельцы",
+        "Девелоперы",
+        "Энергетические компании",
+        "Madison Air",
+        "Blackstone"
+      ],
+      "evidence": "IPO Madison Air, субсидии Rapidus, проекты по AI энергетике",
+      "confidence": "high",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt8-digital-identity",
+      "srt_level": 8,
+      "srt_level_name": "Спонтанный порядок",
+      "name": "Специалист по цифровой идентичности и age verification",
+      "description": "Разработка и внедрение цифровых протоколов идентификации и проверки возраста для доступа к AI-сервисам и соцсетям.",
+      "capacity": {
+        "category": "small",
+        "range_label": "< $500M",
+        "evidence_usd": 50000000,
+        "active_players_count": 4,
+        "confidence": "medium",
+        "reasoning": "Тесты Ирландии, ЕС и Японии указывают на формирующийся, но пока небольшой рынок."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Регуляторное давление нарастает, но стандарты ещё не устоялись."
+      },
+      "entry_conditions": [
+        "Экспертиза в цифровой идентичности",
+        "Знание регуляторики",
+        "Технологии верификации"
+      ],
+      "key_players": [
+        "FinTech компании",
+        "Госструктуры",
+        "Стартапы идентификации"
+      ],
+      "evidence": "Тесты Ирландии, ЕС, Японии по age verification",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt9-infra-reit",
+      "srt_level": 9,
+      "srt_level_name": "Денежная система",
+      "name": "Infra-REIT для дата-центров AI",
+      "description": "Финансовый инструмент на базе REIT, позволяющий устойчивость дата-центров как инфраструктурных активов, с регулярной доходностью и публичной ликвидностью.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 10000000000,
+        "active_players_count": 5,
+        "confidence": "high",
+        "reasoning": "IPO AirTrunk, планы Blackstone и Pimco сделки подтверждают масштаб рынка DC REIT >$50B."
+      },
+      "window": {
+        "category": "open",
+        "label": "Открыто",
+        "description": "Рынок активно формируется, институциональные инвесторы входят — окно открыто."
+      },
+      "entry_conditions": [
+        "Крупные капитальные вложения",
+        "Партнерства с дата-центрами",
+        "Лицензированные REIT-структуры"
+      ],
+      "key_players": [
+        "Инвестиционные фонды",
+        "Управляющие недвижимостью",
+        "Публичные компании инфраструктуры"
+      ],
+      "evidence": "IPO AirTrunk, Blackstone планы, Pimco сделки",
+      "confidence": "high",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt9-ai-capex-hubs",
+      "srt_level": 9,
+      "srt_level_name": "Денежная система",
+      "name": "AI-CapEx энергетические хабы и проекты",
+      "description": "Сверхкрупные объёмы капитальных расходов (CapEx), ориентированные на обслуживание дата-центров и AI-инфраструктуры.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 7000000000,
+        "active_players_count": 5,
+        "confidence": "high",
+        "reasoning": "Microsoft $7 млрд проект Техас и Blackstone инвестиции в солнечную энергетику подтверждают масштаб."
+      },
+      "window": {
+        "category": "open",
+        "label": "Открыто",
+        "description": "Масштабные инвестиции только начинаются — окно широко открыто."
+      },
+      "entry_conditions": [
+        "Технологическая способность строить и эксплуатировать",
+        "Энергетическая инфраструктура",
+        "Финансовые ресурсы >$1B"
+      ],
+      "key_players": [
+        "Энергетические компании",
+        "Инфраструктурные инвесторы",
+        "Крупные AI-компании",
+        "Государственные фонды"
+      ],
+      "evidence": "Microsoft $7 млрд проект Техас, Blackstone инвестиции в солнечную энергетику",
+      "confidence": "high",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt9-debt-financing",
+      "srt_level": 9,
+      "srt_level_name": "Денежная система",
+      "name": "Долговое финансирование frontier labs и AI-инфраструктуры",
+      "description": "Высокодоходные облигации, кредитные линии и секьюритизация долга под AI-компании (CoreWeave, Google junk bonds, дата-центры).",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 48500000000,
+        "active_players_count": 5,
+        "confidence": "high",
+        "reasoning": "SoftBank кредит $40 млрд + CoreWeave облигации $8.5 млрд — только за апрель. Рынок >$100B/год."
+      },
+      "window": {
+        "category": "open",
+        "label": "Открыто",
+        "description": "Взрывной рост долгового финансирования AI — окно широко открыто."
+      },
+      "entry_conditions": [
+        "Доступ к крупному капиталу",
+        "Рынок ликвидности",
+        "Способность структурировать сделки"
+      ],
+      "key_players": [
+        "SoftBank",
+        "CoreWeave",
+        "Банки",
+        "Инвестиционные фонды",
+        "Специализированные кредиторы"
+      ],
+      "evidence": "SoftBank кредит $40 млрд, CoreWeave облигации $8.5 млрд, Pimco сделки",
+      "confidence": "high",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt9-agentic-ai-consulting",
+      "srt_level": 9,
+      "srt_level_name": "Денежная система",
+      "name": "Финансовые площадки и консультанты внедрения agentic AI",
+      "description": "Фонды и сервисы, субсидирующие и сопровождающие внедрение AI в корпоративные процессы (Oracle Cloud фонд $750 млн для McKinsey, Accenture и др.).",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 750000000,
+        "active_players_count": 5,
+        "confidence": "high",
+        "reasoning": "Oracle Cloud фонд $750 млн и Andreessen Horowitz инвестиции подтверждают масштаб."
+      },
+      "window": {
+        "category": "open",
+        "label": "Открыто",
+        "description": "Рынок консалтинга по внедрению agentic AI только формируется — окно открыто."
+      },
+      "entry_conditions": [
+        "Экспертиза в AI",
+        "Партнёрские отношения с крупными AI-провайдерами",
+        "Консалтинговый опыт"
+      ],
+      "key_players": [
+        "Консалтинговые компании",
+        "Предпринимательские венчурные фонды",
+        "Интеграторы",
+        "McKinsey",
+        "Accenture"
+      ],
+      "evidence": "Oracle Cloud фонд $750 млн, Andreessen Horowitz инвестиции",
+      "confidence": "high",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt9-cyber-risk-market",
+      "srt_level": 9,
+      "srt_level_name": "Денежная система",
+      "name": "Рынок кибер-рисков менеджмента AI",
+      "description": "Инструменты страхования, стоимостного управления рисков, связанных с AI-моделями, их безопасностью и контентными системами.",
+      "capacity": {
+        "category": "medium",
+        "range_label": "$100M–$1B",
+        "evidence_usd": 200000000,
+        "active_players_count": 5,
+        "confidence": "medium",
+        "reasoning": "Рост регуляторных требований и инцидентов создаёт спрос на страхование AI-рисков."
+      },
+      "window": {
+        "category": "open",
+        "label": "Открыто",
+        "description": "Рынок страхования AI-рисков только формируется — окно открыто."
+      },
+      "entry_conditions": [
+        "Глубокие знания AI-безопасности",
+        "Финансовый инжиниринг",
+        "Нормативное регулирование"
+      ],
+      "key_players": [
+        "Страховые компании",
+        "FinTech",
+        "Регуляторы",
+        "Консалтинговые фирмы"
+      ],
+      "evidence": "Отрасль историй регуляторов (EIRSCD), страховые продукты Arch",
+      "confidence": "medium",
+      "audience_lens": [
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt9-vertical-ai-products",
+      "srt_level": 9,
+      "srt_level_name": "Денежная система",
+      "name": "Вертикализированные AI-продукты для снижения издержек труда",
+      "description": "Компании, создающие AI-системы для автоматизации конкретных бизнес-процессов (Procore $10 млрд сделка, Upside AI $2 млрд).",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 12000000000,
+        "active_players_count": 6,
+        "confidence": "high",
+        "reasoning": "Procore $10 млрд и Upside AI $2 млрд подтверждают масштаб вертикального AI."
+      },
+      "window": {
+        "category": "open",
+        "label": "Открыто",
+        "description": "Множество вертикалей ещё не охвачены AI — окно широко открыто."
+      },
+      "entry_conditions": [
+        "Глубокое знание вертикали и отрасли",
+        "Сильные продукты",
+        "Масштабируемость"
+      ],
+      "key_players": [
+        "Стартапы",
+        "Крупные компании",
+        "Вертикальные интеграторы",
+        "Procore",
+        "Upside AI"
+      ],
+      "evidence": "Раунды Procore $10 млрд, Upside AI $2 млрд",
+      "confidence": "high",
+      "audience_lens": [
+        "founder",
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    }
+  ],
+  "history": {
+    "new_places": [
+      "srt1-energy-integrator",
+      "srt1-critical-minerals",
+      "srt1-flexible-dc-operator",
+      "srt1-cooling-efficiency",
+      "srt1-alternative-energy",
+      "srt1-institutional-energy-investor",
+      "srt2-dc-reit",
+      "srt2-space-energy-dc",
+      "srt2-regional-ai-hubs",
+      "srt2-sovereign-digital-circuits",
+      "srt2-behind-the-meter",
+      "srt2-satellite-infrastructure",
+      "srt3-agent-reliability-engineer",
+      "srt3-gig-robot-trainer",
+      "srt3-ai-ops-supervisor",
+      "srt3-ai-audit-specialist",
+      "srt3-ai-infrastructure-specialist",
+      "srt3-ai-governance-lead",
+      "srt3-agent-workflow-architect",
+      "srt4-silicon-photonics",
+      "srt4-memory-chip",
+      "srt4-ai-chip-fab",
+      "srt4-dc-energy-infra",
+      "srt4-agent-memory-hardware",
+      "srt4-low-power-ai",
+      "srt4-chip-testing",
+      "srt5-compute-as-a-service",
+      "srt5-energy-operators-ai",
+      "srt5-chip-sovereignty",
+      "srt5-infra-finance-secondary",
+      "srt5-agent-governance-platforms",
+      "srt5-industrial-ai-sensing",
+      "srt6-model-customization",
+      "srt6-formal-verification",
+      "srt6-agentops-engineer",
+      "srt6-agent-first-architect",
+      "srt6-edge-ai-mobile",
+      "srt6-benchmark-governance",
+      "srt6-agent-governance-engineer",
+      "srt7-audit-reproducibility",
+      "srt7-university-venture-bridge",
+      "srt7-agentic-benchmarks",
+      "srt7-ai-literacy-education",
+      "srt7-legal-regulatory",
+      "srt8-controlled-release",
+      "srt8-agent-auditor",
+      "srt8-sovereign-ai-operator",
+      "srt8-agent-orchestration",
+      "srt8-infra-energy-investor",
+      "srt8-digital-identity",
+      "srt9-infra-reit",
+      "srt9-ai-capex-hubs",
+      "srt9-debt-financing",
+      "srt9-agentic-ai-consulting",
+      "srt9-cyber-risk-market",
+      "srt9-vertical-ai-products"
+    ],
+    "changed_places": [],
+    "closed_places": []
+  }
+}
