@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Карта мест СРТ — AIwatcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+<style>
+/* ═══════════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0a0e17;
+  color: #c8cdd5;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════════════════════════ */
+.page-wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════════════════ */
+.header {
+  padding: 28px 0 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-brand a {
+  color: #00d4aa;
+  text-decoration: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.header-brand a:hover { opacity: 1; }
+.header-brand .sep { color: rgba(255,255,255,0.15); }
+.header-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f0f2f5;
+  letter-spacing: -0.02em;
+}
+.header-subtitle {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 4px;
+}
+.header-meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.meta-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+.meta-chip .val {
+  color: #f0f2f5;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════
+   STATS BAR
+   ═══════════════════════════════════════════════════════ */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.stat-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 14px 16px;
+  text-align: center;
+}
+.stat-card .num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #f0f2f5;
+}
+.stat-card .lbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   FILTERS
+   ═══════════════════════════════════════════════════════ */
+.filters-section {
+  padding: 20px 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.filter-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+  margin-right: 4px;
+}
+.filter-btn {
+  padding: 5px 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  background: transparent;
+  color: #9ca3af;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.filter-btn:hover {
+  border-color: rgba(0,212,170,0.3);
+  color: #c8cdd5;
+}
+.filter-btn.active {
+  background: rgba(0,212,170,0.12);
+  border-color: rgba(0,212,170,0.4);
+  color: #00d4aa;
+}
+.filter-reset {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  color: #6b7280;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.filter-reset:hover { color: #f0f2f5; background: rgba(255,255,255,0.08); }
+
+/* ═══════════════════════════════════════════════════════
+   TABS
+   ═══════════════════════════════════════════════════════ */
+.tabs-nav {
+  display: flex;
+  gap: 4px;
+  padding: 8px 0 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.tab-btn {
+  padding: 10px 20px;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.tab-btn:hover { color: #c8cdd5; }
+.tab-btn.active {
+  color: #00d4aa;
+  border-bottom-color: #00d4aa;
+}
+.tab-panel { display: none; padding: 24px 0; }
+.tab-panel.active { display: block; }
+
+/* ═══════════════════════════════════════════════════════
+   BUBBLE CHART
+   ═══════════════════════════════════════════════════════ */
+#bubble-chart {
+  width: 100%;
+  min-height: 560px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════
+   MATRIX (CSS GRID)
+   ═══════════════════════════════════════════════════════ */
+.matrix-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 12px;
+}
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(200px, 1fr));
+  gap: 10px;
+  min-width: 1800px;
+}
+.matrix-col-header {
+  text-align: center;
+  padding: 10px 6px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px 8px 0 0;
+  border-bottom: 2px solid;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #f0f2f5;
+}
+.matrix-col-header .level-num {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+.matrix-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.place-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 14px;
+  transition: all 0.2s;
+  cursor: default;
+}
+.place-card:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+  transform: translateY(-1px);
+}
+.place-card .card-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #f0f2f5;
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+.place-card .card-desc {
+  font-size: 0.73rem;
+  color: #9ca3af;
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+.card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.badge-cap-large  { background: rgba(0,212,170,0.12); color: #00d4aa; }
+.badge-cap-medium { background: rgba(59,130,246,0.12); color: #60a5fa; }
+.badge-cap-small  { background: rgba(156,163,175,0.12); color: #9ca3af; }
+.badge-win-open    { background: rgba(52,211,153,0.12); color: #34d399; }
+.badge-win-narrowing { background: rgba(251,191,36,0.12); color: #fbbf24; }
+.badge-win-closing { background: rgba(239,68,68,0.12); color: #ef4444; }
+.badge-conf-high   { background: rgba(0,212,170,0.08); color: #00d4aa; }
+.badge-conf-medium { background: rgba(251,191,36,0.08); color: #fbbf24; }
+.badge-conf-low    { background: rgba(239,68,68,0.08); color: #ef4444; }
+.card-players {
+  font-size: 0.7rem;
+  color: #6b7280;
+  margin-top: 6px;
+}
+.card-players span { color: #9ca3af; }
+.card-conditions {
+  margin-top: 6px;
+  font-size: 0.68rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+.card-evidence {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.7rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TABLE
+   ═══════════════════════════════════════════════════════ */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  min-width: 1200px;
+}
+.data-table thead th {
+  background: rgba(255,255,255,0.04);
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #9ca3af;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.data-table thead th:hover { color: #f0f2f5; }
+.data-table thead th .sort-arrow { margin-left: 4px; font-size: 0.6rem; }
+.data-table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.15s;
+}
+.data-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+.data-table tbody td {
+  padding: 10px 14px;
+  vertical-align: top;
+  color: #c8cdd5;
+}
+.data-table .col-level {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  width: 40px;
+}
+.data-table .col-name { font-weight: 500; color: #f0f2f5; min-width: 200px; }
+.data-table .col-desc { color: #9ca3af; min-width: 220px; max-width: 320px; }
+.data-table .col-evidence { color: #9ca3af; font-style: italic; min-width: 180px; max-width: 280px; }
+.data-table .col-players { min-width: 160px; }
+.data-table .col-conditions { min-width: 180px; max-width: 260px; font-size: 0.72rem; }
+
+/* ═══════════════════════════════════════════════════════
+   LEVEL COLORS
+   ═══════════════════════════════════════════════════════ */
+.level-1  { --lc: #ef4444; }
+.level-2  { --lc: #f97316; }
+.level-3  { --lc: #eab308; }
+.level-4  { --lc: #84cc16; }
+.level-5  { --lc: #22c55e; }
+.level-6  { --lc: #06b6d4; }
+.level-7  { --lc: #3b82f6; }
+.level-8  { --lc: #8b5cf6; }
+.level-9  { --lc: #ec4899; }
+.level-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--lc);
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════ */
+.footer {
+  padding: 24px 0;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+  font-size: 0.72rem;
+  color: #4b5563;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SIGNAL OF MONTH
+   ═══════════════════════════════════════════════════════ */
+.signal-banner {
+  margin: 20px 0 8px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(0,212,170,0.06), rgba(59,130,246,0.04));
+  border: 1px solid rgba(0,212,170,0.15);
+  border-radius: 10px;
+}
+.signal-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #00d4aa;
+  margin-bottom: 4px;
+}
+.signal-text {
+  font-size: 0.88rem;
+  color: #e5e7eb;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COUNTER BADGE
+   ═══════════════════════════════════════════════════════ */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: rgba(0,212,170,0.15);
+  color: #00d4aa;
+  font-size: 0.68rem;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+  margin-left: 6px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  html { font-size: 14px; }
+  .page-wrapper { padding: 0 14px; }
+  .header-title { font-size: 1.4rem; }
+  .stats-bar { grid-template-columns: repeat(3, 1fr); }
+  .filters-section { gap: 8px; }
+  .tabs-nav { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tab-btn { padding: 8px 14px; font-size: 0.8rem; white-space: nowrap; }
+  #bubble-chart { min-height: 400px; }
+}
+@media (max-width: 480px) {
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .header-meta { gap: 8px; }
+  .meta-chip { padding: 4px 10px; font-size: 0.72rem; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   DETAIL MODAL
+   ═══════════════════════════════════════════════════════ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: #12161f;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 28px;
+}
+.modal-close {
+  float: right;
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+.modal-close:hover { color: #f0f2f5; }
+.modal-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f0f2f5;
+  margin-bottom: 4px;
+  padding-right: 40px;
+}
+.modal-level {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+.modal-desc {
+  font-size: 0.88rem;
+  color: #c8cdd5;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.modal-section {
+  margin-bottom: 14px;
+}
+.modal-section-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+.modal-section-body {
+  font-size: 0.82rem;
+  color: #c8cdd5;
+  line-height: 1.5;
+}
+.modal-section-body ul {
+  list-style: none;
+  padding: 0;
+}
+.modal-section-body li {
+  padding: 3px 0;
+  padding-left: 16px;
+  position: relative;
+}
+.modal-section-body li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #00d4aa;
+  font-size: 0.75rem;
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="header">
+    <div class="header-top">
+      <div>
+        <div class="header-brand">
+          <a href="https://verkhovskiy.ai">AI Strategic Intelligence</a>
+          <span class="sep">/</span>
+          <a href="#">Карта мест</a>
+        </div>
+        <h1 class="header-title">Карта формирующихся мест в СРТ</h1>
+        <p class="header-subtitle">56 новых ролей, ниш и звеньев в цепочке создания стоимости AI-экономики</p>
+      </div>
+      <div class="header-meta" id="header-meta"></div>
+    </div>
+  </header>
+
+  <!-- ═══ SIGNAL OF MONTH ═══ -->
+  <div class="signal-banner" id="signal-banner"></div>
+
+  <!-- ═══ STATS BAR ═══ -->
+  <div class="stats-bar" id="stats-bar"></div>
+
+  <!-- ═══ FILTERS ═══ -->
+  <div class="filters-section" id="filters-section"></div>
+
+  <!-- ═══ TABS ═══ -->
+  <nav class="tabs-nav">
+    <button class="tab-btn active" data-tab="bubble">Bubble Chart</button>
+    <button class="tab-btn" data-tab="matrix">Матрица карточек</button>
+    <button class="tab-btn" data-tab="table">Таблица</button>
+  </nav>
+
+  <!-- ═══ TAB 1: BUBBLE CHART ═══ -->
+  <div class="tab-panel active" id="panel-bubble">
+    <div id="bubble-chart"></div>
+  </div>
+
+  <!-- ═══ TAB 2: MATRIX ═══ -->
+  <div class="tab-panel" id="panel-matrix">
+    <div class="matrix-wrapper">
+      <div class="matrix-grid" id="matrix-grid"></div>
+    </div>
+  </div>
+
+  <!-- ═══ TAB 3: TABLE ═══ -->
+  <div class="tab-panel" id="panel-table">
+    <div class="table-wrapper">
+      <table class="data-table" id="data-table">
+        <thead id="table-head"></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    AIwatcher SRT Places Map v1.0 &middot; Данные за <span id="footer-period"></span> &middot; Сгенерировано <span id="footer-date"></span>
+  </footer>
+</div>
+
+<!-- ═══ DETAIL MODAL ═══ -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box" id="modal-box"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// DATA (inline from places_data.json)
+// ═══════════════════════════════════════════════════════
+const PLACES_DATA = {"meta":{"generated_at":"2026-05-02T11:08:55Z","version":"1.0.0","period":{"month":4,"year":2026,"label":"Апрель 2026","start_date":"2026-04-01","end_date":"2026-04-30","total_events":3599},"total_places":56,"places_by_level":{"1":6,"2":6,"3":7,"4":7,"5":6,"6":7,"7":5,"8":6,"9":6},"places_by_capacity":{"small":1,"medium":28,"large":27},"places_by_window":{"open":12,"narrowing":34,"closing":10},"places_by_confidence":{"high":25,"medium":27,"low":4},"turbulence_index":12.5,"signal_of_month":"Институционализация AI в денежной системе: инвестиции превращаются из венчурной истории в масштабную инфраструктурную и долговую архитектуру (REIT, junk bonds, проектное финансирование >$50B за месяц)","pipeline_version":"1.0.0","source":"1ni5CVTBZhzGPSRSDx41oR4dicET5bQeoZd1vlffycYc"},"places":[{"id":"srt1-energy-integrator","srt_level":1,"srt_level_name":"Природные ресурсы","name":"Интегратор энергоснабжения AI-инфраструктуры","description":"Компания/подразделение, объединяющее управление энергетикой и AI-вычислительной инфраструктурой для стабильного питания дата-центров.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":5000000000,"active_players_count":5,"confidence":"high","reasoning":"Сопоставимо с рынком промышленной энергетики. Подтверждённые сделки Microsoft в Техасе, Oracle-Bloom 2.8 ГВт, X-Energy IPO."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Крупные игроки активно занимают позиции, но рынок достаточно велик для новых участников."},"entry_conditions":["Капитал >$500M","Доступ к энергетическим активам","Опыт в энергетике и AI-инфраструктуре"],"key_players":["Microsoft","Meta","NextEra Energy","Oracle","X-Energy"],"evidence":"Сделки Microsoft в Техасе, Oracle-Bloom 2.8 ГВт, X-Energy IPO","confidence":"high","audience_lens":["investor","operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt1-critical-minerals","srt_level":1,"srt_level_name":"Природные ресурсы","name":"Поставщик критических минералов для AI-цикла","description":"Компания, добывающая и перерабатывающая минералы (гелий, вольфрам, медь) для AI и связанных технологий.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":7200000000,"active_players_count":4,"confidence":"high","reasoning":"CATL $4.4 млрд, USA Rare Earth $2.8 млрд — подтверждённые сделки за один месяц."},"window":{"category":"narrowing","label":"Средне-долгосрочное (>6 мес)","description":"Геополитические ограничения и дефицит ресурсов сужают окно для новых игроков."},"entry_conditions":["Доступ к месторождениям","Технологический опыт переработки","Геополитические связи"],"key_players":["CATL","USA Rare Earth","Госкорпорации","Стратегические инвесторы"],"evidence":"CATL $4.4 млрд, USA Rare Earth $2.8 млрд, рост интереса к вольфраму во Вьетнаме","confidence":"high","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt1-flexible-dc-operator","srt_level":1,"srt_level_name":"Природные ресурсы","name":"Оператор «гибких» дата-центров в регионах с профицитом ВИЭ","description":"Провайдер дата-центров, использующий периоды отрицательных/низких цен на электроэнергию для оптимизации себестоимости AI-инфраструктуры.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":200000000,"active_players_count":3,"confidence":"medium","reasoning":"Нишевой рынок, аналогичный рынку colocation в ранней стадии. Подтверждённые сделки Firmus."},"window":{"category":"open","label":"Краткосрочное (<6 мес)","description":"Окно открыто — рынок только формируется, крупные игроки ещё не вошли."},"entry_conditions":["Доступ к ВИЭ","Телеком-инфраструктура","Устойчивое законодательство региона"],"key_players":["Firmus","Локальные девелоперы дата-центров","Энергетические компании"],"evidence":"Отрицательные цены на электроэнергию в Польше, сделки Firmus","confidence":"medium","audience_lens":["founder","operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt1-cooling-efficiency","srt_level":1,"srt_level_name":"Природные ресурсы","name":"Специалисты по энергоэффективности и охлаждению AI","description":"Эксперты, создающие технологии охлаждения и энергоэффективного оборудования для дата-центров AI.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":150000000,"active_players_count":6,"confidence":"medium","reasoning":"Аналогично рынку промышленного HVAC, но специализированному под AI-нагрузки."},"window":{"category":"narrowing","label":"Кратко- и среднесрочное (<18 мес)","description":"Спрос растёт быстрее предложения, но крупные HVAC-компании начинают входить."},"entry_conditions":["Техническая компетенция в HVAC","Опыт в энергетике","Опыт работы с AI-инфраструктурой"],"key_players":["Инженерные фирмы","Стартапы охлаждения","Лаборатории"],"evidence":"Техпланирование под экстремальную погоду, запросы на энергоэффективность","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt1-alternative-energy","srt_level":1,"srt_level_name":"Природные ресурсы","name":"Провайдеры альтернативной энергетики для AI","description":"Компании, создающие устойчивые источники энергии (малые АЭС, космическая солнечная энергия) для AI дата-центров.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":3000000000,"active_players_count":4,"confidence":"medium","reasoning":"Рынок малых модульных реакторов оценивается в $10B+ к 2030. Проекты DOE и Meta подтверждают масштаб."},"window":{"category":"closing","label":"Долгосрочное (>18 мес)","description":"Высокие барьеры входа и длительные циклы разработки ограничивают доступ."},"entry_conditions":["Высокие технологические требования","Капиталоёмкость >$1B","Государственная поддержка и лицензии"],"key_players":["Antares (DOE)","Meta","Энергетические стартапы","Госкорпорации"],"evidence":"Antares DOE, Meta космическая солнечная энергетика","confidence":"medium","audience_lens":["investor","founder"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt1-institutional-energy-investor","srt_level":1,"srt_level_name":"Природные ресурсы","name":"Институциональные инвесторы в энергетическую AI-инфраструктуру","description":"Фонды и банки, создающие финансовые инструменты для энергоинфраструктуры AI (junk bonds, проектное финансирование).","capacity":{"category":"large","range_label":"> $1B","evidence_usd":10240000000,"active_players_count":5,"confidence":"high","reasoning":"CoreWeave $4.54 млрд + Google $5.7 млрд junk bonds — только за апрель. Рынок AI-энергофинансирования >$50B/год."},"window":{"category":"narrowing","label":"Кратко- и среднесрочное (<18 мес)","description":"Институциональные игроки активно входят, но объём рынка позволяет новым участникам."},"entry_conditions":["Финансовые ресурсы >$100M","Экспертиза в инфраструктурных проектах","Доступ к рынкам капитала"],"key_players":["CoreWeave","Google","Инвестфонды","Банки"],"evidence":"CoreWeave $4.54 млрд, Google $5.7 млрд junk bonds","confidence":"high","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt2-dc-reit","srt_level":2,"srt_level_name":"Пространственная организация","name":"Финансовые инструменты и REIT для дата-центров","description":"Специализированные фондовые инструменты и REIT, связанные с владением и управлением дата-центрами AI.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":4540000000,"active_players_count":4,"confidence":"high","reasoning":"IPO AirTrunk и долговое финансирование $4.54 млрд подтверждают масштаб рынка DC REIT."},"window":{"category":"narrowing","label":"Средне-долгосрочное (6-18+ мес)","description":"Рынок институционализируется, но ещё есть место для специализированных REIT."},"entry_conditions":["Доступ к проектному финансированию","Владение дата-центровыми активами","Опыт управления недвижимостью"],"key_players":["AirTrunk","Девелоперы дата-центров","Финансовые фонды","Институциональные инвесторы"],"evidence":"IPO AirTrunk (Сингапур), долговое финансирование $4.54 млрд","confidence":"high","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt2-space-energy-dc","srt_level":2,"srt_level_name":"Пространственная организация","name":"Космическая энергетика и космические дата-центры","description":"Использование космических источников энергии и размещение вычислительных мощностей на орбите.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":2000000000,"active_players_count":3,"confidence":"low","reasoning":"Рынок находится на ранней стадии, но проекты Meta и Blue Origin указывают на потенциал >$10B."},"window":{"category":"closing","label":"Долгосрочное (>18 мес)","description":"Экстремально высокие барьеры входа, только для крупнейших игроков."},"entry_conditions":["Высокие капвложения >$5B","Технологический опыт в космосе","Партнерства с аэрокосмическими компаниями"],"key_players":["Meta","Blue Origin","Anduril"],"evidence":"Проекты Meta, Blue Origin планы по 8–12 запускам в 2026","confidence":"low","audience_lens":["investor","founder"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt2-regional-ai-hubs","srt_level":2,"srt_level_name":"Пространственная организация","name":"Региональные AI-хабы с интегрированной энергетикой и охлаждением","description":"Региональные кластеры дата-центров, использующие локальные энергетические и климатические преимущества.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":1500000000,"active_players_count":5,"confidence":"medium","reasoning":"Расширение Microsoft в Австралии и планы в Норвегии/Испании указывают на рынок $5B+."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Гиперскейлеры активно занимают регионы, но локальные операторы имеют преимущества."},"entry_conditions":["Доступ к дешёвой энергии","Поддержка местных властей","Телеком-связь"],"key_players":["Microsoft","Локальные операторы","Гиперскейлеры","Госструктуры"],"evidence":"Microsoft Австралия, Норвегия и Испания как AI-узлы","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt2-sovereign-digital-circuits","srt_level":2,"srt_level_name":"Пространственная организация","name":"Локализованные и суверенные цифровые контуры","description":"Инфраструктуры с локальными режимами доступа к AI, правилами и хранением, обеспечивающие безопасность и комплаенс.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":500000000,"active_players_count":6,"confidence":"medium","reasoning":"Аналогично рынку суверенных облаков. Фрагментация регуляций ускоряет формирование."},"window":{"category":"narrowing","label":"Средне-долгосрочное (6-18+ мес)","description":"Регуляторное давление нарастает, создавая спрос, но реализация требует времени."},"entry_conditions":["Комплаенс-экспертиза","Инфраструктура данных","Доверие пользователей и регуляторов"],"key_players":["Госструктуры","Крупные корпорации","Локальные облачные провайдеры"],"evidence":"Примеры регуляторных различий: США, Китай, Европа, Гонконг, Россия","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt2-behind-the-meter","srt_level":2,"srt_level_name":"Пространственная организация","name":"Энергетические и сетевые решения «за счётчиком»","description":"Локальные генераторы, батареи и решения для обхода ограничений сетей при быстром развертывании дата-центров.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":300000000,"active_players_count":5,"confidence":"medium","reasoning":"Узкие места в электросетях США создают рынок bypass-решений, аналогичный distributed generation."},"window":{"category":"narrowing","label":"Кратко- и среднесрочное (<18 мес)","description":"Острая потребность рынка, но технологические решения ещё не стандартизированы."},"entry_conditions":["Технологии энергетики","Капитал","Партнерства с регуляторами"],"key_players":["Microsoft","Apple","Девелоперы","Энергетические стартапы"],"evidence":"Ускоренный запуск дата-центров с батареями и газом","confidence":"medium","audience_lens":["founder","operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt2-satellite-infrastructure","srt_level":2,"srt_level_name":"Пространственная организация","name":"Спутниковая инфраструктура для AI и облаков","description":"Размещение и эксплуатация спутниковых сетей для расширения покрытия AI-сервисов, создание новых узлов связи.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":11600000000,"active_players_count":3,"confidence":"high","reasoning":"Сделка Amazon-Globalstar $11.6 млрд — одна из крупнейших в секторе за месяц."},"window":{"category":"narrowing","label":"Средне-долгосрочное (6-18+ мес)","description":"Олигопольный рынок с высокими барьерами, но растущий спрос создаёт ниши."},"entry_conditions":["Капвложения >$1B","Лицензии на спектр","Технологический опыт"],"key_players":["Amazon","Globalstar","Blue Origin","Телеком-операторы"],"evidence":"Сделка Amazon-Globalstar $11.6 млрд, планы Blue Origin","confidence":"high","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt3-agent-reliability-engineer","srt_level":3,"srt_level_name":"Социально-профессиональная структура","name":"Инженер надежности агентных систем","description":"Специалист по стабильности, безопасности и аудиту автономных AI-агентов.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":500000000,"active_players_count":8,"confidence":"high","reasoning":"Аналогично рынку SRE/DevOps ($15B), но для AI-агентов. Рост вакансий подтверждает формирование."},"window":{"category":"narrowing","label":"Средне-долгосрочное (6-18+ мес)","description":"Профессия формируется, стандарты ещё не устоялись — есть время для входа."},"entry_conditions":["Знания ML и безопасности","Опыт с агентными системами","Red-teaming навыки"],"key_players":["Anthropic","AI-инженеры","Специалисты по безопасности"],"evidence":"Рост вакансий, проекты Anthropic, Universal Verifier, SELFDOUBT","confidence":"high","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt3-gig-robot-trainer","srt_level":3,"srt_level_name":"Социально-профессиональная структура","name":"Gig-robot trainer / домашний датасеттер для embodied AI","description":"Gig-работник, собирающий данные о движениях для обучения гуманоидных роботов.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":100000000,"active_players_count":4,"confidence":"medium","reasoning":"Аналогично рынку data labeling ($1B+), но специализированному для физических данных."},"window":{"category":"narrowing","label":"Кратко- и среднесрочное (<18 мес)","description":"Рынок только формируется, низкие барьеры входа для платформ."},"entry_conditions":["Минимальные требования к работникам","Доступ к оборудованию захвата движений","Платформа координации"],"key_players":["Gig-работники из развивающихся стран","Платформы данных","Robotics-стартапы"],"evidence":"Gig-работники из Нигерии, описание gig-robot trainer апрель 2026, MIT Technology Review","confidence":"medium","audience_lens":["founder"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt3-ai-ops-supervisor","srt_level":3,"srt_level_name":"Социально-профессиональная структура","name":"AI-ops и агент-супервайзер","description":"Операторы и контролеры работы AI-агентов в бизнес-процессах.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":300000000,"active_players_count":6,"confidence":"high","reasoning":"Аналогично рынку ITSM ($10B+). Автоматизация middle-management создаёт массовый спрос."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Роль формируется в крупных компаниях, стандартизация впереди."},"entry_conditions":["Навыки управления процессами","Знание AI-инструментов","Опыт ITSM"],"key_players":["Kyndryl","ITSM-специалисты","Процессные менеджеры","AI governance специалисты"],"evidence":"События апреля, Kyndryl сервисы управления агентами","confidence":"high","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt3-ai-audit-specialist","srt_level":3,"srt_level_name":"Социально-профессиональная структура","name":"Специалист по аудиту и контролю AI-систем","description":"Эксперт по формальной верификации и аудиту поведения AI-систем.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":200000000,"active_players_count":5,"confidence":"medium","reasoning":"Аналогично рынку аудита кибербезопасности ($5B). Регуляторное давление ускоряет рост."},"window":{"category":"narrowing","label":"Средне-долгосрочное (>6 мес)","description":"Нормативные требования нарастают, создавая устойчивый спрос."},"entry_conditions":["Знание нормативов AI","Опыт верификации","Компетенции в ML и compliance"],"key_players":["Кибербезопасность-компании","Compliance-консультанты","ML-инженеры с опытом аудита"],"evidence":"События апреля, проекты по аудиту, Anthropic Mythos, Universal Verifier","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt3-ai-infrastructure-specialist","srt_level":3,"srt_level_name":"Социально-профессиональная структура","name":"Специалист по AI-инфраструктуре","description":"Инженеры, обеспечивающие работу вычислительной, энергетической и логистической инфраструктуры AI.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":1000000000,"active_players_count":10,"confidence":"high","reasoning":"Масштабное строительство дата-центров создаёт дефицит кадров, аналогичный буму облачной инфраструктуры 2010-х."},"window":{"category":"closing","label":"Долгосрочное (>18 мес)","description":"Устойчивый долгосрочный спрос, но конкуренция за кадры высока."},"entry_conditions":["Профильное образование","Опыт работы с инфраструктурой","Знание энергетики и supply chain"],"key_players":["Инженеры","Энергетики","Supply chain специалисты","Oracle"],"evidence":"События апреля, CFO Oracle о дефиците кадров","confidence":"high","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt3-ai-governance-lead","srt_level":3,"srt_level_name":"Социально-профессиональная структура","name":"AI governance lead / AI cyber operator","description":"Руководитель процессов безопасности и соответствия AI-систем в организациях.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":150000000,"active_players_count":7,"confidence":"medium","reasoning":"Аналогично рынку CISO/DPO — каждая крупная организация будет нуждаться в AI governance lead."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Регуляторные требования UK NCSC и Anthropic ускоряют формирование роли."},"entry_conditions":["Опыт управления рисками","Знание AI и регуляторики","Кибербезопасность"],"key_players":["Риск-менеджеры","Кибербезопасность-специалисты","Комплаенс-эксперты"],"evidence":"Рост требований к контролю, регуляции, кибербезопасности AI (UK NCSC, Anthropic)","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt3-agent-workflow-architect","srt_level":3,"srt_level_name":"Социально-профессиональная структура","name":"Архитектор агентных рабочих процессов и проектировщик политик доступа","description":"Проектировщик схем взаимодействия человек-машина и политик доступа в AI-средах.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":100000000,"active_players_count":5,"confidence":"medium","reasoning":"Аналогично рынку enterprise architecture ($3B), специализированному для AI-агентов."},"window":{"category":"narrowing","label":"Средне-долгосрочное (>6 мес)","description":"Усложнение AI-систем создаёт растущий спрос на архитекторов."},"entry_conditions":["Опыт проектирования IT-систем","Знание AI","Навыки безопасности"],"key_players":["Системные архитекторы","Специалисты по безопасности","Enterprise architects"],"evidence":"Усложнение AI-систем, необходимость объяснимого поведения агентов","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt4-silicon-photonics","srt_level":4,"srt_level_name":"«Железные» технологии","name":"Silicon photonics инженеры и разработчики","description":"Специалисты по разработке оптических чипов и интерконнектов для вычислительных платформ.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":2000000000,"active_players_count":4,"confidence":"high","reasoning":"Партнерство Nvidia-Marvell и рост заказов Lumentum подтверждают масштаб рынка фотоники."},"window":{"category":"narrowing","label":"Средне-долгосрочное (6-18+ мес)","description":"Крупные полупроводниковые компании активно инвестируют, но ниши для стартапов остаются."},"entry_conditions":["Глубокие знания фотоники и микроэлектроники","R&D ресурсы","Партнерства с OEM"],"key_players":["Nvidia","Marvell","Lumentum","Полупроводниковые стартапы"],"evidence":"Nvidia-Marvell, Lumentum до 2028","confidence":"high","audience_lens":["founder","operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt4-memory-chip","srt_level":4,"srt_level_name":"«Железные» технологии","name":"AI-оптимизированные memory chip производители","description":"Производители специализированной памяти с высокой пропускной способностью и низкой задержкой для AI-вычислений.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":5000000000,"active_players_count":3,"confidence":"high","reasoning":"Рост прибыли Samsung и SK Hynix, дефицит HBM подтверждают масштаб >$10B."},"window":{"category":"narrowing","label":"Средне-долгосрочное (>6 мес)","description":"Олигопольный рынок, но дефицит создаёт возможности для новых технологий."},"entry_conditions":["Доступ к техпроцессам","R&D бюджет >$500M","Партнерства с крупными производителями"],"key_players":["Samsung","SK Hynix","Крупные производители памяти","Стартапы"],"evidence":"Финансовые отчеты Samsung, планы листинга, дефицит HBM","confidence":"high","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt4-ai-chip-fab","srt_level":4,"srt_level_name":"«Железные» технологии","name":"Инженеры и операторы AI-ориентированных фабрик по чипам","description":"Специалисты запуска и управления фабриками AI-оптимизированных чипов.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":3000000000,"active_players_count":4,"confidence":"medium","reasoning":"Запуск Terafab и стремление к вертикальной интеграции (Tesla) подтверждают рынок."},"window":{"category":"closing","label":"Долгосрочное (>18 мес)","description":"Экстремально капиталоёмкий сегмент с длительными циклами строительства."},"entry_conditions":["Навыки в полупроводниках","Управление оборудованием","Капвложения >$5B"],"key_players":["Tesla","Инженеры полупроводникового производства","TSMC","Intel"],"evidence":"Запуск Terafab, запросы оборудования","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt4-dc-energy-infra","srt_level":4,"srt_level_name":"«Железные» технологии","name":"Разработчики и операторы энергоинфраструктуры AI-дата-центров","description":"Компании и специалисты по гибридным системам питания, космическому энергоснабжению.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":4000000000,"active_players_count":5,"confidence":"high","reasoning":"Инвестиции Entergy и проекты Meta подтверждают масштаб рынка энергоинфраструктуры DC."},"window":{"category":"narrowing","label":"Средне-долгосрочное (>6 мес)","description":"Ограничения энергетики создают устойчивый спрос, крупные игроки входят."},"entry_conditions":["Экспертиза в энергетике","Партнерства с IT-компаниями","Капитал"],"key_players":["Энергокомпании","Meta","Entergy","Стартапы","Инженеры-энергетики"],"evidence":"Инвестиции Entergy, проекты Meta","confidence":"high","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt4-agent-memory-hardware","srt_level":4,"srt_level_name":"«Железные» технологии","name":"Инженеры и разработчики аппаратных решений для agent memory и governance layers","description":"Специалисты по созданию чипов и систем для долговременной памяти и безопасности AI-агентов.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":50000000,"active_players_count":3,"confidence":"low","reasoning":"Рынок на ранней стадии. Публикации Springdrift и ShieldNet указывают на формирование."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Ниша только формируется, есть время для входа стартапам."},"entry_conditions":["Знания AI-архитектур","Аппаратная безопасность","R&D ресурсы"],"key_players":["Стартапы AI hardware","R&D лаборатории","Исследователи"],"evidence":"Публикации ShieldNet, Springdrift","confidence":"low","audience_lens":["founder"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt4-low-power-ai","srt_level":4,"srt_level_name":"«Железные» технологии","name":"Разработчики low-power AI hardware для периферии","description":"Производители чипов для AI на смартфонах и носимых устройствах.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":500000000,"active_players_count":4,"confidence":"medium","reasoning":"Запуск Samsung и продвижение Qualcomm подтверждают рынок edge AI hardware."},"window":{"category":"narrowing","label":"Кратко-среднесрочное (<18 мес)","description":"Быстрый рост спроса на on-device AI создаёт окно для специализированных решений."},"entry_conditions":["Опыт в энергоэффективных архитектурах","Интеграция с мобильными платформами","Навыки оптимизации"],"key_players":["Qualcomm","Apple","Samsung","Edge AI стартапы"],"evidence":"Запуск Samsung, продвижение Qualcomm","confidence":"medium","audience_lens":["founder"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt4-chip-testing","srt_level":4,"srt_level_name":"«Железные» технологии","name":"Специалисты по тестированию и контролю качества AI-чипов","description":"Эксперты по тестированию и верификации качества AI-оборудования.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":200000000,"active_players_count":3,"confidence":"medium","reasoning":"Дефицит тестовых мощностей (Advantest) указывает на растущий рынок."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Дефицит тестовых мощностей создаёт устойчивый спрос."},"entry_conditions":["Опыт тестирования чипов","Знание AI-специфик","Оборудование"],"key_players":["Advantest","Компании по тестированию полупроводников","QA инженеры"],"evidence":"Сообщения Advantest о дефиците тестовых мощностей","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt5-compute-as-a-service","srt_level":5,"srt_level_name":"Разделение труда между фирмами","name":"Compute-as-a-Service провайдер","description":"Фирмы, предоставляющие специализированные вычислительные мощности AI-лабораториям по долгосрочным контрактам.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":21000000000,"active_players_count":4,"confidence":"high","reasoning":"$21 млрд контракт CoreWeave с Meta и multibillion контракт с Anthropic подтверждают масштаб."},"window":{"category":"narrowing","label":"Средне-долгосрочное (>6 мес)","description":"CoreWeave доминирует, но рынок достаточно велик для 3-5 крупных игроков."},"entry_conditions":["Инвестиции в масштабируемую инфраструктуру","Партнерства с AI-лабораториями","Капитал >$1B"],"key_players":["CoreWeave","Специализированные cloud-провайдеры","Дата-центры","Инвестфонды"],"evidence":"$21 млрд контракт CoreWeave с Meta, multibillion контракт с Anthropic","confidence":"high","audience_lens":["investor","operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt5-energy-operators-ai","srt_level":5,"srt_level_name":"Разделение труда между фирмами","name":"Энергетические операторы и инвесторы под AI-энергоцентры","description":"Компании, владеющие или инвестирующие в энергию (ВИЭ, storage) для AI-дата-центров.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":7000000000,"active_players_count":5,"confidence":"high","reasoning":"Microsoft-Chevron $7 млрд и рост storage в Китае подтверждают масштаб."},"window":{"category":"narrowing","label":"Средне-долгосрочное (>6 мес)","description":"Энергетические шоки и дефицит мощности создают устойчивый спрос."},"entry_conditions":["Капиталоемкие проекты","Партнерства с AI-компаниями","Доступ к ресурсам"],"key_players":["Microsoft","Chevron","Engine No.1","BigTech","Инфраструктурные фонды"],"evidence":"Microsoft–Chevron $7 млрд, рост storage в Китае","confidence":"high","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt5-chip-sovereignty","srt_level":5,"srt_level_name":"Разделение труда между фирмами","name":"AI Chip Sovereignty Manufactures","description":"Производители AI-чипов, стремящиеся к суверенитету и снижению зависимости от глобальных цепочек (Rapidus).","capacity":{"category":"large","range_label":"> $1B","evidence_usd":4000000000,"active_players_count":3,"confidence":"medium","reasoning":"Rapidus субсидии ¥631.5 млрд (~$4 млрд) подтверждают государственную поддержку суверенного производства."},"window":{"category":"closing","label":"Долгосрочное (>18 мес)","description":"Экстремально капиталоёмкий сегмент, требующий государственной поддержки."},"entry_conditions":["Капвложения >$5B","Технологический уровень","Поддержка государства"],"key_players":["Rapidus","Национальные проекты","Крупные производители","Стартапы"],"evidence":"Rapidus субсидии ¥631.5 млрд (~$4 млрд)","confidence":"medium","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt5-infra-finance-secondary","srt_level":5,"srt_level_name":"Разделение труда между фирмами","name":"AI Infrastructure Finance and Secondary Market Operators","description":"Игроки на вторичном рынке долга и капитала дата-центров и AI-инфраструктуры.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":14000000000,"active_players_count":4,"confidence":"high","reasoning":"Pimco продажи долга Oracle $14 млрд и AirTrunk REIT IPO подтверждают формирование вторичного рынка."},"window":{"category":"open","label":"Кратко-среднесрочное (<18 мес)","description":"Рынок только формируется, институциональные инвесторы входят."},"entry_conditions":["Доступ к капиталу","Регуляторика","Наличие активов"],"key_players":["Pimco","Blackstone","Банки","REIT структуры"],"evidence":"Pimco продажи долга Oracle $14 млрд, AirTrunk REIT IPO","confidence":"high","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt5-agent-governance-platforms","srt_level":5,"srt_level_name":"Разделение труда между фирмами","name":"Agent Governance Platforms","description":"Поставщики систем управления, мониторинга и контроля AI-агентов (например, Kyndryl).","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":100000000,"active_players_count":5,"confidence":"medium","reasoning":"Запуск Kyndryl сервиса и рост агентности AI подтверждают формирование рынка."},"window":{"category":"open","label":"Кратко-среднесрочное (<18 мес)","description":"Рынок на ранней стадии, стандарты не устоялись — окно открыто."},"entry_conditions":["Технические компетенции в AgentOps","Партнерства с корпоративными клиентами","Безопасность"],"key_players":["Kyndryl","IT-интеграторы","AI-стартапы"],"evidence":"Запуск Kyndryl сервиса управления агентами","confidence":"medium","audience_lens":["founder","operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt5-industrial-ai-sensing","srt_level":5,"srt_level_name":"Разделение труда между фирмами","name":"Industrial AI Sensing & Inspection Integrators","description":"Компании, объединяющие AI с индустриальным контролем качества (Hexagon с Waygate).","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":1450000000,"active_players_count":4,"confidence":"high","reasoning":"Сделка Hexagon-Waygate $1.45 млрд подтверждает масштаб рынка промышленного AI."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Конвергенция AI и промышленности ускоряется, крупные игроки входят."},"entry_conditions":["Экспертиза в оборудовании","AI-компетенции","Доступ к рынкам производства"],"key_players":["Hexagon","Waygate","Индустриальные гиганты","AI-стартапы"],"evidence":"Сделка Hexagon-Waygate $1.45 млрд","confidence":"high","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt6-model-customization","srt_level":6,"srt_level_name":"Технологии производства знаний","name":"Инженер кастомизации моделей и архитектуры внедрения","description":"Специалист по адаптации LLM под корпоративные данные и процессы, используя дообучение, RAG, контекстные хранилища.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":750000000,"active_players_count":8,"confidence":"high","reasoning":"Сдвиг от универсальных моделей к кастомизации создаёт рынок, аналогичный enterprise software customization ($20B+)."},"window":{"category":"narrowing","label":"Средне-долгосрочное (>6 мес)","description":"Спрос растёт, но крупные cloud-провайдеры активно занимают позиции."},"entry_conditions":["Глубокое понимание LLM","Навыки работы с данными и интерфейсами","Cloud-экспертиза"],"key_players":["ML-инженеры","Data engineers","Google Cloud","AWS","Kyndryl"],"evidence":"Релизы Kyndryl по управлению агентами, MIT Tech Review","confidence":"high","audience_lens":["founder","operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt6-formal-verification","srt_level":6,"srt_level_name":"Технологии производства знаний","name":"Инженер формальной верификации и доказуемой надежности AI","description":"Разработчик методик формальной проверки рассуждений, кода и поведения AI-агентов.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":50000000,"active_players_count":4,"confidence":"low","reasoning":"Рынок на ранней стадии, аналогичный формальной верификации ПО ($500M). Публикации указывают на рост."},"window":{"category":"closing","label":"Долгосрочное (>18 мес)","description":"Высокие академические барьеры и длительные циклы разработки."},"entry_conditions":["Знания формальной логики","Программная верификация","ML-экспертиза"],"key_players":["Microsoft Research","Формальные методы специалисты","SMT/theorem proving эксперты"],"evidence":"Публикации IC3-Evolve, PRoSFI, EVOM","confidence":"low","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt6-agentops-engineer","srt_level":6,"srt_level_name":"Технологии производства знаний","name":"Операционный инженер AI-агентов (AgentOps)","description":"Специалист по мониторингу, диагностике и управлению жизненным циклом AI-агентов в продуктивной среде.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":100000000,"active_players_count":5,"confidence":"medium","reasoning":"Аналогично рынку MLOps ($2B), но специализированному для агентных систем."},"window":{"category":"open","label":"Краткосрочное (<6 мес)","description":"Рынок только формируется, стандарты не устоялись — окно широко открыто."},"entry_conditions":["Опыт в облачных инфраструктурах","Знание агентных систем","Навыки анализа логов"],"key_players":["DevOps/SRE с AI навыками","Специалисты по наблюдаемости","Kyndryl"],"evidence":"Запуск Signals, Kyndryl (апрель 2026)","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt6-agent-first-architect","srt_level":6,"srt_level_name":"Технологии производства знаний","name":"Архитектор agent-first процессов","description":"Аналитик и архитектор бизнес-процессов вокруг автономных AI-агентов, а не интеграции AI в старые процессы.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":100000000,"active_players_count":5,"confidence":"medium","reasoning":"Аналогично рынку BPM-консалтинга ($5B), но для agent-first подхода."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Сдвиг к agent-first process redesign создаёт растущий спрос."},"entry_conditions":["Понимание AI","Бизнес-процессы","Проектирование систем"],"key_players":["Бизнес-аналитики","Цифровые консультанты с навыками AI","MIT Tech Review"],"evidence":"Публикации MIT Tech Review, исследования AgentForge, TREX","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt6-edge-ai-mobile","srt_level":6,"srt_level_name":"Технологии производства знаний","name":"Инженер по edge AI и мобильным агентам","description":"Разработчик и оптимизатор AI-моделей для смартфонов и устройств с ограниченными ресурсами.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":500000000,"active_players_count":5,"confidence":"medium","reasoning":"Проекты Qualcomm+OpenAI и Samsung подтверждают масштаб рынка on-device AI."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Быстрый рост спроса на on-device AI, но крупные игроки активно входят."},"entry_conditions":["Навыки low-rank adaptation","Knowledge distillation","Inference optimization"],"key_players":["Qualcomm","Samsung","Embedded инженеры","ML-инженеры"],"evidence":"Рост акций Qualcomm, запуск Samsung","confidence":"medium","audience_lens":["founder"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt6-benchmark-governance","srt_level":6,"srt_level_name":"Технологии производства знаний","name":"Специалист по benchmark governance и evaluation science","description":"Эксперт по разработке методик оценки AI с учётом reliability, safety и operating layer.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":50000000,"active_players_count":6,"confidence":"medium","reasoning":"Кризис классических бенчмарков создаёт спрос на новые методики оценки."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Рост stress-testing систем и требований к evaluation создаёт устойчивый спрос."},"entry_conditions":["Глубокое понимание AI-метрик","Статистика","Безопасность"],"key_players":["Исследователи AI","Data scientists","Компании по оценке"],"evidence":"Появление LABBench2, FinTrace, HORIZON, SafetyALFRED","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt6-agent-governance-engineer","srt_level":6,"srt_level_name":"Технологии производства знаний","name":"Инженер по инженерии управляемого агентного поведения (Agent Governance Engineer)","description":"Специалист по архитектурам разделения полномочий, контролю целостности и предотвращению саботажа в multi-agent системах.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":30000000,"active_players_count":4,"confidence":"low","reasoning":"Рынок на ранней стадии. Проекты PolicyBank и PhantomPolicy указывают на формирование."},"window":{"category":"closing","label":"Долгосрочное (>18 мес)","description":"Высокие академические барьеры, длительные циклы стандартизации."},"entry_conditions":["Опыт в безопасности","Formal methods","AI-экспертиза"],"key_players":["Специалисты по безопасности","Разработчики multi-agent систем"],"evidence":"Публикации по политике и безопасности агентов (PolicyBank, PhantomPolicy, CWAC, ARES)","confidence":"low","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt7-audit-reproducibility","srt_level":7,"srt_level_name":"Институты производства знаний","name":"Центры аудита и воспроизводимости AI","description":"Институты, занимающиеся аудитом, верификацией и воспроизводимостью AI-систем.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":100000000,"active_players_count":6,"confidence":"medium","reasoning":"Кризис традиционных бенчмарков и требования регуляторов создают институциональный спрос."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Запросы регуляторов нарастают, создавая устойчивый спрос на аудит."},"entry_conditions":["Компетенции в ML","Программирование","Стандарты","Регуляторика"],"key_players":["Лаборатории","Консалтинговые компании","Стартапы по аудиту","AISI"],"evidence":"Рост проектов FactReview, OpenEval, AISI; запросы регуляторов","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt7-university-venture-bridge","srt_level":7,"srt_level_name":"Институты производства знаний","name":"Институциональные мосты «университет — венчур» для AI memory tech","description":"Лаборатории и spin-out компании, разрабатывающие когнитивную память и платформы расширения интеллекта с венчурным финансированием.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":100000000,"active_players_count":3,"confidence":"medium","reasoning":"Привлечение $100 млн и поддержка Sequoia/Nvidia указывают на формирование крупного рынка."},"window":{"category":"closing","label":"Долгосрочное (>18 мес)","description":"Высокие академические барьеры и длительные циклы коммерциализации."},"entry_conditions":["Высокий уровень исследований","Доступ к капиталу и партнёрам","Университетская база"],"key_players":["Университетские исследователи","Венчурные фонды","AI-стартапы","Sequoia","Nvidia"],"evidence":"Привлечение $100 млн, поддержка Sequoia/Nvidia, Harvard spin-out","confidence":"medium","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt7-agentic-benchmarks","srt_level":7,"srt_level_name":"Институты производства знаний","name":"Институты разработки и стандартизации бенчмарков agentic AI","description":"Организации, создающие стандарты и фреймворки для оценки надежности, безопасности и функций agentic систем.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":50000000,"active_players_count":5,"confidence":"medium","reasoning":"Необходимость оценки agentic систем создаёт институциональный спрос на стандарты."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Стандарты формируются, есть время для участия в их создании."},"entry_conditions":["Экспертиза в agent-based системах","Безопасность","Тестирование"],"key_players":["Академические группы","AI-компании","Консорциумы"],"evidence":"Появление HORIZON, SIR-Bench, AISafetyBenchExplorer","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt7-ai-literacy-education","srt_level":7,"srt_level_name":"Институты производства знаний","name":"Образовательные институты AI-грамотности и подготовки кадров","description":"Программы и курсы, интегрирующие AI-навыки в профессиональное и массовое образование.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":200000000,"active_players_count":8,"confidence":"high","reasoning":"Запрос на массовую AI-грамотность от госструктур и корпораций подтверждает масштаб."},"window":{"category":"open","label":"Краткосрочное (<6 мес)","description":"Острый дефицит кадров и программ — окно широко открыто."},"entry_conditions":["Разработка учебных программ","Партнерства с индустрией","Доступ к аудитории"],"key_players":["Госучреждения","Университеты","EdTech компании"],"evidence":"Обучение госслужащих Нью-Йорка, инициативы Минтруда США","confidence":"high","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt7-legal-regulatory","srt_level":7,"srt_level_name":"Институты производства знаний","name":"Юридические и нормативные институты управления AI-знанием","description":"Структуры для правовой экспертизы, регулирования, отчетности и судебного урегулирования вопросов AI.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":500000000,"active_players_count":6,"confidence":"high","reasoning":"Рост судебных споров (Маск vs Альтман) и нормативных требований подтверждают масштаб."},"window":{"category":"closing","label":"Долгосрочное (>18 мес)","description":"Длительные циклы формирования правовых институтов."},"entry_conditions":["Экспертиза в AI и праве","Международные стандарты","Доступ к регуляторам"],"key_players":["Правительственные органы","Юридические компании","Стандартизирующие организации"],"evidence":"Суд Маск vs Альтман, законодательство Калифорнии, ЕС","confidence":"high","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt8-controlled-release","srt_level":8,"srt_level_name":"Спонтанный порядок","name":"Специалист по controlled release и trusted access management","description":"Управление селективным доступом к передовым AI-моделям, аудит пользователей, настройка уровней доступа и безопасность.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":100000000,"active_players_count":4,"confidence":"medium","reasoning":"Кейсы Anthropic Mythos и координация OpenAI/Anthropic/Google подтверждают формирование."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Рост compliance-рисков создаёт устойчивый спрос на управление доступом."},"entry_conditions":["Глубокое понимание AI","Нормативы и безопасность","Compliance-экспертиза"],"key_players":["Compliance-специалисты","Кибербезопасность","Юридические консультанты"],"evidence":"Ограниченный релиз Mythos, переговоры с госструктурами США","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt8-agent-auditor","srt_level":8,"srt_level_name":"Спонтанный порядок","name":"Аудитор и мониторинг агентных систем","description":"Регулярный аудит, мониторинг и оценка безопасности AI-агентов в реальном времени с использованием новых инструментов.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":80000000,"active_players_count":5,"confidence":"medium","reasoning":"Требования к доказуемой вредоостанавливаемости и рост инцидентов создают спрос."},"window":{"category":"open","label":"Краткосрочное (<6 мес)","description":"Острая потребность рынка, инструменты только появляются — окно открыто."},"entry_conditions":["Навыки работы с AI системами","Аналитика данных","Security-инструменты"],"key_players":["Кибербезопасность","QA","Compliance","Исследователи AI"],"evidence":"AgentHazard, кейсы Mythos, банковские тесты","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt8-sovereign-ai-operator","srt_level":8,"srt_level_name":"Спонтанный порядок","name":"Оператор локальных и суверенных AI-контуров","description":"Создание и управление локальными, изолированными AI-средами для госсектора и регулируемых отраслей.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":1000000000,"active_players_count":5,"confidence":"high","reasoning":"Проекты Microsoft в Японии и тесты Ирландии подтверждают масштаб суверенного AI."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Регуляторные ограничения создают устойчивый спрос, но реализация требует времени."},"entry_conditions":["Техническая компетенция в облаках","Знание регуляторики","Партнерства с госсектором"],"key_players":["IT-компании","Системные интеграторы","Госсектор","Microsoft"],"evidence":"Проекты Microsoft в Японии, тесты Ирландии","confidence":"high","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt8-agent-orchestration","srt_level":8,"srt_level_name":"Спонтанный порядок","name":"Координатор и оператор agent orchestration platform","description":"Управление платформами оркестрации агентных систем: права, память, маршрутизация, безопасность (Qualixar OS, Holos).","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":100000000,"active_players_count":5,"confidence":"medium","reasoning":"Переход к комплексным agent-системам создаёт спрос на инфраструктуру управления."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Рынок формируется, стандарты не устоялись — есть время для входа."},"entry_conditions":["Опыт в ML Ops","Распределённые системы","DevOps-экспертиза"],"key_players":["Разработчики ПО","Системные архитекторы","DevOps"],"evidence":"Появление Agent OS, Holos, рост interest в agent orchestration","confidence":"medium","audience_lens":["founder","operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt8-infra-energy-investor","srt_level":8,"srt_level_name":"Спонтанный порядок","name":"Инфраструктурный инвестор и оператор AI-энергетических ресурсов","description":"Инвесторы и операторы в энергетике, земле, охлаждении и сетевой инфраструктуре для AI дата-центров.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":5000000000,"active_players_count":5,"confidence":"high","reasoning":"IPO Madison Air, Blackstone IPO, Rapidus субсидии подтверждают масштаб инфраструктурных инвестиций."},"window":{"category":"closing","label":"Долгосрочное (>18 мес)","description":"Крупные институциональные игроки уже заняли позиции."},"entry_conditions":["Финансовые ресурсы >$1B","Опыт инфраструктурных проектов","Доступ к земле и энергии"],"key_players":["Капиталовладельцы","Девелоперы","Энергетические компании","Madison Air","Blackstone"],"evidence":"IPO Madison Air, субсидии Rapidus, проекты по AI энергетике","confidence":"high","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt8-digital-identity","srt_level":8,"srt_level_name":"Спонтанный порядок","name":"Специалист по цифровой идентичности и age verification","description":"Разработка и внедрение цифровых протоколов идентификации и проверки возраста для доступа к AI-сервисам и соцсетям.","capacity":{"category":"small","range_label":"< $500M","evidence_usd":50000000,"active_players_count":4,"confidence":"medium","reasoning":"Тесты Ирландии, ЕС и Японии указывают на формирующийся, но пока небольшой рынок."},"window":{"category":"narrowing","label":"Среднесрочное (6-18 мес)","description":"Регуляторное давление нарастает, но стандарты ещё не устоялись."},"entry_conditions":["Экспертиза в цифровой идентичности","Знание регуляторики","Технологии верификации"],"key_players":["FinTech компании","Госструктуры","Стартапы идентификации"],"evidence":"Тесты Ирландии, ЕС, Японии по age verification","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt9-infra-reit","srt_level":9,"srt_level_name":"Денежная система","name":"Infra-REIT для дата-центров AI","description":"Финансовый инструмент на базе REIT, позволяющий устойчивость дата-центров как инфраструктурных активов, с регулярной доходностью и публичной ликвидностью.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":10000000000,"active_players_count":5,"confidence":"high","reasoning":"IPO AirTrunk, планы Blackstone и Pimco сделки подтверждают масштаб рынка DC REIT >$50B."},"window":{"category":"open","label":"Открыто","description":"Рынок активно формируется, институциональные инвесторы входят — окно открыто."},"entry_conditions":["Крупные капитальные вложения","Партнерства с дата-центрами","Лицензированные REIT-структуры"],"key_players":["Инвестиционные фонды","Управляющие недвижимостью","Публичные компании инфраструктуры"],"evidence":"IPO AirTrunk, Blackstone планы, Pimco сделки","confidence":"high","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt9-ai-capex-hubs","srt_level":9,"srt_level_name":"Денежная система","name":"AI-CapEx энергетические хабы и проекты","description":"Сверхкрупные объёмы капитальных расходов (CapEx), ориентированные на обслуживание дата-центров и AI-инфраструктуры.","capacity":{"category":"large","range_label":"> $1B","evidence_usd":7000000000,"active_players_count":5,"confidence":"high","reasoning":"Microsoft $7 млрд проект Техас и Blackstone инвестиции в солнечную энергетику подтверждают масштаб."},"window":{"category":"open","label":"Открыто","description":"Масштабные инвестиции только начинаются — окно широко открыто."},"entry_conditions":["Технологическая способность строить и эксплуатировать","Энергетическая инфраструктура","Финансовые ресурсы >$1B"],"key_players":["Энергетические компании","Инфраструктурные инвесторы","Крупные AI-компании","Государственные фонды"],"evidence":"Microsoft $7 млрд проект Техас, Blackstone инвестиции в солнечную энергетику","confidence":"high","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt9-debt-financing","srt_level":9,"srt_level_name":"Денежная система","name":"Долговое финансирование frontier labs и AI-инфраструктуры","description":"Высокодоходные облигации, кредитные линии и секьюритизация долга под AI-компании (CoreWeave, Google junk bonds, дата-центры).","capacity":{"category":"large","range_label":"> $1B","evidence_usd":48500000000,"active_players_count":5,"confidence":"high","reasoning":"SoftBank кредит $40 млрд + CoreWeave облигации $8.5 млрд — только за апрель. Рынок >$100B/год."},"window":{"category":"open","label":"Открыто","description":"Взрывной рост долгового финансирования AI — окно широко открыто."},"entry_conditions":["Доступ к крупному капиталу","Рынок ликвидности","Способность структурировать сделки"],"key_players":["SoftBank","CoreWeave","Банки","Инвестиционные фонды","Специализированные кредиторы"],"evidence":"SoftBank кредит $40 млрд, CoreWeave облигации $8.5 млрд, Pimco сделки","confidence":"high","audience_lens":["investor"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt9-agentic-ai-consulting","srt_level":9,"srt_level_name":"Денежная система","name":"Финансовые площадки и консультанты внедрения agentic AI","description":"Фонды и сервисы, субсидирующие и сопровождающие внедрение AI в корпоративные процессы (Oracle Cloud фонд $750 млн для McKinsey, Accenture и др.).","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":750000000,"active_players_count":5,"confidence":"high","reasoning":"Oracle Cloud фонд $750 млн и Andreessen Horowitz инвестиции подтверждают масштаб."},"window":{"category":"open","label":"Открыто","description":"Рынок консалтинга по внедрению agentic AI только формируется — окно открыто."},"entry_conditions":["Экспертиза в AI","Партнёрские отношения с крупными AI-провайдерами","Консалтинговый опыт"],"key_players":["Консалтинговые компании","Предпринимательские венчурные фонды","Интеграторы","McKinsey","Accenture"],"evidence":"Oracle Cloud фонд $750 млн, Andreessen Horowitz инвестиции","confidence":"high","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt9-cyber-risk-market","srt_level":9,"srt_level_name":"Денежная система","name":"Рынок кибер-рисков менеджмента AI","description":"Инструменты страхования, стоимостного управления рисков, связанных с AI-моделями, их безопасностью и контентными системами.","capacity":{"category":"medium","range_label":"$100M–$1B","evidence_usd":200000000,"active_players_count":5,"confidence":"medium","reasoning":"Рост регуляторных требований и инцидентов создаёт спрос на страхование AI-рисков."},"window":{"category":"open","label":"Открыто","description":"Рынок страхования AI-рисков только формируется — окно открыто."},"entry_conditions":["Глубокие знания AI-безопасности","Финансовый инжиниринг","Нормативное регулирование"],"key_players":["Страховые компании","FinTech","Регуляторы","Консалтинговые фирмы"],"evidence":"Отрасль историй регуляторов (EIRSCD), страховые продукты Arch","confidence":"medium","audience_lens":["operator"],"last_updated":"2026-05-02","generated_month":"2026-04"},{"id":"srt9-vertical-ai-products","srt_level":9,"srt_level_name":"Денежная система","name":"Вертикализированные AI-продукты для снижения издержек труда","description":"Компании, создающие AI-системы для автоматизации конкретных бизнес-процессов (Procore $10 млрд сделка, Upside AI $2 млрд).","capacity":{"category":"large","range_label":"> $1B","evidence_usd":12000000000,"active_players_count":6,"confidence":"high","reasoning":"Procore $10 млрд и Upside AI $2 млрд подтверждают масштаб вертикального AI."},"window":{"category":"open","label":"Открыто","description":"Множество вертикалей ещё не охвачены AI — окно широко открыто."},"entry_conditions":["Глубокое знание вертикали и отрасли","Сильные продукты","Масштабируемость"],"key_players":["Стартапы","Крупные компании","Вертикальные интеграторы","Procore","Upside AI"],"evidence":"Раунды Procore $10 млрд, Upside AI $2 млрд","confidence":"high","audience_lens":["founder","investor"],"last_updated":"2026-05-02","generated_month":"2026-04"}],"history":{"new_places":["srt1-energy-integrator","srt1-critical-minerals","srt1-flexible-dc-operator","srt1-cooling-efficiency","srt1-alternative-energy","srt1-institutional-energy-investor","srt2-dc-reit","srt2-space-energy-dc","srt2-regional-ai-hubs","srt2-sovereign-digital-circuits","srt2-behind-the-meter","srt2-satellite-infrastructure","srt3-agent-reliability-engineer","srt3-gig-robot-trainer","srt3-ai-ops-supervisor","srt3-ai-audit-specialist","srt3-ai-infrastructure-specialist","srt3-ai-governance-lead","srt3-agent-workflow-architect","srt4-silicon-photonics","srt4-memory-chip","srt4-ai-chip-fab","srt4-dc-energy-infra","srt4-agent-memory-hardware","srt4-low-power-ai","srt4-chip-testing","srt5-compute-as-a-service","srt5-energy-operators-ai","srt5-chip-sovereignty","srt5-infra-finance-secondary","srt5-agent-governance-platforms","srt5-industrial-ai-sensing","srt6-model-customization","srt6-formal-verification","srt6-agentops-engineer","srt6-agent-first-architect","srt6-edge-ai-mobile","srt6-benchmark-governance","srt6-agent-governance-engineer","srt7-audit-reproducibility","srt7-university-venture-bridge","srt7-agentic-benchmarks","srt7-ai-literacy-education","srt7-legal-regulatory","srt8-controlled-release","srt8-agent-auditor","srt8-sovereign-ai-operator","srt8-agent-orchestration","srt8-infra-energy-investor","srt8-digital-identity","srt9-infra-reit","srt9-ai-capex-hubs","srt9-debt-financing","srt9-agentic-ai-consulting","srt9-cyber-risk-market","srt9-vertical-ai-products"],"changed_places":[],"closed_places":[]}};
+
+// ═══════════════════════════════════════════════════════
+// CONSTANTS
+// ═══════════════════════════════════════════════════════
+const SRT_LEVELS = {
+  1: 'Природные ресурсы',
+  2: 'Пространственная организация',
+  3: 'Социально-профессиональная структура',
+  4: '«Железные» технологии',
+  5: 'Разделение труда между фирмами',
+  6: 'Технологии производства знаний',
+  7: 'Институты производства знаний',
+  8: 'Спонтанный порядок',
+  9: 'Денежная система'
+};
+
+const LEVEL_COLORS = {
+  1: '#ef4444', 2: '#f97316', 3: '#eab308', 4: '#84cc16', 5: '#22c55e',
+  6: '#06b6d4', 7: '#3b82f6', 8: '#8b5cf6', 9: '#ec4899'
+};
+
+const CAPACITY_LABELS = { large: '> $1B', medium: '$100M–$1B', small: '< $100M' };
+const CAPACITY_RU = { large: 'Крупная', medium: 'Средняя', small: 'Малая' };
+const WINDOW_RU = { open: 'Открыто', narrowing: 'Сужается', closing: 'Закрывается' };
+const WINDOW_COLORS = { open: '#34d399', narrowing: '#fbbf24', closing: '#ef4444' };
+const CONF_RU = { high: 'Высокая', medium: 'Средняя', low: 'Низкая' };
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+let activeFilters = { level: null, capacity: null, window: null };
+let sortCol = null;
+let sortDir = 'asc';
+
+// ═══════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════
+function formatUSD(n) {
+  if (n >= 1e9) return '$' + (n / 1e9).toFixed(1) + 'B';
+  if (n >= 1e6) return '$' + (n / 1e6).toFixed(0) + 'M';
+  return '$' + n.toLocaleString();
+}
+
+function getFiltered() {
+  return PLACES_DATA.places.filter(p => {
+    if (activeFilters.level && p.srt_level !== activeFilters.level) return false;
+    if (activeFilters.capacity && p.capacity.category !== activeFilters.capacity) return false;
+    if (activeFilters.window && p.window.category !== activeFilters.window) return false;
+    return true;
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  renderMeta();
+  renderSignal();
+  renderStats();
+  renderFilters();
+  renderBubble();
+  renderMatrix();
+  renderTable();
+  initTabs();
+  initModal();
+});
+
+// ═══════════════════════════════════════════════════════
+// META
+// ═══════════════════════════════════════════════════════
+function renderMeta() {
+  const m = PLACES_DATA.meta;
+  document.getElementById('header-meta').innerHTML = `
+    <div class="meta-chip">Период: <span class="val">${m.period.label}</span></div>
+    <div class="meta-chip">Мест: <span class="val">${m.total_places}</span></div>
+    <div class="meta-chip">Турбулентность: <span class="val">${m.turbulence_index}</span></div>
+    <div class="meta-chip">Версия: <span class="val">${m.version}</span></div>
+  `;
+  document.getElementById('footer-period').textContent = m.period.label;
+  document.getElementById('footer-date').textContent = new Date(m.generated_at).toLocaleDateString('ru-RU');
+}
+
+function renderSignal() {
+  const s = PLACES_DATA.meta.signal_of_month;
+  if (!s) return;
+  document.getElementById('signal-banner').innerHTML = `
+    <div class="signal-label">Сигнал месяца</div>
+    <div class="signal-text">${s}</div>
+  `;
+}
+
+function renderStats() {
+  const m = PLACES_DATA.meta;
+  const bar = document.getElementById('stats-bar');
+  const items = [
+    { num: m.total_places, lbl: 'Всего мест' },
+    { num: m.places_by_capacity.large || 0, lbl: 'Крупные (>$1B)' },
+    { num: m.places_by_capacity.medium || 0, lbl: 'Средние ($100M–$1B)' },
+    { num: m.places_by_window.open || 0, lbl: 'Окно открыто' },
+    { num: m.places_by_window.narrowing || 0, lbl: 'Окно сужается' },
+    { num: m.places_by_window.closing || 0, lbl: 'Окно закрывается' },
+    { num: m.places_by_confidence.high || 0, lbl: 'Высокая уверенность' },
+    { num: m.turbulence_index, lbl: 'Индекс турбулентности' },
+  ];
+  bar.innerHTML = items.map(i => `
+    <div class="stat-card">
+      <div class="num">${i.num}</div>
+      <div class="lbl">${i.lbl}</div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════════════════
+// FILTERS
+// ═══════════════════════════════════════════════════════
+function renderFilters() {
+  const sec = document.getElementById('filters-section');
+  sec.innerHTML = `
+    <div class="filter-group">
+      <span class="filter-label">Уровень СРТ</span>
+      ${[1,2,3,4,5,6,7,8,9].map(l => `
+        <button class="filter-btn" data-filter="level" data-value="${l}"
+                style="border-color: ${LEVEL_COLORS[l]}33">${l}</button>
+      `).join('')}
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Ёмкость</span>
+      <button class="filter-btn" data-filter="capacity" data-value="large">Крупная</button>
+      <button class="filter-btn" data-filter="capacity" data-value="medium">Средняя</button>
+      <button class="filter-btn" data-filter="capacity" data-value="small">Малая</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Окно</span>
+      <button class="filter-btn" data-filter="window" data-value="open">Открыто</button>
+      <button class="filter-btn" data-filter="window" data-value="narrowing">Сужается</button>
+      <button class="filter-btn" data-filter="window" data-value="closing">Закрывается</button>
+    </div>
+    <button class="filter-reset" id="filter-reset">Сбросить</button>
+  `;
+
+  sec.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.filter;
+      const val = btn.dataset.value;
+      const parsed = key === 'level' ? parseInt(val) : val;
+
+      if (activeFilters[key] === parsed) {
+        activeFilters[key] = null;
+        btn.classList.remove('active');
+      } else {
+        sec.querySelectorAll(`[data-filter="${key}"]`).forEach(b => b.classList.remove('active'));
+        activeFilters[key] = parsed;
+        btn.classList.add('active');
+      }
+      applyFilters();
+    });
+  });
+
+  document.getElementById('filter-reset').addEventListener('click', () => {
+    activeFilters = { level: null, capacity: null, window: null };
+    sec.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    applyFilters();
+  });
+}
+
+function applyFilters() {
+  renderBubble();
+  renderMatrix();
+  renderTable();
+}
+
+// ═══════════════════════════════════════════════════════
+// TABS
+// ═══════════════════════════════════════════════════════
+function initTabs() {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+      if (btn.dataset.tab === 'bubble') {
+        setTimeout(() => Plotly.Plots.resize('bubble-chart'), 50);
+      }
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// BUBBLE CHART (Plotly.js)
+// ═══════════════════════════════════════════════════════
+function renderBubble() {
+  const places = getFiltered();
+  const capMap = { large: 3, medium: 2, small: 1 };
+  const confSize = { high: 28, medium: 18, low: 10 };
+
+  // Group by window category for legend
+  const groups = { open: [], narrowing: [], closing: [] };
+  places.forEach(p => {
+    const wc = p.window.category;
+    if (groups[wc]) groups[wc].push(p);
+  });
+
+  const traces = Object.entries(groups).map(([wc, items]) => ({
+    x: items.map(p => p.srt_level + (Math.random() - 0.5) * 0.3),
+    y: items.map(p => capMap[p.capacity.category] + (Math.random() - 0.5) * 0.25),
+    text: items.map(p =>
+      `<b>${p.name}</b><br>` +
+      `Уровень ${p.srt_level}: ${SRT_LEVELS[p.srt_level]}<br>` +
+      `Ёмкость: ${CAPACITY_RU[p.capacity.category]} (${p.capacity.range_label})<br>` +
+      `Окно: ${WINDOW_RU[p.window.category]}<br>` +
+      `Уверенность: ${CONF_RU[p.confidence]}<br>` +
+      `Игроки: ${p.key_players.slice(0, 3).join(', ')}`
+    ),
+    customdata: items.map(p => p.id),
+    mode: 'markers',
+    marker: {
+      size: items.map(p => confSize[p.confidence]),
+      color: items.map(p => LEVEL_COLORS[p.srt_level]),
+      opacity: 0.75,
+      line: { width: 1.5, color: WINDOW_COLORS[wc] },
+    },
+    name: WINDOW_RU[wc],
+    hovertemplate: '%{text}<extra></extra>',
+    type: 'scatter',
+  }));
+
+  const layout = {
+    paper_bgcolor: '#0a0e17',
+    plot_bgcolor: '#0f1320',
+    font: { family: 'Inter, sans-serif', color: '#9ca3af', size: 12 },
+    margin: { t: 40, r: 30, b: 60, l: 70 },
+    xaxis: {
+      title: { text: 'Уровень СРТ', font: { size: 13, color: '#6b7280' } },
+      tickmode: 'array',
+      tickvals: [1,2,3,4,5,6,7,8,9],
+      ticktext: ['1','2','3','4','5','6','7','8','9'],
+      gridcolor: 'rgba(255,255,255,0.04)',
+      zeroline: false,
+      range: [0.3, 9.7],
+    },
+    yaxis: {
+      title: { text: 'Экономическая ёмкость', font: { size: 13, color: '#6b7280' } },
+      tickmode: 'array',
+      tickvals: [1, 2, 3],
+      ticktext: ['< $100M', '$100M–$1B', '> $1B'],
+      gridcolor: 'rgba(255,255,255,0.04)',
+      zeroline: false,
+      range: [0.4, 3.6],
+    },
+    legend: {
+      x: 0, y: 1.12,
+      orientation: 'h',
+      font: { size: 11 },
+      bgcolor: 'transparent',
+    },
+    hoverlabel: {
+      bgcolor: '#1a1f2e',
+      bordercolor: 'rgba(255,255,255,0.1)',
+      font: { family: 'Inter', size: 12, color: '#e5e7eb' },
+    },
+    annotations: [1,2,3,4,5,6,7,8,9].map(l => ({
+      x: l, y: 0.55, xref: 'x', yref: 'y',
+      text: SRT_LEVELS[l].split(' ').slice(0, 2).join(' '),
+      showarrow: false,
+      font: { size: 9, color: LEVEL_COLORS[l] + '88' },
+    })),
+  };
+
+  const config = {
+    responsive: true,
+    displayModeBar: false,
+  };
+
+  Plotly.newPlot('bubble-chart', traces, layout, config);
+
+  document.getElementById('bubble-chart').on('plotly_click', (data) => {
+    if (data.points.length > 0) {
+      const id = data.points[0].customdata;
+      openModal(id);
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// MATRIX (CSS Grid)
+// ═══════════════════════════════════════════════════════
+function renderMatrix() {
+  const places = getFiltered();
+  const grid = document.getElementById('matrix-grid');
+  grid.innerHTML = '';
+
+  for (let level = 1; level <= 9; level++) {
+    const levelPlaces = places.filter(p => p.srt_level === level);
+    const col = document.createElement('div');
+    col.className = 'matrix-column';
+
+    // Header
+    const header = document.createElement('div');
+    header.className = `matrix-col-header level-${level}`;
+    header.style.borderBottomColor = LEVEL_COLORS[level];
+    header.innerHTML = `
+      <span class="level-num">${level}</span>
+      ${SRT_LEVELS[level]}
+      <span class="count-badge">${levelPlaces.length}</span>
+    `;
+    col.appendChild(header);
+
+    // Cards
+    levelPlaces.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'place-card';
+      card.style.borderLeftColor = LEVEL_COLORS[level];
+      card.style.borderLeftWidth = '3px';
+      card.onclick = () => openModal(p.id);
+      card.style.cursor = 'pointer';
+
+      card.innerHTML = `
+        <div class="card-name">${p.name}</div>
+        <div class="card-desc">${p.description}</div>
+        <div class="card-badges">
+          <span class="badge badge-cap-${p.capacity.category}">${CAPACITY_RU[p.capacity.category]} ${p.capacity.range_label}</span>
+          <span class="badge badge-win-${p.window.category}">${WINDOW_RU[p.window.category]}</span>
+          <span class="badge badge-conf-${p.confidence}">⚡ ${CONF_RU[p.confidence]}</span>
+        </div>
+        <div class="card-players">Игроки: <span>${p.key_players.slice(0, 3).join(', ')}${p.key_players.length > 3 ? '...' : ''}</span></div>
+        <div class="card-conditions">${p.entry_conditions.map(c => '→ ' + c).join('<br>')}</div>
+        <div class="card-evidence">${p.evidence}</div>
+      `;
+      col.appendChild(card);
+    });
+
+    grid.appendChild(col);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// TABLE
+// ═══════════════════════════════════════════════════════
+function renderTable() {
+  const places = getFiltered();
+  const sorted = sortPlaces(places);
+
+  // Head
+  const thead = document.getElementById('table-head');
+  thead.innerHTML = `<tr>
+    ${tableCol('srt_level', 'Ур.')}
+    ${tableCol('name', 'Название')}
+    ${tableCol('description', 'Описание')}
+    ${tableCol('capacity', 'Ёмкость')}
+    ${tableCol('window', 'Окно')}
+    ${tableCol('confidence', 'Уверенность')}
+    ${tableCol('key_players', 'Ключевые игроки')}
+    ${tableCol('entry_conditions', 'Условия входа')}
+    ${tableCol('evidence', 'Evidence')}
+  </tr>`;
+
+  thead.querySelectorAll('th').forEach(th => {
+    th.addEventListener('click', () => {
+      const col = th.dataset.col;
+      if (sortCol === col) {
+        sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+      } else {
+        sortCol = col;
+        sortDir = 'asc';
+      }
+      renderTable();
+    });
+  });
+
+  // Body
+  const tbody = document.getElementById('table-body');
+  tbody.innerHTML = sorted.map(p => `
+    <tr onclick="openModal('${p.id}')" style="cursor:pointer">
+      <td class="col-level level-${p.srt_level}"><span class="level-dot"></span>${p.srt_level}</td>
+      <td class="col-name">${p.name}</td>
+      <td class="col-desc">${p.description}</td>
+      <td><span class="badge badge-cap-${p.capacity.category}">${CAPACITY_RU[p.capacity.category]}</span><br><small style="color:#6b7280">${p.capacity.range_label}</small></td>
+      <td><span class="badge badge-win-${p.window.category}">${WINDOW_RU[p.window.category]}</span></td>
+      <td><span class="badge badge-conf-${p.confidence}">${CONF_RU[p.confidence]}</span></td>
+      <td class="col-players">${p.key_players.join(', ')}</td>
+      <td class="col-conditions">${p.entry_conditions.join('; ')}</td>
+      <td class="col-evidence">${p.evidence}</td>
+    </tr>
+  `).join('');
+}
+
+function tableCol(col, label) {
+  const arrow = sortCol === col ? (sortDir === 'asc' ? ' ↑' : ' ↓') : '';
+  return `<th data-col="${col}">${label}<span class="sort-arrow">${arrow}</span></th>`;
+}
+
+function sortPlaces(places) {
+  if (!sortCol) return places;
+  return [...places].sort((a, b) => {
+    let va, vb;
+    switch (sortCol) {
+      case 'srt_level': va = a.srt_level; vb = b.srt_level; break;
+      case 'name': va = a.name; vb = b.name; break;
+      case 'description': va = a.description; vb = b.description; break;
+      case 'capacity':
+        const cm = { large: 3, medium: 2, small: 1 };
+        va = cm[a.capacity.category]; vb = cm[b.capacity.category]; break;
+      case 'window':
+        const wm = { open: 1, narrowing: 2, closing: 3 };
+        va = wm[a.window.category]; vb = wm[b.window.category]; break;
+      case 'confidence':
+        const cfm = { high: 3, medium: 2, low: 1 };
+        va = cfm[a.confidence]; vb = cfm[b.confidence]; break;
+      default: va = a[sortCol]; vb = b[sortCol];
+    }
+    if (typeof va === 'string') {
+      return sortDir === 'asc' ? va.localeCompare(vb) : vb.localeCompare(va);
+    }
+    return sortDir === 'asc' ? va - vb : vb - va;
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// DETAIL MODAL
+// ═══════════════════════════════════════════════════════
+function initModal() {
+  const overlay = document.getElementById('modal-overlay');
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+}
+
+function openModal(id) {
+  const p = PLACES_DATA.places.find(pl => pl.id === id);
+  if (!p) return;
+
+  const box = document.getElementById('modal-box');
+  box.innerHTML = `
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="modal-level level-${p.srt_level}">
+      <span class="level-dot"></span>
+      Уровень ${p.srt_level}: ${SRT_LEVELS[p.srt_level]}
+    </div>
+    <div class="modal-title">${p.name}</div>
+    <div class="modal-desc">${p.description}</div>
+
+    <div class="card-badges" style="margin-bottom:16px">
+      <span class="badge badge-cap-${p.capacity.category}">${CAPACITY_RU[p.capacity.category]} ${p.capacity.range_label}</span>
+      <span class="badge badge-win-${p.window.category}">${WINDOW_RU[p.window.category]}</span>
+      <span class="badge badge-conf-${p.confidence}">⚡ ${CONF_RU[p.confidence]}</span>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Экономическая ёмкость</div>
+      <div class="modal-section-body">
+        <p><strong>Категория:</strong> ${CAPACITY_RU[p.capacity.category]} (${p.capacity.range_label})</p>
+        <p><strong>Подтверждённый объём:</strong> ${formatUSD(p.capacity.evidence_usd)}</p>
+        <p><strong>Активных игроков:</strong> ${p.capacity.active_players_count}</p>
+        <p><strong>Обоснование:</strong> ${p.capacity.reasoning}</p>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Окно возможностей</div>
+      <div class="modal-section-body">
+        <p><strong>Статус:</strong> ${WINDOW_RU[p.window.category]} — ${p.window.label}</p>
+        <p>${p.window.description}</p>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Условия входа</div>
+      <div class="modal-section-body">
+        <ul>${p.entry_conditions.map(c => `<li>${c}</li>`).join('')}</ul>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Ключевые игроки</div>
+      <div class="modal-section-body">${p.key_players.join(', ')}</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Evidence</div>
+      <div class="modal-section-body" style="font-style:italic">${p.evidence}</div>
+    </div>
+
+    ${p.audience_lens ? `
+    <div class="modal-section">
+      <div class="modal-section-title">Целевая аудитория</div>
+      <div class="modal-section-body">
+        ${p.audience_lens.map(a => {
+          const labels = { investor: '🎯 Инвестор', operator: '⚙️ Оператор', founder: '🚀 Стартапер' };
+          return `<span class="badge" style="background:rgba(255,255,255,0.06);color:#c8cdd5;margin-right:6px">${labels[a] || a}</span>`;
+        }).join('')}
+      </div>
+    </div>
+    ` : ''}
+  `;
+
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+</script>
+</body>
+</html>
