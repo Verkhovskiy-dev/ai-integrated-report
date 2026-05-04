@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generated_at": "2026-05-04T02:30:00Z",
+    "generated_at": "2026-05-02T11:08:55Z",
     "version": "1.0.0",
     "period": {
-      "month": 5,
+      "month": 4,
       "year": 2026,
-      "label": "Май 2026",
+      "label": "Апрель 2026",
       "start_date": "2026-04-01",
       "end_date": "2026-04-30",
       "total_events": 3599
     },
-    "total_places": 55,
+    "total_places": 56,
     "places_by_level": {
       "1": 6,
       "2": 6,
@@ -44,6 +44,84 @@
   },
   "places": [
     {
+      "id": "srt1-energy-integrator",
+      "srt_level": 1,
+      "srt_level_name": "Природные ресурсы",
+      "name": "Интегратор энергоснабжения AI-инфраструктуры",
+      "description": "Компания/подразделение, объединяющее управление энергетикой и AI-вычислительной инфраструктурой для стабильного питания дата-центров.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 5000000000,
+        "active_players_count": 5,
+        "confidence": "high",
+        "reasoning": "Сопоставимо с рынком промышленной энергетики. Подтверждённые сделки Microsoft в Техасе, Oracle-Bloom 2.8 ГВт, X-Energy IPO."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Среднесрочное (6-18 мес)",
+        "description": "Крупные игроки активно занимают позиции, но рынок достаточно велик для новых участников."
+      },
+      "entry_conditions": [
+        "Капитал >$500M",
+        "Доступ к энергетическим активам",
+        "Опыт в энергетике и AI-инфраструктуре"
+      ],
+      "key_players": [
+        "Microsoft",
+        "Meta",
+        "NextEra Energy",
+        "Oracle",
+        "X-Energy"
+      ],
+      "evidence": "Сделки Microsoft в Техасе, Oracle-Bloom 2.8 ГВт, X-Energy IPO",
+      "confidence": "high",
+      "audience_lens": [
+        "investor",
+        "operator"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
+      "id": "srt1-critical-minerals",
+      "srt_level": 1,
+      "srt_level_name": "Природные ресурсы",
+      "name": "Поставщик критических минералов для AI-цикла",
+      "description": "Компания, добывающая и перерабатывающая минералы (гелий, вольфрам, медь) для AI и связанных технологий.",
+      "capacity": {
+        "category": "large",
+        "range_label": "> $1B",
+        "evidence_usd": 7200000000,
+        "active_players_count": 4,
+        "confidence": "high",
+        "reasoning": "CATL $4.4 млрд, USA Rare Earth $2.8 млрд — подтверждённые сделки за один месяц."
+      },
+      "window": {
+        "category": "narrowing",
+        "label": "Средне-долгосрочное (>6 мес)",
+        "description": "Геополитические ограничения и дефицит ресурсов сужают окно для новых игроков."
+      },
+      "entry_conditions": [
+        "Доступ к месторождениям",
+        "Технологический опыт переработки",
+        "Геополитические связи"
+      ],
+      "key_players": [
+        "CATL",
+        "USA Rare Earth",
+        "Госкорпорации",
+        "Стратегические инвесторы"
+      ],
+      "evidence": "CATL $4.4 млрд, USA Rare Earth $2.8 млрд, рост интереса к вольфраму во Вьетнаме",
+      "confidence": "high",
+      "audience_lens": [
+        "investor"
+      ],
+      "last_updated": "2026-05-02",
+      "generated_month": "2026-04"
+    },
+    {
       "id": "srt1-flexible-dc-operator",
       "srt_level": 1,
       "srt_level_name": "Природные ресурсы",
@@ -58,8 +136,8 @@
         "reasoning": "Нишевой рынок, аналогичный рынку colocation в ранней стадии. Подтверждённые сделки Firmus."
       },
       "window": {
-        "category": "narrowing",
-        "label": "Сужается",
+        "category": "open",
+        "label": "Краткосрочное (<6 мес)",
         "description": "Окно открыто — рынок только формируется, крупные игроки ещё не вошли."
       },
       "entry_conditions": [
@@ -88,7 +166,7 @@
       "name": "Специалисты по энергоэффективности и охлаждению AI",
       "description": "Эксперты, создающие технологии охлаждения и энергоэффективного оборудования для дата-центров AI.",
       "capacity": {
-        "category": "large",
+        "category": "medium",
         "range_label": "$100M–$1B",
         "evidence_usd": 150000000,
         "active_players_count": 6,
@@ -2088,39 +2166,6 @@
       ],
       "last_updated": "2026-05-02",
       "generated_month": "2026-04"
-    },
-    {
-      "id": "srt5-new-test-place",
-      "srt_level": 5,
-      "srt_level_name": "Разделение труда между фирмами",
-      "name": "Тестовый новый игрок (Май 2026)",
-      "description": "Новое место, появившееся в мае 2026 для тестирования diff.",
-      "capacity": {
-        "category": "medium",
-        "range_label": "$100M–$1B",
-        "evidence_usd": 500000000,
-        "active_players_count": 3,
-        "confidence": "medium",
-        "reasoning": "Тест"
-      },
-      "window": {
-        "category": "open",
-        "label": "Открыто",
-        "description": "Окно открыто."
-      },
-      "entry_conditions": [
-        "Тест"
-      ],
-      "key_players": [
-        "Тест"
-      ],
-      "evidence": "Тестовые данные",
-      "confidence": "medium",
-      "audience_lens": [
-        "founder"
-      ],
-      "last_updated": "2026-05-04",
-      "generated_month": "2026-05"
     }
   ],
   "history": {
