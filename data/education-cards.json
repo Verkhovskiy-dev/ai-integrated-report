@@ -1,536 +1,99 @@
 {
+  "meta": {
+    "total": 3,
+    "generated_at": "2026-04-30T09:30:00Z",
+    "version": "1.0"
+  },
   "cards": [
     {
-      "id": "1",
-      "title": "Stanford University: Single institute merging AI and data science efforts",
-      "signal_source": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1sNElMbGp3aEQ1T05VNzdlMFAxS3Zldm0yNTY0Zkh0bjZZbk1jVndoVDFNWDJwRnJaZXBac3NsaHROOEluYTNRZFRSNWhDem1LSHVjTUtaRlJQSl9lYk1CNjF0MzN3RC15Y0pWYXlidmpPRVUwRE9PYTdmWTJKdUU?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Consolidation of AI and data science under a single institute.",
-        "impact": "Enhances program portfolio management and interdisciplinary tracks.",
-        "momentum": "High"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
+      "id": "card-1",
+      "title": "Позиционирование vs INSEAD + Google DeepMind",
+      "status": "замысел",
+      "source_signal_id": "alert-1",
+      "created_at": "2026-04-30T07:15:00Z",
+      "updated_at": "2026-04-30T07:15:00Z",
+      "plan_thinking": [
+        { "id": "pt-1-1", "name": "Целевая аудитория программы-конкурента", "status": "пусто", "responsible_position": "developer", "plan": "thinking" },
+        { "id": "pt-1-2", "name": "Модель эффекта на набор СКОЛКОВО", "status": "пусто", "responsible_position": "analyst", "plan": "thinking" },
+        { "id": "pt-1-3", "name": "Каннибализация текущих программ", "status": "пусто", "responsible_position": "analyst", "plan": "thinking" },
+        { "id": "pt-1-4", "name": "ROI запуска ответной программы", "status": "пусто", "responsible_position": "coordinator", "plan": "thinking" }
       ],
-      "calculation_model": "Institutional consolidation model"
+      "plan_communication": [
+        { "id": "pc-1-1", "name": "Мнение экспертов по AI Strategy", "status": "пусто", "responsible_position": "expert", "plan": "communication" },
+        { "id": "pc-1-2", "name": "Спрос слушателей на тему AI Strategy", "status": "пусто", "responsible_position": "student", "plan": "communication" },
+        { "id": "pc-1-3", "name": "Бюджет и ресурсы на запуск", "status": "пусто", "responsible_position": "coordinator", "plan": "communication" },
+        { "id": "pc-1-4", "name": "Данные мониторинга", "status": "прояснён", "value": "INSEAD объявил партнёрство с Google DeepMind, запуск — сентябрь 2026. Прямой конкурент для программ AI Strategy и Digital Transformation.", "responsible_position": "analyst", "plan": "communication" }
+      ],
+      "plan_action": [
+        { "id": "pa-1-1", "name": "Пилотный модуль AI Strategy", "status": "пусто", "responsible_position": "expert", "plan": "action" },
+        { "id": "pa-1-2", "name": "Сверка с CRM (реальный спрос)", "status": "пусто", "responsible_position": "analyst", "plan": "action" },
+        { "id": "pa-1-3", "name": "Бенчмарк программы INSEAD+DeepMind", "status": "пусто", "responsible_position": "developer", "plan": "action" }
+      ],
+      "relevant_positions": ["developer", "analyst", "expert", "student", "coordinator"],
+      "decisions": [],
+      "model": null
     },
     {
-      "id": "2",
-      "title": "Harvard Business School: AI Integration Across MBA Curriculum",
-      "signal_source": "https://news.google.com/rss/articles/CBMickFVX3lxTE1zQzZWaU9jUDhOQ0JQY0h6ZWppYWZPaUNkd1VnTV9xVjZEalBybm1RTXlrS0hPRmV1N3NsYjNvMDdIMEVvNGpXcUoxSFpfS25KTW9oY3pESlE2WUxqY3hZLUZ1QnRNeEM4X01GMGhhdGtvUQ?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Integration of AI across the MBA curriculum.",
-        "impact": "Increases perceived relevance of MBA and reduces risk of students opting for external AI courses.",
-        "momentum": "High"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
+      "id": "card-2",
+      "title": "AI Sandbox — практическая инфраструктура для Executive Education",
+      "status": "замысел",
+      "source_signal_id": "alert-2",
+      "created_at": "2026-04-30T06:30:00Z",
+      "updated_at": "2026-04-30T06:30:00Z",
+      "plan_thinking": [
+        { "id": "pt-2-1", "name": "Архитектура sandbox-среды", "status": "пусто", "responsible_position": "developer", "plan": "thinking" },
+        { "id": "pt-2-2", "name": "Стоимость доступа к frontier-моделям", "status": "пусто", "responsible_position": "analyst", "plan": "thinking" },
+        { "id": "pt-2-3", "name": "Модель эффекта на NPS программ", "status": "пусто", "responsible_position": "analyst", "plan": "thinking" },
+        { "id": "pt-2-4", "name": "Выбор моделей: GigaChat vs OpenAI vs Claude", "status": "пусто", "responsible_position": "expert", "plan": "thinking" }
       ],
-      "calculation_model": "Curriculum integration model"
+      "plan_communication": [
+        { "id": "pc-2-1", "name": "Мнение преподавателей", "status": "пусто", "responsible_position": "expert", "plan": "communication" },
+        { "id": "pc-2-2", "name": "Запрос слушателей на hands-on AI", "status": "пусто", "responsible_position": "student", "plan": "communication" },
+        { "id": "pc-2-3", "name": "Бюджет на инфраструктуру", "status": "пусто", "responsible_position": "coordinator", "plan": "communication" },
+        { "id": "pc-2-4", "name": "Данные мониторинга", "status": "прояснён", "value": "MIT Sloan запустил AI Sandbox с доступом к GPT-4o, Claude 3.5 и Gemini Ultra. Новый стандарт практической подготовки.", "responsible_position": "analyst", "plan": "communication" }
+      ],
+      "plan_action": [
+        { "id": "pa-2-1", "name": "Пилот sandbox на 1 программе", "status": "пусто", "responsible_position": "developer", "plan": "action" },
+        { "id": "pa-2-2", "name": "Тестирование с группой слушателей", "status": "пусто", "responsible_position": "expert", "plan": "action" },
+        { "id": "pa-2-3", "name": "Замер удовлетворённости до/после", "status": "пусто", "responsible_position": "analyst", "plan": "action" }
+      ],
+      "relevant_positions": ["developer", "analyst", "expert", "student", "coordinator"],
+      "decisions": [],
+      "model": null
     },
     {
-      "id": "3",
-      "title": "Wharton School: Digital Strategy in the Era of AI Certificate",
-      "signal_source": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPeTR1MUp3NVhOcWNrN0JXSkNIT1cwSGNaTlFqVTZYaENPY2ZJZnVZTXlpdXVlMFUtZVpjSUNoc3dKSGptejlUWEpza2ozRFFMWFRmdUFfTHdmSzN3eUsySm1wRlhETXZIcE1DbVBScFh2YkZTQmlIaU5DUzVuVDlXSXJBeXlodVNQOWFnay1WQjF6ZnlHWDVjMENFWlFGZTdjRk9XRWtITnRZWm9YZDJtUnVCcFFKaVNPNEcxZF9qUVM0Zw?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Launch of a certificate in digital strategy in the AI era.",
-        "impact": "Increases pressure on business schools to provide scalable online certificates.",
-        "momentum": "High"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
+      "id": "card-3",
+      "title": "Модуль Agentic AI для руководителей",
+      "status": "замысел",
+      "source_signal_id": "alert-3",
+      "created_at": "2026-04-29T18:45:00Z",
+      "updated_at": "2026-04-29T18:45:00Z",
+      "plan_thinking": [
+        { "id": "pt-3-1", "name": "Целевая аудитория на российском рынке", "status": "пусто", "responsible_position": "developer", "plan": "thinking" },
+        { "id": "pt-3-2", "name": "Ценовая модель (vs Wharton $4800)", "status": "пусто", "responsible_position": "analyst", "plan": "thinking" },
+        { "id": "pt-3-3", "name": "ROI для СКОЛКОВО", "status": "пусто", "responsible_position": "analyst", "plan": "thinking" },
+        { "id": "pt-3-4", "name": "Сценарий бездействия", "status": "пусто", "responsible_position": "coordinator", "plan": "thinking" }
       ],
-      "calculation_model": "Online certificate model"
-    },
-    {
-      "id": "4",
-      "title": "Columbia Business School: AI in Business Initiative",
-      "signal_source": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNWDhaODRzcW1UNXczZlQ3MHZYd1BCdjhXMER3OXUwanV6VWhrWEs5clVyTHd2dGUtSENKWjFLQ21rVzQtN2VIY1hJd1ZlSTlCQ3dHakZKWHlxMGZOZnpCeTZCVjVzX2UwQU5PbFotOXh5ajhhNXJENlpQa0tVYU1TRU1pREpCZE03bFhkRG80N2Y0X0Vsa3ZYU1VjX1ozZnFHcHFoWG1sUzk3Y3RpdXgzSHhGbktkZm8?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Launch of AI in Business Initiative.",
-        "impact": "Signals a shift from standalone courses to a platform model.",
-        "momentum": "High"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
+      "plan_communication": [
+        { "id": "pc-3-1", "name": "Экспертиза по Agentic AI контенту", "status": "пусто", "responsible_position": "expert", "plan": "communication" },
+        { "id": "pc-3-2", "name": "Спрос C-suite на Agentic AI", "status": "пусто", "responsible_position": "student", "plan": "communication" },
+        { "id": "pc-3-3", "name": "Ресурсы и преподаватели", "status": "пусто", "responsible_position": "coordinator", "plan": "communication" },
+        { "id": "pc-3-4", "name": "Данные мониторинга", "status": "прояснён", "value": "Wharton запускает 'Leading with Agentic AI' — 6 недель, онлайн, $4800. Старт июнь 2026. Первая программа топ-школы с фокусом на Agentic AI.", "responsible_position": "analyst", "plan": "communication" }
       ],
-      "calculation_model": "Platform model"
-    },
-    {
-      "id": "5",
-      "title": "Stanford University: $1 million seed grants to shape the future of AI in education",
-      "signal_source": "https://news.google.com/rss/articles/CBMidEFVX3lxTE10QWJYTk1OVDhQZ0ZUU2VRdTllQW9yVG1tRzhoV0xqellHRzV2NmkwbzBHbGxKb3dYa040SzZfSENwNXc4MVBGaWdRZW5BZTBURUx1c0hRYkhSX2hYcWdfLU5Rc3BhWDZQcHluYmVhRnVweWl6?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Announcement of $1 million seed grants for AI in education.",
-        "impact": "Accelerates the development of new courses and tools.",
-        "momentum": "High"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
+      "plan_action": [
+        { "id": "pa-3-1", "name": "Пилотный 2-дневный интенсив", "status": "пусто", "responsible_position": "expert", "plan": "action" },
+        { "id": "pa-3-2", "name": "Бенчмарк Wharton программы", "status": "пусто", "responsible_position": "developer", "plan": "action" },
+        { "id": "pa-3-3", "name": "Опрос корпоративных клиентов", "status": "пусто", "responsible_position": "analyst", "plan": "action" }
       ],
-      "calculation_model": "Grant impact model"
-    },
-    {
-      "id": "6",
-      "title": "Kellogg School of Management: Executive Education programs on AI-driven business value",
-      "signal_source": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNeWVza2pNY1JZTU5xWk8zanc3TnBLQ3lOUmZubjlDMXNyM3V2V09QUGtZSW1jY3dDSUxONlVsY0dabHRWa2E1NnIwMW4wTHp2Tjk2cjQ2S2swcTNPNUtHQTktUDNCMFdFSldERFB4Ykd4RTVVeVAwWHltVGRBQWlLODlVcVFyVHpiLW1mdmMzell0MWc?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Expansion of executive education programs focused on AI-driven business value.",
-        "impact": "Indicates growing demand for applied formats with quick ROI.",
-        "momentum": "High"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
+      "relevant_positions": ["developer", "analyst", "expert", "student", "coordinator"],
       "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
-      ],
-      "calculation_model": "Executive education model"
-    },
-    {
-      "id": "7",
-      "title": "Cambridge Judge Business School: AI Leadership Programme (with Emeritus)",
-      "signal_source": "https://news.google.com/rss/articles/CBMihgJBVV95cUxQekNyRk1yNzByUVlTaUxVeTJZMlo1cTBScnJuWEVLSEFsT2phNC0tZV9ndnVLUXh0YmxCcmZfT0ZHRFk2elZEUWxfZGFZbXF0ZlY5NkFNOFFGeC0xWndzaUlhSnhvMWlKU3lPTUVPdWdkUGpHVl9DZ25SaXZPYTRSS2kyYjJCSE9LUHctVkxGbndoR09QT1I1b0hELUZyX180elhhRjJiZldJWkgtbVhKSFdNb1drNEhPanR2UHA5M0ladmNrYWp1SHlubERDN2JkZVlRbkFWbHJEOV8zNlhPd1pHTkREOUlfYzNSSUxJN3RKSVhEWXRVMFRBTHJzMmV3S0tNdXNn?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Launch of AI Leadership Programme in partnership with Emeritus.",
-        "impact": "Enhances international reach and scalability.",
-        "momentum": "High"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
-      ],
-      "calculation_model": "Partnership model"
-    },
-    {
-      "id": "8",
-      "title": "London Business School: Campus-Wide Generative AI Gateway",
-      "signal_source": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOaXFzNGFXOUJEcnN0SnctMGdIT29BQUt5Y2UyZWxKc2VmZlNGdGtzQm8xZjg2YWdIZzJhLTEzbllpQnlsUlpkWkJ2NTlMRWdEMTF1UkkxVF9pdWd4ZTI2Q2k4ZFY3Yl96UGJNT1dVSFdHVGJPX2FZZzRCWTc2Y2J6bnNwTTNEUGp3OE9VRl9iN3NkYk95VkVOY0dYNEVaSVFGbHJOMjJITnRpclVpWXVyMkcyOVV6UQ?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Launch of campus-wide Generative AI Gateway.",
-        "impact": "Accelerates AI integration in education and reduces barriers for AI literacy.",
-        "momentum": "High"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
-      ],
-      "calculation_model": "Infrastructure model"
-    },
-    {
-      "id": "9",
-      "title": "Oxford Saïd Business School: New Executive AI Programme + open courses on edX",
-      "signal_source": "https://news.google.com/rss/articles/CBMilAJBVV95cUxOX1dTQlVfYmlVV2JfcUtuWXdjZVFRQ0N4bGxjYVoydFUxT0tuam1UYnpidkROcGFYeTMxOFpfaGZiZEpaWTdlS25NSFlHT25LNVlCaU15Wi1MRlo2MG9OQ28wN2hhaTRHY0o3R1l1dUZjWlJKVFB2Tm5oUVhxU0J4MXliQl9qSjNteV9LUklEYWhhVmlUdXU4aTY3dzlSQkg5bzhPZVUxX2QwRnE3bEd4dWlMNm5ab3VaaGJkTE5QdXhIVGxKaEdrR0VBY1BreDg5TkZJQURvNm9YV3Z1eHlSc0FDdHFwVGlDaG02RExYSkJ6ZkwyUWlGOTFBR1B3WjR2dmFwdjJhZ2JmSm5iUlYta2hQdko?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Launch of new executive AI programme and open courses on edX.",
-        "impact": "Creates a two-tier funnel for lead generation and monetization.",
-        "momentum": "High"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
-      ],
-      "calculation_model": "Funnel model"
-    },
-    {
-      "id": "10",
-      "title": "МГУ имени М.В. Ломоносова: Факультет искусственного интеллекта",
-      "signal_source": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE85S0xhVDBiZ0dmOUk3WjIxM2gtNmFSb2dxMUwyeEZnZVlpRm1Sd1JyeHR4UHY4WEpNM1R0cWp3d3JDeWdRbGRGaUFKNWtHOFU?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Launch of a new faculty of artificial intelligence.",
-        "impact": "Establishes AI education as a stable institutional unit in Russia.",
-        "momentum": "High"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
-      ],
-      "calculation_model": "Institutional establishment model"
-    },
-    {
-      "id": "11",
-      "title": "МГУ имени М.В. Ломоносова: Центр искусственного интеллекта",
-      "signal_source": "https://news.google.com/rss/articles/CBMiakFVX3lxTE05d1AtQmFNQWMzTkFRX254Y0hxRU4zemVfa3lNbHhxOWlQams4bnd6amlCX0RxczZ0a0Frbl9qTVpPTmdrZDduZDgzYmItYTBza2xkZURhY3lwbEhiNFMxaThTWDJWM1NMdmc?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Creation of an AI center with a significant grant.",
-        "impact": "Enhances research and educational infrastructure.",
-        "momentum": "High"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
-      ],
-      "calculation_model": "Infrastructure enhancement model"
-    },
-    {
-      "id": "12",
-      "title": "НИУ ВШЭ: Онлайн-магистерская программа «Искусственный интеллект»",
-      "signal_source": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1UdVFLeXVnYjNvQWVmTVJDRFZ1ZXctSkZNZDJPRDRpZmtiWDlQRldPRWNSWmVZVkxGbXkwYWRWM0dJUWJRVlA2TGRWdTVlVE5YY25rRjFpcnM2YVkxc3ZUZg?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "High demand for online master's program in AI.",
-        "impact": "Confirms market readiness for long-term online AI education.",
-        "momentum": "Medium"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
-      ],
-      "calculation_model": "Online education demand model"
-    },
-    {
-      "id": "13",
-      "title": "НИУ ВШЭ & Альфа-Банк: Совместные исследовательские проекты в сфере ИИ",
-      "signal_source": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9SbzJ5a3U5Q0h5U2RrZlYzQXFyTldScmJXM1NRN3JaRkR0NGN0Vm9Za1RueHgwd1V0SHoyYWNTNWxJNnc3U25qamxtVkliaER1MVU4cVVDSFluWjhtM1E?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Launch of joint AI research projects with Alfa-Bank.",
-        "impact": "Strengthens university-employer link and program attractiveness.",
-        "momentum": "Medium"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
-      ],
-      "calculation_model": "University-employer collaboration model"
-    },
-    {
-      "id": "14",
-      "title": "«Школа 21» Сбера & НИЯУ МИФИ: Магистерская программа «Управление внедрением ИИ в бизнес»",
-      "signal_source": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1NN0VRUzczUG5NU0hQY3ZwN0lzeGgyME5mZmc5UkZGU2FZZVBwd3hzcnZyR0htam9BMS1pTFBvaXh3OEUydnJ4Yi1tVWdsVEFvelVqSVBKU0I5a1ZoU3BjRQ?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Launch of a master's program on AI implementation management.",
-        "impact": "Challenges business schools by targeting managerial AI transformation.",
-        "momentum": "Medium"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
-      ],
-      "calculation_model": "AI management education model"
-    },
-    {
-      "id": "15",
-      "title": "Алтайский филиал РАНХиГС: Курсы повышения квалификации по ИИ",
-      "signal_source": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPQmE3Z3VPUTlxNzBqUGNmT0pld3NrTDQ5aHhXYnVpRkpKU2dkMU1SV2QybGdTUG5Ia0JVLTYxR1lub3p2NmlfTkNTRGd0Vlp4QlBqYUdEODUwYUN6VUhjZVdUeUNrN0pDVUw0ZFB6ZGNsTTVFMkdvc2Q3aUJDV2ZWcnRGZWtydkMxZDNpRVNhVXc2WFRneW9MU1Z3?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Launch of AI upskilling courses.",
-        "impact": "Expands AI upskilling in public administration.",
-        "momentum": "Medium"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
-      ],
-      "calculation_model": "Upskilling model"
-    },
-    {
-      "id": "16",
-      "title": "Российское общество «Знание»: Курс по ИИ для педагогов",
-      "signal_source": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1WYTFjazlmNV9VVFk1ZlRaRWU3MktKYVpVWFEtdV9QZTJXbGFRaXdrMG96UDhRMW9iVGViSEJZN0RhN0t2V1o3X3d6NkRBMzdLbnByMWw3ZzdhcnV2TlFYQVYxVXNOZDB4NzBWUGJ5TkNfVmE5bGNqVHdIWQ?oc=5",
-      "created_at": "2026-05-08",
-      "status": "new",
-      "plan_thinking": {
-        "status": "proyasnyon",
-        "description": "Launch of AI course for educators.",
-        "impact": "Drives AI literacy in education system.",
-        "momentum": "Medium"
-      },
-      "plan_communication": {
-        "status": "pusto",
-        "description": "",
-        "impact": "",
-        "momentum": ""
-      },
-      "plan_action": {
-        "status": "pusto",
-        "description": "",
-        "impact": ""
-      },
-      "decisions": [],
-      "relevant_positions": [
-        "developer",
-        "analyst",
-        "expert",
-        "student",
-        "coordinator"
-      ],
-      "calculation_model": "AI literacy model"
+      "model": {
+        "type": "inaction_scenario",
+        "inputs": { "wharton_price_usd": 4800, "potential_audience_ru": 200, "conversion_rate": 0.15 },
+        "result": { "optimistic": 0, "base": -30, "pessimistic": -60 },
+        "confidence": "low",
+        "last_verified": null
+      }
     }
-  ],
-  "meta": {
-    "updated_at": "2026-05-08T09:20:27.869Z",
-    "total": 16
-  }
+  ]
 }
