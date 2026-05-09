@@ -1,9 +1,4 @@
 {
-  "meta": {
-    "total": 3,
-    "generated_at": "2026-04-30T09:30:00Z",
-    "version": "1.0"
-  },
   "cards": [
     {
       "id": "card-1",
@@ -13,23 +8,96 @@
       "created_at": "2026-04-30T07:15:00Z",
       "updated_at": "2026-04-30T07:15:00Z",
       "plan_thinking": [
-        { "id": "pt-1-1", "name": "Целевая аудитория программы-конкурента", "status": "пусто", "responsible_position": "developer", "plan": "thinking" },
-        { "id": "pt-1-2", "name": "Модель эффекта на набор СКОЛКОВО", "status": "пусто", "responsible_position": "analyst", "plan": "thinking" },
-        { "id": "pt-1-3", "name": "Каннибализация текущих программ", "status": "пусто", "responsible_position": "analyst", "plan": "thinking" },
-        { "id": "pt-1-4", "name": "ROI запуска ответной программы", "status": "пусто", "responsible_position": "coordinator", "plan": "thinking" }
+        {
+          "id": "pt-1-1",
+          "name": "Целевая аудитория программы-конкурента",
+          "status": "пусто",
+          "responsible_position": "developer",
+          "plan": "thinking"
+        },
+        {
+          "id": "pt-1-2",
+          "name": "Модель эффекта на набор СКОЛКОВО",
+          "status": "пусто",
+          "responsible_position": "analyst",
+          "plan": "thinking"
+        },
+        {
+          "id": "pt-1-3",
+          "name": "Каннибализация текущих программ",
+          "status": "пусто",
+          "responsible_position": "analyst",
+          "plan": "thinking"
+        },
+        {
+          "id": "pt-1-4",
+          "name": "ROI запуска ответной программы",
+          "status": "пусто",
+          "responsible_position": "coordinator",
+          "plan": "thinking"
+        }
       ],
       "plan_communication": [
-        { "id": "pc-1-1", "name": "Мнение экспертов по AI Strategy", "status": "пусто", "responsible_position": "expert", "plan": "communication" },
-        { "id": "pc-1-2", "name": "Спрос слушателей на тему AI Strategy", "status": "пусто", "responsible_position": "student", "plan": "communication" },
-        { "id": "pc-1-3", "name": "Бюджет и ресурсы на запуск", "status": "пусто", "responsible_position": "coordinator", "plan": "communication" },
-        { "id": "pc-1-4", "name": "Данные мониторинга", "status": "прояснён", "value": "INSEAD объявил партнёрство с Google DeepMind, запуск — сентябрь 2026. Прямой конкурент для программ AI Strategy и Digital Transformation.", "responsible_position": "analyst", "plan": "communication" }
+        {
+          "id": "pc-1-1",
+          "name": "Мнение экспертов по AI Strategy",
+          "status": "пусто",
+          "responsible_position": "expert",
+          "plan": "communication"
+        },
+        {
+          "id": "pc-1-2",
+          "name": "Спрос слушателей на тему AI Strategy",
+          "status": "пусто",
+          "responsible_position": "student",
+          "plan": "communication"
+        },
+        {
+          "id": "pc-1-3",
+          "name": "Бюджет и ресурсы на запуск",
+          "status": "пусто",
+          "responsible_position": "coordinator",
+          "plan": "communication"
+        },
+        {
+          "id": "pc-1-4",
+          "name": "Данные мониторинга",
+          "status": "прояснён",
+          "value": "INSEAD объявил партнёрство с Google DeepMind, запуск — сентябрь 2026. Прямой конкурент для программ AI Strategy и Digital Transformation.",
+          "responsible_position": "analyst",
+          "plan": "communication"
+        }
       ],
       "plan_action": [
-        { "id": "pa-1-1", "name": "Пилотный модуль AI Strategy", "status": "пусто", "responsible_position": "expert", "plan": "action" },
-        { "id": "pa-1-2", "name": "Сверка с CRM (реальный спрос)", "status": "пусто", "responsible_position": "analyst", "plan": "action" },
-        { "id": "pa-1-3", "name": "Бенчмарк программы INSEAD+DeepMind", "status": "пусто", "responsible_position": "developer", "plan": "action" }
+        {
+          "id": "pa-1-1",
+          "name": "Пилотный модуль AI Strategy",
+          "status": "пусто",
+          "responsible_position": "expert",
+          "plan": "action"
+        },
+        {
+          "id": "pa-1-2",
+          "name": "Сверка с CRM (реальный спрос)",
+          "status": "пусто",
+          "responsible_position": "analyst",
+          "plan": "action"
+        },
+        {
+          "id": "pa-1-3",
+          "name": "Бенчмарк программы INSEAD+DeepMind",
+          "status": "пусто",
+          "responsible_position": "developer",
+          "plan": "action"
+        }
       ],
-      "relevant_positions": ["developer", "analyst", "expert", "student", "coordinator"],
+      "relevant_positions": [
+        "developer",
+        "analyst",
+        "expert",
+        "student",
+        "coordinator"
+      ],
       "decisions": [],
       "model": null
     },
@@ -41,23 +109,96 @@
       "created_at": "2026-04-30T06:30:00Z",
       "updated_at": "2026-04-30T06:30:00Z",
       "plan_thinking": [
-        { "id": "pt-2-1", "name": "Архитектура sandbox-среды", "status": "пусто", "responsible_position": "developer", "plan": "thinking" },
-        { "id": "pt-2-2", "name": "Стоимость доступа к frontier-моделям", "status": "пусто", "responsible_position": "analyst", "plan": "thinking" },
-        { "id": "pt-2-3", "name": "Модель эффекта на NPS программ", "status": "пусто", "responsible_position": "analyst", "plan": "thinking" },
-        { "id": "pt-2-4", "name": "Выбор моделей: GigaChat vs OpenAI vs Claude", "status": "пусто", "responsible_position": "expert", "plan": "thinking" }
+        {
+          "id": "pt-2-1",
+          "name": "Архитектура sandbox-среды",
+          "status": "пусто",
+          "responsible_position": "developer",
+          "plan": "thinking"
+        },
+        {
+          "id": "pt-2-2",
+          "name": "Стоимость доступа к frontier-моделям",
+          "status": "пусто",
+          "responsible_position": "analyst",
+          "plan": "thinking"
+        },
+        {
+          "id": "pt-2-3",
+          "name": "Модель эффекта на NPS программ",
+          "status": "пусто",
+          "responsible_position": "analyst",
+          "plan": "thinking"
+        },
+        {
+          "id": "pt-2-4",
+          "name": "Выбор моделей: GigaChat vs OpenAI vs Claude",
+          "status": "пусто",
+          "responsible_position": "expert",
+          "plan": "thinking"
+        }
       ],
       "plan_communication": [
-        { "id": "pc-2-1", "name": "Мнение преподавателей", "status": "пусто", "responsible_position": "expert", "plan": "communication" },
-        { "id": "pc-2-2", "name": "Запрос слушателей на hands-on AI", "status": "пусто", "responsible_position": "student", "plan": "communication" },
-        { "id": "pc-2-3", "name": "Бюджет на инфраструктуру", "status": "пусто", "responsible_position": "coordinator", "plan": "communication" },
-        { "id": "pc-2-4", "name": "Данные мониторинга", "status": "прояснён", "value": "MIT Sloan запустил AI Sandbox с доступом к GPT-4o, Claude 3.5 и Gemini Ultra. Новый стандарт практической подготовки.", "responsible_position": "analyst", "plan": "communication" }
+        {
+          "id": "pc-2-1",
+          "name": "Мнение преподавателей",
+          "status": "пусто",
+          "responsible_position": "expert",
+          "plan": "communication"
+        },
+        {
+          "id": "pc-2-2",
+          "name": "Запрос слушателей на hands-on AI",
+          "status": "пусто",
+          "responsible_position": "student",
+          "plan": "communication"
+        },
+        {
+          "id": "pc-2-3",
+          "name": "Бюджет на инфраструктуру",
+          "status": "пусто",
+          "responsible_position": "coordinator",
+          "plan": "communication"
+        },
+        {
+          "id": "pc-2-4",
+          "name": "Данные мониторинга",
+          "status": "прояснён",
+          "value": "MIT Sloan запустил AI Sandbox с доступом к GPT-4o, Claude 3.5 и Gemini Ultra. Новый стандарт практической подготовки.",
+          "responsible_position": "analyst",
+          "plan": "communication"
+        }
       ],
       "plan_action": [
-        { "id": "pa-2-1", "name": "Пилот sandbox на 1 программе", "status": "пусто", "responsible_position": "developer", "plan": "action" },
-        { "id": "pa-2-2", "name": "Тестирование с группой слушателей", "status": "пусто", "responsible_position": "expert", "plan": "action" },
-        { "id": "pa-2-3", "name": "Замер удовлетворённости до/после", "status": "пусто", "responsible_position": "analyst", "plan": "action" }
+        {
+          "id": "pa-2-1",
+          "name": "Пилот sandbox на 1 программе",
+          "status": "пусто",
+          "responsible_position": "developer",
+          "plan": "action"
+        },
+        {
+          "id": "pa-2-2",
+          "name": "Тестирование с группой слушателей",
+          "status": "пусто",
+          "responsible_position": "expert",
+          "plan": "action"
+        },
+        {
+          "id": "pa-2-3",
+          "name": "Замер удовлетворённости до/после",
+          "status": "пусто",
+          "responsible_position": "analyst",
+          "plan": "action"
+        }
       ],
-      "relevant_positions": ["developer", "analyst", "expert", "student", "coordinator"],
+      "relevant_positions": [
+        "developer",
+        "analyst",
+        "expert",
+        "student",
+        "coordinator"
+      ],
       "decisions": [],
       "model": null
     },
@@ -69,31 +210,281 @@
       "created_at": "2026-04-29T18:45:00Z",
       "updated_at": "2026-04-29T18:45:00Z",
       "plan_thinking": [
-        { "id": "pt-3-1", "name": "Целевая аудитория на российском рынке", "status": "пусто", "responsible_position": "developer", "plan": "thinking" },
-        { "id": "pt-3-2", "name": "Ценовая модель (vs Wharton $4800)", "status": "пусто", "responsible_position": "analyst", "plan": "thinking" },
-        { "id": "pt-3-3", "name": "ROI для СКОЛКОВО", "status": "пусто", "responsible_position": "analyst", "plan": "thinking" },
-        { "id": "pt-3-4", "name": "Сценарий бездействия", "status": "пусто", "responsible_position": "coordinator", "plan": "thinking" }
+        {
+          "id": "pt-3-1",
+          "name": "Целевая аудитория на российском рынке",
+          "status": "пусто",
+          "responsible_position": "developer",
+          "plan": "thinking"
+        },
+        {
+          "id": "pt-3-2",
+          "name": "Ценовая модель (vs Wharton $4800)",
+          "status": "пусто",
+          "responsible_position": "analyst",
+          "plan": "thinking"
+        },
+        {
+          "id": "pt-3-3",
+          "name": "ROI для СКОЛКОВО",
+          "status": "пусто",
+          "responsible_position": "analyst",
+          "plan": "thinking"
+        },
+        {
+          "id": "pt-3-4",
+          "name": "Сценарий бездействия",
+          "status": "пусто",
+          "responsible_position": "coordinator",
+          "plan": "thinking"
+        }
       ],
       "plan_communication": [
-        { "id": "pc-3-1", "name": "Экспертиза по Agentic AI контенту", "status": "пусто", "responsible_position": "expert", "plan": "communication" },
-        { "id": "pc-3-2", "name": "Спрос C-suite на Agentic AI", "status": "пусто", "responsible_position": "student", "plan": "communication" },
-        { "id": "pc-3-3", "name": "Ресурсы и преподаватели", "status": "пусто", "responsible_position": "coordinator", "plan": "communication" },
-        { "id": "pc-3-4", "name": "Данные мониторинга", "status": "прояснён", "value": "Wharton запускает 'Leading with Agentic AI' — 6 недель, онлайн, $4800. Старт июнь 2026. Первая программа топ-школы с фокусом на Agentic AI.", "responsible_position": "analyst", "plan": "communication" }
+        {
+          "id": "pc-3-1",
+          "name": "Экспертиза по Agentic AI контенту",
+          "status": "пусто",
+          "responsible_position": "expert",
+          "plan": "communication"
+        },
+        {
+          "id": "pc-3-2",
+          "name": "Спрос C-suite на Agentic AI",
+          "status": "пусто",
+          "responsible_position": "student",
+          "plan": "communication"
+        },
+        {
+          "id": "pc-3-3",
+          "name": "Ресурсы и преподаватели",
+          "status": "пусто",
+          "responsible_position": "coordinator",
+          "plan": "communication"
+        },
+        {
+          "id": "pc-3-4",
+          "name": "Данные мониторинга",
+          "status": "прояснён",
+          "value": "Wharton запускает 'Leading with Agentic AI' — 6 недель, онлайн, $4800. Старт июнь 2026. Первая программа топ-школы с фокусом на Agentic AI.",
+          "responsible_position": "analyst",
+          "plan": "communication"
+        }
       ],
       "plan_action": [
-        { "id": "pa-3-1", "name": "Пилотный 2-дневный интенсив", "status": "пусто", "responsible_position": "expert", "plan": "action" },
-        { "id": "pa-3-2", "name": "Бенчмарк Wharton программы", "status": "пусто", "responsible_position": "developer", "plan": "action" },
-        { "id": "pa-3-3", "name": "Опрос корпоративных клиентов", "status": "пусто", "responsible_position": "analyst", "plan": "action" }
+        {
+          "id": "pa-3-1",
+          "name": "Пилотный 2-дневный интенсив",
+          "status": "пусто",
+          "responsible_position": "expert",
+          "plan": "action"
+        },
+        {
+          "id": "pa-3-2",
+          "name": "Бенчмарк Wharton программы",
+          "status": "пусто",
+          "responsible_position": "developer",
+          "plan": "action"
+        },
+        {
+          "id": "pa-3-3",
+          "name": "Опрос корпоративных клиентов",
+          "status": "пусто",
+          "responsible_position": "analyst",
+          "plan": "action"
+        }
       ],
-      "relevant_positions": ["developer", "analyst", "expert", "student", "coordinator"],
+      "relevant_positions": [
+        "developer",
+        "analyst",
+        "expert",
+        "student",
+        "coordinator"
+      ],
       "decisions": [],
       "model": {
         "type": "inaction_scenario",
-        "inputs": { "wharton_price_usd": 4800, "potential_audience_ru": 200, "conversion_rate": 0.15 },
-        "result": { "optimistic": 0, "base": -30, "pessimistic": -60 },
+        "inputs": {
+          "wharton_price_usd": 4800,
+          "potential_audience_ru": 200,
+          "conversion_rate": 0.15
+        },
+        "result": {
+          "optimistic": 0,
+          "base": -30,
+          "pessimistic": -60
+        },
         "confidence": "low",
         "last_verified": null
       }
+    },
+    {
+      "id": "card_001",
+      "title": "Stanford AI and Data Science Institute",
+      "signal_source": "Stanford University",
+      "created_at": "2026-05-08",
+      "status": "new",
+      "plan_thinking": {
+        "status": "proyasnyon",
+        "description": "Консолидация AI и data science под единым институтом.",
+        "impact": "Усиление бренда и управляемости AI-портфеля.",
+        "momentum": "High"
+      },
+      "plan_communication": {
+        "status": "pusto",
+        "description": "",
+        "target_audience": "",
+        "channels": ""
+      },
+      "plan_action": {
+        "status": "pusto",
+        "steps": "",
+        "timeline": ""
+      },
+      "decisions": [],
+      "relevant_positions": [
+        "developer",
+        "analyst",
+        "expert",
+        "student",
+        "coordinator"
+      ],
+      "calculation_model": "Standard"
+    },
+    {
+      "id": "card_002",
+      "title": "HBS MBA AI Integration",
+      "signal_source": "Harvard Business School",
+      "created_at": "2026-05-08",
+      "status": "new",
+      "plan_thinking": {
+        "status": "proyasnyon",
+        "description": "Расширение интеграции ИИ по всей MBA-программе.",
+        "impact": "Повышение планки ожиданий для выпускников.",
+        "momentum": "High"
+      },
+      "plan_communication": {
+        "status": "pusto",
+        "description": "",
+        "target_audience": "",
+        "channels": ""
+      },
+      "plan_action": {
+        "status": "pusto",
+        "steps": "",
+        "timeline": ""
+      },
+      "decisions": [],
+      "relevant_positions": [
+        "developer",
+        "analyst",
+        "expert",
+        "student",
+        "coordinator"
+      ],
+      "calculation_model": "Standard"
+    },
+    {
+      "id": "card_003",
+      "title": "Wharton Online AI Certificates",
+      "signal_source": "Wharton School (University of Pennsylvania)",
+      "created_at": "2026-05-08",
+      "status": "new",
+      "plan_thinking": {
+        "status": "proyasnyon",
+        "description": "Запуск/расширение линейки онлайн-сертификатов по AI-стратегии и AI-лидерству.",
+        "impact": "Усиливает давление на школы без сильного онлайн-продукта.",
+        "momentum": "High"
+      },
+      "plan_communication": {
+        "status": "pusto",
+        "description": "",
+        "target_audience": "",
+        "channels": ""
+      },
+      "plan_action": {
+        "status": "pusto",
+        "steps": "",
+        "timeline": ""
+      },
+      "decisions": [],
+      "relevant_positions": [
+        "developer",
+        "analyst",
+        "expert",
+        "student",
+        "coordinator"
+      ],
+      "calculation_model": "Standard"
+    },
+    {
+      "id": "card_004",
+      "title": "Cambridge AI Leadership Programme",
+      "signal_source": "University of Cambridge Judge Business School",
+      "created_at": "2026-05-08",
+      "status": "new",
+      "plan_thinking": {
+        "status": "proyasnyon",
+        "description": "Запуск AI Leadership Programme в партнёрстве с Emeritus.",
+        "impact": "Повышает охват и скорость набора.",
+        "momentum": "High"
+      },
+      "plan_communication": {
+        "status": "pusto",
+        "description": "",
+        "target_audience": "",
+        "channels": ""
+      },
+      "plan_action": {
+        "status": "pusto",
+        "steps": "",
+        "timeline": ""
+      },
+      "decisions": [],
+      "relevant_positions": [
+        "developer",
+        "analyst",
+        "expert",
+        "student",
+        "coordinator"
+      ],
+      "calculation_model": "Standard"
+    },
+    {
+      "id": "card_005",
+      "title": "Moscow State University AI Faculty",
+      "signal_source": "МГУ имени М.В. Ломоносова",
+      "created_at": "2026-05-08",
+      "status": "new",
+      "plan_thinking": {
+        "status": "proyasnyon",
+        "description": "Открытие факультета искусственного интеллекта и создание AI-центра.",
+        "impact": "Сильный государственно-академический сигнал.",
+        "momentum": "High"
+      },
+      "plan_communication": {
+        "status": "pusto",
+        "description": "",
+        "target_audience": "",
+        "channels": ""
+      },
+      "plan_action": {
+        "status": "pusto",
+        "steps": "",
+        "timeline": ""
+      },
+      "decisions": [],
+      "relevant_positions": [
+        "developer",
+        "analyst",
+        "expert",
+        "student",
+        "coordinator"
+      ],
+      "calculation_model": "Standard"
     }
-  ]
+  ],
+  "meta": {
+    "updated_at": "2026-05-09T06:03:02.392Z",
+    "total": 8
+  }
 }
