@@ -387,6 +387,466 @@
       border-color: var(--border-hover);
     }
 
+    /* ========== TOOL OF THE DAY ========== */
+    .totd-card {
+      position: relative;
+      background: linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(0, 212, 255, 0.08) 100%);
+      border: 1px solid rgba(234, 179, 8, 0.25);
+      border-radius: 16px;
+      padding: 32px;
+      overflow: hidden;
+    }
+
+    .totd-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(234, 179, 8, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .totd-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(234, 179, 8, 0.15);
+      border: 1px solid rgba(234, 179, 8, 0.3);
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--yellow);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .totd-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .totd-title {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .totd-category {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .totd-rating {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 20px;
+      background: rgba(234, 179, 8, 0.1);
+      border: 1px solid rgba(234, 179, 8, 0.2);
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    .totd-rating-value {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .totd-rating-max {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .totd-description {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .totd-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .totd-pros, .totd-cons {
+      padding: 16px 20px;
+      border-radius: 10px;
+    }
+
+    .totd-pros {
+      background: rgba(0, 255, 136, 0.05);
+      border: 1px solid rgba(0, 255, 136, 0.15);
+    }
+
+    .totd-cons {
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.15);
+    }
+
+    .totd-list-title {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .totd-pros .totd-list-title { color: var(--green); }
+    .totd-cons .totd-list-title { color: var(--red); }
+
+    .totd-list {
+      list-style: none;
+    }
+
+    .totd-list li {
+      font-size: 13px;
+      color: var(--text-secondary);
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .totd-list li::before {
+      content: '+';
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .totd-pros .totd-list li::before { color: var(--green); content: '+'; }
+    .totd-cons .totd-list li::before { color: var(--red); content: '−'; }
+
+    .totd-comparison {
+      margin-bottom: 24px;
+    }
+
+    .totd-comparison-title {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+
+    .totd-comparison-item {
+      padding: 12px 16px;
+      background: rgba(0, 212, 255, 0.04);
+      border: 1px solid rgba(0, 212, 255, 0.1);
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .totd-comparison-name {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .totd-comparison-verdict {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .totd-recommendation {
+      padding: 16px 20px;
+      background: rgba(139, 92, 246, 0.06);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+
+    .totd-recommendation-title {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--purple);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .totd-recommendation-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .totd-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .totd-tag {
+      padding: 4px 12px;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--purple);
+    }
+
+    .totd-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, var(--yellow), #f59e0b);
+      border-radius: 8px;
+      color: var(--bg-primary);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+      margin-top: 16px;
+    }
+
+    .totd-link:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ========== NAVIGATOR QUIZ ========== */
+    .navigator-container {
+      max-width: 700px;
+    }
+
+    .navigator-step {
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .navigator-progress {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 32px;
+    }
+
+    .navigator-progress-dot {
+      flex: 1;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.06);
+      transition: background 0.3s;
+    }
+
+    .navigator-progress-dot.active {
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+    }
+
+    .navigator-progress-dot.completed {
+      background: var(--green);
+    }
+
+    .navigator-question {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .navigator-hint {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .navigator-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .navigator-option {
+      padding: 14px 18px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: all 0.2s;
+      font-family: var(--font-body);
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .navigator-option:hover {
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+      background: var(--bg-card-hover);
+    }
+
+    .navigator-option.selected {
+      border-color: rgba(139, 92, 246, 0.4);
+      background: rgba(139, 92, 246, 0.08);
+      color: var(--purple);
+    }
+
+    .navigator-option-icon {
+      font-size: 18px;
+      width: 28px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .navigator-multi-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-top: 12px;
+    }
+
+    .navigator-btn {
+      padding: 10px 24px;
+      background: linear-gradient(135deg, var(--purple), var(--cyan));
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .navigator-btn.visible { display: inline-block; }
+    .navigator-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .navigator-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .navigator-results {
+      animation: fadeIn 0.4s ease;
+    }
+
+    .navigator-results-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--purple), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .navigator-results-subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .navigator-result-card {
+      padding: 20px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      transition: all 0.3s;
+    }
+
+    .navigator-result-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+    }
+
+    .navigator-result-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .navigator-result-name {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .navigator-result-level {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .navigator-result-level-1 { background: rgba(0, 212, 255, 0.12); color: var(--cyan); }
+    .navigator-result-level-2 { background: rgba(0, 255, 136, 0.12); color: var(--green); }
+    .navigator-result-level-3 { background: rgba(139, 92, 246, 0.12); color: var(--purple); }
+
+    .navigator-result-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .navigator-result-match {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--green);
+    }
+
+    .navigator-result-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--cyan);
+      text-decoration: none;
+      margin-top: 8px;
+    }
+
+    .navigator-result-link:hover { text-decoration: underline; }
+
+    .navigator-restart-btn {
+      padding: 12px 32px;
+      background: transparent;
+      border: 1px solid var(--purple);
+      border-radius: 8px;
+      color: var(--purple);
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 24px;
+    }
+
+    .navigator-restart-btn:hover {
+      background: rgba(139, 92, 246, 0.1);
+    }
+
     /* ========== LEVEL SECTION ========== */
     .level-header {
       display: flex;
@@ -792,7 +1252,7 @@
     .strategy-points li:last-child { border-bottom: none; }
 
     .strategy-points li::before {
-      content: '›';
+      content: '\203A';
       position: absolute;
       left: 0;
       color: var(--text-muted);
@@ -1115,6 +1575,14 @@
         width: 100%;
         height: 160px;
       }
+
+      .totd-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .totd-header {
+        flex-direction: column;
+      }
     }
 
     @media (max-width: 600px) {
@@ -1125,7 +1593,7 @@
   </style>
 </head>
 <body>
-  <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Меню">☰</button>
+  <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Меню">&#9776;</button>
   <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
   <div class="app-layout">
@@ -1137,7 +1605,7 @@
         <div class="sidebar-subtitle">Обновлено: Май 2026</div>
       </div>
       <a href="https://verkhovskiy.ai" class="sidebar-back">
-        <span>←</span> Назад к дашборду
+        <span>&larr;</span> Назад к дашборду
       </a>
       <nav class="sidebar-nav" id="sidebarNav"></nav>
       <div class="sidebar-progress">
@@ -1153,7 +1621,7 @@
       <section class="hero section" id="section-overview">
         <div class="hero-content">
           <div class="hero-badge">
-            <span>◆</span> AI Consulting Group
+            <span>&#9670;</span> AI Consulting Group
           </div>
           <h1>Трёхуровневая карта<br>LLM-инструментов 2026</h1>
           <p class="hero-subtitle">Стратегический обзор: модели, агенты, платформы сборки. Обновлено: май 2026</p>
@@ -1165,6 +1633,14 @@
             <div class="hero-principle-text">Каждый уровень решает свой класс задач — от генерации текста до полной автоматизации. Китайские модели заняли 45% мирового трафика (MiMo-V2-Pro — #1 на OpenRouter). Meta перешла от open source к проприетарной Muse Spark. Sora закрыта. MCP — индустриальный стандарт (9400+ серверов).</div>
           </div>
         </div>
+      </section>
+
+      <!-- Tool of the Day -->
+      <section class="section" id="section-tool-of-the-day">
+        <div class="section-label" style="color: var(--yellow)">&#11088; Рекомендация</div>
+        <h2 class="section-title">Инструмент дня</h2>
+        <p class="section-desc">Подробный разбор одного инструмента из каталога — с рейтингом, сравнением с аналогами и рекомендацией по использованию.</p>
+        <div id="toolOfTheDayContent"><p style="color: var(--text-muted)">Загрузка...</p></div>
       </section>
 
       <!-- Level Sections -->
@@ -1206,6 +1682,14 @@
         <div id="strategyContent"></div>
       </section>
 
+      <!-- Navigator Quiz -->
+      <section class="section" id="section-navigator">
+        <div class="section-label" style="color: var(--purple)">&#129517; Персональный подбор</div>
+        <h2 class="section-title">Какие AI-инструменты тебе нужны?</h2>
+        <p class="section-desc">Ответьте на 6 вопросов и получите персонализированную рекомендацию инструментов из каталога, подобранную под ваши задачи и бюджет.</p>
+        <div class="navigator-container" id="navigatorContent"></div>
+      </section>
+
       <!-- Quiz -->
       <section class="section" id="section-quiz">
         <div class="section-label" style="color: var(--yellow)">Проверка знаний</div>
@@ -1216,8 +1700,11 @@
     </main>
   </div>
 
-  <script src="data.js"></script>
   <script>
+    // ========== GLOBAL DATA ==========
+    let DATA = null;
+    let TOTD = null;
+
     // ========== STATE ==========
     let activeSection = 'overview';
     let activeCategoryIndex = {};
@@ -1225,15 +1712,122 @@
     let quizState = { current: 0, score: 0, answered: false, finished: false };
     let visitedSections = new Set(['overview']);
 
+    // ========== NAVIGATOR STATE ==========
+    const navigatorQuestions = [
+      {
+        id: 1,
+        question: "Какие задачи вы решаете чаще всего?",
+        hint: "Выберите основное направление работы",
+        multi: false,
+        options: [
+          { icon: "&#128221;", text: "Написание текстов, статей, отчётов", tags: ["текст", "контент"] },
+          { icon: "&#128187;", text: "Программирование и разработка", tags: ["код", "IDE"] },
+          { icon: "&#127912;", text: "Создание изображений, видео, медиа", tags: ["изображения", "видео", "контент", "мультимодальность"] },
+          { icon: "&#128269;", text: "Исследования и аналитика", tags: ["research", "поиск", "текст"] },
+          { icon: "&#9881;", text: "Автоматизация рабочих процессов", tags: ["автоматизация", "агенты", "no-code"] },
+          { icon: "&#128188;", text: "Управление и стратегия (Enterprise)", tags: ["enterprise", "интеграция"] }
+        ]
+      },
+      {
+        id: 2,
+        question: "Какой у вас бюджет на AI-инструменты?",
+        hint: "Месячный бюджет на одного пользователя",
+        multi: false,
+        options: [
+          { icon: "&#128176;", text: "Бесплатно / минимальный (до $20/мес)", tags: ["бюджетный", "open-source"] },
+          { icon: "&#128179;", text: "Средний ($20–100/мес)", tags: ["enterprise"] },
+          { icon: "&#128142;", text: "Без ограничений (Enterprise)", tags: ["enterprise"] }
+        ]
+      },
+      {
+        id: 3,
+        question: "Нужен ли вам API-доступ для интеграции?",
+        hint: "Планируете ли встраивать AI в свои системы",
+        multi: false,
+        options: [
+          { icon: "&#10060;", text: "Нет, мне достаточно веб-интерфейса", tags: ["no-code"] },
+          { icon: "&#9989;", text: "Да, нужен API для интеграции", tags: ["api", "код"] },
+          { icon: "&#128640;", text: "Нужна полная платформа для создания AI-решений", tags: ["api", "enterprise", "интеграция"] }
+        ]
+      },
+      {
+        id: 4,
+        question: "Какой уровень технической подготовки?",
+        hint: "Это поможет подобрать инструменты нужной сложности",
+        multi: false,
+        options: [
+          { icon: "&#128100;", text: "Нетехнический — нужен простой интерфейс", tags: ["no-code", "текст"] },
+          { icon: "&#128104;&#8205;&#128187;", text: "Средний — могу настроить, но не программировать", tags: ["автоматизация", "no-code", "агенты"] },
+          { icon: "&#129489;&#8205;&#128187;", text: "Продвинутый — пишу код, работаю с API", tags: ["код", "api", "IDE"] }
+        ]
+      },
+      {
+        id: 5,
+        question: "Что для вас важнее в инструменте?",
+        hint: "Выберите приоритет",
+        multi: false,
+        options: [
+          { icon: "&#9889;", text: "Скорость и простота использования", tags: ["текст", "no-code"] },
+          { icon: "&#128170;", text: "Мощность и качество результата", tags: ["reasoning", "enterprise"] },
+          { icon: "&#128274;", text: "Контроль и безопасность данных", tags: ["open-source", "enterprise"] },
+          { icon: "&#128176;", text: "Соотношение цена/качество", tags: ["бюджетный", "open-source"] }
+        ]
+      },
+      {
+        id: 6,
+        question: "Работаете один или в команде?",
+        hint: "Это влияет на выбор между персональными и командными решениями",
+        multi: false,
+        options: [
+          { icon: "&#128100;", text: "Один / фрилансер", tags: ["бюджетный", "текст", "код"] },
+          { icon: "&#128101;", text: "Небольшая команда (2–10 человек)", tags: ["агенты", "автоматизация"] },
+          { icon: "&#127970;", text: "Большая организация (10+ человек)", tags: ["enterprise", "интеграция"] }
+        ]
+      }
+    ];
+
+    let navState = { current: 0, answers: [], finished: false };
+
+    // ========== LOAD DATA ==========
+    async function loadData() {
+      try {
+        const resp = await fetch('data/llm-tools.json');
+        if (!resp.ok) throw new Error('Failed to load llm-tools.json');
+        DATA = await resp.json();
+      } catch (e) {
+        console.error('Error loading data:', e);
+        document.getElementById('mainContent').innerHTML = '<div style="padding:60px 40px;"><h2 style="color:var(--red)">Ошибка загрузки данных</h2><p style="color:var(--text-secondary)">Не удалось загрузить каталог инструментов. Попробуйте обновить страницу.</p></div>';
+        return false;
+      }
+      return true;
+    }
+
+    async function loadToolOfTheDay() {
+      try {
+        const resp = await fetch('data/tool-of-the-day.json');
+        if (!resp.ok) throw new Error('Failed to load tool-of-the-day.json');
+        TOTD = await resp.json();
+      } catch (e) {
+        console.warn('Tool of the day not available, will use random:', e);
+        TOTD = null;
+      }
+    }
+
     // ========== INIT ==========
-    function init() {
+    async function init() {
+      const dataLoaded = await loadData();
+      if (!dataLoaded) return;
+      await loadToolOfTheDay();
+
       renderNav();
       renderHeroLevels();
+      renderToolOfTheDay();
       renderLevelSections();
       renderComparison();
       renderTimeline();
       renderShifts();
       renderStrategy();
+      renderNavigator();
       renderQuiz();
       setupScrollObserver();
       updateProgress();
@@ -1242,7 +1836,7 @@
     // ========== NAVIGATION ==========
     function renderNav() {
       const nav = document.getElementById('sidebarNav');
-      nav.innerHTML = sections.map(s => `
+      nav.innerHTML = DATA.sections.map(s => `
         <div class="nav-item ${s.id === activeSection ? 'active' : ''}" data-section="${s.id}" onclick="scrollToSection('${s.id}')">
           <span class="nav-icon">${s.icon}</span>
           <span>${s.title}</span>
@@ -1257,7 +1851,6 @@
         visitedSections.add(id);
         updateProgress();
       }
-      // Close mobile sidebar
       document.getElementById('sidebar').classList.remove('open');
       document.querySelector('.sidebar-overlay').classList.remove('open');
     }
@@ -1282,14 +1875,14 @@
         });
       }, { threshold: 0.3 });
 
-      sections.forEach(s => {
+      DATA.sections.forEach(s => {
         const el = document.getElementById('section-' + s.id);
         if (el) observer.observe(el);
       });
     }
 
     function updateProgress() {
-      const pct = Math.round((visitedSections.size / sections.length) * 100);
+      const pct = Math.round((visitedSections.size / DATA.sections.length) * 100);
       document.getElementById('progressFill').style.width = pct + '%';
       document.getElementById('progressText').textContent = pct + '%';
     }
@@ -1297,7 +1890,7 @@
     // ========== HERO LEVELS ==========
     function renderHeroLevels() {
       const container = document.getElementById('heroLevels');
-      container.innerHTML = levels.map((l, i) => `
+      container.innerHTML = DATA.levels.map((l, i) => `
         <div class="hero-level-card" onclick="scrollToSection('level${l.id}')">
           <div class="hero-level-num">${l.id}</div>
           <div class="hero-level-title">${l.shortTitle}</div>
@@ -1306,9 +1899,108 @@
       `).join('');
     }
 
+    // ========== TOOL OF THE DAY ==========
+    function renderToolOfTheDay() {
+      const container = document.getElementById('toolOfTheDayContent');
+      let tool;
+
+      if (TOTD && TOTD.tool) {
+        tool = TOTD.tool;
+      } else {
+        // Fallback: random tool from catalog
+        const allTools = [];
+        DATA.levels.forEach(level => {
+          level.categories.forEach(cat => {
+            cat.tools.forEach(t => {
+              allTools.push({ ...t, level: level.id, category: cat.name });
+            });
+          });
+        });
+        const randomTool = allTools[Math.floor(Math.random() * allTools.length)];
+        tool = {
+          name: randomTool.name,
+          url: randomTool.url,
+          level: randomTool.level,
+          category: randomTool.category,
+          description: randomTool.description,
+          fullDescription: randomTool.description,
+          rating: 8.0,
+          ratingMax: 10,
+          pros: randomTool.features || [],
+          cons: ["Информация ограничена — полный обзор скоро появится"],
+          comparison: [],
+          recommendation: randomTool.strength || "Рекомендуется для изучения.",
+          idealFor: [],
+          pricing: randomTool.apiPrice || "См. официальный сайт"
+        };
+      }
+
+      const levelColors = { 1: 'var(--cyan)', 2: 'var(--green)', 3: 'var(--purple)' };
+      const levelNames = { 1: 'Уровень 1: Модели', 2: 'Уровень 2: Агенты', 3: 'Уровень 3: Платформы' };
+
+      container.innerHTML = `
+        <div class="totd-card">
+          <div class="totd-badge">&#11088; Инструмент дня &mdash; ${TOTD ? TOTD.date : new Date().toISOString().split('T')[0]}</div>
+          <div class="totd-header">
+            <div>
+              <div class="totd-title">${tool.name}</div>
+              <div class="totd-category">${levelNames[tool.level] || ''} &bull; ${tool.category}</div>
+            </div>
+            <div class="totd-rating">
+              <div class="totd-rating-value">${tool.rating}</div>
+              <div class="totd-rating-max">/ ${tool.ratingMax}</div>
+            </div>
+          </div>
+          <div class="totd-description">${tool.fullDescription || tool.description}</div>
+
+          <div class="totd-grid">
+            <div class="totd-pros">
+              <div class="totd-list-title">Преимущества</div>
+              <ul class="totd-list">
+                ${(tool.pros || []).map(p => `<li>${p}</li>`).join('')}
+              </ul>
+            </div>
+            <div class="totd-cons">
+              <div class="totd-list-title">Ограничения</div>
+              <ul class="totd-list">
+                ${(tool.cons || []).map(c => `<li>${c}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+
+          ${tool.comparison && tool.comparison.length > 0 ? `
+            <div class="totd-comparison">
+              <div class="totd-comparison-title">Сравнение с аналогами</div>
+              ${tool.comparison.map(c => `
+                <div class="totd-comparison-item">
+                  <div class="totd-comparison-name">vs ${c.competitor}</div>
+                  <div class="totd-comparison-verdict">${c.verdict}</div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+
+          <div class="totd-recommendation">
+            <div class="totd-recommendation-title">Рекомендация</div>
+            <div class="totd-recommendation-text">${tool.recommendation}</div>
+          </div>
+
+          ${tool.idealFor && tool.idealFor.length > 0 ? `
+            <div class="totd-tags">
+              ${tool.idealFor.map(t => `<span class="totd-tag">${t}</span>`).join('')}
+            </div>
+          ` : ''}
+
+          <a href="${tool.url}" target="_blank" rel="noopener" class="totd-link">
+            Перейти на сайт &rarr;
+          </a>
+        </div>
+      `;
+    }
+
     // ========== LEVEL SECTIONS ==========
     function renderLevelSections() {
-      levels.forEach(level => {
+      DATA.levels.forEach(level => {
         const section = document.getElementById('section-level' + level.id);
         activeCategoryIndex['level' + level.id] = 0;
 
@@ -1336,14 +2028,12 @@
     function switchCategory(levelKey, catIndex) {
       activeCategoryIndex[levelKey] = catIndex;
       const levelId = parseInt(levelKey.replace('level', ''));
-      const level = levels.find(l => l.id === levelId);
+      const level = DATA.levels.find(l => l.id === levelId);
 
-      // Update tabs
       document.querySelectorAll(`#tabs-${levelKey} .category-tab`).forEach((tab, i) => {
         tab.classList.toggle('active', i === catIndex);
       });
 
-      // Update tools
       const grid = document.getElementById('tools-' + levelKey);
       grid.innerHTML = renderToolCards(levelId, level.categories[catIndex].tools, level.color);
     }
@@ -1360,8 +2050,8 @@
                 <div class="tool-name">${tool.name}</div>
               </div>
               <div class="tool-card-actions">
-                <a href="${tool.url}" target="_blank" rel="noopener" class="tool-link" title="Официальный сайт" onclick="event.stopPropagation()">↗</a>
-                <button class="tool-expand ${isOpen ? 'open' : ''}" id="expand-${cardKey}">▾</button>
+                <a href="${tool.url}" target="_blank" rel="noopener" class="tool-link" title="Официальный сайт" onclick="event.stopPropagation()">&nearr;</a>
+                <button class="tool-expand ${isOpen ? 'open' : ''}" id="expand-${cardKey}">&#9662;</button>
               </div>
             </div>
             <div class="tool-card-body ${isOpen ? 'open' : ''}" id="body-${cardKey}">
@@ -1389,13 +2079,14 @@
     // ========== COMPARISON ==========
     function renderComparison() {
       const container = document.getElementById('comparisonContent');
+      const ct = DATA.comparisonTable;
       container.innerHTML = `
         <table class="comparison-table">
           <thead>
-            <tr>${comparisonTable.headers.map(h => `<th>${h}</th>`).join('')}</tr>
+            <tr>${ct.headers.map(h => `<th>${h}</th>`).join('')}</tr>
           </thead>
           <tbody>
-            ${comparisonTable.rows.map(row => `
+            ${ct.rows.map(row => `
               <tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>
             `).join('')}
           </tbody>
@@ -1406,7 +2097,7 @@
     // ========== TIMELINE ==========
     function renderTimeline() {
       const container = document.getElementById('timelineContent');
-      container.innerHTML = timeline.map(item => `
+      container.innerHTML = DATA.timeline.map(item => `
         <div class="timeline-item">
           <div class="timeline-date">${item.date}</div>
           <div class="timeline-event">${item.event}</div>
@@ -1418,12 +2109,12 @@
     // ========== SHIFTS ==========
     function renderShifts() {
       const container = document.getElementById('shiftsContent');
-      container.innerHTML = structuralShifts.map(shift => `
+      container.innerHTML = DATA.structuralShifts.map(shift => `
         <div class="glass-card shift-card">
           <div class="shift-area">${shift.area}</div>
           <div class="shift-arrow">
             <span class="shift-from">${shift.from}</span>
-            <span class="shift-arrow-icon">→</span>
+            <span class="shift-arrow-icon">&rarr;</span>
             <span class="shift-to">${shift.to}</span>
           </div>
           <div class="shift-desc">${shift.description}</div>
@@ -1434,18 +2125,19 @@
     // ========== STRATEGY ==========
     function renderStrategy() {
       const container = document.getElementById('strategyContent');
+      const s = DATA.strategy;
       container.innerHTML = `
         <div class="strategy-grid">
           <div class="glass-card strategy-card">
-            <div class="strategy-title">${strategy.topDown.title}</div>
+            <div class="strategy-title">${s.topDown.title}</div>
             <ul class="strategy-points">
-              ${strategy.topDown.points.map(p => `<li>${p}</li>`).join('')}
+              ${s.topDown.points.map(p => `<li>${p}</li>`).join('')}
             </ul>
           </div>
           <div class="glass-card strategy-card recommended">
-            <div class="strategy-title">${strategy.bottomUp.title}</div>
+            <div class="strategy-title">${s.bottomUp.title}</div>
             <ul class="strategy-points">
-              ${strategy.bottomUp.points.map(p => `<li>${p}</li>`).join('')}
+              ${s.bottomUp.points.map(p => `<li>${p}</li>`).join('')}
             </ul>
           </div>
         </div>
@@ -1454,18 +2146,131 @@
           <div class="pilot-meta">
             <div>
               <div class="pilot-meta-label">Длительность</div>
-              <div class="pilot-meta-value">${strategy.pilot.duration}</div>
+              <div class="pilot-meta-value">${s.pilot.duration}</div>
             </div>
           </div>
-          <div style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">${strategy.pilot.goal}</div>
+          <div style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">${s.pilot.goal}</div>
           <div class="pilot-formula">1 Модель + 1 Агент + 1 Задача = Доказательство ценности</div>
         </div>
       `;
     }
 
+    // ========== NAVIGATOR QUIZ ==========
+    function renderNavigator() {
+      const container = document.getElementById('navigatorContent');
+
+      if (navState.finished) {
+        renderNavigatorResults(container);
+        return;
+      }
+
+      const q = navigatorQuestions[navState.current];
+      const currentAnswer = navState.answers[navState.current];
+
+      container.innerHTML = `
+        <div class="navigator-step">
+          <div class="navigator-progress">
+            ${navigatorQuestions.map((_, i) => `
+              <div class="navigator-progress-dot ${i < navState.current ? 'completed' : ''} ${i === navState.current ? 'active' : ''}"></div>
+            `).join('')}
+          </div>
+          <div class="navigator-question">${q.question}</div>
+          <div class="navigator-hint">${q.hint}</div>
+          <div class="navigator-options">
+            ${q.options.map((opt, i) => `
+              <div class="navigator-option ${currentAnswer === i ? 'selected' : ''}" onclick="selectNavigatorOption(${i})">
+                <span class="navigator-option-icon">${opt.icon}</span>
+                <span>${opt.text}</span>
+              </div>
+            `).join('')}
+          </div>
+          <button class="navigator-btn ${currentAnswer !== undefined ? 'visible' : ''}" id="navNextBtn" onclick="nextNavigatorStep()">
+            ${navState.current < navigatorQuestions.length - 1 ? 'Далее &rarr;' : 'Показать рекомендации'}
+          </button>
+        </div>
+      `;
+    }
+
+    function selectNavigatorOption(index) {
+      navState.answers[navState.current] = index;
+      renderNavigator();
+    }
+
+    function nextNavigatorStep() {
+      if (navState.answers[navState.current] === undefined) return;
+      navState.current++;
+      if (navState.current >= navigatorQuestions.length) {
+        navState.finished = true;
+      }
+      renderNavigator();
+    }
+
+    function renderNavigatorResults(container) {
+      // Collect tags from answers
+      const userTags = [];
+      navState.answers.forEach((ansIdx, qIdx) => {
+        if (ansIdx !== undefined && navigatorQuestions[qIdx]) {
+          const tags = navigatorQuestions[qIdx].options[ansIdx].tags;
+          userTags.push(...tags);
+        }
+      });
+
+      // Score all tools
+      const allTools = [];
+      DATA.levels.forEach(level => {
+        level.categories.forEach(cat => {
+          cat.tools.forEach(t => {
+            const toolTags = t.tags || [];
+            let score = 0;
+            userTags.forEach(ut => {
+              if (toolTags.includes(ut)) score++;
+            });
+            if (score > 0) {
+              allTools.push({
+                ...t,
+                level: level.id,
+                category: cat.name,
+                matchScore: score,
+                maxScore: userTags.length
+              });
+            }
+          });
+        });
+      });
+
+      // Sort by match score
+      allTools.sort((a, b) => b.matchScore - a.matchScore);
+      const topTools = allTools.slice(0, 8);
+
+      container.innerHTML = `
+        <div class="navigator-results">
+          <div class="navigator-results-title">Ваши рекомендации</div>
+          <div class="navigator-results-subtitle">На основе ваших ответов мы подобрали ${topTools.length} инструментов, наиболее подходящих для ваших задач:</div>
+          ${topTools.map(tool => `
+            <div class="navigator-result-card">
+              <div class="navigator-result-header">
+                <div class="navigator-result-name">${tool.name}</div>
+                <span class="navigator-result-level navigator-result-level-${tool.level}">Уровень ${tool.level}</span>
+              </div>
+              <div class="navigator-result-desc">${tool.strength || tool.description}</div>
+              <div class="navigator-result-match">Совпадение: ${Math.round((tool.matchScore / tool.maxScore) * 100)}%</div>
+              <a href="${tool.url}" target="_blank" rel="noopener" class="navigator-result-link">Перейти &rarr;</a>
+            </div>
+          `).join('')}
+          <button class="navigator-restart-btn" onclick="restartNavigator()">Пройти заново</button>
+        </div>
+      `;
+    }
+
+    function restartNavigator() {
+      navState = { current: 0, answers: [], finished: false };
+      renderNavigator();
+    }
+
     // ========== QUIZ ==========
     function renderQuiz() {
       const container = document.getElementById('quizContent');
+      const quizQuestions = DATA.quizQuestions;
 
       if (quizState.finished) {
         container.innerHTML = `
@@ -1500,7 +2305,7 @@
         </div>
         <div class="quiz-explanation" id="quizExplanation">${q.explanation}</div>
         <button class="quiz-next-btn" id="quizNextBtn" onclick="nextQuestion()">
-          ${quizState.current < quizQuestions.length - 1 ? 'Следующий вопрос →' : 'Показать результат'}
+          ${quizState.current < quizQuestions.length - 1 ? 'Следующий вопрос &rarr;' : 'Показать результат'}
         </button>
       `;
     }
@@ -1509,7 +2314,7 @@
       if (quizState.answered) return;
       quizState.answered = true;
 
-      const q = quizQuestions[quizState.current];
+      const q = DATA.quizQuestions[quizState.current];
       const options = document.querySelectorAll('.quiz-option');
 
       options.forEach((opt, i) => {
@@ -1527,7 +2332,7 @@
     function nextQuestion() {
       quizState.answered = false;
       quizState.current++;
-      if (quizState.current >= quizQuestions.length) {
+      if (quizState.current >= DATA.quizQuestions.length) {
         quizState.finished = true;
       }
       renderQuiz();

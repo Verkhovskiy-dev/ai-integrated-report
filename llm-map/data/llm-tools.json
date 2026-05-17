@@ -1,0 +1,599 @@
+{
+  "sections": [
+    { "id": "overview", "title": "Обзор", "icon": "📋" },
+    { "id": "tool-of-the-day", "title": "Инструмент дня", "icon": "⭐" },
+    { "id": "level1", "title": "Уровень 1: Модели", "icon": "🧠" },
+    { "id": "level2", "title": "Уровень 2: Агенты", "icon": "🤖" },
+    { "id": "level3", "title": "Уровень 3: Платформы", "icon": "🔧" },
+    { "id": "comparison", "title": "Сравнение", "icon": "📊" },
+    { "id": "evolution", "title": "Эволюция", "icon": "📈" },
+    { "id": "strategy", "title": "Стратегия", "icon": "🎯" },
+    { "id": "navigator", "title": "Навигатор", "icon": "🧭" },
+    { "id": "quiz", "title": "Тест", "icon": "✅" }
+  ],
+  "levels": [
+    {
+      "id": 1,
+      "title": "Уровень 1 — Стандартные LLM-платформы",
+      "subtitle": "Фундамент экосистемы",
+      "shortTitle": "Фундамент экосистемы",
+      "shortDesc": "Генерация текста, кода, анализ",
+      "description": "Генерация текста, кода, анализ — без выполнения действий. К маю 2026 года рынок достиг зрелости: GPT-5.5, Claude Opus 4.7, Gemini 3.1 Pro и Grok 4.3 конкурируют на равных. Китайские модели (DeepSeek V4 Pro, Qwen 3.6, Kimi K2.6, MiMo-V2-Pro) занимают 45% трафика OpenRouter. Meta перешла от open-source Llama к проприетарной Muse Spark.",
+      "color": "#00d4ff",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310419663031817411/LmcKwojoPuoroSjGyukkEi/level1-models-bvmEmyXuQTm3TBVWp6yUoz.webp",
+      "categories": [
+        {
+          "name": "Проприетарные модели (Запад)",
+          "tools": [
+            {
+              "name": "OpenAI GPT-5.5 / o3 / o4-mini",
+              "url": "https://openai.com",
+              "description": "GPT-5.5 (23 апреля 2026) — флагман для сложных задач. GPT-5.5 Instant (5 мая 2026) — новый дефолт ChatGPT. o4-mini — экономичный reasoning. Sora ЗАКРЫТА 26 апреля 2026. Images 2.0 — новый генератор изображений.",
+              "strength": "Самая развитая экосистема, GPT-5.5 — лидер по сложным задачам",
+              "features": ["GPT-5.5 Instant", "o4-mini Reasoning", "Images 2.0", "Sora закрыта"],
+              "context": "200K (o3-mini)",
+              "reasoning": "o3, o4-mini",
+              "multimodal": "Текст, Код, Изобр., Аудио",
+              "apiPrice": "$0.55–40/1M tok",
+              "tags": ["текст", "код", "изображения", "аудио", "reasoning", "enterprise"]
+            },
+            {
+              "name": "Claude Opus 4.7 / Sonnet 4.6",
+              "url": "https://anthropic.com",
+              "description": "Claude Opus 4.7 (16 апреля 2026) — SWE-bench 87.6%, лидер агентного кодинга. Claude Code с Dreaming, multi-agent orchestration, scheduled routines. Claude Cowork GA (9 апреля 2026). Claude Mythos — более мощная внутренняя модель.",
+              "strength": "Агентный кодинг #1 (SWE-bench 87.6%), Dreaming, контекст 1M",
+              "features": ["Opus 4.7 SWE-bench 87.6%", "Dreaming", "Claude Cowork GA", "Mythos"],
+              "context": "1M tokens",
+              "reasoning": "Extended Thinking",
+              "multimodal": "Текст, Код, Изобр.",
+              "apiPrice": "$3–75/1M tok",
+              "tags": ["текст", "код", "reasoning", "агенты", "enterprise"]
+            },
+            {
+              "name": "Gemini 3.1 Pro / Deep Research Max",
+              "url": "https://ai.google.dev",
+              "description": "Gemini 3.1 Pro Preview (19 февраля 2026) — текущий флагман Google. Deep Research Max (21 апреля 2026) на базе 3.1 Pro + MCP. Nano Banana 2/3/Pro — генерация изображений. Veo 3.1 Ultra — видеогенерация с нативным аудио. Gemma 4 (17 апреля 2026) — open source.",
+              "strength": "Nano Banana (изобр.), Veo 3.1 (видео), Deep Research Max, Google экосистема",
+              "features": ["Deep Research Max", "Nano Banana 2/3/Pro", "Veo 3.1 Ultra", "Gemma 4"],
+              "context": "2M tokens",
+              "reasoning": "Deep Think",
+              "multimodal": "Текст, Код, Изобр., Видео, Аудио",
+              "apiPrice": "$1.25–10/1M tok",
+              "tags": ["текст", "код", "изображения", "видео", "аудио", "research", "enterprise"]
+            },
+            {
+              "name": "Grok 4.3 / 4.2 Non-Reasoning",
+              "url": "https://x.ai",
+              "description": "Grok 4.3 (май 2026) — флагман xAI для chat, coding, agentic workflows. Grok 4.2 Non-Reasoning доступен на Azure Foundry. Grok 4.1 Fast retiring 15 мая 2026. Эксклюзивные данные X/Twitter.",
+              "strength": "Данные X/Twitter в реальном времени, Azure Foundry, агрессивные цены",
+              "features": ["Grok 4.3 Flagship", "Azure Foundry", "X/Twitter Data", "Aggressive Pricing"],
+              "context": "256K tokens",
+              "reasoning": "Built-in",
+              "multimodal": "Текст, Код, Изобр.",
+              "apiPrice": "$2–10/1M tok",
+              "tags": ["текст", "код", "соцсети", "enterprise"]
+            },
+            {
+              "name": "Meta Muse Spark",
+              "url": "https://ai.meta.com",
+              "description": "Muse Spark (8 апреля 2026) — первая модель Meta Superintelligence Labs. ПРОПРИЕТАРНАЯ (разрыв с open-source Llama). Заменяет Llama как флагман Meta. Llama 4 Behemoth так и не вышла.",
+              "strength": "Meta экосистема (3B+ пользователей), разрыв с open source",
+              "features": ["Proprietary Model", "Meta SI Labs", "3B+ Users", "Llama Successor"],
+              "context": "N/A",
+              "reasoning": "N/A",
+              "multimodal": "Текст, Код, Изобр.",
+              "apiPrice": "N/A",
+              "tags": ["текст", "код", "изображения", "enterprise"]
+            }
+          ]
+        },
+        {
+          "name": "Китайские модели",
+          "tools": [
+            {
+              "name": "Xiaomi MiMo-V2-Pro",
+              "url": "https://github.com/XiaomiMiMo",
+              "description": "MiMo-V2-Pro — #1 на OpenRouter (21.1% трафика). Xiaomi вошла в AI-рынок в январе 2026. Специализация: coding (49% coding tokens совместно с Qwen). Open-weight модель.",
+              "strength": "#1 OpenRouter (21.1%). Coding specialist. Open-weight.",
+              "features": ["#1 OpenRouter 21.1%", "Coding Specialist", "Open Weight", "January 2026 Entry"],
+              "tags": ["код", "open-source", "бюджетный"]
+            },
+            {
+              "name": "DeepSeek V4 Pro / R2",
+              "url": "https://deepseek.com",
+              "description": "DeepSeek V4 Pro (апрель 2026) — frontier reasoning. R2 — reasoning модель. 5.6% OpenRouter. Продолжает традицию R1 (январь 2025). Конкурент GPT-5.5 по reasoning.",
+              "strength": "Frontier reasoning. Продолжение R1. 5.6% OpenRouter.",
+              "features": ["V4 Pro Frontier", "R2 Reasoning", "5.6% OpenRouter", "R1 Legacy"],
+              "tags": ["текст", "код", "reasoning", "бюджетный"]
+            },
+            {
+              "name": "Alibaba Qwen 3.6",
+              "url": "https://qwen.ai",
+              "description": "Qwen 3.6 — 14% OpenRouter. Hybrid thinking (reasoning + non-reasoning в одной модели). MCP support. Сильнейшая модель Alibaba. Coding: 49% tokens совместно с MiMo.",
+              "strength": "14% OpenRouter. Hybrid thinking. MCP support.",
+              "features": ["14% OpenRouter", "Hybrid Thinking", "MCP Support", "Coding Leader"],
+              "tags": ["текст", "код", "reasoning", "бюджетный", "api"]
+            },
+            {
+              "name": "Kimi K2.6 (Moonshot)",
+              "url": "https://kimi.ai",
+              "description": "Kimi K2.6 — frontier модель от Moonshot AI. Muon optimizer. 1M контекст. Конкурирует с GPT-5.5 и Claude Opus 4.7 на ряде бенчмарков.",
+              "strength": "Frontier level. Muon optimizer. 1M контекст.",
+              "features": ["Frontier Level", "Muon Optimizer", "1M Context", "Moonshot AI"],
+              "tags": ["текст", "код", "reasoning", "бюджетный"]
+            },
+            {
+              "name": "MiniMax / Z.ai",
+              "url": "https://minimax.io",
+              "description": "MiniMax (8%) и Z.ai (5.6%) — значительные игроки на OpenRouter. MiniMax специализируется на мультимодальности. Z.ai — новый бренд от 01.AI (Yi).",
+              "strength": "MiniMax 8% + Z.ai 5.6% OpenRouter. Мультимодальность.",
+              "features": ["MiniMax 8%", "Z.ai 5.6%", "Multimodal", "Yi Legacy"],
+              "tags": ["текст", "изображения", "мультимодальность", "бюджетный"]
+            }
+          ]
+        },
+        {
+          "name": "Open Source (Запад)",
+          "tools": [
+            {
+              "name": "Gemma 4 (Google)",
+              "url": "https://ai.google.dev/gemma",
+              "description": "Gemma 4 (17 апреля 2026) — open-source модель от Google. Наследник Gemma 2. Конкурирует с Llama в open-source пространстве после ухода Meta к проприетарной модели.",
+              "strength": "Google open source. Заполняет нишу после ухода Llama.",
+              "features": ["April 2026", "Google Open Source", "Gemma 2 Successor", "Llama Alternative"],
+              "tags": ["текст", "код", "open-source", "бюджетный"]
+            },
+            {
+              "name": "Llama 4 Scout / Maverick (Legacy)",
+              "url": "https://llama.meta.com",
+              "description": "Llama 4 Scout/Maverick (апрель 2025) — последние open-source модели Meta. Behemoth отменена. Meta перешла к Muse Spark. Llama остаётся доступной, но без обновлений.",
+              "strength": "Legacy open source. Без обновлений после Muse Spark.",
+              "features": ["Scout/Maverick", "Legacy Status", "No Updates", "Behemoth Cancelled"],
+              "tags": ["текст", "код", "open-source", "бюджетный"]
+            },
+            {
+              "name": "Mistral Large 3 / Codestral",
+              "url": "https://mistral.ai",
+              "description": "Mistral Large 3 — европейский frontier. Codestral — специализированная модель для кодинга. Le Chat — consumer продукт. Европейская альтернатива US/China моделям.",
+              "strength": "Европейский frontier. Codestral для кодинга. Le Chat.",
+              "features": ["European Frontier", "Codestral Coding", "Le Chat Consumer", "EU Alternative"],
+              "tags": ["текст", "код", "open-source", "enterprise"]
+            }
+          ]
+        },
+        {
+          "name": "Нишевые решения",
+          "tools": [
+            {
+              "name": "Perplexity Sonar Pro",
+              "url": "https://perplexity.ai",
+              "description": "Sonar Pro — AI-поиск с цитированием источников. Лидер категории AI Search. Интеграция в браузеры и приложения. Конкурент Google Search.",
+              "strength": "AI Search лидер. Цитирование источников. Конкурент Google.",
+              "features": ["AI Search Leader", "Source Citations", "Browser Integration", "Google Competitor"],
+              "tags": ["research", "поиск", "текст"]
+            },
+            {
+              "name": "ElevenLabs / Sesame",
+              "url": "https://elevenlabs.io",
+              "description": "ElevenLabs — лидер AI Voice. Sesame (Maya) — прорыв в conversational AI с эмоциональным голосом. Voice cloning, multilingual TTS.",
+              "strength": "Voice AI лидер. Sesame Maya — эмоциональный голос.",
+              "features": ["Voice AI Leader", "Sesame Maya", "Voice Cloning", "Multilingual TTS"],
+              "tags": ["аудио", "голос", "мультимодальность"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Уровень 2 — Агентные системы",
+      "subtitle": "От слов к делу",
+      "shortTitle": "От слов к делу",
+      "shortDesc": "Автономное выполнение задач",
+      "description": "Готовые прикладные решения, автономно выполняющие цепочки действий. К маю 2026: Cursor 3 с Agents View и параллельными VM, Devin 2.2 с 3x ускорением, Claude Code с Dreaming и multi-agent orchestration, Copilot с cloud agent mode. Видеогенерация: Sora закрыта, лидеры — Veo 3.1, Kling 3.0, Runway Gen-4.5.",
+      "color": "#00ff88",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310419663031817411/LmcKwojoPuoroSjGyukkEi/level2-agents-4ipF3Pi4ohN4jiXKyQo2Qw.webp",
+      "categories": [
+        {
+          "name": "Кодинг",
+          "tools": [
+            {
+              "name": "Cursor 3.0",
+              "url": "https://cursor.com",
+              "description": "Cursor 3.0 (апрель 2026): rebuilt as 'agent switchboard'. Agents View — новый UI вместо классического IDE. Автоматический выбор модели и репозитория. Background Agents с параллельными VM.",
+              "strength": "Стандарт индустрии. Agent switchboard. Автовыбор модели.",
+              "features": ["Agent Switchboard", "Agents View", "Auto Model Selection", "Background Agents"],
+              "tags": ["код", "агенты", "IDE", "enterprise"]
+            },
+            {
+              "name": "Devin 2.2",
+              "url": "https://devin.ai",
+              "description": "Devin 2.2 (февраль 2026): 3x faster startup, новый UI connecting every step of dev lifecycle. Killed $500 plan. Полностью автономный AI Software Engineer. Интеграция в Windsurf.",
+              "strength": "Полностью автономный. 3x быстрее. Пионер категории.",
+              "features": ["3x Faster", "Full Autonomy", "Windsurf Integration", "New Pricing"],
+              "tags": ["код", "агенты", "автоматизация"]
+            },
+            {
+              "name": "Claude Code",
+              "url": "https://docs.anthropic.com/claude-code",
+              "description": "CLI на базе Claude Opus 4.7. Май 2026: Dreaming (self-improving agents), scheduled routines, outcome-based agents, multi-agent orchestration, new memory systems. 1M контекст. Рост 70x YoY.",
+              "strength": "Dreaming (self-improving), multi-agent, 1M контекст, 70x рост",
+              "features": ["Dreaming", "Multi-Agent", "1M Context", "70x YoY Growth"],
+              "tags": ["код", "агенты", "CLI", "enterprise"]
+            },
+            {
+              "name": "GitHub Copilot (Agent Mode)",
+              "url": "https://github.com/features/copilot",
+              "description": "Agent mode GA. Inline agent mode (preview, апрель 2026). Cloud agent sessions в Visual Studio. Usage-based billing. Coding agent в GitHub.com. Поддержка MCP.",
+              "strength": "GitHub экосистема. Cloud agents. MCP support.",
+              "features": ["Agent Mode GA", "Cloud Sessions", "MCP Support", "Usage-Based Billing"],
+              "tags": ["код", "агенты", "IDE", "enterprise", "api"]
+            },
+            {
+              "name": "Windsurf (ex-Codeium)",
+              "url": "https://windsurf.com",
+              "description": "Windsurf — IDE с глубокой AI-интеграцией. Cascade — агентный режим. Купила Devin. SWE-1 — собственная модель для кодинга. Конкурент Cursor.",
+              "strength": "Cascade agent. Devin интеграция. SWE-1 модель.",
+              "features": ["Cascade Agent", "Devin Acquired", "SWE-1 Model", "Cursor Competitor"],
+              "tags": ["код", "агенты", "IDE"]
+            }
+          ]
+        },
+        {
+          "name": "Браузер и автоматизация",
+          "tools": [
+            {
+              "name": "Manus",
+              "url": "https://manus.im",
+              "description": "General AI Agent — выполняет любые задачи: от создания приложений до исследований и автоматизации. Полная автономность в облачном sandbox. Создаёт сайты, анализирует данные, управляет браузером.",
+              "strength": "General AI Agent. Полная автономность. Облачный sandbox.",
+              "features": ["General Agent", "Full Autonomy", "Cloud Sandbox", "App Creation"],
+              "tags": ["агенты", "автоматизация", "research", "код", "no-code"]
+            },
+            {
+              "name": "OpenAI Operator / Deep Research",
+              "url": "https://openai.com/operator",
+              "description": "Operator — браузерный агент OpenAI. Deep Research — глубокий исследовательский агент. Computer-Using Agent (CUA) для автоматизации десктопных задач.",
+              "strength": "OpenAI экосистема. Browser + Research + Desktop agents.",
+              "features": ["Browser Agent", "Deep Research", "CUA Desktop", "OpenAI Ecosystem"],
+              "tags": ["агенты", "автоматизация", "research", "enterprise"]
+            },
+            {
+              "name": "Google Gemini Deep Research Max",
+              "url": "https://gemini.google.com",
+              "description": "Deep Research Max (21 апреля 2026) — исследовательский агент на базе Gemini 3.1 Pro + MCP. Генерирует структурированные отчёты. Конкурент OpenAI Deep Research.",
+              "strength": "Gemini 3.1 Pro + MCP. Структурированные отчёты.",
+              "features": ["Gemini 3.1 Pro", "MCP Integration", "Structured Reports", "April 2026 Update"],
+              "tags": ["research", "агенты", "enterprise"]
+            },
+            {
+              "name": "Anthropic Claude Computer Use",
+              "url": "https://anthropic.com",
+              "description": "Claude Computer Use — агент для управления компьютером. Клики, ввод текста, навигация. Интеграция с Claude Code для полного цикла разработки.",
+              "strength": "Управление компьютером. Интеграция с Claude Code.",
+              "features": ["Computer Control", "Click & Type", "Claude Code Integration", "Full Dev Cycle"],
+              "tags": ["агенты", "автоматизация", "код"]
+            },
+            {
+              "name": "Browser Use / Stagehand",
+              "url": "https://browseruse.com",
+              "description": "Browser Use — open-source фреймворк для браузерных агентов. Stagehand — альтернатива от Browserbase. Оба используют LLM для навигации по веб-страницам.",
+              "strength": "Open source браузерные агенты. LLM-навигация.",
+              "features": ["Open Source", "Browser Automation", "LLM Navigation", "Browserbase"],
+              "tags": ["агенты", "автоматизация", "open-source", "код"]
+            }
+          ]
+        },
+        {
+          "name": "Контент и медиа",
+          "tools": [
+            {
+              "name": "Google Veo 3.1 Ultra",
+              "url": "https://deepmind.google/veo",
+              "description": "Veo 3.1 Ultra — лидер видеогенерации после закрытия Sora. Нативный аудио (диалоги, звуки). Интеграция в Google экосистему. Flow — режим для длинных видео.",
+              "strength": "Лидер видеогенерации. Нативный аудио. Google экосистема.",
+              "features": ["Video Leader", "Native Audio", "Flow Mode", "Post-Sora Leader"],
+              "tags": ["видео", "аудио", "мультимодальность", "контент"]
+            },
+            {
+              "name": "Kling 3.0 (Kuaishou)",
+              "url": "https://klingai.com",
+              "description": "Kling 3.0 — китайский лидер видеогенерации. Высокое качество, конкурент Veo 3.1. Доступен глобально. Motion Brush для точного контроля.",
+              "strength": "Китайский лидер видео. Motion Brush. Глобальный доступ.",
+              "features": ["Video Generation", "Motion Brush", "Global Access", "Veo Competitor"],
+              "tags": ["видео", "контент", "бюджетный"]
+            },
+            {
+              "name": "Runway Gen-4.5 / Act-One",
+              "url": "https://runway.com",
+              "description": "Gen-4.5 — последняя модель Runway для видеогенерации. Act-One — генерация видео с управлением актёрами. Пионер категории AI Video.",
+              "strength": "Пионер AI Video. Act-One актёры. Gen-4.5.",
+              "features": ["Gen-4.5", "Act-One Actors", "Pioneer Status", "Creative Tools"],
+              "tags": ["видео", "контент", "enterprise"]
+            },
+            {
+              "name": "Nano Banana 2/3/Pro (Google)",
+              "url": "https://ai.google.dev",
+              "description": "Nano Banana (апрель 2026) — новый AI image generator от Google. Заменяет Imagen в Gemini. Три версии: 2 (быстрая), 3 (качественная), Pro (профессиональная).",
+              "strength": "Замена Imagen. Три версии. Интеграция в Gemini.",
+              "features": ["Imagen Replacement", "3 Versions", "Gemini Integration", "April 2026"],
+              "tags": ["изображения", "контент", "enterprise"]
+            },
+            {
+              "name": "NotebookLM / Illuminate",
+              "url": "https://notebooklm.google.com",
+              "description": "NotebookLM — AI-ассистент для работы с документами. Audio Overview — генерация подкастов из документов. Illuminate — расширение для научных статей.",
+              "strength": "Документы → Подкасты. Audio Overview. Google экосистема.",
+              "features": ["Document AI", "Audio Overview", "Podcast Generation", "Illuminate"],
+              "tags": ["текст", "аудио", "research", "контент"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Уровень 3 — Платформы сборки",
+      "subtitle": "Инструмент создания собственных решений",
+      "shortTitle": "Инструмент создания собственных решений",
+      "shortDesc": "Сборка собственных решений",
+      "description": "Платформы для создания собственных AI-решений — от no-code конструкторов до фреймворков разработки и протоколов стандартизации. MCP — индустриальный стандарт (9400+ серверов, 4 реестра, 78% корпоративных команд). A2A Protocol — в Linux Foundation (1 год). OpenAI Assistants API закрывается 26 августа 2026 (замена на Responses API).",
+      "color": "#8b5cf6",
+      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310419663031817411/LmcKwojoPuoroSjGyukkEi/level3-platforms-8r7XuH7xyJJLqyq3aDPQqC.webp",
+      "categories": [
+        {
+          "name": "No-Code / Low-Code",
+          "tools": [
+            {
+              "name": "n8n",
+              "url": "https://n8n.io",
+              "description": "Open Source лидер 2026. Встроенные ноды для AI-агентов, памяти и RAG. Self-hosted бесплатно. Акцент на AI-агентах внутри рабочих процессов.",
+              "strength": "Лидер 2026. Self-hosted. Полная кастомизация.",
+              "features": ["AI Agent Nodes", "Memory & RAG", "Self-Hosted Free", "Workflow Leader"],
+              "tags": ["автоматизация", "no-code", "open-source", "api", "enterprise"]
+            },
+            {
+              "name": "Dify",
+              "url": "https://dify.ai",
+              "description": "Open-source платформа для создания AI-приложений. RAG Pipeline, Agent Framework, Workflow Builder. 120K+ GitHub stars. Backend-as-a-Service для LLM-приложений.",
+              "strength": "120K+ stars. RAG + Agents + Workflows. Open source.",
+              "features": ["120K+ Stars", "RAG Pipeline", "Agent Framework", "BaaS for LLM"],
+              "tags": ["автоматизация", "no-code", "open-source", "api", "enterprise"]
+            },
+            {
+              "name": "Relevance AI",
+              "url": "https://relevanceai.com",
+              "description": "No-code платформа для создания AI-агентов и workforce. Визуальный конструктор агентов. Multi-agent orchestration. Enterprise-ready.",
+              "strength": "No-code AI workforce. Multi-agent. Enterprise.",
+              "features": ["No-Code Agents", "AI Workforce", "Multi-Agent", "Enterprise Ready"],
+              "tags": ["автоматизация", "no-code", "агенты", "enterprise"]
+            }
+          ]
+        },
+        {
+          "name": "Фреймворки разработки",
+          "tools": [
+            {
+              "name": "LangGraph / LangChain",
+              "url": "https://langchain.com",
+              "description": "LangGraph — фреймворк для создания stateful multi-agent систем. LangChain — базовый фреймворк для LLM-приложений. LangSmith — observability. Доминирует в экосистеме.",
+              "strength": "Доминирует в экосистеме. Stateful agents. LangSmith.",
+              "features": ["Stateful Agents", "Multi-Agent", "LangSmith Observability", "Ecosystem Leader"],
+              "tags": ["код", "агенты", "api", "enterprise"]
+            },
+            {
+              "name": "CrewAI",
+              "url": "https://crewai.com",
+              "description": "Фреймворк для создания команд AI-агентов. Role-based agents. Task delegation. Простой API. Быстрый рост в 2026.",
+              "strength": "Команды агентов. Role-based. Простой API.",
+              "features": ["Agent Teams", "Role-Based", "Task Delegation", "Simple API"],
+              "tags": ["код", "агенты", "api"]
+            },
+            {
+              "name": "OpenAI Agents SDK / Responses API",
+              "url": "https://platform.openai.com",
+              "description": "Agents SDK — новый фреймворк OpenAI для создания агентов. Responses API заменяет Assistants API (закрытие 26 августа 2026). Web search, file search, computer use tools.",
+              "strength": "OpenAI экосистема. Responses API. Assistants API → deprecated.",
+              "features": ["Agents SDK", "Responses API", "Assistants Deprecated", "Built-in Tools"],
+              "tags": ["код", "агенты", "api", "enterprise"]
+            }
+          ]
+        },
+        {
+          "name": "Протоколы стандартизации",
+          "tools": [
+            {
+              "name": "MCP (Model Context Protocol)",
+              "url": "https://modelcontextprotocol.io",
+              "description": "Индустриальный стандарт к маю 2026. 9400+ серверов (рост 7.8x YoY). 4 реестра: Smithery (4210), Glama (2750), PulseMCP (1820), Cloudflare. 78% корпоративных AI-команд. Поддержка в Gemini, ChatGPT, Claude.",
+              "strength": "'USB-C для AI'. 9400+ серверов. Снижение интеграции с 18ч до 4.2ч.",
+              "features": ["9400+ Servers", "4 Registries", "78% Enterprise", "Industry Standard"],
+              "tags": ["api", "интеграция", "enterprise", "стандарт"]
+            },
+            {
+              "name": "A2A (Agent-to-Agent Protocol)",
+              "url": "https://github.com/google/A2A",
+              "description": "Протокол Google для межагентного взаимодействия. Передан в Linux Foundation (апрель 2025). 1 год: поддержка в LangGraph, CrewAI. Agent Card для обнаружения. 23% корпоративных стеков.",
+              "strength": "Межагентное взаимодействие. Linux Foundation. 23% enterprise.",
+              "features": ["Inter-Agent Protocol", "Linux Foundation", "Agent Card Discovery", "1 Year Anniversary"],
+              "tags": ["api", "интеграция", "агенты", "стандарт"]
+            },
+            {
+              "name": "ACP / UCP (новые протоколы)",
+              "url": "https://www.digitalapplied.com/blog/ai-agent-protocol-ecosystem-map-2026-mcp-a2a-acp-ucp",
+              "description": "ACP и UCP — новые протоколы в экосистеме агентов 2026. Дополняют MCP и A2A для специализированных сценариев. Экосистема протоколов расширяется.",
+              "strength": "Расширение экосистемы протоколов за пределы MCP/A2A.",
+              "features": ["ACP Protocol", "UCP Protocol", "Ecosystem Expansion"],
+              "tags": ["api", "интеграция", "стандарт"]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "comparisonTable": {
+    "headers": ["Критерий", "Уровень 1 (Модели)", "Уровень 2 (Агенты)", "Уровень 3 (Платформы)"],
+    "rows": [
+      ["Тип задачи", "Генерация, Ответ на вопрос, Анализ текста", "Выполнение цепочки действий, Работа с инструментами", "Сложный бизнес-процесс, Интеграция систем"],
+      ["Время на старт", "Мгновенно (0 мин)", "Быстро (5–30 мин)", "Долго (Дни/Недели)"],
+      ["Контроль", "Ручной (Human-in-the-loop)", "Наблюдение (Oversight)", "Программный (Deterministic)"],
+      ["Навыки", "Промпт-инжиниринг", "Настройка конфигурации", "Разработка (Python/JS)"],
+      ["Стоимость входа", "Бесплатно — $200/мес", "$10–39/мес за IDE", "Бесплатно (OSS) — Enterprise"],
+      ["Идеально для", "Идеи, Черновики, Поиск", "Кодинг, Ресерч, Рутина", "Масштабируемые продукты"],
+      ["Ключевой тренд 2026", "GPT-5.5, Opus 4.7, MiMo-V2-Pro, Qwen 3.6", "Cursor 3, Claude Code Dreaming, Devin 2.2", "MCP 9400+ серверов, A2A в Linux Foundation"]
+    ]
+  },
+  "timeline": [
+    { "date": "Окт 2024", "event": "GPT-4o / Claude 3.5", "description": "Эра Чат-ботов" },
+    { "date": "Сен 2024", "event": "OpenAI o1 Preview", "description": "Старт Reasoning" },
+    { "date": "Янв 2025", "event": "DeepSeek R1", "description": "Open Source прорыв" },
+    { "date": "Фев 2025", "event": "Grok 3 / Claude 3.5 Opus", "description": "Конкуренция обостряется" },
+    { "date": "Апр 2025", "event": "Llama 4 Scout/Maverick / A2A Protocol", "description": "Open Source + Стандарты" },
+    { "date": "Май 2025", "event": "Claude Opus 4 / Sonnet 4", "description": "Anthropic лидирует в агентах" },
+    { "date": "Июл 2025", "event": "GPT-5 / Gemini 2.5 Pro", "description": "Новое поколение моделей" },
+    { "date": "Окт 2025", "event": "Cursor 2.0 / Devin 2.0", "description": "Агентные IDE" },
+    { "date": "Ноя 2025", "event": "Claude Sonnet 4.5 / Grok 4", "description": "Reasoning Wars" },
+    { "date": "Дек 2025", "event": "o3 / Gemini 3.0", "description": "Frontier Reasoning" },
+    { "date": "Янв 2026", "event": "Xiaomi входит в AI", "description": "Xiaomi — новый игрок" },
+    { "date": "Фев 2026", "event": "Sonnet 4.6 / GLM-5 / Manus Agents", "description": "Эра General AI Agents" },
+    { "date": "Мар 2026", "event": "MiMo-V2-Pro #1 OpenRouter / Qwen 3.6", "description": "Китай захватывает 45% трафика" },
+    { "date": "Апр 2026", "event": "GPT-5.5 / Opus 4.7 / Muse Spark / Sora закрыта", "description": "Новые флагманы + закрытие Sora" },
+    { "date": "Май 2026", "event": "Claude Code Dreaming / Cursor 3 / Grok 4.3", "description": "Self-improving agents + Agent IDE" }
+  ],
+  "structuralShifts": [
+    {
+      "area": "Модели мышления",
+      "from": "Probabilistic (2024)",
+      "to": "System 2 Reasoning (2026)",
+      "description": "o3, o4-mini, DeepSeek R2, Claude Extended Thinking — модели теперь 'думают' перед ответом. Hybrid thinking (Qwen 3.6) — reasoning по запросу."
+    },
+    {
+      "area": "Агенты",
+      "from": "Chatbots (2024)",
+      "to": "Autonomous Agents (2026)",
+      "description": "ИИ больше не просто отвечает — выполняет работу. Claude Code с Dreaming (self-improving agents), Cursor 3 с Agents View, Manus создаёт приложения."
+    },
+    {
+      "area": "Интеграция",
+      "from": "Custom API (2024)",
+      "to": "MCP + A2A (2026)",
+      "description": "MCP — 9400+ серверов, 4 реестра. A2A — в Linux Foundation. Новые: ACP, UCP. Время интеграции: с 18ч до 4.2ч."
+    },
+    {
+      "area": "Рынок",
+      "from": "US Closed (2024)",
+      "to": "China 45% + Global Open (2026)",
+      "description": "Китайские модели: 45% OpenRouter (было <2%). MiMo-V2-Pro #1. Meta: open source → проприетарная. Gemma 4 заполняет нишу."
+    },
+    {
+      "area": "Кодинг",
+      "from": "Autocomplete (2024)",
+      "to": "Self-Improving Agents (2026)",
+      "description": "Claude Code Dreaming — агенты улучшают сами себя. Cursor 3 — agent switchboard. Devin 2.2 — autonomous engineer. MiMo + Qwen = 49% coding tokens."
+    }
+  ],
+  "strategy": {
+    "topDown": {
+      "title": "Сверху-Вниз (Top-Down)",
+      "points": [
+        "Централизованная закупка Enterprise-решений (Copilot, Gemini)",
+        "Фокус на безопасности и Compliance",
+        "Низкое принятие (Adoption) сотрудниками"
+      ]
+    },
+    "bottomUp": {
+      "title": "Снизу-Вверх (Bottom-Up) — РЕКОМЕНДУЕМ",
+      "points": [
+        "Сотрудники сами находят инструменты для своих задач",
+        "Быстрый поиск ценности (Time-to-Value)",
+        "Требует правил игры, а не запретов"
+      ]
+    },
+    "pilot": {
+      "duration": "2 недели",
+      "goal": "Доказать, что связка 'Человек + Агент' решает задачу быстрее/дешевле/качественнее"
+    }
+  },
+  "quizQuestions": [
+    {
+      "id": 1,
+      "question": "Какой уровень отвечает за генерацию текста и анализ, но НЕ выполняет действий?",
+      "options": ["Уровень 3 — Платформы сборки", "Уровень 1 — LLM-платформы", "Уровень 2 — Агентные системы"],
+      "correctIndex": 1,
+      "explanation": "Уровень 1 (LLM-платформы) — это фундамент экосистемы. Они генерируют текст, код, анализируют данные, но не содержат встроенных действий.",
+      "level": 1
+    },
+    {
+      "id": 2,
+      "question": "Какая модель занимает #1 место на OpenRouter по объёму трафика в 2026 году?",
+      "options": ["GPT-5.5", "Claude Opus 4.7", "Xiaomi MiMo-V2-Pro"],
+      "correctIndex": 2,
+      "explanation": "Xiaomi MiMo-V2-Pro занимает 21.1% трафика OpenRouter — в 3 раза больше, чем OpenAI (7.5%). Это #1 модель по использованию в мире.",
+      "level": 1
+    },
+    {
+      "id": 3,
+      "question": "Что произошло с OpenAI Sora в апреле 2026?",
+      "options": ["Получила крупное обновление до Sora 3", "Была закрыта 26 апреля 2026", "Стала бесплатной для всех"],
+      "correctIndex": 1,
+      "explanation": "OpenAI закрыла Sora 26 апреля 2026 года. API будет работать до 24 сентября. Лидеры видеогенерации теперь — Veo 3.1 (Google), Kling 3.0 (Kuaishou).",
+      "level": 2
+    },
+    {
+      "id": 4,
+      "question": "Какую долю трафика OpenRouter занимают китайские AI модели к Q2 2026?",
+      "options": ["Около 10%", "Более 45%", "Менее 5%"],
+      "correctIndex": 1,
+      "explanation": "Китайские модели занимают 45%+ трафика OpenRouter. Год назад было менее 2%. Xiaomi (21%), Alibaba (14%), MiniMax (8%), Z.ai (5.6%), DeepSeek (5.6%).",
+      "level": 1
+    },
+    {
+      "id": 5,
+      "question": "Что такое Claude Code Dreaming (май 2026)?",
+      "options": ["Генерация изображений во сне", "Функция self-improving agents — агенты улучшают сами себя", "Режим энергосбережения"],
+      "correctIndex": 1,
+      "explanation": "Dreaming — новая функция Claude Code, где AI-агенты буквально 'мечтают' — улучшают свои стратегии и подходы между задачами, становясь эффективнее.",
+      "level": 2
+    },
+    {
+      "id": 6,
+      "question": "Сколько MCP-серверов в публичном реестре к маю 2026?",
+      "options": ["Около 1200", "Более 9400", "Около 5000"],
+      "correctIndex": 1,
+      "explanation": "К маю 2026 — 9400+ серверов (рост 7.8x за год). 4 реестра: Smithery (4210), Glama (2750), PulseMCP (1820), Cloudflare. 78% корпоративных команд используют MCP.",
+      "level": 3
+    },
+    {
+      "id": 7,
+      "question": "Что сделала Meta с моделью Llama в апреле 2026?",
+      "options": ["Выпустила Llama 5 open source", "Перешла к проприетарной Muse Spark, отказавшись от open source", "Продала Llama компании Google"],
+      "correctIndex": 1,
+      "explanation": "Meta выпустила проприетарную Muse Spark (8 апреля 2026) через Meta Superintelligence Labs. Это разрыв с традицией open-source Llama. Behemoth так и не вышла.",
+      "level": 1
+    },
+    {
+      "id": 8,
+      "question": "Какой подход к внедрению AI рекомендуется?",
+      "options": ["Сверху-Вниз: централизованная закупка", "Снизу-Вверх: сотрудники сами находят инструменты", "Полный запрет до завершения аудита"],
+      "correctIndex": 1,
+      "explanation": "Рекомендуется подход Снизу-Вверх: сотрудники сами находят инструменты для своих задач, что обеспечивает быстрый Time-to-Value. Формула пилота: 1 Модель + 1 Агент + 1 Задача.",
+      "level": 3
+    },
+    {
+      "id": 9,
+      "question": "Что такое Nano Banana от Google?",
+      "options": ["Новая мобильная модель для смартфонов", "AI image generator, заменивший Imagen в Gemini", "Протокол для межагентного взаимодействия"],
+      "correctIndex": 1,
+      "explanation": "Nano Banana 2/3/Pro (апрель 2026) — новый AI image generator от Google, интегрированный в Gemini. Заменяет Imagen. Три версии для разных задач.",
+      "level": 2
+    },
+    {
+      "id": 10,
+      "question": "Какой протокол отвечает за межагентное взаимодействие и передан в Linux Foundation?",
+      "options": ["MCP (Model Context Protocol)", "A2A (Agent-to-Agent Protocol)", "OpenAI Agents SDK"],
+      "correctIndex": 1,
+      "explanation": "A2A (Agent-to-Agent Protocol) от Google передан в Linux Foundation в апреле 2025. За год: поддержка в LangGraph, CrewAI, 23% корпоративных стеков.",
+      "level": 3
+    }
+  ]
+}
