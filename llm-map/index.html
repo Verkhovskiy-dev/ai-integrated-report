@@ -1486,6 +1486,183 @@
       background: rgba(0, 212, 255, 0.1);
     }
 
+    /* ========== CHRONICLE ========== */
+    .chronicle-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .chronicle-filter-btn {
+      padding: 6px 14px;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .chronicle-filter-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+    }
+
+    .chronicle-filter-btn.active {
+      background: rgba(0, 212, 255, 0.1);
+      border-color: rgba(0, 212, 255, 0.3);
+      color: var(--cyan);
+    }
+
+    .chronicle-timeline {
+      position: relative;
+      padding-left: 120px;
+    }
+
+    .chronicle-timeline::before {
+      content: '';
+      position: absolute;
+      left: 100px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--cyan), var(--green), var(--purple), var(--cyan));
+      opacity: 0.25;
+    }
+
+    .chronicle-item {
+      position: relative;
+      display: flex;
+      gap: 24px;
+      padding: 0 0 20px 0;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .chronicle-item::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--cyan);
+      background: var(--bg-primary);
+    }
+
+    .chronicle-item[data-impact="major"]::before { border-color: #ef4444; background: rgba(239, 68, 68, 0.2); }
+    .chronicle-item[data-impact="minor"]::before { border-color: #eab308; }
+    .chronicle-item[data-impact="patch"]::before { border-color: #00ff88; }
+
+    .chronicle-date {
+      position: absolute;
+      left: -120px;
+      top: 4px;
+      width: 80px;
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .chronicle-card {
+      flex: 1;
+      padding: 16px 20px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+
+    .chronicle-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+    }
+
+    .chronicle-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .chronicle-model {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .chronicle-vendor {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--purple);
+    }
+
+    .chronicle-event-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .chronicle-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chronicle-impact {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .chronicle-impact-major { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+    .chronicle-impact-minor { background: rgba(234, 179, 8, 0.1); color: #eab308; }
+    .chronicle-impact-patch { background: rgba(0, 255, 136, 0.1); color: #00ff88; }
+
+    .chronicle-link {
+      font-size: 11px;
+      color: var(--cyan);
+      text-decoration: none;
+    }
+
+    .chronicle-link:hover { text-decoration: underline; }
+
+    .chronicle-empty {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .chronicle-timeline {
+        padding-left: 40px;
+      }
+      .chronicle-timeline::before {
+        left: 20px;
+      }
+      .chronicle-date {
+        left: -40px;
+        width: 36px;
+        font-size: 10px;
+      }
+      .chronicle-item::before {
+        left: -24px;
+      }
+    }
+
     /* ========== MOBILE MENU ========== */
     .mobile-menu-btn {
       display: none;
@@ -1643,6 +1820,15 @@
         <div id="toolOfTheDayContent"><p style="color: var(--text-muted)">Загрузка...</p></div>
       </section>
 
+      <!-- Chronicle -->
+      <section class="section" id="section-chronicle">
+        <div class="section-label" style="color: var(--cyan)">&#9889; Лента обновлений</div>
+        <h2 class="section-title">Хроника обновлений</h2>
+        <p class="section-desc">Последние события в мире AI-моделей и инструментов: релизы, обновления, закрытия. Данные обновляются регулярно.</p>
+        <div class="chronicle-filters" id="chronicleFilters"></div>
+        <div class="chronicle-timeline" id="chronicleContent"><p style="color: var(--text-muted)">Загрузка...</p></div>
+      </section>
+
       <!-- Level Sections -->
       <section class="section" id="section-level1"></section>
       <section class="section" id="section-level2"></section>
@@ -1788,6 +1974,10 @@
 
     let navState = { current: 0, answers: [], finished: false };
 
+    // ========== CHRONICLE STATE ==========
+    let CHRONICLE = null;
+    let chronicleFilter = 'All';
+
     // ========== LOAD DATA ==========
     async function loadData() {
       try {
@@ -1800,6 +1990,17 @@
         return false;
       }
       return true;
+    }
+
+    async function loadChronicle() {
+      try {
+        const resp = await fetch('data/models-feed.json');
+        if (!resp.ok) throw new Error('Failed to load models-feed.json');
+        CHRONICLE = await resp.json();
+      } catch (e) {
+        console.warn('Chronicle data not available:', e);
+        CHRONICLE = null;
+      }
     }
 
     async function loadToolOfTheDay() {
@@ -1818,10 +2019,22 @@
       const dataLoaded = await loadData();
       if (!dataLoaded) return;
       await loadToolOfTheDay();
+      await loadChronicle();
+
+      // Inject chronicle into sections list
+      if (DATA.sections) {
+        const toolIdx = DATA.sections.findIndex(s => s.id === 'tool-of-the-day');
+        const chronicleExists = DATA.sections.find(s => s.id === 'chronicle');
+        if (!chronicleExists) {
+          const insertAt = toolIdx >= 0 ? toolIdx + 1 : 1;
+          DATA.sections.splice(insertAt, 0, { id: 'chronicle', title: 'Хроника', icon: '⚡' });
+        }
+      }
 
       renderNav();
       renderHeroLevels();
       renderToolOfTheDay();
+      renderChronicle();
       renderLevelSections();
       renderComparison();
       renderTimeline();
@@ -1831,6 +2044,11 @@
       renderQuiz();
       setupScrollObserver();
       updateProgress();
+
+      // Handle hash navigation to chronicle
+      if (window.location.hash === '#chronicle') {
+        setTimeout(() => scrollToSection('chronicle'), 300);
+      }
     }
 
     // ========== NAVIGATION ==========
@@ -2092,6 +2310,69 @@
           </tbody>
         </table>
       `;
+    }
+
+    // ========== CHRONICLE ==========
+    function renderChronicle() {
+      const filtersContainer = document.getElementById('chronicleFilters');
+      const container = document.getElementById('chronicleContent');
+
+      if (!CHRONICLE || !CHRONICLE.events || CHRONICLE.events.length === 0) {
+        container.innerHTML = '<div class="chronicle-empty">Данные хроники недоступны</div>';
+        return;
+      }
+
+      // Render filters
+      const vendors = ['All', 'OpenAI', 'Anthropic', 'Google', 'Meta', 'xAI', 'Open Source'];
+      filtersContainer.innerHTML = vendors.map(v => `
+        <button class="chronicle-filter-btn ${v === chronicleFilter ? 'active' : ''}" onclick="filterChronicle('${v}')">
+          ${v === 'All' ? 'Все' : v}
+        </button>
+      `).join('');
+
+      // Filter events
+      let events = CHRONICLE.events;
+      if (chronicleFilter !== 'All') {
+        events = events.filter(ev => ev.vendor === chronicleFilter);
+      }
+      events = events.slice(0, 20);
+
+      if (events.length === 0) {
+        container.innerHTML = '<div class="chronicle-empty">Нет событий для выбранного фильтра</div>';
+        return;
+      }
+
+      const impactEmoji = { major: '🔴', minor: '🟡', patch: '🟢' };
+      const impactLabel = { major: 'Major', minor: 'Minor', patch: 'Patch' };
+
+      container.innerHTML = events.map(ev => {
+        const d = new Date(ev.date);
+        const day = d.getDate();
+        const months = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
+        const dateStr = `${day} ${months[d.getMonth()]}`;
+
+        return `
+          <div class="chronicle-item" data-impact="${ev.impact}">
+            <div class="chronicle-date">${dateStr}</div>
+            <div class="chronicle-card">
+              <div class="chronicle-card-header">
+                <span class="chronicle-model">${ev.model}</span>
+                <span class="chronicle-vendor">${ev.vendor}</span>
+              </div>
+              <div class="chronicle-event-text">${ev.event}</div>
+              <div class="chronicle-meta">
+                <span class="chronicle-impact chronicle-impact-${ev.impact}">${impactEmoji[ev.impact] || '🟡'} ${impactLabel[ev.impact] || 'Minor'}</span>
+                ${ev.url ? `<a href="${ev.url}" target="_blank" rel="noopener" class="chronicle-link">Подробнее &rarr;</a>` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterChronicle(vendor) {
+      chronicleFilter = vendor;
+      renderChronicle();
     }
 
     // ========== TIMELINE ==========
