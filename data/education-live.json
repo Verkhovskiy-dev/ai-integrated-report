@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-30T10:00:00Z",
-  "previous_report_date": "2026-04-29",
-  "current_report_date": "2026-04-30",
+  "generated_at": "2026-05-18T12:00:00Z",
+  "previous_report_date": "2026-04-30",
+  "current_report_date": "2026-05-18",
   "update_frequency": "3x daily",
   "critical_alerts": [
     {
@@ -101,6 +101,14 @@
   ],
   "new_signals": [
     {
+      "id": "signal-skolkovo-calendar-2026",
+      "institution": "Школа управления СКОЛКОВО",
+      "signal": "Обновлён календарь цифровых программ на 2026 год. 9 программ в 3 категориях: Цифровая трансформация (6 программ), Продуктовый подход (2 программы), Управление на данных (1 программа). Ближайшие старты: июнь 2026.",
+      "impact": "Актуализация портфеля программ СКОЛКОВО с фокусом на ИИ-агенты, генеративный ИИ и продуктовый подход",
+      "signal_type": "portfolio_update",
+      "detected_at": "2026-05-18T12:00:00Z"
+    },
+    {
       "id": "signal-1",
       "institution": "Coursera",
       "signal": "Создание AI Literacy Consortium из 12 ведущих бизнес-школ для выпуска единого сертификата AI Literacy. Запуск Q3 2026.",
@@ -139,9 +147,13 @@
   "stats_delta": {
     "new_programs_count": 3,
     "updated_trends_count": 3,
-    "new_signals_count": 3,
+    "new_signals_count": 4,
     "critical_alerts_count": 3,
     "total_programs_monitored": 32,
-    "regions_with_changes": ["USA", "EU", "Russia"]
+    "regions_with_changes": [
+      "USA",
+      "EU",
+      "Russia"
+    ]
   }
 }
