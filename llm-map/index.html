@@ -1663,6 +1663,149 @@
       }
     }
 
+
+    /* ========== BUSINESS CLASSIFIER ========== */
+    .biz-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .biz-filter-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .biz-filter-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+    }
+
+    .biz-filter-btn.active {
+      background: rgba(0, 212, 255, 0.1);
+      border-color: rgba(0, 212, 255, 0.3);
+      color: var(--cyan);
+    }
+
+    .biz-filter-icon {
+      font-size: 15px;
+    }
+
+    .biz-results-summary {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .biz-results-summary strong {
+      color: var(--cyan);
+    }
+
+    .biz-results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 16px;
+    }
+
+    .biz-tool-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      transition: all 0.3s ease;
+    }
+
+    .biz-tool-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .biz-tool-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .biz-tool-name {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .biz-tool-level {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .biz-tool-level-1 { background: rgba(0,212,255,0.1); color: var(--cyan); }
+    .biz-tool-level-2 { background: rgba(0,255,136,0.1); color: var(--green); }
+    .biz-tool-level-3 { background: rgba(139,92,246,0.1); color: var(--purple); }
+
+    .biz-tool-focus {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .biz-tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .biz-use-tag {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--text-muted);
+    }
+
+    .biz-tool-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--cyan);
+      text-decoration: none;
+      opacity: 0.75;
+    }
+
+    .biz-tool-link:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .biz-empty {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .biz-results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     /* ========== MOBILE MENU ========== */
     .mobile-menu-btn {
       display: none;
@@ -1834,6 +1977,17 @@
       <section class="section" id="section-level2"></section>
       <section class="section" id="section-level3"></section>
 
+
+      <!-- Business Classifier -->
+      <section class="section" id="section-business">
+        <div class="section-label" style="color: var(--yellow)">&#128188; Бизнес-применение</div>
+        <h2 class="section-title">Инструменты по бизнес-задачам</h2>
+        <p class="section-desc">Выберите бизнес-направление, чтобы увидеть наиболее подходящие AI-инструменты. Каждый инструмент содержит пояснение, почему он важен именно для этой задачи.</p>
+        <div class="biz-filter-bar" id="bizFilterBar"></div>
+        <div class="biz-results-summary" id="bizSummary"></div>
+        <div class="biz-results-grid" id="bizResults"></div>
+      </section>
+
       <!-- Comparison -->
       <section class="section" id="section-comparison">
         <div class="section-label" style="color: var(--cyan)">Сравнительный анализ</div>
@@ -1977,6 +2131,7 @@
     // ========== CHRONICLE STATE ==========
     let CHRONICLE = null;
     let chronicleFilter = 'All';
+    let activeBizFilter = null;
 
     // ========== LOAD DATA ==========
     async function loadData() {
@@ -2029,6 +2184,13 @@
           const insertAt = toolIdx >= 0 ? toolIdx + 1 : 1;
           DATA.sections.splice(insertAt, 0, { id: 'chronicle', title: 'Хроника', icon: '⚡' });
         }
+        // Inject business classifier section
+        const bizExists = DATA.sections.find(s => s.id === 'business');
+        if (!bizExists) {
+          const stratIdx = DATA.sections.findIndex(s => s.id === 'strategy');
+          const bizInsertAt = stratIdx >= 0 ? stratIdx : DATA.sections.length;
+          DATA.sections.splice(bizInsertAt, 0, { id: 'business', title: 'Бизнес', icon: '💼' });
+        }
       }
 
       renderNav();
@@ -2036,6 +2198,7 @@
       renderToolOfTheDay();
       renderChronicle();
       renderLevelSections();
+      renderBusinessClassifier();
       renderComparison();
       renderTimeline();
       renderShifts();
@@ -2048,6 +2211,9 @@
       // Handle hash navigation to chronicle
       if (window.location.hash === '#chronicle') {
         setTimeout(() => scrollToSection('chronicle'), 300);
+      }
+      if (window.location.hash === '#business') {
+        setTimeout(() => scrollToSection('business'), 300);
       }
     }
 
@@ -2274,6 +2440,7 @@
             </div>
             <div class="tool-card-body ${isOpen ? 'open' : ''}" id="body-${cardKey}">
               <div class="tool-desc">${tool.description}</div>
+              ${tool.businessFocus ? `<div class="tool-strength" style="border-color: rgba(0,212,255,0.15); background: rgba(0,212,255,0.04); color: var(--cyan);">💼 ${tool.businessFocus}</div>` : ''}
               ${tool.strength ? `<div class="tool-strength">${tool.strength}</div>` : ''}
               ${tool.features ? `
                 <div class="tool-features">
@@ -2292,6 +2459,103 @@
       const btn = document.getElementById('expand-' + cardKey);
       if (body) body.classList.toggle('open');
       if (btn) btn.classList.toggle('open');
+    }
+
+
+    // ========== BUSINESS CLASSIFIER ==========
+    const BIZ_LABELS = {
+      marketing: { label: 'Маркетинг и контент', icon: '📣' },
+      development: { label: 'Разработка и код', icon: '💻' },
+      analytics: { label: 'Аналитика и исследования', icon: '🔍' },
+      automation: { label: 'Автоматизация процессов', icon: '⚙️' },
+      hr: { label: 'HR и обучение', icon: '👥' },
+      sales: { label: 'Продажи и CRM', icon: '💰' },
+      design: { label: 'Дизайн и медиа', icon: '🎨' },
+      strategy: { label: 'Стратегия и управление', icon: '📊' }
+    };
+
+    function renderBusinessClassifier() {
+      const filterBar = document.getElementById('bizFilterBar');
+      const categories = DATA.businessCategories || Object.keys(BIZ_LABELS).map(id => ({id, ...BIZ_LABELS[id]}));
+
+      filterBar.innerHTML = `
+        <button class="biz-filter-btn ${!activeBizFilter ? 'active' : ''}" onclick="setBizFilter(null)">
+          <span class="biz-filter-icon">🏢</span> Все
+        </button>
+        ${categories.map(cat => `
+          <button class="biz-filter-btn ${activeBizFilter === cat.id ? 'active' : ''}" onclick="setBizFilter('${cat.id}')">
+            <span class="biz-filter-icon">${cat.icon}</span> ${cat.label}
+          </button>
+        `).join('')}
+      `;
+
+      renderBizResults();
+    }
+
+    function setBizFilter(filterId) {
+      activeBizFilter = filterId;
+      renderBusinessClassifier();
+    }
+
+    function renderBizResults() {
+      const container = document.getElementById('bizResults');
+      const summary = document.getElementById('bizSummary');
+
+      // Collect all tools with businessUse
+      const allTools = [];
+      DATA.levels.forEach(level => {
+        level.categories.forEach(cat => {
+          cat.tools.forEach(tool => {
+            if (tool.businessUse && tool.businessUse.length > 0) {
+              allTools.push({
+                ...tool,
+                levelId: level.id,
+                levelColor: level.color,
+                categoryName: cat.name
+              });
+            }
+          });
+        });
+      });
+
+      // Filter
+      let filtered = allTools;
+      if (activeBizFilter) {
+        filtered = allTools.filter(t => t.businessUse.includes(activeBizFilter));
+      }
+
+      // Summary
+      if (activeBizFilter) {
+        const label = (BIZ_LABELS[activeBizFilter] || {}).label || activeBizFilter;
+        summary.innerHTML = `Направление: <strong>${label}</strong> — найдено инструментов: <strong>${filtered.length}</strong>`;
+      } else {
+        summary.innerHTML = `Всего инструментов с бизнес-классификацией: <strong>${allTools.length}</strong>. Выберите направление для фильтрации.`;
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="biz-empty">Нет инструментов для выбранного направления</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(tool => {
+        const levelLabel = ['', 'Модель', 'Агент', 'Платформа'][tool.levelId] || '';
+        const bizTags = (tool.businessUse || []).map(bu => {
+          const info = BIZ_LABELS[bu] || {};
+          return `<span class="biz-use-tag">${info.icon || ''} ${info.label || bu}</span>`;
+        }).join('');
+
+        return `
+          <div class="biz-tool-card">
+            <div class="biz-tool-header">
+              <div class="biz-tool-name">${tool.name}</div>
+              <span class="biz-tool-level biz-tool-level-${tool.levelId}">${levelLabel}</span>
+            </div>
+            ${tool.businessFocus ? `<div class="biz-tool-focus">${tool.businessFocus}</div>` : `<div class="biz-tool-focus">${tool.description}</div>`}
+            <div class="biz-tool-tags">${bizTags}</div>
+            <a href="${tool.url}" target="_blank" rel="noopener" class="biz-tool-link">Перейти →</a>
+          </div>
+        `;
+      }).join('');
     }
 
     // ========== COMPARISON ==========
