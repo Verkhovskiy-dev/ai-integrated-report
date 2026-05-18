@@ -1,7 +1,9 @@
 /**
- * AI Models Pulse Widget v2
+ * AI Models Pulse Widget v2.1
  * Injects a "Модели / Models" tab into the existing Тренды / Trends section.
- * No standalone block — fully native to the dashboard.
+ * Heading detection: looks for span/p/div containing "Динамика трендов" or
+ * "Trend Dynamics", then targets the parent section; also matches h3 with
+ * "Моментум" or "Momentum" as fallback.
  */
 (function () {
   'use strict';
@@ -15,7 +17,6 @@
     tabTrends : isRU ? 'Тренды'  : 'Trends',
     tabModels : isRU ? 'Модели'  : 'Models',
     more      : isRU ? 'Все обновления моделей →' : 'All model updates →',
-    loading   : isRU ? 'Загрузка…' : 'Loading…',
     noData    : isRU ? 'Нет данных' : 'No data',
     impact    : { major: '🔴', minor: '🟡', patch: '🟢' }
   };
@@ -26,7 +27,7 @@
     var s = document.createElement('style');
     s.id = 'amp-styles';
     s.textContent = [
-      '.amp-tabs{display:flex;gap:4px;margin-bottom:16px;padding:3px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;width:fit-content;}',
+      '.amp-tabs{display:flex;gap:4px;margin:12px 0 16px;padding:3px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;width:fit-content;}',
       '.amp-tab{padding:5px 16px;border:none;border-radius:7px;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;background:transparent;color:rgba(255,255,255,0.45);letter-spacing:.3px;}',
       '.amp-tab.active{background:rgba(0,212,255,0.12);color:#00d4ff;box-shadow:0 0 0 1px rgba(0,212,255,0.2);}',
       '.amp-tab:hover:not(.active){color:rgba(255,255,255,0.75);}',
@@ -40,37 +41,36 @@
       '.amp-footer{margin-top:10px;font-size:12px;}',
       '.amp-footer a{color:#00d4ff;text-decoration:none;opacity:.75;}',
       '.amp-footer a:hover{opacity:1;text-decoration:underline;}',
-      '.amp-empty{font-size:13px;color:rgba(255,255,255,0.35);padding:12px 0;}'
+      '.amp-empty{font-size:13px;color:rgba(255,255,255,0.35);padding:12px 0;}',
+      '@media(max-width:600px){.amp-row{flex-wrap:wrap;gap:4px}.amp-desc{min-width:100%;order:4}}'
     ].join('');
     document.head.appendChild(s);
   }
 
-  /* ── Find the Trends section heading ─────────────────── */
-  function findTrendsHeading() {
-    var headings = document.querySelectorAll('h3, h2');
-    for (var i = 0; i < headings.length; i++) {
-      var txt = headings[i].textContent.trim();
-      if (/^(Тренды|Trends)(\s|$)/i.test(txt)) return headings[i];
-    }
-    return null;
-  }
-
-  /* ── Find the trends content container ───────────────── */
-  function findTrendsContent(heading) {
-    // Walk up to find a section/div that wraps the heading + cards
-    var parent = heading.parentElement;
-    for (var depth = 0; depth < 6; depth++) {
-      if (!parent) break;
-      // Look for sibling elements after the heading that contain trend cards
-      var children = Array.prototype.slice.call(parent.children);
-      var idx = children.indexOf(heading);
-      if (idx >= 0 && children.length > idx + 1) {
-        // Collect all siblings after the heading (the trend cards area)
-        var after = children.slice(idx + 1);
-        if (after.length > 0) return { parent: parent, heading: heading, contentNodes: after };
+  /* ── Find the Trends section ─────────────────────────── */
+  function findTrendsSection() {
+    // Strategy 1: look for the section-label span containing
+    // "Динамика трендов" or "Trend Dynamics"
+    var allEls = document.querySelectorAll('span, p, div');
+    for (var i = 0; i < allEls.length; i++) {
+      var txt = allEls[i].textContent.trim();
+      if (/^Динамика\s+трендов$/i.test(txt) || /^Trend\s+Dynamics$/i.test(txt)) {
+        // Walk up to find the wrapping section container
+        var section = allEls[i].closest('section') || allEls[i].parentElement;
+        return { section: section, labelEl: allEls[i] };
       }
-      parent = parent.parentElement;
     }
+
+    // Strategy 2: look for h3 containing "Моментум" or "Momentum"
+    var headings = document.querySelectorAll('h2, h3');
+    for (var j = 0; j < headings.length; j++) {
+      var htxt = headings[j].textContent.trim();
+      if (/Моментум/i.test(htxt) || /Momentum/i.test(htxt)) {
+        var sec = headings[j].closest('section') || headings[j].parentElement;
+        return { section: sec, labelEl: headings[j] };
+      }
+    }
+
     return null;
   }
 
@@ -104,21 +104,41 @@
 
   /* ── Main injection ───────────────────────────────────── */
   function inject(feedData) {
-    var heading = findTrendsHeading();
-    if (!heading) return; // section not found — bail silently
+    var found = findTrendsSection();
+    if (!found) return;
 
-    var ctx = findTrendsContent(heading);
-    if (!ctx) return;
+    var section = found.section;
+    var labelEl = found.labelEl;
+
+    // Prevent double-injection
+    if (document.getElementById('amp-tabs')) return;
 
     injectStyles();
 
-    // Wrap all content nodes in a single div for easy show/hide
+    // Collect all children of the section that come AFTER the label element.
+    // We need to find the heading (h3) and everything after it as "trend content".
+    var children = Array.prototype.slice.call(section.children);
+    var labelIdx = -1;
+    for (var i = 0; i < children.length; i++) {
+      if (children[i] === labelEl || children[i].contains(labelEl)) {
+        labelIdx = i;
+        break;
+      }
+    }
+
+    // Find the h3 (the main heading like "Моментум структурных сдвигов")
+    var h3 = section.querySelector('h3') || section.querySelector('h2');
+    var h3Idx = h3 ? children.indexOf(h3) : labelIdx;
+    var startIdx = Math.max(labelIdx, h3Idx) + 1;
+
+    // Wrap everything after the heading into a content div
     var contentWrapper = document.createElement('div');
     contentWrapper.id = 'amp-trends-content';
-    ctx.contentNodes.forEach(function (node) {
+    var nodesToMove = children.slice(startIdx);
+    nodesToMove.forEach(function (node) {
       contentWrapper.appendChild(node);
     });
-    ctx.parent.appendChild(contentWrapper);
+    section.appendChild(contentWrapper);
 
     // Build feed wrapper (hidden by default)
     var feedWrapper = document.createElement('div');
@@ -127,28 +147,34 @@
     feedWrapper.innerHTML = feedData
       ? renderFeed(feedData.events)
       : '<div class="amp-empty">' + T.noData + '</div>';
-    ctx.parent.appendChild(feedWrapper);
+    section.appendChild(feedWrapper);
 
-    // Build tab bar
+    // Build tab bar — insert right after the h3
     var tabBar = document.createElement('div');
     tabBar.className = 'amp-tabs';
+    tabBar.id = 'amp-tabs';
     tabBar.innerHTML =
       '<button class="amp-tab active" id="amp-tab-trends">' + T.tabTrends + '</button>' +
       '<button class="amp-tab" id="amp-tab-models">' + T.tabModels + '</button>';
 
-    // Insert tab bar right after the heading
-    heading.insertAdjacentElement('afterend', tabBar);
+    if (h3 && h3.nextSibling) {
+      h3.parentNode.insertBefore(tabBar, h3.nextSibling);
+    } else if (h3) {
+      h3.parentNode.appendChild(tabBar);
+    } else {
+      section.insertBefore(tabBar, contentWrapper);
+    }
 
     // Tab click handlers
     document.getElementById('amp-tab-trends').addEventListener('click', function () {
-      document.getElementById('amp-tab-trends').classList.add('active');
+      this.classList.add('active');
       document.getElementById('amp-tab-models').classList.remove('active');
       contentWrapper.style.display = '';
       feedWrapper.style.display = 'none';
     });
 
     document.getElementById('amp-tab-models').addEventListener('click', function () {
-      document.getElementById('amp-tab-models').classList.add('active');
+      this.classList.add('active');
       document.getElementById('amp-tab-trends').classList.remove('active');
       contentWrapper.style.display = 'none';
       feedWrapper.style.display = '';
@@ -161,13 +187,12 @@
       .then(function (r) { return r.ok ? r.json() : null; })
       .catch(function () { return null; })
       .then(function (data) {
-        // React SPA may still be rendering — retry until heading appears
         var attempts = 0;
         function tryInject() {
-          if (findTrendsHeading()) {
+          if (findTrendsSection()) {
             inject(data);
-          } else if (attempts++ < 30) {
-            setTimeout(tryInject, 400);
+          } else if (attempts++ < 40) {
+            setTimeout(tryInject, 500);
           }
         }
         tryInject();
