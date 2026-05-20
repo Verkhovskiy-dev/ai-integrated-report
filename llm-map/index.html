@@ -1664,6 +1664,129 @@
     }
 
 
+    /* ========== TRENDING / TOP ========== */
+    .trending-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .trending-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .trending-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .trending-rank {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      min-width: 32px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .trending-rank-1 { color: #fbbf24; }
+    .trending-rank-2 { color: #94a3b8; }
+    .trending-rank-3 { color: #cd7f32; }
+
+    .trending-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .trending-name {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .trending-rationale {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .trending-momentum {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 60px;
+    }
+
+    .trending-momentum-value {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .trending-momentum-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .trending-category {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      margin-top: 4px;
+    }
+
+    .trending-category-accelerating { background: rgba(0, 255, 136, 0.1); color: var(--green); }
+    .trending-category-stable { background: rgba(0, 212, 255, 0.1); color: var(--cyan); }
+    .trending-category-emerging { background: rgba(139, 92, 246, 0.1); color: var(--purple); }
+    .trending-category-decelerating { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+    .trending-category-decay { background: rgba(107, 114, 128, 0.1); color: #6b7280; }
+
+    .trending-bar {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 2px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .trending-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      transition: width 0.6s ease;
+    }
+
+    .trending-updated {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 16px;
+      font-family: var(--font-mono);
+    }
+
+    @media (max-width: 768px) {
+      .trending-card {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .trending-momentum {
+        min-width: auto;
+      }
+    }
+
     /* ========== BUSINESS CLASSIFIER ========== */
     .biz-filter-bar {
       display: flex;
@@ -1972,6 +2095,14 @@
         <div class="chronicle-timeline" id="chronicleContent"><p style="color: var(--text-muted)">Загрузка...</p></div>
       </section>
 
+      <!-- Trending / TOP Models -->
+      <section class="section" id="section-trending">
+        <div class="section-label" style="color: var(--green)">&#128200; Динамика рынка</div>
+        <h2 class="section-title">ТОП трендов AI</h2>
+        <p class="section-desc">Рейтинг ключевых направлений AI-индустрии по моментуму — на основе ежедневного анализа новостей, исследований и рыночных сигналов. Обновляется автоматически.</p>
+        <div id="trendingContent"><p style="color: var(--text-muted)">Загрузка...</p></div>
+      </section>
+
       <!-- Level Sections -->
       <section class="section" id="section-level1"></section>
       <section class="section" id="section-level2"></section>
@@ -2044,6 +2175,7 @@
     // ========== GLOBAL DATA ==========
     let DATA = null;
     let TOTD = null;
+    let TRENDING = null;
 
     // ========== STATE ==========
     let activeSection = 'overview';
@@ -2062,7 +2194,7 @@
         options: [
           { icon: "&#128221;", text: "Написание текстов, статей, отчётов", tags: ["текст", "контент"] },
           { icon: "&#128187;", text: "Программирование и разработка", tags: ["код", "IDE"] },
-          { icon: "&#127912;", text: "Создание изображений, видео, медиа", tags: ["изображения", "видео", "контент", "мультимодальность"] },
+          { icon: "&#127912;", text: "Создание изображений, видео, медиа", tags: ["изображения", "видео", "аудио", "голос", "контент", "мультимодальность"] },
           { icon: "&#128269;", text: "Исследования и аналитика", tags: ["research", "поиск", "текст"] },
           { icon: "&#9881;", text: "Автоматизация рабочих процессов", tags: ["автоматизация", "агенты", "no-code"] },
           { icon: "&#128188;", text: "Управление и стратегия (Enterprise)", tags: ["enterprise", "интеграция"] }
@@ -2133,6 +2265,20 @@
     let chronicleFilter = 'All';
     let activeBizFilter = null;
 
+    // ========== LOAD TRENDING ==========
+    async function loadTrending() {
+      try {
+        const resp = await fetch('/data/momentum.json');
+        if (!resp.ok) throw new Error('Failed to load momentum.json');
+        const data = await resp.json();
+        // Get latest entry (array of daily snapshots)
+        TRENDING = Array.isArray(data) ? data[data.length - 1] : data;
+      } catch (e) {
+        console.warn('Trending data not available:', e);
+        TRENDING = null;
+      }
+    }
+
     // ========== LOAD DATA ==========
     async function loadData() {
       try {
@@ -2175,6 +2321,7 @@
       if (!dataLoaded) return;
       await loadToolOfTheDay();
       await loadChronicle();
+      await loadTrending();
 
       // Inject chronicle into sections list
       if (DATA.sections) {
@@ -2183,6 +2330,13 @@
         if (!chronicleExists) {
           const insertAt = toolIdx >= 0 ? toolIdx + 1 : 1;
           DATA.sections.splice(insertAt, 0, { id: 'chronicle', title: 'Хроника', icon: '⚡' });
+        }
+        // Inject trending section
+        const trendingExists = DATA.sections.find(s => s.id === 'trending');
+        if (!trendingExists) {
+          const chronicleIdx = DATA.sections.findIndex(s => s.id === 'chronicle');
+          const trendingInsertAt = chronicleIdx >= 0 ? chronicleIdx + 1 : 2;
+          DATA.sections.splice(trendingInsertAt, 0, { id: 'trending', title: 'ТОП', icon: '🔥' });
         }
         // Inject business classifier section
         const bizExists = DATA.sections.find(s => s.id === 'business');
@@ -2197,6 +2351,7 @@
       renderHeroLevels();
       renderToolOfTheDay();
       renderChronicle();
+      renderTrending();
       renderLevelSections();
       renderBusinessClassifier();
       renderComparison();
@@ -2214,6 +2369,9 @@
       }
       if (window.location.hash === '#business') {
         setTimeout(() => scrollToSection('business'), 300);
+      }
+      if (window.location.hash === '#trending') {
+        setTimeout(() => scrollToSection('trending'), 300);
       }
     }
 
@@ -2573,6 +2731,61 @@
             `).join('')}
           </tbody>
         </table>
+      `;
+    }
+
+    // ========== TRENDING ==========
+    function renderTrending() {
+      const container = document.getElementById('trendingContent');
+      if (!container) return;
+
+      if (!TRENDING || !TRENDING.trends || TRENDING.trends.length === 0) {
+        container.innerHTML = '<div class="chronicle-empty">Данные рейтинга недоступны</div>';
+        return;
+      }
+
+      const trends = [...TRENDING.trends].sort((a, b) => b.momentum - a.momentum);
+      const categoryLabels = {
+        accelerating: 'Ускорение',
+        stable: 'Стабильно',
+        emerging: 'Зарождение',
+        decelerating: 'Замедление',
+        decay: 'Угасание'
+      };
+
+      const maxMomentum = Math.max(...trends.map(t => Math.abs(t.momentum)));
+
+      const getMomentumColor = (val) => {
+        if (val >= 70) return 'var(--green)';
+        if (val >= 40) return 'var(--cyan)';
+        if (val >= 0) return 'var(--purple)';
+        return '#ef4444';
+      };
+
+      container.innerHTML = `
+        <div class="trending-grid">
+          ${trends.map((t, i) => {
+            const rank = i + 1;
+            const barWidth = Math.max(5, Math.abs(t.momentum) / maxMomentum * 100);
+            const color = getMomentumColor(t.momentum);
+            return `
+              <div class="trending-card">
+                <div class="trending-rank ${rank <= 3 ? 'trending-rank-' + rank : ''}">#${rank}</div>
+                <div class="trending-info">
+                  <div class="trending-name">${t.name}</div>
+                  <div class="trending-rationale">${t.rationale}</div>
+                  <span class="trending-category trending-category-${t.category}">${categoryLabels[t.category] || t.category}</span>
+                  <div class="trending-bar"><div class="trending-bar-fill" style="width: ${barWidth}%; background: ${color}"></div></div>
+                </div>
+                <div class="trending-momentum">
+                  <div class="trending-momentum-value" style="color: ${color}">${t.momentum > 0 ? '+' : ''}${t.momentum}</div>
+                  <div class="trending-momentum-label">моментум</div>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+        <div class="trending-updated">Обновлено: ${TRENDING.date || '—'}</div>
       `;
     }
 
