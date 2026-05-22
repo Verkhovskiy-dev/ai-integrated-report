@@ -392,14 +392,14 @@
       <div class="stat-card p-4">
         <div class="section-label mb-3">Категории</div>
         <div class="flex flex-wrap gap-2">
-          <span style="background:#0f2a1e;border:1px solid #1e4030;border-radius:6px;padding:5px 10px;font-size:12px;color:#00e5a0;cursor:pointer;">Текст</span>
-          <span style="background:#1a1525;border:1px solid #2e2545;border-radius:6px;padding:5px 10px;font-size:12px;color:#a78bfa;cursor:pointer;">Код</span>
-          <span style="background:#120c20;border:1px solid #2a1850;border-radius:6px;padding:5px 10px;font-size:12px;color:#c084fc;cursor:pointer;">Видео</span>
-          <span style="background:#081520;border:1px solid #1a3050;border-radius:6px;padding:5px 10px;font-size:12px;color:#38bdf8;cursor:pointer;">Аудио</span>
-          <span style="background:#1e1208;border:1px solid #3a2010;border-radius:6px;padding:5px 10px;font-size:12px;color:#fb923c;cursor:pointer;">Reasoning</span>
-          <span style="background:#1a1f2a;border:1px solid #2a3050;border-radius:6px;padding:5px 10px;font-size:12px;color:#7b9cff;cursor:pointer;">RAG</span>
-          <span style="background:#161a1d;border:1px solid #252c33;border-radius:6px;padding:5px 10px;font-size:12px;color:#6b7a8d;cursor:pointer;">Enterprise</span>
-          <span style="background:#161a1d;border:1px solid #252c33;border-radius:6px;padding:5px 10px;font-size:12px;color:#6b7a8d;cursor:pointer;">Multimodal</span>
+          <span class="cat-pill" data-cat="текст" onclick="filterByCategory('текст')" style="background:#0f2a1e;border:1px solid #1e4030;border-radius:6px;padding:5px 10px;font-size:12px;color:#00e5a0;cursor:pointer;transition:all .2s;">Текст</span>
+          <span class="cat-pill" data-cat="код" onclick="filterByCategory('код')" style="background:#1a1525;border:1px solid #2e2545;border-radius:6px;padding:5px 10px;font-size:12px;color:#a78bfa;cursor:pointer;transition:all .2s;">Код</span>
+          <span class="cat-pill" data-cat="видео" onclick="filterByCategory('видео')" style="background:#120c20;border:1px solid #2a1850;border-radius:6px;padding:5px 10px;font-size:12px;color:#c084fc;cursor:pointer;transition:all .2s;">Видео</span>
+          <span class="cat-pill" data-cat="аудио" onclick="filterByCategory('аудио')" style="background:#081520;border:1px solid #1a3050;border-radius:6px;padding:5px 10px;font-size:12px;color:#38bdf8;cursor:pointer;transition:all .2s;">Аудио</span>
+          <span class="cat-pill" data-cat="reasoning" onclick="filterByCategory('reasoning')" style="background:#1e1208;border:1px solid #3a2010;border-radius:6px;padding:5px 10px;font-size:12px;color:#fb923c;cursor:pointer;transition:all .2s;">Reasoning</span>
+          <span class="cat-pill" data-cat="RAG" onclick="filterByCategory('RAG')" style="background:#1a1f2a;border:1px solid #2a3050;border-radius:6px;padding:5px 10px;font-size:12px;color:#7b9cff;cursor:pointer;transition:all .2s;">RAG</span>
+          <span class="cat-pill" data-cat="enterprise" onclick="filterByCategory('enterprise')" style="background:#161a1d;border:1px solid #252c33;border-radius:6px;padding:5px 10px;font-size:12px;color:#6b7a8d;cursor:pointer;transition:all .2s;">Enterprise</span>
+          <span class="cat-pill" data-cat="мультимодальность" onclick="filterByCategory('мультимодальность')" style="background:#161a1d;border:1px solid #252c33;border-radius:6px;padding:5px 10px;font-size:12px;color:#6b7a8d;cursor:pointer;transition:all .2s;">Multimodal</span>
         </div>
       </div>
 
@@ -572,6 +572,7 @@ let DATA = null, TOTD = null, CHRONICLE = null, TRENDING = null;
 let allTools = [];
 let currentFilter = 'all';
 let currentRoleFilter = null;
+let currentCategoryFilter = null;
 let visibleCount = 8;
 let chronicleFilter = 'All';
 let activeBizFilter = null;
@@ -752,6 +753,10 @@ function renderTools() {
   if (currentRoleFilter) {
     filtered = filtered.filter(t => t.roles && t.roles.includes(currentRoleFilter));
   }
+  // Apply category filter
+  if (currentCategoryFilter) {
+    filtered = filtered.filter(t => t.tags && t.tags.some(tag => tag.toLowerCase() === currentCategoryFilter.toLowerCase()));
+  }
   
   let toShow = filtered.slice(0, visibleCount);
   document.getElementById('tools-count').textContent = filtered.length + ' инструментов';
@@ -797,6 +802,21 @@ function filterLevel(level) {
   renderTools();
 }
 function loadMore() { visibleCount += 8; renderTools(); }
+function filterByCategory(cat) {
+  currentCategoryFilter = currentCategoryFilter === cat ? null : cat;
+  visibleCount = 8;
+  document.querySelectorAll('.cat-pill').forEach(el => {
+    if (el.dataset.cat === currentCategoryFilter) {
+      el.style.boxShadow = '0 0 0 2px ' + el.style.color;
+      el.style.transform = 'scale(1.05)';
+    } else {
+      el.style.boxShadow = 'none';
+      el.style.transform = 'scale(1)';
+    }
+  });
+  renderTools();
+  document.getElementById('tools-feed').scrollIntoView({behavior:'smooth',block:'start'});
+}
 
 // ========== TRENDS COMPACT (Center Column) ==========
 function renderTrendsCompact() {
