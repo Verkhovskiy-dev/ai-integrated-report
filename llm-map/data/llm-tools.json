@@ -68,7 +68,7 @@
             {
               "name": "OpenAI GPT-5.5 / o3 / o4-mini",
               "url": "https://openai.com",
-              "description": "GPT-5.5 (23 апреля 2026) — флагман для сложных задач. GPT-5.5 Instant (5 мая 2026) — новый дефолт ChatGPT. o4-mini — экономичный reasoning. Sora ЗАКРЫТА 26 апреля 2026. Images 2.0 — новый генератор изображений.",
+              "description": "GPT-5.5 (23 апреля 2026) — флагман для сложных задач. GPT-5.5 Instant — новый дефолт ChatGPT. o4-mini — экономичный reasoning. Images 2.0 — новый генератор изображений.",
               "strength": "Самая развитая экосистема, GPT-5.5 — лидер по сложным задачам",
               "features": [
                 "GPT-5.5 Instant",
@@ -94,12 +94,23 @@
                 "analytics",
                 "strategy"
               ],
-              "businessFocus": "Универсальный инструмент для генерации контента, анализа данных и стратегического планирования. GPT-5.5 Instant — оптимальный выбор для массовых задач с балансом цена/качество."
+              "businessFocus": "Универсальный инструмент для генерации контента, анализа данных и стратегического планирования.",
+              "roles": [
+                "developer",
+                "analyst",
+                "marketer",
+                "manager",
+                "designer",
+                "researcher"
+              ],
+              "pricing": "freemium",
+              "rating": 5,
+              "recommendedFor": "Лучший универсальный AI для любых задач"
             },
             {
               "name": "Claude Opus 4.7 / Sonnet 4.6",
               "url": "https://anthropic.com",
-              "description": "Claude Opus 4.7 (16 апреля 2026) — SWE-bench 87.6%, лидер агентного кодинга. Claude Code с Dreaming, multi-agent orchestration, scheduled routines. Claude Cowork GA (9 апреля 2026). Claude Mythos — более мощная внутренняя модель.",
+              "description": "Claude Opus 4.7 — SWE-bench 87.6%, лидер агентного кодинга. Claude Code с Dreaming, multi-agent orchestration. Контекст 1M токенов.",
               "strength": "Агентный кодинг #1 (SWE-bench 87.6%), Dreaming, контекст 1M",
               "features": [
                 "Opus 4.7 SWE-bench 87.6%",
@@ -124,12 +135,20 @@
                 "strategy",
                 "automation"
               ],
-              "businessFocus": "Лидер для сложных аналитических задач и автономной разработки. 1M контекст позволяет анализировать целые кодовые базы и длинные документы за один запрос."
+              "businessFocus": "Лидер для сложных аналитических задач и автономной разработки.",
+              "roles": [
+                "developer",
+                "analyst",
+                "researcher"
+              ],
+              "pricing": "freemium",
+              "rating": 5,
+              "recommendedFor": "Лучший для глубокого анализа и кодинга"
             },
             {
               "name": "Gemini 3.1 Pro / Deep Research Max",
               "url": "https://ai.google.dev",
-              "description": "Gemini 3.1 Pro Preview (19 февраля 2026) — текущий флагман Google. Deep Research Max (21 апреля 2026) на базе 3.1 Pro + MCP. Nano Banana 2/3/Pro — генерация изображений. Veo 3.1 Ultra — видеогенерация с нативным аудио. Gemma 4 (17 апреля 2026) — open source.",
+              "description": "Gemini 3.1 Pro — флагман Google. Deep Research Max с MCP. Nano Banana — генерация изображений. Veo 3.1 Ultra — видеогенерация. Gemma 4 — open source.",
               "strength": "Nano Banana (изобр.), Veo 3.1 (видео), Deep Research Max, Google экосистема",
               "features": [
                 "Deep Research Max",
@@ -156,18 +175,26 @@
                 "design",
                 "strategy"
               ],
-              "businessFocus": "Лучший выбор для компаний в экосистеме Google. Deep Research Max автоматизирует маркетинговые исследования, Nano Banana — генерацию визуального контента."
+              "businessFocus": "Лучший выбор для компаний в экосистеме Google. Deep Research Max автоматизирует исследования.",
+              "roles": [
+                "researcher",
+                "marketer",
+                "designer",
+                "analyst"
+              ],
+              "pricing": "freemium",
+              "rating": 5,
+              "recommendedFor": "Лучший для мультимодальных задач и исследований"
             },
             {
               "name": "Grok 4.3 / 4.2 Non-Reasoning",
               "url": "https://x.ai",
-              "description": "Grok 4.3 (май 2026) — флагман xAI для chat, coding, agentic workflows. Grok 4.2 Non-Reasoning доступен на Azure Foundry. Grok 4.1 Fast retiring 15 мая 2026. Эксклюзивные данные X/Twitter.",
+              "description": "Grok 4.3 — флагман xAI для chat, coding, agentic workflows. Эксклюзивные данные X/Twitter в реальном времени.",
               "strength": "Данные X/Twitter в реальном времени, Azure Foundry, агрессивные цены",
               "features": [
                 "Grok 4.3 Flagship",
                 "Azure Foundry",
-                "X/Twitter Data",
-                "Aggressive Pricing"
+                "X/Twitter Data"
               ],
               "context": "256K tokens",
               "reasoning": "Built-in",
@@ -184,18 +211,25 @@
                 "analytics",
                 "sales"
               ],
-              "businessFocus": "Уникальный доступ к данным X/Twitter в реальном времени — незаменим для мониторинга бренда, трендов и конкурентной разведки в соцсетях."
+              "businessFocus": "Уникальный доступ к данным X/Twitter — незаменим для мониторинга бренда и трендов.",
+              "roles": [
+                "marketer",
+                "analyst",
+                "manager"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для мониторинга соцсетей и трендов"
             },
             {
               "name": "Meta Muse Spark",
               "url": "https://ai.meta.com",
-              "description": "Muse Spark (8 апреля 2026) — первая модель Meta Superintelligence Labs. ПРОПРИЕТАРНАЯ (разрыв с open-source Llama). Заменяет Llama как флагман Meta. Llama 4 Behemoth так и не вышла.",
+              "description": "Muse Spark — первая проприетарная модель Meta Superintelligence Labs. Заменяет Llama как флагман Meta. 3B+ пользователей.",
               "strength": "Meta экосистема (3B+ пользователей), разрыв с open source",
               "features": [
                 "Proprietary Model",
                 "Meta SI Labs",
-                "3B+ Users",
-                "Llama Successor"
+                "3B+ Users"
               ],
               "context": "N/A",
               "reasoning": "N/A",
@@ -211,7 +245,14 @@
                 "marketing",
                 "design"
               ],
-              "businessFocus": "Доступ к аудитории 3B+ пользователей Meta. Стратегически важен для компаний, строящих продукты на Facebook/Instagram/WhatsApp."
+              "businessFocus": "Доступ к аудитории 3B+ пользователей Meta.",
+              "roles": [
+                "marketer",
+                "designer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для маркетинга в экосистеме Meta"
             }
           ]
         },
@@ -221,13 +262,12 @@
             {
               "name": "Xiaomi MiMo-V2-Pro",
               "url": "https://github.com/XiaomiMiMo",
-              "description": "MiMo-V2-Pro — #1 на OpenRouter (21.1% трафика). Xiaomi вошла в AI-рынок в январе 2026. Специализация: coding (49% coding tokens совместно с Qwen). Open-weight модель.",
+              "description": "MiMo-V2-Pro — #1 на OpenRouter (21.1% трафика). Специализация: coding. Open-weight модель.",
               "strength": "#1 OpenRouter (21.1%). Coding specialist. Open-weight.",
               "features": [
                 "#1 OpenRouter 21.1%",
                 "Coding Specialist",
-                "Open Weight",
-                "January 2026 Entry"
+                "Open Weight"
               ],
               "tags": [
                 "код",
@@ -237,18 +277,23 @@
               "businessUse": [
                 "development"
               ],
-              "businessFocus": "Самая популярная модель для кодинга в мире (#1 OpenRouter). Бесплатная open-weight модель — идеальна для стартапов и команд с ограниченным бюджетом."
+              "businessFocus": "Самая популярная модель для кодинга (#1 OpenRouter). Бесплатная open-weight модель.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 5,
+              "recommendedFor": "Лучший бесплатный инструмент для кодинга"
             },
             {
               "name": "DeepSeek V4 Pro / R2",
               "url": "https://deepseek.com",
-              "description": "DeepSeek V4 Pro (апрель 2026) — frontier reasoning. R2 — reasoning модель. 5.6% OpenRouter. Продолжает традицию R1 (январь 2025). Конкурент GPT-5.5 по reasoning.",
-              "strength": "Frontier reasoning. Продолжение R1. 5.6% OpenRouter.",
+              "description": "DeepSeek V4 Pro — frontier reasoning. R2 — reasoning модель. 5.6% OpenRouter. Конкурент GPT-5.5 по reasoning.",
+              "strength": "Frontier reasoning. 5.6% OpenRouter.",
               "features": [
                 "V4 Pro Frontier",
                 "R2 Reasoning",
-                "5.6% OpenRouter",
-                "R1 Legacy"
+                "5.6% OpenRouter"
               ],
               "tags": [
                 "текст",
@@ -261,18 +306,25 @@
                 "analytics",
                 "strategy"
               ],
-              "businessFocus": "Frontier reasoning по цене в 10-50x ниже GPT-5.5. Оптимален для аналитических задач, где нужно глубокое рассуждение без высоких затрат."
+              "businessFocus": "Frontier reasoning по цене в 10-50x ниже GPT-5.5.",
+              "roles": [
+                "developer",
+                "analyst",
+                "researcher"
+              ],
+              "pricing": "freemium",
+              "rating": 5,
+              "recommendedFor": "Лучший по соотношению цена/качество для reasoning"
             },
             {
               "name": "Alibaba Qwen 3.6",
               "url": "https://qwen.ai",
-              "description": "Qwen 3.6 — 14% OpenRouter. Hybrid thinking (reasoning + non-reasoning в одной модели). MCP support. Сильнейшая модель Alibaba. Coding: 49% tokens совместно с MiMo.",
+              "description": "Qwen 3.6 — 14% OpenRouter. Hybrid thinking. MCP support. Coding: 49% tokens совместно с MiMo.",
               "strength": "14% OpenRouter. Hybrid thinking. MCP support.",
               "features": [
                 "14% OpenRouter",
                 "Hybrid Thinking",
-                "MCP Support",
-                "Coding Leader"
+                "MCP Support"
               ],
               "tags": [
                 "текст",
@@ -286,18 +338,24 @@
                 "analytics",
                 "automation"
               ],
-              "businessFocus": "Hybrid thinking (reasoning по запросу) + MCP support. Лучший выбор для автоматизации с интеграцией через стандартные протоколы."
+              "businessFocus": "Hybrid thinking + MCP support. Лучший для автоматизации с интеграцией.",
+              "roles": [
+                "developer",
+                "analyst"
+              ],
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Лучший для интеграции через MCP"
             },
             {
               "name": "Kimi K2.6 (Moonshot)",
               "url": "https://kimi.ai",
-              "description": "Kimi K2.6 — frontier модель от Moonshot AI. Muon optimizer. 1M контекст. Конкурирует с GPT-5.5 и Claude Opus 4.7 на ряде бенчмарков.",
+              "description": "Kimi K2.6 — frontier модель от Moonshot AI. Muon optimizer. 1M контекст.",
               "strength": "Frontier level. Muon optimizer. 1M контекст.",
               "features": [
                 "Frontier Level",
                 "Muon Optimizer",
-                "1M Context",
-                "Moonshot AI"
+                "1M Context"
               ],
               "tags": [
                 "текст",
@@ -309,22 +367,28 @@
                 "analytics",
                 "development"
               ],
-              "businessFocus": "1M контекст при бюджетной цене — идеален для анализа длинных документов, контрактов и кодовых баз без дорогих подписок."
+              "businessFocus": "1M контекст при бюджетной цене — идеален для анализа длинных документов.",
+              "roles": [
+                "analyst",
+                "researcher",
+                "developer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для работы с длинными документами"
             },
             {
               "name": "MiniMax / Z.ai",
               "url": "https://minimax.io",
-              "description": "MiniMax (8%) и Z.ai (5.6%) — значительные игроки на OpenRouter. MiniMax специализируется на мультимодальности. Z.ai — новый бренд от 01.AI (Yi).",
-              "strength": "MiniMax 8% + Z.ai 5.6% OpenRouter. Мультимодальность.",
+              "description": "MiniMax (8%) и Z.ai (5.6%) — значительные игроки на OpenRouter. MiniMax — мультимодальность.",
+              "strength": "8% OpenRouter. Мультимодальность.",
               "features": [
-                "MiniMax 8%",
-                "Z.ai 5.6%",
+                "8% OpenRouter",
                 "Multimodal",
-                "Yi Legacy"
+                "Competitive Pricing"
               ],
               "tags": [
                 "текст",
-                "изображения",
                 "мультимодальность",
                 "бюджетный"
               ],
@@ -332,126 +396,97 @@
                 "marketing",
                 "design"
               ],
-              "businessFocus": "Мультимодальные возможности по бюджетной цене. Подходит для генерации контента и визуалов для маркетинговых кампаний."
+              "businessFocus": "Мультимодальная генерация по низкой цене.",
+              "roles": [
+                "marketer",
+                "designer"
+              ],
+              "pricing": "freemium",
+              "rating": 3,
+              "recommendedFor": "Бюджетная мультимодальная генерация"
             },
             {
               "name": "DeepSeek R1 (Open Source)",
               "url": "https://github.com/deepseek-ai",
-              "description": "DeepSeek R1 (январь 2025) — open-source reasoning модель, ставшая прорывом. Конкурирует с o1 при открытых весах. Основа для множества fine-tuned моделей. Историческое значение для open-source AI.",
-              "strength": "Open-source reasoning прорыв. Основа для fine-tuned моделей.",
+              "description": "DeepSeek R1 — open-source reasoning модель. Легаси, но всё ещё популярна для self-hosted решений.",
+              "strength": "Open source reasoning. Self-hosted.",
               "features": [
-                "Open Source Reasoning",
-                "o1 Competitor",
-                "Fine-Tune Base",
-                "January 2025 Breakthrough"
+                "Open Source",
+                "Self-Hosted",
+                "Reasoning"
               ],
               "tags": [
-                "текст",
                 "код",
                 "reasoning",
                 "open-source",
                 "бюджетный"
               ],
               "businessUse": [
-                "development",
-                "analytics"
+                "development"
               ],
-              "businessFocus": "Бесплатная reasoning модель с открытыми весами. Идеальна для self-hosted решений, где нужен reasoning без затрат на API."
-            },
-            {
-              "name": "Yi-Lightning / Z.ai (01.AI)",
-              "url": "https://01.ai",
-              "description": "Yi-Lightning — быстрая модель от 01.AI (Кай-Фу Ли). Z.ai — новый бренд, 5.6% OpenRouter. Специализация: скорость инференса и мультиязычность. Конкурент GPT-4o по скорости.",
-              "strength": "Быстрый инференс. 5.6% OpenRouter. Мультиязычность.",
-              "features": [
-                "Fast Inference",
-                "5.6% OpenRouter",
-                "Multilingual",
-                "Kai-Fu Lee"
+              "businessFocus": "Open-source reasoning для self-hosted инфраструктуры.",
+              "roles": [
+                "developer"
               ],
-              "tags": [
-                "текст",
-                "код",
-                "бюджетный",
-                "мультиязычный"
-              ],
-              "businessUse": [
-                "marketing",
-                "analytics"
-              ],
-              "businessFocus": "Быстрый инференс по бюджетной цене. Подходит для задач, где важна скорость ответа — чат-боты, real-time аналитика."
-            },
-            {
-              "name": "Baichuan 4 / Baichuan-M1",
-              "url": "https://www.baichuan-ai.com",
-              "description": "Baichuan 4 — frontier модель от Baichuan AI. Baichuan-M1 — специализированная медицинская модель. Сильные позиции в китайском enterprise-сегменте. Фокус: финансы и медицина.",
-              "strength": "Enterprise Китай. Медицинская модель M1. Финансы.",
-              "features": [
-                "Enterprise China",
-                "Medical M1",
-                "Finance Focus",
-                "Baichuan 4"
-              ],
-              "tags": [
-                "текст",
-                "enterprise",
-                "медицина",
-                "финансы"
-              ],
-              "businessUse": [
-                "analytics",
-                "strategy",
-                "hr"
-              ],
-              "businessFocus": "Специализированные модели для финансов и медицины. Релевантно для компаний, работающих с китайским рынком или в регулируемых отраслях."
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Лучший open-source для reasoning"
             },
             {
               "name": "GLM-5 / ChatGLM (Zhipu AI)",
               "url": "https://zhipuai.cn",
-              "description": "GLM-5 (февраль 2026) — frontier модель от Zhipu AI. Сильные позиции в академическом секторе Китая. AutoGLM — агентная система для автоматизации. Партнёрство с Tsinghua University.",
-              "strength": "Академический сектор. AutoGLM агенты. Tsinghua партнёрство.",
+              "description": "GLM-5 — флагман Zhipu AI. Сильные позиции в Китае. Мультимодальная модель.",
+              "strength": "Сильные позиции в Китае. Мультимодальность.",
               "features": [
-                "GLM-5 Frontier",
-                "AutoGLM Agents",
-                "Academic Sector",
-                "Tsinghua Partnership"
+                "GLM-5 Flagship",
+                "Multimodal",
+                "Chinese Market Leader"
               ],
               "tags": [
                 "текст",
                 "код",
-                "reasoning",
-                "агенты"
+                "мультимодальность"
               ],
               "businessUse": [
                 "analytics",
-                "development",
-                "automation"
+                "marketing"
               ],
-              "businessFocus": "Сильная модель для академических и исследовательских задач. AutoGLM — агентная автоматизация для китайского enterprise."
+              "businessFocus": "Мультимодальная модель для китайского рынка.",
+              "roles": [
+                "analyst",
+                "marketer"
+              ],
+              "pricing": "freemium",
+              "rating": 3,
+              "recommendedFor": "Для работы с китайским контентом"
             },
             {
               "name": "Doubao / Seed (ByteDance)",
-              "url": "https://www.volcengine.com/product/doubao",
-              "description": "Doubao — AI-платформа ByteDance (TikTok). Seed — базовая модель. Крупнейшая пользовательская база в Китае (интеграция в TikTok/Douyin). Мультимодальность: текст, изображения, видео.",
-              "strength": "TikTok/Douyin экосистема. Крупнейшая база пользователей в Китае.",
+              "url": "https://doubao.com",
+              "description": "Doubao — AI-платформа ByteDance. Seed — базовая модель. Интеграция с TikTok экосистемой.",
+              "strength": "ByteDance экосистема. TikTok интеграция.",
               "features": [
-                "TikTok/Douyin",
-                "Largest China Userbase",
-                "Multimodal",
+                "ByteDance Ecosystem",
+                "TikTok Integration",
                 "Seed Model"
               ],
               "tags": [
                 "текст",
-                "изображения",
                 "видео",
-                "мультимодальность",
-                "бюджетный"
+                "соцсети"
               ],
               "businessUse": [
                 "marketing",
                 "design"
               ],
-              "businessFocus": "Интеграция с TikTok/Douyin — крупнейшей контент-платформой. Стратегически важен для маркетинга на китайском рынке."
+              "businessFocus": "Интеграция с TikTok для маркетинга и контента.",
+              "roles": [
+                "marketer",
+                "designer"
+              ],
+              "pricing": "freemium",
+              "rating": 3,
+              "recommendedFor": "Для маркетинга в TikTok экосистеме"
             }
           ]
         },
@@ -461,86 +496,362 @@
             {
               "name": "Gemma 4 (Google)",
               "url": "https://ai.google.dev/gemma",
-              "description": "Gemma 4 (17 апреля 2026) — open-source модель от Google. Наследник Gemma 2. Конкурирует с Llama в open-source пространстве после ухода Meta к проприетарной модели.",
-              "strength": "Google open source. Заполняет нишу после ухода Llama.",
+              "description": "Gemma 4 — open-source модель Google. Оптимизирована для edge-устройств и self-hosted.",
+              "strength": "Google quality. Open source. Edge-optimized.",
               "features": [
-                "April 2026",
-                "Google Open Source",
-                "Gemma 2 Successor",
-                "Llama Alternative"
+                "Open Source",
+                "Edge Optimized",
+                "Google Quality"
               ],
               "tags": [
                 "текст",
                 "код",
-                "open-source",
-                "бюджетный"
+                "open-source"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "Open-source модель Google для self-hosted решений.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Лучший open-source от Google"
+            },
+            {
+              "name": "Llama 4 Scout / Maverick (Legacy)",
+              "url": "https://llama.meta.com",
+              "description": "Llama 4 — последняя open-source модель Meta перед переходом к Muse Spark. Scout/Maverick для разных задач.",
+              "strength": "Meta open source legacy. Широкое community.",
+              "features": [
+                "Open Source",
+                "Large Community",
+                "Multiple Sizes"
+              ],
+              "tags": [
+                "текст",
+                "код",
+                "open-source"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "Open-source модель с большим сообществом.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Популярный open-source с большим сообществом"
+            },
+            {
+              "name": "Mistral Large 3 / Codestral",
+              "url": "https://mistral.ai",
+              "description": "Mistral Large 3 — европейский флагман. Codestral — специализированная модель для кода. Сильная позиция в EU.",
+              "strength": "Европейский лидер. Codestral для кода. EU compliance.",
+              "features": [
+                "EU Compliance",
+                "Codestral",
+                "Mistral Large 3"
+              ],
+              "tags": [
+                "текст",
+                "код",
+                "enterprise",
+                "open-source"
               ],
               "businessUse": [
                 "development",
                 "analytics"
               ],
-              "businessFocus": "Бесплатная open-source модель от Google. Идеальна для self-hosted решений, где важен контроль над данными и отсутствие vendor lock-in."
-            },
-            {
-              "name": "Llama 4 Scout / Maverick (Legacy)",
-              "url": "https://llama.meta.com",
-              "description": "Llama 4 Scout/Maverick (апрель 2025) — последние open-source модели Meta. Behemoth отменена. Meta перешла к Muse Spark. Llama остаётся доступной, но без обновлений.",
-              "strength": "Legacy open source. Без обновлений после Muse Spark.",
-              "features": [
-                "Scout/Maverick",
-                "Legacy Status",
-                "No Updates",
-                "Behemoth Cancelled"
+              "businessFocus": "Европейский AI с compliance для EU-компаний.",
+              "roles": [
+                "developer",
+                "analyst",
+                "manager"
               ],
-              "tags": [
-                "текст",
-                "код",
-                "open-source",
-                "бюджетный"
-              ],
-              "businessUse": [
-                "development"
-              ],
-              "businessFocus": "Legacy open-source модель. Используйте только если уже есть инфраструктура на Llama — для новых проектов выбирайте Gemma 4 или Qwen 3.6."
-            },
-            {
-              "name": "Mistral Large 3 / Codestral",
-              "url": "https://mistral.ai",
-              "description": "Mistral Large 3 — европейский frontier. Codestral — специализированная модель для кодинга. Le Chat — consumer продукт. Европейская альтернатива US/China моделям.",
-              "strength": "Европейский frontier. Codestral для кодинга. Le Chat.",
-              "features": [
-                "European Frontier",
-                "Codestral Coding",
-                "Le Chat Consumer",
-                "EU Alternative"
-              ],
-              "tags": [
-                "текст",
-                "код",
-                "open-source",
-                "enterprise"
-              ],
-              "businessUse": [
-                "development",
-                "strategy"
-              ],
-              "businessFocus": "Европейская альтернатива для компаний с требованиями GDPR и суверенитета данных. Codestral — специализированная модель для кодинга."
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший выбор для EU compliance"
             }
           ]
         },
         {
-          "name": "Нишевые решения",
+          "name": "Генерация изображений",
           "tools": [
             {
-              "name": "Perplexity Sonar Pro",
-              "url": "https://perplexity.ai",
-              "description": "Sonar Pro — AI-поиск с цитированием источников. Лидер категории AI Search. Интеграция в браузеры и приложения. Конкурент Google Search.",
-              "strength": "AI Search лидер. Цитирование источников. Конкурент Google.",
+              "name": "Midjourney v7",
+              "url": "https://midjourney.com",
+              "description": "Midjourney v7 — лидер генерации изображений. Фотореалистичность, стилизация, web-интерфейс.",
+              "strength": "Лучшее качество изображений. Огромное сообщество.",
               "features": [
-                "AI Search Leader",
+                "v7 Engine",
+                "Web Editor",
+                "Style Reference"
+              ],
+              "tags": [
+                "изображения",
+                "дизайн",
+                "контент"
+              ],
+              "businessUse": [
+                "design",
+                "marketing"
+              ],
+              "businessFocus": "Лидер генерации изображений для маркетинга и дизайна.",
+              "roles": [
+                "designer",
+                "marketer"
+              ],
+              "pricing": "$10/mo",
+              "rating": 5,
+              "recommendedFor": "Лучший для генерации изображений"
+            },
+            {
+              "name": "DALL-E 3 / Images 2.0",
+              "url": "https://openai.com/dall-e",
+              "description": "DALL-E 3 интегрирован в ChatGPT. Images 2.0 — новый движок OpenAI для генерации изображений.",
+              "strength": "Интеграция с ChatGPT. Точное следование промптам.",
+              "features": [
+                "ChatGPT Integration",
+                "Images 2.0",
+                "Accurate Prompts"
+              ],
+              "tags": [
+                "изображения",
+                "дизайн",
+                "контент"
+              ],
+              "businessUse": [
+                "design",
+                "marketing"
+              ],
+              "businessFocus": "Генерация изображений прямо в ChatGPT.",
+              "roles": [
+                "designer",
+                "marketer",
+                "manager"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для быстрой генерации в ChatGPT"
+            },
+            {
+              "name": "Stable Diffusion 4 / SDXL",
+              "url": "https://stability.ai",
+              "description": "Stable Diffusion 4 — open-source генерация изображений. Локальный запуск, полный контроль, кастомизация.",
+              "strength": "Open source. Локальный запуск. Полная кастомизация.",
+              "features": [
+                "Open Source",
+                "Local Run",
+                "LoRA/ControlNet"
+              ],
+              "tags": [
+                "изображения",
+                "open-source",
+                "дизайн"
+              ],
+              "businessUse": [
+                "design"
+              ],
+              "businessFocus": "Open-source генерация с полным контролем и кастомизацией.",
+              "roles": [
+                "designer",
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Лучший open-source для генерации изображений"
+            },
+            {
+              "name": "Ideogram 3.0",
+              "url": "https://ideogram.ai",
+              "description": "Ideogram 3.0 — лидер по генерации текста на изображениях. Логотипы, постеры, типографика.",
+              "strength": "Лучший текст на изображениях. Логотипы и постеры.",
+              "features": [
+                "Text in Images",
+                "Logo Generation",
+                "Typography"
+              ],
+              "tags": [
+                "изображения",
+                "дизайн",
+                "типографика"
+              ],
+              "businessUse": [
+                "design",
+                "marketing"
+              ],
+              "businessFocus": "Генерация логотипов и постеров с точным текстом.",
+              "roles": [
+                "designer",
+                "marketer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для текста на изображениях и логотипов"
+            },
+            {
+              "name": "Flux 1.1 Pro (Black Forest Labs)",
+              "url": "https://blackforestlabs.ai",
+              "description": "Flux 1.1 Pro — быстрая генерация высокого качества. Отличная детализация и реалистичность.",
+              "strength": "Скорость + качество. Отличная детализация.",
+              "features": [
+                "Fast Generation",
+                "High Detail",
+                "API Access"
+              ],
+              "tags": [
+                "изображения",
+                "api",
+                "дизайн"
+              ],
+              "businessUse": [
+                "design",
+                "marketing"
+              ],
+              "businessFocus": "Быстрая генерация изображений через API.",
+              "roles": [
+                "designer",
+                "developer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для быстрой генерации через API"
+            }
+          ]
+        },
+        {
+          "name": "Аудио и музыка",
+          "tools": [
+            {
+              "name": "ElevenLabs",
+              "url": "https://elevenlabs.io",
+              "description": "ElevenLabs — лидер синтеза речи. Клонирование голоса, мультиязычность, эмоциональная речь.",
+              "strength": "Лучший синтез речи. Клонирование голоса.",
+              "features": [
+                "Voice Cloning",
+                "Multilingual",
+                "Emotional Speech"
+              ],
+              "tags": [
+                "аудио",
+                "голос",
+                "контент"
+              ],
+              "businessUse": [
+                "marketing",
+                "hr"
+              ],
+              "businessFocus": "Синтез речи для подкастов, обучения и маркетинга.",
+              "roles": [
+                "marketer",
+                "researcher",
+                "manager"
+              ],
+              "pricing": "freemium",
+              "rating": 5,
+              "recommendedFor": "Лучший для синтеза речи и озвучки"
+            },
+            {
+              "name": "Suno v4",
+              "url": "https://suno.ai",
+              "description": "Suno v4 — генерация музыки по текстовому описанию. Полные треки с вокалом за секунды.",
+              "strength": "Лучшая генерация музыки. Вокал + инструменты.",
+              "features": [
+                "Full Songs",
+                "Vocals",
+                "Multiple Genres"
+              ],
+              "tags": [
+                "аудио",
+                "музыка",
+                "контент"
+              ],
+              "businessUse": [
+                "marketing",
+                "design"
+              ],
+              "businessFocus": "Генерация музыки для рекламы, видео и контента.",
+              "roles": [
+                "marketer",
+                "designer"
+              ],
+              "pricing": "freemium",
+              "rating": 5,
+              "recommendedFor": "Лучший для генерации музыки"
+            },
+            {
+              "name": "Udio v2",
+              "url": "https://udio.com",
+              "description": "Udio v2 — генерация музыки с высоким качеством звука. Конкурент Suno с фокусом на качество продакшена.",
+              "strength": "Высокое качество звука. Продакшен-ready.",
+              "features": [
+                "High Quality Audio",
+                "Production Ready",
+                "Genre Variety"
+              ],
+              "tags": [
+                "аудио",
+                "музыка",
+                "контент"
+              ],
+              "businessUse": [
+                "marketing",
+                "design"
+              ],
+              "businessFocus": "Профессиональная генерация музыки для продакшена.",
+              "roles": [
+                "designer",
+                "marketer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Для профессионального музыкального продакшена"
+            },
+            {
+              "name": "Sesame AI",
+              "url": "https://sesame.com",
+              "description": "Sesame AI — эмоциональный голосовой AI. Естественные диалоги с эмпатией и контекстом.",
+              "strength": "Эмоциональный AI. Естественные диалоги.",
+              "features": [
+                "Emotional AI",
+                "Natural Dialogue",
+                "Context Awareness"
+              ],
+              "tags": [
+                "аудио",
+                "голос",
+                "enterprise"
+              ],
+              "businessUse": [
+                "sales",
+                "hr"
+              ],
+              "businessFocus": "Эмоциональный голосовой AI для клиентского сервиса.",
+              "roles": [
+                "manager",
+                "marketer"
+              ],
+              "pricing": "paid",
+              "rating": 4,
+              "recommendedFor": "Лучший для эмоционального голосового взаимодействия"
+            }
+          ]
+        },
+        {
+          "name": "Поиск и исследования",
+          "tools": [
+            {
+              "name": "Perplexity Pro",
+              "url": "https://perplexity.ai",
+              "description": "Perplexity Pro — AI-поисковик с цитированием источников. Deep Research для глубоких исследований.",
+              "strength": "AI-поиск с источниками. Deep Research.",
+              "features": [
                 "Source Citations",
-                "Browser Integration",
-                "Google Competitor"
+                "Deep Research",
+                "Real-time Data"
               ],
               "tags": [
                 "research",
@@ -549,33 +860,195 @@
               ],
               "businessUse": [
                 "analytics",
-                "marketing",
-                "sales"
+                "strategy"
               ],
-              "businessFocus": "AI-поиск с цитированием источников. Заменяет часы ручного ресёрча для маркетологов, аналитиков и менеджеров по продажам."
+              "businessFocus": "AI-поиск с верификацией источников для исследований.",
+              "roles": [
+                "researcher",
+                "analyst",
+                "manager"
+              ],
+              "pricing": "freemium",
+              "rating": 5,
+              "recommendedFor": "Лучший AI-поисковик с цитированием"
             },
             {
-              "name": "ElevenLabs / Sesame",
-              "url": "https://elevenlabs.io",
-              "description": "ElevenLabs — лидер AI Voice. Sesame (Maya) — прорыв в conversational AI с эмоциональным голосом. Voice cloning, multilingual TTS.",
-              "strength": "Voice AI лидер. Sesame Maya — эмоциональный голос.",
+              "name": "Consensus AI",
+              "url": "https://consensus.app",
+              "description": "Consensus — AI-поиск по научным публикациям. Анализ research papers с выводами.",
+              "strength": "Научный поиск. Анализ публикаций.",
               "features": [
-                "Voice AI Leader",
-                "Sesame Maya",
-                "Voice Cloning",
-                "Multilingual TTS"
+                "Scientific Search",
+                "Paper Analysis",
+                "Evidence-Based"
               ],
               "tags": [
-                "аудио",
-                "голос",
-                "мультимодальность"
+                "research",
+                "наука",
+                "текст"
+              ],
+              "businessUse": [
+                "analytics"
+              ],
+              "businessFocus": "Поиск и анализ научных публикаций.",
+              "roles": [
+                "researcher",
+                "analyst"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для поиска научных публикаций"
+            },
+            {
+              "name": "Elicit",
+              "url": "https://elicit.com",
+              "description": "Elicit — AI-ассистент для исследований. Систематический обзор литературы, извлечение данных из papers.",
+              "strength": "Систематический обзор литературы. Извлечение данных.",
+              "features": [
+                "Literature Review",
+                "Data Extraction",
+                "Systematic Analysis"
+              ],
+              "tags": [
+                "research",
+                "наука",
+                "аналитика"
+              ],
+              "businessUse": [
+                "analytics"
+              ],
+              "businessFocus": "Автоматизация систематических обзоров литературы.",
+              "roles": [
+                "researcher",
+                "analyst"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для систематических обзоров литературы"
+            }
+          ]
+        },
+        {
+          "name": "Перевод и локализация",
+          "tools": [
+            {
+              "name": "DeepL Pro",
+              "url": "https://deepl.com",
+              "description": "DeepL Pro — лучший AI-переводчик. 33 языка, сохранение стиля, интеграция с документами.",
+              "strength": "Лучшее качество перевода. Сохранение стиля.",
+              "features": [
+                "33 Languages",
+                "Style Preservation",
+                "Document Translation"
+              ],
+              "tags": [
+                "текст",
+                "перевод",
+                "enterprise"
               ],
               "businessUse": [
                 "marketing",
-                "hr",
-                "design"
+                "hr"
               ],
-              "businessFocus": "Генерация голосового контента для подкастов, обучающих курсов, IVR-систем и маркетинговых видео. Voice cloning для персонализации."
+              "businessFocus": "Профессиональный перевод документов и контента.",
+              "roles": [
+                "marketer",
+                "manager",
+                "researcher"
+              ],
+              "pricing": "freemium",
+              "rating": 5,
+              "recommendedFor": "Лучший AI-переводчик"
+            }
+          ]
+        },
+        {
+          "name": "Нишевые решения",
+          "tools": [
+            {
+              "name": "Anthropic Claude Projects",
+              "url": "https://anthropic.com",
+              "description": "Claude Projects — организация работы с AI в проектах. Кастомные инструкции, файлы, контекст.",
+              "strength": "Организация проектов. Кастомный контекст.",
+              "features": [
+                "Projects",
+                "Custom Instructions",
+                "File Upload"
+              ],
+              "tags": [
+                "текст",
+                "enterprise",
+                "контент"
+              ],
+              "businessUse": [
+                "strategy",
+                "analytics"
+              ],
+              "businessFocus": "Организация AI-работы в проектном формате.",
+              "roles": [
+                "manager",
+                "analyst",
+                "researcher"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для организации AI-проектов"
+            },
+            {
+              "name": "Cohere Command R+",
+              "url": "https://cohere.com",
+              "description": "Cohere Command R+ — enterprise LLM с RAG. Оптимизирован для бизнес-задач и поиска.",
+              "strength": "Enterprise RAG. Бизнес-оптимизация. Multilingual.",
+              "features": [
+                "Enterprise RAG",
+                "Multilingual",
+                "Business Optimized"
+              ],
+              "tags": [
+                "текст",
+                "RAG",
+                "enterprise"
+              ],
+              "businessUse": [
+                "analytics",
+                "automation"
+              ],
+              "businessFocus": "Enterprise LLM с встроенным RAG для бизнеса.",
+              "roles": [
+                "developer",
+                "analyst"
+              ],
+              "pricing": "paid",
+              "rating": 4,
+              "recommendedFor": "Лучший enterprise LLM с RAG"
+            },
+            {
+              "name": "AI21 Jamba 2.5",
+              "url": "https://ai21.com",
+              "description": "AI21 Jamba 2.5 — модель с архитектурой SSM+Transformer. Длинный контекст, эффективность.",
+              "strength": "SSM+Transformer. Длинный контекст. Эффективность.",
+              "features": [
+                "SSM Architecture",
+                "Long Context",
+                "Efficient"
+              ],
+              "tags": [
+                "текст",
+                "enterprise",
+                "api"
+              ],
+              "businessUse": [
+                "development",
+                "analytics"
+              ],
+              "businessFocus": "Эффективная модель для длинных документов.",
+              "roles": [
+                "developer",
+                "analyst"
+              ],
+              "pricing": "freemium",
+              "rating": 3,
+              "recommendedFor": "Для эффективной обработки длинных текстов"
             }
           ]
         }
@@ -584,12 +1057,12 @@
     {
       "id": 2,
       "title": "Уровень 2 — Агентные системы",
-      "subtitle": "От слов к делу",
-      "shortTitle": "От слов к делу",
-      "shortDesc": "Автономное выполнение задач",
-      "description": "Готовые прикладные решения, автономно выполняющие цепочки действий. К маю 2026: Cursor 3 с Agents View и параллельными VM, Devin 2.2 с 3x ускорением, Claude Code с Dreaming и multi-agent orchestration, Copilot с cloud agent mode. Видеогенерация: Sora закрыта, лидеры — Veo 3.1, Kling 3.0, Runway Gen-4.5.",
-      "color": "#00ff88",
-      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310419663031817411/LmcKwojoPuoroSjGyukkEi/level2-agents-4ipF3Pi4ohN4jiXKyQo2Qw.webp",
+      "subtitle": "Действия и автоматизация",
+      "shortTitle": "Действия и автоматизация",
+      "shortDesc": "Выполнение задач, автономная работа",
+      "description": "Агентные системы выполняют действия автономно: пишут код, управляют браузером, создают контент. К маю 2026 агенты стали production-ready: Cursor 3.0, Devin 2.2, Claude Code, Manus — все работают в реальных проектах.",
+      "color": "#a78bfa",
+      "image": "",
       "categories": [
         {
           "name": "Кодинг",
@@ -597,35 +1070,39 @@
             {
               "name": "Cursor 3.0",
               "url": "https://cursor.com",
-              "description": "Cursor 3.0 (апрель 2026): rebuilt as 'agent switchboard'. Agents View — новый UI вместо классического IDE. Автоматический выбор модели и репозитория. Background Agents с параллельными VM.",
-              "strength": "Стандарт индустрии. Agent switchboard. Автовыбор модели.",
+              "description": "Cursor 3.0 — AI-first IDE. Background agents, multi-file editing, интеграция с Claude и GPT.",
+              "strength": "AI-first IDE. Background agents. Multi-file editing.",
               "features": [
-                "Agent Switchboard",
-                "Agents View",
-                "Auto Model Selection",
-                "Background Agents"
+                "Background Agents",
+                "Multi-file Edit",
+                "Claude + GPT"
               ],
               "tags": [
                 "код",
-                "агенты",
                 "IDE",
-                "enterprise"
+                "агенты"
               ],
               "businessUse": [
                 "development"
               ],
-              "businessFocus": "Стандарт индустрии для AI-разработки. Сокращает время написания кода на 40-60%. Background Agents позволяют параллельно решать несколько задач."
+              "businessFocus": "AI-first IDE для продуктивной разработки.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "$20/mo",
+              "rating": 5,
+              "recommendedFor": "Лучшая AI IDE для разработчиков"
             },
             {
               "name": "Devin 2.2",
               "url": "https://devin.ai",
-              "description": "Devin 2.2 (февраль 2026): 3x faster startup, новый UI connecting every step of dev lifecycle. Killed $500 plan. Полностью автономный AI Software Engineer. Интеграция в Windsurf.",
-              "strength": "Полностью автономный. 3x быстрее. Пионер категории.",
+              "description": "Devin 2.2 — полностью автономный AI-разработчик. Планирует, пишет код, тестирует, деплоит.",
+              "strength": "Полная автономность. Планирование + исполнение.",
               "features": [
-                "3x Faster",
                 "Full Autonomy",
-                "Windsurf Integration",
-                "New Pricing"
+                "Planning",
+                "Testing",
+                "Deployment"
               ],
               "tags": [
                 "код",
@@ -636,74 +1113,150 @@
                 "development",
                 "automation"
               ],
-              "businessFocus": "Полностью автономный AI-инженер. Может самостоятельно реализовать задачу от постановки до PR. Экономит время senior-разработчиков на рутинных задачах."
+              "businessFocus": "Автономная разработка от планирования до деплоя.",
+              "roles": [
+                "developer",
+                "manager"
+              ],
+              "pricing": "$500/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший для полностью автономной разработки"
             },
             {
               "name": "Claude Code",
               "url": "https://docs.anthropic.com/claude-code",
-              "description": "CLI на базе Claude Opus 4.7. Май 2026: Dreaming (self-improving agents), scheduled routines, outcome-based agents, multi-agent orchestration, new memory systems. 1M контекст. Рост 70x YoY.",
-              "strength": "Dreaming (self-improving), multi-agent, 1M контекст, 70x рост",
+              "description": "Claude Code — CLI-агент на базе Claude Opus 4.7. Dreaming, multi-agent orchestration, 1M контекст.",
+              "strength": "CLI-first. Dreaming. 1M контекст. Multi-agent.",
               "features": [
                 "Dreaming",
                 "Multi-Agent",
                 "1M Context",
-                "70x YoY Growth"
+                "CLI"
               ],
               "tags": [
                 "код",
                 "агенты",
-                "CLI",
-                "enterprise"
+                "CLI"
               ],
               "businessUse": [
                 "development",
                 "automation"
               ],
-              "businessFocus": "CLI-агент с self-improving (Dreaming). Идеален для DevOps, CI/CD и серверной автоматизации. Multi-agent orchestration для сложных проектов."
+              "businessFocus": "CLI-агент для DevOps и автоматизации разработки.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "paid",
+              "rating": 5,
+              "recommendedFor": "Лучший CLI-агент для автономной разработки"
             },
             {
               "name": "GitHub Copilot (Agent Mode)",
               "url": "https://github.com/features/copilot",
-              "description": "Agent mode GA. Inline agent mode (preview, апрель 2026). Cloud agent sessions в Visual Studio. Usage-based billing. Coding agent в GitHub.com. Поддержка MCP.",
-              "strength": "GitHub экосистема. Cloud agents. MCP support.",
+              "description": "GitHub Copilot Agent Mode — автономное выполнение задач в GitHub. Coding agent в PR, Issues.",
+              "strength": "GitHub интеграция. Agent Mode. Coding в PR.",
               "features": [
-                "Agent Mode GA",
-                "Cloud Sessions",
-                "MCP Support",
-                "Usage-Based Billing"
+                "Agent Mode",
+                "GitHub Integration",
+                "PR Automation"
               ],
               "tags": [
                 "код",
                 "агенты",
-                "IDE",
-                "enterprise",
-                "api"
+                "enterprise"
               ],
               "businessUse": [
                 "development"
               ],
-              "businessFocus": "Наименьший порог входа для команд, уже использующих GitHub. Cloud agent sessions и MCP support. Usage-based billing снижает затраты."
+              "businessFocus": "AI-кодинг интегрированный в GitHub workflow.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "$19/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший для команд на GitHub"
             },
             {
               "name": "Windsurf (ex-Codeium)",
-              "url": "https://windsurf.com",
-              "description": "Windsurf — IDE с глубокой AI-интеграцией. Cascade — агентный режим. Купила Devin. SWE-1 — собственная модель для кодинга. Конкурент Cursor.",
-              "strength": "Cascade agent. Devin интеграция. SWE-1 модель.",
+              "url": "https://windsurf.ai",
+              "description": "Windsurf — AI IDE с Cascade агентом. Flows для multi-step задач. Бесплатный tier.",
+              "strength": "Cascade agent. Flows. Бесплатный tier.",
               "features": [
                 "Cascade Agent",
-                "Devin Acquired",
-                "SWE-1 Model",
-                "Cursor Competitor"
+                "Flows",
+                "Free Tier"
               ],
               "tags": [
                 "код",
-                "агенты",
-                "IDE"
+                "IDE",
+                "бюджетный"
               ],
               "businessUse": [
                 "development"
               ],
-              "businessFocus": "IDE с глубокой AI-интеграцией + собственная модель SWE-1. Cascade agent для автономного решения задач. Альтернатива Cursor с интеграцией Devin."
+              "businessFocus": "AI IDE с бесплатным tier для индивидуальных разработчиков.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучшая бесплатная AI IDE"
+            },
+            {
+              "name": "Replit Agent",
+              "url": "https://replit.com",
+              "description": "Replit Agent — AI-агент для создания приложений в браузере. От идеи до деплоя без локальной среды.",
+              "strength": "Браузерная разработка. От идеи до деплоя.",
+              "features": [
+                "Browser IDE",
+                "Auto Deploy",
+                "No Setup"
+              ],
+              "tags": [
+                "код",
+                "no-code",
+                "агенты"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "Быстрое прототипирование и деплой в браузере.",
+              "roles": [
+                "developer",
+                "manager"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для быстрого прототипирования в браузере"
+            },
+            {
+              "name": "Bolt.new / Lovable",
+              "url": "https://bolt.new",
+              "description": "Bolt.new — генерация full-stack приложений из промпта. Lovable — аналог для красивых UI.",
+              "strength": "Генерация приложений из промпта. Мгновенный деплой.",
+              "features": [
+                "Prompt to App",
+                "Instant Deploy",
+                "Full-Stack"
+              ],
+              "tags": [
+                "код",
+                "no-code",
+                "агенты"
+              ],
+              "businessUse": [
+                "development",
+                "design"
+              ],
+              "businessFocus": "Генерация приложений для не-разработчиков.",
+              "roles": [
+                "designer",
+                "manager",
+                "marketer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для генерации приложений без кода"
             }
           ]
         },
@@ -713,39 +1266,13 @@
             {
               "name": "Manus",
               "url": "https://manus.im",
-              "description": "General AI Agent — выполняет любые задачи: от создания приложений до исследований и автоматизации. Полная автономность в облачном sandbox. Создаёт сайты, анализирует данные, управляет браузером.",
-              "strength": "General AI Agent. Полная автономность. Облачный sandbox.",
+              "description": "Manus — универсальный AI-агент. Выполняет любые задачи: исследования, код, документы, автоматизация.",
+              "strength": "Универсальный агент. Любые задачи. Автономность.",
               "features": [
-                "General Agent",
-                "Full Autonomy",
-                "Cloud Sandbox",
-                "App Creation"
-              ],
-              "tags": [
-                "агенты",
-                "автоматизация",
-                "research",
-                "код",
-                "no-code"
-              ],
-              "businessUse": [
-                "automation",
-                "analytics",
-                "development",
-                "marketing"
-              ],
-              "businessFocus": "General AI Agent — автоматизирует любые задачи: от создания сайтов до исследований рынка. Заменяет часы ручной работы одним промптом."
-            },
-            {
-              "name": "OpenAI Operator / Deep Research",
-              "url": "https://openai.com/operator",
-              "description": "Operator — браузерный агент OpenAI. Deep Research — глубокий исследовательский агент. Computer-Using Agent (CUA) для автоматизации десктопных задач.",
-              "strength": "OpenAI экосистема. Browser + Research + Desktop agents.",
-              "features": [
-                "Browser Agent",
-                "Deep Research",
-                "CUA Desktop",
-                "OpenAI Ecosystem"
+                "Universal Agent",
+                "Browser Control",
+                "Code Execution",
+                "Research"
               ],
               "tags": [
                 "агенты",
@@ -756,20 +1283,58 @@
               "businessUse": [
                 "analytics",
                 "automation",
-                "sales"
+                "strategy",
+                "development"
               ],
-              "businessFocus": "Браузерный агент для автоматизации веб-задач + Deep Research для глубоких исследований. CUA — управление десктопными приложениями."
+              "businessFocus": "Универсальный AI-агент для делегирования любых задач.",
+              "roles": [
+                "manager",
+                "analyst",
+                "researcher",
+                "developer"
+              ],
+              "pricing": "paid",
+              "rating": 5,
+              "recommendedFor": "Лучший универсальный AI-агент"
+            },
+            {
+              "name": "OpenAI Operator / Deep Research",
+              "url": "https://openai.com/operator",
+              "description": "OpenAI Operator — браузерный агент. Deep Research — глубокие исследования с отчётами.",
+              "strength": "Браузерный агент OpenAI. Deep Research.",
+              "features": [
+                "Browser Agent",
+                "Deep Research",
+                "Report Generation"
+              ],
+              "tags": [
+                "агенты",
+                "research",
+                "автоматизация"
+              ],
+              "businessUse": [
+                "analytics",
+                "strategy"
+              ],
+              "businessFocus": "Браузерная автоматизация и глубокие исследования.",
+              "roles": [
+                "researcher",
+                "analyst",
+                "manager"
+              ],
+              "pricing": "paid",
+              "rating": 4,
+              "recommendedFor": "Лучший для автоматизированных исследований"
             },
             {
               "name": "Google Gemini Deep Research Max",
               "url": "https://gemini.google.com",
-              "description": "Deep Research Max (21 апреля 2026) — исследовательский агент на базе Gemini 3.1 Pro + MCP. Генерирует структурированные отчёты. Конкурент OpenAI Deep Research.",
-              "strength": "Gemini 3.1 Pro + MCP. Структурированные отчёты.",
+              "description": "Gemini Deep Research Max — глубокие исследования на базе Gemini 3.1 Pro + MCP.",
+              "strength": "Google экосистема. MCP. 2M контекст.",
               "features": [
-                "Gemini 3.1 Pro",
+                "Deep Research",
                 "MCP Integration",
-                "Structured Reports",
-                "April 2026 Update"
+                "2M Context"
               ],
               "tags": [
                 "research",
@@ -780,51 +1345,68 @@
                 "analytics",
                 "strategy"
               ],
-              "businessFocus": "Автоматизация маркетинговых и стратегических исследований. Генерирует структурированные отчёты из множества источников."
+              "businessFocus": "Глубокие исследования в экосистеме Google.",
+              "roles": [
+                "researcher",
+                "analyst"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для исследований в Google экосистеме"
             },
             {
               "name": "Anthropic Claude Computer Use",
               "url": "https://anthropic.com",
-              "description": "Claude Computer Use — агент для управления компьютером. Клики, ввод текста, навигация. Интеграция с Claude Code для полного цикла разработки.",
-              "strength": "Управление компьютером. Интеграция с Claude Code.",
+              "description": "Claude Computer Use — управление компьютером через AI. Клики, ввод, навигация по любым приложениям.",
+              "strength": "Управление компьютером. Любые приложения.",
               "features": [
                 "Computer Control",
-                "Click & Type",
-                "Claude Code Integration",
-                "Full Dev Cycle"
+                "Any Application",
+                "Visual Understanding"
               ],
               "tags": [
                 "агенты",
                 "автоматизация",
-                "код"
+                "enterprise"
               ],
               "businessUse": [
                 "automation"
               ],
-              "businessFocus": "Автоматизация задач, требующих взаимодействия с GUI — заполнение форм, навигация по приложениям, тестирование интерфейсов."
+              "businessFocus": "Автоматизация работы с любыми десктопными приложениями.",
+              "roles": [
+                "developer",
+                "manager"
+              ],
+              "pricing": "paid",
+              "rating": 4,
+              "recommendedFor": "Лучший для автоматизации десктопных приложений"
             },
             {
               "name": "Browser Use / Stagehand",
-              "url": "https://browseruse.com",
-              "description": "Browser Use — open-source фреймворк для браузерных агентов. Stagehand — альтернатива от Browserbase. Оба используют LLM для навигации по веб-страницам.",
-              "strength": "Open source браузерные агенты. LLM-навигация.",
+              "url": "https://browser-use.com",
+              "description": "Browser Use — open-source фреймворк для браузерной автоматизации с AI. Stagehand — альтернатива.",
+              "strength": "Open source. Браузерная автоматизация.",
               "features": [
                 "Open Source",
                 "Browser Automation",
-                "LLM Navigation",
-                "Browserbase"
+                "AI-Powered"
               ],
               "tags": [
                 "агенты",
                 "автоматизация",
-                "open-source",
-                "код"
+                "open-source"
               ],
               "businessUse": [
                 "automation",
                 "development"
               ],
-              "businessFocus": "Open-source фреймворки для создания собственных браузерных агентов. Идеальны для автоматизации скрапинга, тестирования и веб-задач."
+              "businessFocus": "Open-source браузерная автоматизация для разработчиков.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Лучший open-source для браузерной автоматизации"
             }
           ]
         },
@@ -834,36 +1416,40 @@
             {
               "name": "Google Veo 3.1 Ultra",
               "url": "https://deepmind.google/veo",
-              "description": "Veo 3.1 Ultra — лидер видеогенерации после закрытия Sora. Нативный аудио (диалоги, звуки). Интеграция в Google экосистему. Flow — режим для длинных видео.",
-              "strength": "Лидер видеогенерации. Нативный аудио. Google экосистема.",
+              "description": "Veo 3.1 Ultra — генерация видео с нативным аудио. Кинематографическое качество.",
+              "strength": "Нативное аудио. Кинематографическое качество.",
               "features": [
-                "Video Leader",
                 "Native Audio",
-                "Flow Mode",
-                "Post-Sora Leader"
+                "Cinematic Quality",
+                "Long Videos"
               ],
               "tags": [
                 "видео",
                 "аудио",
-                "мультимодальность",
                 "контент"
               ],
               "businessUse": [
                 "marketing",
                 "design"
               ],
-              "businessFocus": "Лидер видеогенерации с нативным аудио. Создание рекламных роликов, обучающих видео и контента для соцсетей без продакшн-команды."
+              "businessFocus": "Генерация видео с аудио для маркетинга.",
+              "roles": [
+                "marketer",
+                "designer"
+              ],
+              "pricing": "paid",
+              "rating": 5,
+              "recommendedFor": "Лучший для генерации видео с аудио"
             },
             {
               "name": "Kling 3.0 (Kuaishou)",
-              "url": "https://klingai.com",
-              "description": "Kling 3.0 — китайский лидер видеогенерации. Высокое качество, конкурент Veo 3.1. Доступен глобально. Motion Brush для точного контроля.",
-              "strength": "Китайский лидер видео. Motion Brush. Глобальный доступ.",
+              "url": "https://kling.ai",
+              "description": "Kling 3.0 — генерация видео от Kuaishou. Высокое качество, длинные видео, доступная цена.",
+              "strength": "Доступная цена. Длинные видео. Высокое качество.",
               "features": [
-                "Video Generation",
-                "Motion Brush",
-                "Global Access",
-                "Veo Competitor"
+                "Long Videos",
+                "Affordable",
+                "High Quality"
               ],
               "tags": [
                 "видео",
@@ -874,75 +1460,1110 @@
                 "marketing",
                 "design"
               ],
-              "businessFocus": "Бюджетная альтернатива Veo для видеогенерации. Motion Brush для точного контроля. Подходит для массового производства видеоконтента."
+              "businessFocus": "Доступная генерация видео для контент-маркетинга.",
+              "roles": [
+                "marketer",
+                "designer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший по цене для генерации видео"
             },
             {
               "name": "Runway Gen-4.5 / Act-One",
-              "url": "https://runway.com",
-              "description": "Gen-4.5 — последняя модель Runway для видеогенерации. Act-One — генерация видео с управлением актёрами. Пионер категории AI Video.",
-              "strength": "Пионер AI Video. Act-One актёры. Gen-4.5.",
+              "url": "https://runway.ml",
+              "description": "Runway Gen-4.5 — генерация и редактирование видео. Act-One — анимация персонажей по видео.",
+              "strength": "Редактирование видео. Act-One анимация.",
               "features": [
-                "Gen-4.5",
-                "Act-One Actors",
-                "Pioneer Status",
-                "Creative Tools"
+                "Video Editing",
+                "Act-One",
+                "Gen-4.5"
               ],
               "tags": [
                 "видео",
-                "контент",
-                "enterprise"
+                "дизайн",
+                "контент"
               ],
               "businessUse": [
-                "marketing",
-                "design"
+                "design",
+                "marketing"
               ],
-              "businessFocus": "Пионер AI Video с уникальным Act-One (управление актёрами). Для креативных агентств и продакшн-студий."
+              "businessFocus": "Профессиональное редактирование и генерация видео.",
+              "roles": [
+                "designer",
+                "marketer"
+              ],
+              "pricing": "$12/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший для редактирования видео с AI"
             },
             {
               "name": "Nano Banana 2/3/Pro (Google)",
-              "url": "https://ai.google.dev",
-              "description": "Nano Banana (апрель 2026) — новый AI image generator от Google. Заменяет Imagen в Gemini. Три версии: 2 (быстрая), 3 (качественная), Pro (профессиональная).",
-              "strength": "Замена Imagen. Три версии. Интеграция в Gemini.",
+              "url": "https://gemini.google.com",
+              "description": "Nano Banana — генерация изображений в Gemini. Версии 2, 3, Pro для разных задач.",
+              "strength": "Интеграция с Gemini. Быстрая генерация.",
               "features": [
-                "Imagen Replacement",
-                "3 Versions",
                 "Gemini Integration",
-                "April 2026"
+                "Fast Generation",
+                "Multiple Versions"
               ],
               "tags": [
                 "изображения",
-                "контент",
-                "enterprise"
+                "контент"
               ],
               "businessUse": [
-                "marketing",
-                "design"
+                "design",
+                "marketing"
               ],
-              "businessFocus": "Быстрая генерация изображений внутри Gemini. Три версии для разных задач — от быстрых черновиков до профессиональных визуалов."
+              "businessFocus": "Генерация изображений в экосистеме Google.",
+              "roles": [
+                "designer",
+                "marketer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для генерации изображений в Gemini"
             },
             {
               "name": "NotebookLM / Illuminate",
               "url": "https://notebooklm.google.com",
-              "description": "NotebookLM — AI-ассистент для работы с документами. Audio Overview — генерация подкастов из документов. Illuminate — расширение для научных статей.",
-              "strength": "Документы → Подкасты. Audio Overview. Google экосистема.",
+              "description": "NotebookLM — AI для работы с документами. Illuminate — генерация подкастов из документов.",
+              "strength": "Работа с документами. Генерация подкастов.",
               "features": [
-                "Document AI",
-                "Audio Overview",
+                "Document Analysis",
                 "Podcast Generation",
                 "Illuminate"
               ],
               "tags": [
-                "текст",
-                "аудио",
                 "research",
+                "аудио",
                 "контент"
               ],
               "businessUse": [
                 "analytics",
+                "marketing",
+                "hr"
+              ],
+              "businessFocus": "Превращение документов в подкасты и саммари.",
+              "roles": [
+                "researcher",
+                "marketer",
+                "manager"
+              ],
+              "pricing": "free",
+              "rating": 5,
+              "recommendedFor": "Лучший для превращения документов в подкасты"
+            },
+            {
+              "name": "HeyGen",
+              "url": "https://heygen.com",
+              "description": "HeyGen — генерация видео с AI-аватарами. Перевод видео на другие языки с синхронизацией губ.",
+              "strength": "AI-аватары. Перевод видео. Lip sync.",
+              "features": [
+                "AI Avatars",
+                "Video Translation",
+                "Lip Sync"
+              ],
+              "tags": [
+                "видео",
+                "перевод",
+                "контент"
+              ],
+              "businessUse": [
+                "marketing",
+                "hr"
+              ],
+              "businessFocus": "AI-аватары для обучения и маркетинга.",
+              "roles": [
+                "marketer",
+                "manager"
+              ],
+              "pricing": "$24/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший для видео с AI-аватарами"
+            },
+            {
+              "name": "Synthesia",
+              "url": "https://synthesia.io",
+              "description": "Synthesia — создание обучающих видео с AI-аватарами. Enterprise-решение для корпоративного обучения.",
+              "strength": "Enterprise обучение. AI-аватары. 130+ языков.",
+              "features": [
+                "Enterprise Training",
+                "130+ Languages",
+                "Custom Avatars"
+              ],
+              "tags": [
+                "видео",
+                "enterprise",
+                "обучение"
+              ],
+              "businessUse": [
                 "hr",
                 "marketing"
               ],
-              "businessFocus": "Превращает документы в подкасты и интерактивные обзоры. Идеален для создания обучающего контента и дайджестов из корпоративных документов."
+              "businessFocus": "Корпоративное обучение с AI-аватарами.",
+              "roles": [
+                "manager",
+                "marketer"
+              ],
+              "pricing": "$22/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший для корпоративного обучения"
+            }
+          ]
+        },
+        {
+          "name": "Написание и редактирование",
+          "tools": [
+            {
+              "name": "Jasper AI",
+              "url": "https://jasper.ai",
+              "description": "Jasper AI — платформа для маркетингового контента. Brand voice, кампании, SEO-оптимизация.",
+              "strength": "Маркетинговый контент. Brand voice. SEO.",
+              "features": [
+                "Brand Voice",
+                "Campaign Builder",
+                "SEO Optimization"
+              ],
+              "tags": [
+                "текст",
+                "маркетинг",
+                "enterprise"
+              ],
+              "businessUse": [
+                "marketing"
+              ],
+              "businessFocus": "Генерация маркетингового контента с brand voice.",
+              "roles": [
+                "marketer"
+              ],
+              "pricing": "$49/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший для маркетингового контента"
+            },
+            {
+              "name": "Copy.ai",
+              "url": "https://copy.ai",
+              "description": "Copy.ai — AI для копирайтинга и GTM-автоматизации. Workflows для sales и marketing.",
+              "strength": "GTM автоматизация. Sales + Marketing workflows.",
+              "features": [
+                "GTM Automation",
+                "Sales Workflows",
+                "Copywriting"
+              ],
+              "tags": [
+                "текст",
+                "маркетинг",
+                "автоматизация"
+              ],
+              "businessUse": [
+                "marketing",
+                "sales"
+              ],
+              "businessFocus": "Автоматизация go-to-market процессов.",
+              "roles": [
+                "marketer",
+                "manager"
+              ],
+              "pricing": "freemium",
+              "rating": 3,
+              "recommendedFor": "Лучший для GTM автоматизации"
+            },
+            {
+              "name": "Grammarly AI",
+              "url": "https://grammarly.com",
+              "description": "Grammarly — AI-редактор текста. Проверка грамматики, стиля, тона. Генерация текста.",
+              "strength": "Редактирование текста. Стиль и тон. Интеграция везде.",
+              "features": [
+                "Grammar Check",
+                "Style/Tone",
+                "AI Generation",
+                "Integrations"
+              ],
+              "tags": [
+                "текст",
+                "редактирование",
+                "enterprise"
+              ],
+              "businessUse": [
+                "marketing",
+                "hr"
+              ],
+              "businessFocus": "Улучшение качества текстов во всей организации.",
+              "roles": [
+                "marketer",
+                "manager",
+                "researcher"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для редактирования и улучшения текстов"
+            },
+            {
+              "name": "Notion AI",
+              "url": "https://notion.so",
+              "description": "Notion AI — AI-ассистент в рабочем пространстве. Саммари, генерация, поиск по базе знаний.",
+              "strength": "Интеграция в workspace. База знаний. Саммари.",
+              "features": [
+                "Workspace AI",
+                "Knowledge Base",
+                "Summaries"
+              ],
+              "tags": [
+                "текст",
+                "автоматизация",
+                "enterprise"
+              ],
+              "businessUse": [
+                "strategy",
+                "hr"
+              ],
+              "businessFocus": "AI-ассистент в корпоративной базе знаний.",
+              "roles": [
+                "manager",
+                "analyst",
+                "researcher"
+              ],
+              "pricing": "$10/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший AI в рабочем пространстве"
+            }
+          ]
+        },
+        {
+          "name": "Дизайн",
+          "tools": [
+            {
+              "name": "Canva AI (Magic Studio)",
+              "url": "https://canva.com",
+              "description": "Canva Magic Studio — AI-инструменты в Canva. Генерация, редактирование, удаление фона, resize.",
+              "strength": "Простота. Всё-в-одном. Огромная библиотека.",
+              "features": [
+                "Magic Studio",
+                "Background Remove",
+                "AI Generation",
+                "Templates"
+              ],
+              "tags": [
+                "дизайн",
+                "изображения",
+                "no-code"
+              ],
+              "businessUse": [
+                "design",
+                "marketing"
+              ],
+              "businessFocus": "AI-дизайн для всех — от соцсетей до презентаций.",
+              "roles": [
+                "marketer",
+                "designer",
+                "manager"
+              ],
+              "pricing": "freemium",
+              "rating": 5,
+              "recommendedFor": "Лучший AI-дизайн для не-дизайнеров"
+            },
+            {
+              "name": "Figma AI",
+              "url": "https://figma.com",
+              "description": "Figma AI — AI-функции в Figma. Генерация UI, автолейаут, поиск по дизайн-системе.",
+              "strength": "Интеграция в Figma. UI генерация. Автолейаут.",
+              "features": [
+                "UI Generation",
+                "Auto Layout",
+                "Design System Search"
+              ],
+              "tags": [
+                "дизайн",
+                "UI/UX",
+                "enterprise"
+              ],
+              "businessUse": [
+                "design"
+              ],
+              "businessFocus": "AI-ускорение дизайна интерфейсов.",
+              "roles": [
+                "designer"
+              ],
+              "pricing": "$15/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший AI для UI/UX дизайна"
+            },
+            {
+              "name": "Adobe Firefly / Photoshop AI",
+              "url": "https://adobe.com/firefly",
+              "description": "Adobe Firefly — генеративный AI от Adobe. Интеграция в Photoshop, Illustrator, Premiere.",
+              "strength": "Adobe экосистема. Коммерческая лицензия. Профессионализм.",
+              "features": [
+                "Adobe Integration",
+                "Commercial License",
+                "Generative Fill"
+              ],
+              "tags": [
+                "изображения",
+                "дизайн",
+                "enterprise"
+              ],
+              "businessUse": [
+                "design",
+                "marketing"
+              ],
+              "businessFocus": "Профессиональный AI-дизайн с коммерческой лицензией.",
+              "roles": [
+                "designer",
+                "marketer"
+              ],
+              "pricing": "$22/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший для профессионального дизайна с лицензией"
+            }
+          ]
+        },
+        {
+          "name": "Данные и аналитика",
+          "tools": [
+            {
+              "name": "Julius AI",
+              "url": "https://julius.ai",
+              "description": "Julius AI — анализ данных через чат. Загрузите CSV/Excel — получите визуализации и инсайты.",
+              "strength": "Анализ данных через чат. Визуализации. Простота.",
+              "features": [
+                "Chat with Data",
+                "Visualizations",
+                "CSV/Excel"
+              ],
+              "tags": [
+                "аналитика",
+                "данные",
+                "no-code"
+              ],
+              "businessUse": [
+                "analytics"
+              ],
+              "businessFocus": "Анализ данных без навыков программирования.",
+              "roles": [
+                "analyst",
+                "manager",
+                "marketer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для анализа данных без кода"
+            },
+            {
+              "name": "Tableau AI / Einstein",
+              "url": "https://tableau.com",
+              "description": "Tableau AI — AI-аналитика в Tableau. Автоматические инсайты, NL-запросы, прогнозирование.",
+              "strength": "Enterprise BI. NL-запросы. Автоинсайты.",
+              "features": [
+                "NL Queries",
+                "Auto Insights",
+                "Forecasting"
+              ],
+              "tags": [
+                "аналитика",
+                "данные",
+                "enterprise"
+              ],
+              "businessUse": [
+                "analytics",
+                "strategy"
+              ],
+              "businessFocus": "Enterprise BI с AI-инсайтами.",
+              "roles": [
+                "analyst",
+                "manager"
+              ],
+              "pricing": "$75/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший enterprise BI с AI"
+            },
+            {
+              "name": "ChatGPT Advanced Data Analysis",
+              "url": "https://openai.com",
+              "description": "Advanced Data Analysis в ChatGPT — загрузка файлов, Python-код, визуализации, статистика.",
+              "strength": "Интеграция в ChatGPT. Python. Визуализации.",
+              "features": [
+                "Python Execution",
+                "File Upload",
+                "Visualizations"
+              ],
+              "tags": [
+                "аналитика",
+                "данные",
+                "код"
+              ],
+              "businessUse": [
+                "analytics"
+              ],
+              "businessFocus": "Анализ данных прямо в ChatGPT.",
+              "roles": [
+                "analyst",
+                "researcher",
+                "developer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для быстрого анализа данных в чате"
+            }
+          ]
+        },
+        {
+          "name": "Продажи и CRM",
+          "tools": [
+            {
+              "name": "Clay",
+              "url": "https://clay.com",
+              "description": "Clay — AI-платформа для обогащения данных и outbound. 100+ источников данных, персонализация.",
+              "strength": "Обогащение данных. 100+ источников. Персонализация.",
+              "features": [
+                "Data Enrichment",
+                "100+ Sources",
+                "Personalization"
+              ],
+              "tags": [
+                "продажи",
+                "данные",
+                "автоматизация"
+              ],
+              "businessUse": [
+                "sales"
+              ],
+              "businessFocus": "Обогащение данных и персонализация outbound.",
+              "roles": [
+                "marketer",
+                "manager"
+              ],
+              "pricing": "$149/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший для обогащения данных в продажах"
+            },
+            {
+              "name": "Gong AI",
+              "url": "https://gong.io",
+              "description": "Gong — AI-аналитика звонков и встреч. Инсайты по сделкам, коучинг, прогнозирование.",
+              "strength": "Аналитика звонков. Коучинг. Прогнозирование сделок.",
+              "features": [
+                "Call Analytics",
+                "Deal Insights",
+                "Coaching"
+              ],
+              "tags": [
+                "продажи",
+                "аналитика",
+                "enterprise"
+              ],
+              "businessUse": [
+                "sales",
+                "strategy"
+              ],
+              "businessFocus": "AI-аналитика продаж и коучинг менеджеров.",
+              "roles": [
+                "manager"
+              ],
+              "pricing": "paid",
+              "rating": 4,
+              "recommendedFor": "Лучший для аналитики продаж и коучинга"
+            },
+            {
+              "name": "Apollo.io AI",
+              "url": "https://apollo.io",
+              "description": "Apollo.io — AI для prospecting и outreach. База 275M+ контактов, AI-персонализация писем.",
+              "strength": "275M+ контактов. AI-персонализация. Sequences.",
+              "features": [
+                "275M+ Contacts",
+                "AI Personalization",
+                "Sequences"
+              ],
+              "tags": [
+                "продажи",
+                "автоматизация",
+                "данные"
+              ],
+              "businessUse": [
+                "sales",
+                "marketing"
+              ],
+              "businessFocus": "AI-prospecting с огромной базой контактов.",
+              "roles": [
+                "marketer",
+                "manager"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для AI-prospecting"
+            }
+          ]
+        },
+        {
+          "name": "Клиентский сервис",
+          "tools": [
+            {
+              "name": "Intercom Fin AI",
+              "url": "https://intercom.com",
+              "description": "Intercom Fin — AI-агент для клиентской поддержки. Решает 50%+ запросов автономно.",
+              "strength": "50%+ автономных решений. Omnichannel.",
+              "features": [
+                "Autonomous Resolution",
+                "Omnichannel",
+                "Knowledge Base"
+              ],
+              "tags": [
+                "поддержка",
+                "агенты",
+                "enterprise"
+              ],
+              "businessUse": [
+                "sales",
+                "automation"
+              ],
+              "businessFocus": "AI-агент для автоматизации клиентской поддержки.",
+              "roles": [
+                "manager"
+              ],
+              "pricing": "$29/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший AI-агент для клиентской поддержки"
+            },
+            {
+              "name": "Zendesk AI",
+              "url": "https://zendesk.com",
+              "description": "Zendesk AI — AI-автоматизация тикетов. Классификация, маршрутизация, автоответы.",
+              "strength": "Enterprise support. Автоматизация тикетов.",
+              "features": [
+                "Ticket Automation",
+                "Classification",
+                "Auto-Replies"
+              ],
+              "tags": [
+                "поддержка",
+                "enterprise",
+                "автоматизация"
+              ],
+              "businessUse": [
+                "sales",
+                "automation"
+              ],
+              "businessFocus": "Enterprise автоматизация клиентской поддержки.",
+              "roles": [
+                "manager"
+              ],
+              "pricing": "$55/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший enterprise для автоматизации поддержки"
+            }
+          ]
+        },
+        {
+          "name": "HR и образование",
+          "tools": [
+            {
+              "name": "Coursera AI Tutor",
+              "url": "https://coursera.org",
+              "description": "Coursera AI Tutor — персональный AI-репетитор. Адаптивное обучение, объяснения, практика.",
+              "strength": "Адаптивное обучение. Персонализация. Coursera контент.",
+              "features": [
+                "Adaptive Learning",
+                "Personalization",
+                "Practice"
+              ],
+              "tags": [
+                "обучение",
+                "текст",
+                "enterprise"
+              ],
+              "businessUse": [
+                "hr"
+              ],
+              "businessFocus": "AI-репетитор для корпоративного обучения.",
+              "roles": [
+                "manager",
+                "researcher"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший AI-репетитор для обучения"
+            },
+            {
+              "name": "HireVue AI",
+              "url": "https://hirevue.com",
+              "description": "HireVue — AI для рекрутинга. Видео-интервью с AI-анализом, скоринг кандидатов.",
+              "strength": "AI-интервью. Скоринг кандидатов. Автоматизация.",
+              "features": [
+                "Video Interviews",
+                "AI Scoring",
+                "Automation"
+              ],
+              "tags": [
+                "HR",
+                "видео",
+                "enterprise"
+              ],
+              "businessUse": [
+                "hr"
+              ],
+              "businessFocus": "Автоматизация рекрутинга с AI-скорингом.",
+              "roles": [
+                "manager"
+              ],
+              "pricing": "paid",
+              "rating": 3,
+              "recommendedFor": "Для автоматизации рекрутинга"
+            },
+            {
+              "name": "Gamma AI",
+              "url": "https://gamma.app",
+              "description": "Gamma — AI-генерация презентаций. Из текста в красивые слайды за секунды.",
+              "strength": "Генерация презентаций. Красивый дизайн. Простота.",
+              "features": [
+                "Presentation Generation",
+                "Beautiful Design",
+                "Templates"
+              ],
+              "tags": [
+                "дизайн",
+                "текст",
+                "no-code"
+              ],
+              "businessUse": [
+                "marketing",
+                "strategy"
+              ],
+              "businessFocus": "Быстрая генерация презентаций для бизнеса.",
+              "roles": [
+                "manager",
+                "marketer",
+                "analyst"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для быстрой генерации презентаций"
+            }
+          ]
+        },
+        {
+          "name": "Юридические и финансовые",
+          "tools": [
+            {
+              "name": "Harvey AI",
+              "url": "https://harvey.ai",
+              "description": "Harvey — AI для юристов. Анализ контрактов, due diligence, юридические исследования.",
+              "strength": "Юридический AI. Анализ контрактов. Due diligence.",
+              "features": [
+                "Contract Analysis",
+                "Due Diligence",
+                "Legal Research"
+              ],
+              "tags": [
+                "юридический",
+                "текст",
+                "enterprise"
+              ],
+              "businessUse": [
+                "strategy"
+              ],
+              "businessFocus": "AI-автоматизация юридической работы.",
+              "roles": [
+                "manager",
+                "analyst"
+              ],
+              "pricing": "paid",
+              "rating": 4,
+              "recommendedFor": "Лучший AI для юридических задач"
+            },
+            {
+              "name": "Bloomberg GPT / Terminal AI",
+              "url": "https://bloomberg.com",
+              "description": "Bloomberg Terminal AI — AI-аналитика финансовых рынков. Новости, прогнозы, данные.",
+              "strength": "Финансовые данные. Прогнозы. Bloomberg экосистема.",
+              "features": [
+                "Financial Data",
+                "Forecasting",
+                "News Analysis"
+              ],
+              "tags": [
+                "финансы",
+                "аналитика",
+                "enterprise"
+              ],
+              "businessUse": [
+                "analytics",
+                "strategy"
+              ],
+              "businessFocus": "AI-аналитика финансовых рынков.",
+              "roles": [
+                "analyst",
+                "manager"
+              ],
+              "pricing": "paid",
+              "rating": 4,
+              "recommendedFor": "Лучший для финансовой аналитики"
+            },
+            {
+              "name": "AlphaFold 3 (DeepMind)",
+              "url": "https://alphafold.ebi.ac.uk",
+              "description": "AlphaFold 3 — предсказание структуры белков. Революция в drug discovery и биологии.",
+              "strength": "Предсказание белков. Drug discovery. Биология.",
+              "features": [
+                "Protein Structure",
+                "Drug Discovery",
+                "Biology"
+              ],
+              "tags": [
+                "наука",
+                "здоровье",
+                "research"
+              ],
+              "businessUse": [
+                "analytics"
+              ],
+              "businessFocus": "AI для научных исследований в биологии.",
+              "roles": [
+                "researcher"
+              ],
+              "pricing": "free",
+              "rating": 5,
+              "recommendedFor": "Лучший AI для биологических исследований"
+            }
+          ]
+        },
+        {
+          "name": "Продуктивность и коммуникация",
+          "tools": [
+            {
+              "name": "Otter.ai",
+              "url": "https://otter.ai",
+              "description": "Otter.ai — AI-транскрипция встреч. Автоматические заметки, action items, саммари.",
+              "strength": "Транскрипция встреч. Action items. Саммари.",
+              "features": [
+                "Meeting Transcription",
+                "Action Items",
+                "Summary"
+              ],
+              "tags": [
+                "аудио",
+                "текст",
+                "enterprise"
+              ],
+              "businessUse": [
+                "strategy",
+                "hr"
+              ],
+              "businessFocus": "Автоматизация заметок и action items со встреч.",
+              "roles": [
+                "manager",
+                "analyst"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для автоматических заметок со встреч"
+            },
+            {
+              "name": "Fireflies.ai",
+              "url": "https://fireflies.ai",
+              "description": "Fireflies — AI-ассистент для встреч. Запись, транскрипция, поиск по разговорам.",
+              "strength": "Запись встреч. Поиск по разговорам. Интеграции.",
+              "features": [
+                "Meeting Recording",
+                "Search",
+                "Integrations"
+              ],
+              "tags": [
+                "аудио",
+                "enterprise",
+                "автоматизация"
+              ],
+              "businessUse": [
+                "sales",
+                "strategy"
+              ],
+              "businessFocus": "Запись и анализ всех рабочих встреч.",
+              "roles": [
+                "manager",
+                "marketer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для записи и анализа встреч"
+            },
+            {
+              "name": "Tome AI",
+              "url": "https://tome.app",
+              "description": "Tome — AI-генерация презентаций и документов. Storytelling, визуализация данных.",
+              "strength": "AI-презентации. Storytelling. Визуализация.",
+              "features": [
+                "AI Presentations",
+                "Storytelling",
+                "Data Viz"
+              ],
+              "tags": [
+                "дизайн",
+                "текст",
+                "контент"
+              ],
+              "businessUse": [
+                "marketing",
+                "strategy"
+              ],
+              "businessFocus": "AI-генерация презентаций для бизнеса.",
+              "roles": [
+                "manager",
+                "marketer",
+                "analyst"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для AI-storytelling в презентациях"
+            },
+            {
+              "name": "Beautiful.ai",
+              "url": "https://beautiful.ai",
+              "description": "Beautiful.ai — AI-дизайн презентаций. Умные шаблоны, автоматическое форматирование.",
+              "strength": "Умные шаблоны. Автоформатирование. Красивый дизайн.",
+              "features": [
+                "Smart Templates",
+                "Auto Format",
+                "Beautiful Design"
+              ],
+              "tags": [
+                "дизайн",
+                "no-code",
+                "контент"
+              ],
+              "businessUse": [
+                "marketing",
+                "strategy"
+              ],
+              "businessFocus": "Красивые презентации без навыков дизайна.",
+              "roles": [
+                "manager",
+                "marketer"
+              ],
+              "pricing": "$12/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший для красивых презентаций без дизайнера"
+            },
+            {
+              "name": "Writesonic / Chatsonic",
+              "url": "https://writesonic.com",
+              "description": "Writesonic — AI для SEO-контента. Chatsonic — чат с актуальными данными из интернета.",
+              "strength": "SEO-контент. Актуальные данные. Маркетинг.",
+              "features": [
+                "SEO Content",
+                "Real-time Data",
+                "Marketing"
+              ],
+              "tags": [
+                "текст",
+                "маркетинг",
+                "SEO"
+              ],
+              "businessUse": [
+                "marketing"
+              ],
+              "businessFocus": "SEO-оптимизированный контент для маркетинга.",
+              "roles": [
+                "marketer"
+              ],
+              "pricing": "freemium",
+              "rating": 3,
+              "recommendedFor": "Лучший для SEO-контента"
+            },
+            {
+              "name": "Descript",
+              "url": "https://descript.com",
+              "description": "Descript — AI-редактор видео и подкастов. Редактирование через текст, удаление filler words.",
+              "strength": "Редактирование через текст. Filler word removal. Подкасты.",
+              "features": [
+                "Text-Based Editing",
+                "Filler Removal",
+                "Podcasts"
+              ],
+              "tags": [
+                "видео",
+                "аудио",
+                "контент"
+              ],
+              "businessUse": [
+                "marketing",
+                "design"
+              ],
+              "businessFocus": "Простое редактирование видео и подкастов.",
+              "roles": [
+                "marketer",
+                "designer"
+              ],
+              "pricing": "$24/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший для редактирования подкастов и видео"
+            },
+            {
+              "name": "Loom AI",
+              "url": "https://loom.com",
+              "description": "Loom AI — запись экрана с AI-саммари. Автоматические заголовки, chapters, CTA.",
+              "strength": "Запись экрана. AI-саммари. Chapters.",
+              "features": [
+                "Screen Recording",
+                "AI Summary",
+                "Chapters",
+                "CTA"
+              ],
+              "tags": [
+                "видео",
+                "enterprise",
+                "контент"
+              ],
+              "businessUse": [
+                "hr",
+                "sales"
+              ],
+              "businessFocus": "Асинхронная коммуникация с AI-улучшениями.",
+              "roles": [
+                "manager",
+                "marketer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для асинхронной видео-коммуникации"
+            },
+            {
+              "name": "Superhuman AI",
+              "url": "https://superhuman.com",
+              "description": "Superhuman — AI-email клиент. Автоответы, приоритизация, scheduling.",
+              "strength": "AI-email. Автоответы. Приоритизация.",
+              "features": [
+                "AI Email",
+                "Auto-Reply",
+                "Prioritization"
+              ],
+              "tags": [
+                "текст",
+                "автоматизация",
+                "enterprise"
+              ],
+              "businessUse": [
+                "sales",
+                "strategy"
+              ],
+              "businessFocus": "AI-ускорение работы с email.",
+              "roles": [
+                "manager",
+                "marketer"
+              ],
+              "pricing": "$30/mo",
+              "rating": 4,
+              "recommendedFor": "Лучший AI-email клиент"
+            },
+            {
+              "name": "Mem AI",
+              "url": "https://mem.ai",
+              "description": "Mem — AI-заметки с автоорганизацией. Связывание знаний, поиск, генерация.",
+              "strength": "Автоорганизация заметок. Связывание знаний.",
+              "features": [
+                "Auto-Organization",
+                "Knowledge Linking",
+                "AI Search"
+              ],
+              "tags": [
+                "текст",
+                "research",
+                "автоматизация"
+              ],
+              "businessUse": [
+                "analytics",
+                "strategy"
+              ],
+              "businessFocus": "AI-организация персональной базы знаний.",
+              "roles": [
+                "researcher",
+                "manager",
+                "analyst"
+              ],
+              "pricing": "freemium",
+              "rating": 3,
+              "recommendedFor": "Лучший для AI-организации заметок"
+            },
+            {
+              "name": "Coda AI",
+              "url": "https://coda.io",
+              "description": "Coda AI — AI в документах и таблицах. Автоматизация, формулы, интеграции.",
+              "strength": "AI в документах. Автоматизация. Формулы.",
+              "features": [
+                "Doc AI",
+                "Automation",
+                "Formulas",
+                "Integrations"
+              ],
+              "tags": [
+                "текст",
+                "автоматизация",
+                "no-code"
+              ],
+              "businessUse": [
+                "automation",
+                "strategy"
+              ],
+              "businessFocus": "AI-автоматизация в документах и процессах.",
+              "roles": [
+                "manager",
+                "analyst"
+              ],
+              "pricing": "freemium",
+              "rating": 3,
+              "recommendedFor": "Для AI-автоматизации в документах"
+            },
+            {
+              "name": "Pictory AI",
+              "url": "https://pictory.ai",
+              "description": "Pictory — создание видео из текста/статей. Автоматический подбор визуала, субтитры.",
+              "strength": "Текст в видео. Автовизуал. Субтитры.",
+              "features": [
+                "Text to Video",
+                "Auto Visuals",
+                "Subtitles"
+              ],
+              "tags": [
+                "видео",
+                "контент",
+                "маркетинг"
+              ],
+              "businessUse": [
+                "marketing"
+              ],
+              "businessFocus": "Превращение статей и текстов в видео.",
+              "roles": [
+                "marketer"
+              ],
+              "pricing": "$19/mo",
+              "rating": 3,
+              "recommendedFor": "Лучший для превращения текста в видео"
+            },
+            {
+              "name": "Scribe AI",
+              "url": "https://scribehow.com",
+              "description": "Scribe — автоматическое создание инструкций и SOP. Записывает действия, генерирует гайды.",
+              "strength": "Автоматические SOP. Запись действий. Гайды.",
+              "features": [
+                "Auto SOP",
+                "Action Recording",
+                "Guide Generation"
+              ],
+              "tags": [
+                "автоматизация",
+                "обучение",
+                "enterprise"
+              ],
+              "businessUse": [
+                "hr",
+                "automation"
+              ],
+              "businessFocus": "Автоматическое создание документации и SOP.",
+              "roles": [
+                "manager"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для автоматического создания SOP"
             }
           ]
         }
@@ -951,12 +2572,12 @@
     {
       "id": 3,
       "title": "Уровень 3 — Платформы сборки",
-      "subtitle": "Инструмент создания собственных решений",
-      "shortTitle": "Инструмент создания собственных решений",
-      "shortDesc": "Сборка собственных решений",
-      "description": "Платформы для создания собственных AI-решений — от no-code конструкторов до фреймворков разработки и протоколов стандартизации. MCP — индустриальный стандарт (9400+ серверов, 4 реестра, 78% корпоративных команд). A2A Protocol — в Linux Foundation (1 год). OpenAI Assistants API закрывается 26 августа 2026 (замена на Responses API).",
-      "color": "#8b5cf6",
-      "image": "https://d2xsxph8kpxj0f.cloudfront.net/310419663031817411/LmcKwojoPuoroSjGyukkEi/level3-platforms-8r7XuH7xyJJLqyq3aDPQqC.webp",
+      "subtitle": "Инфраструктура и оркестрация",
+      "shortTitle": "Инфраструктура и оркестрация",
+      "shortDesc": "Создание AI-решений, интеграция",
+      "description": "Платформы для создания собственных AI-решений: no-code конструкторы, фреймворки разработки и протоколы стандартизации. Позволяют собирать кастомные агенты и пайплайны.",
+      "color": "#fb923c",
+      "image": "",
       "categories": [
         {
           "name": "No-Code / Low-Code",
@@ -964,77 +2585,145 @@
             {
               "name": "n8n",
               "url": "https://n8n.io",
-              "description": "Open Source лидер 2026. Встроенные ноды для AI-агентов, памяти и RAG. Self-hosted бесплатно. Акцент на AI-агентах внутри рабочих процессов.",
-              "strength": "Лидер 2026. Self-hosted. Полная кастомизация.",
+              "description": "n8n — open-source платформа автоматизации. 400+ интеграций, AI-ноды, self-hosted.",
+              "strength": "Open source. 400+ интеграций. Self-hosted.",
               "features": [
-                "AI Agent Nodes",
-                "Memory & RAG",
-                "Self-Hosted Free",
-                "Workflow Leader"
+                "Open Source",
+                "400+ Integrations",
+                "AI Nodes",
+                "Self-Hosted"
               ],
               "tags": [
                 "автоматизация",
                 "no-code",
-                "open-source",
-                "api",
-                "enterprise"
+                "open-source"
               ],
               "businessUse": [
                 "automation",
-                "sales",
-                "marketing",
-                "hr"
+                "development"
               ],
-              "businessFocus": "Лидер автоматизации 2026. Связывает CRM, email, базы данных и AI-модели в единые рабочие процессы. Self-hosted = полный контроль над данными."
+              "businessFocus": "Open-source автоматизация с AI для любых процессов.",
+              "roles": [
+                "developer",
+                "analyst",
+                "manager"
+              ],
+              "pricing": "freemium",
+              "rating": 5,
+              "recommendedFor": "Лучшая open-source платформа автоматизации"
             },
             {
               "name": "Dify",
               "url": "https://dify.ai",
-              "description": "Open-source платформа для создания AI-приложений. RAG Pipeline, Agent Framework, Workflow Builder. 120K+ GitHub stars. Backend-as-a-Service для LLM-приложений.",
-              "strength": "120K+ stars. RAG + Agents + Workflows. Open source.",
+              "description": "Dify — open-source платформа для создания AI-приложений. RAG, агенты, workflows.",
+              "strength": "Open source. RAG. Агенты. Workflows.",
               "features": [
-                "120K+ Stars",
-                "RAG Pipeline",
-                "Agent Framework",
-                "BaaS for LLM"
+                "Open Source",
+                "RAG",
+                "Agents",
+                "Workflows"
               ],
               "tags": [
                 "автоматизация",
                 "no-code",
                 "open-source",
-                "api",
-                "enterprise"
+                "агенты"
               ],
               "businessUse": [
                 "automation",
-                "development",
-                "analytics"
+                "development"
               ],
-              "businessFocus": "Платформа для создания AI-приложений без глубокого кодинга. RAG Pipeline для работы с корпоративными документами. 120K+ GitHub stars."
+              "businessFocus": "Создание AI-приложений без глубокого кодинга.",
+              "roles": [
+                "developer",
+                "analyst"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший open-source для создания AI-приложений"
             },
             {
               "name": "Relevance AI",
               "url": "https://relevanceai.com",
-              "description": "No-code платформа для создания AI-агентов и workforce. Визуальный конструктор агентов. Multi-agent orchestration. Enterprise-ready.",
-              "strength": "No-code AI workforce. Multi-agent. Enterprise.",
+              "description": "Relevance AI — no-code платформа для AI-агентов. Визуальный конструктор, интеграции.",
+              "strength": "No-code агенты. Визуальный конструктор.",
               "features": [
                 "No-Code Agents",
-                "AI Workforce",
-                "Multi-Agent",
-                "Enterprise Ready"
+                "Visual Builder",
+                "Integrations"
+              ],
+              "tags": [
+                "агенты",
+                "no-code",
+                "автоматизация"
+              ],
+              "businessUse": [
+                "automation",
+                "sales"
+              ],
+              "businessFocus": "No-code создание AI-агентов для бизнеса.",
+              "roles": [
+                "manager",
+                "marketer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший no-code для создания AI-агентов"
+            },
+            {
+              "name": "Zapier AI / Central",
+              "url": "https://zapier.com",
+              "description": "Zapier Central — AI-автоматизация. 7000+ приложений, AI actions, natural language triggers.",
+              "strength": "7000+ приложений. AI actions. NL triggers.",
+              "features": [
+                "7000+ Apps",
+                "AI Actions",
+                "NL Triggers"
               ],
               "tags": [
                 "автоматизация",
                 "no-code",
-                "агенты",
                 "enterprise"
               ],
               "businessUse": [
-                "automation",
-                "sales",
-                "hr"
+                "automation"
               ],
-              "businessFocus": "No-code создание AI-workforce: агенты для обработки лидов, скрининга резюме, клиентской поддержки. Enterprise-ready."
+              "businessFocus": "Автоматизация любых бизнес-процессов с AI.",
+              "roles": [
+                "manager",
+                "marketer",
+                "analyst"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для автоматизации с 7000+ приложений"
+            },
+            {
+              "name": "Make (ex-Integromat)",
+              "url": "https://make.com",
+              "description": "Make — визуальная платформа автоматизации. AI-модули, сложные сценарии, доступная цена.",
+              "strength": "Визуальные сценарии. AI-модули. Доступная цена.",
+              "features": [
+                "Visual Scenarios",
+                "AI Modules",
+                "Affordable"
+              ],
+              "tags": [
+                "автоматизация",
+                "no-code",
+                "бюджетный"
+              ],
+              "businessUse": [
+                "automation"
+              ],
+              "businessFocus": "Визуальная автоматизация по доступной цене.",
+              "roles": [
+                "manager",
+                "marketer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший визуальный конструктор автоматизаций"
             }
           ]
         },
@@ -1044,36 +2733,65 @@
             {
               "name": "LangGraph / LangChain",
               "url": "https://langchain.com",
-              "description": "LangGraph — фреймворк для создания stateful multi-agent систем. LangChain — базовый фреймворк для LLM-приложений. LangSmith — observability. Доминирует в экосистеме.",
-              "strength": "Доминирует в экосистеме. Stateful agents. LangSmith.",
+              "description": "LangGraph — фреймворк для stateful AI-агентов. LangChain — оркестрация LLM-цепочек.",
+              "strength": "Stateful agents. Оркестрация. Огромное community.",
               "features": [
                 "Stateful Agents",
-                "Multi-Agent",
-                "LangSmith Observability",
-                "Ecosystem Leader"
+                "LLM Orchestration",
+                "Large Community"
               ],
               "tags": [
                 "код",
                 "агенты",
-                "api",
-                "enterprise"
+                "фреймворк"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "Фреймворк для создания production AI-агентов.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 5,
+              "recommendedFor": "Лучший фреймворк для AI-агентов"
+            },
+            {
+              "name": "CrewAI",
+              "url": "https://crewai.com",
+              "description": "CrewAI — фреймворк для multi-agent систем. Роли, задачи, collaboration между агентами.",
+              "strength": "Multi-agent. Роли и задачи. Collaboration.",
+              "features": [
+                "Multi-Agent",
+                "Roles & Tasks",
+                "Collaboration"
+              ],
+              "tags": [
+                "код",
+                "агенты",
+                "фреймворк"
               ],
               "businessUse": [
                 "development",
                 "automation"
               ],
-              "businessFocus": "Стандартный фреймворк для создания AI-приложений. LangSmith — observability для продакшн. Необходим Python/JS опыт."
+              "businessFocus": "Multi-agent системы для сложных бизнес-процессов.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Лучший для multi-agent систем"
             },
             {
-              "name": "CrewAI",
-              "url": "https://crewai.com",
-              "description": "Фреймворк для создания команд AI-агентов. Role-based agents. Task delegation. Простой API. Быстрый рост в 2026.",
-              "strength": "Команды агентов. Role-based. Простой API.",
+              "name": "OpenAI Agents SDK / Responses API",
+              "url": "https://platform.openai.com",
+              "description": "OpenAI Agents SDK — официальный SDK для создания агентов на базе OpenAI. Responses API для streaming.",
+              "strength": "Официальный OpenAI SDK. Responses API. Простота.",
               "features": [
-                "Agent Teams",
-                "Role-Based",
-                "Task Delegation",
-                "Simple API"
+                "Official SDK",
+                "Responses API",
+                "Tool Use"
               ],
               "tags": [
                 "код",
@@ -1081,33 +2799,68 @@
                 "api"
               ],
               "businessUse": [
-                "development",
-                "automation"
+                "development"
               ],
-              "businessFocus": "Простейший способ создать команду AI-агентов с ролями и делегированием задач. Быстрый прототипинг multi-agent систем."
+              "businessFocus": "Официальный способ создания агентов на OpenAI.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Лучший для агентов на базе OpenAI"
             },
             {
-              "name": "OpenAI Agents SDK / Responses API",
-              "url": "https://platform.openai.com",
-              "description": "Agents SDK — новый фреймворк OpenAI для создания агентов. Responses API заменяет Assistants API (закрытие 26 августа 2026). Web search, file search, computer use tools.",
-              "strength": "OpenAI экосистема. Responses API. Assistants API → deprecated.",
+              "name": "AutoGen (Microsoft)",
+              "url": "https://github.com/microsoft/autogen",
+              "description": "AutoGen — фреймворк Microsoft для multi-agent conversations. Гибкая архитектура.",
+              "strength": "Microsoft. Multi-agent conversations. Гибкость.",
               "features": [
-                "Agents SDK",
-                "Responses API",
-                "Assistants Deprecated",
-                "Built-in Tools"
+                "Multi-Agent",
+                "Conversations",
+                "Microsoft"
               ],
               "tags": [
                 "код",
                 "агенты",
-                "api",
-                "enterprise"
+                "open-source"
               ],
               "businessUse": [
-                "development",
-                "automation"
+                "development"
               ],
-              "businessFocus": "Официальный фреймворк OpenAI. Responses API заменяет Assistants API (дедлайн: 26 августа 2026). Миграция обязательна."
+              "businessFocus": "Multi-agent фреймворк от Microsoft.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Лучший Microsoft фреймворк для агентов"
+            },
+            {
+              "name": "Vercel AI SDK",
+              "url": "https://sdk.vercel.ai",
+              "description": "Vercel AI SDK — TypeScript SDK для AI-приложений. Streaming, tool calling, multi-provider.",
+              "strength": "TypeScript. Streaming. Multi-provider. Vercel deploy.",
+              "features": [
+                "TypeScript",
+                "Streaming",
+                "Multi-Provider",
+                "Vercel"
+              ],
+              "tags": [
+                "код",
+                "api",
+                "фреймворк"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "TypeScript SDK для быстрого создания AI-приложений.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Лучший TypeScript SDK для AI"
             }
           ]
         },
@@ -1117,69 +2870,332 @@
             {
               "name": "MCP (Model Context Protocol)",
               "url": "https://modelcontextprotocol.io",
-              "description": "Индустриальный стандарт к маю 2026. 9400+ серверов (рост 7.8x YoY). 4 реестра: Smithery (4210), Glama (2750), PulseMCP (1820), Cloudflare. 78% корпоративных AI-команд. Поддержка в Gemini, ChatGPT, Claude.",
-              "strength": "'USB-C для AI'. 9400+ серверов. Снижение интеграции с 18ч до 4.2ч.",
+              "description": "MCP — протокол Anthropic для подключения AI к инструментам. 9400+ серверов. Стандарт индустрии.",
+              "strength": "Стандарт индустрии. 9400+ серверов. Anthropic.",
               "features": [
+                "Industry Standard",
                 "9400+ Servers",
-                "4 Registries",
-                "78% Enterprise",
-                "Industry Standard"
+                "Tool Integration"
               ],
               "tags": [
-                "api",
+                "протокол",
                 "интеграция",
-                "enterprise",
-                "стандарт"
-              ],
-              "businessUse": [
-                "development",
-                "automation",
-                "strategy"
-              ],
-              "businessFocus": "'USB-C для AI' — стандарт интеграции, снижающий время подключения инструментов с 18ч до 4.2ч. 78% корпоративных команд уже используют."
-            },
-            {
-              "name": "A2A (Agent-to-Agent Protocol)",
-              "url": "https://github.com/google/A2A",
-              "description": "Протокол Google для межагентного взаимодействия. Передан в Linux Foundation (апрель 2025). 1 год: поддержка в LangGraph, CrewAI. Agent Card для обнаружения. 23% корпоративных стеков.",
-              "strength": "Межагентное взаимодействие. Linux Foundation. 23% enterprise.",
-              "features": [
-                "Inter-Agent Protocol",
-                "Linux Foundation",
-                "Agent Card Discovery",
-                "1 Year Anniversary"
-              ],
-              "tags": [
-                "api",
-                "интеграция",
-                "агенты",
-                "стандарт"
+                "enterprise"
               ],
               "businessUse": [
                 "development",
                 "automation"
               ],
-              "businessFocus": "Протокол для межагентного взаимодействия. Критически важен для компаний, строящих multi-agent системы из разных вендоров."
+              "businessFocus": "Стандартный протокол подключения AI к инструментам.",
+              "roles": [
+                "developer",
+                "manager"
+              ],
+              "pricing": "free",
+              "rating": 5,
+              "recommendedFor": "Стандарт для интеграции AI с инструментами"
+            },
+            {
+              "name": "A2A (Agent-to-Agent Protocol)",
+              "url": "https://github.com/google/A2A",
+              "description": "A2A — протокол Google для коммуникации между AI-агентами. Interoperability.",
+              "strength": "Google. Agent interoperability. Open standard.",
+              "features": [
+                "Agent Communication",
+                "Google",
+                "Open Standard"
+              ],
+              "tags": [
+                "протокол",
+                "агенты",
+                "интеграция"
+              ],
+              "businessUse": [
+                "development",
+                "automation"
+              ],
+              "businessFocus": "Протокол для взаимодействия между AI-агентами.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Для коммуникации между AI-агентами"
             },
             {
               "name": "ACP / UCP (новые протоколы)",
-              "url": "https://www.digitalapplied.com/blog/ai-agent-protocol-ecosystem-map-2026-mcp-a2a-acp-ucp",
-              "description": "ACP и UCP — новые протоколы в экосистеме агентов 2026. Дополняют MCP и A2A для специализированных сценариев. Экосистема протоколов расширяется.",
-              "strength": "Расширение экосистемы протоколов за пределы MCP/A2A.",
+              "url": "https://agentcommunicationprotocol.dev",
+              "description": "ACP и UCP — новые протоколы для агентной коммуникации. Альтернативы A2A.",
+              "strength": "Новые стандарты. Альтернативы A2A.",
               "features": [
-                "ACP Protocol",
-                "UCP Protocol",
-                "Ecosystem Expansion"
+                "New Standards",
+                "Agent Communication",
+                "Emerging"
               ],
               "tags": [
-                "api",
-                "интеграция",
-                "стандарт"
+                "протокол",
+                "агенты",
+                "интеграция"
               ],
               "businessUse": [
                 "development"
               ],
-              "businessFocus": "Новые протоколы для специализированных сценариев. Следите за развитием — могут стать важными для вашего стека."
+              "businessFocus": "Новые протоколы агентной коммуникации.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 3,
+              "recommendedFor": "Для экспериментов с новыми протоколами"
+            }
+          ]
+        },
+        {
+          "name": "RAG и векторные БД",
+          "tools": [
+            {
+              "name": "Pinecone",
+              "url": "https://pinecone.io",
+              "description": "Pinecone — managed векторная БД. Serverless, масштабируемость, простота.",
+              "strength": "Managed. Serverless. Масштабируемость.",
+              "features": [
+                "Serverless",
+                "Scalable",
+                "Managed"
+              ],
+              "tags": [
+                "RAG",
+                "данные",
+                "enterprise"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "Managed векторная БД для RAG-приложений.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучшая managed векторная БД"
+            },
+            {
+              "name": "Weaviate",
+              "url": "https://weaviate.io",
+              "description": "Weaviate — open-source векторная БД. Hybrid search, модульная архитектура.",
+              "strength": "Open source. Hybrid search. Модульность.",
+              "features": [
+                "Open Source",
+                "Hybrid Search",
+                "Modular"
+              ],
+              "tags": [
+                "RAG",
+                "open-source",
+                "данные"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "Open-source векторная БД для AI-приложений.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучшая open-source векторная БД"
+            },
+            {
+              "name": "LlamaIndex",
+              "url": "https://llamaindex.ai",
+              "description": "LlamaIndex — фреймворк для RAG. Индексация данных, query engines, агенты.",
+              "strength": "RAG фреймворк. Индексация. Query engines.",
+              "features": [
+                "RAG Framework",
+                "Data Indexing",
+                "Query Engines"
+              ],
+              "tags": [
+                "RAG",
+                "код",
+                "фреймворк"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "Фреймворк для создания RAG-приложений.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Лучший фреймворк для RAG"
+            }
+          ]
+        },
+        {
+          "name": "MLOps и инфраструктура",
+          "tools": [
+            {
+              "name": "Hugging Face",
+              "url": "https://huggingface.co",
+              "description": "Hugging Face — платформа для ML-моделей. 500K+ моделей, Spaces, Inference API.",
+              "strength": "500K+ моделей. Community. Inference API.",
+              "features": [
+                "500K+ Models",
+                "Spaces",
+                "Inference API"
+              ],
+              "tags": [
+                "open-source",
+                "модели",
+                "api"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "Платформа для доступа к open-source моделям.",
+              "roles": [
+                "developer",
+                "researcher"
+              ],
+              "pricing": "freemium",
+              "rating": 5,
+              "recommendedFor": "Лучшая платформа для open-source моделей"
+            },
+            {
+              "name": "Weights & Biases",
+              "url": "https://wandb.ai",
+              "description": "W&B — платформа для ML-экспериментов. Tracking, визуализация, collaboration.",
+              "strength": "Experiment tracking. Визуализация. Collaboration.",
+              "features": [
+                "Experiment Tracking",
+                "Visualization",
+                "Collaboration"
+              ],
+              "tags": [
+                "MLOps",
+                "данные",
+                "enterprise"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "Tracking и визуализация ML-экспериментов.",
+              "roles": [
+                "developer",
+                "researcher"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для tracking ML-экспериментов"
+            },
+            {
+              "name": "OpenRouter",
+              "url": "https://openrouter.ai",
+              "description": "OpenRouter — единый API для 200+ моделей. Роутинг, fallback, сравнение цен.",
+              "strength": "200+ моделей. Единый API. Роутинг.",
+              "features": [
+                "200+ Models",
+                "Unified API",
+                "Routing",
+                "Fallback"
+              ],
+              "tags": [
+                "api",
+                "модели",
+                "инфраструктура"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "Единый API для доступа к любым LLM.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "freemium",
+              "rating": 5,
+              "recommendedFor": "Лучший единый API для всех LLM"
+            },
+            {
+              "name": "Modal",
+              "url": "https://modal.com",
+              "description": "Modal — serverless платформа для ML. GPU on-demand, простой деплой, масштабирование.",
+              "strength": "Serverless ML. GPU on-demand. Простой деплой.",
+              "features": [
+                "Serverless",
+                "GPU On-Demand",
+                "Easy Deploy"
+              ],
+              "tags": [
+                "инфраструктура",
+                "код",
+                "MLOps"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "Serverless инфраструктура для ML-задач.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший serverless для ML"
+            },
+            {
+              "name": "Replicate",
+              "url": "https://replicate.com",
+              "description": "Replicate — запуск ML-моделей через API. Тысячи моделей, pay-per-use, простота.",
+              "strength": "Тысячи моделей. Pay-per-use. API.",
+              "features": [
+                "Thousands of Models",
+                "Pay-per-use",
+                "Simple API"
+              ],
+              "tags": [
+                "api",
+                "модели",
+                "инфраструктура"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "Простой доступ к ML-моделям через API.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "freemium",
+              "rating": 4,
+              "recommendedFor": "Лучший для запуска ML-моделей через API"
+            },
+            {
+              "name": "Flowise",
+              "url": "https://flowiseai.com",
+              "description": "Flowise — open-source визуальный конструктор LLM-приложений. Drag & drop, self-hosted.",
+              "strength": "Open source. Drag & drop. Self-hosted.",
+              "features": [
+                "Open Source",
+                "Drag & Drop",
+                "Self-Hosted"
+              ],
+              "tags": [
+                "no-code",
+                "open-source",
+                "автоматизация"
+              ],
+              "businessUse": [
+                "development",
+                "automation"
+              ],
+              "businessFocus": "Визуальное создание LLM-приложений.",
+              "roles": [
+                "developer",
+                "analyst"
+              ],
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Лучший визуальный конструктор LLM-приложений"
             }
           ]
         }

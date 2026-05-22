@@ -65,6 +65,38 @@
     .level-tab.active { border-color:#00e5a0 !important; color:#00e5a0 !important; }
     .level-tab:hover { border-color:#00e5a0; }
 
+    /* Role filter */
+    .role-filter-btn {
+      background: #161a1d; border: 1px solid #252c33; border-radius: 8px;
+      padding: 6px 14px; font-size: 12px; color: #9aa5b4; cursor: pointer; transition: all .2s;
+      white-space: nowrap;
+    }
+    .role-filter-btn.active { border-color: #00e5a0; color: #00e5a0; background: #0f2a1e; }
+    .role-filter-btn:hover { border-color: #00e5a0; color: #00e5a0; }
+
+    /* Pricing badge */
+    .pricing-badge {
+      font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 4px;
+      letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 3px;
+    }
+    .pricing-free { background: #0f2a1e; border: 1px solid #1e4030; color: #00e5a0; }
+    .pricing-freemium { background: #1a1f2a; border: 1px solid #2a3050; color: #38bdf8; }
+    .pricing-paid { background: #1e1508; border: 1px solid #3a2a10; color: #fb923c; }
+
+    /* Star rating */
+    .star-rating { display: inline-flex; gap: 1px; }
+    .star-rating .star { font-size: 11px; color: #252c33; }
+    .star-rating .star.filled { color: #eab308; }
+
+    /* Recommendation badge */
+    .rec-badge {
+      font-size: 10px; color: #00e5a0; background: #0f2a1e; border: 1px solid #1e4030;
+      padding: 2px 8px; border-radius: 4px; display: inline-block; margin-top: 6px;
+    }
+
+    /* Tool card hidden by role filter */
+    .tool-card-hidden { display: none !important; }
+
     /* Full-width sections below grid */
     .full-section {
       background: #1c2127; border: 1px solid #252c33; border-radius: 14px;
@@ -267,6 +299,18 @@
       <div><div style="font-size:13px;font-weight:700;color:#0d0f10;">Дашборд</div><div style="font-size:10px;color:rgba(13,15,16,.65);font-weight:500;">Новости · Тренды · CPT</div></div>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="margin-left:4px;"><path d="M4 8h8M9 5l3 3-3 3" stroke="#0d0f10" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
+  </div>
+
+  <!-- ROLE FILTER BAR -->
+  <div class="flex items-center gap-2 mb-5 flex-wrap" id="role-filter-bar">
+    <span style="font-size:12px;color:#6b7a8d;font-weight:500;margin-right:4px;">Фильтр по роли:</span>
+    <button class="role-filter-btn active" onclick="filterByRole(null)">Все роли</button>
+    <button class="role-filter-btn" onclick="filterByRole('marketer')">Я маркетолог</button>
+    <button class="role-filter-btn" onclick="filterByRole('developer')">Я разработчик</button>
+    <button class="role-filter-btn" onclick="filterByRole('analyst')">Я аналитик</button>
+    <button class="role-filter-btn" onclick="filterByRole('manager')">Я менеджер</button>
+    <button class="role-filter-btn" onclick="filterByRole('designer')">Я дизайнер</button>
+    <button class="role-filter-btn" onclick="filterByRole('researcher')">Я исследователь</button>
   </div>
 
   <!-- THREE-COLUMN GRID -->
@@ -518,11 +562,16 @@ const BIZ_LABELS = {
   hr:{label:'HR и обучение',icon:'👥'}, sales:{label:'Продажи и CRM',icon:'💰'},
   design:{label:'Дизайн и медиа',icon:'🎨'}, strategy:{label:'Стратегия и управление',icon:'📊'}
 };
+const ROLE_LABELS = {
+  marketer: 'Маркетолог', developer: 'Разработчик', analyst: 'Аналитик',
+  manager: 'Менеджер', designer: 'Дизайнер', researcher: 'Исследователь'
+};
 
 // ========== STATE ==========
 let DATA = null, TOTD = null, CHRONICLE = null, TRENDING = null;
 let allTools = [];
 let currentFilter = 'all';
+let currentRoleFilter = null;
 let visibleCount = 8;
 let chronicleFilter = 'All';
 let activeBizFilter = null;
@@ -567,6 +616,31 @@ const navigatorQuestions = [
   ]}
 ];
 
+// ========== HELPERS ==========
+function getPricingBadge(pricing) {
+  if (!pricing) return '';
+  const p = pricing.toLowerCase();
+  if (p === 'free') return '<span class="pricing-badge pricing-free">Бесплатно</span>';
+  if (p === 'freemium') return '<span class="pricing-badge pricing-freemium">Freemium</span>';
+  if (p === 'paid') return '<span class="pricing-badge pricing-paid">Платный</span>';
+  // Custom pricing string like "$20/mo"
+  return `<span class="pricing-badge pricing-paid">${pricing}</span>`;
+}
+
+function getStarRating(rating) {
+  if (!rating) return '';
+  const stars = [];
+  for (let i = 1; i <= 5; i++) {
+    stars.push(`<span class="star ${i <= rating ? 'filled' : ''}">★</span>`);
+  }
+  return `<span class="star-rating">${stars.join('')}</span>`;
+}
+
+function getRecommendationBadge(rec) {
+  if (!rec) return '';
+  return `<span class="rec-badge">💡 ${rec}</span>`;
+}
+
 // ========== INIT ==========
 async function init() {
   try {
@@ -577,6 +651,42 @@ async function init() {
     CHRONICLE = await feedRes.json();
     TOTD = await todRes.json();
   } catch(e) { console.error('Failed to load data:', e); return; }
+
+  // Stale date fallback for Tool of the Day
+  if (TOTD && TOTD.date) {
+    const totdDate = new Date(TOTD.date);
+    const now = new Date();
+    const diffDays = (now - totdDate) / (1000 * 60 * 60 * 24);
+    if (diffDays > 2) {
+      // Pick a random tool from the database as fallback
+      const allDbTools = [];
+      DATA.levels.forEach(level => {
+        level.categories.forEach(cat => {
+          cat.tools.forEach(tool => { allDbTools.push({ ...tool, level: level.id, category: cat.name }); });
+        });
+      });
+      const randomTool = allDbTools[Math.floor(Math.random() * allDbTools.length)];
+      TOTD = {
+        date: now.toISOString().split('T')[0],
+        tool: {
+          name: randomTool.name,
+          url: randomTool.url,
+          level: randomTool.level,
+          category: randomTool.category,
+          description: randomTool.description || randomTool.strength || '',
+          fullDescription: randomTool.description || randomTool.strength || '',
+          rating: (randomTool.rating || 4) * 2,
+          ratingMax: 10,
+          pros: (randomTool.features || []).slice(0, 3).map(f => f + ' — ключевая возможность'),
+          cons: ['Требует изучения документации', 'Возможны ограничения бесплатного плана'],
+          comparison: [],
+          recommendation: randomTool.recommendedFor || 'Рекомендуется для профессионального использования.',
+          idealFor: (randomTool.roles || []).map(r => ROLE_LABELS[r] || r),
+          pricing: randomTool.pricing || 'freemium'
+        }
+      };
+    }
+  }
 
   // Try loading trending
   try {
@@ -608,6 +718,22 @@ async function init() {
   renderQuiz();
 }
 
+// ========== ROLE FILTER ==========
+function filterByRole(role) {
+  currentRoleFilter = role;
+  visibleCount = 8;
+  // Update button states
+  document.querySelectorAll('.role-filter-btn').forEach(btn => btn.classList.remove('active'));
+  if (role === null) {
+    document.querySelector('.role-filter-btn').classList.add('active');
+  } else {
+    document.querySelectorAll('.role-filter-btn').forEach(btn => {
+      if (btn.getAttribute('onclick') === `filterByRole('${role}')`) btn.classList.add('active');
+    });
+  }
+  renderTools();
+}
+
 // ========== TOOLS FEED (Left Column) ==========
 function getVendor(tool) {
   if (tool.url?.includes('openai') || tool.name.includes('GPT') || tool.name.includes('OpenAI')) return 'OpenAI';
@@ -621,6 +747,12 @@ function getVendor(tool) {
 function renderTools() {
   const container = document.getElementById('tools-feed');
   let filtered = currentFilter === 'all' ? allTools : allTools.filter(t => t.level === currentFilter);
+  
+  // Apply role filter
+  if (currentRoleFilter) {
+    filtered = filtered.filter(t => t.roles && t.roles.includes(currentRoleFilter));
+  }
+  
   let toShow = filtered.slice(0, visibleCount);
   document.getElementById('tools-count').textContent = filtered.length + ' инструментов';
 
@@ -636,11 +768,13 @@ function renderTools() {
           <div class="flex items-center gap-2 mb-1 flex-wrap">
             <span class="tag" style="background:${vc.bg};color:${vc.text};border:1px solid ${vc.border};">${vendor !== 'default' ? vendor : 'Tool'}</span>
             <span class="tag" style="background:#161a1d;color:${lc.color};border:1px solid #252c33;">${lc.label}</span>
-            ${tags.map(t => `<span class="tag" style="background:#161a1d;color:#6b7a8d;border:1px solid #252c33;">${t}</span>`).join('')}
+            ${getPricingBadge(tool.pricing)}
+            ${getStarRating(tool.rating)}
             ${tool.apiPrice ? `<span style="font-size:10px;color:#6b7a8d;margin-left:auto;font-family:'JetBrains Mono',monospace;">${tool.apiPrice}</span>` : ''}
           </div>
           <p style="font-size:14px;font-weight:500;color:#e8edf2;margin:0 0 4px;"><strong style="color:${vc.text};">${tool.name}</strong></p>
           <p style="font-size:12px;color:#6b7a8d;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${tool.description || tool.strength || ''}</p>
+          ${tool.recommendedFor ? getRecommendationBadge(tool.recommendedFor) : ''}
           ${tool.context ? `<div style="margin-top:6px;font-size:10px;color:#9aa5b4;">Контекст: ${tool.context}${tool.reasoning ? ' · Reasoning: '+tool.reasoning : ''}</div>` : ''}
         </div>
         <a href="${tool.url||'#'}" target="_blank" style="min-width:16px;margin-top:2px;opacity:.35;text-decoration:none;">
@@ -812,7 +946,7 @@ function renderBizResults() {
   summary.innerHTML = activeBizFilter ? `Направление: <strong>${(BIZ_LABELS[activeBizFilter]||{}).label||activeBizFilter}</strong> — найдено: <strong>${filtered.length}</strong>` : `Всего инструментов с бизнес-классификацией: <strong>${allT.length}</strong>`;
   document.getElementById('bizResults').innerHTML = filtered.map(tool => {
     const levelLabel = ['','Модель','Агент','Платформа'][tool.levelId]||'';
-    return `<div class="biz-tool-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${tool.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[tool.levelId]?.color||'#9aa5b4'};border:1px solid #252c33;">${levelLabel}</span></div><p style="font-size:12px;color:#9aa5b4;line-height:1.5;margin:0 0 8px;">${tool.businessFocus||tool.description}</p><div class="flex flex-wrap gap-1">${(tool.businessUse||[]).map(bu=>`<span style="font-size:10px;background:#161a1d;border:1px solid #252c33;color:#6b7a8d;padding:2px 6px;border-radius:4px;">${(BIZ_LABELS[bu]||{}).icon||''} ${(BIZ_LABELS[bu]||{}).label||bu}</span>`).join('')}</div><a href="${tool.url}" target="_blank" style="display:inline-block;margin-top:8px;font-size:11px;color:#00e5a0;text-decoration:none;">Перейти →</a></div>`;
+    return `<div class="biz-tool-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${tool.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[tool.levelId]?.color||'#9aa5b4'};border:1px solid #252c33;">${levelLabel}</span></div><p style="font-size:12px;color:#9aa5b4;line-height:1.5;margin:0 0 8px;">${tool.businessFocus||tool.description}</p><div class="flex flex-wrap gap-1">${(tool.businessUse||[]).map(bu=>`<span style="font-size:10px;background:#161a1d;border:1px solid #252c33;color:#6b7a8d;padding:2px 6px;border-radius:4px;">${(BIZ_LABELS[bu]||{}).icon||''} ${(BIZ_LABELS[bu]||{}).label||bu}</span>`).join('')}</div>${tool.pricing ? `<div style="margin-top:8px;">${getPricingBadge(tool.pricing)} ${getStarRating(tool.rating)}</div>` : ''}<a href="${tool.url}" target="_blank" style="display:inline-block;margin-top:8px;font-size:11px;color:#00e5a0;text-decoration:none;">Перейти →</a></div>`;
   }).join('');
 }
 
@@ -875,7 +1009,7 @@ function renderNavigatorResults(container) {
   container.innerHTML = `
     <div style="font-size:16px;font-weight:600;color:#e8edf2;margin-bottom:8px;">Ваши рекомендации</div>
     <div style="font-size:13px;color:#6b7a8d;margin-bottom:20px;">На основе ваших ответов подобрано ${top.length} инструментов:</div>
-    ${top.map(t=>`<div class="navigator-result-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${t.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[t.level]?.color||'#9aa5b4'};border:1px solid #252c33;">Уровень ${t.level}</span></div><p style="font-size:12px;color:#9aa5b4;margin:0 0 6px;">${t.strength||t.description}</p><div style="font-size:11px;color:#00e5a0;">Совпадение: ${Math.round(t.matchScore/t.maxScore*100)}%</div><a href="${t.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;margin-top:4px;display:inline-block;">Перейти →</a></div>`).join('')}
+    ${top.map(t=>`<div class="navigator-result-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${t.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[t.level]?.color||'#9aa5b4'};border:1px solid #252c33;">Уровень ${t.level}</span></div><p style="font-size:12px;color:#9aa5b4;margin:0 0 6px;">${t.strength||t.description}</p><div class="flex items-center gap-3" style="margin-top:4px;">${getPricingBadge(t.pricing)} ${getStarRating(t.rating)}</div><div style="font-size:11px;color:#00e5a0;margin-top:4px;">Совпадение: ${Math.round(t.matchScore/t.maxScore*100)}%</div><a href="${t.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;margin-top:4px;display:inline-block;">Перейти →</a></div>`).join('')}
     <button onclick="restartNav()" style="margin-top:16px;padding:10px 20px;background:#1c2127;border:1px solid #252c33;border-radius:8px;font-size:13px;color:#9aa5b4;cursor:pointer;">Пройти заново</button>`;
 }
 function restartNav() { navState={current:0,answers:[],finished:false}; renderNavigator(); }
