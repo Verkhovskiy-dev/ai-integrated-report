@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1440" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Гайд по моделям — verkhovskiy.ai</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -11,258 +11,294 @@
         extend: {
           colors: {
             brand: {
-              bg:      '#0d0f10',
-              surface: '#161a1d',
-              card:    '#1c2127',
-              border:  '#252c33',
-              green:   '#00e5a0',
-              teal:    '#00c8d7',
-              muted:   '#6b7a8d',
-              text:    '#e8edf2',
-              sub:     '#9aa5b4',
+              bg: '#0d0f10', surface: '#161a1d', card: '#1c2127',
+              border: '#252c33', green: '#00e5a0', teal: '#00c8d7',
+              muted: '#6b7a8d', text: '#e8edf2', sub: '#9aa5b4',
             }
           },
           fontFamily: {
             sans: ['Inter', 'system-ui', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace'],
-          },
-          boxShadow: {
-            glow: '0 0 20px rgba(0,229,160,0.18)',
-            card: '0 2px 12px rgba(0,0,0,0.45)',
           }
         }
       }
     }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
-    body { background: #0d0f10; color: #e8edf2; font-family: 'Inter', system-ui, sans-serif; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #0d0f10; color: #e8edf2; font-family: 'Inter', system-ui, sans-serif; min-height: 100vh; overflow-x: hidden; }
 
-    /* Scrollbar */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: #161a1d; }
     ::-webkit-scrollbar-thumb { background: #252c33; border-radius: 2px; }
 
-    /* Gradient text */
     .gradient-text {
       background: linear-gradient(135deg, #00e5a0 0%, #00c8d7 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    /* Pulse dot */
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.5; transform: scale(1.4); }
-    }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
     .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
 
-    /* Ticker line */
-    @keyframes ticker {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .ticker-inner { display: flex; animation: ticker 28s linear infinite; white-space: nowrap; }
-    .ticker-inner:hover { animation-play-state: paused; }
+    @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .ticker-inner { display:flex; animation:ticker 28s linear infinite; white-space:nowrap; }
+    .ticker-inner:hover { animation-play-state:paused; }
 
-    /* Card hover */
-    .news-card { transition: border-color 0.2s, background 0.2s, transform 0.15s; }
+    .news-card { transition: border-color .2s, background .2s, transform .15s; }
     .news-card:hover { border-color: #00e5a0 !important; background: #1f2830 !important; transform: translateY(-1px); }
 
-    /* Guide button */
     .guide-btn {
       background: linear-gradient(135deg, #00e5a0 0%, #00c8d7 100%);
-      transition: box-shadow 0.2s, transform 0.15s;
+      transition: box-shadow .2s, transform .15s;
     }
-    .guide-btn:hover { box-shadow: 0 0 28px rgba(0,229,160,0.45); transform: translateY(-1px); }
+    .guide-btn:hover { box-shadow: 0 0 28px rgba(0,229,160,.45); transform: translateY(-1px); }
 
-    /* Trend badge */
-    .trend-up   { color: #00e5a0; }
+    .trend-up { color: #00e5a0; }
     .trend-down { color: #ff5c7a; }
-    .trend-neu  { color: #9aa5b4; }
-
-    /* Stat card */
     .stat-card { background: #1c2127; border: 1px solid #252c33; border-radius: 12px; }
+    .section-label { font-size:10px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#6b7a8d; }
+    .tag { font-size:10px; font-weight:500; letter-spacing:.06em; padding:2px 8px; border-radius:4px; }
+    .level-tab { cursor:pointer; transition:all .2s; }
+    .level-tab.active { border-color:#00e5a0 !important; color:#00e5a0 !important; }
+    .level-tab:hover { border-color:#00e5a0; }
 
-    /* Section label */
-    .section-label {
-      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: #6b7a8d;
+    /* Full-width sections below grid */
+    .full-section {
+      background: #1c2127; border: 1px solid #252c33; border-radius: 14px;
+      padding: 32px; margin-top: 24px;
     }
-
-    /* Divider */
-    .divider { border-color: #252c33; }
-
-    /* Tag */
-    .tag {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.06em;
-      padding: 2px 8px; border-radius: 4px;
+    .full-section h2 {
+      font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700;
+      color: #e8edf2; margin-bottom: 8px;
     }
+    .full-section .sec-desc { font-size: 13px; color: #6b7a8d; margin-bottom: 24px; line-height: 1.5; }
+    .full-section .sec-label { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; }
 
-    /* Level tabs */
-    .level-tab { cursor: pointer; transition: all 0.2s; }
-    .level-tab.active { border-color: #00e5a0 !important; color: #00e5a0 !important; }
-    .level-tab:hover { border-color: #00e5a0; }
+    /* Tool of the Day full */
+    .totd-card { background: #161a1d; border: 1px solid #252c33; border-radius: 12px; padding: 24px; }
+    .totd-title { font-size: 20px; font-weight: 700; color: #e8edf2; }
+    .totd-rating { font-size: 28px; font-weight: 700; color: #00e5a0; font-family: 'JetBrains Mono', monospace; }
+    .totd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 16px 0; }
+    .totd-list { list-style: none; padding: 0; }
+    .totd-list li { font-size: 13px; color: #9aa5b4; padding: 6px 0; border-bottom: 1px solid #252c33; line-height: 1.5; }
+    .totd-list li::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 8px; }
+    .totd-pros li::before { background: #00e5a0; }
+    .totd-cons li::before { background: #ff5c7a; }
+
+    /* Chronicle */
+    .chronicle-filter-btn {
+      background: #161a1d; border: 1px solid #252c33; border-radius: 6px;
+      padding: 5px 12px; font-size: 12px; color: #9aa5b4; cursor: pointer; transition: all .2s;
+    }
+    .chronicle-filter-btn.active, .chronicle-filter-btn:hover { border-color: #00e5a0; color: #00e5a0; }
+    .chronicle-item { display: flex; gap: 12px; padding: 12px; border-radius: 10px; background: #161a1d; border: 1px solid transparent; transition: border-color .2s; }
+    .chronicle-item:hover { border-color: #252c33; }
+    .chronicle-impact-major { color: #ff5c7a; }
+    .chronicle-impact-minor { color: #fb923c; }
+    .chronicle-impact-patch { color: #00e5a0; }
+
+    /* Trending */
+    .trending-card {
+      display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+      background: #161a1d; border: 1px solid #252c33; border-radius: 10px; transition: border-color .2s;
+    }
+    .trending-card:hover { border-color: #00e5a0; }
+    .trending-rank { font-size: 14px; font-weight: 700; color: #6b7a8d; min-width: 32px; }
+    .trending-rank-1 { color: #00e5a0; }
+    .trending-rank-2 { color: #00c8d7; }
+    .trending-rank-3 { color: #a78bfa; }
+    .trending-bar { height: 4px; background: #252c33; border-radius: 2px; margin-top: 6px; }
+    .trending-bar-fill { height: 100%; border-radius: 2px; transition: width .5s; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .comparison-table th { background: #161a1d; color: #00e5a0; padding: 12px; text-align: left; border-bottom: 1px solid #252c33; font-weight: 600; }
+    .comparison-table td { padding: 10px 12px; border-bottom: 1px solid #1e2429; color: #9aa5b4; }
+    .comparison-table tr:hover td { background: #161a1d; }
+
+    /* Timeline */
+    .timeline-item { position: relative; padding-left: 24px; padding-bottom: 20px; border-left: 2px solid #252c33; }
+    .timeline-item::before { content: ''; position: absolute; left: -5px; top: 4px; width: 8px; height: 8px; background: #00e5a0; border-radius: 50%; }
+    .timeline-date { font-size: 11px; color: #00e5a0; font-weight: 600; margin-bottom: 2px; }
+    .timeline-event { font-size: 13px; color: #e8edf2; font-weight: 500; }
+    .timeline-desc { font-size: 12px; color: #6b7a8d; }
+
+    /* Shifts */
+    .shift-card { background: #161a1d; border: 1px solid #252c33; border-radius: 10px; padding: 16px; }
+    .shift-arrow { display: flex; align-items: center; gap: 8px; margin: 8px 0; font-size: 13px; }
+    .shift-from { color: #ff5c7a; }
+    .shift-to { color: #00e5a0; font-weight: 600; }
+
+    /* Strategy */
+    .strategy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .strategy-card { background: #161a1d; border: 1px solid #252c33; border-radius: 12px; padding: 20px; }
+    .strategy-card.recommended { border-color: #00e5a0; }
+    .strategy-card ul { list-style: none; padding: 0; }
+    .strategy-card li { font-size: 13px; color: #9aa5b4; padding: 6px 0; border-bottom: 1px solid #1e2429; }
+    .pilot-card { background: #0f2a1e; border: 1px solid #1e4030; border-radius: 12px; padding: 20px; text-align: center; }
+    .pilot-formula { font-family: 'JetBrains Mono', monospace; font-size: 16px; color: #00e5a0; font-weight: 600; padding: 12px; background: #161a1d; border-radius: 8px; }
+
+    /* Navigator */
+    .navigator-progress { display: flex; gap: 8px; margin-bottom: 20px; }
+    .navigator-progress-dot { width: 10px; height: 10px; border-radius: 50%; background: #252c33; }
+    .navigator-progress-dot.active { background: #00e5a0; }
+    .navigator-progress-dot.completed { background: #00c8d7; }
+    .navigator-option {
+      display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+      background: #161a1d; border: 1px solid #252c33; border-radius: 10px;
+      cursor: pointer; transition: all .2s; font-size: 14px; color: #e8edf2;
+    }
+    .navigator-option:hover { border-color: #00e5a0; }
+    .navigator-option.selected { border-color: #00e5a0; background: #0f2a1e; }
+    .navigator-btn {
+      display: none; margin-top: 16px; padding: 12px 24px;
+      background: linear-gradient(135deg, #00e5a0, #00c8d7); border: none; border-radius: 8px;
+      font-size: 14px; font-weight: 600; color: #0d0f10; cursor: pointer;
+    }
+    .navigator-btn.visible { display: inline-block; }
+    .navigator-result-card {
+      background: #161a1d; border: 1px solid #252c33; border-radius: 10px; padding: 16px; margin-bottom: 12px;
+    }
+    .navigator-result-card:hover { border-color: #00e5a0; }
+
+    /* Quiz */
+    .quiz-option {
+      display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+      background: #161a1d; border: 1px solid #252c33; border-radius: 10px;
+      cursor: pointer; transition: all .2s; font-size: 13px; color: #e8edf2; width: 100%;
+    }
+    .quiz-option:hover { border-color: #00e5a0; }
+    .quiz-option.correct { border-color: #00e5a0; background: #0f2a1e; }
+    .quiz-option.wrong { border-color: #ff5c7a; background: #1e0f0f; }
+    .quiz-option.disabled { pointer-events: none; opacity: 0.7; }
+    .quiz-option-letter { width: 24px; height: 24px; background: #252c33; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 12px; color: #9aa5b4; }
+    .quiz-explanation { display: none; margin-top: 16px; padding: 16px; background: #0f2a1e; border: 1px solid #1e4030; border-radius: 10px; font-size: 13px; color: #9aa5b4; line-height: 1.6; }
+    .quiz-explanation.visible { display: block; }
+    .quiz-next-btn { display: none; margin-top: 12px; padding: 10px 20px; background: linear-gradient(135deg,#00e5a0,#00c8d7); border: none; border-radius: 8px; font-size: 13px; font-weight: 600; color: #0d0f10; cursor: pointer; }
+    .quiz-next-btn.visible { display: inline-block; }
+    .quiz-progress-bar { height: 4px; background: #252c33; border-radius: 2px; margin-bottom: 20px; }
+    .quiz-progress-fill { height: 100%; background: #00e5a0; border-radius: 2px; transition: width .3s; }
+
+    /* Business classifier */
+    .biz-filter-btn {
+      background: #161a1d; border: 1px solid #252c33; border-radius: 8px;
+      padding: 8px 14px; font-size: 12px; color: #9aa5b4; cursor: pointer; transition: all .2s;
+    }
+    .biz-filter-btn.active, .biz-filter-btn:hover { border-color: #00e5a0; color: #00e5a0; }
+    .biz-tool-card { background: #161a1d; border: 1px solid #252c33; border-radius: 10px; padding: 16px; transition: border-color .2s; }
+    .biz-tool-card:hover { border-color: #00e5a0; }
+
+    @media (max-width: 1200px) {
+      .main-grid { grid-template-columns: 1fr 340px !important; }
+      .right-col { display: none; }
+    }
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr !important; }
+      .totd-grid { grid-template-columns: 1fr; }
+      .strategy-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
-<body class="min-h-screen" style="background:#0d0f10; width:1440px; overflow-x:hidden;">
+<body>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     TOP NAV
-═══════════════════════════════════════════════════════════════ -->
-<nav style="background:#161a1d; border-bottom:1px solid #252c33;" class="px-10 py-3 flex items-center justify-between sticky top-0 z-50">
+<!-- TOP NAV -->
+<nav style="background:#161a1d;border-bottom:1px solid #252c33;" class="px-6 md:px-10 py-3 flex items-center justify-between sticky top-0 z-50">
   <div class="flex items-center gap-3">
     <div style="width:32px;height:32px;background:linear-gradient(135deg,#00e5a0,#00c8d7);border-radius:8px;" class="flex items-center justify-center">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h4l2-6 2 12 2-6h2" stroke="#0d0f10" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <span style="font-weight:700;font-size:16px;letter-spacing:-0.02em;" class="text-white">verkhovskiy<span class="gradient-text">.ai</span></span>
   </div>
-
-  <div class="flex items-center gap-8">
-    <a href="/" style="color:#6b7a8d;font-size:13px;font-weight:400;" class="hover:text-white transition-colors">Дашборд</a>
+  <div class="hidden md:flex items-center gap-8">
+    <a href="/" style="color:#6b7a8d;font-size:13px;" class="hover:text-white transition-colors">Дашборд</a>
     <a href="/llm-map/" style="color:#e8edf2;font-size:13px;font-weight:500;border-bottom:2px solid #00e5a0;padding-bottom:2px;">Карта моделей</a>
-    <a href="#" style="color:#6b7a8d;font-size:13px;font-weight:400;" class="hover:text-white transition-colors">Аналитика</a>
-    <a href="#" style="color:#6b7a8d;font-size:13px;font-weight:400;" class="hover:text-white transition-colors">Инструменты</a>
+    <a href="#" style="color:#6b7a8d;font-size:13px;" class="hover:text-white transition-colors">Аналитика</a>
+    <a href="#" style="color:#6b7a8d;font-size:13px;" class="hover:text-white transition-colors">Инструменты</a>
   </div>
-
   <div class="flex items-center gap-4">
     <div class="flex items-center gap-2" style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:6px 12px;">
       <div class="pulse-dot" style="width:7px;height:7px;background:#00e5a0;border-radius:50%;"></div>
       <span style="font-size:12px;color:#9aa5b4;">Live</span>
     </div>
-    <div style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:6px 12px;font-size:12px;color:#9aa5b4;">
-      22 мая 2026
-    </div>
-    <div style="width:32px;height:32px;background:linear-gradient(135deg,#252c33,#1c2127);border-radius:50%;border:1px solid #252c33;" class="flex items-center justify-center cursor-pointer">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="#9aa5b4" stroke-width="1.3"/><path d="M2 12c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#9aa5b4" stroke-width="1.3" stroke-linecap="round"/></svg>
-    </div>
+    <div style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:6px 12px;font-size:12px;color:#9aa5b4;" class="hidden sm:block">22 мая 2026</div>
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     TICKER BAR
-═══════════════════════════════════════════════════════════════ -->
+<!-- TICKER -->
 <div style="background:#131618;border-bottom:1px solid #1e2429;padding:7px 0;overflow:hidden;">
   <div class="ticker-inner" style="gap:0;">
-    <span style="color:#6b7a8d;font-size:11px;font-weight:500;padding:0 32px;">GPT-5.5</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 12%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Gemini 3.5</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 8%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Claude 4 Opus</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 5%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Llama 4</span>
-    <span style="color:#ff5c7a;font-size:11px;">▼ 3%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Grok 4.3</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 4%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">DeepSeek V4</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 19%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">MiMo-V2-Pro</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 21%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Cursor 3.0</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 7%</span>
+    <span style="color:#6b7a8d;font-size:11px;font-weight:500;padding:0 32px;">GPT-5.5</span><span style="color:#00e5a0;font-size:11px;">▲ 12%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Gemini 3.5</span><span style="color:#00e5a0;font-size:11px;">▲ 8%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Claude 4 Opus</span><span style="color:#00e5a0;font-size:11px;">▲ 5%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Llama 4</span><span style="color:#ff5c7a;font-size:11px;">▼ 3%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Grok 4.3</span><span style="color:#00e5a0;font-size:11px;">▲ 4%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">DeepSeek V4</span><span style="color:#00e5a0;font-size:11px;">▲ 19%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">MiMo-V2-Pro</span><span style="color:#00e5a0;font-size:11px;">▲ 21%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Cursor 3.0</span><span style="color:#00e5a0;font-size:11px;">▲ 7%</span>
     <span style="color:#6b7a8d;font-size:11px;padding:0 32px 0 64px;">·····</span>
-    <!-- duplicate for loop -->
-    <span style="color:#6b7a8d;font-size:11px;font-weight:500;padding:0 32px;">GPT-5.5</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 12%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Gemini 3.5</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 8%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Claude 4 Opus</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 5%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Llama 4</span>
-    <span style="color:#ff5c7a;font-size:11px;">▼ 3%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Grok 4.3</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 4%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">DeepSeek V4</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 19%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">MiMo-V2-Pro</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 21%</span>
-    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Cursor 3.0</span>
-    <span style="color:#00e5a0;font-size:11px;">▲ 7%</span>
+    <span style="color:#6b7a8d;font-size:11px;font-weight:500;padding:0 32px;">GPT-5.5</span><span style="color:#00e5a0;font-size:11px;">▲ 12%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Gemini 3.5</span><span style="color:#00e5a0;font-size:11px;">▲ 8%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Claude 4 Opus</span><span style="color:#00e5a0;font-size:11px;">▲ 5%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Llama 4</span><span style="color:#ff5c7a;font-size:11px;">▼ 3%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Grok 4.3</span><span style="color:#00e5a0;font-size:11px;">▲ 4%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">DeepSeek V4</span><span style="color:#00e5a0;font-size:11px;">▲ 19%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">MiMo-V2-Pro</span><span style="color:#00e5a0;font-size:11px;">▲ 21%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Cursor 3.0</span><span style="color:#00e5a0;font-size:11px;">▲ 7%</span>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     MAIN CONTENT
-═══════════════════════════════════════════════════════════════ -->
-<main class="px-10 pt-8 pb-10" style="max-width:1440px;margin:0 auto;">
+<!-- MAIN CONTENT -->
+<main class="px-6 md:px-10 pt-8 pb-10" style="max-width:1440px;margin:0 auto;">
 
-  <!-- ── HEADER ROW ── -->
+  <!-- HEADER ROW -->
   <div class="flex items-start justify-between mb-8">
     <div>
       <div class="section-label mb-2">Гайд по моделям · Обновлено: Май 2026</div>
-      <h1 style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.2;" class="text-white">
+      <h1 style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.2;font-family:'Space Grotesk',sans-serif;" class="text-white">
         Трёхуровневая карта <span class="gradient-text">LLM-инструментов</span>
       </h1>
-      <p style="color:#6b7a8d;font-size:14px;margin-top:6px;">
-        Модели, агенты, платформы сборки — 100+ инструментов с бенчмарками и ценами
-      </p>
+      <p style="color:#6b7a8d;font-size:14px;margin-top:6px;">Модели, агенты, платформы сборки — 100+ инструментов с бенчмарками и ценами</p>
     </div>
-
-    <!-- Guide CTA — back to Dashboard -->
-    <a href="/" class="guide-btn flex items-center gap-3 px-6 py-3 rounded-xl cursor-pointer no-underline" style="text-decoration:none;">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <rect x="2" y="3" width="16" height="14" rx="2.5" stroke="#0d0f10" stroke-width="1.6"/>
-        <path d="M6 7h8M6 10h5M6 13h6" stroke="#0d0f10" stroke-width="1.6" stroke-linecap="round"/>
-      </svg>
-      <div>
-        <div style="font-size:13px;font-weight:700;color:#0d0f10;line-height:1.2;">Дашборд</div>
-        <div style="font-size:10px;color:rgba(13,15,16,0.65);font-weight:500;">Новости · Тренды · CPT</div>
-      </div>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="margin-left:4px;">
-        <path d="M4 8h8M9 5l3 3-3 3" stroke="#0d0f10" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+    <a href="/" class="guide-btn flex items-center gap-3 px-6 py-3 rounded-xl no-underline hidden md:flex" style="text-decoration:none;">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="14" rx="2.5" stroke="#0d0f10" stroke-width="1.6"/><path d="M6 7h8M6 10h5M6 13h6" stroke="#0d0f10" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <div><div style="font-size:13px;font-weight:700;color:#0d0f10;">Дашборд</div><div style="font-size:10px;color:rgba(13,15,16,.65);font-weight:500;">Новости · Тренды · CPT</div></div>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="margin-left:4px;"><path d="M4 8h8M9 5l3 3-3 3" stroke="#0d0f10" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
 
-  <!-- ── THREE-COLUMN GRID ── -->
-  <div class="grid gap-6" style="grid-template-columns: 1fr 380px 280px;">
+  <!-- THREE-COLUMN GRID -->
+  <div class="main-grid grid gap-6" style="grid-template-columns: 1fr 380px 280px;">
 
-    <!-- ════════════════════════════════
-         LEFT: Instruments/Models Feed
-    ════════════════════════════════ -->
+    <!-- LEFT: Tools Feed -->
     <div>
-      <!-- Level tabs -->
-      <div class="flex items-center gap-3 mb-4">
+      <div class="flex items-center gap-3 mb-4 flex-wrap">
         <button onclick="filterLevel('all')" class="level-tab active" id="tab-all" style="background:#1c2127;border:1px solid #00e5a0;border-radius:8px;padding:5px 12px;font-size:12px;color:#00e5a0;font-weight:500;">Все</button>
         <button onclick="filterLevel(1)" class="level-tab" id="tab-1" style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:5px 12px;font-size:12px;color:#9aa5b4;font-weight:500;">🧠 Модели</button>
         <button onclick="filterLevel(2)" class="level-tab" id="tab-2" style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:5px 12px;font-size:12px;color:#9aa5b4;font-weight:500;">🤖 Агенты</button>
         <button onclick="filterLevel(3)" class="level-tab" id="tab-3" style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:5px 12px;font-size:12px;color:#9aa5b4;font-weight:500;">🔧 Платформы</button>
-        <span style="font-size:11px;color:#6b7a8d;margin-left:auto;" id="tools-count">15 инструментов</span>
+        <span style="font-size:11px;color:#6b7a8d;margin-left:auto;" id="tools-count"></span>
       </div>
-
-      <!-- Cards container -->
-      <div class="flex flex-col gap-3" id="tools-feed">
-        <!-- Filled by JS -->
-      </div>
-
-      <!-- Load more -->
+      <div class="flex flex-col gap-3" id="tools-feed"></div>
       <div class="flex justify-center mt-4">
-        <button onclick="loadMore()" id="load-more-btn" style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:8px 20px;font-size:12px;color:#9aa5b4;cursor:pointer;" class="hover:border-brand-green hover:text-white transition-all">
-          Показать ещё 12 инструментов
-        </button>
+        <button onclick="loadMore()" id="load-more-btn" style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:8px 20px;font-size:12px;color:#9aa5b4;cursor:pointer;" class="hover:border-brand-green hover:text-white transition-all">Показать ещё</button>
       </div>
     </div>
 
-    <!-- ════════════════════════════════
-         CENTER: Trends + Tool of Day + Navigation
-    ════════════════════════════════ -->
+    <!-- CENTER: Trends + Tool of Day + Chronicle + CTA -->
     <div class="flex flex-col gap-5">
-
-      <!-- Trends -->
+      <!-- Trends compact -->
       <div class="stat-card p-5">
         <div class="flex items-center justify-between mb-4">
           <span style="font-size:14px;font-weight:600;color:#e8edf2;">Тренды недели</span>
           <span style="font-size:11px;color:#6b7a8d;">ТОП-5</span>
         </div>
-        <div class="flex flex-col gap-3" id="trends-list">
-          <!-- Filled by JS -->
-        </div>
+        <div class="flex flex-col gap-3" id="trends-compact"></div>
       </div>
 
-      <!-- Tool of the Day -->
+      <!-- Tool of Day compact -->
       <div class="stat-card p-5">
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center gap-2">
@@ -273,64 +309,42 @@
             </div>
           </div>
         </div>
-        <div id="tool-of-day">
-          <!-- Filled by JS -->
-        </div>
+        <div id="tool-of-day-compact"></div>
       </div>
 
-      <!-- Chronicle (latest 5) -->
+      <!-- Chronicle compact -->
       <div class="stat-card p-5">
         <div class="flex items-center justify-between mb-4">
           <span style="font-size:14px;font-weight:600;color:#e8edf2;">⚡ Хроника</span>
-          <span style="font-size:11px;color:#6b7a8d;">Последние 5</span>
+          <a href="#section-chronicle" style="font-size:11px;color:#00e5a0;text-decoration:none;">Все события →</a>
         </div>
-        <div class="flex flex-col gap-2" id="chronicle-list">
-          <!-- Filled by JS -->
-        </div>
+        <div class="flex flex-col gap-2" id="chronicle-compact"></div>
       </div>
 
-      <!-- Ecosystem navigation CTA -->
+      <!-- Navigation CTA -->
       <div style="background:linear-gradient(135deg,#0f2a1e 0%,#0a1f28 100%);border:1px solid #1e4030;border-radius:14px;padding:20px;position:relative;overflow:hidden;">
-        <div style="position:absolute;right:-20px;top:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(0,229,160,0.12),transparent 70%);border-radius:50%;"></div>
+        <div style="position:absolute;right:-20px;top:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(0,229,160,.12),transparent 70%);border-radius:50%;"></div>
         <div class="section-label mb-2">Навигация по экосистеме</div>
         <p style="font-size:14px;font-weight:600;color:#e8edf2;margin:0 0 4px;">100+ моделей в одном месте</p>
         <p style="font-size:12px;color:#6b7a8d;margin:0 0 16px;line-height:1.5;">Сравнивайте возможности, цены и бенчмарки всех актуальных LLM</p>
-        <a href="/llm-map/" class="guide-btn flex items-center justify-center gap-2 py-2.5 rounded-lg" style="text-decoration:none;">
-          <span style="font-size:13px;font-weight:700;color:#0d0f10;">Открыть полную карту →</span>
+        <a href="#section-navigator" class="guide-btn flex items-center justify-center gap-2 py-2.5 rounded-lg" style="text-decoration:none;">
+          <span style="font-size:13px;font-weight:700;color:#0d0f10;">Подобрать инструмент →</span>
         </a>
       </div>
-
     </div>
 
-    <!-- ════════════════════════════════
-         RIGHT: Stats + Categories + Quick links
-    ════════════════════════════════ -->
-    <div class="flex flex-col gap-4">
-
-      <!-- Stats -->
+    <!-- RIGHT: Stats + Categories + Quick links -->
+    <div class="flex flex-col gap-4 right-col">
       <div class="stat-card p-4">
         <div class="section-label mb-3">Статистика экосистемы</div>
         <div class="grid grid-cols-2 gap-3">
-          <div style="background:#161a1d;border-radius:8px;padding:12px;">
-            <div style="font-size:22px;font-weight:700;letter-spacing:-0.03em;" class="gradient-text">100+</div>
-            <div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Моделей в каталоге</div>
-          </div>
-          <div style="background:#161a1d;border-radius:8px;padding:12px;">
-            <div style="font-size:22px;font-weight:700;letter-spacing:-0.03em;color:#a78bfa;">25</div>
-            <div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Обновлений за неделю</div>
-          </div>
-          <div style="background:#161a1d;border-radius:8px;padding:12px;">
-            <div style="font-size:22px;font-weight:700;letter-spacing:-0.03em;color:#fb923c;">3</div>
-            <div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Уровня экосистемы</div>
-          </div>
-          <div style="background:#161a1d;border-radius:8px;padding:12px;">
-            <div style="font-size:22px;font-weight:700;letter-spacing:-0.03em;color:#38bdf8;">9400+</div>
-            <div style="font-size:11px;color:#6b7a8d;margin-top:2px;">MCP серверов</div>
-          </div>
+          <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:22px;font-weight:700;" class="gradient-text">100+</div><div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Моделей в каталоге</div></div>
+          <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:22px;font-weight:700;color:#a78bfa;">25</div><div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Обновлений за неделю</div></div>
+          <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:22px;font-weight:700;color:#fb923c;">3</div><div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Уровня экосистемы</div></div>
+          <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:22px;font-weight:700;color:#38bdf8;">9400+</div><div style="font-size:11px;color:#6b7a8d;margin-top:2px;">MCP серверов</div></div>
         </div>
       </div>
 
-      <!-- Category pills -->
       <div class="stat-card p-4">
         <div class="section-label mb-3">Категории</div>
         <div class="flex flex-wrap gap-2">
@@ -345,73 +359,135 @@
         </div>
       </div>
 
-      <!-- Quick links -->
       <div class="stat-card p-4">
         <div class="section-label mb-3">Быстрый доступ</div>
         <div class="flex flex-col gap-1">
-          <a href="#quiz" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;border:1px solid transparent;" class="hover:border-green-900 transition-all">
-            <div class="flex items-center gap-3">
-              <div style="width:28px;height:28px;background:linear-gradient(135deg,#00e5a0,#00c8d7);border-radius:6px;" class="flex items-center justify-center">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M4 5l3-3 3 3" stroke="#0d0f10" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <span style="font-size:13px;color:#e8edf2;font-weight:500;">Навигатор (квиз)</span>
-            </div>
+          <a href="#section-navigator" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;" class="hover:bg-green-900/10 transition-all">
+            <div class="flex items-center gap-3"><div style="width:28px;height:28px;background:linear-gradient(135deg,#00e5a0,#00c8d7);border-radius:6px;" class="flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M4 5l3-3 3 3" stroke="#0d0f10" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span style="font-size:13px;color:#e8edf2;font-weight:500;">Навигатор (квиз)</span></div>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-
-          <a href="#comparison" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;border:1px solid transparent;" class="hover:border-purple-900 transition-all">
-            <div class="flex items-center gap-3">
-              <div style="width:28px;height:28px;background:#1a1525;border:1px solid #2e2545;border-radius:6px;" class="flex items-center justify-center">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="2" width="10" height="10" rx="2" stroke="#a78bfa" stroke-width="1.3"/><path d="M5 5v4M7 7v2M9 3v6" stroke="#a78bfa" stroke-width="1.3" stroke-linecap="round"/></svg>
-              </div>
-              <span style="font-size:13px;color:#e8edf2;font-weight:500;">Сравнение моделей</span>
-            </div>
+          <a href="#section-comparison" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;" class="hover:bg-purple-900/10 transition-all">
+            <div class="flex items-center gap-3"><div style="width:28px;height:28px;background:#1a1525;border:1px solid #2e2545;border-radius:6px;" class="flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="2" width="10" height="10" rx="2" stroke="#a78bfa" stroke-width="1.3"/></svg></div><span style="font-size:13px;color:#e8edf2;font-weight:500;">Сравнение моделей</span></div>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-
-          <a href="#evolution" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;border:1px solid transparent;" class="hover:border-blue-900 transition-all">
-            <div class="flex items-center gap-3">
-              <div style="width:28px;height:28px;background:#0a1520;border:1px solid #1a3050;border-radius:6px;" class="flex items-center justify-center">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10L5 4l3 4 2-2 2 4" stroke="#38bdf8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <span style="font-size:13px;color:#e8edf2;font-weight:500;">Эволюция рынка</span>
-            </div>
+          <a href="#section-evolution" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;" class="hover:bg-blue-900/10 transition-all">
+            <div class="flex items-center gap-3"><div style="width:28px;height:28px;background:#081520;border:1px solid #1a3050;border-radius:6px;" class="flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10l4-4 3 2 3-5" stroke="#38bdf8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span style="font-size:13px;color:#e8edf2;font-weight:500;">Эволюция рынка</span></div>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-
-          <a href="#test" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;border:1px solid transparent;" class="hover:border-orange-900 transition-all">
-            <div class="flex items-center gap-3">
-              <div style="width:28px;height:28px;background:#1e1208;border:1px solid #3a2010;border-radius:6px;" class="flex items-center justify-center">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#fb923c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <span style="font-size:13px;color:#e8edf2;font-weight:500;">Тест знаний</span>
-            </div>
+          <a href="#section-quiz" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;" class="hover:bg-orange-900/10 transition-all">
+            <div class="flex items-center gap-3"><div style="width:28px;height:28px;background:#1e1208;border:1px solid #3a2010;border-radius:6px;" class="flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#fb923c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span style="font-size:13px;color:#e8edf2;font-weight:500;">Тест знаний</span></div>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#section-business" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;" class="hover:bg-yellow-900/10 transition-all">
+            <div class="flex items-center gap-3"><div style="width:28px;height:28px;background:#1e1a08;border:1px solid #3a3010;border-radius:6px;" class="flex items-center justify-center"><span style="font-size:12px;">💼</span></div><span style="font-size:13px;color:#e8edf2;font-weight:500;">Бизнес-классификатор</span></div>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
       </div>
 
-      <!-- Newsletter -->
       <div style="background:#161a1d;border:1px solid #252c33;border-radius:12px;padding:16px;">
         <div style="font-size:13px;font-weight:600;color:#e8edf2;margin-bottom:4px;">Дайджест каждую неделю</div>
-        <p style="font-size:11px;color:#6b7a8d;margin:0 0 12px;line-height:1.5;">Лучшие новости AI прямо в почту</p>
+        <p style="font-size:11px;color:#6b7a8d;margin:0 0 12px;">Лучшие новости AI прямо в почту</p>
         <div class="flex gap-2">
-          <input type="email" placeholder="your@email.com"
-                 style="flex:1;background:#1c2127;border:1px solid #252c33;border-radius:7px;padding:7px 10px;font-size:12px;color:#e8edf2;outline:none;" />
-          <button class="guide-btn px-3 py-1.5 rounded-lg" style="font-size:12px;font-weight:600;color:#0d0f10;white-space:nowrap;border:none;cursor:pointer;">
-            Подписаться
-          </button>
+          <input type="email" placeholder="your@email.com" style="flex:1;background:#1c2127;border:1px solid #252c33;border-radius:7px;padding:7px 10px;font-size:12px;color:#e8edf2;outline:none;" />
+          <button class="guide-btn px-3 py-1.5 rounded-lg" style="font-size:12px;font-weight:600;color:#0d0f10;border:none;cursor:pointer;">Подписаться</button>
         </div>
       </div>
-
     </div>
+
   </div><!-- /grid -->
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FULL-WIDTH SECTIONS BELOW THE GRID
+  ═══════════════════════════════════════════════════════════ -->
+
+  <!-- TOOL OF THE DAY (full) -->
+  <div class="full-section" id="section-tool-of-day">
+    <div class="sec-label" style="color:#eab308;">⭐ Рекомендация</div>
+    <h2>Инструмент дня</h2>
+    <div class="sec-desc">Подробный разбор одного инструмента из каталога — с рейтингом, сравнением с аналогами и рекомендацией.</div>
+    <div id="toolOfTheDayFull"></div>
+  </div>
+
+  <!-- CHRONICLE (full) -->
+  <div class="full-section" id="section-chronicle">
+    <div class="sec-label" style="color:#00c8d7;">⚡ Лента обновлений</div>
+    <h2>Хроника обновлений</h2>
+    <div class="sec-desc">Последние события в мире AI-моделей и инструментов.</div>
+    <div class="flex flex-wrap gap-2 mb-4" id="chronicleFilters"></div>
+    <div class="flex flex-col gap-2" id="chronicleContent"></div>
+  </div>
+
+  <!-- TRENDING (full) -->
+  <div class="full-section" id="section-trending">
+    <div class="sec-label" style="color:#00e5a0;">📈 Динамика рынка</div>
+    <h2>ТОП трендов AI</h2>
+    <div class="sec-desc">Рейтинг ключевых направлений AI-индустрии по моментуму.</div>
+    <div id="trendingContent"></div>
+  </div>
+
+  <!-- BUSINESS CLASSIFIER -->
+  <div class="full-section" id="section-business">
+    <div class="sec-label" style="color:#eab308;">💼 Бизнес-применение</div>
+    <h2>Инструменты по бизнес-задачам</h2>
+    <div class="sec-desc">Выберите бизнес-направление, чтобы увидеть наиболее подходящие AI-инструменты.</div>
+    <div class="flex flex-wrap gap-2 mb-4" id="bizFilterBar"></div>
+    <div style="font-size:13px;color:#9aa5b4;margin-bottom:16px;" id="bizSummary"></div>
+    <div class="grid gap-3" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr));" id="bizResults"></div>
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="full-section" id="section-comparison">
+    <div class="sec-label" style="color:#00c8d7;">Сравнительный анализ</div>
+    <h2>Сравнение уровней</h2>
+    <div class="sec-desc">Ключевые различия между тремя уровнями LLM-экосистемы.</div>
+    <div style="overflow-x:auto;" id="comparisonContent"></div>
+  </div>
+
+  <!-- EVOLUTION -->
+  <div class="full-section" id="section-evolution">
+    <div class="sec-label" style="color:#00e5a0;">Хронология развития</div>
+    <h2>Эволюция экосистемы</h2>
+    <div class="sec-desc">От чат-ботов к автономным агентам: ключевые вехи развития.</div>
+    <div class="grid gap-8" style="grid-template-columns:1fr 1fr;">
+      <div>
+        <h3 style="font-size:16px;font-weight:600;color:#00c8d7;margin-bottom:16px;">Хронология</h3>
+        <div id="timelineContent"></div>
+      </div>
+      <div>
+        <h3 style="font-size:16px;font-weight:600;color:#00e5a0;margin-bottom:16px;">Структурные сдвиги</h3>
+        <div class="flex flex-col gap-3" id="shiftsContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="full-section" id="section-strategy">
+    <div class="sec-label" style="color:#a78bfa;">Рекомендации</div>
+    <h2>Стратегия внедрения</h2>
+    <div class="sec-desc">Два подхода к интеграции AI-инструментов и формула быстрого пилотного проекта.</div>
+    <div id="strategyContent"></div>
+  </div>
+
+  <!-- NAVIGATOR QUIZ -->
+  <div class="full-section" id="section-navigator">
+    <div class="sec-label" style="color:#a78bfa;">🧩 Персональный подбор</div>
+    <h2>Какие AI-инструменты тебе нужны?</h2>
+    <div class="sec-desc">Ответьте на 6 вопросов и получите персонализированную рекомендацию инструментов.</div>
+    <div id="navigatorContent"></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="full-section" id="section-quiz">
+    <div class="sec-label" style="color:#fb923c;">Проверка знаний</div>
+    <h2>Тест для самопроверки</h2>
+    <div class="sec-desc">10 вопросов по материалам карты LLM-инструментов.</div>
+    <div id="quizContent"></div>
+  </div>
 
 </main>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     FOOTER BAR
-═══════════════════════════════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer style="border-top:1px solid #1e2429;padding:14px 40px;" class="flex items-center justify-between">
   <span style="font-size:11px;color:#6b7a8d;">© 2026 verkhovskiy.ai · Гайд по моделям</span>
   <div class="flex items-center gap-6">
@@ -421,93 +497,141 @@
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     JAVASCRIPT — Load data from JSON
-═══════════════════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════ -->
 <script>
+// ========== CONSTANTS ==========
 const VENDOR_COLORS = {
-  'OpenAI': { bg: '#1e1e2e', border: '#2a2a40', text: '#a78bfa' },
-  'Anthropic': { bg: '#1e1508', border: '#3a2a10', text: '#fb923c' },
-  'Google': { bg: '#0f2a1e', border: '#1e4030', text: '#00e5a0' },
-  'xAI': { bg: '#1a1f2a', border: '#2a3050', text: '#7b9cff' },
-  'Meta': { bg: '#120c20', border: '#2a1850', text: '#c084fc' },
-  'Open Source': { bg: '#081520', border: '#1a3050', text: '#38bdf8' },
-  'Runway': { bg: '#120c20', border: '#2a1850', text: '#c084fc' },
-  'ElevenLabs': { bg: '#081520', border: '#1a3050', text: '#38bdf8' },
-  'default': { bg: '#161a1d', border: '#252c33', text: '#9aa5b4' }
+  'OpenAI': { bg:'#1e1e2e', border:'#2a2a40', text:'#a78bfa' },
+  'Anthropic': { bg:'#1e1508', border:'#3a2a10', text:'#fb923c' },
+  'Google': { bg:'#0f2a1e', border:'#1e4030', text:'#00e5a0' },
+  'xAI': { bg:'#1a1f2a', border:'#2a3050', text:'#7b9cff' },
+  'Meta': { bg:'#120c20', border:'#2a1850', text:'#c084fc' },
+  'Open Source': { bg:'#081520', border:'#1a3050', text:'#38bdf8' },
+  'default': { bg:'#161a1d', border:'#252c33', text:'#9aa5b4' }
+};
+const LEVEL_COLORS = { 1:{icon:'🧠',label:'Модели',color:'#00d4ff'}, 2:{icon:'🤖',label:'Агенты',color:'#a78bfa'}, 3:{icon:'🔧',label:'Платформы',color:'#fb923c'} };
+const BIZ_LABELS = {
+  marketing:{label:'Маркетинг и контент',icon:'📣'}, development:{label:'Разработка и код',icon:'💻'},
+  analytics:{label:'Аналитика и исследования',icon:'🔍'}, automation:{label:'Автоматизация процессов',icon:'⚙️'},
+  hr:{label:'HR и обучение',icon:'👥'}, sales:{label:'Продажи и CRM',icon:'💰'},
+  design:{label:'Дизайн и медиа',icon:'🎨'}, strategy:{label:'Стратегия и управление',icon:'📊'}
 };
 
-const LEVEL_COLORS = {
-  1: { icon: '🧠', label: 'Модели', color: '#00d4ff' },
-  2: { icon: '🤖', label: 'Агенты', color: '#a78bfa' },
-  3: { icon: '🔧', label: 'Платформы', color: '#fb923c' }
-};
-
+// ========== STATE ==========
+let DATA = null, TOTD = null, CHRONICLE = null, TRENDING = null;
 let allTools = [];
 let currentFilter = 'all';
 let visibleCount = 8;
+let chronicleFilter = 'All';
+let activeBizFilter = null;
+let quizState = { current: 0, score: 0, answered: false, finished: false };
+let navState = { current: 0, answers: [], finished: false };
 
-// Load data
+// ========== NAVIGATOR QUESTIONS ==========
+const navigatorQuestions = [
+  { id:1, question:"Какие задачи вы решаете чаще всего?", hint:"Выберите основное направление работы", options:[
+    {icon:"📝",text:"Написание текстов, статей, отчётов",tags:["текст","контент"]},
+    {icon:"💻",text:"Программирование и разработка",tags:["код","IDE"]},
+    {icon:"🎨",text:"Создание изображений, видео, медиа",tags:["изображения","видео","аудио","голос","контент","мультимодальность"]},
+    {icon:"🔍",text:"Исследования и аналитика",tags:["research","поиск","текст"]},
+    {icon:"⚙️",text:"Автоматизация рабочих процессов",tags:["автоматизация","агенты","no-code"]},
+    {icon:"💼",text:"Управление и стратегия (Enterprise)",tags:["enterprise","интеграция"]}
+  ]},
+  { id:2, question:"Какой у вас бюджет на AI-инструменты?", hint:"Месячный бюджет на одного пользователя", options:[
+    {icon:"💰",text:"Бесплатно / минимальный (до $20/мес)",tags:["бюджетный","open-source"]},
+    {icon:"💳",text:"Средний ($20–100/мес)",tags:["enterprise"]},
+    {icon:"💎",text:"Без ограничений (Enterprise)",tags:["enterprise"]}
+  ]},
+  { id:3, question:"Нужен ли вам API-доступ для интеграции?", hint:"Планируете ли встраивать AI в свои системы", options:[
+    {icon:"❌",text:"Нет, мне достаточно веб-интерфейса",tags:["no-code"]},
+    {icon:"✅",text:"Да, нужен API для интеграции",tags:["api","код"]},
+    {icon:"🚀",text:"Нужна полная платформа для создания AI-решений",tags:["api","enterprise","интеграция"]}
+  ]},
+  { id:4, question:"Какой уровень технической подготовки?", hint:"Это поможет подобрать инструменты нужной сложности", options:[
+    {icon:"👤",text:"Нетехнический — нужен простой интерфейс",tags:["no-code","текст"]},
+    {icon:"🧑‍💻",text:"Средний — могу настроить, но не программировать",tags:["автоматизация","no-code","агенты"]},
+    {icon:"👨‍💻",text:"Продвинутый — пишу код, работаю с API",tags:["код","api","IDE"]}
+  ]},
+  { id:5, question:"Что для вас важнее в инструменте?", hint:"Выберите приоритет", options:[
+    {icon:"⚡",text:"Скорость и простота использования",tags:["текст","no-code"]},
+    {icon:"💪",text:"Мощность и качество результата",tags:["reasoning","enterprise"]},
+    {icon:"🔒",text:"Контроль и безопасность данных",tags:["open-source","enterprise"]},
+    {icon:"💰",text:"Соотношение цена/качество",tags:["бюджетный","open-source"]}
+  ]},
+  { id:6, question:"Работаете один или в команде?", hint:"Это влияет на выбор между персональными и командными решениями", options:[
+    {icon:"👤",text:"Один / фрилансер",tags:["бюджетный","текст","код"]},
+    {icon:"👥",text:"Небольшая команда (2–10 человек)",tags:["агенты","автоматизация"]},
+    {icon:"🏢",text:"Большая организация (10+ человек)",tags:["enterprise","интеграция"]}
+  ]}
+];
+
+// ========== INIT ==========
 async function init() {
   try {
     const [toolsRes, feedRes, todRes] = await Promise.all([
-      fetch('data/llm-tools.json'),
-      fetch('data/models-feed.json'),
-      fetch('data/tool-of-the-day.json')
+      fetch('data/llm-tools.json'), fetch('data/models-feed.json'), fetch('data/tool-of-the-day.json')
     ]);
-    const toolsData = await toolsRes.json();
-    const feedData = await feedRes.json();
-    const todData = await todRes.json();
+    DATA = await toolsRes.json();
+    CHRONICLE = await feedRes.json();
+    TOTD = await todRes.json();
+  } catch(e) { console.error('Failed to load data:', e); return; }
 
-    // Parse tools from levels
-    toolsData.levels.forEach(level => {
-      level.categories.forEach(cat => {
-        cat.tools.forEach(tool => {
-          allTools.push({
-            ...tool,
-            level: level.id,
-            category: cat.name
-          });
-        });
-      });
+  // Try loading trending
+  try {
+    const resp = await fetch('data/momentum.json');
+    if (resp.ok) { const d = await resp.json(); TRENDING = Array.isArray(d) ? d[d.length-1] : d; }
+  } catch(e) { TRENDING = null; }
+
+  // Flatten tools
+  DATA.levels.forEach(level => {
+    level.categories.forEach(cat => {
+      cat.tools.forEach(tool => { allTools.push({ ...tool, level: level.id, category: cat.name }); });
     });
+  });
 
-    renderTools();
-    renderTrends(feedData);
-    renderToolOfDay(todData);
-    renderChronicle(feedData);
-  } catch(e) {
-    console.error('Failed to load data:', e);
-    renderFallback();
-  }
+  // Render everything
+  renderTools();
+  renderTrendsCompact();
+  renderToolOfDayCompact();
+  renderChronicleCompact();
+  renderToolOfTheDayFull();
+  renderChronicleFull();
+  renderTrendingFull();
+  renderBusinessClassifier();
+  renderComparison();
+  renderTimeline();
+  renderShifts();
+  renderStrategy();
+  renderNavigator();
+  renderQuiz();
+}
+
+// ========== TOOLS FEED (Left Column) ==========
+function getVendor(tool) {
+  if (tool.url?.includes('openai') || tool.name.includes('GPT') || tool.name.includes('OpenAI')) return 'OpenAI';
+  if (tool.url?.includes('anthropic') || tool.name.includes('Claude')) return 'Anthropic';
+  if (tool.url?.includes('google') || tool.name.includes('Gemini') || tool.name.includes('Google')) return 'Google';
+  if (tool.url?.includes('x.ai') || tool.name.includes('Grok')) return 'xAI';
+  if (tool.url?.includes('meta') || tool.name.includes('Meta') || tool.name.includes('Llama')) return 'Meta';
+  return 'default';
 }
 
 function renderTools() {
   const container = document.getElementById('tools-feed');
   let filtered = currentFilter === 'all' ? allTools : allTools.filter(t => t.level === currentFilter);
   let toShow = filtered.slice(0, visibleCount);
-
   document.getElementById('tools-count').textContent = filtered.length + ' инструментов';
 
   container.innerHTML = toShow.map(tool => {
     const lc = LEVEL_COLORS[tool.level];
-    // Determine vendor from name/url
-    let vendor = 'default';
-    if (tool.url?.includes('openai') || tool.name.includes('GPT') || tool.name.includes('OpenAI')) vendor = 'OpenAI';
-    else if (tool.url?.includes('anthropic') || tool.name.includes('Claude')) vendor = 'Anthropic';
-    else if (tool.url?.includes('google') || tool.name.includes('Gemini') || tool.name.includes('Google')) vendor = 'Google';
-    else if (tool.url?.includes('x.ai') || tool.name.includes('Grok')) vendor = 'xAI';
-    else if (tool.url?.includes('meta') || tool.name.includes('Meta') || tool.name.includes('Llama')) vendor = 'Meta';
-    else if (tool.name.includes('Cursor') || tool.name.includes('n8n') || tool.name.includes('Dify')) vendor = 'Open Source';
-
+    const vendor = getVendor(tool);
     const vc = VENDOR_COLORS[vendor] || VENDOR_COLORS['default'];
     const tags = (tool.tags || []).slice(0, 3);
-
     return `
-      <div class="news-card flex items-start gap-4 p-4 rounded-xl cursor-pointer" style="background:#1c2127;border:1px solid #252c33;">
-        <div style="width:40px;height:40px;min-width:40px;background:linear-gradient(135deg,${vc.bg},#0d0f10);border:1px solid ${vc.border};border-radius:10px;" class="flex items-center justify-center">
-          <span style="font-size:18px;">${lc.icon}</span>
-        </div>
+      <div class="news-card flex items-start gap-4 p-4 rounded-xl" style="background:#1c2127;border:1px solid #252c33;">
+        <div style="width:40px;height:40px;min-width:40px;background:linear-gradient(135deg,${vc.bg},#0d0f10);border:1px solid ${vc.border};border-radius:10px;" class="flex items-center justify-center"><span style="font-size:18px;">${lc.icon}</span></div>
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2 mb-1 flex-wrap">
             <span class="tag" style="background:${vc.bg};color:${vc.text};border:1px solid ${vc.border};">${vendor !== 'default' ? vendor : 'Tool'}</span>
@@ -515,129 +639,278 @@ function renderTools() {
             ${tags.map(t => `<span class="tag" style="background:#161a1d;color:#6b7a8d;border:1px solid #252c33;">${t}</span>`).join('')}
             ${tool.apiPrice ? `<span style="font-size:10px;color:#6b7a8d;margin-left:auto;font-family:'JetBrains Mono',monospace;">${tool.apiPrice}</span>` : ''}
           </div>
-          <p style="font-size:14px;font-weight:500;color:#e8edf2;line-height:1.45;margin:0 0 4px;">
-            <strong style="color:${vc.text};">${tool.name}</strong>
-          </p>
-          <p style="font-size:12px;color:#6b7a8d;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
-            ${tool.description || tool.strength || ''}
-          </p>
-          ${tool.context ? `<div style="margin-top:6px;font-size:10px;color:#9aa5b4;"><span style="color:#6b7a8d;">Контекст:</span> ${tool.context} ${tool.reasoning ? `· <span style="color:#6b7a8d;">Reasoning:</span> ${tool.reasoning}` : ''}</div>` : ''}
+          <p style="font-size:14px;font-weight:500;color:#e8edf2;margin:0 0 4px;"><strong style="color:${vc.text};">${tool.name}</strong></p>
+          <p style="font-size:12px;color:#6b7a8d;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${tool.description || tool.strength || ''}</p>
+          ${tool.context ? `<div style="margin-top:6px;font-size:10px;color:#9aa5b4;">Контекст: ${tool.context}${tool.reasoning ? ' · Reasoning: '+tool.reasoning : ''}</div>` : ''}
         </div>
-        <a href="${tool.url || '#'}" target="_blank" style="min-width:16px;margin-top:2px;opacity:0.35;text-decoration:none;">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M4 8h8M9 5l3 3-3 3" stroke="#e8edf2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+        <a href="${tool.url||'#'}" target="_blank" style="min-width:16px;margin-top:2px;opacity:.35;text-decoration:none;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="#e8edf2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-      </div>
-    `;
+      </div>`;
   }).join('');
 
-  // Update load more button
   const btn = document.getElementById('load-more-btn');
   const remaining = filtered.length - visibleCount;
-  if (remaining <= 0) {
-    btn.style.display = 'none';
-  } else {
-    btn.style.display = 'block';
-    btn.textContent = `Показать ещё ${Math.min(remaining, 8)} инструментов`;
-  }
+  btn.style.display = remaining <= 0 ? 'none' : 'block';
+  btn.textContent = `Показать ещё ${Math.min(remaining, 8)} инструментов`;
 }
 
 function filterLevel(level) {
-  currentFilter = level;
-  visibleCount = 8;
-  // Update tabs
-  document.querySelectorAll('.level-tab').forEach(t => {
-    t.classList.remove('active');
-    t.style.borderColor = '#252c33';
-    t.style.color = '#9aa5b4';
-  });
-  const activeTab = document.getElementById(level === 'all' ? 'tab-all' : `tab-${level}`);
-  activeTab.classList.add('active');
-  activeTab.style.borderColor = '#00e5a0';
-  activeTab.style.color = '#00e5a0';
+  currentFilter = level; visibleCount = 8;
+  document.querySelectorAll('.level-tab').forEach(t => { t.classList.remove('active'); t.style.borderColor='#252c33'; t.style.color='#9aa5b4'; });
+  const tab = document.getElementById(level==='all'?'tab-all':`tab-${level}`);
+  tab.classList.add('active'); tab.style.borderColor='#00e5a0'; tab.style.color='#00e5a0';
   renderTools();
 }
+function loadMore() { visibleCount += 8; renderTools(); }
 
-function loadMore() {
-  visibleCount += 8;
-  renderTools();
-}
-
-function renderTrends(feedData) {
-  const trends = [
-    { name: 'Agentic AI', pct: 34 },
-    { name: 'Multimodal LLM', pct: 28 },
-    { name: 'AI Video Gen', pct: 21 },
-    { name: 'On-device AI', pct: 15 },
-    { name: 'RAG 2.0', pct: -2 }
-  ];
-
-  const container = document.getElementById('trends-list');
+// ========== TRENDS COMPACT (Center Column) ==========
+function renderTrendsCompact() {
+  const trends = [{name:'Agentic AI',pct:34},{name:'Multimodal LLM',pct:28},{name:'AI Video Gen',pct:21},{name:'On-device AI',pct:15},{name:'RAG 2.0',pct:-2}];
+  const container = document.getElementById('trends-compact');
   container.innerHTML = trends.map(t => `
     <div class="flex items-center justify-between">
       <span style="font-size:13px;color:#e8edf2;">${t.name}</span>
       <div class="flex items-center gap-2">
-        <div style="width:80px;height:4px;background:#252c33;border-radius:2px;overflow:hidden;">
-          <div style="width:${Math.abs(t.pct)}%;height:100%;background:${t.pct >= 0 ? '#00e5a0' : '#ff5c7a'};border-radius:2px;"></div>
-        </div>
-        <span class="${t.pct >= 0 ? 'trend-up' : 'trend-down'}" style="font-size:12px;font-family:'JetBrains Mono',monospace;min-width:40px;text-align:right;">${t.pct >= 0 ? '▲' : '▼'} ${Math.abs(t.pct)}%</span>
+        <div style="width:80px;height:4px;background:#252c33;border-radius:2px;overflow:hidden;"><div style="width:${Math.abs(t.pct)}%;height:100%;background:${t.pct>=0?'#00e5a0':'#ff5c7a'};border-radius:2px;"></div></div>
+        <span class="${t.pct>=0?'trend-up':'trend-down'}" style="font-size:12px;font-family:'JetBrains Mono',monospace;min-width:40px;text-align:right;">${t.pct>=0?'▲':'▼'} ${Math.abs(t.pct)}%</span>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-function renderToolOfDay(data) {
-  const tool = data.tool || data;
-  const container = document.getElementById('tool-of-day');
-  container.innerHTML = `
+// ========== TOOL OF DAY COMPACT (Center Column) ==========
+function renderToolOfDayCompact() {
+  const tool = TOTD?.tool || TOTD;
+  if (!tool) return;
+  document.getElementById('tool-of-day-compact').innerHTML = `
     <div style="background:#161a1d;border-radius:10px;padding:14px;">
       <div class="flex items-center justify-between mb-2">
         <span style="font-size:16px;font-weight:700;color:#e8edf2;">${tool.name}</span>
-        <span style="font-size:18px;font-weight:700;color:#00e5a0;font-family:'JetBrains Mono',monospace;">${tool.rating}<span style="font-size:12px;color:#6b7a8d;">/${tool.ratingMax || 10}</span></span>
+        <span style="font-size:18px;font-weight:700;color:#00e5a0;font-family:'JetBrains Mono',monospace;">${tool.rating}<span style="font-size:12px;color:#6b7a8d;">/${tool.ratingMax||10}</span></span>
       </div>
       <div style="font-size:11px;color:#6b7a8d;margin-bottom:8px;">Уровень ${tool.level} · ${tool.category}</div>
-      <p style="font-size:12px;color:#9aa5b4;line-height:1.5;margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${tool.description}</p>
-      <div class="flex flex-wrap gap-1">
-        ${(tool.idealFor || []).slice(0, 3).map(t => `<span style="font-size:10px;background:#0f2a1e;border:1px solid #1e4030;color:#00e5a0;padding:2px 6px;border-radius:4px;">${t}</span>`).join('')}
-      </div>
-      <a href="${tool.url}" target="_blank" style="display:inline-block;margin-top:10px;font-size:12px;color:#00e5a0;text-decoration:none;font-weight:500;">Подробнее →</a>
-    </div>
-  `;
+      <p style="font-size:12px;color:#9aa5b4;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${tool.description}</p>
+      <a href="#section-tool-of-day" style="display:inline-block;margin-top:10px;font-size:12px;color:#00e5a0;text-decoration:none;font-weight:500;">Подробнее →</a>
+    </div>`;
 }
 
-function renderChronicle(feedData) {
-  const events = (feedData.events || []).slice(0, 5);
-  const container = document.getElementById('chronicle-list');
-  container.innerHTML = events.map(ev => {
+// ========== CHRONICLE COMPACT (Center Column) ==========
+function renderChronicleCompact() {
+  if (!CHRONICLE) return;
+  const events = (CHRONICLE.events || []).slice(0, 5);
+  document.getElementById('chronicle-compact').innerHTML = events.map(ev => {
     const vc = VENDOR_COLORS[ev.vendor] || VENDOR_COLORS['default'];
-    const impactColor = ev.impact === 'major' ? '#ff5c7a' : '#fb923c';
     return `
       <div style="display:flex;align-items:flex-start;gap:10px;padding:8px;border-radius:8px;background:#161a1d;">
         <div style="min-width:42px;font-size:10px;color:#6b7a8d;padding-top:2px;">${ev.date}</div>
-        <div style="flex:1;">
-          <div style="font-size:12px;font-weight:600;color:#e8edf2;margin-bottom:2px;">${ev.model}</div>
-          <div style="font-size:11px;color:#6b7a8d;line-height:1.4;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;">${ev.event || ev.description || ''}</div>
-        </div>
+        <div style="flex:1;"><div style="font-size:12px;font-weight:600;color:#e8edf2;margin-bottom:2px;">${ev.model}</div><div style="font-size:11px;color:#6b7a8d;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;">${ev.event||''}</div></div>
         <span class="tag" style="background:${vc.bg};color:${vc.text};border:1px solid ${vc.border};white-space:nowrap;">${ev.vendor}</span>
-      </div>
-    `;
+      </div>`;
   }).join('');
 }
 
-function renderFallback() {
-  // Fallback with hardcoded data if JSON fails
-  const container = document.getElementById('tools-feed');
-  container.innerHTML = `
-    <div class="news-card flex items-start gap-4 p-4 rounded-xl" style="background:#1c2127;border:1px solid #252c33;">
-      <div style="width:40px;height:40px;min-width:40px;background:#0f2a1e;border:1px solid #1e4030;border-radius:10px;" class="flex items-center justify-center"><span style="font-size:18px;">🧠</span></div>
-      <div class="flex-1"><p style="font-size:14px;font-weight:500;color:#e8edf2;margin:0;">Данные загружаются из JSON...</p><p style="font-size:12px;color:#6b7a8d;margin:4px 0 0;">Убедитесь что файлы data/*.json доступны</p></div>
-    </div>
-  `;
+// ========== TOOL OF THE DAY FULL ==========
+function renderToolOfTheDayFull() {
+  const tool = TOTD?.tool || TOTD;
+  if (!tool) return;
+  const levelNames = {1:'Уровень 1: Модели',2:'Уровень 2: Агенты',3:'Уровень 3: Платформы'};
+  document.getElementById('toolOfTheDayFull').innerHTML = `
+    <div class="totd-card">
+      <div class="flex items-center justify-between flex-wrap gap-4 mb-4">
+        <div><div class="totd-title">${tool.name}</div><div style="font-size:13px;color:#6b7a8d;margin-top:4px;">${levelNames[tool.level]||''} · ${tool.category}</div></div>
+        <div class="totd-rating">${tool.rating}<span style="font-size:16px;color:#6b7a8d;">/${tool.ratingMax||10}</span></div>
+      </div>
+      <p style="font-size:14px;color:#9aa5b4;line-height:1.7;margin-bottom:20px;">${tool.fullDescription||tool.description}</p>
+      <div class="totd-grid">
+        <div class="totd-pros"><div style="font-size:13px;font-weight:600;color:#00e5a0;margin-bottom:8px;">Преимущества</div><ul class="totd-list">${(tool.pros||[]).map(p=>`<li>${p}</li>`).join('')}</ul></div>
+        <div class="totd-cons"><div style="font-size:13px;font-weight:600;color:#ff5c7a;margin-bottom:8px;">Ограничения</div><ul class="totd-list">${(tool.cons||[]).map(c=>`<li>${c}</li>`).join('')}</ul></div>
+      </div>
+      ${tool.comparison&&tool.comparison.length?`<div style="margin-top:20px;"><div style="font-size:13px;font-weight:600;color:#e8edf2;margin-bottom:12px;">Сравнение с аналогами</div>${tool.comparison.map(c=>`<div style="background:#161a1d;border:1px solid #252c33;border-radius:8px;padding:12px;margin-bottom:8px;"><div style="font-size:12px;font-weight:600;color:#a78bfa;margin-bottom:4px;">vs ${c.competitor}</div><div style="font-size:12px;color:#9aa5b4;line-height:1.5;">${c.verdict}</div></div>`).join('')}</div>`:''}
+      <div style="margin-top:20px;background:#0f2a1e;border:1px solid #1e4030;border-radius:10px;padding:16px;">
+        <div style="font-size:13px;font-weight:600;color:#00e5a0;margin-bottom:8px;">Рекомендация</div>
+        <div style="font-size:13px;color:#9aa5b4;line-height:1.6;">${tool.recommendation||''}</div>
+      </div>
+      ${tool.idealFor&&tool.idealFor.length?`<div class="flex flex-wrap gap-2 mt-4">${tool.idealFor.map(t=>`<span style="font-size:11px;background:#0f2a1e;border:1px solid #1e4030;color:#00e5a0;padding:4px 10px;border-radius:6px;">${t}</span>`).join('')}</div>`:''}
+      <a href="${tool.url}" target="_blank" style="display:inline-block;margin-top:16px;font-size:13px;color:#00e5a0;text-decoration:none;font-weight:600;">Перейти на сайт →</a>
+    </div>`;
 }
 
-init();
-</script>
+// ========== CHRONICLE FULL ==========
+function renderChronicleFull() {
+  if (!CHRONICLE || !CHRONICLE.events) return;
+  const vendors = ['All','OpenAI','Anthropic','Google','Meta','xAI','Open Source'];
+  document.getElementById('chronicleFilters').innerHTML = vendors.map(v => `
+    <button class="chronicle-filter-btn ${v===chronicleFilter?'active':''}" onclick="filterChronicle('${v}')">${v==='All'?'Все':v}</button>`).join('');
 
+  let events = CHRONICLE.events;
+  if (chronicleFilter !== 'All') events = events.filter(ev => ev.vendor === chronicleFilter);
+  events = events.slice(0, 20);
+
+  const impactEmoji = {major:'🔴',minor:'🟡',patch:'🟢'};
+  const impactLabel = {major:'Major',minor:'Minor',patch:'Patch'};
+  const months = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
+
+  document.getElementById('chronicleContent').innerHTML = events.map(ev => {
+    const d = new Date(ev.date); const dateStr = `${d.getDate()} ${months[d.getMonth()]}`;
+    const vc = VENDOR_COLORS[ev.vendor] || VENDOR_COLORS['default'];
+    return `
+      <div class="chronicle-item">
+        <div style="min-width:50px;font-size:12px;color:#6b7a8d;font-weight:500;">${dateStr}</div>
+        <div style="flex:1;">
+          <div class="flex items-center gap-2 mb-1">
+            <span style="font-size:13px;font-weight:600;color:#e8edf2;">${ev.model}</span>
+            <span class="tag" style="background:${vc.bg};color:${vc.text};border:1px solid ${vc.border};">${ev.vendor}</span>
+            <span class="chronicle-impact-${ev.impact}" style="font-size:11px;">${impactEmoji[ev.impact]||'🟡'} ${impactLabel[ev.impact]||'Minor'}</span>
+          </div>
+          <div style="font-size:12px;color:#9aa5b4;line-height:1.5;">${ev.event}</div>
+          ${ev.url?`<a href="${ev.url}" target="_blank" style="font-size:11px;color:#00e5a0;text-decoration:none;margin-top:4px;display:inline-block;">Подробнее →</a>`:''}
+        </div>
+      </div>`;
+  }).join('');
+}
+function filterChronicle(vendor) { chronicleFilter = vendor; renderChronicleFull(); }
+
+// ========== TRENDING FULL ==========
+function renderTrendingFull() {
+  const container = document.getElementById('trendingContent');
+  if (!TRENDING || !TRENDING.trends) { container.innerHTML = '<p style="color:#6b7a8d;">Данные рейтинга недоступны. Загрузите data/momentum.json</p>'; return; }
+  const trends = [...TRENDING.trends].sort((a,b) => b.momentum - a.momentum);
+  const maxM = Math.max(...trends.map(t => Math.abs(t.momentum)));
+  const getColor = v => v>=70?'#00e5a0':v>=40?'#00c8d7':v>=0?'#a78bfa':'#ff5c7a';
+  const catLabels = {accelerating:'Ускорение',stable:'Стабильно',emerging:'Зарождение',decelerating:'Замедление',decay:'Угасание'};
+
+  container.innerHTML = `<div class="grid gap-3" style="grid-template-columns:repeat(auto-fill,minmax(400px,1fr));">${trends.map((t,i) => {
+    const barW = Math.max(5, Math.abs(t.momentum)/maxM*100);
+    const color = getColor(t.momentum);
+    return `
+      <div class="trending-card">
+        <div class="trending-rank ${i<3?'trending-rank-'+(i+1):''}">#${i+1}</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:600;color:#e8edf2;">${t.name}</div>
+          <div style="font-size:11px;color:#6b7a8d;margin-top:2px;">${t.rationale||''}</div>
+          <span style="font-size:10px;padding:2px 6px;border-radius:4px;background:#161a1d;color:${color};margin-top:4px;display:inline-block;">${catLabels[t.category]||t.category}</span>
+          <div class="trending-bar"><div class="trending-bar-fill" style="width:${barW}%;background:${color};"></div></div>
+        </div>
+        <div style="text-align:right;min-width:50px;"><div style="font-size:16px;font-weight:700;color:${color};font-family:'JetBrains Mono',monospace;">${t.momentum>0?'+':''}${t.momentum}</div><div style="font-size:10px;color:#6b7a8d;">моментум</div></div>
+      </div>`;
+  }).join('')}</div><div style="font-size:11px;color:#6b7a8d;margin-top:12px;">Обновлено: ${TRENDING.date||'—'}</div>`;
+}
+
+// ========== BUSINESS CLASSIFIER ==========
+function renderBusinessClassifier() {
+  const categories = DATA.businessCategories || Object.keys(BIZ_LABELS).map(id=>({id,...BIZ_LABELS[id]}));
+  document.getElementById('bizFilterBar').innerHTML = `
+    <button class="biz-filter-btn ${!activeBizFilter?'active':''}" onclick="setBizFilter(null)">🏢 Все</button>
+    ${categories.map(c=>`<button class="biz-filter-btn ${activeBizFilter===c.id?'active':''}" onclick="setBizFilter('${c.id}')">${c.icon} ${c.label}</button>`).join('')}`;
+  renderBizResults();
+}
+function setBizFilter(f) { activeBizFilter = f; renderBusinessClassifier(); }
+function renderBizResults() {
+  const allT = []; DATA.levels.forEach(l => l.categories.forEach(c => c.tools.forEach(t => { if(t.businessUse&&t.businessUse.length) allT.push({...t,levelId:l.id,levelColor:l.color,categoryName:c.name}); })));
+  let filtered = activeBizFilter ? allT.filter(t=>t.businessUse.includes(activeBizFilter)) : allT;
+  const summary = document.getElementById('bizSummary');
+  summary.innerHTML = activeBizFilter ? `Направление: <strong>${(BIZ_LABELS[activeBizFilter]||{}).label||activeBizFilter}</strong> — найдено: <strong>${filtered.length}</strong>` : `Всего инструментов с бизнес-классификацией: <strong>${allT.length}</strong>`;
+  document.getElementById('bizResults').innerHTML = filtered.map(tool => {
+    const levelLabel = ['','Модель','Агент','Платформа'][tool.levelId]||'';
+    return `<div class="biz-tool-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${tool.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[tool.levelId]?.color||'#9aa5b4'};border:1px solid #252c33;">${levelLabel}</span></div><p style="font-size:12px;color:#9aa5b4;line-height:1.5;margin:0 0 8px;">${tool.businessFocus||tool.description}</p><div class="flex flex-wrap gap-1">${(tool.businessUse||[]).map(bu=>`<span style="font-size:10px;background:#161a1d;border:1px solid #252c33;color:#6b7a8d;padding:2px 6px;border-radius:4px;">${(BIZ_LABELS[bu]||{}).icon||''} ${(BIZ_LABELS[bu]||{}).label||bu}</span>`).join('')}</div><a href="${tool.url}" target="_blank" style="display:inline-block;margin-top:8px;font-size:11px;color:#00e5a0;text-decoration:none;">Перейти →</a></div>`;
+  }).join('');
+}
+
+// ========== COMPARISON ==========
+function renderComparison() {
+  const ct = DATA.comparisonTable; if(!ct) return;
+  document.getElementById('comparisonContent').innerHTML = `<table class="comparison-table"><thead><tr>${ct.headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${ct.rows.map(row=>`<tr>${row.map(cell=>`<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+}
+
+// ========== TIMELINE ==========
+function renderTimeline() {
+  if (!DATA.timeline) return;
+  document.getElementById('timelineContent').innerHTML = DATA.timeline.map(item => `
+    <div class="timeline-item"><div class="timeline-date">${item.date}</div><div class="timeline-event">${item.event}</div><div class="timeline-desc">${item.description}</div></div>`).join('');
+}
+
+// ========== SHIFTS ==========
+function renderShifts() {
+  if (!DATA.structuralShifts) return;
+  document.getElementById('shiftsContent').innerHTML = DATA.structuralShifts.map(s => `
+    <div class="shift-card"><div style="font-size:12px;font-weight:600;color:#e8edf2;">${s.area}</div><div class="shift-arrow"><span class="shift-from">${s.from}</span><span style="color:#6b7a8d;">→</span><span class="shift-to">${s.to}</span></div><div style="font-size:12px;color:#6b7a8d;line-height:1.5;">${s.description}</div></div>`).join('');
+}
+
+// ========== STRATEGY ==========
+function renderStrategy() {
+  const s = DATA.strategy; if(!s) return;
+  document.getElementById('strategyContent').innerHTML = `
+    <div class="strategy-grid">
+      <div class="strategy-card"><div style="font-size:15px;font-weight:600;color:#e8edf2;margin-bottom:12px;">${s.topDown.title}</div><ul>${s.topDown.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+      <div class="strategy-card recommended"><div style="font-size:15px;font-weight:600;color:#00e5a0;margin-bottom:12px;">${s.bottomUp.title}</div><ul>${s.bottomUp.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+    </div>
+    <div class="pilot-card"><div style="font-size:15px;font-weight:600;color:#e8edf2;margin-bottom:8px;">Формула быстрого пилота</div><div style="font-size:13px;color:#9aa5b4;margin-bottom:4px;">Длительность: ${s.pilot.duration}</div><div style="font-size:13px;color:#9aa5b4;margin-bottom:12px;">${s.pilot.goal}</div><div class="pilot-formula">1 Модель + 1 Агент + 1 Задача = Доказательство ценности</div></div>`;
+}
+
+// ========== NAVIGATOR ==========
+function renderNavigator() {
+  const container = document.getElementById('navigatorContent');
+  if (navState.finished) { renderNavigatorResults(container); return; }
+  const q = navigatorQuestions[navState.current];
+  const currentAnswer = navState.answers[navState.current];
+  container.innerHTML = `
+    <div class="navigator-progress">${navigatorQuestions.map((_,i)=>`<div class="navigator-progress-dot ${i<navState.current?'completed':''} ${i===navState.current?'active':''}"></div>`).join('')}</div>
+    <div style="font-size:18px;font-weight:600;color:#e8edf2;margin-bottom:8px;">${q.question}</div>
+    <div style="font-size:13px;color:#6b7a8d;margin-bottom:20px;">${q.hint}</div>
+    <div class="flex flex-col gap-3">${q.options.map((opt,i)=>`<div class="navigator-option ${currentAnswer===i?'selected':''}" onclick="selectNavOption(${i})"><span style="font-size:18px;">${opt.icon}</span><span>${opt.text}</span></div>`).join('')}</div>
+    <button class="navigator-btn ${currentAnswer!==undefined?'visible':''}" onclick="nextNavStep()">${navState.current<navigatorQuestions.length-1?'Далее →':'Показать рекомендации'}</button>`;
+}
+function selectNavOption(i) { navState.answers[navState.current]=i; renderNavigator(); }
+function nextNavStep() { if(navState.answers[navState.current]===undefined) return; navState.current++; if(navState.current>=navigatorQuestions.length) navState.finished=true; renderNavigator(); }
+function renderNavigatorResults(container) {
+  const userTags = [];
+  navState.answers.forEach((ans,qi) => { if(ans!==undefined) userTags.push(...navigatorQuestions[qi].options[ans].tags); });
+  const scored = [];
+  DATA.levels.forEach(l => l.categories.forEach(c => c.tools.forEach(t => {
+    let score = 0; (t.tags||[]).forEach(tag => { if(userTags.includes(tag)) score++; });
+    if(score>0) scored.push({...t,level:l.id,category:c.name,matchScore:score,maxScore:userTags.length});
+  })));
+  scored.sort((a,b)=>b.matchScore-a.matchScore);
+  const top = scored.slice(0,8);
+  container.innerHTML = `
+    <div style="font-size:16px;font-weight:600;color:#e8edf2;margin-bottom:8px;">Ваши рекомендации</div>
+    <div style="font-size:13px;color:#6b7a8d;margin-bottom:20px;">На основе ваших ответов подобрано ${top.length} инструментов:</div>
+    ${top.map(t=>`<div class="navigator-result-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${t.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[t.level]?.color||'#9aa5b4'};border:1px solid #252c33;">Уровень ${t.level}</span></div><p style="font-size:12px;color:#9aa5b4;margin:0 0 6px;">${t.strength||t.description}</p><div style="font-size:11px;color:#00e5a0;">Совпадение: ${Math.round(t.matchScore/t.maxScore*100)}%</div><a href="${t.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;margin-top:4px;display:inline-block;">Перейти →</a></div>`).join('')}
+    <button onclick="restartNav()" style="margin-top:16px;padding:10px 20px;background:#1c2127;border:1px solid #252c33;border-radius:8px;font-size:13px;color:#9aa5b4;cursor:pointer;">Пройти заново</button>`;
+}
+function restartNav() { navState={current:0,answers:[],finished:false}; renderNavigator(); }
+
+// ========== QUIZ ==========
+function renderQuiz() {
+  const container = document.getElementById('quizContent');
+  const questions = DATA.quizQuestions; if(!questions) return;
+  if (quizState.finished) {
+    container.innerHTML = `<div style="text-align:center;padding:40px;"><div style="font-size:48px;font-weight:700;color:#00e5a0;font-family:'JetBrains Mono',monospace;">${quizState.score}/${questions.length}</div><div style="font-size:14px;color:#6b7a8d;margin-top:8px;">Правильных ответов</div><button onclick="restartQuiz()" style="margin-top:20px;padding:10px 24px;background:linear-gradient(135deg,#00e5a0,#00c8d7);border:none;border-radius:8px;font-size:14px;font-weight:600;color:#0d0f10;cursor:pointer;">Пройти заново</button></div>`;
+    return;
+  }
+  const q = questions[quizState.current];
+  const letters = ['A','B','C','D'];
+  container.innerHTML = `
+    <div class="flex items-center justify-between mb-3"><span style="font-size:12px;color:#6b7a8d;">Вопрос ${quizState.current+1} из ${questions.length}</span><span style="font-size:12px;color:#00e5a0;">Счёт: ${quizState.score}</span></div>
+    <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:${(quizState.current/questions.length)*100}%"></div></div>
+    <div style="font-size:16px;font-weight:600;color:#e8edf2;margin-bottom:16px;line-height:1.5;">${q.question}</div>
+    <div class="flex flex-col gap-3">${q.options.map((opt,i)=>`<button class="quiz-option" data-index="${i}" onclick="answerQuiz(${i})"><span class="quiz-option-letter">${letters[i]}</span><span>${opt}</span></button>`).join('')}</div>
+    <div class="quiz-explanation" id="quizExplanation">${q.explanation}</div>
+    <button class="quiz-next-btn" id="quizNextBtn" onclick="nextQuestion()">${quizState.current<questions.length-1?'Следующий вопрос →':'Показать результат'}</button>`;
+}
+function answerQuiz(index) {
+  if(quizState.answered) return; quizState.answered = true;
+  const q = DATA.quizQuestions[quizState.current];
+  document.querySelectorAll('.quiz-option').forEach((opt,i) => { opt.classList.add('disabled'); if(i===q.correctIndex) opt.classList.add('correct'); if(i===index&&i!==q.correctIndex) opt.classList.add('wrong'); });
+  if(index===q.correctIndex) quizState.score++;
+  document.getElementById('quizExplanation').classList.add('visible');
+  document.getElementById('quizNextBtn').classList.add('visible');
+}
+function nextQuestion() { quizState.answered=false; quizState.current++; if(quizState.current>=DATA.quizQuestions.length) quizState.finished=true; renderQuiz(); }
+function restartQuiz() { quizState={current:0,score:0,answered:false,finished:false}; renderQuiz(); }
+
+// ========== START ==========
+document.addEventListener('DOMContentLoaded', init);
+</script>
 </body>
 </html>
