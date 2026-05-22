@@ -1,521 +1,278 @@
 /**
- * Models News Widget (Новости моделей) — Standalone Injection Script
+ * Models News Widget (Новости моделей) — Standalone Injection Script v2
  * Injects a compact news feed of AI model updates into the first screen
- * of the dashboard, alongside the "Ключевые события" section.
+ * of the dashboard, alongside "Главные события" and "Карта мест СРТ".
  *
  * Data source: /data/models-feed.json
- * Target: Section containing "Ключевые события" / "Key Events" heading
+ * Target: The grid/flex container holding the first-screen cards
  *
  * ─── ROLLBACK ───────────────────────────────────────────────────────────────
  * Tag: pre-models-news-widget
  * To rollback:
- *   git reset --hard pre-models-news-widget && git push --force
+ *   git reset --hard pre-models-news-widget && git push --force origin gh-pages
  * ─────────────────────────────────────────────────────────────────────────────
  */
 (function () {
   'use strict';
 
-  /* ─── Constants ────────────────────────────────────────────────────────── */
-  const WIDGET_ID = 'models-news-widget';
-  const DATA_URL = '/data/models-feed.json';
-  const GUIDE_URL = '/llm-map/';
-  const CHRONICLE_URL = '/llm-map/#chronicle';
-  const MAX_ITEMS = 5;
+  var WIDGET_ID = 'models-news-widget';
+  var DATA_URL = '/data/models-feed.json';
+  var MAP_URL = '/llm-map/';
+  var CHRONICLE_URL = '/llm-map/#chronicle';
 
-  /* ─── Locale detection ─────────────────────────────────────────────────── */
-  function isEnglish() {
-    return document.documentElement.lang === 'en' ||
-      document.body.classList.contains('lang-en') ||
+  /* ─── i18n ─────────────────────────────────────────────────────────────── */
+  function isEN() {
+    return (document.documentElement.lang || 'ru').toLowerCase() === 'en' ||
       window.location.pathname.includes('/en') ||
       window.location.search.includes('lang=en');
   }
 
-  function t(ru, en) {
-    return isEnglish() ? en : ru;
+  var MONTHS_RU = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
+  var MONTHS_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  function t(ru, en) { return isEN() ? en : ru; }
+
+  /* ─── Fetch data ───────────────────────────────────────────────────────── */
+  function fetchJSON(url) {
+    return fetch(url).then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
   }
 
-  /* ─── Data fetching ────────────────────────────────────────────────────── */
-  async function fetchJSON(url) {
-    try {
-      const res = await fetch(url);
-      if (!res.ok) return null;
-      return await res.json();
-    } catch (e) {
-      return null;
-    }
-  }
-
-  /* ─── Date formatting ──────────────────────────────────────────────────── */
-  function formatDate(dateStr) {
-    const months_ru = ['янв', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
-    const months_en = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const d = new Date(dateStr);
-    const day = d.getDate();
-    const month = isEnglish() ? months_en[d.getMonth()] : months_ru[d.getMonth()];
-    return `${day} ${month}`;
-  }
-
-  /* ─── Impact dot ───────────────────────────────────────────────────────── */
-  function impactDot(impact) {
-    switch (impact) {
-      case 'major': return '<span class="mnw-impact mnw-impact-major" title="Major">🔴</span>';
-      case 'minor': return '<span class="mnw-impact mnw-impact-minor" title="Minor">🟡</span>';
-      case 'patch': return '<span class="mnw-impact mnw-impact-patch" title="Patch">🟢</span>';
-      default: return '<span class="mnw-impact mnw-impact-minor" title="Update">🟡</span>';
-    }
-  }
-
-  /* ─── CSS ──────────────────────────────────────────────────────────────── */
-  const CSS = `
-    #${WIDGET_ID} {
-      background: rgba(26, 27, 46, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      padding: 20px;
-      font-family: 'IBM Plex Sans', sans-serif;
-      color: #e2e8f0;
-      min-width: 0;
-      overflow: hidden;
-    }
-
-    .mnw-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .mnw-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: #ffffff;
-      margin: 0;
-      white-space: nowrap;
-    }
-
-    .mnw-guide-btn {
-      display: inline-flex;
-      align-items: center;
-      padding: 4px 12px;
-      background: rgba(0, 212, 255, 0.12);
-      border: 1px solid rgba(0, 212, 255, 0.3);
-      border-radius: 20px;
-      color: #00d4ff;
-      font-size: 12px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .mnw-guide-btn:hover {
-      background: rgba(0, 212, 255, 0.2);
-      border-color: rgba(0, 212, 255, 0.5);
-      color: #00d4ff;
-      text-decoration: none;
-    }
-
-    .mnw-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .mnw-item {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 10px;
-      align-items: start;
-      padding: 10px 8px;
-      border-radius: 8px;
-      transition: background 0.15s ease;
-      cursor: default;
-    }
-
-    .mnw-item:hover {
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    .mnw-item + .mnw-item {
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-    }
-
-    .mnw-date {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
-      color: rgba(255, 255, 255, 0.4);
-      white-space: nowrap;
-      padding-top: 2px;
-    }
-
-    .mnw-content {
-      min-width: 0;
-    }
-
-    .mnw-model {
-      font-weight: 600;
-      font-size: 13px;
-      color: #ffffff;
-      margin-bottom: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .mnw-event {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.5);
-      line-height: 1.3;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .mnw-impact {
-      font-size: 10px;
-      padding-top: 3px;
-    }
-
-    .mnw-footer {
-      margin-top: 14px;
-      text-align: center;
-    }
-
-    .mnw-footer a {
-      color: #00d4ff;
-      font-size: 12px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-    }
-
-    .mnw-footer a:hover {
-      opacity: 0.8;
-      text-decoration: underline;
-    }
-
-    .mnw-error {
-      text-align: center;
-      color: rgba(255, 255, 255, 0.35);
-      font-size: 12px;
-      padding: 20px 10px;
-    }
-
-    /* ─── Three-column layout for first screen ─────────────────────────── */
-    .mnw-three-col-layout {
-      display: grid;
-      grid-template-columns: 4fr 3fr 3fr;
-      gap: 20px;
-      align-items: start;
-    }
-
-    @media (max-width: 1024px) {
-      .mnw-three-col-layout {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .mnw-three-col-layout {
-        grid-template-columns: 1fr;
-      }
-    }
-  `;
-
-  /* ─── Build widget HTML ────────────────────────────────────────────────── */
-  function buildWidget(events) {
-    const items = events.slice(0, MAX_ITEMS);
-    let html = `<div id="${WIDGET_ID}">`;
-    html += `<div class="mnw-header">`;
-    html += `<h4 class="mnw-title">⚡ ${t('Новости моделей', 'Models News')}</h4>`;
-    html += `<a href="${GUIDE_URL}" class="mnw-guide-btn">${t('Гайд по моделям →', 'Models Guide →')}</a>`;
-    html += `</div>`;
-
-    if (!items.length) {
-      html += `<div class="mnw-error">${t('Нет данных', 'No data available')}</div>`;
-    } else {
-      html += `<ul class="mnw-list">`;
-      for (const item of items) {
-        html += `<li class="mnw-item">`;
-        html += `<span class="mnw-date">${formatDate(item.date)}</span>`;
-        html += `<div class="mnw-content">`;
-        html += `<div class="mnw-model">${escapeHtml(item.model)}</div>`;
-        html += `<div class="mnw-event">${escapeHtml(item.event)}</div>`;
-        html += `</div>`;
-        html += impactDot(item.impact);
-        html += `</li>`;
-      }
-      html += `</ul>`;
-    }
-
-    html += `<div class="mnw-footer">`;
-    html += `<a href="${CHRONICLE_URL}">${t('Все обновления →', 'All updates →')}</a>`;
-    html += `</div>`;
-    html += `</div>`;
-    return html;
+  /* ─── Format date ──────────────────────────────────────────────────────── */
+  function fmtDate(dateStr) {
+    var d = new Date(dateStr);
+    if (isNaN(d.getTime())) return dateStr || '';
+    var months = isEN() ? MONTHS_EN : MONTHS_RU;
+    return d.getDate() + ' ' + months[d.getMonth()];
   }
 
   /* ─── Escape HTML ──────────────────────────────────────────────────────── */
-  function escapeHtml(str) {
+  function esc(str) {
     if (!str) return '';
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
-  /* ─── Inject styles ────────────────────────────────────────────────────── */
+  /* ─── Impact dot ───────────────────────────────────────────────────────── */
+  function dot(impact) {
+    if (impact === 'major') return '<span class="mnw-dot" title="Major">\uD83D\uDD34</span>';
+    if (impact === 'patch') return '<span class="mnw-dot" title="Patch">\uD83D\uDFE2</span>';
+    return '<span class="mnw-dot" title="Minor">\uD83D\uDFE1</span>';
+  }
+
+  /* ─── Build widget HTML ────────────────────────────────────────────────── */
+  function buildWidget(events) {
+    var items = (events || []).slice(0, 5);
+    var rows = '';
+
+    if (items.length === 0) {
+      rows = '<div class="mnw-empty">' + t('Нет данных', 'No data') + '</div>';
+    } else {
+      rows = '<ul class="mnw-list">';
+      for (var i = 0; i < items.length; i++) {
+        var ev = items[i];
+        rows += '<li class="mnw-item">' +
+          '<span class="mnw-date">' + fmtDate(ev.date) + '</span>' +
+          '<div class="mnw-content">' +
+            '<div class="mnw-model">' + esc(ev.model) + '</div>' +
+            '<div class="mnw-event">' + esc(ev.event) + '</div>' +
+          '</div>' +
+          dot(ev.impact) +
+        '</li>';
+      }
+      rows += '</ul>';
+    }
+
+    return '<div id="' + WIDGET_ID + '">' +
+      '<div class="mnw-header">' +
+        '<h4 class="mnw-title">\u26A1 ' + t('Новости моделей', 'Models News') + '</h4>' +
+        '<a href="' + MAP_URL + '" class="mnw-guide-btn">' + t('Гайд по моделям \u2192', 'Models Guide \u2192') + '</a>' +
+      '</div>' +
+      rows +
+      '<div class="mnw-footer"><a href="' + CHRONICLE_URL + '">' + t('Все обновления \u2192', 'All updates \u2192') + '</a></div>' +
+    '</div>';
+  }
+
+  /* ─── CSS ──────────────────────────────────────────────────────────────── */
+  var CSS = [
+    '#' + WIDGET_ID + '{background:rgba(26,27,46,0.95);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:20px;font-family:"IBM Plex Sans",sans-serif;color:#e2e8f0;min-width:0;overflow:hidden;}',
+    '.mnw-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:8px;flex-wrap:wrap;}',
+    '.mnw-title{font-family:"Space Grotesk",sans-serif;font-size:15px;font-weight:700;color:#fff;margin:0;white-space:nowrap;}',
+    '.mnw-guide-btn{display:inline-flex;align-items:center;padding:4px 12px;background:rgba(0,212,255,0.12);border:1px solid rgba(0,212,255,0.3);border-radius:20px;color:#00d4ff;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap;}',
+    '.mnw-guide-btn:hover{background:rgba(0,212,255,0.22);border-color:rgba(0,212,255,0.5);}',
+    '.mnw-list{list-style:none;margin:0;padding:0;}',
+    '.mnw-item{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;padding:10px 8px;border-radius:8px;transition:background .15s;}',
+    '.mnw-item:hover{background:rgba(255,255,255,0.03);}',
+    '.mnw-item+.mnw-item{border-top:1px solid rgba(255,255,255,0.04);}',
+    '.mnw-date{font-family:"IBM Plex Mono",monospace;font-size:11px;color:rgba(255,255,255,0.4);white-space:nowrap;padding-top:2px;}',
+    '.mnw-content{min-width:0;}',
+    '.mnw-model{font-weight:600;font-size:13px;color:#fff;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}',
+    '.mnw-event{font-size:11px;color:rgba(255,255,255,0.45);line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}',
+    '.mnw-dot{font-size:10px;padding-top:3px;}',
+    '.mnw-footer{margin-top:14px;text-align:right;}',
+    '.mnw-footer a{color:rgba(0,212,255,0.7);font-size:11px;font-weight:500;text-decoration:none;}',
+    '.mnw-footer a:hover{color:#00d4ff;text-decoration:underline;}',
+    '.mnw-empty{text-align:center;color:rgba(255,255,255,0.3);font-size:12px;padding:20px 0;}'
+  ].join('\n');
+
   function injectStyles() {
-    if (document.getElementById('models-news-widget-styles')) return;
-    const style = document.createElement('style');
-    style.id = 'models-news-widget-styles';
-    style.textContent = CSS;
-    document.head.appendChild(style);
+    if (document.getElementById('mnw-styles')) return;
+    var s = document.createElement('style');
+    s.id = 'mnw-styles';
+    s.textContent = CSS;
+    document.head.appendChild(s);
   }
 
-  /* ─── Find target section ──────────────────────────────────────────────── */
-  function findKeyEventsSection() {
-    // Look for the heading that contains "Ключевые события" or "Key Events"
-    const headings = document.querySelectorAll('h2, h3, h4, [class*="heading"], [class*="title"]');
-    for (const h of headings) {
-      const text = h.textContent.trim();
-      if (text.includes('Ключевые события') || text.includes('Key Events')) {
-        // Walk up to find the section/card container
-        let el = h;
-        let attempts = 0;
-        while (el && attempts < 10) {
-          if (el.className && typeof el.className === 'string' &&
-              (el.className.includes('rounded-xl') || el.className.includes('rounded-2xl'))) {
-            return el;
-          }
-          if (el.getAttribute && el.getAttribute('class') &&
-              (el.getAttribute('class').includes('rounded-xl') || el.getAttribute('class').includes('rounded-2xl'))) {
-            return el;
-          }
-          el = el.parentElement;
-          attempts++;
-        }
-        // Fallback: try to find a section-like parent
-        el = h;
-        attempts = 0;
-        while (el && attempts < 10) {
-          if (el.className && typeof el.className === 'string' &&
-              (el.className.includes('rounded') || el.tagName === 'SECTION' || el.className.includes('card'))) {
-            return el;
-          }
-          el = el.parentElement;
-          attempts++;
-        }
-        // Last resort: return the heading's parent
-        return h.parentElement;
+  /* ─── Find injection point ─────────────────────────────────────────────── */
+  function findFirstScreenGrid() {
+    // Strategy: find the heading "Главные события" / "Top Events" / "Ключевые события" / "Key Events"
+    var allEls = document.querySelectorAll('h2, h3, h4, span, p, div');
+    var targetEl = null;
+
+    for (var i = 0; i < allEls.length; i++) {
+      var text = allEls[i].textContent.trim();
+      // Match the exact heading (not a container that includes it in children)
+      if (allEls[i].children.length > 3) continue; // skip containers
+      if (/^(Главные событи|Top Events|Ключевые событи|Key Events)/i.test(text) ||
+          text === 'Главные события' || text === 'Top Events' ||
+          text === 'Ключевые события' || text === 'Key Events') {
+        targetEl = allEls[i];
+        break;
       }
     }
-    return null;
-  }
 
-  /* ─── Find the parent grid/flex container of the first screen ──────────── */
-  function findFirstScreenContainer(keyEventsSection) {
-    if (!keyEventsSection) return null;
-    // Walk up to find the grid/flex container that holds the first-screen cards
-    let el = keyEventsSection.parentElement;
-    let attempts = 0;
-    while (el && attempts < 8) {
-      if (el.className && typeof el.className === 'string') {
-        // Look for grid or flex container with multiple children
-        const style = window.getComputedStyle(el);
-        if ((style.display === 'grid' || style.display === 'flex') && el.children.length >= 2) {
-          return el;
+    if (!targetEl) return null;
+
+    // Walk up to find the grid/flex parent that holds the two-column layout
+    var el = targetEl;
+    var attempts = 0;
+    while (el && attempts < 15) {
+      el = el.parentElement;
+      if (!el) break;
+      attempts++;
+      var style = window.getComputedStyle(el);
+      var display = style.display;
+      // Look for grid or flex container with at least 2 direct children
+      if ((display === 'grid' || display === 'flex') && el.children.length >= 2) {
+        // Check if children are substantial (not just small inline elements)
+        var hasLargeChildren = false;
+        for (var c = 0; c < el.children.length; c++) {
+          if (el.children[c].offsetHeight > 80) {
+            hasLargeChildren = true;
+            break;
+          }
         }
-        // Also check class-based patterns
-        if (el.className.includes('grid') || el.className.includes('flex')) {
-          return el;
-        }
+        if (hasLargeChildren) return el;
+      }
+      // Also match by Tailwind class
+      if (el.className && typeof el.className === 'string' &&
+          (el.className.indexOf('grid') >= 0) &&
+          el.children.length >= 2) {
+        return el;
+      }
+    }
+
+    // Fallback: find the rounded card container and return its parent
+    el = targetEl;
+    attempts = 0;
+    while (el && attempts < 10) {
+      if (el.className && typeof el.className === 'string' &&
+          el.className.indexOf('rounded') >= 0 && el.offsetHeight > 100) {
+        return el.parentElement;
       }
       el = el.parentElement;
       attempts++;
     }
-    // Fallback: return the direct parent of keyEventsSection
-    return keyEventsSection.parentElement;
+
+    return null;
   }
 
   /* ─── Main injection ───────────────────────────────────────────────────── */
-  async function inject() {
+  function inject() {
     // Only run on main page
-    const path = window.location.pathname;
-    if (path !== '/' && path !== '' && path !== '/index.html') return;
+    var path = window.location.pathname;
+    if (path !== '/' && path !== '' && path !== '/index.html') return false;
 
     // Don't inject twice
-    if (document.getElementById(WIDGET_ID)) return;
+    if (document.getElementById(WIDGET_ID)) return true;
 
-    // Find target section
-    const keyEventsSection = findKeyEventsSection();
-    if (!keyEventsSection) return;
+    var grid = findFirstScreenGrid();
+    if (!grid) return false;
 
-    // Fetch data
-    const feedData = await fetchJSON(DATA_URL);
-    const events = feedData && feedData.events ? feedData.events : [];
+    // Fetch data then inject
+    fetchJSON(DATA_URL).then(function (data) {
+      if (document.getElementById(WIDGET_ID)) return; // race check
 
-    // Inject styles
-    injectStyles();
+      var events = data && data.events ? data.events : [];
+      injectStyles();
 
-    // Strategy: Find the container that holds the first-screen sections,
-    // then restructure into a three-column layout
-    const parentContainer = findFirstScreenContainer(keyEventsSection);
+      // Create the widget element
+      var widgetWrapper = document.createElement('div');
+      widgetWrapper.innerHTML = buildWidget(events);
+      var widgetEl = widgetWrapper.firstElementChild;
 
-    if (parentContainer) {
-      // Check if we already restructured
-      if (parentContainer.querySelector('.mnw-three-col-layout')) return;
+      // Append as a new child of the grid container
+      grid.appendChild(widgetEl);
 
-      // Find the SRT Places widget container (Радар изменений section)
-      let srtSection = document.getElementById('srt-places-widget');
-      if (srtSection) {
-        // Walk up to find its card container at the same level as keyEventsSection
-        let el = srtSection;
-        let attempts = 0;
-        while (el && el !== parentContainer && attempts < 10) {
-          if (el.parentElement === parentContainer || el.parentElement === keyEventsSection.parentElement) {
-            srtSection = el;
-            break;
-          }
-          el = el.parentElement;
-          attempts++;
+      // Adjust grid to accommodate 3 columns if it's currently 2-col
+      var style = window.getComputedStyle(grid);
+      if (style.display === 'grid') {
+        var currentCols = style.gridTemplateColumns;
+        // Only modify if it looks like a 2-column layout
+        var colCount = currentCols ? currentCols.split(/\s+/).length : 0;
+        if (colCount <= 2) {
+          grid.style.gridTemplateColumns = '1.4fr 1fr 1fr';
+        }
+      } else if (style.display === 'flex') {
+        // For flex: widget will naturally flow as third item
+        if (!grid.style.flexWrap || grid.style.flexWrap === 'wrap') {
+          grid.style.flexWrap = 'nowrap';
         }
       }
+    });
 
-      // Create three-column wrapper
-      const wrapper = document.createElement('div');
-      wrapper.className = 'mnw-three-col-layout';
-
-      // Column 1: Key Events (existing content)
-      const col1 = document.createElement('div');
-      col1.style.minWidth = '0';
-
-      // Move keyEventsSection into col1
-      const keyEventsClone = keyEventsSection.cloneNode(true);
-      col1.appendChild(keyEventsClone);
-      wrapper.appendChild(col1);
-
-      // Column 2: SRT Places widget placeholder
-      const col2 = document.createElement('div');
-      col2.style.minWidth = '0';
-      col2.id = 'mnw-srt-column';
-
-      if (srtSection && srtSection !== keyEventsSection) {
-        const srtClone = srtSection.cloneNode(true);
-        col2.appendChild(srtClone);
-      } else {
-        // The SRT widget may not have injected yet — leave a placeholder
-        // It will inject into the "Радар изменений" section when ready
-        // We look for the Radar section instead
-        const radarHeadings = document.querySelectorAll('h3, h4');
-        let radarSection = null;
-        for (const h of radarHeadings) {
-          const text = h.textContent.trim();
-          if (text.includes('Радар изменений') || text.includes('Change Radar')) {
-            let el = h;
-            let attempts = 0;
-            while (el && attempts < 10) {
-              if (el.parentElement === parentContainer) {
-                radarSection = el;
-                break;
-              }
-              if (el.className && typeof el.className === 'string' &&
-                  (el.className.includes('rounded-xl') || el.className.includes('rounded'))) {
-                radarSection = el;
-                break;
-              }
-              el = el.parentElement;
-              attempts++;
-            }
-            break;
-          }
-        }
-        if (radarSection && radarSection !== keyEventsSection) {
-          col2.appendChild(radarSection.cloneNode(true));
-        }
-      }
-      wrapper.appendChild(col2);
-
-      // Column 3: Models News widget
-      const col3 = document.createElement('div');
-      col3.style.minWidth = '0';
-      col3.innerHTML = buildWidget(events);
-      wrapper.appendChild(col3);
-
-      // Replace the original section with the three-column layout
-      // Insert the wrapper after keyEventsSection, then hide originals
-      keyEventsSection.parentElement.insertBefore(wrapper, keyEventsSection);
-      keyEventsSection.style.display = 'none';
-
-      // Hide the original SRT/Radar section if it exists as a sibling
-      if (srtSection && srtSection.parentElement === parentContainer && srtSection !== keyEventsSection) {
-        srtSection.style.display = 'none';
-      }
-
-    } else {
-      // Fallback: just append the widget after the key events section
-      const widgetContainer = document.createElement('div');
-      widgetContainer.innerHTML = buildWidget(events);
-      keyEventsSection.parentElement.insertBefore(widgetContainer.firstElementChild, keyEventsSection.nextSibling);
-    }
+    return true;
   }
 
   /* ─── Observer: wait for React to render ───────────────────────────────── */
   function waitAndInject() {
-    // Only run on main page
-    const path = window.location.pathname;
+    var path = window.location.pathname;
     if (path !== '/' && path !== '' && path !== '/index.html') return;
 
     // Try immediately
-    inject();
-    if (document.getElementById(WIDGET_ID)) return;
+    if (inject()) return;
 
-    // Use MutationObserver to detect when React renders the section
-    let attempts = 0;
-    const observer = new MutationObserver(() => {
+    // Use MutationObserver
+    var attempts = 0;
+    var observer = new MutationObserver(function () {
       attempts++;
       if (document.getElementById(WIDGET_ID)) {
         observer.disconnect();
         return;
       }
-      inject();
-      if (document.getElementById(WIDGET_ID) || attempts > 200) {
+      if (inject() || attempts > 150) {
         observer.disconnect();
       }
     });
     observer.observe(document.body, { childList: true, subtree: true });
 
-    // Timeout safety: disconnect after 30s
-    setTimeout(() => observer.disconnect(), 30000);
+    // Safety timeout
+    setTimeout(function () { observer.disconnect(); }, 30000);
   }
 
   /* ─── SPA navigation support ───────────────────────────────────────────── */
-  function setupSPASupport() {
-    const originalPushState = history.pushState.bind(history);
-    history.pushState = function (...args) {
-      originalPushState(...args);
-      setTimeout(waitAndInject, 300);
-    };
-
-    const originalReplaceState = history.replaceState.bind(history);
-    history.replaceState = function (...args) {
-      originalReplaceState(...args);
-      setTimeout(waitAndInject, 300);
-    };
-
-    window.addEventListener('popstate', () => setTimeout(waitAndInject, 300));
-  }
+  var origPushState = history.pushState;
+  history.pushState = function () {
+    origPushState.apply(this, arguments);
+    setTimeout(waitAndInject, 200);
+  };
+  window.addEventListener('popstate', function () {
+    setTimeout(waitAndInject, 200);
+  });
 
   /* ─── Bootstrap ────────────────────────────────────────────────────────── */
-  function bootstrap() {
-    setupSPASupport();
-    waitAndInject();
-  }
-
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bootstrap);
+    document.addEventListener('DOMContentLoaded', waitAndInject);
   } else {
-    bootstrap();
+    waitAndInject();
   }
 })();
