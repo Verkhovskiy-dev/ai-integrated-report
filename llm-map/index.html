@@ -1,3108 +1,643 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <title>Трёхуровневая карта LLM-инструментов 2026</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://verkhovskiy.ai/llm-map/" />
-  <meta property="og:title" content="Трёхуровневая карта LLM-инструментов 2026" />
-  <meta property="og:description" content="Интерактивный обучающий сайт с навигацией по трём уровням LLM-инструментов (базовые модели, агентные системы, платформы сборки), включающий карточки инструментов, сравнительные таблицы, интерактивную карту экосистемы и тесты для самопроверки" />
-  <link rel="canonical" href="https://verkhovskiy.ai/llm-map/" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1440" />
+  <title>Гайд по моделям — verkhovskiy.ai</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg:      '#0d0f10',
+              surface: '#161a1d',
+              card:    '#1c2127',
+              border:  '#252c33',
+              green:   '#00e5a0',
+              teal:    '#00c8d7',
+              muted:   '#6b7a8d',
+              text:    '#e8edf2',
+              sub:     '#9aa5b4',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          boxShadow: {
+            glow: '0 0 20px rgba(0,229,160,0.18)',
+            card: '0 2px 12px rgba(0,0,0,0.45)',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    /* ========== RESET & BASE ========== */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    * { box-sizing: border-box; }
+    body { background: #0d0f10; color: #e8edf2; font-family: 'Inter', system-ui, sans-serif; }
 
-    :root {
-      --bg-primary: #0f0f23;
-      --bg-secondary: #1a1a2e;
-      --bg-card: rgba(26, 26, 46, 0.7);
-      --bg-card-hover: rgba(26, 26, 46, 0.9);
-      --border-color: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.15);
-      --text-primary: #e8e8f0;
-      --text-secondary: #a0a0b8;
-      --text-muted: #6b6b80;
-      --cyan: #00d4ff;
-      --green: #00ff88;
-      --teal: #00ffcc;
-      --purple: #8b5cf6;
-      --yellow: #eab308;
-      --red: #ef4444;
-      --level1-color: #00d4ff;
-      --level2-color: #00ff88;
-      --level3-color: #8b5cf6;
-      --font-heading: 'Space Grotesk', sans-serif;
-      --font-body: 'IBM Plex Sans', sans-serif;
-      --font-mono: 'IBM Plex Mono', monospace;
-      --glass-bg: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --glass-blur: 12px;
-      --sidebar-width: 260px;
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #161a1d; }
+    ::-webkit-scrollbar-thumb { background: #252c33; border-radius: 2px; }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #00e5a0 0%, #00c8d7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-x: hidden;
+    /* Pulse dot */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(1.4); }
     }
+    .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
 
-    /* ========== LAYOUT ========== */
-    .app-layout {
-      display: flex;
-      min-height: 100vh;
+    /* Ticker line */
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
+    .ticker-inner { display: flex; animation: ticker 28s linear infinite; white-space: nowrap; }
+    .ticker-inner:hover { animation-play-state: paused; }
 
-    /* ========== SIDEBAR ========== */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: var(--sidebar-width);
-      height: 100vh;
-      background: rgba(15, 15, 35, 0.95);
-      backdrop-filter: blur(20px);
-      border-right: 1px solid var(--border-color);
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease;
+    /* Card hover */
+    .news-card { transition: border-color 0.2s, background 0.2s, transform 0.15s; }
+    .news-card:hover { border-color: #00e5a0 !important; background: #1f2830 !important; transform: translateY(-1px); }
+
+    /* Guide button */
+    .guide-btn {
+      background: linear-gradient(135deg, #00e5a0 0%, #00c8d7 100%);
+      transition: box-shadow 0.2s, transform 0.15s;
     }
+    .guide-btn:hover { box-shadow: 0 0 28px rgba(0,229,160,0.45); transform: translateY(-1px); }
 
-    .sidebar-header {
-      padding: 20px 20px 16px;
-      border-bottom: 1px solid var(--border-color);
-    }
+    /* Trend badge */
+    .trend-up   { color: #00e5a0; }
+    .trend-down { color: #ff5c7a; }
+    .trend-neu  { color: #9aa5b4; }
 
-    .sidebar-logo {
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--cyan);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 4px;
-    }
+    /* Stat card */
+    .stat-card { background: #1c2127; border: 1px solid #252c33; border-radius: 12px; }
 
-    .sidebar-title {
-      font-family: var(--font-heading);
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1.3;
-    }
-
-    .sidebar-subtitle {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 4px;
-      font-family: var(--font-mono);
-    }
-
-    .sidebar-back {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 20px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 13px;
-      font-family: var(--font-body);
-      border-bottom: 1px solid var(--border-color);
-      transition: all 0.2s;
-    }
-
-    .sidebar-back:hover {
-      color: var(--cyan);
-      background: rgba(0, 212, 255, 0.05);
-    }
-
-    .sidebar-nav {
-      flex: 1;
-      overflow-y: auto;
-      padding: 8px 0;
-    }
-
-    .nav-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 20px;
-      cursor: pointer;
-      color: var(--text-secondary);
-      font-size: 14px;
-      font-family: var(--font-body);
-      transition: all 0.2s;
-      border-left: 3px solid transparent;
-      user-select: none;
-    }
-
-    .nav-item:hover {
-      color: var(--text-primary);
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    .nav-item.active {
-      color: var(--cyan);
-      background: rgba(0, 212, 255, 0.08);
-      border-left-color: var(--cyan);
-    }
-
-    .nav-icon { font-size: 16px; width: 24px; text-align: center; }
-
-    .sidebar-progress {
-      padding: 16px 20px;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .progress-label {
-      font-size: 11px;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    .progress-bar {
-      height: 4px;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--cyan), var(--teal));
-      border-radius: 2px;
-      transition: width 0.5s ease;
-    }
-
-    .progress-text {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 4px;
-      font-family: var(--font-mono);
-    }
-
-    /* ========== MAIN CONTENT ========== */
-    .main-content {
-      margin-left: var(--sidebar-width);
-      flex: 1;
-      min-height: 100vh;
-    }
-
-    .section {
-      padding: 48px 40px;
-      border-bottom: 1px solid var(--border-color);
-      min-height: 50vh;
-    }
-
-    .section:last-child { border-bottom: none; }
-
+    /* Section label */
     .section-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #6b7a8d;
     }
 
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-
-    .section-desc {
-      color: var(--text-secondary);
-      font-size: 15px;
-      max-width: 800px;
-      line-height: 1.7;
-      margin-bottom: 32px;
-    }
-
-    /* ========== HERO SECTION ========== */
-    .hero {
-      position: relative;
-      padding: 60px 40px;
-      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, rgba(139, 92, 246, 0.1) 100%);
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -30%;
-      left: -10%;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-content { position: relative; z-index: 1; }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      background: rgba(0, 212, 255, 0.1);
-      border: 1px solid rgba(0, 212, 255, 0.2);
-      border-radius: 20px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--cyan);
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      font-family: var(--font-heading);
-      font-size: 42px;
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, var(--text-primary) 0%, var(--cyan) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-subtitle {
-      font-size: 16px;
-      color: var(--text-secondary);
-      max-width: 600px;
-      line-height: 1.7;
-      margin-bottom: 40px;
-    }
-
-    .hero-levels {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      max-width: 900px;
-    }
-
-    .hero-level-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(var(--glass-blur));
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      padding: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .hero-level-card:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--border-hover);
-      transform: translateY(-2px);
-    }
-
-    .hero-level-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 14px;
-      margin-bottom: 12px;
-    }
-
-    .hero-level-card:nth-child(1) .hero-level-num { background: rgba(0, 212, 255, 0.15); color: var(--cyan); }
-    .hero-level-card:nth-child(2) .hero-level-num { background: rgba(0, 255, 136, 0.15); color: var(--green); }
-    .hero-level-card:nth-child(3) .hero-level-num { background: rgba(139, 92, 246, 0.15); color: var(--purple); }
-
-    .hero-level-title {
-      font-family: var(--font-heading);
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .hero-level-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .hero-principle {
-      margin-top: 32px;
-      padding: 20px 24px;
-      background: rgba(234, 179, 8, 0.05);
-      border: 1px solid rgba(234, 179, 8, 0.15);
-      border-radius: 12px;
-      max-width: 900px;
-    }
-
-    .hero-principle-label {
-      font-family: var(--font-heading);
-      font-weight: 600;
-      color: var(--yellow);
-      font-size: 14px;
-      margin-bottom: 4px;
-    }
-
-    .hero-principle-text {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* ========== GLASS CARD ========== */
-    .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(var(--glass-blur));
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .glass-card:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--border-hover);
-    }
-
-    /* ========== TOOL OF THE DAY ========== */
-    .totd-card {
-      position: relative;
-      background: linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(139, 92, 246, 0.08) 50%, rgba(0, 212, 255, 0.08) 100%);
-      border: 1px solid rgba(234, 179, 8, 0.25);
-      border-radius: 16px;
-      padding: 32px;
-      overflow: hidden;
-    }
-
-    .totd-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(234, 179, 8, 0.1) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .totd-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: rgba(234, 179, 8, 0.15);
-      border: 1px solid rgba(234, 179, 8, 0.3);
-      border-radius: 20px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--yellow);
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .totd-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
-
-    .totd-title {
-      font-family: var(--font-heading);
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-    }
-
-    .totd-category {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .totd-rating {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 16px 20px;
-      background: rgba(234, 179, 8, 0.1);
-      border: 1px solid rgba(234, 179, 8, 0.2);
-      border-radius: 12px;
-      flex-shrink: 0;
-    }
-
-    .totd-rating-value {
-      font-family: var(--font-heading);
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--yellow);
-      line-height: 1;
-    }
-
-    .totd-rating-max {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .totd-description {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 24px;
-    }
-
-    .totd-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .totd-pros, .totd-cons {
-      padding: 16px 20px;
-      border-radius: 10px;
-    }
-
-    .totd-pros {
-      background: rgba(0, 255, 136, 0.05);
-      border: 1px solid rgba(0, 255, 136, 0.15);
-    }
-
-    .totd-cons {
-      background: rgba(239, 68, 68, 0.05);
-      border: 1px solid rgba(239, 68, 68, 0.15);
-    }
-
-    .totd-list-title {
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .totd-pros .totd-list-title { color: var(--green); }
-    .totd-cons .totd-list-title { color: var(--red); }
-
-    .totd-list {
-      list-style: none;
-    }
-
-    .totd-list li {
-      font-size: 13px;
-      color: var(--text-secondary);
-      padding: 4px 0;
-      padding-left: 16px;
-      position: relative;
-      line-height: 1.5;
-    }
-
-    .totd-list li::before {
-      content: '+';
-      position: absolute;
-      left: 0;
-      font-weight: bold;
-    }
-
-    .totd-pros .totd-list li::before { color: var(--green); content: '+'; }
-    .totd-cons .totd-list li::before { color: var(--red); content: '−'; }
-
-    .totd-comparison {
-      margin-bottom: 24px;
-    }
-
-    .totd-comparison-title {
-      font-family: var(--font-heading);
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--cyan);
-      margin-bottom: 12px;
-    }
-
-    .totd-comparison-item {
-      padding: 12px 16px;
-      background: rgba(0, 212, 255, 0.04);
-      border: 1px solid rgba(0, 212, 255, 0.1);
-      border-radius: 8px;
-      margin-bottom: 8px;
-    }
-
-    .totd-comparison-name {
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 4px;
-    }
-
-    .totd-comparison-verdict {
-      font-size: 12px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    .totd-recommendation {
-      padding: 16px 20px;
-      background: rgba(139, 92, 246, 0.06);
-      border: 1px solid rgba(139, 92, 246, 0.2);
-      border-radius: 10px;
-      margin-bottom: 16px;
-    }
-
-    .totd-recommendation-title {
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--purple);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .totd-recommendation-text {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    .totd-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .totd-tag {
-      padding: 4px 12px;
-      background: rgba(139, 92, 246, 0.1);
-      border: 1px solid rgba(139, 92, 246, 0.2);
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--purple);
-    }
-
-    .totd-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      background: linear-gradient(135deg, var(--yellow), #f59e0b);
-      border-radius: 8px;
-      color: var(--bg-primary);
-      text-decoration: none;
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 600;
-      transition: all 0.2s;
-      margin-top: 16px;
-    }
-
-    .totd-link:hover { opacity: 0.9; transform: translateY(-1px); }
-
-    /* ========== NAVIGATOR QUIZ ========== */
-    .navigator-container {
-      max-width: 700px;
-    }
-
-    .navigator-step {
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .navigator-progress {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 32px;
-    }
-
-    .navigator-progress-dot {
-      flex: 1;
-      height: 4px;
-      border-radius: 2px;
-      background: rgba(255, 255, 255, 0.06);
-      transition: background 0.3s;
-    }
-
-    .navigator-progress-dot.active {
-      background: linear-gradient(90deg, var(--purple), var(--cyan));
-    }
-
-    .navigator-progress-dot.completed {
-      background: var(--green);
-    }
-
-    .navigator-question {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      line-height: 1.4;
-    }
-
-    .navigator-hint {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-    }
-
-    .navigator-options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .navigator-option {
-      padding: 14px 18px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 14px;
-      color: var(--text-secondary);
-      transition: all 0.2s;
-      font-family: var(--font-body);
-      text-align: left;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .navigator-option:hover {
-      border-color: var(--border-hover);
-      color: var(--text-primary);
-      background: var(--bg-card-hover);
-    }
-
-    .navigator-option.selected {
-      border-color: rgba(139, 92, 246, 0.4);
-      background: rgba(139, 92, 246, 0.08);
-      color: var(--purple);
-    }
-
-    .navigator-option-icon {
-      font-size: 18px;
-      width: 28px;
-      text-align: center;
-      flex-shrink: 0;
-    }
-
-    .navigator-multi-hint {
-      font-size: 11px;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
-      margin-top: 12px;
-    }
-
-    .navigator-btn {
-      padding: 10px 24px;
-      background: linear-gradient(135deg, var(--purple), var(--cyan));
-      border: none;
-      border-radius: 8px;
-      color: white;
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      margin-top: 20px;
-      display: none;
-    }
-
-    .navigator-btn.visible { display: inline-block; }
-    .navigator-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-    .navigator-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-    .navigator-results {
-      animation: fadeIn 0.4s ease;
-    }
-
-    .navigator-results-title {
-      font-family: var(--font-heading);
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      background: linear-gradient(135deg, var(--purple), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .navigator-results-subtitle {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-    }
-
-    .navigator-result-card {
-      padding: 20px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      margin-bottom: 12px;
-      transition: all 0.3s;
-    }
-
-    .navigator-result-card:hover {
-      border-color: var(--border-hover);
-      background: var(--bg-card-hover);
-    }
-
-    .navigator-result-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .navigator-result-name {
-      font-family: var(--font-heading);
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .navigator-result-level {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-
-    .navigator-result-level-1 { background: rgba(0, 212, 255, 0.12); color: var(--cyan); }
-    .navigator-result-level-2 { background: rgba(0, 255, 136, 0.12); color: var(--green); }
-    .navigator-result-level-3 { background: rgba(139, 92, 246, 0.12); color: var(--purple); }
-
-    .navigator-result-desc {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-
-    .navigator-result-match {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--green);
-    }
-
-    .navigator-result-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 12px;
-      color: var(--cyan);
-      text-decoration: none;
-      margin-top: 8px;
-    }
-
-    .navigator-result-link:hover { text-decoration: underline; }
-
-    .navigator-restart-btn {
-      padding: 12px 32px;
-      background: transparent;
-      border: 1px solid var(--purple);
-      border-radius: 8px;
-      color: var(--purple);
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      margin-top: 24px;
-    }
-
-    .navigator-restart-btn:hover {
-      background: rgba(139, 92, 246, 0.1);
-    }
-
-    /* ========== LEVEL SECTION ========== */
-    .level-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 24px;
-      margin-bottom: 32px;
-    }
-
-    .level-header-image {
-      width: 200px;
-      height: 140px;
-      border-radius: 12px;
-      object-fit: cover;
-      border: 1px solid var(--border-color);
-      flex-shrink: 0;
-    }
-
-    .level-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 12px;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    .level-badge-1 { background: rgba(0, 212, 255, 0.12); color: var(--cyan); }
-    .level-badge-2 { background: rgba(0, 255, 136, 0.12); color: var(--green); }
-    .level-badge-3 { background: rgba(139, 92, 246, 0.12); color: var(--purple); }
-
-    /* ========== CATEGORY TABS ========== */
-    .category-tabs {
-      display: flex;
-      gap: 4px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
-
-    .category-tab {
-      padding: 8px 16px;
-      background: transparent;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      color: var(--text-secondary);
-      font-family: var(--font-body);
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .category-tab:hover {
-      border-color: var(--border-hover);
-      color: var(--text-primary);
-    }
-
-    .category-tab.active {
-      background: rgba(0, 212, 255, 0.1);
-      border-color: rgba(0, 212, 255, 0.3);
-      color: var(--cyan);
-    }
-
-    /* ========== TOOL CARDS ========== */
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-      gap: 16px;
-    }
-
-    .tool-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(var(--glass-blur));
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .tool-card:hover {
-      border-color: var(--border-hover);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    .tool-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 20px;
-      cursor: pointer;
-    }
-
-    .tool-card-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .tool-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .tool-name {
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .tool-card-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-
-    .tool-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      background: rgba(0, 212, 255, 0.1);
-      color: var(--cyan);
-      text-decoration: none;
-      font-size: 12px;
-      transition: all 0.2s;
-    }
-
-    .tool-link:hover {
-      background: rgba(0, 212, 255, 0.2);
-    }
-
-    .tool-expand {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.05);
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 14px;
-      transition: all 0.3s;
-    }
-
-    .tool-expand:hover { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); }
-    .tool-expand.open { transform: rotate(180deg); }
-
-    .tool-card-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s ease;
-    }
-
-    .tool-card-body.open {
-      max-height: 600px;
-      padding: 0 20px 16px;
-    }
-
-    .tool-desc {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-
-    .tool-strength {
-      padding: 10px 14px;
-      background: rgba(0, 255, 136, 0.05);
-      border: 1px solid rgba(0, 255, 136, 0.1);
-      border-radius: 8px;
-      font-size: 12px;
-      color: var(--green);
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-
-    .tool-features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .tool-feature-tag {
-      padding: 3px 10px;
-      background: rgba(139, 92, 246, 0.1);
-      border: 1px solid rgba(139, 92, 246, 0.15);
-      border-radius: 4px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--purple);
-    }
-
-    /* ========== COMPARISON TABLE ========== */
-    .comparison-wrapper {
-      overflow-x: auto;
-      margin-top: 24px;
-    }
-
-    .comparison-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      font-size: 13px;
-    }
-
-    .comparison-table th {
-      background: rgba(0, 212, 255, 0.08);
-      padding: 14px 16px;
-      text-align: left;
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 13px;
-      color: var(--cyan);
-      border-bottom: 1px solid var(--border-color);
-      white-space: nowrap;
-    }
-
-    .comparison-table th:first-child { border-radius: 8px 0 0 0; }
-    .comparison-table th:last-child { border-radius: 0 8px 0 0; }
-
-    .comparison-table td {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border-color);
-      color: var(--text-secondary);
-      vertical-align: top;
-    }
-
-    .comparison-table td:first-child {
-      font-family: var(--font-heading);
-      font-weight: 500;
-      color: var(--text-primary);
-      white-space: nowrap;
-    }
-
-    .comparison-table tr:hover td {
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    /* ========== TIMELINE ========== */
-    .timeline-container {
-      position: relative;
-      padding-left: 32px;
-    }
-
-    .timeline-container::before {
-      content: '';
-      position: absolute;
-      left: 7px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--cyan), var(--green), var(--purple));
-      opacity: 0.3;
-    }
-
-    .timeline-item {
-      position: relative;
-      padding: 0 0 24px 24px;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -28px;
-      top: 6px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      border: 2px solid var(--cyan);
-      background: var(--bg-primary);
-    }
-
-    .timeline-item:nth-child(even)::before { border-color: var(--green); }
-    .timeline-item:nth-child(3n)::before { border-color: var(--purple); }
+    /* Divider */
+    .divider { border-color: #252c33; }
 
-    .timeline-date {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--cyan);
-      margin-bottom: 4px;
+    /* Tag */
+    .tag {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.06em;
+      padding: 2px 8px; border-radius: 4px;
     }
 
-    .timeline-event {
-      font-family: var(--font-heading);
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 2px;
-    }
-
-    .timeline-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    /* ========== SHIFTS ========== */
-    .shifts-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 16px;
-    }
-
-    .shift-card {
-      padding: 20px;
-    }
-
-    .shift-area {
-      font-family: var(--font-heading);
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 12px;
-    }
-
-    .shift-arrow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .shift-from, .shift-to {
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-    }
-
-    .shift-from {
-      background: rgba(239, 68, 68, 0.1);
-      color: var(--red);
-      border: 1px solid rgba(239, 68, 68, 0.15);
-    }
-
-    .shift-to {
-      background: rgba(0, 255, 136, 0.1);
-      color: var(--green);
-      border: 1px solid rgba(0, 255, 136, 0.15);
-    }
-
-    .shift-arrow-icon { color: var(--text-muted); font-size: 14px; }
-
-    .shift-desc {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    /* ========== STRATEGY ========== */
-    .strategy-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .strategy-card {
-      padding: 24px;
-    }
-
-    .strategy-card.recommended {
-      border-color: rgba(0, 255, 136, 0.2);
-      background: rgba(0, 255, 136, 0.03);
-    }
-
-    .strategy-title {
-      font-family: var(--font-heading);
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .strategy-card.recommended .strategy-title { color: var(--green); }
-
-    .strategy-points {
-      list-style: none;
-    }
-
-    .strategy-points li {
-      padding: 8px 0;
-      padding-left: 20px;
-      position: relative;
-      font-size: 14px;
-      color: var(--text-secondary);
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .strategy-points li:last-child { border-bottom: none; }
-
-    .strategy-points li::before {
-      content: '\203A';
-      position: absolute;
-      left: 0;
-      color: var(--text-muted);
-      font-weight: bold;
-    }
-
-    .strategy-card.recommended .strategy-points li::before { color: var(--green); }
-
-    .pilot-card {
-      padding: 24px;
-      border-color: rgba(0, 212, 255, 0.2);
-      background: rgba(0, 212, 255, 0.03);
-    }
-
-    .pilot-title {
-      font-family: var(--font-heading);
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--cyan);
-      margin-bottom: 12px;
-    }
-
-    .pilot-meta {
-      display: flex;
-      gap: 24px;
-      margin-bottom: 12px;
-    }
-
-    .pilot-meta-item {
-      font-size: 13px;
-      color: var(--text-secondary);
-    }
-
-    .pilot-meta-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .pilot-meta-value {
-      font-family: var(--font-heading);
-      font-weight: 600;
-      color: var(--cyan);
-      font-size: 18px;
-    }
-
-    .pilot-formula {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      color: var(--yellow);
-      padding: 12px 16px;
-      background: rgba(234, 179, 8, 0.05);
-      border: 1px solid rgba(234, 179, 8, 0.15);
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    /* ========== QUIZ ========== */
-    .quiz-container {
-      max-width: 700px;
-    }
-
-    .quiz-progress-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .quiz-counter {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .quiz-score {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--cyan);
-    }
-
-    .quiz-progress-bar {
-      height: 4px;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 2px;
-      margin-bottom: 32px;
-      overflow: hidden;
-    }
-
-    .quiz-progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--cyan), var(--teal));
-      border-radius: 2px;
-      transition: width 0.5s ease;
-    }
-
-    .quiz-question {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 24px;
-      line-height: 1.4;
-    }
-
-    .quiz-options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .quiz-option {
-      padding: 14px 18px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 14px;
-      color: var(--text-secondary);
-      transition: all 0.2s;
-      font-family: var(--font-body);
-      text-align: left;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .quiz-option:hover:not(.disabled) {
-      border-color: var(--border-hover);
-      color: var(--text-primary);
-      background: var(--bg-card-hover);
-    }
-
-    .quiz-option.correct {
-      border-color: rgba(0, 255, 136, 0.4);
-      background: rgba(0, 255, 136, 0.08);
-      color: var(--green);
-    }
-
-    .quiz-option.wrong {
-      border-color: rgba(239, 68, 68, 0.4);
-      background: rgba(239, 68, 68, 0.08);
-      color: var(--red);
-    }
-
-    .quiz-option.disabled { cursor: default; opacity: 0.6; }
-
-    .quiz-option-letter {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.05);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 500;
-      flex-shrink: 0;
-    }
-
-    .quiz-explanation {
-      padding: 16px 20px;
-      background: rgba(0, 212, 255, 0.05);
-      border: 1px solid rgba(0, 212, 255, 0.15);
-      border-radius: 10px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 20px;
-      display: none;
-    }
-
-    .quiz-explanation.visible { display: block; }
-
-    .quiz-next-btn {
-      padding: 10px 24px;
-      background: linear-gradient(135deg, var(--cyan), var(--teal));
-      border: none;
-      border-radius: 8px;
-      color: var(--bg-primary);
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: none;
-    }
-
-    .quiz-next-btn.visible { display: inline-block; }
-    .quiz-next-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-
-    .quiz-results {
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .quiz-results-score {
-      font-family: var(--font-heading);
-      font-size: 64px;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--cyan), var(--green));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 8px;
-    }
-
-    .quiz-results-label {
-      font-size: 16px;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-    }
-
-    .quiz-restart-btn {
-      padding: 12px 32px;
-      background: transparent;
-      border: 1px solid var(--cyan);
-      border-radius: 8px;
-      color: var(--cyan);
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .quiz-restart-btn:hover {
-      background: rgba(0, 212, 255, 0.1);
-    }
-
-    /* ========== CHRONICLE ========== */
-    .chronicle-filters {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-
-    .chronicle-filter-btn {
-      padding: 6px 14px;
-      background: transparent;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      color: var(--text-secondary);
-      font-family: var(--font-body);
-      font-size: 12px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .chronicle-filter-btn:hover {
-      border-color: var(--border-hover);
-      color: var(--text-primary);
-    }
-
-    .chronicle-filter-btn.active {
-      background: rgba(0, 212, 255, 0.1);
-      border-color: rgba(0, 212, 255, 0.3);
-      color: var(--cyan);
-    }
-
-    .chronicle-timeline {
-      position: relative;
-      padding-left: 120px;
-    }
-
-    .chronicle-timeline::before {
-      content: '';
-      position: absolute;
-      left: 100px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--cyan), var(--green), var(--purple), var(--cyan));
-      opacity: 0.25;
-    }
-
-    .chronicle-item {
-      position: relative;
-      display: flex;
-      gap: 24px;
-      padding: 0 0 20px 0;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .chronicle-item::before {
-      content: '';
-      position: absolute;
-      left: -24px;
-      top: 8px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      border: 2px solid var(--cyan);
-      background: var(--bg-primary);
-    }
-
-    .chronicle-item[data-impact="major"]::before { border-color: #ef4444; background: rgba(239, 68, 68, 0.2); }
-    .chronicle-item[data-impact="minor"]::before { border-color: #eab308; }
-    .chronicle-item[data-impact="patch"]::before { border-color: #00ff88; }
-
-    .chronicle-date {
-      position: absolute;
-      left: -120px;
-      top: 4px;
-      width: 80px;
-      text-align: right;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    .chronicle-card {
-      flex: 1;
-      padding: 16px 20px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(var(--glass-blur));
-      border: 1px solid var(--glass-border);
-      border-radius: 10px;
-      transition: all 0.2s;
-    }
-
-    .chronicle-card:hover {
-      border-color: var(--border-hover);
-      background: var(--bg-card-hover);
-    }
-
-    .chronicle-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 6px;
-    }
-
-    .chronicle-model {
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .chronicle-vendor {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: rgba(139, 92, 246, 0.1);
-      color: var(--purple);
-    }
-
-    .chronicle-event-text {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-
-    .chronicle-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .chronicle-impact {
-      font-size: 11px;
-      font-family: var(--font-mono);
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
-
-    .chronicle-impact-major { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
-    .chronicle-impact-minor { background: rgba(234, 179, 8, 0.1); color: #eab308; }
-    .chronicle-impact-patch { background: rgba(0, 255, 136, 0.1); color: #00ff88; }
-
-    .chronicle-link {
-      font-size: 11px;
-      color: var(--cyan);
-      text-decoration: none;
-    }
-
-    .chronicle-link:hover { text-decoration: underline; }
-
-    .chronicle-empty {
-      text-align: center;
-      padding: 40px;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
-    @media (max-width: 900px) {
-      .chronicle-timeline {
-        padding-left: 40px;
-      }
-      .chronicle-timeline::before {
-        left: 20px;
-      }
-      .chronicle-date {
-        left: -40px;
-        width: 36px;
-        font-size: 10px;
-      }
-      .chronicle-item::before {
-        left: -24px;
-      }
-    }
-
-
-    /* ========== TRENDING / TOP ========== */
-    .trending-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .trending-card {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 16px 20px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(var(--glass-blur));
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .trending-card:hover {
-      border-color: var(--border-hover);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    .trending-rank {
-      font-family: var(--font-heading);
-      font-size: 20px;
-      font-weight: 700;
-      min-width: 32px;
-      text-align: center;
-      color: var(--text-muted);
-    }
-
-    .trending-rank-1 { color: #fbbf24; }
-    .trending-rank-2 { color: #94a3b8; }
-    .trending-rank-3 { color: #cd7f32; }
-
-    .trending-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .trending-name {
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 4px;
-    }
-
-    .trending-rationale {
-      font-size: 12px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    .trending-momentum {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 60px;
-    }
-
-    .trending-momentum-value {
-      font-family: var(--font-mono);
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .trending-momentum-label {
-      font-size: 10px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .trending-category {
-      display: inline-block;
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-family: var(--font-mono);
-      margin-top: 4px;
-    }
-
-    .trending-category-accelerating { background: rgba(0, 255, 136, 0.1); color: var(--green); }
-    .trending-category-stable { background: rgba(0, 212, 255, 0.1); color: var(--cyan); }
-    .trending-category-emerging { background: rgba(139, 92, 246, 0.1); color: var(--purple); }
-    .trending-category-decelerating { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
-    .trending-category-decay { background: rgba(107, 114, 128, 0.1); color: #6b7280; }
-
-    .trending-bar {
-      width: 100%;
-      height: 4px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 2px;
-      margin-top: 8px;
-      overflow: hidden;
-    }
-
-    .trending-bar-fill {
-      height: 100%;
-      border-radius: 2px;
-      transition: width 0.6s ease;
-    }
-
-    .trending-updated {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 16px;
-      font-family: var(--font-mono);
-    }
-
-    @media (max-width: 768px) {
-      .trending-card {
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-      .trending-momentum {
-        min-width: auto;
-      }
-    }
-
-    /* ========== BUSINESS CLASSIFIER ========== */
-    .biz-filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    .biz-filter-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      background: transparent;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      color: var(--text-secondary);
-      font-family: var(--font-body);
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .biz-filter-btn:hover {
-      border-color: var(--border-hover);
-      color: var(--text-primary);
-    }
-
-    .biz-filter-btn.active {
-      background: rgba(0, 212, 255, 0.1);
-      border-color: rgba(0, 212, 255, 0.3);
-      color: var(--cyan);
-    }
-
-    .biz-filter-icon {
-      font-size: 15px;
-    }
-
-    .biz-results-summary {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .biz-results-summary strong {
-      color: var(--cyan);
-    }
-
-    .biz-results-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-      gap: 16px;
-    }
-
-    .biz-tool-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(var(--glass-blur));
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      padding: 16px 20px;
-      transition: all 0.3s ease;
-    }
-
-    .biz-tool-card:hover {
-      border-color: var(--border-hover);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    .biz-tool-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .biz-tool-name {
-      font-family: var(--font-heading);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-
-    .biz-tool-level {
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 500;
-    }
-
-    .biz-tool-level-1 { background: rgba(0,212,255,0.1); color: var(--cyan); }
-    .biz-tool-level-2 { background: rgba(0,255,136,0.1); color: var(--green); }
-    .biz-tool-level-3 { background: rgba(139,92,246,0.1); color: var(--purple); }
-
-    .biz-tool-focus {
-      font-size: 12px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    .biz-tool-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-
-    .biz-use-tag {
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      color: var(--text-muted);
-    }
-
-    .biz-tool-link {
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 12px;
-      color: var(--cyan);
-      text-decoration: none;
-      opacity: 0.75;
-    }
-
-    .biz-tool-link:hover {
-      opacity: 1;
-      text-decoration: underline;
-    }
-
-    .biz-empty {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      .biz-results-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ========== MOBILE MENU ========== */
-    .mobile-menu-btn {
-      display: none;
-      position: fixed;
-      top: 16px;
-      left: 16px;
-      z-index: 200;
-      width: 40px;
-      height: 40px;
-      background: rgba(15, 15, 35, 0.9);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      color: var(--text-primary);
-      cursor: pointer;
-      font-size: 18px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .sidebar-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 99;
-    }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 900px) {
-      .sidebar {
-        transform: translateX(-100%);
-      }
-
-      .sidebar.open {
-        transform: translateX(0);
-      }
-
-      .sidebar-overlay.open {
-        display: block;
-      }
-
-      .mobile-menu-btn {
-        display: flex;
-      }
-
-      .main-content {
-        margin-left: 0;
-      }
-
-      .section {
-        padding: 32px 20px;
-      }
-
-      .hero {
-        padding: 80px 20px 40px;
-      }
-
-      .hero h1 {
-        font-size: 28px;
-      }
-
-      .hero-levels {
-        grid-template-columns: 1fr;
-      }
-
-      .tools-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .strategy-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .shifts-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .level-header {
-        flex-direction: column;
-      }
-
-      .level-header-image {
-        width: 100%;
-        height: 160px;
-      }
-
-      .totd-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .totd-header {
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 24px; }
-      .section-title { font-size: 22px; }
-      .comparison-table { font-size: 12px; }
-    }
+    /* Level tabs */
+    .level-tab { cursor: pointer; transition: all 0.2s; }
+    .level-tab.active { border-color: #00e5a0 !important; color: #00e5a0 !important; }
+    .level-tab:hover { border-color: #00e5a0; }
   </style>
 </head>
-<body>
-  <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Меню">&#9776;</button>
-  <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<body class="min-h-screen" style="background:#0d0f10; width:1440px; overflow-x:hidden;">
 
-  <div class="app-layout">
-    <!-- SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <div class="sidebar-logo">AI Integrated Report</div>
-        <div class="sidebar-title">Карта LLM-инструментов</div>
-        <div class="sidebar-subtitle">Обновлено: Май 2026</div>
-      </div>
-      <a href="https://verkhovskiy.ai" class="sidebar-back">
-        <span>&larr;</span> Назад к дашборду
-      </a>
-      <nav class="sidebar-nav" id="sidebarNav"></nav>
-      <div class="sidebar-progress">
-        <div class="progress-label">Прогресс</div>
-        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 0%"></div></div>
-        <div class="progress-text" id="progressText">0%</div>
-      </div>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="main-content" id="mainContent">
-      <!-- Hero / Overview -->
-      <section class="hero section" id="section-overview">
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span>&#9670;</span> AI Consulting Group
-          </div>
-          <h1>Трёхуровневая карта<br>LLM-инструментов 2026</h1>
-          <p class="hero-subtitle">Стратегический обзор: модели, агенты, платформы сборки. Обновлено: май 2026</p>
-
-          <div class="hero-levels" id="heroLevels"></div>
-
-          <div class="hero-principle">
-            <div class="hero-principle-label">Ключевой принцип:</div>
-            <div class="hero-principle-text">Каждый уровень решает свой класс задач — от генерации текста до полной автоматизации. Китайские модели заняли 45% мирового трафика (MiMo-V2-Pro — #1 на OpenRouter). Meta перешла от open source к проприетарной Muse Spark. Sora закрыта. MCP — индустриальный стандарт (9400+ серверов).</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Tool of the Day -->
-      <section class="section" id="section-tool-of-the-day">
-        <div class="section-label" style="color: var(--yellow)">&#11088; Рекомендация</div>
-        <h2 class="section-title">Инструмент дня</h2>
-        <p class="section-desc">Подробный разбор одного инструмента из каталога — с рейтингом, сравнением с аналогами и рекомендацией по использованию.</p>
-        <div id="toolOfTheDayContent"><p style="color: var(--text-muted)">Загрузка...</p></div>
-      </section>
-
-      <!-- Chronicle -->
-      <section class="section" id="section-chronicle">
-        <div class="section-label" style="color: var(--cyan)">&#9889; Лента обновлений</div>
-        <h2 class="section-title">Хроника обновлений</h2>
-        <p class="section-desc">Последние события в мире AI-моделей и инструментов: релизы, обновления, закрытия. Данные обновляются регулярно.</p>
-        <div class="chronicle-filters" id="chronicleFilters"></div>
-        <div class="chronicle-timeline" id="chronicleContent"><p style="color: var(--text-muted)">Загрузка...</p></div>
-      </section>
-
-      <!-- Trending / TOP Models -->
-      <section class="section" id="section-trending">
-        <div class="section-label" style="color: var(--green)">&#128200; Динамика рынка</div>
-        <h2 class="section-title">ТОП трендов AI</h2>
-        <p class="section-desc">Рейтинг ключевых направлений AI-индустрии по моментуму — на основе ежедневного анализа новостей, исследований и рыночных сигналов. Обновляется автоматически.</p>
-        <div id="trendingContent"><p style="color: var(--text-muted)">Загрузка...</p></div>
-      </section>
-
-      <!-- Level Sections -->
-      <section class="section" id="section-level1"></section>
-      <section class="section" id="section-level2"></section>
-      <section class="section" id="section-level3"></section>
-
-
-      <!-- Business Classifier -->
-      <section class="section" id="section-business">
-        <div class="section-label" style="color: var(--yellow)">&#128188; Бизнес-применение</div>
-        <h2 class="section-title">Инструменты по бизнес-задачам</h2>
-        <p class="section-desc">Выберите бизнес-направление, чтобы увидеть наиболее подходящие AI-инструменты. Каждый инструмент содержит пояснение, почему он важен именно для этой задачи.</p>
-        <div class="biz-filter-bar" id="bizFilterBar"></div>
-        <div class="biz-results-summary" id="bizSummary"></div>
-        <div class="biz-results-grid" id="bizResults"></div>
-      </section>
-
-      <!-- Comparison -->
-      <section class="section" id="section-comparison">
-        <div class="section-label" style="color: var(--cyan)">Сравнительный анализ</div>
-        <h2 class="section-title">Сравнение уровней</h2>
-        <p class="section-desc">Ключевые различия между тремя уровнями LLM-экосистемы по критериям задач, навыков, стоимости и трендов 2026 года.</p>
-        <div class="comparison-wrapper" id="comparisonContent"></div>
-      </section>
-
-      <!-- Evolution -->
-      <section class="section" id="section-evolution">
-        <div class="section-label" style="color: var(--green)">Хронология развития</div>
-        <h2 class="section-title">Эволюция экосистемы</h2>
-        <p class="section-desc">От чат-ботов к автономным агентам: ключевые вехи развития LLM-экосистемы с октября 2024 по май 2026.</p>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
-          <div>
-            <h3 style="font-family: var(--font-heading); font-size: 18px; margin-bottom: 20px; color: var(--cyan);">Хронология</h3>
-            <div class="timeline-container" id="timelineContent"></div>
-          </div>
-          <div>
-            <h3 style="font-family: var(--font-heading); font-size: 18px; margin-bottom: 20px; color: var(--green);">Структурные сдвиги</h3>
-            <div class="shifts-grid" id="shiftsContent" style="grid-template-columns: 1fr;"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Strategy -->
-      <section class="section" id="section-strategy">
-        <div class="section-label" style="color: var(--purple)">Рекомендации</div>
-        <h2 class="section-title">Стратегия внедрения</h2>
-        <p class="section-desc">Два подхода к интеграции AI-инструментов в организацию и формула быстрого пилотного проекта.</p>
-        <div id="strategyContent"></div>
-      </section>
-
-      <!-- Navigator Quiz -->
-      <section class="section" id="section-navigator">
-        <div class="section-label" style="color: var(--purple)">&#129517; Персональный подбор</div>
-        <h2 class="section-title">Какие AI-инструменты тебе нужны?</h2>
-        <p class="section-desc">Ответьте на 6 вопросов и получите персонализированную рекомендацию инструментов из каталога, подобранную под ваши задачи и бюджет.</p>
-        <div class="navigator-container" id="navigatorContent"></div>
-      </section>
-
-      <!-- Quiz -->
-      <section class="section" id="section-quiz">
-        <div class="section-label" style="color: var(--yellow)">Проверка знаний</div>
-        <h2 class="section-title">Тест для самопроверки</h2>
-        <p class="section-desc">10 вопросов по материалам карты LLM-инструментов. Проверьте, насколько хорошо вы разобрались в экосистеме.</p>
-        <div class="quiz-container" id="quizContent"></div>
-      </section>
-    </main>
+<!-- ═══════════════════════════════════════════════════════════════
+     TOP NAV
+═══════════════════════════════════════════════════════════════ -->
+<nav style="background:#161a1d; border-bottom:1px solid #252c33;" class="px-10 py-3 flex items-center justify-between sticky top-0 z-50">
+  <div class="flex items-center gap-3">
+    <div style="width:32px;height:32px;background:linear-gradient(135deg,#00e5a0,#00c8d7);border-radius:8px;" class="flex items-center justify-center">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h4l2-6 2 12 2-6h2" stroke="#0d0f10" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <span style="font-weight:700;font-size:16px;letter-spacing:-0.02em;" class="text-white">verkhovskiy<span class="gradient-text">.ai</span></span>
   </div>
 
-  <script>
-    // ========== GLOBAL DATA ==========
-    let DATA = null;
-    let TOTD = null;
-    let TRENDING = null;
+  <div class="flex items-center gap-8">
+    <a href="/" style="color:#6b7a8d;font-size:13px;font-weight:400;" class="hover:text-white transition-colors">Дашборд</a>
+    <a href="/llm-map/" style="color:#e8edf2;font-size:13px;font-weight:500;border-bottom:2px solid #00e5a0;padding-bottom:2px;">Карта моделей</a>
+    <a href="#" style="color:#6b7a8d;font-size:13px;font-weight:400;" class="hover:text-white transition-colors">Аналитика</a>
+    <a href="#" style="color:#6b7a8d;font-size:13px;font-weight:400;" class="hover:text-white transition-colors">Инструменты</a>
+  </div>
 
-    // ========== STATE ==========
-    let activeSection = 'overview';
-    let activeCategoryIndex = {};
-    let expandedCards = {};
-    let quizState = { current: 0, score: 0, answered: false, finished: false };
-    let visitedSections = new Set(['overview']);
+  <div class="flex items-center gap-4">
+    <div class="flex items-center gap-2" style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:6px 12px;">
+      <div class="pulse-dot" style="width:7px;height:7px;background:#00e5a0;border-radius:50%;"></div>
+      <span style="font-size:12px;color:#9aa5b4;">Live</span>
+    </div>
+    <div style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:6px 12px;font-size:12px;color:#9aa5b4;">
+      22 мая 2026
+    </div>
+    <div style="width:32px;height:32px;background:linear-gradient(135deg,#252c33,#1c2127);border-radius:50%;border:1px solid #252c33;" class="flex items-center justify-center cursor-pointer">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="#9aa5b4" stroke-width="1.3"/><path d="M2 12c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="#9aa5b4" stroke-width="1.3" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+</nav>
 
-    // ========== NAVIGATOR STATE ==========
-    const navigatorQuestions = [
-      {
-        id: 1,
-        question: "Какие задачи вы решаете чаще всего?",
-        hint: "Выберите основное направление работы",
-        multi: false,
-        options: [
-          { icon: "&#128221;", text: "Написание текстов, статей, отчётов", tags: ["текст", "контент"] },
-          { icon: "&#128187;", text: "Программирование и разработка", tags: ["код", "IDE"] },
-          { icon: "&#127912;", text: "Создание изображений, видео, медиа", tags: ["изображения", "видео", "аудио", "голос", "контент", "мультимодальность"] },
-          { icon: "&#128269;", text: "Исследования и аналитика", tags: ["research", "поиск", "текст"] },
-          { icon: "&#9881;", text: "Автоматизация рабочих процессов", tags: ["автоматизация", "агенты", "no-code"] },
-          { icon: "&#128188;", text: "Управление и стратегия (Enterprise)", tags: ["enterprise", "интеграция"] }
-        ]
-      },
-      {
-        id: 2,
-        question: "Какой у вас бюджет на AI-инструменты?",
-        hint: "Месячный бюджет на одного пользователя",
-        multi: false,
-        options: [
-          { icon: "&#128176;", text: "Бесплатно / минимальный (до $20/мес)", tags: ["бюджетный", "open-source"] },
-          { icon: "&#128179;", text: "Средний ($20–100/мес)", tags: ["enterprise"] },
-          { icon: "&#128142;", text: "Без ограничений (Enterprise)", tags: ["enterprise"] }
-        ]
-      },
-      {
-        id: 3,
-        question: "Нужен ли вам API-доступ для интеграции?",
-        hint: "Планируете ли встраивать AI в свои системы",
-        multi: false,
-        options: [
-          { icon: "&#10060;", text: "Нет, мне достаточно веб-интерфейса", tags: ["no-code"] },
-          { icon: "&#9989;", text: "Да, нужен API для интеграции", tags: ["api", "код"] },
-          { icon: "&#128640;", text: "Нужна полная платформа для создания AI-решений", tags: ["api", "enterprise", "интеграция"] }
-        ]
-      },
-      {
-        id: 4,
-        question: "Какой уровень технической подготовки?",
-        hint: "Это поможет подобрать инструменты нужной сложности",
-        multi: false,
-        options: [
-          { icon: "&#128100;", text: "Нетехнический — нужен простой интерфейс", tags: ["no-code", "текст"] },
-          { icon: "&#128104;&#8205;&#128187;", text: "Средний — могу настроить, но не программировать", tags: ["автоматизация", "no-code", "агенты"] },
-          { icon: "&#129489;&#8205;&#128187;", text: "Продвинутый — пишу код, работаю с API", tags: ["код", "api", "IDE"] }
-        ]
-      },
-      {
-        id: 5,
-        question: "Что для вас важнее в инструменте?",
-        hint: "Выберите приоритет",
-        multi: false,
-        options: [
-          { icon: "&#9889;", text: "Скорость и простота использования", tags: ["текст", "no-code"] },
-          { icon: "&#128170;", text: "Мощность и качество результата", tags: ["reasoning", "enterprise"] },
-          { icon: "&#128274;", text: "Контроль и безопасность данных", tags: ["open-source", "enterprise"] },
-          { icon: "&#128176;", text: "Соотношение цена/качество", tags: ["бюджетный", "open-source"] }
-        ]
-      },
-      {
-        id: 6,
-        question: "Работаете один или в команде?",
-        hint: "Это влияет на выбор между персональными и командными решениями",
-        multi: false,
-        options: [
-          { icon: "&#128100;", text: "Один / фрилансер", tags: ["бюджетный", "текст", "код"] },
-          { icon: "&#128101;", text: "Небольшая команда (2–10 человек)", tags: ["агенты", "автоматизация"] },
-          { icon: "&#127970;", text: "Большая организация (10+ человек)", tags: ["enterprise", "интеграция"] }
-        ]
-      }
-    ];
+<!-- ═══════════════════════════════════════════════════════════════
+     TICKER BAR
+═══════════════════════════════════════════════════════════════ -->
+<div style="background:#131618;border-bottom:1px solid #1e2429;padding:7px 0;overflow:hidden;">
+  <div class="ticker-inner" style="gap:0;">
+    <span style="color:#6b7a8d;font-size:11px;font-weight:500;padding:0 32px;">GPT-5.5</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 12%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Gemini 3.5</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 8%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Claude 4 Opus</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 5%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Llama 4</span>
+    <span style="color:#ff5c7a;font-size:11px;">▼ 3%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Grok 4.3</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 4%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">DeepSeek V4</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 19%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">MiMo-V2-Pro</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 21%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Cursor 3.0</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 7%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px 0 64px;">·····</span>
+    <!-- duplicate for loop -->
+    <span style="color:#6b7a8d;font-size:11px;font-weight:500;padding:0 32px;">GPT-5.5</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 12%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Gemini 3.5</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 8%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Claude 4 Opus</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 5%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Llama 4</span>
+    <span style="color:#ff5c7a;font-size:11px;">▼ 3%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Grok 4.3</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 4%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">DeepSeek V4</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 19%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">MiMo-V2-Pro</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 21%</span>
+    <span style="color:#6b7a8d;font-size:11px;padding:0 32px;">Cursor 3.0</span>
+    <span style="color:#00e5a0;font-size:11px;">▲ 7%</span>
+  </div>
+</div>
 
-    let navState = { current: 0, answers: [], finished: false };
+<!-- ═══════════════════════════════════════════════════════════════
+     MAIN CONTENT
+═══════════════════════════════════════════════════════════════ -->
+<main class="px-10 pt-8 pb-10" style="max-width:1440px;margin:0 auto;">
 
-    // ========== CHRONICLE STATE ==========
-    let CHRONICLE = null;
-    let chronicleFilter = 'All';
-    let activeBizFilter = null;
+  <!-- ── HEADER ROW ── -->
+  <div class="flex items-start justify-between mb-8">
+    <div>
+      <div class="section-label mb-2">Гайд по моделям · Обновлено: Май 2026</div>
+      <h1 style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.2;" class="text-white">
+        Трёхуровневая карта <span class="gradient-text">LLM-инструментов</span>
+      </h1>
+      <p style="color:#6b7a8d;font-size:14px;margin-top:6px;">
+        Модели, агенты, платформы сборки — 100+ инструментов с бенчмарками и ценами
+      </p>
+    </div>
 
-    // ========== LOAD TRENDING ==========
-    async function loadTrending() {
-      try {
-        const resp = await fetch('/data/momentum.json');
-        if (!resp.ok) throw new Error('Failed to load momentum.json');
-        const data = await resp.json();
-        // Get latest entry (array of daily snapshots)
-        TRENDING = Array.isArray(data) ? data[data.length - 1] : data;
-      } catch (e) {
-        console.warn('Trending data not available:', e);
-        TRENDING = null;
-      }
-    }
+    <!-- Guide CTA — back to Dashboard -->
+    <a href="/" class="guide-btn flex items-center gap-3 px-6 py-3 rounded-xl cursor-pointer no-underline" style="text-decoration:none;">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <rect x="2" y="3" width="16" height="14" rx="2.5" stroke="#0d0f10" stroke-width="1.6"/>
+        <path d="M6 7h8M6 10h5M6 13h6" stroke="#0d0f10" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#0d0f10;line-height:1.2;">Дашборд</div>
+        <div style="font-size:10px;color:rgba(13,15,16,0.65);font-weight:500;">Новости · Тренды · CPT</div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="margin-left:4px;">
+        <path d="M4 8h8M9 5l3 3-3 3" stroke="#0d0f10" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
 
-    // ========== LOAD DATA ==========
-    async function loadData() {
-      try {
-        const resp = await fetch('data/llm-tools.json');
-        if (!resp.ok) throw new Error('Failed to load llm-tools.json');
-        DATA = await resp.json();
-      } catch (e) {
-        console.error('Error loading data:', e);
-        document.getElementById('mainContent').innerHTML = '<div style="padding:60px 40px;"><h2 style="color:var(--red)">Ошибка загрузки данных</h2><p style="color:var(--text-secondary)">Не удалось загрузить каталог инструментов. Попробуйте обновить страницу.</p></div>';
-        return false;
-      }
-      return true;
-    }
+  <!-- ── THREE-COLUMN GRID ── -->
+  <div class="grid gap-6" style="grid-template-columns: 1fr 380px 280px;">
 
-    async function loadChronicle() {
-      try {
-        const resp = await fetch('data/models-feed.json');
-        if (!resp.ok) throw new Error('Failed to load models-feed.json');
-        CHRONICLE = await resp.json();
-      } catch (e) {
-        console.warn('Chronicle data not available:', e);
-        CHRONICLE = null;
-      }
-    }
+    <!-- ════════════════════════════════
+         LEFT: Instruments/Models Feed
+    ════════════════════════════════ -->
+    <div>
+      <!-- Level tabs -->
+      <div class="flex items-center gap-3 mb-4">
+        <button onclick="filterLevel('all')" class="level-tab active" id="tab-all" style="background:#1c2127;border:1px solid #00e5a0;border-radius:8px;padding:5px 12px;font-size:12px;color:#00e5a0;font-weight:500;">Все</button>
+        <button onclick="filterLevel(1)" class="level-tab" id="tab-1" style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:5px 12px;font-size:12px;color:#9aa5b4;font-weight:500;">🧠 Модели</button>
+        <button onclick="filterLevel(2)" class="level-tab" id="tab-2" style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:5px 12px;font-size:12px;color:#9aa5b4;font-weight:500;">🤖 Агенты</button>
+        <button onclick="filterLevel(3)" class="level-tab" id="tab-3" style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:5px 12px;font-size:12px;color:#9aa5b4;font-weight:500;">🔧 Платформы</button>
+        <span style="font-size:11px;color:#6b7a8d;margin-left:auto;" id="tools-count">15 инструментов</span>
+      </div>
 
-    async function loadToolOfTheDay() {
-      try {
-        const resp = await fetch('data/tool-of-the-day.json');
-        if (!resp.ok) throw new Error('Failed to load tool-of-the-day.json');
-        TOTD = await resp.json();
-      } catch (e) {
-        console.warn('Tool of the day not available, will use random:', e);
-        TOTD = null;
-      }
-    }
+      <!-- Cards container -->
+      <div class="flex flex-col gap-3" id="tools-feed">
+        <!-- Filled by JS -->
+      </div>
 
-    // ========== INIT ==========
-    async function init() {
-      const dataLoaded = await loadData();
-      if (!dataLoaded) return;
-      await loadToolOfTheDay();
-      await loadChronicle();
-      await loadTrending();
+      <!-- Load more -->
+      <div class="flex justify-center mt-4">
+        <button onclick="loadMore()" id="load-more-btn" style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:8px 20px;font-size:12px;color:#9aa5b4;cursor:pointer;" class="hover:border-brand-green hover:text-white transition-all">
+          Показать ещё 12 инструментов
+        </button>
+      </div>
+    </div>
 
-      // Inject chronicle into sections list
-      if (DATA.sections) {
-        const toolIdx = DATA.sections.findIndex(s => s.id === 'tool-of-the-day');
-        const chronicleExists = DATA.sections.find(s => s.id === 'chronicle');
-        if (!chronicleExists) {
-          const insertAt = toolIdx >= 0 ? toolIdx + 1 : 1;
-          DATA.sections.splice(insertAt, 0, { id: 'chronicle', title: 'Хроника', icon: '⚡' });
-        }
-        // Inject trending section
-        const trendingExists = DATA.sections.find(s => s.id === 'trending');
-        if (!trendingExists) {
-          const chronicleIdx = DATA.sections.findIndex(s => s.id === 'chronicle');
-          const trendingInsertAt = chronicleIdx >= 0 ? chronicleIdx + 1 : 2;
-          DATA.sections.splice(trendingInsertAt, 0, { id: 'trending', title: 'ТОП', icon: '🔥' });
-        }
-        // Inject business classifier section
-        const bizExists = DATA.sections.find(s => s.id === 'business');
-        if (!bizExists) {
-          const stratIdx = DATA.sections.findIndex(s => s.id === 'strategy');
-          const bizInsertAt = stratIdx >= 0 ? stratIdx : DATA.sections.length;
-          DATA.sections.splice(bizInsertAt, 0, { id: 'business', title: 'Бизнес', icon: '💼' });
-        }
-      }
+    <!-- ════════════════════════════════
+         CENTER: Trends + Tool of Day + Navigation
+    ════════════════════════════════ -->
+    <div class="flex flex-col gap-5">
 
-      renderNav();
-      renderHeroLevels();
-      renderToolOfTheDay();
-      renderChronicle();
-      renderTrending();
-      renderLevelSections();
-      renderBusinessClassifier();
-      renderComparison();
-      renderTimeline();
-      renderShifts();
-      renderStrategy();
-      renderNavigator();
-      renderQuiz();
-      setupScrollObserver();
-      updateProgress();
-
-      // Handle hash navigation to chronicle
-      if (window.location.hash === '#chronicle') {
-        setTimeout(() => scrollToSection('chronicle'), 300);
-      }
-      if (window.location.hash === '#business') {
-        setTimeout(() => scrollToSection('business'), 300);
-      }
-      if (window.location.hash === '#trending') {
-        setTimeout(() => scrollToSection('trending'), 300);
-      }
-    }
-
-    // ========== NAVIGATION ==========
-    function renderNav() {
-      const nav = document.getElementById('sidebarNav');
-      nav.innerHTML = DATA.sections.map(s => `
-        <div class="nav-item ${s.id === activeSection ? 'active' : ''}" data-section="${s.id}" onclick="scrollToSection('${s.id}')">
-          <span class="nav-icon">${s.icon}</span>
-          <span>${s.title}</span>
+      <!-- Trends -->
+      <div class="stat-card p-5">
+        <div class="flex items-center justify-between mb-4">
+          <span style="font-size:14px;font-weight:600;color:#e8edf2;">Тренды недели</span>
+          <span style="font-size:11px;color:#6b7a8d;">ТОП-5</span>
         </div>
-      `).join('');
-    }
-
-    function scrollToSection(id) {
-      const el = document.getElementById('section-' + id);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        visitedSections.add(id);
-        updateProgress();
-      }
-      document.getElementById('sidebar').classList.remove('open');
-      document.querySelector('.sidebar-overlay').classList.remove('open');
-    }
-
-    function toggleSidebar() {
-      document.getElementById('sidebar').classList.toggle('open');
-      document.querySelector('.sidebar-overlay').classList.toggle('open');
-    }
-
-    function setupScrollObserver() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id.replace('section-', '');
-            activeSection = id;
-            visitedSections.add(id);
-            updateProgress();
-            document.querySelectorAll('.nav-item').forEach(item => {
-              item.classList.toggle('active', item.dataset.section === id);
-            });
-          }
-        });
-      }, { threshold: 0.3 });
-
-      DATA.sections.forEach(s => {
-        const el = document.getElementById('section-' + s.id);
-        if (el) observer.observe(el);
-      });
-    }
-
-    function updateProgress() {
-      const pct = Math.round((visitedSections.size / DATA.sections.length) * 100);
-      document.getElementById('progressFill').style.width = pct + '%';
-      document.getElementById('progressText').textContent = pct + '%';
-    }
-
-    // ========== HERO LEVELS ==========
-    function renderHeroLevels() {
-      const container = document.getElementById('heroLevels');
-      container.innerHTML = DATA.levels.map((l, i) => `
-        <div class="hero-level-card" onclick="scrollToSection('level${l.id}')">
-          <div class="hero-level-num">${l.id}</div>
-          <div class="hero-level-title">${l.shortTitle}</div>
-          <div class="hero-level-desc">${l.shortDesc}</div>
+        <div class="flex flex-col gap-3" id="trends-list">
+          <!-- Filled by JS -->
         </div>
-      `).join('');
-    }
+      </div>
 
-    // ========== TOOL OF THE DAY ==========
-    function renderToolOfTheDay() {
-      const container = document.getElementById('toolOfTheDayContent');
-      let tool;
-
-      if (TOTD && TOTD.tool) {
-        tool = TOTD.tool;
-      } else {
-        // Fallback: random tool from catalog
-        const allTools = [];
-        DATA.levels.forEach(level => {
-          level.categories.forEach(cat => {
-            cat.tools.forEach(t => {
-              allTools.push({ ...t, level: level.id, category: cat.name });
-            });
-          });
-        });
-        const randomTool = allTools[Math.floor(Math.random() * allTools.length)];
-        tool = {
-          name: randomTool.name,
-          url: randomTool.url,
-          level: randomTool.level,
-          category: randomTool.category,
-          description: randomTool.description,
-          fullDescription: randomTool.description,
-          rating: 8.0,
-          ratingMax: 10,
-          pros: randomTool.features || [],
-          cons: ["Информация ограничена — полный обзор скоро появится"],
-          comparison: [],
-          recommendation: randomTool.strength || "Рекомендуется для изучения.",
-          idealFor: [],
-          pricing: randomTool.apiPrice || "См. официальный сайт"
-        };
-      }
-
-      const levelColors = { 1: 'var(--cyan)', 2: 'var(--green)', 3: 'var(--purple)' };
-      const levelNames = { 1: 'Уровень 1: Модели', 2: 'Уровень 2: Агенты', 3: 'Уровень 3: Платформы' };
-
-      container.innerHTML = `
-        <div class="totd-card">
-          <div class="totd-badge">&#11088; Инструмент дня &mdash; ${TOTD ? TOTD.date : new Date().toISOString().split('T')[0]}</div>
-          <div class="totd-header">
-            <div>
-              <div class="totd-title">${tool.name}</div>
-              <div class="totd-category">${levelNames[tool.level] || ''} &bull; ${tool.category}</div>
-            </div>
-            <div class="totd-rating">
-              <div class="totd-rating-value">${tool.rating}</div>
-              <div class="totd-rating-max">/ ${tool.ratingMax}</div>
+      <!-- Tool of the Day -->
+      <div class="stat-card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <span style="font-size:14px;font-weight:600;color:#e8edf2;">⭐ Инструмент дня</span>
+            <div class="flex items-center gap-1" style="background:#0f2a1e;border:1px solid #1e4030;border-radius:6px;padding:2px 8px;">
+              <div class="pulse-dot" style="width:5px;height:5px;background:#00e5a0;border-radius:50%;"></div>
+              <span style="font-size:10px;color:#00e5a0;font-weight:600;">LIVE</span>
             </div>
           </div>
-          <div class="totd-description">${tool.fullDescription || tool.description}</div>
+        </div>
+        <div id="tool-of-day">
+          <!-- Filled by JS -->
+        </div>
+      </div>
 
-          <div class="totd-grid">
-            <div class="totd-pros">
-              <div class="totd-list-title">Преимущества</div>
-              <ul class="totd-list">
-                ${(tool.pros || []).map(p => `<li>${p}</li>`).join('')}
-              </ul>
-            </div>
-            <div class="totd-cons">
-              <div class="totd-list-title">Ограничения</div>
-              <ul class="totd-list">
-                ${(tool.cons || []).map(c => `<li>${c}</li>`).join('')}
-              </ul>
-            </div>
+      <!-- Chronicle (latest 5) -->
+      <div class="stat-card p-5">
+        <div class="flex items-center justify-between mb-4">
+          <span style="font-size:14px;font-weight:600;color:#e8edf2;">⚡ Хроника</span>
+          <span style="font-size:11px;color:#6b7a8d;">Последние 5</span>
+        </div>
+        <div class="flex flex-col gap-2" id="chronicle-list">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <!-- Ecosystem navigation CTA -->
+      <div style="background:linear-gradient(135deg,#0f2a1e 0%,#0a1f28 100%);border:1px solid #1e4030;border-radius:14px;padding:20px;position:relative;overflow:hidden;">
+        <div style="position:absolute;right:-20px;top:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(0,229,160,0.12),transparent 70%);border-radius:50%;"></div>
+        <div class="section-label mb-2">Навигация по экосистеме</div>
+        <p style="font-size:14px;font-weight:600;color:#e8edf2;margin:0 0 4px;">100+ моделей в одном месте</p>
+        <p style="font-size:12px;color:#6b7a8d;margin:0 0 16px;line-height:1.5;">Сравнивайте возможности, цены и бенчмарки всех актуальных LLM</p>
+        <a href="/llm-map/" class="guide-btn flex items-center justify-center gap-2 py-2.5 rounded-lg" style="text-decoration:none;">
+          <span style="font-size:13px;font-weight:700;color:#0d0f10;">Открыть полную карту →</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- ════════════════════════════════
+         RIGHT: Stats + Categories + Quick links
+    ════════════════════════════════ -->
+    <div class="flex flex-col gap-4">
+
+      <!-- Stats -->
+      <div class="stat-card p-4">
+        <div class="section-label mb-3">Статистика экосистемы</div>
+        <div class="grid grid-cols-2 gap-3">
+          <div style="background:#161a1d;border-radius:8px;padding:12px;">
+            <div style="font-size:22px;font-weight:700;letter-spacing:-0.03em;" class="gradient-text">100+</div>
+            <div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Моделей в каталоге</div>
           </div>
-
-          ${tool.comparison && tool.comparison.length > 0 ? `
-            <div class="totd-comparison">
-              <div class="totd-comparison-title">Сравнение с аналогами</div>
-              ${tool.comparison.map(c => `
-                <div class="totd-comparison-item">
-                  <div class="totd-comparison-name">vs ${c.competitor}</div>
-                  <div class="totd-comparison-verdict">${c.verdict}</div>
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
-
-          <div class="totd-recommendation">
-            <div class="totd-recommendation-title">Рекомендация</div>
-            <div class="totd-recommendation-text">${tool.recommendation}</div>
+          <div style="background:#161a1d;border-radius:8px;padding:12px;">
+            <div style="font-size:22px;font-weight:700;letter-spacing:-0.03em;color:#a78bfa;">25</div>
+            <div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Обновлений за неделю</div>
           </div>
+          <div style="background:#161a1d;border-radius:8px;padding:12px;">
+            <div style="font-size:22px;font-weight:700;letter-spacing:-0.03em;color:#fb923c;">3</div>
+            <div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Уровня экосистемы</div>
+          </div>
+          <div style="background:#161a1d;border-radius:8px;padding:12px;">
+            <div style="font-size:22px;font-weight:700;letter-spacing:-0.03em;color:#38bdf8;">9400+</div>
+            <div style="font-size:11px;color:#6b7a8d;margin-top:2px;">MCP серверов</div>
+          </div>
+        </div>
+      </div>
 
-          ${tool.idealFor && tool.idealFor.length > 0 ? `
-            <div class="totd-tags">
-              ${tool.idealFor.map(t => `<span class="totd-tag">${t}</span>`).join('')}
+      <!-- Category pills -->
+      <div class="stat-card p-4">
+        <div class="section-label mb-3">Категории</div>
+        <div class="flex flex-wrap gap-2">
+          <span style="background:#0f2a1e;border:1px solid #1e4030;border-radius:6px;padding:5px 10px;font-size:12px;color:#00e5a0;cursor:pointer;">Текст</span>
+          <span style="background:#1a1525;border:1px solid #2e2545;border-radius:6px;padding:5px 10px;font-size:12px;color:#a78bfa;cursor:pointer;">Код</span>
+          <span style="background:#120c20;border:1px solid #2a1850;border-radius:6px;padding:5px 10px;font-size:12px;color:#c084fc;cursor:pointer;">Видео</span>
+          <span style="background:#081520;border:1px solid #1a3050;border-radius:6px;padding:5px 10px;font-size:12px;color:#38bdf8;cursor:pointer;">Аудио</span>
+          <span style="background:#1e1208;border:1px solid #3a2010;border-radius:6px;padding:5px 10px;font-size:12px;color:#fb923c;cursor:pointer;">Reasoning</span>
+          <span style="background:#1a1f2a;border:1px solid #2a3050;border-radius:6px;padding:5px 10px;font-size:12px;color:#7b9cff;cursor:pointer;">RAG</span>
+          <span style="background:#161a1d;border:1px solid #252c33;border-radius:6px;padding:5px 10px;font-size:12px;color:#6b7a8d;cursor:pointer;">Enterprise</span>
+          <span style="background:#161a1d;border:1px solid #252c33;border-radius:6px;padding:5px 10px;font-size:12px;color:#6b7a8d;cursor:pointer;">Multimodal</span>
+        </div>
+      </div>
+
+      <!-- Quick links -->
+      <div class="stat-card p-4">
+        <div class="section-label mb-3">Быстрый доступ</div>
+        <div class="flex flex-col gap-1">
+          <a href="#quiz" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;border:1px solid transparent;" class="hover:border-green-900 transition-all">
+            <div class="flex items-center gap-3">
+              <div style="width:28px;height:28px;background:linear-gradient(135deg,#00e5a0,#00c8d7);border-radius:6px;" class="flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M4 5l3-3 3 3" stroke="#0d0f10" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span style="font-size:13px;color:#e8edf2;font-weight:500;">Навигатор (квиз)</span>
             </div>
-          ` : ''}
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
 
-          <a href="${tool.url}" target="_blank" rel="noopener" class="totd-link">
-            Перейти на сайт &rarr;
+          <a href="#comparison" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;border:1px solid transparent;" class="hover:border-purple-900 transition-all">
+            <div class="flex items-center gap-3">
+              <div style="width:28px;height:28px;background:#1a1525;border:1px solid #2e2545;border-radius:6px;" class="flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="2" width="10" height="10" rx="2" stroke="#a78bfa" stroke-width="1.3"/><path d="M5 5v4M7 7v2M9 3v6" stroke="#a78bfa" stroke-width="1.3" stroke-linecap="round"/></svg>
+              </div>
+              <span style="font-size:13px;color:#e8edf2;font-weight:500;">Сравнение моделей</span>
+            </div>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+
+          <a href="#evolution" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;border:1px solid transparent;" class="hover:border-blue-900 transition-all">
+            <div class="flex items-center gap-3">
+              <div style="width:28px;height:28px;background:#0a1520;border:1px solid #1a3050;border-radius:6px;" class="flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10L5 4l3 4 2-2 2 4" stroke="#38bdf8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span style="font-size:13px;color:#e8edf2;font-weight:500;">Эволюция рынка</span>
+            </div>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+
+          <a href="#test" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;border:1px solid transparent;" class="hover:border-orange-900 transition-all">
+            <div class="flex items-center gap-3">
+              <div style="width:28px;height:28px;background:#1e1208;border:1px solid #3a2010;border-radius:6px;" class="flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#fb923c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span style="font-size:13px;color:#e8edf2;font-weight:500;">Тест знаний</span>
+            </div>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
-      `;
-    }
+      </div>
 
-    // ========== LEVEL SECTIONS ==========
-    function renderLevelSections() {
-      DATA.levels.forEach(level => {
-        const section = document.getElementById('section-level' + level.id);
-        activeCategoryIndex['level' + level.id] = 0;
-
-        section.innerHTML = `
-          <div class="level-header">
-            <img class="level-header-image" src="${level.image}" alt="${level.title}" loading="lazy" />
-            <div>
-              <div class="level-badge level-badge-${level.id}">${level.id} &nbsp;${level.subtitle}</div>
-              <h2 class="section-title">${level.title}</h2>
-              <p class="section-desc">${level.description}</p>
-            </div>
-          </div>
-          <div class="category-tabs" id="tabs-level${level.id}">
-            ${level.categories.map((cat, i) => `
-              <button class="category-tab ${i === 0 ? 'active' : ''}" onclick="switchCategory('level${level.id}', ${i})">${cat.name}</button>
-            `).join('')}
-          </div>
-          <div class="tools-grid" id="tools-level${level.id}">
-            ${renderToolCards(level.id, level.categories[0].tools, level.color)}
-          </div>
-        `;
-      });
-    }
-
-    function switchCategory(levelKey, catIndex) {
-      activeCategoryIndex[levelKey] = catIndex;
-      const levelId = parseInt(levelKey.replace('level', ''));
-      const level = DATA.levels.find(l => l.id === levelId);
-
-      document.querySelectorAll(`#tabs-${levelKey} .category-tab`).forEach((tab, i) => {
-        tab.classList.toggle('active', i === catIndex);
-      });
-
-      const grid = document.getElementById('tools-' + levelKey);
-      grid.innerHTML = renderToolCards(levelId, level.categories[catIndex].tools, level.color);
-    }
-
-    function renderToolCards(levelId, tools, color) {
-      return tools.map((tool, i) => {
-        const cardKey = `${levelId}-${i}`;
-        const isOpen = expandedCards[cardKey];
-        return `
-          <div class="tool-card">
-            <div class="tool-card-header" onclick="toggleCard('${cardKey}', ${levelId}, ${i})">
-              <div class="tool-card-left">
-                <div class="tool-dot" style="background: ${color}"></div>
-                <div class="tool-name">${tool.name}</div>
-              </div>
-              <div class="tool-card-actions">
-                <a href="${tool.url}" target="_blank" rel="noopener" class="tool-link" title="Официальный сайт" onclick="event.stopPropagation()">&nearr;</a>
-                <button class="tool-expand ${isOpen ? 'open' : ''}" id="expand-${cardKey}">&#9662;</button>
-              </div>
-            </div>
-            <div class="tool-card-body ${isOpen ? 'open' : ''}" id="body-${cardKey}">
-              <div class="tool-desc">${tool.description}</div>
-              ${tool.businessFocus ? `<div class="tool-strength" style="border-color: rgba(0,212,255,0.15); background: rgba(0,212,255,0.04); color: var(--cyan);">💼 ${tool.businessFocus}</div>` : ''}
-              ${tool.strength ? `<div class="tool-strength">${tool.strength}</div>` : ''}
-              ${tool.features ? `
-                <div class="tool-features">
-                  ${tool.features.map(f => `<span class="tool-feature-tag">${f}</span>`).join('')}
-                </div>
-              ` : ''}
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function toggleCard(cardKey, levelId, toolIndex) {
-      expandedCards[cardKey] = !expandedCards[cardKey];
-      const body = document.getElementById('body-' + cardKey);
-      const btn = document.getElementById('expand-' + cardKey);
-      if (body) body.classList.toggle('open');
-      if (btn) btn.classList.toggle('open');
-    }
-
-
-    // ========== BUSINESS CLASSIFIER ==========
-    const BIZ_LABELS = {
-      marketing: { label: 'Маркетинг и контент', icon: '📣' },
-      development: { label: 'Разработка и код', icon: '💻' },
-      analytics: { label: 'Аналитика и исследования', icon: '🔍' },
-      automation: { label: 'Автоматизация процессов', icon: '⚙️' },
-      hr: { label: 'HR и обучение', icon: '👥' },
-      sales: { label: 'Продажи и CRM', icon: '💰' },
-      design: { label: 'Дизайн и медиа', icon: '🎨' },
-      strategy: { label: 'Стратегия и управление', icon: '📊' }
-    };
-
-    function renderBusinessClassifier() {
-      const filterBar = document.getElementById('bizFilterBar');
-      const categories = DATA.businessCategories || Object.keys(BIZ_LABELS).map(id => ({id, ...BIZ_LABELS[id]}));
-
-      filterBar.innerHTML = `
-        <button class="biz-filter-btn ${!activeBizFilter ? 'active' : ''}" onclick="setBizFilter(null)">
-          <span class="biz-filter-icon">🏢</span> Все
-        </button>
-        ${categories.map(cat => `
-          <button class="biz-filter-btn ${activeBizFilter === cat.id ? 'active' : ''}" onclick="setBizFilter('${cat.id}')">
-            <span class="biz-filter-icon">${cat.icon}</span> ${cat.label}
+      <!-- Newsletter -->
+      <div style="background:#161a1d;border:1px solid #252c33;border-radius:12px;padding:16px;">
+        <div style="font-size:13px;font-weight:600;color:#e8edf2;margin-bottom:4px;">Дайджест каждую неделю</div>
+        <p style="font-size:11px;color:#6b7a8d;margin:0 0 12px;line-height:1.5;">Лучшие новости AI прямо в почту</p>
+        <div class="flex gap-2">
+          <input type="email" placeholder="your@email.com"
+                 style="flex:1;background:#1c2127;border:1px solid #252c33;border-radius:7px;padding:7px 10px;font-size:12px;color:#e8edf2;outline:none;" />
+          <button class="guide-btn px-3 py-1.5 rounded-lg" style="font-size:12px;font-weight:600;color:#0d0f10;white-space:nowrap;border:none;cursor:pointer;">
+            Подписаться
           </button>
-        `).join('')}
-      `;
+        </div>
+      </div>
 
-      renderBizResults();
-    }
+    </div>
+  </div><!-- /grid -->
 
-    function setBizFilter(filterId) {
-      activeBizFilter = filterId;
-      renderBusinessClassifier();
-    }
+</main>
 
-    function renderBizResults() {
-      const container = document.getElementById('bizResults');
-      const summary = document.getElementById('bizSummary');
+<!-- ═══════════════════════════════════════════════════════════════
+     FOOTER BAR
+═══════════════════════════════════════════════════════════════ -->
+<footer style="border-top:1px solid #1e2429;padding:14px 40px;" class="flex items-center justify-between">
+  <span style="font-size:11px;color:#6b7a8d;">© 2026 verkhovskiy.ai · Гайд по моделям</span>
+  <div class="flex items-center gap-6">
+    <a href="#" style="font-size:11px;color:#6b7a8d;text-decoration:none;" class="hover:text-white">О проекте</a>
+    <a href="#" style="font-size:11px;color:#6b7a8d;text-decoration:none;" class="hover:text-white">Telegram</a>
+    <a href="/" style="font-size:11px;color:#00e5a0;text-decoration:none;font-weight:500;">← Дашборд</a>
+  </div>
+</footer>
 
-      // Collect all tools with businessUse
-      const allTools = [];
-      DATA.levels.forEach(level => {
-        level.categories.forEach(cat => {
-          cat.tools.forEach(tool => {
-            if (tool.businessUse && tool.businessUse.length > 0) {
-              allTools.push({
-                ...tool,
-                levelId: level.id,
-                levelColor: level.color,
-                categoryName: cat.name
-              });
-            }
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT — Load data from JSON
+═══════════════════════════════════════════════════════════════ -->
+<script>
+const VENDOR_COLORS = {
+  'OpenAI': { bg: '#1e1e2e', border: '#2a2a40', text: '#a78bfa' },
+  'Anthropic': { bg: '#1e1508', border: '#3a2a10', text: '#fb923c' },
+  'Google': { bg: '#0f2a1e', border: '#1e4030', text: '#00e5a0' },
+  'xAI': { bg: '#1a1f2a', border: '#2a3050', text: '#7b9cff' },
+  'Meta': { bg: '#120c20', border: '#2a1850', text: '#c084fc' },
+  'Open Source': { bg: '#081520', border: '#1a3050', text: '#38bdf8' },
+  'Runway': { bg: '#120c20', border: '#2a1850', text: '#c084fc' },
+  'ElevenLabs': { bg: '#081520', border: '#1a3050', text: '#38bdf8' },
+  'default': { bg: '#161a1d', border: '#252c33', text: '#9aa5b4' }
+};
+
+const LEVEL_COLORS = {
+  1: { icon: '🧠', label: 'Модели', color: '#00d4ff' },
+  2: { icon: '🤖', label: 'Агенты', color: '#a78bfa' },
+  3: { icon: '🔧', label: 'Платформы', color: '#fb923c' }
+};
+
+let allTools = [];
+let currentFilter = 'all';
+let visibleCount = 8;
+
+// Load data
+async function init() {
+  try {
+    const [toolsRes, feedRes, todRes] = await Promise.all([
+      fetch('data/llm-tools.json'),
+      fetch('data/models-feed.json'),
+      fetch('data/tool-of-the-day.json')
+    ]);
+    const toolsData = await toolsRes.json();
+    const feedData = await feedRes.json();
+    const todData = await todRes.json();
+
+    // Parse tools from levels
+    toolsData.levels.forEach(level => {
+      level.categories.forEach(cat => {
+        cat.tools.forEach(tool => {
+          allTools.push({
+            ...tool,
+            level: level.id,
+            category: cat.name
           });
         });
       });
+    });
 
-      // Filter
-      let filtered = allTools;
-      if (activeBizFilter) {
-        filtered = allTools.filter(t => t.businessUse.includes(activeBizFilter));
-      }
+    renderTools();
+    renderTrends(feedData);
+    renderToolOfDay(todData);
+    renderChronicle(feedData);
+  } catch(e) {
+    console.error('Failed to load data:', e);
+    renderFallback();
+  }
+}
 
-      // Summary
-      if (activeBizFilter) {
-        const label = (BIZ_LABELS[activeBizFilter] || {}).label || activeBizFilter;
-        summary.innerHTML = `Направление: <strong>${label}</strong> — найдено инструментов: <strong>${filtered.length}</strong>`;
-      } else {
-        summary.innerHTML = `Всего инструментов с бизнес-классификацией: <strong>${allTools.length}</strong>. Выберите направление для фильтрации.`;
-      }
+function renderTools() {
+  const container = document.getElementById('tools-feed');
+  let filtered = currentFilter === 'all' ? allTools : allTools.filter(t => t.level === currentFilter);
+  let toShow = filtered.slice(0, visibleCount);
 
-      if (filtered.length === 0) {
-        container.innerHTML = '<div class="biz-empty">Нет инструментов для выбранного направления</div>';
-        return;
-      }
+  document.getElementById('tools-count').textContent = filtered.length + ' инструментов';
 
-      container.innerHTML = filtered.map(tool => {
-        const levelLabel = ['', 'Модель', 'Агент', 'Платформа'][tool.levelId] || '';
-        const bizTags = (tool.businessUse || []).map(bu => {
-          const info = BIZ_LABELS[bu] || {};
-          return `<span class="biz-use-tag">${info.icon || ''} ${info.label || bu}</span>`;
-        }).join('');
+  container.innerHTML = toShow.map(tool => {
+    const lc = LEVEL_COLORS[tool.level];
+    // Determine vendor from name/url
+    let vendor = 'default';
+    if (tool.url?.includes('openai') || tool.name.includes('GPT') || tool.name.includes('OpenAI')) vendor = 'OpenAI';
+    else if (tool.url?.includes('anthropic') || tool.name.includes('Claude')) vendor = 'Anthropic';
+    else if (tool.url?.includes('google') || tool.name.includes('Gemini') || tool.name.includes('Google')) vendor = 'Google';
+    else if (tool.url?.includes('x.ai') || tool.name.includes('Grok')) vendor = 'xAI';
+    else if (tool.url?.includes('meta') || tool.name.includes('Meta') || tool.name.includes('Llama')) vendor = 'Meta';
+    else if (tool.name.includes('Cursor') || tool.name.includes('n8n') || tool.name.includes('Dify')) vendor = 'Open Source';
 
-        return `
-          <div class="biz-tool-card">
-            <div class="biz-tool-header">
-              <div class="biz-tool-name">${tool.name}</div>
-              <span class="biz-tool-level biz-tool-level-${tool.levelId}">${levelLabel}</span>
-            </div>
-            ${tool.businessFocus ? `<div class="biz-tool-focus">${tool.businessFocus}</div>` : `<div class="biz-tool-focus">${tool.description}</div>`}
-            <div class="biz-tool-tags">${bizTags}</div>
-            <a href="${tool.url}" target="_blank" rel="noopener" class="biz-tool-link">Перейти →</a>
+    const vc = VENDOR_COLORS[vendor] || VENDOR_COLORS['default'];
+    const tags = (tool.tags || []).slice(0, 3);
+
+    return `
+      <div class="news-card flex items-start gap-4 p-4 rounded-xl cursor-pointer" style="background:#1c2127;border:1px solid #252c33;">
+        <div style="width:40px;height:40px;min-width:40px;background:linear-gradient(135deg,${vc.bg},#0d0f10);border:1px solid ${vc.border};border-radius:10px;" class="flex items-center justify-center">
+          <span style="font-size:18px;">${lc.icon}</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1 flex-wrap">
+            <span class="tag" style="background:${vc.bg};color:${vc.text};border:1px solid ${vc.border};">${vendor !== 'default' ? vendor : 'Tool'}</span>
+            <span class="tag" style="background:#161a1d;color:${lc.color};border:1px solid #252c33;">${lc.label}</span>
+            ${tags.map(t => `<span class="tag" style="background:#161a1d;color:#6b7a8d;border:1px solid #252c33;">${t}</span>`).join('')}
+            ${tool.apiPrice ? `<span style="font-size:10px;color:#6b7a8d;margin-left:auto;font-family:'JetBrains Mono',monospace;">${tool.apiPrice}</span>` : ''}
           </div>
-        `;
-      }).join('');
-    }
-
-    // ========== COMPARISON ==========
-    function renderComparison() {
-      const container = document.getElementById('comparisonContent');
-      const ct = DATA.comparisonTable;
-      container.innerHTML = `
-        <table class="comparison-table">
-          <thead>
-            <tr>${ct.headers.map(h => `<th>${h}</th>`).join('')}</tr>
-          </thead>
-          <tbody>
-            ${ct.rows.map(row => `
-              <tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>
-            `).join('')}
-          </tbody>
-        </table>
-      `;
-    }
-
-    // ========== TRENDING ==========
-    function renderTrending() {
-      const container = document.getElementById('trendingContent');
-      if (!container) return;
-
-      if (!TRENDING || !TRENDING.trends || TRENDING.trends.length === 0) {
-        container.innerHTML = '<div class="chronicle-empty">Данные рейтинга недоступны</div>';
-        return;
-      }
-
-      const trends = [...TRENDING.trends].sort((a, b) => b.momentum - a.momentum);
-      const categoryLabels = {
-        accelerating: 'Ускорение',
-        stable: 'Стабильно',
-        emerging: 'Зарождение',
-        decelerating: 'Замедление',
-        decay: 'Угасание'
-      };
-
-      const maxMomentum = Math.max(...trends.map(t => Math.abs(t.momentum)));
-
-      const getMomentumColor = (val) => {
-        if (val >= 70) return 'var(--green)';
-        if (val >= 40) return 'var(--cyan)';
-        if (val >= 0) return 'var(--purple)';
-        return '#ef4444';
-      };
-
-      container.innerHTML = `
-        <div class="trending-grid">
-          ${trends.map((t, i) => {
-            const rank = i + 1;
-            const barWidth = Math.max(5, Math.abs(t.momentum) / maxMomentum * 100);
-            const color = getMomentumColor(t.momentum);
-            return `
-              <div class="trending-card">
-                <div class="trending-rank ${rank <= 3 ? 'trending-rank-' + rank : ''}">#${rank}</div>
-                <div class="trending-info">
-                  <div class="trending-name">${t.name}</div>
-                  <div class="trending-rationale">${t.rationale}</div>
-                  <span class="trending-category trending-category-${t.category}">${categoryLabels[t.category] || t.category}</span>
-                  <div class="trending-bar"><div class="trending-bar-fill" style="width: ${barWidth}%; background: ${color}"></div></div>
-                </div>
-                <div class="trending-momentum">
-                  <div class="trending-momentum-value" style="color: ${color}">${t.momentum > 0 ? '+' : ''}${t.momentum}</div>
-                  <div class="trending-momentum-label">моментум</div>
-                </div>
-              </div>
-            `;
-          }).join('')}
+          <p style="font-size:14px;font-weight:500;color:#e8edf2;line-height:1.45;margin:0 0 4px;">
+            <strong style="color:${vc.text};">${tool.name}</strong>
+          </p>
+          <p style="font-size:12px;color:#6b7a8d;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">
+            ${tool.description || tool.strength || ''}
+          </p>
+          ${tool.context ? `<div style="margin-top:6px;font-size:10px;color:#9aa5b4;"><span style="color:#6b7a8d;">Контекст:</span> ${tool.context} ${tool.reasoning ? `· <span style="color:#6b7a8d;">Reasoning:</span> ${tool.reasoning}` : ''}</div>` : ''}
         </div>
-        <div class="trending-updated">Обновлено: ${TRENDING.date || '—'}</div>
-      `;
-    }
+        <a href="${tool.url || '#'}" target="_blank" style="min-width:16px;margin-top:2px;opacity:0.35;text-decoration:none;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 8h8M9 5l3 3-3 3" stroke="#e8edf2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    `;
+  }).join('');
 
-    // ========== CHRONICLE ==========
-    function renderChronicle() {
-      const filtersContainer = document.getElementById('chronicleFilters');
-      const container = document.getElementById('chronicleContent');
+  // Update load more button
+  const btn = document.getElementById('load-more-btn');
+  const remaining = filtered.length - visibleCount;
+  if (remaining <= 0) {
+    btn.style.display = 'none';
+  } else {
+    btn.style.display = 'block';
+    btn.textContent = `Показать ещё ${Math.min(remaining, 8)} инструментов`;
+  }
+}
 
-      if (!CHRONICLE || !CHRONICLE.events || CHRONICLE.events.length === 0) {
-        container.innerHTML = '<div class="chronicle-empty">Данные хроники недоступны</div>';
-        return;
-      }
+function filterLevel(level) {
+  currentFilter = level;
+  visibleCount = 8;
+  // Update tabs
+  document.querySelectorAll('.level-tab').forEach(t => {
+    t.classList.remove('active');
+    t.style.borderColor = '#252c33';
+    t.style.color = '#9aa5b4';
+  });
+  const activeTab = document.getElementById(level === 'all' ? 'tab-all' : `tab-${level}`);
+  activeTab.classList.add('active');
+  activeTab.style.borderColor = '#00e5a0';
+  activeTab.style.color = '#00e5a0';
+  renderTools();
+}
 
-      // Render filters
-      const vendors = ['All', 'OpenAI', 'Anthropic', 'Google', 'Meta', 'xAI', 'Open Source'];
-      filtersContainer.innerHTML = vendors.map(v => `
-        <button class="chronicle-filter-btn ${v === chronicleFilter ? 'active' : ''}" onclick="filterChronicle('${v}')">
-          ${v === 'All' ? 'Все' : v}
-        </button>
-      `).join('');
+function loadMore() {
+  visibleCount += 8;
+  renderTools();
+}
 
-      // Filter events
-      let events = CHRONICLE.events;
-      if (chronicleFilter !== 'All') {
-        events = events.filter(ev => ev.vendor === chronicleFilter);
-      }
-      events = events.slice(0, 20);
+function renderTrends(feedData) {
+  const trends = [
+    { name: 'Agentic AI', pct: 34 },
+    { name: 'Multimodal LLM', pct: 28 },
+    { name: 'AI Video Gen', pct: 21 },
+    { name: 'On-device AI', pct: 15 },
+    { name: 'RAG 2.0', pct: -2 }
+  ];
 
-      if (events.length === 0) {
-        container.innerHTML = '<div class="chronicle-empty">Нет событий для выбранного фильтра</div>';
-        return;
-      }
-
-      const impactEmoji = { major: '🔴', minor: '🟡', patch: '🟢' };
-      const impactLabel = { major: 'Major', minor: 'Minor', patch: 'Patch' };
-
-      container.innerHTML = events.map(ev => {
-        const d = new Date(ev.date);
-        const day = d.getDate();
-        const months = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
-        const dateStr = `${day} ${months[d.getMonth()]}`;
-
-        return `
-          <div class="chronicle-item" data-impact="${ev.impact}">
-            <div class="chronicle-date">${dateStr}</div>
-            <div class="chronicle-card">
-              <div class="chronicle-card-header">
-                <span class="chronicle-model">${ev.model}</span>
-                <span class="chronicle-vendor">${ev.vendor}</span>
-              </div>
-              <div class="chronicle-event-text">${ev.event}</div>
-              <div class="chronicle-meta">
-                <span class="chronicle-impact chronicle-impact-${ev.impact}">${impactEmoji[ev.impact] || '🟡'} ${impactLabel[ev.impact] || 'Minor'}</span>
-                ${ev.url ? `<a href="${ev.url}" target="_blank" rel="noopener" class="chronicle-link">Подробнее &rarr;</a>` : ''}
-              </div>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function filterChronicle(vendor) {
-      chronicleFilter = vendor;
-      renderChronicle();
-    }
-
-    // ========== TIMELINE ==========
-    function renderTimeline() {
-      const container = document.getElementById('timelineContent');
-      container.innerHTML = DATA.timeline.map(item => `
-        <div class="timeline-item">
-          <div class="timeline-date">${item.date}</div>
-          <div class="timeline-event">${item.event}</div>
-          <div class="timeline-desc">${item.description}</div>
+  const container = document.getElementById('trends-list');
+  container.innerHTML = trends.map(t => `
+    <div class="flex items-center justify-between">
+      <span style="font-size:13px;color:#e8edf2;">${t.name}</span>
+      <div class="flex items-center gap-2">
+        <div style="width:80px;height:4px;background:#252c33;border-radius:2px;overflow:hidden;">
+          <div style="width:${Math.abs(t.pct)}%;height:100%;background:${t.pct >= 0 ? '#00e5a0' : '#ff5c7a'};border-radius:2px;"></div>
         </div>
-      `).join('');
-    }
+        <span class="${t.pct >= 0 ? 'trend-up' : 'trend-down'}" style="font-size:12px;font-family:'JetBrains Mono',monospace;min-width:40px;text-align:right;">${t.pct >= 0 ? '▲' : '▼'} ${Math.abs(t.pct)}%</span>
+      </div>
+    </div>
+  `).join('');
+}
 
-    // ========== SHIFTS ==========
-    function renderShifts() {
-      const container = document.getElementById('shiftsContent');
-      container.innerHTML = DATA.structuralShifts.map(shift => `
-        <div class="glass-card shift-card">
-          <div class="shift-area">${shift.area}</div>
-          <div class="shift-arrow">
-            <span class="shift-from">${shift.from}</span>
-            <span class="shift-arrow-icon">&rarr;</span>
-            <span class="shift-to">${shift.to}</span>
-          </div>
-          <div class="shift-desc">${shift.description}</div>
+function renderToolOfDay(data) {
+  const tool = data.tool || data;
+  const container = document.getElementById('tool-of-day');
+  container.innerHTML = `
+    <div style="background:#161a1d;border-radius:10px;padding:14px;">
+      <div class="flex items-center justify-between mb-2">
+        <span style="font-size:16px;font-weight:700;color:#e8edf2;">${tool.name}</span>
+        <span style="font-size:18px;font-weight:700;color:#00e5a0;font-family:'JetBrains Mono',monospace;">${tool.rating}<span style="font-size:12px;color:#6b7a8d;">/${tool.ratingMax || 10}</span></span>
+      </div>
+      <div style="font-size:11px;color:#6b7a8d;margin-bottom:8px;">Уровень ${tool.level} · ${tool.category}</div>
+      <p style="font-size:12px;color:#9aa5b4;line-height:1.5;margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${tool.description}</p>
+      <div class="flex flex-wrap gap-1">
+        ${(tool.idealFor || []).slice(0, 3).map(t => `<span style="font-size:10px;background:#0f2a1e;border:1px solid #1e4030;color:#00e5a0;padding:2px 6px;border-radius:4px;">${t}</span>`).join('')}
+      </div>
+      <a href="${tool.url}" target="_blank" style="display:inline-block;margin-top:10px;font-size:12px;color:#00e5a0;text-decoration:none;font-weight:500;">Подробнее →</a>
+    </div>
+  `;
+}
+
+function renderChronicle(feedData) {
+  const events = (feedData.events || []).slice(0, 5);
+  const container = document.getElementById('chronicle-list');
+  container.innerHTML = events.map(ev => {
+    const vc = VENDOR_COLORS[ev.vendor] || VENDOR_COLORS['default'];
+    const impactColor = ev.impact === 'major' ? '#ff5c7a' : '#fb923c';
+    return `
+      <div style="display:flex;align-items:flex-start;gap:10px;padding:8px;border-radius:8px;background:#161a1d;">
+        <div style="min-width:42px;font-size:10px;color:#6b7a8d;padding-top:2px;">${ev.date}</div>
+        <div style="flex:1;">
+          <div style="font-size:12px;font-weight:600;color:#e8edf2;margin-bottom:2px;">${ev.model}</div>
+          <div style="font-size:11px;color:#6b7a8d;line-height:1.4;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;">${ev.event || ev.description || ''}</div>
         </div>
-      `).join('');
-    }
+        <span class="tag" style="background:${vc.bg};color:${vc.text};border:1px solid ${vc.border};white-space:nowrap;">${ev.vendor}</span>
+      </div>
+    `;
+  }).join('');
+}
 
-    // ========== STRATEGY ==========
-    function renderStrategy() {
-      const container = document.getElementById('strategyContent');
-      const s = DATA.strategy;
-      container.innerHTML = `
-        <div class="strategy-grid">
-          <div class="glass-card strategy-card">
-            <div class="strategy-title">${s.topDown.title}</div>
-            <ul class="strategy-points">
-              ${s.topDown.points.map(p => `<li>${p}</li>`).join('')}
-            </ul>
-          </div>
-          <div class="glass-card strategy-card recommended">
-            <div class="strategy-title">${s.bottomUp.title}</div>
-            <ul class="strategy-points">
-              ${s.bottomUp.points.map(p => `<li>${p}</li>`).join('')}
-            </ul>
-          </div>
-        </div>
-        <div class="glass-card pilot-card">
-          <div class="pilot-title">Формула быстрого пилота</div>
-          <div class="pilot-meta">
-            <div>
-              <div class="pilot-meta-label">Длительность</div>
-              <div class="pilot-meta-value">${s.pilot.duration}</div>
-            </div>
-          </div>
-          <div style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">${s.pilot.goal}</div>
-          <div class="pilot-formula">1 Модель + 1 Агент + 1 Задача = Доказательство ценности</div>
-        </div>
-      `;
-    }
+function renderFallback() {
+  // Fallback with hardcoded data if JSON fails
+  const container = document.getElementById('tools-feed');
+  container.innerHTML = `
+    <div class="news-card flex items-start gap-4 p-4 rounded-xl" style="background:#1c2127;border:1px solid #252c33;">
+      <div style="width:40px;height:40px;min-width:40px;background:#0f2a1e;border:1px solid #1e4030;border-radius:10px;" class="flex items-center justify-center"><span style="font-size:18px;">🧠</span></div>
+      <div class="flex-1"><p style="font-size:14px;font-weight:500;color:#e8edf2;margin:0;">Данные загружаются из JSON...</p><p style="font-size:12px;color:#6b7a8d;margin:4px 0 0;">Убедитесь что файлы data/*.json доступны</p></div>
+    </div>
+  `;
+}
 
-    // ========== NAVIGATOR QUIZ ==========
-    function renderNavigator() {
-      const container = document.getElementById('navigatorContent');
+init();
+</script>
 
-      if (navState.finished) {
-        renderNavigatorResults(container);
-        return;
-      }
-
-      const q = navigatorQuestions[navState.current];
-      const currentAnswer = navState.answers[navState.current];
-
-      container.innerHTML = `
-        <div class="navigator-step">
-          <div class="navigator-progress">
-            ${navigatorQuestions.map((_, i) => `
-              <div class="navigator-progress-dot ${i < navState.current ? 'completed' : ''} ${i === navState.current ? 'active' : ''}"></div>
-            `).join('')}
-          </div>
-          <div class="navigator-question">${q.question}</div>
-          <div class="navigator-hint">${q.hint}</div>
-          <div class="navigator-options">
-            ${q.options.map((opt, i) => `
-              <div class="navigator-option ${currentAnswer === i ? 'selected' : ''}" onclick="selectNavigatorOption(${i})">
-                <span class="navigator-option-icon">${opt.icon}</span>
-                <span>${opt.text}</span>
-              </div>
-            `).join('')}
-          </div>
-          <button class="navigator-btn ${currentAnswer !== undefined ? 'visible' : ''}" id="navNextBtn" onclick="nextNavigatorStep()">
-            ${navState.current < navigatorQuestions.length - 1 ? 'Далее &rarr;' : 'Показать рекомендации'}
-          </button>
-        </div>
-      `;
-    }
-
-    function selectNavigatorOption(index) {
-      navState.answers[navState.current] = index;
-      renderNavigator();
-    }
-
-    function nextNavigatorStep() {
-      if (navState.answers[navState.current] === undefined) return;
-      navState.current++;
-      if (navState.current >= navigatorQuestions.length) {
-        navState.finished = true;
-      }
-      renderNavigator();
-    }
-
-    function renderNavigatorResults(container) {
-      // Collect tags from answers
-      const userTags = [];
-      navState.answers.forEach((ansIdx, qIdx) => {
-        if (ansIdx !== undefined && navigatorQuestions[qIdx]) {
-          const tags = navigatorQuestions[qIdx].options[ansIdx].tags;
-          userTags.push(...tags);
-        }
-      });
-
-      // Score all tools
-      const allTools = [];
-      DATA.levels.forEach(level => {
-        level.categories.forEach(cat => {
-          cat.tools.forEach(t => {
-            const toolTags = t.tags || [];
-            let score = 0;
-            userTags.forEach(ut => {
-              if (toolTags.includes(ut)) score++;
-            });
-            if (score > 0) {
-              allTools.push({
-                ...t,
-                level: level.id,
-                category: cat.name,
-                matchScore: score,
-                maxScore: userTags.length
-              });
-            }
-          });
-        });
-      });
-
-      // Sort by match score
-      allTools.sort((a, b) => b.matchScore - a.matchScore);
-      const topTools = allTools.slice(0, 8);
-
-      container.innerHTML = `
-        <div class="navigator-results">
-          <div class="navigator-results-title">Ваши рекомендации</div>
-          <div class="navigator-results-subtitle">На основе ваших ответов мы подобрали ${topTools.length} инструментов, наиболее подходящих для ваших задач:</div>
-          ${topTools.map(tool => `
-            <div class="navigator-result-card">
-              <div class="navigator-result-header">
-                <div class="navigator-result-name">${tool.name}</div>
-                <span class="navigator-result-level navigator-result-level-${tool.level}">Уровень ${tool.level}</span>
-              </div>
-              <div class="navigator-result-desc">${tool.strength || tool.description}</div>
-              <div class="navigator-result-match">Совпадение: ${Math.round((tool.matchScore / tool.maxScore) * 100)}%</div>
-              <a href="${tool.url}" target="_blank" rel="noopener" class="navigator-result-link">Перейти &rarr;</a>
-            </div>
-          `).join('')}
-          <button class="navigator-restart-btn" onclick="restartNavigator()">Пройти заново</button>
-        </div>
-      `;
-    }
-
-    function restartNavigator() {
-      navState = { current: 0, answers: [], finished: false };
-      renderNavigator();
-    }
-
-    // ========== QUIZ ==========
-    function renderQuiz() {
-      const container = document.getElementById('quizContent');
-      const quizQuestions = DATA.quizQuestions;
-
-      if (quizState.finished) {
-        container.innerHTML = `
-          <div class="quiz-results">
-            <div class="quiz-results-score">${quizState.score}/${quizQuestions.length}</div>
-            <div class="quiz-results-label">Правильных ответов</div>
-            <button class="quiz-restart-btn" onclick="restartQuiz()">Пройти заново</button>
-          </div>
-        `;
-        return;
-      }
-
-      const q = quizQuestions[quizState.current];
-      const letters = ['A', 'B', 'C', 'D'];
-
-      container.innerHTML = `
-        <div class="quiz-progress-info">
-          <span class="quiz-counter">Вопрос ${quizState.current + 1} из ${quizQuestions.length}</span>
-          <span class="quiz-score">Счёт: ${quizState.score}</span>
-        </div>
-        <div class="quiz-progress-bar">
-          <div class="quiz-progress-fill" style="width: ${((quizState.current) / quizQuestions.length) * 100}%"></div>
-        </div>
-        <div class="quiz-question">${q.question}</div>
-        <div class="quiz-options">
-          ${q.options.map((opt, i) => `
-            <button class="quiz-option" data-index="${i}" onclick="answerQuiz(${i})">
-              <span class="quiz-option-letter">${letters[i]}</span>
-              <span>${opt}</span>
-            </button>
-          `).join('')}
-        </div>
-        <div class="quiz-explanation" id="quizExplanation">${q.explanation}</div>
-        <button class="quiz-next-btn" id="quizNextBtn" onclick="nextQuestion()">
-          ${quizState.current < quizQuestions.length - 1 ? 'Следующий вопрос &rarr;' : 'Показать результат'}
-        </button>
-      `;
-    }
-
-    function answerQuiz(index) {
-      if (quizState.answered) return;
-      quizState.answered = true;
-
-      const q = DATA.quizQuestions[quizState.current];
-      const options = document.querySelectorAll('.quiz-option');
-
-      options.forEach((opt, i) => {
-        opt.classList.add('disabled');
-        if (i === q.correctIndex) opt.classList.add('correct');
-        if (i === index && i !== q.correctIndex) opt.classList.add('wrong');
-      });
-
-      if (index === q.correctIndex) quizState.score++;
-
-      document.getElementById('quizExplanation').classList.add('visible');
-      document.getElementById('quizNextBtn').classList.add('visible');
-    }
-
-    function nextQuestion() {
-      quizState.answered = false;
-      quizState.current++;
-      if (quizState.current >= DATA.quizQuestions.length) {
-        quizState.finished = true;
-      }
-      renderQuiz();
-    }
-
-    function restartQuiz() {
-      quizState = { current: 0, score: 0, answered: false, finished: false };
-      renderQuiz();
-    }
-
-    // ========== START ==========
-    document.addEventListener('DOMContentLoaded', init);
-  </script>
 </body>
 </html>
