@@ -20,11 +20,16 @@
     .surface { background: #161a1d; }
     .pulse-dot { animation: pulse 2s infinite; }
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-    .tab-btn { cursor: pointer; padding: 10px 20px; font-size: 13px; color: #6b7a8d; border: 1px solid #252c33; border-radius: 8px; background: #1c2127; transition: all 0.3s ease; }
+    .tab-btn { cursor: pointer; padding: 10px 20px; font-size: 13px; color: #6b7a8d; border: 1px solid #252c33; border-radius: 8px; background: #1c2127; transition: all 0.3s ease; user-select: none; }
     .tab-btn:hover { color: #e8edf2; border-color: #00e5a0; }
     .tab-btn.active { color: #0d0f10; background: linear-gradient(135deg, #00e5a0, #00c8d7); border-color: transparent; font-weight: 600; }
+    .scenario-btn { cursor: pointer; padding: 6px 14px; font-size: 12px; color: #6b7a8d; border: 1px solid #252c33; border-radius: 6px; background: transparent; transition: all 0.3s ease; user-select: none; }
+    .scenario-btn:hover { color: #e8edf2; border-color: #00c8d7; }
+    .scenario-btn.active { color: #e8edf2; border-color: #00e5a0; background: rgba(0, 229, 160, 0.1); font-weight: 500; }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
+    .scenario-content { display: none; }
+    .scenario-content.active { display: block; }
     .table-container { overflow-x: auto; }
     .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
     .data-table th { text-align: left; padding: 10px 14px; color: #6b7a8d; font-weight: 500; border-bottom: 1px solid #252c33; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -36,15 +41,24 @@
     .hero-card:hover::before { opacity: 1; }
     .insight-card { border-left: 3px solid #00e5a0; }
     .stack-card { position: relative; }
-    .stack-card::after { content: ''; position: absolute; inset: 0; border-radius: 12px; background: linear-gradient(135deg, rgba(0,229,160,0.05), rgba(0,200,215,0.02)); opacity: 0; transition: opacity 0.3s; }
+    .stack-card::after { content: ''; position: absolute; inset: 0; border-radius: 12px; background: linear-gradient(135deg, rgba(0,229,160,0.05), rgba(0,200,215,0.02)); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
     .stack-card:hover::after { opacity: 1; }
     .badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
     .badge-green { background: rgba(0, 229, 160, 0.12); color: #00e5a0; }
     .badge-teal { background: rgba(0, 200, 215, 0.12); color: #00c8d7; }
     .badge-orange { background: rgba(255, 165, 0, 0.12); color: #ffa500; }
+    .badge-purple { background: rgba(168, 85, 247, 0.12); color: #a855f7; }
+    .price-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+    .price-trio-item { text-align: center; padding: 8px 4px; border-radius: 6px; background: rgba(0,0,0,0.2); }
+    .price-trio-item .label { font-size: 10px; color: #6b7a8d; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .price-trio-item .value { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; color: #00e5a0; }
+    .category-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(37, 44, 51, 0.5); }
+    .category-row:last-child { border-bottom: none; }
+    .tool-chip { display: inline-block; padding: 2px 8px; margin: 2px 3px 2px 0; border-radius: 4px; font-size: 11px; background: rgba(0, 229, 160, 0.06); color: #9aa5b4; border: 1px solid rgba(37, 44, 51, 0.8); }
     @media (max-width: 768px) {
       .hero-grid { grid-template-columns: 1fr !important; }
       .tab-btn { padding: 8px 14px; font-size: 12px; }
+      .price-trio { grid-template-columns: repeat(3, 1fr); }
     }
   </style>
 </head>
@@ -78,10 +92,10 @@
     <!-- Page Header -->
     <div class="mb-10">
       <h1 class="font-space text-3xl md:text-4xl font-bold mb-3">Расходы на <span class="gradient-text">AI</span></h1>
-      <p style="color:#9aa5b4;font-size:15px;max-width:640px;">Сколько стоит AI-стек в 2026 году: от первых экспериментов до полноценной AI-инженерии. Три уровня использования с детальной разбивкой.</p>
+      <p style="color:#9aa5b4;font-size:15px;max-width:680px;">Сколько стоит AI-стек в 2026 году. Три уровня использования, три сценария для каждого: от бесплатного минимума до максимальной производительности без ограничений.</p>
     </div>
 
-    <!-- Hero Cards — 3 Levels -->
+    <!-- Hero Cards — 3 Levels with Min/Opt/Max -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12 hero-grid" style="grid-template-columns: repeat(3, 1fr);">
       <!-- Level 1 -->
       <div class="card hero-card p-6">
@@ -89,16 +103,21 @@
           <span class="badge badge-green">Уровень 1</span>
         </div>
         <h3 class="font-space text-lg font-semibold mb-1">Начинающий</h3>
-        <p style="color:#6b7a8d;font-size:12px;margin-bottom:16px;">The Explorer</p>
-        <div class="flex items-baseline gap-1 mb-2">
-          <span class="font-mono text-2xl font-bold gradient-text">$20–66</span>
-          <span style="color:#6b7a8d;font-size:12px;">/мес</span>
-        </div>
-        <div style="color:#9aa5b4;font-size:12px;">
-          <span class="font-mono">$240–792</span> /год
-        </div>
-        <div style="margin-top:16px;padding-top:16px;border-top:1px solid #252c33;">
-          <p style="color:#6b7a8d;font-size:12px;">Генерация текстов, картинок, простые автоматизации, лендинги</p>
+        <p style="color:#6b7a8d;font-size:12px;margin-bottom:12px;">The Explorer</p>
+        <p style="color:#9aa5b4;font-size:12px;margin-bottom:12px;">AI как умный помощник для базовых задач через веб-интерфейсы</p>
+        <div class="price-trio">
+          <div class="price-trio-item">
+            <div class="label">Мин</div>
+            <div class="value">$0</div>
+          </div>
+          <div class="price-trio-item" style="background:rgba(0,229,160,0.08);">
+            <div class="label">Опт</div>
+            <div class="value">$47</div>
+          </div>
+          <div class="price-trio-item">
+            <div class="label">Макс</div>
+            <div class="value">$96</div>
+          </div>
         </div>
       </div>
 
@@ -109,16 +128,21 @@
           <span style="font-size:10px;color:#00c8d7;border:1px solid rgba(0,200,215,0.3);border-radius:4px;padding:2px 6px;">Популярный</span>
         </div>
         <h3 class="font-space text-lg font-semibold mb-1">Продвинутый</h3>
-        <p style="color:#6b7a8d;font-size:12px;margin-bottom:16px;">The Power User</p>
-        <div class="flex items-baseline gap-1 mb-2">
-          <span class="font-mono text-2xl font-bold gradient-text">$149–322</span>
-          <span style="color:#6b7a8d;font-size:12px;">/мес</span>
-        </div>
-        <div style="color:#9aa5b4;font-size:12px;">
-          <span class="font-mono">$1 788–3 864</span> /год
-        </div>
-        <div style="margin-top:16px;padding-top:16px;border-top:1px solid #252c33;">
-          <p style="color:#6b7a8d;font-size:12px;">Полноценные продукты, мультимодальные задачи, автоматизация бизнес-процессов</p>
+        <p style="color:#6b7a8d;font-size:12px;margin-bottom:12px;">The Power User</p>
+        <p style="color:#9aa5b4;font-size:12px;margin-bottom:12px;">AI глубоко в рабочих процессах, первая серверная инфраструктура</p>
+        <div class="price-trio">
+          <div class="price-trio-item">
+            <div class="label">Мин</div>
+            <div class="value">$85</div>
+          </div>
+          <div class="price-trio-item" style="background:rgba(0,229,160,0.08);">
+            <div class="label">Опт</div>
+            <div class="value">$199</div>
+          </div>
+          <div class="price-trio-item">
+            <div class="label">Макс</div>
+            <div class="value">$380</div>
+          </div>
         </div>
       </div>
 
@@ -128,403 +152,559 @@
           <span class="badge badge-orange">Уровень 3</span>
         </div>
         <h3 class="font-space text-lg font-semibold mb-1">Про</h3>
-        <p style="color:#6b7a8d;font-size:12px;margin-bottom:16px;">The AI Engineer</p>
-        <div class="flex items-baseline gap-1 mb-2">
-          <span class="font-mono text-2xl font-bold gradient-text">$846–2 114+</span>
-          <span style="color:#6b7a8d;font-size:12px;">/мес</span>
-        </div>
-        <div style="color:#9aa5b4;font-size:12px;">
-          <span class="font-mono">$10 152–25 368+</span> /год
-        </div>
-        <div style="margin-top:16px;padding-top:16px;border-top:1px solid #252c33;">
-          <p style="color:#6b7a8d;font-size:12px;">AI-first архитектура, автономные агенты, продакшн-системы, ML-пайплайны</p>
+        <p style="color:#6b7a8d;font-size:12px;margin-bottom:12px;">The AI Engineer / Creator</p>
+        <p style="color:#9aa5b4;font-size:12px;margin-bottom:12px;">Продукты на базе AI, мультиагентные системы, RAG, продакшен</p>
+        <div class="price-trio">
+          <div class="price-trio-item">
+            <div class="label">Мин</div>
+            <div class="value">$450</div>
+          </div>
+          <div class="price-trio-item" style="background:rgba(0,229,160,0.08);">
+            <div class="label">Опт</div>
+            <div class="value">$895</div>
+          </div>
+          <div class="price-trio-item">
+            <div class="label">Макс</div>
+            <div class="value">$1 757</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Section 1: Detailed Breakdown with Tabs -->
+    <!-- Section 1: Detailed Breakdown with Tabs + Scenario Switcher -->
     <section class="mb-12">
       <h2 class="font-space text-xl font-semibold mb-6">Детальная разбивка по уровням</h2>
       
-      <!-- Tabs -->
+      <!-- Level Tabs -->
       <div class="flex flex-wrap gap-3 mb-6">
-        <button class="tab-btn active" onclick="switchTab('level1')">Начинающий</button>
-        <button class="tab-btn" onclick="switchTab('level2')">Продвинутый</button>
-        <button class="tab-btn" onclick="switchTab('level3')">Про</button>
+        <button class="tab-btn active" data-tab="level1">Начинающий</button>
+        <button class="tab-btn" data-tab="level2">Продвинутый</button>
+        <button class="tab-btn" data-tab="level3">Про</button>
       </div>
 
       <!-- Level 1 Content -->
       <div id="level1" class="tab-content active">
-        <div class="card p-6 mb-4">
-          <h4 class="font-space font-semibold mb-1" style="font-size:15px;">Типичные задачи</h4>
-          <p style="color:#9aa5b4;font-size:13px;">Генерация текстов и постов, создание изображений, простые лендинги, заметки и организация знаний</p>
+        <!-- Scenario Switcher -->
+        <div class="flex flex-wrap gap-2 mb-5">
+          <button class="scenario-btn active" data-scenario="level1-min">Минимум — $0</button>
+          <button class="scenario-btn" data-scenario="level1-opt">Оптимум — $47</button>
+          <button class="scenario-btn" data-scenario="level1-max">Максимум — $96</button>
         </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <!-- AI Subscriptions -->
-          <div class="card p-5">
-            <h5 style="color:#00e5a0;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">AI-подписки</h5>
-            <div class="table-container">
-              <table class="data-table">
-                <thead><tr><th>Инструмент</th><th>Цена</th></tr></thead>
-                <tbody>
-                  <tr><td>ChatGPT Plus</td><td class="price">$20</td></tr>
-                  <tr><td>Canva Pro</td><td class="price">$15</td></tr>
-                  <tr><td>Notion Plus</td><td class="price">$10</td></tr>
-                </tbody>
-              </table>
+
+        <!-- Min Scenario -->
+        <div id="level1-min" class="scenario-content active">
+          <div class="card p-5 mb-4">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="badge badge-green">Бесплатный минимум</span>
+              <span class="font-mono" style="color:#00e5a0;font-size:13px;">$0/мес</span>
             </div>
-            <div style="margin-top:12px;padding-top:12px;border-top:1px solid #252c33;">
-              <span style="color:#6b7a8d;font-size:11px;">Итого:</span>
-              <span class="font-mono price" style="font-size:13px;"> $20–45</span>
+            <p style="color:#6b7a8d;font-size:12px;margin-bottom:16px;">Эпизодическое использование бесплатных тарифов. Подходит для знакомства с AI.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <h6 style="color:#00e5a0;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Ассистенты</h6>
+                <div><span class="tool-chip">ChatGPT Free</span><span class="tool-chip">Claude Free</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$0</div>
+              </div>
+              <div>
+                <h6 style="color:#00c8d7;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">App Builders</h6>
+                <div><span class="tool-chip">Lovable Free</span><span class="tool-chip">v0 Free</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$0</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Дизайн</h6>
+                <div><span class="tool-chip">Canva Free</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$0</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Продуктивность</h6>
+                <div><span class="tool-chip">Notion Free</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$0</div>
+              </div>
             </div>
           </div>
-
-          <!-- AI Agents -->
-          <div class="card p-5">
-            <h5 style="color:#00c8d7;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">AI-Агенты</h5>
-            <div class="table-container">
-              <table class="data-table">
-                <thead><tr><th>Инструмент</th><th>Цена</th></tr></thead>
-                <tbody>
-                  <tr><td>Lovable Free</td><td class="price">$0</td></tr>
-                  <tr><td>v0 Premium</td><td class="price">$20</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div style="margin-top:12px;padding-top:12px;border-top:1px solid #252c33;">
-              <span style="color:#6b7a8d;font-size:11px;">Итого:</span>
-              <span class="font-mono price" style="font-size:13px;"> $0–20</span>
-            </div>
-          </div>
-
-          <!-- Infrastructure -->
-          <div class="card p-5">
-            <h5 style="color:#9aa5b4;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Обвязка</h5>
-            <div class="table-container">
-              <table class="data-table">
-                <thead><tr><th>Инструмент</th><th>Цена</th></tr></thead>
-                <tbody>
-                  <tr><td>Домен</td><td class="price">$1</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div style="margin-top:12px;padding-top:12px;border-top:1px solid #252c33;">
-              <span style="color:#6b7a8d;font-size:11px;">Итого:</span>
-              <span class="font-mono price" style="font-size:13px;"> $0–1</span>
+          <div class="card p-4" style="background:rgba(0,229,160,0.04);border-color:rgba(0,229,160,0.2);">
+            <div class="flex items-center justify-between">
+              <span style="color:#9aa5b4;font-size:13px;">Итого:</span>
+              <span class="font-mono font-bold text-lg gradient-text">$0/мес</span>
             </div>
           </div>
         </div>
 
-        <div class="card p-4 mt-4" style="background:rgba(0,229,160,0.04);border-color:rgba(0,229,160,0.2);">
-          <div class="flex items-center justify-between flex-wrap gap-3">
-            <span style="color:#9aa5b4;font-size:13px;">Общий итог:</span>
-            <span class="font-mono font-bold text-lg gradient-text">$20–66/мес</span>
+        <!-- Optimal Scenario -->
+        <div id="level1-opt" class="scenario-content">
+          <div class="card p-5 mb-4">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="badge badge-teal">Оптимальный стек</span>
+              <span class="font-mono" style="color:#00e5a0;font-size:13px;">~$47/мес</span>
+            </div>
+            <p style="color:#6b7a8d;font-size:12px;margin-bottom:16px;">Рекомендуемый набор для комфортной ежедневной работы с доступом к современным моделям.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <h6 style="color:#00e5a0;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Ассистенты</h6>
+                <div><span class="tool-chip">ChatGPT Plus $20</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$20</div>
+              </div>
+              <div>
+                <h6 style="color:#00c8d7;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">App Builders</h6>
+                <div><span class="tool-chip">Lovable Free</span><span class="tool-chip">v0 Free</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$0</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Креатив</h6>
+                <div><span class="tool-chip">Canva Pro $12</span><span class="tool-chip">Midjourney Basic $10</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$22</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Инфраструктура</h6>
+                <div><span class="tool-chip">Домен ~$1</span><span class="tool-chip">GitHub Copilot Free</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$1</div>
+              </div>
+            </div>
+          </div>
+          <div class="card p-4" style="background:rgba(0,229,160,0.04);border-color:rgba(0,229,160,0.2);">
+            <div class="flex items-center justify-between">
+              <span style="color:#9aa5b4;font-size:13px;">Итого:</span>
+              <span class="font-mono font-bold text-lg gradient-text">~$47/мес</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Max Scenario -->
+        <div id="level1-max" class="scenario-content">
+          <div class="card p-5 mb-4">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="badge badge-orange">Максимальный комфорт</span>
+              <span class="font-mono" style="color:#00e5a0;font-size:13px;">~$96/мес</span>
+            </div>
+            <p style="color:#6b7a8d;font-size:12px;margin-bottom:16px;">Расширенный набор с запасными вариантами и премиум-инструментами для всех задач.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <h6 style="color:#00e5a0;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Ассистенты</h6>
+                <div><span class="tool-chip">ChatGPT Plus $20</span><span class="tool-chip">Claude Pro $20</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$40</div>
+              </div>
+              <div>
+                <h6 style="color:#00c8d7;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">App Builders</h6>
+                <div><span class="tool-chip">v0 Premium $20</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$20</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Креатив</h6>
+                <div><span class="tool-chip">Canva Pro $12</span><span class="tool-chip">Midjourney Basic $10</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$22</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Продуктивность + Инфра</h6>
+                <div><span class="tool-chip">Notion Plus $10</span><span class="tool-chip">Домен $1</span><span class="tool-chip">Make Free</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$11</div>
+              </div>
+            </div>
+          </div>
+          <div class="card p-4" style="background:rgba(0,229,160,0.04);border-color:rgba(0,229,160,0.2);">
+            <div class="flex items-center justify-between">
+              <span style="color:#9aa5b4;font-size:13px;">Итого:</span>
+              <span class="font-mono font-bold text-lg gradient-text">~$96/мес</span>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Level 2 Content -->
       <div id="level2" class="tab-content">
-        <div class="card p-6 mb-4">
-          <h4 class="font-space font-semibold mb-1" style="font-size:15px;">Типичные задачи</h4>
-          <p style="color:#9aa5b4;font-size:13px;">Полноценные веб-приложения, мультимодальный контент, автоматизация бизнес-процессов, исследования и аналитика</p>
+        <!-- Scenario Switcher -->
+        <div class="flex flex-wrap gap-2 mb-5">
+          <button class="scenario-btn active" data-scenario="level2-min">Минимум — $85</button>
+          <button class="scenario-btn" data-scenario="level2-opt">Оптимум — $199</button>
+          <button class="scenario-btn" data-scenario="level2-max">Максимум — $380</button>
         </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <!-- AI Subscriptions -->
-          <div class="card p-5">
-            <h5 style="color:#00e5a0;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">AI-подписки</h5>
-            <div class="table-container">
-              <table class="data-table">
-                <thead><tr><th>Инструмент</th><th>Цена</th></tr></thead>
-                <tbody>
-                  <tr><td>ChatGPT Pro</td><td class="price">$100</td></tr>
-                  <tr><td><span style="color:#6b7a8d;font-size:11px;">или</span> Plus + Claude</td><td class="price">$40</td></tr>
-                  <tr><td>Midjourney</td><td class="price">$30</td></tr>
-                  <tr><td>Perplexity Pro</td><td class="price">$20</td></tr>
-                </tbody>
-              </table>
+
+        <!-- Min Scenario -->
+        <div id="level2-min" class="scenario-content active">
+          <div class="card p-5 mb-4">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="badge badge-green">Бюджетный стек</span>
+              <span class="font-mono" style="color:#00e5a0;font-size:13px;">~$85/мес</span>
             </div>
-            <div style="margin-top:12px;padding-top:12px;border-top:1px solid #252c33;">
-              <span style="color:#6b7a8d;font-size:11px;">Итого:</span>
-              <span class="font-mono price" style="font-size:13px;"> $90–170</span>
+            <p style="color:#6b7a8d;font-size:12px;margin-bottom:16px;">Минимальный набор платных инструментов для серьёзной работы.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <h6 style="color:#00e5a0;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Ассистенты</h6>
+                <div><span class="tool-chip">ChatGPT Plus $20</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$20</div>
+              </div>
+              <div>
+                <h6 style="color:#00c8d7;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Coding + Агенты</h6>
+                <div><span class="tool-chip">Cursor Pro $20</span><span class="tool-chip">Manus Pro $20</span><span class="tool-chip">Lovable Free</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$40</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Креатив</h6>
+                <div><span class="tool-chip">Midjourney Basic $10</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$10</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Автоматизация + Инфра</h6>
+                <div><span class="tool-chip">Make Core $12</span><span class="tool-chip">Hetzner CX22 ~$5</span><span class="tool-chip">Домен $1</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$18</div>
+              </div>
             </div>
           </div>
-
-          <!-- AI Agents -->
-          <div class="card p-5">
-            <h5 style="color:#00c8d7;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">AI-Агенты</h5>
-            <div class="table-container">
-              <table class="data-table">
-                <thead><tr><th>Инструмент</th><th>Цена</th></tr></thead>
-                <tbody>
-                  <tr><td>Windsurf / Cursor Pro</td><td class="price">$20</td></tr>
-                  <tr><td>Replit Core</td><td class="price">$20</td></tr>
-                  <tr><td>Manus Pro</td><td class="price">$39</td></tr>
-                  <tr><td>Lovable Pro</td><td class="price">$20–25</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div style="margin-top:12px;padding-top:12px;border-top:1px solid #252c33;">
-              <span style="color:#6b7a8d;font-size:11px;">Итого:</span>
-              <span class="font-mono price" style="font-size:13px;"> $40–104</span>
-            </div>
-          </div>
-
-          <!-- Infrastructure -->
-          <div class="card p-5">
-            <h5 style="color:#9aa5b4;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Обвязка</h5>
-            <div class="table-container">
-              <table class="data-table">
-                <thead><tr><th>Инструмент</th><th>Цена</th></tr></thead>
-                <tbody>
-                  <tr><td>Make</td><td class="price">$9–16</td></tr>
-                  <tr><td><span style="color:#6b7a8d;font-size:11px;">или</span> n8n Cloud</td><td class="price">$20</td></tr>
-                  <tr><td>VPS</td><td class="price">$5–7</td></tr>
-                  <tr><td>Airtable</td><td class="price">$0–20</td></tr>
-                  <tr><td>GitHub Pro</td><td class="price">$4</td></tr>
-                  <tr><td>Домен</td><td class="price">$1</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div style="margin-top:12px;padding-top:12px;border-top:1px solid #252c33;">
-              <span style="color:#6b7a8d;font-size:11px;">Итого:</span>
-              <span class="font-mono price" style="font-size:13px;"> $19–48</span>
+          <div class="card p-4" style="background:rgba(0,229,160,0.04);border-color:rgba(0,229,160,0.2);">
+            <div class="flex items-center justify-between">
+              <span style="color:#9aa5b4;font-size:13px;">Итого:</span>
+              <span class="font-mono font-bold text-lg gradient-text">~$88/мес</span>
             </div>
           </div>
         </div>
 
-        <div class="card p-4 mt-4" style="background:rgba(0,229,160,0.04);border-color:rgba(0,229,160,0.2);">
-          <div class="flex items-center justify-between flex-wrap gap-3">
-            <span style="color:#9aa5b4;font-size:13px;">Общий итог:</span>
-            <span class="font-mono font-bold text-lg gradient-text">$149–322/мес</span>
+        <!-- Optimal Scenario -->
+        <div id="level2-opt" class="scenario-content">
+          <div class="card p-5 mb-4">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="badge badge-teal">Оптимальный стек</span>
+              <span class="font-mono" style="color:#00e5a0;font-size:13px;">~$199/мес</span>
+            </div>
+            <p style="color:#6b7a8d;font-size:12px;margin-bottom:16px;">Сбалансированный набор для фрилансеров и разработчиков, закрывающий 95% потребностей.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <h6 style="color:#00e5a0;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Ассистенты</h6>
+                <div><span class="tool-chip">ChatGPT Plus $20</span><span class="tool-chip">Claude Pro $20</span><span class="tool-chip">Perplexity Pro $20</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$60</div>
+              </div>
+              <div>
+                <h6 style="color:#00c8d7;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Coding + Агенты</h6>
+                <div><span class="tool-chip">Cursor Pro $20</span><span class="tool-chip">Manus Pro $20</span><span class="tool-chip">Lovable Pro $25</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$65</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Креатив</h6>
+                <div><span class="tool-chip">Midjourney Standard $30</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$30</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Автоматизация + Инфра</h6>
+                <div><span class="tool-chip">n8n Cloud €20</span><span class="tool-chip">Hetzner ~$5</span><span class="tool-chip">GitHub Pro $10</span><span class="tool-chip">Notion Plus $10</span><span class="tool-chip">Домен $1</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$46</div>
+              </div>
+            </div>
+          </div>
+          <div class="card p-4" style="background:rgba(0,229,160,0.04);border-color:rgba(0,229,160,0.2);">
+            <div class="flex items-center justify-between">
+              <span style="color:#9aa5b4;font-size:13px;">Итого:</span>
+              <span class="font-mono font-bold text-lg gradient-text">~$201/мес</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Max Scenario -->
+        <div id="level2-max" class="scenario-content">
+          <div class="card p-5 mb-4">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="badge badge-orange">Максимальный стек</span>
+              <span class="font-mono" style="color:#00e5a0;font-size:13px;">~$380/мес</span>
+            </div>
+            <p style="color:#6b7a8d;font-size:12px;margin-bottom:16px;">Для тех, кто упирается в лимиты стандартных Pro-тарифов и нуждается в больших объёмах.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <h6 style="color:#00e5a0;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Ассистенты</h6>
+                <div><span class="tool-chip">ChatGPT Pro $100</span><span class="tool-chip">Claude Pro $20</span><span class="tool-chip">Perplexity Pro $20</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$140</div>
+              </div>
+              <div>
+                <h6 style="color:#00c8d7;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Coding + Агенты</h6>
+                <div><span class="tool-chip">Cursor Pro+ $60</span><span class="tool-chip">Manus Pro $40</span><span class="tool-chip">Lovable Pro $25</span><span class="tool-chip">Replit Core $20</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$145</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Креатив</h6>
+                <div><span class="tool-chip">Midjourney Standard $30</span><span class="tool-chip">Runway Standard $15</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$45</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Автоматизация + Инфра</h6>
+                <div><span class="tool-chip">n8n Cloud Pro €50</span><span class="tool-chip">Hetzner CX32 ~$7</span><span class="tool-chip">Airtable Team $24</span><span class="tool-chip">GitHub Copilot Pro $10</span><span class="tool-chip">Notion Plus $10</span><span class="tool-chip">Домен $1</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$102</div>
+              </div>
+            </div>
+          </div>
+          <div class="card p-4" style="background:rgba(0,229,160,0.04);border-color:rgba(0,229,160,0.2);">
+            <div class="flex items-center justify-between">
+              <span style="color:#9aa5b4;font-size:13px;">Итого:</span>
+              <span class="font-mono font-bold text-lg gradient-text">~$382/мес</span>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Level 3 Content -->
       <div id="level3" class="tab-content">
-        <div class="card p-6 mb-4">
-          <h4 class="font-space font-semibold mb-1" style="font-size:15px;">Типичные задачи</h4>
-          <p style="color:#9aa5b4;font-size:13px;">AI-first архитектура, автономные агенты в продакшне, ML-пайплайны, мультиагентные системы, полный цикл разработки</p>
+        <!-- Scenario Switcher -->
+        <div class="flex flex-wrap gap-2 mb-5">
+          <button class="scenario-btn active" data-scenario="level3-min">Минимум — $450</button>
+          <button class="scenario-btn" data-scenario="level3-opt">Оптимум — $895</button>
+          <button class="scenario-btn" data-scenario="level3-max">Максимум — $1 757</button>
         </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <!-- AI Subscriptions -->
-          <div class="card p-5">
-            <h5 style="color:#00e5a0;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">AI-подписки</h5>
-            <div class="table-container">
-              <table class="data-table">
-                <thead><tr><th>Инструмент</th><th>Цена</th></tr></thead>
-                <tbody>
-                  <tr><td>Claude Max 20x</td><td class="price">$200</td></tr>
-                  <tr><td><span style="color:#6b7a8d;font-size:11px;">или</span> ChatGPT Pro</td><td class="price">$200</td></tr>
-                  <tr><td>API (OpenAI/Anthropic)</td><td class="price">$50–200</td></tr>
-                  <tr><td>Midjourney Pro</td><td class="price">$60</td></tr>
-                  <tr><td>Runway</td><td class="price">$35</td></tr>
-                  <tr><td>ElevenLabs</td><td class="price">$99</td></tr>
-                </tbody>
-              </table>
+
+        <!-- Min Scenario -->
+        <div id="level3-min" class="scenario-content active">
+          <div class="card p-5 mb-4">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="badge badge-green">Экономный про</span>
+              <span class="font-mono" style="color:#00e5a0;font-size:13px;">~$450/мес</span>
             </div>
-            <div style="margin-top:12px;padding-top:12px;border-top:1px solid #252c33;">
-              <span style="color:#6b7a8d;font-size:11px;">AI + API + Специализированные:</span>
-              <span class="font-mono price" style="font-size:13px;"> $349–994</span>
+            <p style="color:#6b7a8d;font-size:12px;margin-bottom:16px;">Профессиональная работа с оптимизацией затрат (self-hosted автоматизация).</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <h6 style="color:#00e5a0;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Ассистенты + API</h6>
+                <div><span class="tool-chip">Claude Max 5x $100</span><span class="tool-chip">API ~$50</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$150</div>
+              </div>
+              <div>
+                <h6 style="color:#00c8d7;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Coding + Агенты</h6>
+                <div><span class="tool-chip">Cursor Pro $20</span><span class="tool-chip">Devin Pro $20</span><span class="tool-chip">Manus Pro $40</span><span class="tool-chip">Lovable Pro $25</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$105</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Креатив + Видео</h6>
+                <div><span class="tool-chip">Midjourney Standard $30</span><span class="tool-chip">ElevenLabs Starter $6</span><span class="tool-chip">Runway Pro $35</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$71</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Инфраструктура</h6>
+                <div><span class="tool-chip">Hetzner CX32 ×2 $14</span><span class="tool-chip">Supabase Pro $25</span><span class="tool-chip">Pinecone Builder $20</span><span class="tool-chip">GitHub Copilot Pro $10</span><span class="tool-chip">Мониторинг $7</span><span class="tool-chip">Домены $3</span><span class="tool-chip">Notion Plus $10</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$89</div>
+              </div>
             </div>
           </div>
-
-          <!-- AI Agents -->
-          <div class="card p-5">
-            <h5 style="color:#00c8d7;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">AI-Агенты</h5>
-            <div class="table-container">
-              <table class="data-table">
-                <thead><tr><th>Инструмент</th><th>Цена</th></tr></thead>
-                <tbody>
-                  <tr><td>Devin</td><td class="price">$100–500</td></tr>
-                  <tr><td>Windsurf Max</td><td class="price">$200</td></tr>
-                  <tr><td>Manus Max</td><td class="price">$200</td></tr>
-                  <tr><td>Replit Pro</td><td class="price">$100</td></tr>
-                  <tr><td>Lovable Business</td><td class="price">$50–150</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div style="margin-top:12px;padding-top:12px;border-top:1px solid #252c33;">
-              <span style="color:#6b7a8d;font-size:11px;">Итого:</span>
-              <span class="font-mono price" style="font-size:13px;"> $300–1 000+</span>
-            </div>
-          </div>
-
-          <!-- Infrastructure -->
-          <div class="card p-5">
-            <h5 style="color:#9aa5b4;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px;">Обвязка</h5>
-            <div class="table-container">
-              <table class="data-table">
-                <thead><tr><th>Инструмент</th><th>Цена</th></tr></thead>
-                <tbody>
-                  <tr><td>n8n Cloud Pro</td><td class="price">$50</td></tr>
-                  <tr><td>VPS x2–3</td><td class="price">$20–60</td></tr>
-                  <tr><td>Supabase</td><td class="price">$25</td></tr>
-                  <tr><td>Pinecone</td><td class="price">$70–100</td></tr>
-                  <tr><td>Airtable</td><td class="price">$20</td></tr>
-                  <tr><td>GitHub Copilot Pro+</td><td class="price">$4–39</td></tr>
-                  <tr><td>Мониторинг</td><td class="price">$7–20</td></tr>
-                  <tr><td>Домены</td><td class="price">$1–5</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div style="margin-top:12px;padding-top:12px;border-top:1px solid #252c33;">
-              <span style="color:#6b7a8d;font-size:11px;">Итого:</span>
-              <span class="font-mono price" style="font-size:13px;"> $197–320</span>
+          <div class="card p-4" style="background:rgba(0,229,160,0.04);border-color:rgba(0,229,160,0.2);">
+            <div class="flex items-center justify-between">
+              <span style="color:#9aa5b4;font-size:13px;">Итого:</span>
+              <span class="font-mono font-bold text-lg gradient-text">~$415/мес</span>
             </div>
           </div>
         </div>
 
-        <div class="card p-4 mt-4" style="background:rgba(0,229,160,0.04);border-color:rgba(0,229,160,0.2);">
-          <div class="flex items-center justify-between flex-wrap gap-3">
-            <span style="color:#9aa5b4;font-size:13px;">Общий итог:</span>
-            <span class="font-mono font-bold text-lg gradient-text">$846–2 114+/мес</span>
+        <!-- Optimal Scenario -->
+        <div id="level3-opt" class="scenario-content">
+          <div class="card p-5 mb-4">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="badge badge-teal">Оптимальный стек</span>
+              <span class="font-mono" style="color:#00e5a0;font-size:13px;">~$895/мес</span>
+            </div>
+            <p style="color:#6b7a8d;font-size:12px;margin-bottom:16px;">Стандартный набор для AI-стартапа из одного человека.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <h6 style="color:#00e5a0;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Ассистенты + API</h6>
+                <div><span class="tool-chip">Claude Max 5x $100</span><span class="tool-chip">ChatGPT Pro $100</span><span class="tool-chip">API ~$100</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$300</div>
+              </div>
+              <div>
+                <h6 style="color:#00c8d7;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Coding + Агенты</h6>
+                <div><span class="tool-chip">Cursor Ultra $200</span><span class="tool-chip">Devin Pro $20</span><span class="tool-chip">Manus Pro $40</span><span class="tool-chip">Lovable Pro $25</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$285</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Креатив + Видео</h6>
+                <div><span class="tool-chip">Midjourney Pro $60</span><span class="tool-chip">ElevenLabs Pro $99</span><span class="tool-chip">Runway Pro $35</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$194</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Автоматизация + Инфра</h6>
+                <div><span class="tool-chip">n8n Cloud Pro €50</span><span class="tool-chip">Hetzner CX32 ×2 $14</span><span class="tool-chip">Supabase Pro $25</span><span class="tool-chip">Pinecone Standard $50</span><span class="tool-chip">GitHub Copilot Pro+ $39</span><span class="tool-chip">Мониторинг $15</span><span class="tool-chip">Домены $5</span><span class="tool-chip">Notion Business $20</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$218</div>
+              </div>
+            </div>
+          </div>
+          <div class="card p-4" style="background:rgba(0,229,160,0.04);border-color:rgba(0,229,160,0.2);">
+            <div class="flex items-center justify-between">
+              <span style="color:#9aa5b4;font-size:13px;">Итого:</span>
+              <span class="font-mono font-bold text-lg gradient-text">~$947/мес</span>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Section 2: Summary Comparison Table -->
-    <section class="mb-12">
-      <h2 class="font-space text-xl font-semibold mb-6">Сводная таблица сравнения</h2>
-      <div class="card p-6">
-        <div class="table-container">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Категория</th>
-                <th>Начинающий</th>
-                <th>Продвинутый</th>
-                <th>Про</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="color:#e8edf2;font-weight:500;">Задачи</td>
-                <td style="color:#9aa5b4;font-size:12px;">Тексты, картинки, лендинги</td>
-                <td style="color:#9aa5b4;font-size:12px;">Продукты, автоматизация</td>
-                <td style="color:#9aa5b4;font-size:12px;">AI-архитектура, ML</td>
-              </tr>
-              <tr>
-                <td style="color:#e8edf2;font-weight:500;">Основной AI</td>
-                <td class="price">$20–45</td>
-                <td class="price">$90–170</td>
-                <td class="price">$200–600</td>
-              </tr>
-              <tr>
-                <td style="color:#e8edf2;font-weight:500;">AI-Агенты</td>
-                <td class="price">$0–20</td>
-                <td class="price">$40–104</td>
-                <td class="price">$300–1 000+</td>
-              </tr>
-              <tr>
-                <td style="color:#e8edf2;font-weight:500;">Специализированные</td>
-                <td class="price">—</td>
-                <td class="price">$20–30</td>
-                <td class="price">$99–194</td>
-              </tr>
-              <tr>
-                <td style="color:#e8edf2;font-weight:500;">Автоматизация</td>
-                <td class="price">—</td>
-                <td class="price">$9–20</td>
-                <td class="price">$50</td>
-              </tr>
-              <tr>
-                <td style="color:#e8edf2;font-weight:500;">Серверы</td>
-                <td class="price">—</td>
-                <td class="price">$5–7</td>
-                <td class="price">$20–60</td>
-              </tr>
-              <tr>
-                <td style="color:#e8edf2;font-weight:500;">Базы данных</td>
-                <td class="price">—</td>
-                <td class="price">$0–20</td>
-                <td class="price">$95–125</td>
-              </tr>
-              <tr>
-                <td style="color:#e8edf2;font-weight:500;">Прочее</td>
-                <td class="price">$0–1</td>
-                <td class="price">$5</td>
-                <td class="price">$12–64</td>
-              </tr>
-              <tr style="border-top:2px solid #252c33;">
-                <td style="color:#e8edf2;font-weight:700;">Итого / мес</td>
-                <td class="price" style="font-size:14px;font-weight:700;">$20–66</td>
-                <td class="price" style="font-size:14px;font-weight:700;">$149–322</td>
-                <td class="price" style="font-size:14px;font-weight:700;">$846–2 114+</td>
-              </tr>
-              <tr>
-                <td style="color:#e8edf2;font-weight:700;">Итого / год</td>
-                <td class="price" style="font-size:14px;font-weight:700;">$240–792</td>
-                <td class="price" style="font-size:14px;font-weight:700;">$1 788–3 864</td>
-                <td class="price" style="font-size:14px;font-weight:700;">$10 152–25 368+</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- Max Scenario -->
+        <div id="level3-max" class="scenario-content">
+          <div class="card p-5 mb-4">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="badge badge-orange">Без ограничений</span>
+              <span class="font-mono" style="color:#00e5a0;font-size:13px;">~$1 757/мес</span>
+            </div>
+            <p style="color:#6b7a8d;font-size:12px;margin-bottom:16px;">Максимальные тарифы для непрерывной тяжёлой нагрузки и работы с автономными агентами.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <h6 style="color:#00e5a0;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Ассистенты + API</h6>
+                <div><span class="tool-chip">Claude Max 20x $200</span><span class="tool-chip">ChatGPT Pro $200</span><span class="tool-chip">API ~$200</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$600</div>
+              </div>
+              <div>
+                <h6 style="color:#00c8d7;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">AI Coding + Агенты</h6>
+                <div><span class="tool-chip">Cursor Ultra $200</span><span class="tool-chip">Windsurf Max $200</span><span class="tool-chip">Devin Max $200</span><span class="tool-chip">Manus Pro $40</span><span class="tool-chip">Replit Pro $95</span><span class="tool-chip">Lovable Business $50</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$785</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Креатив + Видео</h6>
+                <div><span class="tool-chip">Midjourney Pro $60</span><span class="tool-chip">ElevenLabs Pro $99</span><span class="tool-chip">Runway Unlimited $95</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$254</div>
+              </div>
+              <div>
+                <h6 style="color:#9aa5b4;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:8px;">Автоматизация + Инфра</h6>
+                <div><span class="tool-chip">n8n Cloud Pro €50</span><span class="tool-chip">Hetzner CX42+CX32+CX22 ~$28</span><span class="tool-chip">Supabase Pro $25</span><span class="tool-chip">Pinecone Standard $50</span><span class="tool-chip">GitHub Copilot Pro+ $39</span><span class="tool-chip">Мониторинг $20</span><span class="tool-chip">Домены $5</span><span class="tool-chip">Notion Business $20</span></div>
+                <div class="font-mono price" style="font-size:12px;margin-top:6px;">$237</div>
+              </div>
+            </div>
+          </div>
+          <div class="card p-4" style="background:rgba(0,229,160,0.04);border-color:rgba(0,229,160,0.2);">
+            <div class="flex items-center justify-between">
+              <span style="color:#9aa5b4;font-size:13px;">Итого:</span>
+              <span class="font-mono font-bold text-lg gradient-text">~$1 876/мес</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 3: AI Agents 2026 -->
+    <!-- Section 2: Key Findings 2026 -->
     <section class="mb-12">
-      <h2 class="font-space text-xl font-semibold mb-6">AI-Агенты <span class="gradient-text">2026</span></h2>
+      <h2 class="font-space text-xl font-semibold mb-6">Ключевые находки <span class="gradient-text">2026</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="card insight-card p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="badge badge-purple">Слияние</span>
+          </div>
+          <div style="font-size:13px;color:#e8edf2;line-height:1.6;">
+            Cognition поглотила Windsurf — <span style="color:#00e5a0;">Devin Pro ($20)</span> и <span style="color:#00e5a0;">Max ($200)</span> теперь включают и агента, и IDE
+          </div>
+          <p style="color:#6b7a8d;font-size:12px;margin-top:8px;">Pro/Max планы объединяют Devin Agent + Windsurf IDE в одной подписке</p>
+        </div>
+        <div class="card insight-card p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="badge badge-orange">Скрытые расходы</span>
+          </div>
+          <div style="font-size:13px;color:#e8edf2;line-height:1.6;">
+            Cursor перешёл на кредитную систему: heavy users тратят <span class="font-mono" style="color:#00c8d7;">$60–200/мес</span>
+          </div>
+          <p style="color:#6b7a8d;font-size:12px;margin-top:8px;">Базовый $20 — лишь точка входа. Agent Mode активно расходует кредиты</p>
+        </div>
+        <div class="card insight-card p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="badge badge-teal">Статистика</span>
+          </div>
+          <div style="font-size:13px;color:#e8edf2;line-height:1.6;">
+            Средний «AI subscription stack tax» для малого бизнеса — <span class="font-mono" style="color:#00e5a0;">$847/мес</span>
+          </div>
+          <p style="color:#6b7a8d;font-size:12px;margin-top:8px;">~17 инструментов в среднем, из которых ежедневно используется только 6. Аудит экономит 40–60%</p>
+        </div>
+        <div class="card insight-card p-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="badge badge-green">Экономика</span>
+          </div>
+          <div style="font-size:13px;color:#e8edf2;line-height:1.6;">
+            Подписки Claude Max / ChatGPT Pro = эквивалент <span class="font-mono" style="color:#00c8d7;">$1 000–3 000</span> API за <span class="font-mono" style="color:#00e5a0;">$100–200</span>
+          </div>
+          <p style="color:#6b7a8d;font-size:12px;margin-top:8px;">Включая скрытое кэширование контекста в веб-интерфейсах</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: AI Agents Comparison -->
+    <section class="mb-12">
+      <h2 class="font-space text-xl font-semibold mb-6">Сравнение AI-агентов <span class="gradient-text">2026</span></h2>
       <div class="card p-6">
         <div class="table-container">
           <table class="data-table">
             <thead>
               <tr>
                 <th>Агент</th>
+                <th>Тип</th>
+                <th>Free</th>
+                <th>От</th>
+                <th>До</th>
                 <th>Модель оплаты</th>
-                <th>Стоимость</th>
-                <th>Назначение</th>
+                <th>Единица</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td style="color:#e8edf2;font-weight:500;">Lovable</td>
+                <td>App Builder</td>
+                <td><span style="color:#00e5a0;">✓</span></td>
+                <td class="price">$25</td>
+                <td class="price">$50</td>
                 <td>Подписка + кредиты</td>
-                <td class="price">$0–150/мес</td>
-                <td>Full-stack веб-приложения из промпта</td>
+                <td style="font-size:11px;">1 credit = 1 message</td>
               </tr>
               <tr>
-                <td style="color:#e8edf2;font-weight:500;">v0</td>
-                <td>Подписка</td>
-                <td class="price">$20/мес</td>
-                <td>UI/фронтенд генерация (Vercel)</td>
+                <td style="color:#e8edf2;font-weight:500;">v0 by Vercel</td>
+                <td>UI Generator</td>
+                <td><span style="color:#00e5a0;">✓</span></td>
+                <td class="price">$20</td>
+                <td class="price">$30</td>
+                <td>Подписка + токены</td>
+                <td style="font-size:11px;">token-based by model</td>
               </tr>
               <tr>
                 <td style="color:#e8edf2;font-weight:500;">Bolt.new</td>
-                <td>Подписка + кредиты</td>
-                <td class="price">$20–100/мес</td>
-                <td>Full-stack приложения в браузере</td>
+                <td>App Builder</td>
+                <td><span style="color:#00e5a0;">✓</span></td>
+                <td class="price">$25</td>
+                <td class="price">$30</td>
+                <td>Подписка + токены</td>
+                <td style="font-size:11px;">10M tokens/mo (Pro)</td>
               </tr>
               <tr>
-                <td style="color:#e8edf2;font-weight:500;">Replit</td>
-                <td>Подписка</td>
-                <td class="price">$20–100/мес</td>
-                <td>Разработка + деплой в одном месте</td>
+                <td style="color:#e8edf2;font-weight:500;">Replit Agent</td>
+                <td>Cloud IDE + Agent</td>
+                <td><span style="color:#00e5a0;">✓</span></td>
+                <td class="price">$20</td>
+                <td class="price">$95</td>
+                <td>Подписка + кредиты</td>
+                <td style="font-size:11px;">effort-based credits</td>
+              </tr>
+              <tr>
+                <td style="color:#e8edf2;font-weight:500;">Cursor</td>
+                <td>AI IDE</td>
+                <td><span style="color:#00e5a0;">✓</span></td>
+                <td class="price">$20</td>
+                <td class="price">$200</td>
+                <td>Подписка + credit pool</td>
+                <td style="font-size:11px;">$20 credit pool (API)</td>
               </tr>
               <tr>
                 <td style="color:#e8edf2;font-weight:500;">Windsurf</td>
-                <td>Подписка</td>
-                <td class="price">$20–200/мес</td>
-                <td>AI IDE, автономное кодирование</td>
-              </tr>
-              <tr>
-                <td style="color:#e8edf2;font-weight:500;">Manus</td>
-                <td>Подписка</td>
-                <td class="price">$39–200/мес</td>
-                <td>Универсальный AI-агент, автоматизация</td>
+                <td>AI IDE + Agent</td>
+                <td><span style="color:#00e5a0;">✓</span></td>
+                <td class="price">$20</td>
+                <td class="price">$200</td>
+                <td>Подписка + квота</td>
+                <td style="font-size:11px;">daily/weekly quota</td>
               </tr>
               <tr>
                 <td style="color:#e8edf2;font-weight:500;">Devin</td>
-                <td>ACU (кредиты)</td>
-                <td class="price">$100–500/мес</td>
-                <td>Автономный AI-инженер</td>
+                <td>Autonomous SWE</td>
+                <td><span style="color:#00e5a0;">✓</span></td>
+                <td class="price">$20</td>
+                <td class="price">$200</td>
+                <td>Подписка + pay-as-you-go</td>
+                <td style="font-size:11px;">usage quota + overages</td>
+              </tr>
+              <tr>
+                <td style="color:#e8edf2;font-weight:500;">Manus</td>
+                <td>General AI Agent</td>
+                <td><span style="color:#00e5a0;">✓</span></td>
+                <td class="price">$20</td>
+                <td class="price">$40</td>
+                <td>Подписка + кредиты</td>
+                <td style="font-size:11px;">complexity-based</td>
+              </tr>
+              <tr>
+                <td style="color:#e8edf2;font-weight:500;">GitHub Copilot</td>
+                <td>Code + Agent</td>
+                <td><span style="color:#00e5a0;">✓</span></td>
+                <td class="price">$10</td>
+                <td class="price">$39</td>
+                <td>Подписка + AI credits</td>
+                <td style="font-size:11px;">premium requests</td>
               </tr>
             </tbody>
           </table>
@@ -532,183 +712,189 @@
       </div>
     </section>
 
-    <!-- Section 4: Key Insights -->
+    <!-- Section 4: Typical Stacks (Min/Opt/Max per level) -->
     <section class="mb-12">
-      <h2 class="font-space text-xl font-semibold mb-6">Ключевые инсайты</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="card insight-card p-5">
-          <div style="font-size:13px;color:#e8edf2;line-height:1.6;">
-            Подписка <span class="font-mono" style="color:#00e5a0;">$200/мес</span> = реальная стоимость токенов <span class="font-mono" style="color:#00c8d7;">~$3 000–5 000/мес</span>
-          </div>
-          <p style="color:#6b7a8d;font-size:12px;margin-top:8px;">Провайдеры субсидируют подписки, рассчитывая на рост базы пользователей</p>
-        </div>
-        <div class="card insight-card p-5">
-          <div style="font-size:13px;color:#e8edf2;line-height:1.6;">
-            На уровне Про обвязка сопоставима с подписками — <span style="color:#00e5a0;">ты строишь на AI</span>, а не просто пользуешься
-          </div>
-          <p style="color:#6b7a8d;font-size:12px;margin-top:8px;">Инфраструктура становится ключевой статьёй расходов</p>
-        </div>
-        <div class="card insight-card p-5">
-          <div style="font-size:13px;color:#e8edf2;line-height:1.6;">
-            Стоимость токенов падает до <span class="font-mono" style="color:#00e5a0;">900x</span> в год, но потребление растёт
-          </div>
-          <p style="color:#6b7a8d;font-size:12px;margin-top:8px;">Закон Джевонса: дешевле → больше используем → расходы не снижаются</p>
-        </div>
-        <div class="card insight-card p-5">
-          <div style="font-size:13px;color:#e8edf2;line-height:1.6;">
-            Devin: 1 ACU = 15 мин работы = <span class="font-mono" style="color:#00c8d7;">$2.25</span>. Team $500/мес = <span class="font-mono" style="color:#00e5a0;">62.5 часа</span> автономной инженерной работы
-          </div>
-          <p style="color:#6b7a8d;font-size:12px;margin-top:8px;">Сравните с зарплатой джуниор-разработчика</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 5: Typical Stack Examples -->
-    <section class="mb-12">
-      <h2 class="font-space text-xl font-semibold mb-6">Типичные примеры стеков</h2>
+      <h2 class="font-space text-xl font-semibold mb-6">Типичные стеки по сценариям</h2>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
         
-        <!-- Beginner Stack -->
+        <!-- Beginner Stacks -->
         <div class="card stack-card p-6">
           <div class="flex items-center gap-2 mb-4">
             <span class="badge badge-green">Начинающий</span>
           </div>
-          <div class="space-y-3" style="font-size:13px;">
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">ChatGPT Plus</span>
-              <span class="font-mono price">$20</span>
+          <div class="space-y-4">
+            <!-- Min -->
+            <div style="padding-bottom:12px;border-bottom:1px solid #252c33;">
+              <div class="flex justify-between items-center mb-2">
+                <span style="color:#6b7a8d;font-size:11px;text-transform:uppercase;">Минимум</span>
+                <span class="font-mono font-bold" style="color:#00e5a0;font-size:14px;">$0</span>
+              </div>
+              <div><span class="tool-chip">ChatGPT Free</span><span class="tool-chip">Claude Free</span><span class="tool-chip">Lovable Free</span><span class="tool-chip">Canva Free</span></div>
             </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Canva Pro</span>
-              <span class="font-mono price">$15</span>
+            <!-- Opt -->
+            <div style="padding-bottom:12px;border-bottom:1px solid #252c33;">
+              <div class="flex justify-between items-center mb-2">
+                <span style="color:#6b7a8d;font-size:11px;text-transform:uppercase;">Оптимум</span>
+                <span class="font-mono font-bold" style="color:#00e5a0;font-size:14px;">$47</span>
+              </div>
+              <div><span class="tool-chip">ChatGPT Plus $20</span><span class="tool-chip">Canva Pro $12</span><span class="tool-chip">Midjourney $10</span><span class="tool-chip">Домен $1</span></div>
             </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Notion Plus</span>
-              <span class="font-mono price">$10</span>
+            <!-- Max -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span style="color:#6b7a8d;font-size:11px;text-transform:uppercase;">Максимум</span>
+                <span class="font-mono font-bold" style="color:#00e5a0;font-size:14px;">$96</span>
+              </div>
+              <div><span class="tool-chip">ChatGPT Plus $20</span><span class="tool-chip">Claude Pro $20</span><span class="tool-chip">v0 Premium $20</span><span class="tool-chip">Canva $12</span><span class="tool-chip">Midjourney $10</span><span class="tool-chip">Notion $10</span></div>
             </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Lovable Free</span>
-              <span class="font-mono price">$0</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Домен</span>
-              <span class="font-mono price">$1</span>
-            </div>
-          </div>
-          <div style="margin-top:16px;padding-top:16px;border-top:1px solid #252c33;" class="flex justify-between items-center">
-            <span style="color:#6b7a8d;font-size:12px;">Итого:</span>
-            <span class="font-mono font-bold gradient-text" style="font-size:18px;">$46/мес</span>
           </div>
         </div>
 
-        <!-- Power User Stack -->
+        <!-- Advanced Stacks -->
         <div class="card stack-card p-6" style="border-color:#00e5a0;">
           <div class="flex items-center gap-2 mb-4">
             <span class="badge badge-teal">Продвинутый</span>
           </div>
-          <div class="space-y-3" style="font-size:13px;">
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">ChatGPT Plus</span>
-              <span class="font-mono price">$20</span>
+          <div class="space-y-4">
+            <!-- Min -->
+            <div style="padding-bottom:12px;border-bottom:1px solid #252c33;">
+              <div class="flex justify-between items-center mb-2">
+                <span style="color:#6b7a8d;font-size:11px;text-transform:uppercase;">Минимум</span>
+                <span class="font-mono font-bold" style="color:#00e5a0;font-size:14px;">$88</span>
+              </div>
+              <div><span class="tool-chip">ChatGPT Plus $20</span><span class="tool-chip">Cursor $20</span><span class="tool-chip">Manus $20</span><span class="tool-chip">Midjourney $10</span><span class="tool-chip">Make $12</span><span class="tool-chip">VPS $5</span></div>
             </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Claude Pro</span>
-              <span class="font-mono price">$20</span>
+            <!-- Opt -->
+            <div style="padding-bottom:12px;border-bottom:1px solid #252c33;">
+              <div class="flex justify-between items-center mb-2">
+                <span style="color:#6b7a8d;font-size:11px;text-transform:uppercase;">Оптимум</span>
+                <span class="font-mono font-bold" style="color:#00e5a0;font-size:14px;">$201</span>
+              </div>
+              <div><span class="tool-chip">ChatGPT $20</span><span class="tool-chip">Claude $20</span><span class="tool-chip">Perplexity $20</span><span class="tool-chip">Cursor $20</span><span class="tool-chip">Manus $20</span><span class="tool-chip">Lovable $25</span><span class="tool-chip">Midjourney $30</span><span class="tool-chip">n8n €20</span></div>
             </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Midjourney</span>
-              <span class="font-mono price">$30</span>
+            <!-- Max -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span style="color:#6b7a8d;font-size:11px;text-transform:uppercase;">Максимум</span>
+                <span class="font-mono font-bold" style="color:#00e5a0;font-size:14px;">$382</span>
+              </div>
+              <div><span class="tool-chip">ChatGPT Pro $100</span><span class="tool-chip">Claude $20</span><span class="tool-chip">Cursor Pro+ $60</span><span class="tool-chip">Manus $40</span><span class="tool-chip">Lovable $25</span><span class="tool-chip">Replit $20</span><span class="tool-chip">n8n €50</span><span class="tool-chip">Runway $15</span></div>
             </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Windsurf Pro</span>
-              <span class="font-mono price">$20</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Manus Pro</span>
-              <span class="font-mono price">$39</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Lovable Pro</span>
-              <span class="font-mono price">$25</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Make</span>
-              <span class="font-mono price">$9</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">VPS</span>
-              <span class="font-mono price">$5</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">GitHub Pro</span>
-              <span class="font-mono price">$4</span>
-            </div>
-          </div>
-          <div style="margin-top:16px;padding-top:16px;border-top:1px solid #252c33;" class="flex justify-between items-center">
-            <span style="color:#6b7a8d;font-size:12px;">Итого:</span>
-            <span class="font-mono font-bold gradient-text" style="font-size:18px;">$172/мес</span>
           </div>
         </div>
 
-        <!-- Pro Stack -->
+        <!-- Pro Stacks -->
         <div class="card stack-card p-6">
           <div class="flex items-center gap-2 mb-4">
             <span class="badge badge-orange">Про</span>
           </div>
-          <div class="space-y-3" style="font-size:13px;">
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Claude Max 5x</span>
-              <span class="font-mono price">$100</span>
+          <div class="space-y-4">
+            <!-- Min -->
+            <div style="padding-bottom:12px;border-bottom:1px solid #252c33;">
+              <div class="flex justify-between items-center mb-2">
+                <span style="color:#6b7a8d;font-size:11px;text-transform:uppercase;">Минимум</span>
+                <span class="font-mono font-bold" style="color:#00e5a0;font-size:14px;">$415</span>
+              </div>
+              <div><span class="tool-chip">Claude Max $100</span><span class="tool-chip">Cursor $20</span><span class="tool-chip">Devin $20</span><span class="tool-chip">Manus $40</span><span class="tool-chip">Lovable $25</span><span class="tool-chip">API $50</span><span class="tool-chip">Midjourney $30</span><span class="tool-chip">Runway $35</span></div>
             </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">API</span>
-              <span class="font-mono price">$100</span>
+            <!-- Opt -->
+            <div style="padding-bottom:12px;border-bottom:1px solid #252c33;">
+              <div class="flex justify-between items-center mb-2">
+                <span style="color:#6b7a8d;font-size:11px;text-transform:uppercase;">Оптимум</span>
+                <span class="font-mono font-bold" style="color:#00e5a0;font-size:14px;">$947</span>
+              </div>
+              <div><span class="tool-chip">Claude $100</span><span class="tool-chip">ChatGPT $100</span><span class="tool-chip">Cursor Ultra $200</span><span class="tool-chip">Devin $20</span><span class="tool-chip">Manus $40</span><span class="tool-chip">API $100</span><span class="tool-chip">Midjourney $60</span><span class="tool-chip">ElevenLabs $99</span></div>
             </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Devin</span>
-              <span class="font-mono price">$150</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Windsurf Max</span>
-              <span class="font-mono price">$200</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Manus Max</span>
-              <span class="font-mono price">$200</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Lovable Business</span>
-              <span class="font-mono price">$50</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">n8n Cloud Pro</span>
-              <span class="font-mono price">$50</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">VPS x2</span>
-              <span class="font-mono price">$30</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Supabase</span>
-              <span class="font-mono price">$25</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Pinecone</span>
-              <span class="font-mono price">$70</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">GitHub Pro</span>
-              <span class="font-mono price">$4</span>
-            </div>
-            <div class="flex justify-between items-center">
-              <span style="color:#9aa5b4;">Мониторинг</span>
-              <span class="font-mono price">$10</span>
+            <!-- Max -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span style="color:#6b7a8d;font-size:11px;text-transform:uppercase;">Максимум</span>
+                <span class="font-mono font-bold" style="color:#00e5a0;font-size:14px;">$1 876</span>
+              </div>
+              <div><span class="tool-chip">Claude 20x $200</span><span class="tool-chip">ChatGPT $200</span><span class="tool-chip">Cursor $200</span><span class="tool-chip">Windsurf $200</span><span class="tool-chip">Devin $200</span><span class="tool-chip">Manus $40</span><span class="tool-chip">Replit $95</span><span class="tool-chip">API $200</span><span class="tool-chip">Runway $95</span></div>
             </div>
           </div>
-          <div style="margin-top:16px;padding-top:16px;border-top:1px solid #252c33;" class="flex justify-between items-center">
-            <span style="color:#6b7a8d;font-size:12px;">Итого:</span>
-            <span class="font-mono font-bold gradient-text" style="font-size:18px;">$989/мес</span>
-          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Summary Comparison Table -->
+    <section class="mb-12">
+      <h2 class="font-space text-xl font-semibold mb-6">Сводная таблица</h2>
+      <div class="card p-6">
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th colspan="3" style="text-align:center;border-bottom:none;">Начинающий</th>
+                <th colspan="3" style="text-align:center;border-bottom:none;">Продвинутый</th>
+                <th colspan="3" style="text-align:center;border-bottom:none;">Про</th>
+              </tr>
+              <tr>
+                <th>Категория</th>
+                <th>Мин</th><th>Опт</th><th>Макс</th>
+                <th>Мин</th><th>Опт</th><th>Макс</th>
+                <th>Мин</th><th>Опт</th><th>Макс</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color:#e8edf2;font-weight:500;">AI Ассистенты</td>
+                <td class="price">$0</td><td class="price">$20</td><td class="price">$40</td>
+                <td class="price">$20</td><td class="price">$60</td><td class="price">$140</td>
+                <td class="price">$100</td><td class="price">$200</td><td class="price">$400</td>
+              </tr>
+              <tr>
+                <td style="color:#e8edf2;font-weight:500;">AI Coding + Агенты</td>
+                <td class="price">$0</td><td class="price">$0</td><td class="price">$20</td>
+                <td class="price">$40</td><td class="price">$65</td><td class="price">$145</td>
+                <td class="price">$105</td><td class="price">$285</td><td class="price">$785</td>
+              </tr>
+              <tr>
+                <td style="color:#e8edf2;font-weight:500;">API</td>
+                <td class="price">—</td><td class="price">—</td><td class="price">—</td>
+                <td class="price">—</td><td class="price">—</td><td class="price">—</td>
+                <td class="price">$50</td><td class="price">$100</td><td class="price">$200</td>
+              </tr>
+              <tr>
+                <td style="color:#e8edf2;font-weight:500;">Креатив + Видео</td>
+                <td class="price">$0</td><td class="price">$22</td><td class="price">$22</td>
+                <td class="price">$10</td><td class="price">$30</td><td class="price">$45</td>
+                <td class="price">$71</td><td class="price">$194</td><td class="price">$254</td>
+              </tr>
+              <tr>
+                <td style="color:#e8edf2;font-weight:500;">Автоматизация + Инфра</td>
+                <td class="price">$0</td><td class="price">$1</td><td class="price">$11</td>
+                <td class="price">$18</td><td class="price">$46</td><td class="price">$102</td>
+                <td class="price">$89</td><td class="price">$218</td><td class="price">$237</td>
+              </tr>
+              <tr style="border-top:2px solid #252c33;">
+                <td style="color:#e8edf2;font-weight:700;">Итого / мес</td>
+                <td class="price" style="font-weight:700;">$0</td>
+                <td class="price" style="font-weight:700;">$47</td>
+                <td class="price" style="font-weight:700;">$96</td>
+                <td class="price" style="font-weight:700;">$88</td>
+                <td class="price" style="font-weight:700;">$201</td>
+                <td class="price" style="font-weight:700;">$382</td>
+                <td class="price" style="font-weight:700;">$415</td>
+                <td class="price" style="font-weight:700;">$947</td>
+                <td class="price" style="font-weight:700;">$1 876</td>
+              </tr>
+              <tr>
+                <td style="color:#e8edf2;font-weight:700;">Итого / год</td>
+                <td class="price" style="font-weight:700;">$0</td>
+                <td class="price" style="font-weight:700;">$564</td>
+                <td class="price" style="font-weight:700;">$1 152</td>
+                <td class="price" style="font-weight:700;">$1 056</td>
+                <td class="price" style="font-weight:700;">$2 412</td>
+                <td class="price" style="font-weight:700;">$4 584</td>
+                <td class="price" style="font-weight:700;">$4 980</td>
+                <td class="price" style="font-weight:700;">$11 364</td>
+                <td class="price" style="font-weight:700;">$22 512</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -721,21 +907,37 @@
         </div>
         <span style="font-size:13px;color:#6b7a8d;">verkhovskiy.ai — AI Cost Dashboard</span>
       </div>
-      <span style="font-size:12px;color:#6b7a8d;">Данные актуальны на май 2026</span>
+      <span style="font-size:12px;color:#6b7a8d;">Данные актуальны на май 2026 · Источники: официальные прайс-листы 22+ инструментов</span>
     </footer>
   </main>
 
   <script>
-    function switchTab(tabId) {
-      // Hide all tab contents
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      // Remove active from all buttons
-      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-      // Show selected tab
-      document.getElementById(tabId).classList.add('active');
-      // Activate button
-      event.target.classList.add('active');
-    }
+    // Level Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const tabId = this.dataset.tab;
+        // Deactivate all tabs
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        // Activate selected
+        this.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    // Scenario Switcher
+    document.querySelectorAll('.scenario-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const scenarioId = this.dataset.scenario;
+        const parent = this.closest('.tab-content');
+        // Deactivate all scenario buttons in this tab
+        parent.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+        parent.querySelectorAll('.scenario-content').forEach(c => c.classList.remove('active'));
+        // Activate selected
+        this.classList.add('active');
+        document.getElementById(scenarioId).classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
