@@ -646,7 +646,7 @@ function getRecommendationBadge(rec) {
 async function init() {
   try {
     const [toolsRes, feedRes, todRes] = await Promise.all([
-      fetch('data/llm-tools.json'), fetch('data/models-feed.json'), fetch('data/tool-of-the-day.json')
+      fetch('data/llm-tools.json'), fetch('/data/models-feed.json'), fetch('data/tool-of-the-day.json')
     ]);
     DATA = await toolsRes.json();
     CHRONICLE = await feedRes.json();
@@ -691,7 +691,7 @@ async function init() {
 
   // Try loading trending
   try {
-    const resp = await fetch('data/momentum.json');
+    const resp = await fetch('/data/momentum.json');
     if (resp.ok) { const d = await resp.json(); TRENDING = Array.isArray(d) ? d[d.length-1] : d; }
   } catch(e) { TRENDING = null; }
 
