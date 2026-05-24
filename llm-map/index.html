@@ -255,7 +255,7 @@
       <div class="pulse-dot" style="width:7px;height:7px;background:#00e5a0;border-radius:50%;"></div>
       <span style="font-size:12px;color:#9aa5b4;">Live</span>
     </div>
-    <div style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:6px 12px;font-size:12px;color:#9aa5b4;" class="hidden sm:block">22 мая 2026</div>
+    <div style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:6px 12px;font-size:12px;color:#9aa5b4;" class="hidden sm:block" id="header-date">22 мая 2026</div>
   </div>
 </nav>
 
@@ -694,6 +694,23 @@ async function init() {
     const resp = await fetch('/data/momentum.json');
     if (resp.ok) { const d = await resp.json(); TRENDING = Array.isArray(d) ? d[d.length-1] : d; }
   } catch(e) { TRENDING = null; }
+
+  // Update header date dynamically
+  try {
+    const months = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+    let latestDate = null;
+    if (CHRONICLE && CHRONICLE.events && CHRONICLE.events.length > 0) {
+      latestDate = new Date(CHRONICLE.events[0].date);
+    }
+    if (TRENDING && TRENDING.date) {
+      const tDate = new Date(TRENDING.date);
+      if (!latestDate || tDate > latestDate) latestDate = tDate;
+    }
+    if (latestDate) {
+      const el = document.getElementById('header-date');
+      if (el) el.textContent = `${latestDate.getDate()} ${months[latestDate.getMonth()]} ${latestDate.getFullYear()}`;
+    }
+  } catch(e) {}
 
   // Flatten tools
   DATA.levels.forEach(level => {
