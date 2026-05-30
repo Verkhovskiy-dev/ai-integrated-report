@@ -7,18 +7,21 @@
     updateInterval: 100,
     yearStart: new Date("2026-01-01T00:00:00Z"),
     colors: {
-      bg: "#1a1a2e",
-      cardBg: "#16213e",
+      bg: "#0d0f10",
+      cardBg: "#1c2127",
+      surface: "#161a1d",
       text: "#e0e0e0",
       textMuted: "#8892b0",
-      accent: "#00d4ff",
-      accentGreen: "#00ff88",
+      accent: "#00e5a0",
+      accentCyan: "#00d4ff",
+      accentGreen: "#00e5a0",
       accentPurple: "#7b68ee",
-      glow: "rgba(0, 212, 255, 0.4)",
-      glowGreen: "rgba(0, 255, 136, 0.3)",
-      border: "rgba(255,255,255,0.06)",
+      glow: "rgba(0, 229, 160, 0.4)",
+      glowCyan: "rgba(0, 212, 255, 0.4)",
+      glowGreen: "rgba(0, 229, 160, 0.3)",
+      border: "#252c33",
       vendors: {
-        openai: "#00ff88",
+        openai: "#00e5a0",
         anthropic: "#ff8c42",
         google: "#4da6ff",
         deepseek: "#c084fc",
@@ -29,7 +32,6 @@
   let tokensPerMs = CONFIG.tokensPerDay / 86400 / 1000;
 
   // Dollar spend constants
-  // $30M/day globally = $0.50/1M blended avg × 60T tokens/day
   let BLENDED_COST_PER_M = 0.50;
   let dollarPerMs = (CONFIG.tokensPerDay / 1e6 * BLENDED_COST_PER_M) / 86400 / 1000;
 
@@ -89,8 +91,6 @@
     { name: "Code review 500L",     inputT: 3000, outputT: 500  },
   ];
 
-  // Models reused from currentPrices (same order)
-  // taskModels mirrors currentPrices for the heatmap columns
   const taskModels = [
     { short: "GPT-5",       input: 10,   output: 30  },
     { short: "Sonnet 4",    input: 3,    output: 15  },
@@ -127,15 +127,11 @@
     .tcw-root {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       color: ${CONFIG.colors.text};
-      background: ${CONFIG.colors.bg};
-      border-radius: 16px;
-      padding: 28px;
-      max-width: 560px;
+      background: transparent;
+      max-width: 100%;
       width: 100%;
       box-sizing: border-box;
       position: relative;
-      border: 1px solid ${CONFIG.colors.border};
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
     .tcw-root * { box-sizing: border-box; }
 
@@ -169,11 +165,11 @@
       display: none;
       position: absolute;
       top: 30px; right: 0;
-      width: 280px;
-      background: #0d1b2a;
+      width: 320px;
+      background: ${CONFIG.colors.cardBg};
       border: 1px solid ${CONFIG.colors.border};
       border-radius: 8px;
-      padding: 12px;
+      padding: 14px;
       font-size: 11px; line-height: 1.5;
       color: ${CONFIG.colors.textMuted};
       z-index: 100;
@@ -181,122 +177,99 @@
     }
     .tcw-info-btn:hover .tcw-tooltip { display: block; }
 
-    /* Counter */
-    .tcw-counter-section { margin-bottom: 24px; }
-    .tcw-counter-block { margin-bottom: 16px; }
+    /* Counter row */
+    .tcw-counter-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+      background: ${CONFIG.colors.cardBg};
+      border: 1px solid ${CONFIG.colors.border};
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+    .tcw-counter-block {}
     .tcw-counter-label {
-      font-size: 11px; font-weight: 500;
-      text-transform: uppercase; letter-spacing: 1px;
-      color: ${CONFIG.colors.textMuted}; margin-bottom: 4px;
+      font-size: 10px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      color: ${CONFIG.colors.textMuted}; margin-bottom: 6px;
     }
     .tcw-counter-value {
       font-family: 'JetBrains Mono', 'Courier New', monospace;
-      font-size: 32px; font-weight: 700;
-      color: ${CONFIG.colors.accent};
-      text-shadow: 0 0 20px ${CONFIG.colors.glow}, 0 0 40px ${CONFIG.colors.glow};
+      font-size: 28px; font-weight: 700;
+      color: ${CONFIG.colors.accentCyan};
+      text-shadow: 0 0 16px ${CONFIG.colors.glowCyan}, 0 0 32px ${CONFIG.colors.glowCyan};
       line-height: 1.2;
     }
     .tcw-counter-value.green {
       color: ${CONFIG.colors.accentGreen};
-      text-shadow: 0 0 20px ${CONFIG.colors.glowGreen}, 0 0 40px ${CONFIG.colors.glowGreen};
-      font-size: 26px;
+      text-shadow: 0 0 16px ${CONFIG.colors.glowGreen}, 0 0 32px ${CONFIG.colors.glowGreen};
+      font-size: 24px;
     }
-    .tcw-counter-unit {
-      font-size: 13px; font-weight: 400;
-      color: ${CONFIG.colors.textMuted}; margin-left: 6px;
-    }
-
     .tcw-counter-value.gold {
       color: #ffd700;
-      text-shadow: 0 0 20px rgba(255,215,0,0.5), 0 0 40px rgba(255,215,0,0.25);
-      font-size: 28px;
+      text-shadow: 0 0 16px rgba(255,215,0,0.5), 0 0 32px rgba(255,215,0,0.25);
+      font-size: 26px;
     }
     .tcw-counter-value.gold-sm {
       color: #ffd700;
-      text-shadow: 0 0 20px rgba(255,215,0,0.5), 0 0 40px rgba(255,215,0,0.25);
+      text-shadow: 0 0 16px rgba(255,215,0,0.5), 0 0 32px rgba(255,215,0,0.25);
       font-size: 22px;
     }
-
-    .tcw-counter-pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 16px;
+    .tcw-counter-unit {
+      font-size: 12px; font-weight: 400;
+      color: ${CONFIG.colors.textMuted}; margin-left: 4px;
     }
 
-    .tcw-counter-pair .tcw-counter-block {
-      margin-bottom: 0;
+    @media (max-width: 768px) {
+      .tcw-counter-row { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 16px; }
+      .tcw-counter-value { font-size: 22px; }
+      .tcw-counter-value.green { font-size: 18px; }
+      .tcw-counter-value.gold { font-size: 20px; }
+      .tcw-counter-value.gold-sm { font-size: 18px; }
     }
-
-    @media (max-width: 440px) {
-      .tcw-counter-pair { grid-template-columns: 1fr; }
+    @media (max-width: 480px) {
+      .tcw-counter-row { grid-template-columns: 1fr; }
     }
 
     .tcw-divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, ${CONFIG.colors.border}, transparent);
-      margin: 20px 0;
+      background: ${CONFIG.colors.border};
+      margin: 24px 0;
     }
 
     /* Sparkline */
-    .tcw-sparkline-section { margin-bottom: 24px; }
+    .tcw-sparkline-section { margin-bottom: 0; }
     .tcw-section-title {
       font-size: 12px; font-weight: 600;
       text-transform: uppercase; letter-spacing: 1px;
       color: ${CONFIG.colors.textMuted}; margin-bottom: 12px;
     }
     .tcw-sparkline-container {
-      background: rgba(255,255,255,0.02);
-      border-radius: 8px; padding: 12px;
+      background: ${CONFIG.colors.cardBg};
+      border-radius: 12px; padding: 16px 20px;
       border: 1px solid ${CONFIG.colors.border};
     }
-    .tcw-sparkline-svg { width: 100%; height: 80px; display: block; }
+    .tcw-sparkline-svg { width: 100%; height: 100px; display: block; }
     .tcw-sparkline-labels {
       display: flex; justify-content: space-between;
-      margin-top: 6px; font-size: 9px; color: ${CONFIG.colors.textMuted};
+      margin-top: 8px; font-size: 10px; color: ${CONFIG.colors.textMuted};
     }
 
-    /* Prices table */
-    .tcw-prices-section { margin-top: 0; }
-    .tcw-prices-table { width: 100%; border-collapse: collapse; }
-    .tcw-prices-table th {
-      font-size: 10px; font-weight: 500;
-      text-transform: uppercase; letter-spacing: 0.5px;
-      color: ${CONFIG.colors.textMuted};
-      text-align: left; padding: 6px 8px;
-      border-bottom: 1px solid ${CONFIG.colors.border};
-    }
-    .tcw-prices-table th:not(:first-child) { text-align: right; }
-    .tcw-prices-table td {
-      font-size: 12px; padding: 7px 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.03);
-    }
-    .tcw-prices-table td:first-child { font-weight: 500; color: ${CONFIG.colors.text}; }
-    .tcw-prices-table td:not(:first-child) {
-      text-align: right;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; color: ${CONFIG.colors.accentGreen};
-    }
-    .tcw-prices-table tr:last-child td { border-bottom: none; }
-    .tcw-prices-table tr:hover td { background: rgba(255,255,255,0.02); }
-
-    /* ── Model Intelligence section ─────────────────────────────────────── */
-    .tcw-intel-section { margin-bottom: 4px; }
-
+    /* Scatter plot */
+    .tcw-intel-section { margin-bottom: 0; }
     .tcw-scatter-wrap {
-      background: rgba(255,255,255,0.02);
-      border-radius: 8px; padding: 12px 10px 8px;
+      background: ${CONFIG.colors.cardBg};
+      border-radius: 12px; padding: 16px 20px 12px;
       border: 1px solid ${CONFIG.colors.border};
       position: relative;
     }
-
-    /* Tooltip for scatter */
     .tcw-scatter-tooltip {
       position: absolute;
-      background: #0d1b2a;
-      border: 1px solid rgba(255,255,255,0.12);
+      background: ${CONFIG.colors.surface};
+      border: 1px solid ${CONFIG.colors.border};
       border-radius: 6px;
-      padding: 7px 10px;
+      padding: 8px 12px;
       font-size: 11px; line-height: 1.5;
       color: ${CONFIG.colors.text};
       pointer-events: none;
@@ -310,8 +283,8 @@
 
     /* Legend */
     .tcw-legend {
-      display: flex; flex-wrap: wrap; gap: 10px;
-      margin-top: 8px;
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin-top: 10px;
     }
     .tcw-legend-item {
       display: flex; align-items: center; gap: 5px;
@@ -323,23 +296,21 @@
     }
 
     /* Intelligence scale bar */
-    .tcw-intel-bar-wrap {
-      margin-top: 14px;
-    }
+    .tcw-intel-bar-wrap { margin-top: 16px; }
     .tcw-intel-bar-title {
       font-size: 10px; font-weight: 500;
       text-transform: uppercase; letter-spacing: 0.8px;
       color: ${CONFIG.colors.textMuted}; margin-bottom: 6px;
     }
     .tcw-intel-bar-track {
-      position: relative; height: 18px;
-      border-radius: 9px; overflow: hidden;
+      position: relative; height: 20px;
+      border-radius: 10px; overflow: hidden;
       display: flex;
     }
     .tcw-intel-bar-segment {
       height: 100%; display: flex;
       align-items: center; justify-content: center;
-      font-size: 8px; font-weight: 600;
+      font-size: 9px; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.5px;
       color: rgba(255,255,255,0.7);
       overflow: hidden;
@@ -347,12 +318,11 @@
     }
     .tcw-intel-bar-indicator {
       position: absolute; top: -3px;
-      width: 4px; height: 24px;
+      width: 4px; height: 26px;
       border-radius: 2px;
       background: #ffffff;
       box-shadow: 0 0 8px rgba(255,255,255,0.9), 0 0 16px rgba(255,255,255,0.5);
       transform: translateX(-50%);
-      transition: left 0.5s ease;
     }
     .tcw-intel-bar-labels {
       display: flex; justify-content: space-between;
@@ -360,28 +330,64 @@
       color: ${CONFIG.colors.textMuted};
     }
 
-    /* ── Cost per Task heatmap ──────────────────────────────────────────── */
-    .tcw-task-section { margin-top: 0; }
-
-    .tcw-task-wrap {
-      background: rgba(255,255,255,0.02);
-      border-radius: 8px;
-      border: 1px solid ${CONFIG.colors.border};
-      overflow: hidden;
+    /* Two-column bottom layout */
+    .tcw-bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 900px) {
+      .tcw-bottom-grid { grid-template-columns: 1fr; }
     }
 
+    /* Prices table */
+    .tcw-prices-section { margin-top: 0; }
+    .tcw-prices-card {
+      background: ${CONFIG.colors.cardBg};
+      border: 1px solid ${CONFIG.colors.border};
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+    .tcw-prices-table { width: 100%; border-collapse: collapse; }
+    .tcw-prices-table th {
+      font-size: 10px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.5px;
+      color: ${CONFIG.colors.textMuted};
+      text-align: left; padding: 8px 10px;
+      border-bottom: 1px solid ${CONFIG.colors.border};
+    }
+    .tcw-prices-table th:not(:first-child) { text-align: right; }
+    .tcw-prices-table td {
+      font-size: 13px; padding: 9px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .tcw-prices-table td:first-child { font-weight: 500; color: ${CONFIG.colors.text}; }
+    .tcw-prices-table td:not(:first-child) {
+      text-align: right;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; color: ${CONFIG.colors.accentGreen};
+    }
+    .tcw-prices-table tr:last-child td { border-bottom: none; }
+    .tcw-prices-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    /* Cost per Task heatmap */
+    .tcw-task-section { margin-top: 0; }
+    .tcw-task-card {
+      background: ${CONFIG.colors.cardBg};
+      border: 1px solid ${CONFIG.colors.border};
+      border-radius: 12px;
+      overflow: hidden;
+    }
     .tcw-task-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 10.5px;
+      font-size: 11px;
     }
-
     .tcw-task-table thead tr {
       background: rgba(255,255,255,0.04);
     }
-
     .tcw-task-table th {
-      padding: 7px 6px;
+      padding: 8px 7px;
       font-size: 9.5px;
       font-weight: 600;
       text-transform: uppercase;
@@ -391,53 +397,43 @@
       border-bottom: 1px solid ${CONFIG.colors.border};
       white-space: nowrap;
     }
-
     .tcw-task-table th:first-child {
       text-align: left;
-      padding-left: 10px;
+      padding-left: 12px;
       min-width: 110px;
     }
-
     .tcw-task-table td {
-      padding: 6px 5px;
+      padding: 7px 6px;
       text-align: center;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
+      font-size: 10.5px;
       border-bottom: 1px solid rgba(255,255,255,0.025);
-      transition: filter 0.15s;
     }
-
     .tcw-task-table td:first-child {
       text-align: left;
-      padding-left: 10px;
+      padding-left: 12px;
       font-family: 'Inter', sans-serif;
       font-size: 11px;
       font-weight: 500;
       color: ${CONFIG.colors.text};
       white-space: nowrap;
     }
-
-    .tcw-task-table tr:last-child td {
-      border-bottom: none;
-    }
-
+    .tcw-task-table tr:last-child td { border-bottom: none; }
     .tcw-task-table .tcw-daily-row td {
       background: rgba(255,255,255,0.035);
-      font-size: 10px;
+      font-size: 10.5px;
       color: ${CONFIG.colors.textMuted};
     }
-
     .tcw-task-table .tcw-daily-row td:first-child {
       font-family: 'Inter', sans-serif;
-      font-size: 10px;
+      font-size: 10.5px;
       font-style: italic;
       color: ${CONFIG.colors.textMuted};
     }
-
     .tcw-task-note {
-      font-size: 9.5px;
+      font-size: 10px;
       color: ${CONFIG.colors.textMuted};
-      padding: 6px 10px 8px;
+      padding: 8px 12px 10px;
       font-style: italic;
     }
 
@@ -446,17 +442,12 @@
       .tcw-task-table th, .tcw-task-table td { padding: 5px 3px; font-size: 9px; }
       .tcw-task-table th:first-child, .tcw-task-table td:first-child { min-width: 80px; }
     }
-    @media (max-width: 480px) {
-      .tcw-root { padding: 20px; border-radius: 12px; }
-      .tcw-counter-value { font-size: 24px; }
-      .tcw-counter-value.green { font-size: 20px; }
-    }
   `;
 
   // ─── Helpers ─────────────────────────────────────────────────────────────────
   function formatNumber(num) {
-    if (num >= 1e15) return (num / 1e15).toFixed(3) + " Q";  // quadrillions
-    if (num >= 1e12) return (num / 1e12).toFixed(2) + " T";  // trillions
+    if (num >= 1e15) return (num / 1e15).toFixed(3) + " Q";
+    if (num >= 1e12) return (num / 1e12).toFixed(2) + " T";
     if (num >= 1e9)  return (num / 1e9).toFixed(2) + " B";
     if (num >= 1e6)  return (num / 1e6).toFixed(2) + " M";
     return num.toLocaleString("en-US");
@@ -489,7 +480,7 @@
 
   // ─── Sparkline SVG ───────────────────────────────────────────────────────────
   function buildSparklineSVG() {
-    const W = 440, H = 70, P = { t: 8, r: 10, b: 8, l: 10 };
+    const W = 800, H = 100, P = { t: 10, r: 20, b: 10, l: 20 };
     const cW = W - P.l - P.r, cH = H - P.t - P.b;
     const maxP = Math.max(...priceTrend.map(d => d.price));
 
@@ -508,11 +499,11 @@
       <stop offset="100%" stop-color="${CONFIG.colors.accentPurple}" stop-opacity="0.02"/>
     </linearGradient></defs>`;
     s += `<path d="${area}" fill="url(#tcw-sg)"/>`;
-    s += `<path d="${line}" fill="none" stroke="${CONFIG.colors.accentPurple}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+    s += `<path d="${line}" fill="none" stroke="${CONFIG.colors.accentPurple}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`;
     pts.forEach(p => {
-      s += `<circle cx="${p.x}" cy="${p.y}" r="3" fill="${CONFIG.colors.accentPurple}" stroke="#1a1a2e" stroke-width="1.5"/>`;
-      const ly = p.y - 8 < 12 ? p.y + 14 : p.y - 8;
-      s += `<text x="${p.x}" y="${ly}" fill="${CONFIG.colors.textMuted}" font-size="8" font-family="Inter,sans-serif" text-anchor="middle">$${p.price}</text>`;
+      s += `<circle cx="${p.x}" cy="${p.y}" r="4" fill="${CONFIG.colors.accentPurple}" stroke="${CONFIG.colors.cardBg}" stroke-width="2"/>`;
+      const ly = p.y - 10 < 14 ? p.y + 16 : p.y - 10;
+      s += `<text x="${p.x}" y="${ly}" fill="${CONFIG.colors.textMuted}" font-size="10" font-family="Inter,sans-serif" text-anchor="middle">$${p.price}</text>`;
     });
     s += `</svg>`;
     return s;
@@ -520,11 +511,10 @@
 
   // ─── Scatter plot SVG ────────────────────────────────────────────────────────
   function buildScatterSVG() {
-    const W = 460, H = 200;
-    const P = { t: 20, r: 20, b: 36, l: 42 };
+    const W = 800, H = 280;
+    const P = { t: 24, r: 30, b: 42, l: 50 };
     const cW = W - P.l - P.r, cH = H - P.t - P.b;
 
-    // Log scale for X (cost): domain [0.3, 50]
     const xMin = Math.log10(0.3), xMax = Math.log10(50);
     const yMin = 55, yMax = 100;
 
@@ -535,8 +525,7 @@
       return P.t + (1 - (score - yMin) / (yMax - yMin)) * cH;
     }
 
-    // Efficiency frontier: models with best score for their cost bracket
-    // Sort by cost, pick Pareto-optimal (highest score for lowest cost)
+    // Efficiency frontier
     const sorted = [...models].sort((a, b) => a.outputCost - b.outputCost);
     let frontier = [];
     let maxScore = -Infinity;
@@ -549,7 +538,7 @@
 
     let s = `<svg id="tcw-scatter-svg" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;overflow:visible;">`;
 
-    // Defs: glow filters per vendor
+    // Defs: glow filters
     s += `<defs>
       ${["openai","anthropic","google","deepseek"].map(v =>
         `<filter id="tcw-glow-${v}" x="-50%" y="-50%" width="200%" height="200%">
@@ -559,20 +548,20 @@
       ).join("")}
     </defs>`;
 
-    // Background grid lines (Y)
+    // Y grid lines
     const yTicks = [60, 70, 80, 90, 100];
     yTicks.forEach(v => {
       const y = yPos(v);
       s += `<line x1="${P.l}" y1="${y}" x2="${P.l+cW}" y2="${y}" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>`;
-      s += `<text x="${P.l-5}" y="${y+3}" fill="${CONFIG.colors.textMuted}" font-size="8" font-family="Inter,sans-serif" text-anchor="end">${v}</text>`;
+      s += `<text x="${P.l-8}" y="${y+4}" fill="${CONFIG.colors.textMuted}" font-size="10" font-family="Inter,sans-serif" text-anchor="end">${v}</text>`;
     });
 
-    // X axis log ticks
+    // X log ticks
     const xTicks = [0.3, 0.5, 1, 2, 5, 10, 30];
     xTicks.forEach(v => {
       const x = xPos(v);
       s += `<line x1="${x}" y1="${P.t}" x2="${x}" y2="${P.t+cH}" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>`;
-      s += `<text x="${x}" y="${P.t+cH+12}" fill="${CONFIG.colors.textMuted}" font-size="8" font-family="Inter,sans-serif" text-anchor="middle">$${v}</text>`;
+      s += `<text x="${x}" y="${P.t+cH+14}" fill="${CONFIG.colors.textMuted}" font-size="10" font-family="Inter,sans-serif" text-anchor="middle">$${v}</text>`;
     });
 
     // Axis lines
@@ -580,10 +569,10 @@
     s += `<line x1="${P.l}" y1="${P.t+cH}" x2="${P.l+cW}" y2="${P.t+cH}" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>`;
 
     // Axis labels
-    s += `<text x="${P.l + cW/2}" y="${H-2}" fill="${CONFIG.colors.textMuted}" font-size="9" font-family="Inter,sans-serif" text-anchor="middle">Output cost per 1M tokens (log scale)</text>`;
-    s += `<text x="10" y="${P.t + cH/2}" fill="${CONFIG.colors.textMuted}" font-size="9" font-family="Inter,sans-serif" text-anchor="middle" transform="rotate(-90,10,${P.t+cH/2})">Intelligence score</text>`;
+    s += `<text x="${P.l + cW/2}" y="${H-4}" fill="${CONFIG.colors.textMuted}" font-size="11" font-family="Inter,sans-serif" text-anchor="middle">Output cost per 1M tokens (log scale)</text>`;
+    s += `<text x="14" y="${P.t + cH/2}" fill="${CONFIG.colors.textMuted}" font-size="11" font-family="Inter,sans-serif" text-anchor="middle" transform="rotate(-90,14,${P.t+cH/2})">Intelligence score</text>`;
 
-    // Efficiency frontier line
+    // Frontier line
     if (frontier.length > 1) {
       const fPath = frontier.map((m, i) => {
         const x = xPos(m.outputCost), y = yPos(m.score);
@@ -592,41 +581,41 @@
       s += `<path d="${fPath}" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="4 3"/>`;
     }
 
-    // Dots — render with data attributes for JS hover
+    // Dots
     models.forEach((m, idx) => {
       const x = xPos(m.outputCost).toFixed(1);
       const y = yPos(m.score).toFixed(1);
-      const r = 4 + (m.pop / 18) * 7; // radius 4–11
+      const r = 5 + (m.pop / 18) * 9;
       const col = vendorColor(m.vendor);
       s += `<g class="tcw-model-dot" data-idx="${idx}" style="cursor:pointer;">
-        <circle cx="${x}" cy="${y}" r="${r+4}" fill="transparent"/>
+        <circle cx="${x}" cy="${y}" r="${r+5}" fill="transparent"/>
         <circle cx="${x}" cy="${y}" r="${r}" fill="${col}" fill-opacity="0.85"
           stroke="rgba(255,255,255,0.25)" stroke-width="1"
           filter="url(#tcw-glow-${m.vendor})"/>
       </g>`;
     });
 
-    // Labels (offset to avoid overlap)
+    // Labels
     const labelOffsets = {
-      "GPT-5":            [6, -8],
-      "Claude Sonnet 4":  [6, -8],
-      "Gemini 2.5 Pro":   [6, 12],
-      "GPT-4.1":          [6, -8],
-      "Gemini 2.5 Flash": [-6, 12],
-      "GPT-4.1-mini":     [6, -8],
-      "DeepSeek V3":      [-6, -8],
-      "Claude Haiku 3.5": [6, 12],
-      "GPT-4.1-nano":     [-6, 12],
+      "GPT-5":            [8, -10],
+      "Claude Sonnet 4":  [8, -10],
+      "Gemini 2.5 Pro":   [8, 14],
+      "GPT-4.1":          [8, -10],
+      "Gemini 2.5 Flash": [-8, 14],
+      "GPT-4.1-mini":     [8, -10],
+      "DeepSeek V3":      [-8, -10],
+      "Claude Haiku 3.5": [8, 14],
+      "GPT-4.1-nano":     [-8, 14],
     };
     models.forEach(m => {
       const x = xPos(m.outputCost);
       const y = yPos(m.score);
-      const r = 4 + (m.pop / 18) * 7;
-      const [ox, oy] = labelOffsets[m.name] || [6, -8];
+      const r = 5 + (m.pop / 18) * 9;
+      const [ox, oy] = labelOffsets[m.name] || [8, -10];
       const anchor = ox < 0 ? "end" : "start";
       s += `<text x="${(x + r * Math.sign(ox) + ox).toFixed(1)}" y="${(y + oy).toFixed(1)}"
         fill="${CONFIG.colors.text}" fill-opacity="0.85"
-        font-size="9" font-family="Inter,sans-serif" text-anchor="${anchor}"
+        font-size="11" font-family="Inter,sans-serif" text-anchor="${anchor}"
         pointer-events="none">${m.name}</text>`;
     });
 
@@ -636,8 +625,8 @@
 
   // ─── Intelligence scale bar ──────────────────────────────────────────────────
   function buildIntelBar() {
-    const topScore = Math.max(...models.map(m => m.score)); // 92
-    const indicatorPct = topScore; // 0-100 scale
+    const topScore = Math.max(...models.map(m => m.score));
+    const indicatorPct = topScore;
 
     const segments = intelligenceTiers.map(t => {
       const width = t.max - t.min;
@@ -646,16 +635,16 @@
 
     return `
       <div class="tcw-intel-bar-wrap">
-        <div class="tcw-intel-bar-title">Intelligence scale (normalized ELO, 0–100)</div>
+        <div class="tcw-intel-bar-title">Intelligence scale (normalized ELO, 0\u2013100)</div>
         <div class="tcw-intel-bar-track" id="tcw-intel-track">
           ${segments}
           <div class="tcw-intel-bar-indicator" id="tcw-intel-indicator" style="left:${indicatorPct}%;"></div>
         </div>
         <div class="tcw-intel-bar-labels">
-          <span>0 — GPT-3 era</span>
-          <span>30 — GPT-3.5</span>
-          <span>60 — GPT-4</span>
-          <span>80 — Frontier</span>
+          <span>0 \u2014 GPT-3 era</span>
+          <span>30 \u2014 GPT-3.5</span>
+          <span>60 \u2014 GPT-4</span>
+          <span>80 \u2014 Frontier</span>
           <span>100</span>
         </div>
       </div>`;
@@ -685,16 +674,13 @@
 
   // ─── Cost per Task heatmap ──────────────────────────────────────────────────
   function buildTaskHeatmap() {
-    // Compute all costs to find min/max for color scaling
     const allCosts = [];
     taskData.forEach(task => taskModels.forEach(model => allCosts.push(taskCost(task, model))));
     const minC = Math.min(...allCosts);
     const maxC = Math.max(...allCosts);
 
-    // Color: green (cheap) → yellow → orange/red (expensive)
     function heatColor(cost) {
-      const t = Math.pow((cost - minC) / (maxC - minC), 0.45); // power for better spread
-      // green #00c97a → yellow #ffd700 → red #ff4444
+      const t = Math.pow((cost - minC) / (maxC - minC), 0.45);
       let r, g, b;
       if (t < 0.5) {
         const u = t * 2;
@@ -715,7 +701,7 @@
       return t > 0.6 ? "rgba(0,0,0,0.85)" : "rgba(255,255,255,0.9)";
     }
 
-    let html = `<div class="tcw-task-wrap">`;
+    let html = `<div class="tcw-task-card">`;
     html += `<table class="tcw-task-table"><thead><tr>`;
     html += `<th>Task</th>`;
     taskModels.forEach(m => { html += `<th>${m.short}</th>`; });
@@ -732,8 +718,8 @@
       html += `</tr>`;
     });
 
-    // Daily row (× 100 tasks)
-    html += `<tr class="tcw-daily-row"><td>× 100 tasks / day</td>`;
+    // Daily row
+    html += `<tr class="tcw-daily-row"><td>\u00d7 100 tasks / day</td>`;
     taskModels.forEach(model => {
       const total = taskData.reduce((sum, task) => sum + taskCost(task, model) * 100, 0);
       html += `<td>$${total.toFixed(2)}</td>`;
@@ -748,12 +734,12 @@
 
   // ─── Prices table ────────────────────────────────────────────────────────────
   function buildPricesTable() {
-    let html = `<table class="tcw-prices-table">
+    let html = `<div class="tcw-prices-card"><table class="tcw-prices-table">
       <thead><tr><th>Model</th><th>Input / 1M</th><th>Output / 1M</th></tr></thead><tbody>`;
     currentPrices.forEach(p => {
       html += `<tr><td>${p.model}</td><td>$${p.input.toFixed(2)}</td><td>$${p.output.toFixed(2)}</td></tr>`;
     });
-    html += `</tbody></table>`;
+    html += `</tbody></table></div>`;
     return html;
   }
 
@@ -776,41 +762,37 @@
         <!-- Header -->
         <div class="tcw-header">
           <span class="tcw-title">Global AI Token Monitor</span>
-          <button class="tcw-info-btn" aria-label="Methodology info">ℹ️
+          <button class="tcw-info-btn" aria-label="Methodology info">\u2139\uFE0F
             <div class="tcw-tooltip">
               <strong style="color:#e0e0e0;">Methodology</strong><br><br>
               Estimates based on public data:<br>
-              • OpenAI processes 6–8B tokens/min (DevDay, Oct 2025) = ~8.6T/day<br>
-              • Global total ~60T tokens/day incl. Google, Anthropic, Meta, Chinese labs (Dr. A. Thompson, lifearchitect.ai, May 2026)<br>
-              • Counter extrapolates from midnight UTC at 694M tokens/sec<br>
-              • Intelligence scores: normalized Chatbot Arena ELO<br>
-              • Dollar spend: blended rate ~$0.50/1M tokens (most volume on cheap models: Gemini Flash, DeepSeek, GPT-4.1-mini) = ~$30M/day, ~$347/sec<br><br>
+              \u2022 OpenAI processes 6\u20138B tokens/min (DevDay, Oct 2025) = ~8.6T/day<br>
+              \u2022 Global total ~60T tokens/day incl. Google, Anthropic, Meta, Chinese labs (Dr. A. Thompson, lifearchitect.ai, May 2026)<br>
+              \u2022 Counter extrapolates from midnight UTC at 694M tokens/sec<br>
+              \u2022 Intelligence scores: normalized Chatbot Arena ELO<br>
+              \u2022 Dollar spend: blended rate ~$0.50/1M tokens (most volume on cheap models) = ~$30M/day, ~$347/sec<br><br>
               <em>Illustrative estimates only.</em>
             </div>
           </button>
         </div>
 
-        <!-- Counters -->
-        <div class="tcw-counter-section">
-          <div class="tcw-counter-pair">
-            <div class="tcw-counter-block">
-              <div class="tcw-counter-label">Tokens today (UTC)</div>
-              <div class="tcw-counter-value" id="tcw-today-counter">0</div>
-            </div>
-            <div class="tcw-counter-block">
-              <div class="tcw-counter-label">Global spend today (USD)</div>
-              <div class="tcw-counter-value gold" id="tcw-spend-today">$0</div>
-            </div>
+        <!-- Counters: single row on desktop -->
+        <div class="tcw-counter-row">
+          <div class="tcw-counter-block">
+            <div class="tcw-counter-label">Tokens today (UTC)</div>
+            <div class="tcw-counter-value" id="tcw-today-counter">0</div>
           </div>
-          <div class="tcw-counter-pair">
-            <div class="tcw-counter-block">
-              <div class="tcw-counter-label">Tokens this year</div>
-              <div class="tcw-counter-value green" id="tcw-year-counter">0</div>
-            </div>
-            <div class="tcw-counter-block">
-              <div class="tcw-counter-label">Global spend this year (USD)</div>
-              <div class="tcw-counter-value gold-sm" id="tcw-spend-year">$0</div>
-            </div>
+          <div class="tcw-counter-block">
+            <div class="tcw-counter-label">Tokens this year</div>
+            <div class="tcw-counter-value green" id="tcw-year-counter">0</div>
+          </div>
+          <div class="tcw-counter-block">
+            <div class="tcw-counter-label">$ Spend today</div>
+            <div class="tcw-counter-value gold" id="tcw-spend-today">$0</div>
+          </div>
+          <div class="tcw-counter-block">
+            <div class="tcw-counter-label">$ Spend this year</div>
+            <div class="tcw-counter-value gold-sm" id="tcw-spend-year">$0</div>
           </div>
         </div>
 
@@ -840,18 +822,16 @@
 
         <div class="tcw-divider"></div>
 
-        <!-- Prices table -->
-        <div class="tcw-prices-section">
-          <div class="tcw-section-title">Current model pricing (per 1M tokens)</div>
-          ${buildPricesTable()}
-        </div>
-
-        <div class="tcw-divider"></div>
-
-        <!-- Cost per Task -->
-        <div class="tcw-task-section">
-          <div class="tcw-section-title">Cost per task (USD)</div>
-          ${buildTaskHeatmap()}
+        <!-- Bottom grid: Prices + Cost per Task side by side -->
+        <div class="tcw-bottom-grid">
+          <div class="tcw-prices-section">
+            <div class="tcw-section-title">Current model pricing (per 1M tokens)</div>
+            ${buildPricesTable()}
+          </div>
+          <div class="tcw-task-section">
+            <div class="tcw-section-title">Cost per task (USD)</div>
+            ${buildTaskHeatmap()}
+          </div>
         </div>
 
       </div>
@@ -892,7 +872,6 @@
         const rect = scatterWrap.getBoundingClientRect();
         let tx = e.clientX - rect.left + 12;
         let ty = e.clientY - rect.top - 10;
-        // Keep tooltip inside container
         if (tx + 180 > rect.width) tx = e.clientX - rect.left - 190;
         tooltip.style.left = tx + "px";
         tooltip.style.top  = ty + "px";
