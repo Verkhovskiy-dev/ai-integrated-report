@@ -1,0 +1,76 @@
+{
+  "tokensPerDay": 60000000000000,
+  "blendedCostPerM": 2.569,
+  "models": [
+    {
+      "name": "GPT-5",
+      "input": 1.25,
+      "output": 10,
+      "elo": 1350,
+      "score": 92,
+      "vendor": "OpenAI"
+    },
+    {
+      "name": "Claude Sonnet 4",
+      "input": 3,
+      "output": 15,
+      "elo": 1320,
+      "score": 88,
+      "vendor": "Anthropic"
+    },
+    {
+      "name": "Gemini 2.5 Pro",
+      "input": 1.25,
+      "output": 10,
+      "elo": 1310,
+      "score": 86,
+      "vendor": "Google"
+    },
+    {
+      "name": "GPT-4.1-mini",
+      "input": 0.4,
+      "output": 1.6,
+      "elo": 1220,
+      "score": 73,
+      "vendor": "OpenAI"
+    },
+    {
+      "name": "DeepSeek V3",
+      "input": 0.2,
+      "output": 0.8,
+      "elo": 1260,
+      "score": 79,
+      "vendor": "DeepSeek"
+    },
+    {
+      "name": "Gemini 2.5 Flash",
+      "input": 0.3,
+      "output": 2.5,
+      "elo": 1240,
+      "score": 76,
+      "vendor": "Google"
+    },
+    {
+      "name": "Claude Haiku 3.5",
+      "input": 0.8,
+      "output": 4,
+      "elo": 1180,
+      "score": 67,
+      "vendor": "Anthropic"
+    },
+    {
+      "name": "GPT-4.1-nano",
+      "input": 0.1,
+      "output": 0.4,
+      "elo": 1150,
+      "score": 62,
+      "vendor": "OpenAI"
+    }
+  ],
+  "sources": {
+    "tokensPerDay": "OpenAI DevDay Oct 2025 (6-8B tokens/min), Dr. A. Thompson lifearchitect.ai (60T/day global)",
+    "pricing": "Official pricing pages, May 2026",
+    "elo": "Chatbot Arena (lmarena.ai), approximate May 2026"
+  },
+  "lastAutoUpdate": "2026-06-05T05:00:02.109Z"
+}
