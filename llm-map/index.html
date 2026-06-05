@@ -1077,162 +1077,6 @@
       </div>
     </div>
 
-    let navState = { current: 0, answers: [], finished: false };
-
-    // ========== LOAD DATA ==========
-    async function loadData() {
-      try {
-        const resp = await fetch('data/llm-tools.json');
-        if (!resp.ok) throw new Error('Failed to load llm-tools.json');
-        DATA = await resp.json();
-      } catch (e) {
-        console.error('Error loading data:', e);
-        document.getElementById('mainContent').innerHTML = '<div style="padding:60px 40px;"><h2 style="color:var(--red)">Ошибка загрузки данных</h2><p style="color:var(--text-secondary)">Не удалось загрузить каталог инструментов. Попробуйте обновить страницу.</p></div>';
-        return false;
-      }
-      return true;
-    }
-
-    async function loadToolOfTheDay() {
-      try {
-        const resp = await fetch('data/tool-of-the-day.json');
-        if (!resp.ok) throw new Error('Failed to load tool-of-the-day.json');
-        TOTD = await resp.json();
-      } catch (e) {
-        console.warn('Tool of the day not available, will use random:', e);
-        TOTD = null;
-      }
-    }
-
-    // ========== INIT ==========
-    async function init() {
-      const dataLoaded = await loadData();
-      if (!dataLoaded) return;
-      await loadToolOfTheDay();
-
-      renderNav();
-      renderHeroLevels();
-      renderToolOfTheDay();
-      renderLevelSections();
-      renderComparison();
-      renderTimeline();
-      renderShifts();
-      renderStrategy();
-      renderCosts();
-      renderNavigator();
-      renderQuiz();
-      setupScrollObserver();
-      updateProgress();
-    }
-
-    // ========== NAVIGATION ==========
-    function renderNav() {
-      const nav = document.getElementById('sidebarNav');
-      nav.innerHTML = DATA.sections.map(s => `
-        <div class="nav-item ${s.id === activeSection ? 'active' : ''}" data-section="${s.id}" onclick="scrollToSection('${s.id}')">
-          <span class="nav-icon">${s.icon}</span>
-          <span>${s.title}</span>
-        </div>
-        <div class="flex flex-col gap-3" id="trends-compact"></div>
-      </div>
-
-      <!-- Tool of Day compact -->
-      <div class="stat-card p-5">
-        <div class="flex items-center justify-between mb-3">
-          <div class="flex items-center gap-2">
-            <span style="font-size:14px;font-weight:600;color:#e8edf2;">⭐ Инструмент дня</span>
-            <div class="flex items-center gap-1" style="background:#0f2a1e;border:1px solid #1e4030;border-radius:6px;padding:2px 8px;">
-              <div class="pulse-dot" style="width:5px;height:5px;background:#00e5a0;border-radius:50%;"></div>
-              <span style="font-size:10px;color:#00e5a0;font-weight:600;">LIVE</span>
-            </div>
-          </div>
-        </div>
-        <div id="tool-of-day-compact"></div>
-      </div>
-
-      <!-- Chronicle compact -->
-      <div class="stat-card p-5">
-        <div class="flex items-center justify-between mb-4">
-          <span style="font-size:14px;font-weight:600;color:#e8edf2;">⚡ Хроника</span>
-          <a href="#section-chronicle" style="font-size:11px;color:#00e5a0;text-decoration:none;">Все события →</a>
-        </div>
-        <div class="flex flex-col gap-2" id="chronicle-compact"></div>
-      </div>
-
-      <!-- Navigation CTA -->
-      <div style="background:linear-gradient(135deg,#0f2a1e 0%,#0a1f28 100%);border:1px solid #1e4030;border-radius:14px;padding:20px;position:relative;overflow:hidden;">
-        <div style="position:absolute;right:-20px;top:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(0,229,160,.12),transparent 70%);border-radius:50%;"></div>
-        <div class="section-label mb-2">Навигация по экосистеме</div>
-        <p style="font-size:14px;font-weight:600;color:#e8edf2;margin:0 0 4px;">100+ моделей в одном месте</p>
-        <p style="font-size:12px;color:#6b7a8d;margin:0 0 16px;line-height:1.5;">Сравнивайте возможности, цены и бенчмарки всех актуальных LLM</p>
-        <a href="#section-navigator" class="guide-btn flex items-center justify-center gap-2 py-2.5 rounded-lg" style="text-decoration:none;">
-          <span style="font-size:13px;font-weight:700;color:#0d0f10;">Подобрать инструмент →</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- RIGHT: Stats + Categories + Quick links -->
-    <div class="flex flex-col gap-4 right-col">
-      <div class="stat-card p-4">
-        <div class="section-label mb-3">Статистика экосистемы</div>
-        <div class="grid grid-cols-2 gap-3">
-          <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:22px;font-weight:700;" class="gradient-text">100+</div><div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Моделей в каталоге</div></div>
-          <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:22px;font-weight:700;color:#a78bfa;">25</div><div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Обновлений за неделю</div></div>
-          <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:22px;font-weight:700;color:#fb923c;">3</div><div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Уровня экосистемы</div></div>
-          <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:22px;font-weight:700;color:#38bdf8;">9400+</div><div style="font-size:11px;color:#6b7a8d;margin-top:2px;">MCP серверов</div></div>
-        </div>
-      </div>
-
-      <div class="stat-card p-4">
-        <div class="section-label mb-3">Категории</div>
-        <div class="flex flex-wrap gap-2">
-          <span class="cat-pill" data-cat="текст" onclick="filterByCategory('текст')" style="background:#0f2a1e;border:1px solid #1e4030;border-radius:6px;padding:5px 10px;font-size:12px;color:#00e5a0;cursor:pointer;transition:all .2s;">Текст</span>
-          <span class="cat-pill" data-cat="код" onclick="filterByCategory('код')" style="background:#1a1525;border:1px solid #2e2545;border-radius:6px;padding:5px 10px;font-size:12px;color:#a78bfa;cursor:pointer;transition:all .2s;">Код</span>
-          <span class="cat-pill" data-cat="видео" onclick="filterByCategory('видео')" style="background:#120c20;border:1px solid #2a1850;border-radius:6px;padding:5px 10px;font-size:12px;color:#c084fc;cursor:pointer;transition:all .2s;">Видео</span>
-          <span class="cat-pill" data-cat="аудио" onclick="filterByCategory('аудио')" style="background:#081520;border:1px solid #1a3050;border-radius:6px;padding:5px 10px;font-size:12px;color:#38bdf8;cursor:pointer;transition:all .2s;">Аудио</span>
-          <span class="cat-pill" data-cat="reasoning" onclick="filterByCategory('reasoning')" style="background:#1e1208;border:1px solid #3a2010;border-radius:6px;padding:5px 10px;font-size:12px;color:#fb923c;cursor:pointer;transition:all .2s;">Reasoning</span>
-          <span class="cat-pill" data-cat="RAG" onclick="filterByCategory('RAG')" style="background:#1a1f2a;border:1px solid #2a3050;border-radius:6px;padding:5px 10px;font-size:12px;color:#7b9cff;cursor:pointer;transition:all .2s;">RAG</span>
-          <span class="cat-pill" data-cat="enterprise" onclick="filterByCategory('enterprise')" style="background:#161a1d;border:1px solid #252c33;border-radius:6px;padding:5px 10px;font-size:12px;color:#6b7a8d;cursor:pointer;transition:all .2s;">Enterprise</span>
-          <span class="cat-pill" data-cat="мультимодальность" onclick="filterByCategory('мультимодальность')" style="background:#161a1d;border:1px solid #252c33;border-radius:6px;padding:5px 10px;font-size:12px;color:#6b7a8d;cursor:pointer;transition:all .2s;">Multimodal</span>
-        </div>
-      </div>
-
-      <div class="stat-card p-4">
-        <div class="section-label mb-3">Быстрый доступ</div>
-        <div class="flex flex-col gap-1">
-          <a href="#section-navigator" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;" class="hover:bg-green-900/10 transition-all">
-            <div class="flex items-center gap-3"><div style="width:28px;height:28px;background:linear-gradient(135deg,#00e5a0,#00c8d7);border-radius:6px;" class="flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M4 5l3-3 3 3" stroke="#0d0f10" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span style="font-size:13px;color:#e8edf2;font-weight:500;">Навигатор (квиз)</span></div>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#section-comparison" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;" class="hover:bg-purple-900/10 transition-all">
-            <div class="flex items-center gap-3"><div style="width:28px;height:28px;background:#1a1525;border:1px solid #2e2545;border-radius:6px;" class="flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="2" width="10" height="10" rx="2" stroke="#a78bfa" stroke-width="1.3"/></svg></div><span style="font-size:13px;color:#e8edf2;font-weight:500;">Сравнение моделей</span></div>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#section-evolution" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;" class="hover:bg-blue-900/10 transition-all">
-            <div class="flex items-center gap-3"><div style="width:28px;height:28px;background:#081520;border:1px solid #1a3050;border-radius:6px;" class="flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10l4-4 3 2 3-5" stroke="#38bdf8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span style="font-size:13px;color:#e8edf2;font-weight:500;">Эволюция рынка</span></div>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#section-quiz" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;" class="hover:bg-orange-900/10 transition-all">
-            <div class="flex items-center gap-3"><div style="width:28px;height:28px;background:#1e1208;border:1px solid #3a2010;border-radius:6px;" class="flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-5" stroke="#fb923c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span style="font-size:13px;color:#e8edf2;font-weight:500;">Тест знаний</span></div>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#section-business" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-radius:8px;background:#161a1d;" class="hover:bg-yellow-900/10 transition-all">
-            <div class="flex items-center gap-3"><div style="width:28px;height:28px;background:#1e1a08;border:1px solid #3a3010;border-radius:6px;" class="flex items-center justify-center"><span style="font-size:12px;">💼</span></div><span style="font-size:13px;color:#e8edf2;font-weight:500;">Бизнес-классификатор</span></div>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 6h6M7 4l2 2-2 2" stroke="#6b7a8d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div style="background:#161a1d;border:1px solid #252c33;border-radius:12px;padding:16px;">
-        <div style="font-size:13px;font-weight:600;color:#e8edf2;margin-bottom:4px;">Дайджест каждую неделю</div>
-        <p style="font-size:11px;color:#6b7a8d;margin:0 0 12px;">Лучшие новости AI прямо в почту</p>
-        <div class="flex gap-2">
-          <input type="email" placeholder="your@email.com" style="flex:1;background:#1c2127;border:1px solid #252c33;border-radius:7px;padding:7px 10px;font-size:12px;color:#e8edf2;outline:none;" />
-          <button class="guide-btn px-3 py-1.5 rounded-lg" style="font-size:12px;font-weight:600;color:#0d0f10;border:none;cursor:pointer;">Подписаться</button>
-        </div>
-      </div>
-    </div>
-
   </div><!-- /grid -->
 
   <!-- ═══════════════════════════════════════════════════════════
@@ -1339,6 +1183,7 @@
      JAVASCRIPT
 ═══════════════════════════════════════════════════════════ -->
 <script>
+
 // ========== CONSTANTS ==========
 const VENDOR_COLORS = {
   'OpenAI': { bg:'#1e1e2e', border:'#2a2a40', text:'#a78bfa' },
@@ -1478,384 +1323,12 @@ async function init() {
           recommendation: randomTool.strength || "Рекомендуется для изучения.",
           idealFor: [],
           pricing: randomTool.apiPrice || "См. официальный сайт"
-        };
-      }
-
-      const levelColors = { 1: 'var(--cyan)', 2: 'var(--green)', 3: 'var(--purple)' };
-      const levelNames = { 1: 'Уровень 1: Модели', 2: 'Уровень 2: Агенты', 3: 'Уровень 3: Платформы' };
-
-      container.innerHTML = `
-        <div class="totd-card">
-          <div class="totd-badge">&#11088; Инструмент дня &mdash; ${TOTD ? TOTD.date : new Date().toISOString().split('T')[0]}</div>
-          <div class="totd-header">
-            <div>
-              <div class="totd-title">${tool.name}</div>
-              <div class="totd-category">${levelNames[tool.level] || ''} &bull; ${tool.category}</div>
-            </div>
-            <div class="totd-rating">
-              <div class="totd-rating-value">${tool.rating}</div>
-              <div class="totd-rating-max">/ ${tool.ratingMax}</div>
-            </div>
-          </div>
-          <div class="totd-description">${tool.fullDescription || tool.description}</div>
-
-          <div class="totd-grid">
-            <div class="totd-pros">
-              <div class="totd-list-title">Преимущества</div>
-              <ul class="totd-list">
-                ${(tool.pros || []).map(p => `<li>${p}</li>`).join('')}
-              </ul>
-            </div>
-            <div class="totd-cons">
-              <div class="totd-list-title">Ограничения</div>
-              <ul class="totd-list">
-                ${(tool.cons || []).map(c => `<li>${c}</li>`).join('')}
-              </ul>
-            </div>
-          </div>
-
-          ${tool.comparison && tool.comparison.length > 0 ? `
-            <div class="totd-comparison">
-              <div class="totd-comparison-title">Сравнение с аналогами</div>
-              ${tool.comparison.map(c => `
-                <div class="totd-comparison-item">
-                  <div class="totd-comparison-name">vs ${c.competitor}</div>
-                  <div class="totd-comparison-verdict">${c.verdict}</div>
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
-
-          <div class="totd-recommendation">
-            <div class="totd-recommendation-title">Рекомендация</div>
-            <div class="totd-recommendation-text">${tool.recommendation}</div>
-          </div>
-
-          ${tool.idealFor && tool.idealFor.length > 0 ? `
-            <div class="totd-tags">
-              ${tool.idealFor.map(t => `<span class="totd-tag">${t}</span>`).join('')}
-            </div>
-          ` : ''}
-
-          <a href="${tool.url}" target="_blank" rel="noopener" class="totd-link">
-            Перейти на сайт &rarr;
-          </a>
-        </div>
-      `;
-    }
-
-    // ========== LEVEL SECTIONS ==========
-    function renderLevelSections() {
-      DATA.levels.forEach(level => {
-        const section = document.getElementById('section-level' + level.id);
-        activeCategoryIndex['level' + level.id] = 0;
-
-        section.innerHTML = `
-          <div class="level-header">
-            <img class="level-header-image" src="${level.image}" alt="${level.title}" loading="lazy" />
-            <div>
-              <div class="level-badge level-badge-${level.id}">${level.id} &nbsp;${level.subtitle}</div>
-              <h2 class="section-title">${level.title}</h2>
-              <p class="section-desc">${level.description}</p>
-            </div>
-          </div>
-          <div class="category-tabs" id="tabs-level${level.id}">
-            ${level.categories.map((cat, i) => `
-              <button class="category-tab ${i === 0 ? 'active' : ''}" onclick="switchCategory('level${level.id}', ${i})">${cat.name}</button>
-            `).join('')}
-          </div>
-          <div class="tools-grid" id="tools-level${level.id}">
-            ${renderToolCards(level.id, level.categories[0].tools, level.color)}
-          </div>
-        `;
-      });
-    }
-
-    function switchCategory(levelKey, catIndex) {
-      activeCategoryIndex[levelKey] = catIndex;
-      const levelId = parseInt(levelKey.replace('level', ''));
-      const level = DATA.levels.find(l => l.id === levelId);
-
-      document.querySelectorAll(`#tabs-${levelKey} .category-tab`).forEach((tab, i) => {
-        tab.classList.toggle('active', i === catIndex);
-      });
-
-      const grid = document.getElementById('tools-' + levelKey);
-      grid.innerHTML = renderToolCards(levelId, level.categories[catIndex].tools, level.color);
-    }
-
-    function renderToolCards(levelId, tools, color) {
-      return tools.map((tool, i) => {
-        const cardKey = `${levelId}-${i}`;
-        const isOpen = expandedCards[cardKey];
-        return `
-          <div class="tool-card">
-            <div class="tool-card-header" onclick="toggleCard('${cardKey}', ${levelId}, ${i})">
-              <div class="tool-card-left">
-                <div class="tool-dot" style="background: ${color}"></div>
-                <div class="tool-name">${tool.name}</div>
-              </div>
-              <div class="tool-card-actions">
-                <a href="${tool.url}" target="_blank" rel="noopener" class="tool-link" title="Официальный сайт" onclick="event.stopPropagation()">&nearr;</a>
-                <button class="tool-expand ${isOpen ? 'open' : ''}" id="expand-${cardKey}">&#9662;</button>
-              </div>
-            </div>
-            <div class="tool-card-body ${isOpen ? 'open' : ''}" id="body-${cardKey}">
-              <div class="tool-desc">${tool.description}</div>
-              ${tool.strength ? `<div class="tool-strength">${tool.strength}</div>` : ''}
-              ${tool.features ? `
-                <div class="tool-features">
-                  ${tool.features.map(f => `<span class="tool-feature-tag">${f}</span>`).join('')}
-                </div>
-              ` : ''}
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function toggleCard(cardKey, levelId, toolIndex) {
-      expandedCards[cardKey] = !expandedCards[cardKey];
-      const body = document.getElementById('body-' + cardKey);
-      const btn = document.getElementById('expand-' + cardKey);
-      if (body) body.classList.toggle('open');
-      if (btn) btn.classList.toggle('open');
-    }
-
-    // ========== COMPARISON ==========
-    function renderComparison() {
-      const container = document.getElementById('comparisonContent');
-      const ct = DATA.comparisonTable;
-      container.innerHTML = `
-        <table class="comparison-table">
-          <thead>
-            <tr>${ct.headers.map(h => `<th>${h}</th>`).join('')}</tr>
-          </thead>
-          <tbody>
-            ${ct.rows.map(row => `
-              <tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>
-            `).join('')}
-          </tbody>
-        </table>
-      `;
-    }
-
-    // ========== TIMELINE ==========
-    function renderTimeline() {
-      const container = document.getElementById('timelineContent');
-      container.innerHTML = DATA.timeline.map(item => `
-        <div class="timeline-item">
-          <div class="timeline-date">${item.date}</div>
-          <div class="timeline-event">${item.event}</div>
-          <div class="timeline-desc">${item.description}</div>
-        </div>
-      `).join('');
-    }
-
-    // ========== SHIFTS ==========
-    function renderShifts() {
-      const container = document.getElementById('shiftsContent');
-      container.innerHTML = DATA.structuralShifts.map(shift => `
-        <div class="glass-card shift-card">
-          <div class="shift-area">${shift.area}</div>
-          <div class="shift-arrow">
-            <span class="shift-from">${shift.from}</span>
-            <span class="shift-arrow-icon">&rarr;</span>
-            <span class="shift-to">${shift.to}</span>
-          </div>
-          <div class="shift-desc">${shift.description}</div>
-        </div>
-      `).join('');
-    }
-
-    // ========== STRATEGY ==========
-    function renderStrategy() {
-      const container = document.getElementById('strategyContent');
-      const s = DATA.strategy;
-      container.innerHTML = `
-        <div class="strategy-grid">
-          <div class="glass-card strategy-card">
-            <div class="strategy-title">${s.topDown.title}</div>
-            <ul class="strategy-points">
-              ${s.topDown.points.map(p => `<li>${p}</li>`).join('')}
-            </ul>
-          </div>
-          <div class="glass-card strategy-card recommended">
-            <div class="strategy-title">${s.bottomUp.title}</div>
-            <ul class="strategy-points">
-              ${s.bottomUp.points.map(p => `<li>${p}</li>`).join('')}
-            </ul>
-          </div>
-        </div>
-        <div class="glass-card pilot-card">
-          <div class="pilot-title">Формула быстрого пилота</div>
-          <div class="pilot-meta">
-            <div>
-              <div class="pilot-meta-label">Длительность</div>
-              <div class="pilot-meta-value">${s.pilot.duration}</div>
-            </div>
-          </div>
-          <div style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">${s.pilot.goal}</div>
-          <div class="pilot-formula">1 Модель + 1 Агент + 1 Задача = Доказательство ценности</div>
-        </div>
-      `;
-    }
-
-    // ========== AI COSTS BLOCK ==========
-    function renderCosts() {
-      const container = document.getElementById('costsContent');
-
-      const tiers = [
-        {
-          cls: 'tier-1',
-          level: 'Уровень 1',
-          title: 'Начинающий',
-          subtitle: 'The Explorer',
-          desc: 'AI как умный помощник для базовых задач через веб-интерфейсы',
-          popular: false,
-          min: '$0',   opt: '$47',  max: '$96',
-          minYear: '$0',  optYear: '$564', maxYear: '$1 152',
-          tools: ['ChatGPT Plus', 'Canva Pro', 'Midjourney Basic', 'Notion Free']
-        },
-        {
-          cls: 'tier-2',
-          level: 'Уровень 2',
-          title: 'Продвинутый',
-          subtitle: 'The Power User',
-          desc: 'AI глубоко в рабочих процессах, первая серверная инфраструктура',
-          popular: true,
-          min: '$85',  opt: '$199', max: '$380',
-          minYear: '$1 056', optYear: '$2 412', maxYear: '$4 584',
-          tools: ['Cursor Pro', 'Manus Pro', 'n8n Cloud', 'Perplexity Pro']
-        },
-        {
-          cls: 'tier-3',
-          level: 'Уровень 3',
-          title: 'Про',
-          subtitle: 'The AI Engineer',
-          desc: 'Продукты на базе AI, мультиагентные системы, RAG, продакшен',
-          popular: false,
-          min: '$450', opt: '$895', max: '$1 757',
-          minYear: '$4 980', optYear: '$11 364', maxYear: '$22 512',
-          tools: ['Claude Max', 'Cursor Ultra', 'Devin Pro', 'ElevenLabs Pro']
-        }
-      ];
-
-      container.innerHTML = `
-        <div class="costs-block">
-          ${tiers.map(t => `
-            <div class="costs-tier ${t.cls}">
-              ${t.popular ? '<span class="costs-popular-badge">&#128293; Популярный</span>' : ''}
-              <div class="costs-tier-badge">${t.level}</div>
-              <div class="costs-tier-title">${t.title}</div>
-              <div class="costs-tier-subtitle">${t.subtitle}</div>
-              <div class="costs-tier-desc">${t.desc}</div>
-              <div class="costs-row">
-                <div class="costs-item">
-                  <div class="costs-item-label">Мин</div>
-                  <div class="costs-item-value">${t.min}</div>
-                  <div class="costs-item-sub">/мес</div>
-                </div>
-                <div class="costs-item">
-                  <div class="costs-item-label">Опт</div>
-                  <div class="costs-item-value">${t.opt}</div>
-                  <div class="costs-item-sub">/мес</div>
-                </div>
-                <div class="costs-item">
-                  <div class="costs-item-label">Макс</div>
-                  <div class="costs-item-value">${t.max}</div>
-                  <div class="costs-item-sub">/мес</div>
-                </div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-
-        <div class="costs-footer">
-          <div class="costs-footer-facts">
-            <div class="costs-fact">
-              <div class="costs-fact-value">$847</div>
-              <div class="costs-fact-label">Средний стек малого бизнеса</div>
-            </div>
-            <div class="costs-fact">
-              <div class="costs-fact-value">~17</div>
-              <div class="costs-fact-label">Инструментов в среднем</div>
-            </div>
-            <div class="costs-fact">
-              <div class="costs-fact-value">40-60%</div>
-              <div class="costs-fact-label">Экономия после аудита</div>
-            </div>
-            <div class="costs-fact">
-              <div class="costs-fact-value">6</div>
-              <div class="costs-fact-label">Используются ежедневно</div>
-            </div>
-          </div>
-          <a href="/ai-costs/" class="costs-link">Полная аналитика &rarr;</a>
-        </div>
-      `;
-    }
-
-    // ========== NAVIGATOR QUIZ ==========
-    function renderNavigator() {
-      const container = document.getElementById('navigatorContent');
-
-      if (navState.finished) {
-        renderNavigatorResults(container);
-        return;
-      }
-
-      const q = navigatorQuestions[navState.current];
-      const currentAnswer = navState.answers[navState.current];
-
-      container.innerHTML = `
-        <div class="navigator-step">
-          <div class="navigator-progress">
-            ${navigatorQuestions.map((_, i) => `
-              <div class="navigator-progress-dot ${i < navState.current ? 'completed' : ''} ${i === navState.current ? 'active' : ''}"></div>
-            `).join('')}
-          </div>
-          <div class="navigator-question">${q.question}</div>
-          <div class="navigator-hint">${q.hint}</div>
-          <div class="navigator-options">
-            ${q.options.map((opt, i) => `
-              <div class="navigator-option ${currentAnswer === i ? 'selected' : ''}" onclick="selectNavigatorOption(${i})">
-                <span class="navigator-option-icon">${opt.icon}</span>
-                <span>${opt.text}</span>
-              </div>
-            `).join('')}
-          </div>
-          <button class="navigator-btn ${currentAnswer !== undefined ? 'visible' : ''}" id="navNextBtn" onclick="nextNavigatorStep()">
-            ${navState.current < navigatorQuestions.length - 1 ? 'Далее &rarr;' : 'Показать рекомендации'}
-          </button>
-        </div>
-      `;
-    }
-
-    function selectNavigatorOption(index) {
-      navState.answers[navState.current] = index;
-      renderNavigator();
-    }
-
-    function nextNavigatorStep() {
-      if (navState.answers[navState.current] === undefined) return;
-      navState.current++;
-      if (navState.current >= navigatorQuestions.length) {
-        navState.finished = true;
-      }
-      renderNavigator();
-    }
-
-    function renderNavigatorResults(container) {
-      // Collect tags from answers
-      const userTags = [];
-      navState.answers.forEach((ansIdx, qIdx) => {
-        if (ansIdx !== undefined && navigatorQuestions[qIdx]) {
-          const tags = navigatorQuestions[qIdx].options[ansIdx].tags;
-          userTags.push(...tags);
         }
       };
+      }
     }
-  }
+
+
 
   // Try loading trending
   try {
@@ -1900,6 +1373,7 @@ async function init() {
   renderTimeline();
   renderShifts();
   renderStrategy();
+  renderCosts();
   renderNavigator();
   renderQuiz();
 }
@@ -2007,6 +1481,7 @@ function filterByCategory(cat) {
 function renderTrendsCompact() {
   const trends = [{name:'Agentic AI',pct:34},{name:'Multimodal LLM',pct:28},{name:'AI Video Gen',pct:21},{name:'On-device AI',pct:15},{name:'RAG 2.0',pct:-2}];
   const container = document.getElementById('trends-compact');
+  if (!container) return;
   container.innerHTML = trends.map(t => `
     <div class="flex items-center justify-between">
       <span style="font-size:13px;color:#e8edf2;">${t.name}</span>
@@ -2021,7 +1496,9 @@ function renderTrendsCompact() {
 function renderToolOfDayCompact() {
   const tool = TOTD?.tool || TOTD;
   if (!tool) return;
-  document.getElementById('tool-of-day-compact').innerHTML = `
+  const _todEl = document.getElementById('tool-of-day-compact');
+  if (!_todEl) return;
+  _todEl.innerHTML = `
     <div style="background:#161a1d;border-radius:10px;padding:14px;">
       <div class="flex items-center justify-between mb-2">
         <span style="font-size:16px;font-weight:700;color:#e8edf2;">${tool.name}</span>
@@ -2037,7 +1514,9 @@ function renderToolOfDayCompact() {
 function renderChronicleCompact() {
   if (!CHRONICLE) return;
   const events = (CHRONICLE.events || []).slice(0, 5);
-  document.getElementById('chronicle-compact').innerHTML = events.map(ev => {
+  const _chEl = document.getElementById('chronicle-compact');
+  if (!_chEl) return;
+  _chEl.innerHTML = events.map(ev => {
     const vc = VENDOR_COLORS[ev.vendor] || VENDOR_COLORS['default'];
     return `
       <div style="display:flex;align-items:flex-start;gap:10px;padding:8px;border-radius:8px;background:#161a1d;">
@@ -2053,7 +1532,7 @@ function renderToolOfTheDayFull() {
   const tool = TOTD?.tool || TOTD;
   if (!tool) return;
   const levelNames = {1:'Уровень 1: Модели',2:'Уровень 2: Агенты',3:'Уровень 3: Платформы'};
-  document.getElementById('toolOfTheDayFull').innerHTML = `
+  const totdHTML = `
     <div class="totd-card">
       <div class="flex items-center justify-between flex-wrap gap-4 mb-4">
         <div><div class="totd-title">${tool.name}</div><div style="font-size:13px;color:#6b7a8d;margin-top:4px;">${levelNames[tool.level]||''} · ${tool.category}</div></div>
@@ -2072,6 +1551,11 @@ function renderToolOfTheDayFull() {
       ${tool.idealFor&&tool.idealFor.length?`<div class="flex flex-wrap gap-2 mt-4">${tool.idealFor.map(t=>`<span style="font-size:11px;background:#0f2a1e;border:1px solid #1e4030;color:#00e5a0;padding:4px 10px;border-radius:6px;">${t}</span>`).join('')}</div>`:''}
       <a href="${tool.url}" target="_blank" style="display:inline-block;margin-top:16px;font-size:13px;color:#00e5a0;text-decoration:none;font-weight:600;">Перейти на сайт →</a>
     </div>`;
+  // Render into both containers
+  const elFull = document.getElementById('toolOfTheDayFull');
+  const elContent = document.getElementById('toolOfTheDayContent');
+  if (elFull) elFull.innerHTML = totdHTML;
+  if (elContent) elContent.innerHTML = totdHTML;
 }
 
 // ========== CHRONICLE FULL ==========
@@ -2155,68 +1639,12 @@ function renderBizResults() {
   }).join('');
 }
 
-// ========== COMPARISON ==========
-function renderComparison() {
-  const ct = DATA.comparisonTable; if(!ct) return;
-  document.getElementById('comparisonContent').innerHTML = `<table class="comparison-table"><thead><tr>${ct.headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${ct.rows.map(row=>`<tr>${row.map(cell=>`<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
-}
 
-// ========== TIMELINE ==========
-function renderTimeline() {
-  if (!DATA.timeline) return;
-  document.getElementById('timelineContent').innerHTML = DATA.timeline.map(item => `
-    <div class="timeline-item"><div class="timeline-date">${item.date}</div><div class="timeline-event">${item.event}</div><div class="timeline-desc">${item.description}</div></div>`).join('');
-}
 
-// ========== SHIFTS ==========
-function renderShifts() {
-  if (!DATA.structuralShifts) return;
-  document.getElementById('shiftsContent').innerHTML = DATA.structuralShifts.map(s => `
-    <div class="shift-card"><div style="font-size:12px;font-weight:600;color:#e8edf2;">${s.area}</div><div class="shift-arrow"><span class="shift-from">${s.from}</span><span style="color:#6b7a8d;">→</span><span class="shift-to">${s.to}</span></div><div style="font-size:12px;color:#6b7a8d;line-height:1.5;">${s.description}</div></div>`).join('');
-}
 
-// ========== STRATEGY ==========
-function renderStrategy() {
-  const s = DATA.strategy; if(!s) return;
-  document.getElementById('strategyContent').innerHTML = `
-    <div class="strategy-grid">
-      <div class="strategy-card"><div style="font-size:15px;font-weight:600;color:#e8edf2;margin-bottom:12px;">${s.topDown.title}</div><ul>${s.topDown.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>
-      <div class="strategy-card recommended"><div style="font-size:15px;font-weight:600;color:#00e5a0;margin-bottom:12px;">${s.bottomUp.title}</div><ul>${s.bottomUp.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>
-    </div>
-    <div class="pilot-card"><div style="font-size:15px;font-weight:600;color:#e8edf2;margin-bottom:8px;">Формула быстрого пилота</div><div style="font-size:13px;color:#9aa5b4;margin-bottom:4px;">Длительность: ${s.pilot.duration}</div><div style="font-size:13px;color:#9aa5b4;margin-bottom:12px;">${s.pilot.goal}</div><div class="pilot-formula">1 Модель + 1 Агент + 1 Задача = Доказательство ценности</div></div>`;
-}
 
-// ========== NAVIGATOR ==========
-function renderNavigator() {
-  const container = document.getElementById('navigatorContent');
-  if (navState.finished) { renderNavigatorResults(container); return; }
-  const q = navigatorQuestions[navState.current];
-  const currentAnswer = navState.answers[navState.current];
-  container.innerHTML = `
-    <div class="navigator-progress">${navigatorQuestions.map((_,i)=>`<div class="navigator-progress-dot ${i<navState.current?'completed':''} ${i===navState.current?'active':''}"></div>`).join('')}</div>
-    <div style="font-size:18px;font-weight:600;color:#e8edf2;margin-bottom:8px;">${q.question}</div>
-    <div style="font-size:13px;color:#6b7a8d;margin-bottom:20px;">${q.hint}</div>
-    <div class="flex flex-col gap-3">${q.options.map((opt,i)=>`<div class="navigator-option ${currentAnswer===i?'selected':''}" onclick="selectNavOption(${i})"><span style="font-size:18px;">${opt.icon}</span><span>${opt.text}</span></div>`).join('')}</div>
-    <button class="navigator-btn ${currentAnswer!==undefined?'visible':''}" onclick="nextNavStep()">${navState.current<navigatorQuestions.length-1?'Далее →':'Показать рекомендации'}</button>`;
-}
 function selectNavOption(i) { navState.answers[navState.current]=i; renderNavigator(); }
 function nextNavStep() { if(navState.answers[navState.current]===undefined) return; navState.current++; if(navState.current>=navigatorQuestions.length) navState.finished=true; renderNavigator(); }
-function renderNavigatorResults(container) {
-  const userTags = [];
-  navState.answers.forEach((ans,qi) => { if(ans!==undefined) userTags.push(...navigatorQuestions[qi].options[ans].tags); });
-  const scored = [];
-  DATA.levels.forEach(l => l.categories.forEach(c => c.tools.forEach(t => {
-    let score = 0; (t.tags||[]).forEach(tag => { if(userTags.includes(tag)) score++; });
-    if(score>0) scored.push({...t,level:l.id,category:c.name,matchScore:score,maxScore:userTags.length});
-  })));
-  scored.sort((a,b)=>b.matchScore-a.matchScore);
-  const top = scored.slice(0,8);
-  container.innerHTML = `
-    <div style="font-size:16px;font-weight:600;color:#e8edf2;margin-bottom:8px;">Ваши рекомендации</div>
-    <div style="font-size:13px;color:#6b7a8d;margin-bottom:20px;">На основе ваших ответов подобрано ${top.length} инструментов:</div>
-    ${top.map(t=>`<div class="navigator-result-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${t.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[t.level]?.color||'#9aa5b4'};border:1px solid #252c33;">Уровень ${t.level}</span></div><p style="font-size:12px;color:#9aa5b4;margin:0 0 6px;">${t.strength||t.description}</p><div class="flex items-center gap-3" style="margin-top:4px;">${getPricingBadge(t.pricing)} ${getStarRating(t.rating)}</div><div style="font-size:11px;color:#00e5a0;margin-top:4px;">Совпадение: ${Math.round(t.matchScore/t.maxScore*100)}%</div><a href="${t.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;margin-top:4px;display:inline-block;">Перейти →</a></div>`).join('')}
-    <button onclick="restartNav()" style="margin-top:16px;padding:10px 20px;background:#1c2127;border:1px solid #252c33;border-radius:8px;font-size:13px;color:#9aa5b4;cursor:pointer;">Пройти заново</button>`;
-}
 function restartNav() { navState={current:0,answers:[],finished:false}; renderNavigator(); }
 
 // ========== QUIZ ==========
@@ -2250,6 +1678,321 @@ function restartQuiz() { quizState={current:0,score:0,answered:false,finished:fa
 
 // ========== START ==========
 document.addEventListener('DOMContentLoaded', init);
+
+// ========== RENDER FUNCTIONS ==========
+
+// ========== LEVEL SECTIONS ==========
+function renderLevelSections() {
+  DATA.levels.forEach(level => {
+    const section = document.getElementById('section-level' + level.id);
+    activeCategoryIndex['level' + level.id] = 0;
+
+    section.innerHTML = `
+      <div class="level-header">
+        <img class="level-header-image" src="${level.image}" alt="${level.title}" loading="lazy" />
+        <div>
+          <div class="level-badge level-badge-${level.id}">${level.id} &nbsp;${level.subtitle}</div>
+          <h2 class="section-title">${level.title}</h2>
+          <p class="section-desc">${level.description}</p>
+        </div>
+      </div>
+      <div class="category-tabs" id="tabs-level${level.id}">
+        ${level.categories.map((cat, i) => `
+          <button class="category-tab ${i === 0 ? 'active' : ''}" onclick="switchCategory('level${level.id}', ${i})">${cat.name}</button>
+        `).join('')}
+      </div>
+      <div class="tools-grid" id="tools-level${level.id}">
+        ${renderToolCards(level.id, level.categories[0].tools, level.color)}
+      </div>
+    `;
+  });
+}
+
+function switchCategory(levelKey, catIndex) {
+  activeCategoryIndex[levelKey] = catIndex;
+  const levelId = parseInt(levelKey.replace('level', ''));
+  const level = DATA.levels.find(l => l.id === levelId);
+
+  document.querySelectorAll(`#tabs-${levelKey} .category-tab`).forEach((tab, i) => {
+    tab.classList.toggle('active', i === catIndex);
+  });
+
+  const grid = document.getElementById('tools-' + levelKey);
+  grid.innerHTML = renderToolCards(levelId, level.categories[catIndex].tools, level.color);
+}
+
+function renderToolCards(levelId, tools, color) {
+  return tools.map((tool, i) => {
+    const cardKey = `${levelId}-${i}`;
+    const isOpen = expandedCards[cardKey];
+    return `
+      <div class="tool-card">
+        <div class="tool-card-header" onclick="toggleCard('${cardKey}', ${levelId}, ${i})">
+          <div class="tool-card-left">
+            <div class="tool-dot" style="background: ${color}"></div>
+            <div class="tool-name">${tool.name}</div>
+          </div>
+          <div class="tool-card-actions">
+            <a href="${tool.url}" target="_blank" rel="noopener" class="tool-link" title="Официальный сайт" onclick="event.stopPropagation()">&nearr;</a>
+            <button class="tool-expand ${isOpen ? 'open' : ''}" id="expand-${cardKey}">&#9662;</button>
+          </div>
+        </div>
+        <div class="tool-card-body ${isOpen ? 'open' : ''}" id="body-${cardKey}">
+          <div class="tool-desc">${tool.description}</div>
+          ${tool.strength ? `<div class="tool-strength">${tool.strength}</div>` : ''}
+          ${tool.features ? `
+            <div class="tool-features">
+              ${tool.features.map(f => `<span class="tool-feature-tag">${f}</span>`).join('')}
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleCard(cardKey, levelId, toolIndex) {
+  expandedCards[cardKey] = !expandedCards[cardKey];
+  const body = document.getElementById('body-' + cardKey);
+  const btn = document.getElementById('expand-' + cardKey);
+  if (body) body.classList.toggle('open');
+  if (btn) btn.classList.toggle('open');
+}
+
+// ========== COMPARISON ==========
+function renderComparison() {
+  const container = document.getElementById('comparisonContent');
+  const ct = DATA.comparisonTable;
+  container.innerHTML = `
+    <table class="comparison-table">
+      <thead>
+        <tr>${ct.headers.map(h => `<th>${h}</th>`).join('')}</tr>
+      </thead>
+      <tbody>
+        ${ct.rows.map(row => `
+          <tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+// ========== TIMELINE ==========
+function renderTimeline() {
+  const container = document.getElementById('timelineContent');
+  container.innerHTML = DATA.timeline.map(item => `
+    <div class="timeline-item">
+      <div class="timeline-date">${item.date}</div>
+      <div class="timeline-event">${item.event}</div>
+      <div class="timeline-desc">${item.description}</div>
+    </div>
+  `).join('');
+}
+
+// ========== SHIFTS ==========
+function renderShifts() {
+  const container = document.getElementById('shiftsContent');
+  container.innerHTML = DATA.structuralShifts.map(shift => `
+    <div class="glass-card shift-card">
+      <div class="shift-area">${shift.area}</div>
+      <div class="shift-arrow">
+        <span class="shift-from">${shift.from}</span>
+        <span class="shift-arrow-icon">&rarr;</span>
+        <span class="shift-to">${shift.to}</span>
+      </div>
+      <div class="shift-desc">${shift.description}</div>
+    </div>
+  `).join('');
+}
+
+// ========== STRATEGY ==========
+function renderStrategy() {
+  const container = document.getElementById('strategyContent');
+  const s = DATA.strategy;
+  container.innerHTML = `
+    <div class="strategy-grid">
+      <div class="glass-card strategy-card">
+        <div class="strategy-title">${s.topDown.title}</div>
+        <ul class="strategy-points">
+          ${s.topDown.points.map(p => `<li>${p}</li>`).join('')}
+        </ul>
+      </div>
+      <div class="glass-card strategy-card recommended">
+        <div class="strategy-title">${s.bottomUp.title}</div>
+        <ul class="strategy-points">
+          ${s.bottomUp.points.map(p => `<li>${p}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+    <div class="glass-card pilot-card">
+      <div class="pilot-title">Формула быстрого пилота</div>
+      <div class="pilot-meta">
+        <div>
+          <div class="pilot-meta-label">Длительность</div>
+          <div class="pilot-meta-value">${s.pilot.duration}</div>
+        </div>
+      </div>
+      <div style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">${s.pilot.goal}</div>
+      <div class="pilot-formula">1 Модель + 1 Агент + 1 Задача = Доказательство ценности</div>
+    </div>
+  `;
+}
+
+// ========== AI COSTS BLOCK ==========
+function renderCosts() {
+  const container = document.getElementById('costsContent');
+
+  const tiers = [
+    {
+      cls: 'tier-1',
+      level: 'Уровень 1',
+      title: 'Начинающий',
+      subtitle: 'The Explorer',
+      desc: 'AI как умный помощник для базовых задач через веб-интерфейсы',
+      popular: false,
+      min: '$0',   opt: '$47',  max: '$96',
+      minYear: '$0',  optYear: '$564', maxYear: '$1 152',
+      tools: ['ChatGPT Plus', 'Canva Pro', 'Midjourney Basic', 'Notion Free']
+    },
+    {
+      cls: 'tier-2',
+      level: 'Уровень 2',
+      title: 'Продвинутый',
+      subtitle: 'The Power User',
+      desc: 'AI глубоко в рабочих процессах, первая серверная инфраструктура',
+      popular: true,
+      min: '$85',  opt: '$199', max: '$380',
+      minYear: '$1 056', optYear: '$2 412', maxYear: '$4 584',
+      tools: ['Cursor Pro', 'Manus Pro', 'n8n Cloud', 'Perplexity Pro']
+    },
+    {
+      cls: 'tier-3',
+      level: 'Уровень 3',
+      title: 'Про',
+      subtitle: 'The AI Engineer',
+      desc: 'Продукты на базе AI, мультиагентные системы, RAG, продакшен',
+      popular: false,
+      min: '$450', opt: '$895', max: '$1 757',
+      minYear: '$4 980', optYear: '$11 364', maxYear: '$22 512',
+      tools: ['Claude Max', 'Cursor Ultra', 'Devin Pro', 'ElevenLabs Pro']
+    }
+  ];
+
+  container.innerHTML = `
+    <div class="costs-block">
+      ${tiers.map(t => `
+        <div class="costs-tier ${t.cls}">
+          ${t.popular ? '<span class="costs-popular-badge">&#128293; Популярный</span>' : ''}
+          <div class="costs-tier-badge">${t.level}</div>
+          <div class="costs-tier-title">${t.title}</div>
+          <div class="costs-tier-subtitle">${t.subtitle}</div>
+          <div class="costs-tier-desc">${t.desc}</div>
+          <div class="costs-row">
+            <div class="costs-item">
+              <div class="costs-item-label">Мин</div>
+              <div class="costs-item-value">${t.min}</div>
+              <div class="costs-item-sub">/мес</div>
+            </div>
+            <div class="costs-item">
+              <div class="costs-item-label">Опт</div>
+              <div class="costs-item-value">${t.opt}</div>
+              <div class="costs-item-sub">/мес</div>
+            </div>
+            <div class="costs-item">
+              <div class="costs-item-label">Макс</div>
+              <div class="costs-item-value">${t.max}</div>
+              <div class="costs-item-sub">/мес</div>
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="costs-footer">
+      <div class="costs-footer-facts">
+        <div class="costs-fact">
+          <div class="costs-fact-value">$847</div>
+          <div class="costs-fact-label">Средний стек малого бизнеса</div>
+        </div>
+        <div class="costs-fact">
+          <div class="costs-fact-value">~17</div>
+          <div class="costs-fact-label">Инструментов в среднем</div>
+        </div>
+        <div class="costs-fact">
+          <div class="costs-fact-value">40-60%</div>
+          <div class="costs-fact-label">Экономия после аудита</div>
+        </div>
+        <div class="costs-fact">
+          <div class="costs-fact-value">6</div>
+          <div class="costs-fact-label">Используются ежедневно</div>
+        </div>
+      </div>
+      <a href="/ai-costs/" class="costs-link">Полная аналитика &rarr;</a>
+    </div>
+  `;
+}
+
+// ========== NAVIGATOR QUIZ ==========
+function renderNavigator() {
+  const container = document.getElementById('navigatorContent');
+
+  if (navState.finished) {
+    renderNavigatorResults(container);
+    return;
+  }
+
+  const q = navigatorQuestions[navState.current];
+  const currentAnswer = navState.answers[navState.current];
+
+  container.innerHTML = `
+    <div class="navigator-step">
+      <div class="navigator-progress">
+        ${navigatorQuestions.map((_, i) => `
+          <div class="navigator-progress-dot ${i < navState.current ? 'completed' : ''} ${i === navState.current ? 'active' : ''}"></div>
+        `).join('')}
+      </div>
+      <div class="navigator-question">${q.question}</div>
+      <div class="navigator-hint">${q.hint}</div>
+      <div class="navigator-options">
+        ${q.options.map((opt, i) => `
+          <div class="navigator-option ${currentAnswer === i ? 'selected' : ''}" onclick="selectNavigatorOption(${i})">
+            <span class="navigator-option-icon">${opt.icon}</span>
+            <span>${opt.text}</span>
+          </div>
+        `).join('')}
+      </div>
+      <button class="navigator-btn ${currentAnswer !== undefined ? 'visible' : ''}" id="navNextBtn" onclick="nextNavigatorStep()">
+        ${navState.current < navigatorQuestions.length - 1 ? 'Далее &rarr;' : 'Показать рекомендации'}
+      </button>
+    </div>
+  `;
+}
+
+function selectNavigatorOption(index) {
+  navState.answers[navState.current] = index;
+  renderNavigator();
+}
+
+function nextNavigatorStep() {
+  if (navState.answers[navState.current] === undefined) return;
+  navState.current++;
+  if (navState.current >= navigatorQuestions.length) {
+    navState.finished = true;
+  }
+  renderNavigator();
+}
+
+function renderNavigatorResults(container) {
+  // Collect tags from answers
+  const userTags = [];
+  navState.answers.forEach((ansIdx, qIdx) => {
+    if (ansIdx !== undefined && navigatorQuestions[qIdx]) {
+      const tags = navigatorQuestions[qIdx].options[ansIdx].tags;
+      userTags.push(...tags);
+    }
+  });
+}
+
 </script>
 </body>
 </html>
