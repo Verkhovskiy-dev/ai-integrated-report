@@ -1297,7 +1297,7 @@ async function init() {
     const totdDate = new Date(TOTD.date);
     const now = new Date();
     const diffDays = (now - totdDate) / (1000 * 60 * 60 * 24);
-    if (diffDays > 2) {
+    if (diffDays > 30) {
       // Pick a random tool from the database as fallback
       const allDbTools = [];
       DATA.levels.forEach(level => {
