@@ -628,6 +628,204 @@
 
     .totd-link:hover { opacity: 0.9; transform: translateY(-1px); }
 
+    /* ========== COSTS BLOCK ========== */
+    .costs-block {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 768px) {
+      .costs-block { grid-template-columns: 1fr; }
+    }
+
+    .costs-tier {
+      position: relative;
+      padding: 24px;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .costs-tier:hover {
+      transform: translateY(-3px);
+    }
+
+    .costs-tier.tier-1 {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.07) 0%, rgba(0, 212, 255, 0.03) 100%);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+    }
+
+    .costs-tier.tier-2 {
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.07) 0%, rgba(0, 255, 136, 0.03) 100%);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+    }
+
+    .costs-tier.tier-3 {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.07) 0%, rgba(139, 92, 246, 0.03) 100%);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+
+    .costs-tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+
+    .tier-1 .costs-tier-badge { background: rgba(0, 212, 255, 0.12); color: var(--cyan); border: 1px solid rgba(0, 212, 255, 0.2); }
+    .tier-2 .costs-tier-badge { background: rgba(0, 255, 136, 0.12); color: var(--green); border: 1px solid rgba(0, 255, 136, 0.2); }
+    .tier-3 .costs-tier-badge { background: rgba(139, 92, 246, 0.12); color: var(--purple); border: 1px solid rgba(139, 92, 246, 0.2); }
+
+    .costs-tier-title {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .costs-tier-subtitle {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .costs-tier-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .costs-row {
+      display: flex;
+      gap: 8px;
+      justify-content: space-between;
+    }
+
+    .costs-item {
+      flex: 1;
+      text-align: center;
+      padding: 10px 6px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .costs-item-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .costs-item-value {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .tier-1 .costs-item-value { color: var(--cyan); }
+    .tier-2 .costs-item-value { color: var(--green); }
+    .tier-3 .costs-item-value { color: var(--purple); }
+
+    .costs-item-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .costs-popular-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      padding: 3px 9px;
+      background: rgba(0, 255, 136, 0.15);
+      border: 1px solid rgba(0, 255, 136, 0.3);
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .costs-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+    }
+
+    .costs-footer-facts {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .costs-fact {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .costs-fact-value {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--yellow);
+    }
+
+    .costs-fact-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .costs-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      background: rgba(0, 212, 255, 0.1);
+      border: 1px solid rgba(0, 212, 255, 0.25);
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cyan);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .costs-link:hover {
+      background: rgba(0, 212, 255, 0.18);
+      border-color: rgba(0, 212, 255, 0.4);
+      transform: translateY(-1px);
+    }
+
     /* ========== NAVIGATOR QUIZ ========== */
     .navigator-container {
       max-width: 700px;
@@ -1682,6 +1880,14 @@
         <div id="strategyContent"></div>
       </section>
 
+      <!-- AI Costs Block -->
+      <section class="section" id="section-costs">
+        <div class="section-label" style="color: var(--green)">&#128176; Аналитика расходов</div>
+        <h2 class="section-title">Сколько стоит AI-стек в 2026?</h2>
+        <p class="section-desc">Три уровня использования — от бесплатного старта до профессиональной инфраструктуры. Реальные цифры на май 2026 по 22+ инструментам.</p>
+        <div id="costsContent"></div>
+      </section>
+
       <!-- Navigator Quiz -->
       <section class="section" id="section-navigator">
         <div class="section-label" style="color: var(--purple)">&#129517; Персональный подбор</div>
@@ -1827,6 +2033,7 @@
       renderTimeline();
       renderShifts();
       renderStrategy();
+      renderCosts();
       renderNavigator();
       renderQuiz();
       setupScrollObserver();
@@ -2151,6 +2358,100 @@
           </div>
           <div style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">${s.pilot.goal}</div>
           <div class="pilot-formula">1 Модель + 1 Агент + 1 Задача = Доказательство ценности</div>
+        </div>
+      `;
+    }
+
+    // ========== AI COSTS BLOCK ==========
+    function renderCosts() {
+      const container = document.getElementById('costsContent');
+
+      const tiers = [
+        {
+          cls: 'tier-1',
+          level: 'Уровень 1',
+          title: 'Начинающий',
+          subtitle: 'The Explorer',
+          desc: 'AI как умный помощник для базовых задач через веб-интерфейсы',
+          popular: false,
+          min: '$0',   opt: '$47',  max: '$96',
+          minYear: '$0',  optYear: '$564', maxYear: '$1 152',
+          tools: ['ChatGPT Plus', 'Canva Pro', 'Midjourney Basic', 'Notion Free']
+        },
+        {
+          cls: 'tier-2',
+          level: 'Уровень 2',
+          title: 'Продвинутый',
+          subtitle: 'The Power User',
+          desc: 'AI глубоко в рабочих процессах, первая серверная инфраструктура',
+          popular: true,
+          min: '$85',  opt: '$199', max: '$380',
+          minYear: '$1 056', optYear: '$2 412', maxYear: '$4 584',
+          tools: ['Cursor Pro', 'Manus Pro', 'n8n Cloud', 'Perplexity Pro']
+        },
+        {
+          cls: 'tier-3',
+          level: 'Уровень 3',
+          title: 'Про',
+          subtitle: 'The AI Engineer',
+          desc: 'Продукты на базе AI, мультиагентные системы, RAG, продакшен',
+          popular: false,
+          min: '$450', opt: '$895', max: '$1 757',
+          minYear: '$4 980', optYear: '$11 364', maxYear: '$22 512',
+          tools: ['Claude Max', 'Cursor Ultra', 'Devin Pro', 'ElevenLabs Pro']
+        }
+      ];
+
+      container.innerHTML = `
+        <div class="costs-block">
+          ${tiers.map(t => `
+            <div class="costs-tier ${t.cls}">
+              ${t.popular ? '<span class="costs-popular-badge">&#128293; Популярный</span>' : ''}
+              <div class="costs-tier-badge">${t.level}</div>
+              <div class="costs-tier-title">${t.title}</div>
+              <div class="costs-tier-subtitle">${t.subtitle}</div>
+              <div class="costs-tier-desc">${t.desc}</div>
+              <div class="costs-row">
+                <div class="costs-item">
+                  <div class="costs-item-label">Мин</div>
+                  <div class="costs-item-value">${t.min}</div>
+                  <div class="costs-item-sub">/мес</div>
+                </div>
+                <div class="costs-item">
+                  <div class="costs-item-label">Опт</div>
+                  <div class="costs-item-value">${t.opt}</div>
+                  <div class="costs-item-sub">/мес</div>
+                </div>
+                <div class="costs-item">
+                  <div class="costs-item-label">Макс</div>
+                  <div class="costs-item-value">${t.max}</div>
+                  <div class="costs-item-sub">/мес</div>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="costs-footer">
+          <div class="costs-footer-facts">
+            <div class="costs-fact">
+              <div class="costs-fact-value">$847</div>
+              <div class="costs-fact-label">Средний стек малого бизнеса</div>
+            </div>
+            <div class="costs-fact">
+              <div class="costs-fact-value">~17</div>
+              <div class="costs-fact-label">Инструментов в среднем</div>
+            </div>
+            <div class="costs-fact">
+              <div class="costs-fact-value">40-60%</div>
+              <div class="costs-fact-label">Экономия после аудита</div>
+            </div>
+            <div class="costs-fact">
+              <div class="costs-fact-value">6</div>
+              <div class="costs-fact-label">Используются ежедневно</div>
+            </div>
+          </div>
+          <a href="/ai-costs/" class="costs-link">Полная аналитика &rarr;</a>
         </div>
       `;
     }
