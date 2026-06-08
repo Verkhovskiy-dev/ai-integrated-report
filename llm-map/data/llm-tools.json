@@ -1,16 +1,60 @@
 {
   "sections": [
-    { "id": "overview", "title": "Обзор", "icon": "📋" },
-    { "id": "tool-of-the-day", "title": "Инструмент дня", "icon": "⭐" },
-    { "id": "level1", "title": "Уровень 1: Модели", "icon": "🧠" },
-    { "id": "level2", "title": "Уровень 2: Агенты", "icon": "🤖" },
-    { "id": "level3", "title": "Уровень 3: Платформы", "icon": "🔧" },
-    { "id": "comparison", "title": "Сравнение", "icon": "📊" },
-    { "id": "evolution", "title": "Эволюция", "icon": "📈" },
-    { "id": "strategy", "title": "Стратегия", "icon": "🎯" },
-    { "id": "costs", "title": "Расходы", "icon": "💰" },
-    { "id": "navigator", "title": "Навигатор", "icon": "🧭" },
-    { "id": "quiz", "title": "Тест", "icon": "✅" }
+    {
+      "id": "overview",
+      "title": "Обзор",
+      "icon": "📋"
+    },
+    {
+      "id": "tool-of-the-day",
+      "title": "Инструмент дня",
+      "icon": "⭐"
+    },
+    {
+      "id": "level1",
+      "title": "Уровень 1: Модели",
+      "icon": "🧠"
+    },
+    {
+      "id": "level2",
+      "title": "Уровень 2: Агенты",
+      "icon": "🤖"
+    },
+    {
+      "id": "level3",
+      "title": "Уровень 3: Платформы",
+      "icon": "🔧"
+    },
+    {
+      "id": "comparison",
+      "title": "Сравнение",
+      "icon": "📊"
+    },
+    {
+      "id": "evolution",
+      "title": "Эволюция",
+      "icon": "📈"
+    },
+    {
+      "id": "strategy",
+      "title": "Стратегия",
+      "icon": "🎯"
+    },
+    {
+      "id": "costs",
+      "title": "Расходы",
+      "icon": "💰"
+    },
+    {
+      "id": "navigator",
+      "title": "Навигатор",
+      "icon": "🧭"
+    },
+    {
+      "id": "quiz",
+      "title": "Тест",
+      "icon": "✅"
+    }
   ],
   "levels": [
     {
@@ -69,17 +113,19 @@
               "recommendedFor": "Лучший универсальный AI для любых задач"
             },
             {
-              "name": "Claude Opus 4.7 / Sonnet 4.6",
+              "name": "Claude Opus 4.8 / Sonnet 4.6",
               "url": "https://anthropic.com",
-              "description": "Claude Opus 4.7 — SWE-bench 87.6%, лидер агентного кодинга. Claude Code с Dreaming, multi-agent orchestration. Контекст 1M токенов.",
+              "description": "Claude Opus 4.8 (28 мая 2026) — улучшенный reasoning, агентные задачи, dynamic workflows, 1M токенов контекста. Лидер LMSys Arena (99/100). Sonnet 4.6 — баланс скорости и качества. Anthropic подала конфиденциальное заявление на IPO.",
               "strength": "Агентный кодинг #1 (SWE-bench 87.6%), Dreaming, контекст 1M",
               "features": [
-                "Opus 4.7 SWE-bench 87.6%",
-                "Dreaming",
-                "Claude Cowork GA",
-                "Mythos"
+                "Claude Opus 4.8 (28 мая 2026)",
+                "Dynamic Workflows",
+                "Agentic Readiness Analysis",
+                "1M токенов контекст",
+                "Sonnet 4.6",
+                "IPO filing"
               ],
-              "context": "1M tokens",
+              "context": "1M (Opus 4.8)",
               "reasoning": "Extended Thinking",
               "multimodal": "Текст, Код, Изобр.",
               "apiPrice": "$3–75/1M tok",
@@ -107,11 +153,12 @@
               "recommendedFor": "Лучший для глубокого анализа и кодинга"
             },
             {
-              "name": "Gemini 3.1 Pro / Deep Research Max",
+              "name": "Gemini 3.5 Flash / 3.1.5 Pro / Deep Research Max",
               "url": "https://ai.google.dev",
-              "description": "Gemini 3.1 Pro — флагман Google. Deep Research Max с MCP. Nano Banana — генерация изображений. Veo 3.1 Ultra — видеогенерация. Gemma 4 — open source.",
+              "description": "Gemini 3.5 Flash (19 мая 2026) — быстрая мультимодальная модель Google, 1M токенов, GPQA 82.8%, поддержка текста/изображений/аудио/видео. Gemini Omni — advanced reasoning и создание контента. Google фокусируется на агентной эре (май 2026).",
               "strength": "Nano Banana (изобр.), Veo 3.1 (видео), Deep Research Max, Google экосистема",
               "features": [
+                "Gemini 3.5 Flash (19 мая 2026)",
                 "Deep Research Max",
                 "Nano Banana 2/3/Pro",
                 "Veo 3.1 Ultra",
@@ -214,6 +261,23 @@
               "pricing": "freemium",
               "rating": 4,
               "recommendedFor": "Лучший для маркетинга в экосистеме Meta"
+            },
+            {
+              "name": "Microsoft MAI (MAI-Thinking-1 / MAI-Code-1-Flash)",
+              "url": "https://microsoft.ai/models/",
+              "description": "MAI — семейство из 7 моделей Microsoft AI (2 июня 2026). MAI-Thinking-1: flagship reasoning, конкурирует с Claude Sonnet 4.6. MAI-Code-1-Flash: 5B параметров, интегрирован в GitHub Copilot и VS Code. MAI-Image-2.5: text-to-image + editing, #2 Arena ELO. MAI-Transcribe-1.5: точная транскрипция аудио.",
+              "strength": "Собственная экосистема Microsoft, глубокая интеграция с GitHub/VS Code",
+              "features": [
+                "MAI-Thinking-1 reasoning",
+                "MAI-Code-1-Flash (5B)",
+                "MAI-Image-2.5",
+                "MAI-Transcribe-1.5",
+                "GitHub Copilot интеграция",
+                "7 моделей в семействе"
+              ],
+              "context": "128K",
+              "reasoning": "MAI-Thinking-1",
+              "multimodal": "Текст, Код, Изображения, Аудио"
             }
           ]
         },
@@ -278,14 +342,17 @@
               "recommendedFor": "Лучший по соотношению цена/качество для reasoning"
             },
             {
-              "name": "Alibaba Qwen 3.6",
+              "name": "Qwen3.7 Max / Qwen3.7 Plus / Qwen3.6 27B",
               "url": "https://qwen.ai",
-              "description": "Qwen 3.6 — 14% OpenRouter. Hybrid thinking. MCP support. Coding: 49% tokens совместно с MiMo.",
+              "description": "Qwen3.7 Max (19 мая 2026) — flagship Alibaba, 1M токенов, reasoning, GPQA Diamond 92.3%. Qwen3.7 Plus — баланс цены и качества. Qwen3.6 27B (апр 2026) — open-source, 262K контекст, мультимодальный. Qwen3.6 Flash — мультимодальный (текст, изображения, видео), 1M токенов. Qwen Code — агентный кодинг (v0.14.5).",
               "strength": "14% OpenRouter. Hybrid thinking. MCP support.",
               "features": [
-                "14% OpenRouter",
-                "Hybrid Thinking",
-                "MCP Support"
+                "Qwen3.7 Max (19 мая 2026)",
+                "Qwen3.7 Plus",
+                "Qwen3.6 27B open-source",
+                "Qwen3.6 Flash мультимодальный",
+                "Qwen Code v0.14.5",
+                "1M токенов контекст"
               ],
               "tags": [
                 "текст",
@@ -306,7 +373,8 @@
               ],
               "pricing": "free",
               "rating": 4,
-              "recommendedFor": "Лучший для интеграции через MCP"
+              "recommendedFor": "Лучший для интеграции через MCP",
+              "context": "1M (Qwen3.7 Max)"
             },
             {
               "name": "Kimi K2.6 (Moonshot)",
@@ -1368,6 +1436,20 @@
               "pricing": "free",
               "rating": 4,
               "recommendedFor": "Лучший open-source для браузерной автоматизации"
+            },
+            {
+              "name": "Meta Business Agent",
+              "url": "https://about.fb.com/news/2026/06/meta-business-agent/",
+              "description": "Meta Business Agent (3 июня 2026, Conversations London) — AI-агент для бизнеса, доступен в WhatsApp, Instagram DMs и Messenger. Персонализированный клиентский сервис для компаний любого размера. Часть стратегии Meta в enterprise AI против Microsoft и OpenAI.",
+              "strength": "Нативная интеграция в WhatsApp/Instagram/Messenger — 3 млрд пользователей",
+              "features": [
+                "WhatsApp интеграция",
+                "Instagram DMs",
+                "Messenger",
+                "Персонализация клиентов",
+                "Enterprise AI",
+                "Глобальный запуск (3 июня 2026)"
+              ]
             }
           ]
         },
@@ -3290,6 +3372,26 @@
       "date": "Май 2026",
       "event": "Claude Code Dreaming / Cursor 3 / Grok 4.3",
       "description": "Self-improving agents + Agent IDE"
+    },
+    {
+      "date": "Май 2026",
+      "event": "Claude Opus 4.8 / Gemini 3.5 Flash / Qwen3.7 Max — три flagship-модели за 3 недели",
+      "type": "model"
+    },
+    {
+      "date": "Июн 2026",
+      "event": "Microsoft MAI: 7 собственных моделей (MAI-Thinking-1, MAI-Code-1-Flash, MAI-Image-2.5) — выход из зависимости от OpenAI",
+      "type": "model"
+    },
+    {
+      "date": "Июн 2026",
+      "event": "Meta Business Agent: AI-агент для бизнеса в WhatsApp/Instagram/Messenger",
+      "type": "agent"
+    },
+    {
+      "date": "Июн 2026",
+      "event": "Anthropic подала конфиденциальное заявление на IPO",
+      "type": "platform"
     }
   ],
   "structuralShifts": [
