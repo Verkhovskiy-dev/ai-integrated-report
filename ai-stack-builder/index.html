@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+  <meta name="theme-color" content="#0f1117">
+  <title>AI Stack Builder — Спроектируй свою систему на AI-агентах</title>
+  <meta name="description" content="Рой AI-агентов поможет спроектировать персональную производственную систему: от личной эффективности до системной трансформации.">
+  <link rel="canonical" href="https://verkhovskiy.ai/ai-stack-builder/">
+  <meta property="og:title" content="AI Stack Builder — Verkhovskiy AI Dashboard">
+  <meta property="og:description" content="Рой AI-агентов поможет спроектировать персональную производственную систему на AI-агентах.">
+  <meta property="og:url" content="https://verkhovskiy.ai/ai-stack-builder/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg-primary: #0f1117;
+      --bg-secondary: #1a1a2e;
+      --bg-card: #16213e;
+      --accent: #00d4ff;
+      --accent-dim: rgba(0, 212, 255, 0.15);
+      --accent-glow: rgba(0, 212, 255, 0.3);
+      --text-primary: #e8e8f0;
+      --text-secondary: #a0a0b0;
+      --text-muted: #666680;
+      --border: rgba(0, 212, 255, 0.12);
+      --success: #4caf50;
+      --radius: 12px;
+      --radius-lg: 16px;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px 100px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .header-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 24px;
+      transition: color 0.2s;
+    }
+    .header-back:hover { color: var(--accent); }
+
+    .header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    .header p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Progress */
+    .progress-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .progress-step {
+      flex: 1;
+      height: 4px;
+      background: var(--bg-card);
+      border-radius: 2px;
+      transition: background 0.4s ease;
+    }
+    .progress-step.active { background: var(--accent); }
+    .progress-step.done { background: var(--accent); opacity: 0.6; }
+
+    /* Steps */
+    .step {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    .step.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .step-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    /* Form elements */
+    .field-group {
+      margin-bottom: 24px;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    select, textarea {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a0a0b0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    select:focus, textarea:focus {
+      border-color: var(--accent);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    /* Checkbox grid */
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .checkbox-item:hover { border-color: var(--accent); }
+    .checkbox-item.selected {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .checkbox-item input {
+      display: none;
+    }
+
+    .checkbox-mark {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--text-muted);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .checkbox-item.selected .checkbox-mark {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+    .checkbox-mark::after {
+      content: '';
+      width: 8px;
+      height: 5px;
+      border-left: 2px solid var(--bg-primary);
+      border-bottom: 2px solid var(--bg-primary);
+      transform: rotate(-45deg) translateY(-1px);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .checkbox-item.selected .checkbox-mark::after { opacity: 1; }
+
+    .checkbox-label {
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+
+    /* Ambition cards */
+    .ambition-cards {
+      display: grid;
+      gap: 12px;
+    }
+
+    .ambition-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.25s;
+      position: relative;
+    }
+    .ambition-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .ambition-card.selected {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .ambition-card .card-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .ambition-card .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .ambition-card .card-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Radio options (experience level) */
+    .radio-options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .radio-option:hover { border-color: var(--accent); }
+    .radio-option.selected {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .radio-option input { display: none; }
+
+    .radio-dot {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--text-muted);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .radio-option.selected .radio-dot {
+      border-color: var(--accent);
+    }
+    .radio-dot::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .radio-option.selected .radio-dot::after { opacity: 1; }
+
+    .radio-label { font-size: 14px; }
+
+    /* Navigation buttons */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 36px;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      font-family: inherit;
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--text-primary); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #0099cc 100%);
+      color: var(--bg-primary);
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px var(--accent-glow); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    /* Loading state */
+    .loading-screen {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .loading-screen.active { display: block; }
+
+    .loading-orb {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+      animation: pulse 2s ease-in-out infinite;
+      position: relative;
+    }
+
+    .loading-orb::before, .loading-orb::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      animation: orbit 3s linear infinite;
+    }
+    .loading-orb::before {
+      width: 100px;
+      height: 100px;
+      top: -10px;
+      left: -10px;
+      opacity: 0.4;
+    }
+    .loading-orb::after {
+      width: 120px;
+      height: 120px;
+      top: -20px;
+      left: -20px;
+      opacity: 0.2;
+      animation-duration: 4s;
+      animation-direction: reverse;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    @keyframes orbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .loading-agents {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .loading-agents span {
+      display: inline-block;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+    .loading-agents span:nth-child(2) { animation-delay: 0.2s; }
+    .loading-agents span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* Results */
+    .results-screen {
+      display: none;
+      animation: fadeIn 0.6s ease;
+    }
+    .results-screen.active { display: block; }
+
+    .result-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .result-header h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .automation-score {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--accent);
+      border-radius: 50px;
+      padding: 10px 20px;
+      margin-top: 16px;
+    }
+
+    .score-bar {
+      width: 120px;
+      height: 6px;
+      background: var(--bg-primary);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .score-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #00ff88);
+      border-radius: 3px;
+      transition: width 1.5s ease;
+    }
+
+    .score-value {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    /* Tool cards */
+    .tools-grid {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .tool-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      transition: border-color 0.2s;
+    }
+    .tool-card:hover { border-color: var(--accent); }
+
+    .tool-priority {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+    .tool-priority.core { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+    .tool-priority.recommended { background: #ffd700; }
+    .tool-priority.optional { background: var(--text-muted); }
+
+    .tool-info { flex: 1; }
+    .tool-name {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+    .tool-category {
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .tool-role {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .tool-badge {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .tool-badge.core { background: var(--accent-dim); color: var(--accent); }
+    .tool-badge.recommended { background: rgba(255, 215, 0, 0.1); color: #ffd700; }
+    .tool-badge.optional { background: rgba(102, 102, 128, 0.2); color: var(--text-muted); }
+
+    /* Architecture summary */
+    .architecture-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .architecture-block h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .architecture-block p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* Quick win */
+    .quick-win {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 255, 136, 0.05) 100%);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 32px;
+    }
+
+    .quick-win h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .quick-win p {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    /* CTA block */
+    .cta-block {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+    }
+
+    .cta-block h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .cta-block p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .cta-block ul {
+      list-style: none;
+      text-align: left;
+      max-width: 300px;
+      margin: 0 auto 20px;
+    }
+
+    .cta-block ul li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding: 4px 0;
+    }
+    .cta-block ul li::before {
+      content: '✓ ';
+      color: var(--accent);
+    }
+
+    .cta-email-form {
+      display: flex;
+      gap: 8px;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    .cta-email-form input {
+      flex: 1;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .cta-email-form input:focus { border-color: var(--accent); }
+
+    .cta-email-form button {
+      padding: 12px 20px;
+      background: var(--accent);
+      color: var(--bg-primary);
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .cta-email-form button:hover { opacity: 0.9; }
+
+    .cta-status {
+      margin-top: 10px;
+      font-size: 13px;
+      min-height: 20px;
+    }
+
+    /* Legend */
+    .legend {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .container { padding: 24px 16px 80px; }
+      .checkbox-grid { grid-template-columns: 1fr; }
+      .nav-buttons { flex-direction: column-reverse; }
+      .btn { width: 100%; text-align: center; }
+      .cta-email-form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <a href="/" class="header-back">← Вернуться на дашборд</a>
+      <h1>AI Stack Builder</h1>
+      <p>Рой AI-агентов спроектирует персональную производственную систему под ваши задачи</p>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-bar" id="progressBar">
+      <div class="progress-step active"></div>
+      <div class="progress-step"></div>
+      <div class="progress-step"></div>
+      <div class="progress-step"></div>
+    </div>
+
+    <!-- Step 1: About you -->
+    <div class="step active" id="step1">
+      <h2 class="step-title">Расскажите о себе</h2>
+      <p class="step-subtitle">Это поможет агентам подобрать оптимальный стек</p>
+
+      <div class="field-group">
+        <label class="field-label">Ваша роль</label>
+        <select id="role">
+          <option value="" disabled selected>Выберите роль</option>
+          <option value="Предприниматель">Предприниматель</option>
+          <option value="Менеджер">Менеджер</option>
+          <option value="Разработчик">Разработчик</option>
+          <option value="Аналитик">Аналитик</option>
+          <option value="Маркетолог">Маркетолог</option>
+          <option value="Другое">Другое</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Размер команды</label>
+        <select id="teamSize">
+          <option value="" disabled selected>Выберите размер</option>
+          <option value="1">Работаю один</option>
+          <option value="2-5">2–5 человек</option>
+          <option value="6-20">6–20 человек</option>
+          <option value="20+">20+ человек</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Отрасль</label>
+        <select id="industry">
+          <option value="" disabled selected>Выберите отрасль</option>
+          <option value="IT">IT / Технологии</option>
+          <option value="Финансы">Финансы</option>
+          <option value="Маркетинг">Маркетинг / Реклама</option>
+          <option value="Образование">Образование</option>
+          <option value="Консалтинг">Консалтинг</option>
+          <option value="E-commerce">E-commerce</option>
+          <option value="Другое">Другое</option>
+        </select>
+      </div>
+
+      <div class="nav-buttons">
+        <div></div>
+        <button class="btn btn-primary" onclick="nextStep(1)">Далее →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Tasks -->
+    <div class="step" id="step2">
+      <h2 class="step-title">Какие задачи хотите автоматизировать?</h2>
+      <p class="step-subtitle">Выберите все подходящие варианты</p>
+
+      <div class="field-group">
+        <div class="checkbox-grid" id="tasksGrid">
+          <label class="checkbox-item" data-value="Работа с текстом">
+            <input type="checkbox">
+            <span class="checkbox-mark"></span>
+            <span class="checkbox-label">Работа с текстом</span>
+          </label>
+          <label class="checkbox-item" data-value="Анализ данных">
+            <input type="checkbox">
+            <span class="checkbox-mark"></span>
+            <span class="checkbox-label">Анализ данных</span>
+          </label>
+          <label class="checkbox-item" data-value="Генерация контента">
+            <input type="checkbox">
+            <span class="checkbox-mark"></span>
+            <span class="checkbox-label">Генерация контента</span>
+          </label>
+          <label class="checkbox-item" data-value="Управление проектами">
+            <input type="checkbox">
+            <span class="checkbox-mark"></span>
+            <span class="checkbox-label">Управление проектами</span>
+          </label>
+          <label class="checkbox-item" data-value="Коммуникации">
+            <input type="checkbox">
+            <span class="checkbox-mark"></span>
+            <span class="checkbox-label">Коммуникации</span>
+          </label>
+          <label class="checkbox-item" data-value="Исследования">
+            <input type="checkbox">
+            <span class="checkbox-mark"></span>
+            <span class="checkbox-label">Исследования</span>
+          </label>
+          <label class="checkbox-item" data-value="Кодинг">
+            <input type="checkbox">
+            <span class="checkbox-mark"></span>
+            <span class="checkbox-label">Кодинг</span>
+          </label>
+          <label class="checkbox-item" data-value="Другое">
+            <input type="checkbox">
+            <span class="checkbox-mark"></span>
+            <span class="checkbox-label">Другое</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Опишите главную боль (необязательно)</label>
+        <textarea id="painPoint" placeholder="Например: трачу 3 часа в день на рутинные отчёты..."></textarea>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="prevStep(2)">← Назад</button>
+        <button class="btn btn-primary" onclick="nextStep(2)">Далее →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Ambition -->
+    <div class="step" id="step3">
+      <h2 class="step-title">Уровень амбиций</h2>
+      <p class="step-subtitle">Какого масштаба изменений вы хотите достичь?</p>
+
+      <div class="ambition-cards" id="ambitionCards">
+        <div class="ambition-card" data-value="Личная эффективность" onclick="selectAmbition(this)">
+          <div class="card-icon">🎯</div>
+          <div class="card-title">Личная эффективность</div>
+          <div class="card-desc">Хочу делать больше за меньше времени</div>
+        </div>
+        <div class="ambition-card" data-value="Локальная оптимизация" onclick="selectAmbition(this)">
+          <div class="card-icon">⚙️</div>
+          <div class="card-title">Локальная оптимизация</div>
+          <div class="card-desc">Хочу автоматизировать конкретные процессы</div>
+        </div>
+        <div class="ambition-card" data-value="Системная трансформация" onclick="selectAmbition(this)">
+          <div class="card-icon">🚀</div>
+          <div class="card-title">Системная трансформация</div>
+          <div class="card-desc">Хочу перестроить работу на агентной архитектуре</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="prevStep(3)">← Назад</button>
+        <button class="btn btn-primary" onclick="nextStep(3)">Далее →</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Experience -->
+    <div class="step" id="step4">
+      <h2 class="step-title">Текущий опыт с AI</h2>
+      <p class="step-subtitle">Это поможет подобрать инструменты нужного уровня сложности</p>
+
+      <div class="radio-options" id="experienceOptions">
+        <label class="radio-option" data-value="Новичок" onclick="selectExperience(this)">
+          <input type="radio" name="experience">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Новичок — пока только слышал про AI</span>
+        </label>
+        <label class="radio-option" data-value="Использую ChatGPT" onclick="selectExperience(this)">
+          <input type="radio" name="experience">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Использую ChatGPT для отдельных задач</span>
+        </label>
+        <label class="radio-option" data-value="Использую несколько AI-инструментов" onclick="selectExperience(this)">
+          <input type="radio" name="experience">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Использую несколько AI-инструментов</span>
+        </label>
+        <label class="radio-option" data-value="Строю свои автоматизации" onclick="selectExperience(this)">
+          <input type="radio" name="experience">
+          <span class="radio-dot"></span>
+          <span class="radio-label">Строю свои автоматизации и агентов</span>
+        </label>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn btn-secondary" onclick="prevStep(4)">← Назад</button>
+        <button class="btn btn-primary" onclick="submitWizard()">Собрать AI-стек →</button>
+      </div>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading-screen" id="loadingScreen">
+      <div class="loading-orb"></div>
+      <h2 class="loading-title">Агенты анализируют ваш профиль</h2>
+      <p class="loading-agents">
+        <span>Подбираем инструменты</span>
+        <span> • </span>
+        <span>Проектируем архитектуру</span>
+      </p>
+    </div>
+
+    <!-- Results -->
+    <div class="results-screen" id="resultsScreen">
+      <div class="result-header">
+        <h2 id="stackName">Ваш AI-стек</h2>
+        <div class="automation-score">
+          <span style="font-size: 13px; color: var(--text-secondary);">Потенциал автоматизации</span>
+          <div class="score-bar">
+            <div class="score-fill" id="scoreFill" style="width: 0%"></div>
+          </div>
+          <span class="score-value" id="scoreValue">0%</span>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background: var(--accent); box-shadow: 0 0 6px var(--accent);"></div> Ключевой</div>
+        <div class="legend-item"><div class="legend-dot" style="background: #ffd700;"></div> Рекомендован</div>
+        <div class="legend-item"><div class="legend-dot" style="background: var(--text-muted);"></div> Опционально</div>
+      </div>
+
+      <div class="tools-grid" id="toolsGrid"></div>
+
+      <div class="architecture-block">
+        <h3>Как это работает вместе</h3>
+        <p id="architectureSummary"></p>
+      </div>
+
+      <div class="quick-win">
+        <h3>⚡ Быстрый старт</h3>
+        <p id="quickWin"></p>
+      </div>
+
+      <div class="cta-block">
+        <h3>Хотите полный план внедрения?</h3>
+        <p>Получите детальную roadmap, шаблоны workflow и ROI-калькулятор</p>
+        <ul>
+          <li>Пошаговый план на 30 дней</li>
+          <li>Готовые шаблоны автоматизаций</li>
+          <li>Расчёт экономии времени и денег</li>
+        </ul>
+        <form class="cta-email-form" onsubmit="submitWaitlist(event)">
+          <input type="email" id="waitlistEmail" placeholder="your@email.com" required>
+          <button type="submit">Получить</button>
+        </form>
+        <div class="cta-status" id="ctaStatus"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const WEBHOOK_URL = 'https://verkhovsky.app.n8n.cloud/webhook/ai-stack-builder';
+    let currentStep = 1;
+    let selectedAmbition = '';
+    let selectedExperience = '';
+
+    // Checkbox toggle
+    document.querySelectorAll('.checkbox-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('selected');
+        item.querySelector('input').checked = item.classList.contains('selected');
+      });
+    });
+
+    function selectAmbition(card) {
+      document.querySelectorAll('.ambition-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      selectedAmbition = card.dataset.value;
+    }
+
+    function selectExperience(option) {
+      document.querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
+      option.classList.add('selected');
+      selectedExperience = option.dataset.value;
+    }
+
+    function updateProgress() {
+      const steps = document.querySelectorAll('.progress-step');
+      steps.forEach((step, i) => {
+        step.classList.remove('active', 'done');
+        if (i + 1 === currentStep) step.classList.add('active');
+        else if (i + 1 < currentStep) step.classList.add('done');
+      });
+    }
+
+    function showStep(n) {
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      const step = document.getElementById('step' + n);
+      if (step) step.classList.add('active');
+      currentStep = n;
+      updateProgress();
+    }
+
+    function nextStep(from) {
+      // Validation
+      if (from === 1) {
+        if (!document.getElementById('role').value || 
+            !document.getElementById('teamSize').value || 
+            !document.getElementById('industry').value) {
+          alert('Пожалуйста, заполните все поля');
+          return;
+        }
+      }
+      if (from === 2) {
+        const checked = document.querySelectorAll('.checkbox-item.selected');
+        if (checked.length === 0) {
+          alert('Выберите хотя бы одну задачу');
+          return;
+        }
+      }
+      if (from === 3) {
+        if (!selectedAmbition) {
+          alert('Выберите уровень амбиций');
+          return;
+        }
+      }
+      showStep(from + 1);
+    }
+
+    function prevStep(from) {
+      showStep(from - 1);
+    }
+
+    async function submitWizard() {
+      if (!selectedExperience) {
+        alert('Выберите ваш уровень опыта');
+        return;
+      }
+
+      // Collect data
+      const tasks = Array.from(document.querySelectorAll('.checkbox-item.selected'))
+        .map(item => item.dataset.value);
+
+      const payload = {
+        role: document.getElementById('role').value,
+        team_size: document.getElementById('teamSize').value,
+        industry: document.getElementById('industry').value,
+        tasks: tasks,
+        pain_point: document.getElementById('painPoint').value,
+        ambition_level: selectedAmbition,
+        ai_experience: selectedExperience
+      };
+
+      // Show loading
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      document.getElementById('progressBar').style.display = 'none';
+      document.getElementById('loadingScreen').classList.add('active');
+
+      try {
+        const response = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        // Wait minimum 3 seconds for UX
+        await new Promise(r => setTimeout(r, 2000));
+
+        if (result.success && result.data) {
+          showResults(result.data);
+        } else {
+          throw new Error('Invalid response');
+        }
+      } catch (err) {
+        console.error(err);
+        // Show fallback result
+        showResults({
+          stack_name: 'AI Starter Kit',
+          automation_potential: 55,
+          tools: [
+            { name: 'ChatGPT Plus', category: 'LLM', role_in_stack: 'Основной AI-ассистент для ежедневных задач', priority: 'core' },
+            { name: 'Perplexity', category: 'Исследования', role_in_stack: 'AI-поиск для быстрого ресёрча', priority: 'core' },
+            { name: 'n8n', category: 'Автоматизация', role_in_stack: 'Связывание инструментов в workflow', priority: 'recommended' },
+            { name: 'Notion AI', category: 'Знания', role_in_stack: 'Управление знаниями и документацией', priority: 'recommended' },
+            { name: 'Fireflies', category: 'Коммуникации', role_in_stack: 'Запись и суммаризация встреч', priority: 'optional' }
+          ],
+          architecture_summary: 'Базовый стек для начала работы с AI. ChatGPT как центральный ассистент, Perplexity для исследований, n8n для автоматизации рутины.',
+          quick_win: 'Начните с ChatGPT Plus — используйте его для суммаризации документов и генерации черновиков.'
+        });
+      }
+    }
+
+    function showResults(data) {
+      document.getElementById('loadingScreen').classList.remove('active');
+      document.getElementById('resultsScreen').classList.add('active');
+
+      // Stack name
+      document.getElementById('stackName').textContent = data.stack_name || 'Ваш AI-стек';
+
+      // Score animation
+      const score = data.automation_potential || 50;
+      setTimeout(() => {
+        document.getElementById('scoreFill').style.width = score + '%';
+        document.getElementById('scoreValue').textContent = score + '%';
+      }, 300);
+
+      // Tools
+      const toolsHtml = (data.tools || []).map(tool => `
+        <div class="tool-card">
+          <div class="tool-priority ${tool.priority}"></div>
+          <div class="tool-info">
+            <div class="tool-category">${tool.category}</div>
+            <div class="tool-name">${tool.name}</div>
+            <div class="tool-role">${tool.role_in_stack}</div>
+          </div>
+          <span class="tool-badge ${tool.priority}">${
+            tool.priority === 'core' ? 'Ключевой' : 
+            tool.priority === 'recommended' ? 'Рекомендован' : 'Опционально'
+          }</span>
+        </div>
+      `).join('');
+      document.getElementById('toolsGrid').innerHTML = toolsHtml;
+
+      // Architecture
+      document.getElementById('architectureSummary').textContent = data.architecture_summary || '';
+
+      // Quick win
+      document.getElementById('quickWin').textContent = data.quick_win || '';
+    }
+
+    function submitWaitlist(e) {
+      e.preventDefault();
+      const email = document.getElementById('waitlistEmail').value;
+      const status = document.getElementById('ctaStatus');
+      status.style.color = '#4caf50';
+      status.textContent = '✓ Отлично! Вы в списке. Мы свяжемся с вами в ближайшее время.';
+      
+      // Send to webhook (fire and forget)
+      fetch('https://verkhovsky.app.n8n.cloud/webhook/email-subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, source: 'ai-stack-builder' })
+      }).catch(() => {});
+    }
+  </script>
+
+  <!-- Analytics -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="af3768d0-f56a-406c-9d77-cf20b803f6b9"></script>
+</body>
+</html>
