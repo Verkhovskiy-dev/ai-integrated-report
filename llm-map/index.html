@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Гайд по моделям — verkhovskiy.ai</title>
+  <title>Карта LLM-инструментов 2026 — Verkhovskiy AI Dashboard</title>
+  <meta name="description" content="Трёхуровневая карта 100+ LLM-инструментов 2026: модели, агенты, платформы сборки с бенчмарками, ценами и сравнением возможностей." />
+  <link rel="canonical" href="https://verkhovskiy.ai/llm-map/" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Карта LLM-инструментов 2026 — Verkhovskiy AI Dashboard" />
+  <meta property="og:description" content="Трёхуровневая карта 100+ LLM-инструментов: модели, агенты, платформы сборки с бенчмарками, ценами и сравнением возможностей." />
+  <meta property="og:url" content="https://verkhovskiy.ai/llm-map/" />
+  <meta property="og:site_name" content="Verkhovskiy AI Dashboard" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -233,6 +241,39 @@
       .strategy-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <!-- GEO: Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Какая LLM лучше для кода?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "По состоянию на 2026 год лидерами для кодинга являются Claude Sonnet 4, GPT-4.1 и Gemini 2.5 Pro. Выбор зависит от задачи: для рефакторинга и архитектуры — Claude, для быстрой генерации — GPT-4.1, для мультимодальных задач — Gemini."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Сколько стоит AI-стек в 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Стоимость AI-стека варьируется от $20/мес для индивидуального использования (ChatGPT Pro) до $500-5000/мес для корпоративного стека с несколькими моделями, агентными фреймворками и инфраструктурой. Подробный калькулятор доступен в разделе AI Costs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Какие модели поддерживают агентные задачи?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Агентные задачи поддерживают модели с function calling и tool use: Claude Sonnet 4, GPT-4.1, Gemini 2.5 Pro, а также специализированные агентные платформы — CrewAI, LangGraph, AutoGen, OpenAI Agents SDK."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -291,7 +332,7 @@
     <div>
       <div class="section-label mb-2">Гайд по моделям · Обновлено: Май 2026</div>
       <h1 style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.2;font-family:'Space Grotesk',sans-serif;" class="text-white">
-        Трёхуровневая карта <span class="gradient-text">LLM-инструментов</span>
+        Карта <span class="gradient-text">LLM-инструментов</span> 2026
       </h1>
       <p style="color:#6b7a8d;font-size:14px;margin-top:6px;">Модели, агенты, платформы сборки — 100+ инструментов с бенчмарками и ценами</p>
     </div>
