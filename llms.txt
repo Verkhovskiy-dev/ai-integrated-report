@@ -1,0 +1,51 @@
+# Verkhovskiy AI Dashboard
+
+> Стратегический AI-дашборд с картой LLM-инструментов, новостями моделей, аналитикой рынка AI
+
+## About
+
+Verkhovskiy AI Dashboard — интерактивная платформа для мониторинга трендов, структурных сдвигов и слабых сигналов в сфере искусственного интеллекта. Обновляется еженедельно. Содержит карту 100+ LLM-инструментов с ценами и возможностями, новости моделей в реальном времени, аналитику рынка AI.
+
+## Site Structure
+
+- [Главная](https://verkhovskiy.ai/) — AI Strategic Intelligence Dashboard. Мониторинг трендов, структурных сдвигов и слабых сигналов в сфере ИИ.
+- [LLM Map](https://verkhovskiy.ai/llm-map/) — Трёхуровневая карта LLM-инструментов 2026. Сравнение моделей по категориям, ценам, возможностям.
+- [AI Costs](https://verkhovskiy.ai/ai-costs/) — Калькулятор и аналитика стоимости AI-стека. Сравнение цен на токены, API, подписки.
+- [Places](https://verkhovskiy.ai/places.html) — Карта AI-компаний и лабораторий. Географическое распределение ключевых игроков.
+
+## Available Data (JSON APIs)
+
+### /data/models-feed.json
+Лента новостей AI-моделей. Содержит последние релизы, обновления и анонсы моделей.
+- Format: JSON array of objects
+- Fields: title, date, source, summary, url, tags
+- Update frequency: weekly
+
+### /data/momentum.json
+Аналитика momentum (импульса) AI-рынка. Трендовые индикаторы и структурные сдвиги.
+- Format: JSON object with trend indicators
+- Fields: category, score, direction, signals, timestamp
+- Update frequency: weekly
+
+### /data/places_data.json
+Данные о географическом распределении AI-компаний и лабораторий.
+- Format: JSON array of location objects
+- Fields: name, lat, lng, type, description, url
+- Update frequency: monthly
+
+### /data/token-monitor.json
+Мониторинг цен на токены LLM-моделей. Сравнительная таблица стоимости input/output токенов.
+- Format: JSON array of pricing objects
+- Fields: model, provider, input_price, output_price, context_window, updated
+- Update frequency: weekly
+
+### /llm-map/data/llm-tools.json
+Полная база LLM-инструментов для карты. 100+ инструментов с категоризацией.
+- Format: JSON array of tool objects
+- Fields: name, category, tier, description, pricing, capabilities, url, logo
+- Update frequency: weekly
+
+## Contact
+
+- Website: https://verkhovskiy.ai
+- Email: ai@verkhovskiy.ai
