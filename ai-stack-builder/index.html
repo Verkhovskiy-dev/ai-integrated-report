@@ -720,7 +720,7 @@
       <p class="step-subtitle">Это поможет агентам подобрать оптимальный стек</p>
 
       <div class="field-group">
-        <label class="field-label">Ваша роль</label>
+        <label class="field-label">Ваша роль</div>
         <select id="role">
           <option value="" disabled selected>Выберите роль</option>
           <option value="Предприниматель">Предприниматель</option>
@@ -733,7 +733,7 @@
       </div>
 
       <div class="field-group">
-        <label class="field-label">Размер команды</label>
+        <label class="field-label">Размер команды</div>
         <select id="teamSize">
           <option value="" disabled selected>Выберите размер</option>
           <option value="1">Работаю один</option>
@@ -744,7 +744,7 @@
       </div>
 
       <div class="field-group">
-        <label class="field-label">Отрасль</label>
+        <label class="field-label">Отрасль</div>
         <select id="industry">
           <option value="" disabled selected>Выберите отрасль</option>
           <option value="IT">IT / Технологии</option>
@@ -770,51 +770,51 @@
 
       <div class="field-group">
         <div class="checkbox-grid" id="tasksGrid">
-          <label class="checkbox-item" data-value="Работа с текстом">
+          <div class="checkbox-item" data-value="Работа с текстом">
             <input type="checkbox">
             <span class="checkbox-mark"></span>
             <span class="checkbox-label">Работа с текстом</span>
-          </label>
-          <label class="checkbox-item" data-value="Анализ данных">
+          </div>
+          <div class="checkbox-item" data-value="Анализ данных">
             <input type="checkbox">
             <span class="checkbox-mark"></span>
             <span class="checkbox-label">Анализ данных</span>
-          </label>
-          <label class="checkbox-item" data-value="Генерация контента">
+          </div>
+          <div class="checkbox-item" data-value="Генерация контента">
             <input type="checkbox">
             <span class="checkbox-mark"></span>
             <span class="checkbox-label">Генерация контента</span>
-          </label>
-          <label class="checkbox-item" data-value="Управление проектами">
+          </div>
+          <div class="checkbox-item" data-value="Управление проектами">
             <input type="checkbox">
             <span class="checkbox-mark"></span>
             <span class="checkbox-label">Управление проектами</span>
-          </label>
-          <label class="checkbox-item" data-value="Коммуникации">
+          </div>
+          <div class="checkbox-item" data-value="Коммуникации">
             <input type="checkbox">
             <span class="checkbox-mark"></span>
             <span class="checkbox-label">Коммуникации</span>
-          </label>
-          <label class="checkbox-item" data-value="Исследования">
+          </div>
+          <div class="checkbox-item" data-value="Исследования">
             <input type="checkbox">
             <span class="checkbox-mark"></span>
             <span class="checkbox-label">Исследования</span>
-          </label>
-          <label class="checkbox-item" data-value="Кодинг">
+          </div>
+          <div class="checkbox-item" data-value="Кодинг">
             <input type="checkbox">
             <span class="checkbox-mark"></span>
             <span class="checkbox-label">Кодинг</span>
-          </label>
-          <label class="checkbox-item" data-value="Другое">
+          </div>
+          <div class="checkbox-item" data-value="Другое">
             <input type="checkbox">
             <span class="checkbox-mark"></span>
             <span class="checkbox-label">Другое</span>
-          </label>
+          </div>
         </div>
       </div>
 
       <div class="field-group">
-        <label class="field-label">Опишите главную боль (необязательно)</label>
+        <label class="field-label">Опишите главную боль (необязательно)</div>
         <textarea id="painPoint" placeholder="Например: трачу 3 часа в день на рутинные отчёты..."></textarea>
       </div>
 
@@ -863,22 +863,22 @@
           <input type="radio" name="experience">
           <span class="radio-dot"></span>
           <span class="radio-label">Новичок — пока только слышал про AI</span>
-        </label>
+        </div>
         <label class="radio-option" data-value="Использую ChatGPT" onclick="selectExperience(this)">
           <input type="radio" name="experience">
           <span class="radio-dot"></span>
           <span class="radio-label">Использую ChatGPT для отдельных задач</span>
-        </label>
+        </div>
         <label class="radio-option" data-value="Использую несколько AI-инструментов" onclick="selectExperience(this)">
           <input type="radio" name="experience">
           <span class="radio-dot"></span>
           <span class="radio-label">Использую несколько AI-инструментов</span>
-        </label>
+        </div>
         <label class="radio-option" data-value="Строю свои автоматизации" onclick="selectExperience(this)">
           <input type="radio" name="experience">
           <span class="radio-dot"></span>
           <span class="radio-label">Строю свои автоматизации и агентов</span>
-        </label>
+        </div>
       </div>
 
       <div class="nav-buttons">
@@ -954,9 +954,12 @@
 
     // Checkbox toggle
     document.querySelectorAll('.checkbox-item').forEach(item => {
-      item.addEventListener('click', () => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         item.classList.toggle('selected');
-        item.querySelector('input').checked = item.classList.contains('selected');
+        const input = item.querySelector('input');
+        if (input) input.checked = item.classList.contains('selected');
       });
     });
 
