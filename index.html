@@ -96,3 +96,239 @@
       /* Hide the original "Применить к моему бизнесу" floating button */
       button.fixed.bottom-6.right-6.z-30 { display: none !important; }
       
+      /* AI Stack Builder floating button */
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        z-index: 9998;
+        background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+        color: #1a1a2e;
+        border: none;
+        border-radius: 50px;
+        padding: 12px 20px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+        transition: all 0.3s ease;
+      }
+        transform: scale(1.05);
+        box-shadow: 0 6px 28px rgba(0, 212, 255, 0.4);
+      }
+    </style>
+      <style>
+      /* Hide the original floating button from React bundle */
+      button.fixed.bottom-6.right-6.z-30 { display: none !important; }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="af3768d0-f56a-406c-9d77-cf20b803f6b9"></script>
+      <script defer src="/srt-places-widget.js"></script>
+      <script defer src="/models-pulse-widget.js"></script>
+      <script defer src="/models-news-widget.js"></script>
+      <script defer src="/token-banner-widget.js"></script>
+  
+    
+
+    <!-- Subscription Widget -->
+    <div id="subscribe-widget" style="
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+    ">
+      <!-- Toggle Button -->
+      <button id="subscribe-toggle" onclick="toggleSubscribePanel()" style="
+        background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+        color: #1a1a2e;
+        border: none;
+        border-radius: 50px;
+        padding: 12px 20px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+      " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <span>🔔</span> Подписаться
+      </button>
+
+      <!-- Subscription Panel -->
+      <div id="subscribe-panel" style="
+        display: none;
+        position: absolute;
+        bottom: 60px;
+        right: 0;
+        background: #1a1a2e;
+        border: 1px solid rgba(0, 212, 255, 0.2);
+        border-radius: 16px;
+        padding: 24px;
+        width: 320px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+      ">
+        <h3 style="color: #00d4ff; margin: 0 0 8px 0; font-size: 18px; font-weight: 600;">
+          Подписаться на обновления
+        </h3>
+        <p style="color: #a0a0b0; margin: 0 0 20px 0; font-size: 13px; line-height: 1.4;">
+          Получайте уведомления о новых AI-моделях и событиях
+        </p>
+
+        <!-- Telegram Button -->
+        <a href="https://t.me/VerkhovskiyAI_bot" target="_blank" style="
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          background: #16213e;
+          border: 1px solid rgba(0, 212, 255, 0.15);
+          border-radius: 10px;
+          padding: 12px 16px;
+          text-decoration: none;
+          color: #e0e0e0;
+          margin-bottom: 12px;
+          transition: all 0.2s ease;
+        " onmouseover="this.style.borderColor='#00d4ff'; this.style.background='#1c2a4a'" onmouseout="this.style.borderColor='rgba(0, 212, 255, 0.15)'; this.style.background='#16213e'">
+          <span style="font-size: 24px;">📱</span>
+          <div>
+            <div style="font-weight: 500; font-size: 14px;">Telegram</div>
+            <div style="font-size: 12px; color: #888;">Мгновенные уведомления в боте</div>
+          </div>
+          <span style="margin-left: auto; color: #00d4ff;">→</span>
+        </a>
+
+        <!-- Email Form -->
+        <div id="email-form-container" style="
+          background: #16213e;
+          border: 1px solid rgba(0, 212, 255, 0.15);
+          border-radius: 10px;
+          padding: 12px 16px;
+        ">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <span style="font-size: 24px;">📧</span>
+            <div>
+              <div style="font-weight: 500; font-size: 14px; color: #e0e0e0;">Email</div>
+              <div style="font-size: 12px; color: #888;">Дайджест на почту</div>
+            </div>
+          </div>
+          <form id="email-subscribe-form" onsubmit="submitEmailSubscription(event)" style="display: flex; gap: 8px;">
+            <input type="email" id="subscribe-email-input" placeholder="your@email.com" required style="
+              flex: 1;
+              background: #0f1629;
+              border: 1px solid rgba(0, 212, 255, 0.2);
+              border-radius: 8px;
+              padding: 10px 12px;
+              color: #e0e0e0;
+              font-size: 13px;
+              outline: none;
+              transition: border-color 0.2s;
+            " onfocus="this.style.borderColor='#00d4ff'" onblur="this.style.borderColor='rgba(0, 212, 255, 0.2)'" />
+            <button type="submit" id="subscribe-email-btn" style="
+              background: #00d4ff;
+              color: #1a1a2e;
+              border: none;
+              border-radius: 8px;
+              padding: 10px 16px;
+              font-size: 13px;
+              font-weight: 600;
+              cursor: pointer;
+              white-space: nowrap;
+              transition: opacity 0.2s;
+            " onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">OK</button>
+          </form>
+          <div id="email-subscribe-status" style="margin-top: 8px; font-size: 12px; display: none;"></div>
+        </div>
+
+        <!-- Close button -->
+        <button onclick="toggleSubscribePanel()" style="
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          background: none;
+          border: none;
+          color: #666;
+          font-size: 18px;
+          cursor: pointer;
+          padding: 4px;
+          line-height: 1;
+        ">✕</button>
+      </div>
+    </div>
+
+    <script>
+    function toggleSubscribePanel() {
+      const panel = document.getElementById('subscribe-panel');
+      const btn = document.getElementById('subscribe-toggle');
+      if (panel.style.display === 'none') {
+        panel.style.display = 'block';
+        btn.style.display = 'none';
+      } else {
+        panel.style.display = 'none';
+        btn.style.display = 'flex';
+      }
+    }
+
+    async function submitEmailSubscription(e) {
+      e.preventDefault();
+      const email = document.getElementById('subscribe-email-input').value;
+      const statusEl = document.getElementById('email-subscribe-status');
+      const btn = document.getElementById('subscribe-email-btn');
+      
+      btn.disabled = true;
+      btn.textContent = '...';
+      statusEl.style.display = 'none';
+
+      try {
+        const resp = await fetch('https://verkhovsky.app.n8n.cloud/webhook/email-subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
+        });
+        const data = await resp.json();
+        
+        statusEl.style.display = 'block';
+        if (data.success) {
+          statusEl.style.color = '#4caf50';
+          statusEl.textContent = '✅ ' + data.message;
+          document.getElementById('subscribe-email-input').value = '';
+        } else {
+          statusEl.style.color = '#ff5252';
+          statusEl.textContent = '❌ ' + (data.message || 'Ошибка');
+        }
+      } catch (err) {
+        statusEl.style.display = 'block';
+        statusEl.style.color = '#ff5252';
+        statusEl.textContent = '❌ Ошибка соединения';
+      }
+      
+      btn.disabled = false;
+      btn.textContent = 'OK';
+    }
+
+    // Close panel on click outside
+    document.addEventListener('click', function(e) {
+      const widget = document.getElementById('subscribe-widget');
+      const panel = document.getElementById('subscribe-panel');
+      if (panel.style.display === 'block' && !widget.contains(e.target)) {
+        toggleSubscribePanel();
+      }
+    });
+    </script>
+    <!-- End Subscription Widget -->
+
+  </body>
+
+</html>
