@@ -3510,15 +3510,16 @@
   },
   {
     "date": "2026-07-02",
-    "generated_at": "2026-07-02T10:02:13.733Z",
+    "generated_at": "2026-07-02T17:02:50.067Z",
     "trends": [
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
-        "momentum": 90,
+        "momentum": 78,
         "category": "accelerating",
-        "rationale": "Предыдущий срез: 90 → сегодня 90; сигнал остаётся очень сильным из-за $49 млрд MGX, планов SoftBank по AI cloud и биржевой инициативы Congo, но распродажа chip-акций указывает на риск перегрева.",
+        "rationale": "В предыдущей оценке было 90 → сегодня 78: сигналы остаются сильными из-за Pembina, Kling AI и AI-долга, но новости об overcapacity в AI-вычислениях охлаждают экстремальный импульс.",
         "levels": [
+          1,
           2,
           5,
           9
@@ -3526,14 +3527,14 @@
         "is_new": false
       },
       {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 83,
+        "id": "ai-cloud-rental",
+        "name": "AI-облака и аренда вычислений",
+        "momentum": 52,
         "category": "accelerating",
-        "rationale": "Предыдущий срез: 83 → сегодня 83; обсуждение 5% доли OpenAI для правительства США и фонд MGX подтверждают суверенный контур, но новых национальных моделей во входных данных нет.",
+        "rationale": "В предыдущей оценке было 60 → сегодня 52: план Meta продавать доступ к AI-вычислениям поддерживает тренд, но рынок одновременно реагирует страхом overcapacity.",
         "levels": [
+          4,
           5,
-          8,
           9
         ],
         "is_new": false
@@ -3543,35 +3544,21 @@
         "name": "Агентные AI-платформы",
         "momentum": 74,
         "category": "accelerating",
-        "rationale": "Предыдущий срез: 76 → сегодня 74; arXiv-сигналы по verifiable agents и autonomous medical reasoning подтверждают движение, но часть сегодняшних данных относится к методологии, а не к массовому внедрению.",
+        "rationale": "В предыдущей оценке было 74 → сегодня 74: agentic payments, AI-разговор в grocery и оценка Gartner по SaaS подтверждают высокий импульс без нового переломного скачка.",
         "levels": [
-          4,
-          6
+          5,
+          9
         ],
         "is_new": false
       },
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
-        "momentum": 78,
+        "momentum": 66,
         "category": "accelerating",
-        "rationale": "Предыдущий срез: 80 → сегодня 78; Making Failure Safe, Constructive Alignment и Bounded Morality поддерживают тему проверяемости и ограничений агентов, но новых инцидентов безопасности нет.",
+        "rationale": "В предыдущей оценке было 78 → сегодня 66: тема доверия поддержана заявлениями Palantir CEO и agentic payments, но прямых инцидентов безопасности во входных данных нет.",
         "levels": [
-          4,
-          6,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 60,
-        "category": "accelerating",
-        "rationale": "Предыдущий срез: 60 → сегодня 60; SoftBank планирует сдавать AI computing resources компаниям США, а Nvidia предлагает token credits за долю будущих продаж.",
-        "levels": [
-          4,
-          5,
+          8,
           9
         ],
         "is_new": false
@@ -3579,50 +3566,24 @@
       {
         "id": "closed-api-models",
         "name": "Закрытые API-модели",
-        "momentum": 30,
+        "momentum": 32,
         "category": "emerging",
-        "rationale": "Предыдущий срез: 30 → сегодня 30; экспортное решение США по Anthropic Fable 5 и Mythos 5 показывает, что доступ к закрытым моделям регулируется как стратегический ресурс.",
+        "rationale": "В предыдущей оценке было 30 → сегодня 32: GPT-4o сравнивают с классическим ML, а Anthropic обсуждает кастомный чип, что поддерживает закрытые модельные экосистемы.",
         "levels": [
           4,
           5,
-          8
+          6
         ],
         "is_new": false
       },
       {
         "id": "classic-saas",
         "name": "Классический SaaS под давлением AI",
-        "momentum": -36,
-        "category": "decelerating",
-        "rationale": "Предыдущий срез: -36 → сегодня -36; SAP ограничивает найм и поездки, чтобы финансировать AI push и защищаться от новых конкурентов, что подтверждает давление на классический software-порядок.",
-        "levels": [
-          3,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-in-government",
-        "name": "AI в госсекторе",
-        "momentum": 68,
-        "category": "accelerating",
-        "rationale": "Предыдущий срез: 68 → сегодня 68; обсуждение доли OpenAI для правительства США и AI-обучение резервистов подтверждают связку AI и государства, но без нового крупного госвнедрения.",
-        "levels": [
-          7,
-          8,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 55,
-        "category": "accelerating",
-        "rationale": "Предыдущий срез: 55 → сегодня 55; сигналы идут от экспортного решения США по Anthropic, антимонопольного решения ЕС против Google и политического давления вокруг OpenAI.",
+        "momentum": -41,
+        "category": "collapsing",
+        "rationale": "В предыдущей оценке было -36 → сегодня -41: Gartner прямо оценил $234 млрд enterprise SaaS spending под риском из-за agentic AI.",
         "levels": [
           5,
-          8,
           9
         ],
         "is_new": false
@@ -3630,13 +3591,37 @@
       {
         "id": "ai-talent-market",
         "name": "Рынок AI-талантов",
-        "momentum": 42,
+        "momentum": 47,
         "category": "accelerating",
-        "rationale": "Предыдущий срез: 42 → сегодня 42; Gen Z во Florida сталкивается со слабым рынком труда в эпоху AI, резервисты получают AI-обучение, а SAP ограничивает найм ради AI push.",
+        "rationale": "В предыдущей оценке было 42 → сегодня 47: Microsoft мобилизует 6 000 сотрудников для внедрения AI, а SAP ограничивает общий найм ради core AI jobs.",
         "levels": [
           3,
-          5,
-          7
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 50,
+        "category": "accelerating",
+        "rationale": "В предыдущей оценке было 55 → сегодня 50: USPTO готовит разъяснение по AI-related inventions, но других крупных регуляторных сдвигов во входных данных нет.",
+        "levels": [
+          7,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 36,
+        "category": "emerging",
+        "rationale": "В предыдущем списке тренд не был оценен; сегодня появился сильный сигнал — газовая электростанция Pembina должна питать дата-центр в Alberta.",
+        "levels": [
+          1,
+          2,
+          5
         ],
         "is_new": false
       }
