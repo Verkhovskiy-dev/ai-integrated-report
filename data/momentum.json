@@ -3482,107 +3482,82 @@
   },
   {
     "date": "2026-07-03",
-    "generated_at": "2026-07-03T05:02:33.642Z",
+    "generated_at": "2026-07-03T09:39:48.183Z",
     "trends": [
       {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 68,
-        "category": "accelerating",
-        "rationale": "Вчера 74 → сегодня 68: поток работ по service agents, Atlassian tool-use, Auto-FL, EO-Agents и SimWorlds подтверждает высокий темп. Снижение связано с тем, что сегодняшние сигналы в основном исследовательские, без крупных коммерческих запусков.",
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 28,
+        "category": "emerging",
+        "rationale": "Истории по этому тренду во входе нет; оценка консервативная. Сигналы идут от спроса на полупроводники в комментарии Bloomberg и связки integrated circuit с AI leadership в War on the Rocks.",
         "levels": [
           4,
-          5,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 62,
-        "category": "accelerating",
-        "rationale": "Вчера 66 → сегодня 62: Janus, SOLiD, Mastermind, DRL-CLBA и cloud healing показывают устойчивый спрос на контроль, разрешения и проверку. Небольшое снижение — из-за отсутствия регуляторного или рыночного перелома.",
-        "levels": [
-          4,
-          6,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "classic-saas",
-        "name": "Классический SaaS под давлением AI",
-        "momentum": -43,
-        "category": "collapsing",
-        "rationale": "Вчера -41 → сегодня -43: работы по customer-service backend writes и tool-use agents on Atlassian workflows усиливают давление на SaaS как ручной workflow-интерфейс. Сигнал остаётся негативным для классической модели SaaS.",
-        "levels": [
-          4,
-          5
+          9,
+          2
         ],
         "is_new": false
       },
       {
         "id": "ai-cloud-rental",
         "name": "AI-облака и аренда вычислений",
-        "momentum": 42,
-        "category": "accelerating",
-        "rationale": "Вчера 52 → сегодня 42: Safe and Adaptive Cloud Healing подтверждает рост сложности cloud-based AI systems и важность восстановления. Но прямых новостей об аренде вычислений или облачных сделках сегодня нет.",
+        "momentum": 30,
+        "category": "emerging",
+        "rationale": "Предыдущая фиксация: 42 → сегодня 30, потому что прямых новостей об аренде вычислений или облаках нет. Сохраняется только косвенный инфраструктурный сигнал через полупроводники и AI leadership.",
         "levels": [
-          2,
           4,
-          5
+          5,
+          9
         ],
         "is_new": false
       },
       {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 39,
-        "category": "emerging",
-        "rationale": "Вчера 47 → сегодня 39: Hawk фиксирует NPU kernel development как industry bottleneck, связанный с редкими hardware-aware компетенциями. Импульс ниже, потому что нет новостей о найме, компенсациях или миграции талантов.",
+        "id": "classic-saas",
+        "name": "Классический SaaS под давлением AI",
+        "momentum": -34,
+        "category": "decelerating",
+        "rationale": "Предыдущая фиксация: -43 → сегодня -34, потому что AIOps для финансовых сервисов подтверждает AI-давление на корпоративные IT-операции, но прямого события вытеснения SaaS во входе нет. Отрицательный momentum сохраняется, но слабее.",
         "levels": [
-          3,
-          4,
-          5
+          5,
+          4
         ],
         "is_new": false
       },
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 43,
+        "momentum": 30,
+        "category": "emerging",
+        "rationale": "Предыдущая фиксация: 43 → сегодня 30, потому что новостей о новых правилах нет. Материал о scams using artificial intelligence поддерживает давление на институты доверия и будущую регуляторную повестку.",
+        "levels": [
+          8,
+          3,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 50,
         "category": "accelerating",
-        "rationale": "Вчера 50 → сегодня 43: Janus и SOLiD дают технические сигналы governance через permission management и oversight. Формальных регуляторных новостей во входных данных нет, поэтому momentum снижается.",
+        "rationale": "Предыдущая фиксация: 62 → сегодня 50, потому что сегодняшний сигнал касается AI-мошенничества в целом, а не конкретного инцидента с AI-агентами. Тема безопасности остаётся сильной, но подтверждение менее прямое.",
         "levels": [
-          6,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "synthetic-data",
-        "name": "Синтетические данные",
-        "momentum": 18,
-        "category": "emerging",
-        "rationale": "Сигнал возникает из SimWorlds, где dynamic 4D scenes from text описаны как editable content и physical simulation environments. Это ранний, но не массовый сигнал для synthetic environments.",
-        "levels": [
-          4,
-          5,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-in-government",
-        "name": "AI в госсекторе",
-        "momentum": 20,
-        "category": "emerging",
-        "rationale": "Сообщение DW.com о German AI drones на украинском фронте указывает на применение AI-технологий в военном контексте. Сигнал точечный, без данных о госзакупках или программе внедрения.",
-        "levels": [
-          2,
-          4,
+          8,
+          3,
           5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 22,
+        "category": "emerging",
+        "rationale": "Истории по этому тренду во входе нет; оценка умеренная. Сигнал формируют дискуссия о future AI leadership и сомнения в способности Европы получить AI dividend, хотя новостей о национальных моделях нет.",
+        "levels": [
+          9,
+          4,
+          2
         ],
         "is_new": false
       }
