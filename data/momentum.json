@@ -3482,46 +3482,57 @@
   },
   {
     "date": "2026-07-03",
-    "generated_at": "2026-07-03T13:54:13.455Z",
+    "generated_at": "2026-07-03T16:42:14.188Z",
     "trends": [
       {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 41,
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 50,
         "category": "accelerating",
-        "rationale": "Предыдущий срез 43 → сегодня 41: крупные раунды Quantum Systems и Kling AI поддерживают CapEx, но Bloomberg фиксирует тревогу рынков из-за снижения prices per unit of usage. Импульс остаётся сильным, но проверка окупаемости усилилась.",
+        "rationale": "Вчера 46 → сегодня 50: сигналы усилились через Claude Science, customer-service agents, tool-use agents и forward-deployed внедрение. Рост умеренный, потому что новости показывают расширение применения, но не единый платформенный перелом.",
         "levels": [
-          9,
+          3,
           5,
-          4,
-          2
+          6,
+          7
         ],
         "is_new": false
       },
       {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 30,
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 52,
+        "category": "accelerating",
+        "rationale": "Вчера 49 → сегодня 52: добавились материалы о governance ответственности, service-control problem и clinical/FHIR verifiers. Тренд остаётся ускоряющимся, так как агенты переходят к backend writes и протокольным действиям.",
+        "levels": [
+          6,
+          8,
+          3
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 38,
         "category": "emerging",
-        "rationale": "Предыдущий срез 34 → сегодня 30: прямых новостей о новых облачных мощностях нет, а снижение AI usage prices указывает на давление на экономику использования. Сигналы web data infrastructure and enterprise use поддерживают спрос, но слабее инфраструктурных новостей.",
+        "rationale": "Вчера 41 → сегодня 38: крупный раунд Kling AI и ASML-инфраструктура поддерживают CapEx, но Bloomberg фиксирует тревогу рынка по окупаемости и снижение цен за usage. Баланс сместился от ускорения к более осторожной оценке.",
         "levels": [
           9,
           4,
-          5,
-          6
+          5
         ],
         "is_new": false
       },
       {
         "id": "classic-saas",
         "name": "Классический SaaS под давлением AI",
-        "momentum": -32,
+        "momentum": -36,
         "category": "decelerating",
-        "rationale": "Предыдущий срез -26 → сегодня -32: RLVR for tool-use agents on Atlassian workflows and service agents with backend writes показывают давление на niche enterprise SaaS workflows. Forward-deployed engineers усиливают переход от коробочного ПО к AI-интеграции.",
+        "rationale": "Вчера -32 → сегодня -36: работа по Atlassian workflows прямо описывает несоответствие next-token prediction задачам действий внутри API. Агентное выполнение операций усиливает давление на интерфейсную модель SaaS.",
         "levels": [
           5,
           6,
-          3,
           4
         ],
         "is_new": false
@@ -3529,80 +3540,12 @@
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 43,
+        "momentum": 45,
         "category": "accelerating",
-        "rationale": "Предыдущий срез 36 → сегодня 43: UN panel warns about catastrophic risks, а governance-вопрос MIT SMR фокусируется на shutdown model causing harm. Рост значимый, но без конкретного нового закона.",
+        "rationale": "Вчера 43 → сегодня 45: сигналы идут от Argentina AI-run companies, watchdogs по nudification apps и европейских ограничений для игр. Рост небольшой, потому что часть новостей относится к смежным цифровым рынкам, а не только AI.",
         "levels": [
           8,
-          9,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 49,
-        "category": "accelerating",
-        "rationale": "Предыдущий срез 45 → сегодня 49: agent service-control, governance shutdown authority and warnings against treating agents as coworkers усиливают контур безопасности. Прямой киберинцидент отсутствует, поэтому рост умеренный.",
-        "levels": [
-          8,
-          6,
-          4,
-          3
-        ],
-        "is_new": false
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 35,
-        "category": "emerging",
-        "rationale": "Предыдущий срез 30 → сегодня 35: Kling AI получает $2,8 млрд при участии Alibaba and Tencent, а SK Hynix ADRs показывают корейский semiconductor-финансовый контур. Сигнал укрепляется через Китай и Корею.",
-        "levels": [
-          9,
-          4,
-          5,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 46,
-        "category": "accelerating",
-        "rationale": "В предыдущем срезе тренд не был включён; сегодня есть Claude Science, Auto-FL-Research, Agent4cs, tool-use agents and service agents. Набор сигналов показывает переход агентов в research, code and enterprise operations.",
-        "levels": [
-          4,
-          5,
-          6,
-          7
-        ],
-        "is_new": false
-      },
-      {
-        "id": "open-weight-models",
-        "name": "Open-weight модели",
-        "momentum": 18,
-        "category": "emerging",
-        "rationale": "В предыдущем срезе тренд не был включён; Wiola SLM and CreativityNeuro are arXiv signals around model architectures and weight steering. Сигнал умеренный, потому что нет факта крупного open-weight release или массового внедрения.",
-        "levels": [
-          4,
-          6,
-          7
-        ],
-        "is_new": false
-      },
-      {
-        "id": "synthetic-data",
-        "name": "Синтетические данные",
-        "momentum": 12,
-        "category": "emerging",
-        "rationale": "В предыдущем срезе тренд не был включён; World Feedback for Clinical Agents and RL with verifiable rewards point to verifier-graded rollouts rather than per-episode annotation. Сигнал ранний и методологический.",
-        "levels": [
-          6,
-          4,
+          3,
           5
         ],
         "is_new": false
@@ -3610,25 +3553,64 @@
       {
         "id": "ai-in-government",
         "name": "AI в госсекторе",
-        "momentum": 20,
+        "momentum": 28,
         "category": "emerging",
-        "rationale": "В предыдущем срезе тренд не был включён; UN panel warning and Pentagon–Anthropic tense emails are public-sector-adjacent signals. Нет факта нового государственного внедрения, поэтому momentum ограничен.",
+        "rationale": "Вчера 20 → сегодня 28: Israeli AI startup делает ставку на government-focused cybersecurity в Latin America, а также есть сигнал о Pentagon и Anthropic. Тренд усилился, но остаётся emerging из-за ограниченного числа прямых государственных внедрений.",
         "levels": [
+          5,
           8,
+          2
+        ],
+        "is_new": false
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 31,
+        "category": "emerging",
+        "rationale": "Вчера 35 → сегодня 31: прямых новостей о национальных моделях меньше, чем о региональных рынках и китайском финансировании Kling AI. Сигнал сохраняется через China и геополитический спрос, но ослаблен отсутствием явного sovereign AI запуска.",
+        "levels": [
           9,
-          5
+          5,
+          2
         ],
         "is_new": false
       },
       {
         "id": "ai-talent-market",
         "name": "Рынок AI-талантов",
-        "momentum": 34,
+        "momentum": 39,
         "category": "emerging",
-        "rationale": "В предыдущем срезе тренд не был включён; forward-deployed engineers, Bank of America upskilling at scale and UW–Madison College of Computing & AI усиливают кадровый контур. Сигнал сильный, но без данных о зарплатах или найме.",
+        "rationale": "Вчера 34 → сегодня 39: forward-deployed engineers, Bank of America upskilling и обсуждение AI atrophy показывают перестройку ролей и компетенций. Тренд приблизился к ускорению, но остаётся в emerging диапазоне.",
         "levels": [
           3,
-          7,
+          5,
+          7
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 24,
+        "category": "emerging",
+        "rationale": "Истории по этому тренду во входе нет; сегодня сигнал дают Claude Science, Claude Code и материалы о Claude, ChatGPT и Gemini как используемых моделях. Оценка консервативная, так как новости больше о продуктах и применении, чем о новых закрытых моделях.",
+        "levels": [
+          4,
+          5,
+          7
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 18,
+        "category": "emerging",
+        "rationale": "Истории по этому тренду во входе нет; сегодня сигнал связан с AI как operating layer для turbines, а не с питанием дата-центров. Поэтому momentum положительный, но умеренный.",
+        "levels": [
+          1,
+          4,
           5
         ],
         "is_new": false
