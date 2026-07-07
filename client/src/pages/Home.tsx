@@ -34,7 +34,6 @@ import CrossLevelConnections from "@/components/CrossLevelConnections";
 import TopCompanies from "@/components/TopCompanies";
 import ThemeFrequency from "@/components/ThemeFrequency";
 import NodalPositions from "@/components/NodalPositions";
-import Timeline from "@/components/Timeline";
 import ProgramsSection from "@/components/ProgramsSection";
 import WeekOverWeek from "@/components/WeekOverWeek";
 import Forecasts from "@/components/Forecasts";
@@ -168,9 +167,14 @@ export default function Home() {
           <SkolkovoRecommendations />
         </section>
 
-        {/* Timeline */}
-        <section id="timeline" className="py-6 sm:py-10">
-          <Timeline />
+        {/* ÐÑÑÐ¸Ð² Ð¾ÑÑÑÑÐ¾Ð² Ð¿Ð¾ Ð´Ð½ÑÐ¼ (ÑÑÐ°ÑÐ¸ÑÐµÑÐºÐ¸Ðµ ÑÑÑÐ°Ð½Ð¸ÑÑ) */}
+        <section id="archive" className="py-8 sm:py-12 text-center">
+          <a
+            href="/reports/"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-primary/30 bg-primary/10 text-primary text-sm font-mono hover:bg-primary/20 transition-colors"
+          >
+            {locale === "en" ? "Daily report archive →" : "Архив отчётов по дням →"}
+          </a>
         </section>
       </main>
 
