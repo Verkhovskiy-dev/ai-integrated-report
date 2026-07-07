@@ -86,6 +86,9 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
   const scrollTo = (id: string) => {
     onSectionChange(id);
     setMobileMenuOpen(false);
+    if (window.location.hash !== `#${id}`) {
+      history.pushState(null, "", `#${id}`);
+    }
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -93,11 +96,11 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
     <header className="sticky top-0 z-40 backdrop-blur-xl bg-background/80 border-b border-border/50">
       <div className="container flex items-center justify-between h-12 sm:h-14">
         {/* Logo / Title */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0 whitespace-nowrap">
           <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-primary/20 border border-primary/30 flex items-center justify-center">
             <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
           </div>
-          <div className="hidden sm:block">
+          <div className="hidden 2xl:block">
             <h1 className="text-sm font-semibold font-heading tracking-tight text-foreground">
               AI Strategic Intelligence
             </h1>
@@ -113,7 +116,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
               )}
             </div>
           </div>
-          <div className="sm:hidden">
+          <div className="2xl:hidden">
             <h1 className="text-xs font-semibold font-heading tracking-tight text-foreground">
               AI Intelligence
             </h1>
@@ -121,7 +124,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-0.5">
+        <nav className="hidden xl:flex items-center gap-0.5 flex-1 justify-end min-w-0 overflow-x-auto">
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
@@ -130,19 +133,19 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
                 className={`
-                  flex items-center gap-1 px-2 py-1.5 rounded-md text-[10px] font-medium transition-all duration-200
+                  flex items-center gap-1 px-1.5 py-1.5 rounded-md text-[10px] shrink-0 font-medium transition-all duration-200
                   ${isActive
                     ? "bg-primary/15 text-primary border border-primary/20"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                   }
                 `}
               >
-                <Icon className="w-3 h-3" />
+                <Icon className="w-3 h-3 hidden 2xl:block" />
                 <span>{navLabels[item.labelKey] || item.labelKey}</span>
               </button>
             );
           })}
-          <div className="ml-1 flex items-center gap-1.5">
+          <div className="ml-1 flex items-center gap-1.5 shrink-0">
             <ViewModeSwitcher />
             <LanguageSwitcher />
             <PdfExport />
@@ -151,7 +154,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
         </nav>
 
         {/* Mobile: Lang + PDF + QR + Menu */}
-        <div className="flex items-center gap-1.5 lg:hidden">
+        <div className="flex items-center gap-1.5 xl:hidden">
           <ViewModeSwitcher />
           <LanguageSwitcher />
           <PdfExport />
@@ -167,7 +170,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-border/30 bg-background/95 backdrop-blur-xl max-h-[70vh] overflow-y-auto">
+        <div className="xl:hidden border-t border-border/30 bg-background/95 backdrop-blur-xl max-h-[70vh] overflow-y-auto">
           <nav className="container py-3 grid grid-cols-3 gap-1.5">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon;

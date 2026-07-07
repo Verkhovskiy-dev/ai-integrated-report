@@ -50,6 +50,27 @@ export default function Home() {
   const { data } = useExecutiveData();
   const [businessModalOpen, setBusinessModalOpen] = useState(false);
 
+  // Нативная навигация: открытие по #hash и кнопки назад/вперёд
+  useEffect(() => {
+    const scrollWithRetry = (id: string, attempts = 12) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+      if (attempts > 0) setTimeout(() => scrollWithRetry(id, attempts - 1), 250);
+    };
+    const applyHash = () => {
+      const id = window.location.hash.replace("#", "");
+      if (!id) return;
+      setActiveSection(id);
+      scrollWithRetry(id);
+    };
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, []);
+
   useEffect(() => {
     document.title = locale === 'en'
       ? 'AI Integrated Report \u2014 Strategic Dashboard'
