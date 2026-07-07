@@ -140,7 +140,6 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                   }
                 `}
               >
-                <Icon className="w-3 h-3 hidden 2xl:block" />
                 <span>{navLabels[item.labelKey] || item.labelKey}</span>
               </button>
             );
