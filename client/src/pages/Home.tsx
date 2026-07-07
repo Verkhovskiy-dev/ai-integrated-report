@@ -40,7 +40,6 @@ import WeekOverWeek from "@/components/WeekOverWeek";
 import Forecasts from "@/components/Forecasts";
 import SkolkovoRecommendations from "@/components/SkolkovoRecommendations";
 import PracticalTakeaways from "@/components/PracticalTakeaways";
-import ApplyToBusinessModal, { ApplyToBusinessButton } from "@/components/ApplyToBusinessModal";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -48,7 +47,6 @@ export default function Home() {
   const { locale } = useTranslation();
   const { isExecutive } = useViewMode();
   const { data } = useExecutiveData();
-  const [businessModalOpen, setBusinessModalOpen] = useState(false);
 
   // Нативная навигация: открытие по #hash и кнопки назад/вперёд
   useEffect(() => {
@@ -178,16 +176,6 @@ export default function Home() {
 
       <Footer />
 
-      {/* Floating "Apply to My Business" button — shown when executive data is available */}
-      {hasExecutiveData && (
-        <ApplyToBusinessButton onClick={() => setBusinessModalOpen(true)} />
-      )}
-
-      {/* Apply to Business Modal */}
-      <ApplyToBusinessModal
-        isOpen={businessModalOpen}
-        onClose={() => setBusinessModalOpen(false)}
-      />
     </div>
   );
 }
