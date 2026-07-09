@@ -791,6 +791,42 @@ export async function generatePdfReport(data: DashboardData, locale: string): Pr
   b.drawTable(progHeaders, progRows, [120, 60], { headerColor: C.green });
 
   // ═══════════════════════════════════════════════════════════
+  // AI PRO — flagship program highlight (final block)
+  // ═══════════════════════════════════════════════════════════
+  b.ensureSpace(46);
+  b.y += 4;
+  const AIPRO_URL = "https://www.skolkovo.ru/programmes/tehnologii-osnova-ii-transformacii-biznesa/?utm_source=pdf&utm_medium=report&utm_content=expert_dashboardNV";
+  const aiproBoxH = 34;
+  b.doc.setFillColor(45, 35, 12);
+  b.doc.roundedRect(MARGIN_L, b.y, PAGE_W - MARGIN_L * 2, aiproBoxH, 2, 2, "F");
+  b.doc.setDrawColor(...C.amber);
+  b.doc.roundedRect(MARGIN_L, b.y, PAGE_W - MARGIN_L * 2, aiproBoxH, 2, 2, "S");
+  b.setFont("bold", 11, C.amber);
+  b.doc.text("AI PRO", MARGIN_L + 6, b.y + 9);
+  b.setFont("normal", 7, C.white);
+  b.doc.text(
+    isEn
+      ? "Flagship program for CAIO & C-level  ·  Start — October 14, 2026"
+      : "Флагманская программа для CAIO и C-level  ·  Старт — 14 октября 2026",
+    MARGIN_L + 32,
+    b.y + 9
+  );
+  const aiproDesc = isEn
+    ? "This report is a CAIO's daily work. AI PRO teaches building an AI transformation system across all 9 DLS levels — from technology to capital."
+    : "Этот отчёт — ежедневная работа CAIO. AI PRO учит выстраивать систему ИИ-трансформации на всех 9 уровнях СРТ — от технологий до капитала.";
+  b.setFont("normal", 7, C.white);
+  const aiproLines = b.doc.splitTextToSize(aiproDesc, PAGE_W - MARGIN_L * 2 - 12);
+  b.doc.text(aiproLines, MARGIN_L + 6, b.y + 16);
+  b.setFont("normal", 7, C.primary);
+  (b.doc as unknown as { textWithLink: (t: string, x: number, y: number, o: { url: string }) => void }).textWithLink(
+    isEn ? "Learn more: skolkovo.ru → AI PRO" : "Подробнее: skolkovo.ru → AI PRO",
+    MARGIN_L + 6,
+    b.y + 28,
+    { url: AIPRO_URL }
+  );
+  b.y += aiproBoxH + 6;
+
+  // ═══════════════════════════════════════════════════════════
   // Add headers and footers to all pages
   // ═══════════════════════════════════════════════════════════
   const headerTitle = "AI Strategic Intelligence Report";
