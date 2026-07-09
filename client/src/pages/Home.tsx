@@ -34,12 +34,11 @@ import CrossLevelConnections from "@/components/CrossLevelConnections";
 import TopCompanies from "@/components/TopCompanies";
 import ThemeFrequency from "@/components/ThemeFrequency";
 import NodalPositions from "@/components/NodalPositions";
-import ProgramsSection from "@/components/ProgramsSection";
 import WeekOverWeek from "@/components/WeekOverWeek";
 import Forecasts from "@/components/Forecasts";
-import SkolkovoRecommendations from "@/components/SkolkovoRecommendations";
 import PracticalTakeaways from "@/components/PracticalTakeaways";
 import Footer from "@/components/Footer";
+import ProgramsTeaser from "@/components/ProgramsTeaser";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<string>("news");
@@ -112,6 +111,11 @@ export default function Home() {
           <StrategicInsights />
         </section>
 
+        {/* SKOLKOVO programs teaser - insight-linked, full catalog at /programs */}
+        <section id="programs" className="py-6 sm:py-10">
+          <ProgramsTeaser />
+        </section>
+
         {/* Practical Takeaways — shown when executive data is loaded */}
         {hasExecutiveData && (
           <PracticalTakeaways />
@@ -155,16 +159,6 @@ export default function Home() {
         {/* Nodal Positions + Education Recommendations */}
         <section id="positions" className="py-6 sm:py-10">
           <NodalPositions />
-        </section>
-
-        {/* Programs — SKOLKOVO educational programs */}
-        <section id="programs" className="py-6 sm:py-10">
-          <ProgramsSection />
-        </section>
-
-        {/* SKOLKOVO Recommendations */}
-        <section id="recommendations" className="py-6 sm:py-10">
-          <SkolkovoRecommendations />
         </section>
 
         {/* ÐÑÑÐ¸Ð² Ð¾ÑÑÑÑÐ¾Ð² Ð¿Ð¾ Ð´Ð½ÑÐ¼ (ÑÑÐ°ÑÐ¸ÑÐµÑÐºÐ¸Ðµ ÑÑÑÐ°Ð½Ð¸ÑÑ) */}

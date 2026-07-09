@@ -7,7 +7,7 @@
 import { useState } from "react";
 import {
   Activity, Radio, TrendingUp, Network, LayoutGrid,
-  Lightbulb, Target, Menu, X, GraduationCap, BarChart3, Sparkles, BookOpen, Newspaper
+  Lightbulb, Target, Menu, X, GraduationCap, BarChart3, Sparkles, Newspaper
 } from "lucide-react";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
@@ -34,7 +34,6 @@ const NAV_ITEMS: NavItem[] = [
   { id: "forecasts", labelKey: "forecasts", icon: Sparkles },
   { id: "positions", labelKey: "nodes", icon: Target },
   { id: "programs", labelKey: "programs", icon: GraduationCap },
-  { id: "recommendations", labelKey: "recommendations", icon: BookOpen },
 ];
 
 const NAV_LABELS_RU: Record<string, string> = {
