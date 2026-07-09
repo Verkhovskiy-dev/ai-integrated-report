@@ -126,6 +126,19 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
           {NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
+            if (item.id === "programs") {
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => scrollTo(item.id)}
+                  data-umami-event="nav-programs-click"
+                  className="flex items-center gap-1 px-2 py-1.5 rounded-md text-[10px] font-semibold transition-all duration-200 shrink-0 border border-amber-400/40 bg-amber-400/10 text-amber-300 hover:bg-amber-400/20 hover:border-amber-400/60"
+                >
+                  <GraduationCap className="w-3 h-3" />
+                  <span>{navLabels[item.labelKey] || item.labelKey}</span>
+                </button>
+              );
+            }
             return (
               <button
                 key={item.id}
@@ -176,9 +189,12 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
+                  data-umami-event={item.id === "programs" ? "nav-programs-click" : undefined}
                   className={`
                     flex flex-col items-center gap-1 px-2 py-2.5 rounded-lg text-[10px] font-medium transition-all duration-200
-                    ${isActive
+                    ${item.id === "programs"
+                      ? "border border-amber-400/40 bg-amber-400/10 text-amber-300"
+                      : isActive
                       ? "bg-primary/15 text-primary border border-primary/20"
                       : "text-muted-foreground hover:text-foreground bg-muted/20 border border-transparent"
                     }
