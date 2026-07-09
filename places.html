@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Карта мест СРТ — AIwatcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+<style>
+/* ═══════════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0a0e17;
+  color: #c8cdd5;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════════════════════════ */
+.page-wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════════════════ */
+.header {
+  padding: 28px 0 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-brand a {
+  color: #00d4aa;
+  text-decoration: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.header-brand a:hover { opacity: 1; }
+.header-brand .sep { color: rgba(255,255,255,0.15); }
+.header-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f0f2f5;
+  letter-spacing: -0.02em;
+}
+.header-subtitle {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 4px;
+}
+.header-meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.meta-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+.meta-chip .val {
+  color: #f0f2f5;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════
+   STATS BAR
+   ═══════════════════════════════════════════════════════ */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.stat-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 14px 16px;
+  text-align: center;
+}
+.stat-card .num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #f0f2f5;
+}
+.stat-card .lbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   FILTERS
+   ═══════════════════════════════════════════════════════ */
+.filters-section {
+  padding: 20px 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.filter-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+  margin-right: 4px;
+}
+.filter-btn {
+  padding: 5px 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  background: transparent;
+  color: #9ca3af;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.filter-btn:hover {
+  border-color: rgba(0,212,170,0.3);
+  color: #c8cdd5;
+}
+.filter-btn.active {
+  background: rgba(0,212,170,0.12);
+  border-color: rgba(0,212,170,0.4);
+  color: #00d4aa;
+}
+.filter-reset {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  color: #6b7280;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.filter-reset:hover { color: #f0f2f5; background: rgba(255,255,255,0.08); }
+
+/* ═══════════════════════════════════════════════════════
+   TABS
+   ═══════════════════════════════════════════════════════ */
+.tabs-nav {
+  display: flex;
+  gap: 4px;
+  padding: 8px 0 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.tab-btn {
+  padding: 10px 20px;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.tab-btn:hover { color: #c8cdd5; }
+.tab-btn.active {
+  color: #00d4aa;
+  border-bottom-color: #00d4aa;
+}
+.tab-panel { display: none; padding: 24px 0; }
+.tab-panel.active { display: block; }
+
+/* ═══════════════════════════════════════════════════════
+   BUBBLE CHART
+   ═══════════════════════════════════════════════════════ */
+#bubble-chart {
+  width: 100%;
+  min-height: 560px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════
+   MATRIX (CSS GRID)
+   ═══════════════════════════════════════════════════════ */
+.matrix-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 12px;
+}
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(200px, 1fr));
+  gap: 10px;
+  min-width: 1800px;
+}
+.matrix-col-header {
+  text-align: center;
+  padding: 10px 6px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px 8px 0 0;
+  border-bottom: 2px solid;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #f0f2f5;
+}
+.matrix-col-header .level-num {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+.matrix-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.place-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  padding: 14px;
+  transition: all 0.2s;
+  cursor: default;
+}
+.place-card:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+  transform: translateY(-1px);
+}
+.place-card .card-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #f0f2f5;
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+.place-card .card-desc {
+  font-size: 0.73rem;
+  color: #9ca3af;
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+.card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.badge-cap-large  { background: rgba(0,212,170,0.12); color: #00d4aa; }
+.badge-cap-medium { background: rgba(59,130,246,0.12); color: #60a5fa; }
+.badge-cap-small  { background: rgba(156,163,175,0.12); color: #9ca3af; }
+.badge-win-open    { background: rgba(52,211,153,0.12); color: #34d399; }
+.badge-win-narrowing { background: rgba(251,191,36,0.12); color: #fbbf24; }
+.badge-win-closing { background: rgba(239,68,68,0.12); color: #ef4444; }
+.badge-conf-high   { background: rgba(0,212,170,0.08); color: #00d4aa; }
+.badge-conf-medium { background: rgba(251,191,36,0.08); color: #fbbf24; }
+.badge-conf-low    { background: rgba(239,68,68,0.08); color: #ef4444; }
+.card-players {
+  font-size: 0.7rem;
+  color: #6b7280;
+  margin-top: 6px;
+}
+.card-players span { color: #9ca3af; }
+.card-conditions {
+  margin-top: 6px;
+  font-size: 0.68rem;
+  color: #6b7280;
+  line-height: 1.4;
+}
+.card-evidence {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.7rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TABLE
+   ═══════════════════════════════════════════════════════ */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  min-width: 1200px;
+}
+.data-table thead th {
+  background: rgba(255,255,255,0.04);
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #9ca3af;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.data-table thead th:hover { color: #f0f2f5; }
+.data-table thead th .sort-arrow { margin-left: 4px; font-size: 0.6rem; }
+.data-table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: background 0.15s;
+}
+.data-table tbody tr:hover { background: rgba(255,255,255,0.03); }
+.data-table tbody td {
+  padding: 10px 14px;
+  vertical-align: top;
+  color: #c8cdd5;
+}
+.data-table .col-level {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  width: 40px;
+}
+.data-table .col-name { font-weight: 500; color: #f0f2f5; min-width: 200px; }
+.data-table .col-desc { color: #9ca3af; min-width: 220px; max-width: 320px; }
+.data-table .col-evidence { color: #9ca3af; font-style: italic; min-width: 180px; max-width: 280px; }
+.data-table .col-players { min-width: 160px; }
+.data-table .col-conditions { min-width: 180px; max-width: 260px; font-size: 0.72rem; }
+
+/* ═══════════════════════════════════════════════════════
+   LEVEL COLORS
+   ═══════════════════════════════════════════════════════ */
+.level-1  { --lc: #ef4444; }
+.level-2  { --lc: #f97316; }
+.level-3  { --lc: #eab308; }
+.level-4  { --lc: #84cc16; }
+.level-5  { --lc: #22c55e; }
+.level-6  { --lc: #06b6d4; }
+.level-7  { --lc: #3b82f6; }
+.level-8  { --lc: #8b5cf6; }
+.level-9  { --lc: #ec4899; }
+.level-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--lc);
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════ */
+.footer {
+  padding: 24px 0;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+  font-size: 0.72rem;
+  color: #4b5563;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SIGNAL OF MONTH
+   ═══════════════════════════════════════════════════════ */
+.signal-banner {
+  margin: 20px 0 8px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(0,212,170,0.06), rgba(59,130,246,0.04));
+  border: 1px solid rgba(0,212,170,0.15);
+  border-radius: 10px;
+}
+.signal-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #00d4aa;
+  margin-bottom: 4px;
+}
+.signal-text {
+  font-size: 0.88rem;
+  color: #e5e7eb;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COUNTER BADGE
+   ═══════════════════════════════════════════════════════ */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: rgba(0,212,170,0.15);
+  color: #00d4aa;
+  font-size: 0.68rem;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+  margin-left: 6px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  html { font-size: 14px; }
+  .page-wrapper { padding: 0 14px; }
+  .header-title { font-size: 1.4rem; }
+  .stats-bar { grid-template-columns: repeat(3, 1fr); }
+  .filters-section { gap: 8px; }
+  .tabs-nav { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tab-btn { padding: 8px 14px; font-size: 0.8rem; white-space: nowrap; }
+  #bubble-chart { min-height: 400px; }
+}
+@media (max-width: 480px) {
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .header-meta { gap: 8px; }
+  .meta-chip { padding: 4px 10px; font-size: 0.72rem; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   DETAIL MODAL
+   ═══════════════════════════════════════════════════════ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: #12161f;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 28px;
+}
+.modal-close {
+  float: right;
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+.modal-close:hover { color: #f0f2f5; }
+.modal-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f0f2f5;
+  margin-bottom: 4px;
+  padding-right: 40px;
+}
+.modal-level {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+.modal-desc {
+  font-size: 0.88rem;
+  color: #c8cdd5;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.modal-section {
+  margin-bottom: 14px;
+}
+.modal-section-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+.modal-section-body {
+  font-size: 0.82rem;
+  color: #c8cdd5;
+  line-height: 1.5;
+}
+.modal-section-body ul {
+  list-style: none;
+  padding: 0;
+}
+.modal-section-body li {
+  padding: 3px 0;
+  padding-left: 16px;
+  position: relative;
+}
+.modal-section-body li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #00d4aa;
+  font-size: 0.75rem;
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="header">
+    <div class="header-top">
+      <div>
+        <div class="header-brand">
+          <a href="https://verkhovskiy.ai">AI Strategic Intelligence</a>
+          <span class="sep">/</span>
+          <a href="#">Карта мест</a>
+        </div>
+        <h1 class="header-title">Карта формирующихся мест в СРТ</h1>
+        <p class="header-subtitle">56 новых ролей, ниш и звеньев в цепочке создания стоимости AI-экономики</p>
+      </div>
+      <div class="header-meta" id="header-meta"></div>
+    </div>
+  </header>
+
+  <!-- ═══ SIGNAL OF MONTH ═══ -->
+  <div class="signal-banner" id="signal-banner"></div>
+
+  <!-- ═══ STATS BAR ═══ -->
+  <div class="stats-bar" id="stats-bar"></div>
+
+  <!-- ═══ FILTERS ═══ -->
+  <div class="filters-section" id="filters-section"></div>
+
+  <!-- ═══ TABS ═══ -->
+  <nav class="tabs-nav">
+    <button class="tab-btn active" data-tab="bubble">Bubble Chart</button>
+    <button class="tab-btn" data-tab="matrix">Матрица карточек</button>
+    <button class="tab-btn" data-tab="table">Таблица</button>
+  </nav>
+
+  <!-- ═══ TAB 1: BUBBLE CHART ═══ -->
+  <div class="tab-panel active" id="panel-bubble">
+    <div id="bubble-chart"></div>
+  </div>
+
+  <!-- ═══ TAB 2: MATRIX ═══ -->
+  <div class="tab-panel" id="panel-matrix">
+    <div class="matrix-wrapper">
+      <div class="matrix-grid" id="matrix-grid"></div>
+    </div>
+  </div>
+
+  <!-- ═══ TAB 3: TABLE ═══ -->
+  <div class="tab-panel" id="panel-table">
+    <div class="table-wrapper">
+      <table class="data-table" id="data-table">
+        <thead id="table-head"></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    AIwatcher SRT Places Map v1.0 &middot; Данные за <span id="footer-period"></span> &middot; Сгенерировано <span id="footer-date"></span>
+  </footer>
+</div>
+
+<!-- ═══ DETAIL MODAL ═══ -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box" id="modal-box"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// DATA (inline from places_data.json)
+// ═══════════════════════════════════════════════════════
+const PLACES_DATA = {"meta": {"generated_at": "2026-07-01T06:52:07Z", "version": "1.0.0", "period": {"month": 6, "year": 2026, "label": "Июнь 2026", "start_date": "2026-06-01", "end_date": "2026-06-30", "total_events": 3459}, "total_places": 56, "places_by_level": {"1": 6, "2": 6, "3": 7, "4": 7, "5": 6, "6": 7, "7": 5, "8": 6, "9": 6}, "places_by_capacity": {"small": 4, "medium": 22, "large": 30}, "places_by_window": {"open": 42, "narrowing": 14, "closing": 0}, "places_by_confidence": {"high": 48, "medium": 8, "low": 0}, "turbulence_index": 12.5, "signal_of_month": "AI-driven automation reshapes global labor markets, increasing demand for specialized skills and exacerbating inequalities.", "pipeline_version": "1.0.0", "source": "1ni5CVTBZhzGPSRSDx41oR4dicET5bQeoZd1vlffycYc"}, "places": [{"id": "srt1-ai-energy-integrator", "srt_level": 1, "srt_level_name": "Природные ресурсы", "name": "Интегратор энергетических решений для ИИ-ЦОД", "description": "Роль, объединяющая проектирование, строительство и эксплуатацию энергетической инфраструктуры (включая возобновляемые источники и накопители) специально для высоконагруженных ИИ-дата-центров.", "capacity": {"category": "medium", "range_label": "Десятки миллиардов долларов", "evidence_usd": 50000000000, "active_players_count": 5, "confidence": "high", "reasoning": "Растущий спрос на ИИ-ЦОДы и их энергопотребление создают огромный рынок для специализированных энергетических решений. Несколько крупных игроков уже активно работают в этой сфере, а также появляются новые стартапы. Объем инвестиций в энергетическую инфраструктуру для ЦОД исчисляется миллиардами."}, "window": {"category": "open", "label": "Активное формирование рынка", "description": "Рынок находится на стадии активного формирования и роста. Спрос на ИИ-ЦОДы только увеличивается, и потребность в специализированных энергетических решениях будет расти в ближайшие 5-10 лет."}, "entry_conditions": ["Глубокие знания в энергетике (возобновляемые источники, хранение энергии, распределительные сети)", "Опыт в проектировании и строительстве крупномасштабных инфраструктурных проектов", "Понимание специфики ИИ-ЦОД (высокая плотность мощности, требования к охлаждению)", "Наличие партнерств с поставщиками оборудования и финансовыми институтами"], "key_players": ["Schneider Electric", "Siemens Energy", "Black & Veatch", "Fluor Corporation", "NextEra Energy"], "audience_lens": ["investor"], "evidence": "Отчеты аналитических агентств (Gartner, IDC) о росте рынка ИИ-ЦОД и инвестициях в энергетическую инфраструктуру. Публикации о проектах строительства крупных ИИ-ЦОД и их энергообеспечении.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt1-geopolitical-broker", "srt_level": 1, "srt_level_name": "Природные ресурсы", "name": "Геополитический брокер/консультант по размещению ИИ-инфраструктуры", "description": "Специалист или компания, которая консультирует по стратегическому размещению ИИ-инфраструктуры (ЦОД, производств чипов) с учетом геополитических рисков, доступности ресурсов (энергия, вода, земля), регуляторной среды и налоговых льгот.", "capacity": {"category": "small", "range_label": "Сотни миллионов долларов", "evidence_usd": 500000000, "active_players_count": 10, "confidence": "medium", "reasoning": "Рынок консалтинга по стратегическому размещению инфраструктуры существует давно, но специализация на ИИ-инфраструктуре является новой нишей. Объем рынка будет расти по мере увеличения инвестиций в ИИ, но количество игроков будет ограничено из-за высокой специализации. Доходы будут формироваться за счет консалтинговых услуг, а не прямых инвестиций."}, "window": {"category": "narrowing", "label": "Формирование ниши", "description": "Ниша активно формируется, но конкуренция будет расти. Первые игроки, которые займут эту нишу, получат значительное преимущество. Окно возможностей будет сужаться по мере насыщения рынка специализированными консультантами."}, "entry_conditions": ["Глубокие знания в геополитике и международном праве", "Понимание глобальных цепочек поставок и логистики", "Экспертиза в области энергетики, водоснабжения и земельных ресурсов", "Знание регуляторных особенностей и налогового законодательства различных стран", "Сеть контактов в правительствах и крупных корпорациях"], "key_players": ["McKinsey & Company (специализированные отделы)", "Boston Consulting Group (специализированные отделы)", "Eurasia Group", "Control Risks", "Несколько бутиковых консалтинговых фирм"], "audience_lens": ["investor"], "evidence": "Рост геополитической напряженности и усложнение глобальных цепочек поставок. Публикации о проблемах с размещением крупных технологических объектов из-за ресурсных и политических ограничений. Спрос на стратегический консалтинг в области ИИ.", "confidence": "medium", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt1-sustainable-materials", "srt_level": 1, "srt_level_name": "Природные ресурсы", "name": "Разработчик/поставщик 'зеленых' материалов для ИИ-оборудования", "description": "Компании, специализирующиеся на создании и поставке энергоэффективных, экологически чистых и устойчивых материалов для производства ИИ-чипов, памяти, систем охлаждения и корпусов серверов. Это включает переработанные материалы, биоразлагаемые компоненты и материалы с низким углеродным следом.", "capacity": {"category": "medium", "range_label": "100M-1B USD", "evidence_usd": 500000000, "active_players_count": 15, "confidence": "medium", "reasoning": "Растущий спрос на устойчивые решения в ИТ-индустрии, но пока нишевый рынок с ограниченным количеством крупных игроков. Потенциал роста значителен, но текущие объемы еще не достигли массового масштаба."}, "window": {"category": "open", "label": "Открыто", "description": "Рынок находится на ранней стадии формирования, с высоким потенциалом для новых участников и инноваций. Интерес к устойчивости растет, но стандарты и технологии еще развиваются."}, "entry_conditions": ["Глубокие знания в материаловедении и химии", "Опыт в разработке устойчивых производственных процессов", "Сертификация продукции по экологическим стандартам", "Партнерства с производителями электроники и ИИ-оборудования"], "key_players": ["BASF", "DuPont", "Covestro", "Novamont", "NatureWorks"], "audience_lens": ["investor"], "evidence": "Отчеты о росте рынка устойчивых материалов, инвестиции в 'зеленые' технологии, публикации о снижении углеродного следа в производстве электроники.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt1-rare-earth-mining", "srt_level": 1, "srt_level_name": "Природные ресурсы", "name": "Добыча и переработка редкоземельных металлов для ИИ-компонентов", "description": "Компании, занимающиеся разведкой, добычей и первичной переработкой редкоземельных элементов (РЗЭ), критически важных для производства высокопроизводительных ИИ-чипов, магнитов для систем охлаждения и других специализированных компонентов.", "capacity": {"category": "large", "range_label": "1B-10B USD", "evidence_usd": 3000000000, "active_players_count": 10, "confidence": "high", "reasoning": "Рынок РЗЭ является глобальным и стратегически важным, с высокой капитализацией и значительными объемами производства. Спрос на них стабильно растет, особенно в высокотехнологичных отраслях."}, "window": {"category": "narrowing", "label": "Сужается", "description": "Рынок контролируется ограниченным числом крупных игроков и стран. Вход затруднен из-за высоких капитальных затрат, сложных технологий и экологических требований. Новые месторождения редки, а переработка требует специализированных знаний."}, "entry_conditions": ["Значительные капитальные инвестиции", "Доступ к месторождениям РЗЭ", "Передовые технологии добычи и переработки", "Соблюдение строгих экологических и регуляторных норм", "Геополитическая стабильность и поддержка"], "key_players": ["China Northern Rare Earth Group", "MP Materials", "Lynas Rare Earths", "Iluka Resources", "Greenland Minerals"], "audience_lens": ["investor"], "evidence": "Отчеты о мировом рынке редкоземельных металлов, данные о производстве и ценах на РЗЭ, геополитические анализы цепочек поставок критических материалов.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt1-deep-sea-mining", "srt_level": 1, "srt_level_name": "Природные ресурсы", "name": "Глубоководная добыча полезных ископаемых", "description": "Развитие технологий и рост спроса на редкие металлы для электроники и возобновляемой энергетики стимулируют интерес к добыче полезных ископаемых со дна океана. Это включает марганцевые конкреции, кобальтовые корки и сульфиды.", "capacity": {"category": "large", "range_label": "Триллионы долларов", "evidence_usd": 3000000000000, "active_players_count": 50, "confidence": "high", "reasoning": "Потенциальные запасы оцениваются в триллионы, но текущие инвестиции и активные проекты пока ограничены из-за технологических и регуляторных барьеров. Однако, к 2026 году ожидается значительный рост интереса и инвестиций."}, "window": {"category": "narrowing", "label": "Окно сужается", "description": "Технологии развиваются быстро, но регуляторные рамки и экологические ограничения могут замедлить или остановить проекты. Ранние игроки, которые смогут получить лицензии и разработать устойчивые методы, получат значительное преимущество."}, "entry_conditions": ["Доступ к передовым робототехническим и буровым технологиям", "Значительные капиталовложения", "Разрешения от международных и национальных регуляторов", "Экологическая экспертиза и стратегии минимизации воздействия"], "key_players": ["The Metals Company (TMC)", "Lockheed Martin (через дочерние компании)", "China Minmetals Corporation", "Японское агентство по морским наукам и технологиям (JAMSTEC)"], "audience_lens": ["investor"], "evidence": "Отчеты ООН по морскому праву, публикации о технологиях глубоководной добычи, инвестиционные анализы компаний, специализирующихся на морских ресурсах. Рост цен на редкоземельные металлы и кобальт.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt1-sustainable-aquaculture", "srt_level": 1, "srt_level_name": "Природные ресурсы", "name": "Устойчивая аквакультура и морское фермерство", "description": "В ответ на истощение диких рыбных запасов и растущий спрос на белок, устойчивая аквакультура (включая морское фермерство водорослей, моллюсков и рыбы в замкнутых системах) становится ключевым источником продовольствия. Акцент на минимизацию экологического следа и использование инновационных технологий.", "capacity": {"category": "medium", "range_label": "Сотни миллиардов долларов", "evidence_usd": 250000000000, "active_players_count": 500, "confidence": "high", "reasoning": "Мировой рынок аквакультуры уже составляет сотни миллиардов долларов и продолжает расти. Устойчивые методы, хотя и требуют больших начальных инвестиций, обеспечивают долгосрочную прибыльность и соответствие регуляторным требованиям."}, "window": {"category": "open", "label": "Окно открыто", "description": "Рынок активно растет, и спрос на устойчивые продукты питания только увеличивается. Есть много возможностей для инноваций в технологиях кормления, очистки воды и генетики видов. Однако, конкуренция усиливается."}, "entry_conditions": ["Доступ к чистой воде и подходящим морским участкам", "Знания в области биологии и ветеринарии водных организмов", "Инвестиции в системы замкнутого водоснабжения (RAS) или морские фермы", "Сертификация по устойчивым стандартам (например, ASC, BAP)"], "key_players": ["Mowi ASA", "Cermaq Group AS", "Nutreco (через Skretting)", "AquaBounty Technologies", "Небольшие инновационные стартапы в области вертикальных ферм и водорослей"], "audience_lens": ["investor"], "evidence": "Отчеты FAO о состоянии мирового рыболовства и аквакультуры, аналитические отчеты о рынке устойчивых продуктов питания, инвестиции в стартапы аквакультуры, рост потребительского спроса на экологически чистые продукты.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt2-regional-hubs", "srt_level": 2, "srt_level_name": "Пространственная организация", "name": "Региональные хабы ИИ-инфраструктуры", "description": "Формируются новые географические центры, специализирующиеся на размещении крупномасштабных ИИ-вычислительных мощностей (дата-центров), производстве ключевых компонентов (чипы, память) и развитии сопутствующих технологий. Примеры: Франция, Азиатский мегарегион.", "capacity": {"category": "large", "range_label": "Десятки миллиардов долларов инвестиций, тысячи специалистов", "evidence_usd": 50000000000, "active_players_count": 5000, "confidence": "high", "reasoning": "Масштабные государственные и частные инвестиции в создание инфраструктуры, требующие значительных ресурсов и большого количества высококвалифицированных специалистов."}, "window": {"category": "open", "label": "Активное формирование", "description": "Процесс активного формирования и развития этих хабов уже начался и будет продолжаться в течение следующих нескольких лет."}, "entry_conditions": ["Наличие значительных государственных инвестиций и поддержки", "Доступ к квалифицированным кадрам и образовательным программам", "Развитая энергетическая инфраструктура", "Геополитическая стабильность и благоприятный инвестиционный климат"], "key_players": ["Правительства стран (Франция, Южная Корея, Сингапур)", "Крупные технологические компании (Google, Microsoft, Amazon)", "Производители чипов (TSMC, Samsung, Intel)", "Инвестиционные фонды"], "audience_lens": ["investor"], "evidence": "Национальные стратегии развития ИИ, анонсы строительства крупных дата-центров, инвестиции в производство полупроводников.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt2-specialized-centers", "srt_level": 2, "srt_level_name": "Пространственная организация", "name": "Специализированные образовательные и исследовательские центры по AI-инфраструктуре", "description": "Учебные заведения и R&D центры, сфокусированные на подготовке инженеров и разработке решений для проектирования, строительства и эксплуатации ИИ-инфраструктуры: дата-центров, систем охлаждения, энергоснабжения и сетевых решений.", "capacity": {"category": "medium", "range_label": "Сотни миллионов долларов инвестиций, сотни-тысячи студентов и исследователей", "evidence_usd": 500000000, "active_players_count": 1000, "confidence": "medium", "reasoning": "Инвестиции в образование и исследования значительны, но уступают прямым вложениям в физическую инфраструктуру. Количество специалистов растет, но пока ограничено."}, "window": {"category": "open", "label": "Активное развитие", "description": "Создание и расширение таких центров является ответом на растущую потребность в специалистах и технологиях для ИИ-инфраструктуры."}, "entry_conditions": ["Поддержка со стороны государства и промышленности", "Наличие ведущих университетов и исследовательских институтов", "Привлечение высококвалифицированных преподавателей и ученых", "Доступ к современному оборудованию и вычислительным ресурсам"], "key_players": ["Ведущие университеты (MIT, Stanford, Tsinghua)", "Государственные исследовательские фонды", "Технологические компании (для R&D партнерств)", "Образовательные стартапы"], "audience_lens": ["investor"], "evidence": "Открытие новых факультетов/программ по ИИ-инфраструктуре, создание совместных R&D лабораторий с промышленностью, публикации научных работ в этой области.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt2-integrated", "srt_level": 2, "srt_level_name": "Пространственная организация", "name": "Провайдеры интегрированных энергетических и вычислительных решений для ИИ", "description": "Компании, предлагающие комплексные решения для дата-центров, включающие не только вычислительные мощности, но и оптимизированные системы энергоснабжения (включая возобновляемые источники), охлаждения.", "capacity": {"category": "large", "range_label": "Высокая", "evidence_usd": 0, "active_players_count": 0, "confidence": "high", "reasoning": "Интеграция энергетических и вычислительных решений требует значительных инвестиций и экспертизы, что указывает на высокую капиталоемкость и потенциал для крупномасштабных проектов."}, "window": {"category": "open", "label": "Открытое", "description": "Спрос на энергоэффективные и устойчивые решения для ИИ-инфраструктуры постоянно растет, что открывает широкие возможности для новых игроков и инноваций."}, "entry_conditions": ["Глубокая экспертиза в области энергетики и IT-инфраструктуры", "Способность к интеграции сложных систем", "Доступ к капиталу для R&D и развертывания"], "key_players": ["Крупные IT-компании", "Энергетические гиганты", "Специализированные стартапы"], "audience_lens": ["investor"], "evidence": "Растущая потребность в устойчивых и масштабируемых решениях для дата-центров ИИ.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt2-sovereign", "srt_level": 2, "srt_level_name": "Пространственная организация", "name": "Консультанты и интеграторы по 'суверенному ИИ' и регионализации AI-стеков", "description": "Экспертные компании, помогающие государствам и крупным корпорациям разрабатывать и внедрять стратегии по созданию собственных, территориально закрепленных ИИ-экосистем. Это включает в себя выбор локаций.", "capacity": {"category": "medium", "range_label": "Средняя", "evidence_usd": 0, "active_players_count": 0, "confidence": "medium", "reasoning": "Рынок консультационных услуг по 'суверенному ИИ' является нишевым, но высокодоходным, требующим глубокой экспертизы и доверия со стороны государственных и крупных корпоративных клиентов."}, "window": {"category": "narrowing", "label": "Сужающееся", "description": "По мере того как страны и корпорации разрабатывают свои стратегии 'суверенного ИИ', окно для формирования этих стратегий сужается, но спрос на их реализацию остается высоким."}, "entry_conditions": ["Глубокое понимание геополитических и технологических аспектов ИИ", "Опыт работы с государственными структурами и крупным бизнесом", "Наличие высококвалифицированных экспертов по ИИ и стратегии"], "key_players": ["Крупные консалтинговые фирмы", "Специализированные бутики", "Академические институты"], "audience_lens": ["investor"], "evidence": "Растущий тренд на цифровую суверенность и локализацию критических технологий.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt2-ai-hardware", "srt_level": 2, "srt_level_name": "Пространственная организация", "name": "Разработчики и производители физического ИИ и периферийных устройств", "description": "Компании, специализирующиеся на создании ИИ-решений, интегрированных непосредственно в физические устройства (робототехника, бытовая электроника, промышленное оборудование) и работающих на периферии.", "capacity": {"category": "large", "range_label": "Десятки миллиардов USD", "evidence_usd": 50000000000, "active_players_count": 1000, "confidence": "high", "reasoning": "Рынок ИИ-оборудования и периферийных устройств быстро растет, охватывая множество секторов от потребительской электроники до промышленной автоматизации. Ожидается значительный рост инвестиций и разработок в этой области к 2026 году."}, "window": {"category": "open", "label": "Активное формирование", "description": "Рынок находится на стадии активного формирования и быстрого роста, с появлением новых игроков и технологий. Окно возможностей широко открыто для инноваций и захвата доли рынка."}, "entry_conditions": ["Глубокие знания в области аппаратного обеспечения и микроэлектроники", "Опыт в разработке ИИ-алгоритмов для периферийных вычислений", "Доступ к производственным мощностям и цепочкам поставок", "Инвестиции в R&D"], "key_players": ["NVIDIA", "Intel", "Qualcomm", "Google (TPU)", "Tesla (AI chips)"], "audience_lens": ["investor"], "evidence": "Отчеты аналитических агентств (Gartner, IDC) о росте рынка Edge AI и специализированного ИИ-оборудования. Новости о новых инвестициях и стартапах в этой области.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt2-robotics", "srt_level": 2, "srt_level_name": "Пространственная организация", "name": "Разработчики робототехники с интегрированным ИИ", "description": "Компании, создающие роботов (промышленных, сервисных, автономных), которые используют встроенные ИИ-системы для восприятия, принятия решений и взаимодействия с физическим миром.", "capacity": {"category": "large", "range_label": "Десятки миллиардов USD", "evidence_usd": 30000000000, "active_players_count": 500, "confidence": "medium", "reasoning": "Рынок робототехники, особенно с интегрированным ИИ, демонстрирует устойчивый рост. Промышленные роботы уже широко используются, а сервисные и автономные роботы набирают обороты. К 2026 году ожидается значительное расширение применения."}, "window": {"category": "open", "label": "Активное развитие", "description": "Рынок робототехники с ИИ находится в фазе активного развития и диверсификации. Появляются новые области применения и технологические прорывы, что делает окно возможностей широким для инновационных решений."}, "entry_conditions": ["Экспертиза в робототехнике и мехатронике", "Знания в области компьютерного зрения и машинного обучения", "Навыки интеграции аппаратного и программного обеспечения", "Значительные инвестиции в R&D и прототипирование"], "key_players": ["Boston Dynamics", "FANUC", "KUKA", "ABB", "SoftBank Robotics"], "audience_lens": ["investor"], "evidence": "Отчеты Международной федерации робототехники (IFR) о росте рынка промышленных и сервисных роботов. Новости о стартапах, разрабатывающих ИИ-роботов для различных отраслей.", "confidence": "medium", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt3-ai-integration", "srt_level": 3, "srt_level_name": "Социально-профессиональная структура", "name": "Интеграторы ИИ в бизнес-процессы", "description": "Специалисты, ответственные за проектирование, внедрение, контроль и оптимизацию работы ИИ-агентов, управление данными и обеспечение их безопасности, а также за перестройку бизнес-процессов и организационной структуры компаний для эффективного внедрения и монетизации ИИ.", "capacity": {"category": "medium", "range_label": "От 100 000 до 1 млн активных игроков", "evidence_usd": 0, "active_players_count": 0, "confidence": "medium", "reasoning": "Появление новых ролей, таких как 'Архитектор агентных процессов' и 'Специалист по управлению контекстом', указывает на формирование новой профессиональной ниши. Однако, масштабы этой ниши пока не определены, и количество активных игроков будет зависеть от темпов внедрения ИИ в различные отрасли."}, "window": {"category": "open", "label": "Открыто", "description": "Спрос на этих специалистов будет расти по мере развития и широкого внедрения ИИ-технологий в бизнес. Окно возможностей только начинает открываться."}, "entry_conditions": ["Глубокие знания в области ИИ и машинного обучения", "Понимание бизнес-процессов и организационного дизайна", "Опыт работы с данными и их безопасностью", "Навыки системного мышления и проектирования"], "key_players": ["Архитектор агентных процессов", "Инженер верификации", "Оператор корпоративной памяти", "Специалист по управлению контекстом", "Специалист по аудиту ИИ", "Специалист по организационному дизайну и трансформации для ИИ"], "audience_lens": ["investor"], "evidence": "Архитектор агентных процессов / Инженер верификации / Оператор корпоративной памяти / Специалист по управлению контекстом / Специалист по аудиту ИИ: Эти роли формируются на стыке классической разработки и новых требований ИИ. Они отвечают за проектирование, внедрение, контроль и оптимизацию работы ИИ-агентов, управление данными и обеспечение их бе. Специалист по организационному дизайну и трансформации для ИИ: Это консультанты и внутренние эксперты, которые помогают компаниям перестраивать свои бизнес-процессы, организационную структуру и корпоративную культуру для эффективного внедрения и монетизации ИИ-ре", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt3-ai-specialists", "srt_level": 3, "srt_level_name": "Социально-профессиональная структура", "name": "Специалисты по ИИ-операциям и аудиту", "description": "Профессионалы, фокусирующиеся на операционном управлении, верификации, аудите и обеспечении безопасности ИИ-систем, а также на управлении корпоративной памятью и контекстом в условиях активного использования ИИ-агентов.", "capacity": {"category": "small", "range_label": "До 100 000 активных игроков", "evidence_usd": 0, "active_players_count": 0, "confidence": "medium", "reasoning": "Эти роли являются более специализированными и нишевыми по сравнению с общими интеграторами ИИ. Их количество будет расти, но, вероятно, медленнее и в меньших масштабах, чем у специалистов по общей интеграции ИИ."}, "window": {"category": "narrowing", "label": "Сужается", "description": "Хотя спрос на эти роли будет расти, их специализация может привести к более быстрому насыщению рынка по сравнению с более широкими ролями по интеграции ИИ. Окно возможностей для входа в эти узкие ниши может сужаться по мере формирования стандартов и лучших практик."}, "entry_conditions": ["Экспертные знания в конкретных областях ИИ (верификация, аудит, управление данными)", "Опыт работы с конкретными ИИ-платформами и инструментами", "Понимание этических и правовых аспектов ИИ", "Навыки анализа и решения сложных технических проблем"], "key_players": ["Инженер верификации", "Оператор корпоративной памяти", "Специалист по аудиту ИИ", "Специалист по управлению контекстом"], "audience_lens": ["investor"], "evidence": "Архитектор агентных процессов / Инженер верификации / Оператор корпоративной памяти / Специалист по управлению контекстом / Специалист по аудиту ИИ: Эти роли формируются на стыке классической разработки и новых требований ИИ. Они отвечают за проектирование, внедрение, контроль и оптимизацию работы ИИ-агентов, управление данными и обеспечение их бе", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt3-educator", "srt_level": 3, "srt_level_name": "Социально-профессиональная структура", "name": "Разработчик образовательных программ и карьерных траекторий для 'младших' специалистов в эпоху ИИ", "description": "Эксперты и организации, создающие новые модели обучения, стажировок и менторства, которые помогут молодым специалистам получить необходимые навыки и найти свой путь на рынке труда, где исчезают традиционные профессии и появляются новые, связанные с ИИ.", "capacity": {"category": "medium", "range_label": "От 100 до 1000 организаций/специалистов", "evidence_usd": 50000000, "active_players_count": 500, "confidence": "high", "reasoning": "Растущий спрос на переквалификацию и адаптацию рабочей силы к новым реалиям ИИ. Инвестиции в EdTech и корпоративное обучение будут значительными."}, "window": {"category": "open", "label": "Открыто", "description": "Активный период формирования новых образовательных стандартов и карьерных путей, который продлится несколько лет."}, "entry_conditions": ["Глубокое понимание рынка труда и трендов ИИ", "Опыт в разработке образовательных программ", "Навыки менторства и карьерного консультирования"], "key_players": ["EdTech-компании", "Университеты и колледжи", "Корпоративные учебные центры", "Консалтинговые агентства по карьере"], "audience_lens": ["investor"], "evidence": "Растущие инвестиции в EdTech, государственные программы по переподготовке кадров, отчеты о будущем труда от WEF и других организаций.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt3-robotics", "srt_level": 3, "srt_level_name": "Социально-профессиональная структура", "name": "Инженер робототехники / Оператор встроенных систем / Инженер периферийного вывода", "description": "Специалисты, занимающиеся разработкой, внедрением и обслуживанием ИИ-систем, интегрированных в физические устройства и роботов. Они работают на стыке программного обеспечения, мехатроники и электроники, создавая 'умные' машины и устройства.", "capacity": {"category": "large", "range_label": "От 10 000 до 100 000 специалистов", "evidence_usd": 1000000000, "active_players_count": 50000, "confidence": "high", "reasoning": "Быстрый рост рынка робототехники, автоматизации и IoT. Постоянный спрос на специалистов, способных интегрировать ИИ в физический мир."}, "window": {"category": "open", "label": "Открыто", "description": "Долгосрочный тренд, связанный с автоматизацией промышленности, логистики, медицины и быта. Спрос будет только расти."}, "entry_conditions": ["Высшее техническое образование (робототехника, электроника, мехатроника, компьютерные науки)", "Навыки программирования (Python, C++)", "Опыт работы с аппаратным обеспечением и встроенными системами"], "key_players": ["Производители роботов (Boston Dynamics, KUKA)", "Компании по автоматизации производства", "Разработчики IoT-устройств", "Исследовательские лаборатории"], "audience_lens": ["investor"], "evidence": "Отчеты о росте рынка робототехники и IoT, увеличение числа вакансий в этой сфере, инвестиции в стартапы по автоматизации.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt3-ai-ethics-consultant", "srt_level": 3, "srt_level_name": "Социально-профессиональная структура", "name": "Специалист по этическому консалтингу и коммуникациям в сфере ИИ", "description": "Эксперты, помогающие компаниям формировать этические принципы разработки и внедрения ИИ, разрабатывать стратегии ответственной автоматизации и эффективно коммуницировать с общественностью.", "capacity": {"category": "medium", "range_label": "1000-5000", "evidence_usd": 0, "active_players_count": 0, "confidence": "medium", "reasoning": "Потребность в этическом регулировании ИИ растет, но количество компаний, активно инвестирующих в такие позиции, пока ограничено. Спрос будет увеличиваться по мере ужесточения законодательства и роста общественного внимания."}, "window": {"category": "open", "label": "Открыто", "description": "Поле этики ИИ находится на ранней стадии развития, что предоставляет широкие возможности для формирования новых практик и стандартов. Окно будет оставаться открытым в течение длительного времени."}, "entry_conditions": ["Глубокое понимание этических принципов и философии", "Знание технологий ИИ и их потенциальных социальных последствий", "Опыт в консалтинге или коммуникациях", "Способность к стратегическому мышлению и разработке политик"], "key_players": ["Консалтинговые агентства", "Крупные технологические компании", "Регулирующие органы", "Научно-исследовательские институты"], "audience_lens": ["investor"], "evidence": "Растущее число публикаций, конференций и инициатив по этике ИИ. Появление специализированных отделов в крупных корпорациях.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt3-ai-finance-compliance", "srt_level": 3, "srt_level_name": "Социально-профессиональная структура", "name": "Специалист по финансовой отчетности, управлению рисками и комплаенсу для ИИ-компаний", "description": "Профессионалы, обеспечивающие соответствие быстрорастущих ИИ-компаний финансовым, регуляторным и юридическим стандартам, готовящие их к IPO, управляющие рисками и обеспечивающие прозрачность операций.", "capacity": {"category": "large", "range_label": "5000-10000", "evidence_usd": 0, "active_players_count": 0, "confidence": "high", "reasoning": "По мере взросления ИИ-индустрии и увеличения числа компаний, выходящих на публичные рынки, спрос на таких специалистов будет очень высоким. Регулирование становится все более сложным."}, "window": {"category": "open", "label": "Открыто", "description": "Потребность в этих специалистах будет только расти по мере развития ИИ-индустрии и ужесточения регуляторной среды. Окно будет оставаться открытым в течение длительного времени."}, "entry_conditions": ["Глубокие знания в области финансов, бухгалтерского учета и аудита", "Опыт работы с регуляторными требованиями (например, SEC, GDPR)", "Понимание специфики ИИ-бизнеса и его рисков", "Опыт подготовки компаний к IPO"], "key_players": ["ИИ-стартапы и крупные ИИ-компании", "Аудиторские и консалтинговые фирмы", "Инвестиционные банки", "Регуляторные органы"], "audience_lens": ["investor"], "evidence": "Рост числа ИИ-стартапов, привлекающих крупные инвестиции и готовящихся к выходу на биржу. Увеличение сложности финансового и регуляторного ландшафта.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt3-gig-economy-regulators", "srt_level": 3, "srt_level_name": "Социально-профессиональная структура", "name": "Регуляторы Гиг-экономики", "description": "Появление новых государственных и наднациональных органов, а также профсоюзных структур, специализирующихся на регулировании условий труда, налогообложения и социальной защиты работников гиг-экономики. Эти структуры формируются в ответ на растущую долю фрилансеров и временных работников, а также на необходимость балансировки интересов платформ, работников и традиционных работодателей.", "capacity": {"category": "medium", "range_label": "От 100 до 1000 человек", "evidence_usd": 50000000, "active_players_count": 300, "confidence": "high", "reasoning": "Растущая доля гиг-экономики (прогнозируемый рост до 50% рабочей силы в некоторых секторах к 2030 году) неизбежно приведет к институционализации ее регулирования. Уже сейчас наблюдаются прецеденты судебных разбирательств и законодательных инициатив в разных странах. Бюджеты на создание и функционирование таких органов будут значительными."}, "window": {"category": "open", "label": "Открывается", "description": "Окно открывается, поскольку текущие законодательные рамки не успевают за развитием гиг-экономики, создавая правовые вакуумы и социальную напряженность. Необходимость системного регулирования становится все более очевидной."}, "entry_conditions": ["Глубокое понимание трудового права и цифровых платформ", "Способность к межведомственному и международному сотрудничеству", "Опыт в разработке и имплементации регуляторных политик", "Политическая воля и поддержка со стороны государства/наднациональных структур"], "key_players": ["Международная организация труда (МОТ)", "Европейская комиссия (DG EMPL)", "Национальные министерства труда и социальной защиты", "Профсоюзы и ассоциации фрилансеров", "Крупные платформы гиг-экономики (Uber, Deliveroo, Upwork)"], "audience_lens": ["investor"], "evidence": "Отчеты МОТ о будущем труда, законодательные инициативы ЕС по регулированию платформ, рост числа судебных исков от работников гиг-экономики, создание специализированных отделов в профсоюзах.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt4-ai-architect", "srt_level": 4, "srt_level_name": "Железные технологии", "name": "Системный архитектор/интегратор ИИ-вычислений", "description": "Компании, которые не просто поставляют компоненты (GPU), но и проектируют всю вычислительную архитектуру ИИ от ЦОД до конечного устройства, контролируя ключевые точки входа и стандарты. Они обеспечивают полную интеграцию аппаратного и программного обеспечения для оптимальной производительности ИИ-систем.", "capacity": {"category": "large", "range_label": "Десятки миллиардов USD", "evidence_usd": 50000000000, "active_players_count": 5, "confidence": "high", "reasoning": "По мере усложнения ИИ-систем и роста их масштабов, потребность в комплексных решениях, а не просто в отдельных компонентах, будет только расти. Компании, способные предложить 'под ключ' всю архитектуру, будут контролировать значительную часть рынка."}, "window": {"category": "open", "label": "Открыто", "description": "Рынок находится на ранней стадии формирования, но уже сейчас видны предпосылки для появления доминирующих игроков. Окно возможностей будет открыто в течение следующих 5-10 лет."}, "entry_conditions": ["Глубокая экспертиза в аппаратном и программном обеспечении ИИ", "Способность к системной интеграции на уровне ЦОД и конечных устройств", "Доступ к передовым технологиям производства чипов и памяти", "Партнерства с производителями компонентов и разработчиками ПО"], "key_players": ["Nvidia (с расширением роли)", "Intel (с расширением роли)", "Google (для своих внутренних нужд и облачных сервисов)", "Amazon (для своих внутренних нужд и облачных сервисов)", "Microsoft (для своих внутренних нужд и облачных сервисов)"], "audience_lens": ["investor"], "evidence": "Растущая сложность ИИ-систем требует не просто поставки GPU, а комплексного подхода к проектированию всей вычислительной инфраструктуры. Компании, которые смогут предложить такие решения, будут иметь значительное конкурентное преимущество.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt4-hbm-memory", "srt_level": 4, "srt_level_name": "Железные технологии", "name": "Производители высокоскоростной памяти (HBM)", "description": "Компании, специализирующиеся на разработке и производстве высокоскоростной памяти (HBM), которая становится критическим узким местом и ключевым компонентом для ИИ-ускорителей. Перераспределение прибыли в цепочке создания стоимости ИИ-оборудования в сторону производителей HBM.", "capacity": {"category": "medium", "range_label": "Единицы-десятки миллиардов USD", "evidence_usd": 15000000000, "active_players_count": 3, "confidence": "high", "reasoning": "HBM является критически важным компонентом для современных ИИ-ускорителей. Спрос на нее будет расти экспоненциально, что приведет к значительному увеличению выручки и прибыли для ключевых производителей."}, "window": {"category": "open", "label": "Открыто", "description": "Рынок HBM активно развивается, и спрос на нее будет только расти в ближайшие 5-7 лет. Технологические барьеры входа высоки, что ограничивает количество игроков и обеспечивает стабильный рост."}, "entry_conditions": ["Передовые технологии производства полупроводников", "Значительные инвестиции в R&D", "Партнерства с производителями ИИ-ускорителей", "Высококвалифицированные инженерные кадры"], "key_players": ["Samsung", "SK Hynix", "Micron"], "audience_lens": ["investor"], "evidence": "HBM является узким местом в производстве ИИ-ускорителей. Спрос на нее значительно превышает предложение, что приводит к росту цен и увеличению прибыли для производителей. Это подтверждается отчетами компаний и аналитиков рынка полупроводников.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt4-ai-compatibility-standards", "srt_level": 4, "srt_level_name": "Железные технологии", "name": "Разработчики стандартов AI-совместимости для персональных устройств", "description": "Компании или консорциумы, которые определяют технические требования и стандарты для аппаратного и программного обеспечения персональных компьютеров и ноутбуков, чтобы они могли эффективно работать с локальными моделями ИИ и другими AI-функциями. Их деятельность критически важна для обеспечения интероперабельности и широкого внедрения AI-устройств.", "capacity": {"category": "large", "range_label": "Миллиарды долларов", "evidence_usd": 1000000000, "active_players_count": 5, "confidence": "high", "reasoning": "Эти организации формируют основу для целой индустрии, их стандарты влияют на миллиарды устройств и триллионы долларов в экономике. Хотя они сами не производят 'железо', их интеллектуальный вклад имеет огромную ценность."}, "window": {"category": "open", "label": "Открыто", "description": "Рынок стандартов AI-совместимости только формируется, и в ближайшие годы будет активно развиваться, поскольку новые AI-функции и аппаратные решения требуют унификации."}, "entry_conditions": ["Глубокие знания в области аппаратного и программного обеспечения", "Опыт в разработке промышленных стандартов", "Способность к формированию консорциумов и влиянию на крупных игроков рынка", "Наличие патентов и интеллектуальной собственности в смежных областях"], "key_players": ["Intel", "Microsoft", "Qualcomm", "ARM", "JEDEC"], "audience_lens": ["investor"], "evidence": "Растущий интерес к 'AI PC' и 'нейронным процессорам' требует новых стандартов для обеспечения совместимости и производительности. Крупные технологические компании уже активно инвестируют в эту область.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt4-ai-terminal-manufacturers", "srt_level": 4, "srt_level_name": "Железные технологии", "name": "Производители AI-терминалов (сборщики)", "description": "Компании, которые традиционно производили персональные компьютеры и ноутбуки, теперь переориентируются на сборку специализированных AI-терминалов. Они используют ключевые компоненты от доминирующих поставщиков (например, Nvidia, Intel, AMD, Qualcomm) и интегрируют их в готовые устройства, оптимизированные для работы с ИИ.", "capacity": {"category": "large", "range_label": "Десятки миллиардов долларов", "evidence_usd": 50000000000, "active_players_count": 10, "confidence": "high", "reasoning": "Рынок ПК огромен, и его трансформация в рынок AI-терминалов будет измеряться сотнями миллионов устройств. Маржинальность сборщиков может быть ниже, чем у поставщиков чипов, но объемы продаж обеспечат значительную капитализацию."}, "window": {"category": "open", "label": "Открыто", "description": "Переход от традиционных ПК к AI-терминалам только начинается. В ближайшие 3-5 лет ожидается бурный рост и формирование новых лидеров в этом сегменте."}, "entry_conditions": ["Существующие производственные мощности и логистические цепочки для сборки электроники", "Опыт в дизайне и производстве ПК/ноутбуков", "Партнерские отношения с ключевыми поставщиками AI-чипов (Nvidia, Intel, AMD, Qualcomm)", "Навыки в интеграции аппаратного и программного обеспечения"], "key_players": ["HP", "Dell", "Lenovo", "Acer", "Asus", "Samsung", "Microsoft (Surface)"], "audience_lens": ["investor"], "evidence": "Все крупные производители ПК анонсировали или уже выпустили 'AI PC' с выделенными нейронными процессорами. Это указывает на активную переориентацию рынка.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt4-inference-hardware", "srt_level": 4, "srt_level_name": "Железные технологии", "name": "Разработчики аппаратных движков вывода (inference engines)", "description": "Компании, специализирующиеся на создании высокоэффективных аппаратных решений для выполнения ИИ-моделей (инференса) на периферийных устройствах, оптимизированных для массового использования и снижения энергопотребления. Эти движки могут быть представлены в виде специализированных чипов (ASIC), FPGA или оптимизированных GPU, предназначенных для быстрого и эффективного выполнения предварительно обученных моделей ИИ в реальном времени, например, для систем компьютерного зрения, обработки естественного языка или предиктивной аналитики на конечных устройствах.", "capacity": {"category": "large", "range_label": "1B-10B USD", "evidence_usd": 5000000000, "active_players_count": 50, "confidence": "high", "reasoning": "Рынок аппаратного обеспечения для ИИ-инференса быстро растет, поддерживаемый спросом на периферийные вычисления и энергоэффективные решения. Крупные игроки уже инвестируют миллиарды, а множество стартапов привлекают значительные раунды финансирования. Потенциал для массового внедрения в потребительскую электронику, автомобильную промышленность и промышленную автоматизацию огромен."}, "window": {"category": "open", "label": "Открыто", "description": "Рынок находится на ранней стадии активного роста и формирования. Технологии быстро развиваются, и есть много возможностей для новых игроков и инноваций. Ожидается, что в ближайшие 3-5 лет произойдет значительное расширение рынка."}, "entry_conditions": ["Глубокая экспертиза в разработке полупроводников и архитектур ИИ", "Значительные инвестиции в R&D и производство", "Доступ к передовым производственным мощностям (фабрикам)", "Партнерства с производителями устройств и разработчиками ПО"], "key_players": ["NVIDIA (Jetson, Orin)", "Intel (Movidius, Habana Labs)", "Google (Edge TPU)", "Qualcomm (Snapdragon AI Engine)", "Arm (Ethos-N)", "Tenstorrent", "Mythic"], "audience_lens": ["investor"], "evidence": "Отчеты Gartner, IDC по рынку AI Edge, новости о финансировании стартапов в области ИИ-чипов, анонсы новых продуктов от крупных технологических компаний.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt4-physical-ai-infra", "srt_level": 4, "srt_level_name": "Железные технологии", "name": "Поставщики инфраструктуры для 'физического AI' и робототехники", "description": "Компании, разрабатывающие и производящие специализированные аппаратные платформы, сенсоры, актуаторы и вычислительные модули, необходимые для создания роботизированных агентов и устройств с физическим взаимодействием с миром. Это включает в себя компоненты для автономных транспортных средств, промышленных роботов, дронов, экзоскелетов и других систем, где ИИ должен не только обрабатывать информацию, но и физически действовать в реальной среде. Фокус на надежности, безопасности, точности и интеграции.", "capacity": {"category": "medium", "range_label": "100M-1B USD", "evidence_usd": 750000000, "active_players_count": 30, "confidence": "medium", "reasoning": "Рынок робототехники и автономных систем растет, но сегмент специализированной инфраструктуры для 'физического AI' пока более нишевый, чем общий рынок ИИ-чипов. Тем не менее, по мере развития робототехники и автономных систем, спрос на эти компоненты будет значительно увеличиваться. Существуют крупные игроки, но также много специализированных компаний с высоким потенциалом роста."}, "window": {"category": "narrowing", "label": "Сужается", "description": "Рынок активно развивается, но уже есть устоявшиеся игроки и стандарты в некоторых подсегментах (например, сенсоры для автономных автомобилей). Новые возможности все еще появляются, особенно в области новых типов актуаторов, тактильных сенсоров и интегрированных платформ для мобильных роботов, но конкуренция усиливается, и вход требует значительных инвестиций и экспертизы."}, "entry_conditions": ["Глубокая инженерная экспертиза в механике, электронике и программном обеспечении", "Высокие требования к надежности и безопасности продукции", "Способность к интеграции различных аппаратных и программных компонентов", "Сертификация и соответствие отраслевым стандартам (например, ISO для робототехники, автомобильные стандарты)"], "key_players": ["Boston Dynamics (робототехника)", "NVIDIA (Isaac Platform)", "Intel (RealSense)", "Velodyne Lidar", "Waymo (собственные сенсоры)", "KUKA (промышленные роботы)", "ABB Robotics", "FANUC"], "audience_lens": ["investor"], "evidence": "Отчеты по рынку робототехники и автономных систем, публикации о новых разработках в области сенсоров и актуаторов, инвестиции в стартапы, специализирующиеся на компонентах для роботов.", "confidence": "medium", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt4-quantum-steel", "srt_level": 4, "srt_level_name": "Железные технологии", "name": "Квантовая сталь", "description": "Разработка и массовое производство нового класса сталей с улучшенными механическими свойствами (прочность, пластичность, коррозионная стойкость) за счет использования квантовых эффектов и наноструктурирования. Это позволяет создавать более легкие, прочные и долговечные конструкции для различных отраслей, от строительства до аэрокосмической промышленности.", "capacity": {"category": "large", "range_label": "Более $100 млрд", "evidence_usd": 150000000000, "active_players_count": 10, "confidence": "high", "reasoning": "Потенциал для замены традиционных сталей в широком спектре применений, что обуславливает огромный рынок. Активные исследования и государственные инвестиции в передовые материалы."}, "window": {"category": "narrowing", "label": "Окно сужается", "description": "Технологии находятся на стадии активных исследований и пилотных проектов. Первые коммерческие применения ожидаются в течение 3-5 лет, но для массового внедрения потребуется еще 5-10 лет. Ранние игроки уже формируют стандарты и патенты."}, "entry_conditions": ["Значительные инвестиции в НИОКР", "Доступ к передовым материаловедческим лабораториям", "Экспертиза в квантовой физике и нанотехнологиях", "Партнерства с крупными промышленными предприятиями"], "key_players": ["ArcelorMittal (R&D)", "POSCO (R&D)", "Nippon Steel (R&D)", "Университеты и исследовательские институты (MIT, Max Planck Institute)"], "audience_lens": ["investor"], "evidence": "Отчеты о развитии материаловедения, публикации в научных журналах по квантовым материалам, инвестиционные обзоры в области передовых производственных технологий.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt5-integrators", "srt_level": 5, "srt_level_name": "Разделение труда между фирмами", "name": "Системные интеграторы и контролеры ИИ-вычислительной инфраструктуры", "description": "Компании, которые не просто поставляют компоненты, но и контролируют точки входа в вычислительную экономику ИИ, предлагая комплексные решения от чипов до системной архитектуры, фактически становясь 'операторами' ИИ-инфраструктуры.", "capacity": {"category": "large", "range_label": "Десятки миллиардов USD", "evidence_usd": 50000000000, "active_players_count": 5, "confidence": "high", "reasoning": "Контроль над всей цепочкой создания стоимости ИИ-инфраструктуры, от чипов до ПО, позволяет этим компаниям аккумулировать значительную долю прибыли. Их услуги критически важны для развертывания масштабных ИИ-систем."}, "window": {"category": "open", "label": "Открыто", "description": "Рынок находится в стадии активного формирования, с высоким спросом на комплексные решения и ограниченным числом игроков, способных их предоставить."}, "entry_conditions": ["Глубокие компетенции в аппаратном и программном обеспечении ИИ", "Способность к интеграции сложных систем", "Доступ к передовым технологиям производства чипов и памяти", "Значительные инвестиции в R&D"], "key_players": ["NVIDIA (через платформу CUDA и экосистему)", "Microsoft (через Azure AI)", "Google (через Google Cloud AI)", "Amazon (через AWS AI)", "Intel (через Habana Labs и OneAPI)"], "audience_lens": ["investor"], "evidence": "Растущий спрос на готовые ИИ-решения, усложнение ИИ-инфраструктуры, стратегические партнерства между производителями чипов и облачными провайдерами.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt5-memory", "srt_level": 5, "srt_level_name": "Разделение труда между фирмами", "name": "Производители критически важной ИИ-памяти (HBM)", "description": "Компании, специализирующиеся на производстве высокоскоростной памяти (HBM), которая стала узким местом в цепочке создания стоимости ИИ. Их роль становится критически важной, а их влияние на распределение прибыли в ИИ-индустрии значительно возрастает.", "capacity": {"category": "medium", "range_label": "Единицы - десятки миллиардов USD", "evidence_usd": 15000000000, "active_players_count": 3, "confidence": "high", "reasoning": "HBM является критически важным компонентом для высокопроизводительных ИИ-ускорителей. Ограниченное число производителей и высокий спрос создают значительную рыночную власть и возможность для получения высокой прибыли."}, "window": {"category": "narrowing", "label": "Сужается", "description": "Рынок HBM характеризуется высокой капиталоемкостью и технологической сложностью. Хотя спрос высок, вход для новых игроков крайне затруднен, а существующие игроки консолидируют свои позиции."}, "entry_conditions": ["Передовые технологии производства полупроводников (процессы 3D-стекинга)", "Огромные капитальные вложения в фабрики (фабы)", "Глубокие R&D компетенции в материаловедении и архитектуре памяти", "Доступ к патентам и интеллектуальной собственности"], "key_players": ["SK Hynix", "Samsung Electronics", "Micron Technology"], "audience_lens": ["investor"], "evidence": "Отчеты о прибыли производителей HBM, заявления NVIDIA о зависимости от поставок HBM, рост цен на HBM, инвестиции в расширение производственных мощностей.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt5-ai-integrators", "srt_level": 5, "srt_level_name": "Разделение труда между фирмами", "name": "Посреднические интеграционные слои и AI-консалтинг", "description": "Компании, выступающие в роли моста между фундаментальными ИИ-моделями и потребностями предприятий. Они помогают адаптировать, интегрировать и оптимизировать ИИ-решения, а также измерять их эффективность.", "capacity": {"category": "large", "range_label": "Десятки миллиардов USD", "evidence_usd": 50000000000, "active_players_count": 1000, "confidence": "high", "reasoning": "Растущий спрос на кастомизацию и интеграцию ИИ-решений в различные отрасли, высокая стоимость консалтинговых услуг и необходимость специализированных знаний."}, "window": {"category": "open", "label": "Активный рост", "description": "Рынок находится в стадии активного роста, поскольку все больше компаний стремятся внедрить ИИ, но сталкиваются с проблемами интеграции и адаптации."}, "entry_conditions": ["Глубокое понимание ИИ-моделей и технологий", "Опыт в системной интеграции и разработке ПО", "Знание отраслевой специфики и бизнес-процессов", "Наличие квалифицированных ИИ-специалистов и консультантов"], "key_players": ["Крупные консалтинговые фирмы (Accenture, Deloitte)", "Специализированные ИИ-консалтинговые компании", "Интеграторы ПО"], "audience_lens": ["investor"], "evidence": "Растущие инвестиции в ИИ-консалтинг и системную интеграцию, увеличение числа стартапов в этой области, отчеты аналитических агентств о росте рынка ИИ-услуг.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt5-cyber-physical-ai", "srt_level": 5, "srt_level_name": "Разделение труда между фирмами", "name": "Разработчики и поставщики киберфизических ИИ-систем и робототехники", "description": "Компании, создающие интегрированные решения, объединяющие ИИ с физическими устройствами (сенсоры, роботы, бытовая техника), стирая границы между потребительской электроникой, робототехникой и ИИ-платформами.", "capacity": {"category": "large", "range_label": "Сотни миллиардов USD", "evidence_usd": 200000000000, "active_players_count": 500, "confidence": "high", "reasoning": "Огромный потенциал рынка робототехники, IoT и умных устройств, усиленный интеграцией с передовым ИИ. Включает промышленных роботов, автономные транспортные средства, умные дома и носимые устройства."}, "window": {"category": "open", "label": "Быстрый рост", "description": "Рынок находится на стадии быстрого роста, обусловленного развитием технологий ИИ, снижением стоимости аппаратного обеспечения и растущим спросом на автоматизацию и умные решения."}, "entry_conditions": ["Экспертиза в робототехнике, электронике и мехатронике", "Глубокие знания в области ИИ (компьютерное зрение, машинное обучение, обработка естественного языка)", "Наличие производственных мощностей или партнерств", "Способность к интеграции аппаратного и программного обеспечения"], "key_players": ["Производители роботов (Boston Dynamics, FANUC)", "Компании, разрабатывающие автономные системы (Waymo, Tesla)", "Производители умных устройств (Google, Amazon, Apple)", "Стартапы в области ИИ-робототехники"], "audience_lens": ["investor"], "evidence": "Рост рынка промышленной и сервисной робототехники, увеличение инвестиций в автономные системы и умные устройства, появление новых продуктов и решений, объединяющих ИИ и физический мир.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt5-ai-orchestration", "srt_level": 5, "srt_level_name": "Разделение труда между фирмами", "name": "Разработчики решений для оркестрации и управления AI-агентами", "description": "Компании, специализирующиеся на создании инструментов и платформ для управления контекстом, памятью, маршрутизацией и аудитом сложных систем, состоящих из множества ИИ-агентов, работающих поверх базовых моделей.", "capacity": {"category": "medium", "range_label": "100M-1B USD", "evidence_usd": 500000000, "active_players_count": 15, "confidence": "medium", "reasoning": "Рынок находится на ранней стадии, но быстро растет. Уже есть несколько заметных игроков, привлекающих значительные инвестиции. Потенциал роста огромен по мере усложнения систем ИИ-агентов."}, "window": {"category": "open", "label": "Ранняя стадия, активный рост", "description": "Рынок только формируется, но потребность в таких решениях быстро растет по мере усложнения систем на основе ИИ-агентов. Ожидается активный приток новых игроков и инвестиций в ближайшие 2-3 года."}, "entry_conditions": ["Глубокое понимание архитектуры ИИ-агентов и их взаимодействия", "Опыт в разработке распределенных систем и микросервисной архитектуры", "Наличие команды с экспертизой в области LLM, MLOps и системной инженерии", "Способность создавать масштабируемые и отказоустойчивые платформы"], "key_players": ["LangChain", "LlamaIndex", "Autogen (Microsoft)", "CrewAI"], "audience_lens": ["investor"], "evidence": "Активный рост числа стартапов и open-source проектов в области оркестрации агентов. Значительные инвестиции в компании, предлагающие решения для управления сложными системами ИИ. Публикации и исследования о необходимости стандартизации и инструментов для мультиагентных систем.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt5-agent-frameworks", "srt_level": 5, "srt_level_name": "Разделение труда между фирмами", "name": "Разработчики фреймворков для создания AI-агентов", "description": "Компании или проекты, предоставляющие библиотеки, SDK и методологии для упрощения разработки, тестирования и развертывания автономных ИИ-агентов, способных выполнять сложные задачи.", "capacity": {"category": "medium", "range_label": "50M-500M USD", "evidence_usd": 200000000, "active_players_count": 10, "confidence": "medium", "reasoning": "Рынок фреймворков для агентов тесно связан с оркестрацией. Многие проекты являются open-source, но есть потенциал для коммерциализации через поддержку, плагины и корпоративные версии. Объем рынка будет расти по мере увеличения спроса на агентов."}, "window": {"category": "open", "label": "Формирующаяся ниша", "description": "Рынок находится на стадии активного формирования, с большим количеством экспериментов и инноваций. Ожидается консолидация и появление доминирующих стандартов в течение следующих 3-5 лет."}, "entry_conditions": ["Глубокое понимание архитектуры ИИ-агентов и их взаимодействия", "Опыт в разработке библиотек и SDK", "Наличие команды с экспертизой в области LLM и проектирования API", "Способность создавать гибкие и расширяемые фреймворки"], "key_players": ["LangChain", "LlamaIndex", "AutoGPT (open-source)", "BabyAGI (open-source)"], "audience_lens": ["investor"], "evidence": "Популярность open-source проектов, таких как AutoGPT и BabyAGI, демонстрирует высокий интерес к созданию автономных агентов. Активное развитие библиотек, таких как LangChain, подтверждает потребность в стандартизированных подходах к разработке агентов.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt6-orchestration", "srt_level": 6, "srt_level_name": "Технологии производства знаний", "name": "Инженер по оркестрации и верификации ИИ-систем", "description": "Специалист, отвечающий за проектирование, внедрение и поддержку систем, которые управляют взаимодействием между различными ИИ-моделями, обеспечивают маршрутизацию запросов, управление контекстом, памятью и верификацию результатов для создания когерентных и надежных ИИ-решений.", "capacity": {"category": "medium", "range_label": "500-1000", "evidence_usd": 750, "active_players_count": 750, "confidence": "high", "reasoning": "Растущая сложность ИИ-систем и необходимость их интеграции требует специалистов, способных управлять этим взаимодействием. Рынок труда активно формируется, но пока не насыщен."}, "window": {"category": "open", "label": "Открыто", "description": "Потребность в таких специалистах будет только расти по мере усложнения и распространения ИИ-технологий, особенно в корпоративном секторе."}, "entry_conditions": ["Глубокие знания в области архитектуры ИИ-систем и машинного обучения", "Опыт работы с фреймворками оркестрации (например, Kubeflow, MLflow)", "Навыки в области системной инженерии и разработки ПО", "Понимание принципов верификации и валидации ИИ-моделей"], "key_players": ["Крупные технологические компании (Google, Microsoft, Amazon)", "Стартапы, разрабатывающие платформы для MLOps", "Компании, внедряющие комплексные ИИ-решения"], "audience_lens": ["investor"], "evidence": "Растущее количество вакансий на позиции MLOps Engineer, AI System Architect с акцентом на оркестрацию и верификацию. Публикации о необходимости 'AI-native' инфраструктуры.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt6-security", "srt_level": 6, "srt_level_name": "Технологии производства знаний", "name": "Специалист по безопасности и аудиту ИИ-агентов", "description": "Эксперт, специализирующийся на разработке, внедрении и аудите механизмов безопасности для ИИ-агентов, включая логирование, управление памятью, верификацию поведения и соблюдение регуляторных требований, а также на предотвращении атак и злоупотреблений.", "capacity": {"category": "small", "range_label": "100-500", "evidence_usd": 300, "active_players_count": 300, "confidence": "medium", "reasoning": "Это относительно новая, но критически важная область. Количество специалистов пока невелико, но спрос быстро растет из-за регуляторных требований и рисков."}, "window": {"category": "open", "label": "Открыто", "description": "С ростом автономности и критичности ИИ-агентов, вопросы безопасности и этики становятся первостепенными, что открывает долгосрочное окно возможностей."}, "entry_conditions": ["Глубокие знания в области кибербезопасности и информационной безопасности", "Понимание принципов работы ИИ и машинного обучения", "Опыт в аудите систем и разработке политик безопасности", "Знание регуляторных требований (например, GDPR, AI Act)"], "key_players": ["Компании, разрабатывающие критически важные ИИ-системы (финансы, медицина, оборона)", "Консалтинговые фирмы по кибербезопасности", "Регуляторные органы и государственные учреждения"], "audience_lens": ["investor"], "evidence": "Увеличение числа инцидентов, связанных с безопасностью ИИ, появление новых стандартов и регуляций (например, NIST AI Risk Management Framework). Рост инвестиций в AI Trust & Safety.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt6-ai-economy-engineer", "srt_level": 6, "srt_level_name": "Технологии производства знаний", "name": "Инженер по оптимизации экономики вычислений ИИ", "description": "Специалист, фокусирующийся на разработке и внедрении архитектур и алгоритмов, которые минимизируют вычислительные затраты при работе с ИИ-моделями, особенно в многомодельных и агентных системах.", "capacity": {"category": "medium", "range_label": "100M-1B USD", "evidence_usd": 500000000, "active_players_count": 1000, "confidence": "high", "reasoning": "Растущая потребность в эффективных ИИ-системах, особенно в условиях увеличения сложности моделей и их применения в реальном времени. Экономия вычислительных ресурсов становится критически важной для масштабирования ИИ-решений."}, "window": {"category": "open", "label": "Открыто", "description": "Поле активно развивается, спрос на таких специалистов будет расти по мере усложнения ИИ-систем и увеличения их внедрения в различные отрасли."}, "entry_conditions": ["Глубокие знания в области машинного обучения и оптимизации алгоритмов", "Опыт работы с распределенными системами и облачными вычислениями", "Понимание архитектур ИИ-моделей и их вычислительных требований", "Навыки программирования на Python, C++ и работы с фреймворками (TensorFlow, PyTorch)"], "key_players": ["Google", "Microsoft", "Meta", "OpenAI", "Amazon"], "audience_lens": ["investor"], "evidence": "Растущие затраты на обучение и эксплуатацию больших языковых моделей (LLM) и мультимодальных ИИ-систем. Публикации о необходимости 'зеленого ИИ' и оптимизации ресурсов. Активный поиск таких специалистов крупными технологическими компаниями.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt6-ai-transformation-consultant", "srt_level": 6, "srt_level_name": "Технологии производства знаний", "name": "Консультант по организационной трансформации для внедрения ИИ", "description": "Специалист, помогающий компаниям адаптировать свои бизнес-процессы, организационную структуру и корпоративную культуру для эффективного внедрения и использования ИИ. Фокусируется на преодолении разрывов между технологией и бизнесом.", "capacity": {"category": "large", "range_label": "1B-10B USD", "evidence_usd": 3000000000, "active_players_count": 5000, "confidence": "high", "reasoning": "Масштабное внедрение ИИ требует не только технологических решений, но и глубоких изменений в бизнес-процессах и культуре компаний. Рынок консалтинга по трансформации огромен."}, "window": {"category": "open", "label": "Открыто", "description": "По мере того как ИИ становится мейнстримом, все больше компаний будут нуждаться в помощи для его эффективного внедрения, что создает долгосрочный спрос на таких консультантов."}, "entry_conditions": ["Опыт в бизнес-консалтинге или управлении изменениями", "Понимание принципов работы ИИ и его потенциального влияния на бизнес", "Навыки стратегического планирования и управления проектами", "Сильные коммуникативные и межличностные навыки"], "key_players": ["Accenture", "Deloitte", "PwC", "EY", "McKinsey & Company"], "audience_lens": ["investor"], "evidence": "Отчеты консалтинговых компаний о росте спроса на услуги по цифровой и ИИ-трансформации. Увеличение числа вакансий в этой области. Публикации о сложностях внедрения ИИ без соответствующей организационной подготовки.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt6-hybrid-ai", "srt_level": 6, "srt_level_name": "Технологии производства знаний", "name": "Разработчик гибридных нейросимвольных ИИ-систем", "description": "Инженер или исследователь, специализирующийся на создании ИИ-систем, которые комбинируют преимущества нейронных сетей (для распознавания образов и нечетких данных) с символическими методами (для логического вывода и объяснимости).", "capacity": {"category": "medium", "range_label": "100-500 специалистов", "evidence_usd": 50000000, "active_players_count": 200, "confidence": "high", "reasoning": "Растущий интерес к объяснимому ИИ и потребность в более надежных системах, способных к сложному рассуждению, стимулируют спрос на таких специалистов. Однако это все еще нишевая область по сравнению с общим ИИ."}, "window": {"category": "open", "label": "Активное развитие", "description": "Область активно развивается, появляются новые архитектуры и фреймворки, но до массового внедрения еще далеко."}, "entry_conditions": ["Глубокие знания в области машинного обучения и нейронных сетей", "Опыт работы с символическим ИИ (логическое программирование, онтологии)", "Навыки программирования на Python, Prolog или Lisp", "Понимание когнитивных архитектур и систем рассуждения"], "key_players": ["DeepMind", "IBM Research", "Allen Institute for AI (AI2)", "Университетские исследовательские группы"], "audience_lens": ["investor"], "evidence": "Растущее число публикаций и конференций по нейросимвольному ИИ, инвестиции крупных технологических компаний в исследования в этой области.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt6-knowledge-engineer", "srt_level": 6, "srt_level_name": "Технологии производства знаний", "name": "Инженер по знаниям для онтологических систем", "description": "Специалист, занимающийся проектированием, разработкой и поддержкой онтологий и баз знаний, используемых для представления и организации информации в сложных ИИ-системах и семантических сетях.", "capacity": {"category": "small", "range_label": "50-200 специалистов", "evidence_usd": 20000000, "active_players_count": 100, "confidence": "medium", "reasoning": "Онтологии являются ключевым компонентом для многих систем ИИ, требующих глубокого понимания предметной области. Однако это узкоспециализированная роль, и спрос на нее растет медленнее, чем на более общих ИИ-специалистов."}, "window": {"category": "narrowing", "label": "Устоявшаяся ниша", "description": "Область онтологий существует давно, но сейчас переживает возрождение благодаря интеграции с современными ИИ-технологиями. Окно для входа сужается, так как требуются специфические навыки."}, "entry_conditions": ["Знание языков представления знаний (OWL, RDF, SPARQL)", "Опыт работы с инструментами для создания онтологий (Protege)", "Понимание логики и теории графов", "Способность к моделированию предметных областей"], "key_players": ["Semantic Web Company", "TopQuadrant", "Ontotext", "Крупные корпорации с потребностью в управлении знаниями"], "audience_lens": ["investor"], "evidence": "Постоянный спрос на специалистов по онтологиям в академических и промышленных проектах, особенно в областях, требующих высокой степени объяснимости и интеграции данных.", "confidence": "medium", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt6-cognitive-architectures", "srt_level": 6, "srt_level_name": "Технологии производства знаний", "name": "Когнитивные архитектуры для мультимодального синтеза знаний", "description": "Развитие интегрированных когнитивных архитектур, способных синтезировать знания из различных модальностей (текст, изображение, звук, видео, сенсорные данные) для создания более полных и контекстно-зависимых моделей мира. Эти системы будут не просто агрегировать информацию, но и выявлять сложные взаимосвязи, генерировать новые гипотезы и адаптироваться к динамически меняющимся средам, имитируя или превосходя человеческие когнитивные процессы в специфических областях.", "capacity": {"category": "large", "range_label": "Десятки миллиардов долларов", "evidence_usd": 30000000000, "active_players_count": 10000, "confidence": "high", "reasoning": "Растущие инвестиции в ИИ, мультимодальные модели и автономные системы. Потенциал для трансформации множества отраслей, от науки до производства и образования. Крупные технологические компании и государственные фонды активно финансируют исследования в этой области."}, "window": {"category": "open", "label": "Открыто", "description": "Активные исследования и прототипирование. Первые коммерческие применения ожидаются в ближайшие 3-5 лет, но полное раскрытие потенциала займет десятилетия. Сейчас идеальное время для входа и формирования стандартов."}, "entry_conditions": ["Глубокие знания в области машинного обучения, нейронных сетей и когнитивной науки", "Доступ к большим вычислительным ресурсам (GPU-кластеры, специализированные чипы)", "Наличие обширных и разнообразных мультимодальных датасетов", "Опыт в разработке сложных программных систем и интеграции различных ИИ-модулей", "Понимание этических и социальных аспектов создания систем, имитирующих познание"], "key_players": ["Google DeepMind", "OpenAI", "Meta AI", "Anthropic", "IBM Research", "Университетские исследовательские группы (MIT, Stanford, Carnegie Mellon)", "Стартапы, специализирующиеся на мультимодальном ИИ и когнитивных архитектурах"], "audience_lens": ["investor"], "evidence": "Тренды в развитии больших мультимодальных моделей (GPT-4o, Gemini), исследования в области AGI, нейросимволический ИИ, растущий интерес к созданию систем, способных к рассуждению и планированию на основе комплексных данных. Публикации в ведущих конференциях по ИИ (NeurIPS, ICML, AAAI).", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt7-corporate-ai-centers", "srt_level": 7, "srt_level_name": "Институты производства знаний", "name": "Корпоративные инженерные центры ИИ", "description": "Ценность в ИИ-индустрии смещается от академических публикаций к инженерному знанию, создаваемому внутри корпораций. Эти центры фокусируются на интеграции различных компонентов в единый промышленный продукт, становясь основными институтами производства прикладного ИИ-знания.", "capacity": {"category": "large", "range_label": "Миллиарды долларов", "evidence_usd": 1000000000, "active_players_count": 100, "confidence": "high", "reasoning": "Крупные технологические компании уже инвестируют значительные средства в такие центры, и их количество будет расти. Объем рынка ИИ в целом исчисляется сотнями миллиардов."}, "window": {"category": "open", "label": "Активное формирование", "description": "Процесс формирования и укрепления этих центров уже идет и будет активно развиваться в ближайшие годы."}, "entry_conditions": ["Значительные инвестиции в R&D", "Доступ к высококвалифицированным ИИ-инженерам", "Способность к быстрой интеграции и коммерциализации технологий"], "key_players": ["Google AI", "Microsoft Research", "Meta AI", "OpenAI", "Baidu Research"], "audience_lens": ["investor"], "evidence": "Корпоративные инженерные центры как основные институты производства прикладного ИИ-знания: Ценность в ИИ-индустрии смещается от академических публикаций к инженерному знанию, создаваемому внутри корпораций. Эти центры фокусируются на интеграции различных компонентов в единый промышленный продукт.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt7-agentic-ai-consulting", "srt_level": 7, "srt_level_name": "Институты производства знаний", "name": "Консалтинг и решения для 'агентной' трансформации", "description": "Формируется новая ниша консалтинговых услуг и технологических решений, помогающих организациям перестроить свой дизайн, процессы и инфраструктуру для эффективного внедрения и управления агентным ИИ. Это включает в себя разработку стратегий, обучение персонала и создание специализированных платформ.", "capacity": {"category": "medium", "range_label": "Сотни миллионов - Единицы миллиардов долларов", "evidence_usd": 500000000, "active_players_count": 50, "confidence": "medium", "reasoning": "Рынок консалтинга всегда следует за новыми технологическими волнами. Агентный ИИ представляет собой значительную трансформацию, требующую специализированной экспертизы. Объем будет расти по мере зрелости агентных систем."}, "window": {"category": "narrowing", "label": "Быстрое формирование", "description": "Ниша активно формируется сейчас, и первые игроки получают значительное преимущество. Окно возможностей для входа будет сужаться по мере насыщения рынка."}, "entry_conditions": ["Глубокая экспертиза в агентном ИИ и организационном дизайне", "Опыт в консалтинге и внедрении корпоративных решений", "Способность к разработке специализированных инструментов и платформ"], "key_players": ["Accenture", "Deloitte", "IBM Consulting", "Специализированные стартапы в области агентного ИИ"], "audience_lens": ["investor"], "evidence": "Консалтинг и решения для трансформации организаций в 'агентные': Формируется новая ниша консалтинговых услуг и технологических решений, помогающих организациям перестроить свой дизайн, процессы и инфраструктуру для эффективного внедрения и управления агентным ИИ.", "confidence": "medium", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt7-ai-security-industry", "srt_level": 7, "srt_level_name": "Институты производства знаний", "name": "Индустрия безопасности ИИ-агентов и связанные с ней профессии", "description": "Формируется самостоятельный индустриальный слой, специализирующийся на безопасности ИИ-агентов. Это включает в себя разработку методов атак, мониторинга, верификации, регулирования, а также создание стандартов и лучших практик для обеспечения надежности и безопасности систем искусственного интеллекта. Появляются новые профессии, такие как инженеры по безопасности ИИ, аудиторы ИИ-систем и специалисты по этике ИИ.", "capacity": {"category": "medium", "range_label": "Миллиарды долларов", "evidence_usd": 1000000000, "active_players_count": 1000, "confidence": "high", "reasoning": "Потенциальный ущерб от небезопасных ИИ-систем огромен, что стимулирует значительные инвестиции в эту область. Уже сейчас крупные компании и правительства выделяют ресурсы на исследования и разработки в сфере безопасности ИИ. Количество стартапов и исследовательских групп в этой области растет."}, "window": {"category": "open", "label": "Открыто", "description": "Рынок находится на ранней стадии формирования, но уже активно развивается. Существует большой спрос на специалистов и решения в этой области, и он будет только расти по мере распространения ИИ-агентов."}, "entry_conditions": ["Глубокое понимание архитектуры и принципов работы ИИ-моделей", "Знание методов кибербезопасности и криптографии", "Опыт в разработке и тестировании программного обеспечения", "Понимание этических и регуляторных аспектов ИИ"], "key_players": ["Крупные технологические компании (Google, Microsoft, OpenAI)", "Стартапы в области безопасности ИИ", "Исследовательские институты и университеты", "Правительственные и международные регуляторные органы"], "audience_lens": ["investor"], "evidence": "Индустрия безопасности ИИ-агентов и связанные с ней профессии: Формируется самостоятельный индустриальный слой, специализирующийся на безопасности ИИ-агентов. Это включает в себя разработку методов атак, мониторинга, верификации, регулирования, а также создание стандартов и лучших практик.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt7-public-ai-corporations", "srt_level": 7, "srt_level_name": "Институты производства знаний", "name": "Публичные инфраструктурные ИИ-корпорации с новыми требованиями к отчетности и управлению", "description": "Формируется новый класс публичных компаний, разрабатывающих базовые ИИ-модели и инфраструктуру. Они сталкиваются с беспрецедентными требованиями к прозрачности, отчетности, формализации метрик безопасности, этичности и воздействия на общество. Это обусловлено системной значимостью их продуктов и потенциальными рисками, связанными с их использованием.", "capacity": {"category": "large", "range_label": "Десятки и сотни миллиардов долларов", "evidence_usd": 50000000000, "active_players_count": 100, "confidence": "high", "reasoning": "Компании, разрабатывающие базовые ИИ-модели, уже сейчас оцениваются в десятки миллиардов долларов. По мере их выхода на публичные рынки и увеличения влияния, их капитализация будет расти, а вместе с ней и требования к их деятельности. Регуляторы и общественность будут требовать большей прозрачности."}, "window": {"category": "narrowing", "label": "Сужается", "description": "Окно для формирования таких компаний уже открыто, но быстро сужается, так как рынок консолидируется вокруг нескольких крупных игроков. Однако, требования к отчетности и управлению будут только ужесточаться, создавая новые вызовы и возможности для специализированных консалтинговых и аудиторских фирм."}, "entry_conditions": ["Разработка и владение передовыми базовыми ИИ-моделями", "Значительные инвестиции в исследования и разработки", "Способность соответствовать строгим регуляторным требованиям", "Высокий уровень корпоративного управления и прозрачности"], "key_players": ["OpenAI", "Google DeepMind", "Anthropic", "Meta AI", "Microsoft (через инвестиции в OpenAI)"], "audience_lens": ["investor"], "evidence": "Публичные инфраструктурные ИИ-корпорации с новыми требованиями к отчетности и управлению: Формируется новый класс публичных компаний, разрабатывающих базовые ИИ-модели и инфраструктуру. Они сталкиваются с беспрецедентными требованиями к прозрачности, отчетности, формализации метрик безопасности.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt7-ai-cluster", "srt_level": 7, "srt_level_name": "Институты производства знаний", "name": "Азиатский кластер инноваций и производства в области AI", "description": "Формируется мощный азиатский контур самоорганизации вокруг AI-железа, памяти, устройств и робототехники. Корпоративные исследовательские центры в Азии становятся ключевыми источниками прикладного знания.", "capacity": {"category": "large", "range_label": "100B-1T USD", "evidence_usd": 500000000000, "active_players_count": 1000000, "confidence": "high", "reasoning": "Масштабы инвестиций в AI-железо и робототехнику в Азии, а также количество корпоративных исследовательских центров и их влияние на прикладные разработки, указывают на очень высокую экономическую емкость и большое число активных участников."}, "window": {"category": "open", "label": "Открытое окно", "description": "Формирование кластера находится на ранней стадии, но уже активно развивается, привлекая значительные инвестиции и таланты. Окно возможностей для входа и влияния остается открытым."}, "entry_conditions": ["Доступ к передовым технологиям производства полупроводников и робототехники", "Значительные инвестиции в R&D", "Наличие высококвалифицированных специалистов в области AI и инженерии", "Стратегическое партнерство с азиатскими корпорациями и исследовательскими институтами"], "key_players": ["Samsung", "TSMC", "Huawei", "Tencent", "Alibaba", "Sony", "Hyundai", "Foxconn", "Правительства стран Азии (Китай, Южная Корея, Япония, Тайвань)"], "audience_lens": ["investor"], "evidence": "Активное развитие корпоративных исследовательских центров в Азии, значительные государственные и частные инвестиции в AI-инфраструктуру и робототехнику, рост числа патентов и публикаций в области AI от азиатских компаний.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt8-reputation", "srt_level": 8, "srt_level_name": "Спонтанный порядок", "name": "Репутационная сертификация технологий ИИ", "description": "Новый де-факто механизм стандартизации и валидации ИИ-технологий, основанный на одобрении и раннем внедрении лидерами рынка ('якорными пользователями'), что формирует репутационный капитал и доверие к новым решениям. Этот процесс заменяет или дополняет традиционные регуляторные механизмы, создавая динамичную систему оценки качества и безопасности ИИ через коллективное признание и использование.", "capacity": {"category": "large", "range_label": "Миллиарды долларов", "evidence_usd": 1000000000, "active_players_count": 1000, "confidence": "high", "reasoning": "Потенциал рынка ИИ огромен, и потребность в доверии и стандартизации будет только расти. Репутационная сертификация, особенно от крупных игроков, может стать ключевым фактором принятия решений, влияя на многомиллиардные инвестиции и внедрения."}, "window": {"category": "open", "label": "Открыто", "description": "Концепция только начинает формироваться, но потребность в ней уже ощущается. В ближайшие 1-3 года ожидается активное формирование первых 'репутационных' стандартов и появление ключевых 'якорных пользователей'."}, "entry_conditions": ["Наличие инновационной ИИ-технологии, требующей валидации", "Способность привлечь внимание лидеров рынка (якорных пользователей)", "Готовность к прозрачности и открытости в отношении работы ИИ-систем", "Понимание механизмов формирования репутационного капитала в технологической сфере"], "key_players": ["Крупные технологические компании (Google, Microsoft, Amazon)", "Стартапы, разрабатывающие передовые ИИ-решения", "Отраслевые консорциумы и ассоциации", "Венчурные фонды и инвесторы", "Независимые аудиторы и оценщики ИИ-систем"], "audience_lens": ["investor"], "evidence": "Растущая сложность ИИ-систем и опасения по поводу их безопасности и этичности создают запрос на новые формы валидации. Традиционные регуляторы не успевают за темпами развития, что открывает путь для рыночных механизмов, основанных на доверии и репутации. Примеры из других отраслей (например, сертификация органических продуктов) показывают, как репутация может стать мощным драйвером рынка.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt8-design", "srt_level": 8, "srt_level_name": "Спонтанный порядок", "name": "Консалтинг по организационному дизайну для корпоративного ИИ", "description": "Специализированные услуги и решения, помогающие компаниям переосмыслить организационную структуру, процессы и роли для эффективного внедрения и интеграции ИИ, особенно агентных систем. Фокус на операционной эффективности, адаптации корпоративной культуры, управлении изменениями и создании новых бизнес-моделей, которые максимально используют потенциал ИИ.", "capacity": {"category": "medium", "range_label": "Сотни миллионов долларов", "evidence_usd": 500000000, "active_players_count": 500, "confidence": "medium", "reasoning": "По мере того как ИИ становится все более сложным и интегрированным, потребность в перестройке организаций будет расти. Это нишевый, но высокодоходный рынок, поскольку он затрагивает стратегические аспекты бизнеса. Однако, не все компании будут готовы к радикальным изменениям."}, "window": {"category": "narrowing", "label": "Сужается", "description": "Рынок уже существует, но его пик ожидается в ближайшие 2-5 лет, когда многие компании осознают необходимость глубокой трансформации. После этого он может стать более зрелым и конкурентным."}, "entry_conditions": ["Глубокое понимание технологий ИИ и их применимости в бизнесе", "Экспертиза в организационном дизайне и управлении изменениями", "Опыт работы с крупными корпоративными клиентами", "Способность разрабатывать индивидуальные стратегии трансформации", "Наличие методологий для оценки влияния ИИ на рабочие процессы и культуру"], "key_players": ["Крупные консалтинговые фирмы (McKinsey, BCG, Accenture)", "Бутиковые консалтинговые агентства, специализирующиеся на ИИ", "Технологические компании, предлагающие консалтинг как часть своих решений", "Внутренние команды по трансформации в крупных корпорациях"], "audience_lens": ["investor"], "evidence": "Отчеты Gartner и Forrester показывают, что одной из главных проблем при внедрении ИИ является не технология, а организационная готовность. Компании сталкиваются с необходимостью переобучения персонала, изменения ролей, создания новых отделов и адаптации процессов. Это создает высокий спрос на специализированный консалтинг.", "confidence": "medium", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt8-ai-security-audit", "srt_level": 8, "srt_level_name": "Спонтанный порядок", "name": "Индустрия безопасности и аудита ИИ-агентов", "description": "Формирование нового рыночного сегмента, специализирующегося на разработке инструментов, методологий и предоставлении услуг по обеспечению безопасности, мониторингу, верификации, аудиту и регулированию ИИ-агентов. Этот сегмент будет критически важен для обеспечения доверия и надежности в экосистеме ИИ, предлагая решения для выявления уязвимостей, предвзятости, нежелательного поведения и соответствия нормативным требованиям.", "capacity": {"category": "large", "range_label": "Десятки миллиардов долларов", "evidence_usd": 50000000000, "active_players_count": 0, "confidence": "high", "reasoning": "По мере распространения ИИ-агентов в критически важных областях, спрос на их безопасность и аудит будет экспоненциально расти. Регуляторы, крупные корпорации и потребители будут требовать прозрачности и надежности, создавая огромный рынок для специализированных услуг и инструментов."}, "window": {"category": "open", "label": "Открыто", "description": "Рынок находится на ранней стадии формирования, с большим потенциалом для новых игроков и инноваций. Основные стандарты и методологии еще не устоялись, что создает возможности для влияния и захвата значительной доли рынка."}, "entry_conditions": ["Глубокая экспертиза в области ИИ, кибербезопасности и аудита", "Способность разрабатывать сложные инструменты для анализа и верификации ИИ-моделей", "Понимание регуляторных требований и этических норм в области ИИ", "Доступ к данным для обучения и тестирования аудиторских систем"], "key_players": ["Стартапы, специализирующиеся на ИИ-безопасности", "Крупные консалтинговые компании (Big Four)", "Разработчики инструментов для MLOps и AIOps", "Академические исследовательские группы"], "audience_lens": ["investor"], "evidence": "Растущее число инцидентов, связанных с безопасностью ИИ, и активное обсуждение регулирования ИИ на государственном уровне (например, AI Act в ЕС) подтверждают неизбежность формирования этого рынка. Появляются первые специализированные компании и фонды, ориентированные на эту нишу.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt8-ai-compatible-devices", "srt_level": 8, "srt_level_name": "Спонтанный порядок", "name": "Разработчики AI-совместимых персональных вычислительных устройств", "description": "Производители и разработчики аппаратного и программного обеспечения для нового поколения персональных компьютеров, ноутбуков и других устройств, которые изначально спроектированы для эффективной работы с локальными ИИ-моделями и агентами. Эти устройства будут обладать специализированными нейронными процессорами (NPU), оптимизированными операционными системами и программным обеспечением для обеспечения высокой производительности и конфиденциальности при выполнении ИИ-задач на устройстве.", "capacity": {"category": "large", "range_label": "Сотни миллиардов долларов", "evidence_usd": 300000000000, "active_players_count": 0, "confidence": "high", "reasoning": "Рынок персональных вычислительных устройств огромен. Переход к 'AI PC' и другим AI-совместимым устройствам будет масштабным обновлением, сравнимым с переходом на мобильные устройства или появлением интернета, что обеспечит огромный объем продаж и доходов."}, "window": {"category": "open", "label": "Открыто", "description": "Рынок находится на начальной стадии трансформации. Крупные игроки (Microsoft, Intel, AMD, Apple, Qualcomm) уже анонсировали свои стратегии, но еще есть много возможностей для инноваций в аппаратном обеспечении, программном стеке и пользовательском опыте."}, "entry_conditions": ["Значительные инвестиции в R&D для разработки специализированных чипов и архитектур", "Экспертиза в области аппаратного и программного обеспечения", "Способность к массовому производству и глобальной дистрибуции", "Развитая экосистема разработчиков для создания AI-приложений под новые платформы"], "key_players": ["Intel (Lunar Lake, Arrow Lake)", "AMD (Ryzen AI)", "Qualcomm (Snapdragon X Elite)", "Microsoft (Windows Copilot+ PC)", "Apple (M-серия чипов)", "NVIDIA (будущие решения для ПК)"], "audience_lens": ["investor"], "evidence": "Крупнейшие технологические компании активно инвестируют в разработку 'AI PC' и 'AI-enabled' устройств, анонсируя новые поколения процессоров с NPU и операционные системы, оптимизированные для ИИ. Это указывает на неизбежность и масштабность этого тренда.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt8-ai-orchestration", "srt_level": 8, "srt_level_name": "Спонтанный порядок", "name": "Поставщики решений для оркестрации и управления ИИ-агентами", "description": "Компании, разрабатывающие платформы и инструменты для маршрутизации, контекстуализации, управления памятью, аудита и контроля взаимодействия между различными ИИ-агентами, а также между агентами и людьми. Эти решения становятся критически важными для масштабирования и обеспечения надежности сложных многоагентных систем.", "capacity": {"category": "large", "range_label": "Десятки миллиардов долларов", "evidence_usd": 50000000000, "active_players_count": 50, "confidence": "high", "reasoning": "Рынок управления ИИ-системами и агентами находится на ранней стадии, но его потенциал огромен, учитывая экспоненциальный рост числа ИИ-агентов и сложность их взаимодействия. Потребность в надежных и масштабируемых решениях для оркестрации будет только расти."}, "window": {"category": "open", "label": "Активное формирование рынка", "description": "Рынок находится в стадии активного формирования, появляются новые игроки и стандарты. Есть возможность занять лидирующие позиции."}, "entry_conditions": ["Глубокая экспертиза в архитектуре распределенных систем и ИИ", "Способность к разработке масштабируемых и безопасных платформ", "Понимание потребностей корпоративных клиентов в управлении ИИ-операциями"], "key_players": ["Google (Vertex AI Agent Builder)", "Microsoft (Azure AI Agent Studio)", "Anthropic (Claude API tooling)", "OpenAI (Assistants API)", "Небольшие стартапы, специализирующиеся на оркестрации агентов"], "audience_lens": ["investor"], "evidence": "Растущее число фреймворков для создания агентов (LangChain, LlamaIndex), анонсы крупных технологических компаний о платформах для управления агентами. Увеличение сложности ИИ-систем требует специализированных инструментов для их координации.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt8-ai-coalitions", "srt_level": 8, "srt_level_name": "Спонтанный порядок", "name": "Межотраслевые индустриальные ИИ-коалиции", "description": "Новая форма организации в ИИ-индустрии, где крупные игроки из разных секторов (например, производство, энергетика, технологии) объединяют усилия для создания комплексных ИИ-решений и экосистем, смещая фокус с конкуренции на коллаборацию для решения масштабных задач, требующих разнообразной экспертизы и ресурсов.", "capacity": {"category": "large", "range_label": "Сотни миллиардов долларов", "evidence_usd": 200000000000, "active_players_count": 10, "confidence": "medium", "reasoning": "Потенциал таких коалиций огромен, так как они могут решать проблемы, недоступные отдельным компаниям. Однако их формирование и управление сложны, и успех зависит от способности участников эффективно сотрудничать и делиться ресурсами. Оценка основана на потенциальном влиянии на целые отрасли."}, "window": {"category": "open", "label": "Начальная стадия формирования", "description": "Концепция только начинает набирать обороты, есть возможность стать одним из первых участников или инициаторов таких коалиций."}, "entry_conditions": ["Лидерство в своей отрасли и значительные ресурсы", "Стратегическое видение и готовность к долгосрочному сотрудничеству", "Способность к интеграции различных технологий и данных", "Политическая воля к созданию общих стандартов и инфраструктуры"], "key_players": ["Консорциумы, объединяющие технологических гигантов (IBM, Google, Microsoft) с лидерами промышленности (Siemens, General Electric, Saudi Aramco)", "Отраслевые ассоциации, инициирующие ИИ-проекты (например, в автомобилестроении, здравоохранении)", "Государственные инициативы по созданию национальных ИИ-экосистем"], "audience_lens": ["investor"], "evidence": "Примеры консорциумов в области автономного вождения, инициативы по созданию общих ИИ-платформ для промышленности, рост числа партнерств между технологическими компаниями и традиционными отраслями для разработки специализированных ИИ-решений.", "confidence": "medium", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt9-ai-investment-funds", "srt_level": 9, "srt_level_name": "Денежная система", "name": "Инвестиционные фонды для полного AI-вычислительного стека", "description": "Формируется потребность в специализированных инвестиционных фондах, которые будут целенаправленно вкладывать капитал в компании, владеющие или разрабатывающие полный спектр технологий для ИИ-вычислений.", "capacity": {"category": "medium", "range_label": "Десятки миллиардов долларов", "evidence_usd": 50000000000, "active_players_count": 0, "confidence": "medium", "reasoning": "Потенциал рынка ИИ огромен, но на данном этапе фонды только формируются, поэтому объем инвестиций будет расти постепенно."}, "window": {"category": "open", "label": "Открыто", "description": "Рынок ИИ находится на ранней стадии развития, что создает широкие возможности для новых инвестиционных фондов."}, "entry_conditions": ["Глубокая экспертиза в технологиях ИИ и вычислительной инфраструктуре", "Доступ к капиталу для формирования фондов", "Способность идентифицировать перспективные компании на ранних стадиях"], "key_players": ["Крупные венчурные фонды", "Инвестиционные банки", "Семейные офисы с фокусом на технологии"], "audience_lens": ["investor"], "evidence": "Инвестиционные фонды, специализирующиеся на компаниях, контролирующих полный AI-вычислительный стек: Формируется потребность в специализированных инвестиционных фондах, которые будут целенаправленно вкладывать капитал в компании, владеющие или разрабатывающие полный спектр технологий для ИИ-вычислений.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt9-compute-monetization", "srt_level": 9, "srt_level_name": "Денежная система", "name": "Бизнес-модели монетизации вычислительной инфраструктуры ИИ", "description": "Формируется новая категория компаний, которые будут монетизировать не только прикладное программное обеспечение, но и сам вычислительный слой, системные платформы и доступ к ним. Это может быть как 'AI-as-a-Service', так и более сложные модели.", "capacity": {"category": "large", "range_label": "Сотни миллиардов долларов", "evidence_usd": 200000000000, "active_players_count": 0, "confidence": "high", "reasoning": "По мере роста спроса на ИИ, монетизация базовой инфраструктуры станет ключевым источником дохода, сравнимым с облачными сервисами."}, "window": {"category": "open", "label": "Открыто", "description": "Рынок только начинает формироваться, предоставляя широкие возможности для инноваций в моделях монетизации и создания новых компаний."}, "entry_conditions": ["Доступ к значительным вычислительным ресурсам (GPU, специализированные чипы)", "Разработка эффективных платформ для управления и предоставления вычислительных мощностей", "Инновационные бизнес-модели (например, pay-per-use, подписка на ресурсы)"], "key_players": ["Облачные провайдеры (AWS, Azure, GCP)", "Производители чипов (Nvidia, AMD)", "Стартапы, специализирующиеся на AI-инфраструктуре"], "audience_lens": ["investor"], "evidence": "Новые бизнес-модели, ориентированные на монетизацию вычислительной инфраструктуры и платформ: Формируется новая категория компаний, которые будут монетизировать не только прикладное программное обеспечение, но и сам вычислительный слой, системные платформы и доступ к ним. Это может быть как 'AI-as-a-Service'.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt9-ai-audit", "srt_level": 9, "srt_level_name": "Денежная система", "name": "Рынок аудита и консалтинга AI-проектов", "description": "Формирование нового рынка независимых аудиторов и консультантов, специализирующихся на оценке ROI и эффективности AI-проектов в корпоративном секторе. Разработка новых стандартов отчетности и метрик для AI.", "capacity": {"category": "medium", "range_label": "От $500 млн до $2 млрд", "evidence_usd": 1000000000, "active_players_count": 0, "confidence": "high", "reasoning": "Потребность в объективной оценке ROI AI-проектов будет расти экспоненциально с увеличением инвестиций в AI. Существующие аудиторские практики не адаптированы под специфику AI, что создает вакуум для новых игроков и стандартов."}, "window": {"category": "open", "label": "Открыто", "description": "Рынок находится на ранней стадии формирования, но потребность в нем уже очевидна. Первые стандарты и игроки появятся в ближайшие 1-2 года."}, "entry_conditions": ["Глубокое понимание технологий AI и их бизнес-применения", "Экспертиза в финансовом аудите и оценке инвестиций", "Способность разрабатывать новые метрики и методологии оценки", "Независимость и объективность"], "key_players": ["Крупные аудиторские фирмы (Big Four, создающие специализированные подразделения)", "Бутиковые консалтинговые компании, специализирующиеся на AI", "Стартапы, разрабатывающие AI-инструменты для аудита и оценки", "Регуляторы и отраслевые ассоциации, разрабатывающие стандарты"], "audience_lens": ["investor"], "evidence": "Новые стандарты отчетности и аудита для AI-проектов в корпоративном секторе: Потребность в независимых аудиторах и консультантах, которые смогут объективно оценивать реальный возврат на инвестиции (ROI) от внедрения ИИ в корпорациях. Это включает разработку новых метрик, метод", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt9-ai-investment", "srt_level": 9, "srt_level_name": "Денежная система", "name": "Дифференциация инвестиционных потоков в AI", "description": "Разделение инвестиционного ландшафта AI на два основных направления: инвестиции в капиталоемкую AI-инфраструктуру (чипы, дата-центры, энергия) и инвестиции в компании, демонстрирующие реальный ROI от прикладного AI.", "capacity": {"category": "large", "range_label": "От $10 млрд до $100 млрд+", "evidence_usd": 50000000000, "active_players_count": 0, "confidence": "high", "reasoning": "Общий объем инвестиций в AI будет продолжать расти, но инвесторы будут все более избирательны. Разделение на 'инфраструктуру' и 'прикладной ROI' позволит более эффективно распределять капитал и снижать риски."}, "window": {"category": "narrowing", "label": "Сужается", "description": "Процесс дифференциации уже начался и будет усиливаться по мере созревания рынка AI. Инвесторам необходимо быстро определиться со своей стратегией."}, "entry_conditions": ["Четкое понимание бизнес-моделей AI-инфраструктуры и прикладного AI", "Способность оценивать долгосрочные технологические тренды (для инфраструктуры)", "Способность оценивать реальный ROI и масштабируемость (для прикладного AI)", "Доступ к значительному капиталу"], "key_players": ["Крупные венчурные фонды и фонды прямых инвестиций", "Суверенные фонды благосостояния", "Корпоративные венчурные подразделения", "Семейные офисы с фокусом на технологии"], "audience_lens": ["investor"], "evidence": "Разделение инвестиционных потоков между поставщиками AI-инфраструктуры и компаниями, демонстрирующими реальный ROI от прикладного AI: Инвестиционный ландшафт будет дифференцироваться. С одной стороны, будут инвесторы, фокусирующиеся на капиталоемкой инфраструктуре (чипы, дата-центры, энергия), с другой — те, кто ищет компании, уже д", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt9-ai-cluster", "srt_level": 9, "srt_level_name": "Денежная система", "name": "Азиатский кластер инноваций и производства в области AI", "description": "Формируется мощный, самодостаточный и конкурентоспособный азиатский кластер, охватывающий всю цепочку создания стоимости ИИ: от производства чипов и памяти до разработки устройств, робототехники и прикладного ПО. Этот кластер будет конкурировать с западными аналогами, предлагая комплексные решения и устанавливая новые стандарты в индустрии.", "capacity": {"category": "large", "range_label": "100B-1T USD", "evidence_usd": 500000000000, "active_players_count": 1000000, "confidence": "high", "reasoning": "Масштабная инициатива, охватывающая всю цепочку создания стоимости ИИ, требует значительных инвестиций и вовлечения большого количества игроков. Азиатские страны уже являются лидерами в производстве электроники и имеют огромные человеческие ресурсы."}, "window": {"category": "open", "label": "Открыто", "description": "Кластер находится на стадии активного формирования, привлекая инвестиции и таланты. Окно возможностей для входа и влияния остается открытым в ближайшие 2-3 года."}, "entry_conditions": ["Доступ к передовым технологиям производства полупроводников", "Значительные инвестиции в R&D", "Наличие квалифицированных кадров в области ИИ и робототехники", "Стратегическое партнерство с крупными азиатскими корпорациями"], "key_players": ["Китайские технологические гиганты (Tencent, Alibaba, Huawei)", "Южнокорейские конгломераты (Samsung, LG)", "Тайваньские производители полупроводников (TSMC)", "Японские компании в области робототехники и электроники (Sony, SoftBank)"], "audience_lens": ["investor"], "evidence": "Азиатские страны активно инвестируют в ИИ, создавая национальные стратегии и поддерживая местные компании. Растущее число патентов и стартапов в регионе подтверждает эту тенденцию.", "confidence": "high", "last_updated": "2026-07-01", "generated_month": "2026-06"}, {"id": "srt9-ai-supply-chain", "srt_level": 9, "srt_level_name": "Денежная система", "name": "Самодостаточная цепочка создания стоимости ИИ в Азии", "description": "Развитие полностью интегрированной и самодостаточной цепочки создания стоимости ИИ в Азии, минимизирующей зависимость от западных технологий и поставщиков. Это включает в себя локализацию производства чипов, разработку собственных архитектур, создание передовых производственных мощностей и развитие экосистемы прикладного ПО и сервисов.", "capacity": {"category": "large", "range_label": "50B-500B USD", "evidence_usd": 250000000000, "active_players_count": 500000, "confidence": "medium", "reasoning": "Построение полностью самодостаточной цепочки требует огромных усилий и инвестиций, но потенциал рынка ИИ в Азии оправдывает эти затраты. Однако полная независимость может быть достигнута не во всех сегментах в краткосрочной перспективе."}, "window": {"category": "narrowing", "label": "Сужается", "description": "Окно для активного формирования и влияния на архитектуру этой цепочки сужается, так как основные игроки уже определяют свои стратегии и формируют альянсы. Тем не менее, возможности для нишевых игроков и поставщиков специализированных решений все еще существуют."}, "entry_conditions": ["Глубокая экспертиза в конкретных сегментах цепочки создания стоимости ИИ (например, специализированные чипы, ПО для робототехники)", "Способность к быстрому масштабированию производства", "Готовность к долгосрочным инвестициям", "Понимание культурных и деловых особенностей азиатского рынка"], "key_players": ["Национальные правительства азиатских стран (Китай, Южная Корея, Япония)", "Крупные полупроводниковые компании (TSMC, Samsung Foundry)", "Разработчики ИИ-чипов (Huawei HiSilicon, Baidu Kunlun)", "Интеграторы систем и решений (Foxconn, BYD)"], "audience_lens": ["investor"], "evidence": "Торговые войны и геополитическая напряженность стимулируют азиатские страны к созданию собственных технологических экосистем. Правительства активно субсидируют исследования и разработки в области ИИ и полупроводников.", "confidence": "medium", "last_updated": "2026-07-01", "generated_month": "2026-06"}], "history": {"new_places": ["srt1-ai-energy-integrator", "srt1-geopolitical-broker", "srt1-sustainable-materials", "srt1-rare-earth-mining", "srt1-deep-sea-mining", "srt1-sustainable-aquaculture", "srt2-regional-hubs", "srt2-specialized-centers", "srt2-integrated", "srt2-sovereign", "srt2-ai-hardware", "srt2-robotics", "srt3-ai-integration", "srt3-ai-specialists", "srt3-educator", "srt3-robotics", "srt3-ai-ethics-consultant", "srt3-ai-finance-compliance", "srt3-gig-economy-regulators", "srt4-ai-architect", "srt4-hbm-memory", "srt4-ai-compatibility-standards", "srt4-ai-terminal-manufacturers", "srt4-inference-hardware", "srt4-physical-ai-infra", "srt4-quantum-steel", "srt5-integrators", "srt5-memory", "srt5-ai-integrators", "srt5-cyber-physical-ai", "srt5-ai-orchestration", "srt5-agent-frameworks", "srt6-orchestration", "srt6-security", "srt6-ai-economy-engineer", "srt6-ai-transformation-consultant", "srt6-hybrid-ai", "srt6-knowledge-engineer", "srt6-cognitive-architectures", "srt7-corporate-ai-centers", "srt7-agentic-ai-consulting", "srt7-ai-security-industry", "srt7-public-ai-corporations", "srt7-ai-cluster", "srt8-reputation", "srt8-design", "srt8-ai-security-audit", "srt8-ai-compatible-devices", "srt8-ai-orchestration", "srt8-ai-coalitions", "srt9-ai-investment-funds", "srt9-compute-monetization", "srt9-ai-audit", "srt9-ai-investment", "srt9-ai-cluster", "srt9-ai-supply-chain"], "changed_places": [], "closed_places": []}};
+
+// ═══════════════════════════════════════════════════════
+// CONSTANTS
+// ═══════════════════════════════════════════════════════
+const SRT_LEVELS = {
+  1: 'Природные ресурсы',
+  2: 'Пространственная организация',
+  3: 'Социально-профессиональная структура',
+  4: '«Железные» технологии',
+  5: 'Разделение труда между фирмами',
+  6: 'Технологии производства знаний',
+  7: 'Институты производства знаний',
+  8: 'Спонтанный порядок',
+  9: 'Денежная система'
+};
+
+const LEVEL_COLORS = {
+  1: '#ef4444', 2: '#f97316', 3: '#eab308', 4: '#84cc16', 5: '#22c55e',
+  6: '#06b6d4', 7: '#3b82f6', 8: '#8b5cf6', 9: '#ec4899'
+};
+
+const CAPACITY_LABELS = { large: '> $1B', medium: '$100M–$1B', small: '< $100M' };
+const CAPACITY_RU = { large: 'Крупная', medium: 'Средняя', small: 'Малая' };
+const WINDOW_RU = { open: 'Открыто', narrowing: 'Сужается', closing: 'Закрывается' };
+const WINDOW_COLORS = { open: '#34d399', narrowing: '#fbbf24', closing: '#ef4444' };
+const CONF_RU = { high: 'Высокая', medium: 'Средняя', low: 'Низкая' };
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+let activeFilters = { level: null, capacity: null, window: null };
+let sortCol = null;
+let sortDir = 'asc';
+
+// ═══════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════
+function formatUSD(n) {
+  if (n >= 1e9) return '$' + (n / 1e9).toFixed(1) + 'B';
+  if (n >= 1e6) return '$' + (n / 1e6).toFixed(0) + 'M';
+  return '$' + n.toLocaleString();
+}
+
+function getFiltered() {
+  return PLACES_DATA.places.filter(p => {
+    if (activeFilters.level && p.srt_level !== activeFilters.level) return false;
+    if (activeFilters.capacity && p.capacity.category !== activeFilters.capacity) return false;
+    if (activeFilters.window && p.window.category !== activeFilters.window) return false;
+    return true;
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  renderMeta();
+  renderSignal();
+  renderStats();
+  renderFilters();
+  renderBubble();
+  renderMatrix();
+  renderTable();
+  initTabs();
+  initModal();
+});
+
+// ═══════════════════════════════════════════════════════
+// META
+// ═══════════════════════════════════════════════════════
+function renderMeta() {
+  const m = PLACES_DATA.meta;
+  document.getElementById('header-meta').innerHTML = `
+    <div class="meta-chip">Период: <span class="val">${m.period.label}</span></div>
+    <div class="meta-chip">Мест: <span class="val">${m.total_places}</span></div>
+    <div class="meta-chip">Турбулентность: <span class="val">${m.turbulence_index}</span></div>
+    <div class="meta-chip">Версия: <span class="val">${m.version}</span></div>
+  `;
+  document.getElementById('footer-period').textContent = m.period.label;
+  document.getElementById('footer-date').textContent = new Date(m.generated_at).toLocaleDateString('ru-RU');
+}
+
+function renderSignal() {
+  const s = PLACES_DATA.meta.signal_of_month;
+  if (!s) return;
+  document.getElementById('signal-banner').innerHTML = `
+    <div class="signal-label">Сигнал месяца</div>
+    <div class="signal-text">${s}</div>
+  `;
+}
+
+function renderStats() {
+  const m = PLACES_DATA.meta;
+  const bar = document.getElementById('stats-bar');
+  const items = [
+    { num: m.total_places, lbl: 'Всего мест' },
+    { num: m.places_by_capacity.large || 0, lbl: 'Крупные (>$1B)' },
+    { num: m.places_by_capacity.medium || 0, lbl: 'Средние ($100M–$1B)' },
+    { num: m.places_by_window.open || 0, lbl: 'Окно открыто' },
+    { num: m.places_by_window.narrowing || 0, lbl: 'Окно сужается' },
+    { num: m.places_by_window.closing || 0, lbl: 'Окно закрывается' },
+    { num: m.places_by_confidence.high || 0, lbl: 'Высокая уверенность' },
+    { num: m.turbulence_index, lbl: 'Индекс турбулентности' },
+  ];
+  bar.innerHTML = items.map(i => `
+    <div class="stat-card">
+      <div class="num">${i.num}</div>
+      <div class="lbl">${i.lbl}</div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════════════════
+// FILTERS
+// ═══════════════════════════════════════════════════════
+function renderFilters() {
+  const sec = document.getElementById('filters-section');
+  sec.innerHTML = `
+    <div class="filter-group">
+      <span class="filter-label">Уровень СРТ</span>
+      ${[1,2,3,4,5,6,7,8,9].map(l => `
+        <button class="filter-btn" data-filter="level" data-value="${l}"
+                style="border-color: ${LEVEL_COLORS[l]}33">${l}</button>
+      `).join('')}
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Ёмкость</span>
+      <button class="filter-btn" data-filter="capacity" data-value="large">Крупная</button>
+      <button class="filter-btn" data-filter="capacity" data-value="medium">Средняя</button>
+      <button class="filter-btn" data-filter="capacity" data-value="small">Малая</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Окно</span>
+      <button class="filter-btn" data-filter="window" data-value="open">Открыто</button>
+      <button class="filter-btn" data-filter="window" data-value="narrowing">Сужается</button>
+      <button class="filter-btn" data-filter="window" data-value="closing">Закрывается</button>
+    </div>
+    <button class="filter-reset" id="filter-reset">Сбросить</button>
+  `;
+
+  sec.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.filter;
+      const val = btn.dataset.value;
+      const parsed = key === 'level' ? parseInt(val) : val;
+
+      if (activeFilters[key] === parsed) {
+        activeFilters[key] = null;
+        btn.classList.remove('active');
+      } else {
+        sec.querySelectorAll(`[data-filter="${key}"]`).forEach(b => b.classList.remove('active'));
+        activeFilters[key] = parsed;
+        btn.classList.add('active');
+      }
+      applyFilters();
+    });
+  });
+
+  document.getElementById('filter-reset').addEventListener('click', () => {
+    activeFilters = { level: null, capacity: null, window: null };
+    sec.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    applyFilters();
+  });
+}
+
+function applyFilters() {
+  renderBubble();
+  renderMatrix();
+  renderTable();
+}
+
+// ═══════════════════════════════════════════════════════
+// TABS
+// ═══════════════════════════════════════════════════════
+function initTabs() {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+      if (btn.dataset.tab === 'bubble') {
+        setTimeout(() => Plotly.Plots.resize('bubble-chart'), 50);
+      }
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// BUBBLE CHART (Plotly.js)
+// ═══════════════════════════════════════════════════════
+function renderBubble() {
+  const places = getFiltered();
+  const capMap = { large: 3, medium: 2, small: 1 };
+  const confSize = { high: 28, medium: 18, low: 10 };
+
+  // Group by window category for legend
+  const groups = { open: [], narrowing: [], closing: [] };
+  places.forEach(p => {
+    const wc = p.window.category;
+    if (groups[wc]) groups[wc].push(p);
+  });
+
+  const traces = Object.entries(groups).map(([wc, items]) => ({
+    x: items.map(p => p.srt_level + (Math.random() - 0.5) * 0.3),
+    y: items.map(p => capMap[p.capacity.category] + (Math.random() - 0.5) * 0.25),
+    text: items.map(p =>
+      `<b>${p.name}</b><br>` +
+      `Уровень ${p.srt_level}: ${SRT_LEVELS[p.srt_level]}<br>` +
+      `Ёмкость: ${CAPACITY_RU[p.capacity.category]} (${p.capacity.range_label})<br>` +
+      `Окно: ${WINDOW_RU[p.window.category]}<br>` +
+      `Уверенность: ${CONF_RU[p.confidence]}<br>` +
+      `Игроки: ${p.key_players.slice(0, 3).join(', ')}`
+    ),
+    customdata: items.map(p => p.id),
+    mode: 'markers',
+    marker: {
+      size: items.map(p => confSize[p.confidence]),
+      color: items.map(p => LEVEL_COLORS[p.srt_level]),
+      opacity: 0.75,
+      line: { width: 1.5, color: WINDOW_COLORS[wc] },
+    },
+    name: WINDOW_RU[wc],
+    hovertemplate: '%{text}<extra></extra>',
+    type: 'scatter',
+  }));
+
+  const layout = {
+    paper_bgcolor: '#0a0e17',
+    plot_bgcolor: '#0f1320',
+    font: { family: 'Inter, sans-serif', color: '#9ca3af', size: 12 },
+    margin: { t: 40, r: 30, b: 60, l: 70 },
+    xaxis: {
+      title: { text: 'Уровень СРТ', font: { size: 13, color: '#6b7280' } },
+      tickmode: 'array',
+      tickvals: [1,2,3,4,5,6,7,8,9],
+      ticktext: ['1','2','3','4','5','6','7','8','9'],
+      gridcolor: 'rgba(255,255,255,0.04)',
+      zeroline: false,
+      range: [0.3, 9.7],
+    },
+    yaxis: {
+      title: { text: 'Экономическая ёмкость', font: { size: 13, color: '#6b7280' } },
+      tickmode: 'array',
+      tickvals: [1, 2, 3],
+      ticktext: ['< $100M', '$100M–$1B', '> $1B'],
+      gridcolor: 'rgba(255,255,255,0.04)',
+      zeroline: false,
+      range: [0.4, 3.6],
+    },
+    legend: {
+      x: 0, y: 1.12,
+      orientation: 'h',
+      font: { size: 11 },
+      bgcolor: 'transparent',
+    },
+    hoverlabel: {
+      bgcolor: '#1a1f2e',
+      bordercolor: 'rgba(255,255,255,0.1)',
+      font: { family: 'Inter', size: 12, color: '#e5e7eb' },
+    },
+    annotations: [1,2,3,4,5,6,7,8,9].map(l => ({
+      x: l, y: 0.55, xref: 'x', yref: 'y',
+      text: SRT_LEVELS[l].split(' ').slice(0, 2).join(' '),
+      showarrow: false,
+      font: { size: 9, color: LEVEL_COLORS[l] + '88' },
+    })),
+  };
+
+  const config = {
+    responsive: true,
+    displayModeBar: false,
+  };
+
+  Plotly.newPlot('bubble-chart', traces, layout, config);
+
+  document.getElementById('bubble-chart').on('plotly_click', (data) => {
+    if (data.points.length > 0) {
+      const id = data.points[0].customdata;
+      openModal(id);
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// MATRIX (CSS Grid)
+// ═══════════════════════════════════════════════════════
+function renderMatrix() {
+  const places = getFiltered();
+  const grid = document.getElementById('matrix-grid');
+  grid.innerHTML = '';
+
+  for (let level = 1; level <= 9; level++) {
+    const levelPlaces = places.filter(p => p.srt_level === level);
+    const col = document.createElement('div');
+    col.className = 'matrix-column';
+
+    // Header
+    const header = document.createElement('div');
+    header.className = `matrix-col-header level-${level}`;
+    header.style.borderBottomColor = LEVEL_COLORS[level];
+    header.innerHTML = `
+      <span class="level-num">${level}</span>
+      ${SRT_LEVELS[level]}
+      <span class="count-badge">${levelPlaces.length}</span>
+    `;
+    col.appendChild(header);
+
+    // Cards
+    levelPlaces.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'place-card';
+      card.style.borderLeftColor = LEVEL_COLORS[level];
+      card.style.borderLeftWidth = '3px';
+      card.onclick = () => openModal(p.id);
+      card.style.cursor = 'pointer';
+
+      card.innerHTML = `
+        <div class="card-name">${p.name}</div>
+        <div class="card-desc">${p.description}</div>
+        <div class="card-badges">
+          <span class="badge badge-cap-${p.capacity.category}">${CAPACITY_RU[p.capacity.category]} ${p.capacity.range_label}</span>
+          <span class="badge badge-win-${p.window.category}">${WINDOW_RU[p.window.category]}</span>
+          <span class="badge badge-conf-${p.confidence}">⚡ ${CONF_RU[p.confidence]}</span>
+        </div>
+        <div class="card-players">Игроки: <span>${p.key_players.slice(0, 3).join(', ')}${p.key_players.length > 3 ? '...' : ''}</span></div>
+        <div class="card-conditions">${p.entry_conditions.map(c => '→ ' + c).join('<br>')}</div>
+        <div class="card-evidence">${p.evidence}</div>
+      `;
+      col.appendChild(card);
+    });
+
+    grid.appendChild(col);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// TABLE
+// ═══════════════════════════════════════════════════════
+function renderTable() {
+  const places = getFiltered();
+  const sorted = sortPlaces(places);
+
+  // Head
+  const thead = document.getElementById('table-head');
+  thead.innerHTML = `<tr>
+    ${tableCol('srt_level', 'Ур.')}
+    ${tableCol('name', 'Название')}
+    ${tableCol('description', 'Описание')}
+    ${tableCol('capacity', 'Ёмкость')}
+    ${tableCol('window', 'Окно')}
+    ${tableCol('confidence', 'Уверенность')}
+    ${tableCol('key_players', 'Ключевые игроки')}
+    ${tableCol('entry_conditions', 'Условия входа')}
+    ${tableCol('evidence', 'Evidence')}
+  </tr>`;
+
+  thead.querySelectorAll('th').forEach(th => {
+    th.addEventListener('click', () => {
+      const col = th.dataset.col;
+      if (sortCol === col) {
+        sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+      } else {
+        sortCol = col;
+        sortDir = 'asc';
+      }
+      renderTable();
+    });
+  });
+
+  // Body
+  const tbody = document.getElementById('table-body');
+  tbody.innerHTML = sorted.map(p => `
+    <tr onclick="openModal('${p.id}')" style="cursor:pointer">
+      <td class="col-level level-${p.srt_level}"><span class="level-dot"></span>${p.srt_level}</td>
+      <td class="col-name">${p.name}</td>
+      <td class="col-desc">${p.description}</td>
+      <td><span class="badge badge-cap-${p.capacity.category}">${CAPACITY_RU[p.capacity.category]}</span><br><small style="color:#6b7280">${p.capacity.range_label}</small></td>
+      <td><span class="badge badge-win-${p.window.category}">${WINDOW_RU[p.window.category]}</span></td>
+      <td><span class="badge badge-conf-${p.confidence}">${CONF_RU[p.confidence]}</span></td>
+      <td class="col-players">${p.key_players.join(', ')}</td>
+      <td class="col-conditions">${p.entry_conditions.join('; ')}</td>
+      <td class="col-evidence">${p.evidence}</td>
+    </tr>
+  `).join('');
+}
+
+function tableCol(col, label) {
+  const arrow = sortCol === col ? (sortDir === 'asc' ? ' ↑' : ' ↓') : '';
+  return `<th data-col="${col}">${label}<span class="sort-arrow">${arrow}</span></th>`;
+}
+
+function sortPlaces(places) {
+  if (!sortCol) return places;
+  return [...places].sort((a, b) => {
+    let va, vb;
+    switch (sortCol) {
+      case 'srt_level': va = a.srt_level; vb = b.srt_level; break;
+      case 'name': va = a.name; vb = b.name; break;
+      case 'description': va = a.description; vb = b.description; break;
+      case 'capacity':
+        const cm = { large: 3, medium: 2, small: 1 };
+        va = cm[a.capacity.category]; vb = cm[b.capacity.category]; break;
+      case 'window':
+        const wm = { open: 1, narrowing: 2, closing: 3 };
+        va = wm[a.window.category]; vb = wm[b.window.category]; break;
+      case 'confidence':
+        const cfm = { high: 3, medium: 2, low: 1 };
+        va = cfm[a.confidence]; vb = cfm[b.confidence]; break;
+      default: va = a[sortCol]; vb = b[sortCol];
+    }
+    if (typeof va === 'string') {
+      return sortDir === 'asc' ? va.localeCompare(vb) : vb.localeCompare(va);
+    }
+    return sortDir === 'asc' ? va - vb : vb - va;
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// DETAIL MODAL
+// ═══════════════════════════════════════════════════════
+function initModal() {
+  const overlay = document.getElementById('modal-overlay');
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+}
+
+function openModal(id) {
+  const p = PLACES_DATA.places.find(pl => pl.id === id);
+  if (!p) return;
+
+  const box = document.getElementById('modal-box');
+  box.innerHTML = `
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="modal-level level-${p.srt_level}">
+      <span class="level-dot"></span>
+      Уровень ${p.srt_level}: ${SRT_LEVELS[p.srt_level]}
+    </div>
+    <div class="modal-title">${p.name}</div>
+    <div class="modal-desc">${p.description}</div>
+
+    <div class="card-badges" style="margin-bottom:16px">
+      <span class="badge badge-cap-${p.capacity.category}">${CAPACITY_RU[p.capacity.category]} ${p.capacity.range_label}</span>
+      <span class="badge badge-win-${p.window.category}">${WINDOW_RU[p.window.category]}</span>
+      <span class="badge badge-conf-${p.confidence}">⚡ ${CONF_RU[p.confidence]}</span>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Экономическая ёмкость</div>
+      <div class="modal-section-body">
+        <p><strong>Категория:</strong> ${CAPACITY_RU[p.capacity.category]} (${p.capacity.range_label})</p>
+        <p><strong>Подтверждённый объём:</strong> ${formatUSD(p.capacity.evidence_usd)}</p>
+        <p><strong>Активных игроков:</strong> ${p.capacity.active_players_count}</p>
+        <p><strong>Обоснование:</strong> ${p.capacity.reasoning}</p>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Окно возможностей</div>
+      <div class="modal-section-body">
+        <p><strong>Статус:</strong> ${WINDOW_RU[p.window.category]} — ${p.window.label}</p>
+        <p>${p.window.description}</p>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Условия входа</div>
+      <div class="modal-section-body">
+        <ul>${p.entry_conditions.map(c => `<li>${c}</li>`).join('')}</ul>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Ключевые игроки</div>
+      <div class="modal-section-body">${p.key_players.join(', ')}</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Evidence</div>
+      <div class="modal-section-body" style="font-style:italic">${p.evidence}</div>
+    </div>
+
+    ${p.audience_lens ? `
+    <div class="modal-section">
+      <div class="modal-section-title">Целевая аудитория</div>
+      <div class="modal-section-body">
+        ${p.audience_lens.map(a => {
+          const labels = { investor: '🎯 Инвестор', operator: '⚙️ Оператор', founder: '🚀 Стартапер' };
+          return `<span class="badge" style="background:rgba(255,255,255,0.06);color:#c8cdd5;margin-right:6px">${labels[a] || a}</span>`;
+        }).join('')}
+      </div>
+    </div>
+    ` : ''}
+  `;
+
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+</script>
+</body>
+</html>
