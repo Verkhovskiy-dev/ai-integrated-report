@@ -6,6 +6,7 @@
 import { GraduationCap, ArrowRight, ExternalLink } from "lucide-react";
 import { getSkolkovoPrograms } from "@/data/insightsDataLocalized";
 import { useTranslation } from "@/contexts/I18nContext";
+import AiProSpotlight from "@/components/AiProSpotlight";
 
 const TEASER_KEYS = ["aiShift", "intensiveAI", "intensiveAgents"] as const;
 
@@ -99,6 +100,10 @@ export default function ProgramsTeaser() {
               </a>
             );
           })}
+        </div>
+
+        <div className="mt-3">
+          <AiProSpotlight source="teaser" />
         </div>
       </div>
     </div>

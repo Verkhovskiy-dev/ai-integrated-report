@@ -39,6 +39,7 @@ import Forecasts from "@/components/Forecasts";
 import PracticalTakeaways from "@/components/PracticalTakeaways";
 import Footer from "@/components/Footer";
 import ProgramsTeaser from "@/components/ProgramsTeaser";
+import AiProSpotlight from "@/components/AiProSpotlight";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<string>("news");
@@ -92,6 +93,15 @@ export default function Home() {
         {/* === FIRST SCREEN: Executive Summary === */}
         <HeroSummary />
 
+        {/* AI PRO — таргет на executive-аудиторию */}
+        {isExecutive && (
+          <section className="py-3">
+            <div className="container">
+              <AiProSpotlight source="executive" />
+            </div>
+          </section>
+        )}
+
         {/* === Remaining Events (collapsible) === */}
         <LatestNews />
 
@@ -134,6 +144,13 @@ export default function Home() {
         {/* Structural Shifts */}
         <section id="shifts" className="py-6 sm:py-10">
           <StructuralShifts />
+        </section>
+
+        {/* AI PRO — мостик из сдвигов */}
+        <section className="pb-6 sm:pb-10 -mt-2">
+          <div className="container">
+            <AiProSpotlight source="shifts" />
+          </div>
         </section>
 
         {/* Cross-Level Connections */}
