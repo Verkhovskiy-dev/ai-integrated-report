@@ -323,10 +323,10 @@ export default function SkolkovoRecommendations() {
               {/* Programs or Coming Soon */}
               {isProfessional ? (
                 <div className="ml-0 sm:ml-12">
-                  <div className="p-4 rounded-lg border border-amber-500/20 bg-amber-500/5 relative overflow-hidden">
+                  <a href="https://www.skolkovo.ru/programmes/tehnologii-osnova-ii-transformacii-biznesa/?utm_source=messengers&utm_medium=telegram&utm_content=expert_dashboardNV" target="_blank" rel="noopener noreferrer" data-umami-event="program-click" data-umami-event-program="aiPro" className="block p-4 rounded-lg border border-amber-500/20 bg-amber-500/5 relative overflow-hidden hover:border-amber-400/50 transition-colors no-underline">
                     <div className="absolute top-2 right-3">
-                      <span className="text-[10px] px-2 py-0.5 rounded-full font-mono bg-amber-500/20 text-amber-400 border border-amber-500/30">
-                        {isEn ? "In Development" : "В разработке"}
+                      <span className="text-[10px] px-2 py-0.5 rounded-full font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                        {isEn ? "Enrollment Open" : "Набор открыт"}
                       </span>
                     </div>
                     <div className="flex items-center gap-2 mb-2">
@@ -345,10 +345,10 @@ export default function SkolkovoRecommendations() {
                       </span>
                       <span className="flex items-center gap-1">
                         <Clock className="w-3 h-3" />
-                        {isEn ? "Launch — 2026" : "Запуск — 2026"}
+                        {isEn ? "Start — October 14, 2026" : "Старт — 14 октября 2026"}
                       </span>
                     </div>
-                  </div>
+                  </a>
                 </div>
               ) : (
                 <div className="space-y-2 ml-0 sm:ml-12">
