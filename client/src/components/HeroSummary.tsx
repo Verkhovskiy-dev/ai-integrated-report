@@ -53,27 +53,6 @@ function guessType(text: string): string {
   return "product";
 }
 
-// ─── Metrics Strip ──────────────────────────────────────────────
-function MetricsStrip({ metrics }: { metrics: { label: string; value: number; suffix: string }[] }) {
-  return (
-    <div className="flex flex-wrap gap-2 sm:gap-3">
-      {metrics.map((m) => (
-        <div
-          key={m.label}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 bg-card/60 border border-border/40 rounded-lg"
-        >
-          <span className="text-lg sm:text-xl font-heading font-bold text-primary tabular-nums">
-            {m.value}{m.suffix}
-          </span>
-          <span className="text-[9px] sm:text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
-            {m.label}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 // ─── Change Radar Chart (Bubble/Scatter) ────────────────────────
 interface RadarPoint {
   name: string;
@@ -189,6 +168,7 @@ export default function HeroSummary() {
     latestReport, isLive, reportDate, keyFocus,
     keyMetrics,
     strategicInsights,
+    loading,
   } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
   const { t, locale } = useTranslation();
@@ -330,45 +310,24 @@ export default function HeroSummary() {
   // ── Key insight ──
   const keyInsight = strategicInsights[0];
 
-  // ── Compact metrics ──
-  const compactMetrics = useMemo(() => {
-    const evtCount = keyMetrics.find((m) => m.label.toLowerCase().includes("событ"))?.value || totalEvents;
-    const linkCount = keyMetrics.find((m) => m.label.toLowerCase().includes("связ"))?.value || 3;
-    return [
-      { label: isEn ? "events" : "событий", value: evtCount || totalEvents, suffix: "" },
-      { label: isEn ? "insights" : "инсайтов", value: strategicInsights.length, suffix: "" },
-      { label: isEn ? "trends" : "трендов", value: momentumData.length, suffix: "" },
-      { label: isEn ? "links" : "связей", value: linkCount, suffix: "" },
-    ];
-  }, [keyMetrics, totalEvents, momentumData, strategicInsights, isEn]);
+  if (loading) {
+    return (
+      <section id="hero-summary" className="pt-3 pb-4 sm:pt-5 sm:pb-6">
+        <div className="container">
+          <div className="flex flex-col lg:flex-row gap-4">
+            <div className="flex-1 h-56 sm:h-64 rounded-xl bg-card/40 border border-border/30 animate-pulse" />
+            <div className="flex-1 h-56 sm:h-64 rounded-xl bg-card/40 border border-border/30 animate-pulse hidden lg:block" />
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   if (!isLive && topEvents.length === 0) return null;
 
   return (
     <section id="hero-summary" className="pt-3 pb-4 sm:pt-5 sm:pb-6">
       <div className="container space-y-4 sm:space-y-5">
-
-        {/* ── Row 1: Title + Metrics Strip ── */}
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <div>
-              <h2 className="text-lg sm:text-2xl font-heading font-bold text-foreground">
-                AI Strategic Intelligence
-              </h2>
-              <p className="text-[10px] sm:text-xs font-mono text-muted-foreground mt-0.5">
-                {reportDate}
-                {keyFocus && <span className="text-primary/70 ml-2">· {keyFocus}</span>}
-              </p>
-            </div>
-            {isLive && (
-              <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/15">
-                <Zap className="w-3 h-3 text-emerald-400" />
-                <span className="text-[10px] font-mono text-emerald-400">LIVE</span>
-              </div>
-            )}
-          </div>
-          <MetricsStrip metrics={compactMetrics} />
-        </div>
 
         {/* ── Row 2: Two-column — Top Events + Change Radar ── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

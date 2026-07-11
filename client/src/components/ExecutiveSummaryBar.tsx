@@ -15,6 +15,7 @@ export default function ExecutiveSummaryBar() {
     isLive,
     reportDate,
     strategicInsights,
+    loading,
   } = useLiveData();
   const { locale } = useTranslation();
   const isEn = locale === "en";
@@ -41,19 +42,48 @@ export default function ExecutiveSummaryBar() {
     // Main insight (first strategic insight)
     const mainInsight = strategicInsights[0] || null;
 
-    // Top action — derived from the highest-level event (level 9)
-    const topLevel = latestReport.srt_levels?.find((l) => l.level === 9);
-    const topEvent = topLevel?.events?.[0];
-    const actionText = topEvent
-      ? topEvent.title
-      : null;
+    // Top action — 4th event by importance (top-3 already shown in hero block below)
+    const flatEvents = [...(latestReport.srt_levels || [])]
+      .sort((a, b) => b.level - a.level)
+      .flatMap((l) => l.events || []);
+    const topEvent = flatEvents[3] || flatEvents[0];
+    const actionText = topEvent ? topEvent.title : null;
 
-    return { totalEvents, keyShift, mainInsight, actionText };
+    // Compact day counters (merged from the former hero title strip)
+    const trendsCount = latestReport.trends?.length || 0;
+    const linksCount = latestReport.cross_level_links?.length || 0;
+
+    return { totalEvents, keyShift, mainInsight, actionText, trendsCount, linksCount };
   }, [latestReport, strategicInsights]);
+
+  if (loading) {
+    return (
+      <section className="border-b border-border/40 bg-card/40">
+        <div className="container py-3 sm:py-4">
+          <div className="h-4 w-40 rounded bg-card/80 animate-pulse mb-3" />
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+            {[0, 1, 2, 3].map((i) => (
+              <div key={i} className="flex-1 h-16 rounded-lg bg-card/70 border border-border/30 animate-pulse" />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   if (!isLive || !summaryData) return null;
 
-  const { totalEvents, keyShift, mainInsight, actionText } = summaryData;
+  const { totalEvents, keyShift, mainInsight, actionText, trendsCount, linksCount } = summaryData;
+  const insightsCount = strategicInsights.length;
+  const plural = (n: number, f: [string, string, string]) => {
+    const m10 = n % 10, m100 = n % 100;
+    return f[m10 === 1 && m100 !== 11 ? 0 : m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14) ? 1 : 2];
+  };
+  const countersLine = insightsCount + trendsCount + linksCount > 0
+    ? isEn
+      ? `${insightsCount} insights \u00b7 ${trendsCount} trends \u00b7 ${linksCount} links`
+      : `${insightsCount} ${plural(insightsCount, ["инсайт", "инсайта", "инсайтов"])} \u00b7 ${trendsCount} ${plural(trendsCount, ["тренд", "тренда", "трендов"])} \u00b7 ${linksCount} ${plural(linksCount, ["связь", "связи", "связей"])}`
+    : null;
 
   return (
     <section className="border-b border-border/40 bg-gradient-to-r from-card/80 via-card/60 to-card/80 backdrop-blur-sm">
@@ -82,7 +112,7 @@ export default function ExecutiveSummaryBar() {
                 {totalEvents}
               </p>
               <p className="text-[9px] text-muted-foreground mt-0.5">
-                {isEn ? "across 9 SRT levels" : "по 9 уровням СРТ"}
+                {countersLine || (isEn ? "across 9 SRT levels" : "по 9 уровням СРТ")}
               </p>
             </div>
           </div>

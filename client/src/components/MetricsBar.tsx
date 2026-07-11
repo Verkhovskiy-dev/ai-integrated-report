@@ -44,7 +44,7 @@ function AnimatedNumber({ target, suffix }: { target: number; suffix: string }) 
 }
 
 export default function MetricsBar() {
-  const { keyMetrics: KEY_METRICS, isLive, reportDate, keyFocus } = useLiveData();
+  const { keyMetrics: KEY_METRICS, isLive, reportDate, keyFocus, loading } = useLiveData();
   const { t } = useTranslation();
 
   return (
@@ -71,7 +71,9 @@ export default function MetricsBar() {
             {t.metrics.title}
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl leading-relaxed">
-            {isLive ? (
+            {loading ? (
+              <span className="inline-block h-4 w-72 max-w-full rounded bg-card/60 animate-pulse align-middle" />
+            ) : isLive ? (
               <>{t.metrics.descLive}
               <span className="hidden sm:inline"> {t.metrics.descLiveDate} <span className="font-mono text-foreground/80">{reportDate}</span>.</span></>
             ) : (
@@ -85,7 +87,7 @@ export default function MetricsBar() {
             </p>
           )}
           <p className="text-xs text-muted-foreground mt-1 sm:hidden font-mono">
-            {isLive ? reportDate : t.metrics.descStaticDates}
+            {loading ? "" : isLive ? reportDate : t.metrics.descStaticDates}
           </p>
         </div>
 

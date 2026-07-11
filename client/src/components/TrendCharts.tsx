@@ -652,7 +652,7 @@ function EmptyState({ message }: { message: string }) {
    MAIN COMPONENT
    ═══════════════════════════════════════════════════════════ */
 export default function TrendCharts() {
-  const { trendDynamics, momentumData, trendDynamicsLive } = useLiveData();
+  const { trendDynamics, momentumData, trendDynamicsLive, loading } = useLiveData();
   const { selectedLevels, searchQuery } = useFilters();
   const { t, locale } = useTranslation();
   const isEn = locale === "en";
@@ -713,6 +713,21 @@ export default function TrendCharts() {
 
     return { accelerating: accel, decelerating: decel };
   }, [trendDynamics, selectedLevels, searchQuery]);
+
+  // While data is loading, show a skeleton instead of the empty state
+  if (loading) {
+    return (
+      <section id="trends" className="py-6 sm:py-10">
+        <div className="container">
+          <div className="h-5 w-56 rounded bg-card/60 animate-pulse mb-6" />
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex-1 h-64 sm:h-72 rounded-xl bg-card/40 border border-border/30 animate-pulse" />
+            <div className="flex-1 h-64 sm:h-72 rounded-xl bg-card/40 border border-border/30 animate-pulse" />
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   // If no real data at all, show empty state
   if (!trendDynamicsLive) {

@@ -56,9 +56,10 @@ function buildTickerFromReport(report: any): Omit<TickerItem, "id">[] {
     }
   }
 
-  // Sort by level descending (most important first), take top 5
+  // Sort by level descending; skip events 1-4 (hero top-3 + summary focus) to avoid triple duplication
   allEvents.sort((a, b) => b.level - a.level);
-  const top5 = allEvents.slice(0, 5);
+  const picked = allEvents.slice(4, 9);
+  const top5 = picked.length > 0 ? picked : allEvents.slice(0, 5);
 
   return top5.map((e) => ({
     text: e.text,
@@ -102,7 +103,7 @@ function formatLocalTime(date: Date): string {
 }
 
 export default function NewsTicker() {
-  const { latestReport, isLive } = useLiveData();
+  const { latestReport, isLive, loading } = useLiveData();
   const { locale } = useTranslation();
   const isEn = locale === "en";
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -128,7 +129,7 @@ export default function NewsTicker() {
     id: index,
   }));
 
-  const duplicatedItems = [...items, ...items];
+  const duplicatedItems = loading ? [] : [...items, ...items];
 
   return (
     <div className="ticker-wrapper">
