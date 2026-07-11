@@ -63,7 +63,7 @@
       "subtitle": "Фундамент экосистемы",
       "shortTitle": "Фундамент экосистемы",
       "shortDesc": "Генерация текста, кода, анализ",
-      "description": "Генерация текста, кода, анализ — без выполнения действий. К маю 2026 года рынок достиг зрелости: GPT-5.5, Claude Opus 4.7, Gemini 3.1 Pro и Grok 4.3 конкурируют на равных. Китайские модели (DeepSeek V4 Pro, Qwen 3.6, Kimi K2.6, MiMo-V2-Pro) занимают 45% трафика OpenRouter. Meta перешла от open-source Llama к проприетарной Muse Spark.",
+      "description": "Генерация текста, кода, анализ — без выполнения действий. К июлю 2026 конкуренция обострилась: GPT-5.6 (Sol/Terra/Luna), Claude Sonnet 5 и Fable 5, Grok 4.5 вышли за один месяц. Китайские модели (GLM-5.2, DeepSeek V4, Qwen 3.7, Kimi K2.7, MiniMax M3) занимают 30–46% enterprise-трафика США через шлюзы (CNBC, июль 2026) при цене на 60–90% ниже западных аналогов.",
       "color": "#00d4ff",
       "image": "https://d2xsxph8kpxj0f.cloudfront.net/310419663031817411/LmcKwojoPuoroSjGyukkEi/level1-models-bvmEmyXuQTm3TBVWp6yUoz.webp",
       "categories": [
@@ -71,20 +71,22 @@
           "name": "Проприетарные модели (Запад)",
           "tools": [
             {
-              "name": "OpenAI GPT-5.5 / o3 / o4-mini",
+              "name": "OpenAI GPT-5.6 (Sol / Terra / Luna) / GPT-5.5",
               "url": "https://openai.com",
-              "description": "GPT-5.5 (23 апреля 2026) — флагман для сложных задач. GPT-5.5 Instant — новый дефолт ChatGPT. o4-mini — экономичный reasoning. Images 2.0 — новый генератор изображений.",
-              "strength": "Самая развитая экосистема, GPT-5.5 — лидер по сложным задачам",
+              "description": "GPT-5.6 (9 июля 2026) — семейство из трёх моделей: Sol (флагман), Terra (баланс), Luna (экономичная). SOTA на Agents' Last Exam (53.6) и Coding Agent Index (80). Режим ultra координирует до 16 агентов параллельно. Релиз задержан на месяц из-за проверки нацбезопасности США. GPT-5.5 Instant — дефолт ChatGPT; GPT-4.5 удалён 26 июня. GPT-Live (8 июля) — full-duplex голос. ChatGPT Work — документы и презентации для Pro/Enterprise.",
+              "strength": "GPT-5.6 — SOTA в агентном кодинге; Terra/Luna дают уровень Fable 5 за ~1/16 цены",
               "features": [
-                "GPT-5.5 Instant",
-                "o4-mini Reasoning",
-                "Images 2.0",
-                "Sora закрыта"
+                "GPT-5.6 Sol / Terra / Luna (9 июля 2026)",
+                "Ultra mode: до 16 параллельных агентов",
+                "Programmatic Tool Calling",
+                "GPT-Live full-duplex голос",
+                "ChatGPT Work",
+                "GPT-5.5 Instant (дефолт)"
               ],
-              "context": "200K (o3-mini)",
-              "reasoning": "o3, o4-mini",
+              "context": "400K (GPT-5.6), 272K (GPT-5.5 Pro)",
+              "reasoning": "GPT-5.6 max/ultra",
               "multimodal": "Текст, Код, Изобр., Аудио",
-              "apiPrice": "$0.55–40/1M tok",
+              "apiPrice": "$0.55–180/1M tok (GPT-5.5 Pro $30/$180)",
               "tags": [
                 "текст",
                 "код",
@@ -113,22 +115,22 @@
               "recommendedFor": "Лучший универсальный AI для любых задач"
             },
             {
-              "name": "Claude Opus 4.8 / Sonnet 4.6",
+              "name": "Claude Fable 5 / Sonnet 5 / Opus 4.8",
               "url": "https://anthropic.com",
-              "description": "Claude Opus 4.8 (28 мая 2026) — улучшенный reasoning, агентные задачи, dynamic workflows, 1M токенов контекста. Лидер LMSys Arena (99/100). Sonnet 4.6 — баланс скорости и качества. Anthropic подала конфиденциальное заявление на IPO.",
-              "strength": "Агентный кодинг #1 (SWE-bench 87.6%), Dreaming, контекст 1M",
+              "description": "Claude Fable 5 (9 июня 2026) — первая публичная модель класса Mythos: 1M контекст, лидер в reasoning и агентных задачах (SWE-bench Pro ~80%). 12 июня приостановлена по требованию правительства США, восстановлена 30 июня; с 8 июля — платный add-on ($10/$50 за M токенов) для всех тарифов. Claude Sonnet 5 (30 июня) — самый агентный Sonnet, SWE-bench Pro 63.2%, интро-цена $2/$10 до 31 августа. Opus 4.8 ($5/$25) — включён в подписки.",
+              "strength": "Fable 5 — сильнейшая публичная модель в агентных задачах; Sonnet 5 — рациональный дефолт по цене/качеству",
               "features": [
-                "Claude Opus 4.8 (28 мая 2026)",
-                "Dynamic Workflows",
-                "Agentic Readiness Analysis",
+                "Claude Fable 5 (Mythos-класс, 9 июня 2026)",
+                "Claude Sonnet 5 (30 июня 2026)",
+                "Opus 4.8 / Dynamic Workflows",
                 "1M токенов контекст",
-                "Sonnet 4.6",
+                "Claude Science (30 июня)",
                 "IPO filing"
               ],
-              "context": "1M (Opus 4.8)",
+              "context": "1M (Fable 5, Opus 4.8)",
               "reasoning": "Extended Thinking",
               "multimodal": "Текст, Код, Изобр.",
-              "apiPrice": "$3–75/1M tok",
+              "apiPrice": "$2–50/1M tok (Sonnet 5 $2/$10, Fable 5 $10/$50)",
               "tags": [
                 "текст",
                 "код",
@@ -155,19 +157,20 @@
             {
               "name": "Gemini 3.5 Flash / 3.1.5 Pro / Deep Research Max",
               "url": "https://ai.google.dev",
-              "description": "Gemini 3.5 Flash (19 мая 2026) — быстрая мультимодальная модель Google, 1M токенов, GPQA 82.8%, поддержка текста/изображений/аудио/видео. Gemini Omni — advanced reasoning и создание контента. Google фокусируется на агентной эре (май 2026).",
-              "strength": "Nano Banana (изобр.), Veo 3.1 (видео), Deep Research Max, Google экосистема",
+              "description": "Gemini 3.5 Flash — быстрая мультимодальная модель Google ($1.50/$9 за M токенов), 1M токенов, теперь с Computer Use (агенты на desktop/mobile/browser, июнь 2026). Gemini 3.5 Pro задержан — ожидается в июле 2026. Gemini Omni Flash (30 июня) — conversational video, $0.10/сек. Live Translate — speech-to-speech перевод на 70+ языков. NotebookLM получил advanced reasoning и cloud computer.",
+              "strength": "Computer Use агенты, Veo 3.1 (видео), Omni Flash, Nano Banana 2 Lite, Google экосистема",
               "features": [
-                "Gemini 3.5 Flash (19 мая 2026)",
-                "Deep Research Max",
-                "Nano Banana 2/3/Pro",
+                "Gemini 3.5 Flash + Computer Use",
+                "Gemini Omni Flash (30 июня 2026)",
+                "Live Translate 70+ языков",
+                "Nano Banana 2 Lite",
                 "Veo 3.1 Ultra",
-                "Gemma 4"
+                "Gemini 3.5 Pro — ожидается в июле"
               ],
               "context": "2M tokens",
               "reasoning": "Deep Think",
               "multimodal": "Текст, Код, Изобр., Видео, Аудио",
-              "apiPrice": "$1.25–10/1M tok",
+              "apiPrice": "$1.50–9/1M tok",
               "tags": [
                 "текст",
                 "код",
@@ -195,19 +198,21 @@
               "recommendedFor": "Лучший для мультимодальных задач и исследований"
             },
             {
-              "name": "Grok 4.3 / 4.2 Non-Reasoning",
+              "name": "Grok 4.5 / 4.3 / Grok Imagine",
               "url": "https://x.ai",
-              "description": "Grok 4.3 — флагман xAI для chat, coding, agentic workflows. Эксклюзивные данные X/Twitter в реальном времени.",
-              "strength": "Данные X/Twitter в реальном времени, Azure Foundry, агрессивные цены",
+              "description": "Grok 4.5 (8 июля 2026) — первая модель xAI после IPO. 4-е место Artificial Analysis Index, но cost-per-task в 17 раз ниже Opus-класса. Grok Imagine Video 1.5 (16 июня) — #1 video-модель в blind-тестах (SuperGrok $30/мес). Grok 4.3 API: $1.25/$2.50 за M токенов. Эксклюзивные данные X/Twitter в реальном времени. В ЕС — с середины июля.",
+              "strength": "Opus-класс качества при 1/17 стоимости, данные X/Twitter, Grok Imagine Video #1",
               "features": [
-                "Grok 4.3 Flagship",
-                "Azure Foundry",
-                "X/Twitter Data"
+                "Grok 4.5 (8 июля 2026)",
+                "Grok Imagine Video 1.5 (#1 blind-тесты)",
+                "Grok 4 Fast",
+                "X/Twitter Data",
+                "Azure Foundry"
               ],
               "context": "256K tokens",
               "reasoning": "Built-in",
               "multimodal": "Текст, Код, Изобр.",
-              "apiPrice": "$2–10/1M tok",
+              "apiPrice": "$1.25–10/1M tok",
               "tags": [
                 "текст",
                 "код",
@@ -232,9 +237,10 @@
             {
               "name": "Meta Muse Spark",
               "url": "https://ai.meta.com",
-              "description": "Muse Spark — первая проприетарная модель Meta Superintelligence Labs. Заменяет Llama как флагман Meta. 3B+ пользователей.",
+              "description": "Muse Spark — проприетарная модель Meta Superintelligence Labs, заменившая Llama. Новая версия представлена 9 июля 2026. 3B+ пользователей через WhatsApp/Facebook/Instagram. Внутреннее потребление AI Meta — 73.7 трлн токенов/мес.",
               "strength": "Meta экосистема (3B+ пользователей), разрыв с open source",
               "features": [
+                "Muse Spark v2 (9 июля 2026)",
                 "Proprietary Model",
                 "Meta SI Labs",
                 "3B+ Users"
@@ -313,12 +319,13 @@
             {
               "name": "DeepSeek V4 Pro / R2",
               "url": "https://deepseek.com",
-              "description": "DeepSeek V4 Pro — frontier reasoning. R2 — reasoning модель. 5.6% OpenRouter. Конкурент GPT-5.5 по reasoning.",
-              "strength": "Frontier reasoning. 5.6% OpenRouter.",
+              "description": "DeepSeek V4 (MIT-лицензия): V4-Pro — 1.6T/49B MoE, SWE-bench Verified 80.6%, 3 режима reasoning. V4-Flash — 284B/13B, $0.14 за M input-токенов. Официальный формальный релиз V4 — середина июля 2026. Растущая доля enterprise-трафика США через Vercel и OpenRouter.",
+              "strength": "Frontier reasoning в open source, цена в 10–50x ниже западных флагманов",
               "features": [
-                "V4 Pro Frontier",
-                "R2 Reasoning",
-                "5.6% OpenRouter"
+                "V4-Pro (1.6T/49B, SWE-bench 80.6%)",
+                "V4-Flash ($0.14/M input)",
+                "MIT-лицензия",
+                "Формальный релиз — июль 2026"
               ],
               "tags": [
                 "текст",
@@ -344,14 +351,13 @@
             {
               "name": "Qwen3.7 Max / Qwen3.7 Plus / Qwen3.6 27B",
               "url": "https://qwen.ai",
-              "description": "Qwen3.7 Max (19 мая 2026) — flagship Alibaba, 1M токенов, reasoning, GPQA Diamond 92.3%. Qwen3.7 Plus — баланс цены и качества. Qwen3.6 27B (апр 2026) — open-source, 262K контекст, мультимодальный. Qwen3.6 Flash — мультимодальный (текст, изображения, видео), 1M токенов. Qwen Code — агентный кодинг (v0.14.5).",
+              "description": "Qwen3.7 Max — flagship Alibaba, 1M токенов, GPQA 92.4%, SWE-bench Pro 60.6%. Qwen 3.5 397B-A17B — open-weight (GPQA 88.4%, AIME 91.3%). Qwen3-Coder 80B/30B (Apache 2.0) — локальный агентный кодинг. Qwen Code — агентный CLI.",
               "strength": "14% OpenRouter. Hybrid thinking. MCP support.",
               "features": [
-                "Qwen3.7 Max (19 мая 2026)",
-                "Qwen3.7 Plus",
-                "Qwen3.6 27B open-source",
-                "Qwen3.6 Flash мультимодальный",
-                "Qwen Code v0.14.5",
+                "Qwen3.7 Max (GPQA 92.4%)",
+                "Qwen 3.5 397B-A17B open-weight",
+                "Qwen3-Coder 80B (Apache 2.0)",
+                "Qwen Code CLI",
                 "1M токенов контекст"
               ],
               "tags": [
@@ -377,14 +383,16 @@
               "context": "1M (Qwen3.7 Max)"
             },
             {
-              "name": "Kimi K2.6 (Moonshot)",
+              "name": "Kimi K2.7-Code / K2.6 (Moonshot)",
               "url": "https://kimi.ai",
-              "description": "Kimi K2.6 — frontier модель от Moonshot AI. Muon optimizer. 1M контекст.",
-              "strength": "Frontier level. Muon optimizer. 1M контекст.",
+              "description": "Kimi K2.7-Code (июнь 2026) — open-source модель для software engineering, −30% стоимости reasoning-токенов против K2.6. K2.6 Agent Swarm — до 300 суб-агентов и 4000 шагов на прогон. MoonViT-3D (400M) — visual-to-code. 1M контекст. Kimi K3 анонсирован.",
+              "strength": "Agent Swarm до 300 суб-агентов, open-source SWE-специализация, 1M контекст",
               "features": [
-                "Frontier Level",
-                "Muon Optimizer",
-                "1M Context"
+                "K2.7-Code (июнь 2026, open source)",
+                "Agent Swarm: 300 суб-агентов",
+                "MoonViT-3D visual-to-code",
+                "1M Context",
+                "Kimi K3 анонсирован"
               ],
               "tags": [
                 "текст",
@@ -403,18 +411,19 @@
                 "developer"
               ],
               "pricing": "freemium",
-              "rating": 4,
+              "rating": 5,
               "recommendedFor": "Лучший для работы с длинными документами"
             },
             {
-              "name": "MiniMax / Z.ai",
+              "name": "MiniMax M3 / M2.5",
               "url": "https://minimax.io",
-              "description": "MiniMax (8%) и Z.ai (5.6%) — значительные игроки на OpenRouter. MiniMax — мультимодальность.",
-              "strength": "8% OpenRouter. Мультимодальность.",
+              "description": "MiniMax M3 — 428B/23B MoE, 1M контекст, SWE-bench Pro 59%, GPQA 93%. Оптимизирован под высокую пропускную способность при низкой цене. Forge framework для RL. Анонсирована модель 2.7T параметров.",
+              "strength": "GPQA 93% при бюджетной цене, 1M контекст, high-throughput",
               "features": [
-                "8% OpenRouter",
-                "Multimodal",
-                "Competitive Pricing"
+                "M3 (428B/23B MoE)",
+                "GPQA 93%",
+                "1M Context",
+                "Forge RL Framework"
               ],
               "tags": [
                 "текст",
@@ -422,16 +431,16 @@
                 "бюджетный"
               ],
               "businessUse": [
-                "marketing",
-                "design"
+                "development",
+                "analytics"
               ],
-              "businessFocus": "Мультимодальная генерация по низкой цене.",
+              "businessFocus": "Высокая пропускная способность и reasoning по низкой цене.",
               "roles": [
-                "marketer",
-                "designer"
+                "developer",
+                "analyst"
               ],
               "pricing": "freemium",
-              "rating": 3,
+              "rating": 4,
               "recommendedFor": "Бюджетная мультимодальная генерация"
             },
             {
@@ -462,14 +471,16 @@
               "recommendedFor": "Лучший open-source для reasoning"
             },
             {
-              "name": "GLM-5 / ChatGLM (Zhipu AI)",
-              "url": "https://zhipuai.cn",
-              "description": "GLM-5 — флагман Zhipu AI. Сильные позиции в Китае. Мультимодальная модель.",
-              "strength": "Сильные позиции в Китае. Мультимодальность.",
+              "name": "GLM-5.2 (Z.ai / Zhipu)",
+              "url": "https://z.ai",
+              "description": "GLM-5.2 (середина июня 2026) — 753B/40B MoE, MIT-лицензия, 1M контекст. SWE-bench Pro 62.1% (выше GPT-5.5), Terminal-Bench 81.0%, GPQA 91.2%. Цена ~$1.40/$4.40 за M токенов (~1/6 GPT-5.5). Обучена на Huawei Ascend 910B. Самая быстрая адопция в истории Vercel: 27x рост токенов и 80x рост клиентов за первую неделю.",
+              "strength": "SWE-bench Pro выше GPT-5.5 при 1/6 цены, MIT-лицензия без региональных ограничений",
               "features": [
-                "GLM-5 Flagship",
-                "Multimodal",
-                "Chinese Market Leader"
+                "753B/40B MoE, MIT",
+                "SWE-bench Pro 62.1%",
+                "1M контекст",
+                "Slime RL (галлюцинации 90%→34%)",
+                "Huawei Ascend 910B"
               ],
               "tags": [
                 "текст",
@@ -477,25 +488,26 @@
                 "мультимодальность"
               ],
               "businessUse": [
-                "analytics",
-                "marketing"
+                "development",
+                "analytics"
               ],
-              "businessFocus": "Мультимодальная модель для китайского рынка.",
+              "businessFocus": "Frontier-уровень агентного кодинга по цене в 6 раз ниже западных аналогов.",
               "roles": [
-                "analyst",
-                "marketer"
+                "developer",
+                "analyst"
               ],
               "pricing": "freemium",
-              "rating": 3,
-              "recommendedFor": "Для работы с китайским контентом"
+              "rating": 5,
+              "recommendedFor": "Лучшее соотношение цена/качество для агентного кодинга"
             },
             {
               "name": "Doubao / Seed (ByteDance)",
               "url": "https://doubao.com",
-              "description": "Doubao — AI-платформа ByteDance. Seed — базовая модель. Интеграция с TikTok экосистемой.",
+              "description": "Doubao — AI-платформа ByteDance. Seed — базовая модель. Seedance 2.5 (июнь 2026) — видеогенерация с native 30s 4K. Интеграция с TikTok экосистемой.",
               "strength": "ByteDance экосистема. TikTok интеграция.",
               "features": [
                 "ByteDance Ecosystem",
+                "Seedance 2.5 (видео)",
                 "TikTok Integration",
                 "Seed Model"
               ],
@@ -525,12 +537,14 @@
             {
               "name": "Gemma 4 (Google)",
               "url": "https://ai.google.dev/gemma",
-              "description": "Gemma 4 — open-source модель Google. Оптимизирована для edge-устройств и self-hosted.",
+              "description": "Gemma 4 12B (июнь 2026) — open model Google: работает локально на 16GB RAM, vision + native voice, unified architecture. Оптимизирована для edge-устройств и self-hosted.",
               "strength": "Google quality. Open source. Edge-optimized.",
               "features": [
+                "Gemma 4 12B (июнь 2026)",
+                "Локально на 16GB RAM",
+                "Vision + Native Voice",
                 "Open Source",
-                "Edge Optimized",
-                "Google Quality"
+                "Edge Optimized"
               ],
               "tags": [
                 "текст",
@@ -577,12 +591,13 @@
             {
               "name": "Mistral Large 3 / Codestral",
               "url": "https://mistral.ai",
-              "description": "Mistral Large 3 — европейский флагман. Codestral — специализированная модель для кода. Сильная позиция в EU.",
+              "description": "Mistral Medium 3.5 — актуальный европейский флагман. Codestral — специализированная модель для кода. Mistral Vibe Pro ($14.99/мес) — потребительский продукт. Сильная позиция в EU compliance.",
               "strength": "Европейский лидер. Codestral для кода. EU compliance.",
               "features": [
-                "EU Compliance",
+                "Mistral Medium 3.5",
                 "Codestral",
-                "Mistral Large 3"
+                "Mistral Vibe Pro $14.99/мес",
+                "EU Compliance"
               ],
               "tags": [
                 "текст",
@@ -610,14 +625,16 @@
           "name": "Генерация изображений",
           "tools": [
             {
-              "name": "Midjourney v7",
+              "name": "Midjourney V8.1",
               "url": "https://midjourney.com",
-              "description": "Midjourney v7 — лидер генерации изображений. Фотореалистичность, стилизация, web-интерфейс.",
+              "description": "Midjourney V8.1 (июнь 2026, новый дефолт) — умнее обрабатывает промпты, лучше рендерит текст, быстрее генерация, HD-разрешение. V8.2 на подходе. Компания вышла в сегмент medical imaging.",
               "strength": "Лучшее качество изображений. Огромное сообщество.",
               "features": [
-                "v7 Engine",
+                "V8.1 Engine (дефолт с июня 2026)",
+                "Улучшенный текст на изображениях",
+                "HD Resolution",
                 "Web Editor",
-                "Style Reference"
+                "V8.2 скоро"
               ],
               "tags": [
                 "изображения",
@@ -757,12 +774,13 @@
             {
               "name": "ElevenLabs",
               "url": "https://elevenlabs.io",
-              "description": "ElevenLabs — лидер синтеза речи. Клонирование голоса, мультиязычность, эмоциональная речь.",
+              "description": "ElevenLabs — лидер синтеза речи. Клонирование голоса, мультиязычность, эмоциональная речь. В июне 2026 голосовые инструменты стали доступны в мобильных приложениях.",
               "strength": "Лучший синтез речи. Клонирование голоса.",
               "features": [
                 "Voice Cloning",
                 "Multilingual",
-                "Emotional Speech"
+                "Emotional Speech",
+                "Mobile Voice Tools (июнь 2026)"
               ],
               "tags": [
                 "аудио",
@@ -875,11 +893,13 @@
             {
               "name": "Perplexity Pro",
               "url": "https://perplexity.ai",
-              "description": "Perplexity Pro — AI-поисковик с цитированием источников. Deep Research для глубоких исследований.",
+              "description": "Perplexity Pro ($20B оценка) — AI-поисковик с цитированием источников. Deep Research теперь в агентном ассистенте Computer (19 июня 2026): command panel, форки тредов, enterprise-контроль кредитов. Разрабатывает Teammate — AI coding tool (конкурент Cursor/Claude Code).",
               "strength": "AI-поиск с источниками. Deep Research.",
               "features": [
                 "Source Citations",
-                "Deep Research",
+                "Deep Research в Computer (19 июня 2026)",
+                "Enterprise Controls",
+                "Teammate (coding, в разработке)",
                 "Real-time Data"
               ],
               "tags": [
@@ -1089,7 +1109,7 @@
       "subtitle": "Действия и автоматизация",
       "shortTitle": "Действия и автоматизация",
       "shortDesc": "Выполнение задач, автономная работа",
-      "description": "Агентные системы выполняют действия автономно: пишут код, управляют браузером, создают контент. К маю 2026 агенты стали production-ready: Cursor 3.0, Devin 2.2, Claude Code, Manus — все работают в реальных проектах.",
+      "description": "Агентные системы выполняют действия автономно: пишут код, управляют браузером, создают контент. К июлю 2026 агенты — mainstream: Windsurf стал Devin Desktop (Cognition), Claude Code перешёл на Sonnet 5/Fable 5, GitHub Copilot ввёл flex billing, корпорации нормируют расходы на AI-инструменты (Tesla $200/нед, Uber $1500/мес).",
       "color": "#a78bfa",
       "image": "",
       "categories": [
@@ -1099,12 +1119,14 @@
             {
               "name": "Cursor 3.0",
               "url": "https://cursor.com",
-              "description": "Cursor 3.0 — AI-first IDE. Background agents, multi-file editing, интеграция с Claude и GPT.",
+              "description": "Cursor 3.0 — AI-first IDE. Background agents, multi-file editing, интеграция с Claude и GPT. В июне 2026 обновлены тарифы Teams и приобретён Continue.dev. Composer 3 анонсирован.",
               "strength": "AI-first IDE. Background agents. Multi-file editing.",
               "features": [
                 "Background Agents",
                 "Multi-file Edit",
-                "Claude + GPT"
+                "Claude + GPT",
+                "Teams repricing (июнь 2026)",
+                "Continue.dev acquisition"
               ],
               "tags": [
                 "код",
@@ -1123,15 +1145,14 @@
               "recommendedFor": "Лучшая AI IDE для разработчиков"
             },
             {
-              "name": "Devin 2.2",
+              "name": "Devin 2.2 (Cognition)",
               "url": "https://devin.ai",
-              "description": "Devin 2.2 — полностью автономный AI-разработчик. Планирует, пишет код, тестирует, деплоит.",
-              "strength": "Полная автономность. Планирование + исполнение.",
+              "description": "Devin 2.2 — полностью автономный AI-разработчик Cognition: планирует, пишет код, тестирует, деплоит. Devin Local — локальный режим работы. С июня 2026 доступен и через Devin Desktop.",
+              "strength": "Полная автономность. Планирование + исполнение. Devin Local.",
               "features": [
                 "Full Autonomy",
-                "Planning",
-                "Testing",
-                "Deployment"
+                "Planning + Testing + Deployment",
+                "Devin Local"
               ],
               "tags": [
                 "код",
@@ -1147,20 +1168,22 @@
                 "developer",
                 "manager"
               ],
-              "pricing": "$500/mo",
+              "pricing": "$20–500/mo",
               "rating": 4,
               "recommendedFor": "Лучший для полностью автономной разработки"
             },
             {
               "name": "Claude Code",
               "url": "https://docs.anthropic.com/claude-code",
-              "description": "Claude Code — CLI-агент на базе Claude Opus 4.7. Dreaming, multi-agent orchestration, 1M контекст.",
+              "description": "Claude Code — CLI-агент Anthropic, теперь на базе Sonnet 5 и Fable 5 (credit-billed). Dreaming, multi-agent orchestration, 1M контекст. Часть продуктовой линейки: Claude Cowork, Claude for Chrome, Claude Science (30 июня 2026).",
               "strength": "CLI-first. Dreaming. 1M контекст. Multi-agent.",
               "features": [
+                "Sonnet 5 / Fable 5",
                 "Dreaming",
                 "Multi-Agent",
                 "1M Context",
-                "CLI"
+                "CLI",
+                "Claude Science (30 июня)"
               ],
               "tags": [
                 "код",
@@ -1182,12 +1205,14 @@
             {
               "name": "GitHub Copilot (Agent Mode)",
               "url": "https://github.com/features/copilot",
-              "description": "GitHub Copilot Agent Mode — автономное выполнение задач в GitHub. Coding agent в PR, Issues.",
+              "description": "GitHub Copilot Agent Mode — автономное выполнение задач в GitHub. Coding agent в PR, Issues. В июне–июле 2026 введены live flex billing и план Max ($100/мес).",
               "strength": "GitHub интеграция. Agent Mode. Coding в PR.",
               "features": [
                 "Agent Mode",
                 "GitHub Integration",
-                "PR Automation"
+                "PR Automation",
+                "Flex Billing",
+                "Max план $100/мес"
               ],
               "tags": [
                 "код",
@@ -1201,16 +1226,17 @@
               "roles": [
                 "developer"
               ],
-              "pricing": "$19/mo",
+              "pricing": "$19–100/mo",
               "rating": 4,
               "recommendedFor": "Лучший для команд на GitHub"
             },
             {
-              "name": "Windsurf (ex-Codeium)",
-              "url": "https://windsurf.ai",
-              "description": "Windsurf — AI IDE с Cascade агентом. Flows для multi-step задач. Бесплатный tier.",
-              "strength": "Cascade agent. Flows. Бесплатный tier.",
+              "name": "Devin Desktop (ex-Windsurf)",
+              "url": "https://devin.ai",
+              "description": "Windsurf прекратил существование как бренд: 2 июня 2026 Cognition превратила его в Devin Desktop — agent command center. Cascade-агент и Flows сохранены. Бесплатный tier остался; новые планы Pro $20 и Max $200.",
+              "strength": "Cascade agent + командный центр агентов Devin. Бесплатный tier.",
               "features": [
+                "Ребрендинг в Devin Desktop (2 июня 2026)",
                 "Cascade Agent",
                 "Flows",
                 "Free Tier"
@@ -1286,6 +1312,33 @@
               "pricing": "freemium",
               "rating": 4,
               "recommendedFor": "Лучший для генерации приложений без кода"
+            },
+            {
+              "name": "Google Antigravity 2.0",
+              "url": "https://antigravity.google",
+              "description": "Antigravity 2.0 — агентный IDE Google на базе Gemini 3.5 Flash. Автономные агенты с browser-контролем, артефакты, параллельные воркспейсы.",
+              "strength": "Google экосистема, Gemini 3.5 Flash + Computer Use, бесплатный доступ.",
+              "features": [
+                "Agentic IDE",
+                "Gemini 3.5 Flash",
+                "Browser Control",
+                "Parallel Workspaces"
+              ],
+              "tags": [
+                "код",
+                "IDE",
+                "агенты"
+              ],
+              "businessUse": [
+                "development"
+              ],
+              "businessFocus": "Агентная разработка в экосистеме Google.",
+              "roles": [
+                "developer"
+              ],
+              "pricing": "free",
+              "rating": 4,
+              "recommendedFor": "Лучший бесплатный агентный IDE в экосистеме Google"
             }
           ]
         },
@@ -1329,11 +1382,12 @@
             {
               "name": "OpenAI Operator / Deep Research",
               "url": "https://openai.com/operator",
-              "description": "OpenAI Operator — браузерный агент. Deep Research — глубокие исследования с отчётами.",
+              "description": "OpenAI Operator — браузерный агент. Deep Research — глубокие исследования с отчётами. GPT-5.6 ultra mode (июль 2026) координирует до 16 агентов параллельно; Programmatic Tool Calling в Responses API.",
               "strength": "Браузерный агент OpenAI. Deep Research.",
               "features": [
                 "Browser Agent",
                 "Deep Research",
+                "GPT-5.6 ultra mode",
                 "Report Generation"
               ],
               "tags": [
@@ -1459,12 +1513,13 @@
             {
               "name": "Google Veo 3.1 Ultra",
               "url": "https://deepmind.google/veo",
-              "description": "Veo 3.1 Ultra — генерация видео с нативным аудио. Кинематографическое качество.",
+              "description": "Veo 3.1 Ultra — генерация видео с нативным аудио, кинематографическое качество. Лучший общий выбор. Цены: Standard $0.40, Fast $0.15, Lite $0.05 за секунду. Дополнен Gemini Omni Flash (30 июня 2026) для conversational-редактирования ($0.10/сек).",
               "strength": "Нативное аудио. Кинематографическое качество.",
               "features": [
                 "Native Audio",
                 "Cinematic Quality",
-                "Long Videos"
+                "$0.05–0.40/сек",
+                "Gemini Omni Flash (30 июня)"
               ],
               "tags": [
                 "видео",
@@ -1485,13 +1540,14 @@
               "recommendedFor": "Лучший для генерации видео с аудио"
             },
             {
-              "name": "Kling 3.0 (Kuaishou)",
+              "name": "Kling 3.0 / 3.0 Turbo (Kuaishou)",
               "url": "https://kling.ai",
-              "description": "Kling 3.0 — генерация видео от Kuaishou. Высокое качество, длинные видео, доступная цена.",
+              "description": "Kling 3.0 — генерация видео от Kuaishou. Kling 3.0 Turbo (17 июня 2026) — ~$0.11–0.14 за секунду, лучшее соотношение цена/качество для реалистичного видео.",
               "strength": "Доступная цена. Длинные видео. Высокое качество.",
               "features": [
+                "Kling 3.0 Turbo (17 июня 2026)",
+                "$0.11–0.14/сек",
                 "Long Videos",
-                "Affordable",
                 "High Quality"
               ],
               "tags": [
@@ -1543,9 +1599,10 @@
             {
               "name": "Nano Banana 2/3/Pro (Google)",
               "url": "https://gemini.google.com",
-              "description": "Nano Banana — генерация изображений в Gemini. Версии 2, 3, Pro для разных задач.",
+              "description": "Nano Banana — генерация изображений в Gemini. Nano Banana 2 Lite (июнь 2026) — самая быстрая и дешёвая image-модель Gemini. Версии 2, 3, Pro для разных задач.",
               "strength": "Интеграция с Gemini. Быстрая генерация.",
               "features": [
+                "Nano Banana 2 Lite (июнь 2026)",
                 "Gemini Integration",
                 "Fast Generation",
                 "Multiple Versions"
@@ -1570,10 +1627,12 @@
             {
               "name": "NotebookLM / Illuminate",
               "url": "https://notebooklm.google.com",
-              "description": "NotebookLM — AI для работы с документами. Illuminate — генерация подкастов из документов.",
+              "description": "NotebookLM — AI для работы с документами. Июньский апгрейд 2026: advanced reasoning, cloud computer для запуска кода, генерация графиков, таблиц и слайдов. Illuminate — генерация подкастов из документов.",
               "strength": "Работа с документами. Генерация подкастов.",
               "features": [
-                "Document Analysis",
+                "Advanced Reasoning (июнь 2026)",
+                "Cloud Computer",
+                "Графики и слайды",
                 "Podcast Generation",
                 "Illuminate"
               ],
@@ -1652,6 +1711,35 @@
               "pricing": "$22/mo",
               "rating": 4,
               "recommendedFor": "Лучший для корпоративного обучения"
+            },
+            {
+              "name": "Seedance 2.5 (ByteDance)",
+              "url": "https://seed.bytedance.com",
+              "description": "Seedance 2.5 (июнь 2026) — видеогенерация ByteDance: native 30-секундные 4K-клипы, до 50 референсных изображений, нативное аудио. Самая обсуждаемая видеомодель июля 2026.",
+              "strength": "Native 30s 4K, 50 референсов, нативное аудио.",
+              "features": [
+                "30s 4K Native",
+                "50 Reference Images",
+                "Native Audio",
+                "Seedance 2.5 (июнь 2026)"
+              ],
+              "tags": [
+                "видео",
+                "контент",
+                "аудио"
+              ],
+              "businessUse": [
+                "marketing",
+                "design"
+              ],
+              "businessFocus": "Длинные видеоклипы высокого разрешения с аудио для маркетинга.",
+              "roles": [
+                "marketer",
+                "designer"
+              ],
+              "pricing": "paid",
+              "rating": 5,
+              "recommendedFor": "Лучший для длинных 4K-клипов с аудио"
             }
           ]
         },
@@ -2618,7 +2706,7 @@
       "subtitle": "Инфраструктура и оркестрация",
       "shortTitle": "Инфраструктура и оркестрация",
       "shortDesc": "Создание AI-решений, интеграция",
-      "description": "Платформы для создания собственных AI-решений: no-code конструкторы, фреймворки разработки и протоколы стандартизации. Позволяют собирать кастомные агенты и пайплайны.",
+      "description": "Платформы для создания собственных AI-решений: no-code конструкторы, фреймворки разработки и протоколы стандартизации. Ключевое событие июля 2026 — финализация MCP-спецификации 2026-07-28: stateless-ядро, MCP Apps, extensions framework.",
       "color": "#fb923c",
       "image": "",
       "categories": [
@@ -2913,12 +3001,14 @@
             {
               "name": "MCP (Model Context Protocol)",
               "url": "https://modelcontextprotocol.io",
-              "description": "MCP — протокол Anthropic для подключения AI к инструментам. 9400+ серверов. Стандарт индустрии.",
-              "strength": "Стандарт индустрии. 9400+ серверов. Anthropic.",
+              "description": "MCP — стандартный протокол подключения AI к инструментам (9400+ серверов). Спецификация 2026-07-28 (финал 28 июля) — крупнейшая ревизия: stateless-ядро (без сессий и handshake), response caching, extensions framework, MCP Apps (интерактивные HTML-интерфейсы), редизайн Tasks, формальная политика депрекации (12 месяцев).",
+              "strength": "Стандарт индустрии. Spec 2026-07-28: stateless core + MCP Apps.",
               "features": [
                 "Industry Standard",
                 "9400+ Servers",
-                "Tool Integration"
+                "Spec 2026-07-28 (stateless)",
+                "MCP Apps",
+                "Extensions Framework"
               ],
               "tags": [
                 "протокол",
@@ -2941,11 +3031,12 @@
             {
               "name": "A2A (Agent-to-Agent Protocol)",
               "url": "https://github.com/google/A2A",
-              "description": "A2A — протокол Google для коммуникации между AI-агентами. Interoperability.",
-              "strength": "Google. Agent interoperability. Open standard.",
+              "description": "A2A v1.0 — открытый протокол коммуникации агентов под управлением Linux Foundation (LF AI & Data). Де-факто стандарт мульти-агентных систем 2026. Agent Card для discovery возможностей.",
+              "strength": "Linux Foundation. Де-факто стандарт multi-agent 2026.",
               "features": [
-                "Agent Communication",
-                "Google",
+                "A2A v1.0",
+                "Linux Foundation",
+                "Agent Card Discovery",
                 "Open Standard"
               ],
               "tags": [
@@ -2962,7 +3053,7 @@
                 "developer"
               ],
               "pricing": "free",
-              "rating": 4,
+              "rating": 5,
               "recommendedFor": "Для коммуникации между AI-агентами"
             },
             {
@@ -3136,13 +3227,14 @@
             {
               "name": "OpenRouter",
               "url": "https://openrouter.ai",
-              "description": "OpenRouter — единый API для 200+ моделей. Роутинг, fallback, сравнение цен.",
+              "description": "OpenRouter — единый API для 200+ моделей. Роутинг, fallback, сравнение цен. С февраля 2026 китайские модели стабильно занимают более 30% трафика шлюза (пик 46%) — ключевой индикатор сдвига enterprise-спроса к дешёвым open-weight моделям.",
               "strength": "200+ моделей. Единый API. Роутинг.",
               "features": [
                 "200+ Models",
                 "Unified API",
                 "Routing",
-                "Fallback"
+                "Fallback",
+                "Китайские модели >30% трафика"
               ],
               "tags": [
                 "api",
@@ -3291,17 +3383,57 @@
       ],
       [
         "Ключевой тренд 2026",
-        "GPT-5.5, Opus 4.7, MiMo-V2-Pro, Qwen 3.6",
-        "Cursor 3, Claude Code Dreaming, Devin 2.2",
-        "MCP 9400+ серверов, A2A в Linux Foundation"
+        "GPT-5.6, Sonnet 5 / Fable 5, GLM-5.2, Grok 4.5",
+        "Devin Desktop (ex-Windsurf), Claude Code, Cursor 3, GPT-5.6 ultra",
+        "MCP spec 2026-07-28 (stateless), A2A v1.0 в Linux Foundation"
       ]
     ]
   },
   "timeline": [
     {
+      "date": "2026-07-09",
+      "event": "GPT-5.6: Sol / Terra / Luna",
+      "description": "Семейство GPT-5.6 после месячной задержки из-за проверки нацбезопасности США. SOTA на Agents' Last Exam (53.6) и Coding Agent Index (80). Ultra mode — до 16 параллельных агентов. Terra/Luna — уровень Fable 5 за ~1/16 цены. В тот же день Meta представила новую версию Muse Spark."
+    },
+    {
+      "date": "2026-07-08",
+      "event": "Grok 4.5 — первая модель xAI после IPO",
+      "description": "4-е место Artificial Analysis Index, но cost-per-task в 17 раз ниже Opus-класса. GPT-Live (full-duplex голос) от OpenAI вышел в тот же день."
+    },
+    {
+      "date": "2026-07-07",
+      "event": "Китайские модели — 30–46% enterprise-трафика США (CNBC)",
+      "description": "Через OpenRouter китайские модели держат >30% токенов каждую неделю с февраля (пик 46%, годом ранее 11%). Цена на 60–90% ниже западных аналогов. GLM-5.2 и DeepSeek — главные бенефициары."
+    },
+    {
+      "date": "2026-06-30",
+      "event": "Claude Sonnet 5 — самый агентный Sonnet",
+      "description": "SWE-bench Pro 63.2%, интро-цена $2/$10 за M токенов до 31 августа. Новый дефолт Free/Pro тарифов и Claude Code. В тот же день выпущены Claude Science и Gemini Omni Flash."
+    },
+    {
+      "date": "2026-06-16",
+      "event": "Grok Imagine Video 1.5 + Kling 3.0 Turbo + Seedance 2.5",
+      "description": "Волна видеомоделей: Grok Imagine Video 1.5 — #1 в blind-тестах; Kling 3.0 Turbo — $0.11–0.14/сек; Seedance 2.5 — native 30s 4K с аудио."
+    },
+    {
+      "date": "2026-06-15",
+      "event": "GLM-5.2 (Z.ai) — рекордная адопция открытой модели",
+      "description": "753B/40B MoE, MIT-лицензия, SWE-bench Pro 62.1% (выше GPT-5.5) при 1/6 цены. Самая быстрая адопция в истории Vercel: 27x рост токенов за неделю. Обучена на Huawei Ascend 910B."
+    },
+    {
+      "date": "2026-06-12",
+      "event": "Приостановка Claude Fable 5 по требованию правительства США",
+      "description": "Через 3 дня после релиза Fable 5 приостановлена из-за опасений нацбезопасности (advanced cyber capabilities). Восстановлена 30 июня; с 8 июля — платный add-on ($10/$50) для всех тарифов Claude."
+    },
+    {
       "date": "2026-06-09",
       "event": "Claude Fable 5 — первая публичная модель класса Mythos от Anthropic",
       "description": "Anthropic выпустила Claude Fable 5 (1M контекст, 128K выход, $10/$50 за M токенов). Лучшие результаты среди публичных моделей в рассуждениях и агентных задачах. Одновременно анонсирована Claude Mythos 5 для enterprise."
+    },
+    {
+      "date": "2026-06-02",
+      "event": "Windsurf становится Devin Desktop (Cognition)",
+      "description": "Cognition завершила ребрендинг: windsurf.com → devin.ai. Devin Desktop — единый командный центр агентов. Тарифы: Free, Pro $20, Max $200, Teams $80."
     },
     {
       "date": "Окт 2024",
@@ -3416,19 +3548,25 @@
       "area": "Интеграция",
       "from": "Custom API (2024)",
       "to": "MCP + A2A (2026)",
-      "description": "MCP — 9400+ серверов, 4 реестра. A2A — в Linux Foundation. Новые: ACP, UCP. Время интеграции: с 18ч до 4.2ч."
+      "description": "MCP — 9400+ серверов; спецификация 2026-07-28 делает протокол stateless и добавляет MCP Apps. A2A v1.0 — в Linux Foundation, де-факто стандарт multi-agent. Время интеграции: с 18ч до 4.2ч."
     },
     {
       "area": "Рынок",
       "from": "US Closed (2024)",
-      "to": "China 45% + Global Open (2026)",
-      "description": "Китайские модели: 45% OpenRouter (было <2%). MiMo-V2-Pro #1. Meta: open source → проприетарная. Gemma 4 заполняет нишу."
+      "to": "China 30–46% Enterprise + Global Open (2026)",
+      "description": "CNBC (июль 2026): китайские модели — 30–46% enterprise-токенов США через шлюзы, на 60–90% дешевле. GLM-5.2 — рекордная адопция Vercel. Meta: open source → проприетарная Muse Spark. Gemma 4 12B заполняет нишу."
     },
     {
       "area": "Кодинг",
       "from": "Autocomplete (2024)",
       "to": "Self-Improving Agents (2026)",
-      "description": "Claude Code Dreaming — агенты улучшают сами себя. Cursor 3 — agent switchboard. Devin 2.2 — autonomous engineer. MiMo + Qwen = 49% coding tokens."
+      "description": "GPT-5.6 ultra — до 16 параллельных агентов. Kimi Agent Swarm — 300 суб-агентов. Claude Code Dreaming. Devin Desktop — командный центр агентов. Корпорации нормируют расходы: Tesla $200/нед, Uber $1500/мес на AI-инструменты."
+    },
+    {
+      "area": "Экономика моделей",
+      "from": "Flat подписки (2025)",
+      "to": "Credit-based ценообразование (2026)",
+      "description": "Fable 5 — платный add-on ($10/$50) вне подписки; GitHub Copilot — flex billing; Copilot Max $100. Разрыв цен: frontier ($10–50/M) против open-weight ($0.14–4.40/M) — рождает advisor-паттерн: дешёвая модель по умолчанию, эскалация к frontier только при необходимости."
     }
   ],
   "strategy": {
