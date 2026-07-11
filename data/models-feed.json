@@ -1,7 +1,7 @@
 {
   "lastUpdated": "2026-07-11",
-  "weeklyCount": 25,
-  "weeklyTrend": "stable",
+  "weeklyCount": 30,
+  "weeklyTrend": "up",
   "events": [
     {
       "date": "2026-07-10",
@@ -66,6 +66,24 @@
       "event": "Стартап Lyzr привлек $100 миллионов, используя собственного AI-агента для проведения раунда финансирования.",
       "impact": "medium",
       "source": "https://techcrunch.com/2026/07/09/an-ai-agent-startup-just-let-its-agent-run-its-100-million-fundraise/"
+    },
+    {
+      "date": "2026-07-09",
+      "model": "GPT-5.6",
+      "vendor": "Microsoft",
+      "event": "GPT-5.6 стал предпочтительной моделью в Microsoft 365 Copilot, обеспечивая улучшенные возможности ИИ для приложений Word, Excel, PowerPoint и других.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot"
+    },
+    {
+      "date": "2026-07-09",
+      "model": "ChatGPT Work",
+      "vendor": "OpenAI",
+      "event": "Запуск ChatGPT Work — агента, который может выполнять действия в приложениях и файлах, поддерживать проекты длительное время и доводить задачи до завершения.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/chatgpt-for-your-most-ambitious-work"
     },
     {
       "date": "2026-07-08",
@@ -226,182 +244,6 @@
       "event": "Mistral AI выпустила Leanstral 1.5, открытую модель для формальной верификации в Lean 4, которая обнаружила пять ранее неизвестных ошибок в коде.",
       "impact": "medium",
       "source": "https://the-decoder.com/mistrals-open-source-leanstral-1-5-aces-formal-math-benchmarks-and-catches-real-bugs-in-code/"
-    },
-    {
-      "date": "2026-07-03",
-      "vendor": "Microsoft",
-      "model": "Copilot and AutoPilot",
-      "event": "Microsoft планирует объединить свои приложения Copilot для потребителей и предприятий в одно приложение в августе, добавив новых AI-агентов под названием 'AutoPilot', которые будут выполнять задачи в фоновом режиме за дополнительную плату.",
-      "impact": "medium",
-      "source": "https://the-decoder.com/microsoft-follows-anthropic-and-openai-into-the-ai-super-app-race-with-overhauled-copilot-and-autopilot-agents/"
-    },
-    {
-      "date": "2026-07-03",
-      "vendor": "Anthropic",
-      "model": "Claude Code",
-      "event": "Anthropic пытается заблокировать доступ китайских компаний, таких как ByteDance и Ant Financial, к Claude Code, но они обходят ограничения через VPN и зарубежные дочерние компании.",
-      "impact": "medium",
-      "source": "https://the-decoder.com/claude-codes-complicated-china-problem-involves-bans-on-both-sides-of-the-pacific/"
-    },
-    {
-      "date": "2026-07-03",
-      "vendor": "Tesla",
-      "model": "AI Spending",
-      "event": "Tesla ограничивает расходы сотрудников на AI до $200 в неделю, согласно внутреннему меморандуму.",
-      "impact": "low",
-      "source": "https://the-decoder.com/tesla-caps-employee-ai-spending-at-200-per-week/"
-    },
-    {
-      "date": "2026-07-03",
-      "vendor": "Kling",
-      "model": "AI Video",
-      "event": "Китайский производитель AI-видео Kling привлек $2 миллиарда инвестиций и готовится к IPO в Гонконге.",
-      "impact": "high",
-      "source": "https://the-decoder.com/chinese-ai-video-maker-kling-raises-2-billion-as-it-gears-up-for-hong-kong-ipo/"
-    },
-    {
-      "date": "2026-07-02",
-      "vendor": "Anthropic",
-      "model": "Custom AI Chip",
-      "event": "Anthropic обсуждает создание нового пользовательского AI-чипа с Samsung, что может снизить затраты на инфраструктуру.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/07/02/anthropic-is-discussing-a-new-custom-chip-with-samsung/"
-    },
-    {
-      "date": "2026-07-02",
-      "vendor": "OpenAI",
-      "model": "Equity Donation",
-      "event": "OpenAI предложила передать 5% своей доли в собственном капитале суверенному фонду США, чтобы общественность могла участвовать в финансовых выгодах от AI.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/07/02/openai-proposed-donating-5-of-its-equity-to-a-us-sovereign-wealth-fund/"
-    },
-    {
-      "date": "2026-07-02",
-      "vendor": "Microsoft",
-      "model": "AI Deployment Company",
-      "event": "Microsoft запускает собственную компанию по развертыванию AI с инвестициями в размере $2,5 млрд.",
-      "impact": "high",
-      "source": "https://techcrunch.com/2026/07/02/microsoft-launches-its-own-ai-deployment-company-with-2-5-billion-commitment/"
-    },
-    {
-      "date": "2026-07-02",
-      "vendor": "Microsoft",
-      "model": "Frontier Company",
-      "event": "Microsoft инвестирует $2,5 млрд в новое подразделение \"Frontier Company\", чтобы интегрировать AI в основные процессы клиентов.",
-      "impact": "high",
-      "source": "https://the-decoder.com/microsoft-launches-2-5-billion-frontier-company-to-embed-6000-ai-engineers-inside-enterprise-clients/"
-    },
-    {
-      "date": "2026-07-01",
-      "vendor": "Meta",
-      "model": "Cloud Infrastructure",
-      "event": "Meta разрабатывает облачный бизнес для продажи избыточных AI-вычислений внешним клиентам, что ставит её в конкуренцию с крупными облачными провайдерами.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/07/01/meta-like-spacex-looks-to-turn-excess-ai-compute-into-cash/"
-    },
-    {
-      "date": "2026-07-01",
-      "vendor": "Anthropic",
-      "model": "Claude Sonnet 5",
-      "event": "Anthropic выпустила Claude Sonnet 5, который потребляет на 40% больше токенов на задачу, что фактически удваивает реальные затраты, несмотря на неизменные цены.",
-      "impact": "medium",
-      "source": "https://the-decoder.com/claude-sonnet-5-continues-anthropics-pattern-of-hiding-price-increases-behind-unchanged-token-rates/"
-    },
-    {
-      "date": "2026-07-01",
-      "vendor": "Anthropic",
-      "model": "Fable 5",
-      "event": "После двухнедельного запрета правительство США разрешило глобальное распространение Fable 5 от Anthropic.",
-      "impact": "medium",
-      "source": "https://the-decoder.com/anthropics-fable-5-is-back-worldwide-after-a-two-week-government-ban-over-a-jailbreak/"
-    },
-    {
-      "date": "2026-07-01",
-      "vendor": "OpenAI",
-      "model": "GPT-5.6 Pro",
-      "event": "В статье OpenAI случайно раскрыта информация о новой линейке Pro моделей GPT-5.6, что станет первым крупным изменением в структуре ChatGPT Pro.",
-      "impact": "medium",
-      "source": "https://the-decoder.com/openai-paper-reveals-three-gpt-5-6-pro-models-breaking-with-single-top-tier-strategy/"
-    },
-    {
-      "date": "2026-07-01",
-      "vendor": "Cloudflare",
-      "model": "AI Policy",
-      "event": "Cloudflare вводит новую политику, требующую от AI-компаний оплаты за контент издателей, с дедлайном до 15 сентября.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/07/01/cloudflares-new-policy-pushes-ai-companies-to-pay-for-publishers-content/"
-    },
-    {
-      "date": "2026-07-01",
-      "vendor": "Venice AI",
-      "model": "Privacy-first AI Platform",
-      "event": "Venice AI стала единорогом, привлекая $65 млн в рамках серии A, благодаря своей платформе AI, ориентированной на конфиденциальность.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/07/01/venice-ai-becomes-a-unicorn-with-65m-series-a-as-its-privacy-first-ai-platform-takes-off/"
-    },
-    {
-      "date": "2026-06-30",
-      "vendor": "OpenAI",
-      "model": "GeneBench-Pro",
-      "event": "OpenAI представила GeneBench-Pro, новый бенчмарк для тестирования производительности AI в области геномики и научных исследований.",
-      "impact": "medium",
-      "source": "https://openai.com/index/introducing-genebench-pro"
-    },
-    {
-      "date": "2026-06-30",
-      "vendor": "Anthropic",
-      "model": "Claude Sonnet 5",
-      "event": "Anthropic выпустила Claude Sonnet 5, предлагая более низкие цены и улучшенные возможности для работы с агентами.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/06/30/anthropic-launches-claude-sonnet-5-as-a-cheaper-way-to-run-agents/"
-    },
-    {
-      "date": "2026-06-30",
-      "vendor": "Google",
-      "model": "Nano Banana 2 Lite",
-      "event": "Google выпустила Nano Banana 2 Lite, ускоряющую генерацию изображений и снижающую стоимость, а также Gemini Omni Flash для видео.",
-      "impact": "medium",
-      "source": "https://the-decoder.com/google-launches-nano-banana-2-lite-for-fast-ai-images-and-gemini-omni-flash-for-video-via-api/"
-    },
-    {
-      "date": "2026-06-30",
-      "vendor": "Meituan",
-      "model": "LongCat-2.0",
-      "event": "Meituan обучила модель LongCat-2.0 с 1.6 триллионами параметров на китайских чипах, без использования Nvidia.",
-      "impact": "high",
-      "source": "https://the-decoder.com/meituans-longcat-2-0-shows-china-can-train-massive-ai-models-without-nvidia/"
-    },
-    {
-      "date": "2026-06-30",
-      "vendor": "OpenAI",
-      "model": "ChatGPT",
-      "event": "OpenAI сократила стоимость ответов для пользователей ChatGPT более чем вдвое, оптимизировав использование GPU.",
-      "impact": "medium",
-      "source": "https://the-decoder.com/openai-reportedly-cut-response-costs-for-guest-chatgpt-users-by-more-than-half/"
-    },
-    {
-      "date": "2026-06-29",
-      "vendor": "Anthropic",
-      "model": "Claude",
-      "event": "Anthropic и правительство Калифорнии заключили соглашение, позволяющее использовать Claude по сниженной цене.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/06/29/anthropic-and-gov-newsom-forge-deal-allowing-california-government-to-use-claude-at-half-price/"
-    },
-    {
-      "date": "2026-06-29",
-      "vendor": "Amazon",
-      "model": "Anthropic models",
-      "event": "Amazon планирует перейти на оплату по количеству обработанных токенов, что может значительно увеличить затраты.",
-      "impact": "medium",
-      "source": "https://the-decoder.com/amazon-engineers-are-reportedly-distilling-anthropic-models-to-cut-costs-before-new-token-based-pricing-kicks-in/"
-    },
-    {
-      "date": "2026-06-29",
-      "vendor": "Samsung and SK Hynix",
-      "model": "Chip investment",
-      "event": "Samsung и SK Hynix инвестируют $590 миллиардов в новые заводы по производству чипов в ответ на растущий спрос на AI.",
-      "impact": "high",
-      "source": "https://the-decoder.com/samsung-and-sk-hynix-plan-590-billion-chip-investment-as-ai-demand-sends-memory-prices-soaring/"
     }
   ]
 }
