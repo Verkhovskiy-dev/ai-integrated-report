@@ -461,24 +461,163 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
+    let cancelled = false;
+
     async function fetchData() {
       const base = getBasePath();
 
-      try {
-        // Fetch latest report (use EN version if locale is EN)
-        const reportFile = locale === 'en' ? 'latest-report.en.json' : 'latest-report.json';
-        let latestResp = await fetch(`${base}data/${reportFile}`);
-        // Fallback to RU version if EN not available
-        if (!latestResp.ok && locale === 'en') {
-          latestResp = await fetch(`${base}data/latest-report.json`);
-        }
-        if (!latestResp.ok) throw new Error(`HTTP ${latestResp.status}`);
-        const latest: LiveReport = await latestResp.json();
+      // Build trendDynamics (+ raw shifts) from latest report and available archives
+      const buildDynamics = (latest: LiveReport, archiveReports: LiveReport[]) => {
+        const rawMomentumTrends = sanitizeTrends((latest as any).momentum_trends);
+        const rawReportTrends = sanitizeTrends((latest as any).trends);
+        const rawTrends: ReportTrend[] = rawMomentumTrends.length > 0 ? rawMomentumTrends : rawReportTrends;
 
-        // Try to fetch archive manifest, then load all archive files
+        const allShiftSources = [
+          ...(latest.structural_shifts || []),
+          ...archiveReports.flatMap(r => (r as any).structural_shifts || []),
+        ];
+        const rawShifts: RawStructuralShift[] = allShiftSources
+          .filter((s: any) => s.from && s.to)
+          .map((s: any) => ({
+            from: s.from || '',
+            to: s.to || '',
+            levels: s.levels || [],
+            sources: s.sources || [],
+          }));
+        const trendDynamics: TrendDynamic[] = rawTrends.map((t, idx) => {
+          const td: TrendDynamic = {
+            id: idx + 1,
+            name: t.name,
+            momentum: t.momentum,
+            rationale: t.rationale,
+            levels: t.levels,
+            category: t.category,
+          };
+          // Match structural shifts to decelerating trends
+          if (t.category === 'decelerating') {
+            let matched = rawShifts.find(s => s.from === t.name);
+            if (!matched) {
+              const tLevels = new Set(t.levels);
+              matched = rawShifts.find(s => {
+                const overlap = s.levels.filter(l => tLevels.has(l)).length;
+                return overlap >= Math.ceil(t.levels.length * 0.5);
+              });
+            }
+            if (matched) {
+              td.shiftFrom = matched.from;
+              td.shiftTo = matched.to;
+            }
+          }
+          return td;
+        });
+        return { trendDynamics, rawShifts };
+      };
+
+      try {
+        // ── Phase 1: critical data in parallel — everything the first screen needs ──
+        const fetchLatest = async (): Promise<LiveReport> => {
+          const reportFile = locale === 'en' ? 'latest-report.en.json' : 'latest-report.json';
+          let resp = await fetch(`${base}data/${reportFile}`);
+          if (!resp.ok && locale === 'en') {
+            resp = await fetch(`${base}data/latest-report.json`);
+          }
+          if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+          return resp.json();
+        };
+
+        const fetchInsights = async () => {
+          let dynamicInsights: StrategicInsight[] = getLocalizedInsights(locale as Locale);
+          let insightsPeriod = "";
+          let insightsGeneratedAt = "";
+          let insightsLive = false;
+          try {
+            const insightsFile = locale === 'en' ? 'insights.en.json' : 'insights.json';
+            let insightsResp = await fetch(`${base}data/${insightsFile}`);
+            if (!insightsResp.ok && locale === 'en') {
+              insightsResp = await fetch(`${base}data/insights.json`);
+            }
+            if (insightsResp.ok) {
+              const insightsData = await insightsResp.json();
+              if (insightsData.insights && Array.isArray(insightsData.insights) && insightsData.insights.length > 0) {
+                dynamicInsights = insightsData.insights;
+                insightsPeriod = insightsData.period || "";
+                insightsGeneratedAt = insightsData.generated_at || "";
+                insightsLive = true;
+              }
+            }
+          } catch {
+            // insights.json not available, use static fallback
+          }
+          return { dynamicInsights, insightsPeriod, insightsGeneratedAt, insightsLive };
+        };
+
+        const fetchMomentum = async () => {
+          let momentumData: MomentumEntry[] = [];
+          let momentumLive = false;
+          try {
+            const momSuffix = locale === 'en' ? '.en' : '';
+            const momResp = await fetch(`${base}data/momentum${momSuffix}.json`);
+            if (momResp.ok) {
+              const momJson = await momResp.json();
+              if (Array.isArray(momJson) && momJson.length > 0) {
+                momentumData = momJson.map((entry: any) => ({
+                  ...entry,
+                  trends: sanitizeTrends(entry.trends),
+                })).filter((entry: MomentumEntry) => entry.trends.length > 0);
+                momentumLive = momentumData.length > 0;
+              }
+            }
+          } catch {
+            // momentum.json not available
+          }
+          return { momentumData, momentumLive };
+        };
+
+        const [latest, ins, mom] = await Promise.all([fetchLatest(), fetchInsights(), fetchMomentum()]);
+
+        let { momentumData, momentumLive } = mom;
+        // Fallback: if momentum.json is empty but report has momentum_trends, use those
+        if (momentumData.length === 0 && (latest as any).momentum_trends) {
+          const fallbackTrends = sanitizeTrends((latest as any).momentum_trends);
+          if (fallbackTrends.length > 0) {
+            momentumData = [{ date: latest.date, generated_at: latest.generated_at, trends: fallbackTrends }];
+            momentumLive = true;
+          }
+        }
+
+        const { trendDynamics, rawShifts } = buildDynamics(latest, []);
+
+        if (cancelled) return;
+        setState({
+          isLive: true,
+          loading: false,
+          error: null,
+          latestReport: latest,
+          archiveReports: [],
+          reportDate: latest.date,
+          keyFocus: latest.key_focus,
+          heatmapData: buildHeatmap([], latest),
+          keyMetrics: buildKeyMetrics(latest, locale),
+          structuralShifts: (latest.structural_shifts || []).length > 0 ? transformShifts(latest) : getLocalizedShifts(locale as Locale),
+          weakSignals: (latest.radar_signals || []).length > 0 ? transformSignals(latest) : getLocalizedSignals(locale as Locale),
+          crossLevelConnections: transformConnections(latest),
+          themeFrequency: buildThemeFrequency(latest, locale),
+          keyEvents: buildKeyEvents(latest),
+          topCompanies: buildTopCompanies(latest),
+          strategicInsights: ins.dynamicInsights,
+          insightsPeriod: ins.insightsPeriod,
+          insightsGeneratedAt: ins.insightsGeneratedAt,
+          insightsLive: ins.insightsLive,
+          momentumData,
+          momentumLive,
+          trendDynamics,
+          trendDynamicsLive: trendDynamics.length > 0,
+          rawStructuralShifts: rawShifts,
+        });
+
+        // ── Phase 2: archive in background (heatmap, week-over-week, forecasts) ──
         let archiveReports: LiveReport[] = [];
         try {
-          // First try manifest-based loading
           const manifestResp = await fetch(`${base}data/archive/manifest.json`);
           if (manifestResp.ok) {
             const manifest: string[] = await manifestResp.json();
@@ -510,138 +649,19 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           // Archive not available, that's ok
         }
 
-        // Fetch dynamic insights
-        let dynamicInsights: StrategicInsight[] = getLocalizedInsights(locale as Locale);
-        let insightsPeriod = "";
-        let insightsGeneratedAt = "";
-        let insightsLive = false;
-        try {
-          const insightsFile = locale === 'en' ? 'insights.en.json' : 'insights.json';
-          let insightsResp = await fetch(`${base}data/${insightsFile}`);
-          if (!insightsResp.ok && locale === 'en') {
-            insightsResp = await fetch(`${base}data/insights.json`);
-          }
-          if (insightsResp.ok) {
-            const insightsData = await insightsResp.json();
-            if (insightsData.insights && Array.isArray(insightsData.insights) && insightsData.insights.length > 0) {
-              dynamicInsights = insightsData.insights;
-              insightsPeriod = insightsData.period || "";
-              insightsGeneratedAt = insightsData.generated_at || "";
-              insightsLive = true;
-            }
-          }
-        } catch {
-          // insights.json not available, use static fallback
-        }
-
-        // Fetch momentum data
-        let momentumData: MomentumEntry[] = [];
-        let momentumLive = false;
-        try {
-          const momSuffix = locale === 'en' ? '.en' : '';
-          const momResp = await fetch(`${base}data/momentum${momSuffix}.json`);
-          if (momResp.ok) {
-            const momJson = await momResp.json();
-            if (Array.isArray(momJson) && momJson.length > 0) {
-              // Validate each momentum entry's trends array
-              momentumData = momJson.map((entry: any) => ({
-                ...entry,
-                trends: sanitizeTrends(entry.trends),
-              })).filter((entry: MomentumEntry) => entry.trends.length > 0);
-              momentumLive = momentumData.length > 0;
-            }
-          }
-        } catch {
-          // momentum.json not available
-        }
-        // Fallback: if momentum.json is empty but report has momentum_trends, use those
-        if (momentumData.length === 0 && (latest as any).momentum_trends) {
-          const fallbackTrends = sanitizeTrends((latest as any).momentum_trends);
-          if (fallbackTrends.length > 0) {
-            momentumData = [{ date: latest.date, generated_at: latest.generated_at, trends: fallbackTrends }];
-            momentumLive = true;
-          }
-        }
-
-        // Build trendDynamics from report.momentum_trends[] (preferred) or .trends[] (fallback)
-        // Always sanitize to filter out malformed entries (field names as trend names, etc.)
-        const rawMomentumTrends = sanitizeTrends((latest as any).momentum_trends);
-        const rawReportTrends = sanitizeTrends((latest as any).trends);
-        // Prefer momentum_trends if it has valid entries; fall back to trends
-        const rawTrends: ReportTrend[] = rawMomentumTrends.length > 0 ? rawMomentumTrends : rawReportTrends;
-
-        // Collect structural shifts with from/to from latest + archives
-        const allShiftSources = [
-          ...(latest.structural_shifts || []),
-          ...archiveReports.flatMap(r => (r as any).structural_shifts || []),
-        ];
-        const rawShifts: RawStructuralShift[] = allShiftSources
-          .filter((s: any) => s.from && s.to)
-          .map((s: any) => ({
-            from: s.from || '',
-            to: s.to || '',
-            levels: s.levels || [],
-            sources: s.sources || [],
-          }));
-        const trendDynamics: TrendDynamic[] = rawTrends.map((t, idx) => {
-          const td: TrendDynamic = {
-            id: idx + 1,
-            name: t.name,
-            momentum: t.momentum,
-            rationale: t.rationale,
-            levels: t.levels,
-            category: t.category,
-          };
-          // Match structural shifts to decelerating trends
-          if (t.category === 'decelerating') {
-            // First try exact name match with shift.from
-            let matched = rawShifts.find(s => s.from === t.name);
-            if (!matched) {
-              // Fallback: match by levels overlap (>=50% of trend levels)
-              const tLevels = new Set(t.levels);
-              matched = rawShifts.find(s => {
-                const overlap = s.levels.filter(l => tLevels.has(l)).length;
-                return overlap >= Math.ceil(t.levels.length * 0.5);
-              });
-            }
-            if (matched) {
-              td.shiftFrom = matched.from;
-              td.shiftTo = matched.to;
-            }
-          }
-          return td;
-        });
-        const trendDynamicsLive = trendDynamics.length > 0;
-
-        // Transform data
-        setState({
-          isLive: true,
-          loading: false,
-          error: null,
-          latestReport: latest,
+        if (cancelled || archiveReports.length === 0) return;
+        const enriched = buildDynamics(latest, archiveReports);
+        setState((prev) => ({
+          ...prev,
           archiveReports,
-          reportDate: latest.date,
-          keyFocus: latest.key_focus,
           heatmapData: buildHeatmap(archiveReports, latest),
-          keyMetrics: buildKeyMetrics(latest, locale),
-          structuralShifts: (latest.structural_shifts || []).length > 0 ? transformShifts(latest) : getLocalizedShifts(locale as Locale),
-          weakSignals: (latest.radar_signals || []).length > 0 ? transformSignals(latest) : getLocalizedSignals(locale as Locale),
-          crossLevelConnections: transformConnections(latest),
-          themeFrequency: buildThemeFrequency(latest, locale),
-          keyEvents: buildKeyEvents(latest),
-          topCompanies: buildTopCompanies(latest),
-          strategicInsights: dynamicInsights,
-          insightsPeriod,
-          insightsGeneratedAt,
-          insightsLive,
-          momentumData,
-          momentumLive,
-          trendDynamics,
-          trendDynamicsLive,
-          rawStructuralShifts: rawShifts,
-        });
+          trendDynamics: enriched.trendDynamics,
+          trendDynamicsLive: enriched.trendDynamics.length > 0,
+          rawStructuralShifts: enriched.rawShifts,
+        }));
       } catch (err) {
         console.warn("Live data unavailable, using static fallback:", err);
+        if (cancelled) return;
         setState((prev) => ({
           ...prev,
           isLive: false,
@@ -652,6 +672,7 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
     }
 
     fetchData();
+    return () => { cancelled = true; };
   }, [locale]);
 
   return <LiveDataContext.Provider value={state}>{children}</LiveDataContext.Provider>;
