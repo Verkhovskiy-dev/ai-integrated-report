@@ -1,0 +1,239 @@
+{
+  "lastUpdated": "2026-07-12T11:12:30Z",
+  "feeds": [
+    {
+      "url": "https://feeds.bloomberg.com/technology/news.rss",
+      "name": "Bloomberg Technology",
+      "tier": 1,
+      "category": "core",
+      "format": "rss",
+      "tags": [
+        "business",
+        "tech",
+        "markets"
+      ],
+      "addedAt": "2026-01-01",
+      "lastSuccess": "2026-07-12T10:00:00Z",
+      "consecutiveErrors": 0,
+      "status": "active",
+      "avgItemsPerFetch": 15,
+      "notes": ""
+    },
+    {
+      "url": "https://news.google.com/rss/search?q=artificial+intelligence&hl=en&gl=US&ceid=US:en",
+      "name": "Google News AI",
+      "tier": 1,
+      "category": "core",
+      "format": "rss",
+      "tags": [
+        "ai",
+        "aggregator",
+        "breaking"
+      ],
+      "addedAt": "2026-01-01",
+      "lastSuccess": "2026-07-12T10:00:00Z",
+      "consecutiveErrors": 0,
+      "status": "active",
+      "avgItemsPerFetch": 40,
+      "notes": ""
+    },
+    {
+      "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+      "name": "TechCrunch AI",
+      "tier": 1,
+      "category": "core",
+      "format": "rss",
+      "tags": [
+        "ai",
+        "startups",
+        "tech"
+      ],
+      "addedAt": "2026-01-01",
+      "lastSuccess": "2026-07-12T10:00:00Z",
+      "consecutiveErrors": 0,
+      "status": "active",
+      "avgItemsPerFetch": 20,
+      "notes": ""
+    },
+    {
+      "url": "arxiv:dynamic",
+      "name": "arXiv cs.AI/cs.LG/cs.CL",
+      "tier": 1,
+      "category": "core",
+      "format": "special",
+      "tags": [
+        "research",
+        "papers",
+        "ai"
+      ],
+      "addedAt": "2026-01-01",
+      "lastSuccess": "2026-07-12T10:00:00Z",
+      "consecutiveErrors": 0,
+      "status": "active",
+      "avgItemsPerFetch": 20,
+      "notes": "Dynamic routing: RSS http://export.arxiv.org/rss/cs.AI on Mon-Fri, API http://export.arxiv.org/api/query on Sat-Sun (RSS is empty on weekends). URL resolved in Prep Agent Input code."
+    },
+    {
+      "url": "https://venturebeat.com/category/ai/feed/",
+      "name": "VentureBeat AI",
+      "tier": 2,
+      "category": "specialized",
+      "format": "rss",
+      "tags": [
+        "ai",
+        "enterprise",
+        "tech"
+      ],
+      "addedAt": "2026-01-01",
+      "lastSuccess": "2026-07-12T10:00:00Z",
+      "consecutiveErrors": 0,
+      "status": "active",
+      "avgItemsPerFetch": 10,
+      "notes": ""
+    },
+    {
+      "url": "https://www.wired.com/feed/tag/ai/latest/rss",
+      "name": "Wired AI",
+      "tier": 2,
+      "category": "specialized",
+      "format": "rss",
+      "tags": [
+        "ai",
+        "tech",
+        "culture"
+      ],
+      "addedAt": "2026-01-01",
+      "lastSuccess": "2026-07-12T10:00:00Z",
+      "consecutiveErrors": 0,
+      "status": "active",
+      "avgItemsPerFetch": 10,
+      "notes": ""
+    },
+    {
+      "url": "https://arstechnica.com/ai/feed/",
+      "name": "Ars Technica AI",
+      "tier": 2,
+      "category": "specialized",
+      "format": "rss",
+      "tags": [
+        "ai",
+        "tech",
+        "analysis"
+      ],
+      "addedAt": "2026-07-12",
+      "lastSuccess": "2026-07-12T10:00:00Z",
+      "consecutiveErrors": 0,
+      "status": "active",
+      "avgItemsPerFetch": 8,
+      "notes": ""
+    },
+    {
+      "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+      "name": "The Verge AI",
+      "tier": 2,
+      "category": "specialized",
+      "format": "atom",
+      "tags": [
+        "ai",
+        "tech",
+        "consumer"
+      ],
+      "addedAt": "2026-07-12",
+      "lastSuccess": "2026-07-12T10:00:00Z",
+      "consecutiveErrors": 0,
+      "status": "active",
+      "avgItemsPerFetch": 10,
+      "notes": ""
+    },
+    {
+      "url": "https://huggingface.co/blog/feed.xml",
+      "name": "Hugging Face Blog",
+      "tier": 2,
+      "category": "specialized",
+      "format": "rss",
+      "tags": [
+        "ai",
+        "opensource",
+        "models"
+      ],
+      "addedAt": "2026-07-12",
+      "lastSuccess": "2026-07-12T10:00:00Z",
+      "consecutiveErrors": 0,
+      "status": "active",
+      "avgItemsPerFetch": 5,
+      "notes": ""
+    },
+    {
+      "url": "https://www.hrdive.com/feeds/news/",
+      "name": "HRDive",
+      "tier": 2,
+      "category": "specialized",
+      "format": "rss",
+      "tags": [
+        "hr",
+        "workforce",
+        "industry"
+      ],
+      "addedAt": "2026-01-01",
+      "lastSuccess": "2026-07-12T10:00:00Z",
+      "consecutiveErrors": 0,
+      "status": "active",
+      "avgItemsPerFetch": 8,
+      "notes": ""
+    },
+    {
+      "url": "https://www.utilitydive.com/feeds/news/",
+      "name": "UtilityDive",
+      "tier": 2,
+      "category": "specialized",
+      "format": "rss",
+      "tags": [
+        "energy",
+        "utilities",
+        "industry"
+      ],
+      "addedAt": "2026-01-01",
+      "lastSuccess": "2026-07-12T10:00:00Z",
+      "consecutiveErrors": 0,
+      "status": "active",
+      "avgItemsPerFetch": 8,
+      "notes": ""
+    },
+    {
+      "url": "https://sloanreview.mit.edu/feed/",
+      "name": "MIT Sloan Management Review",
+      "tier": 3,
+      "category": "analytical",
+      "format": "rss",
+      "tags": [
+        "management",
+        "strategy",
+        "analysis"
+      ],
+      "addedAt": "2026-01-01",
+      "lastSuccess": "2026-07-12T10:00:00Z",
+      "consecutiveErrors": 0,
+      "status": "active",
+      "avgItemsPerFetch": 3,
+      "notes": "Slow-publishing; uses 72h freshness window"
+    },
+    {
+      "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
+      "name": "MIT Technology Review AI",
+      "tier": 3,
+      "category": "analytical",
+      "format": "rss",
+      "tags": [
+        "ai",
+        "research",
+        "analysis"
+      ],
+      "addedAt": "2026-01-01",
+      "lastSuccess": "2026-07-12T10:00:00Z",
+      "consecutiveErrors": 0,
+      "status": "active",
+      "avgItemsPerFetch": 4,
+      "notes": "Slow-publishing; uses 72h freshness window"
+    }
+  ]
+}
