@@ -1,124 +1,5 @@
 [
   {
-    "date": "2026-07-02",
-    "generated_at": "2026-07-02T17:02:50.067Z",
-    "trends": [
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 78,
-        "category": "accelerating",
-        "rationale": "В предыдущей оценке было 90 → сегодня 78: сигналы остаются сильными из-за Pembina, Kling AI и AI-долга, но новости об overcapacity в AI-вычислениях охлаждают экстремальный импульс.",
-        "levels": [
-          1,
-          2,
-          5,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 52,
-        "category": "accelerating",
-        "rationale": "В предыдущей оценке было 60 → сегодня 52: план Meta продавать доступ к AI-вычислениям поддерживает тренд, но рынок одновременно реагирует страхом overcapacity.",
-        "levels": [
-          4,
-          5,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 74,
-        "category": "accelerating",
-        "rationale": "В предыдущей оценке было 74 → сегодня 74: agentic payments, AI-разговор в grocery и оценка Gartner по SaaS подтверждают высокий импульс без нового переломного скачка.",
-        "levels": [
-          5,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 66,
-        "category": "accelerating",
-        "rationale": "В предыдущей оценке было 78 → сегодня 66: тема доверия поддержана заявлениями Palantir CEO и agentic payments, но прямых инцидентов безопасности во входных данных нет.",
-        "levels": [
-          8,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": 32,
-        "category": "emerging",
-        "rationale": "В предыдущей оценке было 30 → сегодня 32: GPT-4o сравнивают с классическим ML, а Anthropic обсуждает кастомный чип, что поддерживает закрытые модельные экосистемы.",
-        "levels": [
-          4,
-          5,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "classic-saas",
-        "name": "Классический SaaS под давлением AI",
-        "momentum": -41,
-        "category": "collapsing",
-        "rationale": "В предыдущей оценке было -36 → сегодня -41: Gartner прямо оценил $234 млрд enterprise SaaS spending под риском из-за agentic AI.",
-        "levels": [
-          5,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 47,
-        "category": "accelerating",
-        "rationale": "В предыдущей оценке было 42 → сегодня 47: Microsoft мобилизует 6 000 сотрудников для внедрения AI, а SAP ограничивает общий найм ради core AI jobs.",
-        "levels": [
-          3,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 50,
-        "category": "accelerating",
-        "rationale": "В предыдущей оценке было 55 → сегодня 50: USPTO готовит разъяснение по AI-related inventions, но других крупных регуляторных сдвигов во входных данных нет.",
-        "levels": [
-          7,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 36,
-        "category": "emerging",
-        "rationale": "В предыдущем списке тренд не был оценен; сегодня появился сильный сигнал — газовая электростанция Pembina должна питать дата-центр в Alberta.",
-        "levels": [
-          1,
-          2,
-          5
-        ],
-        "is_new": false
-      }
-    ]
-  },
-  {
     "date": "2026-07-03",
     "generated_at": "2026-07-03T17:01:22.980Z",
     "trends": [
@@ -4454,6 +4335,155 @@
           9
         ],
         "is_new": false
+      }
+    ]
+  },
+  {
+    "date": "2026-08-01",
+    "generated_at": "2026-08-01T05:03:14.052Z",
+    "trends": [
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера было 100; сегодня уровень остаётся максимальным из-за новых сообщений о сбоях агентов OpenAI и о том, что Claude получил доступ к системам трёх организаций во время тестов.",
+        "levels": [
+          4,
+          6,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера было 95; сегодня импульс усилился из-за сообщения Bloomberg о почти $2,4 трлн обязательств Big Tech и энергетических планов Xcel под нагрузку дата-центров.",
+        "levels": [
+          9,
+          2,
+          1
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 99,
+        "category": "accelerating",
+        "rationale": "Вчера было 98; сегодня регуляторный контур поддержали отказ суда xAI по закону Миннесоты, спор Reddit против Perplexity и откат функции Google Earth.",
+        "levels": [
+          8,
+          7,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 86,
+        "category": "accelerating",
+        "rationale": "Вчера было 93; сегодня агентная повестка остаётся сильной, но смещается от запуска к сдерживанию после сообщений об OpenAI, Claude и недостатке обучения работников управлению агентами.",
+        "levels": [
+          4,
+          3,
+          6
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-evaluation-governance",
+        "name": "Управление оценкой AI",
+        "momentum": 79,
+        "category": "accelerating",
+        "rationale": "Вчера было 68; сегодня импульс вырос благодаря AISPA, OSReward, Change2Task и PAIChecker, которые формируют инфраструктуру аудита промптов, траекторий и бенчмарков.",
+        "levels": [
+          6,
+          7,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 62,
+        "category": "accelerating",
+        "rationale": "Сегодня появились прямые сигналы: Xcel включила передачу и генерацию для нагрузки дата-центров в дополнительные $10 млрд возможностей, а SpaceX строит электростанцию для xAI Colossus.",
+        "levels": [
+          1,
+          2,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 55,
+        "category": "accelerating",
+        "rationale": "Вчера было 43; сегодня рост поддержали сообщения о недостаточном обучении управлению AI-агентами, запуске AI Management в Sacramento State и активности китайских AI-исследователей на X для найма.",
+        "levels": [
+          3,
+          7,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-cloud-rental",
+        "name": "AI-облака и аренда вычислений",
+        "momentum": 86,
+        "category": "accelerating",
+        "rationale": "Вчера было 83; сегодня импульс поддержали данные Bloomberg о Kimi на Nvidia Hopper через соглашение с Alibaba и материал Hugging Face о цене простаивающих GPU.",
+        "levels": [
+          4,
+          5,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 47,
+        "category": "accelerating",
+        "rationale": "Сегодня сигналами стали 1 млрд активных пользователей OpenAI и идея Apple продавать дополнительные вычисления для Siri AI через iCloud+.",
+        "levels": [
+          5,
+          9,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": 40,
+        "category": "accelerating",
+        "rationale": "Вчера было 37; сегодня тема получила слабое усиление через сообщение Bloomberg о том, что китайская Kimi использует около 20 000 Nvidia Hopper через Alibaba.",
+        "levels": [
+          4,
+          9,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-generated-content-monetization",
+        "name": "Монетизация AI-контента",
+        "momentum": -25,
+        "category": "decelerating",
+        "rationale": "Новый тренд фиксирует ослабление коммерческого доступа полностью AI-сгенерированного контента: лейблы хотят исключить AI-песни из чартов, Snapchat не рекомендует полностью AI-видео, LinkedIn вводит жалобу на AI-мусор.",
+        "levels": [
+          8,
+          5,
+          3
+        ],
+        "is_new": true
       }
     ]
   }
