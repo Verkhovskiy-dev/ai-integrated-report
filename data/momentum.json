@@ -4323,18 +4323,31 @@
   },
   {
     "date": "2026-08-04",
-    "generated_at": "2026-08-04T05:03:33.535Z",
+    "generated_at": "2026-08-04T17:03:59.203Z",
     "trends": [
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
         "momentum": 100,
         "category": "accelerating",
-        "rationale": "Вчера 96 → сегодня 100: FT описала схему AI-расходов Google для Anthropic на $200 млрд, а NTT Data и Naver дали новые инфраструктурные сигналы по дата-центрам и AI-фабрикам.",
+        "rationale": "Вчера тренд уже был на 100; сегодня Blackstone обсуждает долговой пакет для чиповой сделки Anthropic, а Southern Co фиксирует 17 ГВт крупных нагрузок, поэтому верхняя оценка сохраняется без повышения.",
         "levels": [
           9,
           2,
-          5
+          1
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 96,
+        "category": "accelerating",
+        "rationale": "Вчера было 88; сегодня Texas ввёл аудит дата-центров, New York приостановил часть заявок, а Southern Co закрепила гибкий спрос у дата-центра OpenAI, поэтому импульс вырос в пределах допустимой дельты.",
+        "levels": [
+          1,
+          2,
+          8
         ],
         "is_new": false
       },
@@ -4343,7 +4356,84 @@
         "name": "Регулирование AI",
         "momentum": 100,
         "category": "accelerating",
-        "rationale": "Вчера 100 → сегодня 100: новые обязательства AI Act по прозрачности уже вступили в силу, а Austin готовит отчёт о приоритетах жителей в AI-управлении.",
+        "rationale": "Вчера было 100; сегодня добавились аудит дата-центров в Texas, спор Apple и OpenAI по коммерческой тайне и антимонопольные заявления Open Markets, поэтому максимальный уровень сохраняется.",
+        "levels": [
+          8,
+          2,
+          3
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера было 100; сегодня LFM2.5-2.6B позиционируется для локальных агентов, а arXiv-публикации MAGA, SESA и AgentHPOBench расширяют инфраструктуру агентных действий и оценки.",
+        "levels": [
+          4,
+          6,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-cloud-rental",
+        "name": "AI-облака и аренда вычислений",
+        "momentum": 52,
+        "category": "accelerating",
+        "rationale": "Вчера было 40; сегодня Anthropic получила вычислительные мощности у Volta Infra, а Runware представила модульный Sonic Inference Pod, поэтому аренда и специализированная инфраструктура ускорились.",
+        "levels": [
+          2,
+          5,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 45,
+        "category": "accelerating",
+        "rationale": "Сегодня Wired описал благоприятный момент для Mistral, Liquid AI продвигает локальную модель LFM2.5-2.6B, а South China Morning Post сообщил об обращении лидеров США к китайским открытым моделям.",
+        "levels": [
+          4,
+          5,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 30,
+        "category": "emerging",
+        "rationale": "Вчера было 38; сегодня поворот к open-weight моделям у Mistral и китайских открытых моделей снижает относительный импульс закрытых API, хотя спрос на корпоративные платформы Palantir остаётся сильным.",
+        "levels": [
+          5,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 70,
+        "category": "accelerating",
+        "rationale": "Вчера было 64; сегодня CHRO заявили о скепсисе к AI-готовности, новые выпускники названы уязвимой группой, а спор Apple и OpenAI показывает напряжение вокруг перехода специалистов.",
+        "levels": [
+          3,
+          7,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-generated-content-monetization",
+        "name": "Монетизация AI-контента",
+        "momentum": -30,
+        "category": "decelerating",
+        "rationale": "Вчера было -42; Spotify и Merlin дали позитивный сигнал договорной монетизации AI-ремиксов, но Reddit одновременно столкнулся с AI-спамом, поэтому тренд остаётся отрицательным, хотя падение ослабло.",
         "levels": [
           8,
           5
@@ -4355,113 +4445,11 @@
         "name": "Безопасность AI-агентов",
         "momentum": 100,
         "category": "accelerating",
-        "rationale": "Вчера 100 → сегодня 100: NAB начинает тестирование защитных и операционных ограничений агентной платформы, а arXiv-работы выделяют риски спецификаций инструментов и необходимость проверки траекторий.",
+        "rationale": "Вчера было 100; сегодня AI назван фактором более половины киберпреступлений в Африке, а бенчмарки AgentHPOBench, ExtractBench и MAGA уточняют проверку поведения агентов, поэтому максимум сохраняется.",
         "levels": [
-          6,
           8,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера 95 → сегодня 100: AWS встраивает Superblocks в частные облака клиентов, NAB готовит тесты агентной платформы, а OpenClaw описывает разделение слоёв агентной архитектуры.",
-        "levels": [
-          5,
           6,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 40,
-        "category": "accelerating",
-        "rationale": "Вчера 32 → сегодня 40: FT прямо указала аренду чипов как часть финансовой схемы Anthropic, а NTT Data планирует увеличить вычислительную мощность в Японии до 1 ГВт.",
-        "levels": [
-          9,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 48,
-        "category": "accelerating",
-        "rationale": "Вчера 36 → сегодня 48: Bloomberg описал китайский блиц запусков моделей, а Alibaba выпустила Qwen3.8-Max с заявлением о сопоставимости с системами США.",
-        "levels": [
-          4,
-          5,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": 38,
-        "category": "emerging",
-        "rationale": "Вчера 33 → сегодня 38: масштабная схема финансирования Google для Anthropic поддерживает закрытый модельный контур, но Palantir публично ставит под сомнение доверие предприятий к фронтирным лабораториям.",
-        "levels": [
-          9,
-          5,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "classic-saas",
-        "name": "Классический SaaS под давлением AI",
-        "momentum": 30,
-        "category": "emerging",
-        "rationale": "Вчера 22 → сегодня 30: AWS разрешает Superblocks встраиваться в частные облака клиентов, что усиливает сдвиг от стандартного SaaS к AI-инструментам рядом с данными заказчика.",
-        "levels": [
-          5,
           4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 64,
-        "category": "accelerating",
-        "rationale": "Вчера 69 → сегодня 64: прямых новостей о борьбе за отдельных исследователей меньше, но первый набор на AI-бакалавриат в UK и история Listen Labs с наймом более 100 инженеров поддерживают кадровый спрос.",
-        "levels": [
-          3,
-          7,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 88,
-        "category": "accelerating",
-        "rationale": "Вчера 90 → сегодня 88: прямых новых энергетических решений меньше, но план NTT Data довести вычислительную мощность дата-центров до 1 ГВт сохраняет конкретный ресурсный сигнал.",
-        "levels": [
-          1,
-          2,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-generated-content-monetization",
-        "name": "Монетизация AI-контента",
-        "momentum": -42,
-        "category": "collapsing",
-        "rationale": "Вчера -34 → сегодня -42: первая поездка OpenAI для влиятельных авторов вызвала критику, а BBC отдельно указал на трудности компаний с установлением цен на AI.",
-        "levels": [
-          5,
-          8,
-          9
         ],
         "is_new": false
       }
