@@ -4278,123 +4278,95 @@
   },
   {
     "date": "2026-08-09",
-    "generated_at": "2026-08-09T05:02:30.675Z",
+    "generated_at": "2026-08-09T17:02:45.749Z",
     "trends": [
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 94,
-        "category": "accelerating",
-        "rationale": "Вчера было 95; сегодня сигнал остаётся почти на том же уровне из-за Moonshot, инвестиций Amazon в энергетику дата-центра, неопределённости Oncor по почти 300 ГВт нагрузки и денежного эффекта TVA от дата-центров.",
-        "levels": [
-          9,
-          2,
-          1,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 84,
-        "category": "accelerating",
-        "rationale": "Вчера было 75; рост поддержан конкретными энергетическими событиями: газовая электростанция для дата-центра Amazon, позиция Constellation по существующим станциям и выручка TVA от продаж дата-центрам.",
-        "levels": [
-          1,
-          2,
-          9
-        ],
-        "is_new": false
-      },
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
-        "momentum": 92,
+        "momentum": 97,
         "category": "accelerating",
-        "rationale": "Вчера было 100; экстремальный пик после инцидентов снизился, но свежие сигналы MIST, TRAJDEBUG, оценки бенчмарков и предупреждение FT о разрыве безопасности удерживают тренд очень высоким.",
-        "levels": [
-          6,
-          4,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 88,
-        "category": "accelerating",
-        "rationale": "Вчера было 90; тренд поддержан работами о вызове инструментов, локальных агентах LFM2.5-2.6B, агентных операциях вместо Top-K и рекламой, адресованной AI-агентам.",
-        "levels": [
-          4,
-          5,
-          6,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-evaluation-infrastructure",
-        "name": "Инфраструктура оценки AI",
-        "momentum": 56,
-        "category": "accelerating",
-        "rationale": "Вчера было 45; сегодня сразу несколько работ усилили тему: AV-AIVAT, TRAJDEBUG, MIST, оценка бенчмарков разговорных агентов и трудности оценки объяснимого AI.",
-        "levels": [
-          6,
-          4,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 82,
-        "category": "accelerating",
-        "rationale": "Вчера было 85; импульс немного ниже, но остаётся высоким из-за урегулирования OpenAI с DOJ, спора OpenAI с Apple о сотрудниках и сообщений HR Dive о продуктивности и сжатии зарплат.",
-        "levels": [
-          3,
-          5,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 86,
-        "category": "accelerating",
-        "rationale": "Вчера было 90; сегодня тренд поддержали урегулирование OpenAI с DOJ, вопросы социальной лицензии медицинского AI, предупреждения о AI-«докторах» и дискуссия FT о безопасности передовых систем.",
+        "rationale": "Вчера тренд был на 92; сегодня он усилился до 97 из-за сообщений TechCrunch и Ars Technica о выходе агентов из тестовых сред и остановке кибериспытаний, а также материала MIT Technology Review о фундаментальной уязвимости LLM.",
         "levels": [
           8,
-          3,
-          7
+          6,
+          4
         ],
         "is_new": false
       },
       {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 72,
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 96,
         "category": "accelerating",
-        "rationale": "Вчера было 70; умеренное усиление связано с китайскими сигналами: Moonshot ищет гонконгский листинг, ByteDance обучает мегамодель, а Alibaba выпускает новую AI-модель для возвращения в конкурентную гонку.",
+        "rationale": "Вчера тренд был на 94; сегодня рост до 96 поддержан планами Anthropic по собственному оборудованию, листингом Moore Threads и рыночным интересом к акциям памяти как части AI-цикла.",
         "levels": [
           9,
-          4,
-          5
+          5,
+          4
         ],
         "is_new": false
       },
       {
         "id": "open-weight-models",
         "name": "Open-weight модели",
-        "momentum": 37,
-        "category": "emerging",
-        "rationale": "Вчера было 35; тренд слегка усилился за счёт публикаций Hugging Face о LFM2.5-2.6B, Nunchaku 4-bit Diffusion Inference в Diffusers и инфраструктурном партнёрстве Baseten.",
+        "momentum": 45,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был на 37; сегодня импульс вырос до 45, потому что Cloudflare открыл код внутренней AI-платформы, Meetily предложил открытый инструмент для встреч, а Goose противопоставлен платному Claude Code.",
         "levels": [
-          4,
+          8,
           5,
+          3
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 91,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был на 88; сегодня он вырос до 91 благодаря Cowork от Anthropic, открытому агентному рабочему пространству Cloudflare и материалу MIT Technology Review о координации нескольких AI-агентов.",
+        "levels": [
+          5,
+          4,
+          3
+        ],
+        "is_new": false
+      },
+      {
+        "id": "classic-saas",
+        "name": "Классический SaaS под давлением AI",
+        "momentum": 40,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был на 33; сегодня рост до 40 связан с бесплатными и открытыми альтернативами Meetily, Cloudflare и Goose, которые давят на подписные офисные и разработческие инструменты.",
+        "levels": [
+          5,
+          8,
+          3
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 86,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был на 82; сегодня он усилился до 86 из-за материала FT о возможном раздвоении рынка труда и статьи The Conversation о слабых местах мифа усиленной работы.",
+        "levels": [
+          3,
+          7,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 90,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был на 86; сегодня рост до 90 поддержан водяными знаками Suno, требованием раскрытия данных безопасности чатботов и вопросами надзора за тестированием агентов.",
+        "levels": [
+          8,
+          7,
           6
         ],
         "is_new": false
@@ -4402,37 +4374,25 @@
       {
         "id": "closed-api-models",
         "name": "Закрытые API-модели",
-        "momentum": 27,
+        "momentum": 22,
         "category": "emerging",
-        "rationale": "Вчера было 25; сигнал поддержан приобретением NextSlide OpenAI и конкуренцией крупных моделей ByteDance и Alibaba, но сегодняшний поток сильнее смещён в инфраструктуру и оценку, чем в новые закрытые API.",
+        "rationale": "Вчера тренд был на 27; сегодня снижение до 22 связано с тем, что заметные новые сигналы пришли от открытых и бесплатных инструментов Meetily, Cloudflare и Goose, а не от укрепления закрытых API-моделей.",
         "levels": [
-          4,
           5,
-          9
+          8
         ],
         "is_new": false
       },
       {
-        "id": "classic-saas",
-        "name": "Классический SaaS под давлением AI",
-        "momentum": 33,
-        "category": "emerging",
-        "rationale": "Вчера было 30; приобретение NextSlide OpenAI показывает, что функции прикладного SaaS продолжают втягиваться в универсальные AI-платформы вроде ChatGPT.",
+        "id": "ai-evaluation-infrastructure",
+        "name": "Инфраструктура оценки AI",
+        "momentum": 62,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был на 56; сегодня рост до 62 вызван тем, что сами кибербезопасностные тесты агентов стали источником риска, а ICML-работа о фундаментальной уязвимости LLM ставит под вопрос достаточность текущих проверок.",
         "levels": [
-          5,
-          3
-        ],
-        "is_new": false
-      },
-      {
-        "id": "chip-export-control",
-        "name": "Экспортный контроль чипов",
-        "momentum": -12,
-        "category": "decelerating",
-        "rationale": "Сегодня нет прямых новых событий об экспортном контроле чипов; ByteDance и Alibaba усиливают модельную гонку, но источники не сообщают новых ограничений или решений по чипам.",
-        "levels": [
-          4,
-          9
+          8,
+          6,
+          4
         ],
         "is_new": false
       }
