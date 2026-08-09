@@ -1,172 +1,5 @@
 [
   {
-    "date": "2026-07-10",
-    "generated_at": "2026-07-10T05:04:43.441Z",
-    "trends": [
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 88,
-        "category": "accelerating",
-        "rationale": "Вчера 86 → сегодня 88: сигналы от Context Graphs, Lyzr, Meta Spark, IBM Bob и агентного браузинга OpenAI подтверждают переход от отдельных функций к агентной оркестрации.",
-        "levels": [
-          5,
-          6,
-          3,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 71,
-        "category": "accelerating",
-        "rationale": "Вчера 69 → сегодня 71: GPT-5.6 заявляет улучшения в кибербезопасности, Anthropic показывает Jacobian lens, а Alignment Plausibility расширяет проверку ИИ в здравоохранении.",
-        "levels": [
-          4,
-          6,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 84,
-        "category": "accelerating",
-        "rationale": "Вчера 82 → сегодня 84: собственный ИИ-чип Meta, заём DOE для AEP Texas, размещение SK Hynix и покупка энергетических активов KKR поддерживают инфраструктурное ускорение.",
-        "levels": [
-          9,
-          4,
-          2,
-          1
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 42,
-        "category": "accelerating",
-        "rationale": "Вчера 45 → сегодня 42: прямых позитивных сигналов по аренде вычислений меньше, а сообщение о стоимости токенов как барьере внедрения указывает на давление экономики использования.",
-        "levels": [
-          5,
-          4,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": -6,
-        "category": "stable",
-        "rationale": "Вчера -14 → сегодня -6: запуск GPT-5.6 и роль в Copilot 365 улучшают динамику, но спор New York Times с OpenAI и стоимость токенов сохраняют отрицательное давление.",
-        "levels": [
-          4,
-          5,
-          8,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "synthetic-data",
-        "name": "Синтетические данные",
-        "momentum": 39,
-        "category": "emerging",
-        "rationale": "Вчера 34 → сегодня 39: Infinity-Parser2 прямо описывает управляемый конвейер синтеза данных для преодоления дефицита размеченных корпусов.",
-        "levels": [
-          6,
-          4,
-          7
-        ],
-        "is_new": false
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 70,
-        "category": "accelerating",
-        "rationale": "Вчера 72 → сегодня 70: дискуссия Bloomberg смещает суверенность ИИ к взаимозависимости, а материал SCMP о точном оборудовании показывает ограничения полной самодостаточности.",
-        "levels": [
-          8,
-          2,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 78,
-        "category": "accelerating",
-        "rationale": "Вчера 73 → сегодня 78: сигналы по солнечной мощности Нью-Йорка, виртуальной электростанции ComEd, сетям AEP Texas и тарифам для дата-центров усиливают энергетический контур ИИ.",
-        "levels": [
-          1,
-          2,
-          8,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 65,
-        "category": "accelerating",
-        "rationale": "Вчера 73 → сегодня 65: ИИ-инструменты для поиска работы и корпоративной разработки активны, но общий рынок труда США описан как «мало найма, мало увольнений», что замедляет перераспределение ролей.",
-        "levels": [
-          3,
-          5,
-          7
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 87,
-        "category": "accelerating",
-        "rationale": "Вчера 84 → сегодня 87: авторский спор OpenAI, тарифы Нью-Джерси для дата-центров, университетские ограничения устройств и ИИ-двойник премьера Малайзии расширяют поле регулирования.",
-        "levels": [
-          8,
-          7,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "classic-saas",
-        "name": "Классический SaaS под давлением AI",
-        "momentum": 25,
-        "category": "emerging",
-        "rationale": "Вчера 15 → сегодня 25: Copilot 365, IBM Bob, Meta Spark и перенос агентного браузинга показывают давление ИИ на привычные приложения и инструменты разработки.",
-        "levels": [
-          5,
-          3,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "chip-export-control",
-        "name": "Экспортный контроль чипов",
-        "momentum": 32,
-        "category": "emerging",
-        "rationale": "Без вчерашнего явного значения в реестре сегодня сигнал умеренный: материал SCMP о зависимости Китая от импортного точного оборудования показывает, что контроль расширяется за пределы самих чипов.",
-        "levels": [
-          2,
-          4,
-          5,
-          8
-        ],
-        "is_new": false
-      }
-    ]
-  },
-  {
     "date": "2026-07-11",
     "generated_at": "2026-07-11T17:02:33.125Z",
     "trends": [
@@ -4438,6 +4271,168 @@
           3,
           5,
           8
+        ],
+        "is_new": false
+      }
+    ]
+  },
+  {
+    "date": "2026-08-09",
+    "generated_at": "2026-08-09T05:02:30.675Z",
+    "trends": [
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 94,
+        "category": "accelerating",
+        "rationale": "Вчера было 95; сегодня сигнал остаётся почти на том же уровне из-за Moonshot, инвестиций Amazon в энергетику дата-центра, неопределённости Oncor по почти 300 ГВт нагрузки и денежного эффекта TVA от дата-центров.",
+        "levels": [
+          9,
+          2,
+          1,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 84,
+        "category": "accelerating",
+        "rationale": "Вчера было 75; рост поддержан конкретными энергетическими событиями: газовая электростанция для дата-центра Amazon, позиция Constellation по существующим станциям и выручка TVA от продаж дата-центрам.",
+        "levels": [
+          1,
+          2,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 92,
+        "category": "accelerating",
+        "rationale": "Вчера было 100; экстремальный пик после инцидентов снизился, но свежие сигналы MIST, TRAJDEBUG, оценки бенчмарков и предупреждение FT о разрыве безопасности удерживают тренд очень высоким.",
+        "levels": [
+          6,
+          4,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 88,
+        "category": "accelerating",
+        "rationale": "Вчера было 90; тренд поддержан работами о вызове инструментов, локальных агентах LFM2.5-2.6B, агентных операциях вместо Top-K и рекламой, адресованной AI-агентам.",
+        "levels": [
+          4,
+          5,
+          6,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-evaluation-infrastructure",
+        "name": "Инфраструктура оценки AI",
+        "momentum": 56,
+        "category": "accelerating",
+        "rationale": "Вчера было 45; сегодня сразу несколько работ усилили тему: AV-AIVAT, TRAJDEBUG, MIST, оценка бенчмарков разговорных агентов и трудности оценки объяснимого AI.",
+        "levels": [
+          6,
+          4,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 82,
+        "category": "accelerating",
+        "rationale": "Вчера было 85; импульс немного ниже, но остаётся высоким из-за урегулирования OpenAI с DOJ, спора OpenAI с Apple о сотрудниках и сообщений HR Dive о продуктивности и сжатии зарплат.",
+        "levels": [
+          3,
+          5,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 86,
+        "category": "accelerating",
+        "rationale": "Вчера было 90; сегодня тренд поддержали урегулирование OpenAI с DOJ, вопросы социальной лицензии медицинского AI, предупреждения о AI-«докторах» и дискуссия FT о безопасности передовых систем.",
+        "levels": [
+          8,
+          3,
+          7
+        ],
+        "is_new": false
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 72,
+        "category": "accelerating",
+        "rationale": "Вчера было 70; умеренное усиление связано с китайскими сигналами: Moonshot ищет гонконгский листинг, ByteDance обучает мегамодель, а Alibaba выпускает новую AI-модель для возвращения в конкурентную гонку.",
+        "levels": [
+          9,
+          4,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 37,
+        "category": "emerging",
+        "rationale": "Вчера было 35; тренд слегка усилился за счёт публикаций Hugging Face о LFM2.5-2.6B, Nunchaku 4-bit Diffusion Inference в Diffusers и инфраструктурном партнёрстве Baseten.",
+        "levels": [
+          4,
+          5,
+          6
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 27,
+        "category": "emerging",
+        "rationale": "Вчера было 25; сигнал поддержан приобретением NextSlide OpenAI и конкуренцией крупных моделей ByteDance и Alibaba, но сегодняшний поток сильнее смещён в инфраструктуру и оценку, чем в новые закрытые API.",
+        "levels": [
+          4,
+          5,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "classic-saas",
+        "name": "Классический SaaS под давлением AI",
+        "momentum": 33,
+        "category": "emerging",
+        "rationale": "Вчера было 30; приобретение NextSlide OpenAI показывает, что функции прикладного SaaS продолжают втягиваться в универсальные AI-платформы вроде ChatGPT.",
+        "levels": [
+          5,
+          3
+        ],
+        "is_new": false
+      },
+      {
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": -12,
+        "category": "decelerating",
+        "rationale": "Сегодня нет прямых новых событий об экспортном контроле чипов; ByteDance и Alibaba усиливают модельную гонку, но источники не сообщают новых ограничений или решений по чипам.",
+        "levels": [
+          4,
+          9
         ],
         "is_new": false
       }
