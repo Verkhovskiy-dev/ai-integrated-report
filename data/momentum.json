@@ -4267,41 +4267,14 @@
   },
   {
     "date": "2026-08-11",
-    "generated_at": "2026-08-11T05:03:02.948Z",
+    "generated_at": "2026-08-11T17:03:48.592Z",
     "trends": [
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
-        "momentum": 100,
+        "momentum": 98,
         "category": "accelerating",
-        "rationale": "Вчера было 100; сегодня уровень остаётся предельным из-за нового увеличения размещения Intel до $20 млрд, сделки Anthropic с Riot на $9,1 млрд и энергетических контрактов вокруг дата-центров.",
-        "levels": [
-          9,
-          5,
-          2,
-          1
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 58,
-        "category": "accelerating",
-        "rationale": "Вчера было 48; рост связан с контрактом Anthropic на мощности Riot, где бывшая майнинговая инфраструктура продаёт ёмкость AI-дата-центров.",
-        "levels": [
-          5,
-          2,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 92,
-        "category": "accelerating",
-        "rationale": "Вчера было 83; сегодня импульс усилили газовая станция Amazon для дата-центра, 5 ГВт турбин PPL-Blackstone для Пенсильвании и портфель Siemens почти на 70 ГВт.",
+        "rationale": "Утром тренд был на 100; вечером нет нового сопоставимого финансового пакета, но Caterpillar, спор о передаче электроэнергии и мораторий Чикаго показывают, что CapEx упирается в физические и городские ограничения.",
         "levels": [
           1,
           2,
@@ -4310,96 +4283,119 @@
         "is_new": false
       },
       {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 94,
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 97,
         "category": "accelerating",
-        "rationale": "Вчера было 97; импульс остаётся высоким, но без нового массового продуктового запуска, а сегодняшние сигналы идут через исследования памяти, переговоров и коммуникаций агентов.",
+        "rationale": "Утром было 92; вечерний рост поддержан сообщением Caterpillar о 72% росте продаж энергетического оборудования и возобновлении 10-МВт газовой платформы для спроса дата-центров.",
         "levels": [
-          4,
-          6,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 96,
-        "category": "accelerating",
-        "rationale": "Вчера было 97; показатель почти не изменился, поскольку OpenAI выпустила кибермодель Daybreak, а Flow-by-Flow и работа о памяти агентов усилили тему управляемого поведения.",
-        "levels": [
-          4,
-          6,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-evaluation-infrastructure",
-        "name": "Инфраструктура оценки AI",
-        "momentum": 84,
-        "category": "accelerating",
-        "rationale": "Вчера было 76; рост поддержан серией новых бенчмарков и методик: Evaluative AI, NL2SHACL-Bench, MetaSpace, TeXFix-Bench и CMU-Drive.",
-        "levels": [
-          6,
-          7,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 43,
-        "category": "accelerating",
-        "rationale": "Сегодня появились два сигнала: британская Cosine с господдержкой для суверенной AI-модели и VinSpace, строящая внутренний космический бизнес данных через запуск со SpaceX.",
-        "levels": [
-          5,
-          7,
-          9,
+          1,
           2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 88,
-        "category": "accelerating",
-        "rationale": "Вчера было 89; активность сохраняется через тендер OpenAI на $7 млрд, новые университетские AI-центры и угрозу AI для индийской модели ИТ-занятости.",
-        "levels": [
-          3,
-          7,
-          9
         ],
         "is_new": false
       },
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 89,
+        "momentum": 94,
         "category": "accelerating",
-        "rationale": "Вчера было 94; импульс немного ниже, потому что сегодняшние сигналы локальнее: правила AI в школах Юты и обзор технологических законопроектов Калифорнии, без крупного федерального решения.",
+        "rationale": "Утром было 89; Anthropic вводит водяные знаки для соответствия требованиям прозрачности, Sanders призывает к паузе, а Чикаго требует мораторий на дата-центры.",
         "levels": [
-          8,
-          7,
-          3
+          2,
+          8
         ],
         "is_new": false
       },
       {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": 25,
-        "category": "emerging",
-        "rationale": "Вчера было 16; рост связан с OpenAI и Anthropic: OpenAI запускает специализированную кибермодель, а Anthropic покупает крупные облачные мощности для спроса на Claude.",
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Утром было 96; случай Zoom показывает, что публичный AI-инструмент менее чем за 20 промптов помог найти уязвимость захвата устройства, усиливая угрозу AI-ускоренного поиска ошибок.",
         "levels": [
           4,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 91,
+        "category": "accelerating",
+        "rationale": "Утром было 94; крупных новых платформенных запусков вечером нет, но Agent-MD, QuantumMind, AndroidReality и агентная схема для глаукомы показывают углубление вертикальных агентных рабочих процессов.",
+        "levels": [
+          4,
+          5,
+          6
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-evaluation-infrastructure",
+        "name": "Инфраструктура оценки AI",
+        "momentum": 88,
+        "category": "accelerating",
+        "rationale": "Утром было 84; новые работы про проверку бенчмарков, TREAT, Knowing-Saying Gap, AndroidReality и CliniCARE-Bench расширяют слой оценки от текста к математике, мобильным агентам и клинике.",
+        "levels": [
+          6,
+          7,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 34,
+        "category": "emerging",
+        "rationale": "Сегодняшний сигнал идёт не от релиза модели, а от работы о трассировке происхождения open-weight LLM по спектральным отпечаткам в пространстве весов.",
+        "levels": [
+          5,
+          6,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 86,
+        "category": "accelerating",
+        "rationale": "Утром было 88; вечером события сместились от рекрутинговых инструментов к управленческим разрывам, трудовому дефициту и уходу Brad Lightcap из OpenAI для нового проекта.",
+        "levels": [
+          3,
           5,
           9
         ],
         "is_new": false
+      },
+      {
+        "id": "data-center-local-backlash",
+        "name": "Локальное сопротивление дата-центрам",
+        "momentum": 35,
+        "category": "emerging",
+        "rationale": "Новый тренд поддержан мораторием Чикаго, спором о правилах передачи электроэнергии и ростом спроса на генераторное оборудование для дата-центров.",
+        "levels": [
+          1,
+          2,
+          8
+        ],
+        "is_new": true
+      },
+      {
+        "id": "clinical-ai-production",
+        "name": "Производственный контур клинического AI",
+        "momentum": 38,
+        "category": "emerging",
+        "rationale": "Новый тренд поддержан созданием Diagnostic AI Consortium с Aidoc, партнёрством LCMC Health, CliniCARE-Bench, работой о приватности клинических моделей и агентной схемой выявления глаукомы.",
+        "levels": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "is_new": true
       }
     ]
   }
