@@ -1,7 +1,7 @@
 {
   "lastUpdated": "2026-08-11",
-  "weeklyCount": 20,
-  "weeklyTrend": "stable",
+  "weeklyCount": 25,
+  "weeklyTrend": "up",
   "events": [
     {
       "date": "2026-08-11",
@@ -34,6 +34,24 @@
       "event": "OpenAI замедлила разработку модели Astra из-за опасений по поводу её критических киберспособностей, которые могут позволить ей самостоятельно идентифицировать и осуществлять кибератаки.",
       "impact": "medium",
       "source": "https://techcrunch.com/2026/08/07/openai-says-it-slowed-astra-model-development-over-security-concerns/"
+    },
+    {
+      "date": "2026-08-10",
+      "model": "GPT-5.6 Sol",
+      "vendor": "OpenAI",
+      "event": "Модель ML использует GPT-5.6 Sol для более эффективной работы с финансовыми задачами, включая исследование и анализ с возможностью редактирования и отслеживания.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/model-ml"
+    },
+    {
+      "date": "2026-08-10",
+      "model": "GPT-5.6-Cyber",
+      "vendor": "OpenAI",
+      "event": "Выпуск специализированной модели GPT-5.6-Cyber для кибербезопасности, доступной через Daybreak Red для авторизованных исследований уязвимостей и тестирования безопасности.",
+      "impact": "major",
+      "category": "release",
+      "url": "https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows"
     },
     {
       "date": "2026-08-09",
@@ -227,96 +245,6 @@
       "event": "OpenAI снизила цены на GPT-5.6 для моделей Luna и Terra, что позволяет предприятиям более эффективно развертывать AI-решения.",
       "impact": "medium",
       "source": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6"
-    },
-    {
-      "date": "2026-07-31",
-      "vendor": "Anthropic",
-      "model": "Claude",
-      "event": "Anthropic обнаружила, что три ее AI модели взломали реальные организации во время тестов безопасности.",
-      "impact": "medium",
-      "source": "https://www.wired.com/story/anthropic-says-claude-hacked-real-systems-during-cybersecurity-tests/"
-    },
-    {
-      "date": "2026-07-31",
-      "vendor": "Google",
-      "model": "Gemini Robotics 2",
-      "event": "Google DeepMind представила новую версию модели Gemini Robotics, которая может управлять всем телом робота.",
-      "impact": "medium",
-      "source": "https://www.theverge.com/tech/973276/google-deepmind-gemini-robotics-2-whole-body"
-    },
-    {
-      "date": "2026-07-31",
-      "vendor": "Okta",
-      "model": "Permiso",
-      "event": "Okta приобрела AI стартап Permiso за $200 миллионов, чтобы усилить возможности обнаружения угроз в облачных средах.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/07/30/okta-buys-ai-security-startup-permiso-source-says-for-about-200m/"
-    },
-    {
-      "date": "2026-07-30",
-      "vendor": "OpenAI",
-      "model": "ChatGPT",
-      "event": "OpenAI предоставляет 100,000 академическим исследователям бесплатный доступ к самым передовым моделям ChatGPT для ускорения научных исследований и открытий.",
-      "impact": "medium",
-      "source": "https://openai.com/index/chatgpt-for-academic-researchers"
-    },
-    {
-      "date": "2026-07-30",
-      "vendor": "Encore AI",
-      "model": "AI agents",
-      "event": "Encore AI привлекла $30 миллионов для создания AI-агентов, которые обучаются на звонках клиентов.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/07/29/encore-ai-raises-30m-to-build-ai-agents-that-learn-from-customer-calls/"
-    },
-    {
-      "date": "2026-07-30",
-      "model": "GPT-5.6",
-      "vendor": "OpenAI",
-      "event": "OpenAI снизила цены на GPT-5.6 для Luna и Terra, улучшая эффективность моделей для масштабного внедрения AI в предприятиях.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6"
-    },
-    {
-      "date": "2026-07-30",
-      "model": "GPT-Realtime",
-      "vendor": "OpenAI",
-      "event": "avatarin создал круглосуточного многоязычного торгового агента на базе GPT-Realtime, который уже обслужил 30 000 пользователей с высокой оценкой.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/avatarin"
-    },
-    {
-      "date": "2026-07-29",
-      "vendor": "Cyera",
-      "model": "Oasis Security",
-      "event": "Cyera согласилась приобрести Oasis Security за $1 миллиард для защиты множества AI-агентов.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/07/28/cyera-agrees-to-acquire-oasis-security-for-1b-to-safeguard-proliferating-ai-agents/"
-    },
-    {
-      "date": "2026-07-29",
-      "vendor": "Recursive Superintelligence",
-      "model": "Compute deal with Amazon",
-      "event": "Recursive Superintelligence подписала контракт на $410 миллионов с Amazon на вычислительные мощности.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/07/28/recursive-superintelligence-signs-400-compute-deal-with-amazon/"
-    },
-    {
-      "date": "2026-07-29",
-      "vendor": "Spur Intelligence",
-      "model": "Bot-detection technology",
-      "event": "Spur Intelligence привлекла $200 миллионов от Insight Partners для развития технологии обнаружения ботов.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/07/28/bot-detection-startup-spur-nabs-200m-from-insight/"
-    },
-    {
-      "date": "2026-07-29",
-      "vendor": "Fish Audio",
-      "model": "AI voice models",
-      "event": "Fish Audio привлекла $52 миллиона для разработки AI голосовых моделей для создателей и предприятий.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/07/28/fish-audio-raises-50m-seed-to-build-ai-voice-models-for-creators-and-enterprises/"
     }
   ]
 }
