@@ -85,6 +85,16 @@ export default function NodalPositions() {
             </div>
           ))}
         </div>
+        <div className="mt-5 flex justify-end">
+          <a
+            href="/positions"
+            data-umami-event="positions-map-open"
+            className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-primary/35 bg-primary/10 px-4 py-2.5 text-sm font-semibold text-primary no-underline transition-colors hover:bg-primary/20"
+          >
+            Перейти от карты к действию
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
       </div>
 
       {/* Education Recommendations */}

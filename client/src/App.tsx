@@ -12,6 +12,7 @@ import { ExecutiveDataProvider } from "./contexts/ExecutiveDataContext";
 import Home from "./pages/Home";
 import Education from "./pages/Education";
 import Programs from "./pages/Programs";
+import Positions from "./pages/Positions";
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/education"} component={Education} />
       <Route path={"/programs"} component={Programs} />
+      <Route path={"/positions"} component={Positions} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
