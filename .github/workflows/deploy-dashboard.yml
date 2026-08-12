@@ -1,0 +1,63 @@
+name: Deploy dashboard to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dashboard-gh-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout application source
+        uses: actions/checkout@v4
+        with:
+          path: source
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: source/package-lock.json
+
+      - name: Install dependencies
+        working-directory: source
+        run: npm ci
+
+      - name: Build production dashboard
+        working-directory: source
+        run: npx vite build --config vite.config.ghpages.ts
+
+      - name: Checkout published site
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: site
+
+      - name: Update application bundle without touching reports and data
+        run: |
+          cp source/dist/public/index.html site/index.html
+          cp source/dist/public/index.html site/404.html
+          mkdir -p site/assets
+          cp -R source/dist/public/assets/. site/assets/
+
+      - name: Publish bundle
+        working-directory: site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html 404.html assets
+          if git diff --cached --quiet; then
+            echo "Dashboard bundle is already current"
+            exit 0
+          fi
+          git commit -m "deploy: dashboard ${GITHUB_SHA}"
+          git push origin HEAD:gh-pages
