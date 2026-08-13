@@ -1,7 +1,41 @@
 export type PositionIntent = "expert" | "business" | "invest";
 
+export interface SrtPlace {
+  id: string;
+  level: number;
+  name: string;
+  label: string;
+  change: string;
+  whyNow: string;
+  window: string;
+  productiveExit: string;
+  evidence: string[];
+}
+
+const AI_CURATION_PLACE: SrtPlace = {
+    id: "srt3-ai-curation-agencies",
+    level: 3,
+    name: "Агентства по аудиту и кураторству ИИ-систем",
+    label: "СРТ-3 · Агентства по аудиту и кураторству ИИ-систем",
+    change: "Автономные ИИ-агенты входят в высокорисковые процессы, поэтому возникает новая профессиональная функция — независимый надзор, интерпретация выводов и ответственность за безопасность.",
+    whyNow: "Рынок только начинает осознавать риски бесконтрольной автономии ИИ, а институты надзора ещё находятся в стадии формирования.",
+    window: "Открыто",
+    productiveExit: "Доказанный риск передан владельцу процесса и принят им в устранение.",
+    evidence: [
+      "Методология оценки рисков ИИ",
+      "Юридическая экспертиза ответственности алгоритмов",
+      "Доступ к высокорисковому индустриальному кейсу",
+    ],
+};
+
+export const SRT_PLACES: Record<string, SrtPlace> = {
+  "3": AI_CURATION_PLACE,
+  "srt3-ai-curation-agencies": AI_CURATION_PLACE,
+};
+
 export interface PositionRoute {
   id: string;
+  sourcePlaceIds: string[];
   level: number;
   title: string;
   description: string;
@@ -32,11 +66,22 @@ export interface PositionRoute {
   };
   evidence: string[];
   timeToActionMinutes: number;
+  marketAnalysis?: {
+    confidence: string;
+    updatedAt: string;
+    demandSignal: string;
+    buyers: Array<{ title: string; need: string }>;
+    geographies: Array<{ market: string; demand: string }>;
+    compensation: Array<{ market: string; role: string; range: string }>;
+    workModels: string[];
+    sources: Array<{ label: string; url: string }>;
+  };
 }
 
 export const POSITION_ROUTES: PositionRoute[] = [
   {
     id: "ai-agent-audit",
+    sourcePlaceIds: ["srt3-ai-curation-agencies"],
     level: 3,
     title: "Аудит и кураторство AI-агентов",
     description: "Независимый контроль автономных систем в процессах с высокой ценой ошибки.",
@@ -67,9 +112,38 @@ export const POSITION_ROUTES: PositionRoute[] = [
     },
     evidence: ["конфигурация workflow", "3 лога выполнения", "заключение об одном риске"],
     timeToActionMinutes: 90,
+    marketAnalysis: {
+      confidence: "Средняя",
+      updatedAt: "август 2026",
+      demandSignal: "Функция уже выделяется в самостоятельные роли, но название и зона ответственности ещё не стандартизированы.",
+      buyers: [
+        { title: "Финансы и страхование", need: "Контроль моделей и агентов в решениях с финансовым и регуляторным риском." },
+        { title: "Медицина и healthtech", need: "Human oversight, трассируемость выводов и независимая проверка безопасности." },
+        { title: "Корпоративные AI-платформы", need: "Аудит разрешений, логов и границ автономности до масштабирования агентов." },
+        { title: "Консалтинг и сертификация", need: "Проектные проверки, подготовка доказательств и внедрение AI governance." },
+      ],
+      geographies: [
+        { market: "США", demand: "Крупнейший рынок найма; спрос сосредоточен в финансах, страховании, энергетике и enterprise AI." },
+        { market: "ЕС", demand: "Регулируемые отрасли и поставщики high-risk AI; особенно Германия, Франция, Нидерланды и Ирландия." },
+        { market: "Великобритания", demand: "Консалтинг, privacy/data governance, финтех и страхование; роли часто гибридные." },
+      ],
+      compensation: [
+        { market: "США", role: "Core AI governance, mid-career", range: "$140–218 тыс. / год" },
+        { market: "США", role: "AI auditor, mid-level", range: "$70–120 тыс. / год" },
+        { market: "ЕС", role: "AI auditor, mid-level", range: "€50–90 тыс. / год" },
+        { market: "Великобритания", role: "AI auditor, mid-level", range: "£32–54 тыс. / год" },
+      ],
+      workModels: ["Штатная функция AI governance", "Внутренний аудит / model risk", "Консалтинг по проекту", "Независимая оценка и сертификация"],
+      sources: [
+        { label: "AI Governance Salary Report 2026", url: "https://verifywise.ai/documents/ai-governance-salary-report-may-2026.pdf" },
+        { label: "Barclay Simpson: AI Governance 2026", url: "https://www.barclaysimpson.com/salary-guides/2026-data-privacy-and-ai-governance-salary-guide/" },
+        { label: "Avangrid: Sr Manager Data & AI Governance", url: "https://iberdrola.wd3.myworkdayjobs.com/en-US/Iberdrola/job/Sr-Manager---Data---AI-Governance_R-31470" },
+      ],
+    },
   },
   {
     id: "agentic-migration",
+    sourcePlaceIds: ["srt3-agentic-software-migration"],
     level: 3,
     title: "Миграция процессов на AI-агентов",
     description: "Перестройка статического процесса в управляемый агентный контур.",
@@ -103,6 +177,7 @@ export const POSITION_ROUTES: PositionRoute[] = [
   },
   {
     id: "vertical-finance-ai",
+    sourcePlaceIds: ["srt5-vertical-fin-ai"],
     level: 5,
     title: "Вертикальные AI-агенты в финансах",
     description: "Специализированные агенты для инвестиционного анализа и проверки гипотез.",
@@ -136,6 +211,7 @@ export const POSITION_ROUTES: PositionRoute[] = [
   },
   {
     id: "agent-memory",
+    sourcePlaceIds: ["srt6-agentic-memory-lifecycle"],
     level: 6,
     title: "Жизненный цикл памяти AI-агентов",
     description: "Хранение, забывание и контроль контекста долго работающих агентов.",
@@ -180,20 +256,40 @@ export interface EkenPositionRouteV1 {
   firstAction: { title: string; object: string; recipientRole: string; output: string; acceptanceCriterion: string; estimatedMinutes: number };
   resourceGap: PositionRoute["resourceGap"];
   arsenal: PositionRoute["arsenal"];
+  selfAssessment?: {
+    sourcePlace: string;
+    readyCount: number;
+    total: number;
+    missing: string[];
+  };
 }
 
-function newRouteId() {
+export function createPositionRouteId() {
   return globalThis.crypto?.randomUUID?.() ?? `route-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 }
 
-export function buildEkenPayload(route: PositionRoute, intent: PositionIntent): EkenPositionRouteV1 {
+export interface EkenPayloadContext {
+  routeId?: string;
+  createdAt?: string;
+  place?: SrtPlace;
+}
+
+export function buildEkenPayload(
+  route: PositionRoute,
+  intent: PositionIntent,
+  selfAssessment?: EkenPositionRouteV1["selfAssessment"],
+  context: EkenPayloadContext = {},
+): EkenPositionRouteV1 {
+  const place = context.place;
   return {
     schemaVersion: "1.0",
-    routeId: newRouteId(),
-    createdAt: new Date().toISOString(),
+    routeId: context.routeId ?? createPositionRouteId(),
+    createdAt: context.createdAt ?? new Date().toISOString(),
     locale: "ru",
     intent,
-    place: { id: route.id, name: route.title, level: route.level, whyNow: route.whyNow },
+    place: place
+      ? { id: place.id, name: place.name, level: place.level, whyNow: place.whyNow }
+      : { id: route.id, name: route.title, level: route.level, whyNow: route.whyNow },
     position: {
       name: route.position,
       mission: route.mission,
@@ -210,6 +306,7 @@ export function buildEkenPayload(route: PositionRoute, intent: PositionIntent): 
     },
     resourceGap: route.resourceGap,
     arsenal: route.arsenal,
+    ...(selfAssessment ? { selfAssessment } : {}),
   };
 }
 
@@ -217,7 +314,7 @@ export function buildEkenUrl(payload: EkenPositionRouteV1) {
   return `https://app.ekenlab.com/integrations/verkhovskiy#route=${encodeURIComponent(JSON.stringify(payload))}`;
 }
 
-export function buildBriefText(route: PositionRoute, intent: PositionIntent) {
+export function buildBriefText(route: PositionRoute, intent: PositionIntent, place?: SrtPlace) {
   const intentLabels: Record<PositionIntent, string> = {
     expert: "Применить компетенцию",
     business: "Запустить продукт",
@@ -228,7 +325,7 @@ export function buildBriefText(route: PositionRoute, intent: PositionIntent) {
     "БРИФ ПОЗИЦИИ · VERKHOVSKIY.AI → EKEN",
     "",
     `Намерение: ${intentLabels[intent]}`,
-    `Место: СРТ-${route.level} · ${route.title}`,
+    `Место: ${place?.label ?? `СРТ-${route.level} · ${route.title}`}`,
     `Позиция: ${route.position}`,
     `Объект: ${route.object}`,
     "",
