@@ -15,6 +15,7 @@ export default function NodalPositions() {
   const isEn = locale === "en";
   const NODAL_POSITIONS = getNodalPositions(locale as Locale);
   const EDUCATION_RECOMMENDATIONS = getEducationRecommendations(locale as Locale);
+  const positionRouteHref = (source: number | "all") => `/positions?source=${source}`;
 
   return (
     <div className="container">
@@ -34,9 +35,13 @@ export default function NodalPositions() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
           {NODAL_POSITIONS.map((pos) => (
-            <div
+            <a
               key={pos.id}
-              className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-xl p-4 sm:p-5 hover:border-primary/20 transition-all duration-300 group"
+              href={positionRouteHref(pos.id)}
+              data-umami-event="position-entry-from-srt-place"
+              data-umami-event-source={String(pos.id)}
+              data-pilot-place={pos.id === 3 ? "agent-platform" : undefined}
+              className={`bg-card/60 backdrop-blur-sm border rounded-xl p-4 sm:p-5 hover:border-primary/40 transition-all duration-300 group no-underline ${pos.id === 3 ? "border-primary/45 ring-1 ring-primary/10" : "border-border/50"}`}
             >
               {/* Position number */}
               <div className="flex items-center gap-2 mb-3">
@@ -82,12 +87,13 @@ export default function NodalPositions() {
               >
                 {pos.trend}
               </div>
-            </div>
+              <span className="mt-4 flex items-center gap-1.5 text-[11px] font-semibold text-primary">{pos.id === 3 ? "Войти в место" : "Найти позицию"} <ArrowRight className="h-3.5 w-3.5" /></span>
+            </a>
           ))}
         </div>
         <div className="mt-5 flex justify-end">
           <a
-            href="/positions"
+            href={positionRouteHref(3)}
             data-umami-event="positions-map-open"
             className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-primary/35 bg-primary/10 px-4 py-2.5 text-sm font-semibold text-primary no-underline transition-colors hover:bg-primary/20"
           >
