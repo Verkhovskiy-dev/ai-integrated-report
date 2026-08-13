@@ -46,6 +46,8 @@ jobs:
         run: |
           cp source/dist/public/index.html site/index.html
           cp source/dist/public/index.html site/404.html
+          mkdir -p site/positions
+          cp source/dist/public/index.html site/positions/index.html
           mkdir -p site/assets
           cp -R source/dist/public/assets/. site/assets/
 
@@ -54,7 +56,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html 404.html assets
+          git add index.html 404.html positions/index.html assets
           if git diff --cached --quiet; then
             echo "Dashboard bundle is already current"
             exit 0
