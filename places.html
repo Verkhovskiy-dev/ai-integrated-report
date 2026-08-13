@@ -602,7 +602,7 @@ body {
 .modal-action {
   display: flex;
   min-height: 48px;
-  margin-top: 20px;
+  margin: 14px 0 18px;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
@@ -1141,6 +1141,19 @@ function openModal(id) {
       Уровень ${p.srt_level}: ${SRT_LEVELS[p.srt_level]}
     </div>
     <div class="modal-title">${p.name}</div>
+
+    ${p.id === 'srt3-ai-curation-agencies' ? `
+    <a
+      class="modal-action"
+      href="/positions?place=${encodeURIComponent(p.id)}&source=places"
+      data-umami-event="place-to-position-route"
+      data-umami-event-place="${p.id}"
+    >
+      <span>Перейти к занятию позиции</span>
+      <span aria-hidden="true">→</span>
+    </a>
+    ` : ''}
+
     <div class="modal-desc">${p.description}</div>
 
     <div class="card-badges" style="margin-bottom:16px">
@@ -1194,18 +1207,6 @@ function openModal(id) {
         }).join('')}
       </div>
     </div>
-    ` : ''}
-
-    ${p.id === 'srt3-ai-curation-agencies' ? `
-    <a
-      class="modal-action"
-      href="/positions?place=${encodeURIComponent(p.id)}&source=places"
-      data-umami-event="place-to-position-route"
-      data-umami-event-place="${p.id}"
-    >
-      <span>Перейти к занятию позиции</span>
-      <span aria-hidden="true">→</span>
-    </a>
     ` : ''}
   `;
 
