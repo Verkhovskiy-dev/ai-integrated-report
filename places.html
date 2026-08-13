@@ -599,6 +599,29 @@ body {
   color: #00d4aa;
   font-size: 0.75rem;
 }
+.modal-action {
+  display: flex;
+  min-height: 48px;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border: 1px solid rgba(0,212,170,0.35);
+  border-radius: 8px;
+  background: rgba(0,212,170,0.1);
+  color: #00d4aa;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.modal-action:hover {
+  border-color: rgba(0,212,170,0.7);
+  background: rgba(0,212,170,0.16);
+}
+.modal-action span:last-child { font-size: 1.1rem; }
 </style>
 </head>
 <body>
@@ -1171,6 +1194,18 @@ function openModal(id) {
         }).join('')}
       </div>
     </div>
+    ` : ''}
+
+    ${p.id === 'srt3-ai-curation-agencies' ? `
+    <a
+      class="modal-action"
+      href="/positions?place=${encodeURIComponent(p.id)}&source=places"
+      data-umami-event="place-to-position-route"
+      data-umami-event-place="${p.id}"
+    >
+      <span>Перейти к занятию позиции</span>
+      <span aria-hidden="true">→</span>
+    </a>
     ` : ''}
   `;
 
