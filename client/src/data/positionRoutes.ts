@@ -1,3 +1,5 @@
+import { getPlaceIdsForPositionRoute } from "./ekenRouteRegistry";
+
 export type PositionIntent = "expert" | "business" | "invest";
 
 export interface SrtPlace {
@@ -28,9 +30,60 @@ const AI_CURATION_PLACE: SrtPlace = {
     ],
 };
 
+const AGENTIC_SOFTWARE_MIGRATION_PLACE: SrtPlace = {
+  id: "srt3-agentic-software-migration",
+  level: 3,
+  name: "Сервисы миграции на агентное программное обеспечение",
+  label: "СРТ-3 · Сервисы миграции на агентное программное обеспечение",
+  change: "Компании переходят от статического ПО к управляемым агентным контурам, сохраняя явные границы решений и человеческое подтверждение.",
+  whyNow: "Ранние интеграторы уже закрепляют доступ к корпоративным процессам и данным, а крупные вендоры быстро насыщают рынок.",
+  window: "Сужается",
+  productiveExit: "Ограниченный агентный пилот одобрен, а владелец результата назначен.",
+  evidence: [
+    "Карта действующего процесса",
+    "Точка ручного подтверждения",
+    "Доступ к execution traces",
+  ],
+};
+
+const VERTICAL_FINANCE_AI_PLACE: SrtPlace = {
+  id: "srt5-vertical-fin-ai",
+  level: 5,
+  name: "Вертикальные ИИ-агенты для финансового анализа",
+  label: "СРТ-5 · Вертикальные ИИ-агенты для финансового анализа",
+  change: "Финансовый анализ переходит от универсальных моделей к специализированным агентам, проверяемым на воспроизводимых данных.",
+  whyNow: "Финансовый сектор активно тестирует специализированные решения до фиксации стандартов и распределения доступа к качественным данным.",
+  window: "Открыто",
+  productiveExit: "Проверенная инвестиционная гипотеза включена в аналитический пайплайн для ручной верификации.",
+  evidence: [
+    "Контрольный датасет",
+    "Воспроизводимый backtest",
+    "Доступ к первичным рыночным источникам",
+  ],
+};
+
+const AGENT_MEMORY_LIFECYCLE_PLACE: SrtPlace = {
+  id: "srt6-agentic-memory-lifecycle",
+  level: 6,
+  name: "Управление жизненным циклом памяти агентов",
+  label: "СРТ-6 · Управление жизненным циклом памяти агентов",
+  change: "Долго работающим агентам требуется управляемая память: правила хранения, забывания, изоляции контекстов и проверки деградации.",
+  whyNow: "Стандарт ещё не сложился, а число автономных агентов, работающих месяцами над одним проектом, быстро растёт.",
+  window: "Открыто",
+  productiveExit: "Проверяемая политика памяти принята в технический backlog владельца агентной платформы.",
+  evidence: [
+    "Тестовый автономный агент",
+    "10 long-run traces",
+    "Политика хранения и забывания",
+  ],
+};
+
 export const SRT_PLACES: Record<string, SrtPlace> = {
   "3": AI_CURATION_PLACE,
   "srt3-ai-curation-agencies": AI_CURATION_PLACE,
+  "srt3-agentic-software-migration": AGENTIC_SOFTWARE_MIGRATION_PLACE,
+  "srt5-vertical-fin-ai": VERTICAL_FINANCE_AI_PLACE,
+  "srt6-agentic-memory-lifecycle": AGENT_MEMORY_LIFECYCLE_PLACE,
 };
 
 export interface PositionRoute {
@@ -81,7 +134,7 @@ export interface PositionRoute {
 export const POSITION_ROUTES: PositionRoute[] = [
   {
     id: "ai-agent-audit",
-    sourcePlaceIds: ["srt3-ai-curation-agencies"],
+    sourcePlaceIds: getPlaceIdsForPositionRoute("ai-agent-audit"),
     level: 3,
     title: "Аудит и кураторство AI-агентов",
     description: "Независимый контроль автономных систем в процессах с высокой ценой ошибки.",
@@ -143,7 +196,7 @@ export const POSITION_ROUTES: PositionRoute[] = [
   },
   {
     id: "agentic-migration",
-    sourcePlaceIds: ["srt3-agentic-software-migration"],
+    sourcePlaceIds: getPlaceIdsForPositionRoute("agentic-migration"),
     level: 3,
     title: "Миграция процессов на AI-агентов",
     description: "Перестройка статического процесса в управляемый агентный контур.",
@@ -177,7 +230,7 @@ export const POSITION_ROUTES: PositionRoute[] = [
   },
   {
     id: "vertical-finance-ai",
-    sourcePlaceIds: ["srt5-vertical-fin-ai"],
+    sourcePlaceIds: getPlaceIdsForPositionRoute("vertical-finance-ai"),
     level: 5,
     title: "Вертикальные AI-агенты в финансах",
     description: "Специализированные агенты для инвестиционного анализа и проверки гипотез.",
@@ -211,7 +264,7 @@ export const POSITION_ROUTES: PositionRoute[] = [
   },
   {
     id: "agent-memory",
-    sourcePlaceIds: ["srt6-agentic-memory-lifecycle"],
+    sourcePlaceIds: getPlaceIdsForPositionRoute("agent-memory"),
     level: 6,
     title: "Жизненный цикл памяти AI-агентов",
     description: "Хранение, забывание и контроль контекста долго работающих агентов.",
@@ -244,6 +297,14 @@ export const POSITION_ROUTES: PositionRoute[] = [
     timeToActionMinutes: 240,
   },
 ];
+
+export function resolvePositionRoute(placeId: string, routeId?: string | null) {
+  if (!SRT_PLACES[placeId]) return null;
+
+  const matchingRoutes = POSITION_ROUTES.filter((route) => route.sourcePlaceIds.includes(placeId));
+  if (routeId) return matchingRoutes.find((route) => route.id === routeId) ?? null;
+  return matchingRoutes.length === 1 ? matchingRoutes[0] : null;
+}
 
 export interface EkenPositionRouteV1 {
   schemaVersion: "1.0";

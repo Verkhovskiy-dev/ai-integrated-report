@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0",
+  "name": "Verkhovskiy.ai route production line",
+  "trigger": {
+    "event": "places-map-updated",
+    "source": "AIwatcher",
+    "input": "data/places_data.json"
+  },
+  "agents": [
+    {
+      "id": "route-orchestrator",
+      "purpose": "Сравнивает карту с реестром и формирует очередь мест без маршрута.",
+      "command": "node scripts/route-agents/plan-route-jobs.mjs data/places_data.json client/src/data/ekenRoutes.json 12",
+      "output": "route-jobs.json"
+    },
+    {
+      "id": "route-builder",
+      "purpose": "Строит один шестишаговый маршрут для одного placeId.",
+      "concurrency": 4,
+      "input": "route-jobs.json#jobs[]",
+      "prompt": "automation/route-agents/route-builder.prompt.md",
+      "output": "route-drafts/<placeId>.json"
+    },
+    {
+      "id": "route-qa",
+      "purpose": "Проверяет смысловое соответствие месту, полноту маршрута и Eken handoff.",
+      "input": "route-drafts/<placeId>.json",
+      "schema": "automation/route-agents/route-draft.schema.json",
+      "policy": "fail-closed"
+    },
+    {
+      "id": "route-publisher",
+      "purpose": "Публикует только одобренные маршруты через pull request и запускает проверки сборки.",
+      "checks": [
+        "npm run test:routes",
+        "npm run validate:eken-routes",
+        "npm run validate:published-routes"
+      ],
+      "activation": "human-approved-pull-request"
+    }
+  ]
+}

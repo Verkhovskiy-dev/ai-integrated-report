@@ -112,6 +112,11 @@
 .position-place-proof small { margin-bottom: 2px; color: var(--muted-foreground); font-size: 11px; text-transform: uppercase; }
 .position-place-proof strong { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; }
 .position-place-proof svg { color: #59d79e; }
+.position-route-unavailable { max-width: 760px; padding: 42px; border: 1px solid color-mix(in srgb, var(--border) 78%, transparent); background: color-mix(in srgb, var(--card) 72%, transparent); }
+.position-route-unavailable > p { color: #f59e0b; font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; }
+.position-route-unavailable > h1 { margin-top: 14px; font-size: clamp(34px, 5vw, 58px); font-weight: 700; line-height: 1.06; }
+.position-route-unavailable > span { display: block; max-width: 650px; margin-top: 20px; color: var(--muted-foreground); font-size: 16px; line-height: 1.65; }
+.position-route-unavailable > a { display: inline-flex; align-items: center; gap: 9px; margin-top: 30px; padding: 12px 16px; border: 1px solid color-mix(in srgb, var(--primary) 56%, transparent); color: var(--primary); font-size: 13px; text-decoration: none; }
 
 .position-route-ledger { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 25px; color: var(--muted-foreground); font-family: var(--font-mono); font-size: 10px; }
 .position-route-ledger span { padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; }
@@ -265,9 +270,18 @@
 .position-market-columns article strong { font-size: 13px; }
 .position-market-columns article span { color: var(--muted-foreground); font-size: 12px; line-height: 1.5; }
 .position-market-model { padding: 10px 12px; border: 1px solid color-mix(in srgb, var(--border) 68%, transparent); color: var(--muted-foreground); font-size: 12px; }
-.position-market-sources { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 26px; padding-top: 16px; border-top: 1px solid color-mix(in srgb, var(--border) 55%, transparent); font-size: 11px; }
-.position-market-sources > span { color: var(--muted-foreground); }
-.position-market-sources a { color: var(--primary); text-decoration: none; }
+.position-market-evidence { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 24px; margin-top: 26px; padding-top: 18px; border-top: 1px solid color-mix(in srgb, var(--border) 55%, transparent); }
+.position-market-evidence > div { display: grid; gap: 5px; }
+.position-market-evidence strong { font-size: 13px; }
+.position-market-evidence span,
+.position-market-evidence small { color: var(--muted-foreground); font-size: 11px; line-height: 1.5; }
+.position-market-method-toggle { justify-self: end; padding: 0; border: 0; background: transparent; color: var(--primary); font: inherit; font-size: 11px; cursor: pointer; }
+.position-market-method-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
+.position-market-method { grid-column: 1 / -1; padding-top: 3px; color: var(--muted-foreground); font-size: 11px; }
+.position-market-method p { max-width: 720px; line-height: 1.6; }
+.position-market-source-links { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 12px; }
+.position-market-source-links a { color: var(--primary); text-decoration: none; }
+.position-market-source-links a:hover { text-decoration: underline; }
 .position-pay-card > svg { width: 28px; color: var(--primary); }
 .position-pay-card > p, .position-goal-card > p { margin-top: 14px; color: var(--primary); font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; }
 .position-pay-card > h3, .position-goal-card > h3 { margin-top: 10px; font-size: 22px; line-height: 1.3; }
@@ -362,6 +376,8 @@
   .position-market-heading { align-items: start; flex-direction: column; }
   .position-market-buyers, .position-market-columns { grid-template-columns: 1fr; }
   .position-market-columns article { grid-template-columns: 86px 1fr; }
+  .position-market-evidence { grid-template-columns: 1fr; }
+  .position-market-method-toggle { justify-self: start; }
   .position-assessment-list > div { grid-template-columns: 30px 1fr; padding: 13px 0; }
   .position-assessment-list > div > div { grid-column: 2; }
   .position-assessment-list button { flex: 1; }

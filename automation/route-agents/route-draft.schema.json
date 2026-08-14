@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://verkhovskiy.ai/schemas/route-draft.schema.json",
+  "title": "Position route draft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "placeId", "positionRouteId", "position", "journey", "ekenTask", "sources", "status"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "placeId": { "type": "string", "minLength": 3 },
+    "positionRouteId": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "status": { "enum": ["draft", "qa-approved", "rejected"] },
+    "position": {
+      "type": "object",
+      "required": ["name", "mission", "object", "productiveResult", "recipientRole"],
+      "properties": {
+        "name": { "type": "string" },
+        "mission": { "type": "string" },
+        "object": { "type": "string" },
+        "productiveResult": { "type": "string" },
+        "recipientRole": { "type": "string" }
+      }
+    },
+    "journey": {
+      "type": "object",
+      "required": ["requirements", "assessment", "firstAction", "estimatedMinutes"],
+      "properties": {
+        "requirements": { "type": "array", "minItems": 3, "items": { "type": "string" } },
+        "assessment": { "type": "array", "minItems": 3, "items": { "type": "string" } },
+        "firstAction": { "type": "string" },
+        "estimatedMinutes": { "type": "integer", "minimum": 15, "maximum": 480 }
+      }
+    },
+    "ekenTask": {
+      "type": "object",
+      "required": ["brief", "expectedArtifact", "acceptanceCriterion"],
+      "properties": {
+        "brief": { "type": "string" },
+        "expectedArtifact": { "type": "string" },
+        "acceptanceCriterion": { "type": "string" }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["label", "url"],
+        "properties": {
+          "label": { "type": "string" },
+          "url": { "type": "string", "format": "uri" }
+        }
+      }
+    }
+  }
+}

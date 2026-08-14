@@ -42,6 +42,11 @@ jobs:
           ref: gh-pages
           path: site
 
+      - name: Validate Eken routes against the current places map
+        run: |
+          npm --prefix source run test:routes
+          node source/scripts/validate-eken-routes.mjs source/client/src/data/ekenRoutes.json site/data/places_data.json
+
       - name: Update application bundle without touching reports and data
         run: |
           cp source/dist/public/index.html site/index.html
@@ -50,13 +55,18 @@ jobs:
           cp source/dist/public/index.html site/positions/index.html
           mkdir -p site/assets
           cp -R source/dist/public/assets/. site/assets/
+          mkdir -p site/data
+          cp source/dist/public/data/eken-routes.json site/data/eken-routes.json
+
+      - name: Verify routes in the published bundle
+        run: node source/scripts/validate-published-routes.mjs source/client/src/data/ekenRoutes.json site
 
       - name: Publish bundle
         working-directory: site
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html 404.html positions/index.html assets
+          git add index.html 404.html positions/index.html assets data/eken-routes.json
           if git diff --cached --quiet; then
             echo "Dashboard bundle is already current"
             exit 0

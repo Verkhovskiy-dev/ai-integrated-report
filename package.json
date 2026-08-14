@@ -9,6 +9,10 @@
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
+    "test:routes": "vitest run client/src/data/positionRoutes.test.ts",
+    "validate:eken-routes": "node scripts/validate-eken-routes.mjs client/src/data/ekenRoutes.json",
+    "validate:published-routes": "node scripts/validate-published-routes.mjs client/src/data/ekenRoutes.json dist/public",
+    "plan:route-jobs": "node scripts/route-agents/plan-route-jobs.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {

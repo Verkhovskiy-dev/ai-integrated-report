@@ -37,6 +37,7 @@ import {
   buildEkenPayload,
   buildEkenUrl,
   createPositionRouteId,
+  resolvePositionRoute,
   type PositionIntent,
   type PositionRoute,
 } from "@/data/positionRoutes";
@@ -80,20 +81,28 @@ function assessmentItems(route: PositionRoute) {
 export default function Positions() {
   const params = new URLSearchParams(window.location.search);
   const requestedPlace = params.get("place") ?? params.get("source") ?? "3";
-  const place = SRT_PLACES[requestedPlace] ?? SRT_PLACES["3"];
+  const configuredPlace = SRT_PLACES[requestedPlace];
+  const place = configuredPlace ?? SRT_PLACES["3"];
   const sourceKey = place.id;
   const cameFromPlaces = params.get("source") === "places" || params.has("place");
+  const requestedRouteId = params.get("route");
+  const requestedRoute = resolvePositionRoute(requestedPlace, requestedRouteId);
   const sourcePlace = place.label;
   const [step, setStep] = useState(1);
   const [intent, setIntent] = useState<PositionIntent>("expert");
   const placeRoutes = POSITION_ROUTES.filter((route) => route.sourcePlaceIds.includes(sourceKey));
-  const [routeId, setRouteId] = useState(placeRoutes[0]?.id ?? POSITION_ROUTES[0].id);
+  const initialRouteId = placeRoutes.some((route) => route.id === requestedRouteId)
+    ? requestedRouteId!
+    : placeRoutes[0]?.id ?? POSITION_ROUTES[0].id;
+  const [routeId, setRouteId] = useState(initialRouteId);
   const [journeyId, setJourneyId] = useState(() => createPositionRouteId());
   const [journeyStartedAt, setJourneyStartedAt] = useState(() => new Date().toISOString());
   const [answers, setAnswers] = useState<Record<string, boolean | undefined>>({});
   const [copied, setCopied] = useState(false);
+  const [marketMethodOpen, setMarketMethodOpen] = useState(false);
 
   const routes = placeRoutes.length ? placeRoutes : POSITION_ROUTES;
+  const routeConfigurationError = params.has("place") && (!configuredPlace || !requestedRoute);
   const selected = routes.find((route) => route.id === routeId) ?? routes[0];
   const selectedMap = MAP_POSITIONS[selected.id];
   const checklist = useMemo(() => assessmentItems(selected), [selected]);
@@ -118,6 +127,18 @@ export default function Positions() {
     window.scrollTo(0, 0);
   }, [step]);
 
+  useEffect(() => {
+    const analytics = (window as Window & {
+      umami?: { track: (event: string, data?: Record<string, string | number>) => void };
+    }).umami;
+    analytics?.track("position-step-view", {
+      place: place.id,
+      position: selected.id,
+      step,
+      journey: journeyId,
+    });
+  }, [step, place.id, selected.id, journeyId]);
+
   const chooseRoute = (route: PositionRoute) => {
     setRouteId(route.id);
     setJourneyId(createPositionRouteId());
@@ -135,6 +156,29 @@ export default function Positions() {
     setCopied(true);
     window.setTimeout(() => setCopied(false), 2200);
   };
+
+  if (routeConfigurationError) {
+    return (
+      <div className="min-h-screen bg-background text-foreground">
+        <header className="border-b border-border/60 bg-background/90">
+          <div className="container flex h-14 items-center">
+            <a href="/places.html" className="inline-flex items-center gap-2 text-sm text-muted-foreground no-underline transition-colors hover:text-foreground">
+              <ArrowLeft className="h-4 w-4" /> К карте мест
+            </a>
+          </div>
+        </header>
+        <main className="container py-16 sm:py-24">
+          <section className="position-route-unavailable" aria-labelledby="route-unavailable-title">
+            <p>МАРШРУТ НЕДОСТУПЕН</p>
+            <h1 id="route-unavailable-title">Для этого места маршрут ещё не настроен</h1>
+            <span>Карточка не будет подменена другим сценарием. Вернитесь к карте и выберите место с меткой Eken.</span>
+            <a href="/places.html">Вернуться к карте <ArrowRight className="h-4 w-4" /></a>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -262,9 +306,29 @@ export default function Positions() {
                       {selected.marketAnalysis.workModels.map((model) => <span className="position-market-model" key={model}>{model}</span>)}
                     </div>
                   </div>
-                  <div className="position-market-sources">
-                    <span>Источники и методика</span>
-                    {selected.marketAnalysis.sources.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a>)}
+                  <div className="position-market-evidence">
+                    <div>
+                      <strong>Основание оценки</strong>
+                      <span>Спрос подтверждён отраслевыми обзорами и вакансиями работодателей.</span>
+                      <small>Уверенность: {selected.marketAnalysis.confidence} · обновлено {selected.marketAnalysis.updatedAt}</small>
+                    </div>
+                    <button
+                      type="button"
+                      className="position-market-method-toggle"
+                      aria-expanded={marketMethodOpen}
+                      aria-controls="position-market-method"
+                      onClick={() => setMarketMethodOpen((open) => !open)}
+                    >
+                      {marketMethodOpen ? "Скрыть источники и методику" : "Посмотреть источники и методику"}
+                    </button>
+                    {marketMethodOpen && (
+                      <div id="position-market-method" className="position-market-method">
+                        <p>Сопоставлены обзоры рынка AI governance, требования работодателей и ориентиры оплаты для близких ролей. Диапазоны показывают рынок, а не персональный прогноз дохода.</p>
+                        <div className="position-market-source-links">
+                          {selected.marketAnalysis.sources.map((source) => <a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.label} ↗</a>)}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </section>
               )}
@@ -300,14 +364,14 @@ export default function Positions() {
                 {checklist.map((item, index) => <div key={item} className={answers[item] === true ? "is-ready" : answers[item] === false ? "is-missing" : ""}><span className="position-assessment-number">{index + 1}</span><strong>{item}</strong><div><button type="button" aria-pressed={answers[item] === true} onClick={() => setAnswers((current) => ({ ...current, [item]: true }))}>Есть</button><button type="button" aria-pressed={answers[item] === false} onClick={() => setAnswers((current) => ({ ...current, [item]: false }))}>Нет</button></div></div>)}
               </div>
             </section>
-            <aside className="position-stage-aside position-readiness-card"><p>ГОТОВНОСТЬ</p><h3>{Math.round((readyCount / checklist.length) * 100)}%</h3><span>Подтверждено {readyCount} из {checklist.length} требований</span><div className="position-map-fit-track"><span style={{ width: `${(readyCount / checklist.length) * 100}%` }} /></div><small>{assessmentComplete ? (missing.length ? `В маршрут войдут ${missing.length} ресурсных разрыва` : "Можно начинать первое действие") : `Осталось оценить: ${checklist.length - answeredCount}`}</small><button className="position-map-primary" disabled={!assessmentComplete} onClick={() => goTo(6)}>Сформировать бриф <ArrowRight /></button></aside>
+            <aside className="position-stage-aside position-readiness-card"><p>ГОТОВНОСТЬ</p><h3>{Math.round((readyCount / checklist.length) * 100)}%</h3><span>Подтверждено {readyCount} из {checklist.length} требований</span><div className="position-map-fit-track"><span style={{ width: `${(readyCount / checklist.length) * 100}%` }} /></div><small>{assessmentComplete ? (missing.length ? `В маршрут войдут ${missing.length} ресурсных разрыва` : "Можно начинать первое действие") : `Осталось оценить: ${checklist.length - answeredCount}`}</small><button className="position-map-primary" disabled={!assessmentComplete} onClick={() => goTo(6)} data-umami-event="position-brief-created" data-umami-event-place={place.id} data-umami-event-position={selected.id} data-umami-event-ready={readyCount} data-umami-event-total={checklist.length}>Сформировать бриф <ArrowRight /></button></aside>
           </div>
         )}
 
         {step === 6 && (
           <div className="position-stage-layout position-brief-layout">
             <section className="position-stage-main"><p className="position-stage-kicker">ШАГ 6 · ГОТОВЫЙ БРИФ</p><h2>Маршрут освоения позиции собран</h2><p className="position-stage-lead">Eken получит контекст места СРТ, контракт позиции, требования, результат самооценки и первое продуктивное действие.</p><div className="position-route-ledger"><span>Место <strong>{place.id}</strong></span><ArrowRight /><span>Позиция <strong>{selected.id}</strong></span><ArrowRight /><span>Маршрут <strong>{journeyId.slice(0, 8)}</strong></span></div><pre className="position-brief-preview">{brief}</pre></section>
-            <aside className="position-stage-aside position-launch-card"><BookOpen /><p>ПЕРЕДАЧА В EKEN</p><h3>{selected.position}</h3><span>{missing.length ? `Закрыть ${missing.length} разрыва и перейти к первому действию` : "Закрепить маршрут и перейти к первому действию"}</span><div className="position-time"><Clock3 /><span><small>Первое действие</small><strong>≤ {selected.timeToActionMinutes} мин</strong></span></div><a href={ekenUrl} target="_blank" rel="noreferrer" data-umami-event="position-eken-handoff" data-umami-event-place={place.id} data-umami-event-position={selected.id} data-umami-event-route={journeyId} className="position-map-primary">Начать освоение позиции <ArrowRight /></a><button type="button" onClick={copyBrief} className="position-copy-brief">{copied ? <Check /> : <Copy />}{copied ? "Бриф скопирован" : "Копировать бриф"}</button></aside>
+            <aside className="position-stage-aside position-launch-card"><BookOpen /><p>ПЕРЕДАЧА В EKEN</p><h3>{selected.position}</h3><span>{missing.length ? `Закрыть ${missing.length} разрыва и перейти к первому действию` : "Закрепить маршрут и перейти к первому действию"}</span><div className="position-time"><Clock3 /><span><small>Первое действие</small><strong>≤ {selected.timeToActionMinutes} мин</strong></span></div><a href={ekenUrl} target="_blank" rel="noreferrer" data-umami-event="position-eken-handoff" data-umami-event-place={place.id} data-umami-event-position={selected.id} data-umami-event-route={journeyId} className="position-map-primary">Начать освоение позиции <ArrowRight /></a><button type="button" onClick={copyBrief} className="position-copy-brief" data-umami-event="position-brief-copied" data-umami-event-place={place.id} data-umami-event-position={selected.id}>{copied ? <Check /> : <Copy />}{copied ? "Бриф скопирован" : "Копировать бриф"}</button></aside>
           </div>
         )}
       </main>

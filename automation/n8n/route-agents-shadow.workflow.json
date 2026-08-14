@@ -1,0 +1,144 @@
+{
+  "name": "Route Agents — Shadow",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 6 * * 1"
+            }
+          ]
+        }
+      },
+      "id": "route-shadow-schedule",
+      "name": "Weekly Shadow Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [-880, 240]
+    },
+    {
+      "parameters": {},
+      "id": "route-shadow-manual",
+      "name": "Manual Shadow Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-880, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "const MAP_URL = 'https://raw.githubusercontent.com/Verkhovskiy-dev/ai-integrated-report/gh-pages/data/places_data.json?cb=' + Date.now();\nconst ROUTES_URL = 'https://raw.githubusercontent.com/Verkhovskiy-dev/ai-integrated-report/gh-pages/data/eken-routes.json?cb=' + Date.now();\n\nconst [map, registry] = await Promise.all([\n  this.helpers.httpRequest({ method: 'GET', url: MAP_URL, json: true, timeout: 30000 }),\n  this.helpers.httpRequest({ method: 'GET', url: ROUTES_URL, json: true, timeout: 30000 }),\n]);\n\nconst enabled = new Set((registry.routes || []).filter(r => r.enabled).map(r => r.placeId));\nconst priority = place => {\n  let score = 0;\n  if (place.window?.category === 'open') score += 4;\n  if (place.window?.category === 'narrowing') score += 2;\n  if (place.confidence === 'high' || place.capacity?.confidence === 'high') score += 3;\n  if (place.capacity?.category === 'large') score += 2;\n  if (place.capacity?.category === 'medium') score += 1;\n  score += Math.min(2, place.audience_lens?.length || 0);\n  return score;\n};\n\nreturn (map.places || [])\n  .filter(place => place.id && !enabled.has(place.id))\n  .map(place => ({ place, priority: priority(place) }))\n  .sort((a, b) => b.priority - a.priority || a.place.id.localeCompare(b.place.id))\n  .slice(0, 3)\n  .map(job => ({ json: {\n    mode: 'shadow',\n    mapVersion: map.meta?.version || null,\n    placeId: job.place.id,\n    priority: job.priority,\n    place: job.place,\n    agent_input: JSON.stringify(job.place),\n  }}));"
+      },
+      "id": "route-shadow-plan",
+      "name": "Plan Route Jobs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-624, 320]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.agent_input }}",
+        "options": {
+          "systemMessage": "=Ты — Route Builder проекта Verkhovskiy.ai. Построй один маршрут освоения позиции строго для входного места карты СРТ. Не подменяй место похожим сценарием. Верни только JSON без markdown.\n\nЦель маршрута — сократить время от понимания места до первого проверяемого действия и передачи результата внешнему адресату.\n\nОбязательный JSON:\n{\n  \"schemaVersion\": \"1.0\",\n  \"placeId\": \"точный id входного места\",\n  \"positionRouteId\": \"kebab-case\",\n  \"status\": \"draft\",\n  \"position\": {\n    \"name\": \"конкретная роль\",\n    \"mission\": \"что изменить\",\n    \"object\": \"объект действия\",\n    \"productiveResult\": \"результат, принятый внешним адресатом\",\n    \"recipientRole\": \"кто принимает результат\"\n  },\n  \"journey\": {\n    \"requirements\": [\"платформа\", \"компетенция\", \"доступ\", \"норма\"],\n    \"assessment\": [\"проверяемые утверждения самооценки\"],\n    \"firstAction\": \"одно действие на 15–480 минут\",\n    \"estimatedMinutes\": 90\n  },\n  \"ekenTask\": {\n    \"brief\": \"задача для Eken\",\n    \"expectedArtifact\": \"конкретный артефакт\",\n    \"acceptanceCriterion\": \"как внешний адресат принимает результат\"\n  },\n  \"researchQueries\": [\"2–4 запроса для проверки спроса, оплаты и географии\"],\n  \"assumptions\": [\"что пока требует источников\"]\n}\n\nВ теневом режиме не придумывай ссылки, зарплаты и названия работодателей. Непроверенные факты помещай только в assumptions или researchQueries."
+        }
+      },
+      "id": "route-shadow-builder",
+      "name": "Route Builder Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [-368, 320]
+    },
+    {
+      "parameters": {
+        "jsCode": "const outputs = $input.all();\nconst jobs = $('Plan Route Jobs').all();\n\nreturn outputs.map((item, index) => {\n  const raw = String(item.json.output || item.json.text || '').replace(/^```(?:json)?\\s*/i, '').replace(/```\\s*$/i, '').trim();\n  let draft = null;\n  let parseError = null;\n  try { draft = JSON.parse(raw); } catch (error) { parseError = String(error.message); }\n  return { json: {\n    mode: 'shadow',\n    placeId: jobs[index]?.json?.placeId || null,\n    mapVersion: jobs[index]?.json?.mapVersion || null,\n    priority: jobs[index]?.json?.priority || null,\n    place: jobs[index]?.json?.place || null,\n    draft,\n    parseError,\n  }};\n});"
+      },
+      "id": "route-shadow-normalize",
+      "name": "Normalize Draft",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-112, 320]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ JSON.stringify($json) }}",
+        "options": {
+          "systemMessage": "=Ты — Route QA Agent. Проверяй черновик маршрута относительно исходного place. Верни только JSON: {\"placeId\":\"...\",\"positionRouteId\":\"...\",\"approved\":false,\"score\":0,\"issues\":[\"...\"],\"strengths\":[\"...\"]}.\n\nКритические проверки:\n1. placeId совпадает с исходным местом.\n2. Позиция действительно следует из description, entry_conditions, evidence и уровня СРТ.\n3. Есть конкретный внешний адресат и продуктивный результат.\n4. Первое действие выполнимо за 15–480 минут и оставляет артефакт.\n5. Самооценка проверяет платформу, компетенцию, доступ и адресата.\n6. Непроверенные рынок, зарплаты и география не представлены как факты.\n7. Eken-бриф продолжает маршрут, а не начинает общий курс.\n\nВ shadow-режиме approved может быть true только как рекомендация к ручной проверке; агент ничего не публикует."
+        }
+      },
+      "id": "route-shadow-qa",
+      "name": "Route QA Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [144, 320]
+    },
+    {
+      "parameters": {
+        "jsCode": "const outputs = $input.all();\nconst drafts = $('Normalize Draft').all();\n\nreturn outputs.map((item, index) => {\n  const raw = String(item.json.output || item.json.text || '').replace(/^```(?:json)?\\s*/i, '').replace(/```\\s*$/i, '').trim();\n  let qa = null;\n  let qaParseError = null;\n  try { qa = JSON.parse(raw); } catch (error) { qaParseError = String(error.message); }\n  const source = drafts[index]?.json || {};\n  return { json: {\n    mode: 'shadow',\n    publishAllowed: false,\n    placeId: source.placeId || qa?.placeId || null,\n    mapVersion: source.mapVersion || null,\n    priority: source.priority || null,\n    draft: source.draft || null,\n    builderParseError: source.parseError || null,\n    qa,\n    qaParseError,\n    nextState: qa?.approved ? 'manual-review' : 'needs-revision',\n  }};\n});"
+      },
+      "id": "route-shadow-gate",
+      "name": "Shadow Publication Gate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [400, 320]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5.5",
+          "mode": "list",
+          "cachedResultName": "gpt-5.5"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "id": "route-shadow-model",
+      "name": "OpenAI Route Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [-112, 560],
+      "credentials": {
+        "openAiApi": {
+          "id": "XUXiJ2zTz5OpDHUM",
+          "name": "OpenAi account 4"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Weekly Shadow Trigger": {
+      "main": [[{"node": "Plan Route Jobs", "type": "main", "index": 0}]]
+    },
+    "Manual Shadow Trigger": {
+      "main": [[{"node": "Plan Route Jobs", "type": "main", "index": 0}]]
+    },
+    "Plan Route Jobs": {
+      "main": [[{"node": "Route Builder Agent", "type": "main", "index": 0}]]
+    },
+    "Route Builder Agent": {
+      "main": [[{"node": "Normalize Draft", "type": "main", "index": 0}]]
+    },
+    "Normalize Draft": {
+      "main": [[{"node": "Route QA Agent", "type": "main", "index": 0}]]
+    },
+    "Route QA Agent": {
+      "main": [[{"node": "Shadow Publication Gate", "type": "main", "index": 0}]]
+    },
+    "OpenAI Route Model": {
+      "ai_languageModel": [[
+        {"node": "Route Builder Agent", "type": "ai_languageModel", "index": 0},
+        {"node": "Route QA Agent", "type": "ai_languageModel", "index": 0}
+      ]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "pinData": {}
+}
