@@ -15,29 +15,29 @@ export interface SrtPlace {
 }
 
 const AI_CURATION_PLACE: SrtPlace = {
-    id: "srt3-ai-curation-agencies",
-    level: 3,
-    name: "Агентства по аудиту и кураторству ИИ-систем",
-    label: "СРТ-3 · Агентства по аудиту и кураторству ИИ-систем",
-    change: "Автономные ИИ-агенты входят в высокорисковые процессы, поэтому возникает новая профессиональная функция — независимый надзор, интерпретация выводов и ответственность за безопасность.",
-    whyNow: "Рынок только начинает осознавать риски бесконтрольной автономии ИИ, а институты надзора ещё находятся в стадии формирования.",
-    window: "Открыто",
-    productiveExit: "Доказанный риск передан владельцу процесса и принят им в устранение.",
-    evidence: [
-      "Методология оценки рисков ИИ",
-      "Юридическая экспертиза ответственности алгоритмов",
-      "Доступ к высокорисковому индустриальному кейсу",
-    ],
+  id: "srt6-agent-governance-platforms",
+  level: 6,
+  name: "Платформы управления и аудита AI-агентов",
+  label: "СРТ-6 · Платформы управления и аудита AI-агентов",
+  change: "Автономным AI-агентам требуется контур мониторинга, ограничения и верификации действий в реальном времени.",
+  whyNow: "Индустрия только начинает осознавать риски неуправляемых агентов, а стандарты надзора ещё не сформированы.",
+  window: "Открыто",
+  productiveExit: "Доказанный риск передан владельцу процесса и принят им в устранение.",
+  evidence: [
+    "Методология оценки рисков ИИ",
+    "Юридическая экспертиза ответственности алгоритмов",
+    "Доступ к высокорисковому индустриальному кейсу",
+  ],
 };
 
 const AGENTIC_SOFTWARE_MIGRATION_PLACE: SrtPlace = {
-  id: "srt3-agentic-software-migration",
-  level: 3,
-  name: "Сервисы миграции на агентное программное обеспечение",
-  label: "СРТ-3 · Сервисы миграции на агентное программное обеспечение",
-  change: "Компании переходят от статического ПО к управляемым агентным контурам, сохраняя явные границы решений и человеческое подтверждение.",
-  whyNow: "Ранние интеграторы уже закрепляют доступ к корпоративным процессам и данным, а крупные вендоры быстро насыщают рынок.",
-  window: "Сужается",
+  id: "srt6-ai-software-factories",
+  level: 6,
+  name: "AI-фабрики программного обеспечения",
+  label: "СРТ-6 · AI-фабрики программного обеспечения",
+  change: "AI берёт на себя архитектурную сложность создания программных продуктов, превращая разработку в управляемый производственный контур.",
+  whyNow: "Связка LLM и генерации кода стала достаточно зрелой для коммерческого использования и ограниченных агентных пилотов.",
+  window: "Открыто",
   productiveExit: "Ограниченный агентный пилот одобрен, а владелец результата назначен.",
   evidence: [
     "Карта действующего процесса",
@@ -47,12 +47,12 @@ const AGENTIC_SOFTWARE_MIGRATION_PLACE: SrtPlace = {
 };
 
 const VERTICAL_FINANCE_AI_PLACE: SrtPlace = {
-  id: "srt5-vertical-fin-ai",
-  level: 5,
-  name: "Вертикальные ИИ-агенты для финансового анализа",
-  label: "СРТ-5 · Вертикальные ИИ-агенты для финансового анализа",
-  change: "Финансовый анализ переходит от универсальных моделей к специализированным агентам, проверяемым на воспроизводимых данных.",
-  whyNow: "Финансовый сектор активно тестирует специализированные решения до фиксации стандартов и распределения доступа к качественным данным.",
+  id: "srt9-selective-ai-auditing",
+  level: 9,
+  name: "Селективный аудит и оценка ИИ-активов",
+  label: "СРТ-9 · Селективный аудит и оценка ИИ-активов",
+  change: "Инвесторы переходят от универсальных ставок на AI к проверке реальной выручки, маржинальности и устойчивости отдельных ИИ-бизнесов.",
+  whyNow: "После стабилизации распродаж инвесторы ищут способы отделить подтверждённую экономику от хайпа и снизить риск решений.",
   window: "Открыто",
   productiveExit: "Проверенная инвестиционная гипотеза включена в аналитический пайплайн для ручной верификации.",
   evidence: [
@@ -63,12 +63,12 @@ const VERTICAL_FINANCE_AI_PLACE: SrtPlace = {
 };
 
 const AGENT_MEMORY_LIFECYCLE_PLACE: SrtPlace = {
-  id: "srt6-agentic-memory-lifecycle",
+  id: "srt6-personal-agent-infrastructure",
   level: 6,
-  name: "Управление жизненным циклом памяти агентов",
-  label: "СРТ-6 · Управление жизненным циклом памяти агентов",
-  change: "Долго работающим агентам требуется управляемая память: правила хранения, забывания, изоляции контекстов и проверки деградации.",
-  whyNow: "Стандарт ещё не сложился, а число автономных агентов, работающих месяцами над одним проектом, быстро растёт.",
+  name: "Инфраструктура персональных AI-агентов",
+  label: "СРТ-6 · Инфраструктура персональных AI-агентов",
+  change: "Персональным AI-агентам нужен надёжный слой памяти, приватности и длительной работы с данными пользователя.",
+  whyNow: "Сегмент персональных ассистентов вошёл в фазу активной капитализации, но стандарты памяти и приватности ещё не закреплены.",
   window: "Открыто",
   productiveExit: "Проверяемая политика памяти принята в технический backlog владельца агентной платформы.",
   evidence: [
@@ -80,10 +80,10 @@ const AGENT_MEMORY_LIFECYCLE_PLACE: SrtPlace = {
 
 export const SRT_PLACES: Record<string, SrtPlace> = {
   "3": AI_CURATION_PLACE,
-  "srt3-ai-curation-agencies": AI_CURATION_PLACE,
-  "srt3-agentic-software-migration": AGENTIC_SOFTWARE_MIGRATION_PLACE,
-  "srt5-vertical-fin-ai": VERTICAL_FINANCE_AI_PLACE,
-  "srt6-agentic-memory-lifecycle": AGENT_MEMORY_LIFECYCLE_PLACE,
+  "srt6-agent-governance-platforms": AI_CURATION_PLACE,
+  "srt6-ai-software-factories": AGENTIC_SOFTWARE_MIGRATION_PLACE,
+  "srt9-selective-ai-auditing": VERTICAL_FINANCE_AI_PLACE,
+  "srt6-personal-agent-infrastructure": AGENT_MEMORY_LIFECYCLE_PLACE,
 };
 
 export interface PositionRoute {
@@ -135,7 +135,7 @@ export const POSITION_ROUTES: PositionRoute[] = [
   {
     id: "ai-agent-audit",
     sourcePlaceIds: getPlaceIdsForPositionRoute("ai-agent-audit"),
-    level: 3,
+    level: 6,
     title: "Аудит и кураторство AI-агентов",
     description: "Независимый контроль автономных систем в процессах с высокой ценой ошибки.",
     window: "Открыто",
@@ -197,7 +197,7 @@ export const POSITION_ROUTES: PositionRoute[] = [
   {
     id: "agentic-migration",
     sourcePlaceIds: getPlaceIdsForPositionRoute("agentic-migration"),
-    level: 3,
+    level: 6,
     title: "Миграция процессов на AI-агентов",
     description: "Перестройка статического процесса в управляемый агентный контур.",
     window: "Сужается",
@@ -231,7 +231,7 @@ export const POSITION_ROUTES: PositionRoute[] = [
   {
     id: "vertical-finance-ai",
     sourcePlaceIds: getPlaceIdsForPositionRoute("vertical-finance-ai"),
-    level: 5,
+    level: 9,
     title: "Вертикальные AI-агенты в финансах",
     description: "Специализированные агенты для инвестиционного анализа и проверки гипотез.",
     window: "Открыто",

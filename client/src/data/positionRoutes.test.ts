@@ -47,9 +47,9 @@ describe("Verkhovskiy → Eken position handoff", () => {
     expect(payload.routeId).toBe("journey-123");
     expect(payload.createdAt).toBe("2026-08-12T09:00:00.000Z");
     expect(payload.place).toMatchObject({
-      id: "srt3-ai-curation-agencies",
-      level: 3,
-      name: "Агентства по аудиту и кураторству ИИ-систем",
+      id: "srt6-agent-governance-platforms",
+      level: 6,
+      name: "Платформы управления и аудита AI-агентов",
     });
   });
 
@@ -75,6 +75,9 @@ describe("Verkhovskiy → Eken position handoff", () => {
 
     expect(placeIds).toHaveLength(4);
     expect(placeIds.every((placeId) => SRT_PLACES[placeId]?.id === placeId)).toBe(true);
+    POSITION_ROUTES.forEach((route) => {
+      expect(route.level).toBe(SRT_PLACES[route.sourcePlaceIds[0]].level);
+    });
   });
 
   it("keeps the selected place in the Eken handoff for every available route", () => {
@@ -113,9 +116,10 @@ describe("Verkhovskiy → Eken position handoff", () => {
   });
 
   it("fails closed for an unknown place or a mismatched route", () => {
-    expect(resolvePositionRoute("srt5-vertical-fin-ai", "vertical-finance-ai")?.position)
+    expect(resolvePositionRoute("srt9-selective-ai-auditing", "vertical-finance-ai")?.position)
       .toBe("Оператор финансового AI-агента");
-    expect(resolvePositionRoute("srt5-vertical-fin-ai", "ai-agent-audit")).toBeNull();
+    expect(resolvePositionRoute("srt9-selective-ai-auditing", "ai-agent-audit")).toBeNull();
+    expect(resolvePositionRoute("srt5-vertical-fin-ai", "vertical-finance-ai")).toBeNull();
     expect(resolvePositionRoute("missing-place", "ai-agent-audit")).toBeNull();
   });
 });
