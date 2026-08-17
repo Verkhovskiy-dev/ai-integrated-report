@@ -231,6 +231,68 @@
     .biz-tool-card { background: #161a1d; border: 1px solid #252c33; border-radius: 10px; padding: 16px; transition: border-color .2s; }
     .biz-tool-card:hover { border-color: #00e5a0; }
 
+    /* Productive EkenLab route */
+    .tool-card-with-practice {
+      border-color: rgba(0,229,160,.58) !important;
+      box-shadow: inset 3px 0 0 #00e5a0, 0 0 0 1px rgba(0,229,160,.06);
+    }
+    .practice-badge {
+      display:inline-flex; align-items:center; gap:6px; padding:3px 8px; border-radius:999px;
+      color:#65efc0; background:#0f2a1e; border:1px solid #1e6047;
+      font-size:10px; font-weight:650; letter-spacing:.02em;
+    }
+    .practice-card-action {
+      display:inline-flex; align-items:center; justify-content:center; margin-top:10px;
+      padding:7px 11px; border-radius:7px; border:1px solid #1e6047;
+      color:#00e5a0; background:#10251d; font-size:11px; font-weight:650; cursor:pointer;
+      transition:border-color .18s, background .18s, transform .18s;
+    }
+    .practice-card-action:hover { border-color:#00e5a0; background:#123326; transform:translateY(-1px); }
+    .practice-backdrop {
+      position:fixed; inset:0; z-index:80; background:rgba(3,7,9,.62); backdrop-filter:blur(5px);
+      opacity:0; pointer-events:none; transition:opacity .22s ease;
+    }
+    .practice-backdrop.is-open { opacity:1; pointer-events:auto; }
+    .practice-drawer {
+      position:fixed; z-index:90; top:0; right:0; width:min(430px,100vw); height:100vh;
+      background:linear-gradient(180deg,#171c22 0%,#101418 100%); border-left:1px solid #343d47;
+      box-shadow:-28px 0 80px rgba(0,0,0,.46); transform:translateX(102%); transition:transform .25s ease;
+      display:flex; flex-direction:column; overflow:auto;
+    }
+    .practice-drawer.is-open { transform:translateX(0); }
+    .practice-drawer-header { display:flex; align-items:center; justify-content:space-between; padding:22px 26px 14px; }
+    .practice-drawer-close {
+      border:0; background:transparent; color:#9aa5b4; font-size:12px; line-height:1; cursor:pointer;
+      min-height:34px; padding:0 10px; border-radius:8px;
+    }
+    .practice-drawer-close:hover { color:#e8edf2; background:#222930; }
+    .practice-drawer-body { padding:8px 26px 28px; display:flex; flex-direction:column; min-height:calc(100vh - 70px); }
+    .practice-role { display:inline-flex; align-self:flex-start; padding:7px 12px; border:1px solid #2d8a68; border-radius:8px; color:#68e7b8; font-size:12px; font-weight:600; margin:8px 0 24px; }
+    .practice-drawer h2 { color:#f4f7f9; font-size:25px; line-height:1.24; letter-spacing:-.03em; font-weight:700; margin:0; }
+    .practice-duration { display:inline-flex; align-self:flex-start; margin-top:18px; color:#65efc0; border:1px solid #313b43; border-radius:8px; padding:8px 11px; font-family:'JetBrains Mono',monospace; font-size:12px; }
+    .practice-outcome { color:#b7c1cb; font-size:13px; line-height:1.65; margin:22px 0; }
+    .practice-outcome strong { color:#65efc0; }
+    .practice-value-card { border:1px solid #303842; border-radius:12px; overflow:hidden; margin-bottom:22px; }
+    .practice-value-row { padding:16px; }
+    .practice-value-row + .practice-value-row { border-top:1px solid #303842; }
+    .practice-value-row span { display:block; color:#8e9aa8; font-size:11px; font-weight:600; margin-bottom:7px; }
+    .practice-value-row p { color:#c4ccd5; font-size:12px; line-height:1.55; margin:0; }
+    .practice-value-row ul { list-style:none; display:grid; gap:8px; }
+    .practice-value-row li { color:#b6c0ca; font-size:12px; padding-left:10px; border-left:2px solid #2d8a68; }
+    .practice-launch {
+      width:100%; margin-top:auto; min-height:50px; border:0; border-radius:9px; cursor:pointer;
+      background:linear-gradient(135deg,#75e8b7,#54cfe0); color:#07100d; font-size:14px; font-weight:750;
+      transition:box-shadow .18s, transform .18s;
+    }
+    .practice-launch:hover { box-shadow:0 0 28px rgba(0,229,160,.26); transform:translateY(-1px); }
+    .practice-secondary { border:0; background:transparent; color:#aab6c3; font-size:12px; cursor:pointer; padding:14px 8px 8px; }
+    .practice-provider { color:#78c8f5; text-decoration:none; text-align:center; font-size:12px; padding:8px; }
+    .practice-progress { display:flex; align-items:center; justify-content:center; gap:8px; margin-top:25px; color:#707d8a; font-size:10px; }
+    .practice-progress i { width:24px; height:2px; background:#303943; display:block; }
+    .practice-progress b { display:grid; place-items:center; width:25px; height:25px; border:1px solid #3c4853; border-radius:50%; font-weight:500; }
+    .practice-progress b:first-child { color:#65efc0; border-color:#3cae82; }
+    .practice-footnote { text-align:center; color:#788592; font-size:10px; margin-top:9px; }
+
     @media (max-width: 1200px) {
       .main-grid { grid-template-columns: 1fr 340px !important; }
       .right-col { display: none; }
@@ -239,6 +301,7 @@
       .main-grid { grid-template-columns: 1fr !important; }
       .totd-grid { grid-template-columns: 1fr; }
       .strategy-grid { grid-template-columns: 1fr; }
+      .practice-drawer { width:100vw; }
     }
   </style>
   <!-- GEO: Schema.org FAQPage -->
@@ -580,6 +643,15 @@
 
 </main>
 
+<div class="practice-backdrop" id="practice-backdrop" onclick="closePracticeDrawer()" aria-hidden="true"></div>
+<aside class="practice-drawer" id="practice-drawer" role="dialog" aria-modal="true" aria-labelledby="practice-drawer-title" aria-hidden="true">
+  <div class="practice-drawer-header">
+    <span class="practice-badge">Практика EkenLab</span>
+    <button class="practice-drawer-close" type="button" onclick="closePracticeDrawer()">Закрыть</button>
+  </div>
+  <div class="practice-drawer-body" id="practice-drawer-body"></div>
+</aside>
+
 <!-- FOOTER -->
 <footer style="border-top:1px solid #1e2429;padding:14px 40px;" class="flex items-center justify-between">
   <span style="font-size:11px;color:#6b7a8d;">© 2026 verkhovskiy.ai · Гайд по моделям</span>
@@ -614,6 +686,27 @@ const BIZ_LABELS = {
 const ROLE_LABELS = {
   marketer: 'Маркетолог', developer: 'Разработчик', analyst: 'Аналитик',
   manager: 'Менеджер', designer: 'Дизайнер', researcher: 'Исследователь'
+};
+const TOOL_PRACTICES = {
+  'Browser Use / Stagehand': {
+    id: 'browser-use-stagehand',
+    role: 'Аналитик',
+    promise: 'Автоматизировать сбор данных с 3 страниц',
+    duration: 35,
+    artifact: 'рабочий сценарий браузерной автоматизации + таблица',
+    change: 'Получите воспроизводимый процесс без ручного копирования.',
+    prerequisites: ['Базовые навыки работы с таблицами', 'Доступ к целевым сайтам'],
+    starterInputs: [
+      'https://example.com/products?page=1',
+      'https://example.com/products?page=2',
+      'https://example.com/products?page=3'
+    ],
+    successCriteria: [
+      'Обработаны три страницы',
+      'С каждой страницы извлечены одинаковые поля',
+      'Таблица сохранена в CSV или Google Sheets'
+    ]
+  }
 };
 
 // ========== STATE ==========
@@ -708,31 +801,33 @@ async function init() {
     const now = new Date();
     const diffDays = (now - totdDate) / (1000 * 60 * 60 * 24);
     if (diffDays > 30) {
-      // Pick a random tool from the database as fallback
+      // Prefer a tool with a verified productive route. This keeps the
+      // Tool-of-the-Day promise connected to a real EkenLab practice.
       const allDbTools = [];
       DATA.levels.forEach(level => {
         level.categories.forEach(cat => {
           cat.tools.forEach(tool => { allDbTools.push({ ...tool, level: level.id, category: cat.name }); });
         });
       });
-      const randomTool = allDbTools[Math.floor(Math.random() * allDbTools.length)];
+      const featuredTool = allDbTools.find(tool => TOOL_PRACTICES[tool.name])
+        || allDbTools[Math.floor(Math.random() * allDbTools.length)];
       TOTD = {
         date: now.toISOString().split('T')[0],
         tool: {
-          name: randomTool.name,
-          url: randomTool.url,
-          level: randomTool.level,
-          category: randomTool.category,
-          description: randomTool.description || randomTool.strength || '',
-          fullDescription: randomTool.description || randomTool.strength || '',
-          rating: (randomTool.rating || 4) * 2,
+          name: featuredTool.name,
+          url: featuredTool.url,
+          level: featuredTool.level,
+          category: featuredTool.category,
+          description: featuredTool.description || featuredTool.strength || '',
+          fullDescription: featuredTool.description || featuredTool.strength || '',
+          rating: (featuredTool.rating || 4) * 2,
           ratingMax: 10,
-          pros: (randomTool.features || []).slice(0, 3).map(f => f + ' — ключевая возможность'),
+          pros: (featuredTool.features || []).slice(0, 3).map(f => f + ' — ключевая возможность'),
           cons: ['Требует изучения документации', 'Возможны ограничения бесплатного плана'],
           comparison: [],
-          recommendation: randomTool.recommendedFor || 'Рекомендуется для профессионального использования.',
-          idealFor: (randomTool.roles || []).map(r => ROLE_LABELS[r] || r),
-          pricing: randomTool.pricing || 'freemium'
+          recommendation: featuredTool.recommendedFor || 'Рекомендуется для профессионального использования.',
+          idealFor: (featuredTool.roles || []).map(r => ROLE_LABELS[r] || r),
+          pricing: featuredTool.pricing || 'freemium'
         }
       };
     }
@@ -824,17 +919,26 @@ function renderTools() {
   if (currentCategoryFilter) {
     filtered = filtered.filter(t => t.tags && t.tags.some(tag => tag.toLowerCase() === currentCategoryFilter.toLowerCase()));
   }
+
+  // Keep the whole catalogue, but surface routes with a working EkenLab
+  // practice first so the productive exit is discoverable without filters.
+  filtered = filtered.sort((a, b) =>
+    Number(Boolean(TOOL_PRACTICES[b.name])) - Number(Boolean(TOOL_PRACTICES[a.name]))
+  );
   
   let toShow = filtered.slice(0, visibleCount);
-  document.getElementById('tools-count').textContent = filtered.length + ' инструментов';
+  const practiceCount = filtered.filter(tool => TOOL_PRACTICES[tool.name]).length;
+  document.getElementById('tools-count').textContent =
+    `${filtered.length} инструментов${practiceCount ? ` · ${practiceCount} практика EkenLab` : ''}`;
 
   container.innerHTML = toShow.map(tool => {
     const lc = LEVEL_COLORS[tool.level];
     const vendor = getVendor(tool);
     const vc = VENDOR_COLORS[vendor] || VENDOR_COLORS['default'];
     const tags = (tool.tags || []).slice(0, 3);
+    const practice = TOOL_PRACTICES[tool.name];
     return `
-      <div class="news-card flex items-start gap-4 p-4 rounded-xl" style="background:#1c2127;border:1px solid #252c33;">
+      <div class="news-card flex items-start gap-4 p-4 rounded-xl ${practice ? 'tool-card-with-practice' : ''}" style="background:#1c2127;border:1px solid #252c33;">
         <div style="width:40px;height:40px;min-width:40px;background:linear-gradient(135deg,${vc.bg},#0d0f10);border:1px solid ${vc.border};border-radius:10px;" class="flex items-center justify-center"><span style="font-size:18px;">${lc.icon}</span></div>
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2 mb-1 flex-wrap">
@@ -842,12 +946,14 @@ function renderTools() {
             <span class="tag" style="background:#161a1d;color:${lc.color};border:1px solid #252c33;">${lc.label}</span>
             ${getPricingBadge(tool.pricing)}
             ${getStarRating(tool.rating)}
+            ${practice ? '<span class="practice-badge">Освоить в EkenLab</span>' : ''}
             ${tool.apiPrice ? `<span style="font-size:10px;color:#6b7a8d;margin-left:auto;font-family:'JetBrains Mono',monospace;">${tool.apiPrice}</span>` : ''}
           </div>
           <p style="font-size:14px;font-weight:500;color:#e8edf2;margin:0 0 4px;"><strong style="color:${vc.text};">${tool.name}</strong></p>
           <p style="font-size:12px;color:#6b7a8d;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${tool.description || tool.strength || ''}</p>
           ${tool.recommendedFor ? getRecommendationBadge(tool.recommendedFor) : ''}
           ${tool.context ? `<div style="margin-top:6px;font-size:10px;color:#9aa5b4;">Контекст: ${tool.context}${tool.reasoning ? ' · Reasoning: '+tool.reasoning : ''}</div>` : ''}
+          ${practice ? `<button type="button" class="practice-card-action" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-practice-preview" data-umami-event-tool="${practice.id}">Получить первый результат · ${practice.duration} мин</button>` : ''}
         </div>
         <a href="${tool.url||'#'}" target="_blank" style="min-width:16px;margin-top:2px;opacity:.35;text-decoration:none;">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="#e8edf2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -860,6 +966,122 @@ function renderTools() {
   btn.style.display = remaining <= 0 ? 'none' : 'block';
   btn.textContent = `Показать ещё ${Math.min(remaining, 8)} инструментов`;
 }
+
+function getPracticeEntry(practiceId) {
+  const entry = Object.entries(TOOL_PRACTICES).find(([, practice]) => practice.id === practiceId);
+  if (!entry) return null;
+  const [toolName, practice] = entry;
+  const tool = allTools.find(item => item.name === toolName);
+  return tool ? { tool, practice } : null;
+}
+
+function openPracticeDrawer(practiceId) {
+  const entry = getPracticeEntry(practiceId);
+  if (!entry) return;
+  const { tool, practice } = entry;
+  const body = document.getElementById('practice-drawer-body');
+  body.innerHTML = `
+    <span class="practice-role">Для роли · ${practice.role}</span>
+    <h2 id="practice-drawer-title">${practice.promise}</h2>
+    <span class="practice-duration">${practice.duration} мин</span>
+    <p class="practice-outcome"><strong>На выходе:</strong> ${practice.artifact}</p>
+    <div class="practice-value-card">
+      <div class="practice-value-row"><span>Что изменится после шага</span><p>${practice.change}</p></div>
+      <div class="practice-value-row"><span>Что нужно</span><ul>${practice.prerequisites.map(item => `<li>${item}</li>`).join('')}</ul></div>
+    </div>
+    <button type="button" class="practice-launch" onclick="launchEkenPractice('${practice.id}')" data-umami-event="llm-practice-launch" data-umami-event-tool="${practice.id}">Начать практику в EkenLab</button>
+    <button type="button" class="practice-secondary" onclick="closePracticeDrawer()">Сменить сценарий</button>
+    <a class="practice-provider" href="${tool.url}" target="_blank" rel="noreferrer">Открыть сайт инструмента</a>
+    <div class="practice-progress"><b>1</b><i></i><b>2</b><i></i><b>3</b><i></i><b>4</b></div>
+    <p class="practice-footnote">Первый шаг к рабочему результату, не курс</p>`;
+  const backdrop = document.getElementById('practice-backdrop');
+  const drawer = document.getElementById('practice-drawer');
+  backdrop.classList.add('is-open');
+  drawer.classList.add('is-open');
+  backdrop.setAttribute('aria-hidden', 'false');
+  drawer.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  drawer.querySelector('.practice-drawer-close').focus();
+}
+
+function closePracticeDrawer() {
+  const backdrop = document.getElementById('practice-backdrop');
+  const drawer = document.getElementById('practice-drawer');
+  backdrop.classList.remove('is-open');
+  drawer.classList.remove('is-open');
+  backdrop.setAttribute('aria-hidden', 'true');
+  drawer.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function buildToolPracticeRoute(tool, practice) {
+  const routeId = `llm-${practice.id}-${crypto.randomUUID ? crypto.randomUUID() : Date.now()}`;
+  return {
+    schemaVersion: '1.0',
+    routeId,
+    createdAt: new Date().toISOString(),
+    locale: 'ru',
+    intent: 'expert',
+    place: {
+      id: `tool:${practice.id}`,
+      name: `Карта LLM · ${tool.name}`,
+      level: tool.level || 2,
+      whyNow: 'Браузерные агенты уже позволяют заменить повторяемое ручное копирование воспроизводимым сценарием.'
+    },
+    position: {
+      name: 'Аналитик браузерных данных',
+      mission: 'Превращать повторяемый сбор данных из веб-источников в проверяемый рабочий процесс.',
+      resourceMatchPercent: 60,
+      desiredResult: practice.artifact
+    },
+    firstAction: {
+      title: practice.promise,
+      object: 'Три однотипные страницы с данными',
+      recipientRole: 'Аналитик или владелец процесса',
+      output: practice.artifact,
+      acceptanceCriterion: practice.successCriteria.join('; '),
+      estimatedMinutes: practice.duration
+    },
+    resourceGap: {
+      title: `Практика ${tool.name}`,
+      description: 'Собрать и один раз выполнить браузерный сценарий на трёх источниках.',
+      estimatedMinutes: practice.duration,
+      artifact: practice.artifact
+    },
+    arsenal: {
+      platforms: [tool.name],
+      competencies: ['Браузерная автоматизация', 'Структурирование данных', 'Проверка результата'],
+      communicationVenues: ['Рабочая таблица команды'],
+      accesses: practice.prerequisites,
+      norms: ['Воспроизводимость результата', 'Минимизация собираемых данных']
+    },
+    practice: {
+      kind: 'tool',
+      toolId: practice.id,
+      toolName: tool.name,
+      toolUrl: tool.url,
+      role: practice.role,
+      promise: practice.promise,
+      artifact: practice.artifact,
+      estimatedMinutes: practice.duration,
+      starterInputs: practice.starterInputs,
+      prerequisites: practice.prerequisites,
+      successCriteria: practice.successCriteria,
+      sourceUrl: window.location.href.split('#')[0]
+    }
+  };
+}
+
+function launchEkenPractice(practiceId) {
+  const entry = getPracticeEntry(practiceId);
+  if (!entry) return;
+  const payload = buildToolPracticeRoute(entry.tool, entry.practice);
+  window.location.href = `https://app.ekenlab.com/integrations/verkhovskiy#route=${encodeURIComponent(JSON.stringify(payload))}`;
+}
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closePracticeDrawer();
+});
 
 function filterLevel(level) {
   currentFilter = level; visibleCount = 8;
@@ -903,6 +1125,7 @@ function renderTrendsCompact() {
 function renderToolOfDayCompact() {
   const tool = TOTD?.tool || TOTD;
   if (!tool) return;
+  const practice = TOOL_PRACTICES[tool.name];
   document.getElementById('tool-of-day-compact').innerHTML = `
     <div style="background:#161a1d;border-radius:10px;padding:14px;">
       <div class="flex items-center justify-between mb-2">
@@ -911,7 +1134,10 @@ function renderToolOfDayCompact() {
       </div>
       <div style="font-size:11px;color:#6b7a8d;margin-bottom:8px;">Уровень ${tool.level} · ${tool.category}</div>
       <p style="font-size:12px;color:#9aa5b4;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${tool.description}</p>
-      <a href="#section-tool-of-day" style="display:inline-block;margin-top:10px;font-size:12px;color:#00e5a0;text-decoration:none;font-weight:500;">Подробнее →</a>
+      <div class="flex items-center gap-3 flex-wrap" style="margin-top:10px;">
+        <a href="#section-tool-of-day" style="font-size:12px;color:#9aa5b4;text-decoration:none;font-weight:500;">Подробнее</a>
+        ${practice ? `<button type="button" class="practice-card-action" style="margin-top:0" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-tool-of-day-practice" data-umami-event-tool="${practice.id}">Начать практику · ${practice.duration} мин</button>` : ''}
+      </div>
     </div>`;
 }
 
@@ -934,6 +1160,7 @@ function renderChronicleCompact() {
 function renderToolOfTheDayFull() {
   const tool = TOTD?.tool || TOTD;
   if (!tool) return;
+  const practice = TOOL_PRACTICES[tool.name];
   const levelNames = {1:'Уровень 1: Модели',2:'Уровень 2: Агенты',3:'Уровень 3: Платформы'};
   document.getElementById('toolOfTheDayFull').innerHTML = `
     <div class="totd-card">
@@ -952,7 +1179,10 @@ function renderToolOfTheDayFull() {
         <div style="font-size:13px;color:#9aa5b4;line-height:1.6;">${tool.recommendation||''}</div>
       </div>
       ${tool.idealFor&&tool.idealFor.length?`<div class="flex flex-wrap gap-2 mt-4">${tool.idealFor.map(t=>`<span style="font-size:11px;background:#0f2a1e;border:1px solid #1e4030;color:#00e5a0;padding:4px 10px;border-radius:6px;">${t}</span>`).join('')}</div>`:''}
-      <a href="${tool.url}" target="_blank" style="display:inline-block;margin-top:16px;font-size:13px;color:#00e5a0;text-decoration:none;font-weight:600;">Перейти на сайт →</a>
+      <div class="flex items-center gap-3 flex-wrap" style="margin-top:16px;">
+        ${practice ? `<button type="button" class="practice-launch" style="width:auto;min-height:44px;padding:0 22px" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-tool-of-day-practice" data-umami-event-tool="${practice.id}">Начать практику в EkenLab · ${practice.duration} мин</button>` : ''}
+        <a href="${tool.url}" target="_blank" style="font-size:13px;color:#78c8f5;text-decoration:none;font-weight:600;">Открыть сайт инструмента</a>
+      </div>
     </div>`;
 }
 
