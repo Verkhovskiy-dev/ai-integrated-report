@@ -180,6 +180,20 @@
     .strategy-card li { font-size: 13px; color: #9aa5b4; padding: 6px 0; border-bottom: 1px solid #1e2429; }
     .pilot-card { background: #0f2a1e; border: 1px solid #1e4030; border-radius: 12px; padding: 20px; text-align: center; }
     .pilot-formula { font-family: 'JetBrains Mono', monospace; font-size: 16px; color: #00e5a0; font-weight: 600; padding: 12px; background: #161a1d; border-radius: 8px; }
+    .productive-entry {
+      display:flex; align-items:center; justify-content:space-between; gap:18px; margin-top:16px;
+      padding:14px 16px; border:1px solid #2d6d56; border-radius:10px;
+      background:linear-gradient(100deg,rgba(0,229,160,.09),rgba(0,200,215,.035)); text-align:left;
+    }
+    .productive-entry-copy { min-width:0; }
+    .productive-entry-label { color:#65efc0; font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+    .productive-entry-title { color:#e8edf2; font-size:13px; font-weight:650; line-height:1.4; margin-top:3px; }
+    .productive-entry-meta { color:#82909e; font-size:11px; margin-top:3px; }
+    .productive-entry-button {
+      flex:0 0 auto; min-height:38px; padding:0 14px; border-radius:8px; border:1px solid #3cae82;
+      color:#07100d; background:linear-gradient(135deg,#75e8b7,#54cfe0); font-size:12px; font-weight:750; cursor:pointer;
+    }
+    .productive-entry-button:hover { box-shadow:0 0 24px rgba(0,229,160,.2); transform:translateY(-1px); }
 
     /* Navigator */
     .navigator-progress { display: flex; gap: 8px; margin-bottom: 20px; }
@@ -203,6 +217,7 @@
       background: #161a1d; border: 1px solid #252c33; border-radius: 10px; padding: 16px; margin-bottom: 12px;
     }
     .navigator-result-card:hover { border-color: #00e5a0; }
+    .navigator-result-actions { display:flex; align-items:center; gap:14px; margin-top:8px; }
 
     /* Quiz */
     .quiz-option {
@@ -272,7 +287,7 @@
     .practice-duration { display:inline-flex; align-self:flex-start; margin-top:18px; color:#65efc0; border:1px solid #313b43; border-radius:8px; padding:8px 11px; font-family:'JetBrains Mono',monospace; font-size:12px; }
     .practice-outcome { color:#b7c1cb; font-size:13px; line-height:1.65; margin:22px 0; }
     .practice-outcome strong { color:#65efc0; }
-    .practice-value-card { border:1px solid #303842; border-radius:12px; overflow:hidden; margin-bottom:22px; }
+    .practice-value-card { border:1px solid #303842; border-radius:12px; overflow:hidden; margin-bottom:22px; flex-shrink:0; }
     .practice-value-row { padding:16px; }
     .practice-value-row + .practice-value-row { border-top:1px solid #303842; }
     .practice-value-row span { display:block; color:#8e9aa8; font-size:11px; font-weight:600; margin-bottom:7px; }
@@ -280,7 +295,7 @@
     .practice-value-row ul { list-style:none; display:grid; gap:8px; }
     .practice-value-row li { color:#b6c0ca; font-size:12px; padding-left:10px; border-left:2px solid #2d8a68; }
     .practice-launch {
-      width:100%; margin-top:auto; min-height:50px; border:0; border-radius:9px; cursor:pointer;
+      width:100%; margin-top:auto; min-height:50px; border:0; border-radius:9px; cursor:pointer; flex-shrink:0;
       background:linear-gradient(135deg,#75e8b7,#54cfe0); color:#07100d; font-size:14px; font-weight:750;
       transition:box-shadow .18s, transform .18s;
     }
@@ -302,6 +317,8 @@
       .totd-grid { grid-template-columns: 1fr; }
       .strategy-grid { grid-template-columns: 1fr; }
       .practice-drawer { width:100vw; }
+      .productive-entry { align-items:flex-start; flex-direction:column; }
+      .productive-entry-button { width:100%; }
     }
   </style>
   <!-- GEO: Schema.org FAQPage -->
@@ -687,7 +704,7 @@ const ROLE_LABELS = {
   marketer: 'Маркетолог', developer: 'Разработчик', analyst: 'Аналитик',
   manager: 'Менеджер', designer: 'Дизайнер', researcher: 'Исследователь'
 };
-const TOOL_PRACTICES = {
+let TOOL_PRACTICES = {
   'Browser Use / Stagehand': {
     id: 'browser-use-stagehand',
     role: 'Аналитик',
@@ -708,6 +725,9 @@ const TOOL_PRACTICES = {
     ]
   }
 };
+let EKEN_SCENARIOS = [];
+let activePracticeContext = {};
+let navigatorRecommendationTools = [];
 
 // ========== STATE ==========
 let DATA = null, TOTD = null, CHRONICLE = null, TRENDING = null;
@@ -794,6 +814,20 @@ async function init() {
     CHRONICLE = await feedRes.json();
     TOTD = await todRes.json();
   } catch(e) { console.error('Failed to load data:', e); return; }
+
+  try {
+    const scenariosRes = await fetch('/data/eken-scenarios.json');
+    if (scenariosRes.ok) {
+      const registry = await scenariosRes.json();
+      EKEN_SCENARIOS = (registry.scenarios || []).filter(scenario => scenario.enabled);
+      const toolScenarios = EKEN_SCENARIOS.filter(scenario => scenario.surface === 'llm-tool-card');
+      if (toolScenarios.length) {
+        TOOL_PRACTICES = Object.fromEntries(toolScenarios.map(scenario => [scenario.sourceName, normalizeScenario(scenario)]));
+      }
+    }
+  } catch(e) {
+    console.warn('Eken scenario registry unavailable, using the embedded tool route.', e);
+  }
 
   // Stale date fallback for Tool of the Day
   if (TOTD && TOTD.date) {
@@ -967,18 +1001,44 @@ function renderTools() {
   btn.textContent = `Показать ещё ${Math.min(remaining, 8)} инструментов`;
 }
 
-function getPracticeEntry(practiceId) {
-  const entry = Object.entries(TOOL_PRACTICES).find(([, practice]) => practice.id === practiceId);
-  if (!entry) return null;
-  const [toolName, practice] = entry;
-  const tool = allTools.find(item => item.name === toolName);
-  return tool ? { tool, practice } : null;
+function normalizeScenario(scenario) {
+  return {
+    ...scenario,
+    id: scenario.scenarioId,
+    duration: scenario.estimatedMinutes,
+    kind: scenario.surface === 'llm-tool-card' ? 'tool' : 'scenario'
+  };
 }
 
-function openPracticeDrawer(practiceId) {
+function getScenario(scenarioId) {
+  const scenario = EKEN_SCENARIOS.find(item => item.scenarioId === scenarioId);
+  return scenario ? normalizeScenario(scenario) : null;
+}
+
+function getPracticeEntry(practiceId) {
+  const toolEntry = Object.entries(TOOL_PRACTICES).find(([, practice]) => practice.id === practiceId);
+  if (toolEntry) {
+    const [toolName, practice] = toolEntry;
+    const tool = allTools.find(item => item.name === toolName);
+    if (tool) return { tool, practice };
+  }
+
+  const practice = getScenario(practiceId);
+  if (!practice) return null;
+  const tool = allTools.find(item => item.name === practice.sourceName) || {
+    name: practice.sourceName,
+    url: '',
+    level: 2,
+  };
+  return { tool, practice };
+}
+
+function openPracticeDrawer(practiceId, context = {}) {
   const entry = getPracticeEntry(practiceId);
   if (!entry) return;
   const { tool, practice } = entry;
+  activePracticeContext = context;
+  const starterInputs = context.starterInputs?.length ? context.starterInputs : practice.starterInputs;
   const body = document.getElementById('practice-drawer-body');
   body.innerHTML = `
     <span class="practice-role">Для роли · ${practice.role}</span>
@@ -988,10 +1048,11 @@ function openPracticeDrawer(practiceId) {
     <div class="practice-value-card">
       <div class="practice-value-row"><span>Что изменится после шага</span><p>${practice.change}</p></div>
       <div class="practice-value-row"><span>Что нужно</span><ul>${practice.prerequisites.map(item => `<li>${item}</li>`).join('')}</ul></div>
+      ${starterInputs?.length ? `<div class="practice-value-row"><span>С чем начнём</span><ul>${starterInputs.map(item => `<li>${item}</li>`).join('')}</ul></div>` : ''}
     </div>
     <button type="button" class="practice-launch" onclick="launchEkenPractice('${practice.id}')" data-umami-event="llm-practice-launch" data-umami-event-tool="${practice.id}">Начать практику в EkenLab</button>
     <button type="button" class="practice-secondary" onclick="closePracticeDrawer()">Сменить сценарий</button>
-    <a class="practice-provider" href="${tool.url}" target="_blank" rel="noreferrer">Открыть сайт инструмента</a>
+    ${tool.url ? `<a class="practice-provider" href="${tool.url}" target="_blank" rel="noreferrer">Открыть сайт инструмента</a>` : ''}
     <div class="practice-progress"><b>1</b><i></i><b>2</b><i></i><b>3</b><i></i><b>4</b></div>
     <p class="practice-footnote">Первый шаг к рабочему результату, не курс</p>`;
   const backdrop = document.getElementById('practice-backdrop');
@@ -1012,10 +1073,12 @@ function closePracticeDrawer() {
   backdrop.setAttribute('aria-hidden', 'true');
   drawer.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  activePracticeContext = {};
 }
 
-function buildToolPracticeRoute(tool, practice) {
+function buildToolPracticeRoute(tool, practice, context = {}) {
   const routeId = `llm-${practice.id}-${crypto.randomUUID ? crypto.randomUUID() : Date.now()}`;
+  const starterInputs = context.starterInputs?.length ? context.starterInputs : practice.starterInputs;
   return {
     schemaVersion: '1.0',
     routeId,
@@ -1026,56 +1089,58 @@ function buildToolPracticeRoute(tool, practice) {
       id: `tool:${practice.id}`,
       name: `Карта LLM · ${tool.name}`,
       level: tool.level || 2,
-      whyNow: 'Браузерные агенты уже позволяют заменить повторяемое ручное копирование воспроизводимым сценарием.'
+      whyNow: practice.whyNow || 'Инструмент уже можно проверить на коротком производственном сценарии.'
     },
     position: {
-      name: 'Аналитик браузерных данных',
-      mission: 'Превращать повторяемый сбор данных из веб-источников в проверяемый рабочий процесс.',
+      name: practice.position || practice.role,
+      mission: practice.mission || practice.change,
       resourceMatchPercent: 60,
       desiredResult: practice.artifact
     },
     firstAction: {
       title: practice.promise,
-      object: 'Три однотипные страницы с данными',
-      recipientRole: 'Аналитик или владелец процесса',
+      object: context.object || practice.object || starterInputs?.[0] || practice.sourceName,
+      recipientRole: practice.recipientRole || practice.role,
       output: practice.artifact,
       acceptanceCriterion: practice.successCriteria.join('; '),
       estimatedMinutes: practice.duration
     },
     resourceGap: {
       title: `Практика ${tool.name}`,
-      description: 'Собрать и один раз выполнить браузерный сценарий на трёх источниках.',
+      description: practice.change,
       estimatedMinutes: practice.duration,
       artifact: practice.artifact
     },
     arsenal: {
       platforms: [tool.name],
-      competencies: ['Браузерная автоматизация', 'Структурирование данных', 'Проверка результата'],
+      competencies: practice.competencies || ['Постановка задачи', 'Проверка результата'],
       communicationVenues: ['Рабочая таблица команды'],
       accesses: practice.prerequisites,
       norms: ['Воспроизводимость результата', 'Минимизация собираемых данных']
     },
-    practice: {
-      kind: 'tool',
-      toolId: practice.id,
-      toolName: tool.name,
-      toolUrl: tool.url,
-      role: practice.role,
-      promise: practice.promise,
-      artifact: practice.artifact,
-      estimatedMinutes: practice.duration,
-      starterInputs: practice.starterInputs,
-      prerequisites: practice.prerequisites,
-      successCriteria: practice.successCriteria,
-      sourceUrl: window.location.href.split('#')[0]
-    }
+    ...(practice.kind === 'tool' ? {
+      practice: {
+        kind: 'tool',
+        toolId: practice.id,
+        toolName: tool.name,
+        toolUrl: tool.url,
+        role: practice.role,
+        promise: practice.promise,
+        artifact: practice.artifact,
+        estimatedMinutes: practice.duration,
+        starterInputs,
+        prerequisites: practice.prerequisites,
+        successCriteria: practice.successCriteria,
+        sourceUrl: window.location.href.split('#')[0]
+      }
+    } : {})
   };
 }
 
 function launchEkenPractice(practiceId) {
   const entry = getPracticeEntry(practiceId);
   if (!entry) return;
-  const payload = buildToolPracticeRoute(entry.tool, entry.practice);
+  const payload = buildToolPracticeRoute(entry.tool, entry.practice, activePracticeContext);
   window.location.href = `https://app.ekenlab.com/integrations/verkhovskiy#route=${encodeURIComponent(JSON.stringify(payload))}`;
 }
 
@@ -1290,12 +1355,26 @@ function renderShifts() {
 // ========== STRATEGY ==========
 function renderStrategy() {
   const s = DATA.strategy; if(!s) return;
+  const pilotScenario = getScenario('strategy-pilot-passport');
   document.getElementById('strategyContent').innerHTML = `
     <div class="strategy-grid">
       <div class="strategy-card"><div style="font-size:15px;font-weight:600;color:#e8edf2;margin-bottom:12px;">${s.topDown.title}</div><ul>${s.topDown.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>
       <div class="strategy-card recommended"><div style="font-size:15px;font-weight:600;color:#00e5a0;margin-bottom:12px;">${s.bottomUp.title}</div><ul>${s.bottomUp.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>
     </div>
-    <div class="pilot-card"><div style="font-size:15px;font-weight:600;color:#e8edf2;margin-bottom:8px;">Формула быстрого пилота</div><div style="font-size:13px;color:#9aa5b4;margin-bottom:4px;">Длительность: ${s.pilot.duration}</div><div style="font-size:13px;color:#9aa5b4;margin-bottom:12px;">${s.pilot.goal}</div><div class="pilot-formula">1 Модель + 1 Агент + 1 Задача = Доказательство ценности</div></div>`;
+    <div class="pilot-card">
+      <div style="font-size:15px;font-weight:600;color:#e8edf2;margin-bottom:8px;">Формула быстрого пилота</div>
+      <div style="font-size:13px;color:#9aa5b4;margin-bottom:4px;">Длительность: ${s.pilot.duration}</div>
+      <div style="font-size:13px;color:#9aa5b4;margin-bottom:12px;">${s.pilot.goal}</div>
+      <div class="pilot-formula">1 Модель + 1 Агент + 1 Задача = Доказательство ценности</div>
+      ${pilotScenario ? `<div class="productive-entry">
+        <div class="productive-entry-copy">
+          <div class="productive-entry-label">Следующий прирост</div>
+          <div class="productive-entry-title">${pilotScenario.artifact}</div>
+          <div class="productive-entry-meta">${pilotScenario.duration} мин · первый шаг пилота будет определён до перехода</div>
+        </div>
+        <button type="button" class="productive-entry-button" onclick="openPracticeDrawer('${pilotScenario.id}')" data-umami-event="llm-strategy-practice-preview">Собрать пилот в EkenLab</button>
+      </div>` : ''}
+    </div>`;
 }
 
 
@@ -1374,13 +1453,34 @@ function renderNavigatorResults(container) {
   })));
   scored.sort((a,b)=>b.matchScore-a.matchScore);
   const top = scored.slice(0,8);
+  navigatorRecommendationTools = top.slice(0,2);
+  const navigatorScenario = getScenario('navigator-ab-test');
   container.innerHTML = `
     <div style="font-size:16px;font-weight:600;color:#e8edf2;margin-bottom:8px;">Ваши рекомендации</div>
     <div style="font-size:13px;color:#6b7a8d;margin-bottom:20px;">На основе ваших ответов подобрано ${top.length} инструментов:</div>
-    ${top.map(t=>`<div class="navigator-result-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${t.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[t.level]?.color||'#9aa5b4'};border:1px solid #252c33;">Уровень ${t.level}</span></div><p style="font-size:12px;color:#9aa5b4;margin:0 0 6px;">${t.strength||t.description}</p><div class="flex items-center gap-3" style="margin-top:4px;">${getPricingBadge(t.pricing)} ${getStarRating(t.rating)}</div><div style="font-size:11px;color:#00e5a0;margin-top:4px;">Совпадение: ${Math.round(t.matchScore/t.maxScore*100)}%</div><a href="${t.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;margin-top:4px;display:inline-block;">Перейти →</a></div>`).join('')}
+    ${top.map((t,index)=>`<div class="navigator-result-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${index < 2 ? `${index + 1}. ` : ''}${t.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[t.level]?.color||'#9aa5b4'};border:1px solid #252c33;">Уровень ${t.level}</span></div><p style="font-size:12px;color:#9aa5b4;margin:0 0 6px;">${t.strength||t.description}</p><div class="flex items-center gap-3" style="margin-top:4px;">${getPricingBadge(t.pricing)} ${getStarRating(t.rating)}</div><div style="font-size:11px;color:#00e5a0;margin-top:4px;">Совпало признаков: ${t.matchScore}</div><a href="${t.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;margin-top:4px;display:inline-block;">Открыть инструмент →</a></div>`).join('')}
+    ${navigatorScenario && navigatorRecommendationTools.length >= 2 ? `<div class="productive-entry">
+      <div class="productive-entry-copy">
+        <div class="productive-entry-label">Не выбирать вслепую</div>
+        <div class="productive-entry-title">Сравнить ${navigatorRecommendationTools[0].name} и ${navigatorRecommendationTools[1].name} на одной реальной задаче</div>
+        <div class="productive-entry-meta">На выходе: ${navigatorScenario.artifact} · ${navigatorScenario.duration} мин</div>
+      </div>
+      <button type="button" class="productive-entry-button" onclick="openNavigatorPractice()" data-umami-event="llm-navigator-practice-preview">Начать сравнение в EkenLab</button>
+    </div>` : ''}
     <button onclick="restartNav()" style="margin-top:16px;padding:10px 20px;background:#1c2127;border:1px solid #252c33;border-radius:8px;font-size:13px;color:#9aa5b4;cursor:pointer;">Пройти заново</button>`;
 }
-function restartNav() { navState={current:0,answers:[],finished:false}; renderNavigator(); }
+function openNavigatorPractice() {
+  const names = navigatorRecommendationTools.map(tool => tool.name);
+  openPracticeDrawer('navigator-ab-test', {
+    object: `Одна задача для сравнения: ${names.join(' и ')}`,
+    starterInputs: [
+      `Инструмент A: ${names[0]}`,
+      `Инструмент B: ${names[1]}`,
+      'Одна реальная задача и одинаковый исходный материал'
+    ]
+  });
+}
+function restartNav() { navState={current:0,answers:[],finished:false}; navigatorRecommendationTools=[]; renderNavigator(); }
 
 // ========== QUIZ ==========
 function renderQuiz() {
