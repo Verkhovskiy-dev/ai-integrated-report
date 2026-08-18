@@ -5,10 +5,19 @@ export interface EkenRouteRegistryEntry {
   positionRouteId: string;
   enabled: boolean;
   ctaLabel: string;
+  surface: "places-map";
+  sourceId: string;
+  scenarioId: string;
+  version: number;
+  promise: string;
+  artifact: string;
+  estimatedMinutes: number;
+  starterInputs: string[];
+  successCriteria: string[];
 }
 
 export interface EkenRouteRegistry {
-  schemaVersion: "1.0";
+  schemaVersion: "1.1";
   updatedAt: string;
   routes: EkenRouteRegistryEntry[];
 }

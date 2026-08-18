@@ -4,10 +4,17 @@
  * Designed to fit on the first screen without scrolling.
  * i18n support
  */
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { BarChart3, TrendingUp, Lightbulb, Zap, ArrowRight } from "lucide-react";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
+import {
+  DASHBOARD_FOCUS_FALLBACK,
+  buildDashboardFocusEkenPayload,
+  buildEkenScenarioUrl,
+  type EkenProductiveScenario,
+  type EkenScenarioRegistry,
+} from "@/data/ekenScenarioRoutes";
 
 export default function ExecutiveSummaryBar() {
   const {
@@ -56,6 +63,20 @@ export default function ExecutiveSummaryBar() {
     return { totalEvents, keyShift, mainInsight, actionText, trendsCount, linksCount };
   }, [latestReport, strategicInsights]);
 
+  const [focusScenario, setFocusScenario] = useState<EkenProductiveScenario>(DASHBOARD_FOCUS_FALLBACK);
+
+  useEffect(() => {
+    let active = true;
+    fetch("/data/eken-scenarios.json")
+      .then((response) => response.ok ? response.json() : null)
+      .then((registry: EkenScenarioRegistry | null) => {
+        const scenario = registry?.scenarios?.find((item) => item.enabled && item.surface === "dashboard-focus");
+        if (active && scenario) setFocusScenario(scenario);
+      })
+      .catch(() => undefined);
+    return () => { active = false; };
+  }, []);
+
   if (loading) {
     return (
       <section className="border-b border-border/40 bg-card/40">
@@ -84,6 +105,21 @@ export default function ExecutiveSummaryBar() {
       ? `${insightsCount} insights \u00b7 ${trendsCount} trends \u00b7 ${linksCount} links`
       : `${insightsCount} ${plural(insightsCount, ["инсайт", "инсайта", "инсайтов"])} \u00b7 ${trendsCount} ${plural(trendsCount, ["тренд", "тренда", "трендов"])} \u00b7 ${linksCount} ${plural(linksCount, ["связь", "связи", "связей"])}`
     : null;
+
+  const startFocusAction = () => {
+    if (!actionText) return;
+    const analytics = (window as Window & {
+      umami?: { track: (event: string, data?: Record<string, string | number>) => void };
+    }).umami;
+    analytics?.track("route_launch", {
+      surface: focusScenario.surface,
+      scenario: focusScenario.scenarioId,
+      source: focusScenario.sourceId,
+    });
+    window.location.href = buildEkenScenarioUrl(
+      buildDashboardFocusEkenPayload(actionText, reportDate, focusScenario),
+    );
+  };
 
   return (
     <section className="border-b border-border/40 bg-gradient-to-r from-card/80 via-card/60 to-card/80 backdrop-blur-sm">
@@ -167,18 +203,26 @@ export default function ExecutiveSummaryBar() {
                 {isEn ? "Focus Action" : "Фокус действия"}
               </p>
               {actionText ? (
-                <p className="text-[11px] sm:text-xs text-foreground leading-snug line-clamp-2 font-medium">
-                  {actionText}
-                </p>
+                <>
+                  <p className="text-[11px] sm:text-xs text-foreground leading-snug line-clamp-2 font-medium">
+                    {actionText}
+                  </p>
+                  <p className="text-[9px] text-emerald-300/70 mt-1 line-clamp-1">
+                    {isEn ? "Output: decision brief" : "На выходе: decision brief"} · {focusScenario.estimatedMinutes} {isEn ? "min" : "мин"}
+                  </p>
+                </>
               ) : (
                 <p className="text-[11px] text-muted-foreground italic">—</p>
               )}
-              <a
-                href="#insights"
-                className="inline-flex items-center gap-0.5 mt-1 text-[9px] font-mono text-primary/70 hover:text-primary transition-colors"
-              >
-                {isEn ? "Details" : "Подробнее"} <ArrowRight className="w-2.5 h-2.5" />
-              </a>
+              {actionText && (
+                <button
+                  type="button"
+                  onClick={startFocusAction}
+                  className="inline-flex items-center gap-0.5 mt-1 text-[9px] font-mono text-primary/80 hover:text-primary transition-colors"
+                >
+                  {isEn ? "Turn into action" : "Перейти к действию"} <ArrowRight className="w-2.5 h-2.5" />
+                </button>
+              )}
             </div>
           </div>
         </div>
