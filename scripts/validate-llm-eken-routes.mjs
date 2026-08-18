@@ -33,7 +33,12 @@ const ids = new Set();
 const errors = [];
 for (const tool of tools) {
   const practice = api.createDefaultToolPractice(tool);
-  const payload = api.buildToolPracticeRoute(tool, practice);
+  const brief = {
+    objective: practice.promise,
+    realInput: `Тестовый материал для ${tool.name}`,
+    successCriterion: practice.successCriteria.join("; "),
+  };
+  const payload = api.buildToolPracticeRoute(tool, practice, brief);
 
   if (!practice.id) errors.push(`${tool.name}: отсутствует стабильный id`);
   if (ids.has(practice.id)) errors.push(`${tool.name}: дублируется id ${practice.id}`);
@@ -45,14 +50,20 @@ for (const tool of tools) {
   if (!practice.starterInputs?.length || !practice.successCriteria?.length) {
     errors.push(`${tool.name}: нет стартовых данных или критериев успеха`);
   }
-  if (payload.place.id !== `tool:${practice.id}`) {
-    errors.push(`${tool.name}: неверный place.id`);
+  if (payload.schemaVersion !== "2.0") {
+    errors.push(`${tool.name}: ожидается контракт Eken 2.0`);
   }
-  if (!payload.firstAction.acceptanceCriterion || !payload.resourceGap.artifact) {
-    errors.push(`${tool.name}: Eken payload не содержит критерия или артефакта`);
+  if (payload.source.id !== `tool:${practice.id}`) {
+    errors.push(`${tool.name}: неверный source.id`);
   }
-  if (payload.practice) {
-    errors.push(`${tool.name}: автоматически созданный маршрут не должен использовать специализированный UI Browser Use`);
+  if (payload.brief.realInput !== brief.realInput || !payload.brief.successCriterion) {
+    errors.push(`${tool.name}: короткий бриф не передан в Eken payload`);
+  }
+  if (payload.instrument.existingTool !== tool.name || !payload.instrument.expectedArtifact) {
+    errors.push(`${tool.name}: не передан выбранный инструмент или ожидаемый артефакт`);
+  }
+  if (!payload.learning.estimatedMinutes || !payload.learning.evidence) {
+    errors.push(`${tool.name}: не задано обучение или доказательство результата`);
   }
 }
 

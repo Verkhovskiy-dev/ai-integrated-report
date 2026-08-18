@@ -287,6 +287,25 @@
     .practice-duration { display:inline-flex; align-self:flex-start; margin-top:18px; color:#65efc0; border:1px solid #313b43; border-radius:8px; padding:8px 11px; font-family:'JetBrains Mono',monospace; font-size:12px; }
     .practice-outcome { color:#b7c1cb; font-size:13px; line-height:1.65; margin:22px 0; }
     .practice-outcome strong { color:#65efc0; }
+    .practice-brief-intro { color:#8e9aa8; font-size:12px; line-height:1.6; margin:16px 0 18px; }
+    .practice-brief { display:grid; gap:14px; margin-bottom:18px; }
+    .practice-field { display:grid; gap:7px; color:#cbd4dd; font-size:11px; font-weight:650; }
+    .practice-field textarea {
+      width:100%; min-height:74px; resize:vertical; box-sizing:border-box; border:1px solid #303842;
+      border-radius:9px; background:#11161b; color:#edf2f6; padding:11px 12px; font:12px/1.55 Inter,sans-serif;
+      outline:none; transition:border-color .18s, box-shadow .18s;
+    }
+    .practice-field textarea:focus { border-color:#3cae82; box-shadow:0 0 0 3px rgba(60,174,130,.10); }
+    .practice-field textarea::placeholder { color:#5f6c78; }
+    .practice-plan { display:grid; gap:10px; margin:18px 0; }
+    .practice-plan-step { display:grid; grid-template-columns:30px 1fr; gap:11px; padding:12px; border:1px solid #303842; border-radius:10px; background:#12171c; }
+    .practice-plan-step > b { display:grid; place-items:center; width:28px; height:28px; border:1px solid #3cae82; border-radius:50%; color:#65efc0; font-size:11px; }
+    .practice-plan-step strong { display:block; color:#e8edf2; font-size:12px; margin-bottom:4px; }
+    .practice-plan-step p { color:#8e9aa8; font-size:11px; line-height:1.55; margin:0; }
+    .practice-plan-ready { border:1px solid #1e6047; border-radius:11px; background:#0f2a1e; padding:14px; }
+    .practice-plan-ready span { color:#65efc0; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .practice-plan-ready h3 { color:#f4f7f9; font-size:17px; line-height:1.35; margin:5px 0 7px; }
+    .practice-plan-ready p { color:#9fc8b8; font-size:11px; line-height:1.55; margin:0; }
     .practice-value-card { border:1px solid #303842; border-radius:12px; overflow:hidden; margin-bottom:22px; flex-shrink:0; }
     .practice-value-row { padding:16px; }
     .practice-value-row + .practice-value-row { border-top:1px solid #303842; }
@@ -728,6 +747,8 @@ let TOOL_PRACTICES = {
 };
 let EKEN_SCENARIOS = [];
 let activePracticeContext = {};
+let activePracticeId = null;
+let activePracticeBrief = null;
 let navigatorRecommendationTools = [];
 
 // ========== STATE ==========
@@ -803,6 +824,12 @@ function getStarRating(rating) {
 function getRecommendationBadge(rec) {
   if (!rec) return '';
   return `<span class="rec-badge">💡 ${rec}</span>`;
+}
+
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>'"]/g, character => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+  })[character]);
 }
 
 // ========== INIT ==========
@@ -982,14 +1009,14 @@ function renderTools() {
             <span class="tag" style="background:#161a1d;color:${lc.color};border:1px solid #252c33;">${lc.label}</span>
             ${getPricingBadge(tool.pricing)}
             ${getStarRating(tool.rating)}
-            ${practice ? `<span class="practice-badge">${practice.curated ? 'Готовая практика EkenLab' : 'Маршрут EkenLab'}</span>` : ''}
+            ${practice ? `<span class="practice-badge">${isModelEntry(tool) ? 'Тест модели в EkenLab' : (practice.curated ? 'Готовая практика EkenLab' : 'Маршрут EkenLab')}</span>` : ''}
             ${tool.apiPrice ? `<span style="font-size:10px;color:#6b7a8d;margin-left:auto;font-family:'JetBrains Mono',monospace;">${tool.apiPrice}</span>` : ''}
           </div>
           <p style="font-size:14px;font-weight:500;color:#e8edf2;margin:0 0 4px;"><strong style="color:${vc.text};">${tool.name}</strong></p>
           <p style="font-size:12px;color:#6b7a8d;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${tool.description || tool.strength || ''}</p>
           ${tool.recommendedFor ? getRecommendationBadge(tool.recommendedFor) : ''}
           ${tool.context ? `<div style="margin-top:6px;font-size:10px;color:#9aa5b4;">Контекст: ${tool.context}${tool.reasoning ? ' · Reasoning: '+tool.reasoning : ''}</div>` : ''}
-          ${practice ? `<button type="button" class="practice-card-action" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-practice-preview" data-umami-event-tool="${practice.id}">Освоить на своей задаче · ${practice.duration} мин</button>` : ''}
+          ${practice ? `<button type="button" class="practice-card-action" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-practice-preview" data-umami-event-tool="${practice.id}">${practiceActionLabel(tool, practice)}</button>` : ''}
         </div>
         <a href="${tool.url||'#'}" target="_blank" style="min-width:16px;margin-top:2px;opacity:.35;text-decoration:none;">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="#e8edf2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1045,12 +1072,12 @@ function createDefaultToolPractice(tool) {
   if (tool.level === 1) return {
     ...base,
     promise: `Проверить ${tool.name} на своей задаче`,
-    duration: 35,
-    artifact: 'протокол теста и решение: использовать / не использовать',
-    change: 'Вместо общей оценки появится проверенное решение на вашем материале.',
+    duration: 20,
+    artifact: 'проверенный промпт, ответ модели и решение: использовать / сравнить',
+    change: 'Вместо общей оценки появится воспроизводимый результат на вашем материале.',
     mission: 'Выбирать модель по качеству, времени и стоимости результата на реальной задаче.',
-    successCriteria: ['Получен результат на реальном материале', 'Зафиксированы время и качество', 'Принято решение об использовании'],
-    competencies: ['Постановка задачи модели', 'Оценка результата', 'Выбор по данным'],
+    successCriteria: ['Получен ответ на реальном материале', 'Промпт сохранён для повторного запуска', 'Зафиксировано решение: использовать или сравнить'],
+    competencies: ['Постановка задачи модели', 'Улучшение промпта', 'Оценка результата по критерию'],
   };
 
   if (tool.level === 2) return {
@@ -1107,28 +1134,63 @@ function getPracticeEntry(practiceId) {
   return { tool, practice };
 }
 
+function isModelEntry(tool) {
+  return Number(tool?.level ?? tool?.levelId) === 1;
+}
+
+function practiceOutcome(tool, practice) {
+  return isModelEntry(tool)
+    ? 'проверенный промпт, ответ модели и решение: использовать / сравнить'
+    : practice.artifact;
+}
+
+function practiceActionLabel(tool, practice) {
+  return isModelEntry(tool)
+    ? `Проверить на своём материале · ${practice.duration} мин`
+    : `Освоить на своей задаче · ${practice.duration} мин`;
+}
+
 function openPracticeDrawer(practiceId, context = {}) {
   const entry = getPracticeEntry(practiceId);
   if (!entry) return;
   const { tool, practice } = entry;
+  const modelEntry = isModelEntry(tool);
+  const outcome = practiceOutcome(tool, practice);
   activePracticeContext = context;
+  activePracticeId = practiceId;
   const starterInputs = context.starterInputs?.length ? context.starterInputs : practice.starterInputs;
+  activePracticeBrief = {
+    objective: practice.promise,
+    realInput: context.object || '',
+    successCriterion: practice.successCriteria.join('; ')
+  };
   const body = document.getElementById('practice-drawer-body');
   body.innerHTML = `
-    <span class="practice-role">Для роли · ${practice.role}</span>
-    <h2 id="practice-drawer-title">${practice.promise}</h2>
+    <span class="practice-role">${escapeHtml(tool.name)} · ${modelEntry ? 'тест модели' : 'практика'}</span>
+    <h2 id="practice-drawer-title">${modelEntry ? 'Проверить модель на своём материале' : 'Освоить инструмент на своей задаче'}</h2>
     <span class="practice-duration">${practice.duration} мин</span>
-    <p class="practice-outcome"><strong>На выходе:</strong> ${practice.artifact}</p>
-    <div class="practice-value-card">
-      <div class="practice-value-row"><span>Что изменится после шага</span><p>${practice.change}</p></div>
-      <div class="practice-value-row"><span>Что нужно</span><ul>${practice.prerequisites.map(item => `<li>${item}</li>`).join('')}</ul></div>
-      ${starterInputs?.length ? `<div class="practice-value-row"><span>С чем начнём</span><ul>${starterInputs.map(item => `<li>${item}</li>`).join('')}</ul></div>` : ''}
+    <p class="practice-brief-intro">${modelEntry
+      ? 'Одна задача, один реальный материал, один критерий. EkenLab поможет сохранить воспроизводимый промпт и принять решение по результату.'
+      : 'Проверьте три поля. Карта соберёт короткий маршрут, а EkenLab поможет выполнить его и получить проверяемый результат.'}</p>
+    <div class="practice-brief">
+      <label class="practice-field">${modelEntry ? 'Какой результат хотите получить от' : 'Что хотите сделать с помощью'} ${escapeHtml(tool.name)}?
+        <textarea id="practice-objective" placeholder="Опишите один полезный результат"></textarea>
+      </label>
+      <label class="practice-field">${modelEntry ? 'Ваш материал для теста' : 'Реальный пример для первой проверки'}
+        <textarea id="practice-real-input" placeholder="${escapeHtml(starterInputs?.join(' · ') || 'Вставьте исходный материал или опишите задачу')}"></textarea>
+      </label>
+      <label class="practice-field">${modelEntry ? 'По каким признакам ответ подходит?' : 'Когда результат можно считать рабочим?'}
+        <textarea id="practice-success" placeholder="Укажите наблюдаемый критерий"></textarea>
+      </label>
     </div>
-    <button type="button" class="practice-launch" onclick="launchEkenPractice('${practice.id}')" data-umami-event="llm-practice-launch" data-umami-event-tool="${practice.id}">Начать практику в EkenLab</button>
+    <p class="practice-outcome"><strong>На выходе:</strong> ${escapeHtml(outcome)}</p>
+    <button type="button" class="practice-launch" onclick="createToolPracticePlan('${practice.id}')" data-umami-event="llm-practice-plan" data-umami-event-tool="${practice.id}">Сформировать маршрут</button>
     <button type="button" class="practice-secondary" onclick="closePracticeDrawer()">Сменить сценарий</button>
-    ${tool.url ? `<a class="practice-provider" href="${tool.url}" target="_blank" rel="noreferrer">Открыть сайт инструмента</a>` : ''}
-    <div class="practice-progress"><b>1</b><i></i><b>2</b><i></i><b>3</b><i></i><b>4</b></div>
-    <p class="practice-footnote">Первый шаг к рабочему результату, не курс</p>`;
+    ${tool.url ? `<a class="practice-provider" href="${escapeHtml(tool.url)}" target="_blank" rel="noreferrer">Открыть сайт инструмента</a>` : ''}
+    <p class="practice-footnote">Не курс: маршрут строится вокруг вашего материала</p>`;
+  document.getElementById('practice-objective').value = activePracticeBrief.objective;
+  document.getElementById('practice-real-input').value = activePracticeBrief.realInput;
+  document.getElementById('practice-success').value = activePracticeBrief.successCriterion;
   const backdrop = document.getElementById('practice-backdrop');
   const drawer = document.getElementById('practice-drawer');
   backdrop.classList.add('is-open');
@@ -1148,74 +1210,114 @@ function closePracticeDrawer() {
   drawer.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
   activePracticeContext = {};
+  activePracticeId = null;
+  activePracticeBrief = null;
 }
 
-function buildToolPracticeRoute(tool, practice, context = {}) {
-  const routeId = `llm-${practice.id}-${crypto.randomUUID ? crypto.randomUUID() : Date.now()}`;
-  const starterInputs = context.starterInputs?.length ? context.starterInputs : practice.starterInputs;
+function getPracticeIntent(practice) {
+  if (practice.id === 'navigator-ab-test') return 'choose_tool';
+  if (practice.id === 'strategy-pilot-passport') return 'build_tool';
+  return 'master_tool';
+}
+
+function buildToolPracticeRoute(tool, practice, brief) {
+  const suffix = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+  const routeId = `llm-${stableToolId(practice.id)}-${suffix}`;
+  const intent = getPracticeIntent(practice);
+  const modelEntry = isModelEntry(tool);
+  const outcome = practiceOutcome(tool, practice);
   return {
-    schemaVersion: '1.0',
+    schemaVersion: '2.0',
     routeId,
     createdAt: new Date().toISOString(),
     locale: 'ru',
-    intent: 'expert',
-    place: {
+    intent,
+    source: {
+      surface: practice.surface || (modelEntry ? 'llm-model-card' : 'llm-tool-card'),
       id: `tool:${practice.id}`,
-      name: `Карта LLM · ${tool.name}`,
-      level: tool.level || 2,
-      whyNow: practice.whyNow || 'Инструмент уже можно проверить на коротком производственном сценарии.'
+      name: `Карта инструментов · ${tool.name}`,
+      url: window.location.href.split('#')[0],
+      context: practice.whyNow || practice.change
     },
-    position: {
-      name: practice.position || practice.role,
-      mission: practice.mission || practice.change,
-      resourceMatchPercent: 60,
-      desiredResult: practice.artifact
+    brief: {
+      title: modelEntry ? `Проверить ${tool.name} на реальном материале` : `Освоить ${tool.name} на реальной задаче`,
+      objective: brief.objective,
+      realInput: brief.realInput,
+      successCriterion: brief.successCriterion,
+      constraints: ['Первый результат на реальном примере', 'Ручное подтверждение перед внешним действием']
     },
-    firstAction: {
-      title: practice.promise,
-      object: context.object || practice.object || starterInputs?.[0] || practice.sourceName,
-      recipientRole: practice.recipientRole || practice.role,
-      output: practice.artifact,
-      acceptanceCriterion: practice.successCriteria.join('; '),
-      estimatedMinutes: practice.duration
+    instrument: {
+      name: tool.name,
+      kind: 'platform',
+      existingTool: tool.name,
+      expectedArtifact: outcome
     },
-    resourceGap: {
-      title: `Практика ${tool.name}`,
-      description: practice.change,
-      estimatedMinutes: practice.duration,
-      artifact: practice.artifact
-    },
-    arsenal: {
-      platforms: [tool.name],
+    learning: {
+      targetRole: practice.role || 'Пользователь AI-инструментов',
+      currentLevel: 'beginner',
       competencies: practice.competencies || ['Постановка задачи', 'Проверка результата'],
-      communicationVenues: ['Рабочая таблица команды'],
-      accesses: practice.prerequisites,
-      norms: ['Воспроизводимость результата', 'Минимизация собираемых данных']
-    },
-    ...(practice.kind === 'tool' ? {
-      practice: {
-        kind: 'tool',
-        toolId: practice.id,
-        toolName: tool.name,
-        toolUrl: tool.url,
-        role: practice.role,
-        promise: practice.promise,
-        artifact: practice.artifact,
-        estimatedMinutes: practice.duration,
-        starterInputs,
-        prerequisites: practice.prerequisites,
-        successCriteria: practice.successCriteria,
-        sourceUrl: window.location.href.split('#')[0]
-      }
-    } : {})
+      prerequisites: practice.prerequisites || [],
+      estimatedMinutes: practice.duration,
+      evidence: `${outcome}; ${brief.successCriterion}`
+    }
   };
+}
+
+function createToolPracticePlan(practiceId) {
+  const entry = getPracticeEntry(practiceId);
+  if (!entry) return;
+  const objective = document.getElementById('practice-objective')?.value.trim();
+  const realInput = document.getElementById('practice-real-input')?.value.trim();
+  const successCriterion = document.getElementById('practice-success')?.value.trim();
+  if (!objective || !realInput || !successCriterion) {
+    const missing = !objective ? 'practice-objective' : !realInput ? 'practice-real-input' : 'practice-success';
+    document.getElementById(missing)?.focus();
+    return;
+  }
+  activePracticeBrief = { objective, realInput, successCriterion };
+  renderToolPracticePlan(entry);
+}
+
+function renderToolPracticePlan(entry) {
+  const { tool, practice } = entry;
+  const brief = activePracticeBrief;
+  const modelEntry = isModelEntry(tool);
+  const outcome = practiceOutcome(tool, practice);
+  const body = document.getElementById('practice-drawer-body');
+  body.innerHTML = `
+    <span class="practice-role">${escapeHtml(tool.name)} · ${practice.duration} мин</span>
+    <div class="practice-plan-ready">
+      <span>Маршрут готов</span>
+      <h3>${modelEntry ? 'Проверить' : 'Освоить'} ${escapeHtml(tool.name)} ${modelEntry ? 'на реальном материале' : 'на реальной задаче'}</h3>
+      <p>На выходе: ${escapeHtml(outcome)}</p>
+    </div>
+    <div class="practice-plan">
+      <div class="practice-plan-step"><b>1</b><div><strong>Подготовить реальный вход</strong><p>${escapeHtml(brief.realInput)}</p></div></div>
+      <div class="practice-plan-step"><b>2</b><div><strong>${modelEntry ? 'Получить и улучшить ответ' : 'Собрать минимальный рабочий результат'}</strong><p>${escapeHtml(brief.objective)}</p></div></div>
+      <div class="practice-plan-step"><b>3</b><div><strong>${modelEntry ? 'Сравнить с критерием и решить' : 'Проверить и зафиксировать'}</strong><p>${escapeHtml(brief.successCriterion)}</p></div></div>
+    </div>
+    <button type="button" class="practice-launch" onclick="launchEkenPractice('${practice.id}')" data-umami-event="llm-practice-launch" data-umami-event-tool="${practice.id}">Продолжить в EkenLab</button>
+    <button type="button" class="practice-secondary" onclick="editToolPracticeBrief()">Изменить короткий бриф</button>
+    <p class="practice-footnote">Полный технический контракт собран автоматически</p>`;
+}
+
+function editToolPracticeBrief() {
+  if (!activePracticeId) return;
+  const savedBrief = activePracticeBrief;
+  openPracticeDrawer(activePracticeId, activePracticeContext);
+  activePracticeBrief = savedBrief;
+  document.getElementById('practice-objective').value = savedBrief.objective;
+  document.getElementById('practice-real-input').value = savedBrief.realInput;
+  document.getElementById('practice-success').value = savedBrief.successCriterion;
 }
 
 function launchEkenPractice(practiceId) {
   const entry = getPracticeEntry(practiceId);
-  if (!entry) return;
-  const payload = buildToolPracticeRoute(entry.tool, entry.practice, activePracticeContext);
-  window.location.href = `https://app.ekenlab.com/integrations/verkhovskiy#route=${encodeURIComponent(JSON.stringify(payload))}`;
+  if (!entry || !activePracticeBrief) return;
+  const payload = buildToolPracticeRoute(entry.tool, entry.practice, activePracticeBrief);
+  const integrationUrl = new URLSearchParams(window.location.search).get('ekenIntegration')
+    || 'https://app.ekenlab.com/integrations/verkhovskiy';
+  window.location.href = `${integrationUrl}#route=${encodeURIComponent(JSON.stringify(payload))}`;
 }
 
 document.addEventListener('keydown', event => {
@@ -1275,7 +1377,7 @@ function renderToolOfDayCompact() {
       <p style="font-size:12px;color:#9aa5b4;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">${tool.description}</p>
       <div class="flex items-center gap-3 flex-wrap" style="margin-top:10px;">
         <a href="#section-tool-of-day" style="font-size:12px;color:#9aa5b4;text-decoration:none;font-weight:500;">Подробнее</a>
-        ${practice ? `<button type="button" class="practice-card-action" style="margin-top:0" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-tool-of-day-practice" data-umami-event-tool="${practice.id}">Начать практику · ${practice.duration} мин</button>` : ''}
+        ${practice ? `<button type="button" class="practice-card-action" style="margin-top:0" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-tool-of-day-practice" data-umami-event-tool="${practice.id}">${isModelEntry(tool) ? `Проверить модель · ${practice.duration} мин` : `Начать практику · ${practice.duration} мин`}</button>` : ''}
       </div>
     </div>`;
 }
@@ -1319,7 +1421,7 @@ function renderToolOfTheDayFull() {
       </div>
       ${tool.idealFor&&tool.idealFor.length?`<div class="flex flex-wrap gap-2 mt-4">${tool.idealFor.map(t=>`<span style="font-size:11px;background:#0f2a1e;border:1px solid #1e4030;color:#00e5a0;padding:4px 10px;border-radius:6px;">${t}</span>`).join('')}</div>`:''}
       <div class="flex items-center gap-3 flex-wrap" style="margin-top:16px;">
-        ${practice ? `<button type="button" class="practice-launch" style="width:auto;min-height:44px;padding:0 22px" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-tool-of-day-practice" data-umami-event-tool="${practice.id}">Начать практику в EkenLab · ${practice.duration} мин</button>` : ''}
+        ${practice ? `<button type="button" class="practice-launch" style="width:auto;min-height:44px;padding:0 22px" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-tool-of-day-practice" data-umami-event-tool="${practice.id}">${isModelEntry(tool) ? 'Проверить модель в EkenLab' : 'Начать практику в EkenLab'} · ${practice.duration} мин</button>` : ''}
         <a href="${tool.url}" target="_blank" style="font-size:13px;color:#78c8f5;text-decoration:none;font-weight:600;">Открыть сайт инструмента</a>
       </div>
     </div>`;
@@ -1403,7 +1505,7 @@ function renderBizResults() {
   document.getElementById('bizResults').innerHTML = filtered.map(tool => {
     const levelLabel = ['','Модель','Агент','Платформа'][tool.levelId]||'';
     const practice = TOOL_PRACTICES[tool.name];
-    return `<div class="biz-tool-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${tool.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[tool.levelId]?.color||'#9aa5b4'};border:1px solid #252c33;">${levelLabel}</span></div><p style="font-size:12px;color:#9aa5b4;line-height:1.5;margin:0 0 8px;">${tool.businessFocus||tool.description}</p><div class="flex flex-wrap gap-1">${(tool.businessUse||[]).map(bu=>`<span style="font-size:10px;background:#161a1d;border:1px solid #252c33;color:#6b7a8d;padding:2px 6px;border-radius:4px;">${(BIZ_LABELS[bu]||{}).icon||''} ${(BIZ_LABELS[bu]||{}).label||bu}</span>`).join('')}</div>${tool.pricing ? `<div style="margin-top:8px;">${getPricingBadge(tool.pricing)} ${getStarRating(tool.rating)}</div>` : ''}<div class="navigator-result-actions">${practice ? `<button type="button" class="practice-card-action" style="margin-top:0" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-business-practice-preview" data-umami-event-tool="${practice.id}">Освоить в EkenLab · ${practice.duration} мин</button>` : ''}<a href="${tool.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;">Открыть сайт →</a></div></div>`;
+    return `<div class="biz-tool-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${tool.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[tool.levelId]?.color||'#9aa5b4'};border:1px solid #252c33;">${levelLabel}</span></div><p style="font-size:12px;color:#9aa5b4;line-height:1.5;margin:0 0 8px;">${tool.businessFocus||tool.description}</p><div class="flex flex-wrap gap-1">${(tool.businessUse||[]).map(bu=>`<span style="font-size:10px;background:#161a1d;border:1px solid #252c33;color:#6b7a8d;padding:2px 6px;border-radius:4px;">${(BIZ_LABELS[bu]||{}).icon||''} ${(BIZ_LABELS[bu]||{}).label||bu}</span>`).join('')}</div>${tool.pricing ? `<div style="margin-top:8px;">${getPricingBadge(tool.pricing)} ${getStarRating(tool.rating)}</div>` : ''}<div class="navigator-result-actions">${practice ? `<button type="button" class="practice-card-action" style="margin-top:0" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-business-practice-preview" data-umami-event-tool="${practice.id}">${isModelEntry(tool) ? 'Проверить модель' : 'Освоить в EkenLab'} · ${practice.duration} мин</button>` : ''}<a href="${tool.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;">Открыть сайт →</a></div></div>`;
   }).join('');
 }
 
@@ -1535,7 +1637,7 @@ function renderNavigatorResults(container) {
     <div style="font-size:13px;color:#6b7a8d;margin-bottom:20px;">На основе ваших ответов подобрано ${top.length} инструментов:</div>
     ${top.map((t,index) => {
       const practice = TOOL_PRACTICES[t.name];
-      return `<div class="navigator-result-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${index < 2 ? `${index + 1}. ` : ''}${t.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[t.level]?.color||'#9aa5b4'};border:1px solid #252c33;">Уровень ${t.level}</span></div><p style="font-size:12px;color:#9aa5b4;margin:0 0 6px;">${t.strength||t.description}</p><div class="flex items-center gap-3" style="margin-top:4px;">${getPricingBadge(t.pricing)} ${getStarRating(t.rating)}</div><div style="font-size:11px;color:#00e5a0;margin-top:4px;">Совпало признаков: ${t.matchScore}</div><div class="navigator-result-actions">${practice ? `<button type="button" class="practice-card-action" style="margin-top:0" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-navigator-tool-practice" data-umami-event-tool="${practice.id}">Освоить · ${practice.duration} мин</button>` : ''}<a href="${t.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;">Открыть инструмент →</a></div></div>`;
+      return `<div class="navigator-result-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${index < 2 ? `${index + 1}. ` : ''}${t.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[t.level]?.color||'#9aa5b4'};border:1px solid #252c33;">Уровень ${t.level}</span></div><p style="font-size:12px;color:#9aa5b4;margin:0 0 6px;">${t.strength||t.description}</p><div class="flex items-center gap-3" style="margin-top:4px;">${getPricingBadge(t.pricing)} ${getStarRating(t.rating)}</div><div style="font-size:11px;color:#00e5a0;margin-top:4px;">Совпало признаков: ${t.matchScore}</div><div class="navigator-result-actions">${practice ? `<button type="button" class="practice-card-action" style="margin-top:0" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-navigator-tool-practice" data-umami-event-tool="${practice.id}">${isModelEntry(t) ? 'Проверить модель' : 'Освоить'} · ${practice.duration} мин</button>` : ''}<a href="${t.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;">Открыть инструмент →</a></div></div>`;
     }).join('')}
     ${navigatorScenario && navigatorRecommendationTools.length >= 2 ? `<div class="productive-entry">
       <div class="productive-entry-copy">
