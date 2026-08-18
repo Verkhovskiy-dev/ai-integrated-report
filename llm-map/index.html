@@ -707,6 +707,7 @@ const ROLE_LABELS = {
 let TOOL_PRACTICES = {
   'Browser Use / Stagehand': {
     id: 'browser-use-stagehand',
+    curated: true,
     role: 'Аналитик',
     promise: 'Автоматизировать сбор данных с 3 страниц',
     duration: 35,
@@ -896,6 +897,7 @@ async function init() {
       cat.tools.forEach(tool => { allTools.push({ ...tool, level: level.id, category: cat.name }); });
     });
   });
+  ensurePracticeForEveryTool();
 
   // Render everything
   renderTools();
@@ -963,7 +965,7 @@ function renderTools() {
   let toShow = filtered.slice(0, visibleCount);
   const practiceCount = filtered.filter(tool => TOOL_PRACTICES[tool.name]).length;
   document.getElementById('tools-count').textContent =
-    `${filtered.length} инструментов${practiceCount ? ` · ${practiceCount} практика EkenLab` : ''}`;
+    `${filtered.length} инструментов${practiceCount ? ` · ${practiceCount} маршрутов EkenLab` : ''}`;
 
   container.innerHTML = toShow.map(tool => {
     const lc = LEVEL_COLORS[tool.level];
@@ -972,7 +974,7 @@ function renderTools() {
     const tags = (tool.tags || []).slice(0, 3);
     const practice = TOOL_PRACTICES[tool.name];
     return `
-      <div class="news-card flex items-start gap-4 p-4 rounded-xl ${practice ? 'tool-card-with-practice' : ''}" style="background:#1c2127;border:1px solid #252c33;">
+      <div class="news-card flex items-start gap-4 p-4 rounded-xl ${practice?.curated ? 'tool-card-with-practice' : ''}" style="background:#1c2127;border:1px solid #252c33;">
         <div style="width:40px;height:40px;min-width:40px;background:linear-gradient(135deg,${vc.bg},#0d0f10);border:1px solid ${vc.border};border-radius:10px;" class="flex items-center justify-center"><span style="font-size:18px;">${lc.icon}</span></div>
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-2 mb-1 flex-wrap">
@@ -980,14 +982,14 @@ function renderTools() {
             <span class="tag" style="background:#161a1d;color:${lc.color};border:1px solid #252c33;">${lc.label}</span>
             ${getPricingBadge(tool.pricing)}
             ${getStarRating(tool.rating)}
-            ${practice ? '<span class="practice-badge">Освоить в EkenLab</span>' : ''}
+            ${practice ? `<span class="practice-badge">${practice.curated ? 'Готовая практика EkenLab' : 'Маршрут EkenLab'}</span>` : ''}
             ${tool.apiPrice ? `<span style="font-size:10px;color:#6b7a8d;margin-left:auto;font-family:'JetBrains Mono',monospace;">${tool.apiPrice}</span>` : ''}
           </div>
           <p style="font-size:14px;font-weight:500;color:#e8edf2;margin:0 0 4px;"><strong style="color:${vc.text};">${tool.name}</strong></p>
           <p style="font-size:12px;color:#6b7a8d;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${tool.description || tool.strength || ''}</p>
           ${tool.recommendedFor ? getRecommendationBadge(tool.recommendedFor) : ''}
           ${tool.context ? `<div style="margin-top:6px;font-size:10px;color:#9aa5b4;">Контекст: ${tool.context}${tool.reasoning ? ' · Reasoning: '+tool.reasoning : ''}</div>` : ''}
-          ${practice ? `<button type="button" class="practice-card-action" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-practice-preview" data-umami-event-tool="${practice.id}">Получить первый результат · ${practice.duration} мин</button>` : ''}
+          ${practice ? `<button type="button" class="practice-card-action" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-practice-preview" data-umami-event-tool="${practice.id}">Освоить на своей задаче · ${practice.duration} мин</button>` : ''}
         </div>
         <a href="${tool.url||'#'}" target="_blank" style="min-width:16px;margin-top:2px;opacity:.35;text-decoration:none;">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="#e8edf2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1006,8 +1008,80 @@ function normalizeScenario(scenario) {
     ...scenario,
     id: scenario.scenarioId,
     duration: scenario.estimatedMinutes,
-    kind: scenario.surface === 'llm-tool-card' ? 'tool' : 'scenario'
+    kind: scenario.surface === 'llm-tool-card' ? 'tool' : 'scenario',
+    curated: true
   };
+}
+
+function stableToolId(name) {
+  const slug = name.toLowerCase()
+    .replace(/[^a-z0-9]+/gi, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 46) || 'instrument';
+  let hash = 0;
+  for (let index = 0; index < name.length; index++) hash = ((hash << 5) - hash + name.charCodeAt(index)) | 0;
+  return `${slug}-${Math.abs(hash).toString(36)}`;
+}
+
+function createDefaultToolPractice(tool) {
+  const roleKey = tool.roles?.[0];
+  const role = ROLE_LABELS[roleKey] || 'Специалист';
+  const category = tool.category || LEVEL_COLORS[tool.level]?.label || 'AI-инструменты';
+  const base = {
+    id: stableToolId(tool.name),
+    curated: false,
+    kind: 'scenario',
+    role,
+    sourceName: tool.name,
+    whyNow: tool.strength || tool.businessFocus || tool.description || `Инструмент доступен для короткой проверки в категории «${category}».`,
+    position: `${role} с рабочим AI-инструментом`,
+    object: `Одна реальная задача в категории «${category}»`,
+    recipientRole: role === 'Специалист' ? 'Владелец рабочего результата' : role,
+    prerequisites: [`Доступ к ${tool.name}`, 'Одна реальная задача и пример приемлемого результата'],
+    starterInputs: ['Описание реальной задачи', 'Исходный материал', 'Пример приемлемого результата'],
+    communicationVenues: ['Рабочий контур пользователя'],
+  };
+
+  if (tool.level === 1) return {
+    ...base,
+    promise: `Проверить ${tool.name} на своей задаче`,
+    duration: 35,
+    artifact: 'протокол теста и решение: использовать / не использовать',
+    change: 'Вместо общей оценки появится проверенное решение на вашем материале.',
+    mission: 'Выбирать модель по качеству, времени и стоимости результата на реальной задаче.',
+    successCriteria: ['Получен результат на реальном материале', 'Зафиксированы время и качество', 'Принято решение об использовании'],
+    competencies: ['Постановка задачи модели', 'Оценка результата', 'Выбор по данным'],
+  };
+
+  if (tool.level === 2) return {
+    ...base,
+    promise: `Собрать первый рабочий сценарий с ${tool.name}`,
+    duration: 45,
+    artifact: 'выполненный сценарий, лог результата и условие повторного запуска',
+    change: 'Инструмент будет проверен действием, а не чтением описания.',
+    mission: 'Превращать возможности AI-агента в воспроизводимый рабочий сценарий.',
+    successCriteria: ['Сценарий выполнен от входа до результата', 'Результат сохранён', 'Условия повторного запуска записаны'],
+    competencies: ['Настройка AI-агента', 'Проверка выполнения', 'Документирование сценария'],
+  };
+
+  return {
+    ...base,
+    promise: `Собрать минимальный рабочий контур в ${tool.name}`,
+    duration: 60,
+    artifact: 'минимальная интеграция, тестовый прогон и критерий масштабирования',
+    change: 'Платформа будет привязана к конкретному процессу и проверяемому результату.',
+    mission: 'Осваивать AI-платформу через минимальную интеграцию в действующий процесс.',
+    successCriteria: ['Интеграция получает реальный вход', 'Тестовый прогон завершён', 'Определён критерий масштабирования'],
+    competencies: ['Проектирование интеграции', 'Настройка платформы', 'Проверка рабочего контура'],
+  };
+}
+
+function ensurePracticeForEveryTool() {
+  const practices = { ...TOOL_PRACTICES };
+  allTools.forEach(tool => {
+    if (!practices[tool.name]) practices[tool.name] = createDefaultToolPractice(tool);
+  });
+  TOOL_PRACTICES = practices;
 }
 
 function getScenario(scenarioId) {
@@ -1328,7 +1402,8 @@ function renderBizResults() {
   summary.innerHTML = activeBizFilter ? `Направление: <strong>${(BIZ_LABELS[activeBizFilter]||{}).label||activeBizFilter}</strong> — найдено: <strong>${filtered.length}</strong>` : `Всего инструментов с бизнес-классификацией: <strong>${allT.length}</strong>`;
   document.getElementById('bizResults').innerHTML = filtered.map(tool => {
     const levelLabel = ['','Модель','Агент','Платформа'][tool.levelId]||'';
-    return `<div class="biz-tool-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${tool.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[tool.levelId]?.color||'#9aa5b4'};border:1px solid #252c33;">${levelLabel}</span></div><p style="font-size:12px;color:#9aa5b4;line-height:1.5;margin:0 0 8px;">${tool.businessFocus||tool.description}</p><div class="flex flex-wrap gap-1">${(tool.businessUse||[]).map(bu=>`<span style="font-size:10px;background:#161a1d;border:1px solid #252c33;color:#6b7a8d;padding:2px 6px;border-radius:4px;">${(BIZ_LABELS[bu]||{}).icon||''} ${(BIZ_LABELS[bu]||{}).label||bu}</span>`).join('')}</div>${tool.pricing ? `<div style="margin-top:8px;">${getPricingBadge(tool.pricing)} ${getStarRating(tool.rating)}</div>` : ''}<a href="${tool.url}" target="_blank" style="display:inline-block;margin-top:8px;font-size:11px;color:#00e5a0;text-decoration:none;">Перейти →</a></div>`;
+    const practice = TOOL_PRACTICES[tool.name];
+    return `<div class="biz-tool-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${tool.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[tool.levelId]?.color||'#9aa5b4'};border:1px solid #252c33;">${levelLabel}</span></div><p style="font-size:12px;color:#9aa5b4;line-height:1.5;margin:0 0 8px;">${tool.businessFocus||tool.description}</p><div class="flex flex-wrap gap-1">${(tool.businessUse||[]).map(bu=>`<span style="font-size:10px;background:#161a1d;border:1px solid #252c33;color:#6b7a8d;padding:2px 6px;border-radius:4px;">${(BIZ_LABELS[bu]||{}).icon||''} ${(BIZ_LABELS[bu]||{}).label||bu}</span>`).join('')}</div>${tool.pricing ? `<div style="margin-top:8px;">${getPricingBadge(tool.pricing)} ${getStarRating(tool.rating)}</div>` : ''}<div class="navigator-result-actions">${practice ? `<button type="button" class="practice-card-action" style="margin-top:0" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-business-practice-preview" data-umami-event-tool="${practice.id}">Освоить в EkenLab · ${practice.duration} мин</button>` : ''}<a href="${tool.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;">Открыть сайт →</a></div></div>`;
   }).join('');
 }
 
@@ -1458,7 +1533,10 @@ function renderNavigatorResults(container) {
   container.innerHTML = `
     <div style="font-size:16px;font-weight:600;color:#e8edf2;margin-bottom:8px;">Ваши рекомендации</div>
     <div style="font-size:13px;color:#6b7a8d;margin-bottom:20px;">На основе ваших ответов подобрано ${top.length} инструментов:</div>
-    ${top.map((t,index)=>`<div class="navigator-result-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${index < 2 ? `${index + 1}. ` : ''}${t.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[t.level]?.color||'#9aa5b4'};border:1px solid #252c33;">Уровень ${t.level}</span></div><p style="font-size:12px;color:#9aa5b4;margin:0 0 6px;">${t.strength||t.description}</p><div class="flex items-center gap-3" style="margin-top:4px;">${getPricingBadge(t.pricing)} ${getStarRating(t.rating)}</div><div style="font-size:11px;color:#00e5a0;margin-top:4px;">Совпало признаков: ${t.matchScore}</div><a href="${t.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;margin-top:4px;display:inline-block;">Открыть инструмент →</a></div>`).join('')}
+    ${top.map((t,index) => {
+      const practice = TOOL_PRACTICES[t.name];
+      return `<div class="navigator-result-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${index < 2 ? `${index + 1}. ` : ''}${t.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[t.level]?.color||'#9aa5b4'};border:1px solid #252c33;">Уровень ${t.level}</span></div><p style="font-size:12px;color:#9aa5b4;margin:0 0 6px;">${t.strength||t.description}</p><div class="flex items-center gap-3" style="margin-top:4px;">${getPricingBadge(t.pricing)} ${getStarRating(t.rating)}</div><div style="font-size:11px;color:#00e5a0;margin-top:4px;">Совпало признаков: ${t.matchScore}</div><div class="navigator-result-actions">${practice ? `<button type="button" class="practice-card-action" style="margin-top:0" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-navigator-tool-practice" data-umami-event-tool="${practice.id}">Освоить · ${practice.duration} мин</button>` : ''}<a href="${t.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;">Открыть инструмент →</a></div></div>`;
+    }).join('')}
     ${navigatorScenario && navigatorRecommendationTools.length >= 2 ? `<div class="productive-entry">
       <div class="productive-entry-copy">
         <div class="productive-entry-label">Не выбирать вслепую</div>
