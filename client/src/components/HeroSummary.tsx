@@ -422,16 +422,6 @@ export default function HeroSummary() {
                         )}
                       </div>
                     )}
-                    <div className="px-3 pb-2.5 ml-9">
-                      <EkenRouteAction
-                        compact
-                        surface="dashboard-news"
-                        sourceName={item.title}
-                        sourceText={item.description}
-                        level={item.level}
-                        reportDate={reportDate}
-                      />
-                    </div>
                   </div>
                 );
               })}
