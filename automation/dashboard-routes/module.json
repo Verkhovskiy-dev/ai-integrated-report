@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0",
+  "name": "Dashboard → Eken Route System",
+  "trigger": {
+    "events": ["dashboard-report-updated", "places-map-updated", "llm-map-updated"]
+  },
+  "pipeline": [
+    {
+      "id": "entry-analyzer",
+      "purpose": "Находит продуктивные точки входа и считает fingerprint их содержания."
+    },
+    {
+      "id": "scenario-builder",
+      "purpose": "Создаёт обещание прироста, первое действие, артефакт, адресата и критерий принятия."
+    },
+    {
+      "id": "route-qa",
+      "purpose": "Проверяет уникальность источника, длительность 15–480 минут и полноту контракта.",
+      "policy": "fail-closed"
+    },
+    {
+      "id": "route-compiler",
+      "purpose": "Атомарно обновляет единый реестр, сохраняя вручную курируемые сценарии."
+    },
+    {
+      "id": "route-runtime",
+      "purpose": "Строит Eken payload из выбранной карточки и измеряет route_launch."
+    }
+  ],
+  "surfaces": ["dashboard-focus", "dashboard-news", "dashboard-trend", "dashboard-shift", "dashboard-insight"],
+  "activation": "automatic-after-qa",
+  "publisher": "scripts/dashboard-routes/route-system.mjs"
+}

@@ -17,6 +17,7 @@ import { useTranslation } from "@/contexts/I18nContext";
 import { useViewMode } from "@/contexts/ViewModeContext";
 import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
 import { ExecutiveEventCardLocalized } from "@/components/ExecutiveEventCard";
+import EkenRouteAction from "@/components/EkenRouteAction";
 
 /* ── Severity-based color scheme ── */
 function getSeverityColor(level: number): string {
@@ -291,6 +292,16 @@ export default function LatestNews() {
                     )}
                   </div>
                 )}
+                <div className="px-3 pb-3 pl-4">
+                  <EkenRouteAction
+                    compact
+                    surface="dashboard-news"
+                    sourceName={item.title}
+                    sourceText={item.description}
+                    level={item.level}
+                    reportDate={reportDate}
+                  />
+                </div>
               </div>
             );
           })}

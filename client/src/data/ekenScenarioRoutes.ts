@@ -19,12 +19,33 @@ export interface EkenProductiveScenario {
   prerequisites: string[];
   successCriteria: string[];
   competencies: string[];
+  sourceFingerprint?: string;
+  managedBy?: "manual" | "route-system";
+  generatedAt?: string;
 }
 
 export interface EkenScenarioRegistry {
-  schemaVersion: "1.0";
+  schemaVersion: "1.0" | "1.1";
   updatedAt: string;
   scenarios: EkenProductiveScenario[];
+}
+
+export type DashboardRouteSurface =
+  | "dashboard-focus"
+  | "dashboard-news"
+  | "dashboard-trend"
+  | "dashboard-shift"
+  | "dashboard-insight";
+
+export interface DashboardRouteSource {
+  surface: DashboardRouteSurface;
+  sourceId?: string;
+  sourceName: string;
+  sourceText?: string;
+  level?: number;
+  reportDate?: string;
+  from?: string;
+  to?: string;
 }
 
 export const DASHBOARD_FOCUS_FALLBACK: EkenProductiveScenario = {
@@ -59,11 +80,112 @@ function newScenarioRouteId(scenarioId: string) {
   return `dashboard-${scenarioId}-${suffix}`;
 }
 
-export function buildDashboardFocusEkenPayload(
-  actionText: string,
-  reportDate: string,
-  scenario: EkenProductiveScenario = DASHBOARD_FOCUS_FALLBACK,
+export function stableRouteSourceId(surface: string, sourceName: string, discriminator = "") {
+  const input = `${surface}|${discriminator}|${sourceName}`.normalize("NFKC").trim().toLowerCase();
+  let hash = 2166136261;
+  for (let index = 0; index < input.length; index += 1) {
+    hash ^= input.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  const slug = sourceName
+    .toLowerCase()
+    .replace(/[^a-z0-9а-яё]+/gi, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 42) || "entry";
+  return `${surface.replace(/^dashboard-/, "")}:${slug}-${(hash >>> 0).toString(36)}`;
+}
+
+const LEVEL_ROLES: Record<number, string> = {
+  9: "Инвестиционный стратег",
+  8: "Архитектор институциональных решений",
+  7: "Аналитик знаний",
+  6: "Архитектор AI-систем",
+  5: "Владелец продуктового контура",
+  4: "Инженер инфраструктуры",
+  3: "Архитектор профессиональной позиции",
+  2: "Аналитик размещения",
+  1: "Аналитик ресурсных ограничений",
+};
+
+export function buildDefaultDashboardScenario(source: DashboardRouteSource): EkenProductiveScenario {
+  const sourceId = source.sourceId ?? stableRouteSourceId(source.surface, source.sourceName, String(source.level ?? ""));
+  const role = LEVEL_ROLES[source.level ?? 0] ?? "Оператор продуктивного действия";
+  const common = {
+    surface: source.surface,
+    sourceId,
+    sourceName: source.sourceName,
+    scenarioId: `${sourceId.replace(/[:]/g, "-")}-action`,
+    version: 1,
+    enabled: true,
+    role,
+    whyNow: source.sourceText || `Сигнал «${source.sourceName}» уже обнаружен; следующий прирост возникает только после проверки действием.`,
+    position: role,
+    object: source.sourceName,
+    recipientRole: "Владелец затронутого процесса",
+    starterInputs: ["Материал выбранной карточки", "Один процесс или решение, на которое влияет сигнал"],
+    prerequisites: ["Доступ к исходным данным", "Возможность связаться с владельцем результата"],
+    competencies: ["Интерпретация сигнала", "Постановка проверяемого действия", "Фиксация результата"],
+    managedBy: "route-system" as const,
+  };
+
+  if (source.surface === "dashboard-trend") {
+    return {
+      ...common,
+      promise: `Проверить влияние тренда «${source.sourceName}» на один процесс`,
+      artifact: "карта воздействия тренда и решение о коротком пилоте",
+      estimatedMinutes: 45,
+      change: "Тренд будет переведён из наблюдения в проверяемую гипотезу для конкретного процесса.",
+      mission: "Отделять наблюдаемую динамику от воздействия, которое требует изменения процесса.",
+      successCriteria: ["Назван затронутый процесс", "Сформулирована проверяемая гипотеза", "Назначен следующий шаг и его владелец"],
+    };
+  }
+
+  if (source.surface === "dashboard-shift") {
+    return {
+      ...common,
+      promise: `Спроектировать первый манёвр в направлении «${source.to || source.sourceName}»`,
+      artifact: "карта перехода ОТ → К с первым действием, ресурсом и адресатом",
+      estimatedMinutes: 60,
+      change: "Структурный сдвиг станет основанием для конкретного манёвра ресурсов.",
+      mission: "Сокращать время от понимания структурного перехода до изменения собственной позиции.",
+      successCriteria: ["Зафиксирована исходная позиция", "Определён недостающий ресурс", "Первое действие принято владельцем результата"],
+    };
+  }
+
+  if (source.surface === "dashboard-insight") {
+    return {
+      ...common,
+      promise: `Превратить инсайт «${source.sourceName}» в решение`,
+      artifact: "decision brief с решением, аргументом, адресатом и критерием результата",
+      estimatedMinutes: 30,
+      change: "Инсайт станет подготовленным решением, а не сохранённым наблюдением.",
+      mission: "Преобразовывать аналитический вывод в решение с проверяемым эффектом.",
+      successCriteria: ["Сформулировано одно решение", "Назван адресат", "Определён критерий эффекта"],
+    };
+  }
+
+  return {
+    ...common,
+    promise: `Превратить сигнал «${source.sourceName}» в решение и первый шаг`,
+    artifact: "одностраничный action brief с решением, адресатом и действием на 24 часа",
+    estimatedMinutes: 30,
+    change: "Карточка перестанет быть прочитанной информацией и станет подготовленным действием.",
+    mission: "Сокращать время от нового сигнала до первого проверяемого действия.",
+    successCriteria: ["Сформулировано одно решение", "Назван адресат результата", "Определён шаг на ближайшие 24 часа"],
+  };
+}
+
+export function findDashboardScenario(
+  registry: EkenScenarioRegistry | null | undefined,
+  source: DashboardRouteSource,
 ) {
+  const sourceId = source.sourceId ?? stableRouteSourceId(source.surface, source.sourceName, String(source.level ?? ""));
+  return registry?.scenarios.find((item) => item.enabled && item.surface === source.surface && item.sourceId === sourceId)
+    ?? buildDefaultDashboardScenario({ ...source, sourceId });
+}
+
+export function buildScenarioEkenPayload(source: DashboardRouteSource, scenario: EkenProductiveScenario) {
+  const contextText = source.sourceText || source.sourceName;
   return {
     schemaVersion: "1.0",
     routeId: newScenarioRouteId(scenario.scenarioId),
@@ -73,7 +195,7 @@ export function buildDashboardFocusEkenPayload(
     place: {
       id: `dashboard:${scenario.sourceId}`,
       name: `Дашборд · ${scenario.sourceName}`,
-      level: 8,
+      level: source.level ?? 8,
       whyNow: scenario.whyNow,
     },
     position: {
@@ -84,14 +206,14 @@ export function buildDashboardFocusEkenPayload(
     },
     firstAction: {
       title: scenario.promise,
-      object: `${actionText} (сводка ${reportDate})`,
+      object: source.reportDate ? `${contextText} (сводка ${source.reportDate})` : contextText,
       recipientRole: scenario.recipientRole,
       output: scenario.artifact,
       acceptanceCriterion: scenario.successCriteria.join("; "),
       estimatedMinutes: scenario.estimatedMinutes,
     },
     resourceGap: {
-      title: "Decision brief по сигналу дня",
+      title: scenario.artifact,
       description: scenario.change,
       estimatedMinutes: scenario.estimatedMinutes,
       artifact: scenario.artifact,
@@ -101,9 +223,29 @@ export function buildDashboardFocusEkenPayload(
       competencies: scenario.competencies,
       communicationVenues: ["Рабочий контур владельца решения"],
       accesses: scenario.prerequisites,
-      norms: ["Одно решение", "Один адресат", "Один проверяемый шаг"],
+      norms: ["Один результат", "Один адресат", "Один проверяемый критерий"],
+    },
+    source: {
+      surface: scenario.surface,
+      sourceId: scenario.sourceId,
+      sourceFingerprint: scenario.sourceFingerprint,
     },
   };
+}
+
+export function buildDashboardFocusEkenPayload(
+  actionText: string,
+  reportDate: string,
+  scenario: EkenProductiveScenario = DASHBOARD_FOCUS_FALLBACK,
+) {
+  return buildScenarioEkenPayload({
+    surface: "dashboard-focus",
+    sourceId: scenario.sourceId,
+    sourceName: scenario.sourceName,
+    sourceText: actionText,
+    reportDate,
+    level: 8,
+  }, scenario);
 }
 
 export function buildEkenScenarioUrl(payload: ReturnType<typeof buildDashboardFocusEkenPayload>) {

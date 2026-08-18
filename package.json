@@ -13,6 +13,10 @@
     "validate:eken-routes": "node scripts/validate-eken-routes.mjs client/src/data/ekenRoutes.json",
     "validate:published-routes": "node scripts/validate-published-routes.mjs client/src/data/ekenRoutes.json dist/public",
     "plan:route-jobs": "node scripts/route-agents/plan-route-jobs.mjs",
+    "plan:dashboard-routes": "node scripts/dashboard-routes/route-system.mjs plan data/latest-report.json client/src/data/ekenScenarios.json",
+    "publish:dashboard-routes": "node scripts/dashboard-routes/route-system.mjs publish data/latest-report.json client/src/data/ekenScenarios.json",
+    "validate:dashboard-routes": "node scripts/validate-dashboard-routes.mjs data/latest-report.json client/src/data/ekenScenarios.json",
+    "test:dashboard-routes": "vitest run client/src/data/ekenScenarioRoutes.test.ts && node scripts/dashboard-routes/route-system.test.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {

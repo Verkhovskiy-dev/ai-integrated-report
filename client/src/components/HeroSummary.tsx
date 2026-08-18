@@ -22,6 +22,7 @@ import { useTranslation } from "@/contexts/I18nContext";
 import { useViewMode } from "@/contexts/ViewModeContext";
 import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
 import { ExecutiveEventCardLocalized } from "@/components/ExecutiveEventCard";
+import EkenRouteAction from "@/components/EkenRouteAction";
 
 // ─── Helpers ────────────────────────────────────────────────────
 const LEVEL_NAMES_RU: Record<number, string> = {
@@ -421,6 +422,16 @@ export default function HeroSummary() {
                         )}
                       </div>
                     )}
+                    <div className="px-3 pb-2.5 ml-9">
+                      <EkenRouteAction
+                        compact
+                        surface="dashboard-news"
+                        sourceName={item.title}
+                        sourceText={item.description}
+                        level={item.level}
+                        reportDate={reportDate}
+                      />
+                    </div>
                   </div>
                 );
               })}
@@ -507,12 +518,22 @@ export default function HeroSummary() {
                 <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed line-clamp-2">
                   {keyInsight.summary}
                 </p>
-                <a
-                  href="#insights"
-                  className="inline-flex items-center gap-1 mt-2 text-[10px] sm:text-xs font-mono text-primary/70 hover:text-primary transition-colors"
-                >
-                  {isEn ? `All ${strategicInsights.length} insights` : `Все ${strategicInsights.length} инсайтов`} <ArrowRight className="w-3 h-3" />
-                </a>
+                <div className="mt-2 flex flex-wrap items-center gap-2">
+                  <EkenRouteAction
+                    compact
+                    surface="dashboard-insight"
+                    sourceName={keyInsight.title}
+                    sourceText={keyInsight.summary}
+                    level={(keyInsight as any).srtLevels?.[0] ?? 8}
+                    reportDate={reportDate}
+                  />
+                  <a
+                    href="#insights"
+                    className="inline-flex items-center gap-1 text-[10px] sm:text-xs font-mono text-primary/70 hover:text-primary transition-colors"
+                  >
+                    {isEn ? `All ${strategicInsights.length} insights` : `Все ${strategicInsights.length} инсайтов`} <ArrowRight className="w-3 h-3" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

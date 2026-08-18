@@ -9,6 +9,7 @@ import { FilterProvider } from "./contexts/FilterContext";
 import { I18nProvider } from "./contexts/I18nContext";
 import { ViewModeProvider } from "./contexts/ViewModeContext";
 import { ExecutiveDataProvider } from "./contexts/ExecutiveDataContext";
+import { EkenRoutesProvider } from "./contexts/EkenRoutesContext";
 import Home from "./pages/Home";
 import Education from "./pages/Education";
 import Programs from "./pages/Programs";
@@ -34,6 +35,7 @@ function App() {
         <I18nProvider>
           <ViewModeProvider>
           <ExecutiveDataProvider>
+          <EkenRoutesProvider>
           <LiveDataProvider>
             <FilterProvider>
               <TooltipProvider>
@@ -42,6 +44,7 @@ function App() {
               </TooltipProvider>
             </FilterProvider>
           </LiveDataProvider>
+          </EkenRoutesProvider>
           </ExecutiveDataProvider>
           </ViewModeProvider>
         </I18nProvider>
