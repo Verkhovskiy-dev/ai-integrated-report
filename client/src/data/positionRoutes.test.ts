@@ -73,7 +73,7 @@ describe("Verkhovskiy → Eken position handoff", () => {
   it("resolves every Eken route to its own SRT place", () => {
     const placeIds = POSITION_ROUTES.flatMap((route) => route.sourcePlaceIds);
 
-    expect(placeIds).toHaveLength(4);
+    expect(placeIds).toHaveLength(10);
     expect(placeIds.every((placeId) => SRT_PLACES[placeId]?.id === placeId)).toBe(true);
     POSITION_ROUTES.forEach((route) => {
       expect(route.level).toBe(SRT_PLACES[route.sourcePlaceIds[0]].level);
@@ -94,13 +94,20 @@ describe("Verkhovskiy → Eken position handoff", () => {
   it("uses the public Eken registry as the single place-to-position mapping", () => {
     const enabledRoutes = EKEN_ROUTE_REGISTRY.routes.filter((route) => route.enabled);
 
-    expect(enabledRoutes).toHaveLength(4);
+    expect(enabledRoutes).toHaveLength(10);
     enabledRoutes.forEach((entry) => {
       const positionRoute = POSITION_ROUTES.find((route) => route.id === entry.positionRouteId);
 
       expect(SRT_PLACES[entry.placeId]?.id).toBe(entry.placeId);
       expect(positionRoute?.sourcePlaceIds).toContain(entry.placeId);
       expect(getEkenRouteForPlace(entry.placeId)).toEqual(entry);
+      expect(entry.sourceId).toBe(entry.placeId);
+      expect(entry.scenarioId).toBe(entry.positionRouteId);
+      expect(entry.promise).toBeTruthy();
+      expect(entry.artifact).toBeTruthy();
+      expect(entry.estimatedMinutes).toBeGreaterThan(0);
+      expect(entry.starterInputs.length).toBeGreaterThan(0);
+      expect(entry.successCriteria.length).toBeGreaterThan(0);
     });
   });
 

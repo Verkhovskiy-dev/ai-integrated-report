@@ -46,6 +46,8 @@ jobs:
         run: |
           npm --prefix source run test:routes
           node source/scripts/validate-eken-routes.mjs source/client/src/data/ekenRoutes.json site/data/places_data.json
+          node source/scripts/dashboard-routes/route-system.mjs publish site/data/latest-report.json site/data/eken-scenarios.json
+          node source/scripts/validate-dashboard-routes.mjs site/data/latest-report.json site/data/eken-scenarios.json
 
       - name: Update application bundle without touching reports and data
         run: |
@@ -66,7 +68,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html 404.html positions/index.html assets data/eken-routes.json
+          git add index.html 404.html positions/index.html assets data/eken-routes.json data/eken-scenarios.json
           if git diff --cached --quiet; then
             echo "Dashboard bundle is already current"
             exit 0

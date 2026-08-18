@@ -34,6 +34,7 @@ import { SRT_LEVELS } from "@/data/reportData";
 import { useLiveData, type TrendDynamic, type MomentumEntry } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
 import { useTranslation } from "@/contexts/I18nContext";
+import EkenRouteAction from "@/components/EkenRouteAction";
 
 /* ─── helpers ─── */
 
@@ -405,6 +406,15 @@ function TrendCard({
           </div>
         </div>
       )}
+      <div className="mt-2 pl-2">
+        <EkenRouteAction
+          compact
+          surface="dashboard-trend"
+          sourceName={item.name}
+          sourceText={item.rationale}
+          level={item.levels[0]}
+        />
+      </div>
     </div>
   );
 }

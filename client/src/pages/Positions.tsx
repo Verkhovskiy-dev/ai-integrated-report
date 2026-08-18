@@ -47,6 +47,12 @@ const MAP_POSITIONS: Record<string, { x: number; y: number; shortTitle: string; 
   "agentic-migration": { x: 30, y: 29, shortTitle: "Миграция процессов", horizon: "3–6 недель" },
   "vertical-finance-ai": { x: 83, y: 74, shortTitle: "Финансовые агенты", horizon: "1–2 месяца" },
   "agent-memory": { x: 51, y: 56, shortTitle: "Память агентов", horizon: "1–3 месяца" },
+  "system-ai-architect": { x: 63, y: 34, shortTitle: "AI-архитектура", horizon: "2–4 недели" },
+  "ai-code-auditor": { x: 74, y: 27, shortTitle: "Аудит AI-кода", horizon: "1–3 недели" },
+  "ai-qa-designer": { x: 58, y: 48, shortTitle: "AI-QA", horizon: "2–4 недели" },
+  "ai-content-verification-analyst": { x: 69, y: 57, shortTitle: "Верификация контента", horizon: "1–3 недели" },
+  "data-access-architect": { x: 55, y: 66, shortTitle: "Доступ к данным", horizon: "3–6 недель" },
+  "content-provenance-engineer": { x: 76, y: 63, shortTitle: "Provenance контента", horizon: "3–6 недель" },
 };
 
 const STATUS_CLASS: Record<string, string> = {
@@ -254,7 +260,7 @@ export default function Positions() {
                 {routes.map((route) => {
                   const coords = MAP_POSITIONS[route.id];
                   const active = selected.id === route.id;
-                  return <button key={route.id} type="button" className={`position-map-node ${active ? "is-selected" : ""}`} style={{ left: `${coords.x}%`, top: `${coords.y}%` }} onClick={() => chooseRoute(route)} aria-pressed={active} aria-label={`${coords.shortTitle}, соответствие ${route.resourceMatchPercent}%, окно ${route.window.toLowerCase()}`}><span className="position-map-node-dot" /><span className="position-map-node-copy"><small>СРТ-{route.level}</small><strong>{coords.shortTitle}</strong><em className={STATUS_CLASS[route.window] ?? "position-map-status-open"}>{route.window}</em></span></button>;
+                  return <button key={route.id} type="button" className={`position-map-node ${active ? "is-selected" : ""}`} style={{ left: `${coords.x}%`, top: `${coords.y}%` }} onClick={() => chooseRoute(route)} aria-pressed={active} aria-label={`${coords.shortTitle}, окно ${route.window.toLowerCase()}, первое действие ${route.timeToActionMinutes} минут`}><span className="position-map-node-dot" /><span className="position-map-node-copy"><small>СРТ-{route.level}</small><strong>{coords.shortTitle}</strong><em className={STATUS_CLASS[route.window] ?? "position-map-status-open"}>{route.window}</em></span></button>;
                 })}
               </div>
               <div className="position-map-legend" aria-label="Легенда карты"><span><i className="position-map-status-open" /> Окно открыто</span><span><i className="position-map-status-narrowing" /> Окно сужается</span><span className="position-map-caption">Карта показывает позиции, доступные из узла «{sourcePlace}».</span></div>
@@ -264,7 +270,7 @@ export default function Positions() {
               <h2>{selected.position}</h2>
               <div className="position-map-detail-status"><span className={STATUS_CLASS[selected.window] ?? "position-map-status-open"}>{selected.window}</span><span>Горизонт: {selectedMap.horizon}</span></div>
               <div className="position-map-detail-section"><h3>{selected.title}</h3><p>{selected.description}</p></div>
-              <div className="position-map-detail-section"><div className="position-map-fit-label"><h3>Соответствие</h3><strong>{selected.resourceMatchPercent}%</strong></div><div className="position-map-fit-track"><span style={{ width: `${selected.resourceMatchPercent}%` }} /></div><p>{selected.whyNow}</p></div>
+              <div className="position-map-detail-section"><div className="position-map-fit-label"><h3>Первый измеримый шаг</h3><strong>{selected.timeToActionMinutes} мин</strong></div><p>{selected.whyNow}</p><p className="position-card-meta">На выходе: {selected.output}</p></div>
               <div className="position-map-detail-section position-map-resource"><Database className="h-6 w-6" /><div><h3>Ключевой ресурс</h3><strong>{routeResource(selected)}</strong><p>{selected.resourceGap.description}</p></div></div>
               <button type="button" className="position-map-primary" onClick={() => goTo(3)} data-umami-event="srt-position-selected" data-umami-event-place={place.id} data-umami-event-position={selected.id}>Выбрать позицию <ArrowRight className="h-4 w-4" /></button>
               <p className="position-map-next">Далее: описание роли и продуктивного результата</p>

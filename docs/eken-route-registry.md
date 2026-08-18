@@ -2,7 +2,7 @@
 
 Единый источник доступности переходов находится в `client/src/data/ekenRoutes.json`.
 
-Каждая включённая запись связывает стабильный `placeId` карты с конкретным `positionRouteId` маршрута освоения. Из этого файла автоматически формируются:
+Каждая включённая запись связывает стабильный `placeId` карты с конкретным `positionRouteId` маршрута освоения. Версия контракта 1.1 также хранит обещанный прирост: `promise`, создаваемый `artifact`, `estimatedMinutes`, стартовые данные и критерии успеха. Из этого файла автоматически формируются:
 
 - подсветка Bubble Chart, карточек и строк таблицы;
 - динамический счётчик фильтра «Маршрут Eken»;
@@ -13,7 +13,8 @@
 
 1. Добавить или проверить полное описание позиции в `client/src/data/positionRoutes.ts`.
 2. Добавить одну запись в `client/src/data/ekenRoutes.json`.
-3. Запустить `npm run test:routes` и `npm run validate:eken-routes`.
+3. Заполнить производственный контракт маршрута: `surface`, `sourceId`, `scenarioId`, `version`, `promise`, `artifact`, `estimatedMinutes`, `starterInputs`, `successCriteria`.
+4. Запустить `npm run test:routes` и `npm run validate:eken-routes`.
 
 Изменять `places.html`, число в фильтре или классы подсветки вручную не требуется.
 

@@ -84,6 +84,29 @@ jobs:
             echo "::notice::Auto-fix committed and pushed."
           }
 
+      - name: Checkout dashboard route system
+        if: steps.autofix.outputs.empty_events != 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: route-system-source
+
+      - name: Rebuild Dashboard → Eken routes
+        if: steps.autofix.outputs.empty_events != 'true'
+        run: |
+          node route-system-source/scripts/dashboard-routes/route-system.mjs publish data/latest-report.json data/eken-scenarios.json
+          node route-system-source/scripts/validate-dashboard-routes.mjs data/latest-report.json data/eken-scenarios.json
+
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "GitHub Actions"
+          git add data/eken-scenarios.json
+          if git diff --cached --quiet; then
+            echo "Dashboard routes are already current"
+          else
+            git commit -m "routes: rebuild Dashboard to Eken entry points"
+            git push origin gh-pages
+          fi
+
       - name: Post summary
         if: always()
         run: |

@@ -12,6 +12,7 @@ import { useLiveData } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
 import { useTranslation } from "@/contexts/I18nContext";
 import { ProgramBadgeGroup } from "@/components/ProgramBadge";
+import EkenRouteAction from "@/components/EkenRouteAction";
 
 function getLevelColor(id: number): string {
   const level = SRT_LEVELS.find((l) => l.id === id);
@@ -196,6 +197,17 @@ export default function StructuralShifts() {
                     )}
                   </div>
                 )}
+                <div className="px-3 sm:px-4 pb-3 sm:pb-4">
+                  <EkenRouteAction
+                    compact
+                    surface="dashboard-shift"
+                    sourceName={shift.title}
+                    sourceText={shift.mechanism}
+                    level={shift.levels[0]}
+                    from={shift.from}
+                    to={shift.to}
+                  />
+                </div>
               </div>
             );
           })}
