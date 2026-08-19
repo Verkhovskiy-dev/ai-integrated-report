@@ -32,4 +32,137 @@
     url: location.href,
     webvisor: true
   });
+
+  var FUNNEL_STORAGE_KEY = 'verkhovskiy_education_funnel_v1';
+  var EKEN_HOST_PATTERN = /(^|\.)ekenlab\.com$/i;
+
+  function track(eventName, payload) {
+    var eventPayload = Object.assign({
+      page_path: location.pathname,
+      page_title: document.title
+    }, payload || {});
+
+    if (window.umami && typeof window.umami.track === 'function') {
+      window.umami.track(eventName, eventPayload);
+    }
+
+    window.ym(METRIKA_COUNTER_ID, 'reachGoal', eventName, eventPayload);
+  }
+
+  function getElementLabel(element) {
+    return (element.getAttribute('aria-label') || element.textContent || '')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 120);
+  }
+
+  function getEkenUrl(element) {
+    var link = element.closest && element.closest('a[href]');
+    if (!link) return null;
+
+    try {
+      var url = new URL(link.href, location.href);
+      return EKEN_HOST_PATTERN.test(url.hostname) ? url : null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function addEkenAttribution(link, url) {
+    if (!link || !url) return;
+
+    if (!url.searchParams.has('utm_source')) {
+      url.searchParams.set('utm_source', 'verkhovskiy.ai');
+      url.searchParams.set('utm_medium', 'referral');
+      url.searchParams.set('utm_campaign', 'education_funnel');
+      url.searchParams.set('utm_content', location.pathname.replace(/^\/+|\/+$/g, '') || 'home');
+      link.href = url.toString();
+    }
+  }
+
+  function trackReturnVisit() {
+    var now = Date.now();
+    var state = null;
+
+    try {
+      state = JSON.parse(localStorage.getItem(FUNNEL_STORAGE_KEY) || 'null');
+    } catch (error) {
+      state = null;
+    }
+
+    if (state && state.lastVisitAt) {
+      var daysSinceLastVisit = (now - state.lastVisitAt) / 86400000;
+      if (daysSinceLastVisit >= 1 && daysSinceLastVisit <= 7) {
+        track('return_visit_7d', {
+          days_since_last_visit: Math.round(daysSinceLastVisit * 10) / 10
+        });
+      }
+    }
+
+    try {
+      localStorage.setItem(FUNNEL_STORAGE_KEY, JSON.stringify({
+        firstVisitAt: state && state.firstVisitAt ? state.firstVisitAt : now,
+        lastVisitAt: now
+      }));
+    } catch (error) {
+      // Analytics must never block the product when storage is unavailable.
+    }
+  }
+
+  document.addEventListener('click', function (event) {
+    var target = event.target instanceof Element ? event.target : null;
+    if (!target) return;
+
+    var clickable = target.closest('a, button, [role="button"]');
+    if (!clickable) return;
+
+    var label = getElementLabel(clickable);
+    var ekenUrl = getEkenUrl(clickable);
+
+    if (ekenUrl) {
+      addEkenAttribution(clickable.closest('a[href]'), ekenUrl);
+      track(ekenUrl.pathname.indexOf('/integrations/verkhovskiy') === 0
+        ? 'eken_route_handoff'
+        : 'eken_cta_click', {
+        destination: ekenUrl.origin + ekenUrl.pathname,
+        cta_label: label,
+        source_path: location.pathname
+      });
+      return;
+    }
+
+    if (/eken/i.test(label)) {
+      track('eken_cta_click', {
+        destination: 'programmatic_or_unresolved',
+        cta_label: label,
+        source_path: location.pathname
+      });
+      return;
+    }
+
+    if (/обуч|образован|программ|курс|learn|education|program/i.test(label)) {
+      track('education_interest', {
+        cta_label: label,
+        source_path: location.pathname
+      });
+    }
+  }, true);
+
+  window.setTimeout(function () {
+    trackReturnVisit();
+  }, 2500);
+
+  window.setTimeout(function () {
+    track('content_engaged_60s', { elapsed_seconds: 60 });
+  }, 60000);
+
+  window.verkhovskiyAnalytics = {
+    track: track,
+    trackEducationInterest: function (payload) {
+      track('education_interest', payload);
+    },
+    trackEkenHandoff: function (payload) {
+      track('eken_route_handoff', payload);
+    }
+  };
 })();
