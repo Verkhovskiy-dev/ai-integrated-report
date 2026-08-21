@@ -99,6 +99,18 @@ function vitePluginManusDebugCollector(): Plugin {
     },
 
     configureServer(server: ViteDevServer) {
+      // Local development uses the same generated report files as production.
+      // Vite's root is /client, while the canonical data directory is at repo root.
+      server.middlewares.use("/data", (req, res, next) => {
+        if (req.method !== "GET") return next();
+        const filename = path.basename((req.url || "").split("?")[0]);
+        if (!filename.endsWith(".json")) return next();
+        const dataPath = path.join(PROJECT_ROOT, "data", filename);
+        if (!fs.existsSync(dataPath)) return next();
+        res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
+        fs.createReadStream(dataPath).pipe(res);
+      });
+
       // POST /__manus__/logs: Browser sends logs (written directly to files)
       server.middlewares.use("/__manus__/logs", (req, res, next) => {
         if (req.method !== "POST") {
