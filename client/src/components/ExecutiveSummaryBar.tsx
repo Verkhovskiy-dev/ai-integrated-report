@@ -6,9 +6,10 @@
  */
 import { useMemo } from "react";
 import { BarChart3, TrendingUp, Lightbulb, Zap } from "lucide-react";
-import IntentFirstPilot from "@/components/IntentFirstPilot";
+import { ArrowRight } from "lucide-react";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
+import { buildSignalPositionHref, linkSignalToPosition } from "@/data/signalPositionLink";
 
 export default function ExecutiveSummaryBar() {
   const {
@@ -76,6 +77,8 @@ export default function ExecutiveSummaryBar() {
   if (!isLive || !summaryData) return null;
 
   const { totalEvents, keyShift, mainInsight, actionText, actionDescription, trendsCount, linksCount } = summaryData;
+  const signalId = `dashboard-focus:${reportDate}:event-4`;
+  const positionLink = actionText ? linkSignalToPosition(actionText, actionDescription) : null;
   const insightsCount = strategicInsights.length;
   const plural = (n: number, f: [string, string, string]) => {
     const m10 = n % 10, m100 = n % 100;
@@ -174,23 +177,22 @@ export default function ExecutiveSummaryBar() {
                     {actionText}
                   </p>
                   <p className="text-[9px] text-emerald-300/70 mt-1 line-clamp-1">
-                    {isEn ? "First useful sample in 4–8 min" : "Первый полезный пример за 4–8 мин"}
+                    {isEn ? "Affected position" : "Затронутая позиция"}: {positionLink?.positionName[isEn ? "en" : "ru"]}
                   </p>
                 </>
               ) : (
                 <p className="text-[11px] text-muted-foreground italic">—</p>
               )}
-              {actionText && (
-                <IntentFirstPilot
-                  compact
-                  locale={isEn ? "en" : "ru"}
-                  signal={{
-                    id: `dashboard-focus:${reportDate}:event-4`,
-                    title: actionText,
-                    description: actionDescription,
-                    reportDate,
-                  }}
-                />
+              {actionText && positionLink && (
+                <a
+                  href={buildSignalPositionHref(positionLink, signalId)}
+                  data-umami-event="signal-position-map-opened"
+                  data-umami-event-signal={signalId}
+                  data-umami-event-position={String(positionLink.source)}
+                  className="mt-2 inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-2.5 py-1.5 text-[10px] font-medium text-emerald-200 no-underline hover:bg-emerald-400/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+                >
+                  {isEn ? "Show on position map" : "Показать на карте позиций"} <ArrowRight className="h-3.5 w-3.5" />
+                </a>
               )}
             </div>
           </div>

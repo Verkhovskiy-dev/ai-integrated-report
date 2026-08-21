@@ -86,6 +86,7 @@ function assessmentItems(route: PositionRoute) {
 
 export default function Positions() {
   const params = new URLSearchParams(window.location.search);
+  const enteredFromSignal = params.get("from") === "signal" && Boolean(params.get("signal"));
   const requestedPlace = params.get("place") ?? params.get("source") ?? "3";
   const configuredPlace = SRT_PLACES[requestedPlace];
   const place = configuredPlace ?? SRT_PLACES["3"];
@@ -94,7 +95,7 @@ export default function Positions() {
   const requestedRouteId = params.get("route");
   const requestedRoute = resolvePositionRoute(requestedPlace, requestedRouteId);
   const sourcePlace = place.label;
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(params.get("step") === "map" ? 2 : 1);
   const [intent, setIntent] = useState<PositionIntent>("expert");
   const placeRoutes = POSITION_ROUTES.filter((route) => route.sourcePlaceIds.includes(sourceKey));
   const initialRouteId = placeRoutes.some((route) => route.id === requestedRouteId)
@@ -198,6 +199,13 @@ export default function Positions() {
       </header>
 
       <main className="container py-5 sm:py-7">
+        {enteredFromSignal && (
+          <section className="mb-5 rounded-xl border border-emerald-400/25 bg-emerald-400/[0.07] p-4" aria-label="Связь сигнала с картой позиций">
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-300">Вход из сигнала дашборда</p>
+            <h2 className="mt-1 text-base font-semibold text-foreground">Новость не стала задачей автоматически — она подсветила затронутое место на карте</h2>
+            <p className="mt-1 text-sm leading-6 text-muted-foreground">Проверьте доступные позиции, сравните потенциал и сложность входа. Eken появится только после выбора конкретной позиции и подготовки брифа.</p>
+          </section>
+        )}
         <div className="position-flow-title">
           <div>
             <p>ВХОД ИЗ СРТ · {sourcePlace}</p>
