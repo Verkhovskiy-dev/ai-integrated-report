@@ -309,7 +309,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
                     <p className="text-[11px] sm:text-xs text-foreground/80 leading-relaxed">{item.advice}</p>
                     <EkenRouteAction
                       compact
-                      entryLabel={isEn ? "Start Eken track" : "Начать трек в Eken"}
+                      entryLabel={isEn ? "Continue in Eken" : "Продолжить в Eken"}
                       trackRole={item.role}
                       surface="dashboard-insight"
                       sourceId={`insight-role:${insight.id}:${item.key}`}

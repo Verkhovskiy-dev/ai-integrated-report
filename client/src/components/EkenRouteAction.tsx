@@ -43,8 +43,17 @@ export default function EkenRouteAction({ compact = false, className = "", entry
         promise: `Превратить рекомендацию для ${trackRole} в решение и первый проверяемый шаг`,
       }
     : baseScenario;
+  const buildInitialDraft = () => {
+    const nextDraft = buildLearningBriefDraft(source, scenario);
+    if (!trackRole) return nextDraft;
+    return {
+      ...nextDraft,
+      realInput: source.sourceText?.trim() || source.sourceName,
+      successCriterion: `Сформулирован первый шаг для ${trackRole}; определён ожидаемый результат и критерий приёмки`,
+    };
+  };
   const [open, setOpen] = useState(false);
-  const [draft, setDraft] = useState<LearningBriefDraft>(() => buildLearningBriefDraft(source, scenario));
+  const [draft, setDraft] = useState<LearningBriefDraft>(buildInitialDraft);
   const [plan, setPlan] = useState<LocalLearningRoutePlan | null>(null);
   const [payload, setPayload] = useState<EkenLearningRouteV2 | null>(null);
   const [copied, setCopied] = useState(false);
@@ -152,11 +161,23 @@ export default function EkenRouteAction({ compact = false, className = "", entry
         onClick={(event) => {
           event.preventDefault();
           event.stopPropagation();
-          setDraft(buildLearningBriefDraft(source, scenario));
-          setPlan(null);
-          setPayload(null);
-          setCopied(false);
+          const nextDraft = buildInitialDraft();
+          setDraft(nextDraft);
           setStatus("preview");
+          if (trackRole) {
+            try {
+              setPayload(buildLearningRoutePayload(source, scenario, nextDraft));
+              setPlan(buildLocalLearningRoutePlan(source, scenario, nextDraft));
+            } catch {
+              setPayload(null);
+              setPlan(null);
+              setStatus("failed-service");
+            }
+          } else {
+            setPlan(null);
+            setPayload(null);
+          }
+          setCopied(false);
           setOpen(true);
           (window as Window & { umami?: { track: (event: string, data?: Record<string, string>) => void } }).umami
             ?.track("handoff_preview_opened", { scenario: scenario.scenarioId, source: scenario.sourceId });
@@ -168,31 +189,71 @@ export default function EkenRouteAction({ compact = false, className = "", entry
         data-eken-surface={scenario.surface}
       >
         <Route className={compact ? "h-3 w-3" : "h-3.5 w-3.5"} />
-        <span>{triggerLabel} · {scenario.estimatedMinutes} мин</span>
+        <span>{triggerLabel}{isRoleTrack ? "" : ` · ${scenario.estimatedMinutes} мин`}</span>
         <ArrowRight className={`${compact ? "h-3 w-3" : "h-3.5 w-3.5"} opacity-60 transition-transform group-hover/eken:translate-x-0.5`} />
       </button>
 
       <DialogContent
-        className="max-h-[92vh] overflow-y-auto border-violet-400/20 bg-[#0b1020]/95 text-slate-100 backdrop-blur-xl sm:max-w-2xl"
+        className={`max-h-[92vh] overflow-y-auto border-violet-400/20 bg-[#0b1020]/95 text-slate-100 backdrop-blur-xl ${isRoleTrack ? "sm:max-w-lg" : "sm:max-w-2xl"}`}
         onClick={(event) => event.stopPropagation()}
       >
         <DialogHeader>
           <div className="mb-1 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-violet-300">
-            <Sparkles className="h-4 w-4" /> {isRoleTrack ? `Инсайт → трек ${trackRole}` : isInsightDecision ? "Инсайт → бриф решения" : "Verkhovskiy.ai → EkenLab"}
+            <Sparkles className="h-4 w-4" /> {isRoleTrack ? "Переход в Eken" : isInsightDecision ? "Инсайт → бриф решения" : "Verkhovskiy.ai → EkenLab"}
           </div>
           <DialogTitle className="text-xl text-white">
-            {isRoleTrack ? `Запустить трек ${trackRole}` : isInsightDecision ? "Превратить инсайт в решение" : "Короткий бриф на рабочий AI-инструмент"}
+            {isRoleTrack ? `Продолжить как ${trackRole}` : isInsightDecision ? "Превратить инсайт в решение" : "Короткий бриф на рабочий AI-инструмент"}
           </DialogTitle>
           <DialogDescription className="text-slate-400">
             {isRoleTrack
-              ? `Превратите рекомендацию для ${trackRole} в первый проверяемый шаг. На выходе — ${scenario.artifact}.`
+              ? "Роль и результат уже определены. Проверьте их и откройте готовый трек — ничего заполнять не нужно."
               : isInsightDecision
               ? `За ${scenario.estimatedMinutes} минут сформулируйте одно решение, назовите адресата и способ проверить эффект. На выходе — ${scenario.artifact}.`
               : "Проверьте три поля. Полный технический контракт будет собран автоматически и передан в EkenLab."}
           </DialogDescription>
         </DialogHeader>
 
-        {plan ? (
+        {isRoleTrack && plan ? (
+          <div className="grid gap-4 py-2">
+            <div className="rounded-xl border border-emerald-400/20 bg-emerald-400/[0.06] p-4">
+              <div className="flex items-center justify-between gap-3">
+                <span className="rounded-md bg-violet-400/15 px-2 py-1 text-xs font-semibold text-violet-200">{trackRole}</span>
+                <span className="text-xs text-slate-400">{scenario.estimatedMinutes} минут</span>
+              </div>
+              <h3 className="mt-3 text-base font-semibold text-white">{scenario.sourceName}</h3>
+              <p className="mt-2 text-sm leading-6 text-emerald-50/75">Результат: {scenario.artifact}</p>
+            </div>
+
+            <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm leading-6 text-slate-300">
+              <p><strong className="text-white">В Eken перейдут:</strong> этот инсайт, рекомендация для {trackRole}, роль и ожидаемый результат.</p>
+              <p className="mt-1 text-xs text-slate-500">Ничего заполнять не нужно. Текст не попадёт в URL.</p>
+            </div>
+
+            <div aria-live="polite" className="min-h-5 text-xs text-slate-300">
+              {status === "creating" && "Создаём трек в Eken…"}
+              {status === "redirecting" && "Открываем Eken в новой вкладке…"}
+              {status === "failed-retryable" && "Не удалось связаться с Eken. Можно повторить или скопировать бриф."}
+              {status === "failed-service" && "Eken пока не принял контекст. Бриф остался здесь."}
+            </div>
+
+            {(status === "failed-retryable" || status === "failed-service") && (
+              <div className="grid gap-2 rounded-lg border border-amber-400/20 bg-amber-400/[0.06] p-3 text-xs text-amber-100/80">
+                <span className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Контекст не потерян.</span>
+                <button type="button" onClick={copyPlan} className="min-h-11 rounded-lg border border-amber-200/20 px-3 text-amber-100 hover:bg-amber-200/10">
+                  {copied ? "Бриф скопирован" : "Скопировать бриф"}
+                </button>
+                <button type="button" onClick={openCompatibilityRoute} className="min-h-11 rounded-lg border border-amber-200/20 px-3 text-amber-100 hover:bg-amber-200/10">
+                  Открыть Eken без переноса контекста
+                </button>
+              </div>
+            )}
+
+            <button type="button" disabled={!payload || status === "creating" || status === "redirecting"} onClick={continueToEken} className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-violet-500 px-4 py-3 text-sm font-semibold text-white hover:bg-violet-400 disabled:cursor-wait disabled:opacity-50">
+              {(status === "creating" || status === "redirecting") && <LoaderCircle className="h-4 w-4 animate-spin" />}
+              {status === "failed-retryable" ? "Повторить" : `Открыть трек ${trackRole} в Eken`} <ArrowRight className="h-4 w-4" />
+            </button>
+          </div>
+        ) : plan ? (
           <div className="grid gap-4 py-2">
             <div className="rounded-xl border border-emerald-400/20 bg-emerald-400/[0.06] p-4">
               <p className="text-xs font-medium uppercase tracking-[0.14em] text-emerald-300">{isRoleTrack ? `Старт трека ${trackRole} готов` : isInsightDecision ? "Бриф решения готов" : "Маршрут готов"}</p>
