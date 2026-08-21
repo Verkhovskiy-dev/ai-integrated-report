@@ -4,14 +4,10 @@ const DEFAULT_EKEN_HANDOFF_API_URL =
   "https://app.ekenlab.com/api/integrations/verkhovskiy/handoffs";
 const HANDOFF_TIMEOUT_MS = 8_000;
 
-export function buildEkenIntegrationUrl(handoffToken: unknown) {
+export function buildEkenIntegrationUrl(handoffToken: string) {
   const baseUrl =
     import.meta.env.VITE_EKEN_INTEGRATION_URL?.trim() ||
     DEFAULT_EKEN_INTEGRATION_URL;
-  if (typeof handoffToken !== "string" || !handoffToken.trim()) {
-    // Compatibility for pre-handoff callers. New V2 flows must use createEkenHandoff.
-    return `${baseUrl}#route=${encodeURIComponent(JSON.stringify(handoffToken))}`;
-  }
   const url = new URL(baseUrl);
   url.searchParams.set("handoffToken", handoffToken);
   return url.toString();

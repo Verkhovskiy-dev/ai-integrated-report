@@ -1,5 +1,5 @@
 import { getPlaceIdsForPositionRoute } from "./ekenRouteRegistry";
-import { buildEkenIntegrationUrl } from "./ekenIntegrationUrl";
+import { buildEkenCompatibilityUrl } from "./ekenIntegrationUrl";
 
 export type PositionIntent = "expert" | "business" | "invest";
 
@@ -592,6 +592,7 @@ export function resolvePositionRoute(placeId: string, routeId?: string | null) {
 export interface EkenPositionRouteV1 {
   schemaVersion: "1.0";
   routeId: string;
+  scenarioId: string;
   createdAt: string;
   locale: "ru";
   intent: PositionIntent;
@@ -628,6 +629,7 @@ export function buildEkenPayload(
   return {
     schemaVersion: "1.0",
     routeId: context.routeId ?? createPositionRouteId(),
+    scenarioId: route.id,
     createdAt: context.createdAt ?? new Date().toISOString(),
     locale: "ru",
     intent,
@@ -655,7 +657,12 @@ export function buildEkenPayload(
 }
 
 export function buildEkenUrl(payload: EkenPositionRouteV1) {
-  return buildEkenIntegrationUrl(payload);
+  return buildEkenCompatibilityUrl({
+    routeId: payload.routeId,
+    scenarioId: payload.scenarioId,
+    sourceId: payload.place.id,
+    surface: "position",
+  });
 }
 
 export function buildBriefText(route: PositionRoute, intent: PositionIntent, place?: SrtPlace) {

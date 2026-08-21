@@ -5,11 +5,15 @@
  * i18n support
  */
 import { useMemo } from "react";
-import { BarChart3, TrendingUp, Lightbulb, Zap } from "lucide-react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BarChart3, TrendingUp, Lightbulb, Zap } from "lucide-react";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
-import { buildSignalPositionHref, linkSignalToPosition } from "@/data/signalPositionLink";
+import {
+  buildSignalPositionMapHref,
+  getPublishedDashboardFocusSignalId,
+  resolveRelationPositionRoute,
+  resolveSignalPositionRelations,
+} from "@/data/signalPositionRelations";
 
 export default function ExecutiveSummaryBar() {
   const {
@@ -77,8 +81,10 @@ export default function ExecutiveSummaryBar() {
   if (!isLive || !summaryData) return null;
 
   const { totalEvents, keyShift, mainInsight, actionText, actionDescription, trendsCount, linksCount } = summaryData;
-  const signalId = `dashboard-focus:${reportDate}:event-4`;
-  const positionLink = actionText ? linkSignalToPosition(actionText, actionDescription) : null;
+  const signalId = getPublishedDashboardFocusSignalId(reportDate);
+  const positionResolution = signalId ? resolveSignalPositionRelations(signalId) : null;
+  const recommendedRelation = positionResolution?.relations.find((relation) => relation.recommended) ?? null;
+  const recommendedPosition = recommendedRelation ? resolveRelationPositionRoute(recommendedRelation) : null;
   const insightsCount = strategicInsights.length;
   const plural = (n: number, f: [string, string, string]) => {
     const m10 = n % 10, m100 = n % 100;
@@ -163,7 +169,7 @@ export default function ExecutiveSummaryBar() {
           </div>
 
           {/* 4. Action */}
-          <div className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-lg bg-background/40 border border-emerald-500/20">
+          <div id="signal-position-entry" className="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-lg bg-background/40 border border-emerald-500/20 scroll-mt-20">
             <div className="w-8 h-8 rounded-md bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
               <Zap className="w-4 h-4 text-emerald-400" />
             </div>
@@ -177,18 +183,28 @@ export default function ExecutiveSummaryBar() {
                     {actionText}
                   </p>
                   <p className="text-[9px] text-emerald-300/70 mt-1 line-clamp-1">
-                    {isEn ? "Affected position" : "Затронутая позиция"}: {positionLink?.positionName[isEn ? "en" : "ru"]}
+                    {recommendedPosition
+                      ? `${isEn ? "Recommended position" : "Рекомендуемая позиция"}: ${recommendedPosition.position}`
+                      : (isEn ? "Position link requires verification" : "Связь с позициями требует проверки")}
                   </p>
                 </>
               ) : (
                 <p className="text-[11px] text-muted-foreground italic">—</p>
               )}
-              {actionText && positionLink && (
+              {actionText && signalId && positionResolution?.fixture && recommendedRelation && (
                 <a
-                  href={buildSignalPositionHref(positionLink, signalId)}
-                  data-umami-event="signal-position-map-opened"
-                  data-umami-event-signal={signalId}
-                  data-umami-event-position={String(positionLink.source)}
+                  href={buildSignalPositionMapHref(signalId, positionResolution.fixture.sourcePlaceId)}
+                  onClick={() => (window as Window & { umami?: { track: (event: string, data?: Record<string, string | number>) => void } }).umami?.track("signal_position_map_opened", {
+                    signalId,
+                    signalVersion: positionResolution.fixture.signalVersion,
+                    sourcePlaceId: positionResolution.fixture.sourcePlaceId,
+                    positionRouteId: recommendedRelation.positionRouteId,
+                    recommended: 1,
+                    confidence: recommendedRelation.confidence,
+                    positionsShown: positionResolution.relations.length,
+                    viewMode: new URLSearchParams(window.location.search).get("view") ?? "expert",
+                    locale,
+                  })}
                   className="mt-2 inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-2.5 py-1.5 text-[10px] font-medium text-emerald-200 no-underline hover:bg-emerald-400/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
                 >
                   {isEn ? "Show on position map" : "Показать на карте позиций"} <ArrowRight className="h-3.5 w-3.5" />

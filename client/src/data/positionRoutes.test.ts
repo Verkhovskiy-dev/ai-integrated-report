@@ -19,6 +19,7 @@ describe("Verkhovskiy → Eken position handoff", () => {
     expect(payload.schemaVersion).toBe("1.0");
     expect(payload.locale).toBe("ru");
     expect(payload.routeId).toBeTruthy();
+    expect(payload.scenarioId).toBe(POSITION_ROUTES[0].id);
     expect(payload.place.id).toBe("ai-agent-audit");
     expect(payload.position.name).toBe("Аудитор AI-агентов");
     expect(payload.firstAction.acceptanceCriterion).toBeTruthy();
@@ -26,14 +27,27 @@ describe("Verkhovskiy → Eken position handoff", () => {
     expect(payload.arsenal.platforms.length).toBeGreaterThan(0);
   });
 
-  it("keeps the payload in the URL fragment instead of the request URL", () => {
-    const payload = buildEkenPayload(POSITION_ROUTES[2], "invest");
+  it("uses an identifier-only degraded URL without the private position brief", () => {
+    const payload = buildEkenPayload(POSITION_ROUTES[2], "invest", {
+      sourcePlace: "private assessment context",
+      readyCount: 1,
+      total: 3,
+      missing: ["private-access-gap"],
+    });
     const url = new URL(buildEkenUrl(payload));
-    const restored = JSON.parse(new URLSearchParams(url.hash.slice(1)).get("route") ?? "null");
 
     expect(url.pathname).toBe("/integrations/verkhovskiy");
-    expect(url.search).toBe("");
-    expect(restored).toEqual(payload);
+    expect(url.hash).toBe("");
+    expect(url.searchParams.get("routeId")).toBe(payload.routeId);
+    expect(url.searchParams.get("scenarioId")).toBe(POSITION_ROUTES[2].id);
+    expect(url.searchParams.get("sourceId")).toBe(payload.place.id);
+    expect(url.searchParams.get("surface")).toBe("position");
+    expect(url.searchParams.get("handoffStatus")).toBe("local-preview");
+    expect(url.href).not.toContain(encodeURIComponent(payload.firstAction.object));
+    expect(url.href).not.toContain("selfAssessment");
+    expect(url.href).not.toContain("private-access-gap");
+    expect(url.href).not.toContain("acceptanceCriterion");
+    expect(url.href).not.toContain("evidence");
   });
 
   it("keeps one journey id and the actual SRT place through the handoff", () => {

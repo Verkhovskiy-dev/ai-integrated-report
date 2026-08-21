@@ -1,6 +1,61 @@
 @import "tailwindcss";
 
 /* Positions decision field ------------------------------------------------ */
+.positions-page #subscribe-widget { display: none !important; }
+
+.position-signal-context {
+  position: relative;
+  display: grid;
+  min-height: 76px;
+  max-height: 112px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, #34d399 30%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, #34d399 7%, transparent);
+}
+.position-signal-context p { color: #6ee7b7; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: .13em; }
+.position-signal-context strong { display: block; margin-top: 4px; font-size: 13px; line-height: 1.4; }
+.position-signal-method { display: inline-flex; min-height: 44px; align-items: center; gap: 7px; padding: 0 10px; color: #6ee7b7; font-size: 12px; }
+.position-signal-evidence { position: absolute; z-index: 20; top: calc(100% + 5px); right: 0; left: 0; display: grid; gap: 6px; padding: 12px; border: 1px solid var(--border); border-radius: 9px; background: var(--card); color: var(--muted-foreground); font-size: 11px; line-height: 1.5; box-shadow: 0 16px 40px rgb(0 0 0 / .28); }
+.position-signal-evidence b { color: var(--foreground); }
+
+.position-compact-progress { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 14px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.position-compact-progress span { position: relative; min-height: 44px; padding: 14px 12px 10px 22px; color: var(--muted-foreground); font-size: 11px; }
+.position-compact-progress span::before { content: ""; position: absolute; top: 19px; left: 8px; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.position-compact-progress span.is-active { color: var(--primary); font-weight: 700; }
+.position-compact-progress span.is-complete { color: #59d79e; }
+
+.position-relation-empty,
+.position-single-relation { max-width: 760px; margin: 36px auto; padding: 28px; border: 1px solid var(--border); border-radius: 12px; background: color-mix(in srgb, var(--card) 70%, transparent); }
+.position-relation-empty > svg { color: #f59e0b; }
+.position-relation-empty h2,
+.position-single-relation h2 { margin-top: 12px; font-size: clamp(24px, 4vw, 38px); line-height: 1.1; }
+.position-relation-empty p,
+.position-single-relation > p { margin-top: 12px; color: var(--muted-foreground); line-height: 1.6; }
+.position-relation-empty a { display: inline-flex; min-height: 44px; margin-top: 18px; align-items: center; color: var(--primary); }
+.position-relation-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.position-relation-badges span { padding: 5px 8px; border: 1px solid var(--border); border-radius: 99px; color: var(--primary); font-size: 11px; }
+.position-relation-claim { padding: 12px; border-left: 2px solid var(--primary); background: color-mix(in srgb, var(--primary) 5%, transparent); }
+
+.position-map-node { min-height: 44px; }
+.position-map-node.is-recommended .position-map-node-dot { border-color: #59d79e; box-shadow: 0 0 0 5px color-mix(in srgb, #59d79e 16%, transparent); }
+.position-score-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-top: 14px; }
+.position-score-grid > div { padding: 9px; border: 1px solid var(--border); border-radius: 7px; background: color-mix(in srgb, var(--card) 70%, transparent); }
+.position-score-grid span, .position-score-grid strong { display: block; }
+.position-score-grid span { color: var(--muted-foreground); font-size: 10px; }
+.position-score-grid strong { margin-top: 3px; color: var(--primary); font-family: var(--font-mono); font-size: 15px; }
+.position-score-method { margin-top: 9px; color: var(--muted-foreground); font-size: 11px; line-height: 1.5; }
+.position-score-method summary { min-height: 44px; padding-top: 13px; cursor: pointer; color: var(--primary); }
+.position-general-layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr); gap: 16px; }
+.position-general-list { padding: 18px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); }
+.position-general-list h2 { margin: 4px 0 14px; font-size: clamp(20px, 3vw, 30px); }
+.position-general-list button { display: grid; grid-template-columns: 32px 1fr auto; align-items: center; gap: 10px; width: 100%; min-height: 52px; margin-top: 7px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; background: transparent; color: inherit; text-align: left; }
+.position-general-list button.is-selected { border-color: var(--primary); background: color-mix(in srgb, var(--primary) 8%, transparent); }
+.position-general-list button span, .position-general-list button small { color: var(--muted-foreground); }
 .position-route-steps {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -337,6 +392,14 @@
 }
 
 @media (max-width: 640px) {
+  .position-signal-context { max-height: none; grid-template-columns: 1fr; gap: 4px; }
+  .position-signal-method { justify-self: start; padding-left: 0; }
+  .position-compact-progress span { padding-right: 4px; padding-left: 18px; font-size: 10px; }
+  .position-compact-progress span::before { left: 6px; }
+  .position-score-grid { grid-template-columns: 1fr; }
+  .position-general-layout { grid-template-columns: 1fr; }
+  [data-role="signal-position-relations"] .position-map-heading { margin-bottom: 8px; }
+  [data-role="position-relation"] { min-height: 62px; }
   .position-route-steps { gap: 14px; }
   .position-route-step { gap: 9px; }
   .position-route-step-number { width: 36px; height: 36px; flex-basis: 36px; font-size: 14px; }

@@ -518,10 +518,13 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
         const fetchLatest = async (): Promise<LiveReport> => {
           const reportFile = locale === 'en' ? 'latest-report.en.json' : 'latest-report.json';
           let resp = await fetch(`${base}data/${reportFile}`);
-          if (!resp.ok && locale === 'en') {
+          const isJsonResponse = resp.headers.get("content-type")?.includes("application/json") ?? false;
+          if (locale === 'en' && (!resp.ok || !isJsonResponse)) {
             resp = await fetch(`${base}data/latest-report.json`);
           }
-          if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+          if (!resp.ok || !(resp.headers.get("content-type")?.includes("application/json") ?? false)) {
+            throw new Error(`Invalid report response: HTTP ${resp.status}`);
+          }
           return resp.json();
         };
 

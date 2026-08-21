@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import {
+  AlertTriangle,
   ArrowLeft,
   ArrowRight,
   Banknote,
@@ -8,6 +9,7 @@ import {
   Building2,
   Check,
   CheckCircle2,
+  ChevronDown,
   Clock3,
   Copy,
   Database,
@@ -16,6 +18,7 @@ import {
   Globe2,
   Layers3,
   RadioTower,
+  ShieldAlert,
   ShieldCheck,
   Target,
   Users,
@@ -30,6 +33,7 @@ import {
   YAxis,
 } from "recharts";
 import Footer from "@/components/Footer";
+import { useTranslation } from "@/contexts/I18nContext";
 import {
   POSITION_ROUTES,
   SRT_PLACES,
@@ -41,6 +45,10 @@ import {
   type PositionIntent,
   type PositionRoute,
 } from "@/data/positionRoutes";
+import {
+  resolveRelationPositionRoute,
+  resolveSignalPositionRelations,
+} from "@/data/signalPositionRelations";
 
 const MAP_POSITIONS: Record<string, { x: number; y: number; shortTitle: string; horizon: string }> = {
   "ai-agent-audit": { x: 77, y: 18, shortTitle: "Аудит AI-агентов", horizon: "2–4 недели" },
@@ -69,6 +77,18 @@ const FLOW_STEPS = [
   ["Бриф", "Начало освоения"],
 ] as const;
 
+const IMPACT_LABELS = { created: "создаётся", strengthened: "усиливается", weakened: "ослабевает", verify: "требует проверки" } as const;
+const HORIZON_LABELS = { now: "сейчас", "30d": "30 дней", quarter: "квартал", "12m": "12 месяцев" } as const;
+
+function stepFromUrl() {
+  const value = new URLSearchParams(window.location.search).get("step");
+  return value === "brief" ? 6 : value === "readiness" ? 5 : value === "position" ? 3 : value === "map" ? 2 : 1;
+}
+
+function urlStep(step: number) {
+  return step >= 6 ? "brief" : step === 5 ? "readiness" : step >= 3 ? "position" : step === 2 ? "map" : null;
+}
+
 function routeResource(route: PositionRoute) {
   if (route.id === "ai-agent-audit") return "Доступ к n8n и логам";
   return route.arsenal.accesses.slice(0, 2).join(" · ");
@@ -85,6 +105,7 @@ function assessmentItems(route: PositionRoute) {
 }
 
 export default function Positions() {
+  const { locale } = useTranslation();
   const params = new URLSearchParams(window.location.search);
   const enteredFromSignal = params.get("from") === "signal" && Boolean(params.get("signal"));
   const requestedPlace = params.get("place") ?? params.get("source") ?? "3";
@@ -95,56 +116,96 @@ export default function Positions() {
   const requestedRouteId = params.get("route");
   const requestedRoute = resolvePositionRoute(requestedPlace, requestedRouteId);
   const sourcePlace = place.label;
-  const [step, setStep] = useState(params.get("step") === "map" ? 2 : 1);
+  const [step, setStep] = useState(stepFromUrl);
   const [intent, setIntent] = useState<PositionIntent>("expert");
   const placeRoutes = POSITION_ROUTES.filter((route) => route.sourcePlaceIds.includes(sourceKey));
-  const initialRouteId = placeRoutes.some((route) => route.id === requestedRouteId)
-    ? requestedRouteId!
-    : placeRoutes[0]?.id ?? POSITION_ROUTES[0].id;
+  const initialRouteId = requestedRouteId ?? placeRoutes[0]?.id ?? POSITION_ROUTES[0].id;
   const [routeId, setRouteId] = useState(initialRouteId);
   const [journeyId, setJourneyId] = useState(() => createPositionRouteId());
   const [journeyStartedAt, setJourneyStartedAt] = useState(() => new Date().toISOString());
   const [answers, setAnswers] = useState<Record<string, boolean | undefined>>({});
   const [copied, setCopied] = useState(false);
   const [marketMethodOpen, setMarketMethodOpen] = useState(false);
+  const [relationMethodOpen, setRelationMethodOpen] = useState(false);
+  const isEn = locale === "en";
+  const impactLabel = (impact: keyof typeof IMPACT_LABELS) => isEn
+    ? ({ created: "created", strengthened: "strengthened", weakened: "weakened", verify: "needs verification" } as const)[impact]
+    : IMPACT_LABELS[impact];
+  const horizonLabel = (horizon: keyof typeof HORIZON_LABELS) => isEn
+    ? ({ now: "now", "30d": "30 days", quarter: "quarter", "12m": "12 months" } as const)[horizon]
+    : HORIZON_LABELS[horizon];
 
   const routes = placeRoutes.length ? placeRoutes : POSITION_ROUTES;
+  const signalId = params.get("signal") ?? "";
+  const relationResolution = enteredFromSignal ? resolveSignalPositionRelations(signalId) : null;
+  const relations = relationResolution?.relations ?? [];
+  const relationRoutes = relations
+    .map((relation) => resolveRelationPositionRoute(relation))
+    .filter((route): route is PositionRoute => Boolean(route));
   const routeConfigurationError = params.has("place") && (!configuredPlace || !requestedRoute);
-  const selected = routes.find((route) => route.id === routeId) ?? routes[0];
-  const selectedMap = MAP_POSITIONS[selected.id];
+  const selected = relationRoutes.find((route) => route.id === routeId) ?? relationRoutes[0] ?? routes.find((route) => route.id === routeId) ?? routes[0];
+  const selectedRelation = relations.find((relation) => relation.positionRouteId === selected.id);
   const checklist = useMemo(() => assessmentItems(selected), [selected]);
   const answeredCount = checklist.filter((item) => answers[item] !== undefined).length;
   const readyCount = checklist.filter((item) => answers[item] === true).length;
   const missing = checklist.filter((item) => answers[item] === false);
   const assessmentComplete = answeredCount === checklist.length;
   const payload = useMemo(
-    () => buildEkenPayload(
+    () => step === 6 ? buildEkenPayload(
       selected,
       intent,
       { sourcePlace, readyCount, total: checklist.length, missing },
       { routeId: journeyId, createdAt: journeyStartedAt, place },
-    ),
-    [selected, intent, sourcePlace, readyCount, checklist.length, missing.join("|"), journeyId, journeyStartedAt, place],
+    ) : null,
+    [step, selected, intent, sourcePlace, readyCount, checklist.length, missing.join("|"), journeyId, journeyStartedAt, place],
   );
   const brief = `${buildBriefText(selected, intent, place)}\n\nИДЕНТИФИКАТОР МАРШРУТА\nrouteId: ${journeyId}\n\nСАМООЦЕНКА ГОТОВНОСТИ\nИсточник входа: ${sourcePlace}\nПодтверждено: ${readyCount} из ${checklist.length}\nНужно закрыть: ${missing.length ? missing.join("; ") : "ресурсных разрывов не отмечено"}`;
-  const ekenUrl = buildEkenUrl(payload);
+  const ekenUrl = payload ? buildEkenUrl(payload) : "";
 
   useEffect(() => {
     document.title = "Маршрут в позицию — Verkhovskiy.ai";
     window.scrollTo(0, 0);
   }, [step]);
 
+  useLayoutEffect(() => {
+    document.body.classList.add("positions-page");
+    return () => document.body.classList.remove("positions-page");
+  }, []);
+
+  useEffect(() => {
+    const restoreStep = () => {
+      const restored = new URLSearchParams(window.location.search);
+      setStep(stepFromUrl());
+      const restoredRoute = restored.get("route");
+      if (restoredRoute) setRouteId(restoredRoute);
+    };
+    window.addEventListener("popstate", restoreStep);
+    return () => window.removeEventListener("popstate", restoreStep);
+  }, []);
+
   useEffect(() => {
     const analytics = (window as Window & {
       umami?: { track: (event: string, data?: Record<string, string | number>) => void };
     }).umami;
-    analytics?.track("position-step-view", {
-      place: place.id,
-      position: selected.id,
-      step,
-      journey: journeyId,
-    });
-  }, [step, place.id, selected.id, journeyId]);
+    if (enteredFromSignal && step === 2) {
+      analytics?.track("signal_position_map_opened", {
+        signalId,
+        signalVersion: relationResolution?.fixture?.signalVersion ?? "unknown",
+        sourcePlaceId: place.id,
+        positionsShown: relations.length,
+        viewMode: new URLSearchParams(window.location.search).get("view") ?? "expert",
+        locale,
+      });
+    } else if (!enteredFromSignal) {
+      analytics?.track("position_node_viewed", {
+        sourcePlaceId: place.id,
+        positionRouteId: selected.id,
+        positionsShown: routes.length,
+        viewMode: new URLSearchParams(window.location.search).get("view") ?? "expert",
+        locale,
+      });
+    }
+  }, [step, place.id, selected.id, journeyId, locale, enteredFromSignal, signalId, relations.length]);
 
   const chooseRoute = (route: PositionRoute) => {
     setRouteId(route.id);
@@ -152,10 +213,52 @@ export default function Positions() {
     setJourneyStartedAt(new Date().toISOString());
     setAnswers({});
     if (!route.intents.includes(intent)) setIntent(route.intents[0]);
+    const nextUrl = new URL(window.location.href);
+    nextUrl.searchParams.set("route", route.id);
+    window.history.pushState({}, "", nextUrl);
+    (window as Window & { umami?: { track: (event: string, data?: Record<string, string | number>) => void } }).umami?.track("position_compared", {
+      signalId: signalId || "direct",
+      sourcePlaceId: place.id,
+      positionRouteId: route.id,
+      impactType: relations.find((relation) => relation.positionRouteId === route.id)?.impactType ?? "verify",
+      recommended: relations.find((relation) => relation.positionRouteId === route.id)?.recommended ? 1 : 0,
+      confidence: relations.find((relation) => relation.positionRouteId === route.id)?.confidence ?? "low",
+      positionsShown: relations.length,
+    });
+  };
+
+  const selectPosition = () => {
+    const analytics = (window as Window & { umami?: { track: (event: string, data?: Record<string, string | number>) => void } }).umami;
+    if (selectedRelation && !selectedRelation.recommended && relations.some((relation) => relation.recommended)) {
+      analytics?.track("position_recommendation_overridden", {
+        signalId,
+        sourcePlaceId: selectedRelation.sourcePlaceId,
+        positionRouteId: selectedRelation.positionRouteId,
+        impactType: selectedRelation.impactType,
+        confidence: selectedRelation.confidence,
+        positionsShown: relations.length,
+      });
+    }
+    analytics?.track("position_selected", {
+      signalId: signalId || "direct",
+      sourcePlaceId: place.id,
+      positionRouteId: selected.id,
+      impactType: selectedRelation?.impactType ?? "direct",
+      recommended: selectedRelation?.recommended ? 1 : 0,
+      confidence: selectedRelation?.confidence ?? "unknown",
+      positionsShown: relations.length,
+    });
+    goTo(3);
   };
 
   const goTo = (nextStep: number) => {
-    setStep(Math.max(1, Math.min(FLOW_STEPS.length, nextStep)));
+    const normalized = Math.max(1, Math.min(FLOW_STEPS.length, nextStep));
+    const nextUrl = new URL(window.location.href);
+    const serialized = urlStep(normalized);
+    if (serialized) nextUrl.searchParams.set("step", serialized);
+    else nextUrl.searchParams.delete("step");
+    window.history.pushState({}, "", nextUrl);
+    setStep(normalized);
   };
 
   const copyBrief = async () => {
@@ -191,8 +294,8 @@ export default function Positions() {
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/90 backdrop-blur-xl">
         <div className="container flex h-14 items-center justify-between gap-4">
-          <a href={cameFromPlaces ? "/places.html" : "/#positions"} className="inline-flex items-center gap-2 text-sm text-muted-foreground no-underline transition-colors hover:text-foreground">
-            <ArrowLeft className="h-4 w-4" /> {cameFromPlaces ? "К карте мест" : "К карте СРТ"}
+          <a href={cameFromPlaces ? "/places.html" : enteredFromSignal ? "/#signal-position-entry" : "/#positions"} className="inline-flex items-center gap-2 text-sm text-muted-foreground no-underline transition-colors hover:text-foreground">
+            <ArrowLeft className="h-4 w-4" /> {cameFromPlaces ? (isEn ? "Back to places" : "К карте мест") : enteredFromSignal ? (isEn ? "Back to signal" : "К сигналу") : (isEn ? "Back to SRT map" : "К карте СРТ")}
           </a>
           <div className="position-source-context"><Target className="h-4 w-4" /><span>{place.label}</span></div>
         </div>
@@ -200,30 +303,29 @@ export default function Positions() {
 
       <main className="container py-5 sm:py-7">
         {enteredFromSignal && (
-          <section className="mb-5 rounded-xl border border-emerald-400/25 bg-emerald-400/[0.07] p-4" aria-label="Связь сигнала с картой позиций">
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-300">Вход из сигнала дашборда</p>
-            <h2 className="mt-1 text-base font-semibold text-foreground">Новость не стала задачей автоматически — она подсветила затронутое место на карте</h2>
-            <p className="mt-1 text-sm leading-6 text-muted-foreground">Проверьте доступные позиции, сравните потенциал и сложность входа. Eken появится только после выбора конкретной позиции и подготовки брифа.</p>
+          <section className="position-signal-context" aria-label="Связь сигнала с картой позиций" data-role="signal-context">
+            <div>
+              <p>{isEn ? "SIGNAL" : "СИГНАЛ"} → {place.label.toUpperCase()}</p>
+              <strong>{relationResolution?.fixture?.causalSummary ?? place.change}</strong>
+            </div>
+            <button type="button" className="position-signal-method" onClick={() => setRelationMethodOpen((current) => !current)} aria-expanded={relationMethodOpen}>
+              {isEn ? "Why this link?" : "Почему так?"} <ChevronDown className="h-4 w-4" />
+            </button>
+            {relationMethodOpen && (
+              <div className="position-signal-evidence" role="note">
+                <span><b>Evidence:</b> {relations.flatMap((relation) => relation.evidenceRefs).filter((evidence, index, all) => all.findIndex((item) => item.url === evidence.url) === index).map((evidence, index) => <span key={evidence.url}>{index > 0 && " · "}<a href={evidence.url} target="_blank" rel="noopener noreferrer">{evidence.publisher}</a></span>)}</span>
+                <span><b>Assumption:</b> {isEn ? "The causal link is checked per position and includes a counterargument." : "причинная связь проверяется отдельно для каждой позиции и содержит контраргумент."}</span>
+                <span><b>{isEn ? "Method" : "Метод"}:</b> relevance = 30% impact + 25% evidence + 20% urgency + 15% actionability + 10% role breadth.</span>
+              </div>
+            )}
           </section>
         )}
-        <div className="position-flow-title">
-          <div>
-            <p>ВХОД ИЗ СРТ · {sourcePlace}</p>
-            <h1>{FLOW_STEPS[step - 1][0]}</h1>
-          </div>
-          {step > 1 && <button type="button" onClick={() => goTo(step - 1)}><ArrowLeft className="h-4 w-4" /> Назад</button>}
-        </div>
+        <div className="position-flow-title"><div><p>{isEn ? "SRT ENTRY" : "ВХОД ИЗ СРТ"} · {sourcePlace}</p><h1>{isEn ? "Position map" : "Карта позиций"}</h1></div></div>
 
-        <nav className="position-route-steps position-route-steps-six" aria-label="Этапы входа в позицию">
-          {FLOW_STEPS.map(([label, description], index) => {
-            const number = index + 1;
-            const available = number <= step;
-            return (
-              <button key={label} type="button" disabled={!available} onClick={() => available && goTo(number)} className={`position-route-step ${number === step ? "is-active" : ""} ${number < step ? "is-complete" : ""}`}>
-                <span className="position-route-step-number">{number < step ? <Check className="h-4 w-4" /> : number}</span>
-                <span><strong>{label}</strong><small>{description}</small></span>
-              </button>
-            );
+        <nav className="position-compact-progress" aria-label="Этапы выбора позиции">
+          {(isEn ? ["Map", "Position", "Readiness", "Brief"] : ["Карта", "Позиция", "Готовность", "Бриф"]).map((label, index) => {
+            const activeIndex = step <= 2 ? 0 : step <= 4 ? 1 : step === 5 ? 2 : 3;
+            return <span key={label} aria-current={index === activeIndex ? "step" : undefined} className={index === activeIndex ? "is-active" : index < activeIndex ? "is-complete" : ""}>{label}</span>;
           })}
         </nav>
 
@@ -248,42 +350,83 @@ export default function Positions() {
                 <small>Условия входа</small>
                 {place.evidence.map((item) => <strong key={item}><Check className="h-4 w-4" />{item}</strong>)}
               </div>
-              <button type="button" className="position-map-primary" onClick={() => goTo(2)} data-umami-event="srt-place-open" data-umami-event-place={place.id}>Посмотреть позиции <ArrowRight /></button>
+              <button type="button" className="position-map-primary" onClick={() => goTo(2)} data-umami-event="srt-place-open">Посмотреть позиции <ArrowRight /></button>
               <p className="position-map-next">Далее: карта доступных манёвров из этого места</p>
             </aside>
           </div>
         )}
 
         {step === 2 && (
-          <div className="position-map-layout">
-            <section className="position-map-field" aria-labelledby="position-map-title">
-              <div className="position-map-heading">
-                <div><p>ШАГ 2 · КАРТА ПОЗИЦИЙ</p><h2 id="position-map-title">Где действовать из выбранного места?</h2></div>
-                <p className="position-map-fit-note">Выше и правее — выше потенциал и проще вход</p>
-              </div>
-              <div className="position-map-canvas">
-                <span className="position-axis-y-title">Потенциал позиции</span><span className="position-axis-y-top">ВЫШЕ</span><span className="position-axis-y-bottom">НИЖЕ</span>
-                <span className="position-axis-x-title">Доступность сейчас</span><span className="position-axis-x-left">НИЖЕ</span><span className="position-axis-x-right">ВЫШЕ</span>
-                <div className="position-map-grid" aria-hidden="true"><ResponsiveContainer width="100%" height="100%"><ScatterChart margin={{ top: 0, right: 0, bottom: 0, left: 0 }}><CartesianGrid stroke="rgba(125, 143, 156, 0.16)" strokeDasharray="4 4" /><XAxis type="number" dataKey="x" domain={[0, 100]} hide /><YAxis type="number" dataKey="y" domain={[0, 100]} hide /><Scatter data={[]} /></ScatterChart></ResponsiveContainer></div>
-                {routes.map((route) => {
-                  const coords = MAP_POSITIONS[route.id];
-                  const active = selected.id === route.id;
-                  return <button key={route.id} type="button" className={`position-map-node ${active ? "is-selected" : ""}`} style={{ left: `${coords.x}%`, top: `${coords.y}%` }} onClick={() => chooseRoute(route)} aria-pressed={active} aria-label={`${coords.shortTitle}, окно ${route.window.toLowerCase()}, первое действие ${route.timeToActionMinutes} минут`}><span className="position-map-node-dot" /><span className="position-map-node-copy"><small>СРТ-{route.level}</small><strong>{coords.shortTitle}</strong><em className={STATUS_CLASS[route.window] ?? "position-map-status-open"}>{route.window}</em></span></button>;
-                })}
-              </div>
-              <div className="position-map-legend" aria-label="Легенда карты"><span><i className="position-map-status-open" /> Окно открыто</span><span><i className="position-map-status-narrowing" /> Окно сужается</span><span className="position-map-caption">Карта показывает позиции, доступные из узла «{sourcePlace}».</span></div>
+          !enteredFromSignal ? (
+            <div className="position-general-layout" data-role="general-position-map">
+              <section className="position-general-list" aria-labelledby="general-map-title">
+                <p className="position-stage-kicker">ДОСТУПНЫЕ ПОЗИЦИИ</p>
+              <h2 id="general-map-title">{isEn ? "Choose a position to compare" : "Выберите позицию для сравнения"}</h2>
+                {routes.map((route, index) => (
+                  <button key={route.id} type="button" className={selected.id === route.id ? "is-selected" : ""} onClick={() => chooseRoute(route)} aria-pressed={selected.id === route.id}>
+                    <span>#{index + 1}</span><strong>{route.position}</strong><small>{route.window}</small>
+                  </button>
+                ))}
+              </section>
+              <aside className="position-map-detail" aria-live="polite">
+                <div className="position-map-detail-kicker"><span>{isEn ? "SELECTED POSITION" : "ВЫБРАННАЯ ПОЗИЦИЯ"}</span><span>SRT-{selected.level}</span></div>
+                <h2>{selected.position}</h2>
+                <p>{selected.mission}</p>
+                <div className="position-map-detail-section"><h3>{isEn ? "First action" : "Первое действие"}</h3><p>{selected.firstAction}</p><p className="position-card-meta">{isEn ? "Artifact" : "Артефакт"}: {selected.output}</p></div>
+                <div className="position-map-detail-section position-map-risk"><ShieldAlert className="h-6 w-6" /><div><h3>Риск входа</h3><strong>{selected.resourceGap.title}</strong><p>{selected.resourceGap.description}</p></div></div>
+                <button type="button" className="position-map-primary" onClick={selectPosition}>{isEn ? "Select position" : "Выбрать позицию"} <ArrowRight className="h-4 w-4" /></button>
+              </aside>
+            </div>
+          ) : relations.length === 0 ? (
+            <section className="position-relation-empty" data-role={relationResolution?.state === "unknown-signal" ? "unknown-signal-state" : relationResolution?.state === "invalid" ? "invalid-relations-state" : "zero-relations-state"}>
+              <AlertTriangle className="h-7 w-7" />
+              <h2>{relationResolution && relationResolution.state !== "full" ? relationResolution.message : "Пока нельзя доказательно связать сигнал с позициями"}</h2>
+              <p>{relationResolution?.state === "invalid" ? (isEn ? "Relations were not published because they failed data validation." : "Связи не опубликованы, потому что не прошли проверку данных.") : (isEn ? "We do not replace an unknown or stale signal with a generic route. Return to the dashboard and choose another signal." : "Мы не подменяем неизвестный или устаревший сигнал общим маршрутом. Вернитесь к сводке и выберите другой сигнал.")}</p>
+              <a href="/#signal-position-entry">{isEn ? "Back to signals" : "Вернуться к сигналам"}</a>
             </section>
-            <aside className="position-map-detail" aria-live="polite">
-              <div className="position-map-detail-kicker"><span>ВЫБРАННАЯ ПОЗИЦИЯ</span><span>СРТ-{selected.level}</span></div>
-              <h2>{selected.position}</h2>
-              <div className="position-map-detail-status"><span className={STATUS_CLASS[selected.window] ?? "position-map-status-open"}>{selected.window}</span><span>Горизонт: {selectedMap.horizon}</span></div>
-              <div className="position-map-detail-section"><h3>{selected.title}</h3><p>{selected.description}</p></div>
-              <div className="position-map-detail-section"><div className="position-map-fit-label"><h3>Первый измеримый шаг</h3><strong>{selected.timeToActionMinutes} мин</strong></div><p>{selected.whyNow}</p><p className="position-card-meta">На выходе: {selected.output}</p></div>
-              <div className="position-map-detail-section position-map-resource"><Database className="h-6 w-6" /><div><h3>Ключевой ресурс</h3><strong>{routeResource(selected)}</strong><p>{selected.resourceGap.description}</p></div></div>
-              <button type="button" className="position-map-primary" onClick={() => goTo(3)} data-umami-event="srt-position-selected" data-umami-event-place={place.id} data-umami-event-position={selected.id}>Выбрать позицию <ArrowRight className="h-4 w-4" /></button>
-              <p className="position-map-next">Далее: описание роли и продуктивного результата</p>
-            </aside>
-          </div>
+          ) : relations.length === 1 ? (
+            <section className="position-single-relation" data-role="single-relation-state">
+              <p className="position-stage-kicker">ОДНА ПОДТВЕРЖДАЕМАЯ СВЯЗЬ</p>
+              <h2>{relationRoutes[0]?.position}</h2>
+              <p>{relationResolution?.state === "single" ? relationResolution.message : "Найдена одна позиция. Альтернативы требуют дополнительной проверки."}</p>
+              <div className="position-relation-badges"><span>{impactLabel(relations[0].impactType)}</span><span>{horizonLabel(relations[0].horizon)}</span></div>
+              <p className="position-relation-claim">{relations[0].causalClaim}</p>
+              <button type="button" className="position-map-primary" onClick={selectPosition}>{isEn ? "Open position" : "Открыть позицию"} <ArrowRight className="h-4 w-4" /></button>
+            </section>
+          ) : (
+            <div className="position-map-layout" data-role="signal-position-relations" data-relation-count={relations.length}>
+              <section className="position-map-field" aria-labelledby="position-map-title">
+                <div className="position-map-heading">
+                  <div><p>{isEn ? "POSITION COMPARISON" : "СРАВНЕНИЕ ПОЗИЦИЙ"}</p><h2 id="position-map-title">{isEn ? "Where can this signal change the work?" : "Где сигнал может изменить работу?"}</h2></div>
+                  <p className="position-map-fit-note">{isEn ? "Ranking reflects validated relation evidence" : "Ранжирование основано на проверенных relation evidence"}</p>
+                </div>
+                <div className="position-map-canvas">
+                  <span className="position-axis-y-title">{isEn ? "Useful-result potential" : "Потенциал полезного результата"}</span><span className="position-axis-y-top">{isEn ? "HIGH" : "ВЫШЕ"}</span><span className="position-axis-y-bottom">{isEn ? "LOW" : "НИЖЕ"}</span>
+                  <span className="position-axis-x-title">{isEn ? "Accessibility now" : "Доступность входа сейчас"}</span><span className="position-axis-x-left">{isEn ? "LOW" : "НИЖЕ"}</span><span className="position-axis-x-right">{isEn ? "HIGH" : "ВЫШЕ"}</span>
+                  <div className="position-map-grid" aria-hidden="true"><ResponsiveContainer width="100%" height="100%"><ScatterChart margin={{ top: 0, right: 0, bottom: 0, left: 0 }}><CartesianGrid stroke="rgba(125, 143, 156, 0.16)" strokeDasharray="4 4" /><XAxis type="number" dataKey="x" domain={[0, 100]} hide /><YAxis type="number" dataKey="y" domain={[0, 100]} hide /><Scatter data={[]} /></ScatterChart></ResponsiveContainer></div>
+                  {relations.map((relation, rank) => {
+                    const route = resolveRelationPositionRoute(relation)!;
+                    const coords = MAP_POSITIONS[route.id];
+                    const active = selected.id === route.id;
+                    return <button key={route.id} type="button" data-role="position-relation" data-impact-type={relation.impactType} className={`position-map-node ${active ? "is-selected" : ""} ${relation.recommended ? "is-recommended" : ""}`} style={{ left: `${relation.accessibilityScore}%`, top: `${100 - relation.potentialScore}%` }} onClick={() => chooseRoute(route)} aria-pressed={active} aria-label={`${rank + 1}. ${route.position}, ${impactLabel(relation.impactType)}, ${isEn ? "accessibility" : "доступность"} ${relation.accessibilityScore}, ${isEn ? "potential" : "потенциал"} ${relation.potentialScore}, ${horizonLabel(relation.horizon)}`}><span className="position-map-node-dot" /><span className="position-map-node-copy"><small>#{rank + 1} · {relation.recommended ? (isEn ? "RECOMMENDED" : "РЕКОМЕНДУЕМАЯ") : impactLabel(relation.impactType).toUpperCase()}</small><strong>{coords?.shortTitle ?? route.position}</strong><em className={STATUS_CLASS[route.window] ?? "position-map-status-open"}>{route.window}</em></span></button>;
+                  })}
+                </div>
+                <div className="position-map-legend"><span><i className="position-map-status-open" /> {isEn ? "Window open" : "Окно открыто"}</span><span><i className="position-map-status-narrowing" /> {isEn ? "Window narrowing" : "Окно сужается"}</span><span className="position-map-caption">{isEn ? "On mobile, the map becomes a ranked list with the same data." : "На mobile карта заменяется ранжированным списком с теми же данными."}</span></div>
+              </section>
+              <aside className="position-map-detail" aria-live="polite" data-role="position-relation-detail">
+                <div className="position-map-detail-kicker"><span>{selectedRelation?.recommended ? (isEn ? "RECOMMENDED POSITION" : "РЕКОМЕНДУЕМАЯ ПОЗИЦИЯ") : (isEn ? "ALTERNATIVE" : "АЛЬТЕРНАТИВА")}</span><span>SRT-{selected.level}</span></div>
+                <h2>{selected.position}</h2>
+                <div className="position-map-detail-status"><span>{isEn ? "Impact" : "Влияние"}: {selectedRelation ? impactLabel(selectedRelation.impactType) : "—"}</span><span>{selectedRelation ? horizonLabel(selectedRelation.horizon) : "—"}</span></div>
+                <div className="position-map-detail-section"><h3>{selectedRelation?.recommended ? (isEn ? "Why recommended" : "Почему рекомендована") : (isEn ? "Why consider it" : "Почему рассматриваем")}</h3><p>{selectedRelation?.whyRecommended ?? selectedRelation?.causalClaim}</p><p className="position-card-meta">{isEn ? "Counterargument" : "Контраргумент"}: {selectedRelation?.counterargument}</p></div>
+                <div className="position-score-grid"><div><span>{isEn ? "Potential" : "Потенциал"}</span><strong>{selectedRelation?.potentialScore ?? "—"}{selectedRelation && "/100"}</strong></div><div><span>{isEn ? "Accessibility" : "Доступность"}</span><strong>{selectedRelation?.accessibilityScore ?? "—"}{selectedRelation && "/100"}</strong></div><div><span>{isEn ? "Relevance" : "Релевантность"}</span><strong>{selectedRelation?.relevanceScore ?? "—"}{selectedRelation && "/100"}</strong></div></div>
+                <details className="position-score-method"><summary>{isEn ? "How scores are calculated" : "Как получены оценки"}</summary><p>{isEn ? "Potential and accessibility come from the relation API. A recommendation requires relevance ≥60, confidence of medium or higher, a measurable action and an outcome criterion." : "Потенциал и доступность публикуются relation API. Рекомендация возможна только при relevance ≥60, confidence не ниже medium, измеримом действии и критерии результата."}</p></details>
+                <div className="position-map-detail-section"><div className="position-map-fit-label"><h3>{isEn ? "First action" : "Первое действие"}</h3><strong>{selected.timeToActionMinutes} {isEn ? "min" : "мин"}</strong></div><p>{selected.firstAction}</p><p className="position-card-meta">{isEn ? "Artifact" : "Артефакт"}: {selected.output}</p></div>
+                <div className="position-map-detail-section position-map-resource"><Database className="h-6 w-6" /><div><h3>{isEn ? "Key resource" : "Ключевой ресурс"}</h3><strong>{routeResource(selected)}</strong><p>{selected.resourceGap.description}</p></div></div>
+                <div className="position-map-detail-section position-map-risk"><ShieldAlert className="h-6 w-6" /><div><h3>{isEn ? "Main risk" : "Основной риск"}</h3><strong>{selectedRelation?.counterargument}</strong><p>{isEn ? "Choosing an alternative over the recommendation is a normal comparison outcome." : "Выбор альтернативы вместо рекомендации — нормальный сценарий сравнения."}</p></div></div>
+                <button type="button" className="position-map-primary" onClick={selectPosition}>{isEn ? "Select position" : "Выбрать позицию"} <ArrowRight className="h-4 w-4" /></button>
+              </aside>
+            </div>
+          )
         )}
 
         {step === 3 && (
@@ -378,14 +521,14 @@ export default function Positions() {
                 {checklist.map((item, index) => <div key={item} className={answers[item] === true ? "is-ready" : answers[item] === false ? "is-missing" : ""}><span className="position-assessment-number">{index + 1}</span><strong>{item}</strong><div><button type="button" aria-pressed={answers[item] === true} onClick={() => setAnswers((current) => ({ ...current, [item]: true }))}>Есть</button><button type="button" aria-pressed={answers[item] === false} onClick={() => setAnswers((current) => ({ ...current, [item]: false }))}>Нет</button></div></div>)}
               </div>
             </section>
-            <aside className="position-stage-aside position-readiness-card"><p>ГОТОВНОСТЬ</p><h3>{Math.round((readyCount / checklist.length) * 100)}%</h3><span>Подтверждено {readyCount} из {checklist.length} требований</span><div className="position-map-fit-track"><span style={{ width: `${(readyCount / checklist.length) * 100}%` }} /></div><small>{assessmentComplete ? (missing.length ? `В маршрут войдут ${missing.length} ресурсных разрыва` : "Можно начинать первое действие") : `Осталось оценить: ${checklist.length - answeredCount}`}</small><button className="position-map-primary" disabled={!assessmentComplete} onClick={() => goTo(6)} data-umami-event="position-brief-created" data-umami-event-place={place.id} data-umami-event-position={selected.id} data-umami-event-ready={readyCount} data-umami-event-total={checklist.length}>Сформировать бриф <ArrowRight /></button></aside>
+            <aside className="position-stage-aside position-readiness-card"><p>ГОТОВНОСТЬ</p><h3>{Math.round((readyCount / checklist.length) * 100)}%</h3><span>Подтверждено {readyCount} из {checklist.length} требований</span><div className="position-map-fit-track"><span style={{ width: `${(readyCount / checklist.length) * 100}%` }} /></div><small>{assessmentComplete ? (missing.length ? `В маршрут войдут ${missing.length} ресурсных разрыва` : "Можно начинать первое действие") : `Осталось оценить: ${checklist.length - answeredCount}`}</small><button className="position-map-primary" disabled={!assessmentComplete} onClick={() => goTo(6)} data-umami-event="position-brief-created">Сформировать бриф <ArrowRight /></button></aside>
           </div>
         )}
 
         {step === 6 && (
           <div className="position-stage-layout position-brief-layout">
             <section className="position-stage-main"><p className="position-stage-kicker">ШАГ 6 · ГОТОВЫЙ БРИФ</p><h2>Маршрут освоения позиции собран</h2><p className="position-stage-lead">Eken получит контекст места СРТ, контракт позиции, требования, результат самооценки и первое продуктивное действие.</p><div className="position-route-ledger"><span>Место <strong>{place.id}</strong></span><ArrowRight /><span>Позиция <strong>{selected.id}</strong></span><ArrowRight /><span>Маршрут <strong>{journeyId.slice(0, 8)}</strong></span></div><pre className="position-brief-preview">{brief}</pre></section>
-            <aside className="position-stage-aside position-launch-card"><BookOpen /><p>ПЕРЕДАЧА В EKEN</p><h3>{selected.position}</h3><span>{missing.length ? `Закрыть ${missing.length} разрыва и перейти к первому действию` : "Закрепить маршрут и перейти к первому действию"}</span><div className="position-time"><Clock3 /><span><small>Первое действие</small><strong>≤ {selected.timeToActionMinutes} мин</strong></span></div><a href={ekenUrl} target="_blank" rel="noreferrer" data-umami-event="position-eken-handoff" data-umami-event-place={place.id} data-umami-event-position={selected.id} data-umami-event-route={journeyId} className="position-map-primary">Начать освоение позиции <ArrowRight /></a><button type="button" onClick={copyBrief} className="position-copy-brief" data-umami-event="position-brief-copied" data-umami-event-place={place.id} data-umami-event-position={selected.id}>{copied ? <Check /> : <Copy />}{copied ? "Бриф скопирован" : "Копировать бриф"}</button></aside>
+            <aside className="position-stage-aside position-launch-card"><BookOpen /><p>ПЕРЕДАЧА В EKEN</p><h3>{selected.position}</h3><span>{missing.length ? `Закрыть ${missing.length} разрыва и перейти к первому действию` : "Закрепить маршрут и перейти к первому действию"}</span><div className="position-time"><Clock3 /><span><small>Первое действие</small><strong>≤ {selected.timeToActionMinutes} мин</strong></span></div><a href={ekenUrl} target="_blank" rel="noreferrer" data-umami-event="position-eken-handoff" className="position-map-primary">Начать освоение позиции <ArrowRight /></a><button type="button" onClick={copyBrief} className="position-copy-brief" data-umami-event="position-brief-copied">{copied ? <Check /> : <Copy />}{copied ? "Бриф скопирован" : "Копировать бриф"}</button></aside>
           </div>
         )}
       </main>
