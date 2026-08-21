@@ -16,7 +16,7 @@ const api = new Function(
   "document",
   "window",
   "crypto",
-  `${source}; return { createDefaultToolPractice, buildToolPracticeRoute, stableToolId };`,
+  `${source}; return { createDefaultToolPractice, buildToolPracticeRoute, stableToolId, buildModelTestBrief, MODEL_TEST_TASKS };`,
 )(documentStub, windowStub, globalThis.crypto);
 
 const data = JSON.parse(fs.readFileSync(toolsPath, "utf8"));
@@ -31,6 +31,31 @@ for (const level of data.levels ?? []) {
 
 const ids = new Set();
 const errors = [];
+
+const modelTaskEntries = Object.entries(api.MODEL_TEST_TASKS);
+if (modelTaskEntries.length !== 5) errors.push(`тест модели: ожидается 5 вариантов задачи, получено ${modelTaskEntries.length}`);
+if (!api.MODEL_TEST_TASKS.custom || api.MODEL_TEST_TASKS.custom.label !== "Вписать свою задачу") {
+  errors.push("тест модели: отсутствует единственный явный вариант собственной задачи");
+}
+for (const [taskId, task] of modelTaskEntries.filter(([taskId]) => taskId !== "custom")) {
+  const brief = api.buildModelTestBrief(taskId);
+  if (!task.label || !brief?.objective || !brief?.realInput || !brief?.successCriterion) {
+    errors.push(`тест модели: вариант ${taskId} не создаёт полный готовый бриф`);
+  }
+}
+if (api.buildModelTestBrief("custom", "", "") !== null) {
+  errors.push("тест модели: пустая собственная задача должна блокировать маршрут");
+}
+const customBrief = api.buildModelTestBrief("custom", "Найти риски", "Описание процесса");
+if (customBrief?.objective !== "Найти риски" || customBrief?.realInput !== "Описание процесса") {
+  errors.push("тест модели: собственная задача или материал потеряны");
+}
+if (!html.includes('role="radiogroup"') || !html.includes('role="radio"') || !html.includes('Тест пройден, если')) {
+  errors.push("тест модели: нет доступного выбора задачи или понятного критерия результата");
+}
+if (html.includes("По каким признакам ответ подходит?")) {
+  errors.push("тест модели: осталась непонятная формулировка критерия");
+}
 for (const tool of tools) {
   const practice = api.createDefaultToolPractice(tool);
   const brief = {

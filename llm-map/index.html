@@ -297,6 +297,23 @@
     }
     .practice-field textarea:focus { border-color:#3cae82; box-shadow:0 0 0 3px rgba(60,174,130,.10); }
     .practice-field textarea::placeholder { color:#5f6c78; }
+    .practice-task-question { color:#cbd4dd; font-size:12px; font-weight:700; margin:0; }
+    .practice-task-hint { color:#788592; font-size:11px; line-height:1.5; margin:-4px 0 0; }
+    .practice-task-options { display:grid; gap:8px; }
+    .practice-task-option {
+      display:grid; grid-template-columns:22px 1fr; gap:10px; align-items:start; width:100%; text-align:left;
+      border:1px solid #303842; border-radius:10px; background:#11161b; color:#d5dde5; padding:11px 12px;
+      font:600 12px/1.45 Inter,sans-serif; cursor:pointer; transition:border-color .18s, background .18s, box-shadow .18s;
+    }
+    .practice-task-option:hover { border-color:#466153; background:#131d19; }
+    .practice-task-option[aria-checked="true"] { border-color:#3cae82; background:#10251d; box-shadow:0 0 0 2px rgba(60,174,130,.10); color:#effbf6; }
+    .practice-task-radio { display:grid; place-items:center; width:18px; height:18px; margin-top:1px; border:1px solid #52606c; border-radius:50%; }
+    .practice-task-option[aria-checked="true"] .practice-task-radio { border:5px solid #65efc0; background:#0d1713; }
+    .practice-custom-fields { display:grid; gap:12px; padding:12px; border:1px solid #303842; border-radius:10px; background:#11161b; }
+    .practice-custom-fields[hidden] { display:none; }
+    .practice-success-card { border:1px solid #2d5848; border-radius:10px; background:#10211b; padding:12px; }
+    .practice-success-card span { display:block; color:#65efc0; font-size:10px; font-weight:750; letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px; }
+    .practice-success-card p { color:#c8ded5; font-size:12px; line-height:1.55; margin:0; }
     .practice-plan { display:grid; gap:10px; margin:18px 0; }
     .practice-plan-step { display:grid; grid-template-columns:30px 1fr; gap:11px; padding:12px; border:1px solid #303842; border-radius:10px; background:#12171c; }
     .practice-plan-step > b { display:grid; place-items:center; width:28px; height:28px; border:1px solid #3cae82; border-radius:50%; color:#65efc0; font-size:11px; }
@@ -723,6 +740,36 @@ const ROLE_LABELS = {
   marketer: 'Маркетолог', developer: 'Разработчик', analyst: 'Аналитик',
   manager: 'Менеджер', designer: 'Дизайнер', researcher: 'Исследователь'
 };
+const MODEL_TEST_TASKS = {
+  summary: {
+    label: 'Сделать краткое резюме',
+    objective: 'Сократить материал до пяти ключевых тезисов и одного следующего шага',
+    realInput: 'Команда получает много обновлений по AI-инструментам, но решения откладываются: источники сохраняют в чатах, сравнение ведут без единых критериев, а ответственный за следующий шаг обычно не назначен.',
+    successCriterion: 'Есть пять содержательных тезисов и один конкретный следующий шаг; новых фактов, которых нет в материале, не добавлено.'
+  },
+  compare: {
+    label: 'Сравнить два варианта',
+    objective: 'Сравнить два подхода и рекомендовать один для короткого пилота',
+    realInput: 'Вариант А: использовать готовый AI-сервис, запуск за 1 день, данные обрабатываются у поставщика. Вариант Б: собрать внутренний прототип, запуск за 2 недели, данные остаются в контуре компании.',
+    successCriterion: 'Оба варианта сравнены по времени, риску данных и усилиям; дана одна рекомендация с объяснением.'
+  },
+  risks: {
+    label: 'Найти риски и слабые места',
+    objective: 'Найти главные риски предложения и указать, что проверить до запуска',
+    realInput: 'Предлагается подключить AI-агента к входящей почте и разрешить ему самостоятельно готовить ответы клиентам без обязательной проверки сотрудником.',
+    successCriterion: 'Названы минимум три конкретных риска и для каждого предложена проверка или ограничение.'
+  },
+  draft: {
+    label: 'Подготовить рабочий черновик',
+    objective: 'Подготовить короткий черновик ответа руководителю с решением и следующим шагом',
+    realInput: 'Руководитель спрашивает, стоит ли команде тестировать новую AI-модель. Бюджет на пилот ограничен, решение нужно принять на этой неделе.',
+    successCriterion: 'В черновике есть ясная рекомендация, аргумент и следующий шаг; текст можно отправить после быстрой проверки.'
+  },
+  custom: {
+    label: 'Вписать свою задачу',
+    successCriterion: 'Результат решает указанную задачу, опирается на переданный материал и не содержит выдуманных фактов.'
+  }
+};
 let TOOL_PRACTICES = {
   'Browser Use / Stagehand': {
     id: 'browser-use-stagehand',
@@ -749,6 +796,7 @@ let EKEN_SCENARIOS = [];
 let activePracticeContext = {};
 let activePracticeId = null;
 let activePracticeBrief = null;
+let activeModelTaskId = null;
 let navigatorRecommendationTools = [];
 
 // ========== STATE ==========
@@ -1146,8 +1194,50 @@ function practiceOutcome(tool, practice) {
 
 function practiceActionLabel(tool, practice) {
   return isModelEntry(tool)
-    ? `Проверить на своём материале · ${practice.duration} мин`
+    ? `Проверить на задаче · ${practice.duration} мин`
     : `Освоить на своей задаче · ${practice.duration} мин`;
+}
+
+function buildModelTestBrief(taskId, customObjective = '', customInput = '') {
+  const task = MODEL_TEST_TASKS[taskId];
+  if (!task) throw new Error('Неизвестная задача теста модели');
+  if (taskId === 'custom') {
+    const objective = customObjective.trim();
+    const realInput = customInput.trim();
+    if (!objective || !realInput) return null;
+    return { objective, realInput, successCriterion: task.successCriterion };
+  }
+  return { objective: task.objective, realInput: task.realInput, successCriterion: task.successCriterion };
+}
+
+function selectModelTestTask(taskId) {
+  if (!MODEL_TEST_TASKS[taskId]) return;
+  activeModelTaskId = taskId;
+  document.querySelectorAll('[data-model-task]').forEach(option => {
+    const selected = option.dataset.modelTask === taskId;
+    option.setAttribute('aria-checked', selected ? 'true' : 'false');
+    option.tabIndex = selected ? 0 : -1;
+  });
+  const customFields = document.getElementById('practice-custom-task');
+  if (customFields) customFields.hidden = taskId !== 'custom';
+  const criterion = document.getElementById('practice-success-preview');
+  if (criterion) criterion.textContent = MODEL_TEST_TASKS[taskId].successCriterion;
+  if (taskId === 'custom') document.getElementById('practice-custom-objective')?.focus();
+}
+
+function handleModelTaskKeydown(event, taskId) {
+  const taskIds = Object.keys(MODEL_TEST_TASKS);
+  const currentIndex = taskIds.indexOf(taskId);
+  let nextIndex = currentIndex;
+  if (event.key === 'ArrowDown' || event.key === 'ArrowRight') nextIndex = (currentIndex + 1) % taskIds.length;
+  else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + taskIds.length) % taskIds.length;
+  else if (event.key === 'Home') nextIndex = 0;
+  else if (event.key === 'End') nextIndex = taskIds.length - 1;
+  else return;
+  event.preventDefault();
+  const nextId = taskIds[nextIndex];
+  selectModelTestTask(nextId);
+  document.querySelector(`[data-model-task="${nextId}"]`)?.focus();
 }
 
 function openPracticeDrawer(practiceId, context = {}) {
@@ -1158,39 +1248,67 @@ function openPracticeDrawer(practiceId, context = {}) {
   const outcome = practiceOutcome(tool, practice);
   activePracticeContext = context;
   activePracticeId = practiceId;
+  activeModelTaskId = modelEntry ? 'summary' : null;
   const starterInputs = context.starterInputs?.length ? context.starterInputs : practice.starterInputs;
-  activePracticeBrief = {
-    objective: practice.promise,
-    realInput: context.object || '',
-    successCriterion: practice.successCriteria.join('; ')
-  };
+  activePracticeBrief = modelEntry
+    ? buildModelTestBrief(activeModelTaskId)
+    : {
+        objective: practice.promise,
+        realInput: context.object || '',
+        successCriterion: practice.successCriteria.join('; ')
+      };
   const body = document.getElementById('practice-drawer-body');
   body.innerHTML = `
     <span class="practice-role">${escapeHtml(tool.name)} · ${modelEntry ? 'тест модели' : 'практика'}</span>
-    <h2 id="practice-drawer-title">${modelEntry ? 'Проверить модель на своём материале' : 'Освоить инструмент на своей задаче'}</h2>
+    <h2 id="practice-drawer-title">${modelEntry ? 'Проверить модель на реальной задаче' : 'Освоить инструмент на своей задаче'}</h2>
     <span class="practice-duration">${practice.duration} мин</span>
     <p class="practice-brief-intro">${modelEntry
-      ? 'Одна задача, один реальный материал, один критерий. EkenLab поможет сохранить воспроизводимый промпт и принять решение по результату.'
+      ? 'Выберите готовую задачу или впишите свою. Для каждой заранее показано, по какому результату оценивать модель.'
       : 'Проверьте три поля. Карта соберёт короткий маршрут, а EkenLab поможет выполнить его и получить проверяемый результат.'}</p>
-    <div class="practice-brief">
-      <label class="practice-field">${modelEntry ? 'Какой результат хотите получить от' : 'Что хотите сделать с помощью'} ${escapeHtml(tool.name)}?
-        <textarea id="practice-objective" placeholder="Опишите один полезный результат"></textarea>
-      </label>
-      <label class="practice-field">${modelEntry ? 'Ваш материал для теста' : 'Реальный пример для первой проверки'}
-        <textarea id="practice-real-input" placeholder="${escapeHtml(starterInputs?.join(' · ') || 'Вставьте исходный материал или опишите задачу')}"></textarea>
-      </label>
-      <label class="practice-field">${modelEntry ? 'По каким признакам ответ подходит?' : 'Когда результат можно считать рабочим?'}
-        <textarea id="practice-success" placeholder="Укажите наблюдаемый критерий"></textarea>
-      </label>
-    </div>
+    ${modelEntry ? `
+      <div class="practice-brief">
+        <p class="practice-task-question" id="practice-task-question">Что поручить модели?</p>
+        <p class="practice-task-hint">Выберите готовую задачу — ничего заполнять не потребуется.</p>
+        <div class="practice-task-options" role="radiogroup" aria-labelledby="practice-task-question">
+          ${Object.entries(MODEL_TEST_TASKS).map(([id, task]) => `
+            <button type="button" class="practice-task-option" role="radio" aria-checked="${id === activeModelTaskId}" tabindex="${id === activeModelTaskId ? '0' : '-1'}" data-model-task="${id}" onclick="selectModelTestTask('${id}')" onkeydown="handleModelTaskKeydown(event, '${id}')">
+              <span class="practice-task-radio" aria-hidden="true"></span><span>${escapeHtml(task.label)}</span>
+            </button>`).join('')}
+        </div>
+        <div class="practice-custom-fields" id="practice-custom-task" hidden>
+          <label class="practice-field">Что должна сделать модель?
+            <textarea id="practice-custom-objective" placeholder="Например: найти противоречия и предложить решение"></textarea>
+          </label>
+          <label class="practice-field">С каким материалом работать?
+            <textarea id="practice-custom-input" placeholder="Вставьте текст, данные или опишите исходную ситуацию"></textarea>
+          </label>
+        </div>
+        <div class="practice-success-card">
+          <span>Тест пройден, если</span>
+          <p id="practice-success-preview">${escapeHtml(MODEL_TEST_TASKS[activeModelTaskId].successCriterion)}</p>
+        </div>
+      </div>` : `
+      <div class="practice-brief">
+        <label class="practice-field">Что хотите сделать с помощью ${escapeHtml(tool.name)}?
+          <textarea id="practice-objective" placeholder="Опишите один полезный результат"></textarea>
+        </label>
+        <label class="practice-field">Реальный пример для первой проверки
+          <textarea id="practice-real-input" placeholder="${escapeHtml(starterInputs?.join(' · ') || 'Вставьте исходный материал или опишите задачу')}"></textarea>
+        </label>
+        <label class="practice-field">Когда результат можно считать рабочим?
+          <textarea id="practice-success" placeholder="Укажите наблюдаемый критерий"></textarea>
+        </label>
+      </div>`}
     <p class="practice-outcome"><strong>На выходе:</strong> ${escapeHtml(outcome)}</p>
     <button type="button" class="practice-launch" onclick="createToolPracticePlan('${practice.id}')" data-umami-event="llm-practice-plan" data-umami-event-tool="${practice.id}">Сформировать маршрут</button>
     <button type="button" class="practice-secondary" onclick="closePracticeDrawer()">Сменить сценарий</button>
     ${tool.url ? `<a class="practice-provider" href="${escapeHtml(tool.url)}" target="_blank" rel="noreferrer">Открыть сайт инструмента</a>` : ''}
     <p class="practice-footnote">Не курс: маршрут строится вокруг вашего материала</p>`;
-  document.getElementById('practice-objective').value = activePracticeBrief.objective;
-  document.getElementById('practice-real-input').value = activePracticeBrief.realInput;
-  document.getElementById('practice-success').value = activePracticeBrief.successCriterion;
+  if (!modelEntry) {
+    document.getElementById('practice-objective').value = activePracticeBrief.objective;
+    document.getElementById('practice-real-input').value = activePracticeBrief.realInput;
+    document.getElementById('practice-success').value = activePracticeBrief.successCriterion;
+  }
   const backdrop = document.getElementById('practice-backdrop');
   const drawer = document.getElementById('practice-drawer');
   backdrop.classList.add('is-open');
@@ -1212,6 +1330,7 @@ function closePracticeDrawer() {
   activePracticeContext = {};
   activePracticeId = null;
   activePracticeBrief = null;
+  activeModelTaskId = null;
 }
 
 function getPracticeIntent(practice) {
@@ -1240,7 +1359,7 @@ function buildToolPracticeRoute(tool, practice, brief) {
       context: practice.whyNow || practice.change
     },
     brief: {
-      title: modelEntry ? `Проверить ${tool.name} на реальном материале` : `Освоить ${tool.name} на реальной задаче`,
+      title: modelEntry ? `Проверить ${tool.name} на реальной задаче` : `Освоить ${tool.name} на реальной задаче`,
       objective: brief.objective,
       realInput: brief.realInput,
       successCriterion: brief.successCriterion,
@@ -1266,11 +1385,21 @@ function buildToolPracticeRoute(tool, practice, brief) {
 function createToolPracticePlan(practiceId) {
   const entry = getPracticeEntry(practiceId);
   if (!entry) return;
-  const objective = document.getElementById('practice-objective')?.value.trim();
-  const realInput = document.getElementById('practice-real-input')?.value.trim();
-  const successCriterion = document.getElementById('practice-success')?.value.trim();
+  const modelEntry = isModelEntry(entry.tool);
+  const modelBrief = modelEntry
+    ? buildModelTestBrief(
+        activeModelTaskId,
+        document.getElementById('practice-custom-objective')?.value || '',
+        document.getElementById('practice-custom-input')?.value || ''
+      )
+    : null;
+  const objective = modelEntry ? modelBrief?.objective : document.getElementById('practice-objective')?.value.trim();
+  const realInput = modelEntry ? modelBrief?.realInput : document.getElementById('practice-real-input')?.value.trim();
+  const successCriterion = modelEntry ? modelBrief?.successCriterion : document.getElementById('practice-success')?.value.trim();
   if (!objective || !realInput || !successCriterion) {
-    const missing = !objective ? 'practice-objective' : !realInput ? 'practice-real-input' : 'practice-success';
+    const missing = modelEntry
+      ? (!objective ? 'practice-custom-objective' : 'practice-custom-input')
+      : (!objective ? 'practice-objective' : !realInput ? 'practice-real-input' : 'practice-success');
     document.getElementById(missing)?.focus();
     return;
   }
@@ -1288,7 +1417,7 @@ function renderToolPracticePlan(entry) {
     <span class="practice-role">${escapeHtml(tool.name)} · ${practice.duration} мин</span>
     <div class="practice-plan-ready">
       <span>Маршрут готов</span>
-      <h3>${modelEntry ? 'Проверить' : 'Освоить'} ${escapeHtml(tool.name)} ${modelEntry ? 'на реальном материале' : 'на реальной задаче'}</h3>
+      <h3>${modelEntry ? 'Проверить' : 'Освоить'} ${escapeHtml(tool.name)} на реальной задаче</h3>
       <p>На выходе: ${escapeHtml(outcome)}</p>
     </div>
     <div class="practice-plan">
@@ -1304,11 +1433,20 @@ function renderToolPracticePlan(entry) {
 function editToolPracticeBrief() {
   if (!activePracticeId) return;
   const savedBrief = activePracticeBrief;
+  const savedModelTaskId = activeModelTaskId;
   openPracticeDrawer(activePracticeId, activePracticeContext);
   activePracticeBrief = savedBrief;
-  document.getElementById('practice-objective').value = savedBrief.objective;
-  document.getElementById('practice-real-input').value = savedBrief.realInput;
-  document.getElementById('practice-success').value = savedBrief.successCriterion;
+  if (savedModelTaskId) {
+    selectModelTestTask(savedModelTaskId);
+    if (savedModelTaskId === 'custom') {
+      document.getElementById('practice-custom-objective').value = savedBrief.objective;
+      document.getElementById('practice-custom-input').value = savedBrief.realInput;
+    }
+  } else {
+    document.getElementById('practice-objective').value = savedBrief.objective;
+    document.getElementById('practice-real-input').value = savedBrief.realInput;
+    document.getElementById('practice-success').value = savedBrief.successCriterion;
+  }
 }
 
 function launchEkenPractice(practiceId) {
