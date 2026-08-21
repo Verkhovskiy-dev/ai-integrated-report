@@ -1,4 +1,5 @@
 import { getPlaceIdsForPositionRoute } from "./ekenRouteRegistry";
+import { buildEkenIntegrationUrl } from "./ekenIntegrationUrl";
 
 export type PositionIntent = "expert" | "business" | "invest";
 
@@ -654,7 +655,7 @@ export function buildEkenPayload(
 }
 
 export function buildEkenUrl(payload: EkenPositionRouteV1) {
-  return `https://app.ekenlab.com/integrations/verkhovskiy#route=${encodeURIComponent(JSON.stringify(payload))}`;
+  return buildEkenIntegrationUrl(payload);
 }
 
 export function buildBriefText(route: PositionRoute, intent: PositionIntent, place?: SrtPlace) {

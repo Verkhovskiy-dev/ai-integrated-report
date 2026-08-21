@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export interface EkenProductiveScenario {
   surface: string;
   sourceId: string;
@@ -19,9 +21,86 @@ export interface EkenProductiveScenario {
   prerequisites: string[];
   successCriteria: string[];
   competencies: string[];
+  recommendedIntent?: LearningRouteIntent;
+  instrumentKind?: LearningInstrumentKind;
+  existingTool?: string;
   sourceFingerprint?: string;
   managedBy?: "manual" | "route-system";
   generatedAt?: string;
+}
+
+export type LearningRouteIntent =
+  | "build_tool"
+  | "master_tool"
+  | "improve_tool"
+  | "choose_tool"
+  | "enter_position"
+  | "team_adoption";
+
+export type LearningInstrumentKind =
+  | "agent"
+  | "workflow"
+  | "assistant"
+  | "platform"
+  | "method"
+  | "position";
+
+export interface LearningBriefDraft {
+  intent: LearningRouteIntent;
+  title: string;
+  objective: string;
+  realInput: string;
+  successCriterion: string;
+  constraints: string[];
+  instrumentName: string;
+  instrumentKind: LearningInstrumentKind;
+  existingTool?: string;
+}
+
+export const verkhovskiyHandoffV2Schema = z.object({
+  schemaVersion: z.literal("2.0"),
+  routeId: z.string().min(1).max(160).regex(/^[A-Za-z0-9._:-]+$/),
+  scenarioId: z.string().min(1).max(160),
+  source: z.object({
+    surface: z.enum(["hero", "event", "insight", "trend", "model", "position"]),
+    sourceId: z.string().min(1).max(200),
+    title: z.string().trim().min(1).max(500),
+    url: z.string().url().max(2_000),
+    reportDate: z.string().date(),
+  }),
+  audience: z.object({
+    viewMode: z.enum(["expert", "executive"]),
+    role: z.string().trim().min(1).max(200).optional(),
+    locale: z.enum(["ru", "en"]),
+  }),
+  brief: z.object({
+    objective: z.string().trim().min(1).max(4_000),
+    expectedArtifact: z.string().trim().min(1).max(4_000),
+    recipient: z.string().trim().min(1).max(500),
+    acceptanceCriterion: z.string().trim().min(1).max(4_000),
+    estimatedMinutes: z.number().int().positive().max(24 * 60),
+    evidence: z.array(z.string().trim().min(1).max(2_000)).max(20),
+  }),
+  createdAt: z.string().datetime(),
+  expiresAt: z.string().datetime(),
+}).superRefine((payload, context) => {
+  if (Date.parse(payload.expiresAt) <= Date.parse(payload.createdAt)) {
+    context.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["expiresAt"],
+      message: "expiresAt must be later than createdAt",
+    });
+  }
+});
+
+export type EkenLearningRouteV2 = z.infer<typeof verkhovskiyHandoffV2Schema>;
+
+export interface LocalLearningRoutePlan {
+  title: string;
+  intentLabel: string;
+  outcome: string;
+  steps: Array<{ title: string; description: string }>;
+  text: string;
 }
 
 export interface EkenScenarioRegistry {
@@ -46,6 +125,9 @@ export interface DashboardRouteSource {
   reportDate?: string;
   from?: string;
   to?: string;
+  viewMode?: "expert" | "executive";
+  audienceRole?: string;
+  locale?: "ru" | "en";
 }
 
 export const DASHBOARD_FOCUS_FALLBACK: EkenProductiveScenario = {
@@ -77,7 +159,184 @@ export const DASHBOARD_FOCUS_FALLBACK: EkenProductiveScenario = {
 
 function newScenarioRouteId(scenarioId: string) {
   const suffix = globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
-  return `dashboard-${scenarioId}-${suffix}`;
+  const safeScenarioId = scenarioId
+    .toLowerCase()
+    .replace(/[^a-z0-9._:-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 48) || "scenario";
+  return `dashboard-${safeScenarioId}-${suffix}`;
+}
+
+export const LEARNING_INTENT_COPY: Record<LearningRouteIntent, { label: string; hint: string }> = {
+  build_tool: { label: "Создать инструмент", hint: "Собрать рабочий AI-сценарий под повторяемую задачу" },
+  master_tool: { label: "Освоить инструмент", hint: "Научиться пользоваться им на полезном результате" },
+  improve_tool: { label: "Улучшить инструмент", hint: "Найти слабое место и доказать прирост качества" },
+  choose_tool: { label: "Выбрать инструмент", hint: "Сравнить варианты на одном реальном примере" },
+  enter_position: { label: "Освоить позицию", hint: "Выполнить первое доказанное действие из позиции" },
+  team_adoption: { label: "Встроить в команду", hint: "Запустить инструмент в процессе с владельцем и контролем" },
+};
+
+function intentObjective(intent: LearningRouteIntent, scenario: EkenProductiveScenario) {
+  const action = scenario.promise.toLowerCase();
+  switch (intent) {
+    case "master_tool":
+      return `Освоить AI-инструмент через реальный результат: ${action}`;
+    case "improve_tool":
+      return `Улучшить существующий AI-инструмент и доказать прирост на задаче: ${action}`;
+    case "choose_tool":
+      return `Сравнить AI-инструменты на одном реальном примере и выбрать подходящий для задачи: ${action}`;
+    case "enter_position":
+      return `Выполнить первое доказанное действие из позиции «${scenario.position}»: ${action}`;
+    case "team_adoption":
+      return `Встроить AI-инструмент в командный процесс с владельцем и контролем: ${action}`;
+    default:
+      return `Создать AI-инструмент, который помогает: ${action}`;
+  }
+}
+
+export function learningOutcomeForIntent(intent: LearningRouteIntent, scenario: EkenProductiveScenario) {
+  switch (intent) {
+    case "master_tool":
+      return `рабочий результат, созданный выбранным инструментом, и повторяемый сценарий его использования: ${scenario.artifact}`;
+    case "improve_tool":
+      return `улучшенная версия инструмента и сравнение «до / после» на реальном примере: ${scenario.artifact}`;
+    case "choose_tool":
+      return `сравнение вариантов, обоснованный выбор и минимальный прототип: ${scenario.artifact}`;
+    case "enter_position":
+      return `первое принятое действие из позиции и доказательство результата: ${scenario.artifact}`;
+    case "team_adoption":
+      return `рабочий командный процесс с владельцем, ручным контролем и проверенным результатом: ${scenario.artifact}`;
+    default:
+      return `рабочий AI-сценарий и проверенный результат: ${scenario.artifact}`;
+  }
+}
+
+export function buildLearningBriefDraft(
+  source: DashboardRouteSource,
+  scenario: EkenProductiveScenario,
+): LearningBriefDraft {
+  const input = source.sourceText?.trim() || `Карточка «${source.sourceName}» и один реальный пример из моего процесса`;
+  return {
+    intent: scenario.recommendedIntent ?? "build_tool",
+    title: `Создать инструмент: ${scenario.sourceName}`,
+    objective: intentObjective(scenario.recommendedIntent ?? "build_tool", scenario),
+    realInput: input,
+    successCriterion: scenario.successCriteria.join("; "),
+    constraints: ["Первый рабочий результат на реальном примере", "Ручное подтверждение перед внешним действием"],
+    instrumentName: `AI-инструмент · ${scenario.sourceName}`,
+    instrumentKind: scenario.instrumentKind ?? "workflow",
+    existingTool: scenario.existingTool,
+  };
+}
+
+export function retargetLearningBriefDraft(
+  draft: LearningBriefDraft,
+  intent: LearningRouteIntent,
+  scenario: EkenProductiveScenario,
+): LearningBriefDraft {
+  const kindByIntent: Partial<Record<LearningRouteIntent, LearningInstrumentKind>> = {
+    master_tool: "platform",
+    choose_tool: "platform",
+    enter_position: "position",
+    team_adoption: "workflow",
+  };
+  return {
+    ...draft,
+    intent,
+    objective: intentObjective(intent, scenario),
+    instrumentKind: kindByIntent[intent] ?? scenario.instrumentKind ?? "workflow",
+  };
+}
+
+export function buildLocalLearningRoutePlan(
+  source: DashboardRouteSource,
+  scenario: EkenProductiveScenario,
+  draft: LearningBriefDraft,
+): LocalLearningRoutePlan {
+  const outcome = learningOutcomeForIntent(draft.intent, scenario);
+  const steps = [
+    {
+      title: "Подготовить реальный вход",
+      description: draft.realInput,
+    },
+    {
+      title: "Собрать минимальную рабочую версию",
+      description: draft.objective,
+    },
+    {
+      title: "Проверить и зафиксировать результат",
+      description: draft.successCriterion,
+    },
+  ];
+  const intentLabel = LEARNING_INTENT_COPY[draft.intent].label;
+  const text = [
+    "МАРШРУТ ДЕЙСТВИЯ · VERKHOVSKIY.AI",
+    "",
+    `Сценарий: ${intentLabel}`,
+    `Точка входа: ${source.sourceName}`,
+    `Цель: ${draft.objective}`,
+    `Ожидаемый результат: ${outcome}`,
+    `Оценка времени: ${scenario.estimatedMinutes} мин`,
+    "",
+    ...steps.flatMap((step, index) => [
+      `ШАГ ${index + 1}. ${step.title}`,
+      step.description,
+      "",
+    ]),
+    `Ограничения: ${draft.constraints.join("; ")}`,
+  ].join("\n");
+
+  return {
+    title: draft.title,
+    intentLabel,
+    outcome,
+    steps,
+    text,
+  };
+}
+
+export function buildLearningRoutePayload(
+  source: DashboardRouteSource,
+  scenario: EkenProductiveScenario,
+  draft: LearningBriefDraft,
+): EkenLearningRouteV2 {
+  const sourceId = source.sourceId ?? scenario.sourceId;
+  const createdAt = new Date();
+  const surfaceMap: Record<DashboardRouteSurface, EkenLearningRouteV2["source"]["surface"]> = {
+    "dashboard-focus": "hero",
+    "dashboard-news": "event",
+    "dashboard-trend": "trend",
+    "dashboard-shift": "position",
+    "dashboard-insight": "insight",
+  };
+  const payload = {
+    schemaVersion: "2.0",
+    routeId: newScenarioRouteId(scenario.scenarioId),
+    scenarioId: scenario.scenarioId,
+    source: {
+      surface: surfaceMap[source.surface],
+      sourceId,
+      title: scenario.sourceName,
+      url: typeof window === "undefined" ? "https://verkhovskiy.ai/" : window.location.href,
+      reportDate: source.reportDate ?? createdAt.toISOString().slice(0, 10),
+    },
+    audience: {
+      viewMode: source.viewMode ?? "expert",
+      role: source.audienceRole ?? scenario.role,
+      locale: source.locale ?? "ru",
+    },
+    brief: {
+      objective: draft.objective,
+      expectedArtifact: learningOutcomeForIntent(draft.intent, scenario),
+      recipient: scenario.recipientRole,
+      acceptanceCriterion: draft.successCriterion,
+      estimatedMinutes: scenario.estimatedMinutes,
+      evidence: [source.sourceText, draft.realInput, scenario.whyNow].filter((item): item is string => Boolean(item?.trim())),
+    },
+    createdAt: createdAt.toISOString(),
+    expiresAt: new Date(createdAt.getTime() + 30 * 60 * 1_000).toISOString(),
+  };
+  return verkhovskiyHandoffV2Schema.parse(payload);
 }
 
 export function stableRouteSourceId(surface: string, sourceName: string, discriminator = "") {
@@ -246,8 +505,4 @@ export function buildDashboardFocusEkenPayload(
     reportDate,
     level: 8,
   }, scenario);
-}
-
-export function buildEkenScenarioUrl(payload: ReturnType<typeof buildDashboardFocusEkenPayload>) {
-  return `https://app.ekenlab.com/integrations/verkhovskiy#route=${encodeURIComponent(JSON.stringify(payload))}`;
 }

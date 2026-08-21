@@ -151,6 +151,10 @@ export default function FilterBar() {
           )}
         </div>
 
+        <span className="hidden lg:inline text-[9px] text-muted-foreground/70 whitespace-nowrap">
+          {isEn ? "Scope: trends and events" : "Область: тренды и события"}
+        </span>
+
         {/* Level filter toggle */}
         <button
           onClick={() => setShowLevels(!showLevels)}

@@ -12,6 +12,7 @@ import {
 } from "@/data/insightsDataLocalized";
 import { getSrtLevels, REPORT_PERIOD } from "@/data/reportDataLocalized";
 import type { Locale } from "@/contexts/I18nContext";
+import type { ViewMode } from "@/contexts/ViewModeContext";
 
 // ─── Types ───────────────────────────────────────────────────
 interface jsPDFInstance {
@@ -23,7 +24,7 @@ interface jsPDFInstance {
   setDrawColor(r: number, g: number, b: number): void;
   setFillColor(r: number, g: number, b: number): void;
   setLineWidth(width: number): void;
-  text(text: string, x: number, y: number, options?: any): void;
+  text(text: string | string[], x: number, y: number, options?: any): void;
   splitTextToSize(text: string, maxWidth: number): string[];
   rect(x: number, y: number, w: number, h: number, style?: string): void;
   roundedRect(x: number, y: number, w: number, h: number, rx: number, ry: number, style?: string): void;
@@ -356,7 +357,17 @@ class PdfBuilder {
 }
 
 // ─── Main export function ────────────────────────────────────
-export async function generatePdfReport(data: DashboardData, locale: string): Promise<void> {
+export interface PdfReportOptions {
+  viewMode: ViewMode;
+  searchQuery: string;
+  selectedLevels: number[];
+}
+
+export async function generatePdfReport(
+  data: DashboardData,
+  locale: string,
+  options: PdfReportOptions = { viewMode: "expert", searchQuery: "", selectedLevels: [] }
+): Promise<string> {
   // Dynamic imports
   const { jsPDF } = await import("jspdf");
   const { ROBOTO_REGULAR, ROBOTO_BOLD } = await import("@/fonts/robotoFonts");
@@ -420,6 +431,28 @@ export async function generatePdfReport(data: DashboardData, locale: string): Pr
   doc.text(String(data.isLive ? data.archiveReports.length + 1 : REPORT_PERIOD.totalReports), MARGIN_L + 110, b.y + 15);
 
   b.y += 30;
+
+  // Reproducibility metadata: capture the selected product mode and active filters.
+  b.setFont("normal", 7, C.textMuted);
+  const modeLabel = options.viewMode === "executive"
+    ? (isEn ? "Executive" : "Руководитель")
+    : (isEn ? "Expert" : "Эксперт");
+  const filterParts = [
+    options.searchQuery ? `${isEn ? "query" : "запрос"}: “${options.searchQuery}”` : "",
+    options.selectedLevels.length ? `${isEn ? "levels" : "уровни"}: ${options.selectedLevels.join(", ")}` : "",
+  ].filter(Boolean);
+  doc.text(
+    `${isEn ? "Mode" : "Режим"}: ${modeLabel} · ${isEn ? "Filters" : "Фильтры"}: ${filterParts.join("; ") || (isEn ? "none" : "нет")}`,
+    MARGIN_L,
+    b.y
+  );
+  b.y += 5;
+  doc.text(
+    `${isEn ? "Generated" : "Сформировано"}: ${new Date().toLocaleString(locale === "en" ? "en-US" : "ru-RU")}`,
+    MARGIN_L,
+    b.y
+  );
+  b.y += 8;
 
   // Key focus
   if (data.keyFocus) {
@@ -836,6 +869,8 @@ export async function generatePdfReport(data: DashboardData, locale: string): Pr
   // ═══════════════════════════════════════════════════════════
   // Save
   // ═══════════════════════════════════════════════════════════
-  const date = new Date().toISOString().split("T")[0];
-  doc.save(`ai-report-${date}.pdf`);
+  const reportDate = (data.reportDate || new Date().toISOString().split("T")[0]).replace(/[^0-9-]/g, "-");
+  const filename = `verkhovskiy-ai-${options.viewMode}-${locale}-${reportDate}.pdf`;
+  doc.save(filename);
+  return filename;
 }

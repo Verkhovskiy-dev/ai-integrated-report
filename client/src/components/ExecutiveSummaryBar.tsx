@@ -5,13 +5,12 @@
  * i18n support
  */
 import { useEffect, useMemo, useState } from "react";
-import { BarChart3, TrendingUp, Lightbulb, Zap, ArrowRight } from "lucide-react";
+import { BarChart3, TrendingUp, Lightbulb, Zap } from "lucide-react";
+import EkenRouteAction from "@/components/EkenRouteAction";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
 import {
   DASHBOARD_FOCUS_FALLBACK,
-  buildDashboardFocusEkenPayload,
-  buildEkenScenarioUrl,
   type EkenProductiveScenario,
   type EkenScenarioRegistry,
 } from "@/data/ekenScenarioRoutes";
@@ -105,21 +104,6 @@ export default function ExecutiveSummaryBar() {
       ? `${insightsCount} insights \u00b7 ${trendsCount} trends \u00b7 ${linksCount} links`
       : `${insightsCount} ${plural(insightsCount, ["инсайт", "инсайта", "инсайтов"])} \u00b7 ${trendsCount} ${plural(trendsCount, ["тренд", "тренда", "трендов"])} \u00b7 ${linksCount} ${plural(linksCount, ["связь", "связи", "связей"])}`
     : null;
-
-  const startFocusAction = () => {
-    if (!actionText) return;
-    const analytics = (window as Window & {
-      umami?: { track: (event: string, data?: Record<string, string | number>) => void };
-    }).umami;
-    analytics?.track("route_launch", {
-      surface: focusScenario.surface,
-      scenario: focusScenario.scenarioId,
-      source: focusScenario.sourceId,
-    });
-    window.location.href = buildEkenScenarioUrl(
-      buildDashboardFocusEkenPayload(actionText, reportDate, focusScenario),
-    );
-  };
 
   return (
     <section className="border-b border-border/40 bg-gradient-to-r from-card/80 via-card/60 to-card/80 backdrop-blur-sm">
@@ -215,13 +199,16 @@ export default function ExecutiveSummaryBar() {
                 <p className="text-[11px] text-muted-foreground italic">—</p>
               )}
               {actionText && (
-                <button
-                  type="button"
-                  onClick={startFocusAction}
-                  className="inline-flex items-center gap-0.5 mt-1 text-[9px] font-mono text-primary/80 hover:text-primary transition-colors"
-                >
-                  {isEn ? "Turn into action" : "Перейти к действию"} <ArrowRight className="w-2.5 h-2.5" />
-                </button>
+                <EkenRouteAction
+                  compact
+                  className="mt-1"
+                  surface="dashboard-focus"
+                  sourceId={focusScenario.sourceId}
+                  sourceName={focusScenario.sourceName}
+                  sourceText={actionText}
+                  level={8}
+                  reportDate={reportDate}
+                />
               )}
             </div>
           </div>

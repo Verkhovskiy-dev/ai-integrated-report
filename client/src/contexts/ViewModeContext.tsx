@@ -3,7 +3,7 @@
  * Expert mode: full technical detail (default).
  * Executive mode: simplified explanations, role-based advice, actionable takeaways.
  */
-import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
 
 export type ViewMode = "expert" | "executive";
 
@@ -16,6 +16,9 @@ interface ViewModeContextValue {
 const ViewModeContext = createContext<ViewModeContextValue | null>(null);
 
 function getInitialViewMode(): ViewMode {
+  if (typeof window === "undefined") return "expert";
+  const urlMode = new URLSearchParams(window.location.search).get("view");
+  if (urlMode === "expert" || urlMode === "executive") return urlMode;
   try {
     const stored = localStorage.getItem("dashboard-view-mode");
     if (stored === "expert" || stored === "executive") return stored;
@@ -28,9 +31,25 @@ export function ViewModeProvider({ children }: { children: ReactNode }) {
 
   const setViewMode = useCallback((newMode: ViewMode) => {
     setViewModeState(newMode);
+    const url = new URL(window.location.href);
+    url.searchParams.set("view", newMode);
+    window.history.pushState(window.history.state, "", url);
     try {
       localStorage.setItem("dashboard-view-mode", newMode);
     } catch {}
+  }, []);
+
+  useEffect(() => {
+    const syncFromUrl = () => {
+      const urlMode = new URLSearchParams(window.location.search).get("view");
+      const nextMode = urlMode === "expert" || urlMode === "executive" ? urlMode : getInitialViewMode();
+      setViewModeState(nextMode);
+      try {
+        localStorage.setItem("dashboard-view-mode", nextMode);
+      } catch {}
+    };
+    window.addEventListener("popstate", syncFromUrl);
+    return () => window.removeEventListener("popstate", syncFromUrl);
   }, []);
 
   return (

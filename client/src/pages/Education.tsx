@@ -434,7 +434,7 @@ function SkolkovoComparisonSection({ comparisons }: { comparisons: SkolkovoCompa
   const withOverlap = comparisons.filter(c => c.overlap && c.overlap.length > 0).length;
 
   // Unique SKOLKOVO programs referenced
-  const skolkovoPrograms = [...new Set(comparisons.map(c => c.skolkovo_equivalent))];
+  const skolkovoPrograms = Array.from(new Set(comparisons.map(c => c.skolkovo_equivalent)));
 
   return (
     <section className="py-6 sm:py-10">

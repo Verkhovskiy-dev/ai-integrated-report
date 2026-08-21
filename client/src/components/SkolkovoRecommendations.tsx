@@ -107,7 +107,7 @@ const PROGRAM_CONFIG: Record<string, {
   },
 };
 
-function computeRelevance(reports: LiveReport[], isEn: boolean, SKOLKOVO_PROGRAMS: Record<string, { name: string; shortName: string; url: string }>): Record<string, ProgramWithLevel> {
+function computeRelevance(reports: LiveReport[], isEn: boolean, SKOLKOVO_PROGRAMS: Record<string, { name: string; shortName?: string; url: string }>): Record<string, ProgramWithLevel> {
   const allText = reports
     .flatMap((r) => r.srt_levels.flatMap((sl) => sl.events.map((e) => `${e.title} ${e.description}`)))
     .join(" ")

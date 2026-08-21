@@ -1,0 +1,79 @@
+const DEFAULT_EKEN_INTEGRATION_URL =
+  "https://app.ekenlab.com/integrations/verkhovskiy";
+const DEFAULT_EKEN_HANDOFF_API_URL =
+  "https://app.ekenlab.com/api/integrations/verkhovskiy/handoffs";
+const HANDOFF_TIMEOUT_MS = 8_000;
+
+export function buildEkenIntegrationUrl(handoffToken: unknown) {
+  const baseUrl =
+    import.meta.env.VITE_EKEN_INTEGRATION_URL?.trim() ||
+    DEFAULT_EKEN_INTEGRATION_URL;
+  if (typeof handoffToken !== "string" || !handoffToken.trim()) {
+    // Compatibility for pre-handoff callers. New V2 flows must use createEkenHandoff.
+    return `${baseUrl}#route=${encodeURIComponent(JSON.stringify(handoffToken))}`;
+  }
+  const url = new URL(baseUrl);
+  url.searchParams.set("handoffToken", handoffToken);
+  return url.toString();
+}
+
+export class HandoffServiceError extends Error {
+  constructor(
+    message: string,
+    readonly kind: "network" | "timeout" | "service" | "invalid-response",
+  ) {
+    super(message);
+    this.name = "HandoffServiceError";
+  }
+}
+
+export interface CreatedEkenHandoff {
+  handoffToken: string;
+  redirectUrl: string;
+}
+
+function handoffEndpoint() {
+  return import.meta.env.VITE_EKEN_HANDOFF_API_URL?.trim()
+    || DEFAULT_EKEN_HANDOFF_API_URL;
+}
+
+async function postHandoff(payload: unknown): Promise<CreatedEkenHandoff> {
+  const controller = new AbortController();
+  const timeout = globalThis.setTimeout(() => controller.abort(), HANDOFF_TIMEOUT_MS);
+  try {
+    const response = await fetch(handoffEndpoint(), {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+    if (!response.ok) {
+      throw new HandoffServiceError(`Handoff service returned ${response.status}`, "service");
+    }
+    const body = await response.json() as { handoffToken?: unknown };
+    if (typeof body.handoffToken !== "string" || !body.handoffToken.trim()) {
+      throw new HandoffServiceError("Handoff service response has no token", "invalid-response");
+    }
+    return {
+      handoffToken: body.handoffToken,
+      redirectUrl: buildEkenIntegrationUrl(body.handoffToken),
+    };
+  } catch (error) {
+    if (error instanceof HandoffServiceError) throw error;
+    if (error instanceof DOMException && error.name === "AbortError") {
+      throw new HandoffServiceError("Handoff request timed out", "timeout");
+    }
+    throw new HandoffServiceError("Handoff service is unavailable", "network");
+  } finally {
+    globalThis.clearTimeout(timeout);
+  }
+}
+
+export async function createEkenHandoff(payload: unknown): Promise<CreatedEkenHandoff> {
+  try {
+    return await postHandoff(payload);
+  } catch (error) {
+    if (!(error instanceof HandoffServiceError) || error.kind !== "network") throw error;
+    return postHandoff(payload);
+  }
+}
