@@ -28,11 +28,21 @@ import { buildEkenCompatibilityUrl, createEkenHandoff, HandoffServiceError } fro
 interface EkenRouteActionProps extends DashboardRouteSource {
   compact?: boolean;
   className?: string;
+  entryLabel?: string;
+  trackRole?: "CEO" | "CTO" | "CDO";
 }
 
-export default function EkenRouteAction({ compact = false, className = "", ...source }: EkenRouteActionProps) {
+export default function EkenRouteAction({ compact = false, className = "", entryLabel, trackRole, ...source }: EkenRouteActionProps) {
   const { registry } = useEkenRoutes();
-  const scenario = findDashboardScenario(registry, source);
+  const baseScenario = findDashboardScenario(registry, source);
+  const scenario = trackRole
+    ? {
+        ...baseScenario,
+        role: trackRole,
+        recipientRole: trackRole,
+        promise: `Превратить рекомендацию для ${trackRole} в решение и первый проверяемый шаг`,
+      }
+    : baseScenario;
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState<LearningBriefDraft>(() => buildLearningBriefDraft(source, scenario));
   const [plan, setPlan] = useState<LocalLearningRoutePlan | null>(null);
@@ -40,13 +50,14 @@ export default function EkenRouteAction({ compact = false, className = "", ...so
   const [copied, setCopied] = useState(false);
   const [status, setStatus] = useState<"preview" | "creating" | "redirecting" | "failed-retryable" | "failed-service">("preview");
   const isInsightDecision = source.surface === "dashboard-insight";
-  const triggerLabel = isInsightDecision
+  const isRoleTrack = Boolean(trackRole);
+  const triggerLabel = entryLabel ?? (isInsightDecision
     ? "Подготовить решение"
     : source.surface === "dashboard-trend"
       ? "Проверить влияние"
       : source.surface === "dashboard-shift"
         ? "Спроектировать манёвр"
-        : "Собрать маршрут";
+        : "Собрать маршрут");
 
   const update = <K extends keyof LearningBriefDraft>(key: K, value: LearningBriefDraft[K]) => {
     setDraft((current) => ({ ...current, [key]: value }));
@@ -167,13 +178,15 @@ export default function EkenRouteAction({ compact = false, className = "", ...so
       >
         <DialogHeader>
           <div className="mb-1 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-violet-300">
-            <Sparkles className="h-4 w-4" /> {isInsightDecision ? "Инсайт → бриф решения" : "Verkhovskiy.ai → EkenLab"}
+            <Sparkles className="h-4 w-4" /> {isRoleTrack ? `Инсайт → трек ${trackRole}` : isInsightDecision ? "Инсайт → бриф решения" : "Verkhovskiy.ai → EkenLab"}
           </div>
           <DialogTitle className="text-xl text-white">
-            {isInsightDecision ? "Превратить инсайт в решение" : "Короткий бриф на рабочий AI-инструмент"}
+            {isRoleTrack ? `Запустить трек ${trackRole}` : isInsightDecision ? "Превратить инсайт в решение" : "Короткий бриф на рабочий AI-инструмент"}
           </DialogTitle>
           <DialogDescription className="text-slate-400">
-            {isInsightDecision
+            {isRoleTrack
+              ? `Превратите рекомендацию для ${trackRole} в первый проверяемый шаг. На выходе — ${scenario.artifact}.`
+              : isInsightDecision
               ? `За ${scenario.estimatedMinutes} минут сформулируйте одно решение, назовите адресата и способ проверить эффект. На выходе — ${scenario.artifact}.`
               : "Проверьте три поля. Полный технический контракт будет собран автоматически и передан в EkenLab."}
           </DialogDescription>
@@ -182,7 +195,7 @@ export default function EkenRouteAction({ compact = false, className = "", ...so
         {plan ? (
           <div className="grid gap-4 py-2">
             <div className="rounded-xl border border-emerald-400/20 bg-emerald-400/[0.06] p-4">
-              <p className="text-xs font-medium uppercase tracking-[0.14em] text-emerald-300">{isInsightDecision ? "Бриф решения готов" : "Маршрут готов"}</p>
+              <p className="text-xs font-medium uppercase tracking-[0.14em] text-emerald-300">{isRoleTrack ? `Старт трека ${trackRole} готов` : isInsightDecision ? "Бриф решения готов" : "Маршрут готов"}</p>
               <h3 className="mt-1 text-lg font-semibold text-white">{plan.title}</h3>
               <p className="mt-2 text-sm leading-6 text-emerald-50/75">На выходе: {plan.outcome}</p>
             </div>
@@ -240,7 +253,7 @@ export default function EkenRouteAction({ compact = false, className = "", ...so
                 <Download className="h-4 w-4" /> Скачать .md
               </button>
             </div>
-            <button type="button" onClick={() => setPlan(null)} className="text-xs text-slate-500 hover:text-slate-300">{isInsightDecision ? "Изменить бриф решения" : "Изменить короткий бриф"}</button>
+            <button type="button" onClick={() => setPlan(null)} className="text-xs text-slate-500 hover:text-slate-300">{isRoleTrack ? "Изменить старт трека" : isInsightDecision ? "Изменить бриф решения" : "Изменить короткий бриф"}</button>
           </div>
         ) : (
         <div className="grid gap-5 py-2">
@@ -268,7 +281,7 @@ export default function EkenRouteAction({ compact = false, className = "", ...so
           </div>}
 
           <label className="grid gap-2 text-xs font-medium text-slate-300">
-            {isInsightDecision ? "Какое решение нужно подготовить?" : "Что должен делать инструмент?"}
+            {isRoleTrack ? `Какой результат нужен в роли ${trackRole}?` : isInsightDecision ? "Какое решение нужно подготовить?" : "Что должен делать инструмент?"}
             <Textarea
               value={draft.objective}
               onChange={(event) => update("objective", event.target.value)}
@@ -277,17 +290,17 @@ export default function EkenRouteAction({ compact = false, className = "", ...so
           </label>
 
           <label className="grid gap-2 text-xs font-medium text-slate-300">
-            {isInsightDecision ? "Какой процесс или контекст затронут?" : "Реальный пример для первой проверки"}
+            {isRoleTrack ? "На каком процессе или решении проверить?" : isInsightDecision ? "Какой процесс или контекст затронут?" : "Реальный пример для первой проверки"}
             <Textarea
               value={draft.realInput}
               onChange={(event) => update("realInput", event.target.value)}
-              placeholder={isInsightDecision ? "Например: бюджет AI-инфраструктуры на 2027 год или решение о поставщике" : undefined}
+              placeholder={isRoleTrack ? "Например: инвестиционный комитет, AI-платформа или политика данных" : isInsightDecision ? "Например: бюджет AI-инфраструктуры на 2027 год или решение о поставщике" : undefined}
               className="min-h-20 border-white/10 bg-white/[0.04] text-sm text-white"
             />
           </label>
 
           <label className="grid gap-2 text-xs font-medium text-slate-300">
-            {isInsightDecision ? "Как получатель поймёт, что решение полезно?" : "Когда результат можно считать рабочим?"}
+            {isRoleTrack ? "Как понять, что первый шаг принят?" : isInsightDecision ? "Как получатель поймёт, что решение полезно?" : "Когда результат можно считать рабочим?"}
             <Textarea
               value={draft.successCriterion}
               onChange={(event) => update("successCriterion", event.target.value)}
@@ -306,7 +319,7 @@ export default function EkenRouteAction({ compact = false, className = "", ...so
             onClick={startRoute}
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-violet-500 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-violet-400 disabled:cursor-not-allowed disabled:opacity-40"
           >
-            {isInsightDecision ? "Собрать бриф решения" : "Сформировать маршрут"} <ArrowRight className="h-4 w-4" />
+            {isRoleTrack ? "Собрать старт трека" : isInsightDecision ? "Собрать бриф решения" : "Сформировать маршрут"} <ArrowRight className="h-4 w-4" />
           </button>
         </div>
         )}

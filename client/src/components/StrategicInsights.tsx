@@ -23,6 +23,7 @@ import { useLiveData } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
 import { useViewMode } from "@/contexts/ViewModeContext";
 import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
+import EkenRouteAction from "@/components/EkenRouteAction";
 
 /* ------------------------------------------------------------------ */
 /*  Role definitions & relevance mapping                               */
@@ -158,7 +159,7 @@ const ICON_MAP: Record<string, typeof Building> = {
 /*  InsightCard — Progressive Disclosure                               */
 /* ------------------------------------------------------------------ */
 
-function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, executiveAdvice }: {
+function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, executiveAdvice, reportDate }: {
   insight: StrategicInsight;
   isExpanded: boolean;
   onToggle: () => void;
@@ -166,6 +167,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
   role: RoleKey;
   isExecutive: boolean;
   executiveAdvice?: { ceo: string; cto: string; cdo: string } | null;
+  reportDate: string;
 }) {
   const Icon = ICON_MAP[insight.icon] || Lightbulb;
   const roleTakeaway = getRoleTakeaway(role, insight, isEn);
@@ -296,19 +298,31 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
                   {isEn ? "What This Means for You" : "Что это значит для вас"}
                 </span>
               </div>
-              <div className="space-y-3">
-                <div className="flex items-start gap-2">
-                  <span className="text-[10px] font-mono text-cyan-400 bg-cyan-400/10 px-1.5 py-0.5 rounded shrink-0 mt-0.5">CEO</span>
-                  <p className="text-[11px] sm:text-xs text-foreground/80 leading-relaxed">{executiveAdvice.ceo}</p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded shrink-0 mt-0.5">CTO</span>
-                  <p className="text-[11px] sm:text-xs text-foreground/80 leading-relaxed">{executiveAdvice.cto}</p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-[10px] font-mono text-purple-400 bg-purple-400/10 px-1.5 py-0.5 rounded shrink-0 mt-0.5">CDO</span>
-                  <p className="text-[11px] sm:text-xs text-foreground/80 leading-relaxed">{executiveAdvice.cdo}</p>
-                </div>
+              <div className="space-y-4">
+                {([
+                  { key: "ceo", role: "CEO", advice: executiveAdvice.ceo, badge: "text-cyan-400 bg-cyan-400/10" },
+                  { key: "cto", role: "CTO", advice: executiveAdvice.cto, badge: "text-emerald-400 bg-emerald-400/10" },
+                  { key: "cdo", role: "CDO", advice: executiveAdvice.cdo, badge: "text-purple-400 bg-purple-400/10" },
+                ] as const).map((item) => (
+                  <div key={item.key} className="grid items-start gap-2 sm:grid-cols-[auto_1fr_auto]">
+                    <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded shrink-0 mt-0.5 ${item.badge}`}>{item.role}</span>
+                    <p className="text-[11px] sm:text-xs text-foreground/80 leading-relaxed">{item.advice}</p>
+                    <EkenRouteAction
+                      compact
+                      entryLabel={isEn ? "Start Eken track" : "Начать трек в Eken"}
+                      trackRole={item.role}
+                      surface="dashboard-insight"
+                      sourceId={`insight-role:${insight.id}:${item.key}`}
+                      sourceName={insight.title}
+                      sourceText={`${insight.summary}\n\nРекомендация ${item.role}: ${item.advice}`}
+                      reportDate={reportDate}
+                      viewMode="executive"
+                      audienceRole={item.role}
+                      locale={isEn ? "en" : "ru"}
+                      className="min-h-11 self-start whitespace-nowrap"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           )}
@@ -389,7 +403,7 @@ export default function StrategicInsights() {
   // All insights collapsed by default (null = none expanded)
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const [activeRole, setActiveRole] = useState<RoleKey>("all");
-  const { strategicInsights, insightsPeriod, insightsGeneratedAt, insightsLive } = useLiveData();
+  const { strategicInsights, insightsPeriod, insightsGeneratedAt, insightsLive, reportDate } = useLiveData();
   const { locale } = useTranslation();
   const { isExecutive } = useViewMode();
   const { getRoleAdvice } = useExecutiveData();
@@ -477,6 +491,7 @@ export default function StrategicInsights() {
             role={activeRole}
             isExecutive={isExecutive}
             executiveAdvice={isExecutive ? getRoleAdvice(insight.id) : null}
+            reportDate={reportDate}
           />
         ))}
       </div>

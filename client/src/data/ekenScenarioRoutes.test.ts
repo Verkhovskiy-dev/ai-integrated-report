@@ -99,6 +99,30 @@ describe("Dashboard → Eken route runtime", () => {
     expect(payload.brief.expectedArtifact).not.toContain("AI-сценарий");
   });
 
+  it("preserves the selected executive role in an insight track handoff", () => {
+    const source = {
+      surface: "dashboard-insight" as const,
+      sourceId: "insight-role:1:cto",
+      sourceName: "Рост долгового финансирования AI-инфраструктуры",
+      sourceText: "Рекомендация CTO: проверить архитектуру и масштабируемость",
+      reportDate: "2026-08-21",
+      viewMode: "executive" as const,
+      audienceRole: "CTO",
+      locale: "ru" as const,
+    };
+    const baseScenario = findDashboardScenario(null, source);
+    const scenario = { ...baseScenario, role: "CTO", recipientRole: "CTO" };
+    const draft = buildLearningBriefDraft(source, scenario);
+    draft.realInput = "Архитектура корпоративной AI-платформы";
+    const payload = buildLearningRoutePayload(source, scenario, draft);
+
+    expect(payload.source.sourceId).toBe("insight-role:1:cto");
+    expect(payload.audience.role).toBe("CTO");
+    expect(payload.audience.viewMode).toBe("executive");
+    expect(payload.brief.recipient).toBe("CTO");
+    expect(payload.source.url).not.toContain("Рекомендация CTO");
+  });
+
   it("rejects incomplete and expired V2 handoffs before redirect", () => {
     const source = { surface: "dashboard-news" as const, sourceName: "Проверяемый сигнал" };
     const scenario = findDashboardScenario(null, source);
