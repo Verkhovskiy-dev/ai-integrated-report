@@ -23,7 +23,7 @@ import {
   type LearningRouteIntent,
   type EkenLearningRouteV2,
 } from "@/data/ekenScenarioRoutes";
-import { createEkenHandoff, HandoffServiceError } from "@/data/ekenIntegrationUrl";
+import { buildEkenCompatibilityUrl, createEkenHandoff, HandoffServiceError } from "@/data/ekenIntegrationUrl";
 
 interface EkenRouteActionProps extends DashboardRouteSource {
   compact?: boolean;
@@ -84,6 +84,16 @@ export default function EkenRouteAction({ compact = false, className = "", ...so
     link.download = `verkhovskiy-route-${scenario.sourceId.replace(/[^a-z0-9_-]+/gi, "-")}.md`;
     link.click();
     URL.revokeObjectURL(blobUrl);
+  };
+
+  const openCompatibilityRoute = () => {
+    if (!payload) return;
+    window.open(buildEkenCompatibilityUrl({
+      routeId: payload.routeId,
+      scenarioId: payload.scenarioId,
+      sourceId: payload.source.sourceId,
+      surface: payload.source.surface,
+    }), "_blank", "noopener,noreferrer");
   };
 
   const continueToEken = async () => {
@@ -194,8 +204,14 @@ export default function EkenRouteAction({ compact = false, className = "", ...so
             </div>
 
             {(status === "failed-retryable" || status === "failed-service") && (
-              <div className="flex items-start gap-2 rounded-lg border border-amber-400/20 bg-amber-400/[0.06] p-3 text-xs leading-5 text-amber-100/80">
-                <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" /> Техническая ошибка не затронула заполненный preview.
+              <div className="grid gap-3 rounded-lg border border-amber-400/20 bg-amber-400/[0.06] p-3 text-xs leading-5 text-amber-100/80">
+                <div className="flex items-start gap-2">
+                  <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" /> Техническая ошибка не затронула заполненный preview.
+                </div>
+                <button type="button" onClick={openCompatibilityRoute} className="min-h-11 rounded-lg border border-amber-200/20 px-3 text-amber-100 hover:bg-amber-200/10">
+                  Открыть EkenLab без передачи брифа
+                </button>
+                <p className="text-[10px] text-amber-100/55">Откроется новая вкладка только с техническими ID маршрута. Скопируйте бриф отдельно — заполненные поля и доказательства в URL не попадут.</p>
               </div>
             )}
 

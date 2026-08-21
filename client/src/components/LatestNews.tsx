@@ -10,7 +10,7 @@
  * - Skips first 3 events (already shown in HeroSummary) to remove duplication
  */
 import { useMemo, useState } from "react";
-import { Newspaper, Zap, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
+import { Newspaper, Zap, ChevronDown, ChevronUp, ExternalLink, ArrowRight } from "lucide-react";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
 import { useTranslation } from "@/contexts/I18nContext";
@@ -211,6 +211,7 @@ export default function LatestNews() {
                 <button
                   onClick={() => isExpandable && toggleCard(idx)}
                   className={`w-full text-left p-3 pl-4 ${isExpandable ? "cursor-pointer" : "cursor-default"}`}
+                  aria-expanded={isExpandable ? isCardExpanded : undefined}
                 >
                   <div className="flex items-center justify-between gap-2 mb-1.5">
                     <div className="flex items-center gap-1.5">
@@ -289,6 +290,14 @@ export default function LatestNews() {
                         ))}
                       </div>
                     )}
+
+                    <a
+                      href="#insights"
+                      className="inline-flex items-center gap-1 pt-1 text-[10px] font-medium text-primary/80 hover:text-primary"
+                    >
+                      {isEn ? "See implications and decisions" : "Перейти к выводам и решениям"}
+                      <ArrowRight className="h-3 w-3" />
+                    </a>
                   </div>
                 )}
               </div>

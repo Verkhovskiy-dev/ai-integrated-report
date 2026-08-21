@@ -13,7 +13,7 @@ export default function LanguageSwitcher() {
   ];
 
   return (
-    <div className="flex items-center rounded-md border border-border/50 overflow-hidden bg-card/40 backdrop-blur-sm">
+    <div className="flex items-center rounded-md border border-border/50 overflow-hidden bg-card/40 backdrop-blur-sm" role="group" aria-label="Language">
       {options.map((opt) => (
         <button
           key={opt.value}
@@ -27,6 +27,7 @@ export default function LanguageSwitcher() {
             }
           `}
           title={opt.value === "ru" ? "Русский" : "English"}
+          aria-pressed={locale === opt.value}
         >
           {opt.label}
         </button>

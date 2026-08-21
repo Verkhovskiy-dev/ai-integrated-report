@@ -32,6 +32,30 @@ export interface CreatedEkenHandoff {
   redirectUrl: string;
 }
 
+export interface EkenCompatibilityReference {
+  routeId: string;
+  scenarioId: string;
+  sourceId: string;
+  surface: "hero" | "event" | "insight" | "trend" | "model" | "position";
+}
+
+/**
+ * Explicit degraded-mode link. It carries identifiers only: never the brief,
+ * evidence, audience, source title, or other user-entered content.
+ */
+export function buildEkenCompatibilityUrl(reference: EkenCompatibilityReference) {
+  const baseUrl = import.meta.env.VITE_EKEN_INTEGRATION_URL?.trim()
+    || DEFAULT_EKEN_INTEGRATION_URL;
+  const url = new URL(baseUrl);
+  url.searchParams.set("integrationVersion", "2");
+  url.searchParams.set("routeId", reference.routeId);
+  url.searchParams.set("scenarioId", reference.scenarioId);
+  url.searchParams.set("sourceId", reference.sourceId);
+  url.searchParams.set("surface", reference.surface);
+  url.searchParams.set("handoffStatus", "local-preview");
+  return url.toString();
+}
+
 function handoffEndpoint() {
   return import.meta.env.VITE_EKEN_HANDOFF_API_URL?.trim()
     || DEFAULT_EKEN_HANDOFF_API_URL;

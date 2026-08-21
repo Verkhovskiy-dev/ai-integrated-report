@@ -116,6 +116,7 @@ export default function StructuralShifts() {
                 <button
                   onClick={() => setExpandedId(isExpanded ? null : shift.id)}
                   className="w-full text-left p-3 sm:p-4 flex items-start justify-between gap-2 sm:gap-3"
+                  aria-expanded={isExpanded}
                 >
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1.5 sm:mb-2 flex-wrap">

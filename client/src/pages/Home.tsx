@@ -87,6 +87,9 @@ export default function Home() {
       <FilterBar />
 
       <main className="relative z-10">
+        <h1 className="sr-only">
+          {locale === "en" ? "AI Strategic Intelligence Report" : "Стратегический аналитический отчёт об искусственном интеллекте"}
+        </h1>
         {/* Bloomberg-style News Ticker */}
         <NewsTicker />
 

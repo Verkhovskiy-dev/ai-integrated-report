@@ -127,6 +127,7 @@ export default function ApplyToBusinessModal({ isOpen, onClose }: Props) {
           </div>
           <button
             onClick={onClose}
+            aria-label={isEn ? "Close dialog" : "Закрыть окно"}
             className="p-2 rounded-lg hover:bg-muted/50 text-muted-foreground hover:text-foreground transition-colors"
           >
             <X className="w-5 h-5" />
@@ -159,6 +160,7 @@ export default function ApplyToBusinessModal({ isOpen, onClose }: Props) {
                       onClick={() => setSelectedIndustry(ind.industry)}
                       className="flex flex-col items-center gap-2 p-4 rounded-xl bg-card/50 border border-border/40
                         hover:border-primary/30 hover:bg-primary/5 transition-all duration-200 group"
+                      aria-pressed={selectedIndustry === ind.industry}
                     >
                       <Icon className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
                       <span className="text-[11px] sm:text-xs text-center text-foreground/80 group-hover:text-foreground font-medium leading-tight">

@@ -16,7 +16,7 @@ export default function ViewModeSwitcher() {
   ];
 
   return (
-    <div className="flex items-center rounded-md border border-border/50 overflow-hidden bg-card/40 backdrop-blur-sm">
+    <div className="flex items-center rounded-md border border-border/50 overflow-hidden bg-card/40 backdrop-blur-sm" role="group" aria-label={locale === "en" ? "Report view" : "Режим отчёта"}>
       {options.map((opt) => {
         const Icon = opt.icon;
         const isActive = viewMode === opt.value;
@@ -32,6 +32,8 @@ export default function ViewModeSwitcher() {
               }
             `}
             title={locale === "en" ? opt.labelEn : opt.label}
+            aria-label={locale === "en" ? opt.labelEn : opt.label}
+            aria-pressed={isActive}
           >
             <Icon className="w-3 h-3" />
             <span className="hidden sm:inline">{locale === "en" ? opt.labelEn : opt.label}</span>

@@ -171,7 +171,7 @@ export default function HeroSummary() {
     strategicInsights,
     loading,
   } = useLiveData();
-  const { selectedLevels, searchQuery } = useFilters();
+  const { selectedLevels, searchQuery, setSearchQuery, clearLevels } = useFilters();
   const { t, locale } = useTranslation();
   const { isExecutive } = useViewMode();
   const { getEventExplanation } = useExecutiveData();
@@ -346,6 +346,23 @@ export default function HeroSummary() {
             </div>
 
             <div className="space-y-2">
+              {!loading && totalEvents === 0 && (
+                <div className="rounded-lg border border-dashed border-border/50 bg-muted/10 px-4 py-5 text-center" role="status">
+                  <p className="text-sm font-medium text-foreground">
+                    {isEn ? "No events match these filters" : "По этим фильтрам событий не найдено"}
+                  </p>
+                  <p className="mt-1 text-[10px] text-muted-foreground">
+                    {isEn ? "Search covers event titles and descriptions." : "Поиск работает по заголовкам и описаниям событий."}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => { setSearchQuery(""); clearLevels(); }}
+                    className="mt-3 text-xs text-primary hover:underline"
+                  >
+                    {isEn ? "Clear search and levels" : "Сбросить поиск и уровни"}
+                  </button>
+                </div>
+              )}
               {topEvents.slice(0, 3).map((item, idx) => {
                 const isItemExpanded = expandedHeroEvent === idx;
                 const explanation = isExecutive ? getEventExplanation(item.title) : undefined;
@@ -365,6 +382,7 @@ export default function HeroSummary() {
                     <button
                       onClick={() => isExpandable && setExpandedHeroEvent(isItemExpanded ? null : idx)}
                       className={`w-full text-left flex items-start gap-3 p-2.5 group ${isExpandable ? "cursor-pointer" : "cursor-default"}`}
+                      aria-expanded={isExpandable ? isItemExpanded : undefined}
                     >
                       {/* Rank */}
                       <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 border border-primary/20 shrink-0 mt-0.5">
@@ -420,6 +438,13 @@ export default function HeroSummary() {
                             {item.description}
                           </p>
                         )}
+                        <a
+                          href="#insights"
+                          className="mt-2 inline-flex items-center gap-1 text-[10px] font-medium text-primary/80 hover:text-primary"
+                        >
+                          {isEn ? "See implications and decisions" : "Перейти к выводам и решениям"}
+                          <ArrowRight className="h-3 w-3" />
+                        </a>
                       </div>
                     )}
                   </div>

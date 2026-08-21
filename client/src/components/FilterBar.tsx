@@ -145,7 +145,7 @@ export default function FilterBar() {
             className="w-full pl-8 pr-8 py-1.5 text-xs bg-muted/30 border border-border/40 rounded-md text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all"
           />
           {searchQuery && (
-            <button onClick={() => setSearchQuery("")} className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground">
+            <button onClick={() => setSearchQuery("")} aria-label={isEn ? "Clear search" : "Очистить поиск"} className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground">
               <X className="w-3 h-3" />
             </button>
           )}
@@ -163,6 +163,7 @@ export default function FilterBar() {
               ? "bg-primary/15 border-primary/30 text-primary"
               : "bg-muted/30 border-border/40 text-muted-foreground hover:text-foreground"
           }`}
+          aria-expanded={showLevels}
         >
           <Layers className="w-3.5 h-3.5" />
           <span className="hidden sm:inline">{isEn ? "DLS Levels" : "Уровни СРТ"}</span>
@@ -177,6 +178,8 @@ export default function FilterBar() {
           onClick={() => setShowInfo(!showInfo)}
           className="p-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/30 transition-all"
           title={isEn ? "What are DLS levels?" : "Что такое уровни СРТ?"}
+          aria-label={isEn ? "About DLS levels" : "Об уровнях СРТ"}
+          aria-expanded={showInfo}
         >
           <Info className="w-3.5 h-3.5" />
         </button>
@@ -288,6 +291,7 @@ export default function FilterBar() {
                     }`}
                     style={isExplicit ? { color, borderColor: `${color}50` } : undefined}
                     title={desc}
+                    aria-pressed={isExplicit}
                   >
                     {/* Level number badge */}
                     <span

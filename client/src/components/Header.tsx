@@ -99,9 +99,9 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
             <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
           </div>
           <div className="hidden 2xl:block">
-            <h1 className="text-sm font-semibold font-heading tracking-tight text-foreground">
+            <div className="text-sm font-semibold font-heading tracking-tight text-foreground">
               AI Strategic Intelligence
-            </h1>
+            </div>
             <div className="flex items-center gap-2">
               <p className="text-[10px] text-muted-foreground font-mono">
                 {reportLabel} {reportDate ? `— ${reportDate}` : ""}
@@ -115,9 +115,9 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
             </div>
           </div>
           <div className="2xl:hidden">
-            <h1 className="text-xs font-semibold font-heading tracking-tight text-foreground">
+            <div className="text-xs font-semibold font-heading tracking-tight text-foreground">
               AI Intelligence
-            </h1>
+            </div>
           </div>
         </div>
 
@@ -133,6 +133,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                   onClick={() => scrollTo(item.id)}
                   data-umami-event="nav-programs-click"
                   className="flex items-center gap-1 px-2 py-1.5 rounded-md text-[10px] font-semibold transition-all duration-200 shrink-0 border border-amber-400/40 bg-amber-400/10 text-amber-300 hover:bg-amber-400/20 hover:border-amber-400/60"
+                  aria-current={isActive ? "page" : undefined}
                 >
                   <GraduationCap className="w-3 h-3" />
                   <span>{navLabels[item.labelKey] || item.labelKey}</span>
@@ -150,6 +151,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                   }
                 `}
+                aria-current={isActive ? "page" : undefined}
               >
                 <span>{navLabels[item.labelKey] || item.labelKey}</span>
               </button>
@@ -172,6 +174,8 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
           <button
             className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? (locale === "en" ? "Close navigation" : "Закрыть навигацию") : (locale === "en" ? "Open navigation" : "Открыть навигацию")}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -199,6 +203,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                       : "text-muted-foreground hover:text-foreground bg-muted/20 border border-transparent"
                     }
                   `}
+                  aria-current={isActive ? "page" : undefined}
                 >
                   <Icon className="w-4 h-4" />
                   <span>{navLabels[item.labelKey] || item.labelKey}</span>

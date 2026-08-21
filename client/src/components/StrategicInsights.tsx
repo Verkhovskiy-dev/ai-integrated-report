@@ -182,6 +182,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
       <button
         onClick={onToggle}
         className="w-full text-left p-4 sm:p-5 flex items-start gap-3 sm:gap-4"
+        aria-expanded={isExpanded}
       >
         {/* Icon */}
         <div
@@ -360,6 +361,7 @@ function RoleSwitcher({
           <button
             key={key}
             onClick={() => onRoleChange(key)}
+            aria-pressed={isActive}
             className={`
               inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2
               rounded-lg text-[11px] sm:text-xs font-medium
