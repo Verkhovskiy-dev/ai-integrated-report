@@ -28,8 +28,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/assets/index-C5j9InrP.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CZLnTjNm.css">
+    <script type="module" crossorigin src="/assets/index-N0pYKFke.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B-9C-_sF.css">
   </head>
 
   <body>
@@ -42,6 +42,18 @@
       <script defer src="/models-pulse-widget.js"></script>
       <script defer src="/models-news-widget.js"></script>
       <script defer src="/token-banner-widget.js"></script>
+      <script>
+        (function syncPositionsRouteClass() {
+          const sync = () => document.documentElement.classList.toggle('positions-route', window.location.pathname === '/positions');
+          sync();
+          window.addEventListener('popstate', sync);
+          const originalPushState = history.pushState;
+          const originalReplaceState = history.replaceState;
+          history.pushState = function() { originalPushState.apply(this, arguments); sync(); };
+          history.replaceState = function() { originalReplaceState.apply(this, arguments); sync(); };
+        })();
+      </script>
+      <style>.positions-route #subscribe-widget { display: none !important; }</style>
       <!-- Subscription Widget -->
     <div id="subscribe-widget" style="
       position: fixed;
