@@ -4322,111 +4322,119 @@
   },
   {
     "date": "2026-08-21",
-    "generated_at": "2026-08-21T05:02:58.501Z",
+    "generated_at": "2026-08-21T17:03:28.756Z",
     "trends": [
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
-        "momentum": 94,
+        "momentum": 99,
         "category": "accelerating",
-        "rationale": "Вчера было 92; сегодня Danfoss, Deere, Samsung и Nvidia показывают, что AI-CapEx распространяется в охлаждение, строительство, полупроводниковые выплаты и создание новых рынков.",
+        "rationale": "Вчера было 94; сегодня показатель повышен из-за нового долгового пакета Broadcom, общего сигнала Reuters об усталости инвесторов к AI-долгу и привлечения Starcloud для орбитальных дата-центров.",
         "levels": [
           9,
-          5,
           2,
-          1
+          4
         ],
         "is_new": false
       },
       {
+        "id": "ai-debt-financing",
+        "name": "Долговое финансирование AI-инфраструктуры",
+        "momentum": 42,
+        "category": "accelerating",
+        "rationale": "Новый тренд добавлен из-за трех независимых сигналов: Broadcom ищет более $60 млрд долга, Reuters пишет о всплеске AI-долга в США, а The Journal Record фиксирует рекордный технологический долг из-за AI-расходов.",
+        "levels": [
+          9,
+          5
+        ],
+        "is_new": true
+      },
+      {
         "id": "agentic-platforms",
         "name": "Агентные AI-платформы",
-        "momentum": 97,
+        "momentum": 100,
         "category": "accelerating",
-        "rationale": "Вчера было 96; ChatGPT получил интеграцию с Apple Messages, а arXiv дал несколько работ по контексту, памяти и инструментам агентов, поэтому импульс немного усилился.",
+        "rationale": "Вчера было 97; рост ограничен верхней границей, потому что SAPO, EnvHarness, PolicyGuide и Brain Researcher добавили новые методы обучения, управления и научного применения агентов.",
         "levels": [
-          5,
+          4,
           6,
-          4
+          7
         ],
         "is_new": false
       },
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
-        "momentum": 94,
+        "momentum": 99,
         "category": "accelerating",
-        "rationale": "Вчера было 91; Outcome Monitors, SafeBranch, Control Tax и DMD-классификация добавили свежие методики контроля скрытых сбоев, физической безопасности и закрытых моделей.",
+        "rationale": "Вчера было 94; сегодня усилили тренд PolicyGuide для соблюдения политики, TESTNAV для композиционной устойчивости и Brain Researcher для защиты научных выводов.",
         "levels": [
           6,
-          4,
-          8
+          8,
+          7
         ],
         "is_new": false
       },
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 91,
+        "momentum": 99,
         "category": "accelerating",
-        "rationale": "Вчера было 93; Montgomery County принял принципы AI, а законодатели Alabama отреагировали на ChatGPT для подростков, но сегодня сигналы локальные, без крупного федерального решения.",
+        "rationale": "Вчера было 91; скачок поддержан штрафом Uber за автоматизированные блокировки, иском Florida против ChatGPT и отказом Greater Manchester от Palantir.",
         "levels": [
           8,
-          3,
-          5
+          5,
+          3
         ],
         "is_new": false
       },
       {
         "id": "sovereign-ai",
         "name": "Суверенный AI (национальные модели)",
-        "momentum": 52,
+        "momentum": 64,
         "category": "accelerating",
-        "rationale": "Вчера было 44; Бразилия запустила курс на AI-суперкомпьютер между США и Китаем, а листинг CXMT поддержал китайский аппаратный контур AI.",
+        "rationale": "Вчера было 52; рост связан с дополнительными $944 млн Japan для Rapidus, европейскими субсидиями AI-компаниям и поддержкой UK AI-чиповых новичков.",
         "levels": [
           9,
           4,
-          2,
-          8
+          5
         ],
         "is_new": false
       },
       {
         "id": "ai-energy",
         "name": "Энергетика для AI",
-        "momentum": 84,
+        "momentum": 90,
         "category": "accelerating",
-        "rationale": "Вчера было 82; Danfoss указал на рост спроса на охлаждение мощных чипов, TechCrunch поднял вопрос питьевой воды для дата-центров, а Duke показал долгий план солнечной генерации.",
+        "rationale": "Вчера было 84; ERCOT готовит аудит дата-центров Texas, PJM ищет ускорение избыточных подключений, а ADAPT показывает AI-методы управления энергоемкими HVAC-системами.",
         "levels": [
           1,
           2,
-          5,
-          9
+          4
         ],
         "is_new": false
       },
       {
         "id": "ai-talent-market",
         "name": "Рынок AI-талантов",
-        "momentum": 51,
+        "momentum": 60,
         "category": "accelerating",
-        "rationale": "Вчера было 47; MIT Sloan снова показал масштаб компенсаций и удержания AI-кадров, а Nomura дала противоположный сигнал о добавлении рабочих мест в Азии.",
+        "rationale": "Вчера было 51; HR Dive добавил сигналы о давлении AI на пожарно-безопасностные профессии, использовании AI менеджерами и недопредставленности женщин в AI-рабочей силе.",
         "levels": [
           3,
-          5,
-          9
+          7
         ],
         "is_new": false
       },
       {
         "id": "ai-trust-crisis",
         "name": "Кризис доверия к AI",
-        "momentum": 91,
+        "momentum": 96,
         "category": "accelerating",
-        "rationale": "Вчера было 88; сегодня доверие подрывают бессмысленные ответы Grok, рост AI-авторства веб-страниц и отсутствие независимых данных о реальном использовании AI.",
+        "rationale": "Вчера было 91; тренд усилили критика YouTube-создателей за деньги AI-платформы, спор о приватности Meta AI glasses и скепсис местных сообществ к дата-центрам.",
         "levels": [
           8,
-          7,
+          2,
           5
         ],
         "is_new": false
@@ -4434,41 +4442,39 @@
       {
         "id": "consumer-ai-acceptance",
         "name": "Принятие потребительского AI",
-        "momentum": -20,
+        "momentum": -30,
         "category": "decelerating",
-        "rationale": "Вчера было -24; Google Discover и ChatGPT в Apple Messages дают новые потребительские интеграции, но сбои Grok и политическая реакция на ChatGPT для подростков удерживают тренд в отрицательной зоне.",
+        "rationale": "Вчера было -20; показатель снижен из-за новых потребительских конфликтов вокруг Meta AI glasses, оплаченных демонстраций Higgsfield и сообщения Wired о непонимании Silicon Valley общественной критики AI.",
         "levels": [
-          5,
           8,
-          3
+          5
         ],
         "is_new": false
       },
       {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": 38,
+        "id": "classic-saas",
+        "name": "Классический SaaS под давлением AI",
+        "momentum": 34,
         "category": "emerging",
-        "rationale": "OpenAI, по данным TechCrunch, набирает позиции среди бизнес-пользователей, а работа Control Tax прямо описывает ограничения организаций, использующих пограничные модели через API и управляемые конечные точки.",
+        "rationale": "Сегодняшний сигнал пришел от Bloomberg: Salesforce и ServiceNow сталкиваются с кризисом доверия на Wall Street и отвечают выкупами акций.",
         "levels": [
           5,
-          6,
-          8
+          9
         ],
         "is_new": false
       },
       {
         "id": "ai-content-provenance",
         "name": "Происхождение AI-контента",
-        "momentum": 35,
-        "category": "emerging",
-        "rationale": "Новый тренд: исследование о трети веб-страниц с признаками AI-авторства, кнопка Google для предпочтительных источников и Symposium для аудита AI-агентов создают общий сигнал спроса на происхождение и след контента.",
+        "momentum": 43,
+        "category": "accelerating",
+        "rationale": "Вчера было 35; рост связан с критикой YouTube-создателей за оплаченные AI-демонстрации и работой Dual Gatekeeping о фильтрации педагогического AI-контента.",
         "levels": [
           8,
-          7,
-          6
+          6,
+          7
         ],
-        "is_new": true
+        "is_new": false
       }
     ]
   }
