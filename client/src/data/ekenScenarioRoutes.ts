@@ -216,15 +216,18 @@ export function buildLearningBriefDraft(
   scenario: EkenProductiveScenario,
 ): LearningBriefDraft {
   const input = source.sourceText?.trim() || `Карточка «${source.sourceName}» и один реальный пример из моего процесса`;
+  const isInsightDecision = source.surface === "dashboard-insight";
   return {
     intent: scenario.recommendedIntent ?? "build_tool",
-    title: `Создать инструмент: ${scenario.sourceName}`,
-    objective: intentObjective(scenario.recommendedIntent ?? "build_tool", scenario),
-    realInput: input,
+    title: isInsightDecision ? `Решение: ${scenario.sourceName}` : `Создать инструмент: ${scenario.sourceName}`,
+    objective: isInsightDecision
+      ? `Подготовить одно решение по инсайту «${scenario.sourceName}» и определить, кому его передать`
+      : intentObjective(scenario.recommendedIntent ?? "build_tool", scenario),
+    realInput: isInsightDecision ? "" : input,
     successCriterion: scenario.successCriteria.join("; "),
     constraints: ["Первый рабочий результат на реальном примере", "Ручное подтверждение перед внешним действием"],
-    instrumentName: `AI-инструмент · ${scenario.sourceName}`,
-    instrumentKind: scenario.instrumentKind ?? "workflow",
+    instrumentName: isInsightDecision ? `Decision brief · ${scenario.sourceName}` : `AI-инструмент · ${scenario.sourceName}`,
+    instrumentKind: isInsightDecision ? "method" : scenario.instrumentKind ?? "workflow",
     existingTool: scenario.existingTool,
   };
 }
@@ -253,8 +256,22 @@ export function buildLocalLearningRoutePlan(
   scenario: EkenProductiveScenario,
   draft: LearningBriefDraft,
 ): LocalLearningRoutePlan {
-  const outcome = learningOutcomeForIntent(draft.intent, scenario);
-  const steps = [
+  const isInsightDecision = source.surface === "dashboard-insight";
+  const outcome = isInsightDecision ? scenario.artifact : learningOutcomeForIntent(draft.intent, scenario);
+  const steps = isInsightDecision ? [
+    {
+      title: "Уточнить контекст решения",
+      description: draft.realInput,
+    },
+    {
+      title: "Сформулировать решение и адресата",
+      description: draft.objective,
+    },
+    {
+      title: "Зафиксировать критерий эффекта",
+      description: draft.successCriterion,
+    },
+  ] : [
     {
       title: "Подготовить реальный вход",
       description: draft.realInput,
@@ -268,7 +285,7 @@ export function buildLocalLearningRoutePlan(
       description: draft.successCriterion,
     },
   ];
-  const intentLabel = LEARNING_INTENT_COPY[draft.intent].label;
+  const intentLabel = isInsightDecision ? "Подготовить решение" : LEARNING_INTENT_COPY[draft.intent].label;
   const text = [
     "МАРШРУТ ДЕЙСТВИЯ · VERKHOVSKIY.AI",
     "",
@@ -327,7 +344,9 @@ export function buildLearningRoutePayload(
     },
     brief: {
       objective: draft.objective,
-      expectedArtifact: learningOutcomeForIntent(draft.intent, scenario),
+      expectedArtifact: source.surface === "dashboard-insight"
+        ? scenario.artifact
+        : learningOutcomeForIntent(draft.intent, scenario),
       recipient: scenario.recipientRole,
       acceptanceCriterion: draft.successCriterion,
       estimatedMinutes: scenario.estimatedMinutes,

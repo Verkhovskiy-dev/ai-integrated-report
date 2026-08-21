@@ -74,6 +74,31 @@ describe("Dashboard → Eken route runtime", () => {
     expect(verkhovskiyHandoffV2Schema.safeParse(payload).success).toBe(true);
   });
 
+  it("keeps an insight as a decision job instead of reframing it as an AI tool", () => {
+    const source = {
+      surface: "dashboard-insight" as const,
+      sourceName: "Рост долгового финансирования AI-инфраструктуры",
+      sourceText: "Стоимость капитала и риск финансирования меняются",
+      level: 9,
+    };
+    const scenario = findDashboardScenario(null, source);
+    const draft = buildLearningBriefDraft(source, scenario);
+    const plan = buildLocalLearningRoutePlan(source, scenario, draft);
+    const payload = buildLearningRoutePayload(source, scenario, draft);
+
+    expect(draft.title).toMatch(/^Решение:/);
+    expect(draft.objective).toContain("Подготовить одно решение");
+    expect(draft.realInput).toBe("");
+    expect(plan.intentLabel).toBe("Подготовить решение");
+    expect(plan.steps.map((step) => step.title)).toEqual([
+      "Уточнить контекст решения",
+      "Сформулировать решение и адресата",
+      "Зафиксировать критерий эффекта",
+    ]);
+    expect(payload.brief.expectedArtifact).toBe(scenario.artifact);
+    expect(payload.brief.expectedArtifact).not.toContain("AI-сценарий");
+  });
+
   it("rejects incomplete and expired V2 handoffs before redirect", () => {
     const source = { surface: "dashboard-news" as const, sourceName: "Проверяемый сигнал" };
     const scenario = findDashboardScenario(null, source);

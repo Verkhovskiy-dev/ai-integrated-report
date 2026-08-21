@@ -85,6 +85,12 @@ export default function ExecutiveSummaryBar() {
   const positionResolution = signalId ? resolveSignalPositionRelations(signalId) : null;
   const recommendedRelation = positionResolution?.relations.find((relation) => relation.recommended) ?? null;
   const recommendedPosition = recommendedRelation ? resolveRelationPositionRoute(recommendedRelation) : null;
+  const currentViewMode = typeof window === "undefined"
+    ? "expert"
+    : new URLSearchParams(window.location.search).get("view") === "executive" ? "executive" : "expert";
+  const positionMapHref = signalId && positionResolution?.fixture
+    ? buildSignalPositionMapHref(signalId, positionResolution.fixture.sourcePlaceId)
+    : `/positions?step=map&view=${currentViewMode}`;
   const insightsCount = strategicInsights.length;
   const plural = (n: number, f: [string, string, string]) => {
     const m10 = n % 10, m100 = n % 100;
@@ -185,29 +191,31 @@ export default function ExecutiveSummaryBar() {
                   <p className="text-[9px] text-emerald-300/70 mt-1 line-clamp-1">
                     {recommendedPosition
                       ? `${isEn ? "Recommended position" : "Рекомендуемая позиция"}: ${recommendedPosition.position}`
-                      : (isEn ? "Position link requires verification" : "Связь с позициями требует проверки")}
+                      : (isEn ? "No verified recommendation yet" : "Проверенной рекомендации пока нет")}
                   </p>
                 </>
               ) : (
                 <p className="text-[11px] text-muted-foreground italic">—</p>
               )}
-              {actionText && signalId && positionResolution?.fixture && recommendedRelation && (
+              {actionText && (
                 <a
-                  href={buildSignalPositionMapHref(signalId, positionResolution.fixture.sourcePlaceId)}
+                  href={positionMapHref}
                   onClick={() => (window as Window & { umami?: { track: (event: string, data?: Record<string, string | number>) => void } }).umami?.track("signal_position_map_opened", {
-                    signalId,
-                    signalVersion: positionResolution.fixture.signalVersion,
-                    sourcePlaceId: positionResolution.fixture.sourcePlaceId,
-                    positionRouteId: recommendedRelation.positionRouteId,
-                    recommended: 1,
-                    confidence: recommendedRelation.confidence,
-                    positionsShown: positionResolution.relations.length,
+                    signalId: signalId ?? "unmapped-daily-focus",
+                    signalVersion: positionResolution?.fixture?.signalVersion ?? "unmapped",
+                    sourcePlaceId: positionResolution?.fixture?.sourcePlaceId ?? "general-position-map",
+                    positionRouteId: recommendedRelation?.positionRouteId ?? "none",
+                    recommended: recommendedRelation ? 1 : 0,
+                    confidence: recommendedRelation?.confidence ?? "unknown",
+                    positionsShown: positionResolution?.relations.length ?? 0,
                     viewMode: new URLSearchParams(window.location.search).get("view") ?? "expert",
                     locale,
                   })}
                   className="mt-2 inline-flex min-h-11 items-center gap-1.5 rounded-lg border border-emerald-400/30 bg-emerald-400/10 px-2.5 py-1.5 text-[10px] font-medium text-emerald-200 no-underline hover:bg-emerald-400/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
                 >
-                  {isEn ? "Show on position map" : "Показать на карте позиций"} <ArrowRight className="h-3.5 w-3.5" />
+                  {recommendedRelation
+                    ? (isEn ? "Show on position map" : "Показать на карте позиций")
+                    : (isEn ? "Compare positions" : "Сравнить позиции на карте")} <ArrowRight className="h-3.5 w-3.5" />
                 </a>
               )}
             </div>
