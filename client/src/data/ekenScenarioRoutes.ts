@@ -232,6 +232,25 @@ export function buildLearningBriefDraft(
   };
 }
 
+export function buildExecutiveRoleTrackDraft(
+  source: DashboardRouteSource,
+  scenario: EkenProductiveScenario,
+  role: "CEO" | "CTO" | "CDO",
+  recommendation: string,
+): LearningBriefDraft {
+  const objective = recommendation.trim();
+  if (!objective) throw new Error(`Executive recommendation for ${role} is required`);
+  const draft = buildLearningBriefDraft(source, scenario);
+  return {
+    ...draft,
+    title: `Трек ${role}: ${scenario.sourceName}`,
+    objective,
+    realInput: objective,
+    successCriterion: `Сформулирован первый шаг для ${role}; определён ожидаемый результат и критерий приёмки`,
+    instrumentName: `Decision track · ${role} · ${scenario.sourceName}`,
+  };
+}
+
 export function retargetLearningBriefDraft(
   draft: LearningBriefDraft,
   intent: LearningRouteIntent,

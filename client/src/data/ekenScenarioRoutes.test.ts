@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   buildDefaultDashboardScenario,
+  buildExecutiveRoleTrackDraft,
   buildLearningBriefDraft,
   buildLocalLearningRoutePlan,
   buildLearningRoutePayload,
@@ -100,11 +101,12 @@ describe("Dashboard → Eken route runtime", () => {
   });
 
   it("preserves the selected executive role in an insight track handoff", () => {
+    const recommendation = "Проверьте архитектуру и масштабируемость корпоративной AI-платформы";
     const source = {
       surface: "dashboard-insight" as const,
       sourceId: "insight-role:1:cto",
       sourceName: "Рост долгового финансирования AI-инфраструктуры",
-      sourceText: "Рекомендация CTO: проверить архитектуру и масштабируемость",
+      sourceText: `Контекст инсайта\n\nРекомендация CTO: ${recommendation}`,
       reportDate: "2026-08-21",
       viewMode: "executive" as const,
       audienceRole: "CTO",
@@ -112,15 +114,27 @@ describe("Dashboard → Eken route runtime", () => {
     };
     const baseScenario = findDashboardScenario(null, source);
     const scenario = { ...baseScenario, role: "CTO", recipientRole: "CTO" };
-    const draft = buildLearningBriefDraft(source, scenario);
-    draft.realInput = "Архитектура корпоративной AI-платформы";
+    const draft = buildExecutiveRoleTrackDraft(source, scenario, "CTO", recommendation);
     const payload = buildLearningRoutePayload(source, scenario, draft);
 
+    expect(draft.objective).toBe(recommendation);
+    expect(draft.realInput).toBe(recommendation);
     expect(payload.source.sourceId).toBe("insight-role:1:cto");
     expect(payload.audience.role).toBe("CTO");
     expect(payload.audience.viewMode).toBe("executive");
     expect(payload.brief.recipient).toBe("CTO");
+    expect(payload.brief.objective).toBe(recommendation);
+    expect(payload.brief.evidence.join(" ")).toContain(recommendation);
     expect(payload.source.url).not.toContain("Рекомендация CTO");
+  });
+
+  it("fails closed when an executive role track has no recommendation", () => {
+    const source = { surface: "dashboard-insight" as const, sourceName: "Проверяемый инсайт" };
+    const scenario = findDashboardScenario(null, source);
+
+    expect(() => buildExecutiveRoleTrackDraft(source, scenario, "CEO", "   ")).toThrow(
+      "Executive recommendation for CEO is required",
+    );
   });
 
   it("rejects incomplete and expired V2 handoffs before redirect", () => {

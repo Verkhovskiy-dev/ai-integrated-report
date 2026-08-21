@@ -311,6 +311,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
                       compact
                       entryLabel={isEn ? "Continue in Eken" : "Продолжить в Eken"}
                       trackRole={item.role}
+                      trackRecommendation={item.advice}
                       surface="dashboard-insight"
                       sourceId={`insight-role:${insight.id}:${item.key}`}
                       sourceName={insight.title}

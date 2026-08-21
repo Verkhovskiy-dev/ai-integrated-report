@@ -12,6 +12,7 @@ import { useEkenRoutes } from "@/contexts/EkenRoutesContext";
 import {
   buildLocalLearningRoutePlan,
   buildLearningBriefDraft,
+  buildExecutiveRoleTrackDraft,
   buildLearningRoutePayload,
   findDashboardScenario,
   LEARNING_INTENT_COPY,
@@ -30,9 +31,10 @@ interface EkenRouteActionProps extends DashboardRouteSource {
   className?: string;
   entryLabel?: string;
   trackRole?: "CEO" | "CTO" | "CDO";
+  trackRecommendation?: string;
 }
 
-export default function EkenRouteAction({ compact = false, className = "", entryLabel, trackRole, ...source }: EkenRouteActionProps) {
+export default function EkenRouteAction({ compact = false, className = "", entryLabel, trackRole, trackRecommendation, ...source }: EkenRouteActionProps) {
   const { registry } = useEkenRoutes();
   const baseScenario = findDashboardScenario(registry, source);
   const scenario = trackRole
@@ -44,13 +46,15 @@ export default function EkenRouteAction({ compact = false, className = "", entry
       }
     : baseScenario;
   const buildInitialDraft = () => {
-    const nextDraft = buildLearningBriefDraft(source, scenario);
-    if (!trackRole) return nextDraft;
-    return {
-      ...nextDraft,
-      realInput: source.sourceText?.trim() || source.sourceName,
-      successCriterion: `Сформулирован первый шаг для ${trackRole}; определён ожидаемый результат и критерий приёмки`,
-    };
+    if (trackRole) {
+      return buildExecutiveRoleTrackDraft(
+        source,
+        scenario,
+        trackRole,
+        trackRecommendation || source.sourceText || source.sourceName,
+      );
+    }
+    return buildLearningBriefDraft(source, scenario);
   };
   const [open, setOpen] = useState(false);
   const [draft, setDraft] = useState<LearningBriefDraft>(buildInitialDraft);
@@ -220,8 +224,9 @@ export default function EkenRouteAction({ compact = false, className = "", entry
                 <span className="rounded-md bg-violet-400/15 px-2 py-1 text-xs font-semibold text-violet-200">{trackRole}</span>
                 <span className="text-xs text-slate-400">{scenario.estimatedMinutes} минут</span>
               </div>
-              <h3 className="mt-3 text-base font-semibold text-white">{scenario.sourceName}</h3>
-              <p className="mt-2 text-sm leading-6 text-emerald-50/75">Результат: {scenario.artifact}</p>
+              <p className="mt-3 text-xs font-medium uppercase tracking-[0.12em] text-emerald-300">Что сделает {trackRole}</p>
+              <p className="mt-2 text-sm leading-6 text-white">{trackRecommendation || draft.objective}</p>
+              <p className="mt-3 text-xs leading-5 text-emerald-50/65">На выходе: {scenario.artifact}</p>
             </div>
 
             <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm leading-6 text-slate-300">
