@@ -4,16 +4,11 @@
  * Designed to fit on the first screen without scrolling.
  * i18n support
  */
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { BarChart3, TrendingUp, Lightbulb, Zap } from "lucide-react";
-import EkenRouteAction from "@/components/EkenRouteAction";
+import IntentFirstPilot from "@/components/IntentFirstPilot";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
-import {
-  DASHBOARD_FOCUS_FALLBACK,
-  type EkenProductiveScenario,
-  type EkenScenarioRegistry,
-} from "@/data/ekenScenarioRoutes";
 
 export default function ExecutiveSummaryBar() {
   const {
@@ -54,27 +49,14 @@ export default function ExecutiveSummaryBar() {
       .flatMap((l) => l.events || []);
     const topEvent = flatEvents[3] || flatEvents[0];
     const actionText = topEvent ? topEvent.title : null;
+    const actionDescription = topEvent ? topEvent.description : "";
 
     // Compact day counters (merged from the former hero title strip)
     const trendsCount = latestReport.trends?.length || 0;
     const linksCount = latestReport.cross_level_links?.length || 0;
 
-    return { totalEvents, keyShift, mainInsight, actionText, trendsCount, linksCount };
+    return { totalEvents, keyShift, mainInsight, actionText, actionDescription, trendsCount, linksCount };
   }, [latestReport, strategicInsights]);
-
-  const [focusScenario, setFocusScenario] = useState<EkenProductiveScenario>(DASHBOARD_FOCUS_FALLBACK);
-
-  useEffect(() => {
-    let active = true;
-    fetch("/data/eken-scenarios.json")
-      .then((response) => response.ok ? response.json() : null)
-      .then((registry: EkenScenarioRegistry | null) => {
-        const scenario = registry?.scenarios?.find((item) => item.enabled && item.surface === "dashboard-focus");
-        if (active && scenario) setFocusScenario(scenario);
-      })
-      .catch(() => undefined);
-    return () => { active = false; };
-  }, []);
 
   if (loading) {
     return (
@@ -93,7 +75,7 @@ export default function ExecutiveSummaryBar() {
 
   if (!isLive || !summaryData) return null;
 
-  const { totalEvents, keyShift, mainInsight, actionText, trendsCount, linksCount } = summaryData;
+  const { totalEvents, keyShift, mainInsight, actionText, actionDescription, trendsCount, linksCount } = summaryData;
   const insightsCount = strategicInsights.length;
   const plural = (n: number, f: [string, string, string]) => {
     const m10 = n % 10, m100 = n % 100;
@@ -192,22 +174,22 @@ export default function ExecutiveSummaryBar() {
                     {actionText}
                   </p>
                   <p className="text-[9px] text-emerald-300/70 mt-1 line-clamp-1">
-                    {isEn ? "Output: decision brief" : "На выходе: decision brief"} · {focusScenario.estimatedMinutes} {isEn ? "min" : "мин"}
+                    {isEn ? "First useful sample in 4–8 min" : "Первый полезный пример за 4–8 мин"}
                   </p>
                 </>
               ) : (
                 <p className="text-[11px] text-muted-foreground italic">—</p>
               )}
               {actionText && (
-                <EkenRouteAction
+                <IntentFirstPilot
                   compact
-                  className="mt-1"
-                  surface="dashboard-focus"
-                  sourceId={focusScenario.sourceId}
-                  sourceName={focusScenario.sourceName}
-                  sourceText={actionText}
-                  level={8}
-                  reportDate={reportDate}
+                  locale={isEn ? "en" : "ru"}
+                  signal={{
+                    id: `dashboard-focus:${reportDate}:event-4`,
+                    title: actionText,
+                    description: actionDescription,
+                    reportDate,
+                  }}
                 />
               )}
             </div>
