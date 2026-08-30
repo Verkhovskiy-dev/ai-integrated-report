@@ -9,6 +9,7 @@ export function buildShareId(prefix: string, key: string | number) {
 
 export function buildShareUrl(id: string, locale: ShareLocale, currentHref: string) {
   const url = new URL(currentHref);
+  if (id.startsWith("news-")) return `${url.origin}/share/news/${encodeURIComponent(id)}/`;
   url.searchParams.set("share", id);
   url.searchParams.set("lang", locale);
   url.hash = id;

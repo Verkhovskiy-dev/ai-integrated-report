@@ -25,4 +25,9 @@ describe("dashboard sharing", () => {
     expect(buildShareId("news", "Новый AI-агент: запуск!")).toBe(buildShareId("news", "Новый AI-агент: запуск!"));
     expect(buildShareId("news", "Новый AI-агент: запуск!")).toMatch(/^news-[a-zа-яё0-9-]+-[a-z0-9]+$/i);
   });
+
+  it("uses a dedicated static page for a news item", () => {
+    expect(buildShareUrl("news-example-abc", "ru", "https://verkhovskiy.ai/?view=executive"))
+      .toBe("https://verkhovskiy.ai/share/news/news-example-abc/");
+  });
 });
