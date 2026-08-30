@@ -21,7 +21,7 @@ interface ShareableBlockProps {
   className?: string;
 }
 
-interface ShareButtonProps { id: string; title: string; compact?: boolean; className?: string }
+interface ShareButtonProps { id: string; title: string; text?: string; compact?: boolean; className?: string }
 
 declare global {
   interface Window {
@@ -29,10 +29,11 @@ declare global {
   }
 }
 
-export function ShareButton({ id, title, compact = false, className }: ShareButtonProps) {
+export function ShareButton({ id, title, text, compact = false, className }: ShareButtonProps) {
   const { locale } = useTranslation();
   const isEn = locale === "en";
   const [copied, setCopied] = useState(false);
+  const shareText = text ? `${title}\n\n${text.slice(0, 320)}` : title;
   const shareUrl = () => buildShareUrl(id, isEn ? "en" : "ru", window.location.href);
 
   const track = (target: ShareTarget) => {
@@ -60,7 +61,7 @@ export function ShareButton({ id, title, compact = false, className }: ShareButt
 
   const openShare = (target: "telegram" | "facebook") => {
     const outboundUrl = target === "telegram"
-      ? buildTelegramShareUrl(shareUrl(), title)
+      ? buildTelegramShareUrl(shareUrl(), shareText)
       : buildFacebookShareUrl(shareUrl());
     track(target);
     window.open(outboundUrl, "_blank", "noopener,noreferrer,width=720,height=640");
@@ -70,7 +71,7 @@ export function ShareButton({ id, title, compact = false, className }: ShareButt
     const url = shareUrl();
     if (navigator.share) {
       try {
-        await navigator.share({ title, text: title, url });
+        await navigator.share({ title, text: shareText, url });
         track("instagram");
         return;
       } catch (error) {

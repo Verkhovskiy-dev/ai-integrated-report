@@ -382,7 +382,7 @@ export default function HeroSummary() {
                         : "border-border/20 hover:border-primary/20"
                     }`}
                   >
-                    <ShareButton id={itemId} title={item.title} compact className="absolute right-2 top-2" />
+                    <ShareButton id={itemId} title={item.title} text={item.description} compact className="absolute right-2 top-2" />
                     {/* Clickable header */}
                     <button
                       onClick={() => isExpandable && setExpandedHeroEvent(isItemExpanded ? null : idx)}
