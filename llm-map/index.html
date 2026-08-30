@@ -524,13 +524,13 @@
       </div>
 
       <!-- Navigation CTA -->
-      <div style="background:linear-gradient(135deg,#0f2a1e 0%,#0a1f28 100%);border:1px solid #1e4030;border-radius:14px;padding:20px;position:relative;overflow:hidden;">
+      <div id="eken-offer" style="background:linear-gradient(135deg,#0f2a1e 0%,#0a1f28 100%);border:1px solid #1e4030;border-radius:14px;padding:20px;position:relative;overflow:hidden;">
         <div style="position:absolute;right:-20px;top:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(0,229,160,.12),transparent 70%);border-radius:50%;"></div>
-        <div class="section-label mb-2">Навигация по экосистеме</div>
-        <p style="font-size:14px;font-weight:600;color:#e8edf2;margin:0 0 4px;">100+ моделей в одном месте</p>
-        <p style="font-size:12px;color:#6b7a8d;margin:0 0 16px;line-height:1.5;">Сравнивайте возможности, цены и бенчмарки всех актуальных LLM</p>
-        <a href="#section-navigator" class="guide-btn flex items-center justify-center gap-2 py-2.5 rounded-lg" style="text-decoration:none;">
-          <span style="font-size:13px;font-weight:700;color:#0d0f10;">Подобрать инструмент →</span>
+        <div class="section-label mb-2">Карта → практический маршрут</div>
+        <p style="font-size:14px;font-weight:600;color:#e8edf2;margin:0 0 4px;">Выберите направление и проверьте его на своей задаче</p>
+        <p style="font-size:12px;color:#8e9aa8;margin:0 0 16px;line-height:1.5;">Карта подберёт инструменты, а EkenLab соберёт короткий маршрут с конкретным результатом.</p>
+        <a href="#section-navigator" id="eken-offer-cta" onclick="trackLlmFunnel('eken_offer_click', { placement: 'map_primary', destination: '#section-navigator' })" class="guide-btn flex items-center justify-center gap-2 py-2.5 rounded-lg" style="text-decoration:none;">
+          <span style="font-size:13px;font-weight:700;color:#0d0f10;">Подобрать маршрут в Eken →</span>
         </a>
       </div>
     </div>
@@ -880,6 +880,25 @@ function escapeHtml(value) {
   })[character]);
 }
 
+function trackLlmFunnel(eventName, payload = {}) {
+  window.verkhovskiyAnalytics?.track(eventName, {
+    funnel: 'llm_map_to_eken',
+    source: 'llm-map',
+    ...payload
+  });
+}
+
+function observeEkenOffer() {
+  const offer = document.getElementById('eken-offer');
+  if (!offer || !('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver(entries => {
+    if (!entries.some(entry => entry.isIntersecting && entry.intersectionRatio >= 0.5)) return;
+    trackLlmFunnel('eken_offer_view', { placement: 'map_primary' });
+    observer.disconnect();
+  }, { threshold: 0.5 });
+  observer.observe(offer);
+}
+
 // ========== INIT ==========
 async function init() {
   try {
@@ -990,6 +1009,7 @@ async function init() {
   renderCosts();
   renderNavigator();
   renderQuiz();
+  observeEkenOffer();
 }
 
 // ========== ROLE FILTER ==========
@@ -1244,6 +1264,11 @@ function openPracticeDrawer(practiceId, context = {}) {
   const entry = getPracticeEntry(practiceId);
   if (!entry) return;
   const { tool, practice } = entry;
+  trackLlmFunnel('handoff_preview_opened', {
+    practice_id: practice.id,
+    tool: tool.name,
+    surface: practice.surface || 'llm-tool-card'
+  });
   const modelEntry = isModelEntry(tool);
   const outcome = practiceOutcome(tool, practice);
   activePracticeContext = context;
@@ -1412,6 +1437,11 @@ function renderToolPracticePlan(entry) {
   const brief = activePracticeBrief;
   const modelEntry = isModelEntry(tool);
   const outcome = practiceOutcome(tool, practice);
+  trackLlmFunnel('eken_offer_view', {
+    placement: 'practice_plan',
+    practice_id: practice.id,
+    tool: tool.name
+  });
   const body = document.getElementById('practice-drawer-body');
   body.innerHTML = `
     <span class="practice-role">${escapeHtml(tool.name)} · ${practice.duration} мин</span>
@@ -1425,7 +1455,7 @@ function renderToolPracticePlan(entry) {
       <div class="practice-plan-step"><b>2</b><div><strong>${modelEntry ? 'Получить и улучшить ответ' : 'Собрать минимальный рабочий результат'}</strong><p>${escapeHtml(brief.objective)}</p></div></div>
       <div class="practice-plan-step"><b>3</b><div><strong>${modelEntry ? 'Сравнить с критерием и решить' : 'Проверить и зафиксировать'}</strong><p>${escapeHtml(brief.successCriterion)}</p></div></div>
     </div>
-    <button type="button" class="practice-launch" onclick="launchEkenPractice('${practice.id}')" data-umami-event="llm-practice-launch" data-umami-event-tool="${practice.id}">Продолжить в EkenLab</button>
+    <button type="button" class="practice-launch" onclick="launchEkenPractice('${practice.id}')" data-analytics-skip-auto="true" data-umami-event="llm-practice-launch" data-umami-event-tool="${practice.id}">Продолжить в EkenLab</button>
     <button type="button" class="practice-secondary" onclick="editToolPracticeBrief()">Изменить короткий бриф</button>
     <p class="practice-footnote">Полный технический контракт собран автоматически</p>`;
 }
@@ -1453,6 +1483,17 @@ function launchEkenPractice(practiceId) {
   const entry = getPracticeEntry(practiceId);
   if (!entry || !activePracticeBrief) return;
   const payload = buildToolPracticeRoute(entry.tool, entry.practice, activePracticeBrief);
+  trackLlmFunnel('eken_cta_click', {
+    placement: 'practice_plan',
+    practice_id: entry.practice.id,
+    tool: entry.tool.name,
+    destination: 'https://app.ekenlab.com/integrations/verkhovskiy'
+  });
+  trackLlmFunnel('handoff_confirmed', {
+    practice_id: entry.practice.id,
+    route_id: payload.routeId,
+    tool: entry.tool.name
+  });
   const integrationUrl = new URLSearchParams(window.location.search).get('ekenIntegration')
     || 'https://app.ekenlab.com/integrations/verkhovskiy';
   window.location.href = `${integrationUrl}#route=${encodeURIComponent(JSON.stringify(payload))}`;

@@ -35,6 +35,7 @@
 
   var FUNNEL_STORAGE_KEY = 'verkhovskiy_education_funnel_v1';
   var EKEN_HOST_PATTERN = /(^|\.)ekenlab\.com$/i;
+  var TELEGRAM_HOST_PATTERN = /(^|\.)t\.me$/i;
 
   function track(eventName, payload) {
     var eventPayload = Object.assign({
@@ -115,9 +116,29 @@
 
     var clickable = target.closest('a, button, [role="button"]');
     if (!clickable) return;
+    if (clickable.getAttribute('data-analytics-skip-auto') === 'true') return;
 
     var label = getElementLabel(clickable);
     var ekenUrl = getEkenUrl(clickable);
+
+    var link = clickable.closest && clickable.closest('a[href]');
+    if (link) {
+      try {
+        var telegramUrl = new URL(link.href, location.href);
+        if (TELEGRAM_HOST_PATTERN.test(telegramUrl.hostname)) {
+          track('telegram_subscribe_click', {
+            destination: telegramUrl.origin + telegramUrl.pathname,
+            bot: telegramUrl.pathname.replace(/^\/+/, ''),
+            start_source: telegramUrl.searchParams.get('start') || 'unattributed',
+            cta_label: label,
+            source_path: location.pathname
+          });
+          return;
+        }
+      } catch (error) {
+        // Ignore malformed external links; analytics must not block navigation.
+      }
+    }
 
     if (ekenUrl) {
       addEkenAttribution(clickable.closest('a[href]'), ekenUrl);
