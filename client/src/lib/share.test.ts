@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildFacebookShareUrl, buildShareUrl, buildTelegramShareUrl } from "./share";
+import { buildFacebookShareUrl, buildShareId, buildShareUrl, buildTelegramShareUrl } from "./share";
 
 describe("dashboard sharing", () => {
   it("builds a section URL while preserving existing filters", () => {
@@ -19,5 +19,10 @@ describe("dashboard sharing", () => {
   it("encodes the Facebook target", () => {
     const result = new URL(buildFacebookShareUrl("https://example.com/?share=signals#signals"));
     expect(result.searchParams.get("u")).toBe("https://example.com/?share=signals#signals");
+  });
+
+  it("builds stable, URL-safe item anchors", () => {
+    expect(buildShareId("news", "Новый AI-агент: запуск!")).toBe(buildShareId("news", "Новый AI-агент: запуск!"));
+    expect(buildShareId("news", "Новый AI-агент: запуск!")).toMatch(/^news-[a-zа-яё0-9-]+-[a-z0-9]+$/i);
   });
 });

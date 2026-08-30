@@ -24,6 +24,8 @@ import { useTranslation } from "@/contexts/I18nContext";
 import { useViewMode } from "@/contexts/ViewModeContext";
 import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
 import EkenRouteAction from "@/components/EkenRouteAction";
+import { ShareButton } from "@/components/ShareableBlock";
+import { buildShareId } from "@/lib/share";
 
 /* ------------------------------------------------------------------ */
 /*  Role definitions & relevance mapping                               */
@@ -172,14 +174,17 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
   const Icon = ICON_MAP[insight.icon] || Lightbulb;
   const roleTakeaway = getRoleTakeaway(role, insight, isEn);
   const summaryPreview = firstSentence(insight.summary);
+  const itemId = buildShareId("insight", insight.id);
 
   return (
     <div
+      id={itemId}
       className={`
-        bg-card/60 backdrop-blur-sm border rounded-xl overflow-hidden transition-all duration-400
+        relative bg-card/60 backdrop-blur-sm border rounded-xl overflow-hidden transition-all duration-400
         ${isExpanded ? "border-primary/40 glow-cyan" : "border-border/50 hover:border-border"}
       `}
     >
+      <ShareButton id={itemId} title={insight.title} compact className="absolute right-11 top-3 sm:right-14 sm:top-4" />
       {/* Header — always visible, clickable */}
       <button
         onClick={onToggle}

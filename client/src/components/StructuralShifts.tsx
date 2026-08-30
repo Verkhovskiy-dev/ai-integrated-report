@@ -13,6 +13,8 @@ import { useFilters } from "@/contexts/FilterContext";
 import { useTranslation } from "@/contexts/I18nContext";
 import { ProgramBadgeGroup } from "@/components/ProgramBadge";
 import EkenRouteAction from "@/components/EkenRouteAction";
+import { ShareButton } from "@/components/ShareableBlock";
+import { buildShareId } from "@/lib/share";
 
 function getLevelColor(id: number): string {
   const level = SRT_LEVELS.find((l) => l.id === id);
@@ -103,15 +105,18 @@ export default function StructuralShifts() {
           {filteredShifts.map((shift) => {
             const isExpanded = expandedId === shift.id;
             const trendBadge = getTrendBadge(shift.trend);
+            const itemId = buildShareId("shift", shift.id);
 
             return (
               <div
                 key={shift.id}
+                id={itemId}
                 className={`
-                  bg-card/60 backdrop-blur-sm border rounded-lg overflow-hidden transition-all duration-300
+                  relative bg-card/60 backdrop-blur-sm border rounded-lg overflow-hidden transition-all duration-300
                   ${isExpanded ? "border-primary/30 glow-cyan" : "border-border/50 hover:border-border"}
                 `}
               >
+                <ShareButton id={itemId} title={shift.title} compact className="absolute right-10 top-2 sm:right-12 sm:top-3" />
                 {/* Header */}
                 <button
                   onClick={() => setExpandedId(isExpanded ? null : shift.id)}

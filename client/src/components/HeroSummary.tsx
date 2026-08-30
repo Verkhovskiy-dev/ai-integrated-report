@@ -22,6 +22,8 @@ import { useTranslation } from "@/contexts/I18nContext";
 import { useViewMode } from "@/contexts/ViewModeContext";
 import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
 import { ExecutiveEventCardLocalized } from "@/components/ExecutiveEventCard";
+import { ShareButton } from "@/components/ShareableBlock";
+import { buildShareId } from "@/lib/share";
 import EkenRouteAction from "@/components/EkenRouteAction";
 
 // ─── Helpers ────────────────────────────────────────────────────
@@ -368,20 +370,23 @@ export default function HeroSummary() {
                 const explanation = isExecutive ? getEventExplanation(item.title) : undefined;
                 const hasDetails = item.description && item.description !== item.title;
                 const isExpandable = hasDetails || !!explanation;
+                const itemId = buildShareId("news", item.title);
 
                 return (
                   <div
                     key={idx}
-                    className={`bg-background/40 border rounded-lg overflow-hidden transition-all duration-200 ${
+                    id={itemId}
+                    className={`relative bg-background/40 border rounded-lg overflow-hidden transition-all duration-200 ${
                       isItemExpanded
                         ? "border-primary/30 shadow-lg shadow-primary/5"
                         : "border-border/20 hover:border-primary/20"
                     }`}
                   >
+                    <ShareButton id={itemId} title={item.title} compact className="absolute right-2 top-2" />
                     {/* Clickable header */}
                     <button
                       onClick={() => isExpandable && setExpandedHeroEvent(isItemExpanded ? null : idx)}
-                      className={`w-full text-left flex items-start gap-3 p-2.5 group ${isExpandable ? "cursor-pointer" : "cursor-default"}`}
+                      className={`w-full text-left flex items-start gap-3 p-2.5 pr-12 group ${isExpandable ? "cursor-pointer" : "cursor-default"}`}
                       aria-expanded={isExpandable ? isItemExpanded : undefined}
                     >
                       {/* Rank */}

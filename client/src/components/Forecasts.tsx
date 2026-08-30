@@ -1,6 +1,8 @@
 import { Sparkles, ArrowUpRight, ArrowDownRight, AlertTriangle } from "lucide-react";
 import { useLiveData, type LiveReport } from "@/contexts/LiveDataContext";
 import { useTranslation } from "@/contexts/I18nContext";
+import { ShareButton } from "@/components/ShareableBlock";
+import { buildShareId } from "@/lib/share";
 
 interface ForecastItem {
   title: string;
@@ -106,7 +108,8 @@ export default function Forecasts() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {forecasts.map((f, idx) => (
-            <div key={idx} className="p-4 rounded-lg border border-border/40 bg-muted/10 hover:border-border/60 transition-all">
+            <div id={buildShareId("forecast", f.title)} key={idx} className="relative p-4 pr-12 rounded-lg border border-border/40 bg-muted/10 hover:border-border/60 transition-all">
+              <ShareButton id={buildShareId("forecast", f.title)} title={f.title} compact className="absolute right-2 top-2" />
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-1.5">
                   {f.direction === "up" ? <ArrowUpRight className="w-4 h-4 text-emerald-400" /> : f.direction === "down" ? <ArrowDownRight className="w-4 h-4 text-red-400" /> : <AlertTriangle className="w-4 h-4 text-amber-400" />}

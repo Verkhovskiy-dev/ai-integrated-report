@@ -12,6 +12,8 @@ import { useFilters } from "@/contexts/FilterContext";
 import { useTranslation } from "@/contexts/I18nContext";
 import { AlertTriangle, AlertCircle } from "lucide-react";
 import { ProgramBadgeGroup } from "@/components/ProgramBadge";
+import { ShareButton } from "@/components/ShareableBlock";
+import { buildShareId } from "@/lib/share";
 
 const RADAR_BG = "https://private-us-east-1.manuscdn.com/sessionFile/v7uKuw67xnKHKY8cq65BNf/sandbox/TAGv8ZfRAyZfV9Lj7wYGNr-img-2_1770928026000_na1fn_cmFkYXItYmc.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvdjd1S3V3Njd4bktIS1k4Y3E2NUJOZi9zYW5kYm94L1RBR3Y4WmZSQXlaZlY5TGo3d1lHTnItaW1nLTJfMTc3MDkyODAyNjAwMF9uYTFmbl9jbUZrWVhJdFltYy5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=JzbVkgmDDlD6niekdkpPYW1T~wh-zLB0yRpsOSXaMJavyKyxipJo3-syc~xmMJ-Ipsvg51wwZ7mIYA58OpIZuMbOJSqQ7vsQHptay8010mSFEm3LFOVw1o7cAiVNHwAbT9ufh8~X5N8uqHro0Bwc0irb6ilF0wb2fXVdctzs8UM8C74krueKCQgpdQj1AAArv1pmUziDfdGxgDs1g~zjQIEQzZnwNSeeq-7MS2AUDW5lfeURKPHMJHiVuUgiuhbODZmB8tKzQppq7wu-TmF9XJS7pDoO90Qt~bzvmXqIR3ShobqkG9z1XlKPNNd4v-FseIaQUyJMtR5hRpqmDJ2L3Q__";
 
@@ -170,14 +172,17 @@ export default function WeakSignalsRadar() {
               const urgency = getUrgencyConfig(signal.urgency);
               const UrgencyIcon = urgency.icon;
               const hasPrograms = (signal as any).relevantPrograms && (signal as any).relevantPrograms.length > 0;
+              const itemId = buildShareId("signal", signal.id);
               return (
                 <div
                   key={signal.id}
+                  id={itemId}
                   className={`
-                    bg-card/60 backdrop-blur-sm border rounded-lg p-3 sm:p-4 transition-all duration-300
+                    relative bg-card/60 backdrop-blur-sm border rounded-lg p-3 pr-12 sm:p-4 sm:pr-12 transition-all duration-300
                     hover:border-primary/20 ${urgency.border}
                   `}
                 >
+                  <ShareButton id={itemId} title={signal.title} compact className="absolute right-2 top-2" />
                   <div className="flex items-center justify-between mb-1.5 sm:mb-2">
                     <span
                       className="text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded border border-border/40"

@@ -1,5 +1,12 @@
 export type ShareLocale = "ru" | "en";
 
+export function buildShareId(prefix: string, key: string | number) {
+  const normalized = String(key).toLowerCase().normalize("NFKD").replace(/[^a-z0-9а-яё]+/gi, "-").replace(/^-|-$/g, "").slice(0, 42);
+  let hash = 2166136261;
+  for (const char of String(key)) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619);
+  return `${prefix}-${normalized || "item"}-${(hash >>> 0).toString(36)}`;
+}
+
 export function buildShareUrl(id: string, locale: ShareLocale, currentHref: string) {
   const url = new URL(currentHref);
   url.searchParams.set("share", id);
