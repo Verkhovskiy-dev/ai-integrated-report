@@ -21,13 +21,15 @@ interface ShareableBlockProps {
   className?: string;
 }
 
+interface ShareButtonProps { id: string; title: string; compact?: boolean; className?: string }
+
 declare global {
   interface Window {
     umami?: { track: (event: string, data?: Record<string, string>) => void };
   }
 }
 
-export default function ShareableBlock({ id, title, children, className }: ShareableBlockProps) {
+export function ShareButton({ id, title, compact = false, className }: ShareButtonProps) {
   const { locale } = useTranslation();
   const isEn = locale === "en";
   const [copied, setCopied] = useState(false);
@@ -79,18 +81,16 @@ export default function ShareableBlock({ id, title, children, className }: Share
   };
 
   return (
-    <div className={cn("group/share relative", className)} data-shareable-block={id}>
-      {children}
-      <div className="absolute right-3 top-2 z-30 sm:right-6 sm:top-3">
+      <div className={cn("z-30", className)}>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
               type="button"
               aria-label={isEn ? `Share ${title}` : `Поделиться: ${title}`}
-              className="inline-flex h-9 items-center gap-2 rounded-full border border-primary/25 bg-background/90 px-3 text-[11px] font-mono text-muted-foreground shadow-lg shadow-background/30 backdrop-blur-md transition-all hover:border-primary/50 hover:bg-primary/10 hover:text-primary focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 sm:opacity-0 sm:translate-y-1 sm:group-hover/share:translate-y-0 sm:group-hover/share:opacity-100 data-[state=open]:translate-y-0 data-[state=open]:border-primary/50 data-[state=open]:text-primary data-[state=open]:opacity-100"
+              className={cn("inline-flex items-center gap-2 rounded-full border border-primary/25 bg-background/90 font-mono text-muted-foreground shadow-lg shadow-background/30 backdrop-blur-md transition-all hover:border-primary/50 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 data-[state=open]:border-primary/50 data-[state=open]:text-primary", compact ? "h-8 w-8 justify-center p-0 opacity-70 hover:opacity-100" : "h-9 px-3 text-[11px] sm:opacity-0 sm:translate-y-1 sm:group-hover/share:translate-y-0 sm:group-hover/share:opacity-100 data-[state=open]:translate-y-0 data-[state=open]:opacity-100")}
             >
               {copied ? <Check className="size-3.5 text-emerald-400" /> : <Share2 className="size-3.5" />}
-              <span className="hidden md:inline">{copied ? (isEn ? "Copied" : "Скопировано") : (isEn ? "Share" : "Поделиться")}</span>
+              {!compact && <span className="hidden md:inline">{copied ? (isEn ? "Copied" : "Скопировано") : (isEn ? "Share" : "Поделиться")}</span>}
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -120,6 +120,14 @@ export default function ShareableBlock({ id, title, children, className }: Share
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+  );
+}
+
+export default function ShareableBlock({ id, title, children, className }: ShareableBlockProps) {
+  return (
+    <div className={cn("group/share relative", className)} data-shareable-block={id}>
+      {children}
+      <ShareButton id={id} title={title} className="absolute right-3 top-2 sm:right-6 sm:top-3" />
     </div>
   );
 }

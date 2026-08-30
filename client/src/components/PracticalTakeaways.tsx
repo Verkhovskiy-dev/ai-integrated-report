@@ -12,6 +12,8 @@ import {
 import { useTranslation } from "@/contexts/I18nContext";
 import { useViewMode } from "@/contexts/ViewModeContext";
 import { useExecutiveData, type WeeklyTakeaway } from "@/contexts/ExecutiveDataContext";
+import { ShareButton } from "@/components/ShareableBlock";
+import { buildShareId } from "@/lib/share";
 
 const PRIORITY_STYLES: Record<string, { bg: string; border: string; text: string; label: string; labelEn: string }> = {
   high: {
@@ -59,13 +61,16 @@ function TakeawayCard({
   const priority = PRIORITY_STYLES[takeaway.priority] || PRIORITY_STYLES.medium;
   const typeInfo = TYPE_ICONS[takeaway.risk_or_opportunity] || TYPE_ICONS.both;
   const TypeIcon = typeInfo.icon;
+  const itemId = buildShareId("takeaway", takeaway.situation);
 
   return (
     <div
-      className={`bg-card/50 backdrop-blur-sm border rounded-xl overflow-hidden transition-all duration-300 ${
+      id={itemId}
+      className={`relative bg-card/50 backdrop-blur-sm border rounded-xl overflow-hidden transition-all duration-300 ${
         isExpanded ? "border-primary/40 shadow-lg shadow-primary/5" : "border-border/40 hover:border-primary/20"
       }`}
     >
+      <ShareButton id={itemId} title={takeaway.situation} compact className="absolute right-11 top-3 sm:right-14 sm:top-4" />
       {/* Header */}
       <button
         onClick={onToggle}

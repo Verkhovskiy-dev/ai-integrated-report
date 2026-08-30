@@ -17,6 +17,8 @@ import { useTranslation } from "@/contexts/I18nContext";
 import { useViewMode } from "@/contexts/ViewModeContext";
 import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
 import { ExecutiveEventCardLocalized } from "@/components/ExecutiveEventCard";
+import { ShareButton } from "@/components/ShareableBlock";
+import { buildShareId } from "@/lib/share";
 
 /* ── Severity-based color scheme ── */
 function getSeverityColor(level: number): string {
@@ -188,10 +190,12 @@ export default function LatestNews() {
             const isExpandable = hasDetails || hasSources || !!explanation;
             const sevColor = getSeverityColor(item.level);
             const sevBorder = getSeverityBorder(item.level);
+            const itemId = buildShareId("news", item.title);
 
             return (
               <div
                 key={idx}
+                id={itemId}
                 className={`group relative bg-card/50 backdrop-blur-sm border rounded-lg overflow-hidden transition-all duration-200 ${
                   isCardExpanded
                     ? "border-primary/30 shadow-lg shadow-primary/5"
@@ -201,6 +205,7 @@ export default function LatestNews() {
                   backgroundColor: getSeverityBg(item.level),
                 }}
               >
+                <ShareButton id={itemId} title={item.title} compact className="absolute right-2 top-2" />
                 {/* Severity accent bar */}
                 <div
                   className="absolute top-0 left-0 w-1 h-full rounded-l-lg"
@@ -210,7 +215,7 @@ export default function LatestNews() {
                 {/* Card header — clickable */}
                 <button
                   onClick={() => isExpandable && toggleCard(idx)}
-                  className={`w-full text-left p-3 pl-4 ${isExpandable ? "cursor-pointer" : "cursor-default"}`}
+                  className={`w-full text-left p-3 pl-4 pr-12 ${isExpandable ? "cursor-pointer" : "cursor-default"}`}
                   aria-expanded={isExpandable ? isCardExpanded : undefined}
                 >
                   <div className="flex items-center justify-between gap-2 mb-1.5">
