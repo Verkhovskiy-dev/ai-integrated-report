@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@keyframes shared-item-pulse {
+  0%, 100% { box-shadow: 0 0 0 1px transparent; }
+  20%, 75% { box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 75%, transparent), 0 0 28px color-mix(in srgb, var(--primary) 24%, transparent); }
+}
+.shared-item-target { animation: shared-item-pulse 2.6s ease-out; scroll-margin-top: 128px; }
+
 /* Positions decision field ------------------------------------------------ */
 .positions-page #subscribe-widget { display: none !important; }
 

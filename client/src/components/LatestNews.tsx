@@ -205,7 +205,7 @@ export default function LatestNews() {
                   backgroundColor: getSeverityBg(item.level),
                 }}
               >
-                <ShareButton id={itemId} title={item.title} compact className="absolute right-2 top-2" />
+                <ShareButton id={itemId} title={item.title} text={item.description} compact className="absolute right-2 top-2" />
                 {/* Severity accent bar */}
                 <div
                   className="absolute top-0 left-0 w-1 h-full rounded-l-lg"

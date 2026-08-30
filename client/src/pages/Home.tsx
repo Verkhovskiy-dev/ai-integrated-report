@@ -54,12 +54,14 @@ export default function Home() {
       const el = document.getElementById(id);
       if (el) {
         el.scrollIntoView({ behavior: "smooth" });
+        el.classList.add("shared-item-target");
+        window.setTimeout(() => el.classList.remove("shared-item-target"), 2800);
         return;
       }
       if (attempts > 0) setTimeout(() => scrollWithRetry(id, attempts - 1), 250);
     };
     const applyHash = () => {
-      const id = window.location.hash.replace("#", "");
+      const id = window.location.hash.replace("#", "") || new URLSearchParams(window.location.search).get("share") || "";
       if (!id) return;
       setActiveSection(id);
       scrollWithRetry(id);
