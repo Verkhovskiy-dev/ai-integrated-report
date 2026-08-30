@@ -6,7 +6,7 @@ const [dataPath, siteRoot, publicOrigin = "https://verkhovskiy.ai"] = process.ar
 if (!dataPath || !siteRoot) throw new Error("Usage: generate-news-share-pages <latest-report.json> <site-root> [origin]");
 
 const report = JSON.parse(await readFile(dataPath, "utf8"));
-const outputRoot = path.resolve(siteRoot, "share", "v2", "news");
+const outputRoot = path.resolve(siteRoot, "share", "v3", "news");
 if (!outputRoot.startsWith(path.resolve(siteRoot) + path.sep)) throw new Error("Unsafe output path");
 await rm(outputRoot, { recursive: true, force: true });
 
@@ -30,8 +30,10 @@ const textLines = (lines, x, y, size, gap, color, weight = 500) => lines.map((li
 const events = (report.srt_levels ?? []).flatMap(level => (level.events ?? []).map(event => ({ ...event, level: level.level })));
 for (const event of events) {
   const id = shareId("news", event.title);
-  const dir = path.join(outputRoot, id); await mkdir(dir, { recursive: true });
-  const pageUrl = `${publicOrigin}/share/v2/news/${id}/`;
+  const token = id.match(/-([a-z0-9]+)$/i)?.[1];
+  if (!token) throw new Error(`Cannot build ASCII share token for ${id}`);
+  const dir = path.join(outputRoot, token); await mkdir(dir, { recursive: true });
+  const pageUrl = `${publicOrigin}/share/v3/news/${token}/`;
   const dashboardUrl = `${publicOrigin}/?share=${encodeURIComponent(id)}#${encodeURIComponent(id)}`;
   const imageUrl = `${pageUrl}card.png`;
   const titleLines = wrap(event.title, 43, 4);
