@@ -23,6 +23,8 @@ const I18nContext = createContext<I18nContextValue | null>(null);
 
 function getInitialLocale(): Locale {
   try {
+    const requested = new URLSearchParams(window.location.search).get("lang");
+    if (requested === "en" || requested === "ru") return requested;
     const stored = localStorage.getItem("dashboard-locale");
     if (stored === "en" || stored === "ru") return stored;
   } catch {}
