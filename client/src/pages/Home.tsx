@@ -40,6 +40,7 @@ import PracticalTakeaways from "@/components/PracticalTakeaways";
 import Footer from "@/components/Footer";
 import ProgramsTeaser from "@/components/ProgramsTeaser";
 import AiProSpotlight from "@/components/AiProSpotlight";
+import ShareableBlock from "@/components/ShareableBlock";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<string>("news");
@@ -91,7 +92,9 @@ export default function Home() {
         <NewsTicker />
 
         {/* === FIRST SCREEN: Executive Summary === */}
-        <HeroSummary />
+        <ShareableBlock id="hero-summary" title={locale === "en" ? "Executive summary" : "Главное за неделю"}>
+          <HeroSummary />
+        </ShareableBlock>
 
         {/* AI PRO — таргет на executive-аудиторию */}
         {isExecutive && (
@@ -103,23 +106,27 @@ export default function Home() {
         )}
 
         {/* === Remaining Events (collapsible) === */}
-        <LatestNews />
+        <ShareableBlock id="news" title={locale === "en" ? "Latest AI events" : "Последние события в AI"}>
+          <LatestNews />
+        </ShareableBlock>
 
         {/* === Detailed Trend Momentum Panels === */}
-        <TrendCharts />
+        <ShareableBlock id="trends" title={locale === "en" ? "AI trend dynamics" : "Динамика AI-трендов"}>
+          <TrendCharts />
+        </ShareableBlock>
 
         {/* Hero / Metrics Bar */}
         <MetricsBar />
 
         {/* Heatmap: Activity by Level and Date */}
-        <section id="heatmap" className="py-6 sm:py-10">
-          <HeatmapSection />
-        </section>
+        <ShareableBlock id="heatmap" title={locale === "en" ? "Activity heatmap" : "Карта активности"}>
+          <section id="heatmap" className="py-6 sm:py-10"><HeatmapSection /></section>
+        </ShareableBlock>
 
         {/* Strategic Insights — with program links + executive role advice */}
-        <section id="insights" className="py-6 sm:py-10">
-          <StrategicInsights />
-        </section>
+        <ShareableBlock id="insights" title={locale === "en" ? "Strategic insights" : "Стратегические инсайты"}>
+          <section id="insights" className="py-6 sm:py-10"><StrategicInsights /></section>
+        </ShareableBlock>
 
         {/* SKOLKOVO programs teaser - insight-linked, full catalog at /programs */}
         <section id="programs" className="py-6 sm:py-10">
@@ -128,10 +135,13 @@ export default function Home() {
 
         {/* Practical Takeaways — shown when executive data is loaded */}
         {hasExecutiveData && (
-          <PracticalTakeaways />
+          <ShareableBlock id="takeaways" title={locale === "en" ? "Practical takeaways" : "Практические выводы"}>
+            <PracticalTakeaways />
+          </ShareableBlock>
         )}
 
         {/* Two-column layout: Themes + Companies */}
+        <ShareableBlock id="themes" title={locale === "en" ? "Themes and companies" : "Темы и компании"}>
         <section id="themes" className="py-6 sm:py-10">
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-6">
@@ -140,11 +150,12 @@ export default function Home() {
             </div>
           </div>
         </section>
+        </ShareableBlock>
 
         {/* Structural Shifts */}
-        <section id="shifts" className="py-6 sm:py-10">
-          <StructuralShifts />
-        </section>
+        <ShareableBlock id="shifts" title={locale === "en" ? "Structural shifts" : "Структурные сдвиги"}>
+          <section id="shifts" className="py-6 sm:py-10"><StructuralShifts /></section>
+        </ShareableBlock>
 
         {/* AI PRO — мостик из сдвигов */}
         <section className="pb-6 sm:pb-10 -mt-2">
@@ -154,24 +165,24 @@ export default function Home() {
         </section>
 
         {/* Cross-Level Connections */}
-        <section id="connections" className="py-6 sm:py-10">
-          <CrossLevelConnections />
-        </section>
+        <ShareableBlock id="connections" title={locale === "en" ? "Cross-level connections" : "Связи между уровнями"}>
+          <section id="connections" className="py-6 sm:py-10"><CrossLevelConnections /></section>
+        </ShareableBlock>
 
         {/* Weak Signals Radar */}
-        <section id="signals" className="py-6 sm:py-10">
-          <WeakSignalsRadar />
-        </section>
+        <ShareableBlock id="signals" title={locale === "en" ? "Weak signals radar" : "Радар слабых сигналов"}>
+          <section id="signals" className="py-6 sm:py-10"><WeakSignalsRadar /></section>
+        </ShareableBlock>
 
         {/* Week-over-Week Comparison */}
-        <section id="wow" className="py-6 sm:py-10">
-          <WeekOverWeek />
-        </section>
+        <ShareableBlock id="wow" title={locale === "en" ? "Week-over-week comparison" : "Сравнение неделя к неделе"}>
+          <section id="wow" className="py-6 sm:py-10"><WeekOverWeek /></section>
+        </ShareableBlock>
 
         {/* Forecasts */}
-        <section id="forecasts" className="py-6 sm:py-10">
-          <Forecasts />
-        </section>
+        <ShareableBlock id="forecasts" title={locale === "en" ? "AI forecasts" : "Прогнозы AI"}>
+          <section id="forecasts" className="py-6 sm:py-10"><Forecasts /></section>
+        </ShareableBlock>
 
         {/* Nodal Positions + Education Recommendations */}
         <section id="positions" className="py-6 sm:py-10">
