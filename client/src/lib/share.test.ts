@@ -28,6 +28,6 @@ describe("dashboard sharing", () => {
 
   it("uses a dedicated static page for a news item", () => {
     expect(buildShareUrl("news-example-abc", "ru", "https://verkhovskiy.ai/?view=executive"))
-      .toBe("https://verkhovskiy.ai/share/news/news-example-abc/");
+      .toBe("https://verkhovskiy.ai/share/news/news-example-abc/?v=2");
   });
 });
