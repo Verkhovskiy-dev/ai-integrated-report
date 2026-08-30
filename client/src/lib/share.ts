@@ -7,9 +7,15 @@ export function buildShareId(prefix: string, key: string | number) {
   return `${prefix}-${normalized || "item"}-${(hash >>> 0).toString(36)}`;
 }
 
+export function getNewsShareToken(id: string) {
+  const token = id.match(/-([a-z0-9]+)$/i)?.[1];
+  if (!token) throw new Error("Invalid news share id");
+  return token;
+}
+
 export function buildShareUrl(id: string, locale: ShareLocale, currentHref: string) {
   const url = new URL(currentHref);
-  if (id.startsWith("news-")) return `${url.origin}/share/v2/news/${encodeURIComponent(id)}/`;
+  if (id.startsWith("news-")) return `${url.origin}/share/v3/news/${getNewsShareToken(id)}/`;
   url.searchParams.set("share", id);
   url.searchParams.set("lang", locale);
   url.hash = id;
