@@ -6,7 +6,7 @@ const [dataPath, siteRoot, publicOrigin = "https://verkhovskiy.ai"] = process.ar
 if (!dataPath || !siteRoot) throw new Error("Usage: generate-news-share-pages <latest-report.json> <site-root> [origin]");
 
 const report = JSON.parse(await readFile(dataPath, "utf8"));
-const outputRoot = path.resolve(siteRoot, "share", "news");
+const outputRoot = path.resolve(siteRoot, "share", "v2", "news");
 if (!outputRoot.startsWith(path.resolve(siteRoot) + path.sep)) throw new Error("Unsafe output path");
 await rm(outputRoot, { recursive: true, force: true });
 
@@ -31,7 +31,7 @@ const events = (report.srt_levels ?? []).flatMap(level => (level.events ?? []).m
 for (const event of events) {
   const id = shareId("news", event.title);
   const dir = path.join(outputRoot, id); await mkdir(dir, { recursive: true });
-  const pageUrl = `${publicOrigin}/share/news/${id}/`;
+  const pageUrl = `${publicOrigin}/share/v2/news/${id}/`;
   const dashboardUrl = `${publicOrigin}/?share=${encodeURIComponent(id)}#${encodeURIComponent(id)}`;
   const imageUrl = `${pageUrl}card.png`;
   const titleLines = wrap(event.title, 43, 4);
