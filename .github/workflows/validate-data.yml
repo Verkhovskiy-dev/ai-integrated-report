@@ -10,6 +10,9 @@ on:
       - 'data/latest-report.en.json'
       - 'data/archive/*.json'
 
+permissions:
+  contents: write
+
 jobs:
   validate:
     name: Validate & sanitize latest-report.json
