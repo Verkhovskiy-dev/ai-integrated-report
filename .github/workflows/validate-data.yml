@@ -1,6 +1,7 @@
 name: Validate Report Data
 # Run on every push that touches data files in gh-pages branch
 on:
+  workflow_dispatch:
   push:
     branches:
       - gh-pages
@@ -91,6 +92,18 @@ jobs:
           ref: main
           path: route-system-source
 
+      - name: Set up Node.js for share cards
+        if: steps.autofix.outputs.empty_events != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: route-system-source/package-lock.json
+
+      - name: Install share-card generator
+        if: steps.autofix.outputs.empty_events != 'true'
+        run: npm ci --prefix route-system-source --legacy-peer-deps
+
       - name: Rebuild Dashboard → Eken routes
         if: steps.autofix.outputs.empty_events != 'true'
         run: |
@@ -104,6 +117,21 @@ jobs:
             echo "Dashboard routes are already current"
           else
             git commit -m "routes: rebuild Dashboard to Eken entry points"
+            git push origin gh-pages
+          fi
+
+      - name: Rebuild individual news share pages
+        if: steps.autofix.outputs.empty_events != 'true'
+        run: |
+          node route-system-source/scripts/generate-news-share-pages.mjs data/latest-report.json . https://verkhovskiy.ai
+
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "GitHub Actions"
+          git add share/v3/news
+          if git diff --cached --quiet; then
+            echo "News share pages are already current"
+          else
+            git commit -m "share: rebuild news preview pages"
             git push origin gh-pages
           fi
 
