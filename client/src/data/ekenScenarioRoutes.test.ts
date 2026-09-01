@@ -128,6 +128,43 @@ describe("Dashboard → Eken route runtime", () => {
     expect(payload.source.url).not.toContain("Рекомендация CTO");
   });
 
+  it("uses the insight package brief in the Eken handoff", () => {
+    const source = {
+      surface: "dashboard-insight" as const,
+      sourceId: "insight-role:2:ceo",
+      sourceName: "Рост агентной оркестрации",
+      sourceText: "Три проверенных события периода",
+      audienceRole: "CEO",
+      handoffBrief: {
+        objective: "Определить один процесс для ограниченного агентного пилота",
+        firstAction: "Сравнить три процесса по цене ошибки",
+        expectedArtifact: "Карта ограниченного пилота",
+        acceptanceCriterion: "Владелец процесса и границы пилота утверждены",
+        estimatedMinutes: 75,
+      },
+    };
+    const baseScenario = findDashboardScenario(null, source);
+    const scenario = {
+      ...baseScenario,
+      role: "CEO",
+      recipientRole: "CEO",
+      artifact: source.handoffBrief.expectedArtifact,
+      estimatedMinutes: source.handoffBrief.estimatedMinutes,
+    };
+    const draft = buildExecutiveRoleTrackDraft(
+      source,
+      scenario,
+      "CEO",
+      "Выбрать процесс с измеримым эффектом и контролируемым риском",
+    );
+    const payload = buildLearningRoutePayload(source, scenario, draft);
+
+    expect(draft.realInput).toBe(source.handoffBrief.firstAction);
+    expect(payload.brief.expectedArtifact).toBe(source.handoffBrief.expectedArtifact);
+    expect(payload.brief.acceptanceCriterion).toBe(source.handoffBrief.acceptanceCriterion);
+    expect(payload.brief.estimatedMinutes).toBe(75);
+  });
+
   it("fails closed when an executive role track has no recommendation", () => {
     const source = { surface: "dashboard-insight" as const, sourceName: "Проверяемый инсайт" };
     const scenario = findDashboardScenario(null, source);

@@ -534,13 +534,26 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           let insightsGeneratedAt = "";
           let insightsLive = false;
           try {
-            const insightsFile = locale === 'en' ? 'insights.en.json' : 'insights.json';
-            let insightsResp = await fetch(`${base}data/${insightsFile}`);
-            if (!insightsResp.ok && locale === 'en') {
-              insightsResp = await fetch(`${base}data/insights.json`);
+            const ruResponse = await fetch(`${base}data/insights.json`);
+            let insightsResponse = ruResponse;
+            let ruData: any = null;
+            if (ruResponse.ok) ruData = await ruResponse.json();
+
+            if (locale === 'en') {
+              const enResponse = await fetch(`${base}data/insights.en.json`);
+              if (enResponse.ok) {
+                const enData = await enResponse.json();
+                const ruTimestamp = Date.parse(ruData?.generated_at || '');
+                const enTimestamp = Date.parse(enData?.generated_at || '');
+                if (!Number.isFinite(ruTimestamp) || (Number.isFinite(enTimestamp) && enTimestamp >= ruTimestamp)) {
+                  insightsResponse = enResponse;
+                  ruData = enData;
+                }
+              }
             }
-            if (insightsResp.ok) {
-              const insightsData = await insightsResp.json();
+
+            if (insightsResponse.ok && ruData) {
+              const insightsData = ruData;
               if (insightsData.insights && Array.isArray(insightsData.insights) && insightsData.insights.length > 0) {
                 dynamicInsights = insightsData.insights;
                 insightsPeriod = insightsData.period || "";
