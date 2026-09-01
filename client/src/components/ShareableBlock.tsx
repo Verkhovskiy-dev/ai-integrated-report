@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { buildFacebookShareUrl, buildShareUrl, buildTelegramShareUrl } from "@/lib/share";
+import { buildFacebookShareUrl, buildShareUrl, buildTelegramShareUrl, shouldUseNativeFacebookShare } from "@/lib/share";
 
 type ShareTarget = "telegram" | "facebook" | "instagram" | "copy";
 
@@ -59,7 +59,26 @@ export function ShareButton({ id, title, text, compact = false, className }: Sha
     window.setTimeout(() => setCopied(false), 1800);
   };
 
-  const openShare = (target: "telegram" | "facebook") => {
+  const shareNatively = async (target: ShareTarget) => {
+    if (!navigator.share) return false;
+    try {
+      await navigator.share({ title, text: shareText, url: shareUrl() });
+      track(target);
+      return true;
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return true;
+      return false;
+    }
+  };
+
+  const openShare = async (target: "telegram" | "facebook") => {
+    // facebook.com/sharer is unreliable when Safari hands it off to the iOS app.
+    // The native share sheet preserves the exact per-news URL and lets iOS pass it
+    // directly to the installed Facebook app.
+    if (target === "facebook"
+      && shouldUseNativeFacebookShare(navigator.userAgent, navigator.platform, navigator.maxTouchPoints)
+      && await shareNatively(target)) return;
+
     const outboundUrl = target === "telegram"
       ? buildTelegramShareUrl(shareUrl(), shareText)
       : buildFacebookShareUrl(shareUrl());
@@ -68,16 +87,7 @@ export function ShareButton({ id, title, text, compact = false, className }: Sha
   };
 
   const shareToInstagram = async () => {
-    const url = shareUrl();
-    if (navigator.share) {
-      try {
-        await navigator.share({ title, text: shareText, url });
-        track("instagram");
-        return;
-      } catch (error) {
-        if (error instanceof DOMException && error.name === "AbortError") return;
-      }
-    }
+    if (await shareNatively("instagram")) return;
     await copyLink("instagram");
   };
 
