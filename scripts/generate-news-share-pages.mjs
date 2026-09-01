@@ -1,11 +1,13 @@
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import { Resvg } from "@resvg/resvg-js";
 
 const [dataPath, siteRoot, publicOrigin = "https://verkhovskiy.ai"] = process.argv.slice(2);
 if (!dataPath || !siteRoot) throw new Error("Usage: generate-news-share-pages <latest-report.json> <site-root> [origin]");
 
-const report = JSON.parse(await readFile(dataPath, "utf8"));
+const reportSource = await readFile(dataPath, "utf8");
+const report = JSON.parse(reportSource);
 const outputRoot = path.resolve(siteRoot, "share", "v3", "news");
 if (!outputRoot.startsWith(path.resolve(siteRoot) + path.sep)) throw new Error("Unsafe output path");
 await rm(outputRoot, { recursive: true, force: true });
@@ -45,4 +47,5 @@ for (const event of events) {
   const html = `<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>${escapeHtml(event.title)} — Verkhovskiy AI</title><meta name="description" content="${escapeHtml(event.description)}"><meta property="og:type" content="article"><meta property="og:title" content="${escapeHtml(event.title)}"><meta property="og:description" content="${escapeHtml(event.description)}"><meta property="og:url" content="${escapeHtml(pageUrl)}"><meta property="og:image" content="${escapeHtml(imageUrl)}"><meta property="og:image:secure_url" content="${escapeHtml(imageUrl)}"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${escapeHtml(event.title)}"><meta name="twitter:description" content="${escapeHtml(event.description)}"><meta name="twitter:image" content="${escapeHtml(imageUrl)}"><link rel="canonical" href="${escapeHtml(pageUrl)}"><style>*{box-sizing:border-box}body{margin:0;background:#06111a;color:#f3f7f9;font-family:Arial,sans-serif}.shell{max-width:1040px;margin:auto;padding:32px 20px 64px}.brand{color:#31c7d9;font-weight:700;letter-spacing:.08em;margin:12px 0 24px}.card{background:#0b1924;border:1px solid #1c5261;border-radius:22px;overflow:hidden}.card img{display:block;width:100%;height:auto}.content{padding:28px 34px 34px}h1{font-size:clamp(28px,5vw,48px);line-height:1.08;margin:0 0 18px}p{color:#a9bac4;font-size:18px;line-height:1.65;margin:0}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.actions a{padding:13px 18px;border-radius:10px;text-decoration:none;font-weight:700}.dashboard{background:#31c7d9;color:#041016}.source{border:1px solid #315363;color:#b9c8d0}@media(max-width:600px){.shell{padding:18px 12px 40px}.content{padding:22px 20px}p{font-size:16px}}</style></head><body><main class="shell"><div class="brand">VERKHOVSKIY AI · НОВОСТЬ</div><article class="card"><img src="card.png" width="1200" height="630" alt="${escapeHtml(event.title)}"><div class="content"><h1>${escapeHtml(event.title)}</h1><p>${escapeHtml(event.description)}</p><div class="actions"><a class="dashboard" href="${escapeHtml(dashboardUrl)}">Открыть в дашборде →</a>${source}</div></div></article></main></body></html>`;
   await writeFile(path.join(dir, "index.html"), html);
 }
+await writeFile(path.join(outputRoot, ".report-digest"), `${createHash("sha256").update(reportSource).digest("hex")}\n`);
 console.log(`Generated ${events.length} news share pages in ${outputRoot}`);

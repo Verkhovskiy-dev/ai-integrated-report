@@ -1,0 +1,74 @@
+name: Sync news share pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gh-pages
+    paths:
+      - 'data/latest-report.json'
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-news-share-pages
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout published site
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check whether share pages match the report
+        id: freshness
+        shell: bash
+        run: |
+          REPORT_DIGEST=$(sha256sum data/latest-report.json | cut -d ' ' -f 1)
+          PUBLISHED_DIGEST=$(cat share/v3/news/.report-digest 2>/dev/null || true)
+          if [ "$REPORT_DIGEST" = "$PUBLISHED_DIGEST" ]; then
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+            echo "Share pages already match the current report"
+          else
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+            echo "Share pages need to be rebuilt"
+          fi
+
+      - name: Checkout generator
+        if: steps.freshness.outputs.stale == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: generator-source
+
+      - name: Set up Node.js
+        if: steps.freshness.outputs.stale == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: generator-source/package-lock.json
+
+      - name: Install generator dependencies
+        if: steps.freshness.outputs.stale == 'true'
+        run: npm ci --prefix generator-source --legacy-peer-deps
+
+      - name: Generate and publish individual news pages
+        if: steps.freshness.outputs.stale == 'true'
+        run: |
+          node generator-source/scripts/generate-news-share-pages.mjs data/latest-report.json . https://verkhovskiy.ai
+
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "GitHub Actions"
+          git add -A share/v3/news
+          git commit -m "share: sync previews with current report"
+          git pull --rebase origin gh-pages
+          git push origin HEAD:gh-pages
