@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildFacebookShareUrl, buildShareId, buildShareUrl, buildTelegramShareUrl } from "./share";
+import { buildFacebookShareUrl, buildShareId, buildShareUrl, buildTelegramShareUrl, shouldUseNativeFacebookShare } from "./share";
 
 describe("dashboard sharing", () => {
   it("builds a section URL while preserving existing filters", () => {
@@ -29,5 +29,16 @@ describe("dashboard sharing", () => {
   it("uses a dedicated static page for a news item", () => {
     expect(buildShareUrl("news-example-abc", "ru", "https://verkhovskiy.ai/?view=executive"))
       .toBe("https://verkhovskiy.ai/share/v3/news/abc/");
+  });
+
+  it("uses the native share sheet for Facebook on iPhone and touch iPad", () => {
+    expect(shouldUseNativeFacebookShare(
+      "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X)",
+      "iPhone",
+      5,
+    )).toBe(true);
+    expect(shouldUseNativeFacebookShare("Mozilla/5.0 (Macintosh)", "MacIntel", 5)).toBe(true);
+    expect(shouldUseNativeFacebookShare("Mozilla/5.0 (Macintosh)", "MacIntel", 0)).toBe(false);
+    expect(shouldUseNativeFacebookShare("Mozilla/5.0 (Linux; Android 15)", "Linux armv8l", 5)).toBe(false);
   });
 });

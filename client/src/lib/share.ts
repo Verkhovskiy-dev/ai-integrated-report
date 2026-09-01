@@ -31,3 +31,7 @@ export function buildFacebookShareUrl(url: string) {
   const params = new URLSearchParams({ u: url });
   return `https://www.facebook.com/sharer/sharer.php?${params.toString()}`;
 }
+
+export function shouldUseNativeFacebookShare(userAgent: string, platform: string, maxTouchPoints: number) {
+  return /iPad|iPhone|iPod/i.test(userAgent) || (/Mac/i.test(platform) && maxTouchPoints > 1);
+}
