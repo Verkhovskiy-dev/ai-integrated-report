@@ -37,14 +37,21 @@ interface EkenRouteActionProps extends DashboardRouteSource {
 export default function EkenRouteAction({ compact = false, className = "", entryLabel, trackRole, trackRecommendation, ...source }: EkenRouteActionProps) {
   const { registry } = useEkenRoutes();
   const baseScenario = findDashboardScenario(registry, source);
-  const scenario = trackRole
+  const briefAdjustedScenario = source.handoffBrief
     ? {
         ...baseScenario,
+        artifact: source.handoffBrief.expectedArtifact,
+        estimatedMinutes: source.handoffBrief.estimatedMinutes,
+      }
+    : baseScenario;
+  const scenario = trackRole
+    ? {
+        ...briefAdjustedScenario,
         role: trackRole,
         recipientRole: trackRole,
         promise: `Превратить рекомендацию для ${trackRole} в решение и первый проверяемый шаг`,
       }
-    : baseScenario;
+    : briefAdjustedScenario;
   const buildInitialDraft = () => {
     if (trackRole) {
       return buildExecutiveRoleTrackDraft(

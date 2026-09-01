@@ -18,6 +18,7 @@
     "publish:dashboard-routes": "node scripts/dashboard-routes/route-system.mjs publish data/latest-report.json client/src/data/ekenScenarios.json",
     "validate:dashboard-routes": "node scripts/validate-dashboard-routes.mjs data/latest-report.json client/src/data/ekenScenarios.json",
     "test:dashboard-routes": "vitest run client/src/data/ekenScenarioRoutes.test.ts && node scripts/dashboard-routes/route-system.test.mjs",
+    "test:weekly-insights": "node automation/weekly-insights/contract.test.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {

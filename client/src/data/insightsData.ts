@@ -59,6 +59,8 @@ export const SKOLKOVO_PROGRAMS: Record<string, ProgramLink> = {
 
 export interface StrategicInsight {
   id: number;
+  /** Semantic identifier generated together with the weekly package. */
+  insightKey?: string;
   title: string;
   subtitle: string;
   icon: string;
@@ -69,6 +71,36 @@ export interface StrategicInsight {
   educationImplication: string;
   /** Program keys from SKOLKOVO_PROGRAMS that are relevant to this insight */
   relevantPrograms: string[];
+  /** SRT levels explicitly used in the synthesis. */
+  srtLevels?: number[];
+  trendDirection?: "strengthening" | "weakening" | "emerging" | "stable";
+  confidence?: "high" | "medium" | "low";
+  /** Source events validated against the archive before publication. */
+  sourceEvents?: Array<{
+    eventId: string;
+    date: string;
+    title: string;
+    srtLevel: number;
+    urls: string[];
+  }>;
+  /** Generated in the same run as the insight, so advice cannot drift by numeric ID. */
+  roleRecommendations?: Partial<Record<
+    "entrepreneur" | "ceo" | "manager" | "cto" | "product" | "hr" | "cdo",
+    {
+      relevance: number;
+      action: string;
+      expectedArtifact?: string;
+      estimatedMinutes?: number;
+    }
+  >>;
+  /** Minimal productive handoff prepared on the dashboard side for Eken. */
+  ekenBrief?: {
+    objective: string;
+    firstAction: string;
+    expectedArtifact: string;
+    acceptanceCriterion: string;
+    estimatedMinutes: number;
+  };
 }
 
 export const STRATEGIC_INSIGHTS: StrategicInsight[] = [

@@ -128,6 +128,13 @@ export interface DashboardRouteSource {
   viewMode?: "expert" | "executive";
   audienceRole?: string;
   locale?: "ru" | "en";
+  handoffBrief?: {
+    objective: string;
+    firstAction: string;
+    expectedArtifact: string;
+    acceptanceCriterion: string;
+    estimatedMinutes: number;
+  };
 }
 
 export const DASHBOARD_FOCUS_FALLBACK: EkenProductiveScenario = {
@@ -241,12 +248,16 @@ export function buildExecutiveRoleTrackDraft(
   const objective = recommendation.trim();
   if (!objective) throw new Error(`Executive recommendation for ${role} is required`);
   const draft = buildLearningBriefDraft(source, scenario);
+  const generatedBrief = source.handoffBrief;
   return {
     ...draft,
     title: `Трек ${role}: ${scenario.sourceName}`,
-    objective,
-    realInput: objective,
-    successCriterion: `Сформулирован первый шаг для ${role}; определён ожидаемый результат и критерий приёмки`,
+    objective: generatedBrief?.objective
+      ? `${objective} Цель: ${generatedBrief.objective}`
+      : objective,
+    realInput: generatedBrief?.firstAction || objective,
+    successCriterion: generatedBrief?.acceptanceCriterion
+      || `Сформулирован первый шаг для ${role}; определён ожидаемый результат и критерий приёмки`,
     instrumentName: `Decision track · ${role} · ${scenario.sourceName}`,
   };
 }
@@ -363,12 +374,13 @@ export function buildLearningRoutePayload(
     },
     brief: {
       objective: draft.objective,
-      expectedArtifact: source.surface === "dashboard-insight"
+      expectedArtifact: source.handoffBrief?.expectedArtifact ?? (source.surface === "dashboard-insight"
         ? scenario.artifact
-        : learningOutcomeForIntent(draft.intent, scenario),
+        : learningOutcomeForIntent(draft.intent, scenario)
+      ),
       recipient: scenario.recipientRole,
       acceptanceCriterion: draft.successCriterion,
-      estimatedMinutes: scenario.estimatedMinutes,
+      estimatedMinutes: source.handoffBrief?.estimatedMinutes ?? scenario.estimatedMinutes,
       evidence: [source.sourceText, draft.realInput, scenario.whyNow].filter((item): item is string => Boolean(item?.trim())),
     },
     createdAt: createdAt.toISOString(),

@@ -46,49 +46,49 @@ const ROLES: Record<RoleKey, RoleMeta> = {
     labelRu: "Все роли",
     labelEn: "All Roles",
     icon: Users,
-    keywords: /./i,
+    keywords: /./gi,
     color: "primary",
   },
   entrepreneur: {
     labelRu: "Предприниматель",
     labelEn: "Entrepreneur",
     icon: Briefcase,
-    keywords: /рынок|market|бизнес|business|стоимост|value|капитал|capital|инвестиц|invest|конкурен|compet|стратег|strateg|масштаб|scale|startup|стартап|предприним|entrepren|маржа|margin|revenue|выручк|клиент|customer|продаж|sales|прибыл|profit|экономик|econom|цепочк.*стоимост|value.?chain|lock.?in|консолидац|consolidat/i,
+    keywords: /рынок|market|бизнес|business|стоимост|value|капитал|capital|инвестиц|invest|конкурен|compet|стратег|strateg|масштаб|scale|startup|стартап|предприним|entrepren|маржа|margin|revenue|выручк|клиент|customer|продаж|sales|прибыл|profit|экономик|econom|цепочк.*стоимост|value.?chain|lock.?in|консолидац|consolidat/gi,
     color: "amber",
   },
   ceo: {
     labelRu: "CEO",
     labelEn: "CEO",
     icon: BarChart3,
-    keywords: /стратег|strateg|управлен|manag|governance|регулир|regulat|compliance|комплаенс|институт|institut|государств|govern|фискал|fiscal|трансформац|transform|цепочк|chain|позиц|position|контрол|control|стоимост|value|капитал|capital|инфраструктур|infrastruct|вертикальн|vertical|интеграц|integrat|риск|risk|CEO|C-level|руковод|leader|безопасност|security|агент|agent|AI|ИИ/i,
+    keywords: /стратег|strateg|управлен|manag|governance|регулир|regulat|compliance|комплаенс|институт|institut|государств|govern|фискал|fiscal|трансформац|transform|цепочк|chain|позиц|position|контрол|control|стоимост|value|капитал|capital|инфраструктур|infrastruct|вертикальн|vertical|интеграц|integrat|риск|risk|CEO|C-level|руковод|leader|безопасност|security/gi,
     color: "cyan",
   },
   manager: {
     labelRu: "Менеджер",
     labelEn: "Manager",
     icon: UserCog,
-    keywords: /управлен|manag|процесс|process|команд|team|операцион|operat|эффективност|efficien|ROI|внедрен|implement|пилот|pilot|use.?case|кейс|case|проект|project|оптимиз|optimiz|автоматиз|automat|масштаб|scale|KPI|метрик|metric|продуктивност|productiv/i,
+    keywords: /управлен|manag|процесс|process|команд|team|операцион|operat|эффективност|efficien|ROI|внедрен|implement|пилот|pilot|use.?case|кейс|case|проект|project|оптимиз|optimiz|автоматиз|automat|масштаб|scale|KPI|метрик|metric|продуктивност|productiv/gi,
     color: "neon-green",
   },
   cto: {
     labelRu: "CTO",
     labelEn: "CTO",
     icon: Code2,
-    keywords: /технолог|technolog|инфраструктур|infrastruct|архитектур|architect|платформ|platform|API|MCP|агент|agent|модел|model|compute|вычислен|чип|chip|память|memory|HBM|GPU|безопасност|security|DevOps|MLOps|open.?source|open.?weight|дата.?центр|data.?center|компилятор|compiler|kernel|верификац|verif|tool|инструмент|фреймворк|framework|стек|stack|железн|hardware/i,
+    keywords: /технолог|technolog|инфраструктур|infrastruct|архитектур|architect|платформ|platform|API|MCP|агент|agent|модел|model|compute|вычислен|чип|chip|память|memory|HBM|GPU|безопасност|security|DevOps|MLOps|open.?source|open.?weight|дата.?центр|data.?center|компилятор|compiler|kernel|верификац|verif|tool|инструмент|фреймворк|framework|стек|stack|железн|hardware/gi,
     color: "magenta",
   },
   product: {
     labelRu: "Продакт",
     labelEn: "Product Manager",
     icon: Lightbulb,
-    keywords: /продукт|product|пользовател|user|UX|интерфейс|interface|фич|feature|клиент|customer|рынок|market|монетизац|monetiz|платформ|platform|данн|data|контекст|context|персонализац|personaliz|lock.?in|экосистем|ecosystem|SaaS|приложен|app|сервис|service|use.?case|кейс|case/i,
+    keywords: /продукт|product|пользовател|user|UX|интерфейс|interface|фич|feature|клиент|customer|рынок|market|монетизац|monetiz|платформ|platform|данн|data|контекст|context|персонализац|personaliz|lock.?in|экосистем|ecosystem|SaaS|приложен|app|сервис|service|use.?case|кейс|case/gi,
     color: "amber",
   },
   hr: {
     labelRu: "HR",
     labelEn: "HR",
     icon: Heart,
-    keywords: /образован|educat|компетенц|competen|кадр|talent|профессион|profession|труд|labor|занятост|employ|переподготовк|retrain|навык|skill|обучен|train|курс|course|программ.*подготовк|training.?program|сокращен|layoff|рынок.*труда|labor.?market|Agent.?Ops|DevOps|специалист|specialist|дефицит|shortage|наём|hiring/i,
+    keywords: /образован|educat|компетенц|competen|кадр|talent|профессион|profession|труд|labor|занятост|employ|переподготовк|retrain|навык|skill|обучен|train|курс|course|программ.*подготовк|training.?program|сокращен|layoff|рынок.*труда|labor.?market|Agent.?Ops|DevOps|специалист|specialist|дефицит|shortage|наём|hiring/gi,
     color: "magenta",
   },
 };
@@ -97,6 +97,11 @@ const ROLE_KEYS: RoleKey[] = ["all", "entrepreneur", "ceo", "manager", "cto", "p
 
 function getRoleTakeaway(role: RoleKey, insight: StrategicInsight, isEn: boolean): string | null {
   if (role === "all") return null;
+
+  const generated = insight.roleRecommendations?.[role];
+  if (generated?.action) {
+    return `${isEn ? "Recommended action" : "Рекомендуемое действие"}: ${generated.action}`;
+  }
 
   const takeaways: Record<Exclude<RoleKey, "all">, { ru: string; en: string }[]> = {
     entrepreneur: [
@@ -125,6 +130,8 @@ function getRoleTakeaway(role: RoleKey, insight: StrategicInsight, isEn: boolean
 
 function scoreInsightForRole(insight: StrategicInsight, role: RoleKey): number {
   if (role === "all") return 1;
+  const generatedScore = insight.roleRecommendations?.[role]?.relevance;
+  if (typeof generatedScore === "number") return generatedScore;
   const meta = ROLES[role];
   const corpus = [
     insight.title,
@@ -175,6 +182,12 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
   const roleTakeaway = getRoleTakeaway(role, insight, isEn);
   const summaryPreview = firstSentence(insight.summary);
   const itemId = buildShareId("insight", insight.id);
+  const sourceCount = insight.sourceEvents?.length ?? 0;
+  const confidenceLabel = insight.confidence
+    ? (isEn
+        ? insight.confidence
+        : ({ high: "высокая", medium: "средняя", low: "низкая" } as const)[insight.confidence])
+    : null;
 
   return (
     <div
@@ -215,6 +228,16 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
             >
               {isEn ? "Insight" : "Инсайт"} {insight.id}
             </span>
+            {insight.confidence && (
+              <span className="text-[10px] font-mono text-emerald-300/80">
+                {isEn ? "confidence" : "уверенность"}: {confidenceLabel}
+              </span>
+            )}
+            {sourceCount > 0 && (
+              <span className="text-[10px] font-mono text-muted-foreground/70">
+                {sourceCount} {isEn ? "verified events" : "проверенных событий"}
+              </span>
+            )}
           </div>
 
           {/* Title */}
@@ -270,6 +293,26 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
                 </li>
               ))}
             </ul>
+            {sourceCount > 0 && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {insight.sourceEvents!.map((source) => {
+                  const href = source.urls.find((url) => /^https?:\/\//i.test(url));
+                  const label = `${source.date} · СРТ-${source.srtLevel} · ${source.title}`;
+                  return href ? (
+                    <a
+                      key={source.eventId}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="max-w-full truncate rounded border border-border/40 bg-background/30 px-2 py-1 text-[10px] text-primary/80 hover:border-primary/40 hover:text-primary"
+                      title={label}
+                    >
+                      {label}
+                    </a>
+                  ) : null;
+                })}
+              </div>
+            )}
           </div>
 
           {/* Non-obvious conclusion */}
@@ -325,6 +368,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
                       viewMode="executive"
                       audienceRole={item.role}
                       locale={isEn ? "en" : "ru"}
+                      handoffBrief={insight.ekenBrief}
                       className="min-h-11 self-start whitespace-nowrap"
                     />
                   </div>
@@ -414,6 +458,8 @@ export default function StrategicInsights() {
   const { isExecutive } = useViewMode();
   const { getRoleAdvice } = useExecutiveData();
   const isEn = locale === "en";
+  const insightsVerified = strategicInsights.length > 0
+    && strategicInsights.every((insight) => (insight.sourceEvents?.length ?? 0) >= 3);
 
   // Filter and sort insights by role relevance
   const filteredInsights = useMemo(() => {
@@ -450,7 +496,7 @@ export default function StrategicInsights() {
           {insightsLive && (
             <span className="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-400/80 bg-emerald-400/10 px-2 py-0.5 rounded-full border border-emerald-400/20">
               <RefreshCw className="w-2.5 h-2.5" />
-              live
+              {insightsVerified ? (isEn ? "source-verified" : "источники проверены") : "live"}
             </span>
           )}
         </div>
@@ -487,19 +533,30 @@ export default function StrategicInsights() {
       </div>
 
       <div className="space-y-3 sm:space-y-4">
-        {filteredInsights.map((insight) => (
-          <InsightCard
-            key={insight.id}
-            insight={insight}
-            isExpanded={expandedId === insight.id}
-            onToggle={() => setExpandedId(expandedId === insight.id ? null : insight.id)}
-            isEn={isEn}
-            role={activeRole}
-            isExecutive={isExecutive}
-            executiveAdvice={isExecutive ? getRoleAdvice(insight.id) : null}
-            reportDate={reportDate}
-          />
-        ))}
+        {filteredInsights.map((insight) => {
+          const embeddedAdvice = insight.roleRecommendations;
+          const legacyAdvice = getRoleAdvice(insight.id);
+          const executiveAdvice = embeddedAdvice?.ceo?.action && embeddedAdvice?.cto?.action && embeddedAdvice?.cdo?.action
+            ? {
+                ceo: embeddedAdvice.ceo.action,
+                cto: embeddedAdvice.cto.action,
+                cdo: embeddedAdvice.cdo.action,
+              }
+            : legacyAdvice;
+          return (
+            <InsightCard
+              key={insight.insightKey ?? insight.id}
+              insight={insight}
+              isExpanded={expandedId === insight.id}
+              onToggle={() => setExpandedId(expandedId === insight.id ? null : insight.id)}
+              isEn={isEn}
+              role={activeRole}
+              isExecutive={isExecutive}
+              executiveAdvice={isExecutive ? executiveAdvice : null}
+              reportDate={reportDate}
+            />
+          );
+        })}
       </div>
     </div>
   );
