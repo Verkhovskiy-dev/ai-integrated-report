@@ -12,12 +12,10 @@
  * 5. TrendCharts — detailed momentum panels
  * 6. MetricsBar — hero section with key numbers
  * 7. Heatmap, Insights, Themes, Shifts, etc.
- * 8. PracticalTakeaways — weekly actionable recommendations
  */
 import { useState, useEffect } from "react";
 import { useTranslation } from "@/contexts/I18nContext";
 import { useViewMode } from "@/contexts/ViewModeContext";
-import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
 import Header from "@/components/Header";
 import ExecutiveSummaryBar from "@/components/ExecutiveSummaryBar";
 import FilterBar from "@/components/FilterBar";
@@ -36,7 +34,6 @@ import ThemeFrequency from "@/components/ThemeFrequency";
 import NodalPositions from "@/components/NodalPositions";
 import WeekOverWeek from "@/components/WeekOverWeek";
 import Forecasts from "@/components/Forecasts";
-import PracticalTakeaways from "@/components/PracticalTakeaways";
 import Footer from "@/components/Footer";
 import ProgramsTeaser from "@/components/ProgramsTeaser";
 import AiProSpotlight from "@/components/AiProSpotlight";
@@ -46,7 +43,6 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState<string>("news");
   const { locale } = useTranslation();
   const { isExecutive } = useViewMode();
-  const { data } = useExecutiveData();
 
   // Нативная навигация: открытие по #hash и кнопки назад/вперёд
   useEffect(() => {
@@ -76,9 +72,6 @@ export default function Home() {
       ? 'AI Integrated Report \u2014 Strategic Dashboard'
       : 'AI Integrated Report \u2014 \u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0414\u0430\u0448\u0431\u043e\u0440\u0434';
   }, [locale]);
-
-  // Show the floating button and sections when executive data is available
-  const hasExecutiveData = !!data && data.industry_personalizations.length > 0;
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-clip">
@@ -137,13 +130,6 @@ export default function Home() {
         <section id="programs" className="py-6 sm:py-10">
           <ProgramsTeaser />
         </section>
-
-        {/* Practical Takeaways — shown when executive data is loaded */}
-        {hasExecutiveData && (
-          <ShareableBlock id="takeaways" title={locale === "en" ? "Practical takeaways" : "Практические выводы"}>
-            <PracticalTakeaways />
-          </ShareableBlock>
-        )}
 
         {/* Two-column layout: Themes + Companies */}
         <ShareableBlock id="themes" title={locale === "en" ? "Themes and companies" : "Темы и компании"}>
