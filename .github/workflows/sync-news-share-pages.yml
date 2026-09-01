@@ -70,5 +70,15 @@ jobs:
           git config user.name "GitHub Actions"
           git add -A share/v3/news
           git commit -m "share: sync previews with current report"
-          git pull --rebase origin gh-pages
-          git push origin HEAD:gh-pages
+
+          for attempt in 1 2 3 4 5; do
+            git fetch origin gh-pages
+            git rebase origin/gh-pages
+            if git push origin HEAD:gh-pages; then
+              exit 0
+            fi
+            echo "gh-pages changed during publish; retrying ($attempt/5)"
+            sleep 2
+          done
+          echo "Unable to publish share pages after 5 attempts"
+          exit 1
