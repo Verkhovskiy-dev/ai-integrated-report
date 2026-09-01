@@ -13,6 +13,17 @@ export function buildEkenIntegrationUrl(handoffToken: string) {
   return url.toString();
 }
 
+/**
+ * Working PositionRouteV1 transport supported by the current Eken frontend.
+ * The fragment is not sent with the HTTP request; Eken stores it in session
+ * before authentication and removes it from the address bar.
+ */
+export function buildEkenFragmentUrl(payload: unknown) {
+  const baseUrl = import.meta.env.VITE_EKEN_INTEGRATION_URL?.trim()
+    || DEFAULT_EKEN_INTEGRATION_URL;
+  return `${baseUrl}#route=${encodeURIComponent(JSON.stringify(payload))}`;
+}
+
 export class HandoffServiceError extends Error {
   constructor(
     message: string,

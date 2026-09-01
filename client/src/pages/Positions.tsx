@@ -160,8 +160,6 @@ export default function Positions() {
     [step, selected, intent, sourcePlace, readyCount, checklist.length, missing.join("|"), journeyId, journeyStartedAt, place],
   );
   const brief = `${buildBriefText(selected, intent, place)}\n\nИДЕНТИФИКАТОР МАРШРУТА\nrouteId: ${journeyId}\n\nСАМООЦЕНКА ГОТОВНОСТИ\nИсточник входа: ${sourcePlace}\nПодтверждено: ${readyCount} из ${checklist.length}\nНужно закрыть: ${missing.length ? missing.join("; ") : "ресурсных разрывов не отмечено"}`;
-  const ekenUrl = payload ? buildEkenUrl(payload) : "";
-
   useEffect(() => {
     document.title = "Маршрут в позицию — Verkhovskiy.ai";
     window.scrollTo(0, 0);
@@ -265,6 +263,19 @@ export default function Positions() {
     await navigator.clipboard.writeText(brief);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 2200);
+  };
+
+  const startEkenHandoff = () => {
+    if (!payload) return;
+    const analytics = (window as Window & {
+      umami?: { track: (event: string, data?: Record<string, string | number>) => void };
+    }).umami;
+    analytics?.track("position_eken_handoff_started", {
+      sourcePlaceId: place.id,
+      positionRouteId: selected.id,
+      journeyId,
+    });
+    window.open(buildEkenUrl(payload), "_blank", "noopener,noreferrer");
   };
 
   if (routeConfigurationError) {
@@ -528,7 +539,7 @@ export default function Positions() {
         {step === 6 && (
           <div className="position-stage-layout position-brief-layout">
             <section className="position-stage-main"><p className="position-stage-kicker">ШАГ 6 · ГОТОВЫЙ БРИФ</p><h2>Маршрут освоения позиции собран</h2><p className="position-stage-lead">Eken получит контекст места СРТ, контракт позиции, требования, результат самооценки и первое продуктивное действие.</p><div className="position-route-ledger"><span>Место <strong>{place.id}</strong></span><ArrowRight /><span>Позиция <strong>{selected.id}</strong></span><ArrowRight /><span>Маршрут <strong>{journeyId.slice(0, 8)}</strong></span></div><pre className="position-brief-preview">{brief}</pre></section>
-            <aside className="position-stage-aside position-launch-card"><BookOpen /><p>ПЕРЕДАЧА В EKEN</p><h3>{selected.position}</h3><span>{missing.length ? `Закрыть ${missing.length} разрыва и перейти к первому действию` : "Закрепить маршрут и перейти к первому действию"}</span><div className="position-time"><Clock3 /><span><small>Первое действие</small><strong>≤ {selected.timeToActionMinutes} мин</strong></span></div><a href={ekenUrl} target="_blank" rel="noreferrer" data-umami-event="position-eken-handoff" className="position-map-primary">Начать освоение позиции <ArrowRight /></a><button type="button" onClick={copyBrief} className="position-copy-brief" data-umami-event="position-brief-copied">{copied ? <Check /> : <Copy />}{copied ? "Бриф скопирован" : "Копировать бриф"}</button></aside>
+            <aside className="position-stage-aside position-launch-card"><BookOpen /><p>ПЕРЕДАЧА В EKEN</p><h3>{selected.position}</h3><span>{missing.length ? `Закрыть ${missing.length} разрыва и перейти к первому действию` : "Закрепить маршрут и перейти к первому действию"}</span><div className="position-time"><Clock3 /><span><small>Первое действие</small><strong>≤ {selected.timeToActionMinutes} мин</strong></span></div><button type="button" onClick={startEkenHandoff} disabled={!payload} data-umami-event="position-eken-handoff" className="position-map-primary">Передать бриф и начать <ArrowRight /></button><button type="button" onClick={copyBrief} className="position-copy-brief" data-umami-event="position-brief-copied">{copied ? <Check /> : <Copy />}{copied ? "Бриф скопирован" : "Копировать бриф"}</button></aside>
           </div>
         )}
       </main>

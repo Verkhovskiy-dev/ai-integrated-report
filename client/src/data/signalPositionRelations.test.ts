@@ -124,7 +124,7 @@ describe("signal → position relation data layer", () => {
     expect(href).not.toContain(encodeURIComponent(rawText));
     expect(href).not.toContain("title=");
     expect(href).not.toContain("description=");
-    expect(() => buildSignalPositionMapHref(rawText, "srt7-content-provenance-tech")).toThrow("technical identifiers only");
+    expect(() => buildSignalPositionMapHref(rawText, "srt7-ai-labeling-compliance")).toThrow("technical identifiers only");
     expect(hasOnlyTechnicalPositionMapParams("/positions?source=place&step=map&from=signal&signal=Secret%20plan")).toBe(false);
     expect(hasOnlyTechnicalPositionMapParams(`${href}#private-context`)).toBe(false);
     expect(hasOnlyTechnicalPositionMapParams(`${href}&signal=duplicate`)).toBe(false);

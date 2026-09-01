@@ -1,5 +1,5 @@
 import { getPlaceIdsForPositionRoute } from "./ekenRouteRegistry";
-import { buildEkenCompatibilityUrl } from "./ekenIntegrationUrl";
+import { buildEkenFragmentUrl } from "./ekenIntegrationUrl";
 
 export type PositionIntent = "expert" | "business" | "invest";
 
@@ -16,12 +16,12 @@ export interface SrtPlace {
 }
 
 const AI_CURATION_PLACE: SrtPlace = {
-  id: "srt6-agent-governance-platforms",
+  id: "srt6-structural-verification-services",
   level: 6,
-  name: "Платформы управления и аудита AI-агентов",
-  label: "СРТ-6 · Платформы управления и аудита AI-агентов",
-  change: "Автономным AI-агентам требуется контур мониторинга, ограничения и верификации действий в реальном времени.",
-  whyNow: "Индустрия только начинает осознавать риски неуправляемых агентов, а стандарты надзора ещё не сформированы.",
+  name: "Сервисы структурной верификации AI-агентов",
+  label: "СРТ-6 · Сервисы структурной верификации AI-агентов",
+  change: "Автономным системам требуется внешний алгоритмический контроль, который доказывает безопасность действий, а не только проверяет результат постфактум.",
+  whyNow: "Банки и государственный сектор готовят агентов к эксплуатации, но традиционные песочницы не дают достаточных гарантий.",
   window: "Открыто",
   productiveExit: "Доказанный риск передан владельцу процесса и принят им в устранение.",
   evidence: [
@@ -32,12 +32,12 @@ const AI_CURATION_PLACE: SrtPlace = {
 };
 
 const AGENTIC_SOFTWARE_MIGRATION_PLACE: SrtPlace = {
-  id: "srt6-ai-software-factories",
-  level: 6,
-  name: "AI-фабрики программного обеспечения",
-  label: "СРТ-6 · AI-фабрики программного обеспечения",
-  change: "AI берёт на себя архитектурную сложность создания программных продуктов, превращая разработку в управляемый производственный контур.",
-  whyNow: "Связка LLM и генерации кода стала достаточно зрелой для коммерческого использования и ограниченных агентных пилотов.",
+  id: "srt3-ai-agent-orchestration",
+  level: 3,
+  name: "Оркестрация флотов ИИ-агентов",
+  label: "СРТ-3 · Оркестрация флотов ИИ-агентов",
+  change: "ИИ-агенты становятся единицами цифрового труда, поэтому компаниям нужен управляемый контур их координации, мониторинга и включения в процессы.",
+  whyNow: "Переход от отдельных помощников к флотам агентов уже начался, а операционные стандарты ещё не закреплены.",
   window: "Открыто",
   productiveExit: "Ограниченный агентный пилот одобрен, а владелец результата назначен.",
   evidence: [
@@ -48,12 +48,12 @@ const AGENTIC_SOFTWARE_MIGRATION_PLACE: SrtPlace = {
 };
 
 const VERTICAL_FINANCE_AI_PLACE: SrtPlace = {
-  id: "srt9-selective-ai-auditing",
-  level: 9,
-  name: "Селективный аудит и оценка ИИ-активов",
-  label: "СРТ-9 · Селективный аудит и оценка ИИ-активов",
-  change: "Инвесторы переходят от универсальных ставок на AI к проверке реальной выручки, маржинальности и устойчивости отдельных ИИ-бизнесов.",
-  whyNow: "После стабилизации распродаж инвесторы ищут способы отделить подтверждённую экономику от хайпа и снизить риск решений.",
+  id: "srt3-pro-retail-fintech",
+  level: 3,
+  name: "Профессиональный ИИ-инструментарий для розничных трейдеров",
+  label: "СРТ-3 · Профессиональный ИИ-инструментарий для розничных трейдеров",
+  change: "AI-ассистенты дают розничному инвестору доступ к аналитическим процедурам, которые раньше были доступны только институциональным командам.",
+  whyNow: "Демократизация профессиональных инструментов уже идёт, но качество инвестиционных гипотез и контроль ошибок ещё не стандартизированы.",
   window: "Открыто",
   productiveExit: "Проверенная инвестиционная гипотеза включена в аналитический пайплайн для ручной верификации.",
   evidence: [
@@ -64,12 +64,12 @@ const VERTICAL_FINANCE_AI_PLACE: SrtPlace = {
 };
 
 const AGENT_MEMORY_LIFECYCLE_PLACE: SrtPlace = {
-  id: "srt6-personal-agent-infrastructure",
+  id: "srt6-sovereign-data-vaults",
   level: 6,
-  name: "Инфраструктура персональных AI-агентов",
-  label: "СРТ-6 · Инфраструктура персональных AI-агентов",
-  change: "Персональным AI-агентам нужен надёжный слой памяти, приватности и длительной работы с данными пользователя.",
-  whyNow: "Сегмент персональных ассистентов вошёл в фазу активной капитализации, но стандарты памяти и приватности ещё не закреплены.",
+  name: "Суверенные платформы защиты обучающих данных",
+  label: "СРТ-6 · Суверенные платформы защиты обучающих данных",
+  change: "Контроль хранения, забывания и разделения контекстов становится обязательным условием работы агентов с чувствительными данными.",
+  whyNow: "Требования к локализации и предотвращению утечек растут быстрее, чем формируются проверяемые политики памяти.",
   window: "Открыто",
   productiveExit: "Проверяемая политика памяти принята в технический backlog владельца агентной платформы.",
   evidence: [
@@ -80,10 +80,10 @@ const AGENT_MEMORY_LIFECYCLE_PLACE: SrtPlace = {
 };
 
 const AI_ARCHITECT_UPSKILLING_PLACE: SrtPlace = {
-  id: "srt3-ai-architect-upskilling",
+  id: "srt3-ai-native-engineering-edu",
   level: 3,
-  name: "Переподготовка в системных ИИ-архитекторов",
-  label: "СРТ-3 · Переподготовка в системных ИИ-архитекторов",
+  name: "Переподготовка инженеров под AI-native разработку",
+  label: "СРТ-3 · Переподготовка инженеров под AI-native разработку",
   change: "Ценность разработчика смещается от написания синтаксиса к проектированию систем и постановке задач агентам.",
   whyNow: "Традиционное ИТ-образование ещё не адаптировалось к появлению автономных кодеров.",
   window: "Открыто",
@@ -92,60 +92,60 @@ const AI_ARCHITECT_UPSKILLING_PLACE: SrtPlace = {
 };
 
 const AI_CODE_AUDIT_PLACE: SrtPlace = {
-  id: "srt3-ai-code-verification-audit",
-  level: 3,
-  name: "Аудит и верификация ИИ-генерируемого кода",
-  label: "СРТ-3 · Аудит и верификация ИИ-генерируемого кода",
-  change: "Ускорение генерации кода увеличивает спрос на независимую проверку безопасности, производительности и лицензионной чистоты.",
-  whyNow: "Корпорации опасаются использовать AI-код без воспроизводимых гарантий безопасности.",
+  id: "srt8-ai-verification-infra",
+  level: 8,
+  name: "Инфраструктура верификации и фактчекинга ИИ",
+  label: "СРТ-8 · Инфраструктура верификации и фактчекинга ИИ",
+  change: "Независимая проверка точности и безопасности AI-результатов становится инфраструктурным слоем, включая воспроизводимый аудит сгенерированного кода.",
+  whyNow: "Крупные игроки сталкиваются с публичными ошибками ИИ, поэтому спрос смещается от доверия к доказуемой проверке.",
   window: "Открыто",
   productiveExit: "Один риск воспроизводится тестом, а исправление принято владельцем кода.",
   evidence: ["AI-сгенерированный модуль", "Тестовый контур", "Владелец кода"],
 };
 
 const AI_QA_COMPLIANCE_PLACE: SrtPlace = {
-  id: "srt5-ai-qa-compliance-platforms",
+  id: "srt5-ai-data-qa-governance",
   level: 5,
-  name: "Платформы контроля качества и легализации ИИ-контента",
-  label: "СРТ-5 · Платформы контроля качества и легализации ИИ-контента",
-  change: "Компании готовы платить за проверяемое качество AI-результатов и юридическую чистоту их использования.",
-  whyNow: "Рынок узкоспециализированных сервисов жизненного цикла ИИ только начинает структурироваться.",
+  name: "Контроль качества и аудит данных для ИИ",
+  label: "СРТ-5 · Контроль качества и аудит данных для ИИ",
+  change: "Верификация, очистка и разметка данных выделяются в самостоятельный слой AI-стека.",
+  whyNow: "Сложность моделей растёт быстрее внутренних QA-возможностей компаний, и специализированная функция качества становится критической.",
   window: "Открыто",
   productiveExit: "Рубрика качества и тест-кейсы приняты владельцем процесса.",
   evidence: ["10 реальных примеров", "Приемлемый эталон", "Критические ошибки"],
 };
 
 const DATA_GATEWAY_PLACE: SrtPlace = {
-  id: "srt5-data-supply-chain-gateways",
-  level: 5,
-  name: "Шлюзы управления цепочками поставок данных",
-  label: "СРТ-5 · Шлюзы управления цепочками поставок данных",
-  change: "Владельцам контента нужны управляемый доступ, учёт использования и справедливое вознаграждение за данные для ИИ.",
-  whyNow: "Крупные платформы пересматривают условия доступа к данным и быстро закрывают прежние каналы.",
+  id: "srt7-ip-royalty-clearinghouse",
+  level: 7,
+  name: "Платформы лицензирования данных для обучения AI",
+  label: "СРТ-7 · Платформы лицензирования данных для обучения AI",
+  change: "Правообладателям и разработчикам LLM нужны прозрачные контракты доступа, учёта использования и отзыва прав.",
+  whyNow: "Судебные конфликты и закрытие прежних каналов данных ускоряют формирование легальных шлюзов и расчётных механизмов.",
   window: "Сужается",
   productiveExit: "Минимальный контракт использования данных согласован владельцем и потребителем.",
   evidence: ["Один набор данных", "AI-потребитель", "Условия доступа и отзыва"],
 };
 
 const AI_CONTENT_VERIFICATION_PLACE: SrtPlace = {
-  id: "srt6-ai-content-verification",
-  level: 6,
-  name: "Системы верификации и очистки AI-контента",
-  label: "СРТ-6 · Системы верификации и очистки AI-контента",
-  change: "Информационным средам нужна иммунная система против синтетического загрязнения и недоказанных источников.",
-  whyNow: "Критические платформы уже ограничивают AI-контент из-за фейков и низкого качества.",
+  id: "srt3-decentralized-ip-verification",
+  level: 3,
+  name: "Децентрализованные сети верификации авторства",
+  label: "СРТ-3 · Децентрализованные сети верификации авторства",
+  change: "Профессиональные сообщества создают собственные протоколы проверки происхождения контента и защиты от AI-мошенничества.",
+  whyNow: "Государственное регулирование отстаёт, а авторам и платформам уже нужны доказательства происхождения и качества цифровых объектов.",
   window: "Открыто",
   productiveExit: "По 20 объектам принято доказательное решение: использовать, проверить или исключить.",
   evidence: ["20 единиц контента", "Первичные источники", "Критерии качества"],
 };
 
 const CONTENT_PROVENANCE_PLACE: SrtPlace = {
-  id: "srt7-content-provenance-tech",
+  id: "srt7-ai-labeling-compliance",
   level: 7,
-  name: "Технологии подтверждения происхождения контента",
-  label: "СРТ-7 · Технологии подтверждения происхождения контента",
-  change: "Маркировка, водяные знаки и цепочка владения становятся обязательным слоем доверия к цифровым медиа.",
-  whyNow: "Регуляторы вводят требования прозрачности для чат-ботов и дипфейков, а стандарты ещё не закреплены окончательно.",
+  name: "Сервисы сертификации и маркировки AI-контента",
+  label: "СРТ-7 · Сервисы сертификации и маркировки AI-контента",
+  change: "Маркировка, водяные знаки и проверяемая цепочка происхождения становятся обязательным слоем цифровых медиа.",
+  whyNow: "Регуляторные требования усиливаются, а медиа-платформам уже нужны независимые провайдеры C2PA и технической маркировки.",
   window: "Открыто",
   productiveExit: "Происхождение одного медиафайла проверяется после публикации.",
   evidence: ["Исходный медиафайл", "Точка публикации", "Протокол C2PA"],
@@ -153,16 +153,16 @@ const CONTENT_PROVENANCE_PLACE: SrtPlace = {
 
 export const SRT_PLACES: Record<string, SrtPlace> = {
   "3": AI_CURATION_PLACE,
-  "srt6-agent-governance-platforms": AI_CURATION_PLACE,
-  "srt6-ai-software-factories": AGENTIC_SOFTWARE_MIGRATION_PLACE,
-  "srt9-selective-ai-auditing": VERTICAL_FINANCE_AI_PLACE,
-  "srt6-personal-agent-infrastructure": AGENT_MEMORY_LIFECYCLE_PLACE,
-  "srt3-ai-architect-upskilling": AI_ARCHITECT_UPSKILLING_PLACE,
-  "srt3-ai-code-verification-audit": AI_CODE_AUDIT_PLACE,
-  "srt5-ai-qa-compliance-platforms": AI_QA_COMPLIANCE_PLACE,
-  "srt5-data-supply-chain-gateways": DATA_GATEWAY_PLACE,
-  "srt6-ai-content-verification": AI_CONTENT_VERIFICATION_PLACE,
-  "srt7-content-provenance-tech": CONTENT_PROVENANCE_PLACE,
+  "srt6-structural-verification-services": AI_CURATION_PLACE,
+  "srt3-ai-agent-orchestration": AGENTIC_SOFTWARE_MIGRATION_PLACE,
+  "srt3-pro-retail-fintech": VERTICAL_FINANCE_AI_PLACE,
+  "srt6-sovereign-data-vaults": AGENT_MEMORY_LIFECYCLE_PLACE,
+  "srt3-ai-native-engineering-edu": AI_ARCHITECT_UPSKILLING_PLACE,
+  "srt8-ai-verification-infra": AI_CODE_AUDIT_PLACE,
+  "srt5-ai-data-qa-governance": AI_QA_COMPLIANCE_PLACE,
+  "srt7-ip-royalty-clearinghouse": DATA_GATEWAY_PLACE,
+  "srt3-decentralized-ip-verification": AI_CONTENT_VERIFICATION_PLACE,
+  "srt7-ai-labeling-compliance": CONTENT_PROVENANCE_PLACE,
 };
 
 export interface PositionRoute {
@@ -276,7 +276,7 @@ export const POSITION_ROUTES: PositionRoute[] = [
   {
     id: "agentic-migration",
     sourcePlaceIds: getPlaceIdsForPositionRoute("agentic-migration"),
-    level: 6,
+    level: 3,
     title: "Миграция процессов на AI-агентов",
     description: "Перестройка статического процесса в управляемый агентный контур.",
     window: "Сужается",
@@ -310,7 +310,7 @@ export const POSITION_ROUTES: PositionRoute[] = [
   {
     id: "vertical-finance-ai",
     sourcePlaceIds: getPlaceIdsForPositionRoute("vertical-finance-ai"),
-    level: 9,
+    level: 3,
     title: "Вертикальные AI-агенты в финансах",
     description: "Специализированные агенты для инвестиционного анализа и проверки гипотез.",
     window: "Открыто",
@@ -412,7 +412,7 @@ export const POSITION_ROUTES: PositionRoute[] = [
   {
     id: "ai-code-auditor",
     sourcePlaceIds: getPlaceIdsForPositionRoute("ai-code-auditor"),
-    level: 3,
+    level: 8,
     title: "Аудит AI-генерируемого кода",
     description: "Воспроизводимая проверка безопасности и корректности кода, созданного AI-агентом.",
     window: "Открыто",
@@ -480,7 +480,7 @@ export const POSITION_ROUTES: PositionRoute[] = [
   {
     id: "ai-content-verification-analyst",
     sourcePlaceIds: getPlaceIdsForPositionRoute("ai-content-verification-analyst"),
-    level: 6,
+    level: 3,
     title: "Верификация AI-контента",
     description: "Проверка происхождения, фактического качества и допустимости синтетического контента.",
     window: "Открыто",
@@ -514,7 +514,7 @@ export const POSITION_ROUTES: PositionRoute[] = [
   {
     id: "data-access-architect",
     sourcePlaceIds: getPlaceIdsForPositionRoute("data-access-architect"),
-    level: 5,
+    level: 7,
     title: "Контракт доступа к данным для AI",
     description: "Управляемые права, учёт использования и условия отзыва данных между владельцем и AI-потребителем.",
     window: "Сужается",
@@ -657,12 +657,11 @@ export function buildEkenPayload(
 }
 
 export function buildEkenUrl(payload: EkenPositionRouteV1) {
-  return buildEkenCompatibilityUrl({
-    routeId: payload.routeId,
-    scenarioId: payload.scenarioId,
-    sourceId: payload.place.id,
-    surface: "position",
-  });
+  // Eken's current PositionRouteV1 DTO does not accept dashboard-only fields.
+  // Keep them on the Verkhovskiy side, while transferring the complete core
+  // brief that Eken can import today.
+  const { scenarioId: _scenarioId, selfAssessment: _selfAssessment, ...ekenRoute } = payload;
+  return buildEkenFragmentUrl(ekenRoute);
 }
 
 export function buildBriefText(route: PositionRoute, intent: PositionIntent, place?: SrtPlace) {
