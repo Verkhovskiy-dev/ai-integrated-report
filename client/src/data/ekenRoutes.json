@@ -1,14 +1,14 @@
 {
   "schemaVersion": "1.1",
-  "updatedAt": "2026-08-18",
+  "updatedAt": "2026-09-01",
   "routes": [
     {
-      "placeId": "srt6-agent-governance-platforms",
+      "placeId": "srt6-structural-verification-services",
       "positionRouteId": "ai-agent-audit",
       "enabled": true,
       "ctaLabel": "Занять позицию",
       "surface": "places-map",
-      "sourceId": "srt6-agent-governance-platforms",
+      "sourceId": "srt6-structural-verification-services",
       "scenarioId": "ai-agent-audit",
       "version": 1,
       "promise": "Доказать один риск работающего AI-агента",
@@ -18,12 +18,12 @@
       "successCriteria": ["Риск признан владельцем процесса", "Изменение взято в работу"]
     },
     {
-      "placeId": "srt6-ai-software-factories",
+      "placeId": "srt3-ai-agent-orchestration",
       "positionRouteId": "agentic-migration",
       "enabled": true,
       "ctaLabel": "Занять позицию",
       "surface": "places-map",
-      "sourceId": "srt6-ai-software-factories",
+      "sourceId": "srt3-ai-agent-orchestration",
       "scenarioId": "agentic-migration",
       "version": 1,
       "promise": "Собрать схему ограниченного агентного пилота",
@@ -33,12 +33,12 @@
       "successCriteria": ["Пилот одобрен", "Назначен владелец результата"]
     },
     {
-      "placeId": "srt9-selective-ai-auditing",
+      "placeId": "srt3-pro-retail-fintech",
       "positionRouteId": "vertical-finance-ai",
       "enabled": true,
       "ctaLabel": "Занять позицию",
       "surface": "places-map",
-      "sourceId": "srt9-selective-ai-auditing",
+      "sourceId": "srt3-pro-retail-fintech",
       "scenarioId": "vertical-finance-ai",
       "version": 1,
       "promise": "Проверить инвестиционную гипотезу без утечки будущих данных",
@@ -48,12 +48,12 @@
       "successCriteria": ["Backtest воспроизводим", "Гипотеза включена в аналитический разбор"]
     },
     {
-      "placeId": "srt6-personal-agent-infrastructure",
+      "placeId": "srt6-sovereign-data-vaults",
       "positionRouteId": "agent-memory",
       "enabled": true,
       "ctaLabel": "Занять позицию",
       "surface": "places-map",
-      "sourceId": "srt6-personal-agent-infrastructure",
+      "sourceId": "srt6-sovereign-data-vaults",
       "scenarioId": "agent-memory",
       "version": 1,
       "promise": "Собрать и проверить политику памяти агента",
@@ -63,12 +63,12 @@
       "successCriteria": ["Правила хранения и забывания проверяемы", "Политика принята в backlog"]
     },
     {
-      "placeId": "srt3-ai-architect-upskilling",
+      "placeId": "srt3-ai-native-engineering-edu",
       "positionRouteId": "system-ai-architect",
       "enabled": true,
       "ctaLabel": "Занять позицию",
       "surface": "places-map",
-      "sourceId": "srt3-ai-architect-upskilling",
+      "sourceId": "srt3-ai-native-engineering-edu",
       "scenarioId": "system-ai-architect",
       "version": 1,
       "promise": "Спроектировать один AI-процесс с границей ответственности человека",
@@ -78,12 +78,12 @@
       "successCriteria": ["Границы агента зафиксированы", "Назначена точка human review"]
     },
     {
-      "placeId": "srt3-ai-code-verification-audit",
+      "placeId": "srt8-ai-verification-infra",
       "positionRouteId": "ai-code-auditor",
       "enabled": true,
       "ctaLabel": "Занять позицию",
       "surface": "places-map",
-      "sourceId": "srt3-ai-code-verification-audit",
+      "sourceId": "srt8-ai-verification-infra",
       "scenarioId": "ai-code-auditor",
       "version": 1,
       "promise": "Доказать один риск в AI-генерируемом коде",
@@ -93,12 +93,12 @@
       "successCriteria": ["Риск воспроизводится тестом", "Исправление принято владельцем кода"]
     },
     {
-      "placeId": "srt5-ai-qa-compliance-platforms",
+      "placeId": "srt5-ai-data-qa-governance",
       "positionRouteId": "ai-qa-designer",
       "enabled": true,
       "ctaLabel": "Занять позицию",
       "surface": "places-map",
-      "sourceId": "srt5-ai-qa-compliance-platforms",
+      "sourceId": "srt5-ai-data-qa-governance",
       "scenarioId": "ai-qa-designer",
       "version": 1,
       "promise": "Собрать минимальный контур качества AI-результата",
@@ -108,12 +108,12 @@
       "successCriteria": ["Тест-кейсы покрывают критические ошибки", "Владелец процесса принимает рубрику"]
     },
     {
-      "placeId": "srt6-ai-content-verification",
+      "placeId": "srt3-decentralized-ip-verification",
       "positionRouteId": "ai-content-verification-analyst",
       "enabled": true,
       "ctaLabel": "Занять позицию",
       "surface": "places-map",
-      "sourceId": "srt6-ai-content-verification",
+      "sourceId": "srt3-decentralized-ip-verification",
       "scenarioId": "ai-content-verification-analyst",
       "version": 1,
       "promise": "Проверить происхождение и качество 20 единиц контента",
@@ -123,12 +123,12 @@
       "successCriteria": ["Каждый объект имеет решение", "Сомнительные объекты снабжены доказательством риска"]
     },
     {
-      "placeId": "srt5-data-supply-chain-gateways",
+      "placeId": "srt7-ip-royalty-clearinghouse",
       "positionRouteId": "data-access-architect",
       "enabled": true,
       "ctaLabel": "Занять позицию",
       "surface": "places-map",
-      "sourceId": "srt5-data-supply-chain-gateways",
+      "sourceId": "srt7-ip-royalty-clearinghouse",
       "scenarioId": "data-access-architect",
       "version": 1,
       "promise": "Собрать минимальный контракт использования данных",
@@ -138,12 +138,12 @@
       "successCriteria": ["Условия доступа однозначны", "Использование измеримо", "Отзыв доступа предусмотрен"]
     },
     {
-      "placeId": "srt7-content-provenance-tech",
+      "placeId": "srt7-ai-labeling-compliance",
       "positionRouteId": "content-provenance-engineer",
       "enabled": true,
       "ctaLabel": "Занять позицию",
       "surface": "places-map",
-      "sourceId": "srt7-content-provenance-tech",
+      "sourceId": "srt7-ai-labeling-compliance",
       "scenarioId": "content-provenance-engineer",
       "version": 1,
       "promise": "Собрать прототип цепочки происхождения одного медиафайла",

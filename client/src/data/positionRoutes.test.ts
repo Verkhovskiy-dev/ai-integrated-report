@@ -27,7 +27,7 @@ describe("Verkhovskiy → Eken position handoff", () => {
     expect(payload.arsenal.platforms.length).toBeGreaterThan(0);
   });
 
-  it("uses an identifier-only degraded URL without the private position brief", () => {
+  it("transfers an Eken-compatible core brief in the URL fragment", () => {
     const payload = buildEkenPayload(POSITION_ROUTES[2], "invest", {
       sourcePlace: "private assessment context",
       readyCount: 1,
@@ -35,19 +35,17 @@ describe("Verkhovskiy → Eken position handoff", () => {
       missing: ["private-access-gap"],
     });
     const url = new URL(buildEkenUrl(payload));
+    const transferred = JSON.parse(new URLSearchParams(url.hash.slice(1)).get("route") ?? "null");
 
     expect(url.pathname).toBe("/integrations/verkhovskiy");
-    expect(url.hash).toBe("");
-    expect(url.searchParams.get("routeId")).toBe(payload.routeId);
-    expect(url.searchParams.get("scenarioId")).toBe(POSITION_ROUTES[2].id);
-    expect(url.searchParams.get("sourceId")).toBe(payload.place.id);
-    expect(url.searchParams.get("surface")).toBe("position");
-    expect(url.searchParams.get("handoffStatus")).toBe("local-preview");
-    expect(url.href).not.toContain(encodeURIComponent(payload.firstAction.object));
-    expect(url.href).not.toContain("selfAssessment");
+    expect(url.search).toBe("");
+    expect(transferred.routeId).toBe(payload.routeId);
+    expect(transferred.place.id).toBe(payload.place.id);
+    expect(transferred.position.name).toBe(payload.position.name);
+    expect(transferred.firstAction).toEqual(payload.firstAction);
+    expect(transferred.scenarioId).toBeUndefined();
+    expect(transferred.selfAssessment).toBeUndefined();
     expect(url.href).not.toContain("private-access-gap");
-    expect(url.href).not.toContain("acceptanceCriterion");
-    expect(url.href).not.toContain("evidence");
   });
 
   it("keeps one journey id and the actual SRT place through the handoff", () => {
@@ -61,9 +59,9 @@ describe("Verkhovskiy → Eken position handoff", () => {
     expect(payload.routeId).toBe("journey-123");
     expect(payload.createdAt).toBe("2026-08-12T09:00:00.000Z");
     expect(payload.place).toMatchObject({
-      id: "srt6-agent-governance-platforms",
+      id: "srt6-structural-verification-services",
       level: 6,
-      name: "Платформы управления и аудита AI-агентов",
+      name: "Сервисы структурной верификации AI-агентов",
     });
   });
 
@@ -137,9 +135,10 @@ describe("Verkhovskiy → Eken position handoff", () => {
   });
 
   it("fails closed for an unknown place or a mismatched route", () => {
-    expect(resolvePositionRoute("srt9-selective-ai-auditing", "vertical-finance-ai")?.position)
+    expect(resolvePositionRoute("srt3-pro-retail-fintech", "vertical-finance-ai")?.position)
       .toBe("Оператор финансового AI-агента");
-    expect(resolvePositionRoute("srt9-selective-ai-auditing", "ai-agent-audit")).toBeNull();
+    expect(resolvePositionRoute("srt3-pro-retail-fintech", "ai-agent-audit")).toBeNull();
+    expect(resolvePositionRoute("srt9-selective-ai-auditing", "vertical-finance-ai")).toBeNull();
     expect(resolvePositionRoute("srt5-vertical-fin-ai", "vertical-finance-ai")).toBeNull();
     expect(resolvePositionRoute("missing-place", "ai-agent-audit")).toBeNull();
   });

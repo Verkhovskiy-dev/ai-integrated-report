@@ -237,7 +237,7 @@ const CURRENT_SIGNAL_CANDIDATES: SignalPositionCandidate[] = [
   {
     signalId: "dashboard-focus:2026-02-24:event-4",
     signalVersion: "2026-08-21.1",
-    sourcePlaceId: "srt7-content-provenance-tech",
+    sourcePlaceId: "srt7-ai-labeling-compliance",
     positionRouteId: "content-provenance-engineer",
     impactType: "strengthened",
     potentialScore: 84,
@@ -254,7 +254,7 @@ const CURRENT_SIGNAL_CANDIDATES: SignalPositionCandidate[] = [
   {
     signalId: "dashboard-focus:2026-02-24:event-4",
     signalVersion: "2026-08-21.1",
-    sourcePlaceId: "srt7-content-provenance-tech",
+    sourcePlaceId: "srt7-ai-labeling-compliance",
     positionRouteId: "data-access-architect",
     impactType: "strengthened",
     potentialScore: 78,
@@ -270,7 +270,7 @@ const CURRENT_SIGNAL_CANDIDATES: SignalPositionCandidate[] = [
   {
     signalId: "dashboard-focus:2026-02-24:event-4",
     signalVersion: "2026-08-21.1",
-    sourcePlaceId: "srt7-content-provenance-tech",
+    sourcePlaceId: "srt7-ai-labeling-compliance",
     positionRouteId: "ai-agent-audit",
     impactType: "verify",
     potentialScore: 70,
@@ -286,7 +286,7 @@ const CURRENT_SIGNAL_CANDIDATES: SignalPositionCandidate[] = [
   {
     signalId: "dashboard-focus:2026-02-24:event-4",
     signalVersion: "2026-08-21.1",
-    sourcePlaceId: "srt7-content-provenance-tech",
+    sourcePlaceId: "srt7-ai-labeling-compliance",
     positionRouteId: "ai-content-verification-analyst",
     impactType: "verify",
     potentialScore: 66,
@@ -306,7 +306,7 @@ const rankedCurrentSignal = rankSignalPositionCandidates(CURRENT_SIGNAL_CANDIDAT
 export const CURRENT_SIGNAL_POSITION_FIXTURE: SignalPositionFixture = {
   signalId: "dashboard-focus:2026-02-24:event-4",
   signalVersion: "2026-08-21.1",
-  sourcePlaceId: "srt7-content-provenance-tech",
+  sourcePlaceId: "srt7-ai-labeling-compliance",
   title: "Distillation усиливает требования к происхождению AI-результатов",
   causalSummary: "Сигнал затрагивает provenance, условия доступа к данным и проверку производных результатов; operational audit остаётся альтернативой для проверки.",
   relations: rankedCurrentSignal.relations,
