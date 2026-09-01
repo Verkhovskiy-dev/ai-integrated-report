@@ -123,7 +123,7 @@ export default function Home() {
 
         {/* Strategic Insights — with program links + executive role advice */}
         <ShareableBlock id="insights" title={locale === "en" ? "Strategic insights" : "Стратегические инсайты"}>
-          <section className="py-6 sm:py-10"><StrategicInsights /></section>
+          <section id="insights" className="scroll-mt-28 py-6 sm:scroll-mt-32 sm:py-10"><StrategicInsights /></section>
         </ShareableBlock>
 
         {/* SKOLKOVO programs teaser - insight-linked, full catalog at /programs */}
