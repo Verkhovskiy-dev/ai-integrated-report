@@ -65,6 +65,9 @@ jobs:
       - name: Generate individual news share pages
         run: node source/scripts/generate-news-share-pages.mjs site/data/latest-report.json site https://verkhovskiy.ai
 
+      - name: Generate individual place share pages
+        run: node source/scripts/generate-place-share-pages.mjs site/data/places_data.json site https://verkhovskiy.ai
+
       - name: Verify routes in the published bundle
         run: node source/scripts/validate-published-routes.mjs source/client/src/data/ekenRoutes.json site
 

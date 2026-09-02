@@ -1,0 +1,84 @@
+name: Sync place share pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gh-pages
+    paths:
+      - 'data/places_data.json'
+  schedule:
+    - cron: '12,27,42,57 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-place-share-pages
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout published site
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check whether share pages match the places map
+        id: freshness
+        shell: bash
+        run: |
+          PLACES_DIGEST=$(sha256sum data/places_data.json | cut -d ' ' -f 1)
+          PUBLISHED_DIGEST=$(cat share/v1/places/.places-digest 2>/dev/null || true)
+          if [ "$PLACES_DIGEST" = "$PUBLISHED_DIGEST" ]; then
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+            echo "Place share pages already match the current map"
+          else
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+            echo "Place share pages need to be rebuilt"
+          fi
+
+      - name: Checkout generator
+        if: steps.freshness.outputs.stale == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: generator-source
+
+      - name: Set up Node.js
+        if: steps.freshness.outputs.stale == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: generator-source/package-lock.json
+
+      - name: Install generator dependencies
+        if: steps.freshness.outputs.stale == 'true'
+        run: npm ci --prefix generator-source --legacy-peer-deps
+
+      - name: Generate and publish individual place pages
+        if: steps.freshness.outputs.stale == 'true'
+        run: |
+          node generator-source/scripts/generate-place-share-pages.mjs data/places_data.json . https://verkhovskiy.ai
+
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "GitHub Actions"
+          git add -A share/v1/places
+          git commit -m "share: sync previews with current places map"
+
+          for attempt in 1 2 3 4 5; do
+            git fetch origin gh-pages
+            git rebase origin/gh-pages
+            if git push origin HEAD:gh-pages; then
+              exit 0
+            fi
+            echo "gh-pages changed during publish; retrying ($attempt/5)"
+            sleep 2
+          done
+          echo "Unable to publish place share pages after 5 attempts"
+          exit 1
