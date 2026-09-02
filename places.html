@@ -1189,9 +1189,7 @@ function getPlaceById(id) {
 function getPlaceShareUrl(placeOrId) {
   const id = typeof placeOrId === 'string' ? placeOrId : placeOrId.id;
   const publicOrigin = window.location.protocol === 'file:' ? 'https://verkhovskiy.ai' : window.location.origin;
-  const url = new URL('/places.html', publicOrigin);
-  url.searchParams.set('place', id);
-  return url.toString();
+  return new URL(`/share/v1/places/${encodeURIComponent(id)}/`, publicOrigin).toString();
 }
 
 function getPlaceShareText(place) {
@@ -1901,7 +1899,7 @@ function openPlaceShare(id, event) {
     <button class="modal-close" type="button" onclick="closePlaceShare()" aria-label="Закрыть">&times;</button>
     <div class="share-kicker">Опубликовать карточку</div>
     <div class="share-title" id="share-title">${place.name}</div>
-    <div class="share-summary">Ссылка откроет карту сразу на этом месте — с описанием, ёмкостью, окном возможностей и условиями входа.</div>
+    <div class="share-summary">Публикация получит отдельное превью этой позиции. Переход откроет карту сразу на выбранном месте.</div>
     <div class="share-options">
       <button type="button" class="share-option" onclick="openPlaceShareLink('${place.id}', 'telegram', event)">
         <span class="share-option-icon">↗</span><span>Telegram</span>
