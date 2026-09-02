@@ -919,6 +919,7 @@ body {
   font-size: 0.8rem;
   font-weight: 700;
   line-height: 1;
+  text-decoration: none;
   cursor: pointer;
   transition: color 0.15s, border-color 0.15s, background 0.15s, transform 0.15s;
 }
@@ -990,6 +991,7 @@ body {
   font: inherit;
   font-size: 0.78rem;
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
 }
 .share-option:hover,
@@ -1194,6 +1196,19 @@ function getPlaceShareUrl(placeOrId) {
 
 function getPlaceShareText(place) {
   return `${place.name}\n\nСРТ-${place.srt_level} · ${CAPACITY_RU[place.capacity.category]} ёмкость · Окно: ${WINDOW_RU[place.window.category]}`;
+}
+
+function getTelegramShareUrl(place) {
+  return `https://t.me/share/url?${new URLSearchParams({
+    url: getPlaceShareUrl(place),
+    text: getPlaceShareText(place)
+  }).toString()}`;
+}
+
+function getFacebookShareUrl(place) {
+  return `https://www.facebook.com/sharer/sharer.php?${new URLSearchParams({
+    u: getPlaceShareUrl(place)
+  }).toString()}`;
 }
 
 function trackPlaceShare(eventName, place, target) {
@@ -1759,20 +1774,24 @@ function openModal(id, syncUrl = true) {
     <div class="modal-title">${p.name}</div>
     <div class="modal-share-row" aria-label="Опубликовать карточку">
       <span class="modal-share-status" id="modal-share-status" aria-live="polite"></span>
-      <button
-        type="button"
+      <a
         class="place-share-icon"
         aria-label="Опубликовать в Telegram"
         title="Telegram"
-        onclick="sharePlaceDirect('${p.id}', 'telegram', event)"
-      ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 3-7.4 18-4.2-7.2L3 10.5 21 3Z"></path><path d="m9.4 13.8 4.2-3.9"></path></svg></button>
-      <button
-        type="button"
+        href="${getTelegramShareUrl(p)}"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="trackDirectPlaceShare('${p.id}', 'telegram', event)"
+      ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 3-7.4 18-4.2-7.2L3 10.5 21 3Z"></path><path d="m9.4 13.8 4.2-3.9"></path></svg></a>
+      <a
         class="place-share-icon"
         aria-label="Опубликовать в Facebook"
         title="Facebook"
-        onclick="sharePlaceDirect('${p.id}', 'facebook', event)"
-      >f</button>
+        href="${getFacebookShareUrl(p)}"
+        target="_blank"
+        rel="noopener noreferrer"
+        onclick="trackDirectPlaceShare('${p.id}', 'facebook', event)"
+      >f</a>
       <button
         type="button"
         class="place-share-icon"
@@ -1888,12 +1907,12 @@ function openPlaceShare(id, event) {
     <div class="share-title" id="share-title">${place.name}</div>
     <div class="share-summary">Ссылка откроет карту сразу на этом месте — с описанием, ёмкостью, окном возможностей и условиями входа.</div>
     <div class="share-options">
-      <button type="button" class="share-option" onclick="sharePlaceTo('telegram')">
+      <a class="share-option" href="${getTelegramShareUrl(place)}" target="_blank" rel="noopener noreferrer" onclick="trackDirectPlaceShare('${place.id}', 'telegram', event)">
         <span class="share-option-icon">↗</span><span>Telegram</span>
-      </button>
-      <button type="button" class="share-option" onclick="sharePlaceTo('facebook')">
+      </a>
+      <a class="share-option" href="${getFacebookShareUrl(place)}" target="_blank" rel="noopener noreferrer" onclick="trackDirectPlaceShare('${place.id}', 'facebook', event)">
         <span class="share-option-icon">f</span><span>Facebook</span>
-      </button>
+      </a>
       <button type="button" class="share-option" onclick="sharePlaceTo('instagram')">
         <span class="share-option-icon">◎</span><span>Instagram / меню ОС</span>
       </button>
@@ -1956,6 +1975,12 @@ async function sharePlaceDirect(id, target, event) {
   else await sharePlaceTo(target);
 }
 
+function trackDirectPlaceShare(id, target, event) {
+  event?.stopPropagation();
+  const place = getPlaceById(id);
+  if (place) trackPlaceShare('place_share_complete', place, target);
+}
+
 async function sharePlaceTo(target) {
   const place = getPlaceById(currentSharedPlaceId);
   if (!place) return;
@@ -1976,11 +2001,6 @@ async function sharePlaceTo(target) {
     return;
   }
 
-  const outbound = target === 'telegram'
-    ? `https://t.me/share/url?${new URLSearchParams({ url, text }).toString()}`
-    : `https://www.facebook.com/sharer/sharer.php?${new URLSearchParams({ u: url }).toString()}`;
-  trackPlaceShare('place_share_complete', place, target);
-  window.open(outbound, '_blank', 'noopener,noreferrer,width=720,height=640');
 }
 
 function openSharedPlaceFromUrl() {
