@@ -897,18 +897,52 @@ body {
   outline: none;
   transform: translateY(-1px);
 }
-.place-share-button.is-text {
-  width: auto;
-  height: 32px;
-  padding: 0 11px;
-  border-radius: 999px;
-  gap: 7px;
-  font-size: 0.72rem;
-}
 .modal-share-row {
   display: flex;
+  min-height: 34px;
+  align-items: center;
   justify-content: flex-end;
+  gap: 7px;
   margin: 8px 0 4px;
+}
+.place-share-icon {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.11);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.025);
+  color: #9ca3af;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s, transform 0.15s;
+}
+.place-share-icon:hover,
+.place-share-icon:focus-visible {
+  border-color: rgba(0,212,170,0.55);
+  background: rgba(0,212,170,0.1);
+  color: #00d4aa;
+  outline: none;
+  transform: translateY(-1px);
+}
+.place-share-icon svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+.modal-share-status {
+  margin-right: 3px;
+  color: #34d399;
+  font-size: 0.68rem;
 }
 .share-overlay { z-index: 1100; }
 .share-box {
@@ -1152,7 +1186,8 @@ function getPlaceById(id) {
 
 function getPlaceShareUrl(placeOrId) {
   const id = typeof placeOrId === 'string' ? placeOrId : placeOrId.id;
-  const url = new URL('/places.html', window.location.origin);
+  const publicOrigin = window.location.protocol === 'file:' ? 'https://verkhovskiy.ai' : window.location.origin;
+  const url = new URL('/places.html', publicOrigin);
   url.searchParams.set('place', id);
   return url.toString();
 }
@@ -1722,12 +1757,36 @@ function openModal(id, syncUrl = true) {
       Уровень ${p.srt_level}: ${SRT_LEVELS[p.srt_level]}
     </div>
     <div class="modal-title">${p.name}</div>
-    <div class="modal-share-row">
+    <div class="modal-share-row" aria-label="Опубликовать карточку">
+      <span class="modal-share-status" id="modal-share-status" aria-live="polite"></span>
       <button
         type="button"
-        class="place-share-button is-text"
-        onclick="openPlaceShare('${p.id}', event)"
-      ><span aria-hidden="true">↗</span> Поделиться местом</button>
+        class="place-share-icon"
+        aria-label="Опубликовать в Telegram"
+        title="Telegram"
+        onclick="sharePlaceDirect('${p.id}', 'telegram', event)"
+      ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 3-7.4 18-4.2-7.2L3 10.5 21 3Z"></path><path d="m9.4 13.8 4.2-3.9"></path></svg></button>
+      <button
+        type="button"
+        class="place-share-icon"
+        aria-label="Опубликовать в Facebook"
+        title="Facebook"
+        onclick="sharePlaceDirect('${p.id}', 'facebook', event)"
+      >f</button>
+      <button
+        type="button"
+        class="place-share-icon"
+        aria-label="Опубликовать в Instagram через меню устройства"
+        title="Instagram / меню устройства"
+        onclick="sharePlaceDirect('${p.id}', 'instagram', event)"
+      ><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.7" r=".7" fill="currentColor" stroke="none"></circle></svg></button>
+      <button
+        type="button"
+        class="place-share-icon"
+        aria-label="Копировать ссылку на карточку"
+        title="Копировать ссылку"
+        onclick="sharePlaceDirect('${p.id}', 'copy', event)"
+      ><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg></button>
     </div>
 
     ${hasEkenRoute(p) ? `
@@ -1878,7 +1937,23 @@ async function copyPlaceShareLink(target = 'copy') {
   await writeShareLink(getPlaceShareUrl(place));
   const status = document.getElementById('share-status');
   if (status) status.textContent = 'Ссылка на карточку скопирована';
+  const modalStatus = document.getElementById('modal-share-status');
+  if (modalStatus) {
+    modalStatus.textContent = 'Скопировано';
+    window.setTimeout(() => {
+      if (modalStatus.isConnected) modalStatus.textContent = '';
+    }, 1800);
+  }
   trackPlaceShare('place_share_complete', place, target);
+}
+
+async function sharePlaceDirect(id, target, event) {
+  event?.preventDefault();
+  event?.stopPropagation();
+  if (!getPlaceById(id)) return;
+  currentSharedPlaceId = id;
+  if (target === 'copy') await copyPlaceShareLink();
+  else await sharePlaceTo(target);
 }
 
 async function sharePlaceTo(target) {
