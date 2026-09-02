@@ -1774,24 +1774,20 @@ function openModal(id, syncUrl = true) {
     <div class="modal-title">${p.name}</div>
     <div class="modal-share-row" aria-label="Опубликовать карточку">
       <span class="modal-share-status" id="modal-share-status" aria-live="polite"></span>
-      <a
+      <button
+        type="button"
         class="place-share-icon"
         aria-label="Опубликовать в Telegram"
         title="Telegram"
-        href="${getTelegramShareUrl(p)}"
-        target="_blank"
-        rel="noopener noreferrer"
-        onclick="trackDirectPlaceShare('${p.id}', 'telegram', event)"
-      ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 3-7.4 18-4.2-7.2L3 10.5 21 3Z"></path><path d="m9.4 13.8 4.2-3.9"></path></svg></a>
-      <a
+        onclick="openPlaceShareLink('${p.id}', 'telegram', event)"
+      ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 3-7.4 18-4.2-7.2L3 10.5 21 3Z"></path><path d="m9.4 13.8 4.2-3.9"></path></svg></button>
+      <button
+        type="button"
         class="place-share-icon"
         aria-label="Опубликовать в Facebook"
         title="Facebook"
-        href="${getFacebookShareUrl(p)}"
-        target="_blank"
-        rel="noopener noreferrer"
-        onclick="trackDirectPlaceShare('${p.id}', 'facebook', event)"
-      >f</a>
+        onclick="openPlaceShareLink('${p.id}', 'facebook', event)"
+      >f</button>
       <button
         type="button"
         class="place-share-icon"
@@ -1907,12 +1903,12 @@ function openPlaceShare(id, event) {
     <div class="share-title" id="share-title">${place.name}</div>
     <div class="share-summary">Ссылка откроет карту сразу на этом месте — с описанием, ёмкостью, окном возможностей и условиями входа.</div>
     <div class="share-options">
-      <a class="share-option" href="${getTelegramShareUrl(place)}" target="_blank" rel="noopener noreferrer" onclick="trackDirectPlaceShare('${place.id}', 'telegram', event)">
+      <button type="button" class="share-option" onclick="openPlaceShareLink('${place.id}', 'telegram', event)">
         <span class="share-option-icon">↗</span><span>Telegram</span>
-      </a>
-      <a class="share-option" href="${getFacebookShareUrl(place)}" target="_blank" rel="noopener noreferrer" onclick="trackDirectPlaceShare('${place.id}', 'facebook', event)">
+      </button>
+      <button type="button" class="share-option" onclick="openPlaceShareLink('${place.id}', 'facebook', event)">
         <span class="share-option-icon">f</span><span>Facebook</span>
-      </a>
+      </button>
       <button type="button" class="share-option" onclick="sharePlaceTo('instagram')">
         <span class="share-option-icon">◎</span><span>Instagram / меню ОС</span>
       </button>
@@ -1979,6 +1975,16 @@ function trackDirectPlaceShare(id, target, event) {
   event?.stopPropagation();
   const place = getPlaceById(id);
   if (place) trackPlaceShare('place_share_complete', place, target);
+}
+
+function openPlaceShareLink(id, target, event) {
+  event?.preventDefault();
+  event?.stopPropagation();
+  const place = getPlaceById(id);
+  if (!place) return;
+  const outbound = target === 'telegram' ? getTelegramShareUrl(place) : getFacebookShareUrl(place);
+  trackPlaceShare('place_share_complete', place, target);
+  window.location.assign(outbound);
 }
 
 async function sharePlaceTo(target) {
