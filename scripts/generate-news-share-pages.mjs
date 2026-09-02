@@ -1,4 +1,4 @@
-import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import path from "node:path";
 import { Resvg } from "@resvg/resvg-js";
@@ -10,7 +10,10 @@ const reportSource = await readFile(dataPath, "utf8");
 const report = JSON.parse(reportSource);
 const outputRoot = path.resolve(siteRoot, "share", "v3", "news");
 if (!outputRoot.startsWith(path.resolve(siteRoot) + path.sep)) throw new Error("Unsafe output path");
-await rm(outputRoot, { recursive: true, force: true });
+// Share URLs are permanent once published. Never clear this directory: doing so
+// would turn links from earlier reports and social posts into 404 responses.
+// Current-report pages overwrite matching tokens, while older tokens remain.
+await mkdir(outputRoot, { recursive: true });
 
 const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" })[c]);
 const escapeXml = escapeHtml;
