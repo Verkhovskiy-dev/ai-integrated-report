@@ -1,170 +1,5 @@
 [
   {
-    "date": "2026-08-03",
-    "generated_at": "2026-08-03T17:03:14.397Z",
-    "trends": [
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 100; вечером его удерживают на максимуме встреча Белого дома с AI-компаниями по рамке тестирования моделей и фактическое использование ChatGPT офисами Конгресса.",
-        "levels": [
-          8,
-          6,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 100; сегодня он не ослаб, потому что MIT Technology Review объяснил лживое поведение агентов, а arXiv дал новые работы по валидности бенчмарков, локализации отказов и авторизации действий.",
-        "levels": [
-          6,
-          8,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 96,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 91; вечерние сигналы от AWS о продолжении CapEx, Pimco о финансировании цифровой инфраструктуры, DTE и PJM по дата-центрам добавили инфраструктурный импульс.",
-        "levels": [
-          9,
-          5,
-          2,
-          1
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 90,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 82; PJM связал дефицит мощности с дата-центрами и возможным ростом на 70 ГВт, DTE сохранила $30 млрд сетевого плана, а AEP закрепила 13 ГВт турбин.",
-        "levels": [
-          1,
-          2,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 95,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 92; новые бенчмарки MerchantBench, MMShopBench, SciGym, NeSyFS и работы по многоагентному планированию показывают расширение агентных систем в торговлю, науку и физические задачи.",
-        "levels": [
-          6,
-          5,
-          4,
-          3
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": 33,
-        "category": "emerging",
-        "rationale": "Сегодня ChatGPT доминирует в платном AI-использовании Конгресса, а AWS описывает рост спроса на AI-вывод в бизнесе. Это новый сигнал зависимости организаций от закрытых сервисов и облачных API.",
-        "levels": [
-          8,
-          5,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 32,
-        "category": "emerging",
-        "rationale": "Вчера тренд был на 24; AWS сообщил о сдвиге клиентов от обучения к выводу и продолжении инвестиций в CapEx, что усиливает значение облачного слоя эксплуатации моделей.",
-        "levels": [
-          5,
-          9,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 69,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 76; вечерние сигналы больше про перестройку ролей, чем про найм: Wired описал ботов во фастфуде, HR Dive — доступность труда, MIT SMR — давление AI на маркетинговые команды.",
-        "levels": [
-          3,
-          5,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "classic-saas",
-        "name": "Классический SaaS под давлением AI",
-        "momentum": 22,
-        "category": "emerging",
-        "rationale": "Сегодня June привлекла $20 млн на упрощение внедрения AI, а MIT SMR описал подрыв эффективности маркетинговых команд из-за AI. Сигнал умеренный: давление идёт через слой внедрения и рабочих процессов, а не через прямую замену всех SaaS-систем.",
-        "levels": [
-          5,
-          3,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "chip-export-control",
-        "name": "Экспортный контроль чипов",
-        "momentum": 41,
-        "category": "accelerating",
-        "rationale": "Сегодня Financial Times сообщил, что удержание ASML над будущим чипмейкинга ослабевает, а Китай становится ближе. Это усиливает аппаратно-геоэкономический контур вокруг контроля интегральных схем.",
-        "levels": [
-          4,
-          8,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 36,
-        "category": "emerging",
-        "rationale": "Вчера тренд был на 32; новый сигнал пришёл не от модели, а от производственной базы: Financial Times описал продвижение Китая к ослаблению зависимости от ASML, а Bloomberg сообщил о льготах Индии для локальной электроники.",
-        "levels": [
-          4,
-          2,
-          5,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-generated-content-monetization",
-        "name": "Монетизация AI-контента",
-        "momentum": -34,
-        "category": "decelerating",
-        "rationale": "Вчера тренд был на -30; вечерние новости скорее усилили недоверие: LinkedIn тестирует жалобы на AI-контент, а The Verge описал сомнения в происхождении песни в Billboard Hot 100.",
-        "levels": [
-          8,
-          5,
-          3
-        ],
-        "is_new": false
-      }
-    ]
-  },
-  {
     "date": "2026-08-04",
     "generated_at": "2026-08-04T17:03:59.203Z",
     "trends": [
@@ -4401,6 +4236,142 @@
           9
         ],
         "is_new": true
+      }
+    ]
+  },
+  {
+    "date": "2026-09-02",
+    "generated_at": "2026-09-02T05:02:29.748Z",
+    "trends": [
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера было 100; сегодня уровень сохраняется, потому что Astra выпускается через ранний доступ для защиты, а OpenAgentFlow формализует границы действий для флотов агентов.",
+        "levels": [
+          4,
+          6,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 99,
+        "category": "accelerating",
+        "rationale": "Вчера было 96; рост ограниченный, но поддержан Claude Fable 5.1 для агентных задач, UI-Venus-2 для интерфейсных агентов и HyperWorld для мировых моделей.",
+        "levels": [
+          4,
+          5,
+          6
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 95,
+        "category": "accelerating",
+        "rationale": "Вчера было 89; сегодня тренд усилили прогноз PwC на $31,6 трлн дата-центров, рост прогноза Dell на AI-серверах и кредит GMI Cloud под GPU-мощность.",
+        "levels": [
+          2,
+          5,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-cloud-rental",
+        "name": "AI-облака и аренда вычислений",
+        "momentum": 38,
+        "category": "emerging",
+        "rationale": "Сегодня появился прямой сигнал: GMI Cloud получила спрос на кредит, обеспеченный продажей вычислительной мощности передовых чипов.",
+        "levels": [
+          4,
+          5,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 36,
+        "category": "emerging",
+        "rationale": "Вчера было 27; рост связан с переговорами Nvidia о покупке Hugging Face и с публикацией BenchMIRT на Hugging Face как сигналом значимости инфраструктуры сообщества.",
+        "levels": [
+          5,
+          6,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": -22,
+        "category": "decelerating",
+        "rationale": "Вчера было -29; положение немного улучшили Claude Fable 5.1 и ChatGPT Health с Epic, но Astra с критическими киберспособностями и правила ЕС сохраняют отрицательное давление.",
+        "levels": [
+          4,
+          5,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера было 100; сегодня максимум поддержан правилами ЕС для ChatGPT и Reddit, запретом AI в школах Нью-Йорка и судебными обвинениями вокруг OpenAI, Anthropic и xAI.",
+        "levels": [
+          7,
+          8,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-in-government",
+        "name": "AI в госсекторе",
+        "momentum": 64,
+        "category": "accelerating",
+        "rationale": "Вчера было 55; рост связан с переходом армейской TITAN к производству и открытием Минобороны США трех крупных AI-инструментов для сотрудников.",
+        "levels": [
+          5,
+          8,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 73,
+        "category": "accelerating",
+        "rationale": "Вчера было 70; FT зафиксировала снижение вакансий для AI-затронутых профессий в Техасе, а EY выделила $100 млн на награды сотрудникам за технологические изменения.",
+        "levels": [
+          3,
+          5,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 49,
+        "category": "accelerating",
+        "rationale": "Вчера было 58; прямых новых энергетических сделок сегодня нет, но прогноз PwC по дата-центрам поддерживает инфраструктурный спрос только косвенно, поэтому импульс ослаб.",
+        "levels": [
+          1,
+          2,
+          9
+        ],
+        "is_new": false
       }
     ]
   }
