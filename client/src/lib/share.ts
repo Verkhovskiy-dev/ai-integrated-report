@@ -32,6 +32,17 @@ export function buildFacebookShareUrl(url: string) {
   return `https://www.facebook.com/sharer/sharer.php?${params.toString()}`;
 }
 
+export async function isNewsSharePageReady(url: string, fetcher: typeof fetch = fetch) {
+  const parsed = new URL(url);
+  if (!parsed.pathname.startsWith("/share/v3/news/")) return true;
+  try {
+    const response = await fetcher(parsed.toString(), { method: "HEAD", cache: "no-store" });
+    return response.ok && (response.headers.get("content-type") ?? "").includes("text/html");
+  } catch {
+    return false;
+  }
+}
+
 export function shouldUseNativeFacebookShare(userAgent: string, platform: string, maxTouchPoints: number) {
   return /iPad|iPhone|iPod/i.test(userAgent) || (/Mac/i.test(platform) && maxTouchPoints > 1);
 }

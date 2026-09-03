@@ -10,7 +10,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { buildFacebookShareUrl, buildShareUrl, buildTelegramShareUrl, shouldUseNativeFacebookShare } from "@/lib/share";
+import { toast } from "sonner";
+import { buildFacebookShareUrl, buildShareUrl, buildTelegramShareUrl, isNewsSharePageReady, shouldUseNativeFacebookShare } from "@/lib/share";
 
 type ShareTarget = "telegram" | "facebook" | "instagram" | "copy";
 
@@ -72,6 +73,15 @@ export function ShareButton({ id, title, text, compact = false, className }: Sha
   };
 
   const openShare = async (target: "telegram" | "facebook") => {
+    const url = shareUrl();
+    if (target === "facebook" && !await isNewsSharePageReady(url)) {
+      window.umami?.track("dashboard_block_share_not_ready", { block: id, target });
+      toast.info(isEn
+        ? "The Facebook card is still being prepared. Please try again in a minute."
+        : "Карточка для Facebook ещё готовится. Попробуйте снова через минуту.");
+      return;
+    }
+
     // facebook.com/sharer is unreliable when Safari hands it off to the iOS app.
     // The native share sheet preserves the exact per-news URL and lets iOS pass it
     // directly to the installed Facebook app.
@@ -80,8 +90,8 @@ export function ShareButton({ id, title, text, compact = false, className }: Sha
       && await shareNatively(target)) return;
 
     const outboundUrl = target === "telegram"
-      ? buildTelegramShareUrl(shareUrl(), shareText)
-      : buildFacebookShareUrl(shareUrl());
+      ? buildTelegramShareUrl(url, shareText)
+      : buildFacebookShareUrl(url);
     track(target);
     window.open(outboundUrl, "_blank", "noopener,noreferrer,width=720,height=640");
   };

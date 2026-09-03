@@ -2,6 +2,9 @@ name: Sync news share pages
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types:
+      - aiwatcher-report-published
   push:
     branches:
       - gh-pages

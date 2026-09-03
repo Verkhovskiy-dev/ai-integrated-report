@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { buildFacebookShareUrl, buildShareId, buildShareUrl, buildTelegramShareUrl, shouldUseNativeFacebookShare } from "./share";
+import { describe, expect, it, vi } from "vitest";
+import { buildFacebookShareUrl, buildShareId, buildShareUrl, buildTelegramShareUrl, isNewsSharePageReady, shouldUseNativeFacebookShare } from "./share";
 
 describe("dashboard sharing", () => {
   it("builds a section URL while preserving existing filters", () => {
@@ -40,5 +40,26 @@ describe("dashboard sharing", () => {
     expect(shouldUseNativeFacebookShare("Mozilla/5.0 (Macintosh)", "MacIntel", 5)).toBe(true);
     expect(shouldUseNativeFacebookShare("Mozilla/5.0 (Macintosh)", "MacIntel", 0)).toBe(false);
     expect(shouldUseNativeFacebookShare("Mozilla/5.0 (Linux; Android 15)", "Linux armv8l", 5)).toBe(false);
+  });
+
+  it("verifies a dedicated news page before sharing it", async () => {
+    const readyFetch = vi.fn().mockResolvedValue(new Response(null, {
+      status: 200,
+      headers: { "content-type": "text/html; charset=utf-8" },
+    }));
+    const missingFetch = vi.fn().mockResolvedValue(new Response(null, { status: 404 }));
+
+    await expect(isNewsSharePageReady("https://verkhovskiy.ai/share/v3/news/abc/", readyFetch)).resolves.toBe(true);
+    await expect(isNewsSharePageReady("https://verkhovskiy.ai/share/v3/news/abc/", missingFetch)).resolves.toBe(false);
+    expect(readyFetch).toHaveBeenCalledWith(
+      "https://verkhovskiy.ai/share/v3/news/abc/",
+      { method: "HEAD", cache: "no-store" },
+    );
+  });
+
+  it("does not preflight ordinary dashboard section links", async () => {
+    const fetcher = vi.fn();
+    await expect(isNewsSharePageReady("https://verkhovskiy.ai/?share=insights#insights", fetcher)).resolves.toBe(true);
+    expect(fetcher).not.toHaveBeenCalled();
   });
 });
