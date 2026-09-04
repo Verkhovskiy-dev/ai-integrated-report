@@ -8,7 +8,7 @@ npx vite build --config vite.config.ghpages.ts
 # GitHub Pages serves 404.html for clean SPA routes such as /positions.
 # Keep it in sync with the current app bundle so direct links do not boot an
 # older deployment.
-cp dist/public/index.html dist/public/404.html
+node scripts/prepare-seo.mjs dist/public
 
 echo "=== Preparing deployment ==="
 # Save current branch

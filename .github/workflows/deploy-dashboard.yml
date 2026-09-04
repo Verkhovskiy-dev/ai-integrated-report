@@ -62,6 +62,11 @@ jobs:
           mkdir -p site/data
           cp source/dist/public/data/eken-routes.json site/data/eken-routes.json
 
+      - name: Prepare indexable routes and favicon
+        run: |
+          node --test source/scripts/prepare-seo.test.mjs
+          node source/scripts/prepare-seo.mjs site
+
       - name: Generate individual news share pages
         run: node source/scripts/generate-news-share-pages.mjs site/data/latest-report.json site https://verkhovskiy.ai
 
@@ -76,7 +81,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html 404.html positions/index.html assets share data/eken-routes.json data/eken-scenarios.json
+          git add index.html 404.html positions/index.html programs/index.html education/index.html favicon.svg favicon.png sitemap.xml assets share data/eken-routes.json data/eken-scenarios.json
           if git diff --cached --quiet; then
             echo "Dashboard bundle is already current"
             exit 0
