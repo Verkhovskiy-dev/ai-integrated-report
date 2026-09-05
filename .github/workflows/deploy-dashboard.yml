@@ -53,6 +53,8 @@ jobs:
 
       - name: Update application bundle without touching reports and data
         run: |
+          node --test source/scripts/analytics-coverage.test.mjs
+          node source/scripts/validate-shared-analytics.mjs site/analytics.js
           cp source/dist/public/index.html site/index.html
           cp source/dist/public/index.html site/404.html
           mkdir -p site/positions

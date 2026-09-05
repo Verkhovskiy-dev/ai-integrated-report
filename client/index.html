@@ -2,15 +2,6 @@
 <html lang="ru">
 
   <head>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    <!-- End Google Analytics -->
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
     <meta
@@ -34,10 +25,8 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      src="https://cloud.umami.is/script.js"
-      data-website-id="af3768d0-f56a-406c-9d77-cf20b803f6b9"></script>
+    <!-- Shared production analytics: Umami + Yandex Metrica, maintained on gh-pages. -->
+    <script defer src="/analytics.js"></script>
       <script defer src="/srt-places-widget.js"></script>
       <script defer src="/models-pulse-widget.js"></script>
       <script defer src="/models-news-widget.js"></script>
