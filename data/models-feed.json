@@ -1,7 +1,7 @@
 {
   "lastUpdated": "2026-09-11",
-  "weeklyCount": 16,
-  "weeklyTrend": "stable",
+  "weeklyCount": 23,
+  "weeklyTrend": "up",
   "events": [
     {
       "date": "2026-09-11",
@@ -58,6 +58,24 @@
       "event": "Listen Labs отказалась от подписанного соглашения о финансировании на $1,5 миллиарда, чтобы начать переговоры с Salesforce.",
       "impact": "medium",
       "source": "https://techcrunch.com/2026/09/09/ai-research-startup-listen-labs-scrubbed-a-1-5b-funding-round-for-salesforce-talks/"
+    },
+    {
+      "date": "2026-09-10",
+      "model": "GPT-Live-1",
+      "vendor": "OpenAI",
+      "event": "В API добавлена поддержка GPT-Live-1 для естественных голосовых диалогов с улучшенным следованием инструкциям и поддержкой телефонии.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/introducing-gpt-live-1-in-the-api"
+    },
+    {
+      "date": "2026-09-10",
+      "model": "Agents API",
+      "vendor": "OpenAI",
+      "event": "Запущен Agents API — управляемый сервис для создания и запуска облачных агентов с использованием Codex для оркестрации и длительных сессий.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/introducing-the-agents-api"
     },
     {
       "date": "2026-09-09",
@@ -229,66 +247,6 @@
       "event": "HiddenLayer привлекла $100 миллионов, чтобы помочь предприятиям защитить свои развертывания ИИ.",
       "impact": "medium",
       "source": "https://techcrunch.com/2026/09/02/hiddenlayer-nabs-100m-as-enterprises-rush-to-secure-their-ai-deployments/"
-    },
-    {
-      "date": "2026-09-03",
-      "model": "GPT-6 Astra",
-      "vendor": "OpenAI",
-      "event": "Выпуск модели GPT-6 Astra с улучшенной производительностью и повышенным уровнем кибербезопасности.",
-      "impact": "major",
-      "category": "release",
-      "url": "https://openai.com/index/safety-overview-gpt-6-astra"
-    },
-    {
-      "date": "2026-09-02",
-      "vendor": "OpenAI",
-      "model": "Astra",
-      "event": "OpenAI представила модель Astra, которая соответствует критическим требованиям кибербезопасности в рамках Preparedness Framework.",
-      "impact": "high",
-      "source": "https://openai.com/index/path-to-astra"
-    },
-    {
-      "date": "2026-09-02",
-      "vendor": "Anthropic",
-      "model": "Fable 5.1",
-      "event": "Anthropic выпустила Fable 5.1, снизив стоимость токенов и ограничения модели.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/09/01/anthropics-new-fable-release-is-cheaper-less-restrictive/"
-    },
-    {
-      "date": "2026-09-02",
-      "vendor": "AfterQuery",
-      "model": "AfterQuery",
-      "event": "Стартап AfterQuery стал самым быстрым единорогом Y Combinator, достигнув оценки в $3,2 миллиарда.",
-      "impact": "high",
-      "source": "https://techcrunch.com/2026/09/01/afterquery-reportedly-becomes-y-combinators-fastest-ever-unicorn-now-valued-at-3-2b/"
-    },
-    {
-      "date": "2026-09-01",
-      "model": "Astra",
-      "vendor": "OpenAI",
-      "event": "Модель Astra стала первой моделью OpenAI, соответствующей критическим требованиям кибербезопасности по рамкам Preparedness Framework с усиленными мерами защиты при выпуске.",
-      "impact": "major",
-      "category": "release",
-      "url": "https://openai.com/index/path-to-astra"
-    },
-    {
-      "date": "2026-09-01",
-      "model": "ChatGPT",
-      "vendor": "OpenAI",
-      "event": "ChatGPT получил возможность подключения к электронным медицинским записям и дополнительным отраслевым данным, что помогает клиницистам безопасно получать контекст пациентов и медицинские исследования.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources"
-    },
-    {
-      "date": "2026-08-31",
-      "model": "ChatGPT",
-      "vendor": "OpenAI",
-      "event": "ChatGPT теперь может подключаться к надежным медицинским данным, что помогает врачам безопасно получать доступ к контексту пациентов и медицинским исследованиям.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources"
     }
   ]
 }
