@@ -1,166 +1,5 @@
 [
   {
-    "date": "2026-08-13",
-    "generated_at": "2026-08-13T17:03:17.897Z",
-    "trends": [
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Утренний максимум подтверждён, но не превышен: Cisco дала прогноз $7.5 billion продаж для AI-дата-центров, частный кредит обсуждает AI-долг, а OATI предлагает программно высвободить сетевую мощность.",
-        "levels": [
-          9,
-          5,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Сигнал OATI о dynamic line rating, межрегиональной координации и AI-enhanced dispatch удерживает тренд на максимуме: энергетика AI сегодня проявилась через управление пропускной способностью сети.",
-        "levels": [
-          2,
-          1,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Тренд остаётся на максимуме: Microsoft объединяет Copilot в единый интерфейс, AWS продвигает AgentCore Observability, а arXiv даёт новые работы по памяти, harness и ограничению автономии агентов.",
-        "levels": [
-          5,
-          6,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 96,
-        "category": "accelerating",
-        "rationale": "Вчера было 94, сегодня 96: GitGuardian вынес проблему учётных данных агентов, а работы Off-Support Barrier и Local verification уточнили методологические пределы проверки агентного поведения.",
-        "levels": [
-          8,
-          6,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-evaluation-infrastructure",
-        "name": "Инфраструктура оценки AI",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Тренд остаётся на максимуме: Hugging Face опубликовал итоги воспроизведения 2200 работ ICML, Q-CAGE предложил оценку RAG, а VQ-bench оформил рамку бенчмаркинга квантования.",
-        "levels": [
-          7,
-          6,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": 68,
-        "category": "accelerating",
-        "rationale": "Вчера было 56, сегодня 68: DeepSeek повысила цены на V4-модели перед возможным IPO, Anthropic обсуждается через оценку до $2 трлн, а Apple ведёт переговоры о платном новостном контенте для Siri.",
-        "levels": [
-          9,
-          5,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-provenance",
-        "name": "Происхождение и маркировка AI-контента",
-        "momentum": 61,
-        "category": "accelerating",
-        "rationale": "Вчера было 52, сегодня 61: Ars Technica уточнила, что водяной знак Claude помечает даже человеческий текст, который Claude только редактировал, а студенческие агенты в онлайн-курсах усилили вопрос атрибуции действия.",
-        "levels": [
-          8,
-          7,
-          3
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 90,
-        "category": "accelerating",
-        "rationale": "Вчера было 88, сегодня 90: OpenAI меняет директора по выручке перед ожидаемым выходом на Wall Street, а управляющие капиталом конкурируют за сотрудников OpenAI и Anthropic перед возможными IPO-доходами.",
-        "levels": [
-          3,
-          9,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 98,
-        "category": "accelerating",
-        "rationale": "Вчера было 97, сегодня 98: Flock вводит privacy guardrails после критики наблюдения, Evergy просит регуляторов Канзаса осторожно обращаться с AI из-за конфиденциальной информации, а сделка HPE-Juniper прошла через DOJ settlement.",
-        "levels": [
-          8,
-          5,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "classic-saas",
-        "name": "Классический SaaS под давлением AI",
-        "momentum": -32,
-        "category": "decelerating",
-        "rationale": "Вчера было -25, сегодня -32: Microsoft объединяет отдельные Copilot-приложения и закрывает слабые AI-функции, показывая, что интерфейсы классических приложений поглощаются более крупным AI-контуром.",
-        "levels": [
-          5,
-          3
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 49,
-        "category": "accelerating",
-        "rationale": "Вчера было 42, сегодня 49: AWS продвигает наблюдаемость on-premises и multi-cloud AI-агентов, а Cisco дала отдельный прогноз продаж для AI-дата-центров, усиливая инфраструктурный слой облачного спроса.",
-        "levels": [
-          5,
-          4,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-financialization",
-        "name": "Финансизация AI-инфраструктуры",
-        "momentum": 35,
-        "category": "emerging",
-        "rationale": "Новый тренд поддержан несколькими вечерними сигналами: частный кредит оценивает AI-долг, Anthropic и Databricks получают IPO- и раундовые оценки, а wealth managers заранее работают с будущими AI-миллионерами.",
-        "levels": [
-          9,
-          5,
-          3
-        ],
-        "is_new": true
-      }
-    ]
-  },
-  {
     "date": "2026-08-14",
     "generated_at": "2026-08-14T17:02:57.562Z",
     "trends": [
@@ -4312,6 +4151,157 @@
           8,
           9,
           7
+        ],
+        "is_new": false
+      }
+    ]
+  },
+  {
+    "date": "2026-09-12",
+    "generated_at": "2026-09-12T05:02:24.414Z",
+    "trends": [
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 94,
+        "category": "accelerating",
+        "rationale": "Вчера было 99; сегодня сигнал остаётся очень сильным, но смещается от чистого ускорения к проверке долговой и корпоративной устойчивости через продажу акций Oracle и расширение сокращений из-за AI-дата-центров.",
+        "levels": [
+          9,
+          5,
+          3,
+          2
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 93,
+        "category": "accelerating",
+        "rationale": "Вчера было 95; статья MIT Technology Review об Ашберне и решение суда по приказу DOE дают свежий нижний сигнал, но не добавляют нового проекта мощности.",
+        "levels": [
+          1,
+          2,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера было 100; подтверждение OpenAI о нарушении работы сервиса AI-агентами и работа об artificial id удерживают тренд на максимуме без необходимости повышать оценку.",
+        "levels": [
+          4,
+          6,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера было 100; штраф юристу, иск к Meta, правовые риски Apple Watch и предупреждение директора нацразведки США дают сразу несколько институциональных сигналов.",
+        "levels": [
+          8,
+          3,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 96,
+        "category": "accelerating",
+        "rationale": "Вчера было 95; новый факт о сбое сервиса из-за AI-агентов добавляет операционный сигнал, а не только продуктовый или исследовательский.",
+        "levels": [
+          4,
+          5,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 81,
+        "category": "accelerating",
+        "rationale": "Вчера было 76; Oracle расширила план сокращений на $700 млн на фоне AI-дата-центров, а конфликт OpenAI с математиками показывает напряжение вокруг интеллектуального труда.",
+        "levels": [
+          3,
+          7,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-measurement-crisis",
+        "name": "Кризис измерения AI",
+        "momentum": 98,
+        "category": "accelerating",
+        "rationale": "Вчера было 96; CausalArena, MindTopo, BenchMIRT и детектор галлюцинаций дают несколько свежих методологических сигналов о пересборке измерения качества моделей.",
+        "levels": [
+          6,
+          7,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": -88,
+        "category": "collapsing",
+        "rationale": "Вчера было -86; призыв Garry Tan развивать американские open-weight альтернативы через дистилляцию усиливает давление на закрытый API-контур.",
+        "levels": [
+          8,
+          5,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Сегодня есть прямой сигнал от Garry Tan о дистилляции для американских open-weight лабораторий и технический сигнал от Hugging Face с WebGPU-ядрами для локального AI.",
+        "levels": [
+          4,
+          5,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 60,
+        "category": "accelerating",
+        "rationale": "Вчера было 52; Nuha-Speech для арабских речевых LLM, коммерческая цель Moonshot AI и американская дискуссия об open-weight альтернативах дают свежие сигналы национальной и языковой дифференциации.",
+        "levels": [
+          7,
+          5,
+          8,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "synthetic-data",
+        "name": "Синтетические данные",
+        "momentum": -12,
+        "category": "decelerating",
+        "rationale": "Сегодня сильнее прозвучал не рост синтетики, а ограничение повторения человеческих данных: работа о MoE показывает переобучение на повторённых корпусах, а Mecka AI привлекает капитал именно вокруг данных для обучения роботов.",
+        "levels": [
+          4,
+          5,
+          6
         ],
         "is_new": false
       }
