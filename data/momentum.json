@@ -1,166 +1,5 @@
 [
   {
-    "date": "2026-08-18",
-    "generated_at": "2026-08-18T17:05:56.924Z",
-    "trends": [
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 91,
-        "category": "accelerating",
-        "rationale": "Вчера было 88; сегодня сигнал усилили кредитная линия Anthropic выше 10 млрд долларов, заемный спрос ByteDance свыше 30 млрд долларов и предупреждение JPMorgan о переносе AI-риска в облигации.",
-        "levels": [
-          9,
-          5,
-          1
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 82,
-        "category": "accelerating",
-        "rationale": "Вчера было 86; сегодня нет новых конкретных дата-центров, но есть ресурсные сигналы Utility Dive о 11 ГВт генерации, 5 ГВт хранения и пересмотре передачи ISO-NE.",
-        "levels": [
-          1,
-          2,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 86,
-        "category": "accelerating",
-        "rationale": "Вчера было 84; Warp Factories, Firefox Smart Window, KV-кэш для агентного обслуживания и A2A/MCP показывают переход агентов в инфраструктуру разработки и взаимодействия.",
-        "levels": [
-          5,
-          6,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 69,
-        "category": "accelerating",
-        "rationale": "Вчера было 62; взлом Microsoft Copilot через скрытый параметр, предупреждения о Z.ai и работа о стратегической корректности A2A/MCP добавили конкретные риски исполнения.",
-        "levels": [
-          4,
-          6,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 84,
-        "category": "accelerating",
-        "rationale": "Вчера было 83; новый вклад дали подростковый режим ChatGPT, сравнительная матрица регулирования ЕС, США и Китая, а также применение AI Минтрудом США в чувствительной кадровой процедуре.",
-        "levels": [
-          8,
-          6,
-          3
-        ],
-        "is_new": false
-      },
-      {
-        "id": "training-data-governance",
-        "name": "Управление обучающими данными",
-        "momentum": 66,
-        "category": "accelerating",
-        "rationale": "Вчера было 68; вместо утренних споров о платформенных данных сегодня появился более узкий сигнал MIT о том, что AI-изображения часто нельзя проследить до обучающих данных.",
-        "levels": [
-          7,
-          8,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "open-weight-models",
-        "name": "Open-weight модели",
-        "momentum": 30,
-        "category": "emerging",
-        "rationale": "Вчера было 22; выпуск Z.ai добавил сильный сигнал, потому что open-weight модель одновременно описана как инструмент защиты и потенциальный ресурс для хакеров.",
-        "levels": [
-          4,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": 54,
-        "category": "accelerating",
-        "rationale": "Вчера было 50; Anthropic выходит к крупной кредитной линии, OpenAI вводит подростковый режим, а Snowflake предупреждает о риске зависимости от одной модели.",
-        "levels": [
-          9,
-          8,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 57,
-        "category": "accelerating",
-        "rationale": "Вчера было 52; EdgeRunner и армейский AI-центр США заявили о создании армейской LLM, а Франция применит AI для проверки киберуязвимостей после взлома налогового ведомства.",
-        "levels": [
-          8,
-          5,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 48,
-        "category": "accelerating",
-        "rationale": "Сегодня есть несколько трудовых сигналов: FOBO у работников, пример удержания AI-кадров в MIT Sloan и сообщение о том, что женщины составляют чуть более четверти новых AI-наймов.",
-        "levels": [
-          3,
-          5,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-trust-crisis",
-        "name": "Кризис доверия к AI",
-        "momentum": 60,
-        "category": "accelerating",
-        "rationale": "Вчера было 54; доверительный контур усилили отсутствие независимых данных использования AI, подростковые ограничения ChatGPT, опасения молодых взрослых о рабочих местах и аудит AI-доказательства.",
-        "levels": [
-          8,
-          7,
-          3
-        ],
-        "is_new": false
-      },
-      {
-        "id": "classic-saas",
-        "name": "Классический SaaS под давлением AI",
-        "momentum": -36,
-        "category": "decelerating",
-        "rationale": "Вчера было -31; Firefox Smart Window, Warp Factories и Snowflake с маршрутизацией моделей усиливают давление на классические программные интерфейсы, переводя ценность в AI-слой задач и экономику моделей.",
-        "levels": [
-          5,
-          6,
-          4
-        ],
-        "is_new": false
-      }
-    ]
-  },
-  {
     "date": "2026-08-19",
     "generated_at": "2026-08-19T17:03:05.688Z",
     "trends": [
@@ -4318,6 +4157,150 @@
           1
         ],
         "is_new": true
+      }
+    ]
+  },
+  {
+    "date": "2026-09-17",
+    "generated_at": "2026-09-17T05:02:55.269Z",
+    "trends": [
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера 100 → сегодня 100: федеральное регулирование в Washington описано как маловероятное, но OpenAI вводит режим раскрытия инцидентов, Florida утверждает школьные правила, а сенаторы Alaska открыты к ограничителям.",
+        "levels": [
+          7,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера 100 → сегодня 100: OpenAI раскрыла инциденты несоответствия моделей, Anthropic и OpenAI обсуждают встроенных оценщиков, а Hugging Face и Google DeepMind дали сигналы по повторяемости и групповому поведению агентов.",
+        "levels": [
+          6,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера 100 → сегодня 100: Snap представляет Specs Intelligence как AI-помощника, подключающего цифровые аккаунты для рабочих задач и поездок, что расширяет агентный слой в пользовательские экосистемы.",
+        "levels": [
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 90,
+        "category": "accelerating",
+        "rationale": "Вчера 95 → сегодня 90: GMI Cloud ищет $300 млн на чипы, но Holtec отозвала IPO из-за настроений против дата-центров, а опрос The New York Times и Siena University показал 61% против строительства дата-центров для AI.",
+        "levels": [
+          1,
+          2,
+          8,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 72,
+        "category": "accelerating",
+        "rationale": "Вчера 70 → сегодня 72: тема расширилась от энергопотребления к материальному следу — The Verge сообщил о прогнозе электронных отходов AI до 23 млн контейнеров к 2050 году, а Al Gore отдельно высказался о климатическом потенциале AI.",
+        "levels": [
+          1,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": 38,
+        "category": "emerging",
+        "rationale": "Вчера 25 → сегодня 38: Huawei назначила запуск новых AI-чипов на 2027 год на фоне ограничений США, а Bloomberg сообщил о давлении на китайские AI-акции из-за возможных ограничений доступа к передовым моделям.",
+        "levels": [
+          4,
+          8,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 56,
+        "category": "accelerating",
+        "rationale": "Вчера 45 → сегодня 56: India продвигает программу чипов на $30 млрд, Huawei готовит замену Nvidia, а AI вынесен в повестку саммита Xi и Trump.",
+        "levels": [
+          4,
+          8,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 65,
+        "category": "accelerating",
+        "rationale": "Вчера 60 → сегодня 65: выходцы из DeepMind близки к привлечению $700 млн для Emulate, а Financial Times сообщил о появлении рабочих мест для авторов LinkedIn-текстов из-за AI.",
+        "levels": [
+          3,
+          7,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-in-government",
+        "name": "AI в госсекторе",
+        "momentum": 86,
+        "category": "accelerating",
+        "rationale": "Вчера 82 → сегодня 86: Florida утвердила правила AI в государственных школах, сенаторы Alaska открыты к ограничителям, а Washington одновременно не готов к скорому федеральному регулированию.",
+        "levels": [
+          7,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-social-license",
+        "name": "Общественная легитимность AI",
+        "momentum": 50,
+        "category": "accelerating",
+        "rationale": "Вчера 35 → сегодня 50: опрос показал 61% против дата-центров для AI, Holtec связала отзыв IPO с настроениями против дата-центров, а католические епископы США встретились с AI-компаниями по поводу катастрофического риска.",
+        "levels": [
+          1,
+          8,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": -60,
+        "category": "collapsing",
+        "rationale": "Вчера -55 → сегодня -60: раскрытие инцидентов OpenAI и обсуждение встроенных оценщиков показывают рост издержек доверия для закрытых лабораторий, а Bloomberg сообщил о попытках ограничить доступ китайских конкурентов к передовым моделям.",
+        "levels": [
+          5,
+          8,
+          9
+        ],
+        "is_new": false
       }
     ]
   }
