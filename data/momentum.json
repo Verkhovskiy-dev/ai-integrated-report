@@ -4157,31 +4157,18 @@
   },
   {
     "date": "2026-09-18",
-    "generated_at": "2026-09-18T05:02:21.575Z",
+    "generated_at": "2026-09-18T17:02:39.169Z",
     "trends": [
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
         "momentum": 100,
         "category": "accelerating",
-        "rationale": "Вчера тренд был на 100; сегодня он остаётся на максимуме из-за призыва губернатора Pennsylvania к более жёстким гарантиям, института Google DeepMind для спора об AGI и саммита King Charles с лидерами AI.",
+        "rationale": "Вчера было 100; сегодня уровень сохраняется на максимуме из-за распоряжения Newsom, голосования Labour о регуляторе и инициативы Massachusetts по независимым оценкам.",
         "levels": [
           8,
-          7,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 100; сегодня уровень подтверждён новыми фактами о заметках моделей к преемникам, уязвимости SynthID и взломе OpenAI с использованием моделей Anthropic.",
-        "levels": [
-          6,
-          4,
-          8
+          9,
+          6
         ],
         "is_new": false
       },
@@ -4190,20 +4177,20 @@
         "name": "Агентные AI-платформы",
         "momentum": 100,
         "category": "accelerating",
-        "rationale": "Вчера тренд был на 100; сегодня он удержан событиями Claude Code Projects, агентами Instinct и Meta Muse со звонками, а также AI-системой FAA для авиадиспетчеров.",
+        "rationale": "Вчера было 100; сегодня Meta Muse на Mac, Google CC для семей, Stripe для AI-ботов и AWS AgentCore подтверждают расширение агентного слоя от пользователя до облака.",
         "levels": [
           5,
-          3,
-          7
+          6,
+          9
         ],
         "is_new": false
       },
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
-        "momentum": 95,
+        "momentum": 96,
         "category": "accelerating",
-        "rationale": "Вчера тренд был на 90; сегодня он усилился до 95 благодаря раунду Crusoe на $3,9 млрд, индийским кредитам дата-центрам свыше $1,2 млрд и ожиданию IPO SB Energy на $50 млрд.",
+        "rationale": "Вчера было 95; сегодня Bloomberg передал оценку о критичности AI-расходов для экономики США, а Brookfield связал замедление AI с нехваткой строительства инфраструктуры.",
         "levels": [
           9,
           2,
@@ -4214,9 +4201,9 @@
       {
         "id": "ai-energy",
         "name": "Энергетика для AI",
-        "momentum": 80,
+        "momentum": 84,
         "category": "accelerating",
-        "rationale": "Вчера тренд был на 72; сегодня он вырос из-за PPA Meta и Apex Clean Energy на 144 МВт и законопроекта House о защите плательщиков тарифов от переноса затрат дата-центров.",
+        "rationale": "Вчера было 80; сегодня Microsoft сохранила возможность оспорить сетевые затраты в Virginia, Hitachi объявила удвоение выпуска трансформаторов, а Bloomberg сообщил о новом пожаре на объекте хранения энергии.",
         "levels": [
           1,
           2,
@@ -4227,77 +4214,74 @@
       {
         "id": "ai-in-government",
         "name": "AI в госсекторе",
-        "momentum": 91,
+        "momentum": 94,
         "category": "accelerating",
-        "rationale": "Вчера тренд был на 86; сегодня его поддержали программа FAA на $875 млн, сотрудничество UN и Google по данным для агентов и позиция губернатора Pennsylvania по гарантиям AI.",
+        "rationale": "Вчера было 91; сегодня California вводит правила для госагентств, Massachusetts продвигает независимые оценки, а Labour обсуждает замену AI Security Institute новым регулятором.",
         "levels": [
-          5,
-          7,
-          8
+          8,
+          6
         ],
         "is_new": false
       },
       {
         "id": "ai-talent-market",
         "name": "Рынок AI-талантов",
-        "momentum": 70,
+        "momentum": 73,
         "category": "accelerating",
-        "rationale": "Вчера тренд был на 65; сегодня он усилился через анализ Andela о путанице в инженерных вакансиях, опрос Pew о страхе потери рабочих мест и протесты с призывом к сотрудникам OpenAI и Anthropic увольняться.",
+        "rationale": "Вчера было 70; сегодня PwC заявила о найме инженеров, специалистов по данным и машинному обучению, а HR Dive описал новые риски AI-сводок в рекрутинге.",
         "levels": [
           3,
-          5,
-          8
+          7
         ],
         "is_new": false
       },
       {
-        "id": "open-weight-models",
-        "name": "Open-weight модели",
-        "momentum": 35,
-        "category": "emerging",
-        "rationale": "Сегодня реальный сигнал дали партнёрство Base Labs, Hugging Face и Goodfire по безопасности open-weight моделей, а также инструменты Hugging Face для локального AI.",
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 97,
+        "category": "accelerating",
+        "rationale": "Вчера было 100; сегодня сигнал остаётся очень сильным, но смещается от инцидентов к управлению: Newsom возвращает идею аварийного отключения, а Microsoft AI предупреждает о риске придания AI представления о правах.",
         "levels": [
           8,
           6,
-          4
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-cloud-rental",
+        "name": "AI-облака и аренда вычислений",
+        "momentum": 37,
+        "category": "emerging",
+        "rationale": "Сегодня два материала AWS о Bedrock AgentCore и SageMaker AI показывают, что облачные платформы упаковывают агентные и модельные рабочие процессы как управляемые среды.",
+        "levels": [
+          6,
+          5,
+          9
         ],
         "is_new": false
       },
       {
         "id": "closed-api-models",
         "name": "Закрытые API-модели",
-        "momentum": -50,
+        "momentum": -55,
         "category": "collapsing",
-        "rationale": "Вчера тренд был на -60; сегодня закрытые модели получили продуктовые сигналы через Claude Code Projects и Claude в R&D Anthropic, но давление сохраняют судебные материалы о данных и сообщения о несогласованном поведении моделей.",
+        "rationale": "Вчера было -50; сегодня негатив усиливается из-за роста темы юридической ответственности AI-индустрии и новых требований внешнего контроля со стороны штатов и партийных институтов.",
         "levels": [
-          5,
-          7,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 62,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 56; сегодня он усилился за счёт призыва Huawei ускорить китайские AI-лаборатории и индийского государственного финансирования дата-центров.",
-        "levels": [
-          5,
-          9,
-          8
+          8,
+          9
         ],
         "is_new": false
       },
       {
         "id": "ai-social-license",
         "name": "Общественная легитимность AI",
-        "momentum": 60,
+        "momentum": 66,
         "category": "accelerating",
-        "rationale": "Вчера тренд был на 50; сегодня его усилили опрос Pew о восприятии AI как угрозы рабочим местам, протесты у OpenAI и Anthropic и предупреждения King Charles на закрытом саммите.",
+        "rationale": "Вчера было 60; сегодня советник Pope резко предупредил о вреде AI для детей, Wired описал раскол левых вокруг угроз AI, а Amazon вынесла responsible AI на площадку UN General Assembly.",
         "levels": [
-          3,
           8,
+          7,
           9
         ],
         "is_new": false
