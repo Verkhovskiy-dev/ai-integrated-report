@@ -3002,11 +3002,10 @@
             {
               "name": "MCP (Model Context Protocol)",
               "url": "https://modelcontextprotocol.io",
-              "description": "MCP — стандартный протокол подключения AI к инструментам (9400+ серверов). Спецификация 2026-07-28 (финал 28 июля) — крупнейшая ревизия: stateless-ядро (без сессий и handshake), response caching, extensions framework, MCP Apps (интерактивные HTML-интерфейсы), редизайн Tasks, формальная политика депрекации (12 месяцев).",
+              "description": "MCP — стандартный протокол подключения AI к инструментам. Спецификация 2026-07-28 (финал 28 июля) — крупнейшая ревизия: stateless-ядро (без сессий и handshake), response caching, extensions framework, MCP Apps (интерактивные HTML-интерфейсы), редизайн Tasks, формальная политика депрекации (12 месяцев).",
               "strength": "Стандарт индустрии. Spec 2026-07-28: stateless core + MCP Apps.",
               "features": [
                 "Industry Standard",
-                "9400+ Servers",
                 "Spec 2026-07-28 (stateless)",
                 "MCP Apps",
                 "Extensions Framework"
@@ -3549,7 +3548,7 @@
       "area": "Интеграция",
       "from": "Custom API (2024)",
       "to": "MCP + A2A (2026)",
-      "description": "MCP — 9400+ серверов; спецификация 2026-07-28 делает протокол stateless и добавляет MCP Apps. A2A v1.0 — в Linux Foundation, де-факто стандарт multi-agent. Время интеграции: с 18ч до 4.2ч."
+      "description": "Спецификация MCP 2026-07-28 делает протокол stateless и добавляет MCP Apps. A2A v1.0 — в Linux Foundation, де-факто стандарт multi-agent. Время интеграции: с 18ч до 4.2ч."
     },
     {
       "area": "Рынок",
@@ -3652,18 +3651,6 @@
       "correctIndex": 1,
       "explanation": "Dreaming — новая функция Claude Code, где AI-агенты буквально 'мечтают' — улучшают свои стратегии и подходы между задачами, становясь эффективнее.",
       "level": 2
-    },
-    {
-      "id": 6,
-      "question": "Сколько MCP-серверов в публичном реестре к маю 2026?",
-      "options": [
-        "Около 1200",
-        "Более 9400",
-        "Около 5000"
-      ],
-      "correctIndex": 1,
-      "explanation": "К маю 2026 — 9400+ серверов (рост 7.8x за год). 4 реестра: Smithery (4210), Glama (2750), PulseMCP (1820), Cloudflare. 78% корпоративных команд используют MCP.",
-      "level": 3
     },
     {
       "id": 7,

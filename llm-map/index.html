@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Карта LLM-инструментов 2026 — Verkhovskiy AI Dashboard</title>
-  <meta name="description" content="Трёхуровневая карта 100+ LLM-инструментов 2026: модели, агенты, платформы сборки с бенчмарками, ценами и сравнением возможностей." />
+  <title>Карта LLM-инструментов: два кандидата для проверки — Verkhovskiy AI Dashboard</title>
+  <meta name="description" content="Карта LLM-инструментов: подобрать два кандидата для проверки на своей задаче. Сведения в карточках требуют проверки у разработчика перед покупкой или внедрением." />
   <link rel="canonical" href="https://verkhovskiy.ai/llm-map/" />
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Карта LLM-инструментов 2026 — Verkhovskiy AI Dashboard" />
-  <meta property="og:description" content="Трёхуровневая карта 100+ LLM-инструментов: модели, агенты, платформы сборки с бенчмарками, ценами и сравнением возможностей." />
+  <meta property="og:title" content="Карта LLM-инструментов: два кандидата для проверки — Verkhovskiy AI Dashboard" />
+  <meta property="og:description" content="Навигатор по моделям, агентам и платформам. Сведения в карточках требуют проверки у разработчика перед покупкой или внедрением." />
   <meta property="og:url" content="https://verkhovskiy.ai/llm-map/" />
   <meta property="og:site_name" content="Verkhovskiy AI Dashboard" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -353,6 +353,7 @@
       .totd-grid { grid-template-columns: 1fr; }
       .strategy-grid { grid-template-columns: 1fr; }
       .practice-drawer { width:100vw; }
+      .practice-launch { max-width:100%; padding-left:12px !important; padding-right:12px !important; white-space:normal; }
       .productive-entry { align-items:flex-start; flex-direction:column; }
       .productive-entry-button { width:100%; }
     }
@@ -365,18 +366,18 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Какая LLM лучше для кода?",
+        "name": "Как выбрать LLM для кода?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "По состоянию на 2026 год лидерами для кодинга являются Claude Sonnet 4, GPT-4.1 и Gemini 2.5 Pro. Выбор зависит от задачи: для рефакторинга и архитектуры — Claude, для быстрой генерации — GPT-4.1, для мультимодальных задач — Gemini."
+          "text": "Сравните два доступных кандидата на одном фрагменте кода и заранее определите критерий приёмки."
         }
       },
       {
         "@type": "Question",
-        "name": "Сколько стоит AI-стек в 2026?",
+        "name": "Как оценить стоимость?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Стоимость AI-стека варьируется от $20/мес для индивидуального использования (ChatGPT Pro) до $500-5000/мес для корпоративного стека с несколькими моделями, агентными фреймворками и инфраструктурой. Подробный калькулятор доступен в разделе AI Costs."
+          "text": "Учитывайте тариф, настройку, проверку, исправления и инфраструктуру; условия тарифа проверьте у разработчика."
         }
       },
       {
@@ -408,11 +409,7 @@
     <a href="#" style="color:#6b7a8d;font-size:13px;" class="hover:text-white transition-colors">Инструменты</a>
   </div>
   <div class="flex items-center gap-4">
-    <div class="flex items-center gap-2" style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:6px 12px;">
-      <div class="pulse-dot" style="width:7px;height:7px;background:#00e5a0;border-radius:50%;"></div>
-      <span style="font-size:12px;color:#9aa5b4;">Live</span>
-    </div>
-    <div style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:6px 12px;font-size:12px;color:#9aa5b4;" class="hidden sm:block" id="header-date">22 мая 2026</div>
+    <div style="background:#1c2127;border:1px solid #252c33;border-radius:8px;padding:6px 12px;font-size:12px;color:#9aa5b4;" id="header-date">Архивные данные</div>
   </div>
 </nav>
 
@@ -446,11 +443,11 @@
   <!-- HEADER ROW -->
   <div class="flex items-start justify-between mb-8">
     <div>
-      <div class="section-label mb-2">Гайд по моделям · Обновлено: Май 2026</div>
+      <div class="section-label mb-2">Архив данных · даты срезов указаны в блоках · не отражает текущий рынок</div>
       <h1 style="font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1.2;font-family:'Space Grotesk',sans-serif;" class="text-white">
-        Карта <span class="gradient-text">LLM-инструментов</span> 2026
+        Карта LLM-инструментов: <span class="gradient-text">подобрать два кандидата для проверки на своей задаче</span>
       </h1>
-      <p style="color:#6b7a8d;font-size:14px;margin-top:6px;">Модели, агенты, платформы сборки — 100+ инструментов с бенчмарками и ценами</p>
+      <p style="color:#6b7a8d;font-size:14px;margin-top:6px;">Навигатор по моделям, агентам и платформам. Сведения в карточках требуют проверки у разработчика перед покупкой или внедрением.</p>
     </div>
     <a href="/" class="guide-btn flex items-center gap-3 px-6 py-3 rounded-xl no-underline hidden md:flex" style="text-decoration:none;">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="14" rx="2.5" stroke="#0d0f10" stroke-width="1.6"/><path d="M6 7h8M6 10h5M6 13h6" stroke="#0d0f10" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -458,6 +455,10 @@
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="margin-left:4px;"><path d="M4 8h8M9 5l3 3-3 3" stroke="#0d0f10" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
+
+  <p style="background:#161a1d;border:1px solid #252c33;border-radius:10px;padding:12px 14px;color:#9aa5b4;font-size:12px;line-height:1.6;margin:0 0 20px;">
+    Архивный каталог: общая дата среза не зафиксирована. Цены, рейтинги, описания и рекомендации могут быть устаревшими; перед выбором проверьте сведения у разработчика.
+  </p>
 
   <!-- ROLE FILTER BAR -->
   <div class="flex items-center gap-2 mb-5 flex-wrap" id="role-filter-bar">
@@ -494,8 +495,8 @@
       <!-- Trends compact -->
       <div class="stat-card p-5">
         <div class="flex items-center justify-between mb-4">
-          <span style="font-size:14px;font-weight:600;color:#e8edf2;">Тренды недели</span>
-          <span style="font-size:11px;color:#6b7a8d;">ТОП-5</span>
+          <span style="font-size:14px;font-weight:600;color:#e8edf2;">Архивный срез трендов</span>
+          <span style="font-size:11px;color:#6b7a8d;" id="trends-archive-date">Дата из файла</span>
         </div>
         <div class="flex flex-col gap-3" id="trends-compact"></div>
       </div>
@@ -504,11 +505,8 @@
       <div class="stat-card p-5">
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center gap-2">
-            <span style="font-size:14px;font-weight:600;color:#e8edf2;">⭐ Инструмент дня</span>
-            <div class="flex items-center gap-1" style="background:#0f2a1e;border:1px solid #1e4030;border-radius:6px;padding:2px 8px;">
-              <div class="pulse-dot" style="width:5px;height:5px;background:#00e5a0;border-radius:50%;"></div>
-              <span style="font-size:10px;color:#00e5a0;font-weight:600;">LIVE</span>
-            </div>
+            <span style="font-size:14px;font-weight:600;color:#e8edf2;">Архивная карточка инструмента</span>
+            <span style="font-size:10px;color:#6b7a8d;font-weight:600;" id="tool-archive-date">Дата из файла</span>
           </div>
         </div>
         <div id="tool-of-day-compact"></div>
@@ -517,7 +515,8 @@
       <!-- Chronicle compact -->
       <div class="stat-card p-5">
         <div class="flex items-center justify-between mb-4">
-          <span style="font-size:14px;font-weight:600;color:#e8edf2;">⚡ Хроника</span>
+          <span style="font-size:14px;font-weight:600;color:#e8edf2;">⚡ Архивная хроника</span>
+          <span style="font-size:11px;color:#6b7a8d;" id="chronicle-archive-date">Дата из файла</span>
           <a href="#section-chronicle" style="font-size:11px;color:#00e5a0;text-decoration:none;">Все события →</a>
         </div>
         <div class="flex flex-col gap-2" id="chronicle-compact"></div>
@@ -528,7 +527,7 @@
         <div style="position:absolute;right:-20px;top:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(0,229,160,.12),transparent 70%);border-radius:50%;"></div>
         <div class="section-label mb-2">Карта → практический маршрут</div>
         <p style="font-size:14px;font-weight:600;color:#e8edf2;margin:0 0 4px;">Выберите направление и проверьте его на своей задаче</p>
-        <p style="font-size:12px;color:#8e9aa8;margin:0 0 16px;line-height:1.5;">Карта подберёт инструменты, а EkenLab соберёт короткий маршрут с конкретным результатом.</p>
+        <p style="font-size:12px;color:#8e9aa8;margin:0 0 16px;line-height:1.5;">Карта предложит возможных кандидатов. В EkenLab можно собрать план проверки на своей задаче; результат требует ручной оценки по вашему критерию.</p>
         <a href="#section-navigator" id="eken-offer-cta" onclick="trackLlmFunnel('eken_offer_click', { placement: 'map_primary', destination: '#section-navigator' })" class="guide-btn flex items-center justify-center gap-2 py-2.5 rounded-lg" style="text-decoration:none;">
           <span style="font-size:13px;font-weight:700;color:#0d0f10;">Подобрать маршрут в Eken →</span>
         </a>
@@ -541,9 +540,9 @@
         <div class="section-label mb-3">Статистика экосистемы</div>
         <div class="grid grid-cols-2 gap-3">
           <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:22px;font-weight:700;" class="gradient-text">100+</div><div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Моделей в каталоге</div></div>
-          <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:22px;font-weight:700;color:#a78bfa;">25</div><div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Обновлений за неделю</div></div>
+          <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:14px;font-weight:700;color:#a78bfa;">Архив</div><div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Срез мая 2026</div></div>
           <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:22px;font-weight:700;color:#fb923c;">3</div><div style="font-size:11px;color:#6b7a8d;margin-top:2px;">Уровня экосистемы</div></div>
-          <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:22px;font-weight:700;color:#38bdf8;">9400+</div><div style="font-size:11px;color:#6b7a8d;margin-top:2px;">MCP серверов</div></div>
+          <div style="background:#161a1d;border-radius:8px;padding:12px;"><div style="font-size:11px;color:#6b7a8d;line-height:1.45;">Число MCP-серверов не верифицировано для этой версии карты</div></div>
         </div>
       </div>
 
@@ -605,26 +604,26 @@
 
   <!-- TOOL OF THE DAY (full) -->
   <div class="full-section" id="section-tool-of-day">
-    <div class="sec-label" style="color:#eab308;">⭐ Рекомендация</div>
-    <h2>Инструмент дня</h2>
-    <div class="sec-desc">Подробный разбор одного инструмента из каталога — с рейтингом, сравнением с аналогами и рекомендацией.</div>
+    <div class="sec-label" style="color:#eab308;" id="tool-archive-label">Архив данных · дата из файла</div>
+    <h2>Карточка инструмента</h2>
+    <div class="sec-desc">Карточка инструмента: описание и ссылка на разработчика. Сведения не подтверждают текущее состояние рынка.</div>
     <div id="toolOfTheDayFull"></div>
   </div>
 
   <!-- CHRONICLE (full) -->
   <div class="full-section" id="section-chronicle">
-    <div class="sec-label" style="color:#00c8d7;">⚡ Лента обновлений</div>
-    <h2>Хроника обновлений</h2>
-    <div class="sec-desc">Последние события в мире AI-моделей и инструментов.</div>
+    <div class="sec-label" style="color:#00c8d7;" id="chronicle-archive-label">Архив данных · дата из файла</div>
+    <h2>Хроника событий</h2>
+    <div class="sec-desc">Исторические события в мире AI-моделей и инструментов; не отражают текущий рынок.</div>
     <div class="flex flex-wrap gap-2 mb-4" id="chronicleFilters"></div>
     <div class="flex flex-col gap-2" id="chronicleContent"></div>
   </div>
 
   <!-- TRENDING (full) -->
   <div class="full-section" id="section-trending">
-    <div class="sec-label" style="color:#00e5a0;">📈 Динамика рынка</div>
-    <h2>ТОП трендов AI</h2>
-    <div class="sec-desc">Рейтинг ключевых направлений AI-индустрии по моментуму.</div>
+    <div class="sec-label" style="color:#00e5a0;" id="trends-archive-label">Архив данных · дата из файла</div>
+    <h2>Исторический срез трендов AI</h2>
+    <div class="sec-desc">Архивные значения направлений AI-индустрии; не являются текущим рейтингом.</div>
     <div id="trendingContent"></div>
   </div>
 
@@ -641,7 +640,7 @@
   <!-- COMPARISON -->
   <div class="full-section" id="section-comparison">
     <div class="sec-label" style="color:#00c8d7;">Сравнительный анализ</div>
-    <h2>Сравнение уровней</h2>
+    <h2>Как сравнить два кандидата</h2>
     <div class="sec-desc">Ключевые различия между тремя уровнями LLM-экосистемы.</div>
     <div style="overflow-x:auto;" id="comparisonContent"></div>
   </div>
@@ -651,7 +650,7 @@
     <div class="sec-label" style="color:#00e5a0;">Хронология развития</div>
     <h2>Эволюция экосистемы</h2>
     <div class="sec-desc">От чат-ботов к автономным агентам: ключевые вехи развития.</div>
-    <div class="grid gap-8" style="grid-template-columns:1fr 1fr;">
+    <div class="grid gap-8" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));">
       <div>
         <h3 style="font-size:16px;font-weight:600;color:#00c8d7;margin-bottom:16px;">Хронология</h3>
         <div id="timelineContent"></div>
@@ -674,15 +673,15 @@
   <!-- COSTS ANALYTICS -->
   <div class="full-section" id="section-costs">
     <div class="sec-label" style="color:#eab308;">💰 Аналитика расходов</div>
-    <h2>Сколько стоит AI-стек в 2026?</h2>
-    <div class="sec-desc">Три уровня использования — от бесплатного старта до профессиональной инфраструктуры. Реальные цифры на май 2026.</div>
+    <h2>Как оценить стоимость AI-стека?</h2>
+    <div class="sec-desc">Стоимость зависит от тарифа, объёма, инфраструктуры, настройки и проверки результата. Перед выбором проверьте условия у разработчика и посчитайте полный цикл своей задачи.</div>
     <div id="costsContent"></div>
   </div>
   <!-- NAVIGATOR QUIZ -->
   <div class="full-section" id="section-navigator">
     <div class="sec-label" style="color:#a78bfa;">🧩 Персональный подбор</div>
     <h2>Какие AI-инструменты тебе нужны?</h2>
-    <div class="sec-desc">Ответьте на 6 вопросов и получите персонализированную рекомендацию инструментов.</div>
+    <div class="sec-desc">Ответьте на 6 вопросов и получите список возможных кандидатов для проверки.</div>
     <div id="navigatorContent"></div>
   </div>
 
@@ -690,7 +689,7 @@
   <div class="full-section" id="section-quiz">
     <div class="sec-label" style="color:#fb923c;">Проверка знаний</div>
     <h2>Тест для самопроверки</h2>
-    <div class="sec-desc">10 вопросов по материалам карты LLM-инструментов.</div>
+    <div class="sec-desc">Вопросы по материалам карты LLM-инструментов.</div>
     <div id="quizContent"></div>
   </div>
 
@@ -797,6 +796,7 @@ let activePracticeContext = {};
 let activePracticeId = null;
 let activePracticeBrief = null;
 let activeModelTaskId = null;
+let practiceReturnFocus = null;
 let navigatorRecommendationTools = [];
 
 // ========== STATE ==========
@@ -924,66 +924,27 @@ async function init() {
     console.warn('Eken scenario registry unavailable, using the embedded tool route.', e);
   }
 
-  // Stale date fallback for Tool of the Day
-  if (TOTD && TOTD.date) {
-    const totdDate = new Date(TOTD.date);
-    const now = new Date();
-    const diffDays = (now - totdDate) / (1000 * 60 * 60 * 24);
-    if (diffDays > 30) {
-      // Prefer a tool with a verified productive route. This keeps the
-      // Tool-of-the-Day promise connected to a real EkenLab practice.
-      const allDbTools = [];
-      DATA.levels.forEach(level => {
-        level.categories.forEach(cat => {
-          cat.tools.forEach(tool => { allDbTools.push({ ...tool, level: level.id, category: cat.name }); });
-        });
-      });
-      const featuredTool = allDbTools.find(tool => TOOL_PRACTICES[tool.name])
-        || allDbTools[Math.floor(Math.random() * allDbTools.length)];
-      TOTD = {
-        date: now.toISOString().split('T')[0],
-        tool: {
-          name: featuredTool.name,
-          url: featuredTool.url,
-          level: featuredTool.level,
-          category: featuredTool.category,
-          description: featuredTool.description || featuredTool.strength || '',
-          fullDescription: featuredTool.description || featuredTool.strength || '',
-          rating: (featuredTool.rating || 4) * 2,
-          ratingMax: 10,
-          pros: (featuredTool.features || []).slice(0, 3).map(f => f + ' — ключевая возможность'),
-          cons: ['Требует изучения документации', 'Возможны ограничения бесплатного плана'],
-          comparison: [],
-          recommendation: featuredTool.recommendedFor || 'Рекомендуется для профессионального использования.',
-          idealFor: (featuredTool.roles || []).map(r => ROLE_LABELS[r] || r),
-          pricing: featuredTool.pricing || 'freemium'
-        }
-      };
-    }
-  }
-
   // Try loading trending
   try {
     const resp = await fetch('/data/momentum.json');
     if (resp.ok) { const d = await resp.json(); TRENDING = Array.isArray(d) ? d[d.length-1] : d; }
   } catch(e) { TRENDING = null; }
 
-  // Update header date dynamically
-  try {
-    const months = ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
-    let latestDate = null;
-    if (CHRONICLE && CHRONICLE.events && CHRONICLE.events.length > 0) {
-      latestDate = new Date(CHRONICLE.events[0].date);
-    }
-    if (TRENDING && TRENDING.date) {
-      const tDate = new Date(TRENDING.date);
-      if (!latestDate || tDate > latestDate) latestDate = tDate;
-    }
-    if (latestDate) {
-      const el = document.getElementById('header-date');
-      if (el) el.textContent = `${latestDate.getDate()} ${months[latestDate.getMonth()]} ${latestDate.getFullYear()}`;
-    }
-  } catch(e) {}
+  const archiveDates = [
+    ['tool-archive-date', 'tool-archive-label', TOTD?.date],
+    ['chronicle-archive-date', 'chronicle-archive-label', CHRONICLE?.lastUpdated || CHRONICLE?.events?.[0]?.date],
+    ['trends-archive-date', 'trends-archive-label', TRENDING?.date]
+  ];
+  archiveDates.forEach(([compactId, fullId, value]) => {
+    const parsed = value ? new Date(`${value}T00:00:00`) : null;
+    const label = parsed && !Number.isNaN(parsed.getTime())
+      ? parsed.toLocaleDateString('ru-RU', { day:'numeric', month:'long', year:'numeric' })
+      : 'дата не указана';
+    const compact = document.getElementById(compactId);
+    const full = document.getElementById(fullId);
+    if (compact) compact.textContent = label;
+    if (full) full.textContent = `Архив данных · ${label}`;
+  });
 
   // Flatten tools
   DATA.levels.forEach(level => {
@@ -1263,6 +1224,7 @@ function handleModelTaskKeydown(event, taskId) {
 function openPracticeDrawer(practiceId, context = {}) {
   const entry = getPracticeEntry(practiceId);
   if (!entry) return;
+  practiceReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
   const { tool, practice } = entry;
   trackLlmFunnel('handoff_preview_opened', {
     practice_id: practice.id,
@@ -1349,9 +1311,11 @@ function closePracticeDrawer() {
   const drawer = document.getElementById('practice-drawer');
   backdrop.classList.remove('is-open');
   drawer.classList.remove('is-open');
+  if (practiceReturnFocus && document.contains(practiceReturnFocus)) practiceReturnFocus.focus();
   backdrop.setAttribute('aria-hidden', 'true');
   drawer.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  practiceReturnFocus = null;
   activePracticeContext = {};
   activePracticeId = null;
   activePracticeBrief = null;
@@ -1644,13 +1608,13 @@ function filterChronicle(vendor) { chronicleFilter = vendor; renderChronicleFull
 // ========== TRENDING FULL ==========
 function renderTrendingFull() {
   const container = document.getElementById('trendingContent');
-  if (!TRENDING || !TRENDING.trends) { container.innerHTML = '<p style="color:#6b7a8d;">Данные рейтинга недоступны. Загрузите data/momentum.json</p>'; return; }
+  if (!TRENDING || !TRENDING.trends) { container.innerHTML = '<p style="color:#6b7a8d;">Архивный срез недоступен. Загрузите data/momentum.json</p>'; return; }
   const trends = [...TRENDING.trends].sort((a,b) => b.momentum - a.momentum);
   const maxM = Math.max(...trends.map(t => Math.abs(t.momentum)));
   const getColor = v => v>=70?'#00e5a0':v>=40?'#00c8d7':v>=0?'#a78bfa':'#ff5c7a';
   const catLabels = {accelerating:'Ускорение',stable:'Стабильно',emerging:'Зарождение',decelerating:'Замедление',decay:'Угасание'};
 
-  container.innerHTML = `<div class="grid gap-3" style="grid-template-columns:repeat(auto-fill,minmax(400px,1fr));">${trends.map((t,i) => {
+  container.innerHTML = `<div class="grid gap-3" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,400px),1fr));">${trends.map((t,i) => {
     const barW = Math.max(5, Math.abs(t.momentum)/maxM*100);
     const color = getColor(t.momentum);
     return `
@@ -1739,49 +1703,9 @@ function renderCosts() {
   const container = document.getElementById('costsContent');
   if (!container) return;
   container.innerHTML = `
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:24px;">
-      <div style="background:#161a1d;border:1px solid #252c33;border-radius:12px;padding:20px;position:relative;">
-        <div style="font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#00c8d7;margin-bottom:8px;">Уровень 1</div>
-        <div style="font-size:18px;font-weight:700;color:#e8edf2;margin-bottom:4px;">Начинающий</div>
-        <div style="font-size:12px;color:#6b7a8d;margin-bottom:16px;">The Explorer</div>
-        <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:12px;">
-          <span style="font-size:28px;font-weight:700;color:#00e5a0;font-family:'JetBrains Mono',monospace;">$0–96</span>
-          <span style="font-size:12px;color:#6b7a8d;">/мес</span>
-        </div>
-        <div style="font-size:12px;color:#9aa5b4;line-height:1.6;">Мин: $0 · Опт: $47 · Макс: $96</div>
-        <div style="font-size:11px;color:#6b7a8d;margin-top:8px;">ChatGPT Free/Plus, Claude Free, Gemini</div>
-      </div>
-      <div style="background:#161a1d;border:1px solid #1e4030;border-radius:12px;padding:20px;position:relative;">
-        <div style="position:absolute;top:12px;right:12px;font-size:10px;background:#0f2a1e;color:#00e5a0;padding:3px 8px;border-radius:4px;font-weight:600;">🔥 Популярный</div>
-        <div style="font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#00e5a0;margin-bottom:8px;">Уровень 2</div>
-        <div style="font-size:18px;font-weight:700;color:#e8edf2;margin-bottom:4px;">Продвинутый</div>
-        <div style="font-size:12px;color:#6b7a8d;margin-bottom:16px;">The Power User</div>
-        <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:12px;">
-          <span style="font-size:28px;font-weight:700;color:#00e5a0;font-family:'JetBrains Mono',monospace;">$85–380</span>
-          <span style="font-size:12px;color:#6b7a8d;">/мес</span>
-        </div>
-        <div style="font-size:12px;color:#9aa5b4;line-height:1.6;">Мин: $85 · Опт: $199 · Макс: $380</div>
-        <div style="font-size:11px;color:#6b7a8d;margin-top:8px;">Pro-подписки, Cursor, API-доступ</div>
-      </div>
-      <div style="background:#161a1d;border:1px solid #252c33;border-radius:12px;padding:20px;position:relative;">
-        <div style="font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#a78bfa;margin-bottom:8px;">Уровень 3</div>
-        <div style="font-size:18px;font-weight:700;color:#e8edf2;margin-bottom:4px;">Про</div>
-        <div style="font-size:12px;color:#6b7a8d;margin-bottom:16px;">The AI Engineer</div>
-        <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:12px;">
-          <span style="font-size:28px;font-weight:700;color:#00e5a0;font-family:'JetBrains Mono',monospace;">$450–1757</span>
-          <span style="font-size:12px;color:#6b7a8d;">/мес</span>
-        </div>
-        <div style="font-size:12px;color:#9aa5b4;line-height:1.6;">Мин: $450 · Опт: $895 · Макс: $1757</div>
-        <div style="font-size:11px;color:#6b7a8d;margin-top:8px;">Enterprise API, платформы сборки, мульти-агенты</div>
-      </div>
+    <div style="padding:20px;background:#161a1d;border:1px solid #252c33;border-radius:12px;">
+      <p style="font-size:14px;color:#9aa5b4;line-height:1.7;margin:0;">Стоимость зависит от тарифа, объёма, инфраструктуры, настройки и проверки результата. Перед выбором проверьте условия у разработчика и посчитайте полный цикл своей задачи.</p>
     </div>
-    <div style="display:flex;flex-wrap:wrap;gap:16px;padding:16px;background:#161a1d;border:1px solid #252c33;border-radius:10px;margin-bottom:16px;">
-      <div style="font-size:12px;color:#9aa5b4;"><span style="color:#00e5a0;font-weight:600;">$847</span> — средний стек малого бизнеса</div>
-      <div style="font-size:12px;color:#9aa5b4;"><span style="color:#00e5a0;font-weight:600;">~17</span> инструментов в среднем</div>
-      <div style="font-size:12px;color:#9aa5b4;"><span style="color:#00e5a0;font-weight:600;">40–60%</span> экономия после аудита</div>
-      <div style="font-size:12px;color:#9aa5b4;"><span style="color:#00e5a0;font-weight:600;">6</span> используются ежедневно</div>
-    </div>
-    <a href="/ai-costs/" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#00e5a0;text-decoration:none;font-weight:600;padding:10px 18px;background:#0f2a1e;border:1px solid #1e4030;border-radius:8px;">Полная аналитика расходов →</a>
   `;
 }
 // ========== NAVIGATOR ==========
@@ -1795,7 +1719,7 @@ function renderNavigator() {
     <div style="font-size:18px;font-weight:600;color:#e8edf2;margin-bottom:8px;">${q.question}</div>
     <div style="font-size:13px;color:#6b7a8d;margin-bottom:20px;">${q.hint}</div>
     <div class="flex flex-col gap-3">${q.options.map((opt,i)=>`<div class="navigator-option ${currentAnswer===i?'selected':''}" onclick="selectNavOption(${i})"><span style="font-size:18px;">${opt.icon}</span><span>${opt.text}</span></div>`).join('')}</div>
-    <button class="navigator-btn ${currentAnswer!==undefined?'visible':''}" onclick="nextNavStep()">${navState.current<navigatorQuestions.length-1?'Далее →':'Показать рекомендации'}</button>`;
+    <button class="navigator-btn ${currentAnswer!==undefined?'visible':''}" onclick="nextNavStep()">${navState.current<navigatorQuestions.length-1?'Далее →':'Показать кандидатов'}</button>`;
 }
 function selectNavOption(i) { navState.answers[navState.current]=i; renderNavigator(); }
 function nextNavStep() { if(navState.answers[navState.current]===undefined) return; navState.current++; if(navState.current>=navigatorQuestions.length) navState.finished=true; renderNavigator(); }
@@ -1812,16 +1736,15 @@ function renderNavigatorResults(container) {
   navigatorRecommendationTools = top.slice(0,2);
   const navigatorScenario = getScenario('navigator-ab-test');
   container.innerHTML = `
-    <div style="font-size:16px;font-weight:600;color:#e8edf2;margin-bottom:8px;">Ваши рекомендации</div>
-    <div style="font-size:13px;color:#6b7a8d;margin-bottom:20px;">На основе ваших ответов подобрано ${top.length} инструментов:</div>
+    <div style="font-size:16px;font-weight:600;color:#e8edf2;margin-bottom:8px;">Возможные кандидаты для проверки</div>
+    <div style="font-size:13px;color:#6b7a8d;margin-bottom:20px;">По вашим ответам найдены ${top.length} возможных кандидатов. Проверьте сведения у разработчика:</div>
     ${top.map((t,index) => {
-      const practice = TOOL_PRACTICES[t.name];
-      return `<div class="navigator-result-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${index < 2 ? `${index + 1}. ` : ''}${t.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[t.level]?.color||'#9aa5b4'};border:1px solid #252c33;">Уровень ${t.level}</span></div><p style="font-size:12px;color:#9aa5b4;margin:0 0 6px;">${t.strength||t.description}</p><div class="flex items-center gap-3" style="margin-top:4px;">${getPricingBadge(t.pricing)} ${getStarRating(t.rating)}</div><div style="font-size:11px;color:#00e5a0;margin-top:4px;">Совпало признаков: ${t.matchScore}</div><div class="navigator-result-actions">${practice ? `<button type="button" class="practice-card-action" style="margin-top:0" onclick="openPracticeDrawer('${practice.id}')" data-umami-event="llm-navigator-tool-practice" data-umami-event-tool="${practice.id}">${isModelEntry(t) ? 'Проверить модель' : 'Освоить'} · ${practice.duration} мин</button>` : ''}<a href="${t.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;">Открыть инструмент →</a></div></div>`;
+      return `<div class="navigator-result-card"><div class="flex items-center justify-between mb-2"><span style="font-size:14px;font-weight:600;color:#e8edf2;">${index < 2 ? `${index + 1}. ` : ''}${t.name}</span><span style="font-size:10px;padding:2px 8px;border-radius:4px;background:#161a1d;color:${LEVEL_COLORS[t.level]?.color||'#9aa5b4'};border:1px solid #252c33;">Уровень ${t.level}</span></div><p style="font-size:12px;color:#9aa5b4;margin:0 0 6px;">${t.strength||t.description}</p><div class="navigator-result-actions"><a href="${t.url}" target="_blank" style="font-size:11px;color:#00c8d7;text-decoration:none;">Открыть сайт разработчика →</a></div></div>`;
     }).join('')}
     ${navigatorScenario && navigatorRecommendationTools.length >= 2 ? `<div class="productive-entry">
       <div class="productive-entry-copy">
         <div class="productive-entry-label">Не выбирать вслепую</div>
-        <div class="productive-entry-title">Сравнить ${navigatorRecommendationTools[0].name} и ${navigatorRecommendationTools[1].name} на одной реальной задаче</div>
+        <div class="productive-entry-title">Сравнить два кандидата на одной рабочей задаче</div>
         <div class="productive-entry-meta">На выходе: ${navigatorScenario.artifact} · ${navigatorScenario.duration} мин</div>
       </div>
       <button type="button" class="productive-entry-button" onclick="openNavigatorPractice()" data-umami-event="llm-navigator-practice-preview">Начать сравнение в EkenLab</button>
