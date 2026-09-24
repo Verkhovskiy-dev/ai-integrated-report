@@ -20,6 +20,7 @@
     "test:dashboard-routes": "vitest run client/src/data/ekenScenarioRoutes.test.ts && node scripts/dashboard-routes/route-system.test.mjs",
     "test:weekly-insights": "node automation/weekly-insights/contract.test.mjs",
     "test:news-shares": "node scripts/generate-news-share-pages.test.mjs",
+    "test:place-shares": "node scripts/generate-place-share-pages.test.mjs",
     "generate:place-shares": "node scripts/generate-place-share-pages.mjs",
     "format": "prettier --write ."
   },
