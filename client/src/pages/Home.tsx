@@ -25,7 +25,7 @@ import LatestNews from "@/components/LatestNews";
 import MetricsBar from "@/components/MetricsBar";
 import TrendCharts from "@/components/TrendCharts";
 import HeatmapSection from "@/components/HeatmapSection";
-import DecisionChallenges from "@/components/DecisionChallenges";
+import StrategicInsights from "@/components/StrategicInsights";
 import StructuralShifts from "@/components/StructuralShifts";
 import WeakSignalsRadar from "@/components/WeakSignalsRadar";
 import CrossLevelConnections from "@/components/CrossLevelConnections";
@@ -123,7 +123,7 @@ export default function Home() {
 
         {/* Strategic Insights — with program links + executive role advice */}
         <ShareableBlock id="insights" title={locale === "en" ? "Strategic insights" : "Стратегические инсайты"}>
-          <section id="insights" className="scroll-mt-28 py-6 sm:scroll-mt-32 sm:py-10"><DecisionChallenges /></section>
+          <section id="insights" className="scroll-mt-28 py-6 sm:scroll-mt-32 sm:py-10"><StrategicInsights /></section>
         </ShareableBlock>
 
         {/* SKOLKOVO programs teaser - insight-linked, full catalog at /programs */}
