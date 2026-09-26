@@ -19,6 +19,8 @@ import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
 import { ExecutiveEventCardLocalized } from "@/components/ExecutiveEventCard";
 import { ShareButton } from "@/components/ShareableBlock";
 import { buildShareId } from "@/lib/share";
+import NewsReactions from "@/components/NewsReactions";
+import { buildNewsIdentity } from "@shared/newsIdentity";
 
 /* ── Severity-based color scheme ── */
 function getSeverityColor(level: number): string {
@@ -92,7 +94,7 @@ export default function LatestNews() {
   const { getEventExplanation } = useExecutiveData();
   const isEn = locale === "en";
   const [expanded, setExpanded] = useState(false);
-  const [expandedCard, setExpandedCard] = useState<number | null>(null);
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
 
   const LEVEL_NAMES: Record<number, string> = isEn
     ? { 9: "Capital", 8: "Institutions", 7: "Knowledge", 6: "Technology", 5: "Value Chain", 4: "Hardware", 3: "Professions", 2: "Geography", 1: "Resources" }
@@ -131,8 +133,8 @@ export default function LatestNews() {
 
   if (!isLive || remainingItems.length === 0) return null;
 
-  const toggleCard = (idx: number) => {
-    setExpandedCard(expandedCard === idx ? null : idx);
+  const toggleCard = (newsId: string) => {
+    setExpandedCard(expandedCard === newsId ? null : newsId);
   };
 
   return (
@@ -183,7 +185,8 @@ export default function LatestNews() {
         {/* News cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
           {visibleItems.map((item, idx) => {
-            const isCardExpanded = expandedCard === idx;
+            const identity = buildNewsIdentity(item);
+            const isCardExpanded = expandedCard === identity.newsId;
             const hasDetails = item.description && item.description !== item.title;
             const hasSources = item.sources.length > 0;
             const explanation = isExecutive ? getEventExplanation(item.title) : undefined;
@@ -194,7 +197,7 @@ export default function LatestNews() {
 
             return (
               <div
-                key={idx}
+                key={`${identity.newsId}:${identity.contentVersion}`}
                 id={itemId}
                 className={`group relative bg-card/50 backdrop-blur-sm border rounded-lg overflow-hidden transition-all duration-200 ${
                   isCardExpanded
@@ -214,7 +217,7 @@ export default function LatestNews() {
 
                 {/* Card header — clickable */}
                 <button
-                  onClick={() => isExpandable && toggleCard(idx)}
+                  onClick={() => isExpandable && toggleCard(identity.newsId)}
                   className={`w-full text-left p-3 pl-4 pr-12 ${isExpandable ? "cursor-pointer" : "cursor-default"}`}
                   aria-expanded={isExpandable ? isCardExpanded : undefined}
                 >
@@ -305,6 +308,12 @@ export default function LatestNews() {
                     </a>
                   </div>
                 )}
+                <NewsReactions
+                  title={item.title}
+                  description={item.description}
+                  sources={item.sources}
+                  isEn={isEn}
+                />
               </div>
             );
           })}

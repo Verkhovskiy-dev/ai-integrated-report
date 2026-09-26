@@ -25,6 +25,8 @@ import { ExecutiveEventCardLocalized } from "@/components/ExecutiveEventCard";
 import { ShareButton } from "@/components/ShareableBlock";
 import { buildShareId } from "@/lib/share";
 import EkenRouteAction from "@/components/EkenRouteAction";
+import NewsReactions from "@/components/NewsReactions";
+import { buildNewsIdentity } from "@shared/newsIdentity";
 
 // ─── Helpers ────────────────────────────────────────────────────
 const LEVEL_NAMES_RU: Record<number, string> = {
@@ -178,7 +180,7 @@ export default function HeroSummary() {
   const { isExecutive } = useViewMode();
   const { getEventExplanation } = useExecutiveData();
   const isEn = locale === "en";
-  const [expandedHeroEvent, setExpandedHeroEvent] = useState<number | null>(null);
+  const [expandedHeroEvent, setExpandedHeroEvent] = useState<string | null>(null);
 
   const LEVEL_NAMES = isEn ? LEVEL_NAMES_EN : LEVEL_NAMES_RU;
   const lvPrefix = isEn ? "Lv." : "Ур.";
@@ -186,7 +188,7 @@ export default function HeroSummary() {
   // ── Top 3 events ──
   const topEvents = useMemo(() => {
     if (!latestReport?.srt_levels) return [];
-    const items: { title: string; level: number; levelName: string; type: string; description: string }[] = [];
+    const items: { title: string; level: number; levelName: string; type: string; description: string; sources: string[] }[] = [];
     for (const srtLevel of latestReport.srt_levels) {
       if (selectedLevels.length > 0 && !selectedLevels.includes(srtLevel.level)) continue;
       for (const event of srtLevel.events) {
@@ -200,6 +202,7 @@ export default function HeroSummary() {
           level: srtLevel.level,
           levelName: LEVEL_NAMES[srtLevel.level] || `${lvPrefix}${srtLevel.level}`,
           type: guessType(event.title + " " + event.description),
+          sources: event.sources || [],
         });
       }
     }
@@ -366,7 +369,8 @@ export default function HeroSummary() {
                 </div>
               )}
               {topEvents.slice(0, 3).map((item, idx) => {
-                const isItemExpanded = expandedHeroEvent === idx;
+                const identity = buildNewsIdentity(item);
+                const isItemExpanded = expandedHeroEvent === identity.newsId;
                 const explanation = isExecutive ? getEventExplanation(item.title) : undefined;
                 const hasDetails = item.description && item.description !== item.title;
                 const isExpandable = hasDetails || !!explanation;
@@ -374,7 +378,7 @@ export default function HeroSummary() {
 
                 return (
                   <div
-                    key={idx}
+                    key={`${identity.newsId}:${identity.contentVersion}`}
                     id={itemId}
                     className={`relative bg-background/40 border rounded-lg overflow-hidden transition-all duration-200 ${
                       isItemExpanded
@@ -385,7 +389,7 @@ export default function HeroSummary() {
                     <ShareButton id={itemId} title={item.title} text={item.description} compact className="absolute right-2 top-2" />
                     {/* Clickable header */}
                     <button
-                      onClick={() => isExpandable && setExpandedHeroEvent(isItemExpanded ? null : idx)}
+                      onClick={() => isExpandable && setExpandedHeroEvent(isItemExpanded ? null : identity.newsId)}
                       className={`w-full text-left flex items-start gap-3 p-2.5 pr-12 group ${isExpandable ? "cursor-pointer" : "cursor-default"}`}
                       aria-expanded={isExpandable ? isItemExpanded : undefined}
                     >
@@ -452,6 +456,12 @@ export default function HeroSummary() {
                         </a>
                       </div>
                     )}
+                    <NewsReactions
+                      title={item.title}
+                      description={item.description}
+                      sources={item.sources}
+                      isEn={isEn}
+                    />
                   </div>
                 );
               })}

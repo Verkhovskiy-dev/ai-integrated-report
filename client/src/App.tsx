@@ -16,6 +16,7 @@ import Home from "./pages/Home";
 import Education from "./pages/Education";
 import Programs from "./pages/Programs";
 import Positions from "./pages/Positions";
+import EditorReactions from "./pages/EditorReactions";
 
 function Router() {
   const [location] = useLocation();
@@ -41,6 +42,8 @@ function Router() {
       <Route path={"/programs/"} component={Programs} />
       <Route path={"/positions"} component={Positions} />
       <Route path={"/positions/"} component={Positions} />
+      <Route path={"/editor/reactions"} component={EditorReactions} />
+      <Route path={"/editor/reactions/"} component={EditorReactions} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

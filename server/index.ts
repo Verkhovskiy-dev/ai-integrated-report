@@ -3,13 +3,25 @@ import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
 import { readFile } from "fs/promises";
+import { createReactionRouter } from "./reactions/api";
+import { reactionConfig } from "./reactions/config";
+import { ReactionStore } from "./reactions/store";
+import { createNewsRegistry } from "./reactions/registry";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function startServer() {
+  const reaction = reactionConfig();
+  if (reaction.namespace === "production" && !reaction.adminToken) {
+    throw new Error("REACTIONS_ADMIN_TOKEN is required in production namespace");
+  }
   const app = express();
   const server = createServer(app);
+  const reactionStore = new ReactionStore(reaction.dbPath, reaction.namespace);
+  reactionStore.health();
+  reactionStore.upsertRegistry([...createNewsRegistry().values()]);
+  reactionStore.purgeBefore(new Date(Date.now() - reaction.retentionDays * 86_400_000).toISOString());
 
   // Serve static files from dist/public in production
   const staticPath =
@@ -37,6 +49,11 @@ async function startServer() {
   const escapeHtml = (value: string) => value.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]!);
 
   app.set("trust proxy", true);
+  app.use("/api/reactions", express.json({ limit: "16kb" }), createReactionRouter({
+    store: reactionStore,
+    allowedOrigins: reaction.allowedOrigins,
+    adminToken: reaction.adminToken,
+  }));
   app.use(express.static(staticPath, { index: false }));
 
   // Handle client-side routing - serve index.html for all routes
@@ -63,11 +80,16 @@ async function startServer() {
     res.type("html").send(html);
   });
 
-  const port = process.env.PORT || 3000;
-
-  server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}/`);
+  server.listen(reaction.port, reaction.host, () => {
+    console.log(`Server running on http://${reaction.host}:${reaction.port}/ (${reaction.namespace} reactions)`);
   });
+
+  const shutdown = () => server.close(() => { reactionStore.close(); process.exit(0); });
+  process.once("SIGINT", shutdown);
+  process.once("SIGTERM", shutdown);
 }
 
-startServer().catch(console.error);
+startServer().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

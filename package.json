@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "reactions:registry": "node --import tsx scripts/generate-reaction-registry.ts",
+    "prebuild": "npm run reactions:registry",
+    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist && esbuild server/reactions-service.ts --platform=node --bundle --format=cjs --outfile=dist/reactions-service.cjs && esbuild server/reactions/cli.ts --platform=node --bundle --format=cjs --outfile=dist/reactions-cli.cjs",
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
@@ -22,7 +24,10 @@
     "test:news-shares": "node scripts/generate-news-share-pages.test.mjs",
     "test:place-shares": "node scripts/generate-place-share-pages.test.mjs",
     "generate:place-shares": "node scripts/generate-place-share-pages.mjs",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "reactions:cli": "node --import tsx server/reactions/cli.ts",
+    "reactions:cli:built": "node dist/reactions-cli.cjs",
+    "test:reactions": "node --import tsx --test shared/newsIdentity.test.ts client/src/lib/newsReactions.test.ts server/reactions/store.test.ts server/reactions/api.e2e.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
