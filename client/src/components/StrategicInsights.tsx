@@ -26,6 +26,7 @@ import { useExecutiveData } from "@/contexts/ExecutiveDataContext";
 import EkenRouteAction from "@/components/EkenRouteAction";
 import { ShareButton } from "@/components/ShareableBlock";
 import { buildShareId } from "@/lib/share";
+import { getArchivedInsightEditorialCopy } from "@/data/insightEditorialCopy";
 
 /* ------------------------------------------------------------------ */
 /*  Role definitions & relevance mapping                               */
@@ -96,7 +97,7 @@ const ROLES: Record<RoleKey, RoleMeta> = {
 const ROLE_KEYS: RoleKey[] = ["all", "entrepreneur", "ceo", "manager", "cto", "product", "hr"];
 const INSIGHTS_FRESHNESS_DAYS = 14;
 
-function insightFreshness(generatedAt: string, period: string): "fresh" | "archived" | "unknown" {
+export function insightFreshness(generatedAt: string, period: string): "fresh" | "archived" | "unknown" {
   // Weekly payloads normally include generatedAt. Older valid packages only have
   // an interval, so use its end date rather than silently treating them as live.
   const periodEnd = period.split("—").at(-1)?.trim() ?? "";
@@ -116,7 +117,16 @@ const INSIGHT_DECISIONS: Record<string, InsightDecision> = {
 
 const FALLBACK_DECISION: InsightDecision = { roles: [], applicability: { ru: "Применимость требует сверки с текущим контекстом решения; в данных нет явной ролевой привязки.", en: "Applicability needs to be checked against the current decision context; the data has no explicit role assignment." }, nextStep: { ru: "Сверить вывод с владельцем решения и доступными основаниями.", en: "Review the conclusion with the decision owner and available evidence." }, returnCondition: { ru: "Вернуться, когда появится конкретное решение, к которому относится этот вывод.", en: "Return when a concrete decision related to this conclusion appears." } };
 
-function decisionFor(insight: StrategicInsight): InsightDecision {
+function decisionFor(insight: StrategicInsight, isEn: boolean, generatedAt: string): InsightDecision {
+  const editorial = getArchivedInsightEditorialCopy(insight.insightKey, isEn ? "en" : "ru", generatedAt);
+  if (editorial) {
+    return {
+      roles: [],
+      applicability: { ru: editorial.applicability, en: editorial.applicability },
+      nextStep: { ru: editorial.nextStep, en: editorial.nextStep },
+      returnCondition: { ru: editorial.returnCondition, en: editorial.returnCondition },
+    };
+  }
   return INSIGHT_DECISIONS[insight.insightKey ?? ""] ?? FALLBACK_DECISION;
 }
 
@@ -156,7 +166,7 @@ function getRoleTakeaway(role: RoleKey, insight: StrategicInsight, isEn: boolean
 export function matchesRole(insight: StrategicInsight, role: RoleKey): boolean {
   if (role === "all") return true;
   const relevance = insight.roleRecommendations?.[role]?.relevance;
-  return typeof relevance === "number" ? relevance > 0 : decisionFor(insight).roles.includes(role);
+  return typeof relevance === "number" ? relevance > 0 : INSIGHT_DECISIONS[insight.insightKey ?? ""]?.roles.includes(role) ?? false;
 }
 
 /* ------------------------------------------------------------------ */
@@ -181,7 +191,7 @@ const ICON_MAP: Record<string, typeof Building> = {
 /*  InsightCard — Progressive Disclosure                               */
 /* ------------------------------------------------------------------ */
 
-function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, executiveAdvice, reportDate }: {
+function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, executiveAdvice, reportDate, insightsGeneratedAt }: {
   insight: StrategicInsight;
   isExpanded: boolean;
   onToggle: () => void;
@@ -190,14 +200,19 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
   isExecutive: boolean;
   executiveAdvice?: { ceo: string; cto: string; cdo: string } | null;
   reportDate: string;
+  insightsGeneratedAt: string;
 }) {
   const Icon = ICON_MAP[insight.icon] || Lightbulb;
   const generatedRoleAction = role === "all" ? null : insight.roleRecommendations?.[role]?.action;
   const roleTakeaway = generatedRoleAction ? `${isEn ? "Recommended action" : "Рекомендуемое действие"}: ${generatedRoleAction}` : null;
   const [selectedAction, setSelectedAction] = useState<"check" | "clarify" | "later" | null>(null);
-  const decision = decisionFor(insight);
+  const editorial = getArchivedInsightEditorialCopy(insight.insightKey, isEn ? "en" : "ru", insightsGeneratedAt);
+  const displayTitle = editorial?.title ?? insight.title;
+  const displaySummary = editorial?.summary ?? insight.summary;
+  const displayConclusion = editorial?.workingConclusion ?? insight.nonObviousConclusion;
+  const decision = decisionFor(insight, isEn, insightsGeneratedAt);
   const decisionText = isEn ? { applicability: decision.applicability.en, nextStep: decision.nextStep.en, returnCondition: decision.returnCondition.en } : { applicability: decision.applicability.ru, nextStep: decision.nextStep.ru, returnCondition: decision.returnCondition.ru };
-  const summaryPreview = firstSentence(insight.summary);
+  const summaryPreview = firstSentence(displaySummary);
   const itemId = buildShareId("insight", insight.id);
   const detailsId = `${itemId}-details`;
   const sourceCount = insight.sourceEvents?.length ?? 0;
@@ -215,7 +230,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
         ${isExpanded ? "border-primary/40 glow-cyan" : "border-border/50 hover:border-border"}
       `}
     >
-      <ShareButton id={itemId} title={insight.title} compact className="absolute right-11 top-3 sm:right-14 sm:top-4" />
+      <ShareButton id={itemId} title={displayTitle} compact className="absolute right-11 top-3 sm:right-14 sm:top-4" />
       {/* Header — always visible, clickable */}
       <button
         onClick={onToggle}
@@ -261,7 +276,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
 
           {/* Title */}
           <h4 className="text-sm sm:text-base font-heading font-bold text-foreground leading-snug mb-1">
-            {insight.title}
+            {displayTitle}
           </h4>
           <p className="text-xs sm:text-sm text-muted-foreground leading-snug">
             {insight.subtitle}
@@ -280,10 +295,15 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
 
       {/* Summary preview — always visible (first sentence only when collapsed) */}
       <div className="px-4 sm:px-5 pb-3 sm:pb-4">
+        {editorial && (
+          <p className="mb-1.5 text-[10px] font-mono text-amber-300/90">
+            {isEn ? "Working interpretation from an archived collection; external sources have not been independently verified." : "Рабочая интерпретация по архивированной подборке; внешние источники не проверены независимо."}
+          </p>
+        )}
         <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed">
-          {isExpanded ? insight.summary : summaryPreview}
+          {isExpanded ? displaySummary : summaryPreview}
         </p>
-        {!isExpanded && insight.summary.length > summaryPreview.length && (
+        {!isExpanded && displaySummary.length > summaryPreview.length && (
           <button
             onClick={onToggle}
             className="inline-flex items-center gap-1 mt-1.5 text-[10px] sm:text-xs font-mono text-primary/70 hover:text-primary transition-colors"
@@ -350,8 +370,13 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
                 {isEn ? "Non-Obvious Conclusion" : "Неочевидный вывод"}
               </span>
             </div>
+            {editorial && (
+              <p className="mb-2 text-[10px] font-mono text-amber-300/90">
+                {isEn ? "Working interpretation from an archived collection; external sources have not been independently verified." : "Рабочая интерпретация по архивированной подборке; внешние источники не проверены независимо."}
+              </p>
+            )}
             <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed">
-              {insight.nonObviousConclusion}
+              {displayConclusion}
             </p>
           </div>
 
@@ -389,8 +414,8 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
                       trackRecommendation={item.advice}
                       surface="dashboard-insight"
                       sourceId={`insight-role:${insight.id}:${item.key}`}
-                      sourceName={insight.title}
-                      sourceText={`${insight.summary}\n\nРекомендация ${item.role}: ${item.advice}`}
+                      sourceName={displayTitle}
+                      sourceText={`${displaySummary}\n\nРекомендация ${item.role}: ${item.advice}`}
                       reportDate={reportDate}
                       viewMode="executive"
                       audienceRole={item.role}
@@ -536,6 +561,12 @@ export default function StrategicInsights() {
                   : (isEn ? "date unknown; sources not independently verified" : "дата неизвестна; источники не проверены")}
             </span>
           )}
+          {isEn && !insightsLive && (
+            <span className="inline-flex items-center gap-1 text-[10px] font-mono text-amber-300/90 bg-amber-400/10 px-2 py-0.5 rounded-full border border-amber-400/30">
+              <RefreshCw className="w-2.5 h-2.5" />
+              synchronized English insight package unavailable
+            </span>
+          )}
         </div>
         <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-2">
           {isEn
@@ -596,6 +627,7 @@ export default function StrategicInsights() {
               isExecutive={isExecutive}
               executiveAdvice={isExecutive ? executiveAdvice : null}
               reportDate={reportDate}
+              insightsGeneratedAt={insightsGeneratedAt}
             />
           );
         })}

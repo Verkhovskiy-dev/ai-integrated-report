@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { matchesRole } from "./StrategicInsights";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { insightFreshness, matchesRole } from "./StrategicInsights";
 import type { StrategicInsight } from "@/data/insightsData";
 
 function insight(overrides: Partial<StrategicInsight>): StrategicInsight {
@@ -34,5 +34,19 @@ describe("insight role filtering", () => {
 
     expect(matchesRole(unmappedCard, "hr")).toBe(false);
     expect(matchesRole(unmappedCard, "cto")).toBe(false);
+  });
+});
+
+describe("insight freshness fixtures", () => {
+  afterEach(() => vi.useRealTimers());
+
+  it("distinguishes fresh, archived, period-only, and invalid packages", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-09-26T00:00:00.000Z"));
+
+    expect(insightFreshness("2026-09-25T00:00:00.000Z", "")).toBe("fresh");
+    expect(insightFreshness("2026-09-01T19:38:59.260Z", "")).toBe("archived");
+    expect(insightFreshness("", "2026-09-10 — 2026-09-25")).toBe("fresh");
+    expect(insightFreshness("not-a-date", "not-a-period")).toBe("unknown");
   });
 });

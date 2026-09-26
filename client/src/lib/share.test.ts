@@ -10,6 +10,11 @@ describe("dashboard sharing", () => {
     expect(result.hash).toBe("#insights");
   });
 
+  it("uses the canonical public origin when a local preview shares a section", () => {
+    expect(buildShareUrl("insight-1", "ru", "http://127.0.0.1:4179/?view=executive#insights"))
+      .toBe("https://verkhovskiy.ai/?view=executive&share=insight-1&lang=ru#insight-1");
+  });
+
   it("encodes Telegram copy without double encoding", () => {
     const result = new URL(buildTelegramShareUrl("https://example.com/?share=news#news", "Новости AI & тренды"));
     expect(result.searchParams.get("url")).toBe("https://example.com/?share=news#news");

@@ -1,5 +1,18 @@
 export type ShareLocale = "ru" | "en";
 
+// A local preview must never report that a loopback URL is usable outside the
+// developer's machine. The deployed site and its existing canonical tags use
+// this public origin.
+const CANONICAL_PUBLIC_ORIGIN = "https://verkhovskiy.ai";
+
+function publicShareBase(currentHref: string) {
+  const current = new URL(currentHref);
+  const isLoopback = current.hostname === "localhost" || current.hostname === "127.0.0.1" || current.hostname === "::1";
+  return isLoopback
+    ? new URL(`${current.pathname}${current.search}${current.hash}`, CANONICAL_PUBLIC_ORIGIN)
+    : current;
+}
+
 export function buildShareId(prefix: string, key: string | number) {
   const normalized = String(key).toLowerCase().normalize("NFKD").replace(/[^a-z0-9а-яё]+/gi, "-").replace(/^-|-$/g, "").slice(0, 42);
   let hash = 2166136261;
@@ -14,7 +27,7 @@ export function getNewsShareToken(id: string) {
 }
 
 export function buildShareUrl(id: string, locale: ShareLocale, currentHref: string) {
-  const url = new URL(currentHref);
+  const url = publicShareBase(currentHref);
   if (id.startsWith("news-")) return `${url.origin}/share/v3/news/${getNewsShareToken(id)}/`;
   url.searchParams.set("share", id);
   url.searchParams.set("lang", locale);
