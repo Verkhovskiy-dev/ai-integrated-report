@@ -25,7 +25,6 @@ import {
   getThemeFrequency as getLocalizedThemes,
 } from "@/data/reportDataLocalized";
 import { getStrategicInsights as getLocalizedInsights } from "@/data/insightsDataLocalized";
-import { ARCHIVED_INSIGHT_COPY_GENERATED_AT } from "@/data/insightEditorialCopy";
 import type { Locale } from "./I18nContext";
 
 // === Types matching the JSON from n8n ===
@@ -551,11 +550,10 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
                   ruData = enData;
                 }
               }
-              // The approved EN overlay is tied to one archived RU package. For
-              // every other stale/missing EN payload, retain the localized static
-              // fallback instead of mixing an English shell with Russian cards.
-              if (ruData?.generated_at !== ARCHIVED_INSIGHT_COPY_GENERATED_AT
-                && (!insightsResponse.ok || insightsResponse === ruResponse)) {
+              // Never render a Russian dynamic package inside the English UI.
+              // A stale/missing EN package uses the explicitly labelled localized
+              // fallback until a synchronous English package is published.
+              if (!insightsResponse.ok || insightsResponse === ruResponse) {
                 insightsResponse = new Response(null, { status: 204 });
                 ruData = null;
               }

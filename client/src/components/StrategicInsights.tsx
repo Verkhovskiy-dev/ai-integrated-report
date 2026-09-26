@@ -295,9 +295,11 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
 
       {/* Summary preview — always visible (first sentence only when collapsed) */}
       <div className="px-4 sm:px-5 pb-3 sm:pb-4">
-        {editorial && (
+        {insight.confidence === "low" && (
           <p className="mb-1.5 text-[10px] font-mono text-amber-300/90">
-            {isEn ? "Working interpretation from an archived collection; external sources have not been independently verified." : "Рабочая интерпретация по архивированной подборке; внешние источники не проверены независимо."}
+            {editorial
+              ? (isEn ? "Working interpretation from an archived collection; external sources have not been independently verified." : "Рабочая интерпретация по архивированной подборке; внешние источники не проверены независимо.")
+              : (isEn ? "Low-confidence working interpretation; external sources have not been independently verified." : "Рабочая интерпретация с низкой уверенностью; внешние источники не проверены независимо.")}
           </p>
         )}
         <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed">
@@ -370,9 +372,11 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
                 {isEn ? "Non-Obvious Conclusion" : "Неочевидный вывод"}
               </span>
             </div>
-            {editorial && (
+            {insight.confidence === "low" && (
               <p className="mb-2 text-[10px] font-mono text-amber-300/90">
-                {isEn ? "Working interpretation from an archived collection; external sources have not been independently verified." : "Рабочая интерпретация по архивированной подборке; внешние источники не проверены независимо."}
+                {editorial
+                  ? (isEn ? "Working interpretation from an archived collection; external sources have not been independently verified." : "Рабочая интерпретация по архивированной подборке; внешние источники не проверены независимо.")
+                  : (isEn ? "Low-confidence working interpretation; external sources have not been independently verified." : "Рабочая интерпретация с низкой уверенностью; внешние источники не проверены независимо.")}
               </p>
             )}
             <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed">
@@ -564,7 +568,7 @@ export default function StrategicInsights() {
           {isEn && !insightsLive && (
             <span className="inline-flex items-center gap-1 text-[10px] font-mono text-amber-300/90 bg-amber-400/10 px-2 py-0.5 rounded-full border border-amber-400/30">
               <RefreshCw className="w-2.5 h-2.5" />
-              synchronized English insight package unavailable
+              Synchronized English insight package unavailable; showing a localized fallback, not the current archived package.
             </span>
           )}
         </div>
