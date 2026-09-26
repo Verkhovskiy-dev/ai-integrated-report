@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, rmSync } from "node:fs";
+import { mkdtempSync, rmSync, readFileSync } from "node:fs";
+import { DatabaseSync } from "node:sqlite";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -17,6 +18,40 @@ const base: ReactionWrite = {
   url: "https://verkhovskiy.ai/",
   sourceUrl: "https://example.com/news",
 };
+
+test("legacy migration preserves records, supports important, retry, restart and removal", () => {
+  const directory = mkdtempSync(path.join(os.tmpdir(), "reactions-migrate-"));
+  const dbPath = path.join(directory, "test.sqlite");
+  let store: ReactionStore | undefined;
+  try {
+    const legacy = new DatabaseSync(dbPath);
+    legacy.exec(readFileSync(new URL("./fixtures/legacy-schema.sql", import.meta.url), "utf8"));
+    legacy.prepare("INSERT INTO reaction_events VALUES (1, ?, 'synthetic', ?, ?, ?, 'useful', 'set', 0, 1, ?, ?, ?, ?)").run(base.eventId, base.browserId, base.newsId, base.contentVersion, base.title, base.url, base.sourceUrl!, "2026-09-26T00:00:00Z");
+    legacy.prepare("INSERT INTO reaction_state VALUES ('synthetic', ?, ?, ?, 'useful', 1, ?, ?, ?, ?, ?)").run(base.browserId, base.newsId, base.contentVersion, base.title, base.url, base.sourceUrl!, "2026-09-26T00:00:00Z", base.eventId);
+    const oldEvents = legacy.prepare("SELECT * FROM reaction_events").all();
+    const oldState = legacy.prepare("SELECT * FROM reaction_state").all();
+    legacy.close();
+    store = new ReactionStore(dbPath, "synthetic");
+    assert.deepEqual(store.db.prepare("SELECT * FROM reaction_events").all(), oldEvents);
+    assert.deepEqual(store.db.prepare("SELECT * FROM reaction_state").all(), oldState);
+    const important: ReactionWrite = { ...base, eventId: "00000000-0000-4000-8000-000000000021", reaction: "important", expectedRevision: 1 };
+    assert.equal(store.apply(important).state.reaction, "important");
+    assert.equal(store.apply(important).duplicate, true);
+    const summary = store.summary("2000-01-01T00:00:00Z", "2100-01-01T00:00:00Z");
+    assert.equal((summary.newsVersions[0] as { important: number }).important, 1);
+    assert.equal(summary.operationCount, 2);
+    store.close(); store = undefined;
+    store = new ReactionStore(dbPath, "synthetic");
+    assert.equal(store.getCurrent(base).reaction, "important");
+    assert.equal(store.apply({ ...important, eventId: "00000000-0000-4000-8000-000000000022", reaction: null, operation: "remove", expectedRevision: 2 }).state.reaction, null);
+    assert.equal(store.summary("2000-01-01T00:00:00Z", "2100-01-01T00:00:00Z").activeReactionCountAtEnd, 0);
+    assert.equal((store.db.prepare("PRAGMA integrity_check").get() as Record<string, string>).integrity_check, "ok");
+    assert.equal(store.db.prepare("SELECT name FROM sqlite_master WHERE type='index' AND name LIKE 'reaction_events_%'").all().length, 2);
+  } finally {
+    store?.close();
+    rmSync(directory, { recursive: true, force: true });
+  }
+});
 
 test("durable log, idempotency, revision conflict and restart", () => {
   const directory = mkdtempSync(path.join(os.tmpdir(), "reactions-store-"));

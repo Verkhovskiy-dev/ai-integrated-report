@@ -7,6 +7,7 @@ import {
 
 const OPTIONS: Array<{ value: NewsReaction; ru: string; en: string }> = [
   { value: "useful", ru: "Полезно", en: "Useful" },
+  { value: "important", ru: "Важно", en: "Important" },
   { value: "more", ru: "Хочу подробнее", en: "Tell me more" },
   { value: "unclear", ru: "Неясно", en: "Unclear" },
 ];

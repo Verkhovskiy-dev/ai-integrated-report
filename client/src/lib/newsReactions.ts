@@ -1,4 +1,4 @@
-export type NewsReaction = "useful" | "more" | "unclear";
+export type NewsReaction = "useful" | "important" | "more" | "unclear";
 
 export interface BrowserIdentity {
   browserId: string;
@@ -114,6 +114,7 @@ export interface EditorSummary {
     url: string;
     sourceUrl?: string;
     useful: number;
+    important: number;
     more: number;
     unclear: number;
     activeReactions: number;

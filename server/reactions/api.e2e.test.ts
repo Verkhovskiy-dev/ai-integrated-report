@@ -41,7 +41,7 @@ test("HTTP E2E: auth, registered news, duplicate, two-tab conflict, remove, summ
     browserId,
     newsId: registered.newsId,
     contentVersion: registered.contentVersion,
-    reaction: "useful",
+    reaction: "important",
     operation: "set",
     expectedRevision: 0,
   };
@@ -55,7 +55,7 @@ test("HTTP E2E: auth, registered news, duplicate, two-tab conflict, remove, summ
     assert.equal((await post({ ...payload, newsId: "news_unknown1" })).status, 400);
     const created = await post(payload);
     assert.equal(created.status, 201);
-    assert.equal((await created.json()).state.reaction, "useful");
+    assert.equal((await created.json()).state.reaction, "important");
     assert.equal((await post(payload)).status, 200);
 
     const tabTwoConflict = await post({ ...payload, eventId: "00000000-0000-4000-8000-000000000012", reaction: "more" });

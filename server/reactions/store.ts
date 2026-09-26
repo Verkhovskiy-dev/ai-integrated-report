@@ -4,7 +4,7 @@ import crypto from "node:crypto";
 import { DatabaseSync } from "node:sqlite";
 import type { RegisteredNews } from "./registry";
 
-export const REACTIONS = ["useful", "more", "unclear"] as const;
+export const REACTIONS = ["useful", "important", "more", "unclear"] as const;
 export type Reaction = (typeof REACTIONS)[number];
 export type ReactionOperation = "set" | "remove";
 
@@ -69,7 +69,7 @@ export class ReactionStore {
         browser_id TEXT NOT NULL,
         news_id TEXT NOT NULL,
         content_version TEXT NOT NULL,
-        reaction TEXT CHECK(reaction IN ('useful','more','unclear') OR reaction IS NULL),
+        reaction TEXT CHECK(reaction IN ('useful','important','more','unclear') OR reaction IS NULL),
         operation TEXT NOT NULL CHECK(operation IN ('set','remove')),
         expected_revision INTEGER NOT NULL,
         resulting_revision INTEGER NOT NULL,
@@ -87,7 +87,7 @@ export class ReactionStore {
         browser_id TEXT NOT NULL,
         news_id TEXT NOT NULL,
         content_version TEXT NOT NULL,
-        reaction TEXT CHECK(reaction IN ('useful','more','unclear') OR reaction IS NULL),
+        reaction TEXT CHECK(reaction IN ('useful','important','more','unclear') OR reaction IS NULL),
         revision INTEGER NOT NULL,
         title TEXT NOT NULL,
         url TEXT NOT NULL,
@@ -124,6 +124,33 @@ export class ReactionStore {
     );
     if (!registryColumns.has("active_until")) this.db.exec("ALTER TABLE news_registry ADD COLUMN active_until TEXT");
     if (!registryColumns.has("last_snapshot_id")) this.db.exec("ALTER TABLE news_registry ADD COLUMN last_snapshot_id TEXT");
+    this.migrateImportantReaction();
+  }
+
+  private migrateImportantReaction() {
+    // SQLite CHECK constraints require rebuilding the tables. Keep both changes
+    // atomic, including event IDs, revisions, explicit indexes and sequence.
+    this.db.exec("BEGIN IMMEDIATE");
+    try {
+      for (const table of ["reaction_events", "reaction_state"]) {
+        const { sql } = this.db.prepare("SELECT sql FROM sqlite_master WHERE type = 'table' AND name = ?").get(table) as { sql: string };
+        if (sql.includes("'important'")) continue;
+        const oldCheck = "reaction IN ('useful','more','unclear')";
+        if (!sql.includes(oldCheck)) throw new Error("unsupported_reaction_schema");
+        const indexes = this.db.prepare("SELECT sql FROM sqlite_master WHERE type = 'index' AND tbl_name = ? AND sql IS NOT NULL").all(table) as Array<{ sql: string }>;
+        const sequence = this.db.prepare("SELECT seq FROM sqlite_sequence WHERE name = ?").get(table) as { seq: number } | undefined;
+        const upgraded = sql.replace(/CREATE TABLE\s+["`]?\w+["`]?/i, 'CREATE TABLE ' + table + '_important_v2')
+          .replace(oldCheck, "reaction IN ('useful','important','more','unclear')");
+        this.db.exec(upgraded);
+        this.db.exec('INSERT INTO ' + table + '_important_v2 SELECT * FROM ' + table + '; DROP TABLE ' + table + '; ALTER TABLE ' + table + '_important_v2 RENAME TO ' + table + ';');
+        for (const index of indexes) this.db.exec(index.sql);
+        if (sequence) this.db.prepare("UPDATE sqlite_sequence SET seq = MAX(seq, ?) WHERE name = ?").run(sequence.seq, table);
+      }
+      this.db.exec("COMMIT");
+    } catch (error) {
+      this.db.exec("ROLLBACK");
+      throw error;
+    }
   }
 
   close() {
@@ -330,6 +357,7 @@ export class ReactionStore {
       SELECT news_id AS newsId, content_version AS contentVersion, title, url,
              source_url AS sourceUrl,
              SUM(CASE WHEN reaction = 'useful' THEN 1 ELSE 0 END) AS useful,
+             SUM(CASE WHEN reaction = 'important' THEN 1 ELSE 0 END) AS important,
              SUM(CASE WHEN reaction = 'more' THEN 1 ELSE 0 END) AS more,
              SUM(CASE WHEN reaction = 'unclear' THEN 1 ELSE 0 END) AS unclear,
              SUM(CASE WHEN reaction IS NOT NULL THEN 1 ELSE 0 END) AS activeReactions
