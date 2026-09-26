@@ -94,16 +94,24 @@ const ROLES: Record<RoleKey, RoleMeta> = {
 };
 
 const ROLE_KEYS: RoleKey[] = ["all", "entrepreneur", "ceo", "manager", "cto", "product", "hr"];
+const INSIGHTS_FRESHNESS_DAYS = 14;
 
-type InsightDecision = { roles: RoleKey[]; applicability: string; nextStep: string; returnCondition: string };
+function insightFreshness(generatedAt: string): "fresh" | "archived" | "unknown" {
+  const timestamp = Date.parse(generatedAt);
+  if (!Number.isFinite(timestamp)) return "unknown";
+  return Date.now() - timestamp <= INSIGHTS_FRESHNESS_DAYS * 24 * 60 * 60 * 1000 ? "fresh" : "archived";
+}
+
+type LocalizedText = { ru: string; en: string };
+type InsightDecision = { roles: RoleKey[]; applicability: LocalizedText; nextStep: LocalizedText; returnCondition: LocalizedText };
 
 const INSIGHT_DECISIONS: Record<string, InsightDecision> = {
-  "financialization-of-ai-compute": { roles: ["ceo", "cto"], applicability: "Для CEO, CFO и CTO при решении о собственной AI-инфраструктуре или долгосрочных обязательствах на вычисления.", nextStep: "Собрать лист обязательств, срока и критерия остановки.", returnCondition: "Вернуться при предложении капитальных вложений или долгосрочных обязательств на вычисления." },
-  "agent-systems-shift-to-managed-processes": { roles: ["cto", "manager"], applicability: "Для CTO и владельца процесса, когда агент получает доступ к данным, инструментам или действию.", nextStep: "Описать полномочия одного пилота: владелец, данные, инструменты и ручная проверка.", returnCondition: "Вернуться при намерении дать агенту доступ к данным или самостоятельным действиям." },
-  "ai-content-trust-and-regulation-challenges": { roles: ["product"], applicability: "Для Product и legal публичного продукта, который публикует AI-контент.", nextStep: "Проверить путь: создание → маркировка → жалоба → эскалация → фиксация решения.", returnCondition: "Вернуться при запуске публичного AI-контента либо появлении жалобы на его достоверность." },
+  "financialization-of-ai-compute": { roles: ["ceo", "cto"], applicability: { ru: "Для CEO, CFO и CTO при решении о собственной AI-инфраструктуре или долгосрочных обязательствах на вычисления.", en: "For CEO, CFO, and CTO when deciding on owned AI infrastructure or long-term compute commitments." }, nextStep: { ru: "Собрать лист обязательств, срока и критерия остановки.", en: "Prepare a list of commitments, timing, and a stop criterion." }, returnCondition: { ru: "Вернуться при предложении капитальных вложений или долгосрочных обязательств на вычисления.", en: "Return when capital expenditure or long-term compute commitments are proposed." } },
+  "agent-systems-shift-to-managed-processes": { roles: ["cto", "manager"], applicability: { ru: "Для CTO и владельца процесса, когда агент получает доступ к данным, инструментам или действию.", en: "For a CTO and process owner when an agent receives access to data, tools, or actions." }, nextStep: { ru: "Описать полномочия одного пилота: владелец, данные, инструменты и ручная проверка.", en: "Define one pilot's authority: owner, data, tools, and human review." }, returnCondition: { ru: "Вернуться при намерении дать агенту доступ к данным или самостоятельным действиям.", en: "Return when there is an intent to grant an agent data access or autonomous actions." } },
+  "ai-content-trust-and-regulation-challenges": { roles: ["product"], applicability: { ru: "Для Product и legal публичного продукта, который публикует AI-контент.", en: "For Product and legal teams of a public product that publishes AI content." }, nextStep: { ru: "Проверить путь: создание → маркировка → жалоба → эскалация → фиксация решения.", en: "Test the path: creation → labeling → complaint → escalation → decision record." }, returnCondition: { ru: "Вернуться при запуске публичного AI-контента либо появлении жалобы на его достоверность.", en: "Return when public AI content launches or a complaint about its accuracy appears." } },
 };
 
-const FALLBACK_DECISION: InsightDecision = { roles: [], applicability: "Применимость требует сверки с текущим контекстом решения; в данных нет явного ролевого mapping.", nextStep: "Сверить вывод с владельцем решения и доступными основаниями.", returnCondition: "Вернуться, когда появится конкретное решение, к которому относится этот вывод." };
+const FALLBACK_DECISION: InsightDecision = { roles: [], applicability: { ru: "Применимость требует сверки с текущим контекстом решения; в данных нет явной ролевой привязки.", en: "Applicability needs to be checked against the current decision context; the data has no explicit role assignment." }, nextStep: { ru: "Сверить вывод с владельцем решения и доступными основаниями.", en: "Review the conclusion with the decision owner and available evidence." }, returnCondition: { ru: "Вернуться, когда появится конкретное решение, к которому относится этот вывод.", en: "Return when a concrete decision related to this conclusion appears." } };
 
 function decisionFor(insight: StrategicInsight): InsightDecision {
   return INSIGHT_DECISIONS[insight.insightKey ?? ""] ?? FALLBACK_DECISION;
@@ -143,7 +151,9 @@ function getRoleTakeaway(role: RoleKey, insight: StrategicInsight, isEn: boolean
 }
 
 function matchesRole(insight: StrategicInsight, role: RoleKey): boolean {
-  return role === "all" || decisionFor(insight).roles.includes(role);
+  if (role === "all") return true;
+  const relevance = insight.roleRecommendations?.[role]?.relevance;
+  return typeof relevance === "number" ? relevance > 0 : decisionFor(insight).roles.includes(role);
 }
 
 /* ------------------------------------------------------------------ */
@@ -183,6 +193,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
   const roleTakeaway = generatedRoleAction ? `${isEn ? "Recommended action" : "Рекомендуемое действие"}: ${generatedRoleAction}` : null;
   const [selectedAction, setSelectedAction] = useState<"check" | "clarify" | "later" | null>(null);
   const decision = decisionFor(insight);
+  const decisionText = isEn ? { applicability: decision.applicability.en, nextStep: decision.nextStep.en, returnCondition: decision.returnCondition.en } : { applicability: decision.applicability.ru, nextStep: decision.nextStep.ru, returnCondition: decision.returnCondition.ru };
   const summaryPreview = firstSentence(insight.summary);
   const itemId = buildShareId("insight", insight.id);
   const detailsId = `${itemId}-details`;
@@ -277,6 +288,10 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
             {isEn ? "Read more" : "Подробнее"} <ChevronDown className="w-3 h-3" />
           </button>
         )}
+        <div className="mt-3 border-l-2 border-primary/40 pl-3 text-xs sm:text-sm text-foreground/80">
+          <p><span className="font-medium">{isEn ? "Applicable when:" : "Когда применимо:"}</span> {decisionText.applicability}</p>
+          <p className="mt-1"><span className="font-medium">{isEn ? "Next step:" : "Следующий ход:"}</span> {decisionText.nextStep}</p>
+        </div>
       </div>
 
       {/* Expanded content — hidden by default */}
@@ -387,21 +402,21 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
           )}
 
           <div className="px-4 sm:px-5 py-3 sm:py-4 bg-primary/5 border-t border-primary/10">
-            <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed"><strong>{isEn ? "Applicable when:" : "Когда применимо:"}</strong> {decision.applicability}</p>
-            <p className="mt-2 text-xs sm:text-sm text-foreground/80 leading-relaxed"><strong>{isEn ? "Next step:" : "Следующий ход:"}</strong> {decision.nextStep}</p>
+            <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed"><strong>{isEn ? "Applicable when:" : "Когда применимо:"}</strong> {decisionText.applicability}</p>
+            <p className="mt-2 text-xs sm:text-sm text-foreground/80 leading-relaxed"><strong>{isEn ? "Next step:" : "Следующий ход:"}</strong> {decisionText.nextStep}</p>
             <div className="mt-3 grid gap-2 sm:grid-cols-3" role="group" aria-label={isEn ? "Choose next step" : "Выберите следующий ход"}>
               {([
-                ["check", isEn ? "Check" : "Проверить", decision.nextStep],
+                ["check", isEn ? "Check" : "Проверить", decisionText.nextStep],
                 ["clarify", isEn ? "Clarify" : "Уточнить", isEn ? "Define the applicable context and owner." : "Определить применимый контекст и владельца."],
-                ["later", isEn ? "Not now" : "Не сейчас", decision.returnCondition],
+                ["later", isEn ? "Not now" : "Не сейчас", decisionText.returnCondition],
               ] as const).map(([key, label, response]) => (
                 <button key={key} type="button" aria-pressed={selectedAction === key} onClick={() => setSelectedAction(key)} className={`rounded-lg border px-3 py-2 text-left text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${selectedAction === key ? "border-primary bg-primary/10 text-foreground" : "border-border/50 bg-background/30 text-muted-foreground hover:border-primary/50"}`}>{label}</button>
               ))}
             </div>
             <p className="mt-2 min-h-5 text-xs text-muted-foreground" aria-live="polite">
-              {selectedAction === "check" && decision.nextStep}
+              {selectedAction === "check" && decisionText.nextStep}
               {selectedAction === "clarify" && (isEn ? "Define the applicable context and owner." : "Определить применимый контекст и владельца.")}
-              {selectedAction === "later" && decision.returnCondition}
+              {selectedAction === "later" && decisionText.returnCondition}
             </p>
           </div>
 
@@ -486,6 +501,7 @@ export default function StrategicInsights() {
   const { isExecutive } = useViewMode();
   const { getRoleAdvice } = useExecutiveData();
   const isEn = locale === "en";
+  const freshness = insightFreshness(insightsGeneratedAt);
   // Explicit per-card mapping; unknown data is not assigned to a role by heuristics.
   const filteredInsights = useMemo(() => {
     if (activeRole === "all") return strategicInsights;
@@ -508,9 +524,13 @@ export default function StrategicInsights() {
             {isEn ? "Strategic Insights" : "Стратегические инсайты"}
           </p>
           {insightsLive && (
-            <span className="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-400/80 bg-emerald-400/10 px-2 py-0.5 rounded-full border border-emerald-400/20">
+            <span className="inline-flex items-center gap-1 text-[10px] font-mono text-amber-300/90 bg-amber-400/10 px-2 py-0.5 rounded-full border border-amber-400/30">
               <RefreshCw className="w-2.5 h-2.5" />
-              {isEn ? "archived data; sources not independently verified" : "архивные данные; источники не проверены"}
+              {freshness === "fresh"
+                ? (isEn ? "recent data; sources not independently verified" : "недавние данные; источники не проверены")
+                : freshness === "archived"
+                  ? (isEn ? "archived data; sources not independently verified" : "архивные данные; источники не проверены")
+                  : (isEn ? "date unknown; sources not independently verified" : "дата неизвестна; источники не проверены")}
             </span>
           )}
         </div>
