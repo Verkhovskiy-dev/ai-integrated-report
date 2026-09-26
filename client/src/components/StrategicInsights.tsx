@@ -96,8 +96,11 @@ const ROLES: Record<RoleKey, RoleMeta> = {
 const ROLE_KEYS: RoleKey[] = ["all", "entrepreneur", "ceo", "manager", "cto", "product", "hr"];
 const INSIGHTS_FRESHNESS_DAYS = 14;
 
-function insightFreshness(generatedAt: string): "fresh" | "archived" | "unknown" {
-  const timestamp = Date.parse(generatedAt);
+function insightFreshness(generatedAt: string, period: string): "fresh" | "archived" | "unknown" {
+  // Weekly payloads normally include generatedAt. Older valid packages only have
+  // an interval, so use its end date rather than silently treating them as live.
+  const periodEnd = period.split("—").at(-1)?.trim() ?? "";
+  const timestamp = Date.parse(generatedAt) || Date.parse(periodEnd);
   if (!Number.isFinite(timestamp)) return "unknown";
   return Date.now() - timestamp <= INSIGHTS_FRESHNESS_DAYS * 24 * 60 * 60 * 1000 ? "fresh" : "archived";
 }
@@ -150,7 +153,7 @@ function getRoleTakeaway(role: RoleKey, insight: StrategicInsight, isEn: boolean
   return options ? (isEn ? options[0].en : options[0].ru) : null;
 }
 
-function matchesRole(insight: StrategicInsight, role: RoleKey): boolean {
+export function matchesRole(insight: StrategicInsight, role: RoleKey): boolean {
   if (role === "all") return true;
   const relevance = insight.roleRecommendations?.[role]?.relevance;
   return typeof relevance === "number" ? relevance > 0 : decisionFor(insight).roles.includes(role);
@@ -501,7 +504,7 @@ export default function StrategicInsights() {
   const { isExecutive } = useViewMode();
   const { getRoleAdvice } = useExecutiveData();
   const isEn = locale === "en";
-  const freshness = insightFreshness(insightsGeneratedAt);
+  const freshness = insightFreshness(insightsGeneratedAt, insightsPeriod);
   // Explicit per-card mapping; unknown data is not assigned to a role by heuristics.
   const filteredInsights = useMemo(() => {
     if (activeRole === "all") return strategicInsights;
