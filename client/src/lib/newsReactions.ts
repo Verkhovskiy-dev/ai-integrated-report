@@ -46,7 +46,11 @@ export function createBrowserIdentity(
 }
 
 export function getBrowserIdentity() {
-  return createBrowserIdentity(typeof window === "undefined" ? undefined : window.localStorage);
+  try {
+    return createBrowserIdentity(typeof window === "undefined" ? undefined : window.localStorage);
+  } catch {
+    return createBrowserIdentity(undefined);
+  }
 }
 
 export function reactionApiBase() {

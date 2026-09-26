@@ -20,7 +20,10 @@ async function startServer() {
   const server = createServer(app);
   const reactionStore = new ReactionStore(reaction.dbPath, reaction.namespace);
   reactionStore.health();
-  reactionStore.upsertRegistry([...createNewsRegistry().values()]);
+  if (reaction.namespace === "synthetic" && !reactionStore.getRegistryState()) {
+    const seed = [...createNewsRegistry().values()];
+    reactionStore.replaceRegistrySnapshot(seed, seed, "bundled-synthetic", new Date().toISOString(), reaction.registryTtlHours);
+  }
   reactionStore.purgeBefore(new Date(Date.now() - reaction.retentionDays * 86_400_000).toISOString());
 
   // Serve static files from dist/public in production
@@ -48,7 +51,7 @@ async function startServer() {
 
   const escapeHtml = (value: string) => value.replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]!);
 
-  app.set("trust proxy", true);
+  app.set("trust proxy", "loopback");
   app.use("/api/reactions", express.json({ limit: "16kb" }), createReactionRouter({
     store: reactionStore,
     allowedOrigins: reaction.allowedOrigins,

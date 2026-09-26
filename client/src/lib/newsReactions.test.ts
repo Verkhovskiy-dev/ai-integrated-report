@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createBrowserIdentity, newReactionIntent } from "./newsReactions";
+import { createBrowserIdentity, getBrowserIdentity, newReactionIntent } from "./newsReactions";
 
 test("browser identity persists when storage is available", () => {
   const values = new Map<string, string>();
@@ -16,6 +16,22 @@ test("storage denial falls back to a pseudonymous session id", () => {
   const result = createBrowserIdentity(denied, () => "00000000-0000-4000-8000-000000000003");
   assert.equal(result.persistent, false);
   assert.match(result.browserId, /^br_/);
+});
+
+test("localStorage getter denial cannot escape browser identity fallback", () => {
+  const previousWindow = Object.getOwnPropertyDescriptor(globalThis, "window");
+  Object.defineProperty(globalThis, "window", {
+    configurable: true,
+    value: Object.defineProperty({}, "localStorage", { get: () => { throw new Error("SecurityError"); } }),
+  });
+  try {
+    const result = getBrowserIdentity();
+    assert.equal(result.persistent, false);
+    assert.match(result.browserId, /^br_/);
+  } finally {
+    if (previousWindow) Object.defineProperty(globalThis, "window", previousWindow);
+    else Reflect.deleteProperty(globalThis, "window");
+  }
 });
 
 test("intent toggles selected reaction into remove operation", () => {

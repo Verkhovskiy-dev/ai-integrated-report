@@ -59,6 +59,9 @@ jobs:
           cp source/dist/public/index.html site/404.html
           mkdir -p site/positions
           cp source/dist/public/index.html site/positions/index.html
+          test -f source/dist/public/editor/reactions/index.html
+          mkdir -p site/editor/reactions
+          cp source/dist/public/editor/reactions/index.html site/editor/reactions/index.html
           mkdir -p site/assets
           cp -R source/dist/public/assets/. site/assets/
           mkdir -p site/data
@@ -83,7 +86,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html 404.html positions/index.html programs/index.html education/index.html favicon.svg favicon.png sitemap.xml assets share data/eken-routes.json data/eken-scenarios.json
+          git add index.html 404.html positions/index.html editor/reactions/index.html programs/index.html education/index.html favicon.svg favicon.png sitemap.xml assets share data/eken-routes.json data/eken-scenarios.json
           if git diff --cached --quiet; then
             echo "Dashboard bundle is already current"
             exit 0

@@ -2,6 +2,7 @@ import registryJson from "./news-registry.json";
 import { readFile } from "node:fs/promises";
 import { buildNewsIdentity } from "../../shared/newsIdentity";
 import { buildShareId } from "../../client/src/lib/share";
+import type { ReactionStore } from "./store";
 
 export interface RegisteredNews {
   newsId: string;
@@ -43,4 +44,21 @@ export function registryEntriesFromReport(report: unknown, siteOrigin = "https:/
 export async function registryEntriesFromFile(reportPath: string, siteOrigin?: string) {
   const report = JSON.parse(await readFile(reportPath, "utf8"));
   return registryEntriesFromReport(report, siteOrigin);
+}
+
+export async function refreshRegistrySetFromFiles(
+  store: ReactionStore,
+  ruReportPath: string,
+  enReportPath: string,
+  siteOrigin = "https://verkhovskiy.ai",
+  refreshedAt = new Date().toISOString(),
+  ttlHours = 24,
+) {
+  // Both trusted inputs are completely read and validated before the SQLite
+  // transaction starts, so a missing/invalid locale can never partially refresh.
+  const [ruEntries, enEntries] = await Promise.all([
+    registryEntriesFromFile(ruReportPath, siteOrigin),
+    registryEntriesFromFile(enReportPath, siteOrigin),
+  ]);
+  return store.replaceRegistrySnapshot(ruEntries, enEntries, siteOrigin, refreshedAt, ttlHours);
 }

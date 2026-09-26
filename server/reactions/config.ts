@@ -19,5 +19,6 @@ export function reactionConfig(env = process.env) {
     host: env.HOST ?? "127.0.0.1",
     port: Number(env.PORT ?? 3000),
     retentionDays: Number(env.REACTIONS_RETENTION_DAYS ?? (selectedNamespace === "production" ? 30 : 7)),
+    registryTtlHours: Number(env.REACTIONS_REGISTRY_TTL_HOURS ?? 24),
   };
 }

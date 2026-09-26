@@ -1,7 +1,6 @@
 import crypto from "node:crypto";
 import { Router, type Request, type Response } from "express";
 import { REACTIONS, ReactionStore, RevisionConflict, type Reaction, type ReactionWrite } from "./store";
-import type { RegisteredNews } from "./registry";
 
 const ID_PATTERN = /^[a-zA-Z0-9][a-zA-Z0-9:_-]{7,127}$/;
 const EVENT_ID_PATTERN = /^[0-9a-f]{8}-[0-9a-f-]{27,36}$/i;
@@ -11,7 +10,7 @@ export interface ReactionApiOptions {
   allowedOrigins: string[];
   adminToken?: string;
   rateLimitPerMinute?: number;
-  newsRegistry?: Map<string, RegisteredNews>;
+  now?: () => Date;
 }
 
 function text(value: unknown, max: number, field: string): string {
@@ -39,7 +38,7 @@ function url(value: unknown, field: string, optional = false): string | undefine
   return result;
 }
 
-function parseWrite(body: Record<string, unknown>, resolveNews: (newsId: string, contentVersion: string) => RegisteredNews | undefined): ReactionWrite {
+function parseWrite(body: Record<string, unknown>, store: ReactionStore, now: Date): ReactionWrite {
   const operation = body.operation;
   if (operation !== "set" && operation !== "remove") throw new Error("invalid_operation");
   const reaction = operation === "remove" ? null : body.reaction;
@@ -50,11 +49,17 @@ function parseWrite(body: Record<string, unknown>, resolveNews: (newsId: string,
   if (!EVENT_ID_PATTERN.test(eventId)) throw new Error("invalid_eventId");
   const newsId = identifier(body.newsId, "newsId");
   const contentVersion = identifier(body.contentVersion, "contentVersion");
-  const registered = resolveNews(newsId, contentVersion);
-  if (!registered) throw new Error("unknown_news_version");
+  const browserId = identifier(body.browserId, "browserId");
+  const resolved = store.resolveRegisteredNews(newsId, contentVersion, now.toISOString());
+  if (resolved.status === "unknown") throw new Error("unknown_news_version");
+  if (resolved.status === "expired") {
+    const current = store.getCurrent({ browserId, newsId, contentVersion });
+    if (operation !== "remove" || current.reaction === null) throw new Error("expired_news_version");
+  }
+  const registered = resolved.entry;
   return {
     eventId,
-    browserId: identifier(body.browserId, "browserId"),
+    browserId,
     newsId,
     contentVersion,
     reaction: reaction as Reaction | null,
@@ -75,7 +80,7 @@ function authorized(req: Request, token?: string) {
   return a.length === b.length && crypto.timingSafeEqual(a, b);
 }
 
-export function createReactionRouter({ store, allowedOrigins, adminToken, rateLimitPerMinute = 60, newsRegistry }: ReactionApiOptions) {
+export function createReactionRouter({ store, allowedOrigins, adminToken, rateLimitPerMinute = 60, now = () => new Date() }: ReactionApiOptions) {
   const router = Router();
   const rate = new Map<string, number[]>();
   const ipSalt = crypto.randomBytes(32);
@@ -134,10 +139,7 @@ export function createReactionRouter({ store, allowedOrigins, adminToken, rateLi
 
   router.post("/events", (req: Request, res: Response) => {
     try {
-      const input = parseWrite(
-        req.body as Record<string, unknown>,
-        newsRegistry ? (newsId, contentVersion) => newsRegistry.get(`${newsId}:${contentVersion}`) : (newsId, contentVersion) => store.getRegisteredNews(newsId, contentVersion),
-      );
+      const input = parseWrite(req.body as Record<string, unknown>, store, now());
       const ipKey = crypto.createHmac("sha256", ipSalt).update(req.ip || "unknown").digest("hex").slice(0, 24);
       if (!allow("global", 1_500) || !allow(`ip:${ipKey}`, Math.max(rateLimitPerMinute * 2, 120)) || !allow(`browser:${input.browserId}`, rateLimitPerMinute)) {
         return res.status(429).json({ error: "rate_limited", retryAfterSeconds: 60 });
@@ -148,6 +150,7 @@ export function createReactionRouter({ store, allowedOrigins, adminToken, rateLi
       if (error instanceof RevisionConflict) return res.status(409).json({ error: error.message, current: error.current });
       const message = error instanceof Error ? error.message : "internal_error";
       if (message === "event_id_payload_mismatch") return res.status(409).json({ error: message });
+      if (message === "expired_news_version") return res.status(410).json({ error: message });
       if (message.startsWith("invalid_") || message === "unknown_news_version") return res.status(400).json({ error: message });
       console.error("reaction_write_failed", error);
       res.status(500).json({ error: "internal_error" });

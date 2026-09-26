@@ -18,6 +18,12 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: path.resolve(import.meta.dirname, "client", "index.html"),
+        editorReactions: path.resolve(import.meta.dirname, "client", "editor", "reactions", "index.html"),
+      },
+    },
   },
   preview: {
     allowedHosts: [

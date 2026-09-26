@@ -8,10 +8,14 @@ import { ReactionStore } from "./reactions/store";
 const config = reactionConfig();
 if (config.namespace === "production" && !config.adminToken) throw new Error("REACTIONS_ADMIN_TOKEN is required in production namespace");
 if (!Number.isFinite(config.retentionDays) || config.retentionDays <= 0) throw new Error("REACTIONS_RETENTION_DAYS must be positive");
+if (!Number.isFinite(config.registryTtlHours) || config.registryTtlHours <= 0 || config.registryTtlHours > 168) throw new Error("REACTIONS_REGISTRY_TTL_HOURS must be within (0,168]");
 
 const store = new ReactionStore(config.dbPath, config.namespace);
 store.health();
-store.upsertRegistry([...createNewsRegistry().values()]);
+if (config.namespace === "synthetic" && !store.getRegistryState()) {
+  const seed = [...createNewsRegistry().values()];
+  store.replaceRegistrySnapshot(seed, seed, "bundled-synthetic", new Date().toISOString(), config.registryTtlHours);
+}
 const cutoff = new Date(Date.now() - config.retentionDays * 86_400_000).toISOString();
 const purged = store.purgeBefore(cutoff);
 
@@ -33,6 +37,7 @@ server.listen(config.port, config.host, () => {
     port: config.port,
     namespace: config.namespace,
     retentionDays: config.retentionDays,
+    registryTtlHours: config.registryTtlHours,
     startupPurge: purged,
   }));
 });

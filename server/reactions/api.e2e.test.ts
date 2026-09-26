@@ -21,13 +21,14 @@ test("HTTP E2E: auth, registered news, duplicate, two-tab conflict, remove, summ
   const directory = mkdtempSync(path.join(os.tmpdir(), "reactions-e2e-"));
   const dbPath = path.join(directory, "test.sqlite");
   let store = new ReactionStore(dbPath, "synthetic");
-  store.upsertRegistry([registered]);
+  store.replaceRegistrySnapshot([registered], [registered], "test", "2026-09-26T00:00:00.000Z", 24);
+  let currentTime = new Date("2026-09-26T01:00:00.000Z");
   const app = express();
   app.use("/api/reactions", express.json(), createReactionRouter({
     store,
     allowedOrigins: ["http://127.0.0.1"],
     adminToken: "test-editor-token",
-    newsRegistry: new Map([[`${registered.newsId}:${registered.contentVersion}`, registered]]),
+    now: () => currentTime,
   }));
   const server = createServer(app);
   await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
@@ -63,6 +64,10 @@ test("HTTP E2E: auth, registered news, duplicate, two-tab conflict, remove, summ
     assert.equal(conflictBody.current.revision, 1);
     const changed = await post({ ...payload, eventId: "00000000-0000-4000-8000-000000000012", reaction: "more", expectedRevision: 1 });
     assert.equal(changed.status, 201);
+    currentTime = new Date("2026-09-27T01:00:00.000Z");
+    const expiredSet = await post({ ...payload, eventId: "00000000-0000-4000-8000-000000000014", reaction: "unclear", expectedRevision: 2 });
+    assert.equal(expiredSet.status, 410);
+    assert.equal((await expiredSet.json()).error, "expired_news_version");
     const removed = await post({ ...payload, eventId: "00000000-0000-4000-8000-000000000013", reaction: null, operation: "remove", expectedRevision: 2 });
     assert.equal(removed.status, 201);
 

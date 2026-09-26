@@ -27,7 +27,7 @@
     "format": "prettier --write .",
     "reactions:cli": "node --import tsx server/reactions/cli.ts",
     "reactions:cli:built": "node dist/reactions-cli.cjs",
-    "test:reactions": "node --import tsx --test shared/newsIdentity.test.ts client/src/lib/newsReactions.test.ts server/reactions/store.test.ts server/reactions/api.e2e.test.ts"
+    "test:reactions": "node --import tsx --test shared/newsIdentity.test.ts client/src/lib/newsReactions.test.ts server/reactions/store.test.ts server/reactions/registry.test.ts server/reactions/api.e2e.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

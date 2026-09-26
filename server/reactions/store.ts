@@ -1,5 +1,6 @@
 import { mkdirSync } from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import { DatabaseSync } from "node:sqlite";
 import type { RegisteredNews } from "./registry";
 
@@ -29,6 +30,11 @@ export interface ReactionState {
   updatedAt: string | null;
   lastEventId: string | null;
 }
+
+export type RegistryResolution =
+  | { status: "active"; entry: RegisteredNews }
+  | { status: "expired"; entry: RegisteredNews }
+  | { status: "unknown" };
 
 export class RevisionConflict extends Error {
   constructor(public readonly current: ReactionState) {
@@ -98,9 +104,26 @@ export class ReactionStore {
         source_url TEXT,
         first_seen_at TEXT NOT NULL,
         last_seen_at TEXT NOT NULL,
+        active_until TEXT,
+        last_snapshot_id TEXT,
         PRIMARY KEY(news_id, content_version)
       );
+      CREATE TABLE IF NOT EXISTS news_registry_state (
+        singleton INTEGER PRIMARY KEY CHECK(singleton = 1),
+        snapshot_id TEXT NOT NULL,
+        refreshed_at TEXT NOT NULL,
+        expires_at TEXT NOT NULL,
+        ru_count INTEGER NOT NULL,
+        en_count INTEGER NOT NULL,
+        unique_count INTEGER NOT NULL,
+        origin TEXT NOT NULL
+      );
     `);
+    const registryColumns = new Set(
+      (this.db.prepare("PRAGMA table_info(news_registry)").all() as Array<{ name: string }>).map((column) => column.name),
+    );
+    if (!registryColumns.has("active_until")) this.db.exec("ALTER TABLE news_registry ADD COLUMN active_until TEXT");
+    if (!registryColumns.has("last_snapshot_id")) this.db.exec("ALTER TABLE news_registry ADD COLUMN last_snapshot_id TEXT");
   }
 
   close() {
@@ -122,35 +145,93 @@ export class ReactionStore {
     return rowToState(row, identity);
   }
 
-  upsertRegistry(entries: RegisteredNews[], seenAt = new Date().toISOString()) {
+  replaceRegistrySnapshot(
+    ruEntries: RegisteredNews[],
+    enEntries: RegisteredNews[],
+    origin: string,
+    refreshedAt = new Date().toISOString(),
+    ttlHours = 24,
+  ) {
+    if (ruEntries.length === 0) throw new Error("invalid_ru_registry_empty");
+    if (enEntries.length === 0) throw new Error("invalid_en_registry_empty");
+    if (!Number.isFinite(ttlHours) || ttlHours <= 0 || ttlHours > 168) throw new Error("invalid_registry_ttl_hours");
+    const refreshedMs = Date.parse(refreshedAt);
+    if (!Number.isFinite(refreshedMs)) throw new Error("invalid_registry_refreshed_at");
+    const expiresAt = new Date(refreshedMs + ttlHours * 3_600_000).toISOString();
+    const snapshotId = crypto.randomUUID();
+    const combined = new Map<string, RegisteredNews>();
+    for (const entry of [...ruEntries, ...enEntries]) {
+      const key = `${entry.newsId}:${entry.contentVersion}`;
+      const previous = combined.get(key);
+      if (previous && JSON.stringify(previous) !== JSON.stringify(entry)) throw new Error("conflicting_registry_entry");
+      combined.set(key, entry);
+    }
     this.db.exec("BEGIN IMMEDIATE");
     try {
       const statement = this.db.prepare(`
-        INSERT INTO news_registry(news_id, content_version, title, url, source_url, first_seen_at, last_seen_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO news_registry(news_id, content_version, title, url, source_url, first_seen_at, last_seen_at, active_until, last_snapshot_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(news_id, content_version) DO UPDATE SET
           title = excluded.title,
           url = excluded.url,
           source_url = excluded.source_url,
-          last_seen_at = excluded.last_seen_at
+          last_seen_at = excluded.last_seen_at,
+          active_until = excluded.active_until,
+          last_snapshot_id = excluded.last_snapshot_id
       `);
-      for (const entry of entries) statement.run(
-        entry.newsId, entry.contentVersion, entry.title, entry.url, entry.sourceUrl ?? null, seenAt, seenAt,
+      for (const entry of combined.values()) statement.run(
+        entry.newsId, entry.contentVersion, entry.title, entry.url, entry.sourceUrl ?? null,
+        refreshedAt, refreshedAt, expiresAt, snapshotId,
       );
+      this.db.prepare(`
+        INSERT INTO news_registry_state(singleton, snapshot_id, refreshed_at, expires_at, ru_count, en_count, unique_count, origin)
+        VALUES (1, ?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(singleton) DO UPDATE SET
+          snapshot_id = excluded.snapshot_id,
+          refreshed_at = excluded.refreshed_at,
+          expires_at = excluded.expires_at,
+          ru_count = excluded.ru_count,
+          en_count = excluded.en_count,
+          unique_count = excluded.unique_count,
+          origin = excluded.origin
+      `).run(snapshotId, refreshedAt, expiresAt, ruEntries.length, enEntries.length, combined.size, origin);
       this.db.exec("COMMIT");
-      return { upserted: entries.length, seenAt };
+      return {
+        snapshotId,
+        refreshedAt,
+        expiresAt,
+        ruCount: ruEntries.length,
+        enCount: enEntries.length,
+        uniqueCount: combined.size,
+        origin,
+      };
     } catch (error) {
       this.db.exec("ROLLBACK");
       throw error;
     }
   }
 
-  getRegisteredNews(newsId: string, contentVersion: string): RegisteredNews | undefined {
+  getRegistryState() {
+    return this.db.prepare(`
+      SELECT snapshot_id AS snapshotId, refreshed_at AS refreshedAt, expires_at AS expiresAt,
+             ru_count AS ruCount, en_count AS enCount, unique_count AS uniqueCount, origin
+      FROM news_registry_state WHERE singleton = 1
+    `).get() as Record<string, unknown> | undefined;
+  }
+
+  resolveRegisteredNews(newsId: string, contentVersion: string, at = new Date().toISOString()): RegistryResolution {
     const row = this.db.prepare(`
-      SELECT news_id AS newsId, content_version AS contentVersion, title, url, source_url AS sourceUrl
+      SELECT news_id AS newsId, content_version AS contentVersion, title, url,
+             source_url AS sourceUrl, active_until AS activeUntil
       FROM news_registry WHERE news_id = ? AND content_version = ?
-    `).get(newsId, contentVersion) as RegisteredNews | undefined;
-    return row;
+    `).get(newsId, contentVersion) as (RegisteredNews & { activeUntil: string | null }) | undefined;
+    if (!row) return { status: "unknown" };
+    const state = this.getRegistryState() as { expiresAt?: string } | undefined;
+    const { activeUntil: _activeUntil, ...entry } = row;
+    if (row.activeUntil && row.activeUntil > at && state?.expiresAt && state.expiresAt > at) {
+      return { status: "active", entry };
+    }
+    return { status: "expired", entry };
   }
 
   apply(input: ReactionWrite): { duplicate: boolean; state: ReactionState; serverTimestamp: string; eventId: string } {

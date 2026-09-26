@@ -1,4 +1,4 @@
-import { useMemo, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { loadEditorSummary, type EditorSummary } from "@/lib/newsReactions";
 
 function almatyDate(offsetDays = 0) {
@@ -17,7 +17,6 @@ export default function EditorReactions() {
   const [summary, setSummary] = useState<EditorSummary | null>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const periodLabel = useMemo(() => `[${fromDate}, ${toDate}) · +05`, [fromDate, toDate]);
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
@@ -26,6 +25,7 @@ export default function EditorReactions() {
     try {
       setSummary(await loadEditorSummary(token, boundary(fromDate), boundary(toDate)));
     } catch (caught) {
+      setSummary(null);
       const status = (caught as Error & { status?: number }).status;
       setError(status === 401 ? "Неверный или отсутствующий редакторский токен." : "Не удалось загрузить сводку.");
     } finally {
@@ -50,7 +50,7 @@ export default function EditorReactions() {
         {summary && (
           <section className="space-y-4">
             <div className="grid gap-3 sm:grid-cols-3">
-              <div className="rounded border p-3"><div className="text-xs text-muted-foreground">Период</div><div>{periodLabel}</div></div>
+              <div className="rounded border p-3"><div className="text-xs text-muted-foreground">Период</div><div>[{summary.period.from}, {summary.period.to}) · {summary.period.timezone}</div></div>
               <div className="rounded border p-3"><div className="text-xs text-muted-foreground">Операций в периоде</div><div className="text-2xl font-bold">{summary.operationCount}</div></div>
               <div className="rounded border p-3"><div className="text-xs text-muted-foreground">Активных реакций на конец</div><div className="text-2xl font-bold">{summary.activeReactionCountAtEnd}</div></div>
             </div>
