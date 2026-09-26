@@ -95,6 +95,20 @@ const ROLES: Record<RoleKey, RoleMeta> = {
 
 const ROLE_KEYS: RoleKey[] = ["all", "entrepreneur", "ceo", "manager", "cto", "product", "hr"];
 
+type InsightDecision = { roles: RoleKey[]; applicability: string; nextStep: string; returnCondition: string };
+
+const INSIGHT_DECISIONS: Record<string, InsightDecision> = {
+  "financialization-of-ai-compute": { roles: ["ceo", "cto"], applicability: "Для CEO, CFO и CTO при решении о собственной AI-инфраструктуре или долгосрочных обязательствах на вычисления.", nextStep: "Собрать лист обязательств, срока и критерия остановки.", returnCondition: "Вернуться при предложении капитальных вложений или долгосрочных обязательств на вычисления." },
+  "agent-systems-shift-to-managed-processes": { roles: ["cto", "manager"], applicability: "Для CTO и владельца процесса, когда агент получает доступ к данным, инструментам или действию.", nextStep: "Описать полномочия одного пилота: владелец, данные, инструменты и ручная проверка.", returnCondition: "Вернуться при намерении дать агенту доступ к данным или самостоятельным действиям." },
+  "ai-content-trust-and-regulation-challenges": { roles: ["product"], applicability: "Для Product и legal публичного продукта, который публикует AI-контент.", nextStep: "Проверить путь: создание → маркировка → жалоба → эскалация → фиксация решения.", returnCondition: "Вернуться при запуске публичного AI-контента либо появлении жалобы на его достоверность." },
+};
+
+const FALLBACK_DECISION: InsightDecision = { roles: [], applicability: "Применимость требует сверки с текущим контекстом решения; в данных нет явного ролевого mapping.", nextStep: "Сверить вывод с владельцем решения и доступными основаниями.", returnCondition: "Вернуться, когда появится конкретное решение, к которому относится этот вывод." };
+
+function decisionFor(insight: StrategicInsight): InsightDecision {
+  return INSIGHT_DECISIONS[insight.insightKey ?? ""] ?? FALLBACK_DECISION;
+}
+
 function getRoleTakeaway(role: RoleKey, insight: StrategicInsight, isEn: boolean): string | null {
   if (role === "all") return null;
 
@@ -128,22 +142,8 @@ function getRoleTakeaway(role: RoleKey, insight: StrategicInsight, isEn: boolean
   return options ? (isEn ? options[0].en : options[0].ru) : null;
 }
 
-function scoreInsightForRole(insight: StrategicInsight, role: RoleKey): number {
-  if (role === "all") return 1;
-  const generatedScore = insight.roleRecommendations?.[role]?.relevance;
-  if (typeof generatedScore === "number") return generatedScore;
-  const meta = ROLES[role];
-  const corpus = [
-    insight.title,
-    insight.subtitle,
-    insight.summary,
-    ...insight.evidence,
-    insight.nonObviousConclusion,
-    insight.educationImplication,
-  ].join(" ");
-
-  const matches = corpus.match(meta.keywords);
-  return matches ? matches.length : 0;
+function matchesRole(insight: StrategicInsight, role: RoleKey): boolean {
+  return role === "all" || decisionFor(insight).roles.includes(role);
 }
 
 /* ------------------------------------------------------------------ */
@@ -179,9 +179,13 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
   reportDate: string;
 }) {
   const Icon = ICON_MAP[insight.icon] || Lightbulb;
-  const roleTakeaway = getRoleTakeaway(role, insight, isEn);
+  const generatedRoleAction = role === "all" ? null : insight.roleRecommendations?.[role]?.action;
+  const roleTakeaway = generatedRoleAction ? `${isEn ? "Recommended action" : "Рекомендуемое действие"}: ${generatedRoleAction}` : null;
+  const [selectedAction, setSelectedAction] = useState<"check" | "clarify" | "later" | null>(null);
+  const decision = decisionFor(insight);
   const summaryPreview = firstSentence(insight.summary);
   const itemId = buildShareId("insight", insight.id);
+  const detailsId = `${itemId}-details`;
   const sourceCount = insight.sourceEvents?.length ?? 0;
   const confidenceLabel = insight.confidence
     ? (isEn
@@ -203,6 +207,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
         onClick={onToggle}
         className="w-full text-left p-4 sm:p-5 flex items-start gap-3 sm:gap-4"
         aria-expanded={isExpanded}
+        aria-controls={detailsId}
       >
         {/* Icon */}
         <div
@@ -235,7 +240,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
             )}
             {sourceCount > 0 && (
               <span className="text-[10px] font-mono text-muted-foreground/70">
-                {sourceCount} {isEn ? "verified events" : "проверенных событий"}
+                {sourceCount} {isEn ? "source events" : "оснований"}
               </span>
             )}
           </div>
@@ -276,7 +281,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
 
       {/* Expanded content — hidden by default */}
       {isExpanded && (
-        <div className="border-t border-border/30">
+        <div id={detailsId} className="border-t border-border/30">
           {/* Evidence */}
           <div className="px-4 sm:px-5 py-3 sm:py-4">
             <div className="flex items-center gap-2 mb-2.5">
@@ -296,7 +301,7 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
             {sourceCount > 0 && (
               <div className="mt-3 flex flex-wrap gap-2">
                 {insight.sourceEvents!.map((source) => {
-                  const href = source.urls.find((url) => /^https?:\/\//i.test(url));
+                  const href = source.urls.find((url) => /^https?:\/\//i.test(url) && !/news\.google\.com\/rss/i.test(url));
                   const label = `${source.date} · СРТ-${source.srtLevel} · ${source.title}`;
                   return href ? (
                     <a
@@ -309,7 +314,11 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
                     >
                       {label}
                     </a>
-                  ) : null;
+                  ) : (
+                    <span key={source.eventId} className="max-w-full rounded border border-amber-400/30 bg-amber-400/5 px-2 py-1 text-[10px] text-amber-300/80">
+                      {source.date} · {isEn ? "primary source not established" : "первоисточник не установлен"}
+                    </span>
+                  );
                 })}
               </div>
             )}
@@ -376,6 +385,25 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
               </div>
             </div>
           )}
+
+          <div className="px-4 sm:px-5 py-3 sm:py-4 bg-primary/5 border-t border-primary/10">
+            <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed"><strong>{isEn ? "Applicable when:" : "Когда применимо:"}</strong> {decision.applicability}</p>
+            <p className="mt-2 text-xs sm:text-sm text-foreground/80 leading-relaxed"><strong>{isEn ? "Next step:" : "Следующий ход:"}</strong> {decision.nextStep}</p>
+            <div className="mt-3 grid gap-2 sm:grid-cols-3" role="group" aria-label={isEn ? "Choose next step" : "Выберите следующий ход"}>
+              {([
+                ["check", isEn ? "Check" : "Проверить", decision.nextStep],
+                ["clarify", isEn ? "Clarify" : "Уточнить", isEn ? "Define the applicable context and owner." : "Определить применимый контекст и владельца."],
+                ["later", isEn ? "Not now" : "Не сейчас", decision.returnCondition],
+              ] as const).map(([key, label, response]) => (
+                <button key={key} type="button" aria-pressed={selectedAction === key} onClick={() => setSelectedAction(key)} className={`rounded-lg border px-3 py-2 text-left text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${selectedAction === key ? "border-primary bg-primary/10 text-foreground" : "border-border/50 bg-background/30 text-muted-foreground hover:border-primary/50"}`}>{label}</button>
+              ))}
+            </div>
+            <p className="mt-2 min-h-5 text-xs text-muted-foreground" aria-live="polite">
+              {selectedAction === "check" && decision.nextStep}
+              {selectedAction === "clarify" && (isEn ? "Define the applicable context and owner." : "Определить применимый контекст и владельца.")}
+              {selectedAction === "later" && decision.returnCondition}
+            </p>
+          </div>
 
           {/* Education implication with program links */}
           <div className="px-4 sm:px-5 py-3 sm:py-4 bg-primary/5 border-t border-primary/10">
@@ -458,24 +486,10 @@ export default function StrategicInsights() {
   const { isExecutive } = useViewMode();
   const { getRoleAdvice } = useExecutiveData();
   const isEn = locale === "en";
-  const insightsVerified = strategicInsights.length > 0
-    && strategicInsights.every((insight) => (insight.sourceEvents?.length ?? 0) >= 3);
-
-  // Filter and sort insights by role relevance
+  // Explicit per-card mapping; unknown data is not assigned to a role by heuristics.
   const filteredInsights = useMemo(() => {
     if (activeRole === "all") return strategicInsights;
-
-    const scored = strategicInsights.map((insight) => ({
-      insight,
-      score: scoreInsightForRole(insight, activeRole),
-    }));
-
-    const relevant = scored.filter((s) => s.score > 0);
-    if (relevant.length === 0) return strategicInsights;
-
-    return relevant
-      .sort((a, b) => b.score - a.score)
-      .map((s) => s.insight);
+    return strategicInsights.filter((insight) => matchesRole(insight, activeRole));
   }, [strategicInsights, activeRole]);
 
   const generatedLabel = insightsGeneratedAt
@@ -496,7 +510,7 @@ export default function StrategicInsights() {
           {insightsLive && (
             <span className="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-400/80 bg-emerald-400/10 px-2 py-0.5 rounded-full border border-emerald-400/20">
               <RefreshCw className="w-2.5 h-2.5" />
-              {insightsVerified ? (isEn ? "source-verified" : "источники проверены") : "live"}
+              {isEn ? "archived data; sources not independently verified" : "архивные данные; источники не проверены"}
             </span>
           )}
         </div>
@@ -533,6 +547,11 @@ export default function StrategicInsights() {
       </div>
 
       <div className="space-y-3 sm:space-y-4">
+        {activeRole !== "all" && filteredInsights.length === 0 && (
+          <p className="rounded-xl border border-border/50 bg-card/40 p-4 text-xs text-muted-foreground">
+            {isEn ? "No cards have an explicit mapping for this role in the current data." : "В текущих данных нет карточек с явным mapping для этой роли."}
+          </p>
+        )}
         {filteredInsights.map((insight) => {
           const embeddedAdvice = insight.roleRecommendations;
           const legacyAdvice = getRoleAdvice(insight.id);
