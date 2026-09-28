@@ -4186,14 +4186,91 @@
   },
   {
     "date": "2026-09-28",
-    "generated_at": "2026-09-28T05:01:56.723Z",
+    "generated_at": "2026-09-28T17:02:34.180Z",
     "trends": [
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
-        "momentum": 96,
+        "momentum": 98,
         "category": "accelerating",
-        "rationale": "Вчера тренд был на 95; сегодня он остаётся на пределе из-за ScopeBench, работы о каскадных атаках на навыки и новых раскрытий о нарушениях AI-моделей.",
+        "rationale": "Вчера было 96; сегодня тренд усилился до 98 из-за остановки обучения мощных моделей OpenAI, запуска защитной платформы Nvidia и призыва к аудиторам внутри лабораторий.",
+        "levels": [
+          8,
+          6,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 95,
+        "category": "accelerating",
+        "rationale": "Вчера было 90; сегодня рост поддержали корпоративная AI-платформа Meta, раунд Instinct на $1 млрд и публикация Holo4 для агентов работы с компьютером.",
+        "levels": [
+          5,
+          6,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 98,
+        "category": "accelerating",
+        "rationale": "Вчера было 96; сегодня добавились слушания New York City с OpenAI и Meta, судебный запрос Florida по ChatGPT и призыв руководителей компаний контролировать самоулучшение AI.",
+        "levels": [
+          8,
+          3,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 88,
+        "category": "accelerating",
+        "rationale": "Вчера было 83; сегодня тренд усилили материалы FT о долге гиперскейлеров и безубыточности AI-CapEx, сделка SoftBank на $11,1 млрд и соглашение Akamai с Anthropic на $12 млрд.",
+        "levels": [
+          9,
+          5,
+          2
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 63,
+        "category": "accelerating",
+        "rationale": "Вчера было 58; сегодня появились сигналы о выбросах резервных генераторов дата-центров, закупках NYSERDA и переописании дата-центров как AI-фабрик для коммунальных компаний.",
+        "levels": [
+          1,
+          2
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 66,
+        "category": "accelerating",
+        "rationale": "Тренд получил новые сигналы от заявления министра UK о плане на случай потерь рабочих мест, запуска магистратуры по AI в Houston и назначения первого AI-руководителя Universal Music.",
+        "levels": [
+          3,
+          7,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-evaluation-governance",
+        "name": "Управление через оценку AI",
+        "momentum": 85,
+        "category": "accelerating",
+        "rationale": "Вчера было 73; сегодня рост связан с Benchy, HARDEN, CRC-Router и работами о стоимости траекторий агентов, которые превращают оценку в механизм допуска.",
         "levels": [
           6,
           8,
@@ -4202,119 +4279,40 @@
         "is_new": false
       },
       {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 90,
-        "category": "accelerating",
-        "rationale": "Вчера было 88; сегодня добавился сигнал массового внедрения через функцию звонков Gemini на Pixel и архитектурная работа о связке агентов с пространствами данных через MCP.",
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": -67,
+        "category": "collapsing",
+        "rationale": "Вчера было -62; отрицательная динамика усилилась из-за паузы OpenAI, судебного запроса Florida о блокировке ChatGPT и обсуждения ответственности за агентов.",
         "levels": [
+          8,
           5,
-          6,
           4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 96,
-        "category": "accelerating",
-        "rationale": "Вчера было 95; сегодня тренд поддержали ужин Trump с Dario Amodei и заявление Don Beyer о федеральных гарантиях, тестировании безопасности и обязательной отчётности.",
-        "levels": [
-          8,
-          9,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-in-government",
-        "name": "AI в госсекторе",
-        "momentum": 90,
-        "category": "accelerating",
-        "rationale": "Вчера было 98; сегодня нет нового крупного государственного внедрения уровня вчерашних инцидентов, но есть политическое развитие через Белый дом и Конгресс.",
-        "levels": [
-          8,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 83,
-        "category": "accelerating",
-        "rationale": "Вчера было 78; сегодня добавились ASML как аппаратное узкое место, Sakai Chemical как материал для серверной цепочки и возможный доступ Alibaba и ByteDance к Nvidia RTX.",
-        "levels": [
-          4,
-          5,
-          9,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 58,
-        "category": "accelerating",
-        "rationale": "Вчера было 50; сегодня DOE объявило $1,9 млрд на передачу, FERC отклонила жалобу Oklo по подключению, а Utility Dive связал микросети с повседневной работой энергосистемы.",
-        "levels": [
-          1,
-          2,
-          9
         ],
         "is_new": false
       },
       {
         "id": "open-weight-models",
         "name": "Open-weight модели",
-        "momentum": 48,
+        "momentum": 52,
         "category": "accelerating",
-        "rationale": "Вчера было 38; сегодня FT сообщил, что компании США за пределами Silicon Valley внедряют более дешёвые открытые китайские альтернативы OpenAI и Anthropic.",
-        "levels": [
-          5,
-          4,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": -62,
-        "category": "collapsing",
-        "rationale": "Вчера было -55; давление усилилось, потому что корпоративный спрос уходит к более дешёвым открытым альтернативам, а Anthropic одновременно втянута в политический спор о безопасности.",
-        "levels": [
-          5,
-          8,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "chip-export-control",
-        "name": "Экспортный контроль чипов",
-        "momentum": 36,
-        "category": "emerging",
-        "rationale": "Сегодня Bloomberg сообщил, что Китай может разрешить Alibaba и ByteDance покупку новых Nvidia RTX Pro 5500, что даёт свежий сигнал управляемого доступа к чипам.",
+        "rationale": "Вчера было 48; умеренное усиление связано с открытым инструментом Nvidia для безопасности агентов и публикацией Holo4 в экосистеме Hugging Face.",
         "levels": [
           4,
-          8,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-evaluation-governance",
-        "name": "Управление через оценку AI",
-        "momentum": 73,
-        "category": "accelerating",
-        "rationale": "Вчера было 66; сегодня тренд усилили BioEVAL, ScopeBench, синтетическая эталонная истина для объяснимого AI и безразметочные измерения для судей кода.",
-        "levels": [
           6,
-          7,
           8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "classic-saas",
+        "name": "Классический SaaS под давлением AI",
+        "momentum": 14,
+        "category": "emerging",
+        "rationale": "Сегодня сигнал смешанный: Meta выходит на корпоративный AI-рынок, но CEO Atlassian обсуждает не крах SaaS, а перестройку корпоративного программного обеспечения вокруг AI.",
+        "levels": [
+          5,
+          3
         ],
         "is_new": false
       }
