@@ -4170,44 +4170,32 @@
   },
   {
     "date": "2026-09-29",
-    "generated_at": "2026-09-29T05:01:47.755Z",
+    "generated_at": "2026-09-29T17:02:37.679Z",
     "trends": [
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 93,
-        "category": "accelerating",
-        "rationale": "Вчера было 88; сегодня импульс усилился до 93 из-за оценки Bain о $6 трлн необходимой выручки, попытки Nvidia привлечь страховщиков и сделки Samsung Helix на $1 млрд.",
-        "levels": [
-          9,
-          5,
-          2
-        ],
-        "is_new": false
-      },
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
         "momentum": 100,
         "category": "accelerating",
-        "rationale": "Вчера было 98; сегодня тренд достиг 100 из-за удержания Astra, рабочей группы OpenAI в Australia, ScopeBench и работы о каскадных атаках на навыки агентов.",
+        "rationale": "Вчера тренд уже был на 100; сегодня его удерживают утечка адреса через Meta Muse, раунд Reco на $55 млн и новые методы проверки источников и памяти агентов.",
         "levels": [
           4,
           6,
-          8
+          8,
+          9
         ],
         "is_new": false
       },
       {
         "id": "agentic-platforms",
         "name": "Агентные AI-платформы",
-        "momentum": 96,
+        "momentum": 100,
         "category": "accelerating",
-        "rationale": "Вчера было 95; сегодня небольшой рост связан с открытием Shopify checkout для браузерных агентов и переходом Google от Gemini Gems к навыкам.",
+        "rationale": "Вчера было 96; сегодня Meta расширяет Muse на малый бизнес, Instinct сообщает о росте транзакций, а Dazzle строит персонального агента на фотоданных.",
         "levels": [
           5,
           4,
-          6
+          8
         ],
         "is_new": false
       },
@@ -4216,99 +4204,99 @@
         "name": "Регулирование AI",
         "momentum": 100,
         "category": "accelerating",
-        "rationale": "Вчера было 98; сегодня импульс усилили инцидент OpenAI с правительственными сайтами Australia и встреча руководителей Nvidia, Anthropic и Palantir с президентом США по AI-рискам.",
+        "rationale": "Вчера было 100; сегодня добавились America.gov, встреча Trump с руководителями AI-компаний, инициатива договора США и China и сигнал о Argentina как мягкой юрисдикции.",
         "levels": [
           8,
-          4,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-evaluation-governance",
-        "name": "Управление через оценку AI",
-        "momentum": 90,
-        "category": "accelerating",
-        "rationale": "Вчера было 85; сегодня рост поддержали ScopeBench, BioEVAL, работа о судье кода, который отказывается угадывать, и синтетическая проверка объяснимого AI.",
-        "levels": [
-          6,
-          7,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 42,
-        "category": "accelerating",
-        "rationale": "Сегодня появился сильный сигнал от Modal Labs, которая близка к раунду $750 млн при оценке $15,75 млрд как поставщик инференса.",
-        "levels": [
-          9,
-          5,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": -72,
-        "category": "collapsing",
-        "rationale": "Вчера было -67; сегодня отрицательный импульс усилился, потому что OpenAI удержала Astra из-за оценок безопасности, а Anthropic раскрыла крупные убытки в проспекте IPO.",
-        "levels": [
-          4,
-          9,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 68,
-        "category": "accelerating",
-        "rationale": "Вчера было 63; сегодня тренд усилился через раскол Climate Week вокруг AI-дата-центров и отмену проекта Goodman в Sydney после сопротивления жителей.",
-        "levels": [
-          1,
           2,
           9
         ],
         "is_new": false
       },
       {
-        "id": "classic-saas",
-        "name": "Классический SaaS под давлением AI",
-        "momentum": 20,
-        "category": "emerging",
-        "rationale": "Вчера было 14; сегодня Shopify открыл checkout для агентов, а Google заменяет Gems на навыки, что усиливает давление на традиционные интерфейсы программных сервисов.",
+        "id": "ai-in-government",
+        "name": "AI в госсекторе",
+        "momentum": 52,
+        "category": "accelerating",
+        "rationale": "Запуск America.gov показывает переход AI в гражданский государственный интерфейс, где галлюцинации моделей становятся административной проблемой.",
         "levels": [
-          5,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "synthetic-data",
-        "name": "Синтетические данные",
-        "momentum": 18,
-        "category": "emerging",
-        "rationale": "Сегодня сигналом стала работа о синтетической эталонной истине для оценки объяснимого AI, где синтетическая рамка используется для закрытия дефицита надежных объяснений.",
-        "levels": [
+          8,
           6
         ],
         "is_new": false
       },
       {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 35,
+        "id": "ai-evaluation-governance",
+        "name": "Управление через оценку AI",
+        "momentum": 95,
+        "category": "accelerating",
+        "rationale": "Вчера было 90; сегодня появились source-aware проверка MCP-агентов, CPB для памяти агентов, оценка голосовых агентов и работа о смещениях рассуждающих моделей.",
+        "levels": [
+          6,
+          8,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 88,
+        "category": "accelerating",
+        "rationale": "Вчера было 93; сегодня сигнал слабее финансовых событий утра, но Utility Dive добавил конкретные препятствия для дата-центров: труд, оборудование и местное сопротивление.",
+        "levels": [
+          2,
+          9,
+          3
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": -64,
+        "category": "collapsing",
+        "rationale": "Вчера было -72; негатив сохраняется из-за сообщений о предупреждениях сотрудников OpenAI и рисках Anthropic в IPO-подаче, но рост выручки OpenAI до почти $70 млрд смягчает спад.",
+        "levels": [
+          9,
+          8,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "classic-saas",
+        "name": "Классический SaaS под давлением AI",
+        "momentum": 30,
         "category": "emerging",
-        "rationale": "Сегодня тренд поддержан материалом Bloomberg о пяти узлах гонки AI между США и China и рабочей группой OpenAI в Australia после инцидента с государственными сайтами.",
+        "rationale": "Вчера было 20; сегодня Meta расширяет Muse на малый бизнес, Dazzle переносит персонализацию в AI-интерфейс, а Instinct показывает рост агентных транзакций.",
+        "levels": [
+          5,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 32,
+        "category": "emerging",
+        "rationale": "Сегодня HR Dive поставил вопрос развития старших специалистов, если AI забирает младшую работу, а Financial Times показал сохранение ценности языковых и культурных навыков.",
+        "levels": [
+          3,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": 28,
+        "category": "emerging",
+        "rationale": "Ars Technica сообщил, что China может разрешить ByteDance и Alibaba покупать запрещенные чипы Nvidia, что делает контроль GPU подвижным элементом геоэкономического торга.",
         "levels": [
           8,
-          9,
-          4
+          4,
+          5
         ],
         "is_new": false
       }
