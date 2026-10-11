@@ -50,7 +50,7 @@
     .modebar button { flex:1; padding:18px; border:0; background:transparent; font-size:20px; }
     .modebar [aria-selected="true"] { background:#183f32; color:white; }
     main h2:first-of-type { margin-top:0; }
-    main img { max-width:100%; max-height:220px; object-fit:contain; display:block; margin:16px auto; }
+    main img { max-width:100%; height:180px; object-fit:contain; display:block; margin:16px auto; }
     .step-card { border:1px solid #c9d6c7; border-radius:20px; margin:24px 0; padding:clamp(18px,3vw,32px); background:#fff; }
     .step-card h4,.step-card h5 { font-size:26px; margin:0 0 20px; }
     .step-card .input { background:#edf0e8; padding:16px; border-radius:10px; }
@@ -317,7 +317,7 @@
 <p>Как именно — подсказка</p>
 <p>Эта схема рассчитана на MacBook из памятки с 48 ГБ объединённой памяти. Для ноутбука с Windows сначала нужна отдельная проверка GPU и памяти; эти требования нельзя автоматически переносить на него.</p>
 
-<label class="done"><input data-step="_10" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_11">Проверьте свободное место</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="155" rx="10" width="280" x="100" y="35"></rect><rect height="28" rx="4" width="220" x="130" y="125"></rect><path d="M240 125v28"></path><text x="240" y="90">Место на диске</text><text class="tiny" x="240" y="177">Оставьте запас для модели и документов</text></svg>
+<label class="done"><input data-step="_10" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_11">2. Проверьте свободное место</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="155" rx="10" width="280" x="100" y="35"></rect><rect height="28" rx="4" width="220" x="130" y="125"></rect><path d="M240 125v28"></path><text x="240" y="90">Место на диске</text><text class="tiny" x="240" y="177">Оставьте запас для модели и документов</text></svg>
 <p class="input"><strong>На входе:</strong> Включённый Mac с доступом к настройкам хранилища.</p>
 <p class="actor"><strong>Кто делает:</strong> Вы.</p>
 <p class="action"><strong>Действие:</strong> Откройте настройки хранилища. Освободите место для файла модели и рабочих документов.</p>
@@ -326,7 +326,7 @@
 <p>Как именно — подсказка</p>
 <p>Размер выбранного файла указан на странице скачивания. Практический резерв: размер модели плюс ещё 20–30 ГБ. Память 48 ГБ и место SSD — разные характеристики.</p>
 
-<label class="done"><input data-step="_11" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_12">Установите программу запуска</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="320" x="80" y="25"></rect><path d="M80 60h320"></path><circle cx="100" cy="42" r="3"></circle><text x="240" y="110">llama.cpp</text><path d="M240 125v45m-15-15 15 15 15-15"></path></svg>
+<label class="done"><input data-step="_11" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_12">3. Установите программу запуска</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="320" x="80" y="25"></rect><path d="M80 60h320"></path><circle cx="100" cy="42" r="3"></circle><text x="240" y="110">llama.cpp</text><path d="M240 125v45m-15-15 15 15 15-15"></path></svg>
 <p class="input"><strong>На входе:</strong> Подготовленный Mac, свободное место и права на установку программы.</p>
 <p class="actor"><strong>Кто делает:</strong> Настройщик или вы, если работаете с терминалом.</p>
 <p class="action"><strong>Действие:</strong> Установите llama.cpp для своей операционной системы.</p>
@@ -335,7 +335,7 @@
 <p>Как именно — подсказка</p>
 <p><a href="https://github.com/ggml-org/llama.cpp">Официальный проект llama.cpp ↗</a>. Это технический шаг: если вы не работаете с терминалом, передайте настройщику эту карточку и следующие две. Попросите установить совместимую сборку, записать версию и сделать ярлык запуска. Сам файл модели скачивается отдельно.</p>
 
-<label class="done"><input data-step="_12" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_13">Скачайте файл модели</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><path d="M125 30h140l40 40v120H125zM265 30v40h40"></path><text x="210" y="115">Q8 GGUF</text><text class="tiny" x="210" y="150">модель — отдельный файл</text><path d="M345 50v105m-20-20 20 20 20-20"></path></svg>
+<label class="done"><input data-step="_12" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_13">4. Скачайте файл модели</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><path d="M125 30h140l40 40v120H125zM265 30v40h40"></path><text x="210" y="115">Q8 GGUF</text><text class="tiny" x="210" y="150">модель — отдельный файл</text><path d="M345 50v105m-20-20 20 20 20-20"></path></svg>
 <p class="input"><strong>На входе:</strong> Установленный llama.cpp и выбранный формат Q8 GGUF для Mac 48 ГБ.</p>
 <p class="actor"><strong>Кто делает:</strong> Настройщик или вы.</p>
 <p class="action"><strong>Действие:</strong> Скачайте Qwen3.8-27B-Q8_0.gguf по ссылке ниже и сохраните в папку «Модели».</p>
@@ -344,7 +344,7 @@
 <p>Как именно — подсказка</p>
 <p><a href="https://huggingface.co/ggml-org/Qwen3.8-27B-GGUF/tree/main">Файлы Qwen3.8-27B GGUF ↗</a>. Перед загрузкой проверьте, что репозиторий доступен и ваша версия llama.cpp поддерживает модель. Если файлов несколько и непонятно, какой нужен, настройщик должен выбрать комплект. Начните с текста; изображения требуют отдельной проверки поддержки.</p>
 
-<label class="done"><input data-step="_13" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_14">Откройте свой чат</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="360" x="60" y="25"></rect><path d="M60 60h360"></path><text class="tiny" x="240" y="48">127.0.0.1:8080</text><rect height="35" rx="8" width="210" x="180" y="82"></rect><rect height="35" rx="8" width="250" x="85" y="133"></rect><text class="tiny" x="280" y="105">Сократи этот текст</text><text class="tiny" x="205" y="157">Готово. Вот краткая версия…</text></svg>
+<label class="done"><input data-step="_13" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_14">5. Откройте свой чат</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="360" x="60" y="25"></rect><path d="M60 60h360"></path><text class="tiny" x="240" y="48">127.0.0.1:8080</text><rect height="35" rx="8" width="210" x="180" y="82"></rect><rect height="35" rx="8" width="250" x="85" y="133"></rect><text class="tiny" x="280" y="105">Сократи этот текст</text><text class="tiny" x="205" y="157">Готово. Вот краткая версия…</text></svg>
 <p class="input"><strong>На входе:</strong> llama-server установлен; файл GGUF скачан, его путь известен.</p>
 <p class="actor"><strong>Кто делает:</strong> Настройщик.</p>
 <p class="action"><strong>Действие:</strong> Запустите модель, затем откройте её локальный адрес в браузере. Вставьте небольшой текст и попросите сократить его до трёх пунктов.</p>
@@ -356,7 +356,7 @@
 </code></pre>
 <p>Команда вводится одной строкой. Откройте <code>http://127.0.0.1:8080</code>. Пока не подключайте внешние API и инструменты. Ошибка при загрузке — повод проверить файл и совместимость, а не покупать новый компьютер.</p>
 
-<label class="done"><input data-step="_14" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_15">Проверьте, что всё работает</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="175" rx="6" width="130" x="90" y="25"></rect><path d="M110 65l10 10 20-25m-30 60 10 10 20-25m-30 60 10 10 20-25M155 65h40m-40 45h40m-40 45h40"></path><path d="M275 110l30 30 65-85"></path><text class="tiny" x="315" y="190">Результат проверяет человек</text></svg>
+<label class="done"><input data-step="_14" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_15">6. Проверьте, что всё работает</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="175" rx="6" width="130" x="90" y="25"></rect><path d="M110 65l10 10 20-25m-30 60 10 10 20-25m-30 60 10 10 20-25M155 65h40m-40 45h40m-40 45h40"></path><path d="M275 110l30 30 65-85"></path><text class="tiny" x="315" y="190">Результат проверяет человек</text></svg>
 <p class="input"><strong>На входе:</strong> Открытый локальный чат, пять ваших контрольных вопросов и один небольшой тестовый текст.</p>
 <p class="actor"><strong>Кто делает:</strong> Вы.</p>
 <p class="action"><strong>Действие:</strong> Отключите интернет и повторите запрос. Затем выполните десять своих обычных задач и проверьте ответы.</p>
@@ -378,7 +378,7 @@
 <p>Как именно — подсказка</p>
 <p>Основной маршрут — Mac mini из памятки с 48 ГБ. Нужен подходящий кабель HDMI или USB-C к вашему монитору. Если покупаете новый Mac mini и бюджет позволяет, 64 ГБ дадут больше запаса для длинного контекста и других программ. ПК с RTX 4090 48 ГБ собирайте и проверяйте отдельно: перепайка памяти не входит в эту инструкцию.</p>
 
-<label class="done"><input data-step="_16" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_17">Проверьте свободное место</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="155" rx="10" width="280" x="100" y="35"></rect><rect height="28" rx="4" width="220" x="130" y="125"></rect><path d="M240 125v28"></path><text x="240" y="90">Место на диске</text><text class="tiny" x="240" y="177">Оставьте запас для модели и документов</text></svg>
+<label class="done"><input data-step="_16" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_17">2. Проверьте свободное место</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="155" rx="10" width="280" x="100" y="35"></rect><rect height="28" rx="4" width="220" x="130" y="125"></rect><path d="M240 125v28"></path><text x="240" y="90">Место на диске</text><text class="tiny" x="240" y="177">Оставьте запас для модели и документов</text></svg>
 <p class="input"><strong>На входе:</strong> Включённый Mac с доступом к настройкам хранилища.</p>
 <p class="actor"><strong>Кто делает:</strong> Вы.</p>
 <p class="action"><strong>Действие:</strong> Откройте настройки хранилища. Освободите место для файла модели и рабочих документов.</p>
@@ -387,7 +387,7 @@
 <p>Как именно — подсказка</p>
 <p>Размер выбранного файла указан на странице скачивания. Практический резерв: размер модели плюс ещё 20–30 ГБ. Память 48 ГБ и место SSD — разные характеристики.</p>
 
-<label class="done"><input data-step="_17" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_18">Установите программу запуска</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="320" x="80" y="25"></rect><path d="M80 60h320"></path><circle cx="100" cy="42" r="3"></circle><text x="240" y="110">llama.cpp</text><path d="M240 125v45m-15-15 15 15 15-15"></path></svg>
+<label class="done"><input data-step="_17" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_18">3. Установите программу запуска</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="320" x="80" y="25"></rect><path d="M80 60h320"></path><circle cx="100" cy="42" r="3"></circle><text x="240" y="110">llama.cpp</text><path d="M240 125v45m-15-15 15 15 15-15"></path></svg>
 <p class="input"><strong>На входе:</strong> Подготовленный Mac, свободное место и права на установку программы.</p>
 <p class="actor"><strong>Кто делает:</strong> Настройщик или вы, если работаете с терминалом.</p>
 <p class="action"><strong>Действие:</strong> Установите llama.cpp для своей операционной системы.</p>
@@ -396,7 +396,7 @@
 <p>Как именно — подсказка</p>
 <p><a href="https://github.com/ggml-org/llama.cpp">Официальный проект llama.cpp ↗</a>. Это технический шаг: если вы не работаете с терминалом, передайте настройщику эту карточку и следующие две. Попросите установить совместимую сборку, записать версию и сделать ярлык запуска. Сам файл модели скачивается отдельно.</p>
 
-<label class="done"><input data-step="_18" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_19">Скачайте файл модели</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><path d="M125 30h140l40 40v120H125zM265 30v40h40"></path><text x="210" y="115">Q8 GGUF</text><text class="tiny" x="210" y="150">модель — отдельный файл</text><path d="M345 50v105m-20-20 20 20 20-20"></path></svg>
+<label class="done"><input data-step="_18" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_19">4. Скачайте файл модели</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><path d="M125 30h140l40 40v120H125zM265 30v40h40"></path><text x="210" y="115">Q8 GGUF</text><text class="tiny" x="210" y="150">модель — отдельный файл</text><path d="M345 50v105m-20-20 20 20 20-20"></path></svg>
 <p class="input"><strong>На входе:</strong> Установленный llama.cpp и выбранный формат Q8 GGUF для Mac 48 ГБ.</p>
 <p class="actor"><strong>Кто делает:</strong> Настройщик или вы.</p>
 <p class="action"><strong>Действие:</strong> Скачайте Qwen3.8-27B-Q8_0.gguf по ссылке ниже и сохраните в папку «Модели».</p>
@@ -405,7 +405,7 @@
 <p>Как именно — подсказка</p>
 <p><a href="https://huggingface.co/ggml-org/Qwen3.8-27B-GGUF/tree/main">Файлы Qwen3.8-27B GGUF ↗</a>. Перед загрузкой проверьте, что репозиторий доступен и ваша версия llama.cpp поддерживает модель. Если файлов несколько и непонятно, какой нужен, настройщик должен выбрать комплект. Начните с текста; изображения требуют отдельной проверки поддержки.</p>
 
-<label class="done"><input data-step="_19" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_20">Откройте свой чат</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="360" x="60" y="25"></rect><path d="M60 60h360"></path><text class="tiny" x="240" y="48">127.0.0.1:8080</text><rect height="35" rx="8" width="210" x="180" y="82"></rect><rect height="35" rx="8" width="250" x="85" y="133"></rect><text class="tiny" x="280" y="105">Сократи этот текст</text><text class="tiny" x="205" y="157">Готово. Вот краткая версия…</text></svg>
+<label class="done"><input data-step="_19" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_20">5. Откройте свой чат</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="360" x="60" y="25"></rect><path d="M60 60h360"></path><text class="tiny" x="240" y="48">127.0.0.1:8080</text><rect height="35" rx="8" width="210" x="180" y="82"></rect><rect height="35" rx="8" width="250" x="85" y="133"></rect><text class="tiny" x="280" y="105">Сократи этот текст</text><text class="tiny" x="205" y="157">Готово. Вот краткая версия…</text></svg>
 <p class="input"><strong>На входе:</strong> llama-server установлен; файл GGUF скачан, его путь известен.</p>
 <p class="actor"><strong>Кто делает:</strong> Настройщик.</p>
 <p class="action"><strong>Действие:</strong> Запустите модель, затем откройте её локальный адрес в браузере. Вставьте небольшой текст и попросите сократить его до трёх пунктов.</p>
@@ -417,7 +417,7 @@
 </code></pre>
 <p>Команда вводится одной строкой. Откройте <code>http://127.0.0.1:8080</code>. Пока не подключайте внешние API и инструменты. Ошибка при загрузке — повод проверить файл и совместимость, а не покупать новый компьютер.</p>
 
-<label class="done"><input data-step="_20" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_21">Проверьте, что всё работает</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="175" rx="6" width="130" x="90" y="25"></rect><path d="M110 65l10 10 20-25m-30 60 10 10 20-25m-30 60 10 10 20-25M155 65h40m-40 45h40m-40 45h40"></path><path d="M275 110l30 30 65-85"></path><text class="tiny" x="315" y="190">Результат проверяет человек</text></svg>
+<label class="done"><input data-step="_20" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_21">6. Проверьте, что всё работает</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="175" rx="6" width="130" x="90" y="25"></rect><path d="M110 65l10 10 20-25m-30 60 10 10 20-25m-30 60 10 10 20-25M155 65h40m-40 45h40m-40 45h40"></path><path d="M275 110l30 30 65-85"></path><text class="tiny" x="315" y="190">Результат проверяет человек</text></svg>
 <p class="input"><strong>На входе:</strong> Открытый локальный чат, пять ваших контрольных вопросов и один небольшой тестовый текст.</p>
 <p class="actor"><strong>Кто делает:</strong> Вы.</p>
 <p class="action"><strong>Действие:</strong> Отключите интернет и повторите запрос. Затем выполните десять своих обычных задач и проверьте ответы.</p>
@@ -445,7 +445,7 @@
 <p>Как соединить компоненты</p>
 <p>Провайдер чата — совместимый API llama-server на Mac или vLLM на NVIDIA. Для краткого документа можно передать весь текст; для коллекции настройте локальную embedding-модель и индекс. <a href="https://docs.openwebui.com/features/workspace/knowledge/">Инструкция базы знаний ↗</a>. В Docker адрес 127.0.0.1 указывает на сам контейнер: настройщик выбирает адрес, доступный из контейнера. Сканы сначала требуют распознавания текста. Это дополнительная настройка, не часть запуска модели.</p>
 
-<label class="done"><input data-step="_23" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_24">Подключите агента · по желанию</h5><svg aria-label="Подключите агента · по желанию" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="110" rx="12" width="180" x="25" y="50"></rect><rect height="110" rx="12" width="180" x="275" y="50"></rect><path d="M210 105h58m-12-10 12 10-12 10"></path><text x="115" y="111">Модель + харнес</text><text x="365" y="111">Готовый файл</text><text class="tiny" x="240" y="200">Один агент · одна пробная папка</text></svg>
+<label class="done"><input data-step="_23" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_24">8. Подключите агента · по желанию</h5><svg aria-label="Подключите агента · по желанию" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="110" rx="12" width="180" x="25" y="50"></rect><rect height="110" rx="12" width="180" x="275" y="50"></rect><path d="M210 105h58m-12-10 12 10-12 10"></path><text x="115" y="111">Модель + харнес</text><text x="365" y="111">Готовый файл</text><text class="tiny" x="240" y="200">Один агент · одна пробная папка</text></svg>
 <p><a href="#connect-personal">Открыть подробную сборку: модель → харнес → инструменты → результат</a></p>
 <p class="input"><strong>На входе:</strong> Проверенная модель с API и пробная папка с двумя текстовыми файлами.</p>
 <p class="actor"><strong>Кто делает:</strong> Вы / ответственный за этот шаг.</p>
@@ -814,7 +814,7 @@
 <p>Сервер в сборе + ИБП + место с охлаждением + внутренняя сеть</p>
 <p>Также нужны: рабочие компьютеры сотрудников, модель и интерфейс, разрешённые документы, администратор и владелец задачи.</p>
 
-<article class="step-card"><h4 id="_36">01. Выберите первую задачу</h4><svg aria-label="Выберите первую задачу" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="180" rx="8" width="150" x="95" y="20"></rect><path d="M120 60h95m-95 35h95m-95 35h70"></path><path d="M290 100l30 30 65-70"></path><text class="tiny" x="340" y="180">Задача + критерий успеха</text></svg>
+<article class="step-card"><h4 id="_36">1. Выберите первую задачу</h4><svg aria-label="Выберите первую задачу" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="180" rx="8" width="150" x="95" y="20"></rect><path d="M120 60h95m-95 35h95m-95 35h70"></path><path d="M290 100l30 30 65-70"></path><text class="tiny" x="340" y="180">Задача + критерий успеха</text></svg>
 <p class="input"><strong>На входе:</strong> Владелец бизнес-задачи и два будущих пользователя, готовые дать примеры работы.</p>
 <p class="actor"><strong>Кто делает:</strong> Владелец задачи и будущие пользователи.</p>
 <p class="action"><strong>Действие:</strong> Руководитель и будущие пользователи выбирают один рабочий сценарий и собирают 10–20 примеров.</p>
@@ -823,7 +823,7 @@
 <p>Подсказка для ответственного</p>
 <p>Зафиксируйте длину документов, ожидаемое число параллельных запросов и критерии качества. 30 сотрудников с доступом не означают 30 одновременных генераций.</p>
 
-<label class="done"><input data-step="_36" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_37">Получите пилотный стенд</h4><svg aria-label="Получите пилотный стенд" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="6" width="150" x="70" y="25"></rect><rect height="35" rx="3" width="120" x="85" y="45"></rect><rect height="35" rx="3" width="120" x="85" y="95"></rect><circle cx="190" cy="62" r="4"></circle><circle cx="190" cy="112" r="4"></circle><rect height="110" rx="5" width="95" x="295" y="70"></rect><path d="M330 100l-12 30h25l-12 28"></path><text class="tiny" x="145" y="218">Сервер в сборе</text><text class="tiny" x="342" y="205">ИБП</text></svg>
+<label class="done"><input data-step="_36" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_37">2. Получите пилотный стенд</h4><svg aria-label="Получите пилотный стенд" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="6" width="150" x="70" y="25"></rect><rect height="35" rx="3" width="120" x="85" y="45"></rect><rect height="35" rx="3" width="120" x="85" y="95"></rect><circle cx="190" cy="62" r="4"></circle><circle cx="190" cy="112" r="4"></circle><rect height="110" rx="5" width="95" x="295" y="70"></rect><path d="M330 100l-12 30h25l-12 28"></path><text class="tiny" x="145" y="218">Сервер в сборе</text><text class="tiny" x="342" y="205">ИБП</text></svg>
 <p class="input"><strong>На входе:</strong> Задачи и критерии шага 1; согласованные требования к данным и вычислениям.</p>
 <p class="actor"><strong>Кто делает:</strong> Администратор и ответственный за закупку.</p>
 <p class="action"><strong>Действие:</strong> Договоритесь о тесте у поставщика, аренде или использовании имеющегося подходящего сервера. Окончательную закупку утвердите после шага 8.</p>
@@ -832,7 +832,7 @@
 <p>Подсказка для ответственного</p>
 <p>Сверьте точную версию GPU, объём RAM и SSD, питание, охлаждение, сеть, цену с налогами и доставкой. ИБП подбирается под мощность и нужное время автономии. Пассивные Server Edition требуют подходящего серверного охлаждения.</p>
 
-<label class="done"><input data-step="_37" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_38">Подключите сервер</h4><svg aria-label="Подключите сервер" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="130" rx="6" width="110" x="50" y="35"></rect><rect height="75" rx="5" width="85" x="215" y="90"></rect><rect height="40" rx="4" width="95" x="350" y="35"></rect><path d="M160 135h55m85 0h35v50m-175-110h50V55h140"></path><text class="tiny" x="100" y="195">Сервер</text><text class="tiny" x="255" y="195">ИБП → питание</text><text class="tiny" x="395" y="105">Сеть</text></svg>
+<label class="done"><input data-step="_37" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_38">3. Подключите сервер</h4><svg aria-label="Подключите сервер" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="130" rx="6" width="110" x="50" y="35"></rect><rect height="75" rx="5" width="85" x="215" y="90"></rect><rect height="40" rx="4" width="95" x="350" y="35"></rect><path d="M160 135h55m85 0h35v50m-175-110h50V55h140"></path><text class="tiny" x="100" y="195">Сервер</text><text class="tiny" x="255" y="195">ИБП → питание</text><text class="tiny" x="395" y="105">Сеть</text></svg>
 <p class="input"><strong>На входе:</strong> Пилотный стенд, схема сети и условия доступа из шага 2.</p>
 <p class="actor"><strong>Кто делает:</strong> Инженер.</p>
 <p class="action"><strong>Действие:</strong> Для собственного стенда инженер подключает питание через ИБП и внутреннюю сеть. Для арендованного стенда проверяет защищённый доступ и условия работы с данными.</p>
@@ -841,7 +841,7 @@
 <p>Подсказка для ответственного</p>
 <p>Проверьте электрическую мощность, вентиляцию, шум, крепление и сетевые порты. Установка в стойку и электрические подключения выполняются специалистом. Схема показывает принцип соединения; конкретные кабели определяет спецификация.</p>
 
-<label class="done"><input data-step="_38" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_39">Проверьте оборудование</h4><svg aria-label="Проверьте оборудование" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="175" rx="7" width="350" x="65" y="25"></rect><path d="M65 60h350"></path><text x="240" y="105">GPU 1  ✓</text><text x="240" y="145">GPU 2  ✓</text><text class="tiny" x="240" y="180">Для конфигурации с двумя картами</text></svg>
+<label class="done"><input data-step="_38" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_39">4. Проверьте оборудование</h4><svg aria-label="Проверьте оборудование" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="175" rx="7" width="350" x="65" y="25"></rect><path d="M65 60h350"></path><text x="240" y="105">GPU 1  ✓</text><text x="240" y="145">GPU 2  ✓</text><text class="tiny" x="240" y="180">Для конфигурации с двумя картами</text></svg>
 <p class="input"><strong>На входе:</strong> Доступ администратора к включённому серверу и спецификация оборудования.</p>
 <p class="actor"><strong>Кто делает:</strong> Инженер.</p>
 <p class="action"><strong>Действие:</strong> Инженер устанавливает ОС и драйвер GPU и запускает аппаратный тест.</p>
@@ -850,7 +850,7 @@
 <p>Подсказка для ответственного</p>
 <p>Сохраните версии ОС, драйвера и результат проверки. Для конфигурации с одной картой должна определяться одна GPU. Объём памяти двух карт не становится автоматически общей памятью одного запроса.</p>
 
-<label class="done"><input data-step="_39" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_40">Запустите внутренний чат</h4><svg aria-label="Запустите внутренний чат" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="155" rx="6" width="130" x="50" y="30"></rect><text x="115" y="100">Модель</text><text class="tiny" x="115" y="135">на сервере</text><path d="M190 110h75m-15-12 15 12-15 12"></path><rect height="115" rx="6" width="160" x="280" y="50"></rect><path d="M280 80h160"></path><text x="360" y="115">Чат</text><text class="tiny" x="360" y="145">в браузере</text></svg>
+<label class="done"><input data-step="_39" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_40">5. Запустите внутренний чат</h4><svg aria-label="Запустите внутренний чат" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="155" rx="6" width="130" x="50" y="30"></rect><text x="115" y="100">Модель</text><text class="tiny" x="115" y="135">на сервере</text><path d="M190 110h75m-15-12 15 12-15 12"></path><rect height="115" rx="6" width="160" x="280" y="50"></rect><path d="M280 80h160"></path><text x="360" y="115">Чат</text><text class="tiny" x="360" y="145">в браузере</text></svg>
 <p class="input"><strong>На входе:</strong> Проверенные GPU, ОС и драйвер, выбранная модель FP8 и доступный из сети сервер.</p>
 <p class="actor"><strong>Кто делает:</strong> Администратор.</p>
 <p class="action"><strong>Действие:</strong> Инженер запускает Qwen3.8-27B-FP8 через vLLM и подключает Open WebUI к его внутреннему API.</p>
@@ -859,7 +859,7 @@
 <p>Подсказка для ответственного</p>
 <p>Используйте официальные веса <a href="https://huggingface.co/Qwen/Qwen3.8-27B-FP8">Qwen/Qwen3.8-27B-FP8 ↗</a> и рецепт <code>vllm serve Qwen/Qwen3.8-27B-FP8</code>. Зафиксируйте версии модели и <a href="https://docs.vllm.ai/">vLLM ↗</a>. Не выставляйте незащищённый API в интернет. Для двух GPU способ запуска выбирается по измерениям: одна реплика на каждом GPU с балансировкой либо другой режим после теста.</p>
 
-<label class="done"><input data-step="_40" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_41">Настройте доступ к документам</h4><svg aria-label="Настройте доступ к документам" class="ikeapic" role="img" viewbox="0 0 480 220"><circle cx="110" cy="45" r="20"></circle><path d="M75 125V95q35-45 70 0v30"></path><rect height="65" rx="5" width="70" x="210" y="65"></rect><path d="M225 65V45a20 20 0 0 1 40 0v20m-105 50h50m70 0h45"></path><rect height="125" rx="4" width="85" x="325" y="35"></rect><path d="M340 60h55m-55 25h55m-55 25h35"></path><text class="tiny" x="240" y="200">Сотрудник → права → разрешённые документы</text></svg>
+<label class="done"><input data-step="_40" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_41">6. Настройте доступ к документам</h4><svg aria-label="Настройте доступ к документам" class="ikeapic" role="img" viewbox="0 0 480 220"><circle cx="110" cy="45" r="20"></circle><path d="M75 125V95q35-45 70 0v30"></path><rect height="65" rx="5" width="70" x="210" y="65"></rect><path d="M225 65V45a20 20 0 0 1 40 0v20m-105 50h50m70 0h45"></path><rect height="125" rx="4" width="85" x="325" y="35"></rect><path d="M340 60h55m-55 25h55m-55 25h35"></path><text class="tiny" x="240" y="200">Сотрудник → права → разрешённые документы</text></svg>
 <p class="input"><strong>На входе:</strong> Работающий Open WebUI, два тестовых пользователя и разрешённые документы.</p>
 <p class="actor"><strong>Кто делает:</strong> Администратор и владелец данных.</p>
 <p class="action"><strong>Действие:</strong> Создайте персональные учётные записи в Open WebUI и подключите небольшой набор документов с локальным поиском.</p>
@@ -868,7 +868,7 @@
 <p>Подсказка для ответственного</p>
 <p>Настройте извлечение текста, локальную embedding-модель (кандидат — Qwen3-Embedding-0.6B из каталога), индекс, роли, внутренний HTTPS и проверку прав при поиске и выдаче. Для сканов добавьте OCR. Проверьте тестовыми пользователями обе ситуации: разрешённый документ доступен, чужой — недоступен. Проверьте исходящие подключения и внешние интеграции.</p>
 
-<label class="done"><input data-step="_41" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_42">Проверьте резервную копию</h4><svg aria-label="Проверьте резервную копию" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="120" rx="6" width="120" x="50" y="45"></rect><rect height="120" rx="6" width="120" x="310" y="45"></rect><path d="M185 80h110m-15-10 15 10-15 10m15 55H185m15-10-15 10 15 10"></path><text x="110" y="110">Данные</text><text x="370" y="110">Копия</text><text class="tiny" x="240" y="65">Сохранить</text><text class="tiny" x="240" y="175">Восстановить</text></svg>
+<label class="done"><input data-step="_41" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_42">7. Проверьте резервную копию</h4><svg aria-label="Проверьте резервную копию" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="120" rx="6" width="120" x="50" y="45"></rect><rect height="120" rx="6" width="120" x="310" y="45"></rect><path d="M185 80h110m-15-10 15 10-15 10m15 55H185m15-10-15 10 15 10"></path><text x="110" y="110">Данные</text><text x="370" y="110">Копия</text><text class="tiny" x="240" y="65">Сохранить</text><text class="tiny" x="240" y="175">Восстановить</text></svg>
 <p class="input"><strong>На входе:</strong> Настроенный пилот, список сохраняемых данных и отдельное хранилище копий.</p>
 <p class="actor"><strong>Кто делает:</strong> Администратор.</p>
 <p class="action"><strong>Действие:</strong> Администратор сохраняет настройки и данные и пробует восстановить их в тестовом окружении.</p>
@@ -877,7 +877,7 @@
 <p>Подсказка для ответственного</p>
 <p>В копии включите настройки Open WebUI, пользователей, документы и индекс либо способ его восстановления; затем согласуйте сроки хранения и допустимую потерю данных. Копию храните отдельно от основного сервера. Две GPU в одном корпусе не обеспечивают отказоустойчивость сервера.</p>
 
-<label class="done"><input data-step="_42" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_43">Проверьте работу под нагрузкой</h4><svg aria-label="Проверьте работу под нагрузкой" class="ikeapic" role="img" viewbox="0 0 480 220"><path d="M60 175V35m0 140h360M90 150l65-15 65-40 65 10 90-60"></path><text class="tiny" x="95" y="205">1</text><text class="tiny" x="155" y="205">5</text><text class="tiny" x="220" y="205">10</text><text class="tiny" x="285" y="205">20</text><text class="tiny" x="375" y="205">30 запросов</text><text class="tiny" x="240" y="25">Проверяем время ответа и качество</text></svg>
+<label class="done"><input data-step="_42" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_43">8. Проверьте работу под нагрузкой</h4><svg aria-label="Проверьте работу под нагрузкой" class="ikeapic" role="img" viewbox="0 0 480 220"><path d="M60 175V35m0 140h360M90 150l65-15 65-40 65 10 90-60"></path><text class="tiny" x="95" y="205">1</text><text class="tiny" x="155" y="205">5</text><text class="tiny" x="220" y="205">10</text><text class="tiny" x="285" y="205">20</text><text class="tiny" x="375" y="205">30 запросов</text><text class="tiny" x="240" y="25">Проверяем время ответа и качество</text></svg>
 <p class="input"><strong>На входе:</strong> Работающий пилот и критерии времени и качества из шага 1.</p>
 <p class="actor"><strong>Кто делает:</strong> Инженер и владелец задачи.</p>
 <p class="action"><strong>Действие:</strong> Запустите типовые задачи при 1, 5, 10, 20 и 30 одновременных запросах.</p>
@@ -886,7 +886,7 @@
 <p>Подсказка для ответственного</p>
 <p>Измерьте время до первого токена, скорость выдачи, очередь и ошибки. Используйте одинаковые модель, документы и длину ответа; например, <a href="https://docs.vllm.ai/en/latest/cli/bench/serve/">vLLM bench serve ↗</a>. Если тест не пройден, настройте очередь или измените конфигурацию и повторите его.</p>
 
-<label class="done"><input data-step="_43" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_44">Передайте систему команде</h4><svg aria-label="Передайте систему команде" class="ikeapic" role="img" viewbox="0 0 480 220"><circle cx="100" cy="60" r="20"></circle><circle cx="240" cy="60" r="20"></circle><circle cx="380" cy="60" r="20"></circle><path d="M65 140v-35q35-45 70 0v35m70 0v-35q35-45 70 0v35m70 0v-35q35-45 70 0v35"></path><text class="tiny" x="100" y="180">Администратор</text><text class="tiny" x="240" y="180">Владелец задачи</text><text class="tiny" x="380" y="180">Сотрудники</text></svg>
+<label class="done"><input data-step="_43" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_44">9. Передайте систему команде</h4><svg aria-label="Передайте систему команде" class="ikeapic" role="img" viewbox="0 0 480 220"><circle cx="100" cy="60" r="20"></circle><circle cx="240" cy="60" r="20"></circle><circle cx="380" cy="60" r="20"></circle><path d="M65 140v-35q35-45 70 0v35m70 0v-35q35-45 70 0v35m70 0v-35q35-45 70 0v35"></path><text class="tiny" x="100" y="180">Администратор</text><text class="tiny" x="240" y="180">Владелец задачи</text><text class="tiny" x="380" y="180">Сотрудники</text></svg>
 <p class="input"><strong>На входе:</strong> Протокол пилота: качество, нагрузка, права и восстановление проверены.</p>
 <p class="actor"><strong>Кто делает:</strong> Администратор и владелец задачи.</p>
 <p class="action"><strong>Действие:</strong> По результатам пилота утвердите окончательную конфигурацию и закупку, если она нужна. На рабочем сервере повторите проверки шагов 4–8 и подключайте команду постепенно.</p>
