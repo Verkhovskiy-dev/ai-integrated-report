@@ -8,7 +8,7 @@
   <style>
     :root { --ink:#18342b; --muted:#62736a; --paper:#f5f4ee; --card:#fffefa; --line:#d9dfd5; --accent:#236747; --soft:#e8f0e3; }
     * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
+    html { scroll-behavior:auto; }
     body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif; }
     a { color:var(--accent); text-underline-offset:3px; }
     .hero { background:#183f32; color:#fff; padding:48px max(24px,calc((100vw - 1210px)/2)); }
@@ -45,6 +45,13 @@
     @media(max-width:900px) { .layout { display:block; padding:18px 14px 50px; } aside { position:static; max-height:none; margin-bottom:16px; } main { padding:25px; } }
     @media print { body { background:#fff; } .hero { color:#18342b; background:#fff; padding:0; } .hero .eyebrow { color:#62736a; } .layout { display:block; padding:0; } aside,.actions { display:none; } main { box-shadow:none; border:0; padding:0; } h2,h3,h4,h5 { break-after:avoid; } table,blockquote,pre { break-inside:avoid; } }
 
+    .start-here {padding:24px;background:#e8f0e3;border-radius:16px;margin:24px 0;}
+    .sample-download {display:inline-block;padding:7px 12px;background:#e8f0e3;border:1px solid #91a985;border-radius:8px;font-weight:650;}
+    .code-block {margin:18px 0;display:flex;flex-direction:column;align-items:stretch;}
+    .copy-code {align-self:flex-end;font-size:13px;padding:5px 12px;margin-bottom:5px;}
+    .code-block pre {margin:0;}
+    .wire-branches > div {border:1px solid #a9bba2;border-radius:14px;padding:8px;}
+    @media print {.copy-code {display:none;}}
     [hidden] { display:none!important; }
     .modebar { max-width:1212px; margin:24px auto 0; padding:8px; display:flex; gap:8px; background:#dae7d8; border-radius:18px; }
     .modebar button { flex:1; padding:18px; border:0; background:transparent; font-size:20px; }
@@ -98,7 +105,8 @@
 <a class="level-3" href="#corporate-budget">2.4. Бюджет и поставщики</a>
 <a class="level-3" href="#assembly-company">2.5. Пилот и внедрение</a>
 <a class="level-3" href="#connect-company">2.6. Подключите агентов сотрудников</a>
-<a class="level-2" href="#3_4">3. Как проверить результат</a></aside>
+<a class="level-2" href="#3_4">3. Как проверить результат</a>
+<a class="level-3" href="#-">Если что-то не получилось</a></aside>
   <main id="content"><!-- После правки Markdown запустите `py -3.11 build_html.py`, чтобы обновить HTML. -->
 <h1 id="_1">Локальный ИИ: памятка для слушателей</h1>
 <p>По итогам обсуждения на реюнионе ЕМБА 10 октября 2026 года.</p>
@@ -108,6 +116,66 @@
 <p><strong>Как читать:</strong> выберите личный или корпоративный маршрут. Цены и нагрузку проверяйте перед закупкой: это ориентиры на 11 октября 2026 года, а не коммерческое предложение.</p>
 </blockquote>
 <hr/>
+<div class="start-here">
+<p><strong>Первый раз здесь? Начните со сборки, каталоги можно прочитать позже.</strong></p>
+<ul>
+<li><strong>MacBook с 48 ГБ памяти:</strong> <a href="#laptop">ноутбук, шаг 1</a>.</li>
+<li><strong>Mac mini с 48 ГБ памяти:</strong> <a href="#desktop">домашний компьютер, шаг 1</a>.</li>
+<li><strong>ПК с NVIDIA 48 ГБ:</strong> <a href="#nvidia">задание настройщику</a>. Команды для Mac на Windows не выполняйте.</li>
+<li><strong>Компания:</strong> <a href="#assembly-company">пилот с администратором</a>. Установка на сервер и действия сотрудника разделены.</li>
+</ul>
+<p>Здесь мы собираем один учебный комплект. Сначала появится чат, затем агент научится читать два файла и создавать третий. Покупать и устанавливать все программы из каталогов не нужно.</p>
+</div>
+<details>
+<summary>Семь слов, которые встретятся дальше</summary>
+<table>
+<thead>
+<tr>
+<th>Слово</th>
+<th>Что это в нашей сборке</th>
+<th>Что появляется у вас</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Модель</td>
+<td>Qwen: вычисляет ответ на переданный текст</td>
+<td>Большой скачанный файл; сам по себе не открывает чат</td>
+</tr>
+<tr>
+<td>Движок / сервер модели</td>
+<td>llama.cpp на Mac или vLLM на NVIDIA: запускает модель</td>
+<td>Работающая программа, которая принимает запросы</td>
+</tr>
+<tr>
+<td>Чат</td>
+<td>Окно для переписки с моделью</td>
+<td>Страница в браузере</td>
+</tr>
+<tr>
+<td>API / Base URL</td>
+<td>Адрес для связи двух программ</td>
+<td>Строка настройки, например адрес с <code>/v1</code>; это не страница чата</td>
+</tr>
+<tr>
+<td>Харнес</td>
+<td>Программа, которая даёт модели инструменты и выполняет её шаги</td>
+<td>В учебном примере — OpenCode в отдельной вкладке Терминала</td>
+</tr>
+<tr>
+<td>Инструмент / MCP</td>
+<td>Инструмент читает файл или открывает сайт; MCP подключает дополнительные инструменты</td>
+<td>Видимый вызов действия и его результат в истории агента</td>
+</tr>
+<tr>
+<td>Skill / навык</td>
+<td>Сохранённый порядок выполнения задачи</td>
+<td>Маленький файл <code>SKILL.md</code>; сам программы не устанавливает</td>
+</tr>
+</tbody>
+</table>
+<p>Q8 GGUF и FP8 — разные форматы хранения модели для разных программ запуска. В учебных шагах уже выбран нужный файл: пересчитывать и выбирать формат самостоятельно не требуется.</p>
+</details>
 <section data-mode="personal"><h2 id="1">1. Для себя</h2>
 <span id="11"></span><h3 id="personal">1.1. Базовый стек</h3>
 <h4 id="_2">Что понадобится</h4>
@@ -122,7 +190,7 @@
 <p><strong>Основной маршрут этой памятки</strong></p>
 <h4 id="mac-48-q8-gguf-llamacpp-nvidia-48-fp8-vllm">Mac 48 ГБ → Q8 GGUF + llama.cpp; NVIDIA 48 ГБ → FP8 + vLLM</h4>
 <p>MacBook и Mac mini используют одну инструкцию ниже. Для ПК с NVIDIA есть отдельная краткая инструкция. Начальный результат — текстовый чат; картинки, документы и агент подключаются после проверки базы.</p>
-<p><strong>Порядок чтения:</strong> 1. Стек → 2. Модели и программы → 3. Агент по задаче → 4. Бюджет → 5. Сборка и проверка → 6. Подключение харнеса и инструментов. Каталоги помогают выбрать замену; все варианты сразу устанавливать не нужно.</p>
+<p><strong>Для первого запуска:</strong> переходите к <a href="#assembly-personal">сборке</a>, затем к <a href="#connect-personal">агенту</a>. Каталоги выше нужны, если вы хотите сравнить альтернативы.</p>
 <hr/>
 <span id="12"></span><h3 id="catalog-personal">1.2. Модели и программы</h3>
 <p>Основной маршрут на Mac: Qwen3.8-27B Q8 GGUF + llama.cpp; на NVIDIA: Qwen3.8-27B FP8 + vLLM. Для уже имеющегося ноутбука с 16–24 ГБ можно отдельно попробовать Qwen3.5-9B через Ollama; покупать устройство из сметы для этой пробы не требуется.</p>
@@ -201,7 +269,7 @@
 <p><strong>Харнес</strong>OpenClaw, Hermes, OpenCode…Управляет шагами и вызовами инструментов</p>
 <p><strong>Инструменты</strong>Файлы, браузер, терминал, MCPЧитают данные и выполняют действия</p>
 <h4 id="_6">С чего начать</h4>
-<p>Для личного помощника выберите OpenClaw или Hermes. Для сайтов, скриптов и работы с кодом — OpenCode; если уже пользуетесь VS Code, рассмотрите Cline. Для небольших правок через терминал — Aider.</p>
+<p>В учебной сборке ниже используем OpenCode для чтения и создания файлов. Если нужен помощник в мессенджере или другая среда работы, отдельно рассмотрите OpenClaw или Hermes. Для сайтов, скриптов и работы с кодом — OpenCode; если уже пользуетесь VS Code, рассмотрите Cline. Для небольших правок через терминал — Aider.</p>
 <p><strong>OpenClaw</strong></p>
 <p>Помощник в привычных каналах</p>
 <h5 id="openclaw">OpenClaw</h5><img alt="OpenClaw — иллюстрация из официального проекта" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false" referrerpolicy="no-referrer" src="https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-banner-light.png"/>
@@ -248,7 +316,7 @@
 <p>Установить → перейти в папку проекта → выбрать модель → добавить нужные файлы в диалог.</p>
 <p><a href="https://aider.chat/docs/install.html">Установка ↗</a> · <a href="https://github.com/Aider-AI/aider">Исходники ↗</a> · <a href="https://aider.chat/docs/llms/ollama.html">Подключение модели ↗</a></p>
 <h4 id="_7">Как соединить с вашим стеком</h4>
-<p>В базовом маршруте начните с Hermes или OpenCode через совместимый API: подробности в необязательном шаге 8 сборки. Для OpenClaw и остальных агентов используйте инструкцию конкретного провайдера; наличие поддержки Ollama не означает одинаковую настройку llama.cpp.</p>
+<p>В учебном маршруте начните с OpenCode через совместимый API: подробности в необязательном шаге 8 сборки. Для OpenClaw и остальных агентов используйте инструкцию конкретного провайдера; наличие поддержки Ollama не означает одинаковую настройку llama.cpp.</p>
 <p>Основной стек: выбранный харнес → API llama-server → Qwen3.8-27B</p>
 <p>Базовый чат llama-server остаётся доступен. Open WebUI нужен только для дополнительного интерфейса и поиска по документам. Харнес подключается к серверу модели отдельно и получает свои инструменты. Работающий чат ещё не доказывает, что модель надёжно выполняет многошаговые задания и вызовы инструментов.</p>
 <p><strong>1</strong><strong>Подключите модель</strong></p>
@@ -303,10 +371,15 @@
 <span id="15"></span><h3 id="assembly-personal">1.5. Пошаговая сборка</h3>
 <p>Mac с 48 ГБ → Qwen3.8-27B Q8 GGUF → llama.cpp / llama-server → локальный чат. Шаги 1–6 дают рабочий текстовый чат. Шаги 7–8 — дополнительные возможности. Для MacBook и Mac mini приведены отдельные маршруты сборки; маршрут NVIDIA с FP8 указан после них.</p>
 <p>Один шаг — одно действие и проверяемый результат.</p>
-<h4 id="_9">Ноутбук</h4>
+<p><strong>Перед командами: как открыть Терминал на Mac</strong></p>
+<p>Нажмите <strong>⌘ Пробел</strong>, напечатайте <strong>Терминал</strong> (или <strong>Terminal</strong>), нажмите <strong>Return / Enter</strong>. В его окне вставляйте команды из зелёных блоков и нажимайте Return. Кнопка «Копировать» берёт только команду. Текст задания для модели вводится в чат — место ввода всегда подписано.</p>
+<p>После обычной команды дождитесь новой строки приглашения (обычно заканчивается <code>%</code> или <code>$</code>). После запуска сервера приглашение не возвращается: окно занято работающей моделью. Для следующих команд откройте <strong>Shell → New Tab / Новая вкладка</strong> или нажмите <strong>⌘ T</strong>. Не вводите команды в окно, где ещё работает сервер.</p>
+<p><strong>Маршрут проверяется по частям:</strong> установка → файл → чат → агент → файл результата. Если проверка шага не прошла, сначала откройте <a href="#help-first-run">таблицу ошибок</a>.</p>
+<span id="_9"></span><h4 id="laptop">Ноутбук</h4>
+<p>Перед шагом 3 прочитайте <a href="#assembly-personal">как открыть Терминал</a>.</p>
 <p><strong>Положите перед собой</strong></p>
 <p>Ноутбук + зарядка</p>
-<p>Также нужны: интернет для загрузки, место на SSD, десять примеров ваших задач.</p>
+<p>Также нужны: интернет для загрузки, 60 ГБ свободного места на SSD. Учебные задания уже даны ниже; затем добавьте свои примеры.</p>
 
 <article class="step-card"><h5 id="_10">1. Подключите ноутбук</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><path d="M120 40h240v130H120zM95 190h290l-25-20H120z"></path><path d="M175 190h130"></path><text x="240" y="105">48 ГБ</text><path d="M385 110h45v65h-30"></path><text class="tiny" x="425" y="90">питание</text></svg>
 <p class="input"><strong>На входе:</strong> Ноутбук из выбранной конфигурации, зарядное устройство и интернет для установки.</p>
@@ -318,56 +391,96 @@
 <p>Эта схема рассчитана на MacBook из памятки с 48 ГБ объединённой памяти. Для ноутбука с Windows сначала нужна отдельная проверка GPU и памяти; эти требования нельзя автоматически переносить на него.</p>
 
 <label class="done"><input data-step="_10" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_11">2. Проверьте свободное место</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="155" rx="10" width="280" x="100" y="35"></rect><rect height="28" rx="4" width="220" x="130" y="125"></rect><path d="M240 125v28"></path><text x="240" y="90">Место на диске</text><text class="tiny" x="240" y="177">Оставьте запас для модели и документов</text></svg>
-<p class="input"><strong>На входе:</strong> Включённый Mac с доступом к настройкам хранилища.</p>
+<p class="input"><strong>На входе:</strong> Включённый Mac.</p>
 <p class="actor"><strong>Кто делает:</strong> Вы.</p>
-<p class="action"><strong>Действие:</strong> Откройте настройки хранилища. Освободите место для файла модели и рабочих документов.</p>
-<p class="result"><strong>На выходе:</strong> На диске есть запас; загрузка не остановится из-за нехватки места.</p>
-<p class="verify"><strong>Проверка:</strong> Откройте сведения о хранилище и сравните свободное место с размером выбранного файла и необходимым запасом.</p>
-<p>Как именно — подсказка</p>
-<p>Размер выбранного файла указан на странице скачивания. Практический резерв: размер модели плюс ещё 20–30 ГБ. Память 48 ГБ и место SSD — разные характеристики.</p>
-
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Нажмите <strong> → Об этом Mac</strong>: найдите «Память». Этот маршрут рассчитан на Apple Silicon и 48 ГБ или больше.</li>
+<li>Откройте <strong> → Системные настройки → Основные → Хранилище</strong>.</li>
+<li>Для учебной установки оставьте <strong>не менее 60 ГБ свободного места</strong>: файл занимает около 28,6 ГБ, остальное — запас на установку и работу. Это ориентир для этого маршрута, а не требование всех моделей.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Вы проверили две разные величины: память компьютера и свободное место диска.</p>
+<p class="verify"><strong>Проверка:</strong> В «Об этом Mac» — 48 ГБ или больше; в хранилище — свободно не менее 60 ГБ. Если памяти меньше, не переходите к загрузке Q8: выберите меньшую модель с настройщиком.</p>
 <label class="done"><input data-step="_11" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_12">3. Установите программу запуска</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="320" x="80" y="25"></rect><path d="M80 60h320"></path><circle cx="100" cy="42" r="3"></circle><text x="240" y="110">llama.cpp</text><path d="M240 125v45m-15-15 15 15 15-15"></path></svg>
-<p class="input"><strong>На входе:</strong> Подготовленный Mac, свободное место и права на установку программы.</p>
-<p class="actor"><strong>Кто делает:</strong> Настройщик или вы, если работаете с терминалом.</p>
-<p class="action"><strong>Действие:</strong> Установите llama.cpp для своей операционной системы.</p>
-<p class="result"><strong>На выходе:</strong> На компьютере есть программа, которая сможет открыть файл модели.</p>
-<p class="verify"><strong>Проверка:</strong> Настройщик запускает llama-server --help: команда найдена и выводит параметры.</p>
-<p>Как именно — подсказка</p>
-<p><a href="https://github.com/ggml-org/llama.cpp">Официальный проект llama.cpp ↗</a>. Это технический шаг: если вы не работаете с терминалом, передайте настройщику эту карточку и следующие две. Попросите установить совместимую сборку, записать версию и сделать ярлык запуска. Сам файл модели скачивается отдельно.</p>
-
+<p class="input"><strong>На входе:</strong> Mac подготовлен; Терминал открыт по подсказке выше; интернет включён.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы; если нет прав установки — настройщик.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>В Терминале выполните проверку:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">brew --version
+</code></pre></div>
+<ol start="2">
+<li>Если показана версия Homebrew, переходите к следующей команде. Если написано <code>command not found</code>, откройте <a href="https://brew.sh/">официальную страницу Homebrew</a>, скопируйте команду под <strong>Install Homebrew</strong> и выполните её в Терминале. Следуйте подсказкам установки, включая <strong>Next steps</strong> в конце. При вводе пароля Mac символы не видны — это нормально. Откройте новую вкладку Терминала и повторите <code>brew --version</code>.</li>
+<li>Установите программу запуска:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">brew install llama.cpp
+</code></pre></div>
+<ol start="4">
+<li>После окончания проверьте:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">llama-server --version
+</code></pre></div>
+<p class="result"><strong>На выходе:</strong> В Терминале доступна команда <code>llama-server</code>. Пока модель не скачана и чат не запущен.</p>
+<p class="verify"><strong>Проверка:</strong> Последняя команда выводит версию / номер сборки, а не <code>command not found</code>. Сохраните этот номер, если потребуется помощь.</p>
+<p>Основание: <a href="https://github.com/ggml-org/llama.cpp/blob/master/docs/install.md">установка llama.cpp</a>. Если Homebrew предложил действия, которых вы не понимаете, передайте текст ошибки настройщику; не продолжайте следующую карточку до успешной проверки.</p>
 <label class="done"><input data-step="_12" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_13">4. Скачайте файл модели</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><path d="M125 30h140l40 40v120H125zM265 30v40h40"></path><text x="210" y="115">Q8 GGUF</text><text class="tiny" x="210" y="150">модель — отдельный файл</text><path d="M345 50v105m-20-20 20 20 20-20"></path></svg>
-<p class="input"><strong>На входе:</strong> Установленный llama.cpp и выбранный формат Q8 GGUF для Mac 48 ГБ.</p>
-<p class="actor"><strong>Кто делает:</strong> Настройщик или вы.</p>
-<p class="action"><strong>Действие:</strong> Скачайте Qwen3.8-27B-Q8_0.gguf по ссылке ниже и сохраните в папку «Модели».</p>
-<p class="result"><strong>На выходе:</strong> В папке лежит файл модели; вы знаете, где он находится.</p>
-<p class="verify"><strong>Проверка:</strong> В указанной папке виден завершённый файл GGUF нужной версии; загрузка не обрывалась.</p>
-<p>Как именно — подсказка</p>
-<p><a href="https://huggingface.co/ggml-org/Qwen3.8-27B-GGUF/tree/main">Файлы Qwen3.8-27B GGUF ↗</a>. Перед загрузкой проверьте, что репозиторий доступен и ваша версия llama.cpp поддерживает модель. Если файлов несколько и непонятно, какой нужен, настройщик должен выбрать комплект. Начните с текста; изображения требуют отдельной проверки поддержки.</p>
-
-<label class="done"><input data-step="_13" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_14">5. Откройте свой чат</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="360" x="60" y="25"></rect><path d="M60 60h360"></path><text class="tiny" x="240" y="48">127.0.0.1:8080</text><rect height="35" rx="8" width="210" x="180" y="82"></rect><rect height="35" rx="8" width="250" x="85" y="133"></rect><text class="tiny" x="280" y="105">Сократи этот текст</text><text class="tiny" x="205" y="157">Готово. Вот краткая версия…</text></svg>
-<p class="input"><strong>На входе:</strong> llama-server установлен; файл GGUF скачан, его путь известен.</p>
-<p class="actor"><strong>Кто делает:</strong> Настройщик.</p>
-<p class="action"><strong>Действие:</strong> Запустите модель, затем откройте её локальный адрес в браузере. Вставьте небольшой текст и попросите сократить его до трёх пунктов.</p>
-<p class="result"><strong>На выходе:</strong> На экране появился ответ, который подготовил ваш компьютер.</p>
-<p class="verify"><strong>Проверка:</strong> Откройте указанный адрес в браузере на этом Mac и отправьте короткий запрос.</p>
-<p>Как именно — подсказка</p>
-<p>Для настройщика: проверьте параметры через <code>llama-server --help</code>. Типовой шаблон для совместимой сборки:</p>
-<pre><code>llama-server -m /путь/к/Qwen3.8-27B-Q8_0.gguf --alias local-qwen --host 127.0.0.1 --port 8080
-</code></pre>
-<p>Команда вводится одной строкой. Откройте <code>http://127.0.0.1:8080</code>. Пока не подключайте внешние API и инструменты. Ошибка при загрузке — повод проверить файл и совместимость, а не покупать новый компьютер.</p>
-
-<label class="done"><input data-step="_14" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_15">6. Проверьте, что всё работает</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="175" rx="6" width="130" x="90" y="25"></rect><path d="M110 65l10 10 20-25m-30 60 10 10 20-25m-30 60 10 10 20-25M155 65h40m-40 45h40m-40 45h40"></path><path d="M275 110l30 30 65-85"></path><text class="tiny" x="315" y="190">Результат проверяет человек</text></svg>
-<p class="input"><strong>На входе:</strong> Открытый локальный чат, пять ваших контрольных вопросов и один небольшой тестовый текст.</p>
+<p class="input"><strong>На входе:</strong> llama-server установлен; свободно 60 ГБ; есть интернет.</p>
 <p class="actor"><strong>Кто делает:</strong> Вы.</p>
-<p class="action"><strong>Действие:</strong> Отключите интернет и повторите запрос. Затем выполните десять своих обычных задач и проверьте ответы.</p>
-<p class="result"><strong>На выходе:</strong> Чат отвечает без интернета, а качество и скорость вас устраивают.</p>
-<p class="verify"><strong>Проверка:</strong> Сравните ответы с вашим текстом; повторите запрос без интернета при уже запущенном сервере.</p>
-<p>Как именно — подсказка</p>
-<p>Например: сократить письмо, выделить поручения, составить черновик ответа. Модель не получает доступ ко всем папкам автоматически. Поиск по вашим документам подключается отдельным шагом. Офлайн-тест подтверждает работу без сети в этом сценарии, но не заменяет проверку настроек интеграций.</p>
-<label class="done"><input data-step="_15" type="checkbox"/> Проверил результат шага</label></article><h4 id="mac-mini">Стационарный компьютер · Mac mini</h4>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>В свободной вкладке Терминала создайте папку:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">mkdir -p "$HOME/Models"
+</code></pre></div>
+<ol start="2">
+<li>Откройте <a href="https://huggingface.co/ggml-org/Qwen3.8-27B-GGUF/blob/main/Qwen3.8-27B-Q8_0.gguf">страницу именно файла Qwen3.8-27B-Q8_0.gguf</a> и нажмите <strong>download</strong>. Размер — около <strong>28,6 ГБ</strong>. Для этого текстового примера другие файлы (<code>mmproj</code>, <code>mtp</code>, <code>dflash</code>) не нужны.</li>
+<li>Дождитесь завершения в списке загрузок браузера. Откройте Finder → <strong>Загрузки</strong> и найдите <code>Qwen3.8-27B-Q8_0.gguf</code>.</li>
+<li>В Finder нажмите <strong>⌘ Shift G</strong>, введите <code>~/Models</code>, нажмите Return. Переместите скачанный файл в эту папку. Не меняйте имя.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Файл лежит в <code>Models</code> внутри вашей домашней папки. Это то место, которое использует следующая команда.</p>
+<p class="verify"><strong>Проверка:</strong> В Finder выделите файл → ⌘ I («Свойства»): имя точно <code>Qwen3.8-27B-Q8_0.gguf</code>, размер около 28,6 ГБ. Файл с окончанием <code>.download</code> или <code>.crdownload</code> ещё не готов.</p>
+<label class="done"><input data-step="_13" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_14">5. Откройте свой чат</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="360" x="60" y="25"></rect><path d="M60 60h360"></path><text class="tiny" x="240" y="48">127.0.0.1:8080</text><rect height="35" rx="8" width="210" x="180" y="82"></rect><rect height="35" rx="8" width="250" x="85" y="133"></rect><text class="tiny" x="280" y="105">Сократи этот текст</text><text class="tiny" x="205" y="157">Готово. Вот краткая версия…</text></svg>
+<p class="input"><strong>На входе:</strong> Готовый файл в <code>~/Models</code>; llama-server установлен.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>В Терминале вставьте всю строку и нажмите Return:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">llama-server -m "$HOME/Models/Qwen3.8-27B-Q8_0.gguf" --alias local-qwen --host 127.0.0.1 --port 8080 --jinja -c 8192
+</code></pre></div>
+<ol start="2">
+<li>Дождитесь окончания загрузки модели. Окно будет занято журналом работы — <strong>оставьте его открытым</strong>.</li>
+<li>На этом же Mac откройте браузер. Нажмите <strong>⌘ L</strong>, вставьте <code>http://127.0.0.1:8080</code> и нажмите Return. Это адресная строка браузера, не поле поиска сайта.</li>
+<li>В поле сообщения открывшегося чата введите: <strong>«Ответь одним словом: готов»</strong>. Нажмите кнопку отправки рядом с полем.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> В браузере открыт локальный чат и появился ответ. <code>local-qwen</code> — короткое имя этой модели для подключения агента.</p>
+<p class="verify"><strong>Проверка:</strong> Ответ виден в браузере, а в оставленном Терминале появились строки обработки запроса. Сообщение об ошибке загрузки модели означает, что шаг ещё не выполнен.</p>
+<p><strong>Что означают адреса:</strong> <code>http://127.0.0.1:8080</code> — чат для вас; <code>http://127.0.0.1:8080/v1</code> — связь для агента. <code>127.0.0.1</code> означает этот компьютер. С телефона или другого ноутбука такой адрес ваш Mac не откроет.</p>
+<p><strong>Завтра:</strong> повторите эту же команду и откройте тот же адрес. Чтобы выключить модель сейчас, в её окне Терминала нажмите <strong>Control C</strong>. Закрытие вкладки браузера само по себе сервер не выключает. Начальный контекст ограничен 8192 токенами; длинные документы пока не используйте.</p>
+<p>Шаблон запуска нужно проверить на установленной версии: <a href="https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md">сервер llama.cpp</a>.</p>
+<label class="done"><input data-step="_14" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_15">6. Проверьте, что всё работает</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="175" rx="6" width="130" x="90" y="25"></rect><path d="M110 65l10 10 20-25m-30 60 10 10 20-25m-30 60 10 10 20-25M155 65h40m-40 45h40m-40 45h40"></path><path d="M275 110l30 30 65-85"></path><text class="tiny" x="315" y="190">Результат проверяет человек</text></svg>
+<p class="input"><strong>На входе:</strong> Чат ответил; сервер продолжает работать.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Вставьте <strong>в чат</strong> этот учебный текст и задание:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-text">Встреча «Маяк» назначена на 15 октября в 11:00. Анна готовит смету. Борис бронирует зал. Число участников пока не определено.
+Перечисли дату, время, поручения и число участников. Если сведений нет, так и напиши.
+</code></pre></div>
+<ol start="2">
+<li>Сверьте ответ с эталоном ниже.</li>
+<li>Отключите Wi-Fi в меню Mac; если подключён сетевой кабель, отключите его тоже. Не останавливайте модель. Начните новый разговор или повторите тот же запрос.</li>
+<li>Верните сеть после проверки. Затем проверьте десять коротких примеров из своей работы.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Модель отвечает на переданный текст без сети. Вы понимаете, как отличить правильный ответ от выдумки.</p>
+<p class="verify"><strong>Проверка:</strong> Должны быть <strong>15 октября, 11:00, Анна — смета, Борис — зал; число участников неизвестно</strong>. Формулировки могут отличаться. Сохраните неверные ответы для разбора. Офлайн-проверка относится к этому чату, а не к ещё не установленным внешним инструментам.</p>
+<span id="mac-mini"></span><label class="done"><input data-step="_15" type="checkbox"/> Проверил результат шага</label></article><h4 id="desktop">Стационарный компьютер · Mac mini</h4>
+<p>Перед шагом 3 прочитайте <a href="#assembly-personal">как открыть Терминал</a>.</p>
 <p><strong>Положите перед собой</strong></p>
 <p>Mac mini + монитор + кабель + клавиатура + мышь</p>
-<p>Также нужны: интернет для загрузки, место на SSD, десять примеров ваших задач.</p>
+<p>Также нужны: интернет для загрузки, 60 ГБ свободного места на SSD. Учебные задания уже даны ниже; затем добавьте свои примеры.</p>
 
 <article class="step-card"><h5 id="_16">1. Соедините домашний компьютер</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="120" rx="5" width="200" x="40" y="25"></rect><path d="M140 145v30m-35 0h70"></path><rect height="55" rx="12" width="85" x="300" y="100"></rect><path d="M240 85h40v40h20"></path><path d="M385 130h50v55"></path><rect height="15" rx="3" width="165" x="60" y="190"></rect><ellipse cx="255" cy="197" rx="12" ry="16"></ellipse><text class="tiny" x="340" y="80">Mac mini</text><text class="tiny" x="240" y="65">HDMI</text></svg>
 <p class="input"><strong>На входе:</strong> Mac mini, питание, монитор, кабель, клавиатура и мышь. Маршрут ПК с NVIDIA описан отдельно ниже.</p>
@@ -379,86 +492,135 @@
 <p>Основной маршрут — Mac mini из памятки с 48 ГБ. Нужен подходящий кабель HDMI или USB-C к вашему монитору. Если покупаете новый Mac mini и бюджет позволяет, 64 ГБ дадут больше запаса для длинного контекста и других программ. ПК с RTX 4090 48 ГБ собирайте и проверяйте отдельно: перепайка памяти не входит в эту инструкцию.</p>
 
 <label class="done"><input data-step="_16" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_17">2. Проверьте свободное место</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="155" rx="10" width="280" x="100" y="35"></rect><rect height="28" rx="4" width="220" x="130" y="125"></rect><path d="M240 125v28"></path><text x="240" y="90">Место на диске</text><text class="tiny" x="240" y="177">Оставьте запас для модели и документов</text></svg>
-<p class="input"><strong>На входе:</strong> Включённый Mac с доступом к настройкам хранилища.</p>
+<p class="input"><strong>На входе:</strong> Включённый Mac.</p>
 <p class="actor"><strong>Кто делает:</strong> Вы.</p>
-<p class="action"><strong>Действие:</strong> Откройте настройки хранилища. Освободите место для файла модели и рабочих документов.</p>
-<p class="result"><strong>На выходе:</strong> На диске есть запас; загрузка не остановится из-за нехватки места.</p>
-<p class="verify"><strong>Проверка:</strong> Откройте сведения о хранилище и сравните свободное место с размером выбранного файла и необходимым запасом.</p>
-<p>Как именно — подсказка</p>
-<p>Размер выбранного файла указан на странице скачивания. Практический резерв: размер модели плюс ещё 20–30 ГБ. Память 48 ГБ и место SSD — разные характеристики.</p>
-
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Нажмите <strong> → Об этом Mac</strong>: найдите «Память». Этот маршрут рассчитан на Apple Silicon и 48 ГБ или больше.</li>
+<li>Откройте <strong> → Системные настройки → Основные → Хранилище</strong>.</li>
+<li>Для учебной установки оставьте <strong>не менее 60 ГБ свободного места</strong>: файл занимает около 28,6 ГБ, остальное — запас на установку и работу. Это ориентир для этого маршрута, а не требование всех моделей.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Вы проверили две разные величины: память компьютера и свободное место диска.</p>
+<p class="verify"><strong>Проверка:</strong> В «Об этом Mac» — 48 ГБ или больше; в хранилище — свободно не менее 60 ГБ. Если памяти меньше, не переходите к загрузке Q8: выберите меньшую модель с настройщиком.</p>
 <label class="done"><input data-step="_17" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_18">3. Установите программу запуска</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="320" x="80" y="25"></rect><path d="M80 60h320"></path><circle cx="100" cy="42" r="3"></circle><text x="240" y="110">llama.cpp</text><path d="M240 125v45m-15-15 15 15 15-15"></path></svg>
-<p class="input"><strong>На входе:</strong> Подготовленный Mac, свободное место и права на установку программы.</p>
-<p class="actor"><strong>Кто делает:</strong> Настройщик или вы, если работаете с терминалом.</p>
-<p class="action"><strong>Действие:</strong> Установите llama.cpp для своей операционной системы.</p>
-<p class="result"><strong>На выходе:</strong> На компьютере есть программа, которая сможет открыть файл модели.</p>
-<p class="verify"><strong>Проверка:</strong> Настройщик запускает llama-server --help: команда найдена и выводит параметры.</p>
-<p>Как именно — подсказка</p>
-<p><a href="https://github.com/ggml-org/llama.cpp">Официальный проект llama.cpp ↗</a>. Это технический шаг: если вы не работаете с терминалом, передайте настройщику эту карточку и следующие две. Попросите установить совместимую сборку, записать версию и сделать ярлык запуска. Сам файл модели скачивается отдельно.</p>
-
+<p class="input"><strong>На входе:</strong> Mac подготовлен; Терминал открыт по подсказке выше; интернет включён.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы; если нет прав установки — настройщик.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>В Терминале выполните проверку:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">brew --version
+</code></pre></div>
+<ol start="2">
+<li>Если показана версия Homebrew, переходите к следующей команде. Если написано <code>command not found</code>, откройте <a href="https://brew.sh/">официальную страницу Homebrew</a>, скопируйте команду под <strong>Install Homebrew</strong> и выполните её в Терминале. Следуйте подсказкам установки, включая <strong>Next steps</strong> в конце. При вводе пароля Mac символы не видны — это нормально. Откройте новую вкладку Терминала и повторите <code>brew --version</code>.</li>
+<li>Установите программу запуска:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">brew install llama.cpp
+</code></pre></div>
+<ol start="4">
+<li>После окончания проверьте:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">llama-server --version
+</code></pre></div>
+<p class="result"><strong>На выходе:</strong> В Терминале доступна команда <code>llama-server</code>. Пока модель не скачана и чат не запущен.</p>
+<p class="verify"><strong>Проверка:</strong> Последняя команда выводит версию / номер сборки, а не <code>command not found</code>. Сохраните этот номер, если потребуется помощь.</p>
+<p>Основание: <a href="https://github.com/ggml-org/llama.cpp/blob/master/docs/install.md">установка llama.cpp</a>. Если Homebrew предложил действия, которых вы не понимаете, передайте текст ошибки настройщику; не продолжайте следующую карточку до успешной проверки.</p>
 <label class="done"><input data-step="_18" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_19">4. Скачайте файл модели</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><path d="M125 30h140l40 40v120H125zM265 30v40h40"></path><text x="210" y="115">Q8 GGUF</text><text class="tiny" x="210" y="150">модель — отдельный файл</text><path d="M345 50v105m-20-20 20 20 20-20"></path></svg>
-<p class="input"><strong>На входе:</strong> Установленный llama.cpp и выбранный формат Q8 GGUF для Mac 48 ГБ.</p>
-<p class="actor"><strong>Кто делает:</strong> Настройщик или вы.</p>
-<p class="action"><strong>Действие:</strong> Скачайте Qwen3.8-27B-Q8_0.gguf по ссылке ниже и сохраните в папку «Модели».</p>
-<p class="result"><strong>На выходе:</strong> В папке лежит файл модели; вы знаете, где он находится.</p>
-<p class="verify"><strong>Проверка:</strong> В указанной папке виден завершённый файл GGUF нужной версии; загрузка не обрывалась.</p>
-<p>Как именно — подсказка</p>
-<p><a href="https://huggingface.co/ggml-org/Qwen3.8-27B-GGUF/tree/main">Файлы Qwen3.8-27B GGUF ↗</a>. Перед загрузкой проверьте, что репозиторий доступен и ваша версия llama.cpp поддерживает модель. Если файлов несколько и непонятно, какой нужен, настройщик должен выбрать комплект. Начните с текста; изображения требуют отдельной проверки поддержки.</p>
-
-<label class="done"><input data-step="_19" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_20">5. Откройте свой чат</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="360" x="60" y="25"></rect><path d="M60 60h360"></path><text class="tiny" x="240" y="48">127.0.0.1:8080</text><rect height="35" rx="8" width="210" x="180" y="82"></rect><rect height="35" rx="8" width="250" x="85" y="133"></rect><text class="tiny" x="280" y="105">Сократи этот текст</text><text class="tiny" x="205" y="157">Готово. Вот краткая версия…</text></svg>
-<p class="input"><strong>На входе:</strong> llama-server установлен; файл GGUF скачан, его путь известен.</p>
-<p class="actor"><strong>Кто делает:</strong> Настройщик.</p>
-<p class="action"><strong>Действие:</strong> Запустите модель, затем откройте её локальный адрес в браузере. Вставьте небольшой текст и попросите сократить его до трёх пунктов.</p>
-<p class="result"><strong>На выходе:</strong> На экране появился ответ, который подготовил ваш компьютер.</p>
-<p class="verify"><strong>Проверка:</strong> Откройте указанный адрес в браузере на этом Mac и отправьте короткий запрос.</p>
-<p>Как именно — подсказка</p>
-<p>Для настройщика: проверьте параметры через <code>llama-server --help</code>. Типовой шаблон для совместимой сборки:</p>
-<pre><code>llama-server -m /путь/к/Qwen3.8-27B-Q8_0.gguf --alias local-qwen --host 127.0.0.1 --port 8080
-</code></pre>
-<p>Команда вводится одной строкой. Откройте <code>http://127.0.0.1:8080</code>. Пока не подключайте внешние API и инструменты. Ошибка при загрузке — повод проверить файл и совместимость, а не покупать новый компьютер.</p>
-
-<label class="done"><input data-step="_20" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_21">6. Проверьте, что всё работает</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="175" rx="6" width="130" x="90" y="25"></rect><path d="M110 65l10 10 20-25m-30 60 10 10 20-25m-30 60 10 10 20-25M155 65h40m-40 45h40m-40 45h40"></path><path d="M275 110l30 30 65-85"></path><text class="tiny" x="315" y="190">Результат проверяет человек</text></svg>
-<p class="input"><strong>На входе:</strong> Открытый локальный чат, пять ваших контрольных вопросов и один небольшой тестовый текст.</p>
+<p class="input"><strong>На входе:</strong> llama-server установлен; свободно 60 ГБ; есть интернет.</p>
 <p class="actor"><strong>Кто делает:</strong> Вы.</p>
-<p class="action"><strong>Действие:</strong> Отключите интернет и повторите запрос. Затем выполните десять своих обычных задач и проверьте ответы.</p>
-<p class="result"><strong>На выходе:</strong> Чат отвечает без интернета, а качество и скорость вас устраивают.</p>
-<p class="verify"><strong>Проверка:</strong> Сравните ответы с вашим текстом; повторите запрос без интернета при уже запущенном сервере.</p>
-<p>Как именно — подсказка</p>
-<p>Например: сократить письмо, выделить поручения, составить черновик ответа. Модель не получает доступ ко всем папкам автоматически. Поиск по вашим документам подключается отдельным шагом. Офлайн-тест подтверждает работу без сети в этом сценарии, но не заменяет проверку настроек интеграций.</p>
-<p>БАЗА СОБРАНА: текстовый чат работает на вашей модели. Если нужны документы или действия агента, переходите к дополнительным шагам ниже.</p>
-<label class="done"><input data-step="_21" type="checkbox"/> Проверил результат шага</label></article><h4 id="nvidia-48">Если у вас ПК с NVIDIA 48 ГБ</h4>
-<p>Для модифицированной RTX 4090 с 48 ГБ или другой совместимой NVIDIA GPU попросите настройщика подготовить Linux, драйвер CUDA и актуальный vLLM. Из официального репозитория Qwen используйте <strong>FP8</strong>, а не Q4 GGUF. Проверяемый шаблон запуска:</p>
-<pre><code>vllm serve Qwen/Qwen3.8-27B-FP8 --host 127.0.0.1 --port 8000
-</code></pre>
-<p>Проверьте ответ через локальный API <code>http://127.0.0.1:8000/v1</code>, затем повторите без интернета и на своих задачах. На 48 ГБ начните с умеренной длины контекста и измерьте запас видеопамяти при нескольких одновременных запросах. Результат ведущего «до 15» относится только к его стенду; формат весов и параметры теста не зафиксированы.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>В свободной вкладке Терминала создайте папку:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">mkdir -p "$HOME/Models"
+</code></pre></div>
+<ol start="2">
+<li>Откройте <a href="https://huggingface.co/ggml-org/Qwen3.8-27B-GGUF/blob/main/Qwen3.8-27B-Q8_0.gguf">страницу именно файла Qwen3.8-27B-Q8_0.gguf</a> и нажмите <strong>download</strong>. Размер — около <strong>28,6 ГБ</strong>. Для этого текстового примера другие файлы (<code>mmproj</code>, <code>mtp</code>, <code>dflash</code>) не нужны.</li>
+<li>Дождитесь завершения в списке загрузок браузера. Откройте Finder → <strong>Загрузки</strong> и найдите <code>Qwen3.8-27B-Q8_0.gguf</code>.</li>
+<li>В Finder нажмите <strong>⌘ Shift G</strong>, введите <code>~/Models</code>, нажмите Return. Переместите скачанный файл в эту папку. Не меняйте имя.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Файл лежит в <code>Models</code> внутри вашей домашней папки. Это то место, которое использует следующая команда.</p>
+<p class="verify"><strong>Проверка:</strong> В Finder выделите файл → ⌘ I («Свойства»): имя точно <code>Qwen3.8-27B-Q8_0.gguf</code>, размер около 28,6 ГБ. Файл с окончанием <code>.download</code> или <code>.crdownload</code> ещё не готов.</p>
+<label class="done"><input data-step="_19" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_20">5. Откройте свой чат</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="10" width="360" x="60" y="25"></rect><path d="M60 60h360"></path><text class="tiny" x="240" y="48">127.0.0.1:8080</text><rect height="35" rx="8" width="210" x="180" y="82"></rect><rect height="35" rx="8" width="250" x="85" y="133"></rect><text class="tiny" x="280" y="105">Сократи этот текст</text><text class="tiny" x="205" y="157">Готово. Вот краткая версия…</text></svg>
+<p class="input"><strong>На входе:</strong> Готовый файл в <code>~/Models</code>; llama-server установлен.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>В Терминале вставьте всю строку и нажмите Return:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">llama-server -m "$HOME/Models/Qwen3.8-27B-Q8_0.gguf" --alias local-qwen --host 127.0.0.1 --port 8080 --jinja -c 8192
+</code></pre></div>
+<ol start="2">
+<li>Дождитесь окончания загрузки модели. Окно будет занято журналом работы — <strong>оставьте его открытым</strong>.</li>
+<li>На этом же Mac откройте браузер. Нажмите <strong>⌘ L</strong>, вставьте <code>http://127.0.0.1:8080</code> и нажмите Return. Это адресная строка браузера, не поле поиска сайта.</li>
+<li>В поле сообщения открывшегося чата введите: <strong>«Ответь одним словом: готов»</strong>. Нажмите кнопку отправки рядом с полем.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> В браузере открыт локальный чат и появился ответ. <code>local-qwen</code> — короткое имя этой модели для подключения агента.</p>
+<p class="verify"><strong>Проверка:</strong> Ответ виден в браузере, а в оставленном Терминале появились строки обработки запроса. Сообщение об ошибке загрузки модели означает, что шаг ещё не выполнен.</p>
+<p><strong>Что означают адреса:</strong> <code>http://127.0.0.1:8080</code> — чат для вас; <code>http://127.0.0.1:8080/v1</code> — связь для агента. <code>127.0.0.1</code> означает этот компьютер. С телефона или другого ноутбука такой адрес ваш Mac не откроет.</p>
+<p><strong>Завтра:</strong> повторите эту же команду и откройте тот же адрес. Чтобы выключить модель сейчас, в её окне Терминала нажмите <strong>Control C</strong>. Закрытие вкладки браузера само по себе сервер не выключает. Начальный контекст ограничен 8192 токенами; длинные документы пока не используйте.</p>
+<p>Шаблон запуска нужно проверить на установленной версии: <a href="https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md">сервер llama.cpp</a>.</p>
+<label class="done"><input data-step="_20" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_21">6. Проверьте, что всё работает</h5><svg aria-label="Схема шага" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="175" rx="6" width="130" x="90" y="25"></rect><path d="M110 65l10 10 20-25m-30 60 10 10 20-25m-30 60 10 10 20-25M155 65h40m-40 45h40m-40 45h40"></path><path d="M275 110l30 30 65-85"></path><text class="tiny" x="315" y="190">Результат проверяет человек</text></svg>
+<p class="input"><strong>На входе:</strong> Чат ответил; сервер продолжает работать.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Вставьте <strong>в чат</strong> этот учебный текст и задание:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-text">Встреча «Маяк» назначена на 15 октября в 11:00. Анна готовит смету. Борис бронирует зал. Число участников пока не определено.
+Перечисли дату, время, поручения и число участников. Если сведений нет, так и напиши.
+</code></pre></div>
+<ol start="2">
+<li>Сверьте ответ с эталоном ниже.</li>
+<li>Отключите Wi-Fi в меню Mac; если подключён сетевой кабель, отключите его тоже. Не останавливайте модель. Начните новый разговор или повторите тот же запрос.</li>
+<li>Верните сеть после проверки. Затем проверьте десять коротких примеров из своей работы.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Модель отвечает на переданный текст без сети. Вы понимаете, как отличить правильный ответ от выдумки.</p>
+<p class="verify"><strong>Проверка:</strong> Должны быть <strong>15 октября, 11:00, Анна — смета, Борис — зал; число участников неизвестно</strong>. Формулировки могут отличаться. Сохраните неверные ответы для разбора. Офлайн-проверка относится к этому чату, а не к ещё не установленным внешним инструментам.</p>
+<span id="nvidia-48"></span><label class="done"><input data-step="_21" type="checkbox"/> Проверил результат шага</label></article><h4 id="nvidia">Если у вас ПК с NVIDIA 48 ГБ</h4>
+<p>Это отдельный маршрут с настройщиком. Открытие <code>/v1</code> в браузере не создаёт чат. Передайте настройщику такое задание:</p>
+<blockquote>
+<p>Подготовьте на совместимой NVIDIA 48 ГБ Linux, драйвер и vLLM с моделью <a href="https://huggingface.co/Qwen/Qwen3.8-27B-FP8">Qwen/Qwen3.8-27B-FP8</a>. Установите <a href="https://docs.openwebui.com/getting-started/quick-start/">Open WebUI</a> и соедините его с моделью. Передайте мне адрес чата, способ входа, адрес API для агента, точное Model ID, способ запуска после перезагрузки и ваш контакт. Проверьте текстовый запрос и один вызов файлового инструмента из выбранного харнеса.</p>
+</blockquote>
+<p><strong>Что получаете:</strong> две разные строки — «открыть чат в браузере» и «вставить API в настройки агента». Адреса заполняет настройщик после установки. Без них переходить к агенту рано.</p>
+<p><strong>Что проверяете сами:</strong> войдите по адресу чата, вставьте пример про встречу «Маяк» из шага 6 выше, сверьте пять фактов. Для офлайн-проверки ПК с моделью и экраном на одной машине отключите внешнюю сеть после установки. Если модель на другом сервере, оставьте локальную сеть включённой, а доступ в интернет отключает администратор.</p>
+<details>
+<summary>Для настройщика: исходный шаблон vLLM</summary>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">vllm serve Qwen/Qwen3.8-27B-FP8 --host 127.0.0.1 --port 8000
+</code></pre></div>
+<p>Это шаблон первого текстового запуска, не готовая многопользовательская установка. Подберите длину контекста под видеопамять. API — <code>http://127.0.0.1:8000/v1</code> только для клиента на том же хосте. Уточните Model ID по <code>/v1/models</code>; у контейнера свой localhost. Для агентов отдельно настройте совместимый шаблон и парсер <a href="https://docs.vllm.ai/en/latest/features/tool_calling/">tool calling vLLM</a>. Версии и параметры запишите в карточку подключения.</p>
+</details>
 <h4 id="mlx-mac">Если хотите сравнить MLX на Mac</h4>
 <p><a href="https://huggingface.co/mlx-community/Qwen3.8-27B-8bit">MLX Community публикует Qwen3.8-27B-8bit ↗</a> размером около 29,5 ГБ. Это нативный для Apple Silicon вариант, который имеет смысл сравнить с Q8 GGUF на одних и тех же 10 задачах: качество, скорость и расход памяти. Для текста и изображений смотрите инструкцию <code>mlx-vlm</code> в карточке модели. Стандартный CUDA-маршрут vLLM для Mac не подходит; существует отдельный <a href="https://docs.vllm.ai/projects/vllm-metal/en/stable/">vLLM Metal ↗</a> на базе MLX. Для первого личного запуска он усложняет настройку без необходимости.</p>
 <h4 id="_22">Продолжение: документы и действия</h4>
 <p>Эти шаги можно пропустить, если достаточно чата. Они не включены автоматически в базовую стоимость настройки.</p>
 
 <article class="step-card"><h5 id="_23">7. Подключите документы · по желанию</h5><svg aria-label="Подключите документы · по желанию" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="110" rx="12" width="180" x="25" y="50"></rect><rect height="110" rx="12" width="180" x="275" y="50"></rect><path d="M210 105h58m-12-10 12 10-12 10"></path><text x="115" y="111">Документы</text><text x="365" y="111">Ответ + источник</text><text class="tiny" x="240" y="200">Проверьте цитату в оригинале</text></svg>
-<p class="input"><strong>На входе:</strong> Работающий API модели, Open WebUI и два-три разрешённых текстовых документа.</p>
-<p class="actor"><strong>Кто делает:</strong> Вы / ответственный за этот шаг.</p>
-<p class="action"><strong>Действие:</strong> Передайте настройщику два-три текстовых документа и подключите Open WebUI к уже работающему серверу модели.</p>
-<p class="result"><strong>На выходе:</strong> Вы задаёте вопрос по документу, открываете указанный источник и находите подтверждение ответа.</p>
-<p class="verify"><strong>Проверка:</strong> Откройте источник ответа и найдите подтверждающий фрагмент.</p>
-<p>Как соединить компоненты</p>
-<p>Провайдер чата — совместимый API llama-server на Mac или vLLM на NVIDIA. Для краткого документа можно передать весь текст; для коллекции настройте локальную embedding-модель и индекс. <a href="https://docs.openwebui.com/features/workspace/knowledge/">Инструкция базы знаний ↗</a>. В Docker адрес 127.0.0.1 указывает на сам контейнер: настройщик выбирает адрес, доступный из контейнера. Сканы сначала требуют распознавания текста. Это дополнительная настройка, не часть запуска модели.</p>
-
+<p class="input"><strong>На входе:</strong> Работающий чат. Маленький текст, который вы можете открыть и прочитать сами.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Для первого документа откройте его в редакторе, скопируйте текст и вставьте в чат. Добавьте вопрос: <strong>«Кто отвечает за зал? Приведи точную цитату из текста»</strong>.</li>
+<li>Проверьте цитату по исходнику. Это уже работа с документом; устанавливать ещё одну программу для неё не требуется.</li>
+<li>Если документов много и нужен поиск по коллекции, передайте настройщику: «Установите Open WebUI, подключите мой сервер модели, настройте локальный поиск. Передайте адрес чата, вход, название коллекции и покажите загрузку одного файла». <a href="https://docs.openwebui.com/getting-started/quick-start/">Установка</a> · <a href="https://docs.openwebui.com/features/workspace/knowledge/">база знаний</a>.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> На вопрос по переданному тексту есть ответ с проверяемой цитатой. Поиск по коллекции появляется только после отдельной настройки.</p>
+<p class="verify"><strong>Проверка:</strong> В примере шага 6 ответ — Борис; цитата — «Борис бронирует зал». Если используете коллекцию, откройте источник ответа и найдите эту строку. Пустая ссылка или выдуманная цитата — проверка не пройдена.</p>
 <label class="done"><input data-step="_23" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h5 id="_24">8. Подключите агента · по желанию</h5><svg aria-label="Подключите агента · по желанию" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="110" rx="12" width="180" x="25" y="50"></rect><rect height="110" rx="12" width="180" x="275" y="50"></rect><path d="M210 105h58m-12-10 12 10-12 10"></path><text x="115" y="111">Модель + харнес</text><text x="365" y="111">Готовый файл</text><text class="tiny" x="240" y="200">Один агент · одна пробная папка</text></svg>
 <p><a href="#connect-personal">Открыть подробную сборку: модель → харнес → инструменты → результат</a></p>
-<p class="input"><strong>На входе:</strong> Проверенная модель с API и пробная папка с двумя текстовыми файлами.</p>
-<p class="actor"><strong>Кто делает:</strong> Вы / ответственный за этот шаг.</p>
-<p class="action"><strong>Действие:</strong> Выберите один харнес из каталога, подключите его к своей модели и дайте задачу создать обзор файлов в пробной папке.</p>
+<p class="input"><strong>На входе:</strong> Чат из шага 6 работает. Пробную папку вы скачаете в А2.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы; настройщик помогает при ошибках.</p>
+<p class="action"><strong>Действие:</strong> Пройдите учебный маршрут OpenCode в А1–А3 и А4 ниже. Скачайте готовую папку, подключите уже работающую модель и получите файл summary.md. Для первого раза выбирать оболочку из каталога не требуется.</p>
 <p class="result"><strong>На выходе:</strong> Новый файл создан, его содержание проверено; известны модель, выполненные действия и разрешённая рабочая папка.</p>
-<p class="verify"><strong>Проверка:</strong> Пройдите А1–А5 ниже: проверьте созданный файл и историю вызовов инструментов.</p>
+<p class="verify"><strong>Проверка:</strong> Пройдите А1–А4 ниже: проверьте созданный файл и историю вызовов инструментов.</p>
 <p>Как соединить компоненты</p>
 <p>Для Hermes / OpenCode настройщик выбирает совместимый API: на Mac — http://127.0.0.1:8080/v1 и имя модели local-qwen из шага 5; на NVIDIA — адрес и имя модели vLLM. Для вызова инструментов в llama-server обычно нужен --jinja и совместимый шаблон модели; <a href="https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md">документация сервера ↗</a>. Сначала проверьте один вызов инструмента. Если не работает, проверьте совместимость связки. Альтернативный маршрут через Ollama / LM Studio описан в карточке харнеса. Для отправки сообщений и удаления оставьте подтверждение.</p>
 <hr/>
 <span id="16"></span><label class="done"><input data-step="_24" type="checkbox"/> Проверил результат шага</label></article><h3 id="connect-personal">1.6. Подключите харнес и инструменты</h3>
 <p><strong>Что появится:</strong> отдельная программа-агент, подключение к вашей модели и инструменты для работы с данными. На этом сайте вы читаете инструкцию; установка выполняется на выбранном компьютере.</p>
 <p><strong>Три подключения:</strong> API модели — адрес, куда харнес отправляет запрос; инструмент — программа, выполняющая действие; MCP — способ подключить к харнесу дополнительные инструменты. Ключ доступа подтверждает право обращения к сервису.</p>
-<p>Теперь собираем агента поверх уже работающей модели. Пример первой задачи: прочитать два файла и сохранить сводку в третий. Ноутбук и домашняя станция проходят одинаковые шаги; отличается адрес сервера модели.</p>
+<p><strong>Учебный маршрут ниже: Mac + llama-server + OpenCode.</strong> Он использует уже запущенную модель и готовые файлы настройки. OpenCode выбран для одного повторяемого примера; Hermes и OpenClaw остаются альтернативами в каталоге. Не устанавливайте три оболочки одновременно. На NVIDIA или в компании настройщик заменяет адрес и имя модели в конфигурации.</p>
+<p>Сначала пройдите <strong>А1 → А2 → А3 → А4</strong>: агент прочитает два файла и создаст третий. <strong>А5 (браузер)</strong> и <strong>А6 (навык)</strong> добавляются по желанию после успешного результата.</p>
 <div aria-label="Вы передаёте задачу харнесу. Харнес обращается к модели через API и отдельно вызывает инструменты." class="wiring" role="img"><div class="wire-node">ВЫ<small>Задача и проверка результата</small></div><div class="wire-arrow">↓ задача · ↑ результат</div><div class="wire-node wire-core">ХАРНЕС<small>Hermes / OpenCode / OpenClaw</small></div><div class="wire-branches"><div><div class="wire-arrow">↕ API модели</div><div class="wire-node">МОДЕЛЬ<small>llama.cpp / vLLM → Qwen</small></div></div><div><div class="wire-arrow">↕ вызов инструмента</div><div class="wire-node">ИНСТРУМЕНТЫ<small>Файлы · браузер · MCP</small></div></div></div><p>Модель предлагает действие → харнес проверяет разрешение → инструмент выполняет → результат возвращается модели.</p></div>
 <table>
 <thead>
@@ -497,144 +659,179 @@
 </tbody>
 </table>
 <article class="step-card"><h4 id="1_2">А1. Установите одну оболочку</h4><div class="step-diagram"><div>Компьютер</div><b>→</b><div>Установленный харнес</div></div>
-<p class="input"><strong>На входе:</strong> Работающий сервер модели из раздела «Сборка» и компьютер для запуска харнеса.</p>
-<p class="actor"><strong>Кто делает:</strong> Вы или настройщик.</p>
-<p class="action"><strong>Действие:</strong> Для офисного помощника выберите <a href="https://hermes-agent.nousresearch.com/docs/">Hermes</a>, для работы с проектами — <a href="https://opencode.ai/docs/">OpenCode</a>. Установите по официальной инструкции на компьютер, где агент будет работать с файлами. OpenClaw — ещё один вариант, его маршрут показан ниже.</p>
-<p class="result"><strong>На выходе:</strong> Оболочка запускается. Установка оболочки и скачивание модели — два самостоятельных шага.</p>
-<p class="verify"><strong>Проверка:</strong> Запустите оболочку: открывается её интерфейс или терминальный диалог.</p>
+<p class="input"><strong>На входе:</strong> Mac из шагов 1–6, Homebrew работает. Сервер модели остаётся в своей вкладке Терминала.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Откройте новую вкладку Терминала (<strong>⌘ T</strong>). В ней выполните:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">brew install anomalyco/tap/opencode
+</code></pre></div>
+<ol start="2">
+<li>Дождитесь завершения и проверьте:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">opencode --version
+</code></pre></div>
+<ol start="3">
+<li>Пока не запускайте диалог: сначала подготовьте папку и настройку в А2.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Установлена программа OpenCode для запуска из Терминала. Модель повторно скачивать не нужно.</p>
+<p class="verify"><strong>Проверка:</strong> Показан номер версии. <code>command not found</code> означает, что оболочка ещё не готова.</p>
+<p>Маршрут соответствует <a href="https://opencode.ai/docs/">документации OpenCode CLI</a>. Если OpenCode уже установлен, сначала посмотрите его версию: не заменяйте другую установленную редакцию вслепую. Для существующей установки настройщик проверяет совместимость конфигурации ниже.</p>
 <label class="done"><input data-step="1_2" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="2_1">А2. Подключите модель к оболочке</h4><div class="step-diagram"><div>Харнес</div><b>→</b><div>API → модель</div></div>
-<p class="input"><strong>На входе:</strong> Запущенный сервер модели, установленный харнес и известные адрес, имя модели и требования к ключу.</p>
-<p class="actor"><strong>Кто делает:</strong> Вы или настройщик.</p>
-<p class="action"><strong>Действие:</strong> В настройке провайдера укажите три значения: адрес API, точное имя модели, ключ доступа — если он требуется сервером. В Hermes откройте терминал → <code>hermes model</code> → <strong>Custom endpoint</strong> → совместимый с OpenAI Chat Completions API. Адрес берите из таблицы ниже.</p>
+<p class="input"><strong>На входе:</strong> llama-server работает на этом же Mac; OpenCode установлен.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li><a class="sample-download" download="AI-pilot.zip" href="examples/AI-pilot.zip">Скачайте учебную папку AI-pilot.zip</a>. В Finder → <strong>Загрузки</strong> дважды нажмите архив, если браузер ещё не распаковал его.</li>
+<li>Внутри папки <code>AI-pilot</code> должны быть <strong>brief.txt</strong>, <strong>tasks.txt</strong> и <strong>opencode.json</strong>. Это наши учебные данные и настройки, не большая модель.</li>
+<li>В Finder нажмите <strong>⌘ Shift H</strong> (домашняя папка) и перенесите туда <code>AI-pilot</code>. Если папка с таким именем уже есть, не заменяйте её: попросите настройщика выбрать новый путь и изменить команды под него.</li>
+<li>В свободной вкладке Терминала выполните по очереди:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">cd "$HOME/AI-pilot"
+</code></pre></div>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">opencode
+</code></pre></div>
+<ol start="5">
+<li>В открывшийся <strong>диалог OpenCode</strong>, а не в браузер модели, введите: <strong>«Ответь одним словом: готов»</strong>, нажмите Return.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> OpenCode получает ответы от той же модели. Наш <code>opencode.json</code> уже содержит нужные значения — вручную заполнять поля не нужно.</p>
+<p class="verify"><strong>Проверка:</strong> В OpenCode выбран «Мой Qwen» / <code>local-qwen</code>; пришёл ответ. В вкладке llama-server виден новый запрос. Если предлагается оплатить облачный сервис, вернитесь к проверке папки и файла настройки.</p>
 <table>
 <thead>
 <tr>
-<th>Где запущена модель</th>
-<th>Base URL для харнеса</th>
-<th>Model ID</th>
+<th>Поле в учебном файле</th>
+<th>Значение</th>
+<th>Откуда взялось</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>llama-server на этом же Mac</td>
+<td><code>baseURL</code></td>
 <td><code>http://127.0.0.1:8080/v1</code></td>
-<td><code>local-qwen</code>, если задан <code>--alias local-qwen</code></td>
+<td>Адрес и порт из запуска llama-server</td>
 </tr>
 <tr>
-<td>vLLM на этом же ПК</td>
-<td><code>http://127.0.0.1:8000/v1</code>, если порт 8000</td>
-<td>Имя из <code>/v1/models</code></td>
+<td><code>model</code></td>
+<td><code>local/local-qwen</code></td>
+<td>Имя провайдера <code>local</code> + <code>--alias local-qwen</code></td>
 </tr>
 <tr>
-<td>Модель на другом компьютере</td>
-<td>Адрес, выданный настройщиком</td>
-<td>Имя из <code>/v1/models</code></td>
+<td>Ключ</td>
+<td>Не задан</td>
+<td>Наш сервер принимает только локальное подключение без ключа</td>
+</tr>
+<tr>
+<td><code>permission</code></td>
+<td>Запрашивать разрешение</td>
+<td>Перед вызовом инструмента появится запрос</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>Контекст 8192, ответ до 2048 токенов</td>
+<td>Согласовано с начальным запуском сервера; токены — небольшие части текста</td>
 </tr>
 </tbody>
 </table>
-<p class="result"><strong>На выходе:</strong> В чате харнеса приходит ответ на «Ответь одним словом: готов». В журнале сервера виден запрос к выбранной модели. Проверка пока подтверждает только связь с моделью.</p>
-<p class="verify"><strong>Проверка:</strong> Ответ виден в харнесе, запрос — в журнале именно выбранного сервера.</p>
-<p>Где взять имя модели: настройщик запрашивает список по адресу Base URL + <code>/models</code> и копирует поле <code>id</code>. Например, для этого Mac — <code>http://127.0.0.1:8080/v1/models</code>. Это имя API, оно может отличаться от имени скачанного файла.</p>
-<p>Адреса выше — примеры для указанных портов. <code>127.0.0.1</code> всегда означает машину или контейнер самого харнеса. На ноутбуке он не указывает на домашний сервер. <a href="https://hermes-agent.nousresearch.com/docs/integrations/providers">Настройка Hermes</a>.</p>
+<p><strong>Не путайте:</strong> строка <code>cd</code> меняет рабочую папку, <code>opencode</code> запускает агента, а просьбы на русском вводятся уже внутри агента. Чтобы выйти, введите <code>/exit</code>. Чтобы открыть завтра: запустите модель, затем повторите две команды выше в другой вкладке.</p>
+<p><a href="https://opencode.ai/docs/config/">Где OpenCode читает конфигурацию</a> · <a href="https://opencode.ai/docs/providers/">провайдеры</a>.</p>
 <details>
-<summary>Пример настройки OpenCode вместо Hermes</summary>
-<p>В рабочей папке создайте <code>opencode.json</code>. Пример для llama-server на этом же компьютере. Для vLLM замените адрес и <code>local-qwen</code> на имя, которое реально отдаёт сервер. Если требуется ключ, добавьте <code>apiKey</code> через переменную окружения, а не открытым текстом в файл.</p>
-<pre><code class="language-json">{
+<summary>Что внутри opencode.json и как подключить другой сервер</summary>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-json">{
   "$schema": "https://opencode.ai/config.json",
   "provider": {
     "local": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "Мой сервер модели",
       "options": {"baseURL": "http://127.0.0.1:8080/v1"},
-      "models": {"local-qwen": {"name": "Мой Qwen"}}
+      "models": {"local-qwen": {"name": "Мой Qwen", "limit": {"context": 8192, "output": 2048}}}
     }
   },
   "model": "local/local-qwen",
   "permission": {"*": "ask"}
 }
-</code></pre>
-<p>Запустите OpenCode из этой папки. Разрешения в примере запрашиваются перед выполнением действий. <a href="https://opencode.ai/docs/providers/">Провайдеры</a> · <a href="https://opencode.ai/docs/permissions/">Разрешения</a>.</p>
+</code></pre></div>
+<p>Для другого сервера настройщик выдаёт готовый файл с фактическим адресом и Model ID из <code>/v1/models</code>. Ключ передаётся отдельно через защищённое хранилище или переменную окружения. Файл из архива подходит только для нашего Mac-маршрута. При изменении файла выйдите из OpenCode и откройте его заново из той же папки.</p>
+</details>
+<details>
+<summary>Если выбрали Hermes вместо OpenCode</summary>
+<p>Это альтернативный маршрут с настройщиком: <a href="https://hermes-agent.nousresearch.com/docs/getting-started/installation/">установка Hermes</a>. После установки CLI откройте свободную вкладку Терминала, выполните <code>hermes model</code>, выберите <strong>Custom endpoint</strong>, затем OpenAI-compatible Chat Completions. Для нашего Mac укажите <code>http://127.0.0.1:8080/v1</code>, Model ID <code>local-qwen</code>; ключ не нужен, пока сервер не требует авторизации. Запуск выполняется командой <code>hermes</code> из выбранной рабочей папки. Файл <code>opencode.json</code> Hermes не читает. Проверьте ответ и один вызов чтения файла; остальные шаги настройки смотрите в <a href="https://hermes-agent.nousresearch.com/docs/integrations/providers/">инструкции провайдеров Hermes</a>.</p>
 </details>
 <label class="done"><input data-step="2_1" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="3_1">А3. Дайте доступ к пробной папке</h4><div class="step-diagram"><div>Пробная папка</div><b>→</b><div>Инструмент чтения</div></div>
-<p class="input"><strong>На входе:</strong> Харнес отвечает через вашу модель. Есть два несекретных файла и выбранное место их хранения.</p>
+<p class="input"><strong>На входе:</strong> OpenCode отвечает из <code>~/AI-pilot</code>; в папке лежат brief.txt и tasks.txt из архива.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Введите <strong>в OpenCode</strong>:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-text">Прочитай инструментом файлы brief.txt и tasks.txt из текущей папки. Напиши имена файлов и первую строку каждого. Ничего не изменяй.
+</code></pre></div>
+<ol start="2">
+<li>При запросе разрешения прочитайте имя инструмента и путь. Для чтения этих двух файлов выберите <strong>разрешить один раз</strong> (Allow once / аналогичный пункт в вашей версии). Не выдавайте доступ к другим папкам.</li>
+<li>В Finder откройте <code>AI-pilot</code>, нажмите по каждому текстовому файлу и пробел для быстрого просмотра. Сравните строки.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> В истории агента виден вызов чтения, а в ответе — реальные строки двух файлов. Чтобы увидеть подробности вызовов в OpenCode, введите <code>/details</code> в его диалоге. <a href="https://opencode.ai/docs/tui/">Команды интерфейса</a>.</p>
+<p class="verify"><strong>Проверка:</strong> Первая строка brief.txt — <strong>Проект: Маяк.</strong>; tasks.txt — <strong>Поручения по проекту Маяк.</strong> Если модель только обещает прочитать, но вызова инструмента нет, переходите к таблице ошибок.</p>
+<p>Рабочая папка — место работы, а не техническая защита всего диска. В упражнении используются только вымышленные данные и разовые разрешения. Для реальной изоляции администратор создаёт отдельного пользователя ОС или контейнер.</p>
+<label class="done"><input data-step="3_1" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="4">А4. Дайте задачу с проверяемым выходом</h4><div class="step-diagram"><div>Два исходных файла</div><b>→</b><div>Проверенный summary.md</div></div>
+<p class="input"><strong>На входе:</strong> Прочитаны brief.txt и tasks.txt; файловые инструменты работают. Браузер для этого шага не требуется.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Введите <strong>в OpenCode</strong>:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-text">Прочитай brief.txt и tasks.txt. Создай в текущей папке summary.md: дата и время встречи, участники, поручения и незакрытые вопросы. У каждого факта укажи имя исходного файла. Не изменяй исходники, ничего не отправляй.
+</code></pre></div>
+<ol start="2">
+<li>Подтвердите чтение исходников и создание <strong>summary.md</strong> в <code>AI-pilot</code>. Откажитесь от непонятных действий и разберите их с настройщиком.</li>
+<li>В Finder откройте домашнюю папку → <strong>AI-pilot</strong> → выберите <strong>summary.md</strong> → нажмите пробел. Если просмотр недоступен, нажмите правой кнопкой → «Открыть в программе» → TextEdit.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> На диске появился третий содержательный файл — сводка из двух источников. Ответ в чате сам по себе не считается файлом.</p>
+<p class="verify"><strong>Проверка:</strong> В summary.md должны быть <strong>15 октября, 11:00, 12 участников, Анна — смета до 12 октября, Борис — зал до 13 октября; бюджет ещё не согласован</strong>. Сверьте имена источников. В истории видны чтение и запись, исходники не изменились.</p>
+<p>Если вместо вызова инструмента модель печатает его название, настройщик проверяет совместимость шаблона и парсера. В нашем запуске уже есть <code>--jinja</code>; это не гарантия поддержки любого инструмента любой сборкой. <a href="https://github.com/ggml-org/llama.cpp/blob/master/docs/function-calling.md">llama.cpp tool calling</a>.</p>
+<label class="done"><input data-step="4" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="5">А5. Подключите браузер или внешний сервис</h4><div class="step-diagram"><div>Харнес</div><b>→</b><div>MCP → браузер / сервис</div></div>
+<p class="input"><strong>На входе:</strong> А4 выполнен; хотите дополнительно дать агенту браузер. Интернет включён.</p>
 <p class="actor"><strong>Кто делает:</strong> Вы или настройщик.</p>
-<p class="action"><strong>Действие:</strong> Создайте папку <code>AI-пилот</code> с двумя несекретными текстовыми файлами. Включите инструменты чтения и записи файлов. В Hermes их выбор открывается командой <code>hermes tools</code>; в OpenCode файловые инструменты встроены. Установите рабочую папку и проверьте ограничения доступа.</p>
-<p class="result"><strong>На выходе:</strong> Агент перечисляет именно эти два файла и читает их содержимое через инструмент. В истории виден вызов чтения файла.</p>
-<p class="verify"><strong>Проверка:</strong> Попросите назвать файлы и процитировать первую строку каждого; сравните вручную.</p>
-<p>Рабочая папка сама по себе не ограничивает доступ ко всему диску. Если нужна техническая изоляция, используйте отдельного пользователя ОС или контейнер с подключённой только пробной папкой. <a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/tools/">Инструменты и среды Hermes</a>.</p>
-<label class="done"><input data-step="3_1" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="4">А4. Подключите браузер или внешний сервис</h4><div class="step-diagram"><div>Харнес</div><b>→</b><div>MCP → браузер / сервис</div></div>
-<p class="input"><strong>На входе:</strong> Работающий харнес и одна задача, для которой недостаточно чтения файлов.</p>
-<p class="actor"><strong>Кто делает:</strong> Вы или настройщик.</p>
-<p class="action"><strong>Действие:</strong> Добавьте один нужный инструмент по таблице. Встроенный инструмент включается в харнесе. Для MCP укажите команду запуска локального адаптера или URL удалённого, затем пройдите вход, если он нужен. MCP — способ соединить оболочку с инструментом, а skill — инструкция, как им пользоваться.</p>
-<table>
-<thead>
-<tr>
-<th>Что нужно агенту</th>
-<th>Что подключить</th>
-<th>Что проверить</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Читать и создавать файлы</td>
-<td>Встроенные файловые инструменты</td>
-<td>Чтение теста и создание <code>summary.md</code></td>
-</tr>
-<tr>
-<td>Открывать страницы и нажимать кнопки</td>
-<td>Встроенный браузер или <a href="https://github.com/microsoft/playwright-mcp">Playwright MCP</a></td>
-<td>Заголовок открытой страницы</td>
-</tr>
-<tr>
-<td>Искать в интернете</td>
-<td>Поисковый инструмент и его провайдер</td>
-<td>Ссылки на найденные источники</td>
-</tr>
-<tr>
-<td>Читать календарь, CRM, 1С</td>
-<td>Поддерживаемый коннектор или MCP/API-адаптер этой системы</td>
-<td>Одна разрешённая тестовая запись</td>
-</tr>
-<tr>
-<td>Искать по внутренним документам</td>
-<td>Инструмент поиска, подключённый к вашему индексу</td>
-<td>Фрагмент и ссылка на исходник</td>
-</tr>
-</tbody>
-</table>
-<p class="result"><strong>На выходе:</strong> Инструмент виден в списке доступных, а пробный вызов возвращает данные. Права чата Open WebUI и его индекс не передаются харнесу автоматически.</p>
-<p class="verify"><strong>Проверка:</strong> Выполните один тест из таблицы и откройте результат вызова инструмента.</p>
-<details>
-<summary>Конкретный пример: браузер через MCP в OpenCode</summary>
-<p>Установите Node.js по <a href="https://nodejs.org/en/download">официальной инструкции</a>. Добавьте поле <code>mcp</code> в существующий <code>opencode.json</code>, сохранив <code>provider</code>, <code>model</code> и <code>permission</code>. Это фрагмент конфигурации, а не замена всего файла:</p>
-<pre><code class="language-json">{
-  "mcp": {
-    "playwright": {
-      "type": "local",
-      "command": ["npx", "-y", "@playwright/mcp@latest"],
-      "enabled": true
-    }
-  }
-}
-</code></pre>
-<p>Перезапустите оболочку. Первый запуск загружает официальный пакет Microsoft; если сервер запросит установку браузера, следуйте его инструкции. Для воспроизводимой корпоративной установки администратор закрепляет проверенную версию пакета вместо <code>latest</code>.</p>
-<p>Проба: «Открой https://example.com через браузерный инструмент и назови заголовок». В истории должен появиться вызов браузера. <a href="https://opencode.ai/docs/mcp-servers/">MCP в OpenCode</a> · <a href="https://github.com/microsoft/playwright-mcp">Playwright MCP</a>.</p>
-</details>
-<label class="done"><input data-step="4" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="5">А5. Дайте задачу с проверяемым выходом</h4><div class="step-diagram"><div>Два исходных файла</div><b>→</b><div>Проверенный summary.md</div></div>
-<p class="input"><strong>На входе:</strong> Пробная папка доступна, инструменты чтения и записи включены, модель отвечает.</p>
-<p class="actor"><strong>Кто делает:</strong> Вы или настройщик.</p>
-<p class="action"><strong>Действие:</strong> Попросите: «Прочитай два файла из AI-пилот. Создай summary.md: пять выводов, у каждого имя исходного файла. Не меняй исходники». Разрешите чтение и создание результата, откройте полученный файл сами.</p>
-<p class="result"><strong>На выходе:</strong> Есть новый файл, выводы соответствуют источникам, в истории видны чтение и запись. Ответ «я сохранил» без реально созданного файла не засчитывается.</p>
-<p class="verify"><strong>Проверка:</strong> Откройте summary.md в обычном редакторе и проверьте пять выводов.</p>
-<p>Если вместо вызова инструмента модель печатает его название, настройщик проверяет поддержку tool calling: шаблон модели, формат вызовов и парсер движка. Для llama.cpp нужен совместимый шаблон с Jinja; для vLLM — совместимые параметры tool calling. <a href="https://github.com/ggml-org/llama.cpp/blob/master/docs/function-calling.md">llama.cpp</a> · <a href="https://docs.vllm.ai/en/latest/features/tool_calling/">vLLM</a>.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>В диалоге OpenCode введите <code>/exit</code>. В освободившемся Терминале установите Node.js, который запускает браузерный адаптер:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">brew install node
+</code></pre></div>
+<ol start="2">
+<li>Проверьте две команды по очереди: <code>node --version</code>, затем <code>npx --version</code>. Обе должны вернуть номер версии.</li>
+<li><a class="sample-download" download="opencode-browser.json" href="examples/opencode-browser.json">Скачайте вариант настройки с браузером</a>. Он содержит <strong>всю</strong> конфигурацию, включая модель. В Finder переименуйте его в <code>opencode.json</code> и замените только учебный файл в <code>~/AI-pilot</code> (свою рабочую конфигурацию не заменяйте). Убедитесь, что не получилось <code>opencode.json.txt</code>.</li>
+<li>В этой папке снова запустите <code>opencode</code>. Первый запуск скачает пакет Playwright MCP. Введите в диалог:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-text">Через Playwright открой https://example.com и сообщи заголовок страницы. Если браузер не установлен, предложи его установку и запроси разрешение. Больше никуда не переходи.
+</code></pre></div>
+<ol start="5">
+<li>Разрешите только установку браузера, если она нужна, и открытие указанной страницы. Если шаг установки не появился, передайте ошибку настройщику.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> К файловым инструментам добавился браузер. Он открывает внешнюю страницу по команде агента.</p>
+<p class="verify"><strong>Проверка:</strong> В истории есть вызов Playwright, результат — заголовок <strong>Example Domain</strong>. Самостоятельно откройте https://example.com и сравните. Ответ без вызова браузера не подтверждает подключение.</p>
+<p>Это пример <strong>одного</strong> внешнего инструмента. Поиск в интернете, календарь, CRM и 1С подключаются каждый отдельно: выберите нужный сервис, его поддерживаемый адаптер и способ входа. Единого ключа «ко всем инструментам» нет. Для компании используйте <a href="#connect-company">Б4</a>.</p>
+<p><a href="https://opencode.ai/docs/mcp-servers/">Как OpenCode подключает MCP</a> · <a href="https://github.com/microsoft/playwright-mcp">официальный Playwright MCP</a>. Учебная настройка скачивает актуальный пакет; для рабочего корпоративного развёртывания администратор закрепляет проверенную версию.</p>
 <label class="done"><input data-step="5" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="6">А6. Добавляйте навыки после проверки инструментов</h4><div class="step-diagram"><div>Проверенный порядок</div><b>→</b><div>Skill для новых данных</div></div>
-<p class="input"><strong>На входе:</strong> Успешная проба А5, проверенный формат результата и два новых входных файла.</p>
-<p class="actor"><strong>Кто делает:</strong> Вы или настройщик.</p>
-<p class="action"><strong>Действие:</strong> Сохраните инструкцию для повторяющейся задачи: какие файлы читать, как оформлять сводку, что считать готовым. Подключите её как skill по инструкции выбранной оболочки. Повторите задачу на двух новых файлах.</p>
-<p class="result"><strong>На выходе:</strong> Агент использует тот же порядок и формат на новых данных. Skill задаёт метод работы; доступ к файлам, браузеру и системам настраивается отдельно.</p>
-<p class="verify"><strong>Проверка:</strong> Проверьте формат и источники на новых файлах, которые не использовались при настройке.</p>
+<p class="input"><strong>На входе:</strong> А4 прошёл проверку. Вы хотите повторять тот же порядок на новых данных.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li><a class="sample-download" download="SKILL.md" href="examples/SKILL.md">Скачайте учебный SKILL.md</a>. Выйдите из OpenCode через <code>/exit</code>.</li>
+<li>В Терминале создайте место для навыка:</li>
+</ol>
+<div class="code-block"><button aria-label="Копировать текст блока" class="copy-code" type="button">Копировать</button><pre><code class="language-sh">mkdir -p "$HOME/AI-pilot/.opencode/skills/meeting-summary"
+</code></pre></div>
+<ol start="3">
+<li>В Finder нажмите <strong>⌘ Shift G</strong>, вставьте <code>~/AI-pilot/.opencode/skills/meeting-summary</code>. Перенесите туда скачанный <strong>SKILL.md</strong> с этим точным именем. Точка в <code>.opencode</code> означает скрытую папку; переход по пути её открывает.</li>
+<li>Вернитесь в папку <code>AI-pilot</code> и снова запустите OpenCode. Попросите: <strong>«Загрузи навык meeting-summary и перечисли его требования»</strong>. При запросе разрешите чтение навыка.</li>
+<li><a class="sample-download" download="second-inputs.zip" href="examples/second-inputs.zip">Скачайте вторую пару исходников</a>, распакуйте её и перенесите <code>brief-2.txt</code> и <code>tasks-2.txt</code> в <code>AI-pilot</code>. Дайте задачу: <strong>«Используй meeting-summary для brief-2.txt и tasks-2.txt, сохрани summary-2.md»</strong>.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Агент прочитал сохранённую инструкцию и применил её к новым данным.</p>
+<p class="verify"><strong>Проверка:</strong> В истории виден вызов загрузки навыка. В summary-2.md: <strong>проект Север, 22 октября, 14:30, 8 участников, Ирина — программа до 20 октября; место не выбрано</strong>. Если повторились данные «Маяка», результат неверен.</p>
+<p><a href="https://opencode.ai/docs/skills/">Размещение навыков в OpenCode</a>. Навык описывает порядок; установку модели и разрешения на инструменты он не заменяет.</p>
 <label class="done"><input data-step="6" type="checkbox"/> Проверил результат шага</label></article><h4 id="openclaw_1">Если выбран OpenClaw</h4>
-<p>Установите <a href="https://docs.openclaw.ai/install">OpenClaw</a>, выберите провайдера модели, затем подключите инструменты и выполните пробу А5. Для <strong>vLLM</strong> используйте <a href="https://docs.openclaw.ai/providers/vllm">отдельную инструкцию провайдера</a>; для <strong>Ollama</strong> — <a href="https://docs.openclaw.ai/providers/ollama">родной API Ollama</a>, обычно <code>http://127.0.0.1:11434</code> без <code>/v1</code>. Это два разных маршрута: добавлять Ollama к работающему vLLM автоматически не требуется. Браузер настраивается <a href="https://docs.openclaw.ai/tools/browser">отдельно</a>. Подключение Telegram — канал общения с агентом; доступ к рабочим файлам оно само по себе не создаёт.</p>
+<p>Установите <a href="https://docs.openclaw.ai/install">OpenClaw</a>, выберите провайдера модели, затем подключите инструменты и выполните пробу А4. Для <strong>vLLM</strong> используйте <a href="https://docs.openclaw.ai/providers/vllm">отдельную инструкцию провайдера</a>; для <strong>Ollama</strong> — <a href="https://docs.openclaw.ai/providers/ollama">родной API Ollama</a>, обычно <code>http://127.0.0.1:11434</code> без <code>/v1</code>. Это два разных маршрута: добавлять Ollama к работающему vLLM автоматически не требуется. Браузер настраивается <a href="https://docs.openclaw.ai/tools/browser">отдельно</a>. Подключение Telegram — канал общения с агентом; доступ к рабочим файлам оно само по себе не создаёт.</p>
 <hr/>
 </section><section data-mode="company"><h2 id="2_2">2. Для компании</h2>
 <span id="21"></span><h3 id="company">2.1. Базовый стек</h3>
@@ -651,7 +848,7 @@
 <p><strong>Основной маршрут этой памятки</strong></p>
 <h4 id="gpu-qwen38-27b-fp8-vllm-open-webui">Сервер с GPU → Qwen3.8-27B-FP8 → vLLM → Open WebUI → поиск по документам и персональные права</h4>
 <p>Корпоративная инструкция использует официальные FP8-веса и vLLM. На RTX PRO 6000 с 96 ГБ поместится и BF16, но FP8 оставляет больше памяти под контекст и одновременные запросы. Одна GPU — конфигурация пилота с очередью. Две GPU — вариант для сравнения под нагрузкой.</p>
-<p><strong>Порядок чтения:</strong> 1. Стек → 2. Модели и программы → 3. Агент по задаче → 4. Бюджет → 5. Сборка и проверка → 6. Подключение харнеса и инструментов. Каталоги помогают выбрать замену; все варианты сразу устанавливать не нужно.</p>
+<p><strong>Для первого запуска:</strong> переходите к <a href="#assembly-personal">сборке</a>, затем к <a href="#connect-personal">агенту</a>. Каталоги выше нужны, если вы хотите сравнить альтернативы.</p>
 <hr/>
 <span id="22"></span><h3 id="catalog-company">2.2. Модели и программы</h3>
 <p>Для команды из 20–30 человек разделите интерфейс и сервер моделей. Сначала проверьте одну модель на своих задачах и измерьте параллельную нагрузку.</p>
@@ -809,99 +1006,175 @@
 <hr/>
 <span id="25"></span><h3 id="assembly-company">2.5. Пилот и внедрение</h3>
 <p>Сервер с GPU → Qwen3.8-27B-FP8 → vLLM → Open WebUI → поиск по документам и персональные права. Шаги 1–8 выполняются на пилотном стенде, шаг 9 — закупка или принятие окончательной конфигурации и передача команде. Агент добавляется отдельно в шаге 10.</p>
-<p>9 основных шагов и один необязательный шаг с агентом для команды из 20–30 человек. В каждом шаге указаны действие и результат, который нужно проверить.</p>
+<p><strong>Если вы руководитель или сотрудник:</strong> не вводите серверные команды на своём ноутбуке. В карточках ниже вы передаёте конкретное задание администратору, получаете адрес / файл / протокол и сами проверяете результат. Если администратора пока нет, начните с выбора исполнителя; готовый сервер не настраивает себя.</p>
+<p><strong>Если вы администратор:</strong> используйте официальные инструкции vLLM и Open WebUI для выбранной ОС, сети и способа установки. Эта памятка задаёт последовательность и приёмку; конкретные команды вашей инфраструктуры фиксируются в паспорте системы. Сотрудник должен получить уже заполненные адреса, а не шаблоны.</p>
+<p>9 основных шагов и один дополнительный шаг с агентом для 20–30 человек.</p>
 <p><strong>Подготовьте комплект</strong></p>
 <p>Сервер в сборе + ИБП + место с охлаждением + внутренняя сеть</p>
 <p>Также нужны: рабочие компьютеры сотрудников, модель и интерфейс, разрешённые документы, администратор и владелец задачи.</p>
 
 <article class="step-card"><h4 id="_36">1. Выберите первую задачу</h4><svg aria-label="Выберите первую задачу" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="180" rx="8" width="150" x="95" y="20"></rect><path d="M120 60h95m-95 35h95m-95 35h70"></path><path d="M290 100l30 30 65-70"></path><text class="tiny" x="340" y="180">Задача + критерий успеха</text></svg>
-<p class="input"><strong>На входе:</strong> Владелец бизнес-задачи и два будущих пользователя, готовые дать примеры работы.</p>
-<p class="actor"><strong>Кто делает:</strong> Владелец задачи и будущие пользователи.</p>
-<p class="action"><strong>Действие:</strong> Руководитель и будущие пользователи выбирают один рабочий сценарий и собирают 10–20 примеров.</p>
-<p class="result"><strong>На выходе:</strong> Есть набор задач и понятные требования: какой ответ годится и сколько его можно ждать.</p>
-<p class="verify"><strong>Проверка:</strong> Откройте список примеров: у каждого есть входные данные, ожидаемый ответ и допустимое время.</p>
-<p>Подсказка для ответственного</p>
-<p>Зафиксируйте длину документов, ожидаемое число параллельных запросов и критерии качества. 30 сотрудников с доступом не означают 30 одновременных генераций.</p>
-
+<p class="input"><strong>На входе:</strong> Владелец процесса и два сотрудника, выполняющие похожую работу.</p>
+<p class="actor"><strong>Кто делает:</strong> Руководитель и сотрудники.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Создайте обычную таблицу «Пилот ИИ» в Excel или другом привычном редакторе. Колонки: <strong>№ / входной файл / задание / правильные факты / допустимое время / результат пробы</strong>.</li>
+<li>Для первой строки возьмите <a class="sample-download" download="brief.txt" href="examples/brief.txt">brief.txt</a>: задание «Когда встреча и сколько участников?»; факты — <strong>15 октября, 11:00, 12 участников</strong>. Допустимое время согласуйте с сотрудниками; например, 30 секунд — только пример критерия, не обещание скорости.</li>
+<li>Добавьте 10–20 своих разрешённых примеров с ответами, которые сотрудник умеет проверить. Передайте таблицу администратору.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Есть таблица с понятным входом и эталоном для каждого задания.</p>
+<p class="verify"><strong>Проверка:</strong> Другой сотрудник может проверить ответ по таблице без объяснений автора. Укажите число людей, которые могут запускать задачу одновременно: 30 учётных записей и 30 одновременных запросов — разные нагрузки.</p>
 <label class="done"><input data-step="_36" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_37">2. Получите пилотный стенд</h4><svg aria-label="Получите пилотный стенд" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="170" rx="6" width="150" x="70" y="25"></rect><rect height="35" rx="3" width="120" x="85" y="45"></rect><rect height="35" rx="3" width="120" x="85" y="95"></rect><circle cx="190" cy="62" r="4"></circle><circle cx="190" cy="112" r="4"></circle><rect height="110" rx="5" width="95" x="295" y="70"></rect><path d="M330 100l-12 30h25l-12 28"></path><text class="tiny" x="145" y="218">Сервер в сборе</text><text class="tiny" x="342" y="205">ИБП</text></svg>
-<p class="input"><strong>На входе:</strong> Задачи и критерии шага 1; согласованные требования к данным и вычислениям.</p>
-<p class="actor"><strong>Кто делает:</strong> Администратор и ответственный за закупку.</p>
-<p class="action"><strong>Действие:</strong> Договоритесь о тесте у поставщика, аренде или использовании имеющегося подходящего сервера. Окончательную закупку утвердите после шага 8.</p>
-<p class="result"><strong>На выходе:</strong> Есть доступ к пилотному серверу и записана его конфигурация; можно проверять выбранную модель.</p>
-<p class="verify"><strong>Проверка:</strong> Администратор входит на стенд и сверяет его конфигурацию с записанной.</p>
-<p>Подсказка для ответственного</p>
-<p>Сверьте точную версию GPU, объём RAM и SSD, питание, охлаждение, сеть, цену с налогами и доставкой. ИБП подбирается под мощность и нужное время автономии. Пассивные Server Edition требуют подходящего серверного охлаждения.</p>
-
+<p class="input"><strong>На входе:</strong> Таблица задач и администратор, отвечающий за установку.</p>
+<p class="actor"><strong>Кто делает:</strong> Администратор и закупщик; руководитель принимает результат.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Выберите из <a href="#corporate-budget">раздела бюджета</a> поставщика или используйте имеющееся оборудование. Передайте ему таблицу задач и текст запроса ниже.</li>
+<li>Получите условия теста: даты, конфигурацию, стоимость, куда разрешено загружать данные, кто устанавливает ПО и кто устраняет ошибки.</li>
+<li>Администратор проверяет вход на стенд; вам передаёт заполненную спецификацию и срок готовности чата.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Выделен реальный стенд для проб, назначен исполнитель.</p>
+<p class="verify"><strong>Проверка:</strong> В спецификации есть модель и число GPU, видеопамять, RAM, SSD и срок доступа. Ссылка на каталог оборудования без выделенного стенда не считается результатом.</p>
+<p><strong>Текст запроса поставщику:</strong> «Нужен пилот локального ИИ для 20–30 сотрудников. Проверьте Qwen3.8-27B-FP8 через vLLM на приложенных заданиях. Укажите точную конфигурацию и стоимость теста. Предоставьте протокол качества, времени и ошибок при 1, 5, 10, 20 и 30 запросах. Отдельно укажите стоимость оборудования, установки, поддержки, налоги и доставку. Закупку согласуем после проверки».</p>
+<p>Секретные рабочие данные на внешний стенд передавайте только по согласованным условиям; учебные файлы памятки вымышленные.</p>
 <label class="done"><input data-step="_37" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_38">3. Подключите сервер</h4><svg aria-label="Подключите сервер" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="130" rx="6" width="110" x="50" y="35"></rect><rect height="75" rx="5" width="85" x="215" y="90"></rect><rect height="40" rx="4" width="95" x="350" y="35"></rect><path d="M160 135h55m85 0h35v50m-175-110h50V55h140"></path><text class="tiny" x="100" y="195">Сервер</text><text class="tiny" x="255" y="195">ИБП → питание</text><text class="tiny" x="395" y="105">Сеть</text></svg>
-<p class="input"><strong>На входе:</strong> Пилотный стенд, схема сети и условия доступа из шага 2.</p>
-<p class="actor"><strong>Кто делает:</strong> Инженер.</p>
-<p class="action"><strong>Действие:</strong> Для собственного стенда инженер подключает питание через ИБП и внутреннюю сеть. Для арендованного стенда проверяет защищённый доступ и условия работы с данными.</p>
-<p class="result"><strong>На выходе:</strong> Сервер включается, доступен администратору и получает достаточное охлаждение.</p>
-<p class="verify"><strong>Проверка:</strong> Администратор подключается по согласованному адресу из разрешённой сети.</p>
-<p>Подсказка для ответственного</p>
-<p>Проверьте электрическую мощность, вентиляцию, шум, крепление и сетевые порты. Установка в стойку и электрические подключения выполняются специалистом. Схема показывает принцип соединения; конкретные кабели определяет спецификация.</p>
-
+<p class="input"><strong>На входе:</strong> Стенд выделен; известны размещение и ответственный инженер.</p>
+<p class="actor"><strong>Кто делает:</strong> Инженер; сотрудник получает условия подключения.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Для своего сервера инженер подключает питание через подходящий ИБП, внутреннюю сеть и охлаждение по спецификации. Для арендованного — проверяет согласованный защищённый доступ.</li>
+<li>Попросите передать короткую запись: <strong>где стоит сервер / из какой сети доступен / нужен ли VPN / кто включает / кому звонить</strong>.</li>
+<li>С рабочего места пилотного сотрудника инженер проверяет связь. Если нужен VPN, он устанавливает клиент и показывает вход.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Сервер доступен из той сети, где будут работать сотрудники.</p>
+<p class="verify"><strong>Проверка:</strong> Инженер демонстрирует подключение с рабочего компьютера сотрудника. Сам по себе включённый индикатор питания не доказывает доступность. Конкретные кабели и электрические подключения выбирает специалист.</p>
 <label class="done"><input data-step="_38" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_39">4. Проверьте оборудование</h4><svg aria-label="Проверьте оборудование" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="175" rx="7" width="350" x="65" y="25"></rect><path d="M65 60h350"></path><text x="240" y="105">GPU 1  ✓</text><text x="240" y="145">GPU 2  ✓</text><text class="tiny" x="240" y="180">Для конфигурации с двумя картами</text></svg>
-<p class="input"><strong>На входе:</strong> Доступ администратора к включённому серверу и спецификация оборудования.</p>
-<p class="actor"><strong>Кто делает:</strong> Инженер.</p>
-<p class="action"><strong>Действие:</strong> Инженер устанавливает ОС и драйвер GPU и запускает аппаратный тест.</p>
-<p class="result"><strong>На выходе:</strong> Все заказанные карты видны системе; тест не выявил ошибок памяти или перегрева.</p>
-<p class="verify"><strong>Проверка:</strong> Сверьте число и память GPU со спецификацией; приложите протокол аппаратного теста.</p>
-<p>Подсказка для ответственного</p>
-<p>Сохраните версии ОС, драйвера и результат проверки. Для конфигурации с одной картой должна определяться одна GPU. Объём памяти двух карт не становится автоматически общей памятью одного запроса.</p>
-
+<p class="input"><strong>На входе:</strong> Сервер подключён; спецификация сохранена.</p>
+<p class="actor"><strong>Кто делает:</strong> Инженер; закупщик сверяет акт.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Передайте инженеру спецификацию из шага 2. Попросите аппаратный тест и снимок фактических GPU и памяти.</li>
+<li>Инженер проверяет драйвер, ошибки GPU, память, диски, питание и температуру под тестовой нагрузкой. Длительность и метод указывает в протоколе.</li>
+<li>Сверьте таблицу «заказано / установлено / проверено». При расхождении верните поставщику на уточнение до запуска пилота.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Есть подписанный исполнителем протокол и фактическая конфигурация.</p>
+<p class="verify"><strong>Проверка:</strong> Число GPU и объём памяти совпадают со спецификацией; ошибки и перегрев разобраны. Запись «всё нормально» без результатов теста недостаточна.</p>
 <label class="done"><input data-step="_39" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_40">5. Запустите внутренний чат</h4><svg aria-label="Запустите внутренний чат" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="155" rx="6" width="130" x="50" y="30"></rect><text x="115" y="100">Модель</text><text class="tiny" x="115" y="135">на сервере</text><path d="M190 110h75m-15-12 15 12-15 12"></path><rect height="115" rx="6" width="160" x="280" y="50"></rect><path d="M280 80h160"></path><text x="360" y="115">Чат</text><text class="tiny" x="360" y="145">в браузере</text></svg>
-<p class="input"><strong>На входе:</strong> Проверенные GPU, ОС и драйвер, выбранная модель FP8 и доступный из сети сервер.</p>
-<p class="actor"><strong>Кто делает:</strong> Администратор.</p>
-<p class="action"><strong>Действие:</strong> Инженер запускает Qwen3.8-27B-FP8 через vLLM и подключает Open WebUI к его внутреннему API.</p>
-<p class="result"><strong>На выходе:</strong> С рабочего компьютера открывается внутренний чат и отвечает на пробный запрос.</p>
-<p class="verify"><strong>Проверка:</strong> С компьютера сотрудника отправьте вопрос; в интерфейсе виден ответ, в журнале vLLM — запрос.</p>
-<p>Подсказка для ответственного</p>
-<p>Используйте официальные веса <a href="https://huggingface.co/Qwen/Qwen3.8-27B-FP8">Qwen/Qwen3.8-27B-FP8 ↗</a> и рецепт <code>vllm serve Qwen/Qwen3.8-27B-FP8</code>. Зафиксируйте версии модели и <a href="https://docs.vllm.ai/">vLLM ↗</a>. Не выставляйте незащищённый API в интернет. Для двух GPU способ запуска выбирается по измерениям: одна реплика на каждом GPU с балансировкой либо другой режим после теста.</p>
-
+<p class="input"><strong>На входе:</strong> Оборудование проверено, назначены администратор и два пилотных пользователя.</p>
+<p class="actor"><strong>Кто делает:</strong> Администратор устанавливает; сотрудник входит и проверяет.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Передайте администратору: <strong>«Разверните Qwen3.8-27B-FP8 через vLLM, установите Open WebUI и подключите его к модели. Создайте два персональных входа. Выдайте мне адрес страницы чата, способ входа и название модели в списке»</strong>.</li>
+<li>Получите заполненные значения. На рабочем компьютере откройте браузер, вставьте <strong>адрес чата</strong> в адресную строку и войдите своей учётной записью.</li>
+<li>Создайте <strong>New Chat / Новый чат</strong>, в выборе модели укажите имя, выданное администратором. Вставьте текст brief.txt и вопрос: <strong>«Когда встреча и сколько участников?»</strong>. Нажмите отправку.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Вы переписываетесь с корпоративной моделью в браузере. Сотруднику не нужен собственный GPU.</p>
+<p class="verify"><strong>Проверка:</strong> Ответ: <strong>15 октября, 11:00, 12 участников</strong>. Администратор находит этот запрос в журнале vLLM. Если вы видите JSON или ошибку <code>/v1</code>, вам передали адрес API вместо адреса чата.</p>
+<details>
+<summary>Администратору: где соединяются Open WebUI и модель</summary>
+<p><a href="https://docs.openwebui.com/getting-started/quick-start/">Установка Open WebUI</a> · <a href="https://docs.vllm.ai/en/latest/getting_started/quickstart/">vLLM</a>.</p>
+<p>В Open WebUI откройте <strong>Settings → Admin → Connections</strong>, добавьте <strong>OpenAI-compatible</strong> соединение с действительным адресом API vLLM и ключом, если он настроен. Проверьте список моделей и сохраните. <a href="https://docs.openwebui.com/getting-started/quick-start/connect-a-provider/starting-with-openai-compatible/">Официальная инструкция соединения</a>. В контейнере <code>127.0.0.1</code> указывает на этот контейнер; адрес vLLM должен быть доступен именно из Open WebUI. Первая страница сотрудника — URL Open WebUI, не URL vLLM. Назначьте пользователей и права до выдачи доступа.</p>
+</details>
 <label class="done"><input data-step="_40" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_41">6. Настройте доступ к документам</h4><svg aria-label="Настройте доступ к документам" class="ikeapic" role="img" viewbox="0 0 480 220"><circle cx="110" cy="45" r="20"></circle><path d="M75 125V95q35-45 70 0v30"></path><rect height="65" rx="5" width="70" x="210" y="65"></rect><path d="M225 65V45a20 20 0 0 1 40 0v20m-105 50h50m70 0h45"></path><rect height="125" rx="4" width="85" x="325" y="35"></rect><path d="M340 60h55m-55 25h55m-55 25h35"></path><text class="tiny" x="240" y="200">Сотрудник → права → разрешённые документы</text></svg>
-<p class="input"><strong>На входе:</strong> Работающий Open WebUI, два тестовых пользователя и разрешённые документы.</p>
-<p class="actor"><strong>Кто делает:</strong> Администратор и владелец данных.</p>
-<p class="action"><strong>Действие:</strong> Создайте персональные учётные записи в Open WebUI и подключите небольшой набор документов с локальным поиском.</p>
-<p class="result"><strong>На выходе:</strong> Сотрудник получает ответы со ссылками на источники и видит только разрешённые ему материалы.</p>
-<p class="verify"><strong>Проверка:</strong> Оба тестовых пользователя проверяют разрешённый и запрещённый документы.</p>
-<p>Подсказка для ответственного</p>
-<p>Настройте извлечение текста, локальную embedding-модель (кандидат — Qwen3-Embedding-0.6B из каталога), индекс, роли, внутренний HTTPS и проверку прав при поиске и выдаче. Для сканов добавьте OCR. Проверьте тестовыми пользователями обе ситуации: разрешённый документ доступен, чужой — недоступен. Проверьте исходящие подключения и внешние интеграции.</p>
-
+<p class="input"><strong>На входе:</strong> Чат работает; есть два тестовых пользователя с разными правами.</p>
+<p class="actor"><strong>Кто делает:</strong> Администратор настраивает поиск и права; сотрудники проверяют.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Попросите администратора настроить локальные обработку документов и поиск, выдать право создавать учебную коллекцию. Подготовьте brief.txt и отдельный вымышленный файл для другого отдела, например с фразой <strong>«Код учебного отдела Б: СИНИЦА-42»</strong>.</li>
+<li>В Open WebUI откройте <strong>Workspace / Рабочая область → Knowledge / Знания → Create / Создать</strong>. Назовите коллекцию «Пилот — отдел А», загрузите brief.txt и дождитесь окончания обработки. Если этих пунктов нет, администратор должен выдать права или создать коллекцию сам.</li>
+<li>В новом чате напечатайте <code>#</code>, выберите эту коллекцию и спросите: <strong>«Сколько участников встречи? Приведи цитату и источник»</strong>.</li>
+<li>Откройте ссылку на источник ответа. Затем с администратором повторите проверку из учётной записи другого отдела, которой эта коллекция не разрешена.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Разрешённый документ находится, источник открывается; чужая коллекция не раскрывается.</p>
+<p class="verify"><strong>Проверка:</strong> В разрешённом ответе — 12 участников и строка brief.txt. Ограниченная учётная запись не видит документ и не получает его текст. Администратор проверяет отказ также на уровне поиска, до передачи фрагмента модели.</p>
+<p><a href="https://docs.openwebui.com/features/workspace/knowledge/">Инструкция Knowledge</a>. Индекс — подготовленная база для поиска по загруженным текстам; он не возникает от установки модели. Для сканов сначала нужно распознавание. Если поиск не работает, проверяйте извлечение текста, обработку, выбранную коллекцию и режим поиска.</p>
 <label class="done"><input data-step="_41" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_42">7. Проверьте резервную копию</h4><svg aria-label="Проверьте резервную копию" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="120" rx="6" width="120" x="50" y="45"></rect><rect height="120" rx="6" width="120" x="310" y="45"></rect><path d="M185 80h110m-15-10 15 10-15 10m15 55H185m15-10-15 10 15 10"></path><text x="110" y="110">Данные</text><text x="370" y="110">Копия</text><text class="tiny" x="240" y="65">Сохранить</text><text class="tiny" x="240" y="175">Восстановить</text></svg>
-<p class="input"><strong>На входе:</strong> Настроенный пилот, список сохраняемых данных и отдельное хранилище копий.</p>
-<p class="actor"><strong>Кто делает:</strong> Администратор.</p>
-<p class="action"><strong>Действие:</strong> Администратор сохраняет настройки и данные и пробует восстановить их в тестовом окружении.</p>
-<p class="result"><strong>На выходе:</strong> Копия действительно восстанавливается; известно, кто и когда её делает.</p>
-<p class="verify"><strong>Проверка:</strong> Восстановите копию в тестовой среде и откройте сохранённые настройки и документы.</p>
-<p>Подсказка для ответственного</p>
-<p>В копии включите настройки Open WebUI, пользователей, документы и индекс либо способ его восстановления; затем согласуйте сроки хранения и допустимую потерю данных. Копию храните отдельно от основного сервера. Две GPU в одном корпусе не обеспечивают отказоустойчивость сервера.</p>
-
+<p class="input"><strong>На входе:</strong> Есть настроенный чат, коллекция «Пилот — отдел А» и тестовые учётные записи.</p>
+<p class="actor"><strong>Кто делает:</strong> Администратор; владелец задачи проверяет восстановленное.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Попросите администратора сохранить настройки, пользователей, документы и нужные данные поиска на отдельное хранилище, затем восстановить их <strong>в отдельную тестовую среду</strong>.</li>
+<li>Получите адрес восстановленного чата и время, на которое сделана копия. Не заменяйте рабочий сервер ради проверки.</li>
+<li>Войдите, откройте учебную коллекцию, задайте вопрос про 12 участников. Повторите проверку запрещённого доступа.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Резервная копия доказала пригодность; записаны ответственный, расписание и время восстановления.</p>
+<p class="verify"><strong>Проверка:</strong> В восстановленной среде открывается исходный документ и сохраняются права. Наличие файла архива без пробного восстановления не завершает шаг.</p>
 <label class="done"><input data-step="_42" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_43">8. Проверьте работу под нагрузкой</h4><svg aria-label="Проверьте работу под нагрузкой" class="ikeapic" role="img" viewbox="0 0 480 220"><path d="M60 175V35m0 140h360M90 150l65-15 65-40 65 10 90-60"></path><text class="tiny" x="95" y="205">1</text><text class="tiny" x="155" y="205">5</text><text class="tiny" x="220" y="205">10</text><text class="tiny" x="285" y="205">20</text><text class="tiny" x="375" y="205">30 запросов</text><text class="tiny" x="240" y="25">Проверяем время ответа и качество</text></svg>
-<p class="input"><strong>На входе:</strong> Работающий пилот и критерии времени и качества из шага 1.</p>
-<p class="actor"><strong>Кто делает:</strong> Инженер и владелец задачи.</p>
-<p class="action"><strong>Действие:</strong> Запустите типовые задачи при 1, 5, 10, 20 и 30 одновременных запросах.</p>
-<p class="result"><strong>На выходе:</strong> Известно, сколько людей могут комфортно работать; время ожидания и качество соответствуют шагу 1.</p>
-<p class="verify"><strong>Проверка:</strong> Сравните протокол времени ответа и ошибок с критериями шага 1.</p>
-<p>Подсказка для ответственного</p>
-<p>Измерьте время до первого токена, скорость выдачи, очередь и ошибки. Используйте одинаковые модель, документы и длину ответа; например, <a href="https://docs.vllm.ai/en/latest/cli/bench/serve/">vLLM bench serve ↗</a>. Если тест не пройден, настройте очередь или измените конфигурацию и повторите его.</p>
-
+<p class="input"><strong>На входе:</strong> Работающий пилот и таблица критериев из шага 1.</p>
+<p class="actor"><strong>Кто делает:</strong> Администратор измеряет; сотрудники сверяют качество.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Передайте администратору те же задания из таблицы «Пилот ИИ». Он запускает серии на 1, 5, 10, 20 и 30 одновременных запросов.</li>
+<li>Попросите таблицу: <strong>параллельные запросы / время до первого текста / время до полного ответа / ошибки / доля правильных ответов / длина входа и ответа</strong>. Для каждой серии запишите параметры модели.</li>
+<li>Сравните каждую строку с согласованными пределами. Если 30 запросов не проходят, уменьшайте одновременную нагрузку или испытывайте другую конфигурацию.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Вы знаете измеренную вместимость именно своего стенда, а не число из рекламы.</p>
+<p class="verify"><strong>Проверка:</strong> Протокол содержит реальные значения и примеры ответов; есть явно принятое число одновременных задач. Для агентов замер повторяется в Б6: одна задача агента вызывает модель несколько раз.</p>
 <label class="done"><input data-step="_43" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="_44">9. Передайте систему команде</h4><svg aria-label="Передайте систему команде" class="ikeapic" role="img" viewbox="0 0 480 220"><circle cx="100" cy="60" r="20"></circle><circle cx="240" cy="60" r="20"></circle><circle cx="380" cy="60" r="20"></circle><path d="M65 140v-35q35-45 70 0v35m70 0v-35q35-45 70 0v35m70 0v-35q35-45 70 0v35"></path><text class="tiny" x="100" y="180">Администратор</text><text class="tiny" x="240" y="180">Владелец задачи</text><text class="tiny" x="380" y="180">Сотрудники</text></svg>
-<p class="input"><strong>На входе:</strong> Протокол пилота: качество, нагрузка, права и восстановление проверены.</p>
-<p class="actor"><strong>Кто делает:</strong> Администратор и владелец задачи.</p>
-<p class="action"><strong>Действие:</strong> По результатам пилота утвердите окончательную конфигурацию и закупку, если она нужна. На рабочем сервере повторите проверки шагов 4–8 и подключайте команду постепенно.</p>
-<p class="result"><strong>На выходе:</strong> Рабочая конфигурация прошла приёмку. У команды есть инструкция, поддержка и ответственные.</p>
-<p class="verify"><strong>Проверка:</strong> Новый сотрудник выполняет тестовую задачу по инструкции и знает, к кому обратиться.</p>
-<p>Подсказка для ответственного</p>
-<p>Передайте конфигурацию, правила обновления и резервирования. Зафиксируйте результаты приёмки. Владелец сценария проверяет качество ответов; администратор отвечает за доступы и работу сервера.</p>
-<p>БАЗА СОБРАНА: общий чат и поиск работают, доступы проверены, копия восстанавливается, нагрузка принята. Автоматические действия агентов подключаются отдельно.</p>
-<p>Это порядок сборки и приёмки. Совместимость конкретной модели и оборудования, а также 30 параллельных запросов подтверждаются тестом. Отметки готовности сохраняются в этом браузере, если доступно локальное хранение.</p>
+<p class="input"><strong>На входе:</strong> Проверены чат, документы, права, восстановление и нагрузка.</p>
+<p class="actor"><strong>Кто делает:</strong> Владелец задачи и администратор.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>По протоколу утвердите конфигурацию и закупку, если она нужна. На окончательном сервере повторите шаги 4–8.</li>
+<li>Попросите администратора заполнить паспорт ниже и дать сотруднику короткую инструкцию входа с реальными адресами.</li>
+<li>Новый сотрудник, не участвовавший в настройке, выполняет тест шага 5, затем шага 6. После этого подключайте остальных в пределах измеренной нагрузки.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> У команды есть работающая система, адреса, понятные действия и поддержка.</p>
+<p class="verify"><strong>Проверка:</strong> Новый сотрудник сам входит, находит учебный документ и знает контакт поддержки. Если ему приходится узнавать адреса устно, паспорт ещё не заполнен.</p>
+<p><strong>Паспорт системы — заполнить после установки</strong></p>
+<table>
+<thead>
+<tr>
+<th>Поле</th>
+<th>Что записать администратору</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Чат</td>
+<td>Полный URL страницы для браузера; название модели в списке</td>
+</tr>
+<tr>
+<td>Вход и сеть</td>
+<td>Как получить личный вход; нужен ли VPN</td>
+</tr>
+<tr>
+<td>Модель для агента</td>
+<td>Base URL, Model ID, способ получения персонального ключа; сам секрет сюда не вписывать</td>
+</tr>
+<tr>
+<td>Агент</td>
+<td>Название и версия, где открыть, рабочая папка</td>
+</tr>
+<tr>
+<td>Документы</td>
+<td>Название доступной коллекции, ответственный за обновление</td>
+</tr>
+<tr>
+<td>Инструмент</td>
+<td>Что подключено, имя инструмента, кто выдаёт доступ</td>
+</tr>
+<tr>
+<td>Проверки</td>
+<td>Где лежит таблица пилота и протокол восстановления</td>
+</tr>
+<tr>
+<td>Поддержка</td>
+<td>Контакт, часы работы, что приложить к обращению</td>
+</tr>
+<tr>
+<td>Запуск после перезагрузки</td>
+<td>Кто проверяет доступность и как её восстановить</td>
+</tr>
+</tbody>
+</table>
+<p>Это бланк, а не готовые настройки. Пока поля пустые, сотруднику систему не передают.</p>
 <label class="done"><input data-step="_44" type="checkbox"/> Проверил результат шага</label></article><h4 id="_45">Продолжение: агент выполняет действия</h4>
 
 <article class="step-card"><h4 id="_46">10. Добавьте агента к одному сценарию · по желанию</h4><svg aria-label="Добавьте агента к одному сценарию · по желанию" class="ikeapic" role="img" viewbox="0 0 480 220"><rect height="110" rx="12" width="180" x="25" y="50"></rect><rect height="110" rx="12" width="180" x="275" y="50"></rect><path d="M210 105h58m-12-10 12 10-12 10"></path><text x="115" y="111">Внутренняя модель</text><text x="365" y="111">Агент сотрудника</text><text class="tiny" x="240" y="200">Права · журнал · проверка результата</text></svg>
 <p><a href="#connect-company">Открыть подробную сборку агентов сотрудников</a></p>
 <p class="input"><strong>На входе:</strong> Работающий внутренний API модели и согласованный сценарий автоматизации.</p>
-<p class="actor"><strong>Кто делает:</strong> Вы / ответственный за этот шаг.</p>
+<p class="actor"><strong>Кто делает:</strong> Вы; настройщик помогает при ошибках.</p>
 <p class="action"><strong>Действие:</strong> Разверните один выбранный харнес для пилотного пользователя, подключите внутренний API модели и выделенную рабочую область.</p>
 <p class="result"><strong>На выходе:</strong> Агент выполняет согласованную задачу, сохраняет результат и не получает доступ к чужой рабочей области.</p>
 <p class="verify"><strong>Проверка:</strong> Пройдите Б1–Б6: проверяются инструменты, результат и разделение пользователей.</p>
@@ -948,82 +1221,202 @@
 </tbody>
 </table>
 <article class="step-card"><h4 id="1_4">Б1. Создайте рабочую среду агента</h4><div class="step-diagram"><div>Два сотрудника</div><b>→</b><div>Две отдельные среды</div></div>
-<p class="input"><strong>На входе:</strong> Внутренний API модели работает. Определены два участника пилота и сценарий.</p>
-<p class="actor"><strong>Кто делает:</strong> Администратор и владелец задачи.</p>
-<p class="action"><strong>Действие:</strong> Установите выбранный харнес на рабочее место или в выделенную среду на сервере. Для каждого пилотного пользователя выделите отдельную учётную запись, рабочую папку и хранилище состояния. Назначьте администратора и владельца сценария.</p>
-<p class="result"><strong>На выходе:</strong> Два пользователя входят в свои среды. История, файлы и секреты одного пользователя не доступны другому. Один процесс с общей папкой на всех не считается проверенным разделением.</p>
-<p class="verify"><strong>Проверка:</strong> Под пользователем Б попытайтесь прочитать тестовый файл А: доступ должен быть запрещён.</p>
+<p class="input"><strong>На входе:</strong> Внутренний чат прошёл пилот. Назначены два пользователя агента.</p>
+<p class="actor"><strong>Кто делает:</strong> Администратор; сотрудники выполняют пробу.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Передайте администратору: <strong>«Установите один харнес — для этого примера OpenCode. Дайте каждому пилотному пользователю отдельную среду, рабочую папку и способ её открыть. В каждую положите учебные brief.txt и tasks.txt. Настройте разовые подтверждения инструментов»</strong>.</li>
+<li>Получите индивидуальную инструкцию: ярлык или точные действия входа на сервер, путь рабочей папки и команда запуска. Если установка на Windows, администратор использует <a href="https://opencode.ai/docs/windows/">инструкцию OpenCode для Windows</a>; команды Homebrew с Mac туда не переносятся.</li>
+<li>Администратор создаёт в среде А вымышленный файл <code>only-a.txt</code>, разрешённый только А. Из среды Б проверяет чтение этого файла через инструмент.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> У каждого есть понятный вход в свою среду; данные, история и секреты разделены.</p>
+<p class="verify"><strong>Проверка:</strong> Оба пользователя могут открыть свою папку. Чтение only-a.txt из среды Б даёт отказ на уровне системы; одной фразы агента «не могу» недостаточно.</p>
 <label class="done"><input data-step="1_4" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="2_4">Б2. Выдайте карточку подключения модели</h4><div class="step-diagram"><div>API + Model ID + ключ</div><b>→</b><div>Харнес ↔ vLLM</div></div>
-<p class="input"><strong>На входе:</strong> Две раздельные среды с установленным харнесом и настроенный внутренний API.</p>
-<p class="actor"><strong>Кто делает:</strong> Администратор и владелец задачи.</p>
-<p class="action"><strong>Действие:</strong> Администратор настраивает внутренний шлюз перед vLLM: защищённый адрес, персональную авторизацию и журнал запросов. Затем заполняет три поля ниже и вводит их в настройках провайдера харнеса. Для Hermes используется <code>hermes model</code> → Custom endpoint; для OpenCode — <code>provider</code> в <code>opencode.json</code> по <a href="#connect-personal">примеру А2</a>.</p>
+<p class="input"><strong>На входе:</strong> Две отдельные среды агента; сервер vLLM работает.</p>
+<p class="actor"><strong>Кто делает:</strong> Администратор заполняет конфигурацию; сотрудник проверяет.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Попросите администратора заполнить карточку ниже фактическими значениями и установить настройки в харнес. Для OpenCode это файл <code>opencode.json</code> в рабочей папке по структуре <a href="#connect-personal">А2</a>, с корпоративными адресом, именем и авторизацией.</li>
+<li>Администратор проверяет доступ из самой среды агента, персональную авторизацию и журналирование. Если защищённого шлюза ещё нет, его развёртывание выполняется до выдачи доступа.</li>
+<li>Откройте агент по выданной инструкции и напишите: <strong>«Ответь одним словом: готов»</strong>. Повторите под второй учётной записью.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Оба агента отвечают через корпоративную модель; администратор различает их запросы в журнале.</p>
+<p class="verify"><strong>Проверка:</strong> Вы видите ответ; администратор показывает две записи с разными пользователями. URL чата Open WebUI нельзя просто подставить вместо URL vLLM.</p>
 <table>
 <thead>
 <tr>
 <th>Поле</th>
-<th>Что выдаёт администратор</th>
+<th>Кто и откуда получает</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Base URL</td>
-<td>Внутренний адрес API, например <code>https://ai.company.example/v1</code></td>
+<td>Администратор выдаёт HTTPS-адрес внутреннего API; адрес должен быть доступен из среды агента</td>
 </tr>
 <tr>
 <td>Model ID</td>
-<td>Точное имя из <code>/v1/models</code>, совпадающее с именем сервиса vLLM</td>
+<td>Администратор берёт поле <code>id</code> из ответа этого API на <code>/models</code></td>
 </tr>
 <tr>
-<td>API key</td>
-<td>Персональный ключ шлюза, если шлюз обеспечивает такую авторизацию</td>
+<td>Авторизация</td>
+<td>Администратор выдаёт каждому персональный доступ через принятый в компании способ</td>
+</tr>
+<tr>
+<td>Открыть агента</td>
+<td>Полный путь к ярлыку или точная команда на конкретной машине</td>
 </tr>
 </tbody>
 </table>
-<p class="result"><strong>На выходе:</strong> Запрос из харнеса доходит до нужного vLLM. В журнале шлюза виден пользователь. Пример домена выше — заглушка; его нужно заменить реальным адресом компании.</p>
-<p class="verify"><strong>Проверка:</strong> От каждого пользователя отправьте короткий запрос и найдите обе записи в журнале.</p>
-<p>Сам vLLM не создаёт автоматически персональные роли, квоты и доступы к CRM. Для них нужен соответствующий шлюз и контроль в конечных системах. Общий ключ сервера не заменяет идентификацию сотрудников.</p>
+<p>Пароль входа в чат и API-ключ — разные вещи. <code>127.0.0.1</code> в учебном файле относится к машине агента, а не к корпоративному серверу.</p>
 <label class="done"><input data-step="2_4" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="3_3">Б3. Подключите файлы и поиск</h4><div class="step-diagram"><div>Документы + права</div><b>→</b><div>Поиск со ссылками</div></div>
-<p class="input"><strong>На входе:</strong> Агенты обращаются к модели. Есть документы двух отделов и правила доступа к ним.</p>
-<p class="actor"><strong>Кто делает:</strong> Администратор и владелец задачи.</p>
-<p class="action"><strong>Действие:</strong> Подключите к среде агента разрешённую папку. Для коллекции документов добавьте инструмент поиска, обращающийся к вашему индексу с правами пользователя. Проверьте сценарий двумя учётными записями: разрешённый документ и документ другого отдела.</p>
-<p class="result"><strong>На выходе:</strong> Агент возвращает фрагмент и источник из разрешённого документа. Чужой документ не попадает ни в ответ, ни в результат инструмента. Проверка прав выполняется до передачи найденных данных модели.</p>
-<p class="verify"><strong>Проверка:</strong> Проверьте доступ и отказ на уровне результата поиска, до генерации ответа.</p>
+<p class="input"><strong>На входе:</strong> Агенты отвечают через корпоративную модель; папки разделены.</p>
+<p class="actor"><strong>Кто делает:</strong> Администратор соединяет; сотрудник проверяет.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>В агенте попросите прочитать brief.txt и tasks.txt, как в А3. Проверьте первые строки. Это проверка файлового инструмента.</li>
+<li>Для поиска по коллекции передайте администратору: <strong>«Подключите поиск к этой среде агента с правами моего пользователя. Выдайте точное имя инструмента, название коллекции и один проверочный запрос»</strong>.</li>
+<li>Спросите агенту: <strong>«Используй подключённый поиск: сколько участников в учебном проекте Маяк? Дай цитату и источник»</strong>. Откройте результат вызова инструмента и исходный документ.</li>
+<li>Администратор повторяет тот же поиск с учётной записью, которой коллекция запрещена.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Файлы доступны через чтение; коллекция — через отдельно подключённый поиск.</p>
+<p class="verify"><strong>Проверка:</strong> Разрешённый поиск возвращает 12 участников и ссылку на brief.txt. Запрещённый не возвращает текст этого файла. Права проверяются до передачи результата модели.</p>
+<p>Коллекция Open WebUI не появляется в OpenCode автоматически. Если готового соединения нет, администратор должен подобрать или разработать адаптер. До этого можно завершить файловое упражнение; отметку «поиск подключён» не ставьте.</p>
 <label class="done"><input data-step="3_3" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="4-">Б4. Подключите одну бизнес-систему</h4><div class="step-diagram"><div>Харнес</div><b>→</b><div>MCP → API системы</div></div>
-<p class="input"><strong>На входе:</strong> Согласованы система, тестовая запись и учётные записи с нужными правами.</p>
-<p class="actor"><strong>Кто делает:</strong> Администратор и владелец задачи.</p>
-<p class="action"><strong>Действие:</strong> Выберите поддерживаемый коннектор или MCP/API-адаптер для CRM, 1С или календаря. Для локального MCP укажите команду запуска, для удалённого — URL и предусмотренный им способ входа. Начните с права чтения одной тестовой записи. Адрес MCP — отдельное поле; это не адрес <code>/v1</code> модели.</p>
-<p class="result"><strong>На выходе:</strong> В харнесе появился инструмент, его вызов вернул разрешённую запись. Пользователь без доступа получает отказ. Если у системы нет готового адаптера, его разработка — отдельная задача и статья бюджета.</p>
-<p class="verify"><strong>Проверка:</strong> Повторите чтение записи с разрешённой и с ограниченной учётной записью.</p>
-<div aria-label="Харнес через MCP адаптер обращается к API CRM с правами пользователя." class="wiring compact" role="img"><div class="wire-node">ХАРНЕС</div><div class="wire-arrow">↕ MCP</div><div class="wire-node">АДАПТЕР<small>Проверка прав и вызов API</small></div><div class="wire-arrow">↕ API системы</div><div class="wire-node">CRM / 1С / КАЛЕНДАРЬ<small>Учётная запись и права пользователя</small></div></div>
-<p>Схема — вариант проектирования, а не обещание готового коннектора для любой системы. <a href="https://opencode.ai/docs/mcp-servers/">Настройка локального и удалённого MCP в OpenCode</a>. Браузерный пример и таблица остальных инструментов — в <a href="#connect-personal">личном маршруте А4</a>.</p>
+<p class="input"><strong>На входе:</strong> Выбрана конкретная система, например ваша CRM; её администратор согласовал учебную запись.</p>
+<p class="actor"><strong>Кто делает:</strong> Администратор интеграции вместе с владельцем системы.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Попросите владельца CRM создать <strong>в тестовой среде</strong> запись «Пилот ИИ — Маяк» с согласованным ID и полем «Статус: Новый». Сохраните ID и снимок исходных полей.</li>
+<li>Передайте заявку: <strong>«Подключите чтение этой записи из агента. Укажите систему и версию, официальный источник адаптера, способ запуска или URL MCP, способ входа, точное имя инструмента чтения и разрешённые данные»</strong>.</li>
+<li>Администратор устанавливает адаптер, вводит его команду или URL в настройку MCP выбранного харнеса, настраивает вход и проверяет появление инструментов. Он записывает для сотрудника название инструмента и действие открытия его результата.</li>
+<li>В агенте попросите прочитать согласованную запись по её ID. Сверьте поля с самой CRM. Повторите из учётной записи без права чтения.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Один реальный инструмент читает одну разрешённую запись.</p>
+<p class="verify"><strong>Проверка:</strong> В истории есть вызов инструмента, возвращены «Пилот ИИ — Маяк» и «Новый». Ограниченная учётная запись получает отказ. Сам ответ модели без обращения к CRM не доказывает интеграцию.</p>
+<p><strong>Почему здесь нет одной универсальной кнопки:</strong> 1С, разные CRM и календари используют разные подключения. Если исполнитель не может назвать подходящий адаптер, сначала нужны его выбор или разработка, срок и оценка стоимости. До этого шага инструмент ещё не установлен. Адрес MCP относится к инструменту; <code>/v1</code> относится к модели. <a href="https://opencode.ai/docs/mcp-servers/">Подключение MCP в OpenCode</a>.</p>
 <label class="done"><input data-step="4-" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="5_1">Б5. Настройте подтверждение изменений</h4><div class="step-diagram"><div>Подготовленное действие</div><b>→</b><div>Подтверждение → запись</div></div>
-<p class="input"><strong>На входе:</strong> Чтение тестовой записи работает. Определены действия, меняющие данные.</p>
-<p class="actor"><strong>Кто делает:</strong> Администратор и владелец задачи.</p>
-<p class="action"><strong>Действие:</strong> Разделите чтение, подготовку черновика и запись в систему. Операции отправки, удаления и изменения данных требуют предусмотренного вашим харнесом подтверждения; дополнительно ограничьте права на стороне системы. Протестируйте отказ пользователя от действия.</p>
-<p class="result"><strong>На выходе:</strong> Черновик готовится, а внешняя запись появляется только после разрешённого действия. Отмена действительно оставляет систему без изменений. Одной фразы в промпте для этого недостаточно.</p>
-<p class="verify"><strong>Проверка:</strong> Сначала отмените изменение: запись не меняется. Затем подтвердите изменение тестовой записи и сверьте журнал.</p>
+<p class="input"><strong>На входе:</strong> Чтение учебной записи работает. Администратор разрешил тест записи в тестовой системе.</p>
+<p class="actor"><strong>Кто делает:</strong> Администратор настраивает; сотрудник подтверждает или отменяет.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>Попросите администратора включить подтверждение операций записи в харнесе и ограничить доступ на стороне CRM. Он должен показать, где видно планируемое изменение и где нажать «Отмена» и «Разрешить» в установленной версии.</li>
+<li>Дайте агенту задачу: <strong>«Подготовь смену статуса учебной записи с Новый на Проверен. Запроси моё подтверждение перед записью»</strong>. Когда появится запрос, выберите <strong>отменить / отклонить</strong>. Откройте CRM: статус должен остаться «Новый».</li>
+<li>Повторите и разрешите только это изменение учебной записи. Обновите карточку в CRM и сверьте журнал. Если запрос подтверждения не появился, остановите пробу и верните настройку администратору.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Вы управляете записью в систему; отмена и подтверждение имеют проверенный эффект.</p>
+<p class="verify"><strong>Проверка:</strong> После отмены — «Новый»; после разрешения — «Проверен». Журнал содержит пользователя и изменение. Фраза «спроси разрешение» в тексте задания без технических настроек не заменяет контроль.</p>
 <label class="done"><input data-step="5_1" type="checkbox"/> Проверил результат шага</label></article><article class="step-card"><h4 id="6_1">Б6. Примите весь маршрут</h4><div class="step-diagram"><div>Источники + задача</div><b>→</b><div>Результат + журнал</div></div>
-<p class="input"><strong>На входе:</strong> Модель, файлы, поиск и бизнес-инструмент соединены; доступы и подтверждения настроены.</p>
-<p class="actor"><strong>Кто делает:</strong> Администратор и владелец задачи.</p>
-<p class="action"><strong>Действие:</strong> Дайте сквозную задачу: «Найди разрешённый регламент и тестовую запись CRM. Подготовь ответ клиенту в файл, ничего не отправляй». Проверьте результат, источники, журнал вызовов и разделение пользователей. Затем повторите нагрузочный тест уже с агентскими задачами.</p>
-<p class="result"><strong>На выходе:</strong> Файл соответствует исходникам, использованы разрешённые инструменты, чужие данные недоступны, отправки не было. Измерены время и число вызовов модели: одна агентская задача может создавать несколько запросов.</p>
-<p class="verify"><strong>Проверка:</strong> Откройте итоговый файл, сверку с источниками и журнал всей задачи.</p>
-<p><strong>Граница готовности:</strong> чат отвечает → агент вызывает инструмент → инструмент возвращает разрешённые данные → создан проверенный результат. Только после этого подключайте новых пользователей и новые действия.</p>
-<hr/>
+<p class="input"><strong>На входе:</strong> Работают модель, файлы, поиск и чтение CRM. Проверены права и подтверждения.</p>
+<p class="actor"><strong>Кто делает:</strong> Новый пилотный сотрудник; администратор наблюдает журнал.</p>
+<p class="action"><strong>Действие:</strong></p>
+<ol>
+<li>В агенте дайте задачу: <strong>«Найди разрешённый brief.txt о Маяке и учебную запись CRM по нашему тестовому ID. Сохрани pilot-result.md: дату и время встречи, число участников, название и текущий статус записи. Укажи источники. Ничего не изменяй в CRM и не отправляй»</strong>. Вставьте фактический ID из Б4.</li>
+<li>Откройте pilot-result.md в рабочей папке независимо от диалога агента. Сверьте с документом и CRM.</li>
+<li>Администратор показывает цепочку вызовов: поиск / чтение → чтение CRM → создание файла. Он проверяет отсутствие записи или отправки и повторяет тест прав.</li>
+<li>Повторите нагрузочные серии шага 8 с этой агентской задачей, записав время всей задачи и число обращений к модели.</li>
+</ol>
+<p class="result"><strong>На выходе:</strong> Получен файл, в котором объединены проверенные данные документа и CRM. Есть измеренная вместимость агентского сценария.</p>
+<p class="verify"><strong>Проверка:</strong> В файле: <strong>15 октября, 11:00, 12 участников, Пилот ИИ — Маяк, Проверен</strong> (если успешно выполнен Б5). Источники открываются, в CRM изменений от этой задачи нет. При провале любого пункта вернитесь к соответствующему подключению; общий статус «готово» ещё не ставьте.</p>
 <label class="done"><input data-step="6_1" type="checkbox"/> Проверил результат шага</label></article></section><h2 id="3_4">3. Как проверить результат</h2>
-<p>Работающий чат подтверждает базовый запуск. Поиск принимайте по проверенным источникам и правам доступа, агента — по выполненной задаче, корпоративную мощность — по измеренной нагрузке на реальных запросах.</p><div class="actions"><button type="button" onclick="window.print()">Печать / PDF</button></div></main></div>
+<p>Работающий чат подтверждает базовый запуск. Поиск принимайте по проверенным источникам и правам доступа, агента — по выполненной задаче, корпоративную мощность — по измеренной нагрузке на реальных запросах.</p>
+<p><span id="help-first-run"></span></p>
+<h3 id="-">Если что-то не получилось</h3>
+<table>
+<thead>
+<tr>
+<th>Что вы видите</th>
+<th>Что проверить и сделать</th>
+<th>Как понять, что исправлено</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command not found</code></td>
+<td>Команда введена в Терминал? Завершена установка? Для brew выполнены её Next steps? Откройте новую вкладку и повторите проверку версии</td>
+<td>Появился номер версии</td>
+</tr>
+<tr>
+<td>«Файл не найден», <code>No such file</code></td>
+<td>Откройте Finder → ⌘ Shift G → <code>~/Models</code>. Сверьте точное имя GGUF; оно не должно иметь <code>(1)</code> или временное расширение</td>
+<td>Файл есть по пути из команды; сервер его загружает</td>
+</tr>
+<tr>
+<td>Страница чата не открывается / connection refused</td>
+<td>На том же ли компьютере открыт браузер? Работает ли вкладка llama-server? Посмотрите её последнюю ошибку; повторите запуск только после устранения причины</td>
+<td>Открывается чат по адресу без <code>/v1</code></td>
+</tr>
+<tr>
+<td>На странице JSON, 404 или Not Found</td>
+<td>Не перепутаны ли адрес чата и адрес API? Для личного Mac чат — <code>http://127.0.0.1:8080</code>; корпоративный адрес выдаёт администратор</td>
+<td>Видно поле ввода сообщения</td>
+</tr>
+<tr>
+<td><code>address already in use</code></td>
+<td>Порт уже занят. Сначала проверьте, не работает ли чат; не запускайте вторую копию. Если порт занят другой программой, настройщик согласует новый порт во всех настройках</td>
+<td>Одна работающая копия сервера и согласованный адрес</td>
+</tr>
+<tr>
+<td><code>out of memory</code>, программа закрылась</td>
+<td>Закройте лишние приложения, используйте короткий тест с контекстом 8192. Передайте настройщику объём памяти, файл модели и ошибку</td>
+<td>Сервер устойчиво отвечает на короткий запрос; при нехватке подбирается меньшая модель</td>
+</tr>
+<tr>
+<td>В агенте 401 / 403</td>
+<td>401 обычно указывает на авторизацию, 403 — на запрет доступа. Администратор проверяет персональный ключ и права; не копируйте секреты в обращение</td>
+<td>Тестовый запрос разрешённому пользователю проходит</td>
+</tr>
+<tr>
+<td><code>context length exceeded</code> / слишком длинный запрос</td>
+<td>Начните новый диалог командой <code>/new</code> и повторите короткий тест. Если даже он не помещается, настройщик согласует размер контекста в llama-server и <code>limit.context</code> в opencode.json с доступной памятью</td>
+<td>Короткая задача выполняется без переполнения; длинные файлы пока не добавляются</td>
+</tr>
+<tr>
+<td>Агент предлагает облачную модель</td>
+<td>Проверьте запуск из AI-pilot и наличие именно opencode.json. Перезапустите из этой папки; сравните имя модели</td>
+<td>Запрос виден в локальном сервере</td>
+</tr>
+<tr>
+<td>Агент пишет «сохранил», файла нет</td>
+<td>Раскройте вызов инструмента: была ли запись и разрешили ли вы её? Если вызова нет, настройщик проверяет tool calling</td>
+<td>Файл открывается в Finder / файловом менеджере</td>
+</tr>
+<tr>
+<td>MCP не запустился</td>
+<td>Для браузерного примера проверьте версии node и npx, доступ к загрузке пакета и сообщение MCP. Если нужен браузер — завершите его установку</td>
+<td>В истории есть реальный вызов Playwright</td>
+</tr>
+<tr>
+<td>Документ есть, ответа по нему нет</td>
+<td>Выбрана ли коллекция, завершена ли обработка, есть ли читаемый текст и право доступа? Передайте администратору имя файла и запрос</td>
+<td>Появились верная цитата и открываемый источник</td>
+</tr>
+<tr>
+<td>После перезагрузки всё исчезло</td>
+<td>Программы нужно снова запустить: сначала модель, потом агент из своей папки. Для компании используйте паспорт системы</td>
+<td>Те же файлы сохранились; чат и агент снова отвечают</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Что отправить настройщику:</strong> номер шага, ОС, версии программ, точное действие, текст ошибки и снимок экрана без ключей и паролей. Не отмечайте шаг выполненным, пока не пройдена его проверка.</p>
+<p><strong>Статус инструкции:</strong> команды и поля сверены с указанной официальной документацией 11.10.2026. Учебные данные и конфигурации подготовлены для проверки. На вашем оборудовании установка модели и проба инструментов ещё должны быть выполнены; схема и готовый файл настройки не заменяют успешного запуска.</p><div class="actions"><button type="button" onclick="window.print()">Печать / PDF</button></div></main></div>
 <script>
 const routes={personal:['personal','catalog-personal','harness-personal','budget','assembly-personal','connect-personal'],company:['company','catalog-company','harness-company','corporate-budget','assembly-company','connect-company']};
 const labels=['1. Стек','2. Модели и программы','3. Выбор харнеса','4. Бюджет','5. Сборка','6. Харнес + инструменты'];
 function setMode(mode,keep=false){
  document.querySelectorAll('[data-mode]').forEach(x=>x.hidden=x.dataset.mode!==mode);
  for(const m of ['personal','company'])document.getElementById('mode-'+m).setAttribute('aria-selected',String(m===mode));
- document.querySelector('aside').innerHTML='<strong>Ваш маршрут</strong>'+routes[mode].map((id,i)=>'<a href="#'+id+'">'+labels[i]+'</a>').join('');
+ document.querySelector('aside').innerHTML='<strong>Ваш маршрут</strong>'+routes[mode].map((id,i)=>'<a href="#'+id+'">'+labels[i]+'</a>').join('')+'<a href="#help-first-run">Если не получилось</a>';
  if(!keep){location.hash=mode;}
 }
-function hashMode(){const id=location.hash.slice(1);const target=document.getElementById(id);const group=target&&target.closest('[data-mode]');setMode(group?group.dataset.mode:(routes.company.includes(id)?'company':'personal'),true);if(target)requestAnimationFrame(()=>target.scrollIntoView());}
+function hashMode(){const id=location.hash.slice(1);const target=document.getElementById(id);const group=target&&target.closest('[data-mode]');setMode(group?group.dataset.mode:(routes.company.includes(id)?'company':(target&&document.getElementById('mode-company').getAttribute('aria-selected')==='true'?'company':'personal')),true);if(target)requestAnimationFrame(()=>target.scrollIntoView());}
 window.addEventListener('hashchange',hashMode);hashMode();
-document.querySelectorAll('[data-step]').forEach(x=>{const key='guide-step-v4-'+x.dataset.step;try{x.checked=localStorage.getItem(key)==='1'}catch(e){}x.addEventListener('change',()=>{try{localStorage.setItem(key,x.checked?'1':'0')}catch(e){}})});
+document.querySelectorAll('.copy-code').forEach(button=>button.addEventListener('click',async()=>{
+ const code=button.parentElement.querySelector('code');
+ try{await navigator.clipboard.writeText(code.textContent);button.textContent='Скопировано';}
+ catch(e){button.textContent='Выделите текст и нажмите ⌘ C / Ctrl C';}
+}));
+document.querySelectorAll('[data-step]').forEach(x=>{const key='guide-step-v5-'+x.dataset.step;try{x.checked=localStorage.getItem(key)==='1'}catch(e){}x.addEventListener('change',()=>{try{localStorage.setItem(key,x.checked?'1':'0')}catch(e){}})});
 </script>
 </body>
 </html>
