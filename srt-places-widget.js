@@ -33,11 +33,11 @@
     6: '#06b6d4', 7: '#3b82f6', 8: '#8b5cf6', 9: '#ec4899'
   };
 
-  const WINDOW_COLORS = { open: '#34d399', narrowing: '#fbbf24', closing: '#ef4444' };
-  const WINDOW_RU = { open: 'Открыто', narrowing: 'Сужается', closing: 'Закрывается' };
-  const WINDOW_EN = { open: 'Open', narrowing: 'Narrowing', closing: 'Closing' };
-  const CAPACITY_RU = { large: 'Крупная', medium: 'Средняя', small: 'Малая' };
-  const CONF_RU = { high: 'Высокая', medium: 'Средняя', low: 'Низкая' };
+  const WINDOW_COLORS = { open: '#34d399', narrowing: '#fbbf24', closing: '#ef4444', unknown: '#94a3b8' };
+  const WINDOW_RU = { open: 'Открыто', narrowing: 'Сужается', closing: 'Закрывается', unknown: 'Не проверено' };
+  const WINDOW_EN = { open: 'Open', narrowing: 'Narrowing', closing: 'Closing', unknown: 'Not assessed' };
+  const CAPACITY_RU = { large: 'Крупная', medium: 'Средняя', small: 'Малая', unknown: 'Не установлена' };
+  const CONF_RU = { high: 'Высокая', medium: 'Средняя', low: 'Низкая', unknown: 'Не установлена' };
 
   /* ─── Locale detection ─────────────────────────────────────────────────── */
   function isEnglish() {
@@ -304,9 +304,10 @@
     const places = data.places;
 
     const totalPlaces = meta.total_places;
-    const openWindow = meta.places_by_window.open || 0;
-    const largePlaces = meta.places_by_capacity.large || 0;
-    const turbulence = meta.turbulence_index || 0;
+    const unset = t('Не установлено', 'Not assessed');
+    const openWindow = meta.places_by_window.unknown ? unset : (meta.places_by_window.open || 0);
+    const largePlaces = meta.places_by_capacity.unknown ? unset : (meta.places_by_capacity.large || 0);
+    const turbulence = Number.isFinite(meta.turbulence_index) ? meta.turbulence_index.toFixed(1) : unset;
 
     // Metrics row
     const metricsHTML = `
@@ -325,7 +326,7 @@
         </div>
         <div class="spw-metric">
           <span>${t('Турбулентность', 'Turbulence')}:</span>
-          <span class="spw-val" style="color:${turbulence > 15 ? '#ef4444' : turbulence > 10 ? '#fbbf24' : '#34d399'}">${turbulence.toFixed(1)}</span>
+          <span class="spw-val">${turbulence}</span>
         </div>
       </div>`;
 
@@ -393,7 +394,7 @@
             </div>
           </div>
           ${metricsHTML}
-          ${legendHTML}
+          <p style="font-size:0.7rem;color:#9ca3af;line-height:1.5;margin:0 0 0.75rem">${data.meta.baseline_period ? t('На диаграмме — ёмкость и уверенность за ' + data.meta.baseline_period.label + '. Оценки не перепроверены; обводка показывает текущее окно входа.', 'Chart capacity and confidence use the historical ' + data.meta.baseline_period.label + ' baseline. These estimates have not been reassessed; outlines show the current entry window.') : t('Высота — ёмкость; размер — уверенность; обводка — окно входа.', 'Height: capacity; size: confidence; outline: entry window.')}</p>
           <div class="spw-chart" id="spw-bubble-chart">
             <div class="spw-chart-placeholder">${t('Загрузка графика...', 'Loading chart...')}</div>
           </div>
@@ -406,36 +407,42 @@
   }
 
   /* ─── Plotly chart rendering ───────────────────────────────────────────── */
-  function renderChart(places) {
+  async function renderChart(places) {
     const chartEl = document.getElementById('spw-bubble-chart');
     if (!chartEl || !window.Plotly) return;
 
-    const capMap = { large: 3, medium: 2, small: 1 };
-    const confSize = { high: 22, medium: 14, low: 8 };
+    const capMap = { large: 3, medium: 2, small: 1, unknown: 0 };
+    const confSize = { high: 22, medium: 14, low: 8, unknown: 10 };
+    const assessment = p => p.baseline_assessment || p;
+    const jitter = (id, scale) => {
+      let hash = 0;
+      for (const char of id) hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+      return ((hash % 1000) / 999 - 0.5) * scale;
+    };
 
     // Group by window category
-    const groups = { open: [], narrowing: [], closing: [] };
+    const groups = { open: [], narrowing: [], closing: [], unknown: [] };
     places.forEach(p => {
-      const wc = p.window.category;
-      if (groups[wc]) groups[wc].push(p);
+      const wc = groups[p.window.category] ? p.window.category : 'unknown';
+      groups[wc].push(p);
     });
 
     const windowLabels = isEnglish() ? WINDOW_EN : WINDOW_RU;
 
     const traces = Object.entries(groups).map(([wc, items]) => ({
-      x: items.map(p => p.srt_level + (Math.random() - 0.5) * 0.3),
-      y: items.map(p => capMap[p.capacity.category] + (Math.random() - 0.5) * 0.2),
+      x: items.map(p => p.srt_level + jitter(p.id, 0.5)),
+      y: items.map(p => (capMap[assessment(p).capacity.category] ?? 0) + jitter(p.id + '-y', 0.2)),
       text: items.map(p =>
         `<b>${p.name}</b><br>` +
         `${t('Уровень', 'Level')} ${p.srt_level}: ${SRT_LEVELS[p.srt_level]}<br>` +
-        `${t('Ёмкость', 'Capacity')}: ${CAPACITY_RU[p.capacity.category]} (${p.capacity.range_label})<br>` +
+        `${p.baseline_assessment ? t('Историческая ёмкость', 'Historical capacity') : t('Ёмкость', 'Capacity')}: ${CAPACITY_RU[assessment(p).capacity.category] || CAPACITY_RU.unknown} (${assessment(p).capacity.range_label})<br>` +
         `${t('Окно', 'Window')}: ${windowLabels[p.window.category]}<br>` +
-        `${t('Уверенность', 'Confidence')}: ${CONF_RU[p.confidence]}`
+        `${p.baseline_assessment ? t('Историческая уверенность', 'Historical confidence') : t('Уверенность', 'Confidence')}: ${CONF_RU[assessment(p).confidence] || CONF_RU.unknown}`
       ),
       customdata: items.map(p => p.id),
       mode: 'markers',
       marker: {
-        size: items.map(p => confSize[p.confidence]),
+        size: items.map(p => confSize[assessment(p).confidence] || confSize.unknown),
         color: items.map(p => LEVEL_COLORS[p.srt_level]),
         opacity: 0.8,
         line: { width: 2, color: WINDOW_COLORS[wc] },
@@ -462,11 +469,11 @@
       yaxis: {
         title: { text: t('Ёмкость', 'Capacity'), font: { size: 11, color: '#6b7280' } },
         tickmode: 'array',
-        tickvals: [1, 2, 3],
-        ticktext: ['< $100M', '$100M–$1B', '> $1B'],
+        tickvals: [0, 1, 2, 3],
+        ticktext: [t('Неизвестна', 'Unknown'), '< $100M', '$100M–$1B', '> $1B'],
         gridcolor: 'rgba(255,255,255,0.04)',
         zeroline: false,
-        range: [0.4, 3.6],
+        range: [-0.3, 3.6],
       },
       legend: {
         x: 0, y: 1.15,
@@ -486,11 +493,13 @@
       displayModeBar: false,
     };
 
-    Plotly.newPlot('spw-bubble-chart', traces, layout, config);
+    chartEl.innerHTML = '';
+    await Plotly.newPlot('spw-bubble-chart', traces, layout, config);
 
     // Click handler — navigate to places page
-    chartEl.on('plotly_click', function () {
-      window.location.href = PLACES_PAGE_URL;
+    chartEl.on('plotly_click', function (event) {
+      const id = event.points && event.points[0] && event.points[0].customdata;
+      window.location.href = id ? PLACES_PAGE_URL + '?place=' + encodeURIComponent(id) : PLACES_PAGE_URL;
     });
   }
 
@@ -571,7 +580,7 @@
     // Load Plotly and render chart
     await loadPlotly();
     if (window.Plotly) {
-      renderChart(data.places);
+      await renderChart(data.places);
     } else {
       // If Plotly failed to load, show fallback
       const chartEl = document.getElementById('spw-bubble-chart');
