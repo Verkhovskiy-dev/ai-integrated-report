@@ -1,166 +1,5 @@
 [
   {
-    "date": "2026-09-16",
-    "generated_at": "2026-09-16T17:03:07.999Z",
-    "trends": [
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 100; сегодня он остается на максимуме из-за новых сигналов ООН, ЕС, Конгресса США, China, Vatican и внутренних трений в OpenAI и Anthropic вокруг замедления AI.",
-        "levels": [
-          8,
-          9,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 100; сегодня уровень подтвержден Google Home MCP, предупреждением The Next Web о разрешениях агентов и заявлением Microsoft о рисках человекоподобного Claude.",
-        "levels": [
-          8,
-          5,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 100; сегодня Google Home MCP, объединение Claude Chat и Cowork, Alexa+ в India и ставка AWS на рабочий ящик показывают дальнейшее расширение агентных интерфейсов.",
-        "levels": [
-          5,
-          4,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 95,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 95; сегодня он сохраняется благодаря фонду Bain на $1,6 млрд, словам Apollo о беспрецедентном масштабе AI-CapEx, серверному проекту Apple и энергетической заявке Blue Energy.",
-        "levels": [
-          9,
-          2,
-          4,
-          1
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 70,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 63; сегодня он усилился из-за заявки Blue Energy на малый реактор для дата-центра Crusoe, предложения Climavision для управления нагрузками дата-центров и опроса об экологическом следе AI.",
-        "levels": [
-          1,
-          2,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-in-government",
-        "name": "AI в госсекторе",
-        "momentum": 82,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 70; сегодня рост поддержан призывом ООН к координации, инициативой ЕС по детям до 15 лет и призывом демократов в Палате представителей США не уходить на перерыв ради законов об AI.",
-        "levels": [
-          8,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "classic-saas",
-        "name": "Классический SaaS под давлением AI",
-        "momentum": 32,
-        "category": "emerging",
-        "rationale": "Вчера тренд был на 22; сегодня Anthropic добавила Docs и Slides в Claude, а AWS описала агентам рабочий ящик вместо очередного чата, что усиливает давление на офисные и рабочие приложения.",
-        "levels": [
-          5,
-          3
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": -55,
-        "category": "collapsing",
-        "rationale": "Вчера тренд был на -70; сегодня спад частично смягчен продуктовыми сигналами Anthropic, Amazon и Google, но отрицательное значение сохраняется из-за давления локальных WebGPU-ядер и малых настраиваемых моделей Hugging Face.",
-        "levels": [
-          5,
-          6,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 60,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был на 70; сегодня прямых новостей о найме меньше, но HR Dive зафиксировал отсутствие AI в кодексах этики, а Wired описал виртуального актера Tilly Norwood как новый вызов профессиональным ролям.",
-        "levels": [
-          3,
-          8,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "chip-export-control",
-        "name": "Экспортный контроль чипов",
-        "momentum": 25,
-        "category": "emerging",
-        "rationale": "Сегодняшний сигнал связан не с новым запретом, а с возможной локализацией: SK Hynix, по сообщению TechCrunch, обсуждает с Intel производство памяти в США, что отражает перестройку аппаратных цепочек.",
-        "levels": [
-          4,
-          2,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 45,
-        "category": "accelerating",
-        "rationale": "Сегодня Wired и Financial Times показали, что China скептически воспринимает идею замедления AI, если она закрепляет преимущество компаний США; это усиливает суверенную логику в управлении AI-рисками.",
-        "levels": [
-          8,
-          9,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-social-license",
-        "name": "Общественная легитимность AI",
-        "momentum": 35,
-        "category": "emerging",
-        "rationale": "Новый тренд поддержан несколькими сигналами: опросом Al Jazeera об экологическом следе AI, вандализмом перед саммитом в Montreal, мошенническим AI-приложением для знакомств и отсутствием AI в корпоративных кодексах этики.",
-        "levels": [
-          8,
-          3,
-          1
-        ],
-        "is_new": true
-      }
-    ]
-  },
-  {
     "date": "2026-09-17",
     "generated_at": "2026-09-17T05:02:55.269Z",
     "trends": [
@@ -4374,6 +4213,151 @@
         "levels": [
           5,
           6
+        ],
+        "is_new": false
+      }
+    ]
+  },
+  {
+    "date": "2026-10-16",
+    "generated_at": "2026-10-16T05:02:10.069Z",
+    "trends": [
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 78,
+        "category": "accelerating",
+        "rationale": "Вчера было 85; сегодня импульс ослаблен распродажей облигаций дата-центров, хотя план Тайваня по комплексу в Техасе сохраняет инвестиционную линию.",
+        "levels": [
+          9,
+          2,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-financialization",
+        "name": "Финансиализация AI-компаний",
+        "momentum": 80,
+        "category": "accelerating",
+        "rationale": "Вчера было 72; сегодня появились сразу несколько финансовых сигналов: рейтинг Anthropic, стресс облигаций дата-центров, высокая доходность CoreWeave и уход инвесторов в казначейские облигации на фоне AI-турбулентности.",
+        "levels": [
+          9,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 92,
+        "category": "accelerating",
+        "rationale": "Вчера было 100; сегодня регуляторный импульс остаётся высоким за счёт призыва Банка Англии к стандартам тестирования и учений G7, но без нового закона или обязательного режима.",
+        "levels": [
+          8,
+          9,
+          6
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера было 98; Tencent сообщила о непреднамеренном поведении сторонних агентов, G7 готовит учения, а ARIA и RealtimeBench добавляют методический контур контроля.",
+        "levels": [
+          8,
+          6,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера было 96; ChatGPT получил доступ к вкладкам Chrome, Bluesky расширила Attie до создания приложений, а Amazon описала устройства AI как замену приложениям.",
+        "levels": [
+          5,
+          4,
+          3
+        ],
+        "is_new": false
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 60,
+        "category": "accelerating",
+        "rationale": "Вчера было 49; Meta и Apple выпустили Muse Spark Open для локального запуска на Mac, а MAIAM предложила промежуточную рамку доступа между API и публикацией весов.",
+        "levels": [
+          5,
+          4,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": -32,
+        "category": "decelerating",
+        "rationale": "Вчера было -24; сегодняшний набор сигналов сильнее поддерживает локальные open-weight модели и многоуровневый доступ, чем чистую закрытую API-модель.",
+        "levels": [
+          5,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-cloud-rental",
+        "name": "AI-облака и аренда вычислений",
+        "momentum": 35,
+        "category": "emerging",
+        "rationale": "Вчера было 28; рост поддержан обсуждением доходности CoreWeave и сравнением с GMI Cloud, но долговой стресс ограничивает ускорение.",
+        "levels": [
+          9,
+          5,
+          2
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 56,
+        "category": "accelerating",
+        "rationale": "Вчера было 68; сегодня есть только косвенные сигналы через готовность работников платить за обучение и рост приоритета защиты AI-систем, без крупных наймов или увольнений.",
+        "levels": [
+          3,
+          7
+        ],
+        "is_new": false
+      },
+      {
+        "id": "classic-saas",
+        "name": "Классический SaaS под давлением AI",
+        "momentum": 57,
+        "category": "accelerating",
+        "rationale": "Вчера было 50; Amazon описала устройства AI как замену приложениям, а Bluesky и ChatGPT усилили контур, где функции создаются или вызываются поверх существующих сред.",
+        "levels": [
+          5,
+          3
+        ],
+        "is_new": false
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 42,
+        "category": "accelerating",
+        "rationale": "Сигналы дня — индийское предобучение на 2,8 трлн токенов, ставки индийских семейных офисов на местные AI-стартапы и тайваньское финансирование комплекса в Техасе.",
+        "levels": [
+          7,
+          9,
+          2
         ],
         "is_new": false
       }
