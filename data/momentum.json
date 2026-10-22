@@ -1,136 +1,5 @@
 [
   {
-    "date": "2026-09-22",
-    "generated_at": "2026-09-22T17:02:47.488Z",
-    "trends": [
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера было 100, сегодня остаётся 100: Illinois создал AI-кабинет, регуляторы штатов представили рамку проверок, а банки потребовали след от AI-покупки до платежа. Одновременно отказ Trump от международного пакта показывает, что регулирование ускоряется, но не унифицируется.",
-        "levels": [
-          8,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера было 100, сегодня остаётся 100: Meta выпустила патч для Muse, Anthropic связала Opus 5.5 с более строгими киберзащитами, а Cisco Talos обнаружил AI-ориентированную вредоносную командную систему. Безопасность агентов стала ежедневным операционным контуром.",
-        "levels": [
-          4,
-          6,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера было 100, сегодня остаётся 100: Muse получил 902 тыс. загрузок за шесть дней и первые места в магазинах, Grok Bot превысил 400 тыс. недельных пользователей, Rabbit вернулся с OS3, а AstroForge переносит агента в управление аппаратом. Сигналы охватывают потребительский, коммерческий и физический контуры агентности.",
-        "levels": [
-          4,
-          5,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 96,
-        "category": "accelerating",
-        "rationale": "Вчера было 96, сегодня остаётся 96: ABB описала стойки для AI-нагрузок около одного мегаватта, а TechCrunch показал локальные конфликты вокруг строительства дата-центров в Pennsylvania. Капитальные проекты упираются одновременно в технологию стойки и территориальное согласование.",
-        "levels": [
-          2,
-          4,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 95,
-        "category": "accelerating",
-        "rationale": "Вчера было 90, сегодня 95: Financial Times прямо связал AI-спрос с ускорением китайской программы ядерного синтеза, а ABB описала рост мощности на уровне стойки в пять-шесть раз. Это сильнее связывает AI не только с сетью, но и с долгосрочной энергетической стратегией.",
-        "levels": [
-          1,
-          2,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 78,
-        "category": "accelerating",
-        "rationale": "Вчера было 72, сегодня 78: a16z запускает академию с партнёрами OpenAI, Anthropic, Meta и NVIDIA, HR-лидеры предупреждают о потере учебных траекторий из-за AI, а Mirendil получает интерес инвесторов благодаря команде бывших исследователей Anthropic. Кадры становятся одновременно образовательным и финансовым активом.",
-        "levels": [
-          3,
-          7,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": -24,
-        "category": "decelerating",
-        "rationale": "Вчера было -32, сегодня -24: Anthropic выпустила более дешёвый Opus 5.5 для бизнес-задач, что немного улучшает позицию закрытых моделей. Но поддержка квантов llama.cpp в Transformers сохраняет давление открытого и локального вывода на закрытые API.",
-        "levels": [
-          4,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "open-weight-models",
-        "name": "Open-weight модели",
-        "momentum": 42,
-        "category": "accelerating",
-        "rationale": "Сегодняшний сигнал — Hugging Face добавил запуск квантов llama.cpp в Transformers, а Jun Kim присоединился к Hugging Face для поддержки MLX-сообщества. Это усиливает инфраструктуру локального и открытого использования моделей.",
-        "levels": [
-          4,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-in-government",
-        "name": "AI в госсекторе",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера было 96, сегодня 100: Illinois создал AI-кабинет, регуляторы штатов представили рамку AI-проверок, а Trump обозначил позицию США против международного пакта по рискам AI. Государственный контур AI стал одновременно исполнительным, проверочным и геополитическим.",
-        "levels": [
-          8,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 35,
-        "category": "emerging",
-        "rationale": "Сегодняшний сигнал — The Biological Computing Company переносит AI-инструменты в Amazon Web Services. Это показывает, что даже экспериментальные вычислительные подходы ищут масштабирование через облачную инфраструктуру.",
-        "levels": [
-          4,
-          5
-        ],
-        "is_new": false
-      }
-    ]
-  },
-  {
     "date": "2026-09-23",
     "generated_at": "2026-09-23T17:05:00.478Z",
     "trends": [
@@ -4377,6 +4246,167 @@
           9,
           4,
           2
+        ],
+        "is_new": false
+      }
+    ]
+  },
+  {
+    "date": "2026-10-22",
+    "generated_at": "2026-10-22T05:02:46.265Z",
+    "trends": [
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 74,
+        "category": "accelerating",
+        "rationale": "Вчера было 66; сегодня Meta повысила CapEx и создаёт новый класс акций, DeepSeek привлёк $15 млрд, а Blackstone публично защищает долговую модель AI-строительства.",
+        "levels": [
+          9,
+          5,
+          2
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 96,
+        "category": "accelerating",
+        "rationale": "Вчера было 95; новый газопровод Kinder Morgan за $4,2 млрд для комплекса дата-центров и отчёт о загрязнении воздуха в Техасе подтверждают материальное расширение энергопотребления AI.",
+        "levels": [
+          1,
+          2,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера было 100; PHP-уязвимости, найденные с помощью AI, уже широко эксплуатируются, Meta приостановила функцию ссылок Muse, а PROVISO предлагает проверять происхождение данных перед действием агента.",
+        "levels": [
+          8,
+          6,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера было 100; Walmart открывает покупки AI-агентам, Anthropic запускает Claude Duet, Meta сообщает о 10 млн пользователей Muse, а Navalia и DataPraxis развивают обучение профессиональных агентов.",
+        "levels": [
+          5,
+          6,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 100,
+        "category": "accelerating",
+        "rationale": "Вчера было 100; британская налоговая занялась ошибочными AI-советами, суд ограничил возможность EPA закрывать иски о загрязнении дата-центров, а Южная Корея пересматривает государственный AI-рывок.",
+        "levels": [
+          8,
+          1,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": -30,
+        "category": "decelerating",
+        "rationale": "Вчера было -42; сигнал частично улучшился, потому что OpenAI расширяет дистрибуцию новых моделей через Google Cloud, а Anthropic запускает Claude Duet как закрытый агентный продукт.",
+        "levels": [
+          5,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "clinical-ai-workflows",
+        "name": "Клинические AI-рабочие процессы",
+        "momentum": 55,
+        "category": "accelerating",
+        "rationale": "Вчера было 48; MedPAO-Assist, Clinical System One и работа о многоагентных клинических галлюцинациях показывают расширение исследований от отчётов к операционным медицинским решениям.",
+        "levels": [
+          4,
+          6,
+          7
+        ],
+        "is_new": false
+      },
+      {
+        "id": "physical-ai",
+        "name": "Физический AI",
+        "momentum": 50,
+        "category": "accelerating",
+        "rationale": "Вчера было 45; Noetix Robotics подала заявку на IPO в Гонконге, а новости о Tesla связывают будущую стоимость компании с Optimus и Cybercab.",
+        "levels": [
+          9,
+          4,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 57,
+        "category": "accelerating",
+        "rationale": "Вчера было 55; Meta оформляет удержание Zuckerberg как условие AI-амбиций, а Министерство труда США направляет почти $82 млн на обучение для новых отраслей.",
+        "levels": [
+          3,
+          7,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 78,
+        "category": "accelerating",
+        "rationale": "Вчера было 73; китайский DeepSeek привлёк около $15 млрд, а Южная Корея пересматривает государственную AI-стратегию, что усиливает национальные контуры конкуренции.",
+        "levels": [
+          9,
+          8,
+          2
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-cloud-rental",
+        "name": "AI-облака и аренда вычислений",
+        "momentum": 42,
+        "category": "accelerating",
+        "rationale": "Вчера было 34; OpenAI выводит новые модели в Google Cloud, а Amazon публикует системное профилирование TorchNeuron на Trainium.",
+        "levels": [
+          5,
+          4,
+          2
+        ],
+        "is_new": false
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 18,
+        "category": "emerging",
+        "rationale": "Сегодня сигнал умеренный: статьи о SLM-словарях, MedPAO-Assist и локальных клинических моделях показывают спрос на более дешёвые и автономные развёртывания, но без крупного open-weight запуска.",
+        "levels": [
+          4,
+          5,
+          7
         ],
         "is_new": false
       }
