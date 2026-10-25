@@ -32,6 +32,11 @@ interface ReportEvent {
   title: string;
   description: string;
   sources: string[];
+  fact?: string;
+  why_important?: string;
+  news_id?: string;
+  content_version?: string;
+  importance?: { level: "critical" | "high" | "medium" | "low"; rationale: string } | null;
 }
 
 interface SrtLevel {
@@ -159,6 +164,7 @@ export interface TrendDynamic {
 }
 
 export interface LiveReport {
+  content_version?: string;
   date: string;
   generated_at: string;
   key_focus: string;

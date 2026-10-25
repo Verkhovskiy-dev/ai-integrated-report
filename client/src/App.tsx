@@ -56,18 +56,18 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <I18nProvider>
           <ViewModeProvider>
-          <ExecutiveDataProvider>
           <EkenRoutesProvider>
           <LiveDataProvider>
+          <ExecutiveDataProvider>
             <FilterProvider>
               <TooltipProvider>
                 <Toaster />
                 <Router />
               </TooltipProvider>
             </FilterProvider>
+          </ExecutiveDataProvider>
           </LiveDataProvider>
           </EkenRoutesProvider>
-          </ExecutiveDataProvider>
           </ViewModeProvider>
         </I18nProvider>
       </ThemeProvider>

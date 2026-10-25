@@ -21,34 +21,12 @@ import { ShareButton } from "@/components/ShareableBlock";
 import { buildShareId } from "@/lib/share";
 import NewsReactions from "@/components/NewsReactions";
 import { buildNewsIdentity } from "@shared/newsIdentity";
+import { executiveSafeDescription, importanceLabel } from "@/data/newsContract";
 
-/* ── Severity-based color scheme ── */
-function getSeverityColor(level: number): string {
-  if (level >= 9) return "#ef4444";      // red — critical
-  if (level >= 7) return "#f97316";      // orange — high
-  if (level >= 4) return "#eab308";      // yellow — medium
-  return "#6b7280";                       // grey — low
-}
-
-function getSeverityBg(level: number): string {
-  if (level >= 9) return "rgba(239,68,68,0.08)";
-  if (level >= 7) return "rgba(249,115,22,0.06)";
-  if (level >= 4) return "rgba(234,179,8,0.05)";
-  return "rgba(107,114,128,0.04)";
-}
-
-function getSeverityBorder(level: number): string {
-  if (level >= 9) return "border-red-500/30";
-  if (level >= 7) return "border-orange-500/25";
-  if (level >= 4) return "border-yellow-500/20";
-  return "border-border/40";
-}
-
-function getSeverityLabel(level: number, isEn: boolean): string {
-  if (level >= 9) return isEn ? "CRITICAL" : "КРИТИЧНО";
-  if (level >= 7) return isEn ? "HIGH" : "ВЫСОКИЙ";
-  if (level >= 4) return isEn ? "MEDIUM" : "СРЕДНИЙ";
-  return isEn ? "LOW" : "НИЗКИЙ";
+/* SRT is a taxonomy. Colour communicates its level, never importance. */
+function getSrtColor(level: number): string {
+  const colours = ["#64748b", "#0ea5e9", "#14b8a6", "#8b5cf6", "#f59e0b", "#f97316", "#ec4899", "#a855f7", "#e11d48"];
+  return colours[Math.max(0, Math.min(8, level - 1))];
 }
 
 const EVENT_TYPE_ICONS: Record<string, string> = {
@@ -84,6 +62,11 @@ interface NewsItem {
   levelName: string;
   type: string;
   sources: string[];
+  fact?: string;
+  why_important?: string;
+  news_id?: string;
+  content_version?: string;
+  importance?: { level: "critical" | "high" | "medium" | "low"; rationale: string } | null;
 }
 
 export default function LatestNews() {
@@ -120,6 +103,11 @@ export default function LatestNews() {
           levelName: LEVEL_NAMES[srtLevel.level] || `${lvPrefix}${srtLevel.level}`,
           type: guessType(event.title + " " + event.description),
           sources: (event as any).sources || [],
+          fact: event.fact,
+          why_important: event.why_important,
+          news_id: event.news_id,
+          content_version: event.content_version,
+          importance: event.importance,
         });
       }
     }
@@ -156,20 +144,6 @@ export default function LatestNews() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            {/* Severity legend */}
-            <div className="hidden sm:flex items-center gap-2">
-              {[
-                { label: isEn ? "Critical" : "Крит.", color: "#ef4444" },
-                { label: isEn ? "High" : "Выс.", color: "#f97316" },
-                { label: isEn ? "Medium" : "Сред.", color: "#eab308" },
-                { label: isEn ? "Low" : "Низ.", color: "#6b7280" },
-              ].map((s) => (
-                <div key={s.label} className="flex items-center gap-1">
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: s.color }} />
-                  <span className="text-[8px] font-mono text-muted-foreground">{s.label}</span>
-                </div>
-              ))}
-            </div>
             {isExecutive && (
               <span className="px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20 text-[9px] font-mono text-amber-400">
                 {isEn ? "Executive View" : "Для руководителя"}
@@ -189,10 +163,11 @@ export default function LatestNews() {
             const isCardExpanded = expandedCard === identity.newsId;
             const hasDetails = item.description && item.description !== item.title;
             const hasSources = item.sources.length > 0;
-            const explanation = isExecutive ? getEventExplanation(item.title) : undefined;
-            const isExpandable = hasDetails || hasSources || !!explanation;
-            const sevColor = getSeverityColor(item.level);
-            const sevBorder = getSeverityBorder(item.level);
+            const executive = isExecutive ? getEventExplanation(item) : undefined;
+            const explanation = executive?.status === "available" ? executive.explanation : undefined;
+            const displayDescription = executiveSafeDescription(item, executive, isExecutive);
+            const isExpandable = hasDetails || hasSources || !!explanation || isExecutive;
+            const srtColor = getSrtColor(item.level);
             const itemId = buildShareId("news", item.title);
 
             return (
@@ -202,17 +177,15 @@ export default function LatestNews() {
                 className={`group relative bg-card/50 backdrop-blur-sm border rounded-lg overflow-hidden transition-all duration-200 ${
                   isCardExpanded
                     ? "border-primary/30 shadow-lg shadow-primary/5"
-                    : sevBorder + " hover:border-primary/20"
+                    : "border-border/40 hover:border-primary/20"
                 }`}
-                style={{
-                  backgroundColor: getSeverityBg(item.level),
-                }}
+                style={{ backgroundColor: "rgba(15, 23, 42, 0.18)" }}
               >
-                <ShareButton id={itemId} title={item.title} text={item.description} compact className="absolute right-2 top-2" />
-                {/* Severity accent bar */}
+                <ShareButton id={itemId} title={item.title} text={displayDescription} compact className="absolute right-2 top-2" />
+                {/* SRT taxonomy accent bar */}
                 <div
                   className="absolute top-0 left-0 w-1 h-full rounded-l-lg"
-                  style={{ backgroundColor: sevColor }}
+                  style={{ backgroundColor: srtColor }}
                 />
 
                 {/* Card header — clickable */}
@@ -226,23 +199,17 @@ export default function LatestNews() {
                       <span
                         className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-mono font-medium"
                         style={{
-                          color: sevColor,
-                          backgroundColor: `${sevColor}15`,
-                          borderColor: `${sevColor}30`,
+                          color: srtColor,
+                          backgroundColor: `${srtColor}15`,
+                          borderColor: `${srtColor}30`,
                           borderWidth: 1,
                         }}
                       >
                         {EVENT_TYPE_ICONS[item.type] || "📌"}
                         <span>{lvPrefix}{item.level} {item.levelName}</span>
                       </span>
-                      <span
-                        className="text-[7px] font-mono px-1 py-0.5 rounded"
-                        style={{
-                          color: sevColor,
-                          backgroundColor: `${sevColor}10`,
-                        }}
-                      >
-                        {getSeverityLabel(item.level, isEn)}
+                      <span className="text-[7px] font-mono px-1 py-0.5 rounded text-muted-foreground bg-muted/40">
+                        {importanceLabel(item.importance, isEn)}
                       </span>
                     </div>
                     {isExpandable && (
@@ -269,15 +236,21 @@ export default function LatestNews() {
                     {isExecutive && explanation && (
                       <ExecutiveEventCardLocalized
                         explanation={explanation}
-                        accentColor={sevColor}
+                        accentColor={srtColor}
                         isEn={isEn}
                       />
                     )}
 
-                    {/* Full description (shown in expert mode or if no executive explanation) */}
-                    {(!isExecutive || !explanation) && hasDetails && (
+                    {isExecutive && executive?.status === "unavailable" && (
+                      <p role="status" className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                        {isEn ? "Executive explanation is unavailable for this exact report version." : "Пояснение для руководителя недоступно для этой версии новости."}
+                      </p>
+                    )}
+
+                    {/* On rejection, show only the raw source fact, never generated interpretation. */}
+                    {(!isExecutive || !explanation) && Boolean(displayDescription) && (
                       <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
-                        {item.description}
+                        {displayDescription}
                       </p>
                     )}
 

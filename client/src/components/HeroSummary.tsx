@@ -27,6 +27,7 @@ import { buildShareId } from "@/lib/share";
 import EkenRouteAction from "@/components/EkenRouteAction";
 import NewsReactions from "@/components/NewsReactions";
 import { buildNewsIdentity } from "@shared/newsIdentity";
+import { executiveSafeDescription } from "@/data/newsContract";
 
 // ─── Helpers ────────────────────────────────────────────────────
 const LEVEL_NAMES_RU: Record<number, string> = {
@@ -188,7 +189,7 @@ export default function HeroSummary() {
   // ── Top 3 events ──
   const topEvents = useMemo(() => {
     if (!latestReport?.srt_levels) return [];
-    const items: { title: string; level: number; levelName: string; type: string; description: string; sources: string[] }[] = [];
+    const items: { title: string; level: number; levelName: string; type: string; description: string; sources: string[]; fact?: string; news_id?: string; content_version?: string }[] = [];
     for (const srtLevel of latestReport.srt_levels) {
       if (selectedLevels.length > 0 && !selectedLevels.includes(srtLevel.level)) continue;
       for (const event of srtLevel.events) {
@@ -203,6 +204,9 @@ export default function HeroSummary() {
           levelName: LEVEL_NAMES[srtLevel.level] || `${lvPrefix}${srtLevel.level}`,
           type: guessType(event.title + " " + event.description),
           sources: event.sources || [],
+          fact: event.fact,
+          news_id: event.news_id,
+          content_version: event.content_version,
         });
       }
     }
@@ -371,9 +375,11 @@ export default function HeroSummary() {
               {topEvents.slice(0, 3).map((item, idx) => {
                 const identity = buildNewsIdentity(item);
                 const isItemExpanded = expandedHeroEvent === identity.newsId;
-                const explanation = isExecutive ? getEventExplanation(item.title) : undefined;
-                const hasDetails = item.description && item.description !== item.title;
-                const isExpandable = hasDetails || !!explanation;
+                const executive = isExecutive ? getEventExplanation(item) : undefined;
+                const explanation = executive?.status === "available" ? executive.explanation : undefined;
+                const displayDescription = executiveSafeDescription(item, executive, isExecutive);
+                const hasDetails = Boolean(displayDescription && displayDescription !== item.title);
+                const isExpandable = hasDetails || !!explanation || isExecutive;
                 const itemId = buildShareId("news", item.title);
 
                 return (
@@ -386,7 +392,7 @@ export default function HeroSummary() {
                         : "border-border/20 hover:border-primary/20"
                     }`}
                   >
-                    <ShareButton id={itemId} title={item.title} text={item.description} compact className="absolute right-2 top-2" />
+                    <ShareButton id={itemId} title={item.title} text={displayDescription} compact className="absolute right-2 top-2" />
                     {/* Clickable header */}
                     <button
                       onClick={() => isExpandable && setExpandedHeroEvent(isItemExpanded ? null : identity.newsId)}
@@ -441,10 +447,15 @@ export default function HeroSummary() {
                           />
                         )}
 
-                        {/* Expert mode: show full description */}
+                        {isExecutive && executive?.status === "unavailable" && (
+                          <p role="status" className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                            {isEn ? "Executive explanation is unavailable for this exact report version." : "Пояснение для руководителя недоступно для этой версии новости."}
+                          </p>
+                        )}
+                        {/* On rejection, show only the raw source fact. */}
                         {(!isExecutive || !explanation) && hasDetails && (
                           <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
-                            {item.description}
+                            {displayDescription}
                           </p>
                         )}
                         <a

@@ -1,0 +1,27 @@
+{
+  "schema_version": "srt-classification-map/v1",
+  "importance_boundary": "This mapping is structural taxonomy only and is excluded from the executive-generation prompt. It must not determine importance.",
+  "taxonomy_provenance": "Read-only current AIwatcher systemMessage in automation/news-contract/producer-nodes-sanitized.json",
+  "items": {
+    "src:anthropic-agent-skills-aaif:2026-10-22": {
+      "srt_level": 8,
+      "rationale": "The reported action concerns governance and neutral stewardship of an open standard, matching institutions of spontaneous order.",
+      "provenance": "Engineering classification against current AIwatcher L8 definition; not a claim made by Anthropic."
+    },
+    "src:anthropic-independent-evaluators:2026-10-15": {
+      "srt_level": 8,
+      "rationale": "The reported arrangement concerns voluntary external risk-evaluation governance and trust conditions.",
+      "provenance": "Engineering classification against current AIwatcher L8 definition; not a claim made by Anthropic or METR."
+    },
+    "src:ec-harmonised-standards-ai:2026-10-14": {
+      "srt_level": 8,
+      "rationale": "The official record concerns formal standards supporting a regulatory regime.",
+      "provenance": "Engineering classification against current AIwatcher L8 definition; legal applicability is not inferred."
+    },
+    "src:openai-australia-response:2026-09-28": {
+      "srt_level": 6,
+      "rationale": "The company account concerns training/evaluation controls, monitoring and research-access safeguards.",
+      "provenance": "Engineering classification against current AIwatcher L6 definition; effectiveness is not inferred."
+    }
+  }
+}

@@ -5,24 +5,22 @@
  *
  * Data is lazy-loaded only when executive mode is activated.
  */
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { useViewMode } from "./ViewModeContext";
-import { useTranslation, type Locale } from "./I18nContext";
+import { useTranslation } from "./I18nContext";
+import { useLiveData } from "./LiveDataContext";
+import {
+  findExecutiveExplanation,
+  validateExecutiveNewsData,
+  type ContractNewsEvent,
+  type ExecutiveExplanation,
+  type ExecutiveLookup,
+  type ExecutiveNewsData,
+} from "@/data/newsContract";
 
 /* ── Types ─────────────────────────────────────────────────── */
 
-export interface ExecutiveEvent {
-  event_title: string;
-  what_happened: string;
-  why_important: string;
-  business_impact: string;
-}
+export type ExecutiveEvent = ExecutiveExplanation;
 
 export interface RoleAdvice {
   insight_id: number;
@@ -47,8 +45,7 @@ export interface IndustryPersonalization {
   immediate_actions: string[];
 }
 
-export interface ExecutiveData {
-  executive_events: ExecutiveEvent[];
+export interface ExecutiveData extends ExecutiveNewsData {
   role_advice: RoleAdvice[];
   weekly_takeaways: WeeklyTakeaway[];
   industry_personalizations: IndustryPersonalization[];
@@ -58,22 +55,13 @@ interface ExecutiveDataContextValue {
   data: ExecutiveData | null;
   loading: boolean;
   error: string | null;
-  /** Find executive explanation for an event by title (fuzzy first-40-chars match) */
-  getEventExplanation: (title: string) => ExecutiveEvent | undefined;
+  /** Find an explanation only by versioned event identity. */
+  getEventExplanation: (event: ContractNewsEvent) => ExecutiveLookup;
   /** Find role advice for an insight by ID */
   getRoleAdvice: (insightId: number) => RoleAdvice | undefined;
 }
 
 const ExecutiveDataContext = createContext<ExecutiveDataContextValue | null>(null);
-
-/* ── Helpers ───────────────────────────────────────────────── */
-
-const normalize = (s: string) =>
-  s
-    .toLowerCase()
-    .replace(/[«»""*_]/g, "")
-    .trim()
-    .slice(0, 40);
 
 const EMPTY: ExecutiveData = {
   executive_events: [],
@@ -87,17 +75,26 @@ const EMPTY: ExecutiveData = {
 export function ExecutiveDataProvider({ children }: { children: ReactNode }) {
   const { isExecutive } = useViewMode();
   const { locale } = useTranslation();
+  const { latestReport } = useLiveData();
   const [data, setData] = useState<ExecutiveData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [loadedLocale, setLoadedLocale] = useState<Locale | null>(null);
+  const [loadedKey, setLoadedKey] = useState<string | null>(null);
 
   useEffect(() => {
-    // Only load when executive mode is active and locale changed
     if (!isExecutive) return;
-    if (data && loadedLocale === locale) return;
+    const reportVersion = latestReport?.content_version;
+    const requestKey = reportVersion ? `${locale}:${reportVersion}` : null;
+    if (!requestKey) {
+      setData(EMPTY);
+      setError("Loaded report has no verified news contract");
+      setLoading(false);
+      return;
+    }
+    if (loadedKey === requestKey) return;
 
     let cancelled = false;
+    setData(null);
     setLoading(true);
     setError(null);
 
@@ -109,10 +106,18 @@ export function ExecutiveDataProvider({ children }: { children: ReactNode }) {
         if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
         return resp.json();
       })
-      .then((json: ExecutiveData) => {
+      .then(async (json: unknown) => {
+        const validated = await validateExecutiveNewsData(latestReport, json);
+        const optional = json as Partial<ExecutiveData>;
+        const normalized: ExecutiveData = {
+          ...validated,
+          role_advice: Array.isArray(optional.role_advice) ? optional.role_advice : [],
+          weekly_takeaways: Array.isArray(optional.weekly_takeaways) ? optional.weekly_takeaways : [],
+          industry_personalizations: Array.isArray(optional.industry_personalizations) ? optional.industry_personalizations : [],
+        };
         if (!cancelled) {
-          setData(json);
-          setLoadedLocale(locale);
+          setData(normalized);
+          setLoadedKey(requestKey);
           setLoading(false);
         }
       })
@@ -120,7 +125,8 @@ export function ExecutiveDataProvider({ children }: { children: ReactNode }) {
         console.warn("Failed to load executive data:", err);
         if (!cancelled) {
           setData(EMPTY);
-          setError(err.message);
+          setLoadedKey(requestKey);
+          setError(String(err?.message || err));
           setLoading(false);
         }
       });
@@ -128,17 +134,13 @@ export function ExecutiveDataProvider({ children }: { children: ReactNode }) {
     return () => {
       cancelled = true;
     };
-  }, [isExecutive, locale]);
+  }, [isExecutive, locale, latestReport, loadedKey]);
 
-  const getEventExplanation = (title: string): ExecutiveEvent | undefined => {
-    if (!data) return undefined;
-    const needle = normalize(title);
-    return data.executive_events.find((e) => normalize(e.event_title) === needle);
-  };
+  const getEventExplanation = (event: ContractNewsEvent): ExecutiveLookup =>
+    findExecutiveExplanation(event, data);
 
   const getRoleAdvice = (insightId: number): RoleAdvice | undefined => {
-    if (!data) return undefined;
-    return data.role_advice.find((a) => a.insight_id === insightId);
+    return (data?.role_advice ?? []).find((a) => a.insight_id === insightId);
   };
 
   return (

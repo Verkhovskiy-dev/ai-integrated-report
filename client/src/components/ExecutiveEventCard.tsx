@@ -3,7 +3,7 @@
  * Shows: what happened, why it matters, business impact.
  * Replaces the technical event description when viewMode === "executive".
  */
-import { Briefcase, TrendingUp, AlertTriangle } from "lucide-react";
+import { Briefcase, TrendingUp, AlertTriangle, CircleHelp } from "lucide-react";
 import type { ExecutiveEvent } from "@/contexts/ExecutiveDataContext";
 
 interface Props {
@@ -31,6 +31,16 @@ export default function ExecutiveEventCard({ explanation, accentColor = "#22d3ee
           </p>
         </div>
       </div>
+
+      {explanation.uncertainty && (
+        <div className="flex items-start gap-2">
+          <CircleHelp className="mt-1 h-3 w-3 shrink-0 text-muted-foreground" />
+          <div>
+            <p className="mb-0.5 text-[9px] font-mono uppercase tracking-wider text-muted-foreground/60">Граница данных</p>
+            <p className="text-[11px] leading-relaxed text-muted-foreground">{explanation.uncertainty}</p>
+          </div>
+        </div>
+      )}
 
       {/* Why important */}
       <div className="flex items-start gap-2">
@@ -95,6 +105,18 @@ export function ExecutiveEventCardLocalized({
           </p>
         </div>
       </div>
+
+      {explanation.uncertainty && (
+        <div className="flex items-start gap-2">
+          <CircleHelp className="mt-1 h-3 w-3 shrink-0 text-muted-foreground" />
+          <div>
+            <p className="mb-0.5 text-[9px] font-mono uppercase tracking-wider text-muted-foreground/60">
+              {isEn ? "Evidence boundary" : "Граница данных"}
+            </p>
+            <p className="text-[11px] leading-relaxed text-muted-foreground">{explanation.uncertainty}</p>
+          </div>
+        </div>
+      )}
 
       <div className="flex items-start gap-2">
         <div

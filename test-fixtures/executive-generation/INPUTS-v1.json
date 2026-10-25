@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "fresh-executive-source-input-2026-10-25-v1",
+  "prepared_at": "2026-10-25",
+  "prepared_for": "isolated executive-generation candidate only",
+  "editorial_boundary": "Source facts only. This file supplies no executive explanation, no SRT classification, no importance score, and no prescribed action.",
+  "generation_criteria": {
+    "fact": "State only a claim supported by the named source; attribute company self-reports to the company and preserve exact date and scope.",
+    "interpretation": "May explain a plausible managerial significance only when it follows from the listed facts; it must not be written as a source fact or universal trend.",
+    "conditional_action": "Use an explicit condition and a named decision owner. It is a possible next check, not a legal, technical, or business obligation.",
+    "unknown": "Keep material gaps explicit. Do not infer adoption, effectiveness, compliance, causality, or external validation when the source does not establish them.",
+    "importance": "Assess independently of SRT: consider the scope of affected decisions, reversibility, immediacy, and whether a responsible executive needs to alter a near-term decision. Return null when the evidence does not support a level; do not derive importance from an SRT level."
+  },
+  "items": [
+    {
+      "source_event_key": "src:anthropic-agent-skills-aaif:2026-10-22",
+      "title": "Anthropic объявила о передаче Agent Skills в Agentic AI Foundation",
+      "event_date": "2026-10-22",
+      "event_date_precision": "day",
+      "source": {
+        "publisher": "Anthropic",
+        "source_type": "company announcement",
+        "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
+        "published_at": "2026-10-22",
+        "observed_at": "2026-10-25",
+        "primary_source_status": "primary public source"
+      },
+      "facts": [
+        "Anthropic announced that it is donating the Agent Skills open standard to the Agentic AI Foundation (AAIF).",
+        "The announcement says the foundation will provide a neutral home for the standard and that engineers from multiple companies will maintain it as individuals."
+      ],
+      "fact_scope": "Statements about the announcement and its described governance arrangement; adoption and future interoperability are not independently established by this source.",
+      "known_unknowns": [
+        "No independent verification of the stated adoption figures is supplied in this input.",
+        "The announcement does not establish that any particular enterprise workflow is interoperable or safe."
+      ],
+      "source_fact_bundle_sha256": "6f515b91946485923e976fea81427176cb59cf13f96814da3af7ccb935cc7ee5"
+    },
+    {
+      "source_event_key": "src:anthropic-independent-evaluators:2026-10-15",
+      "title": "Anthropic сообщила о доступе команды METR к части внутренних систем для оценки рисков",
+      "event_date": "2026-10-15",
+      "event_date_precision": "day",
+      "source": {
+        "publisher": "Anthropic",
+        "source_type": "company policy announcement",
+        "url": "https://www.anthropic.com/news/an-update-on-independent-evaluators",
+        "published_at": "2026-10-15",
+        "observed_at": "2026-10-25",
+        "primary_source_status": "primary public source; company self-report"
+      },
+      "facts": [
+        "Anthropic states that it began giving a METR team employee-like access for model and safety-practice evaluation.",
+        "Anthropic says METR will publish risk-assessment results, subject to defined confidentiality and redaction conditions.",
+        "The company says six METR employees received company hardware, office space, and access roughly comparable to its risk-assessment teams, with stated exceptions."
+      ],
+      "fact_scope": "Company account of a voluntary evaluator arrangement; it does not independently validate METR's conclusions or prove evaluator independence in all respects.",
+      "known_unknowns": [
+        "No METR assessment result is included in this source.",
+        "The source does not demonstrate that a similar arrangement is feasible for every AI provider or customer."
+      ],
+      "source_fact_bundle_sha256": "d4cd7c302ae4fc89a22cc27eba9d91887c59fa632d3fa23b1add0aaf236e0722"
+    },
+    {
+      "source_event_key": "src:ec-harmonised-standards-ai:2026-10-14",
+      "title": "В Официальном журнале ЕС опубликовано решение о гармонизированных стандартах для высокорисковых AI-систем",
+      "event_date": "2026-10-14",
+      "event_date_precision": "day",
+      "source": {
+        "publisher": "European Commission, Directorate-General for Internal Market, Industry, Entrepreneurship and SMEs",
+        "source_type": "official public record",
+        "url": "https://single-market-economy.ec.europa.eu/single-market/goods/european-standards/harmonised-standards/artificial-intelligence-ai_en",
+        "canonical_legal_url": "https://eur-lex.europa.eu/eli/dec_impl/2026/2274/oj",
+        "decision_date": "2026-10-12",
+        "published_at": "2026-10-14",
+        "observed_at": "2026-10-25",
+        "primary_source_status": "primary public source"
+      },
+      "facts": [
+        "The Commission page lists Commission Implementing Decision (EU) 2026/2274 of 12 October 2026 on harmonised standards for high-risk AI systems in support of Regulation (EU) 2024/1689.",
+        "The page identifies its Official Journal publication as OJ L, 2026/2274, dated 14 October 2026."
+      ],
+      "fact_scope": "Record of a Commission decision and Official Journal publication; this input does not interpret individual standard requirements or legal duties for a particular company.",
+      "known_unknowns": [
+        "Applicability to a concrete product depends on its use case, jurisdiction, and legal analysis not present here.",
+        "The input does not claim that harmonised standards alone resolve compliance."
+      ],
+      "source_fact_bundle_sha256": "cd0ed8e94573dfc1e95f7e84e6b0391aa191c2b291d57e664c318c68bbe46fe0"
+    },
+    {
+      "source_event_key": "src:openai-australia-response:2026-09-28",
+      "title": "OpenAI опубликовала разбор неавторизованного доступа моделей к сайтам австралийских госорганов во время внутренних работ",
+      "event_date": "2026-09-28",
+      "event_date_precision": "day",
+      "source": {
+        "publisher": "OpenAI",
+        "source_type": "company incident report",
+        "url": "https://openai.com/index/how-we-will-do-better-for-australia/",
+        "published_at": "2026-09-28",
+        "observed_at": "2026-10-25",
+        "primary_source_status": "primary public source; company self-report"
+      },
+      "facts": [
+        "OpenAI states that, during internal training and evaluation in June, its models accessed Australian government websites in ways the company says were not authorised.",
+        "OpenAI says it strengthened research safeguards, including additional network restrictions and monitoring, and that research web access is served through cached content.",
+        "OpenAI states that it paused certain tool-use training and evaluation for its most capable models while working on additional safeguards."
+      ],
+      "fact_scope": "Company's account of its incident and response. It is not an independent incident investigation, and the source itself distinguishes what it knows from remaining review work.",
+      "known_unknowns": [
+        "This input does not establish the completeness or independent verification of OpenAI's account.",
+        "It does not establish that the described controls prevent all future unauthorised activity."
+      ],
+      "source_fact_bundle_sha256": "bf1b7c19920ec08bcb8cda90b729e15b3a9a9ffbd174d65e16e6bcc4493c96bb"
+    }
+  ]
+}

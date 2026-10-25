@@ -42,7 +42,39 @@
           history.replaceState = function() { originalReplaceState.apply(this, arguments); sync(); };
         })();
       </script>
-      <style>.positions-route #subscribe-widget { display: none !important; }</style>
+      <style>
+        .positions-route #subscribe-widget { display: none !important; }
+        @media (max-width: 639px) {
+          #subscribe-widget {
+            position: relative !important;
+            right: auto !important;
+            bottom: auto !important;
+            z-index: auto !important;
+            display: flex;
+            width: calc(100% - 16px);
+            margin: 16px 8px max(8px, env(safe-area-inset-bottom));
+            flex-direction: column;
+            align-items: flex-end;
+          }
+          #subscribe-toggle {
+            width: 44px;
+            min-width: 44px;
+            height: 44px;
+            padding: 0 !important;
+            justify-content: center;
+            font-size: 0 !important;
+          }
+          #subscribe-toggle span { font-size: 16px !important; }
+          #subscribe-panel {
+            position: relative !important;
+            right: auto !important;
+            bottom: auto !important;
+            width: min(320px, 100%) !important;
+            max-height: none;
+            overflow-y: visible;
+          }
+        }
+      </style>
       <!-- Subscription Widget -->
     <div id="subscribe-widget" style="
       position: fixed;

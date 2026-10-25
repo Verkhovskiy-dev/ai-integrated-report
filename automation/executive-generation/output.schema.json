@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "batch_id", "items"],
+  "properties": {
+    "schema_version": { "const": "executive-generation/v1" },
+    "batch_id": { "type": "string", "minLength": 1 },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["news_id", "input_hash", "importance", "what_happened", "why_important", "business_impact", "uncertainty"],
+        "properties": {
+          "news_id": { "type": "string", "pattern": "^news_[a-f0-9]{16,64}$" },
+          "input_hash": { "type": "string", "pattern": "^input_[a-f0-9]{20}$" },
+          "importance": {
+            "anyOf": [
+              { "type": "null" },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["level", "rationale"],
+                "properties": {
+                  "level": { "enum": ["critical", "high", "medium", "low"] },
+                  "rationale": { "type": "string", "minLength": 1, "maxLength": 600 }
+                }
+              }
+            ]
+          },
+          "what_happened": { "type": "string", "minLength": 1, "maxLength": 900 },
+          "why_important": { "type": "string", "minLength": 1, "maxLength": 900 },
+          "business_impact": { "type": "string", "minLength": 1, "maxLength": 900 },
+          "uncertainty": { "type": "string", "minLength": 1, "maxLength": 700 }
+        }
+      }
+    }
+  }
+}

@@ -77,7 +77,7 @@ async function startServer() {
       `<meta name="twitter:description" content="${escapeHtml(description)}" />`,
     ].join("\n    ");
     const html = indexTemplate
-      .replace(/<title>.*?<\/title>/s, `<title>${escapeHtml(pageTitle)}</title>`)
+      .replace(/<title>[^]*?<\/title>/, `<title>${escapeHtml(pageTitle)}</title>`)
       .replace(/<meta name="description"[^>]*>/, `<meta name="description" content="${escapeHtml(description)}" />`)
       .replace("</head>", `    ${socialMeta}\n  </head>`);
     res.type("html").send(html);
