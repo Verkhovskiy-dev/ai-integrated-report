@@ -8,6 +8,7 @@ on:
     paths:
       - 'data/latest-report.json'
       - 'data/latest-report.en.json'
+      - 'data/executive_data_ru.json'
       - 'data/archive/*.json'
 
 permissions:
@@ -35,6 +36,17 @@ jobs:
         run: |
           git fetch origin main
           git checkout origin/main -- scripts/validate_report.py
+          git checkout origin/main -- scripts/news-contract/build-paired-news-data.mjs
+          git checkout origin/main -- scripts/news-contract/validate-published-pair.mjs
+
+      - name: Validate report/executive publication contract
+        id: pair_contract
+        run: |
+          node scripts/news-contract/validate-published-pair.mjs \
+            data/latest-report.json data/executive_data_ru.json > /tmp/pair-validation.json
+          cat /tmp/pair-validation.json
+          VERSIONED=$(node -e "const fs=require('fs');const r=JSON.parse(fs.readFileSync('/tmp/pair-validation.json'));process.stdout.write(String(r.mode==='versioned'))")
+          echo "versioned=$VERSIONED" >> "$GITHUB_OUTPUT"
 
       - name: Run validation (dry-run)
         id: validate_dry
@@ -45,7 +57,7 @@ jobs:
 
       - name: Auto-fix data quality issues
         id: autofix
-        if: steps.validate_dry.outcome == 'failure'
+        if: steps.validate_dry.outcome == 'failure' && steps.pair_contract.outputs.versioned != 'true'
         run: |
           echo "::notice::Validation failed — running auto-fix..."
 
@@ -75,6 +87,12 @@ jobs:
             fi
           fi
 
+      - name: Fail closed instead of mutating a versioned pair
+        if: steps.validate_dry.outcome == 'failure' && steps.pair_contract.outputs.versioned == 'true'
+        run: |
+          echo "::error::Versioned report failed validation; refusing one-sided auto-fix/revert."
+          exit 1
+
       - name: Commit auto-fix changes
         if: steps.autofix.outputs.fixed == 'true'
         run: |
@@ -89,14 +107,14 @@ jobs:
           }
 
       - name: Checkout dashboard route system
-        if: steps.autofix.outputs.empty_events != 'true'
+        if: steps.validate_dry.outcome == 'success' || steps.autofix.outputs.fixed == 'true'
         uses: actions/checkout@v4
         with:
           ref: main
           path: route-system-source
 
       - name: Set up Node.js for share cards
-        if: steps.autofix.outputs.empty_events != 'true'
+        if: steps.validate_dry.outcome == 'success' || steps.autofix.outputs.fixed == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -104,11 +122,11 @@ jobs:
           cache-dependency-path: route-system-source/package-lock.json
 
       - name: Install share-card generator
-        if: steps.autofix.outputs.empty_events != 'true'
+        if: steps.validate_dry.outcome == 'success' || steps.autofix.outputs.fixed == 'true'
         run: npm ci --prefix route-system-source --legacy-peer-deps
 
       - name: Rebuild Dashboard → Eken routes
-        if: steps.autofix.outputs.empty_events != 'true'
+        if: steps.validate_dry.outcome == 'success' || steps.autofix.outputs.fixed == 'true'
         run: |
           node route-system-source/scripts/dashboard-routes/route-system.mjs publish data/latest-report.json data/eken-scenarios.json
           node route-system-source/scripts/validate-dashboard-routes.mjs data/latest-report.json data/eken-scenarios.json
@@ -124,7 +142,7 @@ jobs:
           fi
 
       - name: Rebuild individual news share pages
-        if: steps.autofix.outputs.empty_events != 'true'
+        if: steps.validate_dry.outcome == 'success' || steps.autofix.outputs.fixed == 'true'
         run: |
           node route-system-source/scripts/generate-news-share-pages.mjs data/latest-report.json . https://verkhovskiy.ai
 
@@ -180,7 +198,7 @@ jobs:
           EOF
 
       - name: Auto-revert if events are empty
-        if: steps.autofix.outputs.empty_events == 'true'
+        if: steps.autofix.outputs.empty_events == 'true' && steps.pair_contract.outputs.versioned != 'true'
         run: |
           echo "::error::CRITICAL: 0 events detected. Auto-reverting to previous good commit..."
 

@@ -23,7 +23,7 @@
     "test:weekly-insights": "node automation/weekly-insights/contract.test.mjs",
     "test:news-shares": "node scripts/generate-news-share-pages.test.mjs",
     "test:place-shares": "node scripts/generate-place-share-pages.test.mjs",
-    "test:news-contract": "node scripts/news-contract/news-contract.test.mjs && vitest run client/src/data/newsContract.test.ts && node automation/news-contract/actual-n8n-replay.test.mjs && node automation/news-contract/actual-n8n-run.test.mjs",
+    "test:news-contract": "node scripts/news-contract/news-contract.test.mjs && node scripts/news-contract/validate-published-pair.test.mjs && vitest run client/src/data/newsContract.test.ts && node automation/news-contract/actual-n8n-replay.test.mjs && node automation/news-contract/actual-n8n-run.test.mjs",
     "test:actual-n8n-replay": "node automation/news-contract/actual-n8n-replay.test.mjs",
     "test:actual-n8n-run": "node automation/news-contract/actual-n8n-run.test.mjs",
     "test:executive-generation": "node scripts/executive-generation/executive-generation.test.mjs",
