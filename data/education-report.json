@@ -1,85 +1,128 @@
 {
-  "report_date": "2026-07-27",
+  "report_date": "2026-10-29",
+  "trends": [
+    {
+      "trend_name": "ИИ становится обязательным элементом базового обучения",
+      "description": "Вузы вводят обязательные AI-модули и масштабируют интеграцию ИИ в ядро программ, а не в элективы.",
+      "momentum": "High"
+    },
+    {
+      "trend_name": "Рост партнёрств вузов с BigTech для подготовки ИИ-кадров",
+      "description": "Совместные магистратуры/кафедры и программы для менеджеров запускаются с VK, Сбер, Яндекс.",
+      "momentum": "High"
+    },
+    {
+      "trend_name": "Сдвиг к AI governance и управлению рисками в exec-обучении",
+      "description": "Executive-программы всё чаще включают управление, внедрение и governance ИИ в организациях.",
+      "momentum": "Medium"
+    },
+    {
+      "trend_name": "Крупные целевые инвестиции в ИИ-образование и инфраструктуру",
+      "description": "Гранты и финансирование направляются на центры, лаборатории и повышение квалификации преподавателей.",
+      "momentum": "Medium"
+    }
+  ],
+  "competitive_signals": [
+    {
+      "institution": "Harvard Business School",
+      "signal": "Запустила $699 bootcamp с AI-аватарами преподавателей.",
+      "impact": "Давит на рынок коротких программ ценой и масштабируемостью."
+    },
+    {
+      "institution": "Imperial College London",
+      "signal": "Анонсировала Master’s по AI, economics and policy на 2027.",
+      "impact": "Усиливает конкуренцию в нише AI policy/governance на уровне MSc."
+    },
+    {
+      "institution": "The Wharton School",
+      "signal": "Запустила новый digital strategy & AI certificate program.",
+      "impact": "Укрепляет mid-market сертификатов для менеджеров и консультантов."
+    },
+    {
+      "institution": "Университет ИТМО + СКОЛКОВО + Яндекс",
+      "signal": "Объявили совместную подготовку «директоров по ИИ» для бизнеса.",
+      "impact": "Создаёт сильного локального конкурента в сегменте CDTO/AI leadership."
+    }
+  ],
+  "skolkovo_comparison": [
+    {
+      "competitor_program": "AI avatars startup bootcamp ($699)",
+      "competitor_institution": "Harvard Business School",
+      "competitor_region": "USA",
+      "skolkovo_equivalent": "«Онлайн-интенсив по разработке ИИ-продуктов»",
+      "advantage": "Сильнее масштабирование через аватары и низкий входной чек.",
+      "gap": "СКОЛКОВО может усилить онлайн-формат и добавить beginner-уровень."
+    },
+    {
+      "competitor_program": "AI, economics and policy master’s (planned for 2027)",
+      "competitor_institution": "Imperial College London",
+      "competitor_region": "UK",
+      "skolkovo_equivalent": "«Переход в ИИ: трансформация бизнес-процессов» (CDTO)",
+      "advantage": "Закрывает AI policy/governance на уровне MSc (длинный трек).",
+      "gap": "Это закрывает GAP СКОЛКОВО по AI Governance и магистратуре."
+    },
+    {
+      "competitor_program": "digital strategy & AI certificate program",
+      "competitor_institution": "The Wharton School",
+      "competitor_region": "USA",
+      "skolkovo_equivalent": "«Управление бизнесом с помощью ИИ и данных»",
+      "advantage": "Сильный бренд и сертификатный формат для глобальной аудитории.",
+      "gap": "СКОЛКОВО может упаковать аналогичный сертификат на 5–8 недель онлайн."
+    },
+    {
+      "competitor_program": "Cambridge AI Leadership Programme (4 months)",
+      "competitor_institution": "Cambridge Judge Business School Executive Education",
+      "competitor_region": "UK",
+      "skolkovo_equivalent": "«Переход в ИИ: трансформация бизнес-процессов» (CDTO)",
+      "advantage": "Длинная exec-программа с международной сетью и брендом Cambridge.",
+      "gap": "СКОЛКОВО может усилить международные кейсы и governance-модуль."
+    }
+  ],
   "regions": {
     "USA": [
       {
-        "institution": "The Wharton School, University of Pennsylvania (Wharton Executive Education)",
-        "program_name": "AI in Marketing: Creating Customer Value in an AI-Driven Enterprise",
-        "level": "Applied_Short",
-        "description": "Wharton Executive Education запустил специализированную программу по применению ИИ в маркетинге с фокусом на создании клиентской ценности и перестройке маркетинговых процессов под AI-driven enterprise. Для рынка exec-ed это сигнал дальнейшей «вертикализации» AI-обучения (не «AI for everyone», а конкретные функции), что усиливает конкуренцию с короткими прикладными программами бизнес-школ.",
-        "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxQVjVDTXVWOTBFTkFWUlZFaHJBaC1nNHZuNzVmbU5JWHZkY1F2MUxBdnUyZ2cwSDVCYnBsU3hIclRTTnUwS1hXZlV3aXc2MUduQVJERGt2Rnhta08tNXBvMFUtRnNzR2t1cE1NYXhkdzBva1cyRnZha3UzeHF4VTV3VjBCX1ItWWg2Z2lTeFZYS1BXNkMyTUQ1WHZYWV9xckhEYkNxRkxyWGdvVTZWWGlTWHNXaHdzd3M3eFVLOGFqeWhPREVxSk4wMXFYS204RG4xNkVCbUcwS3RVVHJoa2h6WGI2MEMtZHFtdENYQWVR?oc=5"
-      },
-      {
         "institution": "Harvard Business School",
-        "program_name": "AI Integration Across MBA Curriculum (curriculum expansion)",
-        "level": "Premium_Long",
-        "description": "HBS объявляет расширение интеграции ИИ по всей MBA-программе, что переводит AI-компетенции из «элективов» в базовую управленческую подготовку. Конкурентно это повышает ожидания кандидатов и работодателей к «AI-native MBA» и усиливает давление на школы, где AI остаётся точечным модулем или факультативом.",
-        "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1zQzZWaU9jUDhOQ0JQY0h6ZWppYWZPaUNkd1VnTV9xVjZEalBybm1RTXlrS0hPRmV1N3NsYjNvMDdIMEVvNGpXcUoxSFpfS25KTW9oY3pESlE2WUxqY3hZLUZ1QnRNeEM4X01GMGhhdGtvUQ?oc=5"
+        "program_name": "AI avatars startup bootcamp ($699)",
+        "level": "Applied_Short",
+        "description": "Короткий bootcamp по предпринимательству с AI-аватарами.",
+        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOUm9JWmRsdTFRT0IxTUVIQjZfaTU1SG85TGY3ODUyMUtSMWtPN2l1blA3ODZ3bzlNNV9rN1U1cmJjeXFTMXpqeFNJU1BGcjF3TE9Dbzl0dXExbUxFaGhDbXBZU2ttU2s2a01vVW92MFpRNU9BRV9HQ25UVE5JOUVVcTBIVE5JbEh3VzZGckQ3eHZHZE1OWm4td2RSTlh0RDNQZTVn?oc=5"
       },
       {
-        "institution": "Harvard College",
-        "program_name": "Required AI Module in Expository Writing (AI training for freshmen)",
-        "level": "Beginner",
-        "description": "Harvard College добавляет обязательный модуль по ИИ в программу академического письма, фактически вводя AI-грамотность как «новую базовую компетенцию» для всех первокурсников. Это важный сигнал массовизации AI literacy в элитных вузах и смещения фокуса от детекции к педагогическим практикам использования ИИ.",
-        "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9UTGZ6NF9BUVpxQ2JQU1duemNUeHVwbENTRVFtWFh0VWxod1ZnNkxKWUoxdzNFSFFKUlRvLWNCeWtpc1lTMDhUVWlYZWhQc25yX3RnOXdacWhUTWh1Ny1EZDRBdVdMRFFwVHFrLTZPNTUyT05oanc?oc=5"
-      },
-      {
-        "institution": "MIT Sloan School of Management",
-        "program_name": "New MIT Sloan courses on deep learning, generative AI, and financial technology",
-        "level": "Premium_Long",
-        "description": "MIT Sloan обновляет портфель курсов, добавляя фокус на deep learning, generative AI и финтех — это усиливает «технологическую глубину» внутри управленческого образования. Для конкурентной среды это означает рост планки по содержанию: от инструментов GenAI к пониманию моделей, данных и отраслевых применений (finance/fintech).",
-        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNd01ha2FDRVhDcmxHS2ZLaUtweFcxNDRBTU5UUHZ3Y3NEQ2dQc3k0Y2xyOWJLRmIwLXcySlFDVzQ2R0ctWTdNb0IxLXlaV25fNDZvWlNoUHl1QzYwYzZWVVp3ZDdiM0dRR0xWRzRoVVd2N1ZGby05d0hadWotZFhiRHJBTmpERFluSVViQWZsVS11VHJRcDBZZTFzTUY0R1NncWdiZ2VuRXhVZmMtaFB0cS1SVGhxbGY1dENXTE5tUTVBc3Zi?oc=5"
+        "institution": "The Wharton School",
+        "program_name": "digital strategy & AI certificate program",
+        "level": "Intermediate",
+        "description": "Сертификат по digital strategy и ИИ для управленцев.",
+        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQUWhkZ2tsSjFaNlhMS1NtRmlzQUV1UjZwYjZLbXJzZHVZSlRpT1JKQUMwR0ZESTlXWGY5WjFyaWxMSVBkUEJqNmFIVUhmUW5EQS1lTWF3N0xkSzlYQ3k4OVk4dkg5VXJqWmtoaFhJaldyOEZMazdmTWxvdjZJS2h4QW5rWFJaNXVfNTRMYWlrUXhQN1k?oc=5"
       },
       {
         "institution": "Stanford University",
-        "program_name": "$1M seed grants to shape the future of AI in education (AI-in-education funding)",
-        "level": "Intermediate",
-        "description": "Stanford выделяет $1 млн в виде seed grants на развитие направления «AI в образовании», что является прямой инвестицией в образовательную инфраструктуру и доказательную базу. Для рынка это усиливает тренд на институционализацию AI-in-education через финансирование, а не только через отдельные курсы/политики.",
+        "program_name": "Seed grants for AI in education ($1M)",
+        "level": "Other",
+        "description": "Гранты на проекты по ИИ в образовании и педпрактиках.",
         "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE10QWJYTk1OVDhQZ0ZUU2VRdTllQW9yVG1tRzhoV0xqellHRzV2NmkwbzBHbGxKb3dYa040SzZfSENwNXc4MVBGaWdRZW5BZTBURUx1c0hRYkhSX2hYcWdfLU5Rc3BhWDZQcHluYmVhRnVweWl6?oc=5"
-      },
-      {
-        "institution": "Kellogg School of Management (Northwestern University)",
-        "program_name": "Executive Education programs on AI-driven business value (portfolio expansion)",
-        "level": "Applied_Short",
-        "description": "Kellogg Executive Education расширяет линейку программ, ориентированных на создание бизнес-ценности с помощью ИИ, что отражает устойчивый спрос со стороны руководителей на прикладные форматы. Конкурентно это усиливает давление на школы, у которых AI-обучение не упаковано в понятные value-based exec-продукты.",
-        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNeWVza2pNY1JZTU5xWk8zanc3TnBLQ3lOUmZubjlDMXNyM3V2V09QUGtZSW1jY3dDSUxONlVsY0dabHRWa2E1NnIwMW4wTHp2Tjk2cjQ2S2swcTNPNUtHQTktUDNCMFdFSldERFB4Ykd4RTVVeVAwWHltVGRBQWlLODlVcVFyVHpiLW1mdmMzell0MWc?oc=5"
-      },
-      {
-        "institution": "Harvard Kennedy School",
-        "program_name": "AI for governments and policymakers",
-        "level": "Applied_Short",
-        "description": "Harvard Kennedy School продвигает программу по ИИ для госуправления и политиков, формируя отдельный сегмент «AI for public sector». Это конкурентно важно, потому что governance/регулирование и внедрение ИИ в государстве становятся самостоятельным рынком executive-обучения, где бизнес-школы могут конкурировать с policy-школами.",
-        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQNTVWd2JIN2xyeTE3M1g1MGNfZHU2NGxVSDBidExSNE1Da3JHc25Bam1wXy0zWGJFXzc3WUxpZ2FyU19wUE9WVDJQSnppMXNrSXBHUTRsQkV5QURUaF9ydlJyTkVUNW5zazhUWTJ1a0xmbVBxUWZVcmxIWHo2VmhwZ2l6MGRyRU9NT1Nrb0FOVVp4UFNubG1yakVYWHllSjY0enJBZWdJemMxd1FPU3hEQ3VfRGw?oc=5"
-      },
-      {
-        "institution": "The Wharton School, University of Pennsylvania",
-        "program_name": "Digital Strategy & AI Certificate (new certificate program)",
-        "level": "Intermediate",
-        "description": "Wharton запускает сертификат по digital strategy и AI, что усиливает позиционирование школы в сегменте «управленческий AI + стратегия» в формате более длинного, чем 2–5 дней, обучения. Это конкурентный ход против школ, предлагающих только короткие интенсивы без траектории развития компетенций.",
-        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQUWhkZ2tsSjFaNlhMS1NtRmlzQUV1UjZwYjZLbXJzZHVZSlRpT1JKQUMwR0ZESTlXWGY5WjFyaWxMSVBkUEJqNmFIVUhmUW5EQS1lTWF3N0xkSzlYQ3k4OVk4dkg5VXJqWmtoaFhJaldyOEZMazdmTWxvdjZJS2h4QW5rWFJaNXVfNTRMYWlrUXhQN1k?oc=5"
       }
     ],
     "UK": [
       {
+        "institution": "Imperial College London",
+        "program_name": "AI, economics and policy master’s (planned for 2027)",
+        "level": "Premium_Long",
+        "description": "Магистратура про ИИ, экономику и политику (анонс).",
+        "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOV2V1anJobVJ6VUZhZl9MS0Y0X0owT0hwazI3cGNLOGpsWVExU3ROYzRMVEFEcHM4S1BnaGNkVVZoRk90d1BlcW0tXy1vT1Y3c2kxZG1KNWh0aFByLWpLaVJrUmJYLVBpaElvNWpBcjNjLVZha0k5bUpqSUdiZS1VQUQ4UlptWnlVNVNodk1xTWpPUWpoLWxzblFuLWV3UG4xT0Noa1NaUzB0TGlzZ1g2Vw?oc=5"
+      },
+      {
         "institution": "London Business School",
-        "program_name": "Collaboration with OpenAI (education/innovation collaboration)",
-        "level": "Intermediate",
-        "description": "LBS подписывает сотрудничество с OpenAI, что является сильным сигналом стратегического доступа к передовым моделям/экспертизе для обучения и исследований. Для конкурентной среды это повышает привлекательность LBS как «AI-first» школы и может ускорить появление новых форматов (кейсы, симуляции, AI-тьюторы) внутри программ.",
-        "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1fbFBhMmc4Wm1Ed01NaTF5ckQ4ZFAzVnVBWlhWYjVSVXJaSzRkRkJBT1RQWmoybl9CR0l1eXhIejJ5YmJVbkQzc1F5U3NvU2pHd1BsX2VvUk5RUlZlRU5vUVRVbF9EQW1KNU5DSGd0cFY?oc=5"
-      },
-      {
-        "institution": "University of Oxford (Saïd Business School)",
-        "program_name": "Human Leadership Program (launched in response to AI reshaping employer needs)",
+        "program_name": "AI Masterclass for business leaders (with Financial Times)",
         "level": "Applied_Short",
-        "description": "Oxford Saïd запускает программу по «человеческому лидерству» как ответ на изменения рынка труда под влиянием ИИ, усиливая тренд на комплементарные навыки (judgement, leadership, коммуникации) в AI-эпоху. Конкурентно это расширяет поле: школы конкурируют не только «кто лучше учит ИИ», но и «кто лучше учит тому, что ИИ не заменит».",
-        "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNY0o2T1B5amRJV2xoNGt1NC1qY2dRa3pJZXpQbVpYMFF2dUxQZHJXc2FBNDlEbUFzZExfa3VvSEhPNWlleUhYa05zdkZpcDNWbGJ5bXZZZ0k2clNfSDhTTVZjbXhmTkpiYVBkdVJnaUZfQ2FiMXZDR3Z3SDlxYzBYazJ4TERHa2VMd2N5bWxkLW9EQVZlZDZjbnNOekNCakRITS1URDN2dkhpYUgtRUJHT3VUakZMRHlFVWo4?oc=5"
+        "description": "Мастер-класс по ИИ для лидеров бизнеса совместно с FT.",
+        "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPNnlzVzBiOW1CalZZUDRwd3hNRXczX0laT0NaVGFvdnJmcF91SW9SMk5WS3EtRlRDUkkzWWE3SzlYcTMxcTFXYXJHN1NEYUcyRVU1dlFNNndXRmRneDlTa0ctaW9jUGJXQU9ZeXE1VElyT0FabW1BRU4xSjRocC1fTElUdW9VemZXcjNmZk9n?oc=5"
       },
       {
-        "institution": "Cambridge Judge Business School (Executive Education)",
-        "program_name": "AI Leadership Programme (in collaboration with Emeritus)",
+        "institution": "Cambridge Judge Business School Executive Education",
+        "program_name": "Cambridge AI Leadership Programme",
         "level": "Intermediate",
-        "description": "Cambridge Judge Executive Education запускает AI Leadership Programme совместно с Emeritus, усиливая модель масштабирования через edtech-партнёра (маркетинг, набор, delivery). Это конкурентный сигнал: топ-школы ускоряют рост охвата и международных продаж AI-программ через платформенных партнёров.",
-        "url": "https://news.google.com/rss/articles/CBMihgJBVV95cUxQekNyRk1yNzByUVlTaUxVeTJZMlo1cTBScnJuWEVLSEFsT2phNC0tZV9ndnVLUXh0YmxCcmZfT0ZHRFk2elZEUWxfZGFZbXF0ZlY5NkFNOFFGeC0xWndzaUlhSnhvMWlKU3lPTUVPdWdkUGpHVl9DZ25SaXZPYTRSS2kyYjJCSE9LUHctVkxGbndoR09QT1I1b0hELUZyX180elhhRjJiZldJWkgtbVhKSFdNb1drNEhPanR2UHA5M0ladmNrYWp1SHlubERDN2JkZVlRbkFWbHJEOV8zNlhPd1pHTkREOUlfYzNSSUxJN3RKSVhEWXRVMFRBTHJzMmV3S0tNdXNn?oc=5"
+        "description": "4-месячная программа лидерства по ИИ для руководителей.",
+        "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNOHF4Um10X0JZTjVxQ3VuRjlMVk1JaUFleW81aUt6eF9odkM5OHlWM3pCVjgwODA2Qlk5djZXMncwaVhDQUFpRzktdVNuQk1KcTc4YkNnRHdmYjE5eFBHcUdHTC0tWkhHY01OaTdrSFpoUVRSTFVSanp0OW81ZlZHYy1fbVI3dmFnQW1EZXVwQWcwOXRsLVNYaXBUOEhIb0xDd2hJNEtyQkZWMVM0dUNtWmNXZU9PN2Qxald0LXZVR0ZwcWNtSl83dmJZZ3hLNXllaVlKLXlQNDRLY1laWTd3?oc=5"
       }
     ],
     "EU": [],
@@ -88,105 +131,48 @@
     "Saudi_Arabia": [],
     "Russia": [
       {
-        "institution": "Высшая школа экономики (НИУ ВШЭ) + МТС",
-        "program_name": "Магистратура по искусственному интеллекту (новый набор)",
-        "level": "Premium_Long",
-        "description": "МТС и НИУ ВШЭ объявили новый набор в магистратуру по ИИ — это укрепляет модель «корпоративно-университетской» магистратуры с прямой привязкой к индустриальным кейсам и трудоустройству. Конкурентно ВШЭ усиливает лидерство в длинных AI-программах, закрывая потребность рынка в системной подготовке, а не только в коротких курсах.",
-        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNRk0xc3YwQWZXNm4xa3FxVG1OSG5kclBWWnd4WFFqSWtrcjF5VXJUazIydXd0akliOUdsRWNlcjhLZERRUWdnbDg5VFJTZTV6cDhKVlJyalRNS05EOWZmTlE5XzJIckdTR25yVWxnckxOWnFFMVlDWllmd01zaXc1YndmWWZPMGVvY1YtT000aUwyb24xTTNEcy0xeXZIMGNNcWJqTUlXeC1rWldmcnc?oc=5"
-      },
-      {
-        "institution": "Высшая школа экономики (ФКН ВШЭ)",
-        "program_name": "Три отраслевых образовательных модуля по искусственному интеллекту (совместно с ЧГУ)",
-        "level": "Applied_Short",
-        "description": "ФКН ВШЭ совместно с ЧГУ реализовали три отраслевых модуля по ИИ, что показывает масштабирование AI-обучения через модульную модель и региональные партнёрства. Для конкурентной картины это важный сигнал: ведущие центры (ВШЭ) «упаковывают» ИИ в отраслевые блоки и распространяют их через сеть вузов.",
-        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9NLVVBZ19WY2FmYUw2bTlnLW1yZmlzRXdJSWtXbDFIT3VBbGQzYmY2U09QYmtvMS1CQ2dOeUV5TUFtVms3b0J5Zy1nenBQdHdkTTFMcGNB?oc=5"
-      },
-      {
-        "institution": "Высшая школа экономики (ФКН ВШЭ)",
-        "program_name": "ИИ для врачей (курс для студентов Российского университета медицины)",
-        "level": "Applied_Short",
-        "description": "ФКН ВШЭ провёл прикладной курс «ИИ для врачей» для студентов профильного медвуза — это пример междисциплинарного внедрения AI-обучения в профессиональные треки. Конкурентно это расширяет рынок: AI-образование уходит в отраслевые профессии (healthcare) и создаёт спрос на специализированные короткие программы.",
-        "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQZWlyLXgtM2FLVTdOdXBaaFRINjRkenlFbkdiZUJTOFhzdWlDYWNJU0NvZjVEaC12QzVweW5RNDA0ZEdoZGFCY0l5a2tXMG1SdXFuUTU1QUh2cVZWUFlRQ2MzQzlWMlBadm1sV3V0MHhGQml6VzZiVGFKTmFySUVtV0pSdDVxZk1QVlZTaF9fcGRQS2RFME10RGlaSUNFN19taXh5THVsWkJ1VlNoMGNuVGhSLVpjZ1Jfc0NZeF8xbnpOM1Q2aHlmSFFJa2tydmRWdUpN?oc=5"
-      },
-      {
-        "institution": "НИУ ВШЭ",
-        "program_name": "Второй суперкомпьютер НИУ ВШЭ (запуск к концу 2026 года)",
+        "institution": "Университет ИТМО",
+        "program_name": "Программа подготовки «директоров по ИИ» (ИТМО+СКОЛКОВО+Яндекс)",
         "level": "Intermediate",
-        "description": "Планы запуска второго суперкомпьютера в ВШЭ — это инфраструктурная инвестиция, напрямую усиливающая возможности обучения и исследований в ML/GenAI (доступ к вычислениям, практикумы, проекты). Конкурентно это повышает барьеры входа для вузов без вычислительной базы и ускоряет «продуктизацию» AI-образования на данных и моделях.",
-        "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQX3U1RnlOVHlIbXBPdkRwOXJ1cVI5X3VuSF8tSW5pTVR2ZTB2M0ZDUjNmemJ5OENzTFd3cmhkUE1oUmZIMmRKRkNyaHZfUFQ0ZTVCNWJSSGZJOHRDVVJOR0ZqaGFTT0hlakNWLVlwX3pjRmZNTVBtSU5jR1FuZWhGQ1RZVmR0aEFxanJocmpsVXhYSjAwNGg4VTZhYlhfUDIxcTJZVnNJcXFKRTU1Z1EyYkdVV01mZw?oc=5"
-      },
-      {
-        "institution": "Московский государственный университет имени М.В. Ломоносова (МГУ)",
-        "program_name": "Факультет искусственного интеллекта (открытие и первый набор в 2026 году)",
-        "level": "Premium_Long",
-        "description": "МГУ открывает отдельный факультет искусственного интеллекта и объявляет первый набор студентов в 2026 году — это институционализация ИИ как самостоятельного направления подготовки на уровне факультета. Конкурентно это усиливает «брендовый» сегмент AI-образования в РФ и может перетянуть абитуриентов/партнёров у действующих лидеров (ВШЭ, МФТИ, ИТМО) за счёт масштаба и статуса МГУ.",
-        "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQcTl2cVlaRmM0ZUZKM1lCUjZyRVpyNXZtdEFFRjNDbE9WcmplU2VvSUVmOTljcHB1MmJTbW9HN1l5bE1laHpsRDVhRHFZOVFvV2g4dVZ2NjVMeWR0Z1dVSnhhd0NSckQxR3l4eER0dkc1NzRPNTZ5cUtwWUZ4cmVocU84VzNkN0hVRjJBcw?oc=5"
-      },
-      {
-        "institution": "Университет ИТМО + Школа управления СКОЛКОВО + Яндекс",
-        "program_name": "Программа подготовки «директоров по ИИ» / обучение менеджеров внедрять нейросети в бизнес",
-        "level": "Intermediate",
-        "description": "ИТМО, СКОЛКОВО и Яндекс запускают совместную управленческую программу для руководителей по внедрению ИИ, усиливая связку «университет + бизнес-школа + техгигант». Это конкурентный сигнал для рынка exec-ed в РФ: формируется стандарт роли AI-директора и появляется сильный продукт с доступом к практикам Яндекса и академической базе ИТМО.",
+        "description": "Совместная программа для руководителей по внедрению ИИ в бизнес.",
         "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE14akptUjEzTGt1aFJ6UGViQmZSTnJsVk4xZkVJd1B2UTJUbHRjVG1Ca0pQT2ZnQ1JKY1A0M1RTamwxdnZ1RkxyN09tU3NtVGZ4NnRKSTNDSEp0a3VuV2FmVnE3NnIySVJI?oc=5"
       },
       {
-        "institution": "«Школа 21» Сбера + НИЯУ МИФИ",
-        "program_name": "Магистерская программа «Управление внедрением искусственного интеллекта в бизнес»",
+        "institution": "VK + Московский физико-технический институт (МФТИ)",
+        "program_name": "«Искусственный интеллект и социальные медиа»",
         "level": "Premium_Long",
-        "description": "Совместная магистратура «Школы 21» и МИФИ по управлению внедрением ИИ в бизнес — это прямой выход корпоративного провайдера в сегмент длинных степеней с управленческим уклоном. Конкурентно программа усиливает давление на бизнес-школы: корпоративные игроки начинают предлагать «degree-like» продукты с практикой и кадровым контуром.",
-        "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1NN0VRUzczUG5NU0hQY3ZwN0lzeGgyME5mZmc5UkZGU2FZZVBwd3hzcnZyR0htam9BMS1pTFBvaXh3OEUydnJ4Yi1tVWdsVEFvelVqSVBKU0I5a1ZoU3BjRQ?oc=5"
+        "description": "Магистратура по ИИ для соцмедиа и платформенных продуктов.",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFA3REZHYU9TOW1reDZiaHNWcmpBMXpiWVE2NzFIUmxFdVRDZ2xTQUVWR0RjakdYVjJ0ZXZsVGJWZVZCYUR2WlpuS01QSmNCMTBJVXc?oc=5"
       },
       {
-        "institution": "РАНХиГС (региональный филиал)",
-        "program_name": "Бесплатное обучение работе с искусственным интеллектом (региональная программа)",
-        "level": "Beginner",
-        "description": "РАНХиГС в регионах запускает/продвигает бесплатное обучение работе с ИИ, что отражает государственно-ориентированную массовизацию AI literacy. Конкурентно это расширяет воронку: базовые навыки ИИ становятся доступными широким аудиториям, повышая спрос на последующие платные прикладные и дипломные программы.",
-        "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxORFJIYVlxU3M1WEZub0t6a2NqYVUtakx6dWJzbVBTOWREV1QxZlBnRXMxODg1UFg1dEdGaElnTERMMFo4ZzJRLVRyY1NGcENSWGxnblBnNkhNWXhYWk5MMHJqMnB3djlqMWVzSEItdk5lUDB6NGFudHVIUzBCTUx4Z0c0WkZrUEJzS0VYYUF5aFVVMmNDV2ZqcHc3N0lmVW1CWFd4RllnZE15WEZFWk9VMTd6Yy1vQ25jTXFyc1hHd9IBxwFBVV95cUxQNlI5enhsTVFiVFVINjBzV0lzYnZGcGt6Z0lzaDNVTWU0WFhRZjc5T2VmZFNNekY4LXcyYjJvSEVndnRqUGdLakYyNnBvd0Y3cGRZLTA5TWYwUkNCa2VvcEt6a19BNXBPOUYzYUs2WGtiZktEUTdHQWhMYkRRZFRWa2FFQXFuMlpWM3d2M0VZZURQOWhGbUJVNTJxMHM4ZnRiMXBpdjExZlRBNlRsZG9hb3U4NUdnWkJDVTZSTzBZeWFwWU9MaE53?oc=5"
-      },
-      {
-        "institution": "Авито + Школа управления СКОЛКОВО",
-        "program_name": "Общедоступная программа по ИИ для школьников 1–11 классов",
-        "level": "Beginner",
-        "description": "Авито и СКОЛКОВО запускают массовую программу по ИИ для школьников 1–11 классов, формируя раннюю воронку талантов и повышая узнаваемость брендов в AI-образовании. Конкурентно это важный ход: бизнес-школа выходит в pre-university сегмент, что может стать каналом для будущих программ (олимпиады, треки, профориентация).",
-        "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQWElielpQaUVfWVNYSjBEVHRwRWJPbFFVR3lsS2lKNF81UTdiYjdFUE5GWUpySWN6M2xvR21xaUp1MWx0WmRXeUhzTXJ6Y3NqZkV6M3I2d0o2WmVoYlRlbTB6ejVCZzd1RGJTQ3NVVVZvV1VPNTV2WTlpZVBwVklGc3VWUlo2clo3NkhUeGExSTV4UFdfSWFDanVCb3hEeEtKaEh5eVlsdlRJcGJhcVpmbFFlYTRwOXJNMzg5amdDLUhuRGc1T2pDMWFqeDlHck5Xc0Y4YWswTmxlQ3UyV0FMRmRVdw?oc=5"
-      },
-      {
-        "institution": "НИУ ВШЭ (онлайн-образование)",
-        "program_name": "Перезапуск онлайн-магистратуры по прикладным нейросетевым технологиям",
+        "institution": "Сбербанк + Московский физико-технический институт (МФТИ)",
+        "program_name": "Кафедра по подготовке специалистов по ИИ",
         "level": "Premium_Long",
-        "description": "ВШЭ перезапускает онлайн-магистратуру по прикладным нейросетевым технологиям, усиливая предложение в формате дистанционного высшего образования по AI/ML. Конкурентно это закрывает растущий спрос на «длинные» онлайн-степени и повышает давление на школы, у которых нет масштабируемых онлайн-магистратур по ИИ.",
-        "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5LMGFveUtBbVhCSEhEWDZTTDV0S0trcWVQWVMtbkRfR3dwc21vYVQ0REtxb3lkREs4MllsMndfTmJFV2pycFBEUtIBWEFVX3lxTFBwMzRaMHpPX0U1U3JLdUpCWFVUWVM4YVQwX0taMU5ZQ25jcVZocUZwSFFEVUtyZDhLREN1RmZuMnduV0g4WkoySzRzWXk1Nllsb2gyNXp1VzE?oc=5"
+        "description": "Запуск кафедры для подготовки разработчиков ИИ «будущего».",
+        "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOWTQ1czgtLVFuWEREb2o1b004cThSUEV3VGhvbnU3TDVKU2w4cnNCU1U4bE81VXdtWTJZTGpYdm40bFduOFdoWWhOZjcxX3MyTmhiQndkamd1MjllTngybTlDRDFxREo4dXJqLWhMMUFaSkdSTE9xMHFvV05zRFE1amNBS2N1SmdpSDNPUEJ4eWtQUGs0WEdhdUk0dmVwWXBTNDM4MHZjYm01MGR5RFhIbHdJOERYOTc4SWpQYWNtak01b2EwcXJpTVZZWlkweWM?oc=5"
       },
       {
-        "institution": "Республика Бурятия + НИУ ВШЭ",
-        "program_name": "Программа двойных дипломов по ИИ (региональное стратегическое партнёрство)",
+        "institution": "Алтайский филиал РАНХиГС",
+        "program_name": "Курсы повышения квалификации «Искусственный интеллект» (набор)",
+        "level": "Applied_Short",
+        "description": "Новый набор на ДПО-курсы по ИИ для специалистов.",
+        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNNG5ublh3N3lnblo2LWYxMlJ6S0VDNGV2QnRiYUtxdWhDZGZIYk5TaUFNa21fWXN5czViWDRnd0RRWDU1N2dRcE03NVJaS21tRXlicW9vdDVmWkhhR2t0S0xDSDFIYWhGdEdZMWlPaEZTVmw1YzY3c3FOalRPY3JmMEg3UGs5NllrOWloTDE4SEpxNnhDR1NfaWNlY0l5dFp0eDVB?oc=5"
+      },
+      {
+        "institution": "Фонд «Сколково»",
+        "program_name": "Программа обучения ИИ для школ 1–9 классы (доступ открыт)",
         "level": "Premium_Long",
-        "description": "Бурятия и НИУ ВШЭ запускают стратегическое партнёрство и программу двойных дипломов по ИИ, что демонстрирует региональную экспансию ведущих AI-центров через совместные degree-продукты. Конкурентно это укрепляет позиции ВШЭ как «федерального провайдера» AI-образования и может перераспределять абитуриентов из региональных вузов.",
-        "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5Bb0czY0lvNzFYVURQNGlFUE5aR0xGbEQyNUZBb3c1WVpCYzJ5eWFNNXRQSkwzM2tXaDh5RURIcEkyOUFGU1JlbDBZSlQxZzFRenhCWXY4ODdTajBwd2tyb3hxZTdUa3I2dy16LW9kcXY?oc=5"
-      },
-      {
-        "institution": "«Авито» + МФТИ + НИУ ВШЭ",
-        "program_name": "Набор на три магистерские программы (AI/tech-focused)",
-        "level": "Premium_Long",
-        "description": "Партнёрство «Авито» с МФТИ и ВШЭ по набору на три магистерские программы показывает усиление корпоративного участия в подготовке AI-кадров через несколько вузов одновременно. Конкурентно это сигнал консолидации: крупные работодатели формируют «портфель» магистратур под свои потребности, повышая привлекательность программ для абитуриентов.",
-        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxON1R3bi1aMzVpVnNnR0ZjMmlsbDNBTXE2YS1CZjZIczFncFFieTN3eHBaQlpqMkV3X2p2U2kxY3RhTGdrREcwTlNaLXljM0M3RjJTbFFMb3MzRy1ac1piQ0lqY0ZLUTgyMVhmTTMwVlBFbGRLeklEVW93ZFJMSW41b1RiQzlPRGcyR0wtYU9KVFBSbDFTYUJpeGNlX0c5NkVwQ182NQ?oc=5"
-      },
-      {
-        "institution": "Сбербанк",
-        "program_name": "AI Journey 2025 (международная конференция с образовательной компонентой)",
-        "level": "Beginner",
-        "description": "Сбер публикует программу международной конференции AI Journey 2025, которая де-факто выступает как массовая образовательная платформа (доклады, треки, практики). Для конкурентной среды в РФ это укрепляет роль корпоративных экосистем как «медиа+образование» каналов, влияющих на повестку и стандарты компетенций.",
-        "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNa3FnVklwME1pZFlYVjl5SXRGTEhac3hOcENYcDctZlZrOHUzQ25JSDdIcTJsalNlRE5IWUZzUEQtZWZzSGF0dDUxOWFpV1J3emF3TV9oZmttRTQ4OTd2T1B0enVqZTZLM0ZNWm42MmpEZmhBLXNwbDNRcGV5VHFxY09KUTBjeEZVQ05MdmoxRzdEc2JUMk5kUWJyQ09nd1JDYWZ0My1kVmNaT01qX3ZRNGxZcFZObmhXT1RxVmpycXo0MVVrX19BeEFENUJQWkNY?oc=5"
+        "description": "Школьная программа ИИ 1–9 классы стала доступна школам РФ.",
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPeHVuU3ROdjFnMWxLVkhYTlFURmhGN3JaQWVBdXNlNDlBd2h1eUVwVFVMYkVhRnVJOHlqUzVBNGtXTDR1X0wwRDNkRjVRd0luU3Jlc2VUcEM1ajZ2VW5RQjNWZzVOTjFOSW82SGs2YW1YdEw1ZTAtVGlUaXdlVTh6NzhQUjhKUmNZamFDdmE3RWU3YktkNjgtcWIwdExvcS1GZnJMUy0xT1hSVmRkaXZhd2dB?oc=5"
       }
-    ]
+    ],
+    "Other": []
   },
+  "notes": "В USA/UK часть ссылок описывает политику/мнения; включены только явные программы/запуски/инвестиции. У Stanford seed grants классифицированы как инфраструктурный сигнал, не как учебная программа.",
   "meta": {
-    "total_programs": 24,
-    "total_trends": 0,
-    "total_signals": 0,
-    "processed_at": "2026-07-27T06:02:04.519Z"
-  },
-  "trends": [],
-  "competitive_signals": [],
-  "skolkovo_comparison": []
+    "total_programs": 11,
+    "total_trends": 4,
+    "total_signals": 4,
+    "processed_at": "2026-10-29T16:52:25.786Z"
+  }
 }
