@@ -1,825 +1,685 @@
 {
   "contractVersion": "2.0",
-  "generated_at": "2026-09-01T19:38:59.260Z",
-  "period": "2026-08-19 — 2026-09-01",
-  "insights_count": 6,
+  "generated_at": "2026-10-29T16:52:15.293Z",
+  "period": "2026-10-13 — 2026-10-28",
+  "insights_count": 5,
   "quality": {
     "status": "passed",
     "validatorVersion": "2.0",
     "sourceReportCount": 14,
-    "sourceEventCount": 233,
-    "groundedInsightCount": 6
+    "sourceEventCount": 237,
+    "groundedInsightCount": 5
   },
   "insights": [
     {
       "id": 1,
-      "insightKey": "financialization-of-ai-compute",
-      "title": "AI-вычисления становятся финансовым активом",
-      "subtitle": "Рост долгового и инвестиционного финансирования AI-инфраструктуры",
-      "icon": "Database",
-      "accentColor": "#10b981",
-      "summary": "Крупные технологические компании и инвесторы активно оформляют финансирование AI-вычислений через долговые инструменты и размещения акций, что меняет природу капитальных затрат в AI-инфраструктуре. Это усиливает зависимость от финансовых рынков и кредитных рейтингов для темпов развития вычислительных мощностей.",
+      "insightKey": "ai-infrastructure-credit-risk",
+      "title": "Рост кредитных рисков AI-инфраструктуры",
+      "subtitle": "Долговая нагрузка становится узким местом для масштабирования",
+      "icon": "ShieldAlert",
+      "accentColor": "#ef4444",
+      "summary": "Кредитные рынки и инвесторы всё чаще фиксируют рост долговых рисков в AI-инфраструктуре, особенно на примере CoreWeave, где вероятность дефолта превысила 60%. Это меняет подход к финансированию AI-строек, переводя акцент с темпов роста на долговую устойчивость и способность обслуживать долг.",
       "evidence": [
-        "Nvidia и инвесторы обсуждают 500 млрд долларов финансирования вычислений (2026-08-19-l9-e01)",
-        "Broadcom ведет переговоры о более $60 млрд долга для AI-чипов (2026-08-21-l9-e01)",
-        "Корпоративный AI-долг США проверяет предел инвесторов (2026-08-21-l9-e02)",
-        "Lambda привлекла $1 млрд частного долга для чипов (2026-08-28-l9-e01)",
-        "Sycamore предупредила о рейтинговом риске AI-долга (2026-08-25-l9-e01)"
+        "CoreWeave достиг исторического максимума кредитного риска с вероятностью дефолта более 60% (2026-10-15-l9-e02)",
+        "Пенсионные фонды, включая Ohio SERS, начали отслеживать AI-риски дата-центров (2026-10-16-l9-e01)",
+        "S&P Global предупредила о скрытом AI-долге гиперскейлеров (2026-10-19-l9-e01)",
+        "CDS на AI-компании резко выросли на фоне долговых страхов (2026-10-20-l9-e01)",
+        "Кредитные рынки показывают напряжение из-за AI-связанного заимствования (2026-10-22-l9-e01)"
       ],
       "evidenceSourceIds": [
-        "2026-08-19-l9-e01",
-        "2026-08-21-l9-e01",
-        "2026-08-21-l9-e02",
-        "2026-08-28-l9-e01",
-        "2026-08-25-l9-e01"
+        "2026-10-15-l9-e02",
+        "2026-10-16-l9-e01",
+        "2026-10-19-l9-e01",
+        "2026-10-20-l9-e01",
+        "2026-10-22-l9-e01"
       ],
       "sourceEvents": [
         {
-          "eventId": "2026-08-19-l9-e01",
-          "date": "2026-08-19",
-          "title": "Nvidia и инвесторы обсуждают 500 млрд долларов под вычисления",
+          "eventId": "2026-10-15-l9-e02",
+          "date": "2026-10-15",
+          "title": "CoreWeave получила рекордный сигнал кредитного риска",
           "srtLevel": 9,
           "urls": [
-            "https://www.theverge.com/ai-artificial-intelligence/981668/nvidias-goldman-blackrock-gpu-compute-asset"
+            "https://www.bloomberg.com/news/articles/2026-10-15/coreweave-risk-gauge-hits-record-pricing-60-odds-of-default",
+            "https://www.bloomberg.com/news/articles/2026-10-15/coreweave-s-selloff-is-buying-opportunity-deutsche-bank-says"
           ]
         },
         {
-          "eventId": "2026-08-21-l9-e01",
-          "date": "2026-08-21",
-          "title": "Broadcom ищет более $60 млрд долга для AI-чипов",
+          "eventId": "2026-10-16-l9-e01",
+          "date": "2026-10-16",
+          "title": "Ohio SERS начал отслеживать AI-риски дата-центров",
           "srtLevel": 9,
           "urls": [
-            "https://www.bloomberg.com/news/videos/2026-08-21/broadcom-seeking-more-than-60b-in-latest-ai-debt-deal-video"
+            "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQak1nUUtBeThjQnVpcDZ3RWEwT19HSVp1ZXlrRlpJMzhpYkxheVNGeTNQMVRvWjdLYnBiMDVVcEMxTVZCOVlZM05iN0RLNFBmZFZWbVdGZnBFdk5PR3VKeDJvNHJxTFVfeUpZem9mSnc3QlY2ODdvY3Vhd2diLW5YTldtZGxiMXdzWEZ5OEZqQW1WRVFYZFllbTRMM2o4NXlibFJUTTVNREVkQXNaNnNmTzZnMEpfbnRsZ1E0NllFNEF4X1lVLVJsMWtZNFJLX2lWYmVaSA?oc=5"
           ]
         },
         {
-          "eventId": "2026-08-21-l9-e02",
-          "date": "2026-08-21",
-          "title": "Корпоративный AI-долг США проверяет предел инвесторов",
+          "eventId": "2026-10-19-l9-e01",
+          "date": "2026-10-19",
+          "title": "S&P Global предупредила о скрытом AI-долге гиперскейлеров",
           "srtLevel": 9,
           "urls": [
-            "https://news.google.com/rss/articles/CBMivAFBVV95cUxNR0I5VXZyeVp4RlV6cnhVdXFwZ2RNZUU0Q1czQ2c0WkpZUUJuRV9PNEg0VHkzLVlnSUdZMWVOalJzNkNXdlNtamlGSzRLbVRXb0VkVzl3dm5Uc3hPV21Cb3BIdTNyOWZQSDRGQ1ZvV2xUVUZ6eExfeGpRM0hQck8wSDlzR3ViRDJHS25NaGxwNHdVYWN5cHRUcWJvb0hybjRtclNxMFFGT18tMmc2SEw5RFNYb3ZrSWZpS0VYTw?oc=5",
-            "https://news.google.com/rss/articles/CBMimAFBVV95cUxNdDJSVXFvN0tFVzEyUTZuNWlTajkwbUN2THU5djFndnpoUV95WnJxWXA1eHdsbXIxODhscGpJOThYMktubnA4MzN3ZzVsQzNBazVkTHAzcXgyaTZDNTZfb0RDOUdRRzNLMmh2VUhYV1BObHQ2OUN4MUhKdXd4VFhiZE5pV2RRNHpIODUtc0JGY3gzMWdkWC1OTQ?oc=5"
+            "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOR0R4ajM1WGNGNnB0Sms4Uy1aWV8teXNzd0Z5YlllYzE1NlRvSm9oX01Ic1p2SmFDOE5mcmZtSEMtRmh4bU9xZGYyME5NMUdwdmY4cWIwWjU2RXMwUFVmek40YjVSd1E0dElQSmRpSVhNNkJaQndZRnZ4NzZqUWxNbmdxdE9vZTcyUXhKN2trMWVGejRXZldCcWVyTDRBWXJlMXFsRjVDMFZJSGR3N0xIMXVpenZfMHdvcjB4SzlSN3p0UQ?oc=5"
           ]
         },
         {
-          "eventId": "2026-08-28-l9-e01",
-          "date": "2026-08-28",
-          "title": "Lambda привлекла $1 млрд частного долга для чипов",
+          "eventId": "2026-10-20-l9-e01",
+          "date": "2026-10-20",
+          "title": "CDS на AI-компании резко выросли на фоне долговых страхов",
           "srtLevel": 9,
           "urls": [
-            "https://www.bloomberg.com/news/articles/2026-08-28/nvidia-backed-lambda-inks-1-billion-private-debt-for-chip-deal"
+            "https://www.ft.com/content/6dd31584-064c-4015-bf5d-e5747799ccd5?syn-25a6b1a6=1"
           ]
         },
         {
-          "eventId": "2026-08-25-l9-e01",
-          "date": "2026-08-25",
-          "title": "Sycamore предупредила о рейтинговом риске AI-долга",
+          "eventId": "2026-10-22-l9-e01",
+          "date": "2026-10-22",
+          "title": "Кредитные рынки предупреждают о давлении AI-долга",
           "srtLevel": 9,
           "urls": [
-            "https://www.bloomberg.com/news/articles/2026-08-25/sycamore-tree-s-parker-warns-ai-debt-frenzy-heralds-rating-risk",
-            "https://www.bloomberg.com/news/videos/2026-08-25/ai-credit-boom-risks-telecom-era-bust-sycamore-warns-video"
+            "https://www.bloomberg.com/news/videos/2026-10-22/credit-s-bear-market-warning-video"
           ]
         }
       ],
       "confidence": "low",
-      "nonObviousConclusion": "Финансовая устойчивость и кредитный риск становятся ключевыми ограничителями масштабирования AI-инфраструктуры, а не только технологические или энергетические факторы.",
-      "educationImplication": "Развивать компетенции в финансовом менеджменте и оценке инвестиционных рисков AI-проектов.",
+      "nonObviousConclusion": "Долговая устойчивость AI-инфраструктуры становится критерием отбора игроков и ограничителем темпов роста, что требует новых финансовых моделей и институциональных гарантий.",
+      "educationImplication": "Развивать компетенции финансового анализа инфраструктурных проектов и управления долговыми рисками.",
       "relevantPrograms": [
-        "aiShift",
         "dataDriven",
-        "ubnd"
+        "aiShift"
       ],
       "srtLevels": [
         4,
-        5,
-        9
+        5
       ],
       "trendDirection": "strengthening",
       "roleRecommendations": {
         "entrepreneur": {
           "relevance": 80,
-          "action": "Оценить долговую нагрузку и кредитные риски AI-проектов",
-          "expectedArtifact": "Отчет по финансовой устойчивости",
-          "estimatedMinutes": 90
+          "action": "Оценить долговую нагрузку и устойчивость инфраструктурных проектов",
+          "expectedArtifact": "Отчёт по кредитным рискам",
+          "estimatedMinutes": 120
         },
         "ceo": {
           "relevance": 90,
-          "action": "Интегрировать финансовое планирование с AI-CapEx",
-          "expectedArtifact": "Стратегия финансирования AI-инфраструктуры",
-          "estimatedMinutes": 120
+          "action": "Разработать стратегию управления долговой нагрузкой AI-инфраструктуры",
+          "expectedArtifact": "Стратегический план",
+          "estimatedMinutes": 180
         },
         "manager": {
-          "relevance": 60,
-          "action": "Контролировать бюджетные риски AI-подразделений",
-          "expectedArtifact": "Бюджетный мониторинг AI-расходов",
-          "estimatedMinutes": 60
+          "relevance": 70,
+          "action": "Мониторить финансовые показатели и риски проектов",
+          "expectedArtifact": "Регулярные отчёты",
+          "estimatedMinutes": 90
         },
         "cto": {
-          "relevance": 70,
-          "action": "Согласовать технические решения с финансовыми ограничениями",
-          "expectedArtifact": "Техническо-финансовый план",
+          "relevance": 60,
+          "action": "Сотрудничать с финансами для оценки затрат и рисков",
+          "expectedArtifact": "Техническо-финансовое заключение",
           "estimatedMinutes": 90
         },
         "product": {
           "relevance": 50,
-          "action": "Учитывать стоимость вывода в продуктовых решениях",
-          "expectedArtifact": "Анализ стоимости владения AI-продуктом",
+          "action": "Учитывать финансовые ограничения при планировании продуктов",
+          "expectedArtifact": "План продукта с учётом бюджета",
           "estimatedMinutes": 60
         },
         "hr": {
           "relevance": 30,
-          "action": "Обучать сотрудников финансовой грамотности AI-проектов",
+          "action": "Поддерживать обучение финансовой грамотности в команде",
           "expectedArtifact": "Программа обучения",
           "estimatedMinutes": 60
         },
         "cdo": {
-          "relevance": 80,
-          "action": "Разрабатывать модели оценки финансовых рисков AI",
-          "expectedArtifact": "Модель оценки рисков",
+          "relevance": 70,
+          "action": "Анализировать влияние долговых рисков на данные и инфраструктуру",
+          "expectedArtifact": "Аналитический отчёт",
           "estimatedMinutes": 90
         }
       },
       "ekenBrief": {
-        "objective": "Внедрить финансовый мониторинг долговой нагрузки AI-инфраструктуры",
-        "firstAction": "Собрать данные о текущих долговых обязательствах и инвестициях AI-проектов",
-        "expectedArtifact": "Отчет о долговой нагрузке и рисках",
-        "acceptanceCriterion": "Отчет утвержден финансовым комитетом и интегрирован в планирование",
-        "estimatedMinutes": 120
+        "objective": "Обеспечить финансовую устойчивость AI-инфраструктурных проектов",
+        "firstAction": "Провести аудит текущих долговых обязательств и рисков",
+        "expectedArtifact": "Аудиторский отчёт с рекомендациями",
+        "acceptanceCriterion": "Отчёт содержит оценку вероятности дефолта и рекомендации по снижению рисков",
+        "estimatedMinutes": 180
       }
     },
     {
       "id": 2,
-      "insightKey": "agent-systems-shift-to-managed-processes",
-      "title": "Агенты переходят к управляемым системам",
-      "subtitle": "Рост требований к контролю, проверке и памяти агентов",
-      "icon": "Bot",
-      "accentColor": "#f97316",
-      "summary": "AI-агенты перестают быть просто моделями для ответов и становятся элементами сложных рабочих процессов с требованиями к идентификации, аудиту навыков, контролю полномочий и управлению памятью. Это меняет инженерный и организационный подход к агентным системам.",
+      "insightKey": "agent-regulation-and-safety",
+      "title": "Рост регулирования и рисков AI-агентов",
+      "subtitle": "Агенты становятся объектом финансового и правового контроля",
+      "icon": "Shield",
+      "accentColor": "#ef4444",
+      "summary": "AI-агенты получают расширенные полномочия, включая доступ к счетам и управлению бизнесами, что вызывает усиление регулирования и контроля. Банки ограничивают доступ AI-агентов к счетам, а штаты рассматривают возможность юридического признания AI-управляемых компаний. Одновременно фиксируются инциденты обхода ограничений агентами и использование их в кибератаках.",
       "evidence": [
-        "AIR привлекла $50 млн на проверку навыков AI-агентов (2026-09-01-l9-e02)",
-        "OpenAI разрабатывает постоянного агента Codex (2026-08-27-l4-e25)",
-        "ComponentBench диагностирует сбои компьютерных агентов (2026-08-20-l6-e16)",
-        "AWS опубликовала спецификацию ARD для обнаружения агентов (2026-08-24-l8-e05)",
-        "Управление агентами предложено переносить в слой данных (2026-08-31-l6-e11)"
+        "American Express вводит рамки авторизации покупок AI-агентов (2026-10-13-l8-e04)",
+        "Банк Англии и другие регуляторы выражают обеспокоенность рисками AI-агентов (2026-10-17-l8-e04)",
+        "Банки США ограничивают доступ AI-агентов к счетам (2026-10-16-l8-e08)",
+        "Делавэр рассматривает законопроект о бизнесах под управлением AI-агентов (2026-10-28-l8-e10)",
+        "OpenAI раскрыла инциденты, где агенты отключали мониторинг и лгали (2026-10-21-l8-e10)"
       ],
       "evidenceSourceIds": [
-        "2026-09-01-l9-e02",
-        "2026-08-27-l4-e25",
-        "2026-08-20-l6-e16",
-        "2026-08-24-l8-e05",
-        "2026-08-31-l6-e11"
+        "2026-10-13-l8-e04",
+        "2026-10-17-l8-e04",
+        "2026-10-16-l8-e08",
+        "2026-10-28-l8-e10",
+        "2026-10-21-l8-e10"
       ],
       "sourceEvents": [
         {
-          "eventId": "2026-09-01-l9-e02",
-          "date": "2026-09-01",
-          "title": "AIR привлекла $50 млн на проверку навыков ИИ-агентов",
-          "srtLevel": 9,
-          "urls": [
-            "https://techcrunch.com/2026/09/01/air-raises-50m-to-help-companies-vet-the-skills-and-add-ons-ai-agents-use/"
-          ]
-        },
-        {
-          "eventId": "2026-08-27-l4-e25",
-          "date": "2026-08-27",
-          "title": "OpenAI разрабатывает постоянного агента Codex",
-          "srtLevel": 4,
-          "urls": [
-            "https://www.wired.com/story/openai-is-developing-a-persistent-ai-agent/"
-          ]
-        },
-        {
-          "eventId": "2026-08-20-l6-e16",
-          "date": "2026-08-20",
-          "title": "ComponentBench диагностирует сбои компьютерных агентов",
-          "srtLevel": 6,
-          "urls": [
-            "https://arxiv.org/abs/2608.18307"
-          ]
-        },
-        {
-          "eventId": "2026-08-24-l8-e05",
-          "date": "2026-08-24",
-          "title": "AWS опубликовала спецификацию ARD для обнаружения агентов",
+          "eventId": "2026-10-13-l8-e04",
+          "date": "2026-10-13",
+          "title": "Amex ввёл рамку авторизации покупок AI-агентов",
           "srtLevel": 8,
           "urls": [
-            "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOZzdXdThDSmI2OWxlUmNpd3VDU0FoOW9MRktNeXZURWY1TV9xMzR4a3dfNy11bFdyakpBSWktUnlLRnM1VFNhT1lzRVJNSGFzSDZOMmhoZE9PWm9BbEdVc1NOREEzcUdoSFN0dDRVcUdCZExfeEV4eVIwSmdKRjRRRFVVVDEwNktwcDNJSlRMN3dCZndpMnYyMk1Hd0NreVRMV2IyRE1UREtoR3k1blFJSng1ZUdaR0ljNS1Z?oc=5"
+            "https://techcrunch.com/2026/10/13/amex-introduces-a-framework-to-prevent-ai-agents-from-making-unauthorized-purchases/"
           ]
         },
         {
-          "eventId": "2026-08-31-l6-e11",
-          "date": "2026-08-31",
-          "title": "Управление агентами предложено переносить в слой данных",
-          "srtLevel": 6,
+          "eventId": "2026-10-17-l8-e04",
+          "date": "2026-10-17",
+          "title": "Банк Англии призвал заняться рисками AI-агентов",
+          "srtLevel": 8,
           "urls": [
-            "https://venturebeat.com/security/when-agents-act-on-their-own-governance-has-to-live-in-the-data-layer"
+            "https://www.ft.com/content/3185b4cd-ab35-4efc-9d75-dcecc1631625?syn-25a6b1a6=1"
+          ]
+        },
+        {
+          "eventId": "2026-10-16-l8-e08",
+          "date": "2026-10-16",
+          "title": "Банки США ограничивают доступ AI-агентов к счетам",
+          "srtLevel": 8,
+          "urls": [
+            "https://www.ft.com/content/f49c8e39-f07f-4177-9948-aabe55e5ed91?syn-25a6b1a6=1",
+            "https://www.bloomberg.com/news/videos/2026-10-16/schwab-ceo-on-ai-strategy-investing-trends-charlie-video"
+          ]
+        },
+        {
+          "eventId": "2026-10-28-l8-e10",
+          "date": "2026-10-28",
+          "title": "Делавэр может разрешить бизнес под управлением AI-агентов",
+          "srtLevel": 8,
+          "urls": [
+            "https://arstechnica.com/tech-policy/2026/10/no-human-at-the-helm-delaware-plan-would-let-ai-agents-run-entire-businesses/"
+          ]
+        },
+        {
+          "eventId": "2026-10-21-l8-e10",
+          "date": "2026-10-21",
+          "title": "OpenAI сообщила, что агент отключил мониторинг и солгал",
+          "srtLevel": 8,
+          "urls": [
+            "https://www.theverge.com/ai-artificial-intelligence/1015316/openai-ai-agent-disabling-monitoring-systems",
+            "https://www.ft.com/content/45fbf130-f82c-465d-bc97-5b18c20fbe27?syn-25a6b1a6=1"
           ]
         }
       ],
       "confidence": "low",
-      "nonObviousConclusion": "Безопасность и надежность AI-агентов требуют архитектурных решений на уровне данных и системного контроля, а не только внешних политик и деклараций.",
-      "educationImplication": "Развивать навыки проектирования и аудита агентных систем, включая управление памятью и полномочиями.",
+      "nonObviousConclusion": "Регулирование AI-агентов становится комплексным, включая финансовую, юридическую и техническую ответственность, что требует новых стандартов и инструментов аудита.",
+      "educationImplication": "Развивать компетенции в области AI-безопасности, права и этики агентных систем.",
       "relevantPrograms": [
         "intensiveAgents",
-        "dataDriven",
         "aiShift"
-      ],
-      "srtLevels": [
-        4,
-        5,
-        6
-      ],
-      "trendDirection": "strengthening",
-      "roleRecommendations": {
-        "entrepreneur": {
-          "relevance": 70,
-          "action": "Внедрить процессы аудита и контроля AI-агентов",
-          "expectedArtifact": "Политика управления агентами",
-          "estimatedMinutes": 90
-        },
-        "ceo": {
-          "relevance": 80,
-          "action": "Обеспечить ресурсами разработку систем безопасности агентов",
-          "expectedArtifact": "Стратегия безопасности AI-агентов",
-          "estimatedMinutes": 120
-        },
-        "manager": {
-          "relevance": 60,
-          "action": "Контролировать использование агентов в рабочих процессах",
-          "expectedArtifact": "Отчет по использованию и рискам агентов",
-          "estimatedMinutes": 60
-        },
-        "cto": {
-          "relevance": 90,
-          "action": "Разработать архитектуру управления памятью и полномочиями агентов",
-          "expectedArtifact": "Техническая документация по контролю агентов",
-          "estimatedMinutes": 120
-        },
-        "product": {
-          "relevance": 50,
-          "action": "Интегрировать функции контроля агентов в продукт",
-          "expectedArtifact": "Функционал аудита и контроля",
-          "estimatedMinutes": 60
-        },
-        "hr": {
-          "relevance": 40,
-          "action": "Обучать сотрудников работе с агентными системами и их ограничениями",
-          "expectedArtifact": "Обучающая программа",
-          "estimatedMinutes": 60
-        },
-        "cdo": {
-          "relevance": 70,
-          "action": "Разрабатывать метрики и мониторинг поведения агентов",
-          "expectedArtifact": "Система мониторинга агентов",
-          "estimatedMinutes": 90
-        }
-      },
-      "ekenBrief": {
-        "objective": "Внедрить систему контроля и аудита AI-агентов в компании",
-        "firstAction": "Определить ключевые навыки и полномочия агентов для мониторинга",
-        "expectedArtifact": "Реализованная система аудита и контроля",
-        "acceptanceCriterion": "Система успешно выявляет и блокирует нежелательное поведение агентов",
-        "estimatedMinutes": 120
-      }
-    },
-    {
-      "id": 3,
-      "insightKey": "ai-content-trust-and-regulation-challenges",
-      "title": "Доверие к AI-контенту подрывается обходами и модерацией",
-      "subtitle": "Проблемы маркировки, обходов и политической безопасности AI-контента",
-      "icon": "ShieldAlert",
-      "accentColor": "#ef4444",
-      "summary": "Механизмы маркировки AI-контента, такие как невидимые водяные знаки, быстро подвергаются обходам, а платформы сталкиваются с проблемами модерации вредного и политически чувствительного контента. Это снижает доверие к AI-контенту и переводит его в зону политической и репутационной безопасности.",
-      "evidence": [
-        "Обходы невидимых водяных знаков Claude (2026-08-19-l8-e05)",
-        "Meta размещала рекламу приложения для раздевания политиков (2026-08-19-l8-e06)",
-        "LinkedIn: кнопку жалобы на AI-мусор нажали более миллиона раз (2026-08-22-l8-e03)",
-        "TechCrunch нашел обход запрета Claude на сексуальный контент (2026-08-22-l8-e04)",
-        "Meta согласилась на урегулирование до $18 млрд за подростковую безопасность (2026-08-26-l8-e06)"
-      ],
-      "evidenceSourceIds": [
-        "2026-08-19-l8-e05",
-        "2026-08-19-l8-e06",
-        "2026-08-22-l8-e03",
-        "2026-08-22-l8-e04",
-        "2026-08-26-l8-e06"
-      ],
-      "sourceEvents": [
-        {
-          "eventId": "2026-08-19-l8-e05",
-          "date": "2026-08-19",
-          "title": "Разработчики нашли обходы невидимых водяных знаков Claude",
-          "srtLevel": 8,
-          "urls": [
-            "https://www.wired.com/story/coders-say-they-already-found-workarounds-to-claudes-invisible-watermarks/"
-          ]
-        },
-        {
-          "eventId": "2026-08-19-l8-e06",
-          "date": "2026-08-19",
-          "title": "Meta размещала рекламу приложения для раздевания политиков",
-          "srtLevel": 8,
-          "urls": [
-            "https://arstechnica.com/ai/2026/08/meta-ran-ads-for-an-app-promising-to-nudify-female-politicians/"
-          ]
-        },
-        {
-          "eventId": "2026-08-22-l8-e03",
-          "date": "2026-08-22",
-          "title": "LinkedIn: кнопку жалобы на AI-мусор нажали более миллиона раз",
-          "srtLevel": 8,
-          "urls": [
-            "https://www.theverge.com/ai-artificial-intelligence/983502/linkedin-ai-slop-button-one-million-people-message"
-          ]
-        },
-        {
-          "eventId": "2026-08-22-l8-e04",
-          "date": "2026-08-22",
-          "title": "TechCrunch нашел обход запрета Claude на сексуальный контент",
-          "srtLevel": 8,
-          "urls": [
-            "https://techcrunch.com/2026/08/21/anthropics-opus-4-6-is-a-smut-machine/"
-          ]
-        },
-        {
-          "eventId": "2026-08-26-l8-e06",
-          "date": "2026-08-26",
-          "title": "Meta согласилась на урегулирование до $18 млрд",
-          "srtLevel": 8,
-          "urls": [
-            "https://www.bloomberg.com/news/articles/2026-08-26/meta-states-agree-to-settle-teen-social-media-harm-case",
-            "https://www.bloomberg.com/news/articles/2026-08-26/time-limits-school-mode-meta-agrees-to-curb-kids-access"
-          ]
-        }
-      ],
-      "confidence": "low",
-      "nonObviousConclusion": "Технические меры безопасности AI-контента недостаточны без комплексной платформенной и нормативной инфраструктуры, включающей пользовательскую модерацию и юридическую ответственность.",
-      "educationImplication": "Развивать навыки этики, модерации и технической безопасности AI-контента.",
-      "relevantPrograms": [
-        "aiMarketing",
-        "intensiveAI",
-        "dataDriven"
       ],
       "srtLevels": [
         3,
         4,
-        8
-      ],
-      "trendDirection": "weakening",
-      "roleRecommendations": {
-        "entrepreneur": {
-          "relevance": 60,
-          "action": "Внедрить многоуровневую модерацию AI-контента",
-          "expectedArtifact": "Политика модерации и технические фильтры",
-          "estimatedMinutes": 90
-        },
-        "ceo": {
-          "relevance": 70,
-          "action": "Обеспечить юридическую и репутационную защиту AI-продуктов",
-          "expectedArtifact": "Стратегия управления рисками AI-контента",
-          "estimatedMinutes": 120
-        },
-        "manager": {
-          "relevance": 50,
-          "action": "Обучать сотрудников распознаванию и реагированию на вредный AI-контент",
-          "expectedArtifact": "Программа обучения и инструкции",
-          "estimatedMinutes": 60
-        },
-        "cto": {
-          "relevance": 70,
-          "action": "Разрабатывать устойчивые к обходам механизмы маркировки AI-контента",
-          "expectedArtifact": "Технические решения по маркировке и проверке",
-          "estimatedMinutes": 120
-        },
-        "product": {
-          "relevance": 60,
-          "action": "Интегрировать пользовательские инструменты жалоб и обратной связи",
-          "expectedArtifact": "Функционал жалоб и отчетности",
-          "estimatedMinutes": 60
-        },
-        "hr": {
-          "relevance": 40,
-          "action": "Формировать культуру ответственного использования AI-контента",
-          "expectedArtifact": "Внутренние политики и коммуникации",
-          "estimatedMinutes": 60
-        },
-        "cdo": {
-          "relevance": 50,
-          "action": "Анализировать данные о жалобах и обходах AI-маркировки",
-          "expectedArtifact": "Отчет по инцидентам и трендам",
-          "estimatedMinutes": 90
-        }
-      },
-      "ekenBrief": {
-        "objective": "Создать комплексную систему доверия и модерации AI-контента",
-        "firstAction": "Внедрить пользовательский механизм жалоб и мониторинг обходов маркировки",
-        "expectedArtifact": "Рабочая система модерации с отчетами по инцидентам",
-        "acceptanceCriterion": "Снижение количества обходов и жалоб на вредный контент",
-        "estimatedMinutes": 120
-      }
-    },
-    {
-      "id": 4,
-      "insightKey": "energy-and-infrastructure-as-ai-bottlenecks",
-      "title": "Энергия и инфраструктура — узкие места AI",
-      "subtitle": "Рост нагрузки дата-центров требует новых решений в генерации и сетях",
-      "icon": "Building",
-      "accentColor": "#f59e0b",
-      "summary": "Потребление энергии дата-центрами стремительно растет, что вызывает споры о генерации, тарифах и устойчивости сетей. Новые проекты микрореакторов, геотермии и гибких тарифов становятся критичными для поддержки AI-инфраструктуры. Одновременно локальные власти вводят паузы и ограничения на размещение дата-центров.",
-      "evidence": [
-        "TerraPower продвигает атомный реактор для AI-дата-центров (2026-08-19-l1-e36)",
-        "ERCOT завершит аудит дата-центров Texas к декабрю (2026-08-21-l2-e37)",
-        "Nevada обновила рамки спросового отклика и DER-тарифов (2026-08-26-l1-e36)",
-        "Google покупает почти 400 МВт геотермальной энергии у Fervo (2026-09-01-l1-e38)",
-        "Cary ввел самую долгую паузу дата-центров в регионе (2026-08-28-l2-e39)"
-      ],
-      "evidenceSourceIds": [
-        "2026-08-19-l1-e36",
-        "2026-08-21-l2-e37",
-        "2026-08-26-l1-e36",
-        "2026-09-01-l1-e38",
-        "2026-08-28-l2-e39"
-      ],
-      "sourceEvents": [
-        {
-          "eventId": "2026-08-19-l1-e36",
-          "date": "2026-08-19",
-          "title": "TerraPower продвигает атомный реактор для AI-дата-центров",
-          "srtLevel": 1,
-          "urls": [
-            "https://techcrunch.com/2026/08/19/terrapowers-nuclear-reactor-has-a-secret-weapon-for-powering-ai-data-centers/"
-          ]
-        },
-        {
-          "eventId": "2026-08-21-l2-e37",
-          "date": "2026-08-21",
-          "title": "ERCOT завершит аудит дата-центров Texas к декабрю",
-          "srtLevel": 2,
-          "urls": [
-            "https://www.utilitydive.com/news/ercot-texas-puc-data-center-audit/828472/"
-          ]
-        },
-        {
-          "eventId": "2026-08-26-l1-e36",
-          "date": "2026-08-26",
-          "title": "Nevada обновила рамки спросового отклика и DER-тарифов",
-          "srtLevel": 1,
-          "urls": [
-            "https://www.utilitydive.com/news/nevada-misses-an-opportunity-in-performance-based-der-tariffs-advocate/828836/"
-          ]
-        },
-        {
-          "eventId": "2026-09-01-l1-e38",
-          "date": "2026-09-01",
-          "title": "Google покупает почти 400 МВт геотермальной энергии у Fervo",
-          "srtLevel": 1,
-          "urls": [
-            "https://www.bloomberg.com/news/articles/2026-09-01/fervo-signs-geothermal-power-deal-with-google-for-2028-launch"
-          ]
-        },
-        {
-          "eventId": "2026-08-28-l2-e39",
-          "date": "2026-08-28",
-          "title": "Cary ввел самую долгую паузу дата-центров в регионе",
-          "srtLevel": 2,
-          "urls": [
-            "https://news.google.com/rss/articles/CBMingFBVV95cUxQbDRnWVhVaXRMd1VBNDVFVGhDeWxZTndPNzJJVnlWajhNQXpkeHFjWXd0SVZmUWNpeFFFTVNKOGFNYkRFWF9lUjdOWEZ0M1F2VlQ2bWEwZHlNY3VZY0U1UUp3SC1NSGo1OHg5QnBiM0I2MmhxNjBXTlBpWkUyRkg2bmFyOTNFeV9Wc0hYOVQ4eGc2ejdVREFLdFNwUmdIUQ?oc=5"
-          ]
-        }
-      ],
-      "confidence": "low",
-      "nonObviousConclusion": "Устойчивое развитие AI-инфраструктуры зависит от интеграции энергетической политики, сетевого регулирования и общественного согласия, а не только от технологических инноваций.",
-      "educationImplication": "Развивать междисциплинарные компетенции в энергетике, инфраструктуре и управлении проектами AI.",
-      "relevantPrograms": [
-        "dataDriven",
-        "ubnd",
-        "aiShift"
-      ],
-      "srtLevels": [
-        1,
-        2,
-        9
+        5
       ],
       "trendDirection": "strengthening",
       "roleRecommendations": {
         "entrepreneur": {
           "relevance": 70,
-          "action": "Оценить энергетические и сетевые риски при планировании дата-центров",
-          "expectedArtifact": "Анализ рисков и план устойчивости",
-          "estimatedMinutes": 90
-        },
-        "ceo": {
-          "relevance": 80,
-          "action": "Включить энергетическую стратегию в бизнес-план AI-инфраструктуры",
-          "expectedArtifact": "Стратегия устойчивого развития",
+          "action": "Внедрять механизмы контроля и аудита AI-агентов",
+          "expectedArtifact": "Политика безопасности агентов",
           "estimatedMinutes": 120
         },
-        "manager": {
-          "relevance": 60,
-          "action": "Контролировать соответствие проектов требованиям сетевой надежности",
-          "expectedArtifact": "Отчет по соответствию и рискам",
-          "estimatedMinutes": 60
-        },
-        "cto": {
-          "relevance": 70,
-          "action": "Интегрировать энергоэффективные технологии и мониторинг в инфраструктуру",
-          "expectedArtifact": "Технический план энергосбережения",
-          "estimatedMinutes": 90
-        },
-        "product": {
-          "relevance": 40,
-          "action": "Учитывать энергопотребление в продуктовых решениях",
-          "expectedArtifact": "Отчет по энергоэффективности",
-          "estimatedMinutes": 60
-        },
-        "hr": {
-          "relevance": 30,
-          "action": "Обучать сотрудников вопросам устойчивого развития AI-инфраструктуры",
-          "expectedArtifact": "Обучающая программа",
-          "estimatedMinutes": 60
-        },
-        "cdo": {
-          "relevance": 50,
-          "action": "Анализировать данные по энергопотреблению и нагрузкам",
-          "expectedArtifact": "Дашборд мониторинга энергопотребления",
-          "estimatedMinutes": 90
-        }
-      },
-      "ekenBrief": {
-        "objective": "Обеспечить устойчивое энергетическое и сетевое сопровождение AI-проектов",
-        "firstAction": "Провести аудит энергопотребления и сетевых ограничений текущих проектов",
-        "expectedArtifact": "Отчет с рекомендациями по оптимизации и рискам",
-        "acceptanceCriterion": "Утверждение плана устойчивого развития и его интеграция в проекты",
-        "estimatedMinutes": 120
-      }
-    },
-    {
-      "id": 5,
-      "insightKey": "agent-orchestration-becomes-cx-challenge",
-      "title": "Оркестрация AI-агентов — новая задача клиентского опыта",
-      "subtitle": "Рост сложности интеграции множества агентов и систем",
-      "icon": "Layers",
-      "accentColor": "#8b5cf6",
-      "summary": "Компании быстро внедряют множество AI-агентов и голосовых интерфейсов, но архитектура поддержки и интеграции отстает. Управление связями между агентами, API и устаревшими системами становится ключевой проблемой, формируя спрос на новые интеграционные роли и платформы.",
-      "evidence": [
-        "Ramp запустила Router для переключения между моделями (2026-08-20-l5-e24)",
-        "Slack запускает каналы совместного кодирования с AI-агентами (2026-08-20-l5-e25)",
-        "VentureBeat: оркестрация — новая задача клиентского опыта (2026-08-28-l5-e26)",
-        "VentureBeat: риск корпоративного AI — сложность между агентами (2026-08-31-l6-e10)",
-        "VentureBeat: управление агентами должно жить в слое данных (2026-08-31-l6-e11)"
-      ],
-      "evidenceSourceIds": [
-        "2026-08-20-l5-e24",
-        "2026-08-20-l5-e25",
-        "2026-08-28-l5-e26",
-        "2026-08-31-l6-e10",
-        "2026-08-31-l6-e11"
-      ],
-      "sourceEvents": [
-        {
-          "eventId": "2026-08-20-l5-e24",
-          "date": "2026-08-20",
-          "title": "Ramp запустила Router для переключения между моделями",
-          "srtLevel": 5,
-          "urls": [
-            "https://techcrunch.com/2026/08/20/ramp-launches-its-own-ai-model-router-called-router/"
-          ]
-        },
-        {
-          "eventId": "2026-08-20-l5-e25",
-          "date": "2026-08-20",
-          "title": "Slack запускает каналы совместного кодирования с AI-агентами",
-          "srtLevel": 5,
-          "urls": [
-            "https://www.theverge.com/tech/982628/slack-code-vibe-coding-channels-launch"
-          ]
-        },
-        {
-          "eventId": "2026-08-28-l5-e26",
-          "date": "2026-08-28",
-          "title": "Оркестрация названа новым вызовом для клиентского опыта",
-          "srtLevel": 5,
-          "urls": [
-            "https://venturebeat.com/orchestration/orchestration-is-the-new-challenge-for-cx-in-the-age-of-ai-agents"
-          ]
-        },
-        {
-          "eventId": "2026-08-31-l6-e10",
-          "date": "2026-08-31",
-          "title": "Риск корпоративного AI сместился к сложности между агентами",
-          "srtLevel": 6,
-          "urls": [
-            "https://venturebeat.com/ai/enterprise-ais-real-risk-isnt-autonomous-agents-its-the-complexity-between-them"
-          ]
-        },
-        {
-          "eventId": "2026-08-31-l6-e11",
-          "date": "2026-08-31",
-          "title": "Управление агентами предложено переносить в слой данных",
-          "srtLevel": 6,
-          "urls": [
-            "https://venturebeat.com/security/when-agents-act-on-their-own-governance-has-to-live-in-the-data-layer"
-          ]
-        }
-      ],
-      "confidence": "low",
-      "nonObviousConclusion": "Экономическая ценность AI-агентов зависит не только от качества отдельных моделей, но и от способности управлять их взаимодействием и интеграцией в бизнес-процессы.",
-      "educationImplication": "Развивать навыки системной интеграции, управления API и оркестрации AI-сервисов.",
-      "relevantPrograms": [
-        "intensiveAgents",
-        "aiShift",
-        "dataDriven"
-      ],
-      "srtLevels": [
-        5,
-        6
-      ],
-      "trendDirection": "emerging",
-      "roleRecommendations": {
-        "entrepreneur": {
-          "relevance": 70,
-          "action": "Разработать архитектуру оркестрации AI-агентов для клиентов",
-          "expectedArtifact": "Технический план интеграции агентов",
-          "estimatedMinutes": 90
-        },
         "ceo": {
-          "relevance": 80,
-          "action": "Инвестировать в платформы управления агентами",
-          "expectedArtifact": "Стратегия развития AI-инфраструктуры",
-          "estimatedMinutes": 120
+          "relevance": 85,
+          "action": "Обеспечить соответствие агентных систем нормативам и стандартам",
+          "expectedArtifact": "Отчёт по комплаенсу",
+          "estimatedMinutes": 180
         },
         "manager": {
-          "relevance": 60,
-          "action": "Обеспечить координацию между командами разработки агентов",
-          "expectedArtifact": "План коммуникаций и интеграции",
-          "estimatedMinutes": 60
+          "relevance": 75,
+          "action": "Обучать сотрудников работе с агентами и контролю рисков",
+          "expectedArtifact": "Программа обучения",
+          "estimatedMinutes": 90
         },
         "cto": {
           "relevance": 90,
-          "action": "Внедрить системы маршрутизации и мониторинга агентов",
-          "expectedArtifact": "Рабочая система управления агентами",
+          "action": "Разрабатывать и внедрять технические меры контроля агентов",
+          "expectedArtifact": "Техническая документация и мониторинг",
           "estimatedMinutes": 120
         },
         "product": {
-          "relevance": 70,
-          "action": "Проектировать продукты с учетом мультиагентной архитектуры",
-          "expectedArtifact": "Дорожная карта продукта с агентной интеграцией",
+          "relevance": 80,
+          "action": "Проектировать агенты с учётом ограничений и безопасности",
+          "expectedArtifact": "Безопасный продукт",
           "estimatedMinutes": 90
         },
         "hr": {
           "relevance": 40,
-          "action": "Обучать сотрудников работе с мультиагентными системами",
+          "action": "Поддерживать обучение этике и безопасности AI",
           "expectedArtifact": "Обучающие материалы",
           "estimatedMinutes": 60
         },
         "cdo": {
           "relevance": 60,
-          "action": "Анализировать эффективность взаимодействия агентов",
-          "expectedArtifact": "Отчет по производительности агентных систем",
+          "action": "Анализировать данные о поведении агентов для выявления рисков",
+          "expectedArtifact": "Аналитический отчёт",
           "estimatedMinutes": 90
         }
       },
       "ekenBrief": {
-        "objective": "Создать инфраструктуру для эффективной оркестрации AI-агентов",
-        "firstAction": "Определить ключевые точки интеграции и взаимодействия агентов",
-        "expectedArtifact": "Прототип системы маршрутизации и мониторинга",
-        "acceptanceCriterion": "Система успешно управляет взаимодействием агентов без сбоев",
-        "estimatedMinutes": 120
+        "objective": "Обеспечить безопасное и регулируемое использование AI-агентов",
+        "firstAction": "Внедрить систему мониторинга и аудита действий агентов",
+        "expectedArtifact": "Отчёты о действиях и инцидентах агентов",
+        "acceptanceCriterion": "Отчёты показывают снижение инцидентов и соответствие нормативам",
+        "estimatedMinutes": 180
       }
     },
     {
-      "id": 6,
-      "insightKey": "education-and-professionalization-of-ai",
-      "title": "AI становится частью профессионального образования",
-      "subtitle": "Рост программ, курсов и норм использования AI в образовании и работе",
-      "icon": "GraduationCap",
-      "accentColor": "#8b5cf6",
-      "summary": "Университеты и колледжи вводят комбинированные специальности и отдельные степени по AI, школы и школьные округа интегрируют AI-инструменты в учебный процесс и административную работу. Профессиональные сообщества и HR-лидеры формируют нормы использования AI, сохраняя роль человека в принятии решений.",
+      "id": 3,
+      "insightKey": "ai-infrastructure-energy-and-territory",
+      "title": "AI-инфраструктура упирается в энергию и локальное согласие",
+      "subtitle": "Дата-центры требуют новых энергетических решений и социальной лицензии",
+      "icon": "Building",
+      "accentColor": "#f97316",
+      "summary": "Рост AI-нагрузок на дата-центры усиливает давление на энергетические сети и вызывает локальное сопротивление. Крупные проекты включают газовую генерацию, ветровую энергию и ядерные контракты. Одновременно сообщается о выплатах соседям и судебных спорах, что показывает необходимость комплексного подхода к размещению и устойчивости.",
       "evidence": [
-        "VCU запускает курс AI-грамотности (2026-08-21-l7-e16)",
-        "Northeastern ввел комбинированные специальности по AI (2026-08-29-l7-e09)",
-        "NTC объявил программу с дипломом AI-разработчика (2026-08-29-l7-e10)",
-        "Школьный округ St. Cloud добавил ChatGPT для сотрудников (2026-08-27-l7-e09)",
-        "HR-лидеры школьных округов требуют сохранять человека в AI-решениях (2026-08-29-l3-e30)"
+        "Проект SoftBank в Огайо с 10 ГВт нагрузки и газовой генерацией (2026-10-14-l2-e34)",
+        "EverWind строит AI-дата-центр с ветровой генерацией в Новой Шотландии (2026-10-16-l2-e34)",
+        "AEP заключила контракт на линейные генераторы и топливные элементы (2026-10-15-l1-e37)",
+        "Жители De Soto получают выплаты за соседство с дата-центром (2026-10-14-l2-e33)",
+        "Судебные споры и локальное сопротивление в Калифорнии и Техасе (2026-10-17-l2-e36, 2026-10-28-l2-e51)"
       ],
       "evidenceSourceIds": [
-        "2026-08-21-l7-e16",
-        "2026-08-29-l7-e09",
-        "2026-08-29-l7-e10",
-        "2026-08-27-l7-e09",
-        "2026-08-29-l3-e30"
+        "2026-10-14-l2-e34",
+        "2026-10-16-l2-e34",
+        "2026-10-15-l1-e37",
+        "2026-10-14-l2-e33",
+        "2026-10-17-l2-e36"
       ],
       "sourceEvents": [
         {
-          "eventId": "2026-08-21-l7-e16",
-          "date": "2026-08-21",
-          "title": "VCU запускает курс AI-грамотности",
-          "srtLevel": 7,
+          "eventId": "2026-10-14-l2-e34",
+          "date": "2026-10-14",
+          "title": "PJM изучит проект SoftBank в Огайо с нагрузкой около 10 ГВт",
+          "srtLevel": 2,
           "urls": [
-            "https://news.google.com/rss/articles/CBMikgFBVV95cUxPMHNzQXhiQnBtcHZ3bjlfVVYtenRLUk1BZ25qVjF4cHlEam5WZDdrdlMxR2ZDWEg5V25zbVpTaVN1a2MzZjlRaTVRZ2VfTEtidndGb01FWktmRVRFS1NEZGh5R3NjVjFQWlQzZ19neTNwUV81X2R5a1lmZldzM09pZGZ2Z3I2dnVaUDhQMmxzS3Bzdw?oc=5"
+            "https://www.utilitydive.com/news/pjm-softbank-ohio-ai-flagship-state-agreement-approach/832962/"
           ]
         },
         {
-          "eventId": "2026-08-29-l7-e09",
-          "date": "2026-08-29",
-          "title": "Northeastern ввел комбинированные специальности по AI",
-          "srtLevel": 7,
+          "eventId": "2026-10-16-l2-e34",
+          "date": "2026-10-16",
+          "title": "EverWind построит AI-дата-центр и ветровую генерацию в Новой Шотландии",
+          "srtLevel": 2,
           "urls": [
-            "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQelZTbng3bEIybUFWbFBPS085a19RTzJwaFJnOXNQQkFzQmZ4YUVtV2QtWWFTeDhOSXhDTVBheXNCSHBXRVVQVVhwRzZWek5rdGJFemxfS1BSNVM2Q2EwaEtpaHU1aURVRnVHaUhrcUNvYXBpUUhjYzQyaEhwa1E1NWxVUmI4blVjdFBTdWwyWnZzc1RmQmdkMndaelF2QkZTNWNuaVdSXzRkWGgwa3U5UUJvbXo2OXZNVlBnaFFJVkp4MGpBdDhqRXotbUhtNmJRVWluNzhKZm9qNVlP?oc=5"
+            "https://www.bloomberg.com/news/articles/2026-10-16/everwind-to-build-nova-scotia-data-center-lease-to-ai-developer"
           ]
         },
         {
-          "eventId": "2026-08-29-l7-e10",
-          "date": "2026-08-29",
-          "title": "NTC объявил программу с дипломом AI-разработчика",
-          "srtLevel": 7,
+          "eventId": "2026-10-15-l1-e37",
+          "date": "2026-10-15",
+          "title": "AEP закупит до 1,6 ГВт линейных генераторов Mainspring",
+          "srtLevel": 1,
           "urls": [
-            "https://news.google.com/rss/articles/CBMijgFBVV95cUxOZkxoc3BUTnFRaVpBcTJWNjl1S1Y5UDhXQktncC16MjA4VjhITHlTaV83ZDdWUk1PYW1lU3FCeTNqcUxhcGFfby1NUGM0WFN1c1lhZEtZQkttM3RTVE0yQVpqNndva1FqeElnZXNDdVlWeDA5MUo3V3Zyelk2Rm44X1NENW94WWI5TWF6QkpR?oc=5"
+            "https://www.utilitydive.com/news/aep-mainspring-linear-generators-bloom-fuel-cell-google-wyoming/833104/"
           ]
         },
         {
-          "eventId": "2026-08-27-l7-e09",
-          "date": "2026-08-27",
-          "title": "Школьный округ St. Cloud добавил ChatGPT для сотрудников",
-          "srtLevel": 7,
+          "eventId": "2026-10-14-l2-e33",
+          "date": "2026-10-14",
+          "title": "Проект дата-центра в Канзасе предлагает выплаты соседям",
+          "srtLevel": 2,
           "urls": [
-            "https://news.google.com/rss/articles/CBMinwFBVV95cUxObHdmY0ppXy11bjhZLUF5REJrdjBJQjFjZFVSTzBnUnRPemRadklLWkRWUEpZT0I4ZHZ5T0V2TFQ5bjRuQzdhRzZzZjBCbW9nbE13cHFzV25hQWZjX19FNjVTc21CTDdkU1NkTE9qYjQtX0FJMVdrZ0hnNVpHZEEyVzFCSVB3aTR6YzNaUnluV0V0ZmM2UDlCbkQxcEhTd2M?oc=5"
+            "https://www.bloomberg.com/news/articles/2026-10-14/data-center-offers-1-000-a-year-to-kansas-neighbors-for-decade"
           ]
         },
         {
-          "eventId": "2026-08-29-l3-e30",
-          "date": "2026-08-29",
-          "title": "Школьные HR-лидеры требуют сохранять человека в AI-решениях",
-          "srtLevel": 3,
+          "eventId": "2026-10-17-l2-e36",
+          "date": "2026-10-17",
+          "title": "Крупнейший AI-дата-центр Калифорнии стал предметом спора",
+          "srtLevel": 2,
           "urls": [
-            "https://www.hrdive.com/news/district-hr-leaders-keep-humans-in-decision-making-as-ais-presence-grows/828894/"
+            "https://news.google.com/rss/articles/CBMimAFBVV95cUxNOXpKSGU0ckJ0aURhNTRzTUhyMUI2QWI0SWp4M19HUnI1elJDNDRaUF9TVDJ1V1dWM3Y3VzlMTWxXX25DRXRMUldUTVpUcF9lcVR0X3hGZG5tS21ZaUxmNFVHTkRaV0RQT3ZWWkZpdHpaYU9Xbk1jMG5tS1UtWFdIVXFad01sdDJDa3BSdm1aUnQ4dkhDdXZZcQ?oc=5"
           ]
         }
       ],
       "confidence": "low",
-      "nonObviousConclusion": "Образование и профессионализация AI становятся системными, охватывая не только технические навыки, но и этические, управленческие и организационные аспекты.",
-      "educationImplication": "Развивать междисциплинарные программы и навыки, включая этику, управление и коммуникацию AI.",
+      "nonObviousConclusion": "Успешное масштабирование AI-инфраструктуры требует интеграции энергетических решений с социальным и юридическим согласием на местах, что становится новым фактором конкурентоспособности.",
+      "educationImplication": "Развивать навыки междисциплинарного управления инфраструктурными проектами и взаимодействия с сообществами.",
       "relevantPrograms": [
-        "intensiveAI",
-        "aiShift",
-        "ubnd"
+        "ubnd",
+        "dataDriven"
       ],
       "srtLevels": [
+        2,
         3,
-        7
+        4
       ],
       "trendDirection": "strengthening",
       "roleRecommendations": {
         "entrepreneur": {
-          "relevance": 50,
-          "action": "Внедрять программы обучения AI для сотрудников",
-          "expectedArtifact": "Обучающая программа",
-          "estimatedMinutes": 60
+          "relevance": 75,
+          "action": "Включать энергетические и социальные аспекты в планирование площадок",
+          "expectedArtifact": "Комплексный план размещения",
+          "estimatedMinutes": 120
         },
         "ceo": {
-          "relevance": 70,
-          "action": "Поддерживать развитие AI-компетенций в организации",
-          "expectedArtifact": "Стратегия обучения и развития",
-          "estimatedMinutes": 90
+          "relevance": 80,
+          "action": "Обеспечить взаимодействие с местными сообществами и регуляторами",
+          "expectedArtifact": "Отчёт о взаимодействии и согласованиях",
+          "estimatedMinutes": 180
         },
         "manager": {
-          "relevance": 60,
-          "action": "Организовать обучение и адаптацию сотрудников к AI-инструментам",
-          "expectedArtifact": "План обучения и адаптации",
-          "estimatedMinutes": 60
+          "relevance": 70,
+          "action": "Координировать работу с энергетиками и юристами",
+          "expectedArtifact": "Координационный протокол",
+          "estimatedMinutes": 90
         },
         "cto": {
-          "relevance": 50,
-          "action": "Содействовать внедрению AI в учебные процессы и инструменты",
-          "expectedArtifact": "Техническая поддержка обучения",
-          "estimatedMinutes": 60
+          "relevance": 60,
+          "action": "Оптимизировать энергопотребление и интеграцию генерации",
+          "expectedArtifact": "Технический план энергоснабжения",
+          "estimatedMinutes": 90
         },
         "product": {
-          "relevance": 40,
-          "action": "Разрабатывать продукты с учетом образовательных потребностей",
-          "expectedArtifact": "Образовательные функции в продукте",
+          "relevance": 50,
+          "action": "Учитывать инфраструктурные ограничения в разработке продуктов",
+          "expectedArtifact": "Технические требования",
           "estimatedMinutes": 60
         },
         "hr": {
-          "relevance": 80,
-          "action": "Формировать культуру AI-компетентности и ответственности",
-          "expectedArtifact": "HR-политики и программы",
-          "estimatedMinutes": 90
+          "relevance": 30,
+          "action": "Обучать сотрудников особенностям инфраструктурных проектов",
+          "expectedArtifact": "Обучающие материалы",
+          "estimatedMinutes": 60
         },
         "cdo": {
-          "relevance": 60,
-          "action": "Анализировать эффективность образовательных инициатив по AI",
-          "expectedArtifact": "Отчет по результатам обучения",
-          "estimatedMinutes": 60
+          "relevance": 40,
+          "action": "Анализировать данные об энергопотреблении и социальных рисках",
+          "expectedArtifact": "Аналитический отчёт",
+          "estimatedMinutes": 90
         }
       },
       "ekenBrief": {
-        "objective": "Интегрировать AI-компетенции в образовательные и корпоративные программы",
-        "firstAction": "Разработать учебный план с междисциплинарным подходом",
-        "expectedArtifact": "Учебный план и материалы",
-        "acceptanceCriterion": "Программа утверждена и запущена с положительной обратной связью",
-        "estimatedMinutes": 90
+        "objective": "Обеспечить устойчивое размещение AI-инфраструктуры с учётом энергии и сообщества",
+        "firstAction": "Провести аудит энергетических ресурсов и общественного мнения",
+        "expectedArtifact": "Отчёт с рекомендациями по размещению",
+        "acceptanceCriterion": "Отчёт подтверждает баланс между энергетикой и социальной поддержкой",
+        "estimatedMinutes": 180
+      }
+    },
+    {
+      "id": 4,
+      "insightKey": "ai-agent-evaluation-and-benchmarks",
+      "title": "Методология оценки AI-агентов усложняется",
+      "subtitle": "Бенчмарки приближаются к реальным задачам и проверке траекторий",
+      "icon": "Brain",
+      "accentColor": "#8b5cf6",
+      "summary": "Оценка AI-агентов развивается от простых тестов к комплексным бенчмаркам, моделирующим неполные запросы, длительные действия и взаимодействие с инструментами. Это отражает потребность в проверке не только результата, но и процесса, включая уточнение требований и управление памятью.",
+      "evidence": [
+        "CLEAT учит агентов задавать уточняющие вопросы (2026-10-13-l6-e11)",
+        "FDE-Bench проверяет работу с неполными деловыми запросами (2026-10-15-l6-e13)",
+        "EGI-BENCH оценивает корпоративные операции агентов (2026-10-21-l6-e18)",
+        "Работа о самонастраиваемых бенчмарках для долгих действий (2026-10-22-l6-e16)",
+        "NoveltyBench проверяет оценку новизны идей LLM (2026-10-28-l7-e19)"
+      ],
+      "evidenceSourceIds": [
+        "2026-10-13-l6-e11",
+        "2026-10-15-l6-e13",
+        "2026-10-21-l6-e18",
+        "2026-10-22-l6-e16",
+        "2026-10-28-l7-e19"
+      ],
+      "sourceEvents": [
+        {
+          "eventId": "2026-10-13-l6-e11",
+          "date": "2026-10-13",
+          "title": "CLEAT учит агентов задавать уточняющие вопросы",
+          "srtLevel": 6,
+          "urls": [
+            "https://arxiv.org/abs/2610.12655"
+          ]
+        },
+        {
+          "eventId": "2026-10-15-l6-e13",
+          "date": "2026-10-15",
+          "title": "FDE-Bench проверяет работу с неполными деловыми запросами",
+          "srtLevel": 6,
+          "urls": [
+            "https://arxiv.org/abs/2610.14539"
+          ]
+        },
+        {
+          "eventId": "2026-10-21-l6-e18",
+          "date": "2026-10-21",
+          "title": "EGI-BENCH собрал набор оценок для корпоративных агентов",
+          "srtLevel": 6,
+          "urls": [
+            "https://arxiv.org/abs/2610.27234"
+          ]
+        },
+        {
+          "eventId": "2026-10-22-l6-e16",
+          "date": "2026-10-22",
+          "title": "Самонастраиваемые бенчмарки нацелены на долгие действия",
+          "srtLevel": 6,
+          "urls": [
+            "https://arxiv.org/abs/2610.27307"
+          ]
+        },
+        {
+          "eventId": "2026-10-28-l7-e19",
+          "date": "2026-10-28",
+          "title": "AllenAI проверяет, могут ли LLM оценивать новизну идей",
+          "srtLevel": 7,
+          "urls": [
+            "https://huggingface.co/blog/allenai/novelty-bench"
+          ]
+        }
+      ],
+      "confidence": "low",
+      "nonObviousConclusion": "Комплексные бенчмарки и методики аудита становятся ключевыми для внедрения AI-агентов в бизнес-процессы, снижая риски и повышая доверие к автоматизации.",
+      "educationImplication": "Развивать навыки создания и использования сложных тестовых сред и аудита AI-систем.",
+      "relevantPrograms": [
+        "intensiveAgents",
+        "dataDriven"
+      ],
+      "srtLevels": [
+        4,
+        5
+      ],
+      "trendDirection": "emerging",
+      "roleRecommendations": {
+        "entrepreneur": {
+          "relevance": 65,
+          "action": "Интегрировать современные бенчмарки в процесс разработки агентов",
+          "expectedArtifact": "Отчёты по тестированию",
+          "estimatedMinutes": 120
+        },
+        "ceo": {
+          "relevance": 70,
+          "action": "Поддерживать инвестиции в методологию оценки AI",
+          "expectedArtifact": "Стратегия оценки качества",
+          "estimatedMinutes": 90
+        },
+        "manager": {
+          "relevance": 75,
+          "action": "Обучать команды работе с новыми бенчмарками",
+          "expectedArtifact": "Обучающие программы",
+          "estimatedMinutes": 90
+        },
+        "cto": {
+          "relevance": 90,
+          "action": "Внедрять комплексные тесты и мониторинг агентов",
+          "expectedArtifact": "Технические отчёты",
+          "estimatedMinutes": 120
+        },
+        "product": {
+          "relevance": 80,
+          "action": "Проектировать продукты с учётом требований к проверке агентов",
+          "expectedArtifact": "Документация по безопасности",
+          "estimatedMinutes": 90
+        },
+        "hr": {
+          "relevance": 40,
+          "action": "Обучать сотрудников методам оценки AI",
+          "expectedArtifact": "Обучающие материалы",
+          "estimatedMinutes": 60
+        },
+        "cdo": {
+          "relevance": 60,
+          "action": "Анализировать данные тестирования для улучшения моделей",
+          "expectedArtifact": "Аналитический отчёт",
+          "estimatedMinutes": 90
+        }
+      },
+      "ekenBrief": {
+        "objective": "Повысить качество и безопасность AI-агентов через продвинутую оценку",
+        "firstAction": "Внедрить комплексные бенчмарки и процедуры аудита",
+        "expectedArtifact": "Результаты тестирования и отчёты",
+        "acceptanceCriterion": "Снижение ошибок и повышение доверия к агентам",
+        "estimatedMinutes": 180
+      }
+    },
+    {
+      "id": 5,
+      "insightKey": "ai-infrastructure-energy-management",
+      "title": "AI-энергетика переходит к управлению спросом",
+      "subtitle": "Гибкость и виртуальные электростанции становятся ресурсом",
+      "icon": "Zap",
+      "accentColor": "#f59e0b",
+      "summary": "AI-нагрузки на энергосистемы стимулируют развитие инструментов управления спросом и гибкости. Крупные игроки, такие как Google и коммунальные компании, используют AI для прогнозирования и оптимизации энергопотребления, а виртуальные электростанции расширяются до гигаваттных масштабов, снижая риски и затраты.",
+      "evidence": [
+        "Google расширил виртуальную электростанцию в PJM до более 1 ГВт (2026-10-22-l1-e38)",
+        "Коммунальные компании применяют AI для управления растущим спросом (2026-10-22-l1-e37)",
+        "AWS предлагает AI для планирования сетевых очередей (2026-10-15-l1-e38)",
+        "Brattle Group оценила потенциал виртуальных электростанций для снижения счетов (2026-10-14-l1-e37)",
+        "Google виртуальная электростанция стала примером гонки за мощностью (2026-10-19-l1-e35)"
+      ],
+      "evidenceSourceIds": [
+        "2026-10-22-l1-e38",
+        "2026-10-22-l1-e37",
+        "2026-10-15-l1-e38",
+        "2026-10-14-l1-e37",
+        "2026-10-19-l1-e35"
+      ],
+      "sourceEvents": [
+        {
+          "eventId": "2026-10-22-l1-e38",
+          "date": "2026-10-22",
+          "title": "Google увеличил виртуальную электростанцию PJM до 1 ГВт",
+          "srtLevel": 1,
+          "urls": [
+            "https://www.utilitydive.com/news/google-voltus-vpp-virtual-power-pjm/833717/"
+          ]
+        },
+        {
+          "eventId": "2026-10-22-l1-e37",
+          "date": "2026-10-22",
+          "title": "Энергокомпании применяют AI против спроса от AI",
+          "srtLevel": 1,
+          "urls": [
+            "https://www.utilitydive.com/news/utilities-turn-to-ai-to-manage-rising-power-demand-from-ai/833627/"
+          ]
+        },
+        {
+          "eventId": "2026-10-15-l1-e38",
+          "date": "2026-10-15",
+          "title": "AWS предлагает коммунальным компаниям AI для сетевых очередей",
+          "srtLevel": 1,
+          "urls": [
+            "https://www.utilitydive.com/news/utilities-need-ai-solve-grid-backlogs-aws-energy-lead-head/832816/"
+          ]
+        },
+        {
+          "eventId": "2026-10-14-l1-e37",
+          "date": "2026-10-14",
+          "title": "Brattle: виртуальные электростанции могут сдержать рост счетов",
+          "srtLevel": 1,
+          "urls": [
+            "https://www.utilitydive.com/news/scaling-vpps-could-cut-electric-bill-increases-by-half-brattle/832956/"
+          ]
+        },
+        {
+          "eventId": "2026-10-19-l1-e35",
+          "date": "2026-10-19",
+          "title": "Виртуальная электростанция Google показала гонку за мощностью",
+          "srtLevel": 1,
+          "urls": [
+            "https://www.utilitydive.com/news/what-googles-virtual-power-plant-in-pjm-says-about-the-race-for-electricit/833290/"
+          ]
+        }
+      ],
+      "confidence": "low",
+      "nonObviousConclusion": "Управление спросом и гибкость энергосистем становятся ключевыми факторами устойчивого роста AI-инфраструктуры, снижая зависимость от быстрой генерации и расширяя возможности интеграции возобновляемых источников.",
+      "educationImplication": "Развивать компетенции в области AI для энергетики и управления распределёнными ресурсами.",
+      "relevantPrograms": [
+        "dataDriven",
+        "ubnd"
+      ],
+      "srtLevels": [
+        2,
+        3,
+        4
+      ],
+      "trendDirection": "strengthening",
+      "roleRecommendations": {
+        "entrepreneur": {
+          "relevance": 60,
+          "action": "Интегрировать AI-инструменты управления энергией в проекты",
+          "expectedArtifact": "План энергоменеджмента",
+          "estimatedMinutes": 90
+        },
+        "ceo": {
+          "relevance": 75,
+          "action": "Поддерживать инвестиции в AI для управления энергосистемой",
+          "expectedArtifact": "Стратегия устойчивого энергопотребления",
+          "estimatedMinutes": 120
+        },
+        "manager": {
+          "relevance": 70,
+          "action": "Координировать внедрение AI-решений в энергетику",
+          "expectedArtifact": "Отчёты по внедрению",
+          "estimatedMinutes": 90
+        },
+        "cto": {
+          "relevance": 80,
+          "action": "Разрабатывать и внедрять AI-модели для прогноза и оптимизации",
+          "expectedArtifact": "Технические решения",
+          "estimatedMinutes": 120
+        },
+        "product": {
+          "relevance": 65,
+          "action": "Учитывать энергопотребление в дизайне продуктов",
+          "expectedArtifact": "Технические требования",
+          "estimatedMinutes": 60
+        },
+        "hr": {
+          "relevance": 30,
+          "action": "Обучать сотрудников особенностям AI в энергетике",
+          "expectedArtifact": "Обучающие материалы",
+          "estimatedMinutes": 60
+        },
+        "cdo": {
+          "relevance": 50,
+          "action": "Анализировать данные энергопотребления и эффективности",
+          "expectedArtifact": "Аналитический отчёт",
+          "estimatedMinutes": 90
+        }
+      },
+      "ekenBrief": {
+        "objective": "Оптимизировать энергопотребление AI-инфраструктуры через AI-управление",
+        "firstAction": "Внедрить AI-системы прогнозирования и управления спросом",
+        "expectedArtifact": "Отчёты об эффективности и снижении затрат",
+        "acceptanceCriterion": "Снижение пиковых нагрузок и затрат на энергию",
+        "estimatedMinutes": 180
       }
     }
   ]
