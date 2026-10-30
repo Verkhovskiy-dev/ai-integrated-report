@@ -5,6 +5,7 @@
  */
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { useTranslation } from "./I18nContext";
+import { acceptLiveReport, startLiveRefresh } from "@/lib/liveRefresh";
 import {
   HEATMAP_DATA as STATIC_HEATMAP,
   KEY_METRICS as STATIC_METRICS_RU,
@@ -468,9 +469,12 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     let cancelled = false;
+    let acceptedReport: LiveReport | null = null;
 
-    async function fetchData() {
+    async function fetchData(signal: AbortSignal) {
       const base = getBasePath();
+      // Revalidate mutable JSON, including CDN/browser caches, on every check.
+      const fetch = (url: string) => window.fetch(url, { cache: "no-cache", signal });
 
       // Build trendDynamics (+ raw shifts) from latest report and available archives
       const buildDynamics = (latest: LiveReport, archiveReports: LiveReport[]) => {
@@ -602,7 +606,14 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           return { momentumData, momentumLive };
         };
 
-        const [latest, ins, mom] = await Promise.all([fetchLatest(), fetchInsights(), fetchMomentum()]);
+        const latest = await fetchLatest();
+        if (!acceptLiveReport(latest, acceptedReport)) {
+          if (!cancelled && !signal.aborted && JSON.stringify(latest) === JSON.stringify(acceptedReport)) {
+            setState(prev => prev.error ? { ...prev, error: null, loading: false } : prev);
+          }
+          return;
+        }
+        const [ins, mom] = await Promise.all([fetchInsights(), fetchMomentum()]);
 
         let { momentumData, momentumLive } = mom;
         // Fallback: if momentum.json is empty but report has momentum_trends, use those
@@ -617,6 +628,8 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
         const { trendDynamics, rawShifts } = buildDynamics(latest, []);
 
         if (cancelled) return;
+        if (signal.aborted) throw new Error("Live data request timed out");
+        acceptedReport = latest;
         setState({
           isLive: true,
           loading: false,
@@ -678,7 +691,7 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           // Archive not available, that's ok
         }
 
-        if (cancelled || archiveReports.length === 0) return;
+        if (cancelled || signal.aborted || archiveReports.length === 0) return;
         const enriched = buildDynamics(latest, archiveReports);
         setState((prev) => ({
           ...prev,
@@ -689,19 +702,18 @@ export function LiveDataProvider({ children }: { children: ReactNode }) {
           rawStructuralShifts: enriched.rawShifts,
         }));
       } catch (err) {
-        console.warn("Live data unavailable, using static fallback:", err);
         if (cancelled) return;
+        console.warn("Live data refresh unavailable; retaining last release:", err);
         setState((prev) => ({
           ...prev,
-          isLive: false,
           loading: false,
           error: String(err),
         }));
       }
     }
 
-    fetchData();
-    return () => { cancelled = true; };
+    const stopRefresh = startLiveRefresh(fetchData);
+    return () => { cancelled = true; stopRefresh(); };
   }, [locale]);
 
   return <LiveDataContext.Provider value={state}>{children}</LiveDataContext.Provider>;

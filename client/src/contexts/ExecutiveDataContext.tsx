@@ -9,6 +9,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 import { useViewMode } from "./ViewModeContext";
 import { useTranslation } from "./I18nContext";
 import { useLiveData } from "./LiveDataContext";
+import { startLiveRefresh } from "@/lib/liveRefresh";
 import {
   findExecutiveExplanation,
   validateExecutiveNewsData,
@@ -79,7 +80,7 @@ export function ExecutiveDataProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<ExecutiveData | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [loadedKey, setLoadedKey] = useState<string | null>(null);
+  const [dataLocale, setDataLocale] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isExecutive) return;
@@ -91,8 +92,6 @@ export function ExecutiveDataProvider({ children }: { children: ReactNode }) {
       setLoading(false);
       return;
     }
-    if (loadedKey === requestKey) return;
-
     let cancelled = false;
     setData(null);
     setLoading(true);
@@ -101,12 +100,12 @@ export function ExecutiveDataProvider({ children }: { children: ReactNode }) {
     const base = import.meta.env.BASE_URL || "/";
     const url = `${base}data/executive_data_${locale}.json`;
 
-    fetch(url)
-      .then((resp) => {
+    let accepted = false;
+    const stopRefresh = startLiveRefresh(async (signal) => {
+      try {
+        const resp = await fetch(url, { cache: "no-cache", signal });
         if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-        return resp.json();
-      })
-      .then(async (json: unknown) => {
+        const json: unknown = await resp.json();
         const validated = await validateExecutiveNewsData(latestReport, json);
         const optional = json as Partial<ExecutiveData>;
         const normalized: ExecutiveData = {
@@ -116,36 +115,43 @@ export function ExecutiveDataProvider({ children }: { children: ReactNode }) {
           industry_personalizations: Array.isArray(optional.industry_personalizations) ? optional.industry_personalizations : [],
         };
         if (!cancelled) {
+          if (signal.aborted) throw new Error("Executive data request timed out");
+          accepted = true;
           setData(normalized);
-          setLoadedKey(requestKey);
+          setDataLocale(locale);
+          setError(null);
           setLoading(false);
         }
-      })
-      .catch((err) => {
+      } catch (err) {
         console.warn("Failed to load executive data:", err);
         if (!cancelled) {
-          setData(EMPTY);
-          setLoadedKey(requestKey);
-          setError(String(err?.message || err));
+          // A temporary failure must not latch this version as loaded forever.
+          // Retain only an already-validated pair for this exact report.
+          if (!accepted) setData(EMPTY);
+          setError(String(err instanceof Error ? err.message : err));
           setLoading(false);
         }
-      });
+      }
+    });
 
     return () => {
       cancelled = true;
+      stopRefresh();
     };
-  }, [isExecutive, locale, latestReport, loadedKey]);
+  }, [isExecutive, locale, latestReport]);
 
+  // Effects run after render: never expose a prior release for even one frame.
+  const currentData = dataLocale === locale && data?.report_content_version === latestReport?.content_version ? data : null;
   const getEventExplanation = (event: ContractNewsEvent): ExecutiveLookup =>
-    findExecutiveExplanation(event, data);
+    findExecutiveExplanation(event, currentData);
 
   const getRoleAdvice = (insightId: number): RoleAdvice | undefined => {
-    return (data?.role_advice ?? []).find((a) => a.insight_id === insightId);
+    return (currentData?.role_advice ?? []).find((a) => a.insight_id === insightId);
   };
 
   return (
     <ExecutiveDataContext.Provider
-      value={{ data, loading, error, getEventExplanation, getRoleAdvice }}
+      value={{ data: currentData, loading, error, getEventExplanation, getRoleAdvice }}
     >
       {children}
     </ExecutiveDataContext.Provider>
