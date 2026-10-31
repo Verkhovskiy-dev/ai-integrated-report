@@ -53,4 +53,3 @@ export default defineConfig({
   server: { host: '127.0.0.1', port: 4197, strictPort: true, fs: { allow: [root] } },
   build: { outDir: path.join(root, 'dist-preview'), emptyOutDir: true },
 });
-
