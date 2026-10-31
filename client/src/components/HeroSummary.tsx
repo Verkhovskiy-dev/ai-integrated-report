@@ -26,8 +26,9 @@ import { ShareButton } from "@/components/ShareableBlock";
 import { buildShareId } from "@/lib/share";
 import EkenRouteAction from "@/components/EkenRouteAction";
 import NewsReactions from "@/components/NewsReactions";
+import InlineNewsCard from "@/components/InlineNewsCard";
 import { buildNewsIdentity } from "@shared/newsIdentity";
-import { executiveSafeDescription } from "@/data/newsContract";
+import { executiveSafeDescription, type NewsImportance } from "@/data/newsContract";
 
 // ─── Helpers ────────────────────────────────────────────────────
 const LEVEL_NAMES_RU: Record<number, string> = {
@@ -179,7 +180,7 @@ export default function HeroSummary() {
   const { selectedLevels, searchQuery, setSearchQuery, clearLevels } = useFilters();
   const { t, locale } = useTranslation();
   const { isExecutive } = useViewMode();
-  const { getEventExplanation } = useExecutiveData();
+  const { getEventExplanation, loading: executiveLoading } = useExecutiveData();
   const isEn = locale === "en";
   const [expandedHeroEvent, setExpandedHeroEvent] = useState<string | null>(null);
 
@@ -189,7 +190,7 @@ export default function HeroSummary() {
   // ── Top 3 events ──
   const topEvents = useMemo(() => {
     if (!latestReport?.srt_levels) return [];
-    const items: { title: string; level: number; levelName: string; type: string; description: string; sources: string[]; fact?: string; news_id?: string; content_version?: string }[] = [];
+    const items: { title: string; level: number; levelName: string; type: string; description: string; sources: string[]; fact?: string; news_id?: string; content_version?: string; importance?: NewsImportance | null }[] = [];
     for (const srtLevel of latestReport.srt_levels) {
       if (selectedLevels.length > 0 && !selectedLevels.includes(srtLevel.level)) continue;
       for (const event of srtLevel.events) {
@@ -204,6 +205,7 @@ export default function HeroSummary() {
           levelName: LEVEL_NAMES[srtLevel.level] || `${lvPrefix}${srtLevel.level}`,
           type: guessType(event.title + " " + event.description),
           sources: event.sources || [],
+          importance: event.importance,
           fact: event.fact,
           news_id: event.news_id,
           content_version: event.content_version,
@@ -381,6 +383,10 @@ export default function HeroSummary() {
                 const hasDetails = Boolean(displayDescription && displayDescription !== item.title);
                 const isExpandable = hasDetails || !!explanation || isExecutive;
                 const itemId = buildShareId("news", item.title);
+
+                if (isExecutive && executive) {
+                  return <InlineNewsCard key={item.news_id || identity.newsId} item={item} executive={executive} loading={executiveLoading} isEn={isEn} accentColor={LEVEL_COLORS[item.level]} rank={idx + 1} />;
+                }
 
                 return (
                   <div

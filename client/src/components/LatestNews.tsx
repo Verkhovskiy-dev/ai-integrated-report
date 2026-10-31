@@ -20,6 +20,7 @@ import { ExecutiveEventCardLocalized } from "@/components/ExecutiveEventCard";
 import { ShareButton } from "@/components/ShareableBlock";
 import { buildShareId } from "@/lib/share";
 import NewsReactions from "@/components/NewsReactions";
+import InlineNewsCard from "@/components/InlineNewsCard";
 import { buildNewsIdentity } from "@shared/newsIdentity";
 import { executiveSafeDescription, importanceLabel } from "@/data/newsContract";
 
@@ -74,7 +75,7 @@ export default function LatestNews() {
   const { selectedLevels, searchQuery } = useFilters();
   const { t, locale } = useTranslation();
   const { isExecutive } = useViewMode();
-  const { getEventExplanation } = useExecutiveData();
+  const { getEventExplanation, loading: executiveLoading } = useExecutiveData();
   const isEn = locale === "en";
   const [expanded, setExpanded] = useState(false);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
@@ -126,7 +127,7 @@ export default function LatestNews() {
   };
 
   return (
-    <section id="news" className="py-4 sm:py-6">
+    <section id="news" className={`py-4 sm:py-6${isExecutive ? " inline-news-section" : ""}`}>
       <div className="container">
         {/* Section header */}
         <div className="flex items-center justify-between mb-3 sm:mb-4">
@@ -169,6 +170,12 @@ export default function LatestNews() {
             const isExpandable = hasDetails || hasSources || !!explanation || isExecutive;
             const srtColor = getSrtColor(item.level);
             const itemId = buildShareId("news", item.title);
+
+            if (isExecutive && executive) {
+              // Stable news identity keeps reaction state across fresh report renders.
+              // https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key
+              return <InlineNewsCard key={item.news_id || identity.newsId} item={item} executive={executive} loading={executiveLoading} isEn={isEn} accentColor={srtColor} />;
+            }
 
             return (
               <div

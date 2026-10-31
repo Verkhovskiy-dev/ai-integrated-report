@@ -1,0 +1,25 @@
+/* Scoped to the requested cards; global design and other surfaces stay unchanged. */
+.inline-news-card { position: relative; display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 8px; background: rgb(15 23 42 / .18); scroll-margin-top: 112px; }
+.inline-news-accent { position: absolute; inset: 0 auto 0 0; width: 3px; opacity: .8; }
+.inline-news-content { padding: 14px 16px 12px; flex: 1; }
+.inline-news-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; padding-right: 32px; margin-bottom: 9px; font-family: var(--font-mono); font-size: 9px; line-height: 1.5; }
+.inline-news-rank { color: var(--primary); }
+.inline-news-headline { margin: 0; color: var(--foreground); font-size: 14px; font-weight: 600; line-height: 1.45; overflow-wrap: anywhere; }
+.inline-news-why { margin-top: 12px; }
+.inline-news-label { margin-bottom: 4px; color: var(--primary); font-size: 11px; font-weight: 500; }
+.inline-news-explanation { color: var(--foreground); opacity: .82; font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.inline-news-unavailable { color: var(--muted-foreground); font-size: 12px; line-height: 1.6; }
+.inline-news-sources { display: flex; flex-wrap: wrap; align-items: center; gap: 0 12px; padding: 0 14px 4px; border-top: 1px solid color-mix(in srgb, var(--border) 40%, transparent); font-size: 11px; min-height: 44px; }
+.inline-news-sources a { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; max-width: 100%; color: var(--primary); }
+.inline-news-sources a span { overflow-wrap: anywhere; }
+.inline-news-sources a svg { flex: none; }
+.inline-news-sources a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.inline-news-card a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 3px; }
+.inline-news-card [data-news-reactions] { margin-top: auto; }
+.inline-news-card [data-news-reactions] button { min-height: 40px; }
+.inline-news-section { scroll-margin-top: 112px; }
+@media (max-width: 639px) {
+  .inline-news-content { padding: 14px 16px 12px; }
+  .inline-news-explanation, .inline-news-unavailable { font-size: 13px; }
+  .inline-news-card [data-news-reactions] button, .inline-news-sources a { min-height: 44px; }
+}
