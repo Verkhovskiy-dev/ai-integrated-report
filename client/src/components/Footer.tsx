@@ -29,8 +29,8 @@ export default function Footer() {
             </p>
             <p className="text-[10px] sm:text-[11px] text-muted-foreground/70 mt-0.5">
               {isEn
-                ? "Data aggregated from public AI industry sources"
-                : "Данные агрегированы из открытых источников ИИ-индустрии"}
+                ? "Data: automated AIwatcher monitoring (n8n) from public sources"
+                : "Данные: автоматический мониторинг AIwatcher (n8n) по открытым источникам"}
             </p>
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
