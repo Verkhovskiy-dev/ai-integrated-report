@@ -22,21 +22,22 @@ interface Props {
     why_important?: string;
     watch_next?: string | string[];
   };
-  executive: ExecutiveLookup;
+  executive?: ExecutiveLookup;
   loading: boolean;
   isEn: boolean;
   accentColor: string;
   rank?: number;
 }
 
-/** Expandable news card for executive mode with progressive disclosure. */
+/** Expandable news card with progressive multi-step disclosure. */
 export default function InlineNewsCard({ item, executive, loading, isEn, accentColor, rank }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [openSections, setOpenSections] = useState<Set<string>>(new Set());
   const id = buildShareId('news', item.title);
   const sources = visibleNewsSources(item.sources);
   const shareDescription = executiveSafeDescription(item, executive, true);
 
-  const explanation = executive.status === 'available' ? executive.explanation : undefined;
+  const explanation = executive?.status === 'available' ? executive.explanation : undefined;
 
   // Determine what to show in expanded state
   const whatHappened = explanation?.what_happened?.trim() || item.fact?.trim() || item.description?.trim();
@@ -60,7 +61,23 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
   const toggleExpanded = () => {
     if (hasAnyContent) {
       setIsExpanded(!isExpanded);
+      // Reset inner sections when collapsing
+      if (isExpanded) {
+        setOpenSections(new Set());
+      }
     }
+  };
+
+  const toggleSection = (sectionId: string) => {
+    setOpenSections(prev => {
+      const next = new Set(prev);
+      if (next.has(sectionId)) {
+        next.delete(sectionId);
+      } else {
+        next.add(sectionId);
+      }
+      return next;
+    });
   };
 
   // Format related levels as "Ур. 5 → Ур. 4"
@@ -112,10 +129,10 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
         )}
       </button>
 
-      {/* Expanded content */}
+      {/* Step 2: Expanded content with «Что произошло» and accordion sections */}
       {isExpanded && hasAnyContent && (
         <div className="inline-news-expanded-content">
-          {/* What happened */}
+          {/* Always show «Что произошло» when expanded (Step 2) */}
           {shouldShowWhatHappened && (
             <div className="inline-news-section">
               <div className="section-icon" style={{ backgroundColor: `${accentColor}15` }}>
@@ -128,94 +145,171 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
             </div>
           )}
 
-          {/* Significance for SRT */}
-          {srtSignificance && (
-            <div className="inline-news-section">
-              <div className="section-icon" style={{ backgroundColor: '#f59e0b15' }}>
-                <AlertTriangle size={12} style={{ color: '#f59e0b' }} />
-              </div>
-              <div className="section-text">
-                <p className="section-label">{isEn ? 'Significance for SRT' : 'Значимость для СРТ'}</p>
-                {relatedLevelsText && (
-                  <p className="section-content srt-levels-indicator">
-                    <ArrowRight size={14} className="inline" /> {relatedLevelsText}
-                  </p>
-                )}
-                <p className="section-content">{srtSignificance}</p>
-              </div>
-            </div>
-          )}
-
-          {/* Business impact - only when available in executive mode */}
-          {businessImpact && (
-            <div className="inline-news-section">
-              <div className="section-icon" style={{ backgroundColor: '#10b98115' }}>
-                <TrendingUp size={12} style={{ color: '#10b981' }} />
-              </div>
-              <div className="section-text">
-                <p className="section-label">{isEn ? 'Business impact' : 'Последствия для бизнеса'}</p>
-                <p className="section-content">{businessImpact}</p>
-              </div>
-            </div>
-          )}
-
-          {/* Uncertainty */}
-          {uncertainty && (
-            <div className="inline-news-section">
-              <div className="section-icon" style={{ backgroundColor: '#6366f115' }}>
-                <CircleHelp size={12} style={{ color: '#6366f1' }} />
-              </div>
-              <div className="section-text">
-                <p className="section-label">{isEn ? 'Evidence boundary' : 'Неопределённость'}</p>
-                <p className="section-content">{uncertainty}</p>
-              </div>
-            </div>
-          )}
-
-          {/* Watch next */}
-          {watchNext.length > 0 && (
-            <div className="inline-news-section">
-              <div className="section-icon" style={{ backgroundColor: '#8b5cf615' }}>
-                <Eye size={12} style={{ color: '#8b5cf6' }} />
-              </div>
-              <div className="section-text">
-                <p className="section-label">{isEn ? 'What to watch' : 'На что смотреть дальше'}</p>
-                {watchNext.length === 1 ? (
-                  <p className="section-content">{watchNext[0]}</p>
-                ) : (
-                  <ul className="section-content watch-next-list">
-                    {watchNext.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
+          {/* Step 3: Accordion sections - each opens independently */}
+          <div className="inline-news-accordion">
+            {/* Significance for SRT */}
+            {srtSignificance && (
+              <div className="accordion-section">
+                <button
+                  type="button"
+                  onClick={() => toggleSection('significance')}
+                  aria-expanded={openSections.has('significance')}
+                  className="accordion-header"
+                >
+                  <div className="accordion-icon" style={{ backgroundColor: '#f59e0b15' }}>
+                    <AlertTriangle size={12} style={{ color: '#f59e0b' }} />
+                  </div>
+                  <span className="accordion-title">{isEn ? 'Significance for SRT' : 'Значимость для СРТ'}</span>
+                  {openSections.has('significance') ? (
+                    <ChevronUp size={14} className="accordion-chevron" />
+                  ) : (
+                    <ChevronDown size={14} className="accordion-chevron" />
+                  )}
+                </button>
+                {openSections.has('significance') && (
+                  <div className="accordion-content">
+                    {relatedLevelsText && (
+                      <p className="section-content srt-levels-indicator">
+                        <ArrowRight size={14} className="inline" /> {relatedLevelsText}
+                      </p>
+                    )}
+                    <p className="section-content">{srtSignificance}</p>
+                  </div>
                 )}
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Sources */}
-          {sources.length > 0 && (
-            <div className="inline-news-sources-expanded">
-              <p className="sources-label">{isEn ? 'Sources:' : 'Источники:'}</p>
-              <div className="sources-list">
-                {sources.slice(0, 3).map((source) => {
-                  // Extract published_at if available (future feature from n8n)
-                  const sourceWithDate = source as typeof source & { published_at?: string };
-                  return (
-                    <a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer" className="source-link">
-                      <ExternalLink size={12} aria-hidden="true" />
-                      <span>
-                        {source.host}
-                        {sourceWithDate.published_at && (
-                          <span className="source-date"> · {new Date(sourceWithDate.published_at).toLocaleDateString(isEn ? 'en-US' : 'ru-RU', { month: 'short', day: 'numeric' })}</span>
-                        )}
-                      </span>
-                    </a>
-                  );
-                })}
+            {/* Business impact - only in executive mode */}
+            {businessImpact && (
+              <div className="accordion-section">
+                <button
+                  type="button"
+                  onClick={() => toggleSection('business')}
+                  aria-expanded={openSections.has('business')}
+                  className="accordion-header"
+                >
+                  <div className="accordion-icon" style={{ backgroundColor: '#10b98115' }}>
+                    <TrendingUp size={12} style={{ color: '#10b981' }} />
+                  </div>
+                  <span className="accordion-title">{isEn ? 'Business impact' : 'Последствия для бизнеса'}</span>
+                  {openSections.has('business') ? (
+                    <ChevronUp size={14} className="accordion-chevron" />
+                  ) : (
+                    <ChevronDown size={14} className="accordion-chevron" />
+                  )}
+                </button>
+                {openSections.has('business') && (
+                  <div className="accordion-content">
+                    <p className="section-content">{businessImpact}</p>
+                  </div>
+                )}
               </div>
-            </div>
-          )}
+            )}
+
+            {/* Uncertainty */}
+            {uncertainty && (
+              <div className="accordion-section">
+                <button
+                  type="button"
+                  onClick={() => toggleSection('uncertainty')}
+                  aria-expanded={openSections.has('uncertainty')}
+                  className="accordion-header"
+                >
+                  <div className="accordion-icon" style={{ backgroundColor: '#6366f115' }}>
+                    <CircleHelp size={12} style={{ color: '#6366f1' }} />
+                  </div>
+                  <span className="accordion-title">{isEn ? 'Evidence boundary' : 'Неопределённость'}</span>
+                  {openSections.has('uncertainty') ? (
+                    <ChevronUp size={14} className="accordion-chevron" />
+                  ) : (
+                    <ChevronDown size={14} className="accordion-chevron" />
+                  )}
+                </button>
+                {openSections.has('uncertainty') && (
+                  <div className="accordion-content">
+                    <p className="section-content">{uncertainty}</p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Watch next */}
+            {watchNext.length > 0 && (
+              <div className="accordion-section">
+                <button
+                  type="button"
+                  onClick={() => toggleSection('watch')}
+                  aria-expanded={openSections.has('watch')}
+                  className="accordion-header"
+                >
+                  <div className="accordion-icon" style={{ backgroundColor: '#8b5cf615' }}>
+                    <Eye size={12} style={{ color: '#8b5cf6' }} />
+                  </div>
+                  <span className="accordion-title">{isEn ? 'What to watch' : 'На что смотреть дальше'}</span>
+                  {openSections.has('watch') ? (
+                    <ChevronUp size={14} className="accordion-chevron" />
+                  ) : (
+                    <ChevronDown size={14} className="accordion-chevron" />
+                  )}
+                </button>
+                {openSections.has('watch') && (
+                  <div className="accordion-content">
+                    {watchNext.length === 1 ? (
+                      <p className="section-content">{watchNext[0]}</p>
+                    ) : (
+                      <ul className="section-content watch-next-list">
+                        {watchNext.map((item, idx) => (
+                          <li key={idx}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Sources */}
+            {sources.length > 0 && (
+              <div className="accordion-section">
+                <button
+                  type="button"
+                  onClick={() => toggleSection('sources')}
+                  aria-expanded={openSections.has('sources')}
+                  className="accordion-header"
+                >
+                  <div className="accordion-icon" style={{ backgroundColor: '#6366f115' }}>
+                    <ExternalLink size={12} style={{ color: '#6366f1' }} />
+                  </div>
+                  <span className="accordion-title">{isEn ? 'Sources' : 'Источники'}</span>
+                  {openSections.has('sources') ? (
+                    <ChevronUp size={14} className="accordion-chevron" />
+                  ) : (
+                    <ChevronDown size={14} className="accordion-chevron" />
+                  )}
+                </button>
+                {openSections.has('sources') && (
+                  <div className="accordion-content">
+                    <div className="sources-list">
+                      {sources.slice(0, 3).map((source) => {
+                        const sourceWithDate = source as typeof source & { published_at?: string };
+                        return (
+                          <a key={source.url} href={source.url} target="_blank" rel="noopener noreferrer" className="source-link">
+                            <ExternalLink size={12} aria-hidden="true" />
+                            <span>
+                              {source.host}
+                              {sourceWithDate.published_at && (
+                                <span className="source-date"> · {new Date(sourceWithDate.published_at).toLocaleDateString(isEn ? 'en-US' : 'ru-RU', { month: 'short', day: 'numeric' })}</span>
+                              )}
+                            </span>
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       )}
 
