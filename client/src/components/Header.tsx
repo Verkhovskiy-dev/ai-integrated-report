@@ -98,11 +98,11 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
           <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
             <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
           </div>
-          <div className="hidden 2xl:block min-w-0">
+          <div className="hidden lg:block min-w-0">
             <div className="text-sm font-semibold font-heading tracking-tight text-foreground">
               AI Strategic Intelligence
             </div>
-            <div className="text-[9px] text-muted-foreground/70 leading-tight max-w-md">
+            <div className="text-xs text-muted-foreground leading-tight truncate max-w-md xl:max-w-lg">
               {locale === "en" 
                 ? "Strategic dashboard for executives and transformation leaders"
                 : "Дашборд для руководителей и лидеров трансформации"
@@ -120,13 +120,13 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
               )}
             </div>
           </div>
-          <div className="2xl:hidden min-w-0">
+          <div className="lg:hidden min-w-0">
             <div className="text-xs font-semibold font-heading tracking-tight text-foreground">
               AI Intelligence
             </div>
-            <div className="text-[9px] text-muted-foreground/70 leading-tight hidden sm:block">
+            <div className="text-[10px] text-muted-foreground leading-snug hidden sm:block max-w-xs">
               {locale === "en" 
-                ? "For executives"
+                ? "For executives & leaders"
                 : "Для руководителей"
               }
             </div>
