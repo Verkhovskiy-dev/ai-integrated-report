@@ -22,7 +22,8 @@ export default function QrCodeModal() {
       <button
         onClick={() => setOpen(true)}
         title={isEn ? "Show QR Code" : "Показать QR-код"}
-        className="flex items-center gap-1 px-2 py-1.5 text-[10px] font-medium rounded-md border transition-all border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-500/50"
+        aria-label={isEn ? "Show QR Code for this page" : "Показать QR-код для этой страницы"}
+        className="flex items-center gap-1 px-2 py-1.5 text-[10px] font-medium rounded-md border transition-all border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-500/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50"
       >
         <QrCode className="w-3 h-3" />
         <span>QR</span>

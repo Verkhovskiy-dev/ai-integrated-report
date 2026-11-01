@@ -355,11 +355,10 @@ function InsightCard({ insight, isExpanded, onToggle, isEn, role, isExecutive, e
                       {label}
                     </a>
                   ) : (
-                    <span key={source.eventId} className="max-w-full rounded border border-amber-400/30 bg-amber-400/5 px-2 py-1 text-[10px] text-amber-300/80">
-                      {source.date} · {isEn ? "primary source not established" : "первоисточник не установлен"}
-                    </span>
+                    // Hide source badge when URL is missing instead of showing "not established"
+                    null
                   );
-                })}
+                }).filter(Boolean)}
               </div>
             )}
           </div>

@@ -143,6 +143,47 @@ const PROGRAM_CARDS: ProgramCardData[] = [
   },
 ];
 
+// Helper to determine if a program date is in the past
+function isProgramDatePast(dateStr: string): boolean {
+  // Parse dates like "12 августа 2026" or "August 12, 2026"
+  const months_ru = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+  const months_en = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  
+  // Skip if date is TBD or unknown
+  if (!dateStr || dateStr.includes('уточня') || dateStr.includes('TBD') || dateStr.includes('Уточня')) {
+    return false;
+  }
+  
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  // Try to parse Russian date format
+  const ruMatch = dateStr.match(/(\d+)\s+(\S+)\s+(\d{4})/);
+  if (ruMatch) {
+    const day = parseInt(ruMatch[1]);
+    const monthIndex = months_ru.indexOf(ruMatch[2]);
+    const year = parseInt(ruMatch[3]);
+    if (monthIndex >= 0) {
+      const programDate = new Date(year, monthIndex, day);
+      return programDate < today;
+    }
+  }
+  
+  // Try to parse English date format
+  const enMatch = dateStr.match(/(\S+)\s+(\d+),?\s+(\d{4})/);
+  if (enMatch) {
+    const monthIndex = months_en.indexOf(enMatch[1]);
+    const day = parseInt(enMatch[2]);
+    const year = parseInt(enMatch[3]);
+    if (monthIndex >= 0) {
+      const programDate = new Date(year, monthIndex, day);
+      return programDate < today;
+    }
+  }
+  
+  return false;
+}
+
 export default function ProgramsSection() {
   const { locale } = useTranslation();
   const isEn = locale === "en";
@@ -189,12 +230,16 @@ export default function ProgramsSection() {
                   <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: card.accentColor }} />
                 </div>
                 <div className="flex items-center gap-1.5">
-                  {card.status === "active" ? (
-                    <span className="text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded border border-green-400/25 bg-green-400/8 text-green-400">
+                  {card.status === "active" && !isProgramDatePast(isEn ? card.startDate_en : card.startDate_ru) ? (
+                    <span className="text-[10px] sm:text-[11px] font-mono px-1.5 py-0.5 rounded border border-green-400/25 bg-green-400/8 text-green-400">
                       {isEn ? "Registration Open" : "Регистрация открыта"}
                     </span>
+                  ) : card.status === "closed" || isProgramDatePast(isEn ? card.startDate_en : card.startDate_ru) ? (
+                    <span className="text-[10px] sm:text-[11px] font-mono px-1.5 py-0.5 rounded border border-muted-foreground/25 bg-muted-foreground/8 text-muted-foreground">
+                      {isEn ? "Completed" : "Завершена"}
+                    </span>
                   ) : (
-                    <span className="text-[9px] sm:text-[10px] font-mono px-1.5 py-0.5 rounded border border-muted-foreground/25 bg-muted-foreground/8 text-muted-foreground">
+                    <span className="text-[10px] sm:text-[11px] font-mono px-1.5 py-0.5 rounded border border-amber-400/25 bg-amber-400/8 text-amber-400">
                       {isEn ? "TBD" : "Уточняется"}
                     </span>
                   )}
