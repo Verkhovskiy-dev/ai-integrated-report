@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, ExternalLink, Briefcase, AlertTriangle, TrendingUp, CircleHelp, ArrowRight, Eye } from 'lucide-react';
+import { ChevronDown, ChevronUp, ExternalLink, Briefcase, AlertTriangle, TrendingUp, CircleHelp, ArrowRight, Eye, MapPin } from 'lucide-react';
+import { Link } from 'wouter';
 import type { ExecutiveLookup, NewsImportance } from '@/data/newsContract';
 import { executiveSafeDescription, importanceLabel } from '@/data/newsContract';
 import { visibleNewsSources } from '@/data/inlineNews';
 import { ShareButton } from '@/components/ShareableBlock';
 import { buildShareId } from '@/lib/share';
 import NewsReactions from '@/components/NewsReactions';
+import { mapNewsToPlace } from '@/data/newsPlaceMapping';
 import './inline-news.css';
 
 interface Props {
@@ -88,6 +90,13 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
   };
 
   const relatedLevelsText = formatRelatedLevels(item.related_levels);
+
+  // Map news item to SRT place
+  const placeMapping = mapNewsToPlace({
+    level: item.level,
+    title: item.title,
+    description: item.description,
+  });
 
   return (
     <article id={id} className="inline-news-card" aria-labelledby={`${id}-headline`}>
@@ -174,6 +183,49 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
                       </p>
                     )}
                     <p className="section-content">{srtSignificance}</p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* SRT Place - location in the Division of Labor map */}
+            {placeMapping && (
+              <div className="accordion-section">
+                <button
+                  type="button"
+                  onClick={() => toggleSection('place')}
+                  aria-expanded={openSections.has('place')}
+                  className="accordion-header"
+                >
+                  <div className="accordion-icon" style={{ backgroundColor: '#06b6d415' }}>
+                    <MapPin size={12} style={{ color: '#06b6d4' }} />
+                  </div>
+                  <span className="accordion-title">{isEn ? 'Place in SRT' : 'Место в СРТ'}</span>
+                  {openSections.has('place') ? (
+                    <ChevronUp size={14} className="accordion-chevron" />
+                  ) : (
+                    <ChevronDown size={14} className="accordion-chevron" />
+                  )}
+                </button>
+                {openSections.has('place') && (
+                  <div className="accordion-content">
+                    <p className="section-content" style={{ marginBottom: '0.75rem' }}>
+                      <span className="inline-flex items-center gap-1.5">
+                        <span className="font-medium" style={{ color: '#06b6d4' }}>
+                          {isEn ? 'Level' : 'Уровень'} {placeMapping.place.level}
+                        </span>
+                        <span className="text-muted-foreground">•</span>
+                        <span>{placeMapping.place.name}</span>
+                      </span>
+                    </p>
+                    <Link
+                      href={`/positions?place=${placeMapping.placeId}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors px-3 py-2 rounded-md bg-primary/5 hover:bg-primary/10 border border-primary/20"
+                    >
+                      <MapPin size={14} />
+                      {isEn ? 'Open on map' : 'Открыть на карте'}
+                      <ArrowRight size={12} />
+                    </Link>
                   </div>
                 )}
               </div>
