@@ -8,6 +8,7 @@ import { ShareButton } from '@/components/ShareableBlock';
 import { buildShareId } from '@/lib/share';
 import NewsReactions from '@/components/NewsReactions';
 import { resolvePlace } from '@/data/newsPlaceMapping';
+import type { Place } from '@/data/placesData';
 import './inline-news.css';
 
 interface Props {
@@ -32,10 +33,11 @@ interface Props {
   isEn: boolean;
   accentColor: string;
   rank?: number;
+  placesMap?: Map<string, Place>;
 }
 
 /** Expandable news card with progressive multi-step disclosure. */
-export default function InlineNewsCard({ item, executive, loading, isEn, accentColor, rank }: Props) {
+export default function InlineNewsCard({ item, executive, loading, isEn, accentColor, rank, placesMap }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [openSections, setOpenSections] = useState<Set<string>>(new Set());
   const id = buildShareId('news', item.title);
@@ -95,7 +97,7 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
   const relatedLevelsText = formatRelatedLevels(item.related_levels);
 
   // Resolve place from AIwatcher-provided place_id
-  const placeResolution = resolvePlace(item);
+  const placeResolution = placesMap ? resolvePlace(item, placesMap) : null;
 
   return (
     <article id={id} className="inline-news-card" aria-labelledby={`${id}-headline`}>
@@ -211,7 +213,7 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
                     <p className="section-content" style={{ marginBottom: placeResolution.reason ? '0.5rem' : '0.75rem' }}>
                       <span className="inline-flex items-center gap-1.5">
                         <span className="font-medium" style={{ color: '#06b6d4' }}>
-                          {isEn ? 'Level' : 'Уровень'} {placeResolution.place.level}
+                          {isEn ? 'Level' : 'Уровень'} {placeResolution.place.srt_level}
                         </span>
                         <span className="text-muted-foreground">•</span>
                         <span>{placeResolution.place.name}</span>

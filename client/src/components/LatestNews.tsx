@@ -9,7 +9,7 @@
  * - Visual hierarchy: higher-level events get more prominent styling
  * - Skips first 3 events (already shown in HeroSummary) to remove duplication
  */
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Newspaper, Zap, ChevronDown, ChevronUp, ExternalLink, ArrowRight } from "lucide-react";
 import { useLiveData } from "@/contexts/LiveDataContext";
 import { useFilters } from "@/contexts/FilterContext";
@@ -22,6 +22,7 @@ import { buildShareId } from "@/lib/share";
 import NewsReactions from "@/components/NewsReactions";
 import InlineNewsCard from "@/components/InlineNewsCard";
 import { buildNewsIdentity } from "@shared/newsIdentity";
+import { getPlacesMap, type Place } from "@/data/placesData";
 import { executiveSafeDescription, importanceLabel } from "@/data/newsContract";
 
 /* SRT is a taxonomy. Colour communicates its level, never importance. */
@@ -85,6 +86,12 @@ export default function LatestNews() {
   const isEn = locale === "en";
   const [expanded, setExpanded] = useState(false);
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [placesMap, setPlacesMap] = useState<Map<string, Place>>(new Map());
+
+  // Load places data once
+  useEffect(() => {
+    getPlacesMap().then(setPlacesMap);
+  }, []);
 
   const LEVEL_NAMES: Record<number, string> = isEn
     ? { 9: "Capital", 8: "Institutions", 7: "Knowledge", 6: "Technology", 5: "Value Chain", 4: "Hardware", 3: "Professions", 2: "Geography", 1: "Resources" }
@@ -177,7 +184,7 @@ export default function LatestNews() {
             const executive = isExecutive ? getEventExplanation(item) : undefined;
 
             // Always use InlineNewsCard for all visitors
-            return <InlineNewsCard key={item.news_id || identity.newsId} item={item} executive={executive} loading={executiveLoading} isEn={isEn} accentColor={srtColor} />;
+            return <InlineNewsCard key={item.news_id || identity.newsId} item={item} executive={executive} loading={executiveLoading} isEn={isEn} accentColor={srtColor} placesMap={placesMap} />;
           })}
         </div>
 

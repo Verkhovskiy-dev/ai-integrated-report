@@ -7,7 +7,7 @@
  * 4. Key insight of the day — one highlighted card
  * i18n support
  */
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import {
   FileText, Zap, TrendingUp, Link, Lightbulb, ArrowRight,
   Activity, ChevronDown, ChevronUp,
@@ -28,6 +28,7 @@ import EkenRouteAction from "@/components/EkenRouteAction";
 import NewsReactions from "@/components/NewsReactions";
 import InlineNewsCard from "@/components/InlineNewsCard";
 import { buildNewsIdentity } from "@shared/newsIdentity";
+import { getPlacesMap, type Place } from "@/data/placesData";
 import { executiveSafeDescription, type NewsImportance } from "@/data/newsContract";
 
 // ─── Helpers ────────────────────────────────────────────────────
@@ -183,9 +184,15 @@ export default function HeroSummary() {
   const { getEventExplanation, loading: executiveLoading } = useExecutiveData();
   const isEn = locale === "en";
   const [expandedHeroEvent, setExpandedHeroEvent] = useState<string | null>(null);
+  const [placesMap, setPlacesMap] = useState<Map<string, Place>>(new Map());
 
   const LEVEL_NAMES = isEn ? LEVEL_NAMES_EN : LEVEL_NAMES_RU;
   const lvPrefix = isEn ? "Lv." : "Ур.";
+
+  // Load places data once
+  useEffect(() => {
+    getPlacesMap().then(setPlacesMap);
+  }, []);
 
   // ── Top 3 events ──
   const topEvents = useMemo(() => {
@@ -385,7 +392,7 @@ export default function HeroSummary() {
                 const identity = buildNewsIdentity(item);
                 const executive = isExecutive ? getEventExplanation(item) : undefined;
 
-                return <InlineNewsCard key={item.news_id || identity.newsId} item={item} executive={executive} loading={executiveLoading} isEn={isEn} accentColor={LEVEL_COLORS[item.level]} rank={idx + 1} />;
+                return <InlineNewsCard key={item.news_id || identity.newsId} item={item} executive={executive} loading={executiveLoading} isEn={isEn} accentColor={LEVEL_COLORS[item.level]} rank={idx + 1} placesMap={placesMap} />;
               })}
             </div>
 
