@@ -68,6 +68,8 @@ interface NewsItem {
   news_id?: string;
   content_version?: string;
   importance?: { level: "critical" | "high" | "medium" | "low"; rationale: string } | null;
+  related_levels?: number[];
+  srt_significance?: string;
 }
 
 export default function LatestNews() {
@@ -109,6 +111,8 @@ export default function LatestNews() {
           news_id: event.news_id,
           content_version: event.content_version,
           importance: event.importance,
+          related_levels: (event as any).related_levels,
+          srt_significance: (event as any).srt_significance,
         });
       }
     }

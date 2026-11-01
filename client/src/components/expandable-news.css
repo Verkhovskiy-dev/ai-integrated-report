@@ -1,0 +1,242 @@
+/* Expandable news card styles */
+.expandable-news-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgb(15 23 42 / .18);
+  scroll-margin-top: 112px;
+}
+
+.expandable-news-accent {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  opacity: .8;
+}
+
+.expandable-news-header {
+  width: 100%;
+  padding: 14px 44px 14px 16px;
+  text-align: left;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.expandable-news-header:not(.not-expandable):hover {
+  background: rgb(255 255 255 / .02);
+}
+
+.expandable-news-header:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: -2px;
+}
+
+.expandable-news-header.not-expandable {
+  cursor: default;
+  padding-right: 16px;
+}
+
+.expandable-news-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-bottom: 9px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.expandable-news-rank {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.expandable-news-level {
+  font-weight: 600;
+}
+
+.expandable-news-related-levels {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.related-level-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 4px;
+  border: 1px solid;
+  border-radius: 3px;
+  font-size: 8px;
+  opacity: 0.7;
+}
+
+.expandable-news-importance {
+  color: var(--muted-foreground);
+  font-size: 9px;
+}
+
+.expandable-news-headline {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  padding-right: 8px;
+}
+
+.expandable-news-chevron {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  transition: color 0.2s;
+}
+
+.expandable-news-header:not(.not-expandable):hover .expandable-news-chevron {
+  color: var(--primary);
+}
+
+.expandable-news-content {
+  padding: 0 16px 16px 16px;
+  border-top: 1px solid rgb(255 255 255 / .05);
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.expandable-news-section {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+}
+
+.section-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.section-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.section-label {
+  margin: 0 0 4px 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+  opacity: 0.7;
+}
+
+.section-content {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--foreground);
+  opacity: 0.85;
+  overflow-wrap: anywhere;
+}
+
+.section-content.srt-levels-indicator {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--primary);
+  opacity: 0.8;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.expandable-news-sources {
+  padding-top: 8px;
+  border-top: 1px solid rgb(255 255 255 / .05);
+}
+
+.sources-label {
+  margin: 0 0 8px 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+  opacity: 0.7;
+}
+
+.sources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary);
+  font-size: 11px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  overflow-wrap: anywhere;
+}
+
+.source-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.source-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.source-date {
+  color: var(--muted-foreground);
+  font-size: 10px;
+}
+
+.expandable-news-card [data-news-reactions] {
+  margin-top: auto;
+}
+
+.expandable-news-card [data-news-reactions] button {
+  min-height: 40px;
+}
+
+@media (max-width: 639px) {
+  .expandable-news-header {
+    padding: 14px 44px 14px 14px;
+  }
+  
+  .expandable-news-content {
+    padding: 12px 14px 14px 14px;
+  }
+  
+  .section-content {
+    font-size: 13px;
+  }
+  
+  .expandable-news-card [data-news-reactions] button {
+    min-height: 44px;
+  }
+}
