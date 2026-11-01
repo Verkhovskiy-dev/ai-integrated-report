@@ -170,17 +170,18 @@ export default function Positions() {
   const sourcePlace = displayPlace.label || displayPlace.name;
   const requestedRoute = resolvePositionRoute(requestedPlace, requestedRouteId);
   const placeRoutes = POSITION_ROUTES.filter((route) => route.sourcePlaceIds.includes(sourceKey));
-  const routes = placeRoutes.length ? placeRoutes : POSITION_ROUTES;
+  // Don't fall back to POSITION_ROUTES - show only this place's real routes
+  const routes = placeRoutes;
   
   // Initialize routeId when places are loaded
-  const initialRouteId = requestedRouteId ?? placeRoutes[0]?.id ?? POSITION_ROUTES[0]?.id ?? "";
+  const initialRouteId = requestedRouteId ?? placeRoutes[0]?.id ?? "";
   useEffect(() => {
-    if (placesLoaded && !routeId) {
+    if (placesLoaded && !routeId && placeRoutes.length > 0) {
       setRouteId(initialRouteId);
     }
-  }, [placesLoaded, initialRouteId, routeId]);
+  }, [placesLoaded, initialRouteId, routeId, placeRoutes.length]);
   
-  const selected = relationRoutes.find((route) => route.id === routeId) ?? relationRoutes[0] ?? routes.find((route) => route.id === routeId) ?? routes[0];
+  const selected = relationRoutes.find((route) => route.id === routeId) ?? relationRoutes[0] ?? routes.find((route) => route.id === routeId) ?? routes[0] ?? POSITION_ROUTES[0];
   const selectedRelation = relations.find((relation) => relation.positionRouteId === selected.id);
   const checklist = useMemo(() => assessmentItems(selected), [selected]);
   const answeredCount = checklist.filter((item) => answers[item] !== undefined).length;
