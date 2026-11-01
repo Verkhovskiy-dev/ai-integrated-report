@@ -1,108 +1,102 @@
-import { describe, test, expect } from 'vitest';
-import { mapNewsToPlace } from './newsPlaceMapping';
+import { describe, it, expect } from 'vitest';
+import { resolvePlace } from './newsPlaceMapping';
+import type { Place } from './placesData';
 
-describe('newsPlaceMapping', () => {
-  test('maps level 6 verification news to structural-verification place', () => {
-    const result = mapNewsToPlace({
-      level: 6,
-      title: 'Anthropic и OpenAI хотят встроить внешних оценщиков',
-      description: 'Компании разрабатывают системы верификации и аудита для автономных агентов',
-    });
+// Fixture shaped like places_data.json
+const mockPlaces: Place[] = [
+  {
+    id: 'srt6-structural-verification-services',
+    srt_level: 6,
+    name: 'Сервисы структурной верификации AI-агентов',
+    description: 'Test description',
+  },
+  {
+    id: 'srt8-ethical-dc-development',
+    srt_level: 8,
+    name: 'Этичная разработка дата-центров',
+    description: 'Test description',
+  },
+];
 
+const placesMap = new Map(mockPlaces.map(p => [p.id, p]));
+
+describe('resolvePlace', () => {
+  it('returns place when place_id is valid and confidence is high', () => {
+    const result = resolvePlace({
+      place_id: 'srt6-structural-verification-services',
+      place_confidence: 0.8,
+      place_reason: 'Test reason',
+    }, placesMap);
+    
     expect(result).not.toBeNull();
-    expect(result?.place.level).toBe(6);
-    expect(result?.placeId).toBe('srt6-structural-verification-services');
-    expect(result?.isExactMatch).toBe(true);
+    expect(result?.place.id).toBe('srt6-structural-verification-services');
+    expect(result?.place.srt_level).toBe(6);
+    expect(result?.reason).toBe('Test reason');
   });
-
-  test('maps level 6 memory news to sovereign-data-vaults place', () => {
-    const result = mapNewsToPlace({
-      level: 6,
-      title: 'Новые требования к хранению данных агентов',
-      description: 'Локализация и контроль памяти становятся критичными',
-    });
-
+  
+  it('returns place when confidence is exactly 0.6', () => {
+    const result = resolvePlace({
+      place_id: 'srt6-structural-verification-services',
+      place_confidence: 0.6,
+    }, placesMap);
+    
     expect(result).not.toBeNull();
-    expect(result?.place.level).toBe(6);
-    expect(result?.placeId).toBe('srt6-sovereign-data-vaults');
-    expect(result?.isExactMatch).toBe(true);
   });
-
-  test('maps level 3 orchestration news to ai-agent-orchestration place', () => {
-    const result = mapNewsToPlace({
-      level: 3,
-      title: 'Оркестрация флотов AI-агентов становится стандартом',
-      description: 'Компании переходят от единичных агентов к координированным флотам',
-    });
-
+  
+  it('returns place when confidence is undefined (old reports)', () => {
+    const result = resolvePlace({
+      place_id: 'srt6-structural-verification-services',
+      place_confidence: undefined,
+    }, placesMap);
+    
     expect(result).not.toBeNull();
-    expect(result?.place.level).toBe(3);
-    expect(result?.placeId).toBe('srt3-ai-agent-orchestration');
-    expect(result?.isExactMatch).toBe(true);
   });
-
-  test('maps level 3 finance news to pro-retail-fintech place', () => {
-    const result = mapNewsToPlace({
-      level: 3,
-      title: 'AI-инструменты для розничных трейдеров',
-      description: 'Демократизация финансовой аналитики через AI',
-    });
-
-    expect(result).not.toBeNull();
-    expect(result?.place.level).toBe(3);
-    expect(result?.placeId).toBe('srt3-pro-retail-fintech');
-    expect(result?.isExactMatch).toBe(true);
+  
+  it('returns null when confidence is below 0.6', () => {
+    const result = resolvePlace({
+      place_id: 'srt6-structural-verification-services',
+      place_confidence: 0.5,
+    }, placesMap);
+    
+    expect(result).toBeNull();
   });
-
-  test('uses explicit place_id when provided', () => {
-    const result = mapNewsToPlace({
-      level: 3,
-      title: 'Some generic title',
-      description: 'Generic description',
-      place_id: 'srt3-ai-native-engineering-edu',
-    });
-
-    expect(result).not.toBeNull();
-    expect(result?.placeId).toBe('srt3-ai-native-engineering-edu');
-    expect(result?.isExactMatch).toBe(true);
+  
+  it('returns null when place_id is null', () => {
+    const result = resolvePlace({
+      place_id: null,
+      place_confidence: 0.9,
+    }, placesMap);
+    
+    expect(result).toBeNull();
   });
-
-  test('falls back to level-only when no keywords match', () => {
-    const result = mapNewsToPlace({
-      level: 3,
-      title: 'Something completely unrelated',
-      description: 'No matching keywords at all',
-    });
-
-    expect(result).not.toBeNull();
-    expect(result?.place.level).toBe(3);
-    // Should use level-only fallback
-    expect(result?.isExactMatch).toBe(false);
+  
+  it('returns null when place_id is undefined', () => {
+    const result = resolvePlace({
+      place_id: undefined,
+      place_confidence: 0.9,
+    }, placesMap);
+    
+    expect(result).toBeNull();
   });
-
-  test('handles level 8 verification infrastructure news', () => {
-    const result = mapNewsToPlace({
-      level: 8,
-      title: 'Инфраструктура верификации AI-кода',
-      description: 'Независимая проверка безопасности сгенерированного кода',
-    });
-
-    expect(result).not.toBeNull();
-    expect(result?.place.level).toBe(8);
-    expect(result?.placeId).toBe('srt8-ai-verification-infra');
-    expect(result?.isExactMatch).toBe(true);
+  
+  it('returns null when place_id is unknown', () => {
+    const result = resolvePlace({
+      place_id: 'unknown-place-id',
+      place_confidence: 0.9,
+    }, placesMap);
+    
+    expect(result).toBeNull();
   });
-
-  test('handles level 5 news with keyword matching', () => {
-    const result = mapNewsToPlace({
-      level: 5,
-      title: 'AI Data Quality and Governance',
-      description: 'New compliance requirements for AI data quality',
-    });
-
+  
+  it('works with different place from fixture', () => {
+    const result = resolvePlace({
+      place_id: 'srt8-ethical-dc-development',
+      place_confidence: 0.78,
+      place_reason: 'NAACP data center case',
+    }, placesMap);
+    
     expect(result).not.toBeNull();
-    expect(result?.place.level).toBe(5);
-    expect(result?.placeId).toBe('srt5-ai-data-qa-governance');
-    expect(result?.isExactMatch).toBe(true);
+    expect(result?.place.id).toBe('srt8-ethical-dc-development');
+    expect(result?.place.srt_level).toBe(8);
   });
 });
