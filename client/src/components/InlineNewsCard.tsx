@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, ExternalLink, Briefcase, AlertTriangle, TrendingUp, CircleHelp, ArrowRight } from 'lucide-react';
+import { ChevronDown, ChevronUp, ExternalLink, Briefcase, AlertTriangle, TrendingUp, CircleHelp, ArrowRight, Eye } from 'lucide-react';
 import type { ExecutiveLookup, NewsImportance } from '@/data/newsContract';
 import { executiveSafeDescription, importanceLabel } from '@/data/newsContract';
 import { visibleNewsSources } from '@/data/inlineNews';
@@ -20,6 +20,7 @@ interface Props {
     related_levels?: number[];
     srt_significance?: string;
     why_important?: string;
+    watch_next?: string | string[];
   };
   executive: ExecutiveLookup;
   loading: boolean;
@@ -44,9 +45,17 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
   const uncertainty = explanation?.uncertainty?.trim();
   const srtSignificance = item.srt_significance?.trim() || whyImportant;
 
+  // Teaser line for collapsed state (shown below title)
+  const teaserText = item.srt_significance?.trim() || item.why_important?.trim();
+
+  // Watch next section
+  const watchNext = Array.isArray(item.watch_next) 
+    ? item.watch_next.filter(s => s?.trim()).map(s => s.trim())
+    : item.watch_next?.trim() ? [item.watch_next.trim()] : [];
+
   // Don't show duplicate text
   const shouldShowWhatHappened = whatHappened && whatHappened !== item.title;
-  const hasAnyContent = shouldShowWhatHappened || srtSignificance || businessImpact || uncertainty || sources.length > 0;
+  const hasAnyContent = shouldShowWhatHappened || srtSignificance || businessImpact || uncertainty || watchNext.length > 0 || sources.length > 0;
 
   const toggleExpanded = () => {
     if (hasAnyContent) {
@@ -93,6 +102,9 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
           {item.importance && <span className="inline-news-importance">{importanceLabel(item.importance, isEn)}</span>}
         </div>
         <h4 id={`${id}-headline`} className="inline-news-headline">{item.title}</h4>
+        {teaserText && !isExpanded && (
+          <p className="inline-news-teaser">{isEn ? 'Why it matters' : 'почему важно'}: {teaserText}</p>
+        )}
         {hasAnyContent && (
           <div className="inline-news-chevron">
             {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -156,6 +168,27 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
               <div className="section-text">
                 <p className="section-label">{isEn ? 'Evidence boundary' : 'Неопределённость'}</p>
                 <p className="section-content">{uncertainty}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Watch next */}
+          {watchNext.length > 0 && (
+            <div className="inline-news-section">
+              <div className="section-icon" style={{ backgroundColor: '#8b5cf615' }}>
+                <Eye size={12} style={{ color: '#8b5cf6' }} />
+              </div>
+              <div className="section-text">
+                <p className="section-label">{isEn ? 'What to watch' : 'На что смотреть дальше'}</p>
+                {watchNext.length === 1 ? (
+                  <p className="section-content">{watchNext[0]}</p>
+                ) : (
+                  <ul className="section-content watch-next-list">
+                    {watchNext.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           )}

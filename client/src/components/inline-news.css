@@ -94,6 +94,19 @@
   padding-right: 8px;
 }
 
+.inline-news-teaser {
+  margin: 6px 0 0 0;
+  color: var(--muted-foreground);
+  font-size: 11px;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  padding-right: 8px;
+}
+
 .inline-news-chevron {
   position: absolute;
   right: 16px;
@@ -166,6 +179,16 @@
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.watch-next-list {
+  margin: 0;
+  padding-left: 18px;
+  list-style: disc;
+}
+
+.watch-next-list li {
+  margin: 4px 0;
 }
 
 .inline-news-sources-expanded {
