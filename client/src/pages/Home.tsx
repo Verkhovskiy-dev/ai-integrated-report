@@ -83,9 +83,31 @@ export default function Home() {
       <FilterBar />
 
       <main className="relative z-10">
+        {/* Screen Reader title + introductory note */}
         <h1 className="sr-only">
           {locale === "en" ? "AI Strategic Intelligence Report" : "Стратегический аналитический отчёт об искусственном интеллекте"}
         </h1>
+        
+        {/* Introductory block: who it's for and what it provides */}
+        <section className="py-4 sm:py-6 border-b border-border/30 bg-gradient-to-b from-primary/5 to-transparent">
+          <div className="container">
+            <div className="max-w-3xl mx-auto text-center">
+              <p className="text-xs sm:text-sm text-foreground/90 leading-relaxed mb-2">
+                {locale === "en" 
+                  ? <>Strategic intelligence dashboard for executives and transformation leaders. AI industry analysis through the lens of the <strong className="text-primary">Division of Labor Structure (DLS)</strong> — from infrastructure and technologies to institutions and capital flows.</>
+                  : <>Аналитический дашборд для руководителей и лидеров трансформации. Анализ ИИ-индустрии через призму <strong className="text-primary">структуры разделения труда (СРТ)</strong> — от инфраструктуры и технологий до институтов и потоков капитала.</>
+                }
+              </p>
+              <p className="text-[10px] sm:text-xs text-muted-foreground">
+                {locale === "en"
+                  ? "Author: Nikolay Verhovsky · Weekly insights, structural shifts, and weak signals"
+                  : "Автор: Николай Верховский · Еженедельные инсайты, структурные сдвиги и слабые сигналы"
+                }
+              </p>
+            </div>
+          </div>
+        </section>
+        
         {/* Bloomberg-style News Ticker */}
         <NewsTicker />
 

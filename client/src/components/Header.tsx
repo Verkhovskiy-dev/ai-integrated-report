@@ -107,7 +107,7 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                 {reportLabel} {reportDate ? `— ${reportDate}` : ""}
               </p>
               {isLive && (
-                <span className="flex items-center gap-1 text-[9px] font-mono text-emerald-400">
+                <span className="flex items-center gap-1 text-[10px] font-mono text-emerald-400">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   LIVE
                 </span>

@@ -13,20 +13,21 @@ export default function LanguageSwitcher() {
   ];
 
   return (
-    <div className="flex items-center rounded-md border border-border/50 overflow-hidden bg-card/40 backdrop-blur-sm" role="group" aria-label="Language">
+    <div className="flex items-center rounded-md border border-border/50 overflow-hidden bg-card/40 backdrop-blur-sm" role="group" aria-label={locale === "ru" ? "Выбор языка" : "Language selection"}>
       {options.map((opt) => (
         <button
           key={opt.value}
           onClick={() => setLocale(opt.value)}
           className={`
-            px-2 py-1 text-[10px] sm:text-xs font-mono font-medium transition-all duration-200
+            px-2 py-1 text-[10px] sm:text-xs font-mono font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-inset
             ${
               locale === opt.value
                 ? "bg-primary/20 text-primary border-primary/30"
                 : "text-muted-foreground hover:text-foreground hover:bg-muted/20"
             }
           `}
-          title={opt.value === "ru" ? "Русский" : "English"}
+          title={opt.value === "ru" ? "Русский язык" : "English language"}
+          aria-label={opt.value === "ru" ? "Переключить на русский" : "Switch to English"}
           aria-pressed={locale === opt.value}
         >
           {opt.label}

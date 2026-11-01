@@ -44,7 +44,8 @@ export default function PdfExport() {
       onClick={handleExport}
       disabled={exporting || data.loading}
       title={isEn ? "Export to PDF" : "Экспорт в PDF"}
-      className={`flex items-center gap-1 px-2 py-1.5 text-[10px] font-medium rounded-md border transition-all ${exporting || data.loading ? "opacity-50 cursor-wait border-border/30 text-muted-foreground" : "border-amber-500/30 text-amber-400 hover:bg-amber-500/10 hover:border-amber-500/50"}`}
+      aria-label={isEn ? "Export dashboard to PDF" : "Экспортировать дашборд в PDF"}
+      className={`flex items-center gap-1 px-2 py-1.5 text-[10px] font-medium rounded-md border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/50 ${exporting || data.loading ? "opacity-50 cursor-wait border-border/30 text-muted-foreground" : "border-amber-500/30 text-amber-400 hover:bg-amber-500/10 hover:border-amber-500/50"}`}
     >
       {exporting ? <LoaderCircle className="w-3 h-3 animate-spin" /> : status === "success" ? <Check className="w-3 h-3" /> : <FileDown className="w-3 h-3" />}
       <span>{exporting ? (isEn ? "Preparing PDF…" : "Готовим PDF…") : "PDF"}</span>

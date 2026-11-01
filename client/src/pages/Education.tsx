@@ -804,8 +804,8 @@ export default function Education() {
             >
               ← AI Strategic Intelligence
             </Link>
-            <span className="text-[10px] text-muted-foreground/40 font-mono">
-              Данные обновляются 3 раза в день
+            <span className="text-[10px] text-muted-foreground/60 font-mono">
+              Данные из открытых источников бизнес-школ
             </span>
           </div>
         </div>

@@ -19,37 +19,38 @@ export default function Footer() {
       <div className="container">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
           <div className="text-center sm:text-left">
-            <p className="text-[10px] sm:text-xs font-mono text-muted-foreground">
+            <p className="text-[11px] sm:text-xs font-mono text-muted-foreground">
               AI Strategic Intelligence — {isEn ? "Integrated DLS Report" : "Интегрированный отчёт СРТ"}
             </p>
-            <p className="text-[9px] sm:text-[10px] text-muted-foreground/60 mt-0.5 sm:mt-1">
-              {isLive
-                ? (isEn
-                    ? `Report date: ${reportDate} · Data from n8n AIwatcher`
-                    : `Дата отчёта: ${reportDate} · Данные из n8n AIwatcher`)
-                : (isEn
-                    ? `Period: ${REPORT_PERIOD.start} — ${REPORT_PERIOD.end} · ${REPORT_PERIOD.totalReports} reports`
-                    : `Период: ${REPORT_PERIOD.start} — ${REPORT_PERIOD.end} · ${REPORT_PERIOD.totalReports} отчётов`)}
+            <p className="text-[10px] sm:text-[11px] text-muted-foreground/70 mt-0.5 sm:mt-1">
+              {isEn
+                ? `Author: Nikolay Verhovsky · Report date: ${reportDate}`
+                : `Автор: Николай Верховский · Дата отчёта: ${reportDate}`}
+            </p>
+            <p className="text-[10px] sm:text-[11px] text-muted-foreground/70 mt-0.5">
+              {isEn
+                ? "Data aggregated from public AI industry sources"
+                : "Данные агрегированы из открытых источников ИИ-индустрии"}
             </p>
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
             <Link
               href="/education"
-              className="flex items-center gap-1 text-[9px] sm:text-[10px] font-mono text-muted-foreground/60 hover:text-primary transition-colors"
+              className="flex items-center gap-1 text-[10px] sm:text-[11px] font-mono text-muted-foreground/70 hover:text-primary transition-colors"
             >
               <GraduationCap className="w-3 h-3" />
               <span>{isEn ? "Education Monitor" : "Education Monitor"}</span>
             </Link>
             <div className="flex items-center gap-2">
             <div className={`w-1.5 h-1.5 rounded-full ${isLive ? "bg-green-400" : "bg-amber-400"} pulse-signal`} />
-            <span className="text-[9px] sm:text-[10px] font-mono text-muted-foreground">
+            <span className="text-[10px] sm:text-[11px] font-mono text-muted-foreground">
               {isLive
                 ? (isEn
-                    ? `Live · Data current as of ${reportDate}`
-                    : `Live · Данные актуальны на ${reportDate}`)
+                    ? `Live data · Updated ${reportDate}`
+                    : `Live · Обновлено ${reportDate}`)
                 : (isEn
-                    ? "Static data (fallback)"
-                    : "Статические данные (fallback)")}
+                    ? `Archived report from ${REPORT_PERIOD.start} — ${REPORT_PERIOD.end}`
+                    : `Архивный отчёт ${REPORT_PERIOD.start} — ${REPORT_PERIOD.end}`)}
             </span>
             </div>
           </div>
