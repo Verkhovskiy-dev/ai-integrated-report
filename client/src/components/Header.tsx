@@ -92,52 +92,41 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
 
   return (
     <header className="sticky top-0 z-40 backdrop-blur-xl bg-background/80 border-b border-border/50">
-      <div className="container flex items-center justify-between h-12 sm:h-14">
-        {/* Logo / Title */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
-          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
-            <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
-          </div>
-          <div className="hidden lg:block min-w-0">
-            <div className="text-sm font-semibold font-heading tracking-tight text-foreground">
-              AI Strategic Intelligence
+      <div className="container">
+        <div className="flex items-center justify-between h-12 sm:h-14">
+          {/* Logo / Title */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
+              <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
             </div>
-            <div className="text-xs text-muted-foreground leading-tight truncate max-w-md xl:max-w-lg">
-              {locale === "en" 
-                ? "Strategic dashboard for executives and transformation leaders"
-                : "Дашборд для руководителей и лидеров трансформации"
-              }
+            <div className="hidden lg:flex items-center gap-2">
+              <div className="text-sm font-semibold font-heading tracking-tight text-foreground whitespace-nowrap">
+                AI Strategic Intelligence
+              </div>
+              <div className="flex items-center gap-2">
+                <p className="text-[10px] text-muted-foreground font-mono whitespace-nowrap">
+                  {reportLabel} {reportDate ? `— ${reportDate}` : ""}
+                </p>
+                {isLive && (
+                  <span className="flex items-center gap-1 text-[10px] font-mono text-emerald-400 whitespace-nowrap">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    LIVE
+                  </span>
+                )}
+              </div>
             </div>
-            <div className="flex items-center gap-2 mt-0.5">
-              <p className="text-[10px] text-muted-foreground font-mono">
-                {reportLabel} {reportDate ? `— ${reportDate}` : ""}
-              </p>
-              {isLive && (
-                <span className="flex items-center gap-1 text-[10px] font-mono text-emerald-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  LIVE
-                </span>
-              )}
-            </div>
-          </div>
-          <div className="lg:hidden min-w-0">
-            <div className="text-xs font-semibold font-heading tracking-tight text-foreground">
-              AI Intelligence
-            </div>
-            <div className="text-[10px] text-muted-foreground leading-snug hidden sm:block max-w-xs">
-              {locale === "en" 
-                ? "For executives & leaders"
-                : "Для руководителей"
-              }
+            <div className="lg:hidden">
+              <div className="text-xs font-semibold font-heading tracking-tight text-foreground">
+                AI Intelligence
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden xl:flex items-center gap-0.5 flex-1 justify-end min-w-0 overflow-x-auto">
-          {NAV_ITEMS.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeSection === item.id;
+          {/* Desktop Navigation */}
+          <nav className="hidden xl:flex items-center gap-0.5 flex-1 justify-end min-w-0 overflow-x-auto">
+            {NAV_ITEMS.map((item) => {
+              const Icon = item.icon;
+              const isActive = activeSection === item.id;
             if (item.id === "programs") {
               return (
                 <button
@@ -178,19 +167,30 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
         </nav>
 
         {/* Mobile: Lang + PDF + QR + Menu */}
-        <div className="flex items-center gap-1.5 xl:hidden">
-          <ViewModeSwitcher />
-          <LanguageSwitcher />
-          <PdfExport />
-          <QrCodeModal />
-          <button
-            className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? (locale === "en" ? "Close navigation" : "Закрыть навигацию") : (locale === "en" ? "Open navigation" : "Открыть навигацию")}
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          <div className="flex items-center gap-1.5 xl:hidden">
+            <ViewModeSwitcher />
+            <LanguageSwitcher />
+            <PdfExport />
+            <QrCodeModal />
+            <button
+              className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? (locale === "en" ? "Close navigation" : "Закрыть навигацию") : (locale === "en" ? "Open navigation" : "Открыть навигацию")}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Subtitle - thin muted line below main header row */}
+        <div className="border-t border-border/20 py-1">
+          <p className="text-xs text-muted-foreground/80 leading-tight">
+            {locale === "en" 
+              ? "Strategic dashboard for executives and transformation leaders"
+              : "Дашборд для руководителей и лидеров трансформации"
+            }
+          </p>
         </div>
       </div>
 
