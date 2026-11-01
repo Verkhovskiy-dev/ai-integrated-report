@@ -111,19 +111,13 @@ export default function Positions() {
   const enteredFromSignal = params.get("from") === "signal" && Boolean(params.get("signal"));
   const requestedPlace = params.get("place") ?? params.get("source") ?? "3";
   const configuredPlace = SRT_PLACES[requestedPlace];
-  const place = configuredPlace ?? SRT_PLACES["3"];
-  const sourceKey = place.id;
   const cameFromPlaces = params.get("source") === "places" || params.has("place");
   const requestedRouteId = params.get("route");
-  const requestedRoute = resolvePositionRoute(requestedPlace, requestedRouteId);
-  const sourcePlace = place.label;
   const [placesMap, setPlacesMap] = useState<Map<string, Place>>(new Map());
   const [placesLoaded, setPlacesLoaded] = useState(false);
   const [step, setStep] = useState(stepFromUrl);
   const [intent, setIntent] = useState<PositionIntent>("expert");
-  const placeRoutes = POSITION_ROUTES.filter((route) => route.sourcePlaceIds.includes(sourceKey));
-  const initialRouteId = requestedRouteId ?? placeRoutes[0]?.id ?? POSITION_ROUTES[0].id;
-  const [routeId, setRouteId] = useState(initialRouteId);
+  const [routeId, setRouteId] = useState("");
   const [journeyId, setJourneyId] = useState(() => createPositionRouteId());
   const [journeyStartedAt, setJourneyStartedAt] = useState(() => new Date().toISOString());
   const [answers, setAnswers] = useState<Record<string, boolean | undefined>>({});
@@ -138,13 +132,13 @@ export default function Positions() {
     ? ({ now: "now", "30d": "30 days", quarter: "quarter", "12m": "12 months" } as const)[horizon]
     : HORIZON_LABELS[horizon];
 
-  const routes = placeRoutes.length ? placeRoutes : POSITION_ROUTES;
   const signalId = params.get("signal") ?? "";
   const relationResolution = enteredFromSignal ? resolveSignalPositionRelations(signalId) : null;
   const relations = relationResolution?.relations ?? [];
   const relationRoutes = relations
     .map((relation) => resolveRelationPositionRoute(relation))
     .filter((route): route is PositionRoute => Boolean(route));
+  
   // Load all places from places_data.json
   useEffect(() => {
     getPlacesMap().then((map) => {
@@ -158,7 +152,7 @@ export default function Positions() {
   const placeExists = Boolean(configuredPlace || placeFromData);
   const routeConfigurationError = params.has("place") && placesLoaded && !placeExists;
   
-  // Create a hybrid place object for display
+  // Create a hybrid place object for display - use this everywhere
   const displayPlace = configuredPlace ?? (placeFromData ? {
     id: placeFromData.id,
     label: placeFromData.name,
@@ -169,7 +163,22 @@ export default function Positions() {
     productiveExit: Array.isArray(placeFromData.entry_conditions) ? placeFromData.entry_conditions[0] : "Вход требует проверки условий",
     evidence: placeFromData.entry_conditions || [],
     window: placeFromData.window?.label || "Неизвестно",
-  } : place);
+  } : (SRT_PLACES["3"] ?? { id: "3", label: "Default", name: "Default", level: 6, change: "", whyNow: "", productiveExit: "", evidence: [], window: "Неизвестно" }));
+  
+  // Derive all place-dependent values from displayPlace
+  const sourceKey = displayPlace.id;
+  const sourcePlace = displayPlace.label || displayPlace.name;
+  const requestedRoute = resolvePositionRoute(requestedPlace, requestedRouteId);
+  const placeRoutes = POSITION_ROUTES.filter((route) => route.sourcePlaceIds.includes(sourceKey));
+  const routes = placeRoutes.length ? placeRoutes : POSITION_ROUTES;
+  
+  // Initialize routeId when places are loaded
+  const initialRouteId = requestedRouteId ?? placeRoutes[0]?.id ?? POSITION_ROUTES[0]?.id ?? "";
+  useEffect(() => {
+    if (placesLoaded && !routeId) {
+      setRouteId(initialRouteId);
+    }
+  }, [placesLoaded, initialRouteId, routeId]);
   
   const selected = relationRoutes.find((route) => route.id === routeId) ?? relationRoutes[0] ?? routes.find((route) => route.id === routeId) ?? routes[0];
   const selectedRelation = relations.find((relation) => relation.positionRouteId === selected.id);
@@ -183,11 +192,11 @@ export default function Positions() {
       selected,
       intent,
       { sourcePlace, readyCount, total: checklist.length, missing },
-      { routeId: journeyId, createdAt: journeyStartedAt, place },
+      { routeId: journeyId, createdAt: journeyStartedAt, place: displayPlace },
     ) : null,
-    [step, selected, intent, sourcePlace, readyCount, checklist.length, missing.join("|"), journeyId, journeyStartedAt, place],
+    [step, selected, intent, sourcePlace, readyCount, checklist.length, missing.join("|"), journeyId, journeyStartedAt, displayPlace.id],
   );
-  const brief = `${buildBriefText(selected, intent, place)}\n\nИДЕНТИФИКАТОР МАРШРУТА\nrouteId: ${journeyId}\n\nСАМООЦЕНКА ГОТОВНОСТИ\nИсточник входа: ${sourcePlace}\nПодтверждено: ${readyCount} из ${checklist.length}\nНужно закрыть: ${missing.length ? missing.join("; ") : "ресурсных разрывов не отмечено"}`;
+  const brief = `${buildBriefText(selected, intent, displayPlace)}\n\nИДЕНТИФИКАТОР МАРШРУТА\nrouteId: ${journeyId}\n\nСАМООЦЕНКА ГОТОВНОСТИ\nИсточник входа: ${sourcePlace}\nПодтверждено: ${readyCount} из ${checklist.length}\nНужно закрыть: ${missing.length ? missing.join("; ") : "ресурсных разрывов не отмечено"}`;
   useEffect(() => {
     document.title = "Маршрут в позицию — Verkhovskiy.ai";
     window.scrollTo(0, 0);
@@ -217,21 +226,21 @@ export default function Positions() {
       analytics?.track("signal_position_map_opened", {
         signalId,
         signalVersion: relationResolution?.fixture?.signalVersion ?? "unknown",
-        sourcePlaceId: place.id,
+        sourcePlaceId: displayPlace.id,
         positionsShown: relations.length,
         viewMode: new URLSearchParams(window.location.search).get("view") ?? "expert",
         locale,
       });
     } else if (!enteredFromSignal) {
       analytics?.track("position_node_viewed", {
-        sourcePlaceId: place.id,
+        sourcePlaceId: displayPlace.id,
         positionRouteId: selected.id,
         positionsShown: routes.length,
         viewMode: new URLSearchParams(window.location.search).get("view") ?? "expert",
         locale,
       });
     }
-  }, [step, place.id, selected.id, journeyId, locale, enteredFromSignal, signalId, relations.length]);
+  }, [step, displayPlace.id, selected.id, journeyId, locale, enteredFromSignal, signalId, relations.length]);
 
   const chooseRoute = (route: PositionRoute) => {
     setRouteId(route.id);
@@ -244,7 +253,7 @@ export default function Positions() {
     window.history.pushState({}, "", nextUrl);
     (window as Window & { umami?: { track: (event: string, data?: Record<string, string | number>) => void } }).umami?.track("position_compared", {
       signalId: signalId || "direct",
-      sourcePlaceId: place.id,
+      sourcePlaceId: displayPlace.id,
       positionRouteId: route.id,
       impactType: relations.find((relation) => relation.positionRouteId === route.id)?.impactType ?? "verify",
       recommended: relations.find((relation) => relation.positionRouteId === route.id)?.recommended ? 1 : 0,
@@ -267,7 +276,7 @@ export default function Positions() {
     }
     analytics?.track("position_selected", {
       signalId: signalId || "direct",
-      sourcePlaceId: place.id,
+      sourcePlaceId: displayPlace.id,
       positionRouteId: selected.id,
       impactType: selectedRelation?.impactType ?? "direct",
       recommended: selectedRelation?.recommended ? 1 : 0,
@@ -299,7 +308,7 @@ export default function Positions() {
       umami?: { track: (event: string, data?: Record<string, string | number>) => void };
     }).umami;
     analytics?.track("position_eken_handoff_started", {
-      sourcePlaceId: place.id,
+      sourcePlaceId: displayPlace.id,
       positionRouteId: selected.id,
       journeyId,
     });
@@ -336,7 +345,7 @@ export default function Positions() {
           <a href={cameFromPlaces ? "/places.html" : enteredFromSignal ? "/#signal-position-entry" : "/#positions"} className="inline-flex items-center gap-2 text-sm text-muted-foreground no-underline transition-colors hover:text-foreground">
             <ArrowLeft className="h-4 w-4" /> {cameFromPlaces ? (isEn ? "Back to places" : "К карте мест") : enteredFromSignal ? (isEn ? "Back to signal" : "К сигналу") : (isEn ? "Back to SRT map" : "К карте СРТ")}
           </a>
-          <div className="position-source-context"><Target className="h-4 w-4" /><span>{place.label}</span></div>
+          <div className="position-source-context"><Target className="h-4 w-4" /><span>{displayPlace.name}</span></div>
         </div>
       </header>
 
@@ -344,8 +353,8 @@ export default function Positions() {
         {enteredFromSignal && (
           <section className="position-signal-context" aria-label="Связь сигнала с картой позиций" data-role="signal-context">
             <div>
-              <p>{isEn ? "SIGNAL" : "СИГНАЛ"} → {place.label.toUpperCase()}</p>
-              <strong>{relationResolution?.fixture?.causalSummary ?? place.change}</strong>
+              <p>{isEn ? "SIGNAL" : "СИГНАЛ"} → {displayPlace.name.toUpperCase()}</p>
+              <strong>{relationResolution?.fixture?.causalSummary ?? displayPlace.change}</strong>
             </div>
             <button type="button" className="position-signal-method" onClick={() => setRelationMethodOpen((current) => !current)} aria-expanded={relationMethodOpen}>
               {isEn ? "Why this link?" : "Почему так?"} <ChevronDown className="h-4 w-4" />
@@ -371,7 +380,7 @@ export default function Positions() {
         {step === 1 && (
           <div className="position-place-layout">
             <section className="position-place-main" aria-labelledby="place-title">
-              <div className="position-place-signal"><RadioTower /><span>МЕСТО СРТ-{displayPlace.level || place.level} · ОКНО {(displayPlace.window || place.window).toUpperCase()}</span></div>
+              <div className="position-place-signal"><RadioTower /><span>МЕСТО СРТ-{displayPlace.level} · ОКНО {displayPlace.window.toUpperCase()}</span></div>
               <p className="position-stage-kicker">ШАГ 1 · КАРТОЧКА МЕСТА</p>
               <h2 id="place-title">{displayPlace.name}</h2>
               <p className="position-place-change">{displayPlace.change}</p>
@@ -382,11 +391,11 @@ export default function Positions() {
               </div>
             </section>
             <aside className="position-place-aside">
-              <p>ДОСТУПНО ИЗ МЕСТА</p>
-              <h3>{routes.length} {routes.length === 1 ? "позиция" : routes.length < 5 ? "позиции" : "позиций"}</h3>
               {routes.length > 0 ? (
                 <>
-                  <span>Пилот проверяет полный путь от изменения в СРТ до результата, принятого внешним адресатом.</span>
+                  <p>ДОСТУПНО ИЗ МЕСТА</p>
+                  <h3>{routes.length} {routes.length === 1 ? "позиция" : routes.length < 5 ? "позиции" : "позиций"}</h3>
+                  <span>Пилот проверяет полный путь от изменения в СРТ до результата, принятого внешним адресатам.</span>
                   <div className="position-place-proof">
                     <small>Условия входа</small>
                     {displayPlace.evidence.map((item) => <strong key={item}><Check className="h-4 w-4" />{item}</strong>)}
@@ -396,10 +405,13 @@ export default function Positions() {
                 </>
               ) : (
                 <>
-                  <span>Для этого места доступные позиции ещё не настроены. Место определено в данных СРТ, но переход к конкретным действиям требует дополнительной подготовки.</span>
+                  <p>МЕСТО БЕЗ НАСТРОЕННЫХ ПОЗИЦИЙ</p>
+                  <h3>{displayPlace.name}</h3>
+                  <span>Позиции для этого места ещё не настроены. Описание места из данных СРТ:</span>
+                  <p className="text-sm text-muted-foreground mt-2">{displayPlace.change}</p>
                   {displayPlace.evidence.length > 0 && (
                     <div className="position-place-proof">
-                      <small>Условия входа</small>
+                      <small>Условия входа (из места)</small>
                       {displayPlace.evidence.map((item) => <strong key={item}><Check className="h-4 w-4" />{item}</strong>)}
                     </div>
                   )}
@@ -581,7 +593,7 @@ export default function Positions() {
 
         {step === 6 && (
           <div className="position-stage-layout position-brief-layout">
-            <section className="position-stage-main"><p className="position-stage-kicker">ШАГ 6 · ГОТОВЫЙ БРИФ</p><h2>Маршрут освоения позиции собран</h2><p className="position-stage-lead">Eken получит контекст места СРТ, контракт позиции, требования, результат самооценки и первое продуктивное действие.</p><div className="position-route-ledger"><span>Место <strong>{place.id}</strong></span><ArrowRight /><span>Позиция <strong>{selected.id}</strong></span><ArrowRight /><span>Маршрут <strong>{journeyId.slice(0, 8)}</strong></span></div><pre className="position-brief-preview">{brief}</pre></section>
+            <section className="position-stage-main"><p className="position-stage-kicker">ШАГ 6 · ГОТОВЫЙ БРИФ</p><h2>Маршрут освоения позиции собран</h2><p className="position-stage-lead">Eken получит контекст места СРТ, контракт позиции, требования, результат самооценки и первое продуктивное действие.</p><div className="position-route-ledger"><span>Место <strong>{displayPlace.id}</strong></span><ArrowRight /><span>Позиция <strong>{selected.id}</strong></span><ArrowRight /><span>Маршрут <strong>{journeyId.slice(0, 8)}</strong></span></div><pre className="position-brief-preview">{brief}</pre></section>
             <aside className="position-stage-aside position-launch-card"><BookOpen /><p>ПЕРЕДАЧА В EKEN</p><h3>{selected.position}</h3><span>{missing.length ? `Закрыть ${missing.length} разрыва и перейти к первому действию` : "Закрепить маршрут и перейти к первому действию"}</span><div className="position-time"><Clock3 /><span><small>Первое действие</small><strong>≤ {selected.timeToActionMinutes} мин</strong></span></div><button type="button" onClick={startEkenHandoff} disabled={!payload} data-umami-event="position-eken-handoff" className="position-map-primary">Передать бриф и начать <ArrowRight /></button><button type="button" onClick={copyBrief} className="position-copy-brief" data-umami-event="position-brief-copied">{copied ? <Check /> : <Copy />}{copied ? "Бриф скопирован" : "Копировать бриф"}</button></aside>
           </div>
         )}
