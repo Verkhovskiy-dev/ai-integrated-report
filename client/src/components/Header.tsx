@@ -94,15 +94,21 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
     <header className="sticky top-0 z-40 backdrop-blur-xl bg-background/80 border-b border-border/50">
       <div className="container flex items-center justify-between h-12 sm:h-14">
         {/* Logo / Title */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0 whitespace-nowrap">
-          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-primary/20 border border-primary/30 flex items-center justify-center">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-md bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
             <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
           </div>
-          <div className="hidden 2xl:block">
+          <div className="hidden 2xl:block min-w-0">
             <div className="text-sm font-semibold font-heading tracking-tight text-foreground">
               AI Strategic Intelligence
             </div>
-            <div className="flex items-center gap-2">
+            <div className="text-[9px] text-muted-foreground/70 leading-tight max-w-md">
+              {locale === "en" 
+                ? "Strategic dashboard for executives and transformation leaders"
+                : "Дашборд для руководителей и лидеров трансформации"
+              }
+            </div>
+            <div className="flex items-center gap-2 mt-0.5">
               <p className="text-[10px] text-muted-foreground font-mono">
                 {reportLabel} {reportDate ? `— ${reportDate}` : ""}
               </p>
@@ -114,9 +120,15 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
               )}
             </div>
           </div>
-          <div className="2xl:hidden">
+          <div className="2xl:hidden min-w-0">
             <div className="text-xs font-semibold font-heading tracking-tight text-foreground">
               AI Intelligence
+            </div>
+            <div className="text-[9px] text-muted-foreground/70 leading-tight hidden sm:block">
+              {locale === "en" 
+                ? "For executives"
+                : "Для руководителей"
+              }
             </div>
           </div>
         </div>
