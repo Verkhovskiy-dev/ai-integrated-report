@@ -600,6 +600,17 @@ export default function Education() {
     day: "numeric",
   });
 
+  // Compute data age for freshness indicator
+  const dataAge = (() => {
+    const reportDate = new Date(data.report_date);
+    const today = new Date();
+    const diffMs = today.getTime() - reportDate.getTime();
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    return diffDays;
+  })();
+  
+  const isDataFresh = dataAge <= 7; // Consider data fresh if 7 days or newer
+
   const skolkovoComparisons = data.skolkovo_comparison || [];
 
   return (
@@ -622,6 +633,17 @@ export default function Education() {
                 <p className="text-[10px] text-muted-foreground font-mono">
                   Business Schools — {formattedDate}
                 </p>
+                {isDataFresh ? (
+                  <span className="flex items-center gap-1 text-[10px] font-mono text-emerald-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    Live
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-1 text-[10px] font-mono text-amber-400/80">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400/80" />
+                    Обновлено {dataAge} дн. назад
+                  </span>
+                )}
               </div>
             </div>
           </div>
