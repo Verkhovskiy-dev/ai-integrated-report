@@ -49,6 +49,7 @@ import {
   resolveRelationPositionRoute,
   resolveSignalPositionRelations,
 } from "@/data/signalPositionRelations";
+import { getPlacesMap, type Place } from "@/data/placesData";
 
 const MAP_POSITIONS: Record<string, { x: number; y: number; shortTitle: string; horizon: string }> = {
   "ai-agent-audit": { x: 77, y: 18, shortTitle: "Аудит AI-агентов", horizon: "2–4 недели" },
@@ -116,6 +117,8 @@ export default function Positions() {
   const requestedRouteId = params.get("route");
   const requestedRoute = resolvePositionRoute(requestedPlace, requestedRouteId);
   const sourcePlace = place.label;
+  const [placesMap, setPlacesMap] = useState<Map<string, Place>>(new Map());
+  const [placesLoaded, setPlacesLoaded] = useState(false);
   const [step, setStep] = useState(stepFromUrl);
   const [intent, setIntent] = useState<PositionIntent>("expert");
   const placeRoutes = POSITION_ROUTES.filter((route) => route.sourcePlaceIds.includes(sourceKey));
@@ -142,7 +145,32 @@ export default function Positions() {
   const relationRoutes = relations
     .map((relation) => resolveRelationPositionRoute(relation))
     .filter((route): route is PositionRoute => Boolean(route));
-  const routeConfigurationError = params.has("place") && (!configuredPlace || !requestedRoute);
+  // Load all places from places_data.json
+  useEffect(() => {
+    getPlacesMap().then((map) => {
+      setPlacesMap(map);
+      setPlacesLoaded(true);
+    });
+  }, []);
+
+  // Check if place exists in full 49-place map
+  const placeFromData = placesMap.get(requestedPlace);
+  const placeExists = Boolean(configuredPlace || placeFromData);
+  const routeConfigurationError = params.has("place") && placesLoaded && !placeExists;
+  
+  // Create a hybrid place object for display
+  const displayPlace = configuredPlace ?? (placeFromData ? {
+    id: placeFromData.id,
+    label: placeFromData.name,
+    name: placeFromData.name,
+    level: placeFromData.srt_level,
+    change: placeFromData.description || "",
+    whyNow: placeFromData.window?.description || "Окно входа оценивается отдельно для каждого места",
+    productiveExit: Array.isArray(placeFromData.entry_conditions) ? placeFromData.entry_conditions[0] : "Вход требует проверки условий",
+    evidence: placeFromData.entry_conditions || [],
+    window: placeFromData.window?.label || "Неизвестно",
+  } : place);
+  
   const selected = relationRoutes.find((route) => route.id === routeId) ?? relationRoutes[0] ?? routes.find((route) => route.id === routeId) ?? routes[0];
   const selectedRelation = relations.find((relation) => relation.positionRouteId === selected.id);
   const checklist = useMemo(() => assessmentItems(selected), [selected]);
@@ -283,17 +311,17 @@ export default function Positions() {
       <div className="min-h-screen bg-background text-foreground">
         <header className="border-b border-border/60 bg-background/90">
           <div className="container flex h-14 items-center">
-            <a href="/places.html" className="inline-flex items-center gap-2 text-sm text-muted-foreground no-underline transition-colors hover:text-foreground">
-              <ArrowLeft className="h-4 w-4" /> К карте мест
+            <a href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground no-underline transition-colors hover:text-foreground">
+              <ArrowLeft className="h-4 w-4" /> К дашборду
             </a>
           </div>
         </header>
         <main className="container py-16 sm:py-24">
           <section className="position-route-unavailable" aria-labelledby="route-unavailable-title">
-            <p>МАРШРУТ НЕДОСТУПЕН</p>
-            <h1 id="route-unavailable-title">Для этого места маршрут ещё не настроен</h1>
-            <span>Карточка не будет подменена другим сценарием. Вернитесь к карте и выберите место с меткой Eken.</span>
-            <a href="/places.html">Вернуться к карте <ArrowRight className="h-4 w-4" /></a>
+            <p>МЕСТО НЕ НАЙДЕНО</p>
+            <h1 id="route-unavailable-title">Указанное место отсутствует в текущей карте СРТ</h1>
+            <span>ID места не найден среди 49 определённых мест в карте Стратегической Реакции Технологий. Проверьте правильность ссылки или вернитесь к дашборду.</span>
+            <a href="/">Вернуться к дашборду <ArrowRight className="h-4 w-4" /></a>
           </section>
         </main>
         <Footer />
@@ -343,26 +371,41 @@ export default function Positions() {
         {step === 1 && (
           <div className="position-place-layout">
             <section className="position-place-main" aria-labelledby="place-title">
-              <div className="position-place-signal"><RadioTower /><span>ПИЛОТНОЕ МЕСТО · ОКНО {place.window.toUpperCase()}</span></div>
+              <div className="position-place-signal"><RadioTower /><span>МЕСТО СРТ-{displayPlace.level || place.level} · ОКНО {(displayPlace.window || place.window).toUpperCase()}</span></div>
               <p className="position-stage-kicker">ШАГ 1 · КАРТОЧКА МЕСТА</p>
-              <h2 id="place-title">{place.name}</h2>
-              <p className="position-place-change">{place.change}</p>
+              <h2 id="place-title">{displayPlace.name}</h2>
+              <p className="position-place-change">{displayPlace.change}</p>
               <div className="position-place-evidence">
-                <article><Layers3 /><span>Что изменилось</span><strong>Агенты получили доступ к исполнению, а не только к генерации ответа.</strong></article>
-                <article><Clock3 /><span>Почему сейчас</span><strong>{place.whyNow}</strong></article>
-                <article><CheckCircle2 /><span>Продуктивный выход</span><strong>{place.productiveExit}</strong></article>
+                <article><Layers3 /><span>Описание</span><strong>{displayPlace.change || "Подробности этого места уточняются"}</strong></article>
+                <article><Clock3 /><span>Почему сейчас</span><strong>{displayPlace.whyNow}</strong></article>
+                <article><CheckCircle2 /><span>Продуктивный выход</span><strong>{displayPlace.productiveExit}</strong></article>
               </div>
             </section>
             <aside className="position-place-aside">
               <p>ДОСТУПНО ИЗ МЕСТА</p>
               <h3>{routes.length} {routes.length === 1 ? "позиция" : routes.length < 5 ? "позиции" : "позиций"}</h3>
-              <span>Пилот проверяет полный путь от изменения в СРТ до результата, принятого внешним адресатом.</span>
-              <div className="position-place-proof">
-                <small>Условия входа</small>
-                {place.evidence.map((item) => <strong key={item}><Check className="h-4 w-4" />{item}</strong>)}
-              </div>
-              <button type="button" className="position-map-primary" onClick={() => goTo(2)} data-umami-event="srt-place-open">Посмотреть позиции <ArrowRight /></button>
-              <p className="position-map-next">Далее: карта доступных манёвров из этого места</p>
+              {routes.length > 0 ? (
+                <>
+                  <span>Пилот проверяет полный путь от изменения в СРТ до результата, принятого внешним адресатом.</span>
+                  <div className="position-place-proof">
+                    <small>Условия входа</small>
+                    {displayPlace.evidence.map((item) => <strong key={item}><Check className="h-4 w-4" />{item}</strong>)}
+                  </div>
+                  <button type="button" className="position-map-primary" onClick={() => goTo(2)} data-umami-event="srt-place-open">Посмотреть позиции <ArrowRight /></button>
+                  <p className="position-map-next">Далее: карта доступных манёвров из этого места</p>
+                </>
+              ) : (
+                <>
+                  <span>Для этого места доступные позиции ещё не настроены. Место определено в данных СРТ, но переход к конкретным действиям требует дополнительной подготовки.</span>
+                  {displayPlace.evidence.length > 0 && (
+                    <div className="position-place-proof">
+                      <small>Условия входа</small>
+                      {displayPlace.evidence.map((item) => <strong key={item}><Check className="h-4 w-4" />{item}</strong>)}
+                    </div>
+                  )}
+                  <a href="/" className="position-map-primary inline-flex items-center justify-center gap-2">Вернуться к дашборду <ArrowRight className="h-4 w-4" /></a>
+                </>
+              )}
             </aside>
           </div>
         )}
