@@ -4220,14 +4220,14 @@
   },
   {
     "date": "2026-11-01",
-    "generated_at": "2026-11-01T12:54:14.905Z",
+    "generated_at": "2026-11-01T17:02:51.761Z",
     "trends": [
       {
         "id": "ai-market-repricing",
         "name": "Переоценка AI-активов",
-        "momentum": -76,
+        "momentum": -72,
         "category": "collapsing",
-        "rationale": "Вчера тренд был на -82; сегодня снижение цели раунда OpenAI, слабая экономия по Gartner и меньшая доходность AI-поиска Google подтверждают давление, но без нового шокового события.",
+        "rationale": "Вчера было -76; сегодня медийные сигналы CNBC и UkrMedia поддержали тему AI-пузыря, но без новых финансовых раскрытий, поэтому падение не усиливается резко.",
         "levels": [
           9,
           5
@@ -4237,102 +4237,103 @@
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 78,
+        "momentum": 83,
         "category": "accelerating",
-        "rationale": "Вчера было 82; сегодня иск NAACP к xAI, осторожные ответы Google AI о выборах и заявление о роботах как угрозе нацбезопасности сохраняют высокий регуляторный импульс.",
+        "rationale": "Вчера было 78; вечер добавил policy token для отказа от скрейпинга, дискуссию об ответственности, призыв Папы к запрету автономного оружия и кейс судебного prompt injection.",
         "levels": [
           8,
-          4,
-          2
+          7,
+          6
         ],
         "is_new": false
       },
       {
         "id": "sovereign-ai",
         "name": "Суверенный AI (национальные модели)",
-        "momentum": 42,
+        "momentum": 47,
         "category": "accelerating",
-        "rationale": "Вчера было 40; новое общее видение AI в Иберо-Америке добавляет региональный сигнал к суверенному контуру без резкого ускорения.",
+        "rationale": "Вчера было 42; запуск Apple Intelligence в Китае и требования сохранить AI-переписку чиновников усиливают юрисдикционную сборку AI-сервисов.",
         "levels": [
           8,
-          9,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 49,
-        "category": "accelerating",
-        "rationale": "Вчера было 51; Gap внедряет AI-найм, Dayforce фиксирует опасения работников, а TalentLMS показывает проблему закрепления новых методов, что слегка смещает фокус от найма к адаптации.",
-        "levels": [
-          3,
           5,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "open-weight-models",
-        "name": "Open-weight модели",
-        "momentum": 39,
-        "category": "emerging",
-        "rationale": "Вчера было 36; Mistral Large 4, LFM3 и открытые модели для Apple-платформ на Hugging Face дают свежие сигналы расширения открытого модельного канала.",
-        "levels": [
-          4,
-          5,
-          8
+          7
         ],
         "is_new": false
       },
       {
         "id": "agentic-platforms",
         "name": "Агентные AI-платформы",
-        "momentum": 34,
-        "category": "emerging",
-        "rationale": "DeepSeek выпустила прототип кодового агента, но DoorDash сообщает лишь о сотнях заказов от внешних агентов, поэтому импульс есть, но коммерческое применение остаётся ограниченным.",
+        "momentum": 41,
+        "category": "accelerating",
+        "rationale": "Вчера было 34; VeriCUA и автономная лаборатория с AI-агентами добавили свежие сигналы перехода от одиночных моделей к агентным процессам.",
         "levels": [
-          4,
-          5,
-          3
+          6,
+          7,
+          4
         ],
         "is_new": false
       },
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
-        "momentum": 46,
+        "momentum": 55,
         "category": "accelerating",
-        "rationale": "MIT Technology Review, ShallowDefend и работа о предсказании уступки агента дают несколько независимых сигналов усиления превентивной безопасности агентов.",
+        "rationale": "Вчера было 46; бразильский prompt injection в суде и VeriCUA усиливают тему проверки действий и входов для AI-систем.",
         "levels": [
-          6,
           8,
+          6,
           4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 41,
+        "category": "accelerating",
+        "rationale": "Вчера было 39; новые публикации Hugging Face по nemotron-halloween, AWS Trainium и Granite time-series дают сигналы поддержки открытой модельной инфраструктуры.",
+        "levels": [
+          4,
+          6,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 44,
+        "category": "accelerating",
+        "rationale": "Вчера было 41; спутниковый AI-сервер Google и спор о размещении RAM в дата-центрах добавили инфраструктурные сигналы без новых капитальных смет.",
+        "levels": [
+          2,
+          4,
+          9
         ],
         "is_new": false
       },
       {
         "id": "ai-energy",
         "name": "Энергетика для AI",
-        "momentum": 37,
+        "momentum": 39,
         "category": "emerging",
-        "rationale": "Boom смещается к питанию AI-дата-центров, а планы Xcel и Hitachi показывают ресурсный фон для крупных нагрузок; сигнал усиливается, но часть новостей не привязана к AI напрямую.",
+        "rationale": "Вчера было 37; вечерний сигнал из Мэна показывает политизацию дата-центров через климат и воду, но новых энергетических мощностей после утренних событий не добавилось.",
         "levels": [
-          1,
+          8,
           2,
-          9
+          1
         ],
         "is_new": false
       },
       {
-        "id": "ai-ready-science",
-        "name": "AI-готовая наука",
-        "momentum": 35,
-        "category": "emerging",
-        "rationale": "Вчера было 30; Project ProtoStar и обсуждение доверия к LLM при оценке новизны идей усиливают линию подготовки научных данных и процедур к AI.",
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 52,
+        "category": "accelerating",
+        "rationale": "Вчера было 49; материалы о том, что AI-ready работникам нужны не только prompts, и о подделке навыков усиливают тему проверки компетенций.",
         "levels": [
-          7,
+          3,
+          5,
           6
         ],
         "is_new": false
@@ -4340,25 +4341,13 @@
       {
         "id": "classic-saas",
         "name": "Классический SaaS под давлением AI",
-        "momentum": 15,
+        "momentum": 18,
         "category": "emerging",
-        "rationale": "Вчера было 18; прямых новых SaaS-событий мало, но слабое использование внешних агентов DoorDash и отсутствие экономии по Gartner показывают, что замещение классических процессов идёт медленнее ожиданий.",
+        "rationale": "Вчера было 15; новые сигналы про AI-поиск, контекстный корпоративный AI и AI serving harness показывают перенос ценности из приложения в контур вокруг модели.",
         "levels": [
           5,
+          6,
           3
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 41,
-        "category": "accelerating",
-        "rationale": "OpenAI снижает цель финансирования, Boom ищет место в питании дата-центров, Fujifilm расширяет ленту для AI-архивов, а Xcel планирует крупные энергозатраты.",
-        "levels": [
-          9,
-          2,
-          1
         ],
         "is_new": false
       }
