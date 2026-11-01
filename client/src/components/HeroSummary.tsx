@@ -190,7 +190,25 @@ export default function HeroSummary() {
   // ── Top 3 events ──
   const topEvents = useMemo(() => {
     if (!latestReport?.srt_levels) return [];
-    const items: { title: string; level: number; levelName: string; type: string; description: string; sources: string[]; fact?: string; news_id?: string; content_version?: string; importance?: NewsImportance | null }[] = [];
+    const items: { 
+      title: string; 
+      level: number; 
+      levelName: string; 
+      type: string; 
+      description: string; 
+      sources: string[]; 
+      fact?: string; 
+      news_id?: string; 
+      content_version?: string; 
+      importance?: NewsImportance | null;
+      srt_significance?: string;
+      why_important?: string;
+      related_levels?: number[];
+      watch_next?: string | string[];
+      place_id?: string | null;
+      place_confidence?: number;
+      place_reason?: string;
+    }[] = [];
     for (const srtLevel of latestReport.srt_levels) {
       if (selectedLevels.length > 0 && !selectedLevels.includes(srtLevel.level)) continue;
       for (const event of srtLevel.events) {
@@ -209,6 +227,13 @@ export default function HeroSummary() {
           fact: event.fact,
           news_id: event.news_id,
           content_version: event.content_version,
+          srt_significance: (event as any).srt_significance,
+          why_important: event.why_important,
+          related_levels: (event as any).related_levels,
+          watch_next: (event as any).watch_next,
+          place_id: (event as any).place_id,
+          place_confidence: (event as any).place_confidence,
+          place_reason: (event as any).place_reason,
         });
       }
     }

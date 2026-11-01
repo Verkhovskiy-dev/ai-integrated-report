@@ -70,6 +70,10 @@ interface NewsItem {
   importance?: { level: "critical" | "high" | "medium" | "low"; rationale: string } | null;
   related_levels?: number[];
   srt_significance?: string;
+  watch_next?: string | string[];
+  place_id?: string | null;
+  place_confidence?: number;
+  place_reason?: string;
 }
 
 export default function LatestNews() {
@@ -113,6 +117,10 @@ export default function LatestNews() {
           importance: event.importance,
           related_levels: (event as any).related_levels,
           srt_significance: (event as any).srt_significance,
+          watch_next: (event as any).watch_next,
+          place_id: (event as any).place_id,
+          place_confidence: (event as any).place_confidence,
+          place_reason: (event as any).place_reason,
         });
       }
     }

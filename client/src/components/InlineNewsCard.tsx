@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, ExternalLink, Briefcase, AlertTriangle, TrendingUp, CircleHelp, ArrowRight } from 'lucide-react';
+import { ChevronDown, ChevronUp, ExternalLink, Briefcase, AlertTriangle, TrendingUp, CircleHelp, ArrowRight, MapPin } from 'lucide-react';
 import type { ExecutiveLookup, NewsImportance } from '@/data/newsContract';
 import { executiveSafeDescription, importanceLabel } from '@/data/newsContract';
 import { visibleNewsSources } from '@/data/inlineNews';
 import { ShareButton } from '@/components/ShareableBlock';
 import { buildShareId } from '@/lib/share';
 import NewsReactions from '@/components/NewsReactions';
+import { resolveNewsPlace } from '@/data/newsPlaceMapping';
+import { PLACES_BY_ID } from '@/data/placesRegistry';
 import './inline-news.css';
 
 interface Props {
@@ -20,6 +22,9 @@ interface Props {
     related_levels?: number[];
     srt_significance?: string;
     why_important?: string;
+    place_id?: string | null;
+    place_confidence?: number;
+    place_reason?: string;
   };
   executive: ExecutiveLookup;
   loading: boolean;
@@ -37,6 +42,9 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
 
   const explanation = executive.status === 'available' ? executive.explanation : undefined;
 
+  // Resolve place from place_id (contract-based, no heuristics)
+  const placeResolution = resolveNewsPlace(item, PLACES_BY_ID);
+
   // Determine what to show in expanded state
   const whatHappened = explanation?.what_happened?.trim() || item.fact?.trim() || item.description?.trim();
   const whyImportant = explanation?.why_important?.trim() || item.why_important?.trim();
@@ -46,7 +54,7 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
 
   // Don't show duplicate text
   const shouldShowWhatHappened = whatHappened && whatHappened !== item.title;
-  const hasAnyContent = shouldShowWhatHappened || srtSignificance || businessImpact || uncertainty || sources.length > 0;
+  const hasAnyContent = shouldShowWhatHappened || srtSignificance || businessImpact || uncertainty || placeResolution || sources.length > 0;
 
   const toggleExpanded = () => {
     if (hasAnyContent) {
@@ -156,6 +164,60 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
               <div className="section-text">
                 <p className="section-label">{isEn ? 'Evidence boundary' : 'Неопределённость'}</p>
                 <p className="section-content">{uncertainty}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Place in SRT - shown only when place_id is valid and confidence >= 0.6 */}
+          {placeResolution && (
+            <div className="inline-news-section">
+              <div className="section-icon" style={{ backgroundColor: '#06b6d415' }}>
+                <MapPin size={12} style={{ color: '#06b6d4' }} />
+              </div>
+              <div className="section-text">
+                <p className="section-label">{isEn ? 'Place in SRT' : 'Место в СРТ'}</p>
+                <p className="section-content" style={{ marginBottom: placeResolution.reason ? '0.5rem' : '0.75rem' }}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.375rem' }}>
+                    <span style={{ fontWeight: 500, color: '#06b6d4' }}>
+                      {isEn ? 'Level' : 'Уровень'} {placeResolution.place.level}
+                    </span>
+                    <span style={{ color: 'var(--text-muted-foreground)' }}>•</span>
+                    <span>{placeResolution.place.name}</span>
+                  </span>
+                </p>
+                {placeResolution.reason && (
+                  <p className="section-content" style={{ fontSize: '0.688rem', color: 'var(--text-muted-foreground)', opacity: 0.8, marginBottom: '0.75rem' }}>
+                    {placeResolution.reason}
+                  </p>
+                )}
+                <a
+                  href={`/positions?place=${placeResolution.place.id}`}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.375rem',
+                    fontSize: '0.75rem',
+                    fontWeight: 500,
+                    color: 'var(--color-primary)',
+                    padding: '0.5rem 0.75rem',
+                    borderRadius: '0.375rem',
+                    backgroundColor: 'var(--color-primary-muted)',
+                    border: '1px solid',
+                    borderColor: 'var(--color-primary-border)',
+                    transition: 'all 0.2s',
+                    textDecoration: 'none',
+                  }}
+                  onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.currentTarget.style.backgroundColor = 'var(--color-primary-muted-hover)';
+                  }}
+                  onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.currentTarget.style.backgroundColor = 'var(--color-primary-muted)';
+                  }}
+                >
+                  <MapPin size={14} />
+                  {isEn ? 'Open on map' : 'Открыть на карте'}
+                  <ArrowRight size={12} />
+                </a>
               </div>
             </div>
           )}
