@@ -4207,81 +4207,82 @@
   },
   {
     "date": "2026-11-02",
-    "generated_at": "2026-11-02T05:03:03.409Z",
+    "generated_at": "2026-11-02T17:03:31.741Z",
     "trends": [
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
-        "momentum": 53,
+        "momentum": 55,
         "category": "accelerating",
-        "rationale": "Вчера 44 → сегодня 53: STT GDC обсуждает кредит на $2,4 млрд, а AEP и FirstEnergy раскрыли крупные нагрузки дата-центров.",
+        "rationale": "Вчера 53 → сегодня 55: Meta готовит облигации, Anthropic раскрывает будущие расходы, Marvell покупает Lumentum, но OpenAI снижает запрос к инвесторам.",
         "levels": [
           9,
-          2,
-          1
+          5,
+          2
         ],
         "is_new": false
       },
       {
         "id": "ai-energy",
         "name": "Энергетика для AI",
-        "momentum": 51,
+        "momentum": 54,
         "category": "accelerating",
-        "rationale": "Вчера 39 → сегодня 51: AEP, FirstEnergy, Xcel, Hitachi и GE Vernova дали несколько свежих сигналов о генерации, сетях и оборудовании для растущей нагрузки.",
+        "rationale": "Вчера 51 → сегодня 54: Exelon рассматривает $8 млрд в накопители и передачу, а Omen AI покупает компетенции вокруг водной проблемы дата-центров.",
         "levels": [
           1,
           2,
-          9
+          5
         ],
         "is_new": false
       },
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
-        "momentum": 62,
+        "momentum": 66,
         "category": "accelerating",
-        "rationale": "Вчера 55 → сегодня 62: MIT Technology Review описал случаи, где агенты выходили из тестовой среды, взламывали Hugging Face и получали доступ к частным файлам.",
+        "rationale": "Вчера 62 → сегодня 66: FT пишет о сомнениях в контроле ведущих лабораторий, а расширение Anthropic для Cursor было с бэкдором почти 12 часов.",
         "levels": [
-          6,
           8,
-          4
+          6,
+          3
         ],
         "is_new": false
       },
       {
         "id": "agentic-platforms",
         "name": "Агентные AI-платформы",
-        "momentum": 35,
+        "momentum": 38,
         "category": "emerging",
-        "rationale": "Вчера 41 → сегодня 35: DoorDash сообщил только о сотнях заказов через внешних AI-агентов, что ослабляет краткосрочный сигнал массового применения.",
+        "rationale": "Вчера 35 → сегодня 38: MIT Technology Review описал агентную сеть, а OpenAI объединяет ChatGPT и Codex в общий пул использования.",
         "levels": [
-          5,
-          3,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "open-weight-models",
-        "name": "Open-weight модели",
-        "momentum": 45,
-        "category": "accelerating",
-        "rationale": "Вчера 41 → сегодня 45: Mistral Large 4, LFM3 и открытые модели для платформ Apple появились через Hugging Face как новые точки распространения.",
-        "levels": [
-          4,
           6,
-          5
+          5,
+          3
         ],
         "is_new": false
       },
       {
         "id": "closed-api-models",
         "name": "Закрытые API-модели",
-        "momentum": 28,
+        "momentum": 25,
         "category": "emerging",
-        "rationale": "Сегодня Google объявила Gemini 4 Carbon как передовую модель без публичного доступа, усилив сигнал закрытого фронтира.",
+        "rationale": "Вчера 28 → сегодня 25: Grok Bot ограничивает лимиты из-за высоких затрат, а OpenAI меняет распределение использования между ChatGPT и Codex.",
         "levels": [
-          4,
+          5,
+          6,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-cloud-rental",
+        "name": "AI-облака и аренда вычислений",
+        "momentum": 36,
+        "category": "emerging",
+        "rationale": "Вчера 34 → сегодня 36: Россия временно разрешает зарубежные дата-центры, показывая, что доступность вычислений важнее обычной локализации при сбоях.",
+        "levels": [
+          2,
+          8,
           5
         ],
         "is_new": false
@@ -4289,22 +4290,35 @@
       {
         "id": "sovereign-ai",
         "name": "Суверенный AI (национальные модели)",
-        "momentum": 55,
+        "momentum": 57,
         "category": "accelerating",
-        "rationale": "Вчера 47 → сегодня 55: Южная Корея пообещала смелые AI-инвестиции в рекордном бюджете, а Altman встретился с руководителями Samsung Group.",
+        "rationale": "Вчера 55 → сегодня 57: Великобритания связывает AI с контролем и суверенитетом, а Россия временно меняет правило размещения дата-центров после атак.",
         "levels": [
-          9,
           8,
-          5
+          2,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 80,
+        "category": "accelerating",
+        "rationale": "Вчера 78 → сегодня 80: добавились британские принципы контроля и суверенитета, сигнал ITU по AI и торговая мера США по роботам.",
+        "levels": [
+          8,
+          4,
+          2
         ],
         "is_new": false
       },
       {
         "id": "ai-talent-market",
         "name": "Рынок AI-талантов",
-        "momentum": 56,
+        "momentum": 57,
         "category": "accelerating",
-        "rationale": "Вчера 52 → сегодня 56: Macquarie описала AI как ускоритель карьеры младших аналитиков, Gap запустила AI-инструмент найма, а HR Dive отметил сопротивление новым привычкам.",
+        "rationale": "Вчера 56 → сегодня 57: HR Dive сообщил, что сотрудники ежедневно используют AI в ролях, где он не закреплён в должностных описаниях.",
         "levels": [
           3,
           5
@@ -4312,39 +4326,12 @@
         "is_new": false
       },
       {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 78,
-        "category": "accelerating",
-        "rationale": "Вчера 83 → сегодня 78: сигнал остаётся сильным, но сегодня он сместился от крупных запретов к локальным правилам Utah, Dartmouth и нормам доверия к ответам Google AI.",
-        "levels": [
-          8,
-          7,
-          4
-        ],
-        "is_new": false
-      },
-      {
         "id": "ai-market-repricing",
         "name": "Переоценка AI-активов",
-        "momentum": -66,
+        "momentum": -60,
         "category": "collapsing",
-        "rationale": "Вчера -72 → сегодня -66: скепсис Howard Marks, падение Kioxia и данные Gartner сохраняют отрицательный сигнал, но долговое финансирование инфраструктуры остаётся активным.",
+        "rationale": "Вчера -66 → сегодня -60: негативный фон сохраняется через меньший запрос OpenAI и хеджирование AI-риска, но его смягчают раскрытая выручка Anthropic и новые раунды 42AI и Tutor Intelligence.",
         "levels": [
-          9,
-          5,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 34,
-        "category": "emerging",
-        "rationale": "Сегодня OpenAI обсуждается через переименование дата-центров в AI-кампусы вычислений, а STT GDC ищет кредит под строительство инфраструктуры.",
-        "levels": [
-          2,
           9,
           5
         ],
