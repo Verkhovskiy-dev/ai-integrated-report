@@ -4205,17 +4205,17 @@
   },
   {
     "date": "2026-11-03",
-    "generated_at": "2026-11-03T05:03:14.098Z",
+    "generated_at": "2026-11-03T17:03:07.653Z",
     "trends": [
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
-        "momentum": 62,
+        "momentum": 67,
         "category": "accelerating",
-        "rationale": "Вчера было 55; сегодня Morgan Stanley оценил волну AI-инвестиций до $10–15 трлн, а Blackstone и Pimco обсуждали способность кредитных рынков поглотить расходы.",
+        "rationale": "Вчера 62 → сегодня 67: Alphabet готовит энергетическую сделку на $1,5 млрд, PSEG обсуждает дата-центры, а PJM пересчитывает сетевое резервирование под крупные нагрузки.",
         "levels": [
           9,
-          5,
+          2,
           1
         ],
         "is_new": false
@@ -4223,114 +4223,115 @@
       {
         "id": "ai-energy",
         "name": "Энергетика для AI",
-        "momentum": 60,
+        "momentum": 69,
         "category": "accelerating",
-        "rationale": "Вчера было 54; OpenAI заявила о пилоте на дата-центре в Georgia с высвобождением до 1 000 МВт, а Mitsubishi Electric усиливает сетевое управление в США.",
+        "rationale": "Вчера 60 → сегодня 69: Energy Transfer утвердила газопровод на $1,6 млрд, PSEG планирует 200-МВт ядерное усиление, а Alphabet финансирует предоплаченную энергию.",
         "levels": [
           1,
-          2
+          2,
+          9
         ],
         "is_new": false
       },
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
-        "momentum": 74,
+        "momentum": 78,
         "category": "accelerating",
-        "rationale": "Вчера было 66; ANGLER, ERASE, BlindToChange и работа о приватном аудите добавили конкретные методы проверки атак, актуальности и утечки данных при аудите.",
+        "rationale": "Вчера 74 → сегодня 78: обратная теория игр, KEEPER, VLA-тесты на недействие и инцидент Irregular Security дали новые сигналы процедурной безопасности агентов.",
         "levels": [
           6,
-          4,
-          8
+          8,
+          4
         ],
         "is_new": false
       },
       {
         "id": "agentic-platforms",
         "name": "Агентные AI-платформы",
-        "momentum": 47,
+        "momentum": 50,
         "category": "accelerating",
-        "rationale": "Вчера было 38; работа Context as Infrastructure описала поиск как агентный контур, а Garry Tan указал на регулярные расходы на AI-агентов до $200 тыс. в год.",
+        "rationale": "Вчера 47 → сегодня 50: AWS показал AgentCore Web Search в Norton Revamp, а MIT Technology Review выделил проблему качества выводов агентной аналитики.",
         "levels": [
-          6,
-          3,
-          9
+          5,
+          6
         ],
         "is_new": false
       },
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 82,
+        "momentum": 84,
         "category": "accelerating",
-        "rationale": "Вчера было 80; появились иск в Техасе об ограничениях моделей, иски СМИ к Brave, указ о «Super Intelligence» и предложение Argentina как зоны без регулирования.",
+        "rationale": "Вчера 82 → сегодня 84: Google ограничивает школьный отказ от AI через Search, Apple вводит 18+ для AI-компаньонов, а британский министр AI предупреждает о киберрисках.",
         "levels": [
           8,
-          2,
-          7
-        ],
-        "is_new": false
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 63,
-        "category": "accelerating",
-        "rationale": "Вчера было 57; OpenAI наняла бывшего министра армии США, Pentagon изучает AI в стратегии моделирования, а Белый дом меняет официальный язык AI.",
-        "levels": [
-          8,
-          7,
-          3
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 54,
-        "category": "accelerating",
-        "rationale": "Вчера было 57; сильных массовых сигналов найма нет, но OpenAI привлекла оборонного советника, Trajectory переносит обучение моделей к нетехническим экспертам, а University of Hawaii расширяет AI-обучение.",
-        "levels": [
-          3,
           7,
           5
         ],
         "is_new": false
       },
       {
-        "id": "open-weight-models",
-        "name": "Open-weight модели",
-        "momentum": 18,
-        "category": "emerging",
-        "rationale": "Сегодняшний сигнал ограничен объявлением Hugging Face Project ProtoStar для AI-готовой публичной науки; новых крупных релизов моделей в отобранных событиях нет.",
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": 48,
+        "category": "accelerating",
+        "rationale": "Сегодня Nvidia, по данным FT, потребовала от облачных провайдеров, чтобы большинство клиентов были не китайскими; это прямой сигнал фильтрации конечных пользователей GPU.",
+        "levels": [
+          5,
+          4,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 61,
+        "category": "accelerating",
+        "rationale": "Вчера 63 → сегодня 61: новый сигнал ограничен сообщением о боевом AI Saab на Gripen E и британским предупреждением о киберготовности, без крупной новой национальной программы.",
         "levels": [
           7,
-          6
+          8,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 43,
+        "category": "accelerating",
+        "rationale": "Вчера 54 → сегодня 43: FT смещает фокус с массовых увольнений к трудностям входа молодых работников на рынок, но новых крупных сигналов найма или сокращений по AI нет.",
+        "levels": [
+          3,
+          7
         ],
         "is_new": false
       },
       {
         "id": "ai-market-repricing",
         "name": "Переоценка AI-активов",
-        "momentum": -49,
+        "momentum": -45,
         "category": "collapsing",
-        "rationale": "Вчера было -60; негативный импульс ослаб, потому что наряду с предупреждениями о рисках Bloomberg передал и заявления о robust demand для AI-сделок.",
+        "rationale": "Вчера -49 → сегодня -45: Palantir дала прогноз с замедлением квартального роста, а Apple показала AI-участие без резкого CapEx, что усложняет единую оценку AI-бума.",
         "levels": [
-          9
+          9,
+          5
         ],
         "is_new": false
       },
       {
-        "id": "ai-election-integrity",
-        "name": "AI и электоральная инфраструктура",
-        "momentum": 24,
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 27,
         "category": "emerging",
-        "rationale": "Новый тренд: KBAK сообщил об избирателях, использующих AI для мер в бюллетенях, а Council on Foreign Relations предупредил о достоверности кампаний влияния через чат-ботов.",
+        "rationale": "Сегодня Google встроил AI так, что школы теряют Search при полном отказе от AI, а Apple регулирует AI-компаньонов через App Store; это усиливает зависимость от закрытых платформ.",
         "levels": [
           8,
-          3
+          5
         ],
-        "is_new": true
+        "is_new": false
       }
     ]
   }
