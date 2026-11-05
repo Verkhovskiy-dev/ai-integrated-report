@@ -4191,27 +4191,40 @@
   },
   {
     "date": "2026-11-05",
-    "generated_at": "2026-11-05T05:04:05.535Z",
+    "generated_at": "2026-11-05T17:04:09.720Z",
     "trends": [
       {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 62,
-        "category": "accelerating",
-        "rationale": "Вчера 70 → сегодня 62: финансирование Isomorphic Labs и Tenspresso поддерживает CapEx-цикл, но выборы и риск ограничений для дата-центров снижают чистый импульс.",
+        "id": "ai-market-repricing",
+        "name": "Переоценка AI-активов",
+        "momentum": -45,
+        "category": "collapsing",
+        "rationale": "Вчера было -34, сегодня -45: распродажа производителей чипов, снижение Nasdaq 100 на 5%, падение SpaceX и сомнения вокруг BuzzFeed усилили отрицательную переоценку AI-активов.",
         "levels": [
           9,
           5,
-          2
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 55,
+        "category": "accelerating",
+        "rationale": "Вчера было 62, сегодня 55: The Verge фиксирует рекордные расходы Big Tech, но Microsoft отказалась расширять сделку с Nscale, а Bloomberg связал AI-ставки с ростом стоимости капитала.",
+        "levels": [
+          9,
+          2,
+          5
         ],
         "is_new": false
       },
       {
         "id": "ai-energy",
         "name": "Энергетика для AI",
-        "momentum": 70,
+        "momentum": 72,
         "category": "accelerating",
-        "rationale": "Вчера 73 → сегодня 70: APS прямо связала рост спроса с дата-центрами и предложила продлить уголь, но политическое сопротивление ЦОД ограничивает ускорение.",
+        "rationale": "Вчера было 70, сегодня 72: к прежней теме энергосетей добавились жалобы Exelon и Invenergy в FERC, а также отсрочка по разрешению на выбросы для энергетики дата-центра Oracle.",
         "levels": [
           1,
           2,
@@ -4222,12 +4235,12 @@
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
-        "momentum": 88,
+        "momentum": 91,
         "category": "accelerating",
-        "rationale": "Вчера 83 → сегодня 88: сразу несколько arXiv-работ описали полномочия ревьюера, телеметрию среды исполнения и непрерывную авторизацию агентов.",
+        "rationale": "Вчера было 88, сегодня 91: OpenAI запустила GPT-6 Cyber с заявленным снижением выхода за границы, а arXiv добавил контрфактические стандарты объяснения отказов агентов.",
         "levels": [
-          6,
           4,
+          6,
           8
         ],
         "is_new": false
@@ -4235,103 +4248,89 @@
       {
         "id": "agentic-platforms",
         "name": "Агентные AI-платформы",
-        "momentum": 49,
+        "momentum": 56,
         "category": "accelerating",
-        "rationale": "Вчера 57 → сегодня 49: SlackBench и ViBench 2.0 усиливают платформенную методологию, но данные Uber о четырёх поездках через агентов показывают слабое бытовое использование.",
+        "rationale": "Вчера было 49, сегодня 56: Dropbox покупает Tigris Data для DBX Agent Cloud, Box строит агентный поиск, а Aina предлагает физический интерфейс управления агентами.",
         "levels": [
-          6,
-          3,
-          5
+          5,
+          4,
+          3
         ],
         "is_new": false
       },
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 83,
+        "momentum": 86,
         "category": "accelerating",
-        "rationale": "Вчера 76 → сегодня 83: результаты выборов против дата-центров, 12 практик FSB и спор школ с Google усилили регуляторный и институциональный контур AI.",
+        "rationale": "Вчера было 83, сегодня 86: Ars Technica и FT показали борьбу за трактовку AI-отката, а Bloomberg связал ограничения штатов с задержками и ростом стоимости дата-центров.",
         "levels": [
           8,
-          7,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "chip-export-control",
-        "name": "Экспортный контроль чипов",
-        "momentum": 64,
-        "category": "accelerating",
-        "rationale": "Вчера 55 → сегодня 64: отмена сделки Oracle с Tencent и блокировка Китаем покупки робототехнического блока ABB усилили юрисдикционное дробление AI-цепочек.",
-        "levels": [
-          8,
-          5,
-          4
+          2,
+          9
         ],
         "is_new": false
       },
       {
         "id": "ai-talent-market",
         "name": "Рынок AI-талантов",
-        "momentum": 55,
+        "momentum": 60,
         "category": "accelerating",
-        "rationale": "Вчера 52 → сегодня 55: переход Ma Xiao к AI и программа ученичества DOL для IT и полупроводников добавили новые сигналы перераспределения компетенций.",
+        "rationale": "Вчера было 55, сегодня 60: HR Dive описал «AI-возврат» работников с более высокими требованиями оплаты, а FT показал изменение роли выпускников в консалтинге.",
         "levels": [
-          7,
           3,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "open-weight-models",
-        "name": "Open-weight модели",
-        "momentum": 39,
-        "category": "emerging",
-        "rationale": "Сегодня Hugging Face публично связал риск с закрытой разработкой и защитил открытый AI; это поддерживает open-weight нарратив без крупного нового релиза модели.",
-        "levels": [
-          8,
-          6,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": 24,
-        "category": "emerging",
-        "rationale": "Вчера 34 → сегодня 24: ChatGPT получил новую мультимедийную функцию, но школьная критика Google и заявление Hugging Face усилили институциональные вопросы к закрытым платформам.",
-        "levels": [
-          4,
           5,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-market-repricing",
-        "name": "Переоценка AI-активов",
-        "momentum": -34,
-        "category": "decelerating",
-        "rationale": "Вчера -39 → сегодня -34: FT снова поставила вопрос об AI-спаде, Apple режет внутренние AI-бюджеты, но частное финансирование Isomorphic Labs и Tenspresso смягчает спад.",
-        "levels": [
-          9,
-          5,
-          3
+          7
         ],
         "is_new": false
       },
       {
         "id": "ai-verification-infrastructure",
         "name": "Инфраструктура верификации ИИ",
-        "momentum": 44,
+        "momentum": 53,
         "category": "accelerating",
-        "rationale": "Вчера 31 → сегодня 44: AGORA, работа о проверенной генерации кода и бенчмарк обзоров литературы добавили новые проверочные процедуры для AI-результатов.",
+        "rationale": "Вчера было 44, сегодня 53: Axiom Math формально проверил Stacks Project, Anduin предложил репутацию для агентных рынков, а arXiv указал на предвзятость Agent-as-a-Judge.",
         "levels": [
           6,
           7,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "synthetic-data",
+        "name": "Синтетические данные",
+        "momentum": 32,
+        "category": "emerging",
+        "rationale": "Сегодня появился свежий сигнал: Wired сообщил о Potential Sciences, обучающей AI на компьютерно-сгенерированных биохимических данных для ускорения разработки лекарств.",
+        "levels": [
+          7,
+          6,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 37,
+        "category": "emerging",
+        "rationale": "Вчера было 39, сегодня 37: прямых сильных событий по open-weight меньше, но Hugging Face представил Phonon TTS и поддержал открытый контур публикацией модели и бенчмарков.",
+        "levels": [
+          4,
+          6
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 28,
+        "category": "emerging",
+        "rationale": "Вчера было 24, сегодня 28: OpenAI запустила специализированную GPT-6 Cyber, а SoundCloud встроил ElevenLabs в публикацию музыки, усиливая закрытые продуктовые контуры.",
+        "levels": [
+          4,
+          5,
           8
         ],
         "is_new": false
