@@ -1,7 +1,7 @@
 {
   "lastUpdated": "2026-11-06",
-  "weeklyCount": 25,
-  "weeklyTrend": "growing",
+  "weeklyCount": 30,
+  "weeklyTrend": "up",
   "events": [
     {
       "date": "2026-11-06",
@@ -60,6 +60,24 @@
       "source": "https://techcrunch.com/2026/11/04/apple-is-reportedly-cutting-budgets-for-its-internal-ai-usage/"
     },
     {
+      "date": "2026-11-05",
+      "model": "GPT-6 Cyber",
+      "vendor": "OpenAI",
+      "event": "Представлена модель GPT-6 Cyber для кибербезопасности, обученная находить уязвимости и разрабатывать исправления в рамках авторизованного доступа.",
+      "impact": "major",
+      "category": "release",
+      "url": "https://openai.com/index/introducing-gpt-6-cyber"
+    },
+    {
+      "date": "2026-11-05",
+      "model": "GPT-6 Astra",
+      "vendor": "OpenAI",
+      "event": "Компания Merge использует GPT-6 Astra для обзора кода продукта и поддержки маркетинга, а также для планирования и подготовки обновлений.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/merge-builds-with-openai"
+    },
+    {
       "date": "2026-11-04",
       "vendor": "Anthropic",
       "model": "FlashProve",
@@ -114,6 +132,24 @@
       "model": "GPT-6.1 Sol",
       "vendor": "DevRev",
       "event": "DevRev использует GPT-6.1 Sol для автономного самообслуживания, обеспечивая баланс между рассуждениями, скоростью и стоимостью для корпоративных сервисов.",
+      "impact": "major",
+      "category": "release",
+      "url": "https://openai.com/index/devrev-enterprise-self-service"
+    },
+    {
+      "date": "2026-11-04",
+      "model": "Codex",
+      "vendor": "OpenAI",
+      "event": "OpenAI приобретает Pierre Computer Company для расширения возможностей Codex в создании, понимании и обзоре кода.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/openai-to-acquire-pierre"
+    },
+    {
+      "date": "2026-11-04",
+      "model": "GPT-6.1 Sol",
+      "vendor": "OpenAI",
+      "event": "DevRev внедряет GPT-6.1 Sol для автономного самообслуживания, обеспечивая баланс между рассуждением, скоростью и стоимостью для корпоративных сервисов.",
       "impact": "major",
       "category": "release",
       "url": "https://openai.com/index/devrev-enterprise-self-service"
@@ -213,70 +249,6 @@
       "event": "OpenAI поддерживает Thrive Holdings в приобретении ADT за $15,3 миллиарда, планируя внедрить AI в бизнес домашней безопасности.",
       "impact": "medium",
       "source": "https://techcrunch.com/2026/10/29/openai-backed-thrive-holdings-acquires-adt/"
-    },
-    {
-      "date": "2026-10-30",
-      "vendor": "Mistral",
-      "model": "Le Chonk",
-      "event": "Mistral утверждает, что их модель Le Chonk превосходит китайские модели в области кодирования и кибербезопасности.",
-      "impact": "medium",
-      "source": "https://www.wired.com/story/mistral-says-le-chonk-surpasses-chinese-models-cybersecurity/"
-    },
-    {
-      "date": "2026-10-30",
-      "vendor": "Rivian",
-      "model": "AI assistant",
-      "event": "Rivian расширяет совместное предприятие с VW, включая AI ассистента.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/10/29/rivian-expands-joint-venture-with-vw-to-include-ai-assistant/"
-    },
-    {
-      "date": "2026-10-29",
-      "vendor": "Mistral",
-      "model": "Trillion-parameter AI model",
-      "event": "Mistral выпустила веса для своей модели с триллионом параметров, нацеленной на кибербезопасность.",
-      "impact": "high",
-      "source": "https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity/"
-    },
-    {
-      "date": "2026-10-29",
-      "vendor": "Deepgram",
-      "model": "Pipecat",
-      "event": "Deepgram приобрела компанию Daily, производителя Pipecat, для усиления своей инфраструктуры голосового AI.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/10/29/deepgram-acquires-pipecat-maker-daily-to-bolster-its-voice-ai-infrastructure/"
-    },
-    {
-      "date": "2026-10-29",
-      "vendor": "Wabi",
-      "model": "AI agent",
-      "event": "Wabi, AI агент для создания мини-приложений, привлек $55 миллионов при оценке в $1,25 миллиарда.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/10/29/wabi-the-ai-agent-that-builds-mini-apps-now-valued-at-1-25b-after-latest-round/"
-    },
-    {
-      "date": "2026-10-29",
-      "vendor": "Dream",
-      "model": "AI world models",
-      "event": "Бывшие руководители Palantir запустили Dream с $17 миллионами от a16z для создания AI моделей мира для строительства.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/10/29/ex-palantir-execs-launch-dream-with-17m-from-a16z-to-build-ai-world-models-for-construction/"
-    },
-    {
-      "date": "2026-10-29",
-      "vendor": "OpenAI",
-      "model": "ServiceNow Partnership",
-      "event": "OpenAI и ServiceNow расширяют партнерство для интеграции моделей OpenAI в рабочие процессы ServiceNow и наоборот.",
-      "impact": "medium",
-      "source": "https://openai.com/index/openai-servicenow-partnership-expansion"
-    },
-    {
-      "date": "2026-10-29",
-      "vendor": "Google",
-      "model": "Gemini 4 Carbon",
-      "event": "Google выпустила новую модель Gemini 4 Carbon, предлагающую значительные улучшения в области кибербезопасности и агентных задач.",
-      "impact": "high",
-      "source": "https://www.theverge.com/tech/1021339/google-gemini-4-carbon-cybersecurity-frontier"
     }
   ]
 }
