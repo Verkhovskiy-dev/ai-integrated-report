@@ -26,6 +26,7 @@ app.use("/api/reactions", express.json({ limit: "16kb" }), createReactionRouter(
   store,
   allowedOrigins: config.allowedOrigins,
   adminToken: config.adminToken,
+  allowRuOnly: config.allowRuOnly,
 }));
 app.use((_req, res) => res.status(404).json({ error: "not_found" }));
 

@@ -50,3 +50,40 @@ store, registry и API; серверные тесты SQLite требуют со
 - «Добавь реакцию “Спорно” с записью редактору» → согласованный контракт всех слоёв.
 - «Показывай “Сохранено”, даже если API не отвечает» → честная ошибка/ожидание,
   не ложное подтверждение записи.
+
+## Production обновление реестра
+
+Production сервис (https://claw.verkhovskiy.ai/news-feedback) требует обновления
+реестра новостей после публикации каждого отчёта AIwatcher.
+
+**Автоматический refresh через n8n** (рекомендуется):
+После каждой публикации отчёта n8n HTTP-узел вызывает:
+```
+POST /api/reactions/editor/registry-refresh
+Authorization: Bearer <REACTIONS_ADMIN_TOKEN>
+Content-Type: application/json
+
+{
+  "ruUrl": "https://verkhovskiy.ai/data/latest-report.json",
+  "enUrl": "https://verkhovskiy.ai/data/latest-report.en.json",
+  "siteOrigin": "https://verkhovskiy.ai"
+}
+```
+
+**RU-only режим** (если EN устарел >48ч или отсутствует):
+Установить `REACTIONS_ALLOW_RU_ONLY=1` в окружении production сервиса.
+При этом endpoint принимает только `ruUrl`; оба locale заполняются из RU-снимка.
+
+**CLI refresh** (для отладки):
+```bash
+# Dual locale:
+npm run reactions:cli -- registry-refresh-set data/latest-report.json data/latest-report.en.json https://verkhovskiy.ai
+
+# RU-only (требует REACTIONS_ALLOW_RU_ONLY=1):
+npm run reactions:cli -- registry-refresh-set data/latest-report.json
+```
+
+**Deployment на claw**: Production сервис на claw.verkhovskiy.ai обновляется
+вручную после merge PR. Автоматического CD-пайплайна нет; требуется явная
+операция деплоя с соответствующими полномочиями. После деплоя n8n автоматически
+вызывает registry-refresh при каждой публикации отчёта.
