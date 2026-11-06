@@ -46,19 +46,63 @@ export async function registryEntriesFromFile(reportPath: string, siteOrigin?: s
   return registryEntriesFromReport(report, siteOrigin);
 }
 
-export async function refreshRegistrySetFromFiles(
+export async function registryEntriesFromUrl(reportUrl: string, siteOrigin?: string, timeoutMs = 10_000) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(reportUrl, { signal: controller.signal });
+    if (!response.ok) throw new Error(`http_${response.status}`);
+    const report = await response.json();
+    return registryEntriesFromReport(report, siteOrigin);
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+export async function refreshRegistrySetFromUrls(
   store: ReactionStore,
-  ruReportPath: string,
-  enReportPath: string,
+  ruReportUrl: string,
+  enReportUrl: string | undefined,
   siteOrigin = "https://verkhovskiy.ai",
   refreshedAt = new Date().toISOString(),
   ttlHours = 24,
+  allowRuOnly = false,
+) {
+  const ruEntries = await registryEntriesFromUrl(ruReportUrl, siteOrigin);
+  
+  if (!enReportUrl && allowRuOnly) {
+    return store.replaceRegistrySnapshot(ruEntries, ruEntries, siteOrigin, refreshedAt, ttlHours);
+  }
+  
+  if (!enReportUrl) {
+    throw new Error("en_report_url_required");
+  }
+  
+  const enEntries = await registryEntriesFromUrl(enReportUrl, siteOrigin);
+  return store.replaceRegistrySnapshot(ruEntries, enEntries, siteOrigin, refreshedAt, ttlHours);
+}
+
+export async function refreshRegistrySetFromFiles(
+  store: ReactionStore,
+  ruReportPath: string,
+  enReportPath: string | undefined,
+  siteOrigin = "https://verkhovskiy.ai",
+  refreshedAt = new Date().toISOString(),
+  ttlHours = 24,
+  allowRuOnly = false,
 ) {
   // Both trusted inputs are completely read and validated before the SQLite
   // transaction starts, so a missing/invalid locale can never partially refresh.
-  const [ruEntries, enEntries] = await Promise.all([
-    registryEntriesFromFile(ruReportPath, siteOrigin),
-    registryEntriesFromFile(enReportPath, siteOrigin),
-  ]);
+  const ruEntries = await registryEntriesFromFile(ruReportPath, siteOrigin);
+  
+  if (!enReportPath && allowRuOnly) {
+    return store.replaceRegistrySnapshot(ruEntries, ruEntries, siteOrigin, refreshedAt, ttlHours);
+  }
+  
+  if (!enReportPath) {
+    throw new Error("en_report_path_required");
+  }
+  
+  const enEntries = await registryEntriesFromFile(enReportPath, siteOrigin);
   return store.replaceRegistrySnapshot(ruEntries, enEntries, siteOrigin, refreshedAt, ttlHours);
 }

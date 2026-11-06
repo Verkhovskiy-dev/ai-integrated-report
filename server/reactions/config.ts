@@ -9,13 +9,17 @@ function namespace(value: string | undefined): "synthetic" | "production" {
 export function reactionConfig(env = process.env) {
   const selectedNamespace = namespace(env.REACTIONS_NAMESPACE);
   const defaultDb = path.resolve(process.cwd(), "var", `reactions-${selectedNamespace}.sqlite`);
-  const origins = (env.REACTIONS_ALLOWED_ORIGINS ?? "http://127.0.0.1:3000,http://localhost:3000")
+  const defaultOrigins = selectedNamespace === "production"
+    ? "https://verkhovskiy.ai,https://www.verkhovskiy.ai"
+    : "http://127.0.0.1:3000,http://localhost:3000";
+  const origins = (env.REACTIONS_ALLOWED_ORIGINS ?? defaultOrigins)
     .split(",").map((value) => value.trim()).filter(Boolean);
   return {
     namespace: selectedNamespace,
     dbPath: env.REACTIONS_DB_PATH ? path.resolve(env.REACTIONS_DB_PATH) : defaultDb,
     allowedOrigins: origins,
     adminToken: env.REACTIONS_ADMIN_TOKEN,
+    allowRuOnly: env.REACTIONS_ALLOW_RU_ONLY === "1",
     host: env.HOST ?? "127.0.0.1",
     port: Number(env.PORT ?? 3000),
     retentionDays: Number(env.REACTIONS_RETENTION_DAYS ?? (selectedNamespace === "production" ? 30 : 7)),

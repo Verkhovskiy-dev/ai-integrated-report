@@ -39,12 +39,46 @@ test("invalid second locale cannot partially replace registry state", async () =
   try {
     writeFileSync(ru, JSON.stringify(report("RU valid", "https://example.com/ru")));
     writeFileSync(en, JSON.stringify(report("EN valid", "https://example.com/en")));
-    const initial = await refreshRegistrySetFromFiles(store, ru, en, "https://verkhovskiy.ai", "2026-09-26T00:00:00.000Z", 24);
+    const initial = await refreshRegistrySetFromFiles(store, ru, en, "https://verkhovskiy.ai", "2026-09-26T00:00:00.000Z", 24, false);
     writeFileSync(ru, JSON.stringify(report("RU replacement", "https://example.com/ru-new")));
     writeFileSync(en, JSON.stringify({ srt_levels: "invalid" }));
-    await assert.rejects(refreshRegistrySetFromFiles(store, ru, en, "https://verkhovskiy.ai", "2026-09-26T01:00:00.000Z", 24), /invalid_report_levels/);
+    await assert.rejects(refreshRegistrySetFromFiles(store, ru, en, "https://verkhovskiy.ai", "2026-09-26T01:00:00.000Z", 24, false), /invalid_report_levels/);
     assert.equal(store.getRegistryState()?.snapshotId, initial.snapshotId);
     assert.equal((store.db.prepare("SELECT COUNT(*) AS count FROM news_registry").get() as { count: number }).count, initial.uniqueCount);
+  } finally {
+    store.close();
+    rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+test("RU-only refresh with allowRuOnly flag", async () => {
+  const directory = mkdtempSync(path.join(os.tmpdir(), "reactions-registry-"));
+  const store = new ReactionStore(path.join(directory, "test.sqlite"), "synthetic");
+  const ru = path.join(directory, "ru.json");
+  try {
+    writeFileSync(ru, JSON.stringify(report("RU only", "https://example.com/ru-only")));
+    const refreshed = await refreshRegistrySetFromFiles(store, ru, undefined, "https://verkhovskiy.ai", "2026-09-26T00:00:00.000Z", 24, true);
+    assert.equal(refreshed.ruCount, 1);
+    assert.equal(refreshed.enCount, 1);
+    assert.equal(refreshed.uniqueCount, 1);
+    const state = store.getRegistryState();
+    assert.equal(state?.snapshotId, refreshed.snapshotId);
+  } finally {
+    store.close();
+    rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+test("RU-only refresh without allowRuOnly flag should fail", async () => {
+  const directory = mkdtempSync(path.join(os.tmpdir(), "reactions-registry-"));
+  const store = new ReactionStore(path.join(directory, "test.sqlite"), "synthetic");
+  const ru = path.join(directory, "ru.json");
+  try {
+    writeFileSync(ru, JSON.stringify(report("RU only", "https://example.com/ru-only")));
+    await assert.rejects(
+      refreshRegistrySetFromFiles(store, ru, undefined, "https://verkhovskiy.ai", "2026-09-26T00:00:00.000Z", 24, false),
+      /en_report_path_required/,
+    );
   } finally {
     store.close();
     rmSync(directory, { recursive: true, force: true });

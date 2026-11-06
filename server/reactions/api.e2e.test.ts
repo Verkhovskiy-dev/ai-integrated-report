@@ -90,3 +90,186 @@ test("HTTP E2E: auth, registered news, duplicate, two-tab conflict, remove, summ
     rmSync(directory, { recursive: true, force: true });
   }
 });
+
+test("HTTP E2E: admin registry-refresh with dual locales", async () => {
+  const directory = mkdtempSync(path.join(os.tmpdir(), "reactions-e2e-"));
+  const dbPath = path.join(directory, "test.sqlite");
+  const store = new ReactionStore(dbPath, "synthetic");
+  const app = express();
+  
+  const mockReports = express();
+  mockReports.get("/ru.json", (_req, res) => {
+    res.json({
+      srt_levels: [{
+        events: [{
+          title: "RU news",
+          description: "RU description",
+          sources: ["https://example.com/ru"],
+        }],
+      }],
+    });
+  });
+  mockReports.get("/en.json", (_req, res) => {
+    res.json({
+      srt_levels: [{
+        events: [{
+          title: "EN news",
+          description: "EN description",
+          sources: ["https://example.com/en"],
+        }],
+      }],
+    });
+  });
+  
+  const mockServer = createServer(mockReports);
+  await new Promise<void>((resolve) => mockServer.listen(0, "127.0.0.1", resolve));
+  const mockAddress = mockServer.address();
+  if (!mockAddress || typeof mockAddress === "string") throw new Error("missing mock address");
+  const mockBase = `http://127.0.0.1:${mockAddress.port}`;
+  
+  app.use("/api/reactions", express.json(), createReactionRouter({
+    store,
+    allowedOrigins: ["http://127.0.0.1"],
+    adminToken: "test-editor-token",
+    allowRuOnly: false,
+  }));
+  
+  const server = createServer(app);
+  await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
+  const address = server.address();
+  if (!address || typeof address === "string") throw new Error("missing test address");
+  const base = `http://127.0.0.1:${address.port}/api/reactions`;
+  
+  try {
+    const unauthResponse = await fetch(`${base}/editor/registry-refresh`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ ruUrl: `${mockBase}/ru.json`, enUrl: `${mockBase}/en.json` }),
+    });
+    assert.equal(unauthResponse.status, 401);
+    
+    const refreshResponse = await fetch(`${base}/editor/registry-refresh`, {
+      method: "POST",
+      headers: { "content-type": "application/json", authorization: "Bearer test-editor-token" },
+      body: JSON.stringify({ ruUrl: `${mockBase}/ru.json`, enUrl: `${mockBase}/en.json` }),
+    });
+    assert.equal(refreshResponse.status, 200);
+    const refreshResult = await refreshResponse.json();
+    assert.equal(refreshResult.ok, true);
+    assert.equal(refreshResult.ruCount, 1);
+    assert.equal(refreshResult.enCount, 1);
+    assert.equal(refreshResult.uniqueCount, 2);
+    assert.ok(refreshResult.snapshotId);
+    assert.ok(refreshResult.expiresAt);
+  } finally {
+    if (mockServer.listening) await new Promise<void>((resolve) => mockServer.close(() => resolve()));
+    if (server.listening) await new Promise<void>((resolve) => server.close(() => resolve()));
+    store.close();
+    rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+test("HTTP E2E: admin registry-refresh with RU-only when allowed", async () => {
+  const directory = mkdtempSync(path.join(os.tmpdir(), "reactions-e2e-"));
+  const dbPath = path.join(directory, "test.sqlite");
+  const store = new ReactionStore(dbPath, "synthetic");
+  const app = express();
+  
+  const mockReports = express();
+  mockReports.get("/ru.json", (_req, res) => {
+    res.json({
+      srt_levels: [{
+        events: [{
+          title: "RU only",
+          description: "RU description",
+          sources: ["https://example.com/ru"],
+        }],
+      }],
+    });
+  });
+  
+  const mockServer = createServer(mockReports);
+  await new Promise<void>((resolve) => mockServer.listen(0, "127.0.0.1", resolve));
+  const mockAddress = mockServer.address();
+  if (!mockAddress || typeof mockAddress === "string") throw new Error("missing mock address");
+  const mockBase = `http://127.0.0.1:${mockAddress.port}`;
+  
+  app.use("/api/reactions", express.json(), createReactionRouter({
+    store,
+    allowedOrigins: ["http://127.0.0.1"],
+    adminToken: "test-editor-token",
+    allowRuOnly: true,
+  }));
+  
+  const server = createServer(app);
+  await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
+  const address = server.address();
+  if (!address || typeof address === "string") throw new Error("missing test address");
+  const base = `http://127.0.0.1:${address.port}/api/reactions`;
+  
+  try {
+    const refreshResponse = await fetch(`${base}/editor/registry-refresh`, {
+      method: "POST",
+      headers: { "content-type": "application/json", authorization: "Bearer test-editor-token" },
+      body: JSON.stringify({ ruUrl: `${mockBase}/ru.json` }),
+    });
+    assert.equal(refreshResponse.status, 200);
+    const refreshResult = await refreshResponse.json();
+    assert.equal(refreshResult.ok, true);
+    assert.equal(refreshResult.ruCount, 1);
+    assert.equal(refreshResult.enCount, 1);
+    assert.equal(refreshResult.uniqueCount, 1);
+  } finally {
+    if (mockServer.listening) await new Promise<void>((resolve) => mockServer.close(() => resolve()));
+    if (server.listening) await new Promise<void>((resolve) => server.close(() => resolve()));
+    store.close();
+    rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+test("HTTP E2E: admin registry-refresh rejects invalid report", async () => {
+  const directory = mkdtempSync(path.join(os.tmpdir(), "reactions-e2e-"));
+  const dbPath = path.join(directory, "test.sqlite");
+  const store = new ReactionStore(dbPath, "synthetic");
+  const app = express();
+  
+  const mockReports = express();
+  mockReports.get("/invalid.json", (_req, res) => {
+    res.json({ srt_levels: "invalid" });
+  });
+  
+  const mockServer = createServer(mockReports);
+  await new Promise<void>((resolve) => mockServer.listen(0, "127.0.0.1", resolve));
+  const mockAddress = mockServer.address();
+  if (!mockAddress || typeof mockAddress === "string") throw new Error("missing mock address");
+  const mockBase = `http://127.0.0.1:${mockAddress.port}`;
+  
+  app.use("/api/reactions", express.json(), createReactionRouter({
+    store,
+    allowedOrigins: ["http://127.0.0.1"],
+    adminToken: "test-editor-token",
+    allowRuOnly: true,
+  }));
+  
+  const server = createServer(app);
+  await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
+  const address = server.address();
+  if (!address || typeof address === "string") throw new Error("missing test address");
+  const base = `http://127.0.0.1:${address.port}/api/reactions`;
+  
+  try {
+    const refreshResponse = await fetch(`${base}/editor/registry-refresh`, {
+      method: "POST",
+      headers: { "content-type": "application/json", authorization: "Bearer test-editor-token" },
+      body: JSON.stringify({ ruUrl: `${mockBase}/invalid.json` }),
+    });
+    assert.equal(refreshResponse.status, 400);
+    const result = await refreshResponse.json();
+    assert.equal(result.error, "invalid_report_levels");
+  } finally {
+    if (mockServer.listening) await new Promise<void>((resolve) => mockServer.close(() => resolve()));
+    if (server.listening) await new Promise<void>((resolve) => server.close(() => resolve()));
+    store.close();
+    rmSync(directory, { recursive: true, force: true });
+  }
+});
