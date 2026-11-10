@@ -7,11 +7,11 @@ async function main() {
   const store = new ReactionStore(config.dbPath, config.namespace);
   const [command, value, extra, origin] = process.argv.slice(2);
   try {
-    if (command === "registry-refresh-set" && value && extra) {
+    if (command === "registry-refresh-set" && value) {
       const refreshed = await refreshRegistrySetFromFiles(
-        store, value, extra, origin, new Date().toISOString(), config.registryTtlHours,
+        store, value, extra || undefined, origin, new Date().toISOString(), config.registryTtlHours, config.allowRuOnly,
       );
-      console.log(JSON.stringify({ command, ruSource: value, enSource: extra, ...refreshed }));
+      console.log(JSON.stringify({ command, ruSource: value, enSource: extra || null, ...refreshed }));
     } else if (command === "purge-before" && value && Number.isFinite(Date.parse(value))) {
       console.log(JSON.stringify({ command, cutoff: new Date(value).toISOString(), ...store.purgeBefore(new Date(value).toISOString()) }));
     } else if (command === "purge-retention") {
@@ -22,7 +22,7 @@ async function main() {
     } else if (command === "delete-browser" && value) {
       console.log(JSON.stringify({ command, browserId: value, ...store.deleteBrowser(value) }));
     } else {
-      throw new Error("usage: reactions:cli -- registry-refresh-set <ru-report.json> <en-report.json> [site-origin] | purge-before <ISO> | purge-retention [days] | delete-browser <browserId>");
+      throw new Error("usage: reactions:cli -- registry-refresh-set <ru-report.json> [en-report.json] [site-origin] | purge-before <ISO> | purge-retention [days] | delete-browser <browserId>");
     }
   } finally {
     store.close();

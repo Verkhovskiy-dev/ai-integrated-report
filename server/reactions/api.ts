@@ -1,6 +1,7 @@
 import crypto from "node:crypto";
 import { Router, type Request, type Response } from "express";
 import { REACTIONS, ReactionStore, RevisionConflict, type Reaction, type ReactionWrite } from "./store";
+import { refreshRegistrySetFromUrls } from "./registry";
 
 const ID_PATTERN = /^[a-zA-Z0-9][a-zA-Z0-9:_-]{7,127}$/;
 const EVENT_ID_PATTERN = /^[0-9a-f]{8}-[0-9a-f-]{27,36}$/i;
@@ -9,6 +10,7 @@ export interface ReactionApiOptions {
   store: ReactionStore;
   allowedOrigins: string[];
   adminToken?: string;
+  allowRuOnly?: boolean;
   rateLimitPerMinute?: number;
   now?: () => Date;
 }
@@ -80,7 +82,7 @@ function authorized(req: Request, token?: string) {
   return a.length === b.length && crypto.timingSafeEqual(a, b);
 }
 
-export function createReactionRouter({ store, allowedOrigins, adminToken, rateLimitPerMinute = 60, now = () => new Date() }: ReactionApiOptions) {
+export function createReactionRouter({ store, allowedOrigins, adminToken, allowRuOnly = false, rateLimitPerMinute = 60, now = () => new Date() }: ReactionApiOptions) {
   const router = Router();
   const rate = new Map<string, number[]>();
   const ipSalt = crypto.randomBytes(32);
@@ -186,6 +188,39 @@ export function createReactionRouter({ store, allowedOrigins, adminToken, rateLi
       const message = error instanceof Error ? error.message : "internal_error";
       if (message.startsWith("invalid_")) return res.status(400).json({ error: message });
       console.error("reaction_events_read_failed", error);
+      res.status(500).json({ error: "internal_error" });
+    }
+  });
+
+  router.post("/editor/registry-refresh", async (req: Request, res: Response) => {
+    try {
+      const body = req.body as Record<string, unknown>;
+      const ruUrl = url(body.ruUrl, "ruUrl") ?? "https://verkhovskiy.ai/data/latest-report.json";
+      const enUrl = url(body.enUrl, "enUrl", true) ?? (allowRuOnly ? undefined : "https://verkhovskiy.ai/data/latest-report.en.json");
+      const siteOrigin = url(body.siteOrigin, "siteOrigin", true) ?? "https://verkhovskiy.ai";
+      const refreshedAt = now().toISOString();
+      const ttlHours = typeof body.ttlHours === "number" && body.ttlHours > 0 && body.ttlHours <= 168 ? body.ttlHours : 24;
+      
+      const result = await refreshRegistrySetFromUrls(
+        store,
+        ruUrl,
+        enUrl,
+        siteOrigin,
+        refreshedAt,
+        ttlHours,
+        allowRuOnly,
+      );
+      
+      res.json({ ok: true, ...result });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "internal_error";
+      if (message.startsWith("invalid_") || message === "en_report_url_required") {
+        return res.status(400).json({ error: message });
+      }
+      if (message.startsWith("http_")) {
+        return res.status(502).json({ error: "upstream_fetch_failed", detail: message });
+      }
+      console.error("registry_refresh_failed", error);
       res.status(500).json({ error: "internal_error" });
     }
   });
