@@ -1,7 +1,7 @@
 {
   "lastUpdated": "2026-11-11",
-  "weeklyCount": 22,
-  "weeklyTrend": "stable",
+  "weeklyCount": 30,
+  "weeklyTrend": "up",
   "events": [
     {
       "date": "2026-11-11",
@@ -66,6 +66,51 @@
       "event": "Disney и Adobe объявили о многолетнем партнерстве для разработки генеративных AI моделей, поддерживающих производственный процесс Disney.",
       "impact": "medium",
       "source": "https://www.theverge.com/tech/1029773/disney-adobe-generative-ai-partnership"
+    },
+    {
+      "date": "2026-11-10",
+      "model": "OpenAI API",
+      "vendor": "OpenAI",
+      "event": "Singapore Airlines использует модели OpenAI и API для улучшения поддержки клиентов и повышения производительности сотрудников.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/singapore-airlines-travel-work"
+    },
+    {
+      "date": "2026-11-09",
+      "model": "ChatGPT Enterprise",
+      "vendor": "OpenAI",
+      "event": "ChatGPT Enterprise теперь доступен в AWS Marketplace, упрощая закупки для организаций через AWS.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/chatgpt-enterprise-aws-marketplace"
+    },
+    {
+      "date": "2026-11-09",
+      "model": "OpenAI research infrastructure models",
+      "vendor": "OpenAI",
+      "event": "Внедрена система Control Room для отслеживания и остановки рабочих нагрузок моделей при возникновении проблем с безопасностью.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/control-room"
+    },
+    {
+      "date": "2026-11-09",
+      "model": "Codex",
+      "vendor": "OpenAI",
+      "event": "CodeRabbit использует модели OpenAI и Codex для масштабирования разработки программного обеспечения и увеличения выпуска в 20 раз.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/coderabbit-codex-daybreak"
+    },
+    {
+      "date": "2026-11-09",
+      "model": "OpenAI API",
+      "vendor": "OpenAI",
+      "event": "Kuken Industries применяет OpenAI API для быстрого поиска чертежей, сокращая время поиска с часа до 4.5 минут.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/kuken"
     },
     {
       "date": "2026-11-08",
@@ -204,155 +249,6 @@
       "event": "Google позволит школам отключать AI инструменты, но при этом они потеряют доступ к поиску, так как AI функции интегрированы в поисковую систему.",
       "impact": "medium",
       "source": "https://techcrunch.com/2026/11/03/google-will-let-schools-disable-its-ai-tools-but-not-without-sacrificing-search/"
-    },
-    {
-      "date": "2026-11-04",
-      "vendor": "Apple",
-      "model": "App Store rules",
-      "event": "Apple вводит новые правила App Store, требующие рейтинга 18+ для приложений знакомств и AI-компаньонов, предлагающих сексуальный или романтический контент.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/11/03/apple-restricts-dating-apps-and-ai-companions-to-users-18-and-up/"
-    },
-    {
-      "date": "2026-11-04",
-      "model": "GPT-5.6 Cyber",
-      "vendor": "OpenAI",
-      "event": "Модель GPT-5.6 Cyber стала доступна для клиентов AWS GovCloud (US-East) через Amazon Bedrock для задач кибербезопасности.",
-      "impact": "major",
-      "category": "release",
-      "url": "https://openai.com/index/daybreak-red-aws-govcloud"
-    },
-    {
-      "date": "2026-11-04",
-      "model": "Images 2.6",
-      "vendor": "OpenAI",
-      "event": "Выпущена версия Images 2.6 с ускоренной генерацией изображений, созданием GIF, более точным редактированием и новыми API контролями.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/introducing-images-2-6"
-    },
-    {
-      "date": "2026-11-04",
-      "model": "GPT-6.1 Sol",
-      "vendor": "DevRev",
-      "event": "DevRev использует GPT-6.1 Sol для автономного самообслуживания, обеспечивая баланс между рассуждениями, скоростью и стоимостью для корпоративных сервисов.",
-      "impact": "major",
-      "category": "release",
-      "url": "https://openai.com/index/devrev-enterprise-self-service"
-    },
-    {
-      "date": "2026-11-04",
-      "model": "Codex",
-      "vendor": "OpenAI",
-      "event": "OpenAI приобретает Pierre Computer Company для расширения возможностей Codex в создании, понимании и обзоре кода.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/openai-to-acquire-pierre"
-    },
-    {
-      "date": "2026-11-04",
-      "model": "GPT-6.1 Sol",
-      "vendor": "OpenAI",
-      "event": "DevRev внедряет GPT-6.1 Sol для автономного самообслуживания, обеспечивая баланс между рассуждением, скоростью и стоимостью для корпоративных сервисов.",
-      "impact": "major",
-      "category": "release",
-      "url": "https://openai.com/index/devrev-enterprise-self-service"
-    },
-    {
-      "date": "2026-11-03",
-      "vendor": "Google",
-      "model": "Dreambeans",
-      "event": "Google расширяет поддержку Dreambeans, своего последнего AI-эксперимента, на 13 индийских языков.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/11/02/google-takes-dreambeans-to-india-in-bid-to-bring-ai-generated-personal-stories-to-the-masses/"
-    },
-    {
-      "date": "2026-11-03",
-      "vendor": "Trajectory",
-      "model": "AI model training",
-      "event": "Стартап Trajectory привлек $45 миллионов для упрощения обучения AI моделей для нетехнических специалистов, оценка компании достигла $300 миллионов.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/11/02/trajectory-raises-45m-to-make-ai-model-training-accessible-to-nontechnical-experts/"
-    },
-    {
-      "date": "2026-11-03",
-      "vendor": "Anthropic",
-      "model": "RSI capability",
-      "event": "Anthropic предупреждает о приближении к возможности RSI, что может привести к значительному ускорению возможностей AI.",
-      "impact": "high",
-      "source": "https://techcrunch.com/2026/11/02/anthropic-warns-that-its-very-close-to-rsi-capability-aka-self-building-ai/"
-    },
-    {
-      "date": "2026-11-03",
-      "vendor": "42AI",
-      "model": "World model",
-      "event": "42AI вышла из тени с $62,5 миллионами и моделью мира, способной предсказывать поведение человека.",
-      "impact": "high",
-      "source": "https://techcrunch.com/2026/11/02/42ai-comes-out-of-stealth-with-62-5m-and-a-world-model-that-can-predict-human-behavior/"
-    },
-    {
-      "date": "2026-11-02",
-      "vendor": "OpenAI",
-      "model": "AI Training Preferences",
-      "event": "OpenAI будет поддерживать общий сигнал robots.txt, чтобы помочь операторам веб-сайтов сообщать свои предпочтения в обучении ИИ участвующим провайдерам.",
-      "impact": "medium",
-      "source": "https://openai.com/index/helping-websites-express-ai-training-preferences"
-    },
-    {
-      "date": "2026-11-02",
-      "vendor": "xAI",
-      "model": "Data Center Pollution Lawsuit",
-      "event": "Судья разрешил продолжить иск NAACP против xAI, обвиняющий компанию в нарушении Закона о чистом воздухе.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/10/31/judge-allows-naacp-lawsuit-over-xai-data-center-pollution-to-move-forward/"
-    },
-    {
-      "date": "2026-11-01",
-      "vendor": "OpenAI",
-      "model": "Funding Round",
-      "event": "OpenAI снизила целевой показатель финансирования для нового раунда.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/10/31/openai-reportedly-lowers-funding-target-for-new-round/"
-    },
-    {
-      "date": "2026-11-01",
-      "vendor": "Nvidia",
-      "model": "Nscale AI Data Center",
-      "event": "Nvidia рассматривает возможность стать поручителем для AI дата-центра Nscale в Западной Вирджинии.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/10/30/nvidia-weighs-playing-the-cosigner-for-nscales-ai-data-center-in-west-virginia/"
-    },
-    {
-      "date": "2026-10-31",
-      "vendor": "TechCrunch",
-      "model": "Ollie",
-      "event": "AI-ассистент Ollie, ориентированный на конфиденциальность, будет закрыт через неделю.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/10/30/ollie-a-privacy-focused-ai-assistant-is-shutting-down/"
-    },
-    {
-      "date": "2026-10-31",
-      "vendor": "Google",
-      "model": "Gemma 4",
-      "event": "Первый спутник с AI-сервером от Google передал свой первый ответ на Землю.",
-      "impact": "medium",
-      "source": "https://www.theverge.com/tech/1023528/google-project-suncatcher-ai-satellite-transmission"
-    },
-    {
-      "date": "2026-10-31",
-      "vendor": "Anthropic",
-      "model": "IPO",
-      "event": "Anthropic ожидает получения высокого рейтинга 'мусорных' облигаций от кредитных агентств после IPO.",
-      "impact": "high",
-      "source": "https://techcrunch.com/2026/10/30/anthropic-expected-to-receive-high-junk-rating-from-credit-agencies-following-ipo-report-says/"
-    },
-    {
-      "date": "2026-10-30",
-      "vendor": "OpenAI",
-      "model": "Thrive Holdings",
-      "event": "OpenAI поддерживает Thrive Holdings в приобретении ADT за $15,3 миллиарда, планируя внедрить AI в бизнес домашней безопасности.",
-      "impact": "medium",
-      "source": "https://techcrunch.com/2026/10/29/openai-backed-thrive-holdings-acquires-adt/"
     }
   ]
 }
