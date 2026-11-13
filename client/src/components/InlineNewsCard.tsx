@@ -7,7 +7,8 @@ import { visibleNewsSources } from '@/data/inlineNews';
 import { ShareButton } from '@/components/ShareableBlock';
 import { buildShareId } from '@/lib/share';
 import NewsReactions from '@/components/NewsReactions';
-import { mapNewsToPlace } from '@/data/newsPlaceMapping';
+import { resolvePlace } from '@/data/newsPlaceMapping';
+import type { Place } from '@/data/placesData';
 import './inline-news.css';
 
 interface Props {
@@ -23,16 +24,20 @@ interface Props {
     srt_significance?: string;
     why_important?: string;
     watch_next?: string | string[];
+    place_id?: string | null;
+    place_confidence?: number;
+    place_reason?: string;
   };
   executive?: ExecutiveLookup;
   loading: boolean;
   isEn: boolean;
   accentColor: string;
   rank?: number;
+  placesMap?: Map<string, Place>;
 }
 
 /** Expandable news card with progressive multi-step disclosure. */
-export default function InlineNewsCard({ item, executive, loading, isEn, accentColor, rank }: Props) {
+export default function InlineNewsCard({ item, executive, loading, isEn, accentColor, rank, placesMap }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [openSections, setOpenSections] = useState<Set<string>>(new Set());
   const id = buildShareId('news', item.title);
@@ -91,12 +96,8 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
 
   const relatedLevelsText = formatRelatedLevels(item.related_levels);
 
-  // Map news item to SRT place
-  const placeMapping = mapNewsToPlace({
-    level: item.level,
-    title: item.title,
-    description: item.description,
-  });
+  // Resolve place from AIwatcher-provided place_id
+  const placeResolution = placesMap ? resolvePlace(item, placesMap) : null;
 
   return (
     <article id={id} className="inline-news-card" aria-labelledby={`${id}-headline`}>
@@ -189,7 +190,7 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
             )}
 
             {/* SRT Place - location in the Division of Labor map */}
-            {placeMapping && (
+            {placeResolution && (
               <div className="accordion-section">
                 <button
                   type="button"
@@ -209,17 +210,22 @@ export default function InlineNewsCard({ item, executive, loading, isEn, accentC
                 </button>
                 {openSections.has('place') && (
                   <div className="accordion-content">
-                    <p className="section-content" style={{ marginBottom: '0.75rem' }}>
+                    <p className="section-content" style={{ marginBottom: placeResolution.reason ? '0.5rem' : '0.75rem' }}>
                       <span className="inline-flex items-center gap-1.5">
                         <span className="font-medium" style={{ color: '#06b6d4' }}>
-                          {isEn ? 'Level' : 'Уровень'} {placeMapping.place.level}
+                          {isEn ? 'Level' : 'Уровень'} {placeResolution.place.srt_level}
                         </span>
                         <span className="text-muted-foreground">•</span>
-                        <span>{placeMapping.place.name}</span>
+                        <span>{placeResolution.place.name}</span>
                       </span>
                     </p>
+                    {placeResolution.reason && (
+                      <p className="section-content text-muted-foreground/80" style={{ fontSize: '0.688rem', marginBottom: '0.75rem' }}>
+                        {placeResolution.reason}
+                      </p>
+                    )}
                     <Link
-                      href={`/positions?place=${placeMapping.placeId}`}
+                      href={`/positions?place=${placeResolution.place.id}`}
                       className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors px-3 py-2 rounded-md bg-primary/5 hover:bg-primary/10 border border-primary/20"
                     >
                       <MapPin size={14} />
