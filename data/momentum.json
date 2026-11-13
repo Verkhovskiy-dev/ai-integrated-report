@@ -4146,29 +4146,17 @@
   },
   {
     "date": "2026-11-13",
-    "generated_at": "2026-11-13T05:02:51.903Z",
+    "generated_at": "2026-11-13T17:03:40.994Z",
     "trends": [
       {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 58,
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": 66,
         "category": "accelerating",
-        "rationale": "Вчера 53 → сегодня 58: Nebius заявил $40 млрд планируемых расходов, а Samsung обсуждает покупку поставщика охлаждения Modine.",
+        "rationale": "Вчера 54 → сегодня 66: добавились Coons против Lutnick, обвинение Treasury к Commerce, расследования Malaysia и Singapore по 917 серверам и распродажа китайских AI-акций.",
         "levels": [
-          9,
-          5,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 64,
-        "category": "accelerating",
-        "rationale": "Вчера 70 → сегодня 64: сигнал смешанный, потому что EIA ждёт рост батарей, но SoftBank потерял более $3 млрд на турбинах для ИИ-дата-центров.",
-        "levels": [
-          1,
+          8,
+          4,
           2,
           9
         ],
@@ -4177,35 +4165,22 @@
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 91,
+        "momentum": 94,
         "category": "accelerating",
-        "rationale": "Вчера 86 → сегодня 91: демократы начали новое расследование Nvidia, ЕС готовит первые переговоры лидеров по ИИ, а группа Trump обсуждала ИИ-кибератаки.",
+        "rationale": "Вчера 91 → сегодня 94: помимо американского экспортного спора, появился сигнал Ghana о разрыве между внедрением AI и готовностью надзора.",
         "levels": [
           8,
           5,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "chip-export-control",
-        "name": "Экспортный контроль чипов",
-        "momentum": 54,
-        "category": "accelerating",
-        "rationale": "Вчера 43 → сегодня 54: Nvidia частно признала техническую возможность отслеживания чипов, Malaysia усилила проверку Megaspeed, Singapore предъявил новое обвинение.",
-        "levels": [
-          4,
-          8,
-          5
+          7
         ],
         "is_new": false
       },
       {
         "id": "agentic-platforms",
         "name": "Агентные AI-платформы",
-        "momentum": 50,
+        "momentum": 62,
         "category": "accelerating",
-        "rationale": "Вчера 54 → сегодня 50: Muse и Nectar расширили коммерческие функции агентов, но United запретила ИИ-агентов для бронирования из-за киберрисков.",
+        "rationale": "Вчера 50 → сегодня 62: ChatGPT Wallet переводит агента к покупкам, Claude Duet продвигает потребительский сценарий, FT обсуждает отдельный канал доступа для агентов.",
         "levels": [
           5,
           6,
@@ -4216,51 +4191,64 @@
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
-        "momentum": 69,
+        "momentum": 76,
         "category": "accelerating",
-        "rationale": "Вчера 63 → сегодня 69: United сослалась на кибербезопасность при запрете агентов, а исследование Podqi нашло рискованные ссылки в ответах чат-ботов.",
+        "rationale": "Вчера 69 → сегодня 76: CACM поставил вопрос управления и аудита групп агентов в финансовом институте, а ChatGPT Wallet добавляет транзакционный риск.",
         "levels": [
+          6,
           8,
-          5,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": 37,
-        "category": "emerging",
-        "rationale": "Сегодня Google развернул Gemini 4 Hydrogen в поиске и приложении Gemini, усилив закрытый модельный слой как интерфейс доступа к сложным запросам.",
-        "levels": [
-          4,
-          5,
-          8
+          9
         ],
         "is_new": false
       },
       {
         "id": "open-weight-models",
         "name": "Open-weight модели",
-        "momentum": 31,
+        "momentum": 38,
         "category": "emerging",
-        "rationale": "Сегодня CEO Hugging Face публично пообещал продолжить борьбу за открытый ИИ после ухода Хуанга, удерживая повестку open-weight моделей в поле доверия.",
+        "rationale": "Вчера 31 → сегодня 38: llama.cpp v1.0.0 укрепляет локальный AI-стек, а TechCrunch отдельно поднял вопрос будущей поддержки открытого AI в Nvidia.",
         "levels": [
-          8,
+          4,
           6,
-          5
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 63,
+        "category": "accelerating",
+        "rationale": "Вчера 58 → сегодня 63: Nscale раскрыл $5,5 млрд долга перед IPO, Anthropic обсуждается через расходы на вычисления, Cerebras показал новые сделки и задержку контракта с OpenAI.",
+        "levels": [
+          9,
+          5,
+          2,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 40,
+        "category": "accelerating",
+        "rationale": "Вчера 37 → сегодня 40: ChatGPT Wallet и Claude Duet показывают, что закрытые модельные платформы расширяются в пользовательские агентные контуры.",
+        "levels": [
+          5,
+          6
         ],
         "is_new": false
       },
       {
         "id": "ai-talent-market",
         "name": "Рынок AI-талантов",
-        "momentum": 45,
+        "momentum": 48,
         "category": "accelerating",
-        "rationale": "Вчера 42 → сегодня 45: сотрудники Google DeepMind обратились к правительству Великобритании по профсоюзу, а разработчики игр чаще используют генеративный ИИ.",
+        "rationale": "Вчера 45 → сегодня 48: St. Vincent College запускает AI-минор, а TechCrunch сообщил о сомнениях Хуанга в преемственности руководства Nvidia.",
         "levels": [
           3,
-          8,
+          7,
           5
         ],
         "is_new": false
@@ -4268,13 +4256,13 @@
       {
         "id": "ai-market-repricing",
         "name": "Переоценка AI-активов",
-        "momentum": -17,
+        "momentum": -23,
         "category": "decelerating",
-        "rationale": "Вчера -12 → сегодня -17: рекордные розничные покупки Nvidia после ухода CEO показывают волатильную переоценку вокруг управленческого риска, а не спокойную стабилизацию.",
+        "rationale": "Вчера -17 → сегодня -23: китайские AI-акции снизились из-за риска ограничений Nvidia, европейские акции упали на AI-опасениях, а Nscale раскрыл значительный долг.",
         "levels": [
           9,
-          4,
-          8
+          8,
+          5
         ],
         "is_new": false
       }
