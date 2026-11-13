@@ -4,754 +4,777 @@
     {
       "level": 9,
       "name": "Денежная система",
-      "level_summary": "Сегодня денежный уровень дал два разных сигнала: финансирование ИИ-инфраструктуры через предоплаты и займы у Nebius и публичный сбор капитала китайским производителем ИИ-чипов в Гонконге. Отдельно розничные покупки Nvidia показывают, что финансовая реакция на управленческий кризис стала самостоятельным событием.",
+      "level_summary": "Новые сигналы уровня 9 связаны не с очередным финансированием, а с раскрытием долгов, оценок и рыночной реакции вокруг AI-инфраструктуры. Капитал начинает требовать большей проверяемости зависимости от вычислений, чипов и экспортных ограничений.",
       "events": [
         {
-          "title": "Nebius планирует $40 млрд расходов на ИИ-инфраструктуру",
-          "fact": "TechCrunch сообщил, что Nebius планирует профинансировать расширение ИИ-инфраструктуры на $40 млрд за счёт предоплат клиентов и займов. В материале также упомянуты задержки на дата-центре Microsoft.",
-          "why_important": "Если планы будут реализованы, Nebius может существенно нарастить инфраструктурные мощности, но модель финансирования через предоплаты и займы повышает зависимость от спроса клиентов и доступности капитала.",
-          "description": "TechCrunch сообщил, что Nebius планирует профинансировать расширение ИИ-инфраструктуры на $40 млрд за счёт предоплат клиентов и займов. В материале также упомянуты задержки на дата-центре Microsoft.",
+          "title": "Anthropic может выйти на IPO с оценкой $1,4 трлн",
+          "fact": "Bloomberg сообщил, что потенциальное IPO Anthropic привлекает высокий спрос инвесторов и обсуждается с целевой оценкой $1,4 трлн. В сюжете также упомянуты расходы на вычисления, сжигание денег, неопределённая прибыльность и необычные продажи акций инсайдерами.",
+          "why_important": "Если информация подтвердится, это может стать крупной проверкой готовности рынка финансировать AI-компании с высокими затратами и неясной прибыльностью.",
+          "description": "Bloomberg сообщил, что потенциальное IPO Anthropic привлекает высокий спрос инвесторов и обсуждается с целевой оценкой $1,4 трлн. В сюжете также упомянуты расходы на вычисления, сжигание денег, неопределённая прибыльность и необычные продажи акций инсайдерами.",
+          "related_levels": [
+            4,
+            5
+          ],
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-11-13/anthropic-ipo-ai-s-1-4t-test-video"
+          ],
+          "srt_significance": "Ур. 9 → Ур. 4: рынок капитала начинает оценивать модельные компании через стоимость вычислений и устойчивость инфраструктуры.",
+          "watch_next": "Следить за подачей проспекта IPO Anthropic и раскрытием расходов на вычисления.",
+          "place_id": null,
+          "place_confidence": 0.46,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://www.bloomberg.com/news/videos/2026-11-13/anthropic-ipo-ai-s-1-4t-test-video",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "high",
+            "rationale": "Потенциальное IPO Anthropic с обсуждаемой оценкой $1,4 трлн затрагивает крупный сегмент AI-рынка и может влиять на ожидания инвесторов к сектору."
+          },
+          "news_id": "news_f139efce7c74ba932980",
+          "content_version": "cv_24e942ae1c59d6759657"
+        },
+        {
+          "title": "Nscale раскрыл $5,5 млрд долга перед IPO",
+          "fact": "Bloomberg сообщил, что девелопер дата-центров Nscale раскрыл $5,5 млрд долга и более тесную зависимость от Nvidia перед планируемым IPO. В материале сказано, что компании нужны дополнительные средства.",
+          "why_important": "Это важно для оценки устойчивости бизнес-модели дата-центров, так как высокий долг и зависимость от ключевого поставщика могут повысить риск для инвесторов перед IPO.",
+          "description": "Bloomberg сообщил, что девелопер дата-центров Nscale раскрыл $5,5 млрд долга и более тесную зависимость от Nvidia перед планируемым IPO. В материале сказано, что компании нужны дополнительные средства.",
           "related_levels": [
             2,
             5
           ],
           "sources": [
-            "https://techcrunch.com/2026/11/12/nebius-tests-the-neocloud-playbook-with-40-billion-in-planned-spending/"
+            "https://www.bloomberg.com/news/articles/2026-11-13/neocloud-nscale-reveals-5-5-billion-debt-and-closer-nvidia-ties-ahead-of-ipo"
           ],
-          "srt_significance": "Ур. 9 → Ур. 2: финансовая схема Nebius связывает займы и предоплаты с размещением ИИ-инфраструктуры.",
-          "watch_next": "Следить за подписанными предоплатами клиентов Nebius и сроками ввода дата-центров.",
+          "srt_significance": "Ур. 9 → Ур. 2: долговое финансирование напрямую задаёт темп строительства вычислительных площадок.",
+          "watch_next": "Следить за условиями IPO Nscale и раскрытием контрактов с Nvidia.",
           "place_id": "srt9-ai-capex-optimization",
-          "place_confidence": 0.78,
-          "place_reason": "Новость прямо описывает план капитальных расходов на ИИ-инфраструктуру.",
+          "place_confidence": 0.7,
+          "place_reason": "Новость раскрывает структуру капитальных затрат и долга AI-инфраструктуры.",
           "sources_meta": [
             {
-              "url": "https://techcrunch.com/2026/11/12/nebius-tests-the-neocloud-playbook-with-40-billion-in-planned-spending/",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "importance": {
-            "level": "high",
-            "rationale": "Заявленный план расходов на $40 млрд для ИИ-инфраструктуры указывает на крупный масштаб финансирования и потенциальное влияние на рынок neocloud и дата-центров."
-          },
-          "news_id": "news_fb1ddd2a5ff741f61902",
-          "content_version": "cv_268ec0dac71f633a78e6"
-        },
-        {
-          "title": "SigmaStar готовит листинг в Гонконге на $300 млн",
-          "fact": "Bloomberg сообщил, что китайский производитель ИИ-чипов SigmaStar Technology планирует привлечь до $300 млн через листинг в Гонконге уже в этом году. Источник ссылается на людей, знакомых с вопросом.",
-          "why_important": "Если листинг состоится, SigmaStar может получить капитал для развития, а рынок получит дополнительный ориентир оценки китайских производителей ИИ-чипов.",
-          "description": "Bloomberg сообщил, что китайский производитель ИИ-чипов SigmaStar Technology планирует привлечь до $300 млн через листинг в Гонконге уже в этом году. Источник ссылается на людей, знакомых с вопросом.",
-          "related_levels": [
-            4,
-            8
-          ],
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-11-13/china-chipmaker-sigmastar-said-to-plan-300-million-hk-listing"
-          ],
-          "srt_significance": "Ур. 9 → Ур. 4: листинг переводит разработку китайских ИИ-чипов в публичный контур финансирования.",
-          "watch_next": "Следить за подачей проспекта SigmaStar и раскрытием структуры выручки от ИИ-чипов.",
-          "place_id": "srt9-hk-listing-bridge",
-          "place_confidence": 0.9,
-          "place_reason": "Новость прямо касается листинга ИИ-чипмейкера в Гонконге.",
-          "sources_meta": [
-            {
-              "url": "https://www.bloomberg.com/news/articles/2026-11-13/china-chipmaker-sigmastar-said-to-plan-300-million-hk-listing",
+              "url": "https://www.bloomberg.com/news/articles/2026-11-13/neocloud-nscale-reveals-5-5-billion-debt-and-closer-nvidia-ties-ahead-of-ipo",
               "domain": "",
               "published_at": "2026-11-13"
             }
           ],
           "importance": {
             "level": "medium",
-            "rationale": "Потенциальный листинг до $300 млн важен для компании и сектора ИИ-чипов, но масштаб сделки ограничен и основан на сообщении со ссылкой на неназванных людей."
+            "rationale": "Раскрытие $5,5 млрд долга перед IPO существенно для оценки риска Nscale, но evidence ограничен одной сводкой без деталей сделки и финансов."
           },
-          "news_id": "news_ad58f53ad32cd538daeb",
-          "content_version": "cv_a749c613f455cbf4bac0"
+          "news_id": "news_75ce1dae0dc2dd85ac8b",
+          "content_version": "cv_2dcebd343d1b8fb00c2f"
         },
         {
-          "title": "Розничные инвесторы активно покупали Nvidia после ухода CEO",
-          "fact": "Bloomberg со ссылкой на Vanda сообщил о рекордной открытой розничной покупке акций Nvidia после ухода Дженсена Хуанга. В заметке сказано, что инвесторы рассчитывали на восстановление компании.",
-          "why_important": "Такое поведение может отражать сильную веру розничных инвесторов в восстановление Nvidia, однако без дополнительных данных нельзя оценить устойчивость спроса или влияние на фундаментальные показатели.",
-          "description": "Bloomberg со ссылкой на Vanda сообщил о рекордной открытой розничной покупке акций Nvidia после ухода Дженсена Хуанга. В заметке сказано, что инвесторы рассчитывали на восстановление компании.",
+          "title": "Распродажа китайских AI-акций усилилась из-за Nvidia",
+          "fact": "Financial Times сообщил, что распродажа китайских AI-акций усилилась на фоне опасений более жёстких ограничений на чипы Nvidia. В материале отмечено, что ушедший CEO Дженсен Хуанг поддерживал сохранение продаж в Китай.",
+          "why_important": "",
+          "description": "Financial Times сообщил, что распродажа китайских AI-акций усилилась на фоне опасений более жёстких ограничений на чипы Nvidia. В материале отмечено, что ушедший CEO Дженсен Хуанг поддерживал сохранение продаж в Китай.",
           "related_levels": [
             4,
             8
           ],
           "sources": [
-            "https://www.bloomberg.com/news/articles/2026-11-13/nvidia-sees-record-open-retail-buy-after-ceo-ousted-vanda-says"
+            "https://www.ft.com/content/0d4e93e4-895e-4ae0-a01b-833a3ed440a8?syn-25a6b1a6=1"
           ],
-          "srt_significance": "Ур. 9 → Ур. 4: капитал продолжает поддерживать аппаратный слой, несмотря на сбой управления в ключевой фирме.",
-          "watch_next": "Следить за чистыми потоками розничных покупок Nvidia в данных Vanda за следующую неделю.",
-          "place_id": null,
-          "place_confidence": 0,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://www.bloomberg.com/news/articles/2026-11-13/nvidia-sees-record-open-retail-buy-after-ceo-ousted-vanda-says",
-              "domain": "",
-              "published_at": "2026-11-13"
-            }
-          ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Рекордная розничная покупка акций Nvidia указывает на заметный сдвиг рыночного поведения, но факт не содержит данных о долгосрочном влиянии на компанию."
-          },
-          "news_id": "news_b5861012d2c182443b6e",
-          "content_version": "cv_20f58245db3cf0b6d806"
-        }
-      ],
-      "event_count": 3
-    },
-    {
-      "level": 8,
-      "name": "Институты спонтанного порядка",
-      "level_summary": "На уровне институтов доверия сегодня усилились три линии: государственные расследования цепочек чипов, школьные ограничения для ИИ и проверка качества ответов чат-ботов. Саморегуляция открытого кода также стала предметом публичной защиты после кризиса в Nvidia.",
-      "events": [
-        {
-          "title": "Демократы начали новое расследование Nvidia",
-          "fact": "TechCrunch сообщил, что демократы в Конгрессе начали расследование продаж Nvidia в Китай и сделок компании с Trump. В материале сказано, что это уже второе расследование после новостей о предполагаемой шпионской связи.",
-          "why_important": "Если расследование получит развитие, оно может усилить политическое и регуляторное давление на Nvidia, особенно вокруг экспортных продаж и взаимодействия с политическими фигурами.",
-          "description": "TechCrunch сообщил, что демократы в Конгрессе начали расследование продаж Nvidia в Китай и сделок компании с Trump. В материале сказано, что это уже второе расследование после новостей о предполагаемой шпионской связи.",
-          "related_levels": [
-            5,
-            4
-          ],
-          "sources": [
-            "https://techcrunch.com/2026/11/12/democrats-launch-nvidia-investigation-write-scathing-letter-on-huangs-scheme-with-trump/"
-          ],
-          "srt_significance": "Ур. 8 → Ур. 5: парламентское расследование меняет условия сделок и поставок ИИ-чипов.",
-          "watch_next": "Следить за текстом запроса Конгресса к Nvidia и перечнем требуемых документов.",
+          "srt_significance": "Ур. 8 → Ур. 9: регуляторный риск доступа к чипам немедленно переоценивает AI-активы.",
+          "watch_next": "Следить за новыми правилами США по поставкам чипов Nvidia в Китай.",
           "place_id": "srt7-ai-export-governance",
-          "place_confidence": 0.76,
-          "place_reason": "Расследование касается контроля продаж и конечных пользователей ИИ-чипов.",
-          "sources_meta": [
-            {
-              "url": "https://techcrunch.com/2026/11/12/democrats-launch-nvidia-investigation-write-scathing-letter-on-huangs-scheme-with-trump/",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "importance": {
-            "level": "high",
-            "rationale": "Расследование Конгресса по продажам Nvidia в Китай и сделкам с Trump может создать существенные регуляторные и репутационные риски для крупной технологической компании."
-          },
-          "news_id": "news_cbdc8f6b1c4c9f015936",
-          "content_version": "cv_bfa17142a79d3d5315d4"
-        },
-        {
-          "title": "ЕС впервые проведёт переговоры лидеров по ИИ в Дублине",
-          "fact": "AFP сообщил, что лидеры ЕС впервые проведут переговоры по ИИ в Дублине. Новость указывает на формат обсуждения на уровне лидеров.",
-          "why_important": "Если обсуждение перейдёт в согласованные меры, оно может задать направление европейской политики по ИИ.",
-          "description": "AFP сообщил, что лидеры ЕС впервые проведут переговоры по ИИ в Дублине. Новость указывает на формат обсуждения на уровне лидеров.",
-          "related_levels": [
-            9,
-            5
-          ],
-          "sources": [
-            "https://news.google.com/rss/articles/CBMic0FVX3lxTE9OV2d1d0ZWWTc1b0RDZDE2YlNrX09FVjJCdS16RG92NDFfRkVGWTMwX3pvb2hjeWhrc3JudUNtSUNuMkw0dXprMGNUdERfWUZENmF5WVM3TUJ2QkV1T080bi1pcTMwUnpzcVBSZk5ocVRnREE?oc=5"
-          ],
-          "srt_significance": "Ур. 8 → Ур. 9: политическая координация ЕС влияет на будущие условия инвестиций в ИИ.",
-          "watch_next": "Следить за итоговым коммюнике переговоров ЕС в Дублине по ИИ.",
-          "place_id": "srt8-govtech-sovereign-ai",
           "place_confidence": 0.62,
-          "place_reason": "Событие касается межгосударственной координации политики ИИ.",
+          "place_reason": "Событие связано с последствиями экспортного контроля AI-чипов.",
           "sources_meta": [
             {
-              "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9OV2d1d0ZWWTc1b0RDZDE2YlNrX09FVjJCdS16RG92NDFfRkVGWTMwX3pvb2hjeWhrc3JudUNtSUNuMkw0dXprMGNUdERfWUZENmF5WVM3TUJ2QkV1T080bi1pcTMwUnpzcVBSZk5ocVRnREE?oc=5",
+              "url": "https://www.ft.com/content/0d4e93e4-895e-4ae0-a01b-833a3ed440a8?syn-25a6b1a6=1",
               "domain": "",
               "published_at": "2026-11-13"
             }
           ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Переговоры лидеров ЕС по ИИ могут влиять на политическую повестку и регулирование, но конкретные решения не указаны."
-          },
-          "news_id": "news_34c887838c03eb83cf86",
-          "content_version": "cv_1f7d0ec889a3f02d7816"
+          "news_id": "news_651619d596d2070b5ba1",
+          "importance": null,
+          "content_version": "cv_49a47357808b85440262"
         },
         {
-          "title": "Семьи требуют моратория на Gemini в школах",
-          "fact": "Ars Technica сообщил о призывах к мораториям на ИИ Google в школах после негативной реакции на пилот Gemini. В материале упомянут иск подростка, где Gemini назван «тренером самоубийства».",
-          "why_important": "Если претензии получат поддержку школ или регуляторов, внедрение ИИ-инструментов в образовательной среде может быть ограничено.",
-          "description": "Ars Technica сообщил о призывах к мораториям на ИИ Google в школах после негативной реакции на пилот Gemini. В материале упомянут иск подростка, где Gemini назван «тренером самоубийства».",
-          "related_levels": [
-            7,
-            6
-          ],
-          "sources": [
-            "https://arstechnica.com/tech-policy/2026/11/families-fight-to-keep-googles-disturbing-ai-off-school-issued-chromebooks/"
-          ],
-          "srt_significance": "Ур. 8 → Ур. 7: общественное доверие задаёт границы использования ИИ в образовательных институтах.",
-          "watch_next": "Следить за решениями школьных округов по Gemini на выданных учащимся Chromebook.",
-          "place_id": null,
-          "place_confidence": 0.48,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://arstechnica.com/tech-policy/2026/11/families-fight-to-keep-googles-disturbing-ai-off-school-issued-chromebooks/",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "importance": {
-            "level": "high",
-            "rationale": "Сообщение затрагивает безопасность несовершеннолетних, использование Gemini в школах и возможные юридические и репутационные риски для Google."
-          },
-          "news_id": "news_acfb8ed23481a99f369e",
-          "content_version": "cv_7ef340f69c3e5a22f5d7"
-        },
-        {
-          "title": "Чат-боты направляли покупателей на поддельные сайты",
-          "fact": "The Verge сообщил о исследовании Podqi, согласно которому ChatGPT, Gemini и Perplexity могли рекомендовать покупателям сайты-самозванцы и другие рискованные ресурсы. Исследование использовало запросы о покупках и местах приобретения товаров.",
-          "why_important": "Если такие рекомендации распространены, это может подорвать доверие к ИИ-поиску и покупательским сценариям в чат-ботах.",
-          "description": "The Verge сообщил о исследовании Podqi, согласно которому ChatGPT, Gemini и Perplexity могли рекомендовать покупателям сайты-самозванцы и другие рискованные ресурсы. Исследование использовало запросы о покупках и местах приобретения товаров.",
+          "title": "Европейские акции снизились на опасениях вокруг AI",
+          "fact": "Saba сообщил о снижении европейских акций на фоне опасений вокруг искусственного интеллекта. Новость опубликована через Google News.",
+          "why_important": "Это может отражать более широкую переоценку ожиданий по AI и снижение аппетита к риску, если движение было значимым и затронуло широкий рынок.",
+          "description": "Saba сообщил о снижении европейских акций на фоне опасений вокруг искусственного интеллекта. Новость опубликована через Google News.",
           "related_levels": [
             5,
-            6
+            8
           ],
           "sources": [
-            "https://www.theverge.com/ai-artificial-intelligence/1032020/gemini-chatgpt-perplexity-shopping-test-risky-fake-websites-citations"
+            "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBQa0t5Z1REenlDRTNKbjBEWWxETEI2Z2RodUR1Mk05VWVwRHhqakZxQlZzTWV1SkxTWlFiek0wRFJ0YlhtcVVPY2tR?oc=5"
           ],
-          "srt_significance": "Ур. 8 → Ур. 5: доверие к ответам чат-ботов влияет на распределение трафика и продаж в торговле.",
-          "watch_next": "Следить за долей рискованных ссылок в повторных тестах Podqi по ChatGPT, Gemini и Perplexity.",
-          "place_id": "srt8-ai-verification-infra",
-          "place_confidence": 0.86,
-          "place_reason": "Новость прямо касается проверки достоверности ИИ-рекомендаций.",
+          "srt_significance": "Ур. 9 → Ур. 5: общерыночная переоценка влияет на условия роста AI-компаний и их партнёров.",
+          "watch_next": "Следить за динамикой европейских индексов после новых раскрытий AI-компаний.",
+          "place_id": null,
+          "place_confidence": 0,
+          "place_reason": "",
           "sources_meta": [
             {
-              "url": "https://www.theverge.com/ai-artificial-intelligence/1032020/gemini-chatgpt-perplexity-shopping-test-risky-fake-websites-citations",
+              "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBQa0t5Z1REenlDRTNKbjBEWWxETEI2Z2RodUR1Mk05VWVwRHhqakZxQlZzTWV1SkxTWlFiek0wRFJ0YlhtcVVPY2tR?oc=5",
               "domain": "",
-              "published_at": "2026-11-12"
+              "published_at": "2026-11-13"
             }
           ],
           "importance": {
             "level": "medium",
-            "rationale": "Исследование указывает на риск небезопасных рекомендаций в популярных чат-ботах, но масштаб и воспроизводимость за пределами теста не установлены."
+            "rationale": "Снижение европейских акций на опасениях вокруг AI указывает на рыночную чувствительность к теме, но данные в факте краткие и без масштаба движения."
           },
-          "news_id": "news_64a6f20ebcc4dac132a4",
-          "content_version": "cv_a5dc68f4490eebe47e92"
+          "news_id": "news_15ffb32de8029815a6f6",
+          "content_version": "cv_210de9362a4bf118fcc9"
         },
         {
-          "title": "Hugging Face пообещал защищать открытый ИИ после ухода Хуанга",
-          "fact": "TechCrunch сообщил, что CEO Hugging Face пообещал продолжить борьбу за открытый ИИ после ухода Дженсена Хуанга. В материале упомянуты вопросы вокруг покупки Hugging Face компанией Nvidia на $12,9 млрд.",
-          "why_important": "Если вокруг Hugging Face и Nvidia сохраняются вопросы, позиция по открытому ИИ может быть важна для сообщества разработчиков и пользователей платформы.",
-          "description": "TechCrunch сообщил, что CEO Hugging Face пообещал продолжить борьбу за открытый ИИ после ухода Дженсена Хуанга. В материале упомянуты вопросы вокруг покупки Hugging Face компанией Nvidia на $12,9 млрд.",
+          "title": "FT оценила риски ошибок AI-ботов в торговле",
+          "fact": "Financial Times опубликовал материал о рисках AI-ботов в торговле. В описании материала сказано, что издание оценивает масштаб этих рисков.",
+          "why_important": "Если такие риски значимы, они могут затрагивать качество исполнения сделок, рыночную устойчивость и контроль алгоритмических систем.",
+          "description": "Financial Times опубликовал материал о рисках AI-ботов в торговле. В описании материала сказано, что издание оценивает масштаб этих рисков.",
           "related_levels": [
             6,
-            5
-          ],
-          "sources": [
-            "https://techcrunch.com/2026/11/12/hugging-face-ceo-vows-to-keep-fighting-for-open-source-ai-after-jensen-huangs-exit"
-          ],
-          "srt_significance": "Ур. 8 → Ур. 6: сообщество открытого кода защищает условия воспроизводимой разработки моделей.",
-          "watch_next": "Следить за публичными гарантиями Nvidia по независимости Hugging Face и open-weight проектов.",
-          "place_id": null,
-          "place_confidence": 0,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://techcrunch.com/2026/11/12/hugging-face-ceo-vows-to-keep-fighting-for-open-source-ai-after-jensen-huangs-exit",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Заявление CEO Hugging Face связано с открытым ИИ и вопросами вокруг крупной сделки, но в данных нет подтверждённых изменений стратегии или условий."
-          },
-          "news_id": "news_9ccf02f3129f7388553e",
-          "content_version": "cv_3af3ad8a3effb88ec8f0"
-        },
-        {
-          "title": "ИИ-группа Trump обсуждала ИИ-кибератаки",
-          "fact": "Reuters сообщил, что ИИ-группа Trump встретилась в четверг и обсуждала кибератаки с использованием ИИ. Новость опубликована через Google News.",
-          "why_important": "",
-          "description": "Reuters сообщил, что ИИ-группа Trump встретилась в четверг и обсуждала кибератаки с использованием ИИ. Новость опубликована через Google News.",
-          "related_levels": [
-            6,
-            5
-          ],
-          "sources": [
-            "https://news.google.com/rss/articles/CBMisgFBVV95cUxOSTMxZ0ZpeTBfbVZEb3dFbFRpM0xYcU9ta3ZRVnRzc040LUlmWU9IN05La0xrSnBKYzlVVUF3amZuaTJHZGZYa05ObFpJcERkajJiajhVV2RBVzJDVzc0Uzk4NVVfeGhWOG5SSnUtQlRTV1M3MnNON29WZzZZYVlnbGVCVE1LTkpUcm8zOHlmOTdaWGo0dGZJT2Eyb2NqNlB2VWk1bmRCcXdIS3JjRDQ0aTRn?oc=5"
-          ],
-          "srt_significance": "Ур. 8 → Ур. 6: государственная повестка кибератак формирует спрос на проверяемые методы защиты ИИ.",
-          "watch_next": "Следить за протоколами или поручениями ИИ-группы Trump по кибератакам.",
-          "place_id": null,
-          "place_confidence": 0,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOSTMxZ0ZpeTBfbVZEb3dFbFRpM0xYcU9ta3ZRVnRzc040LUlmWU9IN05La0xrSnBKYzlVVUF3amZuaTJHZGZYa05ObFpJcERkajJiajhVV2RBVzJDVzc0Uzk4NVVfeGhWOG5SSnUtQlRTV1M3MnNON29WZzZZYVlnbGVCVE1LTkpUcm8zOHlmOTdaWGo0dGZJT2Eyb2NqNlB2VWk1bmRCcXdIS3JjRDQ0aTRn?oc=5",
-              "domain": "",
-              "published_at": "2026-11-13"
-            }
-          ],
-          "news_id": "news_dc66a27667f2252008a1",
-          "importance": null,
-          "content_version": "cv_9388b97ba5c826da7cad"
-        }
-      ],
-      "event_count": 6
-    },
-    {
-      "level": 7,
-      "name": "Институты производства знаний",
-      "level_summary": "В институтах знаний сегодня появились сигналы из образования и прикладной медицины: частная школа строит обучение вокруг ИИ, а медицинские исследования показывают одновременно полезность и пределы моделей. Уровень знаний становится полем проверки, где ИИ должен не только отвечать, но и выдерживать клиническую или педагогическую интерпретацию.",
-      "events": [
-        {
-          "title": "Частная школа в Чикаго использует ИИ для обучения",
-          "fact": "CBS News сообщил, что новая частная школа в центре Чикаго использует искусственный интеллект для обучения учеников. Новость опубликована через Google News.",
-          "why_important": "Материал может быть индикатором экспериментов с ИИ в образовании, но доказательств широкой применимости или эффективности нет.",
-          "description": "CBS News сообщил, что новая частная школа в центре Чикаго использует искусственный интеллект для обучения учеников. Новость опубликована через Google News.",
-          "related_levels": [
-            3,
             8
           ],
           "sources": [
-            "https://news.google.com/rss/articles/CBMiigFBVV95cUxOQTdkRE5BN1A5STlrTUR2SURJZmliUlJKS3ExOUtITnlxckZoS0o5Wmd0cVkzR3JXU3pXUTl1RFZyb2RRQWZZMktfUVpVVjRnaEhBaUJTMXFBYUd2d2d1ZEwyTWRnWUtCaFZZU1E2WGMwUEV2aGFVU09qbmwtMHE4bjhTZ3NVdFIyVEE?oc=5"
+            "https://www.ft.com/content/b2286012-26ec-4440-834e-580288f20ad0"
           ],
-          "srt_significance": "Ур. 7 → Ур. 3: образовательный институт перестраивает роль учителя вокруг ИИ-обучения.",
-          "watch_next": "Следить за числом учеников и описанием учебной модели этой школы в Чикаго.",
+          "srt_significance": "Ур. 6 → Ур. 9: методы автономной торговли создают новые требования к финансовому контролю.",
+          "watch_next": "Следить за случаями сбоев или регуляторными заявлениями о торговых AI-ботах.",
           "place_id": null,
-          "place_confidence": 0,
+          "place_confidence": 0.57,
           "place_reason": "",
           "sources_meta": [
             {
-              "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOQTdkRE5BN1A5STlrTUR2SURJZmliUlJKS3ExOUtITnlxckZoS0o5Wmd0cVkzR3JXU3pXUTl1RFZyb2RRQWZZMktfUVpVVjRnaEhBaUJTMXFBYUd2d2d1ZEwyTWRnWUtCaFZZU1E2WGMwUEV2aGFVU09qbmwtMHE4bjhTZ3NVdFIyVEE?oc=5",
-              "domain": "",
-              "published_at": "2026-11-13"
-            }
-          ],
-          "importance": {
-            "level": "low",
-            "rationale": "Сообщение описывает локальное внедрение ИИ в одной частной школе без данных о масштабе, результатах или системном влиянии."
-          },
-          "news_id": "news_4b18a8eeea6c5f88fd5d",
-          "content_version": "cv_074c60578bcd0cb09bf7"
-        },
-        {
-          "title": "ИИ точно выявлял Alzheimer, но ошибался на стадировании",
-          "fact": "Bioengineer.org сообщил, что мультимодальный искусственный интеллект точно обнаруживал болезнь Alzheimer, но испытывал трудности со стадированием. Заголовок подчёркивает разрыв между обнаружением и оценкой стадии.",
-          "why_important": "",
-          "description": "Bioengineer.org сообщил, что мультимодальный искусственный интеллект точно обнаруживал болезнь Alzheimer, но испытывал трудности со стадированием. Заголовок подчёркивает разрыв между обнаружением и оценкой стадии.",
-          "related_levels": [
-            6,
-            3
-          ],
-          "sources": [
-            "https://news.google.com/rss/articles/CBMivAFBVV95cUxOY3B6dlJUbFhHTFUtZkpUSHBNTDlTN2VteHY0dk9GSEtvbm9oRGIxOUZYb0dnQ003RDN6b0haVUhkZFZNUTAwaXN3MEVSS183X1c1NmNVYUFWSE11XzNmM3pRQTNBek9XMlZ6LTZkaXk1dHZ5aHM1TlozRWo2YWx4QkV3aUQtYWdNSXdqQm5pNGhDUklGRnZERW1iVGFxOTFBUzdEeGpvbXNKeVg4NjVKZzI1YlpnRG5pc2E4Sw?oc=5"
-          ],
-          "srt_significance": "Ур. 7 → Ур. 6: медицинская проверка задаёт требования к методам оценки мультимодальных моделей.",
-          "watch_next": "Следить за метриками стадирования Alzheimer в следующей версии исследования.",
-          "place_id": null,
-          "place_confidence": 0,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOY3B6dlJUbFhHTFUtZkpUSHBNTDlTN2VteHY0dk9GSEtvbm9oRGIxOUZYb0dnQ003RDN6b0haVUhkZFZNUTAwaXN3MEVSS183X1c1NmNVYUFWSE11XzNmM3pRQTNBek9XMlZ6LTZkaXk1dHZ5aHM1TlozRWo2YWx4QkV3aUQtYWdNSXdqQm5pNGhDUklGRnZERW1iVGFxOTFBUzdEeGpvbXNKeVg4NjVKZzI1YlpnRG5pc2E4Sw?oc=5",
-              "domain": "",
-              "published_at": "2026-11-13"
-            }
-          ],
-          "news_id": "news_6cf0d3d401e345ad6319",
-          "importance": null,
-          "content_version": "cv_02d33c0c0ca6d3d65f2c"
-        },
-        {
-          "title": "Машинное обучение продвинуло прогноз устойчивости к антибиотикам",
-          "fact": "Bioengineer.org сообщил, что машинное и глубокое обучение продвигают прогнозирование антимикробной устойчивости. Новость опубликована через Google News.",
-          "why_important": "Если методы окажутся надежными, они могут улучшить выбор терапии и мониторинг устойчивости, но это не подтверждено представленными данными.",
-          "description": "Bioengineer.org сообщил, что машинное и глубокое обучение продвигают прогнозирование антимикробной устойчивости. Новость опубликована через Google News.",
-          "related_levels": [
-            6,
-            3
-          ],
-          "sources": [
-            "https://news.google.com/rss/articles/CBMipgFBVV95cUxOeEk2a0pYbU82Rm10c3pjTTIyWndZZG44aUJUM0hXaFJycFBpUURuRkRwNGNsZmhFTXJVSndJcmxlLUtKMEhtY0lCZEQxZXgxb0FhdDZYVUx5MnVtTjk3SXBTa2htbm1xYTFlZUhWaWJ0SE1rU21VTjBtQVpIQUtpQ3duWEJhZ0MtRnVWM2dIcGc0NjBkYk9tVEhGMUMzMmZ3Y3FGaWJ3?oc=5"
-          ],
-          "srt_significance": "Ур. 7 → Ур. 6: биомедицинское знание переводится в методы прогнозирования на основе моделей.",
-          "watch_next": "Следить за валидацией моделей устойчивости к антибиотикам на внешних наборах данных.",
-          "place_id": null,
-          "place_confidence": 0,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOeEk2a0pYbU82Rm10c3pjTTIyWndZZG44aUJUM0hXaFJycFBpUURuRkRwNGNsZmhFTXJVSndJcmxlLUtKMEhtY0lCZEQxZXgxb0FhdDZYVUx5MnVtTjk3SXBTa2htbm1xYTFlZUhWaWJ0SE1rU21VTjBtQVpIQUtpQ3duWEJhZ0MtRnVWM2dIcGc0NjBkYk9tVEhGMUMzMmZ3Y3FGaWJ3?oc=5",
+              "url": "https://www.ft.com/content/b2286012-26ec-4440-834e-580288f20ad0",
               "domain": "",
               "published_at": "2026-11-13"
             }
           ],
           "importance": {
             "level": "medium",
-            "rationale": "Прогнозирование антимикробной устойчивости важно для здравоохранения и фармы, но сообщение не содержит конкретных результатов или уровня готовности."
+            "rationale": "Тема касается рисков AI-ботов в торговле, но в предоставленных данных нет конкретных случаев, масштаба ущерба или регуляторных действий."
           },
-          "news_id": "news_c60bd41cfc8d7f2bc3d0",
-          "content_version": "cv_e34d6ea70caf3101a480"
-        }
-      ],
-      "event_count": 3
-    },
-    {
-      "level": 6,
-      "name": "Технологии производства знаний",
-      "level_summary": "На уровне технологий производства знаний сегодня важны две проверки: IBM предложила разметку, рассчитанную на LLM, а спор вокруг «открытия» Maya показал пределы агентных заявлений без академической сверки. Методический слой смещается к воспроизводимости входов и проверке заявлений ИИ-агентов.",
-      "events": [
-        {
-          "title": "IBM описал LLMON для Granite 4.1 3B и 8B",
-          "fact": "Hugging Face опубликовал материал IBM о LLMON, языке разметки, рассчитанном на LLM. В заголовке сказано, что LLMON теперь используется в Granite 4.1 3B и 8B.",
-          "why_important": "Если информация подтвердится, это может показывать направление IBM в адаптации разметки под LLM и развитие семейства Granite.",
-          "description": "Hugging Face опубликовал материал IBM о LLMON, языке разметки, рассчитанном на LLM. В заголовке сказано, что LLMON теперь используется в Granite 4.1 3B и 8B.",
-          "related_levels": [
-            4,
-            5
-          ],
-          "sources": [
-            "https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite"
-          ],
-          "srt_significance": "Ур. 6 → Ур. 4: метод разметки встраивается в конкретные модели Granite.",
-          "watch_next": "Следить за примерами задач, где LLMON даёт прирост в Granite 4.1 3B и 8B.",
-          "place_id": null,
-          "place_confidence": 0,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "importance": {
-            "level": "low",
-            "rationale": "Техническая публикация о языке разметки и его использовании в конкретных моделях IBM; подтвержденных эффектов для рынка или клиентов нет."
-          },
-          "news_id": "news_84ec87286cb35a64f463",
-          "content_version": "cv_db0450ab7dcc1bdee935"
-        },
-        {
-          "title": "ИИ-агенты не открыли неизвестный объект Maya",
-          "fact": "The Verge сообщил, что заявленный Google исследователем Pietro Miotti объект Maya уже был опубликован в академическом журнале годом ранее. Инцидент вызвал критику археологов онлайн.",
-          "why_important": "",
-          "description": "The Verge сообщил, что заявленный Google исследователем Pietro Miotti объект Maya уже был опубликован в академическом журнале годом ранее. Инцидент вызвал критику археологов онлайн.",
-          "related_levels": [
-            7,
-            8
-          ],
-          "sources": [
-            "https://www.theverge.com/ai-artificial-intelligence/1032125/ai-agents-maya-site-archeology-discovery"
-          ],
-          "srt_significance": "Ур. 6 → Ур. 7: агентные методы должны проходить сверку с академическими публикациями.",
-          "watch_next": "Следить за тем, будут ли Google или автор уточнять процедуру проверки археологических находок.",
-          "place_id": "srt8-ai-verification-infra",
-          "place_confidence": 0.67,
-          "place_reason": "Событие касается воспроизводимой проверки заявлений ИИ-агентов.",
-          "sources_meta": [
-            {
-              "url": "https://www.theverge.com/ai-artificial-intelligence/1032125/ai-agents-maya-site-archeology-discovery",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "news_id": "news_a20d1e6a0e529bc1715f",
-          "importance": null,
-          "content_version": "cv_c73ccb9b9b9e71706899"
-        },
-        {
-          "title": "FAA расширила ИИ-подсказки на всё воздушное пространство США",
-          "fact": "Ars Technica сообщил, что FAA расширила применение ИИ-инструмента для управления перегрузкой воздушного движения на всё воздушное пространство США. Авиакомпании поддержали инструмент, но профсоюз авиадиспетчеров не участвовал.",
-          "why_important": "Если описание верно, это значимый шаг внедрения ИИ в операционную поддержку авиации, где важны безопасность, прозрачность и участие профильных специалистов.",
-          "description": "Ars Technica сообщил, что FAA расширила применение ИИ-инструмента для управления перегрузкой воздушного движения на всё воздушное пространство США. Авиакомпании поддержали инструмент, но профсоюз авиадиспетчеров не участвовал.",
-          "related_levels": [
-            3,
-            8
-          ],
-          "sources": [
-            "https://arstechnica.com/ai/2026/11/faa-expands-ai-advice-to-manage-air-traffic-congestion-across-entire-us-airspace/"
-          ],
-          "srt_significance": "Ур. 6 → Ур. 3: ИИ-подсказки меняют работу диспетчеров без полного участия их сообщества.",
-          "watch_next": "Следить за реакцией профсоюза авиадиспетчеров и статистикой задержек после расширения FAA.",
-          "place_id": "srt6-physical-domain-agents",
-          "place_confidence": 0.71,
-          "place_reason": "ИИ встроен в управление физическим транспортным потоком.",
-          "sources_meta": [
-            {
-              "url": "https://arstechnica.com/ai/2026/11/faa-expands-ai-advice-to-manage-air-traffic-congestion-across-entire-us-airspace/",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "importance": {
-            "level": "high",
-            "rationale": "Речь о расширении ИИ-инструмента на всё воздушное пространство США в критически важной транспортной инфраструктуре."
-          },
-          "news_id": "news_6a0b530a1c16bbaf1bc5",
-          "content_version": "cv_a755bb6973b25113dda3"
-        },
-        {
-          "title": "CAM Agent представлен как ИИ-инструмент для инженеров",
-          "fact": "Design News опубликовал материал об ИИ-инструменте Limitless Labs CAM Agent для инженеров. Новость опубликована через Google News.",
-          "why_important": "Потенциально это отражает продолжение появления ИИ-инструментов для инженерных задач, но значимость зависит от возможностей и внедрения CAM Agent.",
-          "description": "Design News опубликовал материал об ИИ-инструменте Limitless Labs CAM Agent для инженеров. Новость опубликована через Google News.",
-          "related_levels": [
-            3,
-            5
-          ],
-          "sources": [
-            "https://news.google.com/rss/articles/CBMinwFBVV95cUxNWHNvODdqMVE4NDBjTTdBSzI0UUhabnF5UXRud1l3OXNyQTR6elpQNlpjVHZOc1lLRTctb19oamJDb01rWWpYcFMtc3dCTDdmM3BDR0l3ZDNKUnNmTjFXY2o5VHBJSlpjVHZBWkN0SVdTNjYtT1loUy1LZTNGbXg3SzV0SE1yWFdmZGRfLXc5UnhLUktWUjZYQjZqeGxOa1k?oc=5"
-          ],
-          "srt_significance": "Ур. 6 → Ур. 3: специализированный инженерный агент меняет набор практических компетенций инженера.",
-          "watch_next": "Следить за описанием задач CAM Agent и примерами его интеграции в инженерные процессы.",
-          "place_id": null,
-          "place_confidence": 0.56,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNWHNvODdqMVE4NDBjTTdBSzI0UUhabnF5UXRud1l3OXNyQTR6elpQNlpjVHZOc1lLRTctb19oamJDb01rWWpYcFMtc3dCTDdmM3BDR0l3ZDNKUnNmTjFXY2o5VHBJSlpjVHZBWkN0SVdTNjYtT1loUy1LZTNGbXg3SzV0SE1yWFdmZGRfLXc5UnhLUktWUjZYQjZqeGxOa1k?oc=5",
-              "domain": "",
-              "published_at": "2026-11-13"
-            }
-          ],
-          "importance": {
-            "level": "low",
-            "rationale": "Сообщение описывает публикацию о конкретном ИИ-инструменте для инженеров без данных о внедрении, клиентах или результатах."
-          },
-          "news_id": "news_76760cc32ba1acce481d",
-          "content_version": "cv_ad72002de1b70bbeac06"
-        }
-      ],
-      "event_count": 4
-    },
-    {
-      "level": 5,
-      "name": "Экономическое разделение труда между фирмами",
-      "level_summary": "Экономическое разделение труда сегодня сместилось в двух направлениях: крупные фирмы пытаются захватить критические звенья инфраструктуры, а ИИ-агенты входят в маркетинг, звонки и бронирование с разными институциональными ответами. Особенно важен контраст между запуском коммерческих агентов и отказом United допускать их к бронированию.",
-      "events": [
-        {
-          "title": "Samsung обсуждает покупку Modine для охлаждения дата-центров",
-          "fact": "Bloomberg сообщил, что Samsung Electronics ведёт переговоры о покупке Modine Manufacturing, производителя систем охлаждения для дата-центров. Источник ссылается на людей, знакомых с вопросом.",
-          "why_important": "Если переговоры приведут к сделке, Samsung может усилить позиции в цепочке поставок для дата-центров, где охлаждение является важным компонентом инфраструктуры.",
-          "description": "Bloomberg сообщил, что Samsung Electronics ведёт переговоры о покупке Modine Manufacturing, производителя систем охлаждения для дата-центров. Источник ссылается на людей, знакомых с вопросом.",
-          "related_levels": [
-            2,
-            1
-          ],
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-11-12/samsung-is-in-talks-to-acquire-data-center-cooling-firm-modine"
-          ],
-          "srt_significance": "Ур. 5 → Ур. 2: M&A вокруг охлаждения перестраивает цепочку размещения дата-центров.",
-          "watch_next": "Следить за подтверждением сделки Samsung и условиями покупки Modine.",
-          "place_id": "srt5-supply-chain-equity-orchestration",
-          "place_confidence": 0.82,
-          "place_reason": "Сделка касается контроля поставщика в инфраструктурной цепочке дата-центров.",
-          "sources_meta": [
-            {
-              "url": "https://www.bloomberg.com/news/articles/2026-11-12/samsung-is-in-talks-to-acquire-data-center-cooling-firm-modine",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Потенциальная сделка затрагивает инфраструктуру дата-центров, но подтверждены только переговоры, а не соглашение."
-          },
-          "news_id": "news_e5e22cd097cf9579e937",
-          "content_version": "cv_ddd5d745a409f16210ad"
-        },
-        {
-          "title": "United Airlines запретила ИИ-агентов для бронирований",
-          "fact": "TechCrunch сообщил, что United Airlines не позволит клиентам использовать ИИ-агентов для бронирования рейсов и управления бронированиями. Компания сослалась на риски кибербезопасности.",
-          "why_important": "",
-          "description": "TechCrunch сообщил, что United Airlines не позволит клиентам использовать ИИ-агентов для бронирования рейсов и управления бронированиями. Компания сослалась на риски кибербезопасности.",
-          "related_levels": [
-            8,
-            6
-          ],
-          "sources": [
-            "https://techcrunch.com/2026/11/12/united-airlines-blocks-ai-agents-from-booking-flights-citing-cybersecurity-risks"
-          ],
-          "srt_significance": "Ур. 5 → Ур. 8: сервисная компания вводит институциональный запрет на агентный доступ из-за безопасности.",
-          "watch_next": "Следить за тем, появятся ли у United правила сертификации доверенных ИИ-агентов.",
-          "place_id": "srt3-ai-agent-orchestration",
-          "place_confidence": 0.73,
-          "place_reason": "Новость касается допуска ИИ-агентов к пользовательскому процессу бронирования.",
-          "sources_meta": [
-            {
-              "url": "https://techcrunch.com/2026/11/12/united-airlines-blocks-ai-agents-from-booking-flights-citing-cybersecurity-risks",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "news_id": "news_039c74dda2a3b52c28a0",
-          "importance": null,
-          "content_version": "cv_e09744182f0e2b4836c5"
-        },
-        {
-          "title": "Muse запустил платные звонки ИИ в компании США",
-          "fact": "TechCrunch сообщил, что ИИ Muse теперь может совершать исходящие звонки компаниям в США. Функция доступна за оплату.",
-          "why_important": "Если функция будет востребована, она может расширить применение ИИ в автоматизации звонков компаниям, но предоставленных данных недостаточно для оценки рыночного масштаба.",
-          "description": "TechCrunch сообщил, что ИИ Muse теперь может совершать исходящие звонки компаниям в США. Функция доступна за оплату.",
-          "related_levels": [
-            3,
-            8
-          ],
-          "sources": [
-            "https://techcrunch.com/2026/11/12/muse-can-now-place-calls-to-u-s-businesses-if-you-pay/"
-          ],
-          "srt_significance": "Ур. 5 → Ур. 3: платный голосовой агент перераспределяет работу исходящих звонков.",
-          "watch_next": "Следить за ограничениями Muse на типы звонков и раскрытием тарифов функции.",
-          "place_id": "srt3-ai-agent-orchestration",
-          "place_confidence": 0.82,
-          "place_reason": "Событие прямо касается выполнения агентом действий в коммуникационном процессе.",
-          "sources_meta": [
-            {
-              "url": "https://techcrunch.com/2026/11/12/muse-can-now-place-calls-to-u-s-businesses-if-you-pay/",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "importance": {
-            "level": "low",
-            "rationale": "Сообщение описывает запуск платной функции отдельного ИИ-сервиса; данных о масштабе использования или рыночном эффекте нет."
-          },
-          "news_id": "news_ab23a7fa21e24fb3c242",
-          "content_version": "cv_fb28884f657cf7bfde87"
-        },
-        {
-          "title": "Nectar запустил агента для поиска авторов и охвата брендов",
-          "fact": "TechCrunch сообщил, что Nectar запустил ИИ-агента для автоматизации маркетинга с авторами. Агент помогает брендам находить авторов, управлять охватом, партнёрствами и отслеживать результаты кампаний.",
-          "why_important": "Если агент окажется эффективным, он может снизить ручные затраты брендов на работу с авторами и упростить управление кампаниями.",
-          "description": "TechCrunch сообщил, что Nectar запустил ИИ-агента для автоматизации маркетинга с авторами. Агент помогает брендам находить авторов, управлять охватом, партнёрствами и отслеживать результаты кампаний.",
-          "related_levels": [
-            3,
-            8
-          ],
-          "sources": [
-            "https://techcrunch.com/2026/11/12/nectar-launches-an-ai-agent-to-automate-creator-discovery-and-outreach-for-brands"
-          ],
-          "srt_significance": "Ур. 5 → Ур. 3: агент забирает часть работы по поиску и сопровождению авторов.",
-          "watch_next": "Следить за тем, какие метрики кампаний Nectar отдаёт агенту, а какие оставляет человеку.",
-          "place_id": "srt3-ai-agent-orchestration",
-          "place_confidence": 0.79,
-          "place_reason": "Новость описывает оркестрацию задач агентом в маркетинговом процессе.",
-          "sources_meta": [
-            {
-              "url": "https://techcrunch.com/2026/11/12/nectar-launches-an-ai-agent-to-automate-creator-discovery-and-outreach-for-brands",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "importance": {
-            "level": "low",
-            "rationale": "Это продуктовый запуск в нише creator marketing; доказательств широкого внедрения или существенного влияния на рынок не представлено."
-          },
-          "news_id": "news_d77c24751633c8701525",
-          "content_version": "cv_8e01950f619cec379489"
-        },
-        {
-          "title": "Google улучшил AI Mode для сложных запросов",
-          "fact": "TechCrunch сообщил, что обновление Google AI Mode на базе Gemini 4 Hydrogen должно лучше понимать сложные запросы, показывать релевантные ссылки и давать более насыщенные визуальные ответы. The Verge также сообщил, что модель доступна в поиске, приложении Gemini и всех уровнях Google.",
-          "why_important": "Если описание возможностей подтвердится на практике, это может усилить конкурентность Google в AI-поиске и повысить ожидания пользователей к ответам на сложные запросы.",
-          "description": "TechCrunch сообщил, что обновление Google AI Mode на базе Gemini 4 Hydrogen должно лучше понимать сложные запросы, показывать релевантные ссылки и давать более насыщенные визуальные ответы. The Verge также сообщил, что модель доступна в поиске, приложении Gemini и всех уровнях Google.",
-          "related_levels": [
-            4,
-            8
-          ],
-          "sources": [
-            "https://techcrunch.com/2026/11/12/googles-latest-search-upgrade-promises-better-answers-to-your-most-complicated-questions/",
-            "https://www.theverge.com/ai-artificial-intelligence/1032505/google-search-ai-mode-gemini-4-hydrogen"
-          ],
-          "srt_significance": "Ур. 5 → Ур. 4: поисковая цепочка перестраивается вокруг новой модели Gemini.",
-          "watch_next": "Следить за изменением доли кликов на внешние ссылки в AI Mode после Gemini 4 Hydrogen.",
-          "place_id": null,
-          "place_confidence": 0,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://techcrunch.com/2026/11/12/googles-latest-search-upgrade-promises-better-answers-to-your-most-complicated-questions/",
-              "domain": "",
-              "published_at": "2026-11-12"
-            },
-            {
-              "url": "https://www.theverge.com/ai-artificial-intelligence/1032505/google-search-ai-mode-gemini-4-hydrogen",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Обновление затрагивает поисковый AI Mode и Gemini-продукты Google, но подтвержденных данных о пользовательском эффекте или коммерческих результатах нет."
-          },
-          "news_id": "news_341363dd4020e2e543df",
-          "content_version": "cv_29d325542ca94d64b5c9"
+          "news_id": "news_b7f0e8f5ad88bb46abc8",
+          "content_version": "cv_9a884b17931f6956de22"
         }
       ],
       "event_count": 5
     },
     {
-      "level": 4,
-      "name": "«Железные» технологии",
-      "level_summary": "На аппаратно-модельном уровне сегодня ключевой сдвиг не только в новой модели Google, но и в возможности технического отслеживания чипов Nvidia. Аппаратный слой становится объектом не только производительности, но и доказуемого контроля перемещения.",
+      "level": 8,
+      "name": "Институты спонтанного порядка",
+      "level_summary": "На уровне институтов спонтанного порядка сегодня усилился экспортно-регуляторный контур вокруг Nvidia и AI-чипов. Отдельный сигнал пришёл из Ганы: внедрение AI может идти быстрее, чем формирование надзора.",
       "events": [
         {
-          "title": "Nvidia признала техническую возможность отслеживать чипы",
-          "fact": "MIT Technology Review сообщил, что представители Nvidia частно подтвердили конгрессмену Bill Foster техническую возможность внедрить меры против контрабанды из Chip Security Act. При этом отраслeвая группа публично называла такие меры потенциально невыполнимыми.",
-          "why_important": "Если техническая возможность будет признана регуляторами значимой, это может усилить давление на производителей чипов по внедрению механизмов отслеживания и контроля экспорта.",
-          "description": "MIT Technology Review сообщил, что представители Nvidia частно подтвердили конгрессмену Bill Foster техническую возможность внедрить меры против контрабанды из Chip Security Act. При этом отраслeвая группа публично называла такие меры потенциально невыполнимыми.",
+          "title": "Coons обвинил Lutnick в провале вокруг Nvidia",
+          "fact": "Bloomberg сообщил, что сенатор Chris Coons заявил, что министр торговли Howard Lutnick «подвёл Америку» в споре вокруг Nvidia. Coons хочет выяснить, не облегчил ли Lutnick Китаю получение передовых AI-чипов Nvidia, но сказал, что не имеет конкретных доказательств ущерба национальной безопасности.",
+          "why_important": "Если расследование получит развитие, оно может усилить политическое давление вокруг экспортного контроля передовых AI-чипов.",
+          "description": "Bloomberg сообщил, что сенатор Chris Coons заявил, что министр торговли Howard Lutnick «подвёл Америку» в споре вокруг Nvidia. Coons хочет выяснить, не облегчил ли Lutnick Китаю получение передовых AI-чипов Nvidia, но сказал, что не имеет конкретных доказательств ущерба национальной безопасности.",
           "related_levels": [
-            8,
-            5
+            4,
+            9
           ],
           "sources": [
-            "https://www.technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking/"
+            "https://www.bloomberg.com/news/videos/2026-11-13/coons-says-secretary-lutnick-let-america-down-video"
           ],
-          "srt_significance": "Ур. 4 → Ур. 8: техническая трассировка чипов становится основанием для новых правил контроля.",
-          "watch_next": "Следить за текстом Chip Security Act и позицией Nvidia по реализации отслеживания.",
+          "srt_significance": "Ур. 8 → Ур. 4: политический надзор давит на технический доступ к передовым AI-чипам.",
+          "watch_next": "Следить за запросами Конгресса к Commerce по поставкам Nvidia в Китай.",
           "place_id": "srt7-ai-export-governance",
-          "place_confidence": 0.88,
-          "place_reason": "Новость описывает техническую основу контроля конечного использования чипов.",
+          "place_confidence": 0.73,
+          "place_reason": "Событие прямо касается контроля экспорта AI-чипов.",
           "sources_meta": [
             {
-              "url": "https://www.technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking/",
+              "url": "https://www.bloomberg.com/news/videos/2026-11-13/coons-says-secretary-lutnick-let-america-down-video",
               "domain": "",
-              "published_at": "2026-11-12"
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Заявление сенатора касается экспортного контроля AI-чипов Nvidia и действий министра торговли, но сам Coons указал на отсутствие конкретных доказательств ущерба национальной безопасности."
+          },
+          "news_id": "news_f7d43118586ff63a0534",
+          "content_version": "cv_d1a2f7fb1d3b3fa62641"
+        },
+        {
+          "title": "Malaysia и Singapore усилили проверки чипов Nvidia",
+          "fact": "Tom's Hardware сообщил, что Malaysia и Singapore усилили расследования по AI-чипам Nvidia. В заголовке говорится о предъявлении обвинений гражданину Китая по делу о 917 контрабандных серверах и об аудите запасов ограниченных GPU.",
+          "why_important": "Такие действия могут указывать на усиление контроля за реэкспортом и движением ограниченных AI-чипов в регионе.",
+          "description": "Tom's Hardware сообщил, что Malaysia и Singapore усилили расследования по AI-чипам Nvidia. В заголовке говорится о предъявлении обвинений гражданину Китая по делу о 917 контрабандных серверах и об аудите запасов ограниченных GPU.",
+          "related_levels": [
+            2,
+            4
+          ],
+          "sources": [
+            "https://news.google.com/rss/articles/CBMiowNBVV95cUxNLVRQRDJjLUYybzVveW5wWEV2cU9ka3VhQXpvV3dWN00yNS11bzBnb0VDOTNENTVFdjh0ZkdMVDF4bjYxTTFZM0s4YmlsMHFyNUZjREFSRTN2Vi1QVk9mMjNqQ3JpY2hKWGRLUFNFR3ljWl91LWQ3dXhmQlNjdnR1WkMteHV2RklKek9UMElmLWVMa3NPU21yUnJ3akNvVDFBQ05fbW1EMVVOMzloYk5YZnU4di1SZ2VlVWkzOE1iUDVJM3R1OVFfb0E3bXpBLWJiY1pDekhXWUtScUplMU9TYVRSYkxYcmRmNmJTeTdKZ2RsU3NlM3pTalVXLWdwMlU5TmZDc0EwaS1wN3E2ZThQWEtjWDRteGRWZktZNDBIbDN4XzhJckg5akw0NXJHU1hxbUpfenhPVEpQQVFDTEZjOFg4d1VTbmNXSzVsZnZQQ01NTjZsamZDb0F0dE1HaDVQRDRONDRhQzRrOXNhbVFHOHJ3YUNHbEl3TVdkamVvNTRMcnFlVXV6LXBOcmNBaWtEeFBtRkRuNWNjZ1VxWUczdFUxTQ?oc=5"
+          ],
+          "srt_significance": "Ур. 8 → Ур. 2: контроль чипов переходит в проверку серверов, запасов и логистики.",
+          "watch_next": "Следить за результатами аудита ограниченных GPU у фирмы в центре дела.",
+          "place_id": "srt7-ai-export-governance",
+          "place_confidence": 0.86,
+          "place_reason": "Новость прямо описывает расследование поставок ограниченных GPU.",
+          "sources_meta": [
+            {
+              "url": "https://news.google.com/rss/articles/CBMiowNBVV95cUxNLVRQRDJjLUYybzVveW5wWEV2cU9ka3VhQXpvV3dWN00yNS11bzBnb0VDOTNENTVFdjh0ZkdMVDF4bjYxTTFZM0s4YmlsMHFyNUZjREFSRTN2Vi1QVk9mMjNqQ3JpY2hKWGRLUFNFR3ljWl91LWQ3dXhmQlNjdnR1WkMteHV2RklKek9UMElmLWVMa3NPU21yUnJ3akNvVDFBQ05fbW1EMVVOMzloYk5YZnU4di1SZ2VlVWkzOE1iUDVJM3R1OVFfb0E3bXpBLWJiY1pDekhXWUtScUplMU9TYVRSYkxYcmRmNmJTeTdKZ2RsU3NlM3pTalVXLWdwMlU5TmZDc0EwaS1wN3E2ZThQWEtjWDRteGRWZktZNDBIbDN4XzhJckg5akw0NXJHU1hxbUpfenhPVEpQQVFDTEZjOFg4d1VTbmNXSzVsZnZQQ01NTjZsamZDb0F0dE1HaDVQRDRONDRhQzRrOXNhbVFHOHJ3YUNHbEl3TVdkamVvNTRMcnFlVXV6LXBOcmNBaWtEeFBtRkRuNWNjZ1VxWUczdFUxTQ?oc=5",
+              "domain": "",
+              "published_at": "2026-11-13"
             }
           ],
           "importance": {
             "level": "high",
-            "rationale": "Тема связана с контролем поставок чипов и возможными мерами против контрабанды, что может иметь существенные регуляторные и операционные последствия для Nvidia и цепочек поставок."
+            "rationale": "Сообщается о расследованиях в Malaysia и Singapore, обвинениях по делу о 917 контрабандных серверах и аудите ограниченных GPU, что указывает на конкретные меры вокруг контроля AI-чипов."
           },
-          "news_id": "news_0b5401a8842f0b62f626",
-          "content_version": "cv_1c2d464905f30dd14edc"
+          "news_id": "news_4735ad7f34830a6f64ba",
+          "content_version": "cv_a44f03ea48784a6d6ce8"
         },
         {
-          "title": "Google развернул Gemini 4 Hydrogen без медленного запуска",
-          "fact": "Ars Technica сообщил, что Google развернул Gemini 4 Hydrogen, заменив 3.8 Flash. В материале сказано, что новая модель не получает медленный выпуск с акцентом на безопасность, как Carbon и Argon.",
-          "why_important": "Если развертывание действительно прошло без более медленного safety-ориентированного запуска, это может привлечь внимание к процессам выпуска AI-моделей Google и управлению рисками.",
-          "description": "Ars Technica сообщил, что Google развернул Gemini 4 Hydrogen, заменив 3.8 Flash. В материале сказано, что новая модель не получает медленный выпуск с акцентом на безопасность, как Carbon и Argon.",
+          "title": "Treasury обвинил Commerce в утечке чипов Nvidia",
+          "fact": "Le Monde сообщил, что министр финансов США возложил на Department of Commerce ответственность за утечку чипов Nvidia в Китай. Новость опубликована через Google News.",
+          "why_important": "Если обвинение приведёт к проверкам или пересмотру процедур, это может повлиять на правоприменение экспортного контроля США.",
+          "description": "Le Monde сообщил, что министр финансов США возложил на Department of Commerce ответственность за утечку чипов Nvidia в Китай. Новость опубликована через Google News.",
+          "related_levels": [
+            4,
+            9
+          ],
+          "sources": [
+            "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPQ1JJZWRfZ0I0WmVJUlowQzVZSm1HdHNvbjEzQVNyR1NNLUJ0cEw1WlJhM2JUdzlJNmtVb3NDdWRWbFMtLTc5OTM1Qm95Z253dXJXZVJsenUyLWEtU2VubHR1ZmdNWTM2Mmo2NVZ2OUEzQnQ3cVlmZVN4M0pfMzVsQUl1SjYzakR2cFY1ZlJOUlBMZzVzMXBuWTVhMzlIUlZwTjlyYVBWdnpZMHlTaGJBeTJrSGNuckIzOEVsRWJuUDdXVTNsazJiQUZ6NWNzWUYySFktOGtsenNuSXdLclBhNnZaWjZBVGRJeDFhS3h6WUYtY19f?oc=5"
+          ],
+          "srt_significance": "Ур. 8 → Ур. 4: сбой ведомственной координации влияет на доступ к передовым чипам.",
+          "watch_next": "Следить за ответом Department of Commerce на обвинения Treasury.",
+          "place_id": "srt7-ai-export-governance",
+          "place_confidence": 0.8,
+          "place_reason": "Событие касается ведомственного контроля экспорта AI-чипов.",
+          "sources_meta": [
+            {
+              "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPQ1JJZWRfZ0I0WmVJUlowQzVZSm1HdHNvbjEzQVNyR1NNLUJ0cEw1WlJhM2JUdzlJNmtVb3NDdWRWbFMtLTc5OTM1Qm95Z253dXJXZVJsenUyLWEtU2VubHR1ZmdNWTM2Mmo2NVZ2OUEzQnQ3cVlmZVN4M0pfMzVsQUl1SjYzakR2cFY1ZlJOUlBMZzVzMXBuWTVhMzlIUlZwTjlyYVBWdnpZMHlTaGJBeTJrSGNuckIzOEVsRWJuUDdXVTNsazJiQUZ6NWNzWUYySFktOGtsenNuSXdLclBhNnZaWjZBVGRJeDFhS3h6WUYtY19f?oc=5",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Сообщение касается обвинений между ведомствами США по утечке чипов Nvidia в Китай, но не содержит деталей объёма, доказательств или последствий."
+          },
+          "news_id": "news_bbf78edecb0b47327ce5",
+          "content_version": "cv_d185fa5fd649b097ef4d"
+        },
+        {
+          "title": "Ghana столкнулась с разрывом готовности к AI-надзору",
+          "fact": "Bioengineer.org сообщил, что в Ghana развёртывание искусственного интеллекта опережает готовность системы управления и надзора. Новость опубликована через Google News.",
+          "why_important": "Если сообщение верно, это показывает возможный дефицит институтов контроля AI при растущем внедрении технологий.",
+          "description": "Bioengineer.org сообщил, что в Ghana развёртывание искусственного интеллекта опережает готовность системы управления и надзора. Новость опубликована через Google News.",
           "related_levels": [
             5,
+            7
+          ],
+          "sources": [
+            "https://news.google.com/rss/articles/CBMiugFBVV95cUxQc0h4bTI0anRYd3RmWU5uSi1nTmNmbDdJYWNhclRuMFhHQlFzTUU3dFU0UVlJeUFoamt2aWtqU3JRZkpXN2FyZnA0SlZyVDJyMlh6a05GNlRJT20wQkl2NDFlcVNUQW5CbXRpLVlaWWpkb29uaE9XYnFOeEVPU3FZZEdmUDJnNmpxRklfYmRISzQwVzNiRmU1ZmZ6dnhEZWpKZkZfQ1ozZ0k0VVQ3dHJzVk5jY05ESFdyM3c?oc=5"
+          ],
+          "srt_significance": "Ур. 8 → Ур. 5: слабый надзор ограничивает безопасное включение AI в отраслевые процессы.",
+          "watch_next": "Следить за появлением в Ghana официальной рамки AI-надзора.",
+          "place_id": null,
+          "place_confidence": 0.55,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQc0h4bTI0anRYd3RmWU5uSi1nTmNmbDdJYWNhclRuMFhHQlFzTUU3dFU0UVlJeUFoamt2aWtqU3JRZkpXN2FyZnA0SlZyVDJyMlh6a05GNlRJT20wQkl2NDFlcVNUQW5CbXRpLVlaWWpkb29uaE9XYnFOeEVPU3FZZEdmUDJnNmpxRklfYmRISzQwVzNiRmU1ZmZ6dnhEZWpKZkZfQ1ozZ0k0VVQ3dHJzVk5jY05ESFdyM3c?oc=5",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Сообщение указывает на разрыв между внедрением AI и готовностью надзора на уровне страны, что может затрагивать регуляторные и операционные риски."
+          },
+          "news_id": "news_3c0f33ae9a3ed6d7ec49",
+          "content_version": "cv_7381e4238049192f941e"
+        },
+        {
+          "title": "42Gears получила сертификацию управления AI",
+          "fact": "Markets Business Insider сообщил, что 42Gears получила сертификацию ISO/IEC3 для систем управления искусственным интеллектом. Новость опубликована через Google News.",
+          "why_important": "Такая сертификация может сигнализировать о формализации управления AI внутри компании, если сведения подтверждены.",
+          "description": "Markets Business Insider сообщил, что 42Gears получила сертификацию ISO/IEC3 для систем управления искусственным интеллектом. Новость опубликована через Google News.",
+          "related_levels": [
+            5,
+            6
+          ],
+          "sources": [
+            "https://news.google.com/rss/articles/CBMi6wFBVV95cUxNVjI1U3dSaHFoOURhMk9scF9ibUtvNHhkSkk4LU5mT2NNT201VWtGVFh2Wk5TNWhONzJ1cnhhTDAtbDhMaWRWdmY3dnMyYzFscG9PdVhCYndKNk1adjAxSXpBZDd1aEN0UG82TDczbzI2Zjk4OWxsOGl3UmxOM0ZmQWxaVXVHSUlOLXhPTzFCdjlUOUE5SVpKY3dZajRCMmtGTGNTdEZ1cEdDY3pwbzhJUFo3WHlTa1RHNkVMN0dZTW1XNUZ6UU5IUHJyN18xM3NLWVluZGRrbjVaWE1YZ0NuVGc4Y082Y1FoZmRV?oc=5"
+          ],
+          "srt_significance": "Ур. 8 → Ур. 5: сертификация переводит внедрение AI в проверяемые управленческие процедуры.",
+          "watch_next": "Следить за тем, будут ли клиенты требовать такие сертификаты в закупках AI-систем.",
+          "place_id": null,
+          "place_confidence": 0.48,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxNVjI1U3dSaHFoOURhMk9scF9ibUtvNHhkSkk4LU5mT2NNT201VWtGVFh2Wk5TNWhONzJ1cnhhTDAtbDhMaWRWdmY3dnMyYzFscG9PdVhCYndKNk1adjAxSXpBZDd1aEN0UG82TDczbzI2Zjk4OWxsOGl3UmxOM0ZmQWxaVXVHSUlOLXhPTzFCdjlUOUE5SVpKY3dZajRCMmtGTGNTdEZ1cEdDY3pwbzhJUFo3WHlTa1RHNkVMN0dZTW1XNUZ6UU5IUHJyN18xM3NLWVluZGRrbjVaWE1YZ0NuVGc4Y082Y1FoZmRV?oc=5",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "low",
+            "rationale": "Факт касается сертификации одной компании; данных о масштабе влияния на рынок или клиентов нет."
+          },
+          "news_id": "news_86be89bf934e8d1642c0",
+          "content_version": "cv_a1a0c96fb802ccd3d7ed"
+        }
+      ],
+      "event_count": 5
+    },
+    {
+      "level": 7,
+      "name": "Институты производства знаний",
+      "level_summary": "На уровне институтов производства знаний за вечер появился один прикладной образовательный сигнал: колледж запускает новую AI-специализацию. Это локальное, но прямое расширение образовательной инфраструктуры под AI-компетенции.",
+      "events": [
+        {
+          "title": "St. Vincent College запустит новый AI-минор",
+          "fact": "The Latrobe Bulletin сообщил, что St. Vincent College запустит новый минор по искусственному интеллекту. Новость опубликована через Google News.",
+          "why_important": "Если программа будет реализована, она может расширить подготовку студентов в области AI на уровне колледжа.",
+          "description": "The Latrobe Bulletin сообщил, что St. Vincent College запустит новый минор по искусственному интеллекту. Новость опубликована через Google News.",
+          "related_levels": [
+            3,
+            5
+          ],
+          "sources": [
+            "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNLXBWeVhONFlYRERfX2RGdDhPeFBPbEZMeWRpWmZ6T3lrN2VtR3VNdEQyY2tpLU5vaGFEelpjMWNPQXFXUUxrMjlNVzlKaW8wY0NtcDRXOVphYzNhNzRzRHAtYUIwZElwY3JqVTE5U2pkMWNfRkRLYTAtQ0xDYW5NUlZISFNHdlVKVnc5NjJXZF9YSHUxZzhkUlFpX0dIX25WSFNRNFBUTlBfVHItcDhPUGl6ZFl2NHRPaEF1WWY0NVVaWmg3SGRzWjBjSDB5c1A5TlJYS0xjSl9mSmZOa1dMUXJnY2lWazU0ZmFnMllPT24?oc=5"
+          ],
+          "srt_significance": "Ур. 7 → Ур. 3: образовательная программа переводит спрос на AI-навыки в новые профили подготовки.",
+          "watch_next": "Следить за набором студентов и перечнем курсов нового AI-минора.",
+          "place_id": null,
+          "place_confidence": 0.52,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNLXBWeVhONFlYRERfX2RGdDhPeFBPbEZMeWRpWmZ6T3lrN2VtR3VNdEQyY2tpLU5vaGFEelpjMWNPQXFXUUxrMjlNVzlKaW8wY0NtcDRXOVphYzNhNzRzRHAtYUIwZElwY3JqVTE5U2pkMWNfRkRLYTAtQ0xDYW5NUlZISFNHdlVKVnc5NjJXZF9YSHUxZzhkUlFpX0dIX25WSFNRNFBUTlBfVHItcDhPUGl6ZFl2NHRPaEF1WWY0NVVaWmg3SGRzWjBjSDB5c1A5TlJYS0xjSl9mSmZOa1dMUXJnY2lWazU0ZmFnMllPT24?oc=5",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "low",
+            "rationale": "Запуск учебного минора является локальной образовательной инициативой без подтверждённого широкого рыночного эффекта."
+          },
+          "news_id": "news_73ae95286037e238fa9a",
+          "content_version": "cv_7e1d4b5e40e07bae3e4b"
+        }
+      ],
+      "event_count": 1
+    },
+    {
+      "level": 6,
+      "name": "Технологии производства знаний",
+      "level_summary": "Уровень технологий производства знаний сегодня дал два разных сигнала: укрепление локального open-weight стека через llama.cpp и постановку вопроса об управляемой совместной работе AI-агентов в финансах. Методический фокус смещается к воспроизводимости и аудиту агентных действий.",
+      "events": [
+        {
+          "title": "llama.cpp выпустил версию 1.0.0",
+          "fact": "Hugging Face опубликовал материал о выпуске llama.cpp v1.0.0. В заголовке сказано, что выпуск даёт более сильную основу для локальной AI-экосистемы.",
+          "why_important": "Если заявленная оценка верна, релиз может укрепить инструменты для локального использования AI и разработки вокруг них.",
+          "description": "Hugging Face опубликовал материал о выпуске llama.cpp v1.0.0. В заголовке сказано, что выпуск даёт более сильную основу для локальной AI-экосистемы.",
+          "related_levels": [
+            4,
             8
           ],
           "sources": [
-            "https://arstechnica.com/google/2026/11/google-rolls-out-gemini-4-hydrogen-finally-replacing-3-8-flash/"
+            "https://huggingface.co/blog/ggml-org/llama-cpp-v1"
           ],
-          "srt_significance": "Ур. 4 → Ур. 5: новая модель быстро входит в продуктовые контуры Google.",
-          "watch_next": "Следить за отчётами Google о безопасности Gemini 4 Hydrogen после массового запуска.",
+          "srt_significance": "Ур. 6 → Ур. 4: методический стек локального AI закрепляется как базовая технология запуска моделей.",
+          "watch_next": "Следить за поддержкой новых моделей и платформ в следующих версиях llama.cpp.",
           "place_id": null,
           "place_confidence": 0,
           "place_reason": "",
           "sources_meta": [
             {
-              "url": "https://arstechnica.com/google/2026/11/google-rolls-out-gemini-4-hydrogen-finally-replacing-3-8-flash/",
+              "url": "https://huggingface.co/blog/ggml-org/llama-cpp-v1",
               "domain": "",
-              "published_at": "2026-11-12"
+              "published_at": "2026-11-13"
             }
           ],
           "importance": {
             "level": "medium",
-            "rationale": "Развертывание новой модели Google и замена прежней версии важны для AI-продуктов, но доказательств последствий для безопасности, пользователей или бизнеса не приведено."
+            "rationale": "Выпуск версии 1.0.0 и заявленная связь с локальной AI-экосистемой могут быть значимы для разработчиков и внедрения локального AI."
           },
-          "news_id": "news_d458704933992cfaa859",
-          "content_version": "cv_3abd144522c9c45bea87"
+          "news_id": "news_6841e619fcd7e8d93702",
+          "content_version": "cv_7bb869cb3e80292478b4"
+        },
+        {
+          "title": "CACM поставил вопрос об аудите групп AI-агентов",
+          "fact": "Communications of the ACM опубликовал материал о том, должны ли несколько AI-агентов сотрудничать под требованиями управления, аудируемости и регулирования в глобальном финансовом институте. Новость опубликована через Google News.",
+          "why_important": "Если такие требования будут формироваться как ожидание для финансовых организаций, это может повлиять на подходы к контролю AI-агентов, журналированию действий и ответственности за решения.",
+          "description": "Communications of the ACM опубликовал материал о том, должны ли несколько AI-агентов сотрудничать под требованиями управления, аудируемости и регулирования в глобальном финансовом институте. Новость опубликована через Google News.",
+          "related_levels": [
+            8,
+            9
+          ],
+          "sources": [
+            "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQZG5WNWFQem5XUktlZTRST0ZlaE5FbUNmd212ZDdtYU1KZ25feF9GT2RZZmlrWFp1X2ZtQnNSM3FCVmVpaXFfcG5Jbi05Y0w5eFU2d2J2U3UzY1Y2T3kteDRLd2RHY3lPZTBkQWFSSlBNNkRnSnQtemZuNjhfcnR5OFpNck0zd3dVSC1kU0tnZzZxSXhrOGZ3ekNpbFlwbUdLZVdib29GMXJ1WVVhZXBwZDZYVnJPQVpXUDduTFVMT3FoWk9aeHlvSC16NTdRVFNLaGdFV0EwQVc1dzFNYjAtNEViOXhPUDdyZml1QUVjbV8?oc=5"
+          ],
+          "srt_significance": "Ур. 6 → Ур. 8: методика совместной работы агентов требует институциональных правил аудита.",
+          "watch_next": "Следить за практическими стандартами журналирования действий нескольких AI-агентов.",
+          "place_id": "srt6-structural-verification-services",
+          "place_confidence": 0.68,
+          "place_reason": "Новость прямо касается аудируемости и проверки поведения AI-агентов.",
+          "sources_meta": [
+            {
+              "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQZG5WNWFQem5XUktlZTRST0ZlaE5FbUNmd212ZDdtYU1KZ25feF9GT2RZZmlrWFp1X2ZtQnNSM3FCVmVpaXFfcG5Jbi05Y0w5eFU2d2J2U3UzY1Y2T3kteDRLd2RHY3lPZTBkQWFSSlBNNkRnSnQtemZuNjhfcnR5OFpNck0zd3dVSC1kU0tnZzZxSXhrOGZ3ekNpbFlwbUdLZVdib29GMXJ1WVVhZXBwZDZYVnJPQVpXUDduTFVMT3FoWk9aeHlvSC16NTdRVFNLaGdFV0EwQVc1dzFNYjAtNEViOXhPUDdyZml1QUVjbV8?oc=5",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Материал затрагивает управление, аудитируемость и регулирование совместной работы AI-агентов в глобальном финансовом институте, но это публикация-обсуждение, а не подтвержденное правило или внедрение."
+          },
+          "news_id": "news_2080add82300b2ca594a",
+          "content_version": "cv_42e75ee206eb82e2d2ae"
+        },
+        {
+          "title": "FT призвал выделить честный канал доступа для AI-агентов",
+          "fact": "Financial Times опубликовал материал о том, что AI-агенты не должны притворяться людьми. В описании сказано, что банки и онлайн-платформы должны предложить стандартный канал доступа на справедливых условиях.",
+          "why_important": "Если идея будет поддержана рынком или регуляторами, платформам может потребоваться различать людей и AI-агентов и задавать отдельные правила доступа.",
+          "description": "Financial Times опубликовал материал о том, что AI-агенты не должны притворяться людьми. В описании сказано, что банки и онлайн-платформы должны предложить стандартный канал доступа на справедливых условиях.",
+          "related_levels": [
+            5,
+            8
+          ],
+          "sources": [
+            "https://www.ft.com/content/069cdc48-e17a-430b-818c-93894768706f?syn-25a6b1a6=1"
+          ],
+          "srt_significance": "Ур. 6 → Ур. 5: агентные протоколы доступа перестраивают интерфейсы сервисных платформ.",
+          "watch_next": "Следить за запуском стандартов доступа для AI-агентов у банков и платформ.",
+          "place_id": null,
+          "place_confidence": 0.5,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://www.ft.com/content/069cdc48-e17a-430b-818c-93894768706f?syn-25a6b1a6=1",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Тема стандартного канала доступа для AI-агентов может быть значимой для банков и онлайн-платформ, но факт описывает публикацию Financial Times, а не обязательное требование."
+          },
+          "news_id": "news_d6b39640e8e489291caf",
+          "content_version": "cv_c330d57c1761183fbd64"
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 5,
+      "name": "Экономическое разделение труда между фирмами",
+      "level_summary": "Экономическое разделение труда вечером обновилось через агентную коммерцию, корпоративные AI-приложения и внедрение AI в медиакомпании. Главный сдвиг — AI начинает брать на себя не только рекомендации, но и операции: покупку, запись встреч, звонки, производство контента и поддержку корпоративных процессов.",
+      "events": [
+        {
+          "title": "ChatGPT Wallet позволит агентам покупать за пользователя",
+          "fact": "TechCrunch сообщил, что ChatGPT Wallet позволит AI-агентам покупать товары и оформлять оплату от имени пользователя. Запуск начинается с ограниченного развёртывания для Pro-подписчиков в США.",
+          "why_important": "Такая функция может расширить роль AI-агентов от рекомендаций к выполнению транзакций, что усиливает вопросы авторизации, возвратов, безопасности платежей и ответственности.",
+          "description": "TechCrunch сообщил, что ChatGPT Wallet позволит AI-агентам покупать товары и оформлять оплату от имени пользователя. Запуск начинается с ограниченного развёртывания для Pro-подписчиков в США.",
+          "related_levels": [
+            6,
+            8,
+            9
+          ],
+          "sources": [
+            "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/"
+          ],
+          "srt_significance": "Ур. 5 → Ур. 8: агентная торговля требует новых правил доверия, согласия и ответственности.",
+          "watch_next": "Следить за лимитами, журналами действий и спорами по покупкам через ChatGPT Wallet.",
+          "place_id": "srt3-ai-agent-orchestration",
+          "place_confidence": 0.74,
+          "place_reason": "Событие описывает агентные действия от имени пользователя.",
+          "sources_meta": [
+            {
+              "url": "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "high",
+            "rationale": "Факт описывает продуктовую возможность, при которой AI-агенты могут покупать и оплачивать товары от имени пользователя; даже при ограниченном запуске это затрагивает платежи, коммерцию и доверие."
+          },
+          "news_id": "news_bbcb79fadd39dd32e9c7",
+          "content_version": "cv_5d10fcb7bd13d56542ae"
+        },
+        {
+          "title": "ElevenLabs выпустил приложение ElevenAI для команд",
+          "fact": "TechCrunch сообщил, что ElevenLabs представил ElevenAI — приложение для заметок по встречам и диктовки, ориентированное на команды и предприятия. В описании сказано, что приложение объединяет фиксацию встреч и диктовку.",
+          "why_important": "",
+          "description": "TechCrunch сообщил, что ElevenLabs представил ElevenAI — приложение для заметок по встречам и диктовки, ориентированное на команды и предприятия. В описании сказано, что приложение объединяет фиксацию встреч и диктовку.",
+          "related_levels": [
+            3,
+            6
+          ],
+          "sources": [
+            "https://techcrunch.com/2026/11/13/elevenlabs-new-app-combines-meeting-note-taking-and-dictation-for-teams/"
+          ],
+          "srt_significance": "Ур. 5 → Ур. 3: AI-инструмент переводит часть офисной работы в автоматизированную фиксацию знаний.",
+          "watch_next": "Следить за интеграциями ElevenAI с корпоративными календарями и хранилищами.",
+          "place_id": null,
+          "place_confidence": 0,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://techcrunch.com/2026/11/13/elevenlabs-new-app-combines-meeting-note-taking-and-dictation-for-teams/",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "news_id": "news_4d1482722545d06dd169",
+          "importance": null,
+          "content_version": "cv_3a5bc24c4a206d01c361"
+        },
+        {
+          "title": "Claude Duet показан как потребительский AI-агент",
+          "fact": "The Verge сообщил о Claude Duet, AI-агенте Anthropic для потребителей. В материале сказано, что это очередная попытка AI-компании убедить людей в полезности агентов вне программирования.",
+          "why_important": "Если такие агенты окажутся полезными для массовых пользователей, это может изменить конкуренцию в потребительских AI-продуктах и повысить ожидания к автономным функциям.",
+          "description": "The Verge сообщил о Claude Duet, AI-агенте Anthropic для потребителей. В материале сказано, что это очередная попытка AI-компании убедить людей в полезности агентов вне программирования.",
+          "related_levels": [
+            3,
+            6
+          ],
+          "sources": [
+            "https://www.theverge.com/ai-artificial-intelligence/1032518/claude-duet-ai-agent-hands-on"
+          ],
+          "srt_significance": "Ур. 5 → Ур. 3: агентные продукты расширяют набор пользовательских и профессиональных практик.",
+          "watch_next": "Следить за функциями Claude Duet, где агент действует без программирования.",
+          "place_id": "srt3-ai-agent-orchestration",
+          "place_confidence": 0.63,
+          "place_reason": "Новость прямо описывает потребительского AI-агента.",
+          "sources_meta": [
+            {
+              "url": "https://www.theverge.com/ai-artificial-intelligence/1032518/claude-duet-ai-agent-hands-on",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Потребительский AI-агент Anthropic указывает на расширение конкуренции в AI за пределы инструментов для разработчиков, но данных о запуске, масштабе или принятии нет."
+          },
+          "news_id": "news_0acc674430dfd202ca5a",
+          "content_version": "cv_170704e3d0bc20bedeb6"
+        },
+        {
+          "title": "Cerebras объявил сделки с Oracle и Microsoft",
+          "fact": "Bloomberg сообщил, что акции Cerebras выросли перед открытием рынка после прогноза продаж выше ожиданий и новых сделок с Oracle и Microsoft. В сюжете также упомянута задержка развёртывания контракта с OpenAI.",
+          "why_important": "",
+          "description": "Bloomberg сообщил, что акции Cerebras выросли перед открытием рынка после прогноза продаж выше ожиданий и новых сделок с Oracle и Microsoft. В сюжете также упомянута задержка развёртывания контракта с OpenAI.",
+          "related_levels": [
+            4,
+            9
+          ],
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-11-13/cerebras-soars-on-sales-cisco-down-on-expectations-miss-video"
+          ],
+          "srt_significance": "Ур. 5 → Ур. 4: коммерческие альянсы определяют загрузку и масштабирование аппаратных AI-платформ.",
+          "watch_next": "Следить за сроками развёртывания контракта Cerebras с OpenAI.",
+          "place_id": null,
+          "place_confidence": 0,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://www.bloomberg.com/news/videos/2026-11-13/cerebras-soars-on-sales-cisco-down-on-expectations-miss-video",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "news_id": "news_5fe8966b48dddf2372c6",
+          "importance": null,
+          "content_version": "cv_703208a01e48de9064e4"
+        },
+        {
+          "title": "Disney внедряет AI от фильмов до парков",
+          "fact": "Bloomberg сообщил, что Disney внедряет AI в операции across the board, от фильмов до парков, при сохранении защиты своей интеллектуальной собственности. Материал подчёркивает разворот компании к использованию AI.",
+          "why_important": "Если Disney масштабирует AI безопасно для IP, это может стать ориентиром для медиа- и развлекательного сектора в применении AI без утраты контроля над правами.",
+          "description": "Bloomberg сообщил, что Disney внедряет AI в операции across the board, от фильмов до парков, при сохранении защиты своей интеллектуальной собственности. Материал подчёркивает разворот компании к использованию AI.",
+          "related_levels": [
+            7,
+            8
+          ],
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-11-13/disney-pivots-to-embrace-ai-from-film-to-parks"
+          ],
+          "srt_significance": "Ур. 5 → Ур. 7: AI-внедрение медиакомпании упирается в правила работы с интеллектуальной собственностью.",
+          "watch_next": "Следить за тем, какие AI-инструменты Disney допустит к работе с контентом.",
+          "place_id": null,
+          "place_confidence": 0.42,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://www.bloomberg.com/news/articles/2026-11-13/disney-pivots-to-embrace-ai-from-film-to-parks",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "high",
+            "rationale": "Широкое внедрение AI в Disney от фильмов до парков затрагивает крупную медиакомпанию с ценными IP-активами и может повлиять на производство, операции и защиту контента."
+          },
+          "news_id": "news_5fc6b2b3b2ee2684f9fc",
+          "content_version": "cv_af87a8a2bc0f1cac8210"
+        },
+        {
+          "title": "Microsoft сообщил о прогрессе в устранении крупного сбоя",
+          "fact": "Bloomberg сообщил, что Microsoft продвигается в восстановлении доступа к флагманскому программному обеспечению после одного из самых долгих сбоев. В материале сказано, что сбой парализовал государственные офисы, трейдеров и бизнесы по всему миру.",
+          "why_important": "",
+          "description": "Bloomberg сообщил, что Microsoft продвигается в восстановлении доступа к флагманскому программному обеспечению после одного из самых долгих сбоев. В материале сказано, что сбой парализовал государственные офисы, трейдеров и бизнесы по всему миру.",
+          "related_levels": [
+            2,
+            3
+          ],
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-11-13/microsoft-says-making-progress-fixing-one-of-its-longest-outages"
+          ],
+          "srt_significance": "Ур. 5 → Ур. 2: зависимость рабочих процессов от облака повышает требования к устойчивости инфраструктуры.",
+          "watch_next": "Следить за отчётом Microsoft о причине и длительности сбоя.",
+          "place_id": null,
+          "place_confidence": 0,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://www.bloomberg.com/news/articles/2026-11-13/microsoft-says-making-progress-fixing-one-of-its-longest-outages",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "news_id": "news_4df74840e093c33658e8",
+          "importance": null,
+          "content_version": "cv_bc7823295f9c21fefc56"
+        },
+        {
+          "title": "Mansa продвигает AI-микродрамы о Black-аудитории",
+          "fact": "Wired сообщил, что стартап Mansa использует AI-микродрамы как доказательства спроса на истории для Black-аудитории в Hollywood. В материале также сказано, что критики обвиняют студию в уступке AI.",
+          "why_important": "Если такие форматы будут восприниматься как подтверждение спроса, они могут повлиять на то, как студии тестируют аудитории и финансируют нишевые истории. Одновременно критика указывает на репутационные риски использования AI в креативном производстве.",
+          "description": "Wired сообщил, что стартап Mansa использует AI-микродрамы как доказательства спроса на истории для Black-аудитории в Hollywood. В материале также сказано, что критики обвиняют студию в уступке AI.",
+          "related_levels": [
+            7,
+            8
+          ],
+          "sources": [
+            "https://www.wired.com/story/black-roles-are-disappearing-in-hollywood-this-startup-is-using-ai-microdramas-to-fight-back/"
+          ],
+          "srt_significance": "Ур. 5 → Ур. 7: AI-контент становится инструментом проверки культурного спроса и авторских решений.",
+          "watch_next": "Следить за тем, перейдут ли AI-микродрамы Mansa в полноценные сделки со студиями.",
+          "place_id": null,
+          "place_confidence": 0,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://www.wired.com/story/black-roles-are-disappearing-in-hollywood-this-startup-is-using-ai-microdramas-to-fight-back/",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Тема затрагивает применение AI в производстве контента и позиционирование историй для Black-аудитории, но данных о масштабе спроса или коммерческом эффекте нет."
+          },
+          "news_id": "news_cd9a227217501d9b400b",
+          "content_version": "cv_e6e4f3a7566934f207a9"
+        },
+        {
+          "title": "Часовые бренды пересматривают работу с AI-поиском",
+          "fact": "Financial Times сообщил, что производители часов сталкиваются с влиянием AI на покупателей. В описании сказано, что бренды вынуждены переосмыслить контакт с потребителями и точность представления товаров в поиске.",
+          "why_important": "Если AI-поиск становится значимым каналом выбора, контроль за точностью описаний и видимостью бренда может стать важной частью маркетинга и дистрибуции. Для люксового сегмента особенно важны контекст, доверие и корректная подача продукта.",
+          "description": "Financial Times сообщил, что производители часов сталкиваются с влиянием AI на покупателей. В описании сказано, что бренды вынуждены переосмыслить контакт с потребителями и точность представления товаров в поиске.",
+          "related_levels": [
+            6,
+            8
+          ],
+          "sources": [
+            "https://www.ft.com/content/dd653a19-492a-41d1-b459-3a2b7d2f0e86"
+          ],
+          "srt_significance": "Ур. 5 → Ур. 6: коммерция начинает зависеть от того, как AI-системы формируют знание о товаре.",
+          "watch_next": "Следить за инструментами брендов для проверки ответов AI-поиска о продуктах.",
+          "place_id": null,
+          "place_confidence": 0,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://www.ft.com/content/dd653a19-492a-41d1-b459-3a2b7d2f0e86",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "AI-поиск может влиять на путь покупателя и представление премиальных товаров, но в факте нет данных о масштабе влияния на продажи или бренды."
+          },
+          "news_id": "news_87ef0f87ce37da824eff",
+          "content_version": "cv_bf0f093c98e4148de142"
+        }
+      ],
+      "event_count": 8
+    },
+    {
+      "level": 4,
+      "name": "«Железные» технологии",
+      "level_summary": "На уровне «железных» технологий новых самостоятельных инженерных запусков меньше, чем институциональных последствий вокруг чипов. Вечерние события показывают, что аппаратный слой сегодня описывается через контроль поставок, альтернативных поставщиков и темп продуктового цикла.",
+      "events": [
+        {
+          "title": "Уход Хуанга поставил под вопрос open-source курс Nvidia",
+          "fact": "TechCrunch сообщил, что уход Дженсена Хуанга вызывает вопросы о приверженности Nvidia открытому AI. В материале упомянуты приобретение Hugging Face, open-weight модели и позиция Nvidia против ограничений.",
+          "why_important": "",
+          "description": "TechCrunch сообщил, что уход Дженсена Хуанга вызывает вопросы о приверженности Nvidia открытому AI. В материале упомянуты приобретение Hugging Face, open-weight модели и позиция Nvidia против ограничений.",
+          "related_levels": [
+            6,
+            8
+          ],
+          "sources": [
+            "https://techcrunch.com/2026/11/12/jensen-huangs-exit-puts-nvidias-support-for-open-source-in-question/"
+          ],
+          "srt_significance": "Ур. 4 → Ур. 8: аппаратный лидер влияет на нормы открытости в AI-экосистеме.",
+          "watch_next": "Следить за заявлениями Nvidia о Hugging Face и open-weight моделях после смены CEO.",
+          "place_id": null,
+          "place_confidence": 0,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://techcrunch.com/2026/11/12/jensen-huangs-exit-puts-nvidias-support-for-open-source-in-question/",
+              "domain": "",
+              "published_at": "2026-11-12"
+            }
+          ],
+          "news_id": "news_4a496b32dce8dcb70540",
+          "importance": null,
+          "content_version": "cv_e656248eed765814f9fd"
+        },
+        {
+          "title": "Израильские VC ждут шанса для конкурентов Nvidia",
+          "fact": "TechCrunch сообщил, что израильские венчурные инвесторы видят возможность для претендентов на фоне турбулентности Nvidia. В материале сказано, что многие в стартап-экосистеме Израиля обеспокоены влиянием ухода Хуанга.",
+          "why_important": "Если турбулентность Nvidia усилит спрос на альтернативы, это может открыть окно для стартапов в AI-чипах, инфраструктуре или смежных технологиях. Обеспокоенность экосистемы показывает зависимость части рынка от стабильности Nvidia.",
+          "description": "TechCrunch сообщил, что израильские венчурные инвесторы видят возможность для претендентов на фоне турбулентности Nvidia. В материале сказано, что многие в стартап-экосистеме Израиля обеспокоены влиянием ухода Хуанга.",
+          "related_levels": [
+            5,
+            9
+          ],
+          "sources": [
+            "https://techcrunch.com/2026/11/13/israels-vcs-see-opportunity-for-challengers-in-nvidias-turmoil/"
+          ],
+          "srt_significance": "Ур. 4 → Ур. 5: сбой у лидера аппаратного слоя перераспределяет внимание инвесторов к конкурентам.",
+          "watch_next": "Следить за финансированием израильских стартапов в AI-чипах и инфраструктуре.",
+          "place_id": null,
+          "place_confidence": 0.38,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://techcrunch.com/2026/11/13/israels-vcs-see-opportunity-for-challengers-in-nvidias-turmoil/",
+              "domain": "",
+              "published_at": "2026-11-13"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Материал указывает на потенциальные возможности для конкурентов Nvidia и настроения VC, но не содержит подтвержденных инвестиций, сделок или рыночных сдвигов."
+          },
+          "news_id": "news_ad83f8c3766bbc41d223",
+          "content_version": "cv_400e41bd482fcf1baa67"
         }
       ],
       "event_count": 2
@@ -759,136 +782,105 @@
     {
       "level": 3,
       "name": "Социально-профессиональная структура",
-      "level_summary": "Социально-профессиональная структура сегодня изменилась через два сигнала: сотрудники Google DeepMind переводят профсоюзный спор к государству, а разработчики игр чаще используют генеративный ИИ в работе. Профессии одновременно требуют коллективного голоса и перестраивают повседневные инструменты.",
+      "level_summary": "На социально-профессиональном уровне новые факты касаются управленческой преемственности и статуса руководителей в технологических компаниях. На фоне AI-инфраструктуры вопрос компетентного руководства стал не кадровой деталью, а условием устойчивости всей цепочки.",
       "events": [
         {
-          "title": "Сотрудники Google DeepMind обратились к UK по профсоюзу",
-          "fact": "Wired сообщил, что сотрудники Google DeepMind пытаются обойти руководство компании и обратиться к правительству Великобритании в борьбе за профсоюз. Это произошло после того, как первоначальные переговоры застопорились.",
-          "why_important": "Если обращение к правительству усилит позиции сотрудников, это может стать значимым прецедентом для трудовых отношений в AI-подразделениях крупных технологических компаний.",
-          "description": "Wired сообщил, что сотрудники Google DeepMind пытаются обойти руководство компании и обратиться к правительству Великобритании в борьбе за профсоюз. Это произошло после того, как первоначальные переговоры застопорились.",
+          "title": "Huang, по сообщению, сомневался в преемнице Kress",
+          "fact": "TechCrunch сообщил, что Дженсен Хуанг не демонстрировал уверенности в своей преемнице. По данным материала, летом он описал Colette Kress как «deer in the headlights» на встрече.",
+          "why_important": "Если сообщение точно отражает ситуацию, оно может указывать на напряженность или неопределенность вокруг управленческой преемственности.",
+          "description": "TechCrunch сообщил, что Дженсен Хуанг не демонстрировал уверенности в своей преемнице. По данным материала, летом он описал Colette Kress как «deer in the headlights» на встрече.",
           "related_levels": [
-            8,
-            5
+            5,
+            9
           ],
           "sources": [
-            "https://www.wired.com/story/google-deepmind-staff-escalate-their-union-fight/"
+            "https://techcrunch.com/2026/11/13/jensen-huang-didnt-show-confidence-in-his-successor-report-says/"
           ],
-          "srt_significance": "Ур. 3 → Ур. 8: профессиональное сообщество выносит трудовой конфликт в государственный контур.",
-          "watch_next": "Следить за ответом британских органов на обращение сотрудников Google DeepMind.",
+          "srt_significance": "Ур. 3 → Ур. 5: управленческая преемственность влияет на устойчивость партнёрств вокруг Nvidia.",
+          "watch_next": "Следить за первыми кадровыми и операционными решениями Colette Kress.",
           "place_id": null,
           "place_confidence": 0,
           "place_reason": "",
           "sources_meta": [
             {
-              "url": "https://www.wired.com/story/google-deepmind-staff-escalate-their-union-fight/",
+              "url": "https://techcrunch.com/2026/11/13/jensen-huang-didnt-show-confidence-in-his-successor-report-says/",
               "domain": "",
-              "published_at": "2026-11-12"
+              "published_at": "2026-11-13"
             }
           ],
           "importance": {
             "level": "medium",
-            "rationale": "Трудовой спор в Google DeepMind может повлиять на отношения с сотрудниками и управление AI-подразделением, но масштаб участия и исход процесса не подтверждены."
+            "rationale": "Сообщение касается доверия к потенциальной преемнице лидера, что может иметь значение для восприятия преемственности управления, но доказанного эффекта не приведено."
           },
-          "news_id": "news_b4cad1d518811350ec56",
-          "content_version": "cv_63899aa30da040e91a55"
+          "news_id": "news_a17f152d477fce8ebb46",
+          "content_version": "cv_6081a79f68418de26d6f"
         },
         {
-          "title": "40% разработчиков игр используют генеративный ИИ в работе",
-          "fact": "The Verge сообщил, что по ежегодному опросу GDC Festival of Gaming 40% разработчиков игр используют генеративный ИИ как часть работы. В 2025 году этот показатель составлял 36%.",
-          "why_important": "Если данные опроса репрезентативны, генеративный ИИ уже стал значимым рабочим инструментом в игровой разработке, а не нишевой практикой.",
-          "description": "The Verge сообщил, что по ежегодному опросу GDC Festival of Gaming 40% разработчиков игр используют генеративный ИИ как часть работы. В 2025 году этот показатель составлял 36%.",
+          "title": "HR Dive: уходы CEO из-за misconduct удвоились",
+          "fact": "HR Dive сообщил, что число уходов CEO из-за misconduct удвоилось по сравнению с 2024 годом. В материале приведена оценка Andy Challenger, что это вопрос не только морали, но и суждения.",
+          "why_important": "",
+          "description": "HR Dive сообщил, что число уходов CEO из-за misconduct удвоилось по сравнению с 2024 годом. В материале приведена оценка Andy Challenger, что это вопрос не только морали, но и суждения.",
           "related_levels": [
-            5,
-            6
+            8,
+            9
           ],
           "sources": [
-            "https://www.theverge.com/games/1032085/gdc-festival-of-gaming-annual-survey-ai-layoffs"
+            "https://www.hrdive.com/news/the-number-of-ceos-exiting-due-to-misconduct-has-doubled-compared-to-2024/874528/"
           ],
-          "srt_significance": "Ур. 3 → Ур. 5: массовое применение ИИ меняет распределение задач в игровой разработке.",
-          "watch_next": "Следить за долей студий, которые вводят формальные правила использования генеративного ИИ.",
+          "srt_significance": "Ур. 3 → Ур. 8: профессиональная репутация CEO становится объектом институционального контроля.",
+          "watch_next": "Следить за изменениями правил советов директоров по поведению руководителей.",
           "place_id": null,
-          "place_confidence": 0.46,
+          "place_confidence": 0,
           "place_reason": "",
           "sources_meta": [
             {
-              "url": "https://www.theverge.com/games/1032085/gdc-festival-of-gaming-annual-survey-ai-layoffs",
+              "url": "https://www.hrdive.com/news/the-number-of-ceos-exiting-due-to-misconduct-has-doubled-compared-to-2024/874528/",
               "domain": "",
               "published_at": "2026-11-12"
             }
           ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Доля разработчиков игр, использующих генеративный ИИ, заметна и растёт, что может влиять на процессы производства контента."
-          },
-          "news_id": "news_889dda614b5244142fc7",
-          "content_version": "cv_e51db9c7398346cbcf0b"
-        },
+          "news_id": "news_552eb90e7f2da4bce2b3",
+          "importance": null,
+          "content_version": "cv_4a414d404641de6353fa"
+        }
+      ],
+      "event_count": 2
+    },
+    {
+      "level": 2,
+      "name": "Пространственная организация",
+      "level_summary": "На уровне пространственной организации новых строительных решений вечером не зафиксировано, но появился отдельный сигнал о физической уязвимости дата-центров. Инфраструктурная устойчивость начинает обсуждаться не только как мощность и охлаждение, но и как защита от атак.",
+      "events": [
         {
-          "title": "Руководители меньше ставят в приоритет благополучие сотрудников",
-          "fact": "HR Dive сообщил, что многие руководители обеспокоены лидерством с эмпатией. Businessolver заявил, что под давлением выбора ставок на ИИ руководители C-suite отодвигают благополучие, культуру и удержание сотрудников.",
-          "why_important": "Если такая динамика подтверждается шире, конкуренция за инвестиции в ИИ может ослаблять внимание руководства к человеческому капиталу.",
-          "description": "HR Dive сообщил, что многие руководители обеспокоены лидерством с эмпатией. Businessolver заявил, что под давлением выбора ставок на ИИ руководители C-suite отодвигают благополучие, культуру и удержание сотрудников.",
+          "title": "Ars Technica обсудит риск атак дронов на дата-центры",
+          "fact": "Ars Technica сообщил о прямом эфире Ars Live 17 ноября в 13:00 по восточному времени о том, что атаки дронов на дата-центры означают для жизни в облаке. В заголовке поставлен вопрос, сможет ли облако пережить удары дронов по дата-центрам.",
+          "why_important": "Тема может быть важна для оценки физической устойчивости облачной инфраструктуры, если обсуждаемые риски окажутся практически значимыми.",
+          "description": "Ars Technica сообщил о прямом эфире Ars Live 17 ноября в 13:00 по восточному времени о том, что атаки дронов на дата-центры означают для жизни в облаке. В заголовке поставлен вопрос, сможет ли облако пережить удары дронов по дата-центрам.",
           "related_levels": [
             5,
             8
           ],
           "sources": [
-            "https://www.hrdive.com/news/many-executives-say-they-are-worried-about-leading-with-empathy/874529/"
+            "https://arstechnica.com/gadgets/2026/11/ars-live-can-the-cloud-survive-drone-strikes-on-data-centers/"
           ],
-          "srt_significance": "Ур. 3 → Ур. 5: управленческие ставки на ИИ меняют приоритеты удержания и культуры.",
-          "watch_next": "Следить за опросами Businessolver о балансе ИИ-инвестиций и удержания сотрудников.",
+          "srt_significance": "Ур. 2 → Ур. 5: физическая уязвимость дата-центров влияет на надёжность облачных сервисов.",
+          "watch_next": "Следить за практическими мерами операторов ЦОД против атак дронов.",
           "place_id": null,
-          "place_confidence": 0,
+          "place_confidence": 0.44,
           "place_reason": "",
           "sources_meta": [
             {
-              "url": "https://www.hrdive.com/news/many-executives-say-they-are-worried-about-leading-with-empathy/874529/",
+              "url": "https://arstechnica.com/gadgets/2026/11/ars-live-can-the-cloud-survive-drone-strikes-on-data-centers/",
               "domain": "",
               "published_at": "2026-11-12"
             }
           ],
           "importance": {
-            "level": "medium",
-            "rationale": "Сдвиг приоритетов C-suite от благополучия и удержания сотрудников может затрагивать HR-риски, культуру и производительность."
+            "level": "low",
+            "rationale": "Это анонс обсуждения риска, а не сообщение о фактической атаке, ущербе или изменении работы дата-центров."
           },
-          "news_id": "news_2ff5061de13c97659022",
-          "content_version": "cv_c3c1ce131d1cee909c9a"
-        }
-      ],
-      "event_count": 3
-    },
-    {
-      "level": 2,
-      "name": "Пространственная организация",
-      "level_summary": "Пространственный уровень сегодня проявился через тарифную архитектуру вокруг дата-центров, а не через новые стройки. Главный вопрос дня: кто присваивает эффект масштаба от роста потребления дата-центров — сеть, коммунальная компания или конечный потребитель.",
-      "events": [
-        {
-          "title": "Дата-центры могут снижать счета, но тарифы спорны",
-          "fact": "Utility Dive опубликовал колонку Edward Burgess, где сказано: когда продажи растут быстрее затрат, тарифы должны снижаться. Автор утверждает, что некоторые коммунальные компании используют более низкие исторические продажи и обновлённые допущения о затратах, чтобы закрепить более высокие тарифы.",
-          "why_important": "",
-          "description": "Utility Dive опубликовал колонку Edward Burgess, где сказано: когда продажи растут быстрее затрат, тарифы должны снижаться. Автор утверждает, что некоторые коммунальные компании используют более низкие исторические продажи и обновлённые допущения о затратах, чтобы закрепить более высокие тарифы.",
-          "related_levels": [
-            1,
-            9
-          ],
-          "sources": [
-            "https://www.utilitydive.com/news/data-centers-could-lower-your-electricity-bill-but-will-utilities-let-them/873144/"
-          ],
-          "srt_significance": "Ур. 2 → Ур. 1: размещение дата-центров меняет экономику сетевой нагрузки и тарифов.",
-          "watch_next": "Следить за тарифными делами, где коммунальные компании учитывают новые продажи дата-центрам.",
-          "place_id": null,
-          "place_confidence": 0.52,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://www.utilitydive.com/news/data-centers-could-lower-your-electricity-bill-but-will-utilities-let-them/873144/",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "news_id": "news_16a21de6e15b7412feb9",
-          "importance": null,
-          "content_version": "cv_f4bf2f75f8c72fa94056"
+          "news_id": "news_0838bef2edd27f9fd5f0",
+          "content_version": "cv_5fc81dec3e4c32f9f62b"
         }
       ],
       "event_count": 1
@@ -896,329 +888,225 @@
     {
       "level": 1,
       "name": "Природные ресурсы и география",
-      "level_summary": "На природно-ресурсном уровне сегодня появились разнонаправленные сигналы: EIA ожидает рост батарей и возобновляемой генерации, а SoftBank зафиксировал крупный убыток на газовых турбинах для ИИ-дата-центров. Энергетика для ИИ стала зоной отбора между быстрыми, но рискованными закупками газа и системной перестройкой сети.",
-      "events": [
-        {
-          "title": "EIA ждёт более 26 ГВт новых батарей в следующем году",
-          "fact": "Utility Dive сообщил, что, по данным EIA, электроэнергетический сектор может установить более 26 ГВт батарейного хранения в следующем году. EIA также ожидает, что возобновляемые источники обеспечат почти четверть потребления в 2027 году.",
-          "why_important": "Если прогноз EIA реализуется, батарейное хранение и ВИЭ будут играть более крупную роль в покрытии спроса и балансировке энергосистемы.",
-          "description": "Utility Dive сообщил, что, по данным EIA, электроэнергетический сектор может установить более 26 ГВт батарейного хранения в следующем году. EIA также ожидает, что возобновляемые источники обеспечат почти четверть потребления в 2027 году.",
-          "related_levels": [
-            2,
-            9
-          ],
-          "sources": [
-            "https://www.utilitydive.com/news/as-coal-burn-declines-rising-power-demand-will-be-primarily-met-by-renewab/874315/"
-          ],
-          "srt_significance": "Ур. 1 → Ур. 2: батареи и возобновляемая генерация задают новые условия размещения дата-центров.",
-          "watch_next": "Следить за фактическим вводом батарейных мощностей в отчётах EIA за 2027 год.",
-          "place_id": null,
-          "place_confidence": 0.44,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://www.utilitydive.com/news/as-coal-burn-declines-rising-power-demand-will-be-primarily-met-by-renewab/874315/",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "importance": {
-            "level": "high",
-            "rationale": "Прогноз более 26 ГВт новых батарей и почти четверти потребления от ВИЭ указывает на существенные изменения в энергосистеме."
-          },
-          "news_id": "news_e863cb682fa1077cebf1",
-          "content_version": "cv_5fc9b08facea6e7befbf"
-        },
-        {
-          "title": "SoftBank потерял более $3 млрд на газовых турбинах для ИИ",
-          "fact": "TechCrunch сообщил, что SoftBank потерял более $3 млрд на предварительных заказах газовых турбин для питания ИИ-дата-центров. Материал рассматривает значение убытка для энергетических рынков.",
-          "why_important": "Если сообщение точно отражает ситуацию, оно указывает на существенный финансовый риск в проектах энергоснабжения ИИ-инфраструктуры и может повлиять на восприятие роли природного газа в таких проектах.",
-          "description": "TechCrunch сообщил, что SoftBank потерял более $3 млрд на предварительных заказах газовых турбин для питания ИИ-дата-центров. Материал рассматривает значение убытка для энергетических рынков.",
-          "related_levels": [
-            9,
-            2
-          ],
-          "sources": [
-            "https://techcrunch.com/2026/11/12/softbanks-billion-dollar-loss-may-have-put-a-cap-on-ais-natural-gas-ambitions/"
-          ],
-          "srt_significance": "Ур. 1 → Ур. 9: энергетические закупки для ИИ напрямую создают финансовые потери капитала.",
-          "watch_next": "Следить за новыми заказами турбин для ИИ-дата-центров и раскрытием убытков по ним.",
-          "place_id": "srt1-ai-dedicated-energy",
-          "place_confidence": 0.84,
-          "place_reason": "Новость прямо касается выделенной генерации для ИИ-дата-центров.",
-          "sources_meta": [
-            {
-              "url": "https://techcrunch.com/2026/11/12/softbanks-billion-dollar-loss-may-have-put-a-cap-on-ais-natural-gas-ambitions/",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "importance": {
-            "level": "high",
-            "rationale": "Заявленный убыток более $3 млрд у SoftBank связан с инфраструктурой энергоснабжения ИИ-дата-центров, что может быть значимо для оценки спроса на газовые турбины и энергетических стратегий ИИ."
-          },
-          "news_id": "news_743bb9f48555c86ca2ab",
-          "content_version": "cv_d4db78b13a80f9042fda"
-        },
-        {
-          "title": "Около 400 ветровых проектов ждут решения DOD",
-          "fact": "Utility Dive сообщил, что около 400 наземных ветровых проектов ждут действий DOD. Представитель DOD Dale Marks заявил суду, что у Пентагона недостаточно сотрудников для проверки разрешений.",
-          "why_important": "Если информация верна, задержки в DOD могут стать существенным ограничением для ввода наземных ветровых проектов и планирования развития генерации.",
-          "description": "Utility Dive сообщил, что около 400 наземных ветровых проектов ждут действий DOD. Представитель DOD Dale Marks заявил суду, что у Пентагона недостаточно сотрудников для проверки разрешений.",
-          "related_levels": [
-            2,
-            8
-          ],
-          "sources": [
-            "https://www.utilitydive.com/news/around-400-onshore-wind-projects-await-dod-action-official-says-in-court/874521"
-          ],
-          "srt_significance": "Ур. 1 → Ур. 2: задержки разрешений ограничивают энергетическую базу для новых вычислительных площадок.",
-          "watch_next": "Следить за числом ветровых проектов, по которым DOD завершит проверку разрешений.",
-          "place_id": null,
-          "place_confidence": 0,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://www.utilitydive.com/news/around-400-onshore-wind-projects-await-dod-action-official-says-in-court/874521",
-              "domain": "",
-              "published_at": "2026-11-12"
-            }
-          ],
-          "importance": {
-            "level": "high",
-            "rationale": "Около 400 наземных ветровых проектов ожидают действий DOD, что указывает на потенциально крупный разрешительный затор для сектора ветроэнергетики."
-          },
-          "news_id": "news_7eeabf85da065d47fe97",
-          "content_version": "cv_40f3052e034654d03956"
-        }
-      ],
-      "event_count": 3
+      "level_summary": "Значимых новых событий уровня 1 после утреннего отчёта не зафиксировано. Энергетическая повестка AI за вечер не дала нового факта, который не дублировал бы уже опубликованные данные о турбинах, батареях или ветровых проектах.",
+      "events": [],
+      "event_count": 0
     }
   ],
   "cross_level_links": [
     {
-      "title": "Трассировка чипов превращает экспортный контроль в техническую функцию",
-      "description": "У4 даёт возможность отслеживания чипов, У8 запускает расследования, У5 получает новые условия поставок и сделок.",
+      "title": "Экспортный контроль стал межведомственным и трансграничным",
+      "description": "У8: Coons и Treasury давят на процедуры США; У2: Malaysia и Singapore проверяют серверы; У9: китайские AI-акции реагируют распродажей.",
       "levels": [
-        4,
         8,
-        5
+        2,
+        9
       ],
       "sources": [
-        "https://www.technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking/",
-        "https://techcrunch.com/2026/11/12/democrats-launch-nvidia-investigation-write-scathing-letter-on-huangs-scheme-with-trump/",
-        "https://www.bloomberg.com/news/articles/2026-11-13/malaysia-checks-whether-chips-were-reexported-by-megaspeed-unit"
+        "https://www.bloomberg.com/news/videos/2026-11-13/coons-says-secretary-lutnick-let-america-down-video",
+        "https://news.google.com/rss/articles/CBMiowNBVV95cUxNLVRQRDJjLUYybzVveW5wWEV2cU9ka3VhQXpvV3dWN00yNS11bzBnb0VDOTNENTVFdjh0ZkdMVDF4bjYxTTFZM0s4YmlsMHFyNUZjREFSRTN2Vi1QVk9mMjNqQ3JpY2hKWGRLUFNFR3ljWl91LWQ3dXhmQlNjdnR1WkMteHV2RklKek9UMElmLWVMa3NPU21yUnJ3akNvVDFBQ05fbW1EMVVOMzloYk5YZnU4di1SZ2VlVWkzOE1iUDVJM3R1OVFfb0E3bXpBLWJiY1pDekhXWUtScUplMU9TYVRSYkxYcmRmNmJTeTdKZ2RsU3NlM3pTalVXLWdwMlU5TmZDc0EwaS1wN3E2ZThQWEtjWDRteGRWZktZNDBIbDN4XzhJckg5akw0NXJHU1hxbUpfenhPVEpQQVFDTEZjOFg4d1VTbmNXSzVsZnZQQ01NTjZsamZDb0F0dE1HaDVQRDRONDRhQzRrOXNhbVFHOHJ3YUNHbEl3TVdkamVvNTRMcnFlVXV6LXBOcmNBaWtEeFBtRkRuNWNjZ1VxWUczdFUxTQ?oc=5",
+        "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPQ1JJZWRfZ0I0WmVJUlowQzVZSm1HdHNvbjEzQVNyR1NNLUJ0cEw1WlJhM2JUdzlJNmtVb3NDdWRWbFMtLTc5OTM1Qm95Z253dXJXZVJsenUyLWEtU2VubHR1ZmdNWTM2Mmo2NVZ2OUEzQnQ3cVlmZVN4M0pfMzVsQUl1SjYzakR2cFY1ZlJOUlBMZzVzMXBuWTVhMzlIUlZwTjlyYVBWdnpZMHlTaGJBeTJrSGNuckIzOEVsRWJuUDdXVTNsazJiQUZ6NWNzWUYySFktOGtsenNuSXdLclBhNnZaWjZBVGRJeDFhS3h6WUYtY19f?oc=5",
+        "https://www.ft.com/content/0d4e93e4-895e-4ae0-a01b-833a3ed440a8?syn-25a6b1a6=1"
       ]
     },
     {
-      "title": "ИИ-CapEx упирается в энергетику и охлаждение",
-      "description": "У9 финансирует расширение Nebius, У5 тянет Samsung к охлаждению, У1 показывает риск газовых турбин и рост накопителей.",
-      "levels": [
-        9,
-        5,
-        1
-      ],
-      "sources": [
-        "https://techcrunch.com/2026/11/12/nebius-tests-the-neocloud-playbook-with-40-billion-in-planned-spending/",
-        "https://www.bloomberg.com/news/articles/2026-11-12/samsung-is-in-talks-to-acquire-data-center-cooling-firm-modine",
-        "https://techcrunch.com/2026/11/12/softbanks-billion-dollar-loss-may-have-put-a-cap-on-ais-natural-gas-ambitions/",
-        "https://www.utilitydive.com/news/as-coal-burn-declines-rising-power-demand-will-be-primarily-met-by-renewab/874315/"
-      ]
-    },
-    {
-      "title": "Агентные сервисы сталкиваются с правом отказа платформ",
-      "description": "У5 запускает агентов Muse и Nectar, У6 внедряет ИИ-подсказки FAA, У8 и У5 ставят ограничения через безопасность United.",
+      "title": "AI-агенты переходят от ответа к действию",
+      "description": "У5: ChatGPT Wallet оформляет покупки; У6: CACM и FT требуют аудита и честных каналов; У8: правила доверия становятся обязательным слоем.",
       "levels": [
         5,
         6,
         8
       ],
       "sources": [
-        "https://techcrunch.com/2026/11/12/muse-can-now-place-calls-to-u-s-businesses-if-you-pay/",
-        "https://techcrunch.com/2026/11/12/nectar-launches-an-ai-agent-to-automate-creator-discovery-and-outreach-for-brands",
-        "https://arstechnica.com/ai/2026/11/faa-expands-ai-advice-to-manage-air-traffic-congestion-across-entire-us-airspace/",
-        "https://techcrunch.com/2026/11/12/united-airlines-blocks-ai-agents-from-booking-flights-citing-cybersecurity-risks"
+        "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/",
+        "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQZG5WNWFQem5XUktlZTRST0ZlaE5FbUNmd212ZDdtYU1KZ25feF9GT2RZZmlrWFp1X2ZtQnNSM3FCVmVpaXFfcG5Jbi05Y0w5eFU2d2J2U3UzY1Y2T3kteDRLd2RHY3lPZTBkQWFSSlBNNkRnSnQtemZuNjhfcnR5OFpNck0zd3dVSC1kU0tnZzZxSXhrOGZ3ekNpbFlwbUdLZVdib29GMXJ1WVVhZXBwZDZYVnJPQVpXUDduTFVMT3FoWk9aeHlvSC16NTdRVFNLaGdFV0EwQVc1dzFNYjAtNEViOXhPUDdyZml1QUVjbV8?oc=5",
+        "https://www.ft.com/content/069cdc48-e17a-430b-818c-93894768706f?syn-25a6b1a6=1",
+        "https://www.theverge.com/ai-artificial-intelligence/1032518/claude-duet-ai-agent-hands-on"
       ]
     },
     {
-      "title": "Образование стало полем доверия, а не только внедрения ИИ",
-      "description": "У7 запускает ИИ-школу в Чикаго, У8 требует мораторий на Gemini, У6 фиксирует необходимость проверки ответов и поведения моделей.",
+      "title": "AI-инфраструктура проверяется рынком капитала",
+      "description": "У9: Anthropic и Nscale раскрывают оценку и долг; У5: Cerebras зависит от крупных сделок; У4: аппаратный слой остаётся узким местом.",
       "levels": [
-        7,
-        8,
-        6
+        9,
+        5,
+        4
       ],
       "sources": [
-        "https://news.google.com/rss/articles/CBMiigFBVV95cUxOQTdkRE5BN1A5STlrTUR2SURJZmliUlJKS3ExOUtITnlxckZoS0o5Wmd0cVkzR3JXU3pXUTl1RFZyb2RRQWZZMktfUVpVVjRnaEhBaUJTMXFBYUd2d2d1ZEwyTWRnWUtCaFZZU1E2WGMwUEV2aGFVU09qbmwtMHE4bjhTZ3NVdFIyVEE?oc=5",
-        "https://arstechnica.com/tech-policy/2026/11/families-fight-to-keep-googles-disturbing-ai-off-school-issued-chromebooks/",
-        "https://www.theverge.com/ai-artificial-intelligence/1032020/gemini-chatgpt-perplexity-shopping-test-risky-fake-websites-citations"
+        "https://www.bloomberg.com/news/videos/2026-11-13/anthropic-ipo-ai-s-1-4t-test-video",
+        "https://www.bloomberg.com/news/articles/2026-11-13/neocloud-nscale-reveals-5-5-billion-debt-and-closer-nvidia-ties-ahead-of-ipo",
+        "https://www.bloomberg.com/news/videos/2026-11-13/cerebras-soars-on-sales-cisco-down-on-expectations-miss-video"
+      ]
+    },
+    {
+      "title": "Локальный AI-стек укрепляется на фоне вопросов к Nvidia",
+      "description": "У6: llama.cpp фиксирует зрелость локального запуска; У4: курс Nvidia на открытость поставлен под вопрос; У8: сообщество ждёт сигналов о правилах открытости.",
+      "levels": [
+        6,
+        4,
+        8
+      ],
+      "sources": [
+        "https://huggingface.co/blog/ggml-org/llama-cpp-v1",
+        "https://techcrunch.com/2026/11/12/jensen-huangs-exit-puts-nvidias-support-for-open-source-in-question/"
       ]
     }
   ],
   "structural_shifts": [
     {
-      "title": "Экспортный контроль чипов переходит от запретов к доказуемой трассировке",
-      "from": "Контроль строился вокруг правил продаж и расследований после факта.",
-      "to": "Контроль начинает опираться на техническую возможность отслеживания чипов и серверов.",
-      "through": "Частное подтверждение Nvidia, проверки Malaysia, дело Singapore и расследование демократов.",
+      "title": "Экспортный контроль смещается к учёту серверов и GPU",
+      "from": "Контроль через правила поставок и политические заявления",
+      "to": "Контроль через расследования, аудит запасов и межведомственную ответственность",
+      "through": "Coons требует ответов от Lutnick, Treasury обвиняет Commerce, Malaysia и Singapore проверяют серверы, рынок Китая реагирует распродажей.",
       "levels": [
-        4,
         8,
-        5
+        4,
+        2,
+        9
       ],
       "sources": [
-        "https://www.technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking/",
-        "https://www.bloomberg.com/news/articles/2026-11-13/malaysia-checks-whether-chips-were-reexported-by-megaspeed-unit",
-        "https://www.bloomberg.com/news/articles/2026-11-13/singapore-charges-5th-person-linked-to-nvidia-chip-case-st-says",
-        "https://techcrunch.com/2026/11/12/democrats-launch-nvidia-investigation-write-scathing-letter-on-huangs-scheme-with-trump/"
+        "https://www.bloomberg.com/news/videos/2026-11-13/coons-says-secretary-lutnick-let-america-down-video",
+        "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPQ1JJZWRfZ0I0WmVJUlowQzVZSm1HdHNvbjEzQVNyR1NNLUJ0cEw1WlJhM2JUdzlJNmtVb3NDdWRWbFMtLTc5OTM1Qm95Z253dXJXZVJsenUyLWEtU2VubHR1ZmdNWTM2Mmo2NVZ2OUEzQnQ3cVlmZVN4M0pfMzVsQUl1SjYzakR2cFY1ZlJOUlBMZzVzMXBuWTVhMzlIUlZwTjlyYVBWdnpZMHlTaGJBeTJrSGNuckIzOEVsRWJuUDdXVTNsazJiQUZ6NWNzWUYySFktOGtsenNuSXdLclBhNnZaWjZBVGRJeDFhS3h6WUYtY19f?oc=5",
+        "https://news.google.com/rss/articles/CBMiowNBVV95cUxNLVRQRDJjLUYybzVveW5wWEV2cU9ka3VhQXpvV3dWN00yNS11bzBnb0VDOTNENTVFdjh0ZkdMVDF4bjYxTTFZM0s4YmlsMHFyNUZjREFSRTN2Vi1QVk9mMjNqQ3JpY2hKWGRLUFNFR3ljWl91LWQ3dXhmQlNjdnR1WkMteHV2RklKek9UMElmLWVMa3NPU21yUnJ3akNvVDFBQ05fbW1EMVVOMzloYk5YZnU4di1SZ2VlVWkzOE1iUDVJM3R1OVFfb0E3bXpBLWJiY1pDekhXWUtScUplMU9TYVRSYkxYcmRmNmJTeTdKZ2RsU3NlM3pTalVXLWdwMlU5TmZDc0EwaS1wN3E2ZThQWEtjWDRteGRWZktZNDBIbDN4XzhJckg5akw0NXJHU1hxbUpfenhPVEpQQVFDTEZjOFg4d1VTbmNXSzVsZnZQQ01NTjZsamZDb0F0dE1HaDVQRDRONDRhQzRrOXNhbVFHOHJ3YUNHbEl3TVdkamVvNTRMcnFlVXV6LXBOcmNBaWtEeFBtRkRuNWNjZ1VxWUczdFUxTQ?oc=5",
+        "https://www.ft.com/content/0d4e93e4-895e-4ae0-a01b-833a3ed440a8?syn-25a6b1a6=1"
       ]
     },
     {
-      "title": "ИИ-инфраструктура дробится на финансовые, энергетические и охлаждающие узкие места",
-      "from": "Рост ИИ-инфраструктуры описывался как закупка вычислений и строительство дата-центров.",
-      "to": "Ключевыми становятся предоплаты клиентов, займы, охлаждение и риск энергетических предзаказов.",
-      "through": "План Nebius, переговоры Samsung о Modine, убыток SoftBank на турбинах и прогноз EIA по батареям.",
-      "levels": [
-        9,
-        5,
-        1,
-        2
-      ],
-      "sources": [
-        "https://techcrunch.com/2026/11/12/nebius-tests-the-neocloud-playbook-with-40-billion-in-planned-spending/",
-        "https://www.bloomberg.com/news/articles/2026-11-12/samsung-is-in-talks-to-acquire-data-center-cooling-firm-modine",
-        "https://techcrunch.com/2026/11/12/softbanks-billion-dollar-loss-may-have-put-a-cap-on-ais-natural-gas-ambitions/",
-        "https://www.utilitydive.com/news/as-coal-burn-declines-rising-power-demand-will-primarily-met-by-renewab/874315/"
-      ]
-    },
-    {
-      "title": "Агентные ИИ переходят из демонстраций в режим допуска к процессам",
-      "from": "Агенты в основном предъявлялись как новые пользовательские функции.",
-      "to": "Платформы начинают решать, каким агентам разрешать действия в реальных сервисных цепочках.",
-      "through": "Запуски Muse и Nectar, расширение FAA и запрет United на бронирование через агентов.",
+      "title": "Агенты переходят в регулируемые транзакционные роли",
+      "from": "Чат-бот как интерфейс рекомендаций",
+      "to": "AI-агент как исполнитель покупок, доступа и совместных действий",
+      "through": "ChatGPT Wallet запускает покупки, CACM ставит вопрос аудита групп агентов, FT требует отдельного канала доступа, Claude Duet выводит агента к потребителям.",
       "levels": [
         5,
         6,
-        8,
-        3
+        8
       ],
       "sources": [
-        "https://techcrunch.com/2026/11/12/muse-can-now-place-calls-to-u-s-businesses-if-you-pay/",
-        "https://techcrunch.com/2026/11/12/nectar-launches-an-ai-agent-to-automate-creator-discovery-and-outreach-for-brands",
-        "https://arstechnica.com/ai/2026/11/faa-expands-ai-advice-to-manage-air-traffic-congestion-across-entire-us-airspace/",
-        "https://techcrunch.com/2026/11/12/united-airlines-blocks-ai-agents-from-booking-flights-citing-cybersecurity-risks"
+        "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/",
+        "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQZG5WNWFQem5XUktlZTRST0ZlaE5FbUNmd212ZDdtYU1KZ25feF9GT2RZZmlrWFp1X2ZtQnNSM3FCVmVpaXFfcG5Jbi05Y0w5eFU2d2J2U3UzY1Y2T3kteDRLd2RHY3lPZTBkQWFSSlBNNkRnSnQtemZuNjhfcnR5OFpNck0zd3dVSC1kU0tnZzZxSXhrOGZ3ekNpbFlwbUdLZVdib29GMXJ1WVVhZXBwZDZYVnJPQVpXUDduTFVMT3FoWk9aeHlvSC16NTdRVFNLaGdFV0EwQVc1dzFNYjAtNEViOXhPUDdyZml1QUVjbV8?oc=5",
+        "https://www.ft.com/content/069cdc48-e17a-430b-818c-93894768706f?syn-25a6b1a6=1",
+        "https://www.theverge.com/ai-artificial-intelligence/1032518/claude-duet-ai-agent-hands-on"
+      ]
+    },
+    {
+      "title": "AI-CapEx переходит от нарратива роста к раскрытию риска",
+      "from": "Рост AI-инфраструктуры как история спроса на вычисления",
+      "to": "Рост как проверка долга, зависимости от поставщиков и сроков развёртывания",
+      "through": "Nscale раскрыл долг и связь с Nvidia, Anthropic обсуждается через расходы на вычисления, Cerebras показал сделки и задержку контракта с OpenAI.",
+      "levels": [
+        9,
+        5,
+        4,
+        2
+      ],
+      "sources": [
+        "https://www.bloomberg.com/news/articles/2026-11-13/neocloud-nscale-reveals-5-5-billion-debt-and-closer-nvidia-ties-ahead-of-ipo",
+        "https://www.bloomberg.com/news/videos/2026-11-13/anthropic-ipo-ai-s-1-4t-test-video",
+        "https://www.bloomberg.com/news/videos/2026-11-13/cerebras-soars-on-sales-cisco-down-on-expectations-miss-video"
       ]
     }
   ],
   "radar_signals": [
     {
-      "title": "Техническая трассировка чипов стала центральным сигналом контроля",
-      "description": "Подтверждение Nvidia и расследования вокруг Malaysia и Singapore делают отслеживание оборудования отдельным контуром управления.",
-      "level_group": "middle",
+      "title": "Глобальный AI-надзор отстаёт за пределами США и ЕС",
+      "description": "Ghana зафиксирована как пример разрыва между развёртыванием AI и готовностью управления.",
+      "level_group": "upper",
       "levels": [
-        4,
-        5,
+        8
+      ],
+      "status": "new",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiugFBVV95cUxQc0h4bTI0anRYd3RmWU5uSi1nTmNmbDdJYWNhclRuMFhHQlFzTUU3dFU0UVlJeUFoamt2aWtqU3JRZkpXN2FyZnA0SlZyVDJyMlh6a05GNlRJT20wQkl2NDFlcVNUQW5CbXRpLVlaWWpkb29uaE9XYnFOeEVPU3FZZEdmUDJnNmpxRklfYmRISzQwVzNiRmU1ZmZ6dnhEZWpKZkZfQ1ozZ0k0VVQ3dHJzVk5jY05ESFdyM3c?oc=5"
+      ]
+    },
+    {
+      "title": "Сертификация AI-управления становится сигналом доверия",
+      "description": "Сертификация 42Gears показывает спрос на формальные процедуры управления AI-системами.",
+      "level_group": "upper",
+      "levels": [
         8
       ],
       "status": "strengthening",
       "sources": [
-        "https://www.technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking/",
-        "https://www.bloomberg.com/news/articles/2026-11-13/malaysia-checks-whether-chips-were-reexported-by-megaspeed-unit",
-        "https://www.bloomberg.com/news/articles/2026-11-13/singapore-charges-5th-person-linked-to-nvidia-chip-case-st-says"
+        "https://news.google.com/rss/articles/CBMi6wFBVV95cUxNVjI1U3dSaHFoOURhMk9scF9ibUtvNHhkSkk4LU5mT2NNT201VWtGVFh2Wk5TNWhONzJ1cnhhTDAtbDhMaWRWdmY3dnMyYzFscG9PdVhCYndKNk1adjAxSXpBZDd1aEN0UG82TDczbzI2Zjk4OWxsOGl3UmxOM0ZmQWxaVXVHSUlOLXhPTzFCdjlUOUE5SVpKY3dZajRCMmtGTGNTdEZ1cEdDY3pwbzhJUFo3WHlTa1RHNkVMN0dZTW1XNUZ6UU5IUHJyN18xM3NLWVluZGRrbjVaWE1YZ0NuVGc4Y082Y1FoZmRV?oc=5"
       ]
     },
     {
-      "title": "Газовая стратегия для ИИ-дата-центров получила финансовый стоп-сигнал",
-      "description": "Убыток SoftBank на турбинах показывает, что ранняя фиксация генерации может стать источником потерь, а не только дефицитным преимуществом.",
-      "level_group": "lower",
+      "title": "Локальный AI-стек получает зрелую базовую версию",
+      "description": "llama.cpp v1.0.0 усиливает локальную экосистему запуска моделей и снижает зависимость от закрытых API.",
+      "level_group": "middle",
       "levels": [
-        1,
+        6,
+        4
+      ],
+      "status": "strengthening",
+      "sources": [
+        "https://huggingface.co/blog/ggml-org/llama-cpp-v1"
+      ]
+    },
+    {
+      "title": "Покупающие агенты требуют новых журналов ответственности",
+      "description": "ChatGPT Wallet переводит AI-агентов в транзакционный контур, где ошибки и согласия должны быть проверяемы.",
+      "level_group": "middle",
+      "levels": [
+        5,
+        6,
+        8
+      ],
+      "status": "new",
+      "sources": [
+        "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/"
+      ]
+    },
+    {
+      "title": "Финансовые институты готовятся к группам AI-агентов",
+      "description": "Материал CACM фиксирует вопрос управления, аудируемости и регулирования нескольких агентов в глобальном финансовом институте.",
+      "level_group": "middle",
+      "levels": [
+        6,
         9
       ],
       "status": "new",
       "sources": [
-        "https://techcrunch.com/2026/11/12/softbanks-billion-dollar-loss-may-have-put-a-cap-on-ais-natural-gas-ambitions/"
+        "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQZG5WNWFQem5XUktlZTRST0ZlaE5FbUNmd212ZDdtYU1KZ25feF9GT2RZZmlrWFp1X2ZtQnNSM3FCVmVpaXFfcG5Jbi05Y0w5eFU2d2J2U3UzY1Y2T3kteDRLd2RHY3lPZTBkQWFSSlBNNkRnSnQtemZuNjhfcnR5OFpNck0zd3dVSC1kU0tnZzZxSXhrOGZ3ekNpbFlwbUdLZVdib29GMXJ1WVVhZXBwZDZYVnJPQVpXUDduTFVMT3FoWk9aeHlvSC16NTdRVFNLaGdFV0EwQVc1dzFNYjAtNEViOXhPUDdyZml1QUVjbV8?oc=5"
       ]
     },
     {
-      "title": "Школьное внедрение ИИ входит в фазу мораториев",
-      "description": "Призывы семей ограничить Gemini на школьных Chromebook создают новый барьер для образовательных ИИ-сервисов.",
-      "level_group": "upper",
+      "title": "Физическая безопасность дата-центров входит в повестку облака",
+      "description": "Ars Technica вынес атаки дронов на дата-центры в отдельную дискуссию о жизнеспособности облачной инфраструктуры.",
+      "level_group": "lower",
       "levels": [
-        7,
-        8
-      ],
-      "status": "strengthening",
-      "sources": [
-        "https://arstechnica.com/tech-policy/2026/11/families-fight-to-keep-googles-disturbing-ai-off-school-issued-chromebooks/"
-      ]
-    },
-    {
-      "title": "Агентные сервисы получают первые явные запреты от платформ",
-      "description": "United запретила клиентские ИИ-агенты для бронирований, хотя Muse и Nectar расширяют коммерческое применение агентов.",
-      "level_group": "middle",
-      "levels": [
-        5,
-        6,
-        8
+        2
       ],
       "status": "new",
       "sources": [
-        "https://techcrunch.com/2026/11/12/united-airlines-blocks-ai-agents-from-booking-flights-citing-cybersecurity-risks",
-        "https://techcrunch.com/2026/11/12/muse-can-now-place-calls-to-u-s-businesses-if-you-pay/",
-        "https://techcrunch.com/2026/11/12/nectar-launches-an-ai-agent-to-automate-creator-discovery-and-outreach-for-brands"
+        "https://arstechnica.com/gadgets/2026/11/ars-live-can-the-cloud-survive-drone-strikes-on-data-centers/"
       ]
     },
     {
-      "title": "Профсоюзная линия в ИИ-лабораториях вышла к государству",
-      "description": "Сотрудники Google DeepMind пытаются подключить правительство Великобритании после срыва начальных переговоров о профсоюзе.",
-      "level_group": "middle",
+      "title": "Нео-облачные компании раскрывают долговую сторону роста",
+      "description": "Nscale перед IPO раскрыл $5,5 млрд долга и более тесную зависимость от Nvidia.",
+      "level_group": "lower",
       "levels": [
-        3,
-        8
+        2,
+        9
       ],
       "status": "strengthening",
       "sources": [
-        "https://www.wired.com/story/google-deepmind-staff-escalate-their-union-fight/"
-      ]
-    },
-    {
-      "title": "Проверка научной новизны стала слабым местом ИИ-агентов",
-      "description": "История с объектом Maya показывает, что агентное заявление может провалиться на сверке с уже опубликованной академической работой.",
-      "level_group": "upper",
-      "levels": [
-        6,
-        7,
-        8
-      ],
-      "status": "new",
-      "sources": [
-        "https://www.theverge.com/ai-artificial-intelligence/1032125/ai-agents-maya-site-archeology-discovery"
+        "https://www.bloomberg.com/news/articles/2026-11-13/neocloud-nscale-reveals-5-5-billion-debt-and-closer-nvidia-ties-ahead-of-ipo"
       ]
     }
   ],
   "trends": [
     {
-      "id": "ai-capex",
-      "name": "AI-CapEx и инфраструктура",
-      "momentum": 58,
+      "id": "chip-export-control",
+      "name": "Экспортный контроль чипов",
+      "momentum": 66,
       "category": "accelerating",
-      "rationale": "Вчера 53 → сегодня 58: Nebius заявил $40 млрд планируемых расходов, а Samsung обсуждает покупку поставщика охлаждения Modine.",
+      "rationale": "Вчера 54 → сегодня 66: добавились Coons против Lutnick, обвинение Treasury к Commerce, расследования Malaysia и Singapore по 917 серверам и распродажа китайских AI-акций.",
       "levels": [
-        9,
-        5,
-        2
-      ],
-      "is_new": false
-    },
-    {
-      "id": "ai-energy",
-      "name": "Энергетика для AI",
-      "momentum": 64,
-      "category": "accelerating",
-      "rationale": "Вчера 70 → сегодня 64: сигнал смешанный, потому что EIA ждёт рост батарей, но SoftBank потерял более $3 млрд на турбинах для ИИ-дата-центров.",
-      "levels": [
-        1,
+        8,
+        4,
         2,
         9
       ],
@@ -1227,35 +1115,22 @@
     {
       "id": "ai-regulation",
       "name": "Регулирование AI",
-      "momentum": 91,
+      "momentum": 94,
       "category": "accelerating",
-      "rationale": "Вчера 86 → сегодня 91: демократы начали новое расследование Nvidia, ЕС готовит первые переговоры лидеров по ИИ, а группа Trump обсуждала ИИ-кибератаки.",
+      "rationale": "Вчера 91 → сегодня 94: помимо американского экспортного спора, появился сигнал Ghana о разрыве между внедрением AI и готовностью надзора.",
       "levels": [
         8,
         5,
-        4
-      ],
-      "is_new": false
-    },
-    {
-      "id": "chip-export-control",
-      "name": "Экспортный контроль чипов",
-      "momentum": 54,
-      "category": "accelerating",
-      "rationale": "Вчера 43 → сегодня 54: Nvidia частно признала техническую возможность отслеживания чипов, Malaysia усилила проверку Megaspeed, Singapore предъявил новое обвинение.",
-      "levels": [
-        4,
-        8,
-        5
+        7
       ],
       "is_new": false
     },
     {
       "id": "agentic-platforms",
       "name": "Агентные AI-платформы",
-      "momentum": 50,
+      "momentum": 62,
       "category": "accelerating",
-      "rationale": "Вчера 54 → сегодня 50: Muse и Nectar расширили коммерческие функции агентов, но United запретила ИИ-агентов для бронирования из-за киберрисков.",
+      "rationale": "Вчера 50 → сегодня 62: ChatGPT Wallet переводит агента к покупкам, Claude Duet продвигает потребительский сценарий, FT обсуждает отдельный канал доступа для агентов.",
       "levels": [
         5,
         6,
@@ -1266,51 +1141,64 @@
     {
       "id": "agent-security",
       "name": "Безопасность AI-агентов",
-      "momentum": 69,
+      "momentum": 76,
       "category": "accelerating",
-      "rationale": "Вчера 63 → сегодня 69: United сослалась на кибербезопасность при запрете агентов, а исследование Podqi нашло рискованные ссылки в ответах чат-ботов.",
+      "rationale": "Вчера 69 → сегодня 76: CACM поставил вопрос управления и аудита групп агентов в финансовом институте, а ChatGPT Wallet добавляет транзакционный риск.",
       "levels": [
+        6,
         8,
-        5,
-        6
-      ],
-      "is_new": false
-    },
-    {
-      "id": "closed-api-models",
-      "name": "Закрытые API-модели",
-      "momentum": 37,
-      "category": "emerging",
-      "rationale": "Сегодня Google развернул Gemini 4 Hydrogen в поиске и приложении Gemini, усилив закрытый модельный слой как интерфейс доступа к сложным запросам.",
-      "levels": [
-        4,
-        5,
-        8
+        9
       ],
       "is_new": false
     },
     {
       "id": "open-weight-models",
       "name": "Open-weight модели",
-      "momentum": 31,
+      "momentum": 38,
       "category": "emerging",
-      "rationale": "Сегодня CEO Hugging Face публично пообещал продолжить борьбу за открытый ИИ после ухода Хуанга, удерживая повестку open-weight моделей в поле доверия.",
+      "rationale": "Вчера 31 → сегодня 38: llama.cpp v1.0.0 укрепляет локальный AI-стек, а TechCrunch отдельно поднял вопрос будущей поддержки открытого AI в Nvidia.",
       "levels": [
-        8,
+        4,
         6,
-        5
+        8
+      ],
+      "is_new": false
+    },
+    {
+      "id": "ai-capex",
+      "name": "AI-CapEx и инфраструктура",
+      "momentum": 63,
+      "category": "accelerating",
+      "rationale": "Вчера 58 → сегодня 63: Nscale раскрыл $5,5 млрд долга перед IPO, Anthropic обсуждается через расходы на вычисления, Cerebras показал новые сделки и задержку контракта с OpenAI.",
+      "levels": [
+        9,
+        5,
+        2,
+        4
+      ],
+      "is_new": false
+    },
+    {
+      "id": "closed-api-models",
+      "name": "Закрытые API-модели",
+      "momentum": 40,
+      "category": "accelerating",
+      "rationale": "Вчера 37 → сегодня 40: ChatGPT Wallet и Claude Duet показывают, что закрытые модельные платформы расширяются в пользовательские агентные контуры.",
+      "levels": [
+        5,
+        6
       ],
       "is_new": false
     },
     {
       "id": "ai-talent-market",
       "name": "Рынок AI-талантов",
-      "momentum": 45,
+      "momentum": 48,
       "category": "accelerating",
-      "rationale": "Вчера 42 → сегодня 45: сотрудники Google DeepMind обратились к правительству Великобритании по профсоюзу, а разработчики игр чаще используют генеративный ИИ.",
+      "rationale": "Вчера 45 → сегодня 48: St. Vincent College запускает AI-минор, а TechCrunch сообщил о сомнениях Хуанга в преемственности руководства Nvidia.",
       "levels": [
         3,
-        8,
+        7,
         5
       ],
       "is_new": false
@@ -1318,46 +1206,35 @@
     {
       "id": "ai-market-repricing",
       "name": "Переоценка AI-активов",
-      "momentum": -17,
+      "momentum": -23,
       "category": "decelerating",
-      "rationale": "Вчера -12 → сегодня -17: рекордные розничные покупки Nvidia после ухода CEO показывают волатильную переоценку вокруг управленческого риска, а не спокойную стабилизацию.",
+      "rationale": "Вчера -17 → сегодня -23: китайские AI-акции снизились из-за риска ограничений Nvidia, европейские акции упали на AI-опасениях, а Nscale раскрыл значительный долг.",
       "levels": [
         9,
-        4,
-        8
+        8,
+        5
       ],
       "is_new": false
     }
   ],
   "memory_notes": [
-    "Сегодня не повторять как отдельный факт сам уход Дженсена Хуанга: использованы только новые развития — расследования, трассировка чипов, рынок и открытый код.",
-    "Главный новый сдвиг дня: экспортный контроль чипов переходит к технической трассировке и проверке конечного использования.",
-    "Инфраструктурный сдвиг дня: ИИ-CapEx разложился на предоплаты и займы Nebius, охлаждение Modine и энергетический убыток SoftBank.",
-    "Агентный сдвиг дня: коммерческие агенты расширяются, но United ввела явный запрет на агентное бронирование из-за киберрисков."
+    "Вечерний отчёт не повторяет утренний уход Хуанга, а фиксирует новые последствия: проверки Malaysia и Singapore, обвинение Treasury к Commerce и комментарий Coons.",
+    "Новый сильный сдвиг: AI-агенты переходят в транзакции через ChatGPT Wallet, что требует аудита, журналов действий и отдельных каналов доступа.",
+    "Nscale с $5,5 млрд долга и Anthropic с обсуждаемой оценкой $1,4 трлн усилили тему проверки AI-CapEx рынком капитала.",
+    "llama.cpp v1.0.0 следует помнить как вечерний сигнал укрепления локальной AI-экосистемы, отдельно от утренних новостей Hugging Face.",
+    "На уровне 1 вечером новых недублирующих энергетических фактов не было; не повторять утреннюю историю SoftBank о газовых турбинах."
   ],
-  "generated_at": "2026-11-13T05:02:51.903Z",
+  "generated_at": "2026-11-13T17:03:40.994Z",
   "momentum_trends": [
     {
-      "id": "ai-capex",
-      "name": "AI-CapEx и инфраструктура",
-      "momentum": 58,
+      "id": "chip-export-control",
+      "name": "Экспортный контроль чипов",
+      "momentum": 66,
       "category": "accelerating",
-      "rationale": "Вчера 53 → сегодня 58: Nebius заявил $40 млрд планируемых расходов, а Samsung обсуждает покупку поставщика охлаждения Modine.",
+      "rationale": "Вчера 54 → сегодня 66: добавились Coons против Lutnick, обвинение Treasury к Commerce, расследования Malaysia и Singapore по 917 серверам и распродажа китайских AI-акций.",
       "levels": [
-        9,
-        5,
-        2
-      ],
-      "is_new": false
-    },
-    {
-      "id": "ai-energy",
-      "name": "Энергетика для AI",
-      "momentum": 64,
-      "category": "accelerating",
-      "rationale": "Вчера 70 → сегодня 64: сигнал смешанный, потому что EIA ждёт рост батарей, но SoftBank потерял более $3 млрд на турбинах для ИИ-дата-центров.",
-      "levels": [
-        1,
+        8,
+        4,
         2,
         9
       ],
@@ -1366,35 +1243,22 @@
     {
       "id": "ai-regulation",
       "name": "Регулирование AI",
-      "momentum": 91,
+      "momentum": 94,
       "category": "accelerating",
-      "rationale": "Вчера 86 → сегодня 91: демократы начали новое расследование Nvidia, ЕС готовит первые переговоры лидеров по ИИ, а группа Trump обсуждала ИИ-кибератаки.",
+      "rationale": "Вчера 91 → сегодня 94: помимо американского экспортного спора, появился сигнал Ghana о разрыве между внедрением AI и готовностью надзора.",
       "levels": [
         8,
         5,
-        4
-      ],
-      "is_new": false
-    },
-    {
-      "id": "chip-export-control",
-      "name": "Экспортный контроль чипов",
-      "momentum": 54,
-      "category": "accelerating",
-      "rationale": "Вчера 43 → сегодня 54: Nvidia частно признала техническую возможность отслеживания чипов, Malaysia усилила проверку Megaspeed, Singapore предъявил новое обвинение.",
-      "levels": [
-        4,
-        8,
-        5
+        7
       ],
       "is_new": false
     },
     {
       "id": "agentic-platforms",
       "name": "Агентные AI-платформы",
-      "momentum": 50,
+      "momentum": 62,
       "category": "accelerating",
-      "rationale": "Вчера 54 → сегодня 50: Muse и Nectar расширили коммерческие функции агентов, но United запретила ИИ-агентов для бронирования из-за киберрисков.",
+      "rationale": "Вчера 50 → сегодня 62: ChatGPT Wallet переводит агента к покупкам, Claude Duet продвигает потребительский сценарий, FT обсуждает отдельный канал доступа для агентов.",
       "levels": [
         5,
         6,
@@ -1405,51 +1269,64 @@
     {
       "id": "agent-security",
       "name": "Безопасность AI-агентов",
-      "momentum": 69,
+      "momentum": 76,
       "category": "accelerating",
-      "rationale": "Вчера 63 → сегодня 69: United сослалась на кибербезопасность при запрете агентов, а исследование Podqi нашло рискованные ссылки в ответах чат-ботов.",
+      "rationale": "Вчера 69 → сегодня 76: CACM поставил вопрос управления и аудита групп агентов в финансовом институте, а ChatGPT Wallet добавляет транзакционный риск.",
       "levels": [
+        6,
         8,
-        5,
-        6
-      ],
-      "is_new": false
-    },
-    {
-      "id": "closed-api-models",
-      "name": "Закрытые API-модели",
-      "momentum": 37,
-      "category": "emerging",
-      "rationale": "Сегодня Google развернул Gemini 4 Hydrogen в поиске и приложении Gemini, усилив закрытый модельный слой как интерфейс доступа к сложным запросам.",
-      "levels": [
-        4,
-        5,
-        8
+        9
       ],
       "is_new": false
     },
     {
       "id": "open-weight-models",
       "name": "Open-weight модели",
-      "momentum": 31,
+      "momentum": 38,
       "category": "emerging",
-      "rationale": "Сегодня CEO Hugging Face публично пообещал продолжить борьбу за открытый ИИ после ухода Хуанга, удерживая повестку open-weight моделей в поле доверия.",
+      "rationale": "Вчера 31 → сегодня 38: llama.cpp v1.0.0 укрепляет локальный AI-стек, а TechCrunch отдельно поднял вопрос будущей поддержки открытого AI в Nvidia.",
       "levels": [
-        8,
+        4,
         6,
-        5
+        8
+      ],
+      "is_new": false
+    },
+    {
+      "id": "ai-capex",
+      "name": "AI-CapEx и инфраструктура",
+      "momentum": 63,
+      "category": "accelerating",
+      "rationale": "Вчера 58 → сегодня 63: Nscale раскрыл $5,5 млрд долга перед IPO, Anthropic обсуждается через расходы на вычисления, Cerebras показал новые сделки и задержку контракта с OpenAI.",
+      "levels": [
+        9,
+        5,
+        2,
+        4
+      ],
+      "is_new": false
+    },
+    {
+      "id": "closed-api-models",
+      "name": "Закрытые API-модели",
+      "momentum": 40,
+      "category": "accelerating",
+      "rationale": "Вчера 37 → сегодня 40: ChatGPT Wallet и Claude Duet показывают, что закрытые модельные платформы расширяются в пользовательские агентные контуры.",
+      "levels": [
+        5,
+        6
       ],
       "is_new": false
     },
     {
       "id": "ai-talent-market",
       "name": "Рынок AI-талантов",
-      "momentum": 45,
+      "momentum": 48,
       "category": "accelerating",
-      "rationale": "Вчера 42 → сегодня 45: сотрудники Google DeepMind обратились к правительству Великобритании по профсоюзу, а разработчики игр чаще используют генеративный ИИ.",
+      "rationale": "Вчера 45 → сегодня 48: St. Vincent College запускает AI-минор, а TechCrunch сообщил о сомнениях Хуанга в преемственности руководства Nvidia.",
       "levels": [
         3,
-        8,
+        7,
         5
       ],
       "is_new": false
@@ -1457,24 +1334,24 @@
     {
       "id": "ai-market-repricing",
       "name": "Переоценка AI-активов",
-      "momentum": -17,
+      "momentum": -23,
       "category": "decelerating",
-      "rationale": "Вчера -12 → сегодня -17: рекордные розничные покупки Nvidia после ухода CEO показывают волатильную переоценку вокруг управленческого риска, а не спокойную стабилизацию.",
+      "rationale": "Вчера -17 → сегодня -23: китайские AI-акции снизились из-за риска ограничений Nvidia, европейские акции упали на AI-опасениях, а Nscale раскрыл значительный долг.",
       "levels": [
         9,
-        4,
-        8
+        8,
+        5
       ],
       "is_new": false
     }
   ],
   "metrics": {
-    "total_events": 30,
+    "total_events": 27,
     "structural_shifts_count": 3,
-    "radar_signals_count": 6,
+    "radar_signals_count": 7,
     "cross_level_links_count": 4,
-    "trends_count": 10,
-    "total_sources": 31
+    "trends_count": 9,
+    "total_sources": 27
   },
-  "content_version": "report_6f51a3d780afe1441701"
+  "content_version": "report_f0aef5046ededeec9d57"
 }
