@@ -4113,57 +4113,57 @@
   },
   {
     "date": "2026-11-14",
-    "generated_at": "2026-11-14T05:03:09.120Z",
+    "generated_at": "2026-11-14T17:03:10.209Z",
     "trends": [
       {
         "id": "chip-export-control",
         "name": "Экспортный контроль чипов",
-        "momentum": 75,
+        "momentum": 82,
         "category": "accelerating",
-        "rationale": "Вчера 66 → сегодня 75: появились два свежих сигнала — Nvidia частно признала техническую возможность отслеживания чипов, а TechCrunch сообщил об обучении сильных моделей China на запрещённых чипах Nvidia.",
+        "rationale": "Вчера 75 → сегодня 82: появились новые сигналы о Treasury-вопросах к Nvidia, законе Malaysia по энергопотреблению дата-центров и реакциях азиатских правительств.",
         "levels": [
-          4,
           8,
-          7,
-          5
+          4,
+          2,
+          1
         ],
         "is_new": false
       },
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 89,
+        "momentum": 92,
         "category": "accelerating",
-        "rationale": "Вчера 94 → сегодня 89: регуляторная повестка остаётся высокой, но сегодняшние сигналы смещены к настройке правил — раскрытие инцидентов White House и возрастные ограничения K-12, а не к новым жёстким запретам.",
+        "rationale": "Вчера 89 → сегодня 92: Italy оштрафовала Meta на €805 млн, Malaysia готовит закон по GPU, а OpenAI governance снова стал предметом публичной критики.",
         "levels": [
           8,
-          7,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 70,
-        "category": "accelerating",
-        "rationale": "Вчера 62 → сегодня 70: LangChain сообщил об оценке $3 млрд и 7 000 клиентах LangSmith, а FAA расширяет AI-рекомендации на всё воздушное пространство US.",
-        "levels": [
-          5,
-          6,
-          3
+          9,
+          2
         ],
         "is_new": false
       },
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
-        "momentum": 82,
+        "momentum": 87,
         "category": "accelerating",
-        "rationale": "Вчера 76 → сегодня 82: Synthesis Smuggling добавил конкретную модель угроз скрытой утечки через вывод LLM, а LiveGeo усилил тему проверки агентов в изменяющейся среде.",
+        "rationale": "Вчера 82 → сегодня 87: Wired описал рост AI-fueled ransomware, а arXiv добавил протоколы one-sided verification и debate для проверки поведения.",
+        "levels": [
+          8,
+          6,
+          3
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 73,
+        "category": "accelerating",
+        "rationale": "Вчера 70 → сегодня 73: CoReMem и Goal Encoding усиливают методический слой агентных систем через память, цели и проверку внутренних состояний.",
         "levels": [
           6,
-          8,
+          4,
           5
         ],
         "is_new": false
@@ -4171,26 +4171,26 @@
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
-        "momentum": 58,
+        "momentum": 63,
         "category": "accelerating",
-        "rationale": "Вчера 63 → сегодня 58: инфраструктурный импульс стал более неоднородным — Amazon поддерживает Fermi как арендатор, но QTS режет долговое размещение, а SoftBank фиксирует списание по турбинам.",
+        "rationale": "Вчера 58 → сегодня 63: Morgan Stanley связал bullish-взгляд с AI-инфраструктурным CapEx, а Bloomberg указал на рост сетевых расходов для техногигантов.",
         "levels": [
           9,
-          2,
           1,
-          5
+          2
         ],
         "is_new": false
       },
       {
         "id": "ai-energy",
         "name": "Энергетика для AI",
-        "momentum": 47,
+        "momentum": 54,
         "category": "accelerating",
-        "rationale": "Сегодня есть два прямых сигнала: SoftBank списала $3,7 млрд из-за ставки на турбины для AI-дата-центров, а Utility Dive описал использование AI-моделей для повышения загрузки сетей.",
+        "rationale": "Вчера 47 → сегодня 54: сетевые расходы технологических компаний и план Malaysia использовать энергопотребление дата-центров сделали энергию инструментом надзора.",
         "levels": [
           1,
           2,
+          8,
           9
         ],
         "is_new": false
@@ -4198,40 +4198,39 @@
       {
         "id": "sovereign-ai",
         "name": "Суверенный AI (национальные модели)",
-        "momentum": 44,
+        "momentum": 49,
         "category": "accelerating",
-        "rationale": "Сегодня India поддерживает Sarvam для создания нативных моделей, а сообщения о запрещённых чипах в моделях China связывают суверенный AI с доступом к вычислениям.",
+        "rationale": "Вчера 44 → сегодня 49: Asian governments начали подтверждать поставки чипов и оценивать локальные проекты, а South Korea заявлена на 10-м месте в AI.",
         "levels": [
           8,
           7,
-          4,
-          5
+          4
         ],
         "is_new": false
       },
       {
         "id": "ai-talent-market",
         "name": "Рынок AI-талантов",
-        "momentum": 43,
-        "category": "accelerating",
-        "rationale": "Вчера 48 → сегодня 43: сигналы есть, но они про изменение ролей и поведения, а не массовый найм — CFO получают технологические обязанности, кандидаты используют AI для проверки работодателей.",
+        "momentum": 38,
+        "category": "emerging",
+        "rationale": "Вчера 43 → сегодня 38: вместо широких сигналов найма появился узкий сюжет поиска CEO Nvidia, где FT сообщила об обращении к Rene Haas из Arm.",
         "levels": [
           3,
           5,
-          8
+          4
         ],
         "is_new": false
       },
       {
         "id": "ai-market-repricing",
         "name": "Переоценка AI-активов",
-        "momentum": -31,
+        "momentum": -24,
         "category": "decelerating",
-        "rationale": "Вчера -23 → сегодня -31: отрицательный импульс усилился из-за сокращения долга QTS, предупреждения Fed о рисках AI-оценок и ожиданий меньших чеков для стартапов после ухода Huang.",
+        "rationale": "Вчера -31 → сегодня -24: Anthropic IPO, по Bloomberg, сильно переподписано, но инвесторы отдельно обсуждают Nvidia turmoil, CapEx и цепочки поставок.",
         "levels": [
           9,
           5,
-          2
+          4
         ],
         "is_new": false
       }
