@@ -1,44 +1,64 @@
 {
   "contractVersion": "2.0",
-  "generated_at": "2026-11-09T07:00:47.433Z",
-  "period": "2026-10-25 — 2026-11-09",
+  "generated_at": "2026-11-16T07:00:57.270Z",
+  "period": "2026-11-03 — 2026-11-16",
   "insights_count": 6,
   "quality": {
     "status": "passed",
     "validatorVersion": "2.0",
     "sourceReportCount": 14,
-    "sourceEventCount": 230,
+    "sourceEventCount": 229,
     "groundedInsightCount": 6
   },
   "insights": [
     {
       "id": 1,
-      "insightKey": "financial-discipline-ai-infrastructure",
-      "title": "Финансовая дисциплина сдерживает рост AI",
-      "subtitle": "Инвесторы ужесточают требования к капиталу и расходам",
-      "icon": "TrendingUp",
-      "accentColor": "#f59e0b",
-      "summary": "Снижение целевой оценки OpenAI (2026-10-25-l9-e01), рост стоимости капитала и охлаждение кредитования дата-центров (2026-11-04-l9-e01, 2026-11-05-l9-e02) указывают на ужесточение финансовых условий для AI-инфраструктуры. Это ограничивает темпы расширения мощностей и требует более осторожного планирования.",
+      "insightKey": "ai-infrastructure-energy-finance-integration",
+      "title": "AI-инфраструктура связывается с энергетикой и финансами",
+      "subtitle": "Рост AI-дата-центров требует новых энергетических и финансовых решений",
+      "icon": "Building",
+      "accentColor": "#f97316",
+      "summary": "В период с 2026-11-03 по 2026-11-16 наблюдается усиление взаимосвязи между AI-инфраструктурой, энергетикой и финансовыми рынками. Компании, такие как Alphabet и Energy Transfer, инвестируют в энергетические проекты, а рынки капитала и регуляторы обращают внимание на долговые риски и тарифные споры, связанные с дата-центрами.",
       "evidence": [
-        "OpenAI снизила целевую оценку до $1,25 трлн (2026-10-25-l9-e01)",
-        "Инвесторы требуют более высокую доходность за финансирование дата-центров (2026-11-04-l9-e01)",
-        "Bloomberg отметил рост стоимости капитала и избирательность инвесторов (2026-11-05-l9-e02)",
-        "Распад AI-активов вызвал падение Nasdaq и азиатских рынков (2026-11-06-l9-e01)"
+        "Alphabet выпускает $1,5 млрд энергетическую сделку для AI (2026-11-03-l9-e01)",
+        "Energy Transfer утверждает газопровод на $1,6 млрд из-за спроса дата-центров (2026-11-03-l1-e31)",
+        "PJM снижает план закупки мощности для дата-центров с 6,8 ГВт до 630 МВт (2026-11-03-l2-e29)",
+        "Financial Times фиксирует охлаждение кредитования дата-центров (2026-11-04-l9-e01)",
+        "Bloomberg сообщает о долговом шоке для строителей дата-центров в 2027 году (2026-11-09-l9-e01)"
       ],
       "evidenceSourceIds": [
-        "2026-10-25-l9-e01",
+        "2026-11-03-l9-e01",
+        "2026-11-03-l1-e31",
+        "2026-11-03-l2-e29",
         "2026-11-04-l9-e01",
-        "2026-11-05-l9-e02",
-        "2026-11-06-l9-e01"
+        "2026-11-09-l9-e01"
       ],
       "sourceEvents": [
         {
-          "eventId": "2026-10-25-l9-e01",
-          "date": "2026-10-25",
-          "title": "OpenAI снизила целевую оценку до $1,25 трлн",
+          "eventId": "2026-11-03-l9-e01",
+          "date": "2026-11-03",
+          "title": "Alphabet готовит энергетическую сделку на $1,5 млрд",
           "srtLevel": 9,
           "urls": [
-            "https://www.ft.com/content/bb564eb1-79d4-4694-aa24-1155202a9abc?syn-25a6b1a6=1"
+            "https://www.bloomberg.com/news/articles/2026-11-03/google-parent-plans-1-5-billion-prepaid-energy-deal-via-goldman"
+          ]
+        },
+        {
+          "eventId": "2026-11-03-l1-e31",
+          "date": "2026-11-03",
+          "title": "Energy Transfer утвердила газопровод на $1,6 млрд из-за спроса",
+          "srtLevel": 1,
+          "urls": [
+            "https://www.bloomberg.com/news/articles/2026-11-03/energy-transfer-approves-1-6-billion-gas-pipe-as-ai-use-soars"
+          ]
+        },
+        {
+          "eventId": "2026-11-03-l2-e29",
+          "date": "2026-11-03",
+          "title": "PJM снижает план закупки для нагрузки дата-центров",
+          "srtLevel": 2,
+          "urls": [
+            "https://www.utilitydive.com/news/pjm-revised-data-center-backstop-procurement-ferc/873551/"
           ]
         },
         {
@@ -51,260 +71,252 @@
           ]
         },
         {
-          "eventId": "2026-11-05-l9-e02",
-          "date": "2026-11-05",
-          "title": "Bloomberg связал AI-ставки с ростом стоимости капитала",
+          "eventId": "2026-11-09-l9-e01",
+          "date": "2026-11-09",
+          "title": "Разработчикам AI грозит долговой шок 2027 года",
           "srtLevel": 9,
           "urls": [
-            "https://www.bloomberg.com/news/videos/2026-11-05/ai-bets-meet-higher-capital-costs-video"
-          ]
-        },
-        {
-          "eventId": "2026-11-06-l9-e01",
-          "date": "2026-11-06",
-          "title": "Распродажа AI-активов перекинулась на США и Азию",
-          "srtLevel": 9,
-          "urls": [
-            "https://www.ft.com/content/3d079b3d-580d-400b-bf9c-56af6a08f60f?syn-25a6b1a6=1",
-            "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOZzBqTkVDZXctQTNnMlpzN182UXE5Si1WMHoyaFZacTRfSjRMeGxSR1NjRVEwSzdnUmsydFRneG4tSk5lM1BjckZvV05qZ1VtSVZNTFY3SXc1Vzk0Y0l3Rm5lT3p2d3ZsUUpoOHRKeUY2YzZEcDUzM2FhM2RjTUZnVHBzWEtfWkV4V3E0?oc=5"
+            "https://www.bloomberg.com/news/articles/2026-11-09/ai-developers-face-2027-rate-shock-after-1-trillion-debt-binge"
           ]
         }
       ],
       "confidence": "low",
-      "nonObviousConclusion": "Финансовая переоценка AI-инфраструктуры становится ключевым фактором, который может замедлить или изменить траекторию развития AI-рынка.",
-      "educationImplication": "Развивать компетенции финансового анализа и управления инвестиционными рисками в AI-проектах.",
+      "nonObviousConclusion": "AI-инфраструктура перестает быть просто вычислительным активом и становится частью сложной энергетической и финансовой экосистемы, где успех зависит от управления долгом, энергоснабжением и тарифами.",
+      "educationImplication": "Развивать компетенции в области энергетического менеджмента и финансового анализа для AI-инфраструктуры.",
       "relevantPrograms": [
         "dataDriven",
         "aiShift"
       ],
       "srtLevels": [
-        8,
-        9
+        1,
+        2,
+        3
       ],
       "trendDirection": "strengthening",
       "roleRecommendations": {
         "entrepreneur": {
           "relevance": 80,
-          "action": "Провести финансовый аудит AI-инфраструктуры",
-          "expectedArtifact": "Отчёт по рискам и затратам",
-          "estimatedMinutes": 120
+          "action": "Оценить энергетические и финансовые риски при планировании AI-инфраструктуры",
+          "expectedArtifact": "Аналитический отчет по рискам",
+          "estimatedMinutes": 90
         },
         "ceo": {
           "relevance": 90,
-          "action": "Пересмотреть стратегию капиталовложений в AI",
-          "expectedArtifact": "Обновлённый инвестиционный план",
-          "estimatedMinutes": 180
+          "action": "Внедрить стратегию управления долгом и энергопотреблением для AI-проектов",
+          "expectedArtifact": "Стратегический план",
+          "estimatedMinutes": 120
         },
         "manager": {
           "relevance": 70,
-          "action": "Оптимизировать бюджет AI-проектов с учётом новых требований",
-          "expectedArtifact": "Сокращённый бюджет с сохранением KPI",
-          "estimatedMinutes": 90
+          "action": "Контролировать исполнение энергетических контрактов и долговых обязательств",
+          "expectedArtifact": "Отчет о выполнении контрактов",
+          "estimatedMinutes": 60
         },
         "cto": {
           "relevance": 75,
-          "action": "Оценить технические решения с точки зрения стоимости владения",
-          "expectedArtifact": "Технический отчёт с рекомендациями",
-          "estimatedMinutes": 120
+          "action": "Интегрировать энергетические решения в архитектуру AI-инфраструктуры",
+          "expectedArtifact": "Технический план интеграции",
+          "estimatedMinutes": 90
         },
         "product": {
           "relevance": 60,
-          "action": "Анализировать влияние стоимости инфраструктуры на продуктовую стратегию",
-          "expectedArtifact": "Продуктовая дорожная карта с учётом затрат",
+          "action": "Разработать продукты с учетом энергетической эффективности",
+          "expectedArtifact": "Прототип продукта",
           "estimatedMinutes": 90
         },
         "hr": {
           "relevance": 40,
-          "action": "Подготовить сотрудников к работе в условиях бюджетных ограничений",
-          "expectedArtifact": "Программа обучения и коммуникации",
+          "action": "Обучить сотрудников основам энергетического и финансового управления AI-проектами",
+          "expectedArtifact": "Программа обучения",
           "estimatedMinutes": 60
         },
         "cdo": {
-          "relevance": 85,
-          "action": "Внедрить инструменты мониторинга затрат и эффективности AI",
-          "expectedArtifact": "Система аналитики затрат",
-          "estimatedMinutes": 120
+          "relevance": 65,
+          "action": "Анализировать данные по энергопотреблению и финансовым потокам AI-инфраструктуры",
+          "expectedArtifact": "Аналитический отчет",
+          "estimatedMinutes": 90
         }
       },
       "ekenBrief": {
-        "objective": "Определить финансовые риски и возможности оптимизации AI-инфраструктуры",
-        "firstAction": "Собрать данные о текущих расходах и инвестициях в AI",
-        "expectedArtifact": "Аналитический отчёт с рекомендациями",
-        "acceptanceCriterion": "Отчёт содержит конкретные меры по снижению затрат и оценку рисков",
-        "estimatedMinutes": 180
+        "objective": "Обеспечить устойчивое финансирование и энергоснабжение AI-инфраструктуры",
+        "firstAction": "Провести аудит текущих энергетических контрактов и долговых обязательств",
+        "expectedArtifact": "Отчет с рекомендациями по оптимизации",
+        "acceptanceCriterion": "Отчет утвержден руководством и содержит конкретные меры",
+        "estimatedMinutes": 120
       }
     },
     {
       "id": 2,
-      "insightKey": "political-and-social-resistance-to-ai-infrastructure",
-      "title": "Политическое и общественное сопротивление AI-инфраструктуре",
-      "subtitle": "Протесты и выборы влияют на размещение дата-центров",
+      "insightKey": "platforms-control-ai-access-and-content",
+      "title": "Платформы усиливают контроль доступа к AI",
+      "subtitle": "Правила доступа и контента становятся инструментом регулирования AI",
       "icon": "ShieldAlert",
       "accentColor": "#ef4444",
-      "summary": "Расширение дата-центров сталкивается с растущим сопротивлением в США и Европе (2026-10-28-l2-e51, 2026-11-08-l8-e05), а политические изменения в штатах Texas и Maine влияют на планы размещения (2026-11-06-l2-e31, 2026-11-02-l2-e29). Это усложняет согласование проектов и повышает риски задержек.",
+      "summary": "В период с 2026-11-03 по 2026-11-10 крупные платформы, такие как Google, Apple и eBay, вводят новые правила доступа к AI-инструментам и контенту. Это включает обязательное раскрытие использования AI, возрастные ограничения и блокировки сторонних AI-агентов, что формирует новый уровень платформенного контроля.",
       "evidence": [
-        "Жители Техаса выступают против дата-центров (2026-10-28-l2-e51)",
-        "Протесты против дата-центров в Европе продолжаются (2026-11-08-l8-e05)",
-        "Texas может потерять роль эпицентра AI-дата-центров (2026-11-06-l2-e31)",
-        "Сопротивление дата-центрам в Мэне стало темой сенатской кампании (2026-10-30-l2-e29)"
+        "Google связывает отключение AI в школах с потерей доступа к поиску (2026-11-03-l8-e04)",
+        "Apple вводит 18+ для AI-компаньонов с романтическим контентом (2026-11-03-l8-e05)",
+        "Anthropic разрабатывает проверку личности моделей (2026-11-04-l8-e06)",
+        "eBay ограничил доступ сторонних AI-агентов (2026-11-10-l8-e09)",
+        "Chicago Public Schools заблокировала генеративный AI, Google угрожает блокировкой поиска (2026-11-10-l7-e12)"
       ],
       "evidenceSourceIds": [
-        "2026-10-28-l2-e51",
-        "2026-11-08-l8-e05",
-        "2026-11-06-l2-e31",
-        "2026-10-30-l2-e29"
+        "2026-11-03-l8-e04",
+        "2026-11-03-l8-e05",
+        "2026-11-04-l8-e06",
+        "2026-11-10-l8-e09",
+        "2026-11-10-l7-e12"
       ],
       "sourceEvents": [
         {
-          "eventId": "2026-10-28-l2-e51",
-          "date": "2026-10-28",
-          "title": "В Техасе растёт сопротивление дата-центрам",
-          "srtLevel": 2,
-          "urls": [
-            "https://www.theverge.com/ai-artificial-intelligence/1018676/data-center-midterm-election-energy-water-texas"
-          ]
-        },
-        {
-          "eventId": "2026-11-08-l8-e05",
-          "date": "2026-11-08",
-          "title": "Протесты против дата-центров распространились по Европе",
+          "eventId": "2026-11-03-l8-e04",
+          "date": "2026-11-03",
+          "title": "Google связывает отключение AI в школах с потерей Search",
           "srtLevel": 8,
           "urls": [
-            "https://www.bloomberg.com/news/articles/2026-11-07/ai-backlash-spreads-across-europe-with-data-center-protests"
+            "https://techcrunch.com/2026/11/03/google-will-let-schools-disable-its-ai-tools-but-not-without-sacrificing-search/"
           ]
         },
         {
-          "eventId": "2026-11-06-l2-e31",
-          "date": "2026-11-06",
-          "title": "Texas может потерять роль эпицентра AI-дата-центров",
-          "srtLevel": 2,
+          "eventId": "2026-11-03-l8-e05",
+          "date": "2026-11-03",
+          "title": "Apple вводит 18+ для AI-компаньонов с романтическим контентом",
+          "srtLevel": 8,
           "urls": [
-            "https://www.technologyreview.com/2026/11/04/1148043/texas-was-the-new-epicenter-of-the-ai-data-center-buildout-that-might-be-kaput/"
+            "https://techcrunch.com/2026/11/03/apple-restricts-dating-apps-and-ai-companions-to-users-18-and-up/"
           ]
         },
         {
-          "eventId": "2026-10-30-l2-e29",
-          "date": "2026-10-30",
-          "title": "Протест против дата-центров вошёл в гонку за Сенат в Мэне",
-          "srtLevel": 2,
+          "eventId": "2026-11-04-l8-e06",
+          "date": "2026-11-04",
+          "title": "Anthropic разрабатывает проверку личности моделей",
+          "srtLevel": 8,
           "urls": [
-            "https://www.theverge.com/ai-artificial-intelligence/1021080/maine-senate-race-susan-collins-ai-data-centers"
+            "https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/"
+          ]
+        },
+        {
+          "eventId": "2026-11-10-l8-e09",
+          "date": "2026-11-10",
+          "title": "eBay ограничил доступ сторонних AI-агентов",
+          "srtLevel": 8,
+          "urls": [
+            "https://www.theverge.com/tech/1030838/ebay-ai-agents-meta-muse-agentic-shopping"
+          ]
+        },
+        {
+          "eventId": "2026-11-10-l7-e12",
+          "date": "2026-11-10",
+          "title": "Chicago Public Schools заблокировала генеративный AI",
+          "srtLevel": 7,
+          "urls": [
+            "https://news.google.com/rss/articles/CBMipAFBVV95cUxOVk54R2J0eGdnYTk4U2I0aVk3V2RPYy00Y1kxYU54b2FlcWFET0NQUTRFUF90LXNtTDNzSDVhdVJFYmNqc1ZFcC0wSE9YUVVaaExxRW9iNTZ2ZEFyN0hsNWVYSUdrQUE3WTg4ZlB2VS1TWW5raFQtd2w1ZmczRGVGTUxpT1pMaE4ydTh5U2dhVU45WmJHRFVodFFMbE9rYm5ORE5wOQ?oc=5"
           ]
         }
       ],
       "confidence": "low",
-      "nonObviousConclusion": "Общественное и политическое давление становится ключевым фактором, влияющим на географию и темпы развития AI-инфраструктуры.",
-      "educationImplication": "Развивать навыки взаимодействия с сообществами и понимание политических процессов в технологических проектах.",
+      "nonObviousConclusion": "Платформы становятся не просто поставщиками AI, а регуляторами доступа и поведения AI-систем, что меняет ландшафт конкуренции и инноваций.",
+      "educationImplication": "Развивать навыки работы с платформенными правилами и compliance в AI-разработке.",
       "relevantPrograms": [
-        "ubnd",
-        "aiShift"
+        "aiMarketing",
+        "intensiveAgents"
       ],
       "srtLevels": [
         2,
-        8,
-        9
+        3
       ],
       "trendDirection": "strengthening",
       "roleRecommendations": {
         "entrepreneur": {
           "relevance": 70,
-          "action": "Разработать стратегию взаимодействия с местными сообществами",
-          "expectedArtifact": "План коммуникаций и поддержки",
+          "action": "Анализировать требования платформ к AI-продуктам и адаптировать разработки",
+          "expectedArtifact": "Документ с требованиями и планом адаптации",
           "estimatedMinutes": 90
         },
         "ceo": {
-          "relevance": 85,
-          "action": "Включить оценку политических рисков в стратегическое планирование",
-          "expectedArtifact": "Обновлённый риск-менеджмент план",
+          "relevance": 80,
+          "action": "Внедрить политику соответствия платформенным правилам AI",
+          "expectedArtifact": "Политика соответствия",
           "estimatedMinutes": 120
         },
         "manager": {
-          "relevance": 60,
-          "action": "Организовать мониторинг общественного мнения и политической ситуации",
-          "expectedArtifact": "Регулярные отчёты и рекомендации",
+          "relevance": 65,
+          "action": "Обеспечить соблюдение правил платформ в командах разработки",
+          "expectedArtifact": "Отчет о соблюдении правил",
           "estimatedMinutes": 60
         },
         "cto": {
-          "relevance": 50,
-          "action": "Оценить технические альтернативы с учётом ограничений площадок",
-          "expectedArtifact": "Технический анализ вариантов размещения",
+          "relevance": 75,
+          "action": "Интегрировать механизмы проверки и контроля AI-систем согласно платформенным требованиям",
+          "expectedArtifact": "Техническая спецификация",
           "estimatedMinutes": 90
         },
         "product": {
-          "relevance": 40,
-          "action": "Адаптировать продуктовую стратегию под региональные особенности",
-          "expectedArtifact": "Региональные планы развития продукта",
-          "estimatedMinutes": 60
+          "relevance": 70,
+          "action": "Разработать функции для соблюдения возрастных и контентных ограничений",
+          "expectedArtifact": "Прототип продукта",
+          "estimatedMinutes": 90
         },
         "hr": {
-          "relevance": 30,
-          "action": "Подготовить сотрудников к работе в условиях неопределённости",
-          "expectedArtifact": "Программа поддержки и обучения",
+          "relevance": 40,
+          "action": "Обучить сотрудников новым требованиям платформ и этике AI",
+          "expectedArtifact": "Программа обучения",
           "estimatedMinutes": 60
         },
         "cdo": {
-          "relevance": 55,
-          "action": "Внедрить инструменты анализа социальных рисков",
-          "expectedArtifact": "Система мониторинга социальных факторов",
+          "relevance": 60,
+          "action": "Контролировать данные и процессы для соответствия платформенным политикам",
+          "expectedArtifact": "Отчет по контролю данных",
           "estimatedMinutes": 90
         }
       },
       "ekenBrief": {
-        "objective": "Минимизировать риски общественного и политического сопротивления при размещении AI-инфраструктуры",
-        "firstAction": "Провести аудит текущих и планируемых площадок с учётом общественного мнения",
-        "expectedArtifact": "Отчёт с рекомендациями по взаимодействию и альтернативам",
-        "acceptanceCriterion": "Отчёт содержит конкретные меры по снижению конфликтов и задержек",
+        "objective": "Обеспечить соответствие AI-продуктов требованиям платформ и регуляторов",
+        "firstAction": "Провести аудит текущих продуктов на соответствие новым правилам платформ",
+        "expectedArtifact": "Аудиторский отчет с рекомендациями",
+        "acceptanceCriterion": "Отчет утвержден и план действий реализован",
         "estimatedMinutes": 120
       }
     },
     {
       "id": 3,
-      "insightKey": "agentic-ai-shifts-work-and-control",
-      "title": "Агентный AI меняет труд и контроль",
-      "subtitle": "Новые роли, ответственность и проверяемость агентов",
+      "insightKey": "agent-ai-shifts-to-operational-and-verifiable-functions",
+      "title": "AI-агенты переходят к проверяемым и операционным ролям",
+      "subtitle": "От чат-интерфейсов к управлению и аудиту действий",
       "icon": "Bot",
       "accentColor": "#10b981",
-      "summary": "AI-агенты входят в бизнес и рабочие процессы (2026-10-28-l8-e10, 2026-11-06-l5-e19), но требуют новых стандартов контроля и проверки (2026-10-25-l6-e11, 2026-11-06-l6-e12). Это меняет требования к ролям сотрудников и управлению, а также вызывает юридические и этические вопросы.",
+      "summary": "В период с 2026-11-04 по 2026-11-16 AI-агенты развиваются от простых помощников к участникам бизнес-процессов с проверяемыми полномочиями и памятью. Появляются инструменты для аудита, контроля полномочий и оценки стоимости памяти, а также интеграция агентов в корпоративные и пользовательские сценарии.",
       "evidence": [
-        "План Делавэра разрешить бизнес под управлением AI-агентов (2026-10-28-l8-e10)",
-        "Perplexity запускает рабочих AI-напарников Teammates (2026-11-06-l5-e19)",
-        "Предложен выборочный аудит AI-решений (2026-10-25-l6-e11)",
-        "TRAP задаёт авторизацию действий агентного AI (2026-11-06-l6-e12)",
-        "HR Dive: только 4% CIO готовы к агентной рабочей силе (2026-10-25-l3-e27)"
+        "Apple открыла Siri AI действия в сторонних приложениях (2026-11-04-l5-e17)",
+        "ChatGPT Wallet позволяет агентам покупать за пользователя (2026-11-13-l5-e15)",
+        "TRAP задаёт авторизацию действий агентного AI во время работы (2026-11-06-l6-e12)",
+        "CoReMem оценивает стоимость памяти coding-агентов (2026-11-14-l6-e15)",
+        "CACM обсуждает аудит групп AI-агентов в финансовом институте (2026-11-13-l6-e13)"
       ],
       "evidenceSourceIds": [
-        "2026-10-28-l8-e10",
-        "2026-11-06-l5-e19",
-        "2026-10-25-l6-e11",
+        "2026-11-04-l5-e17",
+        "2026-11-13-l5-e15",
         "2026-11-06-l6-e12",
-        "2026-10-25-l3-e27"
+        "2026-11-14-l6-e15",
+        "2026-11-13-l6-e13"
       ],
       "sourceEvents": [
         {
-          "eventId": "2026-10-28-l8-e10",
-          "date": "2026-10-28",
-          "title": "Делавэр может разрешить бизнес под управлением AI-агентов",
-          "srtLevel": 8,
-          "urls": [
-            "https://arstechnica.com/tech-policy/2026/10/no-human-at-the-helm-delaware-plan-would-let-ai-agents-run-entire-businesses/"
-          ]
-        },
-        {
-          "eventId": "2026-11-06-l5-e19",
-          "date": "2026-11-06",
-          "title": "Perplexity запускает рабочих AI-напарников Teammates",
+          "eventId": "2026-11-04-l5-e17",
+          "date": "2026-11-04",
+          "title": "Apple открыла Siri AI действия в сторонних приложениях",
           "srtLevel": 5,
           "urls": [
-            "https://www.theverge.com/ai-artificial-intelligence/1028302/perplexity-teammates-ai-agents-work"
+            "https://www.theverge.com/tech/1025694/apple-siri-ai-third-party-apps"
           ]
         },
         {
-          "eventId": "2026-10-25-l6-e11",
-          "date": "2026-10-25",
-          "title": "Предложен выборочный аудит AI-решений",
-          "srtLevel": 6,
+          "eventId": "2026-11-13-l5-e15",
+          "date": "2026-11-13",
+          "title": "ChatGPT Wallet позволит агентам покупать за пользователя",
+          "srtLevel": 5,
           "urls": [
-            "https://arxiv.org/abs/2610.31662v1"
+            "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/"
           ]
         },
         {
@@ -317,120 +329,244 @@
           ]
         },
         {
-          "eventId": "2026-10-25-l3-e27",
-          "date": "2026-10-25",
-          "title": "Только 4% CIO готовы к агентной рабочей силе",
-          "srtLevel": 3,
+          "eventId": "2026-11-14-l6-e15",
+          "date": "2026-11-14",
+          "title": "CoReMem оценивает стоимость памяти coding-агентов",
+          "srtLevel": 6,
           "urls": [
-            "https://www.hrdive.com/news/gartner-survey-CIOs-workforce-revamp/833823/"
+            "https://arxiv.org/abs/2611.17316v1"
+          ]
+        },
+        {
+          "eventId": "2026-11-13-l6-e13",
+          "date": "2026-11-13",
+          "title": "CACM поставил вопрос об аудите групп AI-агентов",
+          "srtLevel": 6,
+          "urls": [
+            "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQZG5WNWFQem5XUktlZTRST0ZlaE5FbUNmd212ZDdtYU1KZ25feF9GT2RZZmlrWFp1X2ZtQnNSM3FCVmVpaXFfcG5Jbi05Y0w5eFU2d2J2U3UzY1Y2T3kteDRLd2RHY3lPZTBkQWFSSlBNNkRnSnQtemZuNjhfcnR5OFpNck0zd3dVSC1kU0tnZzZxSXhrOGZ3ekNpbFlwbUdLZVdib29GMXJ1WVVhZXBwZDZYVnJPQVpXUDduTFVMT3FoWk9aeHlvSC16NTdRVFNLaGdFV0EwQVc1dzFNYjAtNEViOXhPUDdyZml1QUVjbV8?oc=5"
           ]
         }
       ],
       "confidence": "low",
-      "nonObviousConclusion": "Внедрение агентного AI требует комплексного пересмотра рабочих ролей, юридической ответственности и технических механизмов контроля.",
-      "educationImplication": "Развивать компетенции в управлении AI-агентами, этике и юридическом регулировании AI.",
+      "nonObviousConclusion": "AI-агенты становятся не только инструментами генерации ответов, но и участниками управленческих и транзакционных процессов с необходимостью формального контроля и аудита.",
+      "educationImplication": "Развивать навыки проектирования и контроля AI-агентов с учетом безопасности и управляемости.",
       "relevantPrograms": [
         "intensiveAgents",
-        "aiShift",
         "dataDriven"
       ],
       "srtLevels": [
-        3,
-        6,
-        8
+        2,
+        3
       ],
       "trendDirection": "strengthening",
       "roleRecommendations": {
         "entrepreneur": {
           "relevance": 75,
-          "action": "Разработать политику использования AI-агентов в бизнесе",
-          "expectedArtifact": "Документ с правилами и процедурами",
+          "action": "Внедрять AI-агентов с контролем полномочий и аудита в бизнес-процессы",
+          "expectedArtifact": "Прототип AI-агента с аудиторскими функциями",
           "estimatedMinutes": 120
         },
         "ceo": {
-          "relevance": 85,
-          "action": "Внедрить систему контроля и аудита AI-агентов",
-          "expectedArtifact": "Интегрированная система мониторинга",
-          "estimatedMinutes": 180
+          "relevance": 80,
+          "action": "Определить политику использования AI-агентов с учетом безопасности и ответственности",
+          "expectedArtifact": "Корпоративная политика",
+          "estimatedMinutes": 90
         },
         "manager": {
           "relevance": 70,
-          "action": "Обучить сотрудников работе с AI-агентами и контролю",
-          "expectedArtifact": "Программа обучения и поддержки",
-          "estimatedMinutes": 90
+          "action": "Контролировать внедрение AI-агентов и их соответствие требованиям",
+          "expectedArtifact": "Отчет по внедрению",
+          "estimatedMinutes": 60
         },
         "cto": {
-          "relevance": 80,
-          "action": "Внедрить технические решения для аудита и авторизации агентов",
-          "expectedArtifact": "Технический протокол и инструменты",
-          "estimatedMinutes": 150
+          "relevance": 85,
+          "action": "Разрабатывать архитектуру AI-агентов с поддержкой авторизации и аудита",
+          "expectedArtifact": "Техническая документация",
+          "estimatedMinutes": 120
         },
         "product": {
-          "relevance": 65,
-          "action": "Разработать продукты с встроенным контролем AI-агентов",
-          "expectedArtifact": "Прототип с функциями аудита",
-          "estimatedMinutes": 120
+          "relevance": 70,
+          "action": "Создавать продукты с интеграцией AI-агентов и механизмами контроля",
+          "expectedArtifact": "Рабочий продукт",
+          "estimatedMinutes": 90
         },
         "hr": {
           "relevance": 50,
-          "action": "Обновить описания ролей с учётом AI-агентов",
-          "expectedArtifact": "Обновлённые должностные инструкции",
+          "action": "Обучать сотрудников работе с AI-агентами и их контролю",
+          "expectedArtifact": "Обучающая программа",
           "estimatedMinutes": 60
         },
         "cdo": {
-          "relevance": 75,
-          "action": "Внедрить аналитику поведения AI-агентов",
-          "expectedArtifact": "Отчёты по эффективности и рискам",
-          "estimatedMinutes": 120
+          "relevance": 65,
+          "action": "Анализировать данные и логи AI-агентов для обеспечения прозрачности",
+          "expectedArtifact": "Аналитический отчет",
+          "estimatedMinutes": 90
         }
       },
       "ekenBrief": {
-        "objective": "Обеспечить безопасное и контролируемое использование AI-агентов в организации",
-        "firstAction": "Разработать и внедрить политику аудита и авторизации AI-агентов",
-        "expectedArtifact": "Рабочая система контроля и отчётности",
-        "acceptanceCriterion": "Система позволяет отслеживать и ограничивать действия агентов в реальном времени",
+        "objective": "Внедрить AI-агентов с проверяемыми полномочиями и аудиторскими функциями",
+        "firstAction": "Разработать и протестировать прототип AI-агента с контролем доступа",
+        "expectedArtifact": "Прототип с логированием действий",
+        "acceptanceCriterion": "Прототип успешно проходит тесты безопасности и аудита",
         "estimatedMinutes": 180
       }
     },
     {
       "id": 4,
-      "insightKey": "ai-in-science-needs-verifiable-knowledge",
-      "title": "AI в науке требует проверяемого знания",
-      "subtitle": "Новые инструменты для оценки и воспроизводимости исследований",
-      "icon": "GraduationCap",
-      "accentColor": "#8b5cf6",
-      "summary": "Проекты ProtoStar (2026-10-29-l7-e14, 2026-11-07-l7-e11) и Scientist World (2026-11-07-l7-e09) направлены на подготовку науки к AI с помощью машинно исполняемых публикаций. Новые бенчмарки и формальная верификация (2026-11-05-l7-e12, 2026-11-06-l7-e08) помогают повысить качество и воспроизводимость AI-генерируемых результатов.",
+      "insightKey": "political-and-social-factors-shape-ai-infrastructure",
+      "title": "Политика и общество влияют на развитие AI-инфраструктуры",
+      "subtitle": "Выборы, протесты и законодательство меняют ландшафт AI-дата-центров",
+      "icon": "Shield",
+      "accentColor": "#ef4444",
+      "summary": "С 2026-11-03 по 2026-11-16 политические выборы, общественные протесты и новые законы усиливают давление на строительство и эксплуатацию AI-дата-центров. Это проявляется в ужесточении регулирования, протестах в Европе, изменении статуса регионов и усилении контроля со стороны государственных органов.",
       "evidence": [
-        "Hugging Face объявил Project ProtoStar для AI-готовой науки (2026-10-29-l7-e14, 2026-11-07-l7-e11)",
-        "Scientist World превращает статьи в исполняемые среды (2026-11-07-l7-e09)",
-        "Axiom Math формально проверил Stacks Project (2026-11-05-l7-e12)",
-        "AutoIP формализует обратные задачи с помощью агентов (2026-11-06-l7-e08)"
+        "Протесты против дата-центров распространились по Европе (2026-11-08-l8-e05)",
+        "Meta предупреждает о риске политического отпора дата-центрам (2026-11-06-l2-e32)",
+        "Texas может потерять статус центра AI-дата-центров из-за политических изменений (2026-11-06-l2-e31, 2026-11-16-l2-e33)",
+        "Закон Нью-Йорка вводит надзор за OpenAI и Anthropic (2026-11-11-l8-e06)",
+        "США и союзники договорились защищать AI-цепочки от Китая (2026-11-16-l8-e06)"
       ],
       "evidenceSourceIds": [
-        "2026-10-29-l7-e14",
-        "2026-11-07-l7-e09",
-        "2026-11-05-l7-e12",
-        "2026-11-06-l7-e08"
+        "2026-11-08-l8-e05",
+        "2026-11-06-l2-e32",
+        "2026-11-06-l2-e31",
+        "2026-11-16-l2-e33",
+        "2026-11-11-l8-e06"
       ],
       "sourceEvents": [
         {
-          "eventId": "2026-10-29-l7-e14",
-          "date": "2026-10-29",
-          "title": "Hugging Face объявил Project ProtoStar для науки",
-          "srtLevel": 7,
+          "eventId": "2026-11-08-l8-e05",
+          "date": "2026-11-08",
+          "title": "Протесты против дата-центров распространились по Европе",
+          "srtLevel": 8,
           "urls": [
-            "https://huggingface.co/blog/announcing-project-protostar"
+            "https://www.bloomberg.com/news/articles/2026-11-07/ai-backlash-spreads-across-europe-with-data-center-protests"
           ]
         },
         {
-          "eventId": "2026-11-07-l7-e09",
-          "date": "2026-11-07",
-          "title": "Scientist World превращает статьи в исполняемые среды",
-          "srtLevel": 7,
+          "eventId": "2026-11-06-l2-e32",
+          "date": "2026-11-06",
+          "title": "Meta предупреждает о риске политического отпора дата-центрам",
+          "srtLevel": 2,
           "urls": [
-            "https://arxiv.org/abs/2611.08478v1"
+            "https://techcrunch.com/2026/11/05/metas-warns-that-election-backlash-against-data-centers-could-make-ai-expansion-harder/"
           ]
         },
+        {
+          "eventId": "2026-11-06-l2-e31",
+          "date": "2026-11-06",
+          "title": "Texas может потерять роль эпицентра AI-дата-центров",
+          "srtLevel": 2,
+          "urls": [
+            "https://www.technologyreview.com/2026/11/04/1148043/texas-was-the-new-epicenter-of-the-ai-data-center-buildout-that-might-be-kaput/"
+          ]
+        },
+        {
+          "eventId": "2026-11-16-l2-e33",
+          "date": "2026-11-16",
+          "title": "Texas может потерять статус центра AI-дата-центров",
+          "srtLevel": 2,
+          "urls": [
+            "https://www.technologyreview.com/2026/11/04/1148043/texas-was-the-new-epicenter-of-the-ai-data-center-buildout-that-might-be-kaput/"
+          ]
+        },
+        {
+          "eventId": "2026-11-11-l8-e06",
+          "date": "2026-11-11",
+          "title": "Закон Нью-Йорка вводит надзор за OpenAI и Anthropic",
+          "srtLevel": 8,
+          "urls": [
+            "https://techcrunch.com/2026/11/10/openai-anthropic-face-new-oversight-as-new-yorks-ai-safety-law-takes-effect/"
+          ]
+        }
+      ],
+      "confidence": "low",
+      "nonObviousConclusion": "AI-инфраструктура становится объектом не только технических, но и политических и социальных процессов, что требует новых подходов к согласованию и управлению проектами.",
+      "educationImplication": "Развивать компетенции в области государственного регулирования и общественных коммуникаций для AI-проектов.",
+      "relevantPrograms": [
+        "ubnd",
+        "aiShift"
+      ],
+      "srtLevels": [
+        2,
+        3
+      ],
+      "trendDirection": "strengthening",
+      "roleRecommendations": {
+        "entrepreneur": {
+          "relevance": 70,
+          "action": "Учитывать политические и социальные риски при планировании AI-инфраструктуры",
+          "expectedArtifact": "Анализ рисков и план смягчения",
+          "estimatedMinutes": 90
+        },
+        "ceo": {
+          "relevance": 85,
+          "action": "Разработать стратегию взаимодействия с государственными и общественными институтами",
+          "expectedArtifact": "Стратегический документ",
+          "estimatedMinutes": 120
+        },
+        "manager": {
+          "relevance": 65,
+          "action": "Организовать коммуникацию с местными сообществами и регуляторами",
+          "expectedArtifact": "Отчет о взаимодействии",
+          "estimatedMinutes": 60
+        },
+        "cto": {
+          "relevance": 50,
+          "action": "Обеспечить техническую готовность к требованиям регуляторов",
+          "expectedArtifact": "Техническая документация",
+          "estimatedMinutes": 90
+        },
+        "product": {
+          "relevance": 40,
+          "action": "Разрабатывать продукты с учетом региональных ограничений и требований",
+          "expectedArtifact": "Адаптированный продукт",
+          "estimatedMinutes": 90
+        },
+        "hr": {
+          "relevance": 30,
+          "action": "Обучать сотрудников работе в условиях политических и социальных изменений",
+          "expectedArtifact": "Программа обучения",
+          "estimatedMinutes": 60
+        },
+        "cdo": {
+          "relevance": 55,
+          "action": "Анализировать данные о социальных и политических трендах для поддержки решений",
+          "expectedArtifact": "Аналитический отчет",
+          "estimatedMinutes": 90
+        }
+      },
+      "ekenBrief": {
+        "objective": "Обеспечить устойчивость AI-инфраструктуры к политическим и социальным вызовам",
+        "firstAction": "Провести оценку политических и социальных рисков для текущих проектов",
+        "expectedArtifact": "Отчет с рекомендациями по управлению рисками",
+        "acceptanceCriterion": "Руководство утвердило план действий по снижению рисков",
+        "estimatedMinutes": 120
+      }
+    },
+    {
+      "id": 5,
+      "insightKey": "formal-verification-and-benchmarking-in-ai-safety",
+      "title": "Формальная проверка и бенчмарки становятся стандартом AI-безопасности",
+      "subtitle": "От дискуссий к воспроизводимым процедурам и аудитам",
+      "icon": "ShieldAlert",
+      "accentColor": "#8b5cf6",
+      "summary": "В период с 2026-11-05 по 2026-11-16 наблюдается рост значимости формальной проверки, бенчмарков и аудита в области AI-безопасности. Работы DeepMind, Axiom Math и других показывают переход к практическим инструментам для проверки корректности, безопасности и воспроизводимости AI-систем.",
+      "evidence": [
+        "Axiom Math формально проверил Stacks Project (2026-11-05-l7-e12)",
+        "DeepMind представил бенчмарк безопасности ASIMOV-jailbreak (2026-11-10-l6-e15)",
+        "Google DeepMind математически проверил части Signal (2026-11-16-l7-e13)",
+        "ReproBridge сохраняет решения для воспроизводимости ML (2026-11-07-l6-e13)",
+        "Debate и one-sided verification формализуют safety-проверку (2026-11-14-l6-e14)"
+      ],
+      "evidenceSourceIds": [
+        "2026-11-05-l7-e12",
+        "2026-11-10-l6-e15",
+        "2026-11-16-l7-e13",
+        "2026-11-07-l6-e13",
+        "2026-11-14-l6-e14"
+      ],
+      "sourceEvents": [
         {
           "eventId": "2026-11-05-l7-e12",
           "date": "2026-11-05",
@@ -441,333 +577,236 @@
           ]
         },
         {
-          "eventId": "2026-11-06-l7-e08",
-          "date": "2026-11-06",
-          "title": "AutoIP формализует обратные задачи в Lean с помощью агентов",
+          "eventId": "2026-11-10-l6-e15",
+          "date": "2026-11-10",
+          "title": "DeepMind открыл ASIMOV-jailbreak",
+          "srtLevel": 6,
+          "urls": [
+            "https://arstechnica.com/google/2026/11/deepmind-reveals-gemini-robotics-2-5-and-open-safety-benchmark-asimov-jailbreak/"
+          ]
+        },
+        {
+          "eventId": "2026-11-16-l7-e13",
+          "date": "2026-11-16",
+          "title": "Google DeepMind проверил части Signal математически",
           "srtLevel": 7,
           "urls": [
-            "https://arxiv.org/abs/2611.06962"
+            "https://arstechnica.com/ai/2026/11/signals-encryption-just-passed-an-ai-powered-mathematical-checkup/"
+          ]
+        },
+        {
+          "eventId": "2026-11-07-l6-e13",
+          "date": "2026-11-07",
+          "title": "ReproBridge сохраняет решения для воспроизводимости ML",
+          "srtLevel": 6,
+          "urls": [
+            "https://arxiv.org/abs/2611.08452v1"
+          ]
+        },
+        {
+          "eventId": "2026-11-14-l6-e14",
+          "date": "2026-11-14",
+          "title": "XYBench проверяет проблему за вопросом",
+          "srtLevel": 6,
+          "urls": [
+            "https://huggingface.co/blog/allenai/xybench"
           ]
         }
       ],
       "confidence": "low",
-      "nonObviousConclusion": "Для интеграции AI в научные процессы необходимы новые стандарты и инструменты, обеспечивающие проверяемость и воспроизводимость знаний.",
-      "educationImplication": "Развивать навыки работы с AI-инструментами для научной проверки и формальной верификации.",
+      "nonObviousConclusion": "Формальная проверка и бенчмарки становятся неотъемлемой частью разработки и внедрения AI, повышая доверие и безопасность систем.",
+      "educationImplication": "Развивать навыки формальной верификации и построения бенчмарков для AI.",
       "relevantPrograms": [
         "intensiveAI",
         "dataDriven"
       ],
       "srtLevels": [
-        6,
-        7
-      ],
-      "trendDirection": "emerging",
-      "roleRecommendations": {
-        "entrepreneur": {
-          "relevance": 60,
-          "action": "Инвестировать в инструменты проверки научных AI-результатов",
-          "expectedArtifact": "Пилотный проект с проверяемыми AI-данными",
-          "estimatedMinutes": 120
-        },
-        "ceo": {
-          "relevance": 70,
-          "action": "Поддержать внедрение стандартов воспроизводимости в R&D",
-          "expectedArtifact": "Политика качества исследований",
-          "estimatedMinutes": 90
-        },
-        "manager": {
-          "relevance": 65,
-          "action": "Организовать обучение сотрудников новым методам проверки AI-исследований",
-          "expectedArtifact": "Обучающая программа",
-          "estimatedMinutes": 90
-        },
-        "cto": {
-          "relevance": 75,
-          "action": "Внедрить инструменты для формальной верификации и бенчмарков",
-          "expectedArtifact": "Интегрированная платформа проверки",
-          "estimatedMinutes": 150
-        },
-        "product": {
-          "relevance": 55,
-          "action": "Разработать продукты с поддержкой воспроизводимости AI-исследований",
-          "expectedArtifact": "Прототип с функциями проверки",
-          "estimatedMinutes": 120
-        },
-        "hr": {
-          "relevance": 40,
-          "action": "Поддержать развитие компетенций в области AI-научных инструментов",
-          "expectedArtifact": "Программа повышения квалификации",
-          "estimatedMinutes": 60
-        },
-        "cdo": {
-          "relevance": 70,
-          "action": "Обеспечить хранение и доступ к проверяемым научным данным",
-          "expectedArtifact": "Централизованное хранилище данных",
-          "estimatedMinutes": 120
-        }
-      },
-      "ekenBrief": {
-        "objective": "Повысить качество и доверие к AI-генерируемым научным результатам",
-        "firstAction": "Внедрить инструменты для формальной верификации и воспроизводимости исследований",
-        "expectedArtifact": "Рабочая система проверки и отчётности",
-        "acceptanceCriterion": "Система позволяет воспроизводить и проверять AI-результаты в научных проектах",
-        "estimatedMinutes": 180
-      }
-    },
-    {
-      "id": 5,
-      "insightKey": "energy-and-infrastructure-limit-ai-growth",
-      "title": "Энергетика и инфраструктура ограничивают рост AI",
-      "subtitle": "Задержки, дефициты и новые решения в энергетике",
-      "icon": "Building",
-      "accentColor": "#f97316",
-      "summary": "Задержки в запуске ядерных реакторов (2026-10-25-l1-e34), дефицит генерации и сетей (2026-11-03-l2-e30, 2026-11-05-l1-e41), а также рост инвестиций в накопители и переход на DC (2026-11-06-l1-e35, 2026-11-08-l4-e20) показывают, что энергетическая база становится узким местом для AI-инфраструктуры.",
-      "evidence": [
-        "Перезапуск реактора в Мичигане задержан (2026-10-25-l1-e34)",
-        "PSEG планирует ядерное усиление и рассматривает сделки с дата-центрами (2026-11-03-l2-e30)",
-        "Exelon рассматривает $8 млрд в накопители энергии (2026-11-02-l1-e26)",
-        "Eaton заявила о переходе дата-центров с AC на DC (2026-11-08-l4-e20)",
-        "Рост планов расходов Oncor из-за нагрузки (2026-11-08-l1-e33)"
-      ],
-      "evidenceSourceIds": [
-        "2026-10-25-l1-e34",
-        "2026-11-03-l2-e30",
-        "2026-11-02-l1-e26",
-        "2026-11-08-l4-e20",
-        "2026-11-08-l1-e33"
-      ],
-      "sourceEvents": [
-        {
-          "eventId": "2026-10-25-l1-e34",
-          "date": "2026-10-25",
-          "title": "Перезапуск реактора в Мичигане задержан на фоне AI-спроса",
-          "srtLevel": 1,
-          "urls": [
-            "https://www.ft.com/content/bcc464cc-9d12-4b15-866d-64642de66ca8?syn-25a6b1a6=1"
-          ]
-        },
-        {
-          "eventId": "2026-11-03-l2-e30",
-          "date": "2026-11-03",
-          "title": "PSEG планирует ядерное усиление на фоне сделок с дата-центрами",
-          "srtLevel": 2,
-          "urls": [
-            "https://www.utilitydive.com/news/pseg-power-nuclear-uprate-salem-data-center-earnings/873587/"
-          ]
-        },
-        {
-          "eventId": "2026-11-02-l1-e26",
-          "date": "2026-11-02",
-          "title": "Exelon рассматривает $8 млрд в накопители энергии",
-          "srtLevel": 1,
-          "urls": [
-            "https://www.utilitydive.com/news/exelon-energy-storage-new-jersey-earnings/873423/"
-          ]
-        },
-        {
-          "eventId": "2026-11-08-l4-e20",
-          "date": "2026-11-08",
-          "title": "Eaton заявила, что переход дата-центров с AC на DC реален",
-          "srtLevel": 4,
-          "urls": [
-            "https://www.utilitydive.com/news/eaton-ceo-ac-to-dc-migration-is-real-because-of-large-power-savings/873887/"
-          ]
-        },
-        {
-          "eventId": "2026-11-08-l1-e33",
-          "date": "2026-11-08",
-          "title": "Sempra ждёт роста плана расходов Oncor на 20%",
-          "srtLevel": 1,
-          "urls": [
-            "https://www.utilitydive.com/news/sempra-expects-20-increase-oncors-capex-plan-load-growth/874010/"
-          ]
-        }
-      ],
-      "confidence": "low",
-      "nonObviousConclusion": "Энергетическая инфраструктура становится критическим фактором, определяющим скорость и масштаб развития AI-инфраструктуры.",
-      "educationImplication": "Развивать знания в области энергетики и инфраструктурного планирования для AI-проектов.",
-      "relevantPrograms": [
-        "dataDriven",
-        "ubnd"
-      ],
-      "srtLevels": [
-        1,
-        2,
-        4
+        3
       ],
       "trendDirection": "strengthening",
       "roleRecommendations": {
         "entrepreneur": {
-          "relevance": 70,
-          "action": "Оценить энергетические риски и возможности для AI-проектов",
-          "expectedArtifact": "Энергетический аудит и план действий",
-          "estimatedMinutes": 120
-        },
-        "ceo": {
-          "relevance": 80,
-          "action": "Включить энергетическую стратегию в бизнес-план AI-инфраструктуры",
-          "expectedArtifact": "Обновлённый стратегический план",
-          "estimatedMinutes": 150
-        },
-        "manager": {
           "relevance": 60,
-          "action": "Координировать взаимодействие с энергетическими поставщиками",
-          "expectedArtifact": "Отчёты о состоянии энергоснабжения",
+          "action": "Внедрять формальную проверку и бенчмарки в процессы разработки AI-продуктов",
+          "expectedArtifact": "Документация по проверке и тестированию",
           "estimatedMinutes": 90
         },
+        "ceo": {
+          "relevance": 70,
+          "action": "Поддерживать культуру безопасности и формальной проверки в компании",
+          "expectedArtifact": "Политика безопасности",
+          "estimatedMinutes": 90
+        },
+        "manager": {
+          "relevance": 65,
+          "action": "Организовать обучение и внедрение формальных методов проверки",
+          "expectedArtifact": "Отчет о внедрении",
+          "estimatedMinutes": 60
+        },
         "cto": {
-          "relevance": 75,
-          "action": "Разработать технические решения для энергоэффективности",
-          "expectedArtifact": "Технический проект с энергоэффективными решениями",
+          "relevance": 85,
+          "action": "Разрабатывать и интегрировать инструменты формальной верификации и бенчмарков",
+          "expectedArtifact": "Технические решения",
           "estimatedMinutes": 120
         },
         "product": {
-          "relevance": 50,
-          "action": "Адаптировать продукт под ограничения энергопотребления",
-          "expectedArtifact": "Продукт с оптимизированным энергопотреблением",
+          "relevance": 60,
+          "action": "Обеспечить поддержку формальной проверки в продуктах AI",
+          "expectedArtifact": "Функциональные спецификации",
           "estimatedMinutes": 90
         },
         "hr": {
           "relevance": 30,
-          "action": "Обучить сотрудников вопросам энергоэффективности",
+          "action": "Обучать сотрудников методам формальной проверки и безопасности AI",
           "expectedArtifact": "Обучающая программа",
           "estimatedMinutes": 60
         },
         "cdo": {
-          "relevance": 65,
-          "action": "Внедрить мониторинг энергопотребления AI-систем",
-          "expectedArtifact": "Система мониторинга и отчётности",
+          "relevance": 70,
+          "action": "Анализировать результаты формальной проверки и бенчмарков для принятия решений",
+          "expectedArtifact": "Аналитический отчет",
           "estimatedMinutes": 90
         }
       },
       "ekenBrief": {
-        "objective": "Обеспечить устойчивое энергоснабжение для AI-инфраструктуры",
-        "firstAction": "Провести аудит текущих и планируемых энергоресурсов",
-        "expectedArtifact": "Отчёт с рекомендациями по оптимизации энергопотребления",
-        "acceptanceCriterion": "Отчёт содержит конкретные меры по снижению рисков дефицита энергии",
+        "objective": "Внедрить формальную проверку и бенчмарки для повышения безопасности AI-систем",
+        "firstAction": "Выбрать и интегрировать подходящие инструменты формальной проверки",
+        "expectedArtifact": "Отчет о внедрении и результатах тестирования",
+        "acceptanceCriterion": "Системы проходят формальные проверки и соответствуют стандартам безопасности",
         "estimatedMinutes": 180
       }
     },
     {
       "id": 6,
-      "insightKey": "ai-data-and-content-control-evolves",
-      "title": "Контроль данных и контента в AI развивается",
-      "subtitle": "Новые стандарты и практики прозрачности и согласия",
-      "icon": "Shield",
-      "accentColor": "#ec4899",
-      "summary": "Крупные AI-компании приняли общий стандарт отказа от скрейпинга (2026-11-01-l8-e04), а платформы вводят обязательные раскрытия использования AI (2026-11-04-l8-e07). Wikimedia и Meta демонстрируют осторожность в использовании контента (2026-10-30-l8-e06, 2026-11-08-l8-e04). Это меняет правила взаимодействия между правообладателями, платформами и пользователями.",
+      "insightKey": "ai-automation-and-labor-market-shifts",
+      "title": "AI меняет рынок труда и роли профессионалов",
+      "subtitle": "Автоматизация вызывает откат и новые требования к навыкам",
+      "icon": "Brain",
+      "accentColor": "#f59e0b",
+      "summary": "В период с 2026-11-03 по 2026-11-16 AI-автоматизация приводит к снижению вовлеченности работников, откату от принудительного использования AI и изменению ролей в компаниях. Возвращение замененных AI сотрудников и новые требования к CFO и кандидатам отражают сложную динамику на рынке труда.",
       "evidence": [
-        "OpenAI, Google, Microsoft и Anthropic приняли стандарт отказа от скрейпинга (2026-11-01-l8-e04)",
-        "Nexus Mods вводит обязательные раскрытия использования AI (2026-11-04-l8-e07)",
-        "Wikimedia просит суды защитить обучение моделей на защищённых работах (2026-10-30-l8-e06)",
-        "Meta отказалась от спорного обновления коммерческих условий (2026-11-08-l8-e04)"
+        "HR Dive описал «AI-возврат» работников после замены AI (2026-11-05-l3-e34)",
+        "Futurism сообщил об откате от обязательного использования AI на работе (2026-11-07-l3-e29)",
+        "HR Dive зафиксировал кризис вовлеченности из-за AI-неопределенности (2026-11-08-l3-e24)",
+        "HR Dive отметил, что CFO берут на себя технологические обязанности (2026-11-16-l3-e30)",
+        "HR Dive сообщил, что кандидаты используют AI для проверки работодателей (2026-11-16-l3-e29)"
       ],
       "evidenceSourceIds": [
-        "2026-11-01-l8-e04",
-        "2026-11-04-l8-e07",
-        "2026-10-30-l8-e06",
-        "2026-11-08-l8-e04"
+        "2026-11-05-l3-e34",
+        "2026-11-07-l3-e29",
+        "2026-11-08-l3-e24",
+        "2026-11-16-l3-e30",
+        "2026-11-16-l3-e29"
       ],
       "sourceEvents": [
         {
-          "eventId": "2026-11-01-l8-e04",
-          "date": "2026-11-01",
-          "title": "Крупные AI-компании поддержали общий отказ от скрейпинга",
-          "srtLevel": 8,
+          "eventId": "2026-11-05-l3-e34",
+          "date": "2026-11-05",
+          "title": "HR Dive описал «AI-возврат» работников",
+          "srtLevel": 3,
           "urls": [
-            "https://www.theverge.com/tech/1023763/openai-google-microsoft-ai-scraping-standard-opt-out"
+            "https://www.hrdive.com/news/ai-rebounding-could-cost-companies/873462/"
           ]
         },
         {
-          "eventId": "2026-11-04-l8-e07",
-          "date": "2026-11-04",
-          "title": "Nexus Mods вводит обязательные ИИ-раскрытия",
-          "srtLevel": 8,
+          "eventId": "2026-11-07-l3-e29",
+          "date": "2026-11-07",
+          "title": "Futurism: работодатели пересматривают принудительное внедрение AI",
+          "srtLevel": 3,
           "urls": [
-            "https://www.theverge.com/games/1026085/nexus-mods-ai-disclosures"
+            "https://news.google.com/rss/articles/CBMigAFBVV95cUxQRTV1TDl2LWVJQ2ZNblR4WHU4eHpsZXh2MVJ5dzc1QXBRRTZNYVBlTWRrSHdVVGF1WEotZDFtYVN5RFdfUUtsWmRIUU83eEZzbDIyNzNTOTNELUx0Sl9IMlBGMDZxQkJLUGJhRnI2b1JlUGszNG81RDNvV2Q0ZklyQw?oc=5"
           ]
         },
         {
-          "eventId": "2026-10-30-l8-e06",
-          "date": "2026-10-30",
-          "title": "Wikimedia предупредила суды о риске для открытой сети",
-          "srtLevel": 8,
-          "urls": [
-            "https://www.theverge.com/policy/1022880/wikipedia-openai-new-york-times-copyright"
-          ]
-        },
-        {
-          "eventId": "2026-11-08-l8-e04",
+          "eventId": "2026-11-08-l3-e24",
           "date": "2026-11-08",
-          "title": "Meta отказалась от спорного обновления коммерческих условий",
-          "srtLevel": 8,
+          "title": "Работники сталкиваются с кризисом вовлечённости из-за AI-неопределённости",
+          "srtLevel": 3,
           "urls": [
-            "https://arstechnica.com/tech-policy/2026/11/does-meta-think-we-cant-read-meta-abandons-sketchy-commercial-terms-update/"
+            "https://www.hrdive.com/news/workers-are-facing-a-crisis-of-disengagement/874016/"
+          ]
+        },
+        {
+          "eventId": "2026-11-16-l3-e30",
+          "date": "2026-11-16",
+          "title": "Описание роли CFO признали устаревшим из-за техразворота",
+          "srtLevel": 3,
+          "urls": [
+            "https://www.hrdive.com/news/cfo-job-descriptions-are-outdated-experts-say/874616/"
+          ]
+        },
+        {
+          "eventId": "2026-11-16-l3-e29",
+          "date": "2026-11-16",
+          "title": "Кандидаты используют AI для изучения работодателей",
+          "srtLevel": 3,
+          "urls": [
+            "https://www.hrdive.com/news/job-applicants-say-using-ai-to-discover-investigate-companies/874628/"
           ]
         }
       ],
       "confidence": "low",
-      "nonObviousConclusion": "Управление данными и контентом становится ключевым элементом доверия и регулирования AI-систем.",
-      "educationImplication": "Развивать компетенции в области права интеллектуальной собственности и этики AI.",
+      "nonObviousConclusion": "AI-автоматизация не только заменяет рабочие места, но и требует новых моделей взаимодействия с персоналом и переосмысления карьерных траекторий.",
+      "educationImplication": "Развивать навыки адаптации к AI и управления изменениями в организациях.",
       "relevantPrograms": [
-        "aiMarketing",
-        "dataDriven"
+        "aiShift",
+        "ubnd"
       ],
       "srtLevels": [
-        6,
-        8
+        2,
+        3
       ],
-      "trendDirection": "strengthening",
+      "trendDirection": "emerging",
       "roleRecommendations": {
         "entrepreneur": {
           "relevance": 65,
-          "action": "Внедрить политику прозрачности использования данных и AI",
-          "expectedArtifact": "Политика и процедуры раскрытия информации",
+          "action": "Разрабатывать стратегии управления изменениями и вовлечением персонала",
+          "expectedArtifact": "План управления изменениями",
           "estimatedMinutes": 90
         },
         "ceo": {
-          "relevance": 75,
-          "action": "Обеспечить соблюдение новых стандартов и требований",
-          "expectedArtifact": "Отчёт о соответствии и рисках",
+          "relevance": 80,
+          "action": "Поддерживать культуру адаптации и обучения в условиях AI-автоматизации",
+          "expectedArtifact": "Корпоративная программа развития",
           "estimatedMinutes": 120
         },
         "manager": {
-          "relevance": 60,
-          "action": "Обучить команду новым требованиям по работе с данными",
-          "expectedArtifact": "Обучающая программа",
+          "relevance": 75,
+          "action": "Обеспечить поддержку сотрудников в переходный период",
+          "expectedArtifact": "Отчет о поддержке персонала",
           "estimatedMinutes": 60
         },
         "cto": {
-          "relevance": 70,
-          "action": "Внедрить технические средства контроля и аудита данных",
-          "expectedArtifact": "Инструменты мониторинга и отчётности",
-          "estimatedMinutes": 120
+          "relevance": 50,
+          "action": "Интегрировать AI-инструменты с учетом влияния на персонал",
+          "expectedArtifact": "Технический план внедрения",
+          "estimatedMinutes": 90
         },
         "product": {
           "relevance": 55,
-          "action": "Разработать продукты с учётом новых правил использования данных",
-          "expectedArtifact": "Продукт с функциями прозрачности",
+          "action": "Разрабатывать продукты, учитывающие потребности пользователей и сотрудников",
+          "expectedArtifact": "Прототип продукта",
           "estimatedMinutes": 90
         },
         "hr": {
-          "relevance": 40,
-          "action": "Обеспечить понимание этических норм в работе с AI",
-          "expectedArtifact": "Обучающие материалы и коммуникации",
-          "estimatedMinutes": 60
+          "relevance": 90,
+          "action": "Внедрять программы обучения и поддержки сотрудников в условиях AI",
+          "expectedArtifact": "Обучающая программа",
+          "estimatedMinutes": 120
         },
         "cdo": {
-          "relevance": 75,
-          "action": "Контролировать соблюдение прав и стандартов в данных",
-          "expectedArtifact": "Отчёты и аудит данных",
-          "estimatedMinutes": 120
+          "relevance": 60,
+          "action": "Анализировать данные о вовлеченности и адаптации персонала",
+          "expectedArtifact": "Аналитический отчет",
+          "estimatedMinutes": 90
         }
       },
       "ekenBrief": {
-        "objective": "Обеспечить прозрачность и законность использования данных в AI-системах",
-        "firstAction": "Внедрить стандарты раскрытия и контроля данных",
-        "expectedArtifact": "Документированные процедуры и отчёты",
-        "acceptanceCriterion": "Соблюдение стандартов подтверждается внутренним и внешним аудитом",
-        "estimatedMinutes": 150
+        "objective": "Обеспечить успешную адаптацию сотрудников к изменениям, вызванным AI",
+        "firstAction": "Провести опрос и анализ текущего уровня вовлеченности и настроений",
+        "expectedArtifact": "Отчет с рекомендациями по адаптации",
+        "acceptanceCriterion": "Уровень вовлеченности стабилизируется или растет",
+        "estimatedMinutes": 120
       }
     }
   ]
