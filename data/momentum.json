@@ -4067,17 +4067,18 @@
   },
   {
     "date": "2026-11-16",
-    "generated_at": "2026-11-16T05:03:47.835Z",
+    "generated_at": "2026-11-16T17:03:26.499Z",
     "trends": [
       {
         "id": "chip-export-control",
         "name": "Экспортный контроль чипов",
-        "momentum": 93,
+        "momentum": 98,
         "category": "accelerating",
-        "rationale": "Вчера 88 → сегодня 93: добавились соглашение США и союзников по защите AI-цепочек, признание технической возможности отслеживания чипов Nvidia и подготовка статуса национальных чемпионов.",
+        "rationale": "Вчера было 93; сегодня повышение до 98 связано с временным правилом США об удалённом доступе к AI-чипам и сообщением Politico о закрытии лазейки для Китая.",
         "levels": [
           8,
           4,
+          2,
           5
         ],
         "is_new": false
@@ -4085,9 +4086,9 @@
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 96,
+        "momentum": 99,
         "category": "accelerating",
-        "rationale": "Вчера 91 → сегодня 96: регулирование расширяется от экспортного контроля к школам, детской безопасности и государственной маркировке AI-компаний как национальных чемпионов.",
+        "rationale": "Вчера было 96; сегодня тренд усилили правила США по удалённым вычислениям и новый push ЕС к глобальным правилам AI.",
         "levels": [
           8,
           7,
@@ -4098,25 +4099,104 @@
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
-        "momentum": 68,
+        "momentum": 62,
         "category": "accelerating",
-        "rationale": "Вчера 62 → сегодня 68: Morgan Stanley прямо сослался на сохранение AI-CapEx, TSMC инвестирует в OpenAI и Anthropic, а Taisei запускает фонд AI и робототехники.",
+        "rationale": "Вчера было 68; сегодня частный капитал финансирует Noeri, но падение крупных IPO и задержки сделок из-за Anthropic охлаждают денежный контур.",
         "levels": [
           9,
-          4,
-          5
+          5,
+          6
         ],
         "is_new": false
       },
       {
         "id": "ai-energy",
         "name": "Энергетика для AI",
-        "momentum": 66,
+        "momentum": 72,
         "category": "accelerating",
-        "rationale": "Вчера 61 → сегодня 66: появились сигналы о специализированных AI-моделях для сетей, тарифных спорах вокруг дата-центров и зависимости роста спроса от батарей и ВИЭ.",
+        "rationale": "Вчера было 66; сегодня Alphabet планирует сделки на $3 млрд, а FERC отдельно указала на стоимость неопределённости правил для крупных нагрузок.",
         "levels": [
           1,
           2,
+          9,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-cloud-rental",
+        "name": "AI-облака и аренда вычислений",
+        "momentum": 31,
+        "category": "emerging",
+        "rationale": "Вчера было 20; рост до 31 связан с тем, что США начали регулировать удалённый доступ к AI-чипам и серверам как отдельный канал вычислений.",
+        "levels": [
+          8,
+          2,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 50,
+        "category": "accelerating",
+        "rationale": "Вчера было 38; сегодня опубликованы работы о регрессиях агентов, проверке предпосылок действий, правилах вмешательства и Co-Sight Harness.",
+        "levels": [
+          6,
+          3,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 36,
+        "category": "emerging",
+        "rationale": "Сигналы дали материал MIT Technology Review о переходе предприятий к агентным рабочим процессам и работы о внешнем контроле длинных бизнес-агентов.",
+        "levels": [
+          3,
+          5,
+          6
+        ],
+        "is_new": false
+      },
+      {
+        "id": "classic-saas",
+        "name": "Классический SaaS под давлением AI",
+        "momentum": 28,
+        "category": "emerging",
+        "rationale": "Dreamteam привлекла $53 млн и заявила конкуренцию Salesforce и HubSpot, показывая давление AI-ориентированных продуктов на зрелые SaaS-категории.",
+        "levels": [
+          5,
+          3,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 20,
+        "category": "emerging",
+        "rationale": "Вчера было 26; снижение связано с сообщением FT, что уход Jensen Huang убрал влиятельного сторонника открытых AI-систем.",
+        "levels": [
+          5,
+          4,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 38,
+        "category": "emerging",
+        "rationale": "Вчера было 31; FT прямо связал ослабление открытых систем с усилением Anthropic и OpenAI, а IPO Anthropic концентрирует внимание капитала.",
+        "levels": [
+          5,
+          9,
           8
         ],
         "is_new": false
@@ -4124,86 +4204,23 @@
       {
         "id": "sovereign-ai",
         "name": "Суверенный AI (национальные модели)",
-        "momentum": 44,
+        "momentum": 49,
         "category": "accelerating",
-        "rationale": "Вчера 38 → сегодня 44: Alibaba выпустила флагманскую модель, США готовят статус AI-национальных чемпионов, а SK Hynix вместе с правительством Кореи строит тестовый хаб.",
+        "rationale": "Вчера было 44; рост поддержали китайская программа обучения 200 млн школьников AI и бенчмарк AscendGYM для Ascend NPU.",
         "levels": [
-          8,
-          4,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": 31,
-        "category": "emerging",
-        "rationale": "Вчера 28 → сегодня 31: Google вывел Gemini 4 Hydrogen, а Alibaba представила новую флагманскую модель с заявкой на конкуренцию с OpenAI и Anthropic.",
-        "levels": [
-          4,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "open-weight-models",
-        "name": "Open-weight модели",
-        "momentum": 26,
-        "category": "emerging",
-        "rationale": "Сегодня сигнал дали llama.cpp v1.0.0 как основа локальной AI-экосистемы и аудит малых on-device LLM, что усиливает контур локального и открытого развертывания.",
-        "levels": [
-          5,
-          4,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 38,
-        "category": "emerging",
-        "rationale": "Сегодня появились работы о фильтрации памяти LLM-агентов, Opaque Serial Depth и симуляции склонности агента к рыночному сговору.",
-        "levels": [
+          7,
           6,
-          8,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 43,
-        "category": "accelerating",
-        "rationale": "Вчера 39 → сегодня 43: кандидаты используют AI для проверки работодателей, CFO получают технологические обязанности, а Taisei инвестирует в AI и робототехнику из-за сокращения рабочей силы.",
-        "levels": [
-          3,
-          5,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 20,
-        "category": "emerging",
-        "rationale": "Сегодня Hugging Face подключил оплату Hub через Google Cloud, а дискуссия о физической устойчивости дата-центров напомнила о зависимости AI-сервисов от облачного контура.",
-        "levels": [
-          5,
-          2,
-          9
+          4,
+          8
         ],
         "is_new": false
       },
       {
         "id": "ai-market-repricing",
         "name": "Переоценка AI-активов",
-        "momentum": -28,
+        "momentum": -35,
         "category": "decelerating",
-        "rationale": "Вчера -34 → сегодня -28: Индия говорит о выгоде от размотки AI-сделки, но Morgan Stanley одновременно поддержал глобальные акции на тезисе сохранения AI-CapEx.",
+        "rationale": "Вчера было -28; ухудшение связано с падением крупнейших IPO 2026 года более чем на 20% в среднем и переносами сделок из-за IPO Anthropic.",
         "levels": [
           9,
           5
