@@ -1,7 +1,7 @@
 {
   "lastUpdated": "2026-11-17",
-  "weeklyCount": 22,
-  "weeklyTrend": "growing",
+  "weeklyCount": 30,
+  "weeklyTrend": "up",
   "events": [
     {
       "date": "2026-11-17",
@@ -58,6 +58,51 @@
       "event": "Конгресс США планирует ужесточить правила экспорта AI чипов после скандала с бывшим CEO Nvidia Дженсеном Хуаном.",
       "impact": "medium",
       "source": "https://www.theverge.com/ai-artificial-intelligence/1033984/congress-export-rules-ai-chips-china"
+    },
+    {
+      "date": "2026-11-16",
+      "model": "frontier models",
+      "vendor": "OpenAI",
+      "event": "Расширение программы ChatGPT для академических исследователей с предоставлением бесплатного доступа к передовым моделям для 200 000 ученых по всему миру.",
+      "impact": "major",
+      "category": "release",
+      "url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers"
+    },
+    {
+      "date": "2026-11-16",
+      "model": "OpenAI models and Codex",
+      "vendor": "OpenAI",
+      "event": "Использование моделей OpenAI и Codex компанией Revolut для сокращения времени кодирования на 30–60% и масштабирования расследований финансовых преступлений.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/business/customer-stories/revolut"
+    },
+    {
+      "date": "2026-11-16",
+      "model": "ChatGPT",
+      "vendor": "OpenAI",
+      "event": "Партнерство LVMH Media Division с OpenAI для поддержки журналистики с помощью ИИ и повышения доступности публикаций через ChatGPT.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/lvmh-media-division-partnership"
+    },
+    {
+      "date": "2026-11-16",
+      "model": "неуточненные модели OpenAI",
+      "vendor": "OpenAI",
+      "event": "Начало встроенных оценок моделей OpenAI совместно с Apollo Research, METR и другими для независимой оценки выравнивания и систем безопасности моделей.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/our-first-phase-of-embedded-assessments"
+    },
+    {
+      "date": "2026-11-16",
+      "model": "ChatGPT for Healthcare",
+      "vendor": "OpenAI",
+      "event": "Введение агентов для использования компьютера, улучшенных клинических ответов и новых плагинов для здравоохранения, работающих с различным медицинским ПО.",
+      "impact": "minor",
+      "category": "feature",
+      "url": "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare"
     },
     {
       "date": "2026-11-15",
@@ -204,86 +249,6 @@
       "event": "Meta выпустила Muse Ember, новую легковесную модель для выполнения агентских задач, стоимостью 10 центов за миллион входных токенов.",
       "impact": "medium",
       "source": "https://techcrunch.com/2026/11/09/meta-releases-muse-ember-a-new-lightweight-model-for-agent-execution/"
-    },
-    {
-      "date": "2026-11-10",
-      "vendor": "Disney и Adobe",
-      "model": "Партнерство",
-      "event": "Disney и Adobe объявили о многолетнем партнерстве для разработки генеративных AI моделей, поддерживающих производственный процесс Disney.",
-      "impact": "medium",
-      "source": "https://www.theverge.com/tech/1029773/disney-adobe-generative-ai-partnership"
-    },
-    {
-      "date": "2026-11-10",
-      "model": "OpenAI API",
-      "vendor": "OpenAI",
-      "event": "Singapore Airlines использует модели OpenAI и API для улучшения поддержки клиентов и повышения производительности сотрудников.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/singapore-airlines-travel-work"
-    },
-    {
-      "date": "2026-11-10",
-      "model": "ChatGPT",
-      "vendor": "OpenAI",
-      "event": "Введена функция Businesses в ChatGPT, позволяющая управлять информацией о бизнесе и получать аналитические данные для повышения эффективности.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/introducing-businesses-chatgpt"
-    },
-    {
-      "date": "2026-11-10",
-      "model": "OpenAI models",
-      "vendor": "OpenAI",
-      "event": "Singapore Airlines использует модели OpenAI и API для улучшения поддержки клиентов и повышения производительности сотрудников.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/singapore-airlines-travel-work"
-    },
-    {
-      "date": "2026-11-09",
-      "model": "ChatGPT Enterprise",
-      "vendor": "OpenAI",
-      "event": "ChatGPT Enterprise теперь доступен в AWS Marketplace, упрощая закупки для организаций через AWS.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/chatgpt-enterprise-aws-marketplace"
-    },
-    {
-      "date": "2026-11-09",
-      "model": "OpenAI research infrastructure models",
-      "vendor": "OpenAI",
-      "event": "Внедрена система Control Room для отслеживания и остановки рабочих нагрузок моделей при возникновении проблем с безопасностью.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/control-room"
-    },
-    {
-      "date": "2026-11-09",
-      "model": "Codex",
-      "vendor": "OpenAI",
-      "event": "CodeRabbit использует модели OpenAI и Codex для масштабирования разработки программного обеспечения и увеличения выпуска в 20 раз.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/coderabbit-codex-daybreak"
-    },
-    {
-      "date": "2026-11-09",
-      "model": "OpenAI API",
-      "vendor": "OpenAI",
-      "event": "Kuken Industries применяет OpenAI API для быстрого поиска чертежей, сокращая время поиска с часа до 4.5 минут.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/kuken"
-    },
-    {
-      "date": "2026-11-09",
-      "model": "OpenAI models",
-      "vendor": "OpenAI",
-      "event": "Control Room — центральная система для отслеживания и остановки рабочих нагрузок моделей в исследовательской инфраструктуре OpenAI.",
-      "impact": "minor",
-      "category": "feature",
-      "url": "https://openai.com/index/control-room"
     }
   ]
 }
