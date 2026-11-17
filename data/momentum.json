@@ -1,166 +1,5 @@
 [
   {
-    "date": "2026-10-16",
-    "generated_at": "2026-10-16T17:02:31.769Z",
-    "trends": [
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 83,
-        "category": "accelerating",
-        "rationale": "Вчера было 78; сегодня рост до 83 связан с EverWind на 10 млрд канадских долларов, сообщением Computerworld о превышении CapEx над выручкой до 2030 года и вниманием Ohio SERS к рискам дата-центров.",
-        "levels": [
-          2,
-          9,
-          1
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-financialization",
-        "name": "Финансиализация AI-компаний",
-        "momentum": 88,
-        "category": "accelerating",
-        "rationale": "Вчера было 80; сегодня финансовый сигнал усилили продажи акций сооснователями CoreWeave, падение акций CoreWeave на 20% за три сессии и переход части инвесторов к облигационным ETF на фоне сомнений по AI-выручке.",
-        "levels": [
-          9,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 94,
-        "category": "accelerating",
-        "rationale": "Вчера было 92; сегодня импульс поддержали проект экспортного контроля Китая, вызов SpaceX на слушания совета Нью-Йорка и ограничения банков на доступ AI-агентов к счетам.",
-        "levels": [
-          8,
-          9,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 98,
-        "category": "accelerating",
-        "rationale": "Вчера было 100; сегодня уровень остаётся почти предельным благодаря банковским запретам для AI-агентов, StepSafe и работе об отзыве действий, но без события масштаба вчерашних инцидентов.",
-        "levels": [
-          8,
-          6,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера было 100; сегодняшние MAI-Gym, Replit с идеей самоуправляемых компаний, EvolvingBrain и Vercel Jev удерживают максимум без дальнейшего повышения.",
-        "levels": [
-          6,
-          5,
-          3
-        ],
-        "is_new": false
-      },
-      {
-        "id": "open-weight-models",
-        "name": "Open-weight модели",
-        "momentum": 68,
-        "category": "accelerating",
-        "rationale": "Вчера было 60; публикация Beam 501B на Hugging Face добавила сильный новый сигнал к линии владения, настройки и масштабирования открытых весов.",
-        "levels": [
-          4,
-          5,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": -36,
-        "category": "decelerating",
-        "rationale": "Вчера было -32; ограничения банков на неавторизованных AI-агентов и рост open-weight сигнала Beam усиливают давление на модель доступа только через закрытые API.",
-        "levels": [
-          5,
-          8,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "chip-export-control",
-        "name": "Экспортный контроль чипов",
-        "momentum": 55,
-        "category": "accelerating",
-        "rationale": "Сигнал дня — проект экспортного контроля Китая по AI-технологиям и чипам; это расширяет тренд с американских ограничений до двусторонней геотехнологической фрагментации.",
-        "levels": [
-          8,
-          4,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 42,
-        "category": "accelerating",
-        "rationale": "Тренд получил свежие сигналы от EverWind с совмещением дата-центра и ветровой генерации, а также предложения FERC упростить путь для газопроводов и СПГ.",
-        "levels": [
-          1,
-          2,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 60,
-        "category": "accelerating",
-        "rationale": "Вчера было 56; рост умеренный, потому что HR Dive показал двойной эффект AI в рекрутинге: ускорение поиска кандидатов при сохранении ручной проверки и росте стресса специалистов.",
-        "levels": [
-          3,
-          5,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "classic-saas",
-        "name": "Классический SaaS под давлением AI",
-        "momentum": 62,
-        "category": "accelerating",
-        "rationale": "Вчера было 57; Replit описал самоуправляемые компании, а Vercel показал быстрый спрос через AI-шлюз, что усиливает замену отдельных приложений агентными и модельными слоями.",
-        "levels": [
-          5,
-          3,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-data-rights",
-        "name": "Права на данные для AI",
-        "momentum": 35,
-        "category": "emerging",
-        "rationale": "Новый тренд выделен из двух независимых сигналов: новые условия Meta вокруг сайтов компаний и использование материалов комиков AI-сгенерированными аккаунтами без эффективной защиты авторов.",
-        "levels": [
-          8,
-          5,
-          7
-        ],
-        "is_new": true
-      }
-    ]
-  },
-  {
     "date": "2026-10-17",
     "generated_at": "2026-10-17T17:02:54.738Z",
     "trends": [
@@ -4224,6 +4063,170 @@
         "levels": [
           9,
           5
+        ],
+        "is_new": false
+      }
+    ]
+  },
+  {
+    "date": "2026-11-17",
+    "generated_at": "2026-11-17T05:03:05.684Z",
+    "trends": [
+      {
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": 96,
+        "category": "accelerating",
+        "rationale": "Вчера 98 → сегодня 96: тема остаётся предельно сильной, но сегодняшний новый сигнал сместился к региональному эффекту в Юго-Восточной Азии и переоценке Z.AI, а не к новому глобальному правилу.",
+        "levels": [
+          2,
+          4,
+          7,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 96,
+        "category": "accelerating",
+        "rationale": "Вчера 99 → сегодня 96: интенсивность чуть ниже, но иск Калифорнии к OpenAI, CSAM-классификатор и китайские самоограничения кибервозможностей удерживают регулирование в верхней зоне.",
+        "levels": [
+          8,
+          7,
+          6
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 61,
+        "category": "accelerating",
+        "rationale": "Вчера 50 → сегодня 61: иск Калифорнии, встраивание Apollo Research и материал о выключении мониторинга агентами резко усилили запрос на проверяемые границы поведения.",
+        "levels": [
+          8,
+          6,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 67,
+        "category": "accelerating",
+        "rationale": "Вчера 62 → сегодня 67: Pimco связал спреды AI-долга с замедлением строительства ЦОД, а Baidu поставила вопрос окупаемости крупных вложений.",
+        "levels": [
+          9,
+          2,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 76,
+        "category": "accelerating",
+        "rationale": "Вчера 72 → сегодня 76: исследование о потреблении дата-центров США и позиция Constellation по ядерной энергии для ЦОД добавили ресурсный сигнал.",
+        "levels": [
+          1,
+          2,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-cloud-rental",
+        "name": "AI-облака и аренда вычислений",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера 31 → сегодня 39: OpenRouter с Hugging Face упрощают запуск моделей, Apple тестирует лимиты сложного AI, а Hugging Face подключает оплату через Google Cloud.",
+        "levels": [
+          5,
+          4,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 32,
+        "category": "emerging",
+        "rationale": "Вчера 20 → сегодня 32: Hugging Face и OpenRouter усилили слой запуска open-weight моделей, а llama.cpp v1.0.0 укрепил локальный стек.",
+        "levels": [
+          4,
+          5,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 34,
+        "category": "emerging",
+        "rationale": "Вчера 38 → сегодня 34: закрытый контур остаётся значимым, но OpenAI получила иск из-за агентов, а Apple тестирует лимиты сложных функций, показывая давление стоимости и ответственности.",
+        "levels": [
+          5,
+          8,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 43,
+        "category": "accelerating",
+        "rationale": "Вчера 36 → сегодня 43: BotPsy показывает агентный помощник на устройстве, Decision Models выделяют слой решений, а Siri получает лимитируемые сложные AI-взаимодействия.",
+        "levels": [
+          4,
+          5,
+          6,
+          3
+        ],
+        "is_new": false
+      },
+      {
+        "id": "classic-saas",
+        "name": "Классический SaaS под давлением AI",
+        "momentum": 31,
+        "category": "emerging",
+        "rationale": "Вчера 28 → сегодня 31: Bloomberg указал, что Tripadvisor сталкивается с вызовами генеративного AI, а Tone нацеливается на автоматизацию продаж AI-голосом.",
+        "levels": [
+          5,
+          3,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 22,
+        "category": "emerging",
+        "rationale": "Сегодняшний сигнал поддержан пилотом PwC по критическому мышлению при использовании AI и предложением США обновить правила для постоянных иностранных работников.",
+        "levels": [
+          3,
+          5,
+          6
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-market-repricing",
+        "name": "Переоценка AI-активов",
+        "momentum": -44,
+        "category": "collapsing",
+        "rationale": "Вчера -35 → сегодня -44: Baidu говорит о риске пузыря без монетизации, AustralianSuper сомневается в оценке Anthropic, Z.AI упала на 85%, а Pimco обсуждает AI-долг.",
+        "levels": [
+          9,
+          5,
+          4
         ],
         "is_new": false
       }
