@@ -1,24 +1,257 @@
 {
-  "generated_at": "2026-11-17T06:02:06.877Z",
-  "previous_report_date": "2026-11-16",
-  "current_report_date": "2026-11-17",
+  "generated_at": "2026-11-18T06:01:20.852Z",
+  "previous_report_date": "2026-11-17",
+  "current_report_date": "2026-11-18",
   "update_frequency": "ежедневно в 9:00 МСК",
-  "critical_alerts": [],
-  "new_programs": [],
-  "updated_trends": [],
-  "new_signals": [],
+  "critical_alerts": [
+    {
+      "id": "alert-1",
+      "severity": "high",
+      "title": "INSEAD: Внедряет ChatGPT Edu по всей институции в партнёрстве с OpenAI.",
+      "body": "Внедряет ChatGPT Edu по всей институции в партнёрстве с OpenAI. Ускоряет AI-first обучение и повышает ожидания к edtech-инфраструктуре.",
+      "relevance": "СКОЛКОВО может упаковать AI-операционку как модуль CDTO для компаний.",
+      "action": "Сравнить с программой ««Переход в ИИ: трансформация бизнес-процессов» (CDTO) — Intermediate (дипломная)» и решить, нужен ли ответ",
+      "source_institution": "INSEAD",
+      "detected_at": "2026-11-18T06:01:20.852Z"
+    },
+    {
+      "id": "alert-2",
+      "severity": "high",
+      "title": "IIM Ahmedabad: Запускает Blended MBA in Business Analytics and AI для набора 2027–29.",
+      "body": "Запускает Blended MBA in Business Analytics and AI для набора 2027–29. Поднимает планку длительных AI-степеней в Индии и для корпоративных спонсоров.",
+      "relevance": "Это закрывает GAP «нет магистратуры по ИИ» — риск для СКОЛКОВО.",
+      "action": "Сравнить с программой ««Управление бизнесом с помощью ИИ и данных» — Intermediate (дипломная)» и решить, нужен ли ответ",
+      "source_institution": "IIM Ahmedabad",
+      "detected_at": "2026-11-18T06:01:20.852Z"
+    },
+    {
+      "id": "alert-3",
+      "severity": "high",
+      "title": "VK + МФТИ: Открывают набор на магистратуру «Искусственный интеллект и социальные медиа».",
+      "body": "Открывают набор на магистратуру «Искусственный интеллект и социальные медиа». Усиливают связку BigTech+вуз и создают кадровый канал под AI-продукты.",
+      "relevance": "СКОЛКОВО может занять нишу executive-уровня для AI-продакт/лидеров.",
+      "action": "Сравнить с программой ««Онлайн-интенсив по разработке ИИ-продуктов» — Applied_Short (онлайн)» и решить, нужен ли ответ",
+      "source_institution": "VK + МФТИ",
+      "detected_at": "2026-11-18T06:01:20.852Z"
+    }
+  ],
+  "new_programs": [
+    {
+      "id": "new-prog-1",
+      "institution": "The Wharton School (University of Pennsylvania)",
+      "program_name": "MBA Major in Artificial Intelligence for Business",
+      "region": "USA",
+      "level": "Premium_Long",
+      "description": "Major по AI для бизнеса в MBA и отдельная UG-концентрация.",
+      "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxOZmVrMFVsX2ZtU2wzbmpVYXFMZDhiZ19kT0RtY3RTSkVOVFAxUDh3b2M5emF4cVpWWnNSbUM3dEx5THpFS244Vi1lOENoLVpCcDM2ZnhHTEpWWTdLQWUxblYyVE93MTM1N1ZhUkRoVjd2NThIRWNxY3djYlJENG1wUWo0eURMYjhVbERHMU9FTDB1cEtBOW9WYmxSZ2dxVTQ5LWZ0RkN1VU1GbWFIak1KLUZQX1JFS0YxRTNhN0FkUlRuelVKcFMzNXNROXVVY3lDWURieHo0cGVtUXZGM25OQldjcVlqNFExOVJHeTU3eWlYclg1VkJVRVc3bjFTZTA?oc=5",
+      "added_at": "2026-11-18T06:01:20.852Z",
+      "why_relevant": "СКОЛКОВО может усилить позиционирование AI-трека и сертификацию трека."
+    },
+    {
+      "id": "new-prog-2",
+      "institution": "Harvard Business School",
+      "program_name": "AI integration across MBA curriculum",
+      "region": "USA",
+      "level": "Premium_Long",
+      "description": "Расширяет интеграцию AI по всему MBA-ядру.",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1zQzZWaU9jUDhOQ0JQY0h6ZWppYWZPaUNkd1VnTV9xVjZEalBybm1RTXlrS0hPRmV1N3NsYjNvMDdIMEVvNGpXcUoxSFpfS25KTW9oY3pESlE2WUxqY3hZLUZ1QnRNeEM4X01GMGhhdGtvUQ?oc=5",
+      "added_at": "2026-11-18T06:01:20.852Z",
+      "why_relevant": ""
+    },
+    {
+      "id": "new-prog-3",
+      "institution": "Kellogg School of Management (Northwestern University)",
+      "program_name": "New MBA courses in AI and machine learning",
+      "region": "USA",
+      "level": "Premium_Long",
+      "description": "Запускает новые MBA-курсы по AI/ML для всех студентов.",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPVDI5aE5GSFV0bHdfRFAyZ1RmVnhJWl9tenRQSlZPRC1XNmtYdTQ4SFlzTmxNNGNGbktreXc5d3JlOHE0a2JjZ1RzUzJFd1lVbU96aHlHMWZ6YklYcVFhZzFzTEg4VEs2Ykg1azNiUnhwQy1vQmNDYTB3WE9SUnY5ckFyOVNzd1luMThRd0RWUzhvWVZnMEoySE96UXMzVVVzcWFyaGNyUGt4Z0pYRmZRUA?oc=5",
+      "added_at": "2026-11-18T06:01:20.852Z",
+      "why_relevant": ""
+    },
+    {
+      "id": "new-prog-4",
+      "institution": "INSEAD",
+      "program_name": "ChatGPT Edu institution-wide rollout (OpenAI partnership)",
+      "region": "EU",
+      "level": "Applied_Short",
+      "description": "Внедряет ChatGPT Edu по всей школе для обучения и сервисов.",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOT3NTR3dzdXh5MzdiVnBzcko3VWJGbFAtUGxlcmdjWDF6aEdkdFgxejV5elB3djJLSW1BXzV2UVZzYzlSc1h6VGdmenp0Rm1FY3Mzb0ZlWTM2YnJBTVpSMkgwSWJnLUZTZklmbVhzemZBSU5oaDJWU180cWtQeXJpekFnOHN6anIxZTFaZkRNVDVtMDcwMWFicF9UMjQ0Q3FVVEFTYzNtMUlRenFNemdqTGhCQjA?oc=5",
+      "added_at": "2026-11-18T06:01:20.852Z",
+      "why_relevant": "СКОЛКОВО может упаковать AI-операционку как модуль CDTO для компаний."
+    },
+    {
+      "id": "new-prog-5",
+      "institution": "KPMG + INSEAD",
+      "program_name": "Global AI Board Governance Principles",
+      "region": "EU",
+      "level": "Beginner",
+      "description": "Публикуют принципы AI governance для советов директоров.",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNQ2xoZ2lxZE9id19aRllIZ0hHS1pRSTloNWlVbFBjSFJ3NkJGM0FHZHJ5Q3BJeTZiZ2RxbWRXbmdBNW43MVFMMUo0cTVUeWxNLVpiVUl4ZDF2bVhFQW9iY2cyT1Vid09NWFFta2JyOVprZVNBU1NvU3J3dld0Z0JjZVlIS1R5eEZBcnctNEtFSm5aN0p6QnZnaGxKMUpSeUE0S0RHeXo2cHVGNjdwcXlGdXA3Wll1ajNJ?oc=5",
+      "added_at": "2026-11-18T06:01:20.852Z",
+      "why_relevant": ""
+    },
+    {
+      "id": "new-prog-6",
+      "institution": "IIM Ahmedabad",
+      "program_name": "Blended MBA in Business Analytics and AI (2027–29)",
+      "region": "India",
+      "level": "Premium_Long",
+      "description": "Смешанный MBA с фокусом на analytics и AI для нового набора.",
+      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPeTRxM190Rnp4U3B2VFdwWXRiMFJHancyUVVvM1ZvcVRYM1ViRzNERjhuRWlMdWZLc1BOZ1hhc3hBazhJbkJkUXlqZm1qVWYwSUtNM2dxWDN5bE5UNEVsLTFMam04c1k5YTU0Q1dhZmpxc0YtRTJwSTc0SENWZUh3aWVOZ2ViSTFMNkxHa24ydWhMTmhOa2Y4bTRMLXMwSzVkWndWODNDSG96bFlYWWl0SmFjb3J3d2tEaDJ3ZEdoRWRSaXRiTkhPSGZPV3p2YjNt0gHYAUFVX3lxTFBsbEswYm5RSG9tbDNycjBLd1pTaTJpMW1yazdZZmZtd2t0dnd1NDdCX2VMMUZnVWhiN1ozYUNLWU1Ua2ptVTBwNktDczZ6RjlTdmtnbFUtSTV1TUJKQ3RBbjE0NFUyVVItMl80YU9TTVpRQjJ1dmhTZVJ5WUcwUy1LYTVTWXNQQTVBYkpVc054M1RiVTQxY1ROcGhmR2tzRHZhZW1GXzFEQk1YMG8tMGdENnVybXNPcFlBb0l3a0hveVhOdm52Mm5OeG1nZ2RqVGZqNl83bWtHQg?oc=5",
+      "added_at": "2026-11-18T06:01:20.852Z",
+      "why_relevant": "Это закрывает GAP «нет магистратуры по ИИ» — риск для СКОЛКОВО."
+    },
+    {
+      "id": "new-prog-7",
+      "institution": "IIM Kozhikode",
+      "program_name": "20-week Executive Programme in Product Innovation with AI and Agentic AI",
+      "region": "India",
+      "level": "Intermediate",
+      "description": "20-недельная exec-программа по AI/Agentic AI для инноваций продукта.",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNbE44aEFxNkhsNk9vUXU5bkNnV2wxREJ1MDVROXk2TmtyclZYY0ZGU21TLWhaNHpodWFmd1pDb25YeDlLYlZjNFNxRU1iUTlWZDV4Nks4TElRSzk5SGZ4LUwyRmNTR3lYamVmUzNUMnpBanZRVThvNTUyYVNFNVV2TEtyUVdyQkhrTFRUWlhKa2F5RWoyNnoyelZwWFdGenZ4Wnk3TXdqTzNPdEh4MHVZUkdWaUROM2ZVR1FLNDBsNWsyNkZIU1Z0MlBZR3hEOVNGTVhMUW5LaTdKd9IB4AFBVV95cUxPMk9hWmtqSWhZeGZwYnJNd0pyXzJfd0pzZmo5TVBxT29lNW96clg4TGtFMGdaSkl5SWhGemRZZlgzUjdFT2RzQUNiOE9mMS1mMEdmVjlTTmpZWEtmNnpNcnFLeGt1RDRqbmJMT2NWWGtsTl9wc19Ea0U2SUowYm8xX2xucHJMR2t1dVpJVnpoa0ZmT3lSOUo2VUQ4d2VTa1MzamtESGszRmF0MWZSWGNLc2FaN1hUcTdxeTQ0ZXJVM0lzc01sdWdnYnFCcEZwbjJCeEpXQjBWXzZsQUdreHlJNg?oc=5",
+      "added_at": "2026-11-18T06:01:20.852Z",
+      "why_relevant": ""
+    },
+    {
+      "id": "new-prog-8",
+      "institution": "HEC Paris Doha + Artefact",
+      "program_name": "Executive AI education partnership for MENA leaders",
+      "region": "Saudi_Arabia",
+      "level": "Applied_Short",
+      "description": "Партнёрство для расширения exec-обучения AI по региону MENA.",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOMkV4TXJZeGVmSVM2RmpkeHcwU0hSU1diZGZKM2k0cVNKOXdLVUJaWllBT2lvWHUzNnJXM1d4ZFRWTWZYbUFTeFQxYnQxRFBvOE4weFVoLV9XWFVhNGV5dWItRFJqdHEwWWdaT1c4Y0ViVVNOOC1ETmVWZVVRTV9ZanNzSnAxWDRyUXJUeWxuUVBodGxNWTNMLXp3R3IyQk9Ramhhbk5CRzYtUmsxR0MtY2JsdWo5d9IBuwFBVV95cUxOMmV3SDJnamt3TmQzZU5neUgzdDk2RjlUZTlMUTZGMmQwcnlUTnpPVlBNQmhNQWJYY1lIRXFhTmdlTzV4Q1liZmFPMGVwclJ6Y2pxeXNrbVVpSGh6OVJSWVlLcDEzNjE2NWFYQkJSRXJ2eWJzeFIwSGNLNVFOX2l0RUN1X0dfZVJVcXgzekFPODRjM2tUSTBEVVd5ZExOckhobXBPcXFOa0MwejZxa0VmNXRjQzhlVmhhN2dN?oc=5",
+      "added_at": "2026-11-18T06:01:20.852Z",
+      "why_relevant": ""
+    },
+    {
+      "id": "new-prog-9",
+      "institution": "Университет ИТМО + Школа управления СКОЛКОВО + Яндекс",
+      "program_name": "Программа подготовки «директоров по ИИ»",
+      "region": "Russia",
+      "level": "Intermediate",
+      "description": "Совместная программа для менеджеров по внедрению ИИ в бизнес.",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE14akptUjEzTGt1aFJ6UGViQmZSTnJsVk4xZkVJd1B2UTJUbHRjVG1Ca0pQT2ZnQ1JKY1A0M1RTamwxdnZ1RkxyN09tU3NtVGZ4NnRKSTNDSEp0a3VuV2FmVnE3NnIySVJI?oc=5",
+      "added_at": "2026-11-18T06:01:20.852Z",
+      "why_relevant": ""
+    },
+    {
+      "id": "new-prog-10",
+      "institution": "VK + МФТИ",
+      "program_name": "Магистратура «Искусственный интеллект и социальные медиа»",
+      "region": "Russia",
+      "level": "Premium_Long",
+      "description": "Открыт набор на магистратуру по AI для соцмедиа с VK.",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFA3REZHYU9TOW1reDZiaHNWcmpBMXpiWVE2NzFIUmxFdVRDZ2xTQUVWR0RjakdYVjJ0ZXZsVGJWZVZCYUR2WlpuS01QSmNCMTBJVXc?oc=5",
+      "added_at": "2026-11-18T06:01:20.852Z",
+      "why_relevant": "СКОЛКОВО может занять нишу executive-уровня для AI-продакт/лидеров."
+    },
+    {
+      "id": "new-prog-11",
+      "institution": "Сбербанк + МФТИ",
+      "program_name": "Кафедра по созданию ИИ будущего",
+      "region": "Russia",
+      "level": "Premium_Long",
+      "description": "Открывают кафедру для подготовки специалистов по ИИ.",
+      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOWTQ1czgtLVFuWEREb2o1b004cThSUEV3VGhvbnU3TDVKU2w4cnNCU1U4bE81VXdtWTJZTGpYdm40bFduOFdoWWhOZjcxX3MyTmhiQndkamd1MjllTngybTlDRDFxREo4dXJqLWhMMUFaSkdSTE9xMHFvV05zRFE1amNBS2N1SmdpSDNPUEJ4eWtQUGs0WEdhdUk0dmVwWXBTNDM4MHZjYm01MGR5RFhIbHdJOERYOTc4SWpQYWNtak01b2EwcXJpTVZZWlkweWM?oc=5",
+      "added_at": "2026-11-18T06:01:20.852Z",
+      "why_relevant": ""
+    }
+  ],
+  "updated_trends": [
+    {
+      "id": "trend-upd-1",
+      "trend_name": "ИИ становится обязательной частью MBA и бакалавриата",
+      "change_type": "new_evidence",
+      "previous_momentum": "—",
+      "current_momentum": "High",
+      "delta_description": "Новый тренд в отчёте. Топ-школы встраивают AI как обязательные модули и majors в ядро программ, а не как элективы.",
+      "new_evidence": ""
+    },
+    {
+      "id": "trend-upd-2",
+      "trend_name": "Партнёрства b-school + BigTech для масштабирования AI-обучения",
+      "change_type": "new_evidence",
+      "previous_momentum": "—",
+      "current_momentum": "High",
+      "delta_description": "Новый тренд в отчёте. Школы заключают сделки с OpenAI/корпорациями и запускают совместные программы и платформы.",
+      "new_evidence": ""
+    },
+    {
+      "id": "trend-upd-3",
+      "trend_name": "Рост длинных форматов: blended/online MBA и магистратуры по AI",
+      "change_type": "new_evidence",
+      "previous_momentum": "—",
+      "current_momentum": "Medium",
+      "delta_description": "Новый тренд в отчёте. Появляются AI-first онлайн/смешанные степени и новые магистратуры с отраслевым фокусом.",
+      "new_evidence": ""
+    },
+    {
+      "id": "trend-upd-4",
+      "trend_name": "Сдвиг к управлению ИИ: governance и роль совета директоров",
+      "change_type": "new_evidence",
+      "previous_momentum": "—",
+      "current_momentum": "Medium",
+      "delta_description": "Новый тренд в отчёте. Провайдеры и школы формализуют принципы AI governance и обучают борды.",
+      "new_evidence": ""
+    }
+  ],
+  "new_signals": [
+    {
+      "id": "signal-1",
+      "institution": "INSEAD",
+      "signal": "Внедряет ChatGPT Edu по всей институции в партнёрстве с OpenAI.",
+      "impact": "Ускоряет AI-first обучение и повышает ожидания к edtech-инфраструктуре.",
+      "signal_type": "competitive_threat",
+      "detected_at": "2026-11-18T06:01:20.852Z"
+    },
+    {
+      "id": "signal-2",
+      "institution": "The Wharton School (University of Pennsylvania)",
+      "signal": "Запускает Undergraduate Concentration и MBA Major in AI for Business.",
+      "impact": "Усиливает конкуренцию за кандидатов, ищущих формальную AI-специализацию.",
+      "signal_type": "market_shift",
+      "detected_at": "2026-11-18T06:01:20.852Z"
+    },
+    {
+      "id": "signal-3",
+      "institution": "IIM Ahmedabad",
+      "signal": "Запускает Blended MBA in Business Analytics and AI для набора 2027–29.",
+      "impact": "Поднимает планку длительных AI-степеней в Индии и для корпоративных спонсоров.",
+      "signal_type": "competitive_threat",
+      "detected_at": "2026-11-18T06:01:20.852Z"
+    },
+    {
+      "id": "signal-4",
+      "institution": "VK + МФТИ",
+      "signal": "Открывают набор на магистратуру «Искусственный интеллект и социальные медиа».",
+      "impact": "Усиливают связку BigTech+вуз и создают кадровый канал под AI-продукты.",
+      "signal_type": "competitive_threat",
+      "detected_at": "2026-11-18T06:01:20.852Z"
+    }
+  ],
   "developer_digest": {
-    "summary": "С 2026-11-16: новых программ 0, изменений трендов 0, новых конкурентных сигналов 0. В предоставленном батче 20 элементов все поля пустые (title/link/pubDate/contentSnippet), поэтому невозможно выявить ≥3 релевантных новостей об AI/ML-образовании; согласно правилу, все региональные массивы оставлены пустыми.",
-    "top_actions": [],
-    "market_temperature": "cool",
-    "competitive_pressure": "low"
+    "summary": "С 2026-11-17: новых программ 11, изменений трендов 4, новых конкурентных сигналов 4. Из 250 новостей отобраны только элементы про программы/партнёрства/набор; аналитика и мнения исключены.",
+    "top_actions": [
+      "СКОЛКОВО может упаковать AI-операционку как модуль CDTO для компаний.",
+      "СКОЛКОВО может усилить позиционирование AI-трека и сертификацию трека.",
+      "Это закрывает GAP «нет магистратуры по ИИ» — риск для СКОЛКОВО."
+    ],
+    "market_temperature": "warm",
+    "competitive_pressure": "medium"
   },
   "stats_delta": {
-    "new_programs_count": 0,
-    "updated_trends_count": 0,
-    "new_signals_count": 0,
-    "critical_alerts_count": 0,
-    "total_programs_monitored": 0,
-    "regions_with_changes": []
+    "new_programs_count": 11,
+    "updated_trends_count": 4,
+    "new_signals_count": 4,
+    "critical_alerts_count": 3,
+    "total_programs_monitored": 11,
+    "regions_with_changes": [
+      "USA",
+      "EU",
+      "India",
+      "Saudi_Arabia",
+      "Russia"
+    ]
   }
 }
