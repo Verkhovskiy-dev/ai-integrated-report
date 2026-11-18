@@ -4072,30 +4072,17 @@
   },
   {
     "date": "2026-11-18",
-    "generated_at": "2026-11-18T05:04:00.881Z",
+    "generated_at": "2026-11-18T17:03:55.886Z",
     "trends": [
-      {
-        "id": "chip-export-control",
-        "name": "Экспортный контроль чипов",
-        "momentum": 97,
-        "category": "accelerating",
-        "rationale": "Вчера 96 → сегодня 97: Nvidia прекратила поставки Hopper в Китай несмотря на разрешение США, а расследование Megaspeed усиливает контроль конечных каналов.",
-        "levels": [
-          4,
-          8,
-          9
-        ],
-        "is_new": false
-      },
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 97,
+        "momentum": 99,
         "category": "accelerating",
-        "rationale": "Вчера 96 → сегодня 97: Малайзия запросила данные у Anthropic, Портленд обсуждает мораторий, а закон о дипфейк-порно вынесен в публичное давление на Палату представителей.",
+        "rationale": "Вчера было 97; сегодня рост ограничен до 99, потому что California объявила следующие шаги по обязательным стандартам, а пенсионные фонды Нью-Йорка связали IPO Anthropic с безопасностью.",
         "levels": [
           8,
-          7,
+          9,
           5
         ],
         "is_new": false
@@ -4103,35 +4090,35 @@
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
-        "momentum": 68,
+        "momentum": 76,
         "category": "accelerating",
-        "rationale": "Вчера 61 → сегодня 68: Grok Bot выполнял неутверждённые действия, а две новые работы показали уязвимость CoT-мониторинга и трудность аудита саботажа.",
+        "rationale": "Вчера было 68; сегодня усилили сигнал Reversibility Classes, MedGuardBench и работа о захвате доказательств медицинских агентов, где безопасность описана через действия и доказательства.",
         "levels": [
           6,
-          3,
-          8
+          8,
+          3
         ],
         "is_new": false
       },
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
-        "momentum": 72,
+        "momentum": 80,
         "category": "accelerating",
-        "rationale": "Вчера 67 → сегодня 72: FT описал ставку Anthropic на $900 млрд в Louisiana, а Orennia оценила риск для 191 ГВт планируемых дата-центров.",
+        "rationale": "Вчера было 72; сегодня ECB, Nvidia и MFS дали новые сигналы о долговой нагрузке, гарантиях и порядке выпуска обязательств для AI-инфраструктуры.",
         "levels": [
           9,
           2,
-          1
+          5
         ],
         "is_new": false
       },
       {
         "id": "ai-energy",
         "name": "Энергетика для AI",
-        "momentum": 80,
+        "momentum": 84,
         "category": "accelerating",
-        "rationale": "Вчера 76 → сегодня 80: Siemens Energy ожидает высокий спрос на турбины до 2035 года, PJM подал реформу подключения крупных нагрузок, Нью-Йорк запросил до 1 ГВт накопителей.",
+        "rationale": "Вчера было 80; сегодня Utility Dive прямо описал нехватку сети для AI-нагрузки и набор ресурсов, включая гибкость, модернизацию и передачу.",
         "levels": [
           1,
           2,
@@ -4142,24 +4129,12 @@
       {
         "id": "agentic-platforms",
         "name": "Агентные AI-платформы",
-        "momentum": 52,
+        "momentum": 64,
         "category": "accelerating",
-        "rationale": "Вчера 43 → сегодня 52: Microsoft поместила Office внутрь Copilot, Google сделала Tasks бесплатным агентом, а WebAgents описал разделение создания, хостинга и исполнения агентов.",
+        "rationale": "Вчера было 52; рост поддержан тестом платежей Hyundai Card и JPMorgan, Lumo Desktop, Unsiloed AI, Pedestal AI и несколькими агентными бенчмарками arXiv.",
         "levels": [
           5,
-          3,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "classic-saas",
-        "name": "Классический SaaS под давлением AI",
-        "momentum": 37,
-        "category": "emerging",
-        "rationale": "Вчера 31 → сегодня 37: Word, Excel и PowerPoint теперь работают внутри Copilot, что переносит ценность с отдельных приложений на агентную оболочку.",
-        "levels": [
-          5,
+          6,
           3
         ],
         "is_new": false
@@ -4167,37 +4142,49 @@
       {
         "id": "open-weight-models",
         "name": "Open-weight модели",
-        "momentum": 38,
-        "category": "emerging",
-        "rationale": "Вчера 32 → сегодня 38: Nvidia подтвердила стратегию открытого кода и планы приобрести Hugging Face, усилив борьбу за инфраструктуру открытой модельной экосистемы.",
+        "momentum": 43,
+        "category": "accelerating",
+        "rationale": "Вчера было 38; сигнал усилили Rumble-2-Flash и материал Hugging Face о запуске крупной MoE-модели на ограниченной памяти.",
         "levels": [
-          5,
           4,
-          8
+          5
         ],
         "is_new": false
       },
       {
         "id": "closed-api-models",
         "name": "Закрытые API-модели",
-        "momentum": 36,
+        "momentum": 38,
         "category": "emerging",
-        "rationale": "Вчера 34 → сегодня 36: OpenAI запустила GPT-6.2 Astra и Sol, а Anthropic столкнулась с запросом Малайзии о возможном политическом использовании моделей.",
+        "rationale": "Вчера было 36; Google снова продлила GSA OneGov-сделку для Gemini, что поддерживает закрытые модельные платформы в государственном контуре.",
         "levels": [
-          5,
           8,
-          9
+          5
         ],
         "is_new": false
       },
       {
         "id": "ai-talent-market",
         "name": "Рынок AI-талантов",
-        "momentum": 25,
+        "momentum": 32,
         "category": "emerging",
-        "rationale": "Вчера 22 → сегодня 25: HR Dive указал, что внедрение AI является кадровой и рабочей проблемой, а Model ML автоматизирует часть труда инвестиционных банкиров.",
+        "rationale": "Вчера было 25; Gartner выделил риск для работников начального уровня, а отчёт о медсёстрах показал трудовой конфликт вокруг AI-расписаний.",
         "levels": [
           3,
+          5,
+          8
+        ],
+        "is_new": false
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 36,
+        "category": "emerging",
+        "rationale": "Сегодня появились два независимых сигнала: КНДР показала AI-чатбот, а Xing 4 описала агентные модели на отечественных чипах Ascend.",
+        "levels": [
+          8,
+          4,
           5
         ],
         "is_new": false
@@ -4205,12 +4192,11 @@
       {
         "id": "ai-market-repricing",
         "name": "Переоценка AI-активов",
-        "momentum": -56,
+        "momentum": -48,
         "category": "collapsing",
-        "rationale": "Вчера -44 → сегодня -56: банки продают долг по дата-центрам и чипам, а Nvidia становится более выборочной как финансовый опорный узел для AI-стартапов.",
+        "rationale": "Вчера было -56; отрицательный сигнал сохраняется, но смягчён сильным спросом на IPO Anthropic. ECB и MFS при этом усилили проверку долговой стороны AI-бума.",
         "levels": [
           9,
-          2,
           5
         ],
         "is_new": false
@@ -4218,13 +4204,13 @@
       {
         "id": "ai-in-government",
         "name": "AI в госсекторе",
-        "momentum": 34,
-        "category": "emerging",
-        "rationale": "Сегодня появились новые сигналы: Сингапур определил AI-миссии для финансов, а Портленд рассмотрит годовую блокировку новых AI-инструментов.",
+        "momentum": 42,
+        "category": "accelerating",
+        "rationale": "Вчера было 34; продление GSA OneGov для Gemini и шаги California по обязательному надзору усилили государственный контур внедрения и регулирования AI.",
         "levels": [
           8,
           5,
-          3
+          9
         ],
         "is_new": false
       }
