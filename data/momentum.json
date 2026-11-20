@@ -1,123 +1,5 @@
 [
   {
-    "date": "2026-10-19",
-    "generated_at": "2026-10-19T17:03:14.895Z",
-    "trends": [
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 83,
-        "category": "accelerating",
-        "rationale": "Вчера было 78; сегодня сигнал усилился через предупреждение S&P Global о скрытом AI-долге гиперскейлеров и рыночные опасения распродажи AI-долга.",
-        "levels": [
-          9,
-          2,
-          1
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 88,
-        "category": "accelerating",
-        "rationale": "Вчера было 80; вечер добавил ядерное соглашение AEP, Amazon и X-energy на 960 МВт и виртуальную электростанцию Google в PJM как новые формы обеспечения мощности.",
-        "levels": [
-          1,
-          2,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 92,
-        "category": "accelerating",
-        "rationale": "Вчера было 88; запрет DeepSeek для федеральных агентств США и сообщения о нехватке AI-экспертизы Конгресса добавили конкретные институциональные сигналы.",
-        "levels": [
-          8,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 96,
-        "category": "accelerating",
-        "rationale": "Вчера было 93; взлом более 100 сайтов армией AI-агентов и утечка скрытых инструкций WhatsApp показывают расширение поверхности атаки.",
-        "levels": [
-          8,
-          4,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 94,
-        "category": "accelerating",
-        "rationale": "Вчера было 89; Nvidia выпустила открытые модели для корпоративных агентов, а FRACTAL и TAG-Nav добавили методические сигналы оркестрации и навигации.",
-        "levels": [
-          4,
-          5,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "open-weight-models",
-        "name": "Open-weight модели",
-        "momentum": 90,
-        "category": "accelerating",
-        "rationale": "Вчера было 86; TechCrunch сообщил о новых открытых моделях Nvidia для предприятий, собственных дата-центров и персональных компьютеров.",
-        "levels": [
-          4,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": -44,
-        "category": "collapsing",
-        "rationale": "Вчера было -39; движение Nvidia к открытым моделям для размещения внутри компаний усиливает давление на модель аренды удалённого закрытого доступа.",
-        "levels": [
-          4,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 66,
-        "category": "accelerating",
-        "rationale": "Вчера было 59; запрет DeepSeek в федеральных системах США и дело OpenAI с саудовскими связями усилили связь моделей с национальной безопасностью.",
-        "levels": [
-          8,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 71,
-        "category": "accelerating",
-        "rationale": "Вчера было 76; новых масштабных данных о найме меньше, но профсоюзное предупреждение политикам показывает сохранение трудовой повестки вокруг AI.",
-        "levels": [
-          3,
-          8
-        ],
-        "is_new": false
-      }
-    ]
-  },
-  {
     "date": "2026-10-20",
     "generated_at": "2026-10-20T17:03:41.092Z",
     "trends": [
@@ -4226,6 +4108,150 @@
         "levels": [
           9,
           5
+        ],
+        "is_new": false
+      }
+    ]
+  },
+  {
+    "date": "2026-11-20",
+    "generated_at": "2026-11-20T05:02:56.133Z",
+    "trends": [
+      {
+        "id": "ai-market-repricing",
+        "name": "Переоценка AI-активов",
+        "momentum": -40,
+        "category": "collapsing",
+        "rationale": "Вчера было -25; сегодня импульс ухудшился до -40 из-за распродажи азиатских AI-акций, падения SoftBank более чем на 16% и риска медвежьего рынка в развивающихся акциях.",
+        "levels": [
+          9,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 88,
+        "category": "accelerating",
+        "rationale": "Вчера было 80; сегодня рост до 88 поддержан наймом Apple для AI-агента, запуском computer use в Gemini на Mac и песочницей Google для Chrome-агентов.",
+        "levels": [
+          5,
+          3,
+          6
+        ],
+        "is_new": false
+      },
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 96,
+        "category": "accelerating",
+        "rationale": "Вчера было 91; сегодня рост до 96 связан с работами по интроспективному надзору, GUARD, RefinementGuard и тестовой средой Google для браузерных агентов.",
+        "levels": [
+          6,
+          8,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 84,
+        "category": "accelerating",
+        "rationale": "Вчера было 75; сегодня рост до 84 дают 50-МВт геотермальный PPA Google, спор о прогнозе дата-центров в PJM и правила ride-through для дата-центров.",
+        "levels": [
+          1,
+          2,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 82,
+        "category": "accelerating",
+        "rationale": "Вчера было 88; сегодня показатель ниже, потому что новых мегасделок нет, но инфраструктурный сигнал сохраняют PPA Google, ограничения Nextdc и спор о мощности PJM.",
+        "levels": [
+          1,
+          2,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 90,
+        "category": "accelerating",
+        "rationale": "Вчера было 90; сегодня уровень удержан предложением Калифорнии об AI-выключателе, судебным спором о ложной AI-тревоге и экспортным разрешением США на чипы.",
+        "levels": [
+          8,
+          4,
+          6
+        ],
+        "is_new": false
+      },
+      {
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": 58,
+        "category": "accelerating",
+        "rationale": "Вчера было 51; сегодня рост до 58 связан с сообщением FT об одобрении США продаж чипов Nvidia и AMD китайским компаниям при опасениях Пентагона.",
+        "levels": [
+          8,
+          4,
+          9
+        ],
+        "is_new": false
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 52,
+        "category": "accelerating",
+        "rationale": "Вчера было 47; сегодня рост до 52 поддержан связкой Hugging Face и OpenRouter для запуска open-weight моделей и публикацией открытой речевой модели Rumble-2-Flash.",
+        "levels": [
+          5,
+          4
+        ],
+        "is_new": false
+      },
+      {
+        "id": "classic-saas",
+        "name": "Классический SaaS под давлением AI",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера было 36; сегодня рост до 39 даёт сообщение FT о том, что Sage встраивает AI в продукты, чтобы удержать клиентов малого бизнеса.",
+        "levels": [
+          5,
+          3
+        ],
+        "is_new": false
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 50,
+        "category": "accelerating",
+        "rationale": "Вчера было 44; сегодня рост до 50 связан с исследованием HR Dive о сбоях доверия к AI-резюме и наймом Apple инженеров для собственного AI-агента.",
+        "levels": [
+          3,
+          5
+        ],
+        "is_new": false
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 38,
+        "category": "emerging",
+        "rationale": "Вчера было 43; сегодня снижение до 38, потому что главные сигналы дня сместились к агентным оболочкам и open-weight доступу через Hugging Face и OpenRouter.",
+        "levels": [
+          5,
+          4
         ],
         "is_new": false
       }
