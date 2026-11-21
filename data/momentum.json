@@ -4078,121 +4078,220 @@
   },
   {
     "date": "2026-11-21",
-    "generated_at": "2026-11-21T05:04:39.344Z",
+    "generated_at": "2026-11-21T17:04:28.576Z",
     "trends": [
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 91,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был предельно сильным; сегодня он остаётся высоким благодаря киберсигналам Wired и FT, а также новым методикам MM-SystemOneBias и Verify the Verifier.",
+        "levels": [
+          8,
+          6,
+          4
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://www.wired.com/story/brace-yourself-for-years-of-outage-chaos/",
+          "https://www.ft.com/content/3cf882c6-0be6-43f5-b01e-b6f765686c8b?syn-25a6b1a6=1",
+          "https://arxiv.org/abs/2611.26557v1",
+          "https://arxiv.org/abs/2611.26588v1"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 84,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был очень высоким; сегодня он немного ослаб по интенсивности, но получил новые сигналы: Китай стандартизирует токены, ООН не добилась обязательных правил, а США обсуждают разрешительную реформу.",
+        "levels": [
+          8,
+          1,
+          4
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/articles/2026-11-21/china-plans-to-strengthen-ai-token-standards-in-computing-push",
+          "https://news.google.com/rss/articles/CBMizwFBVV95cUxOSlBHNDRGajl6SXlUeFNSVW15c1JpVEFJQ3RhVzRRZmhkWXdHSE8zTDJkSFk1MFRLZG51RURoSUZ1QTVKMEQ1QUVGOFNrZFQ3NzVoMGZ3aW54N0Y3Tk50UTMwNE90NnRzVlJ2ckdHdVU4NjBvWnNhTDh0Y1JXSmx5SUdmOWEyRjBJcGNZVXNjUGFlM0FXWXpWeDh3TkhwaXpiSzdDcmJpVlczRGFlMnVDZUFGeGg1MjVkWmY4N3JkWDRmVDBGNXFGdUxmQXN3eG8?oc=5",
+          "https://www.utilitydive.com/news/senate-passes-baaja-permitting-bill/875334/"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 75,
+        "category": "accelerating",
+        "rationale": "После вчерашнего пика сигнал стал более исследовательским: PlayCraft использует агентный игровой опыт, O2LaF извлекает скрытые действия из видео, а PGX разделяет управление гуманоидом. (Оценка модели 78: независимых источников 1, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
+        "levels": [
+          6,
+          4,
+          5
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://arxiv.org/abs/2611.26624v1",
+          "https://arxiv.org/abs/2611.26617v1",
+          "https://arxiv.org/abs/2611.26596v1"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 78
+      },
       {
         "id": "ai-market-repricing",
         "name": "Переоценка AI-активов",
-        "momentum": -60,
+        "momentum": -66,
         "category": "collapsing",
-        "rationale": "Вчера было -52; сегодня снижение усилилось после сообщения FT о медвежьем рынке акций технологических компаний США и ослаблении эффекта Anthropic для финансовых посредников.",
+        "rationale": "Вчера тренд уже был резко отрицательным; сегодня сигналы усилились, потому что Bloomberg связал рынок с опасениями по AI-расходам, а Тайвань ввёл меры после падения на AI-опасениях.",
         "levels": [
           9,
+          8,
           5
         ],
-        "is_new": false
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/videos/2026-11-21/wall-street-confronts-ai-reality-check-video",
+          "https://www.bloomberg.com/news/articles/2026-11-21/taiwan-bans-short-sales-of-stocks-in-new-move-to-calm-markets"
+        ],
+        "quiet_days": 0
       },
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
-        "momentum": 62,
+        "momentum": 55,
         "category": "accelerating",
-        "rationale": "Вчера было 70; сегодня тренд остаётся сильным, но получает встречные сигналы: FT пишет об опасениях вокруг AI-расходов, а Meta пересматривает цели устойчивости из-за AI-дата-центров.",
+        "rationale": "По сравнению со вчерашним высоким уровнем сигнал остаётся сильным, но более проверочным: Bloomberg указал опасения по AI-расходам, а PJM и Utility Dive показывают давление дата-центров на мощность. (Оценка модели 58: независимых источников 2, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
         "levels": [
           9,
           2,
           1
         ],
-        "is_new": false
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/videos/2026-11-21/wall-street-confronts-ai-reality-check-video",
+          "https://www.utilitydive.com/news/ratepayer-advocates-pjm-market-monitor-capacity-auction/875165/",
+          "https://www.utilitydive.com/news/the-grid-will-fall-short-of-ais-power-needs-6-resources-close-the-gap/874125/"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 58
       },
       {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 86,
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": 45,
         "category": "accelerating",
-        "rationale": "Вчера было 90; Apple ищет инженера для собственного AI-агента, но данные Scribe о применении AI в рабочих задачах ниже 4% ограничивают оценку темпа внедрения.",
+        "rationale": "Сегодня есть один сильный сигнал: FT пишет, что по мере AI-соперничества США и Китая фокус смещается к цепочкам поставок, что расширяет поле контроля за пределы отдельных чипов. (Оценка модели 31: снижение за день ограничено −15.)",
         "levels": [
-          3,
           5,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 96,
-        "category": "accelerating",
-        "rationale": "Вчера было 97; ROGUE-AI, EditSafetyBench, AgentRoboCritic и тест с 2 млн «канареек» дают свежие сигналы о переходе к расследуемости и аудиту агентных систем.",
-        "levels": [
-          6,
-          8,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 91,
-        "category": "accelerating",
-        "rationale": "Вчера было 88; импульс усилился за счёт инициативы комитета Сената США с правом повестки и угрозы налога за AI-дата-центры вне США.",
-        "levels": [
-          8,
-          2,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "open-weight-models",
-        "name": "Open-weight модели",
-        "momentum": 38,
-        "category": "emerging",
-        "rationale": "Сегодня сигнал дают публикации Hugging Face об Inkling 2 Mini, Rumble-2-Flash и MoE-инференсе на 32GB RAM, усиливая линию локального запуска.",
-        "levels": [
           4,
-          5
+          8
         ],
-        "is_new": false
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://www.ft.com/content/cd4ecaf3-0ded-4830-94a8-4d9c24098c07?syn-25a6b1a6=1"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 31
       },
       {
         "id": "ai-energy",
         "name": "Энергетика для AI",
-        "momentum": 57,
-        "category": "accelerating",
-        "rationale": "Свежий сигнал — Meta переоценивает цели устойчивости на 2030 год на фоне рекордных выбросов от AI-дата-центров; энергетический след стал фактором стратегии.",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера тренд был сильным; сегодня он укрепился конкретными инфраструктурными фактами: 50-МВт PPA Google, спор PJM по дата-центрам и правила ride-through для сетевой надёжности. (Оценка модели 63: независимых источников 1, для «ускоряется» нужно от 3.)",
         "levels": [
           1,
           2,
-          9
+          8
         ],
-        "is_new": false
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://www.utilitydive.com/news/google-signs-50-mw-superhot-geothermal-ppa-with-quaise-energy/875217/",
+          "https://www.utilitydive.com/news/ratepayer-advocates-pjm-market-monitor-capacity-auction/875165/",
+          "https://www.utilitydive.com/news/grid-operators-data-center-ride-through-rules-ercot-nerc/873466/"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 63
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера тренд был умеренным; сегодня он слегка усилился, потому что Hugging Face и OpenRouter связали open-weight модели с более простым запуском через сервисный слой.",
+        "levels": [
+          5,
+          4
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://huggingface.co/blog/openrouter"
+        ],
+        "quiet_days": 0
       },
       {
         "id": "ai-talent-market",
         "name": "Рынок AI-талантов",
-        "momentum": 45,
-        "category": "accelerating",
-        "rationale": "Вчера было 48; Apple нанимает под AI-агента, но сигнал Scribe о низком фактическом применении AI в рабочих задачах показывает разрыв между наймом и массовым использованием.",
+        "momentum": 36,
+        "category": "emerging",
+        "rationale": "По сравнению со вчерашним уровнем сигнал слабее: HR Dive дал общий кадровый факт о карьерном развитии, а TechCrunch показал новую форму лицензирования внешности актёра для AI-контента.",
         "levels": [
           3,
-          5
+          5,
+          8
         ],
-        "is_new": false
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.hrdive.com/news/career-development-top-reason-people-apply-for-and-leave-jobs/875351/",
+          "https://techcrunch.com/2026/11/21/is-selling-an-ai-version-of-your-face-to-this-microdrama-startup-the-future-of-hollywood/"
+        ],
+        "quiet_days": 0
       },
       {
-        "id": "ai-in-government",
-        "name": "AI в госсекторе",
-        "momentum": 32,
+        "id": "synthetic-data",
+        "name": "Синтетические данные",
+        "momentum": 24,
         "category": "emerging",
-        "rationale": "Сигналом стали инициатива AI-комитета Сената США и налоговая угроза Трампа по зарубежным дата-центрам; государство усиливает роль в инфраструктуре AI.",
+        "rationale": "Тренд получил точечный сигнал: статья Bio-PM исследует синтетические IMU-данные для задач распознавания активности, где сбор и разметка реальных данных дороги.",
         "levels": [
-          8,
-          2,
-          9
+          6,
+          5,
+          4
         ],
-        "is_new": false
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://arxiv.org/abs/2611.26607v1"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 34,
+        "category": "emerging",
+        "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 42.",
+        "levels": [
+          7,
+          8,
+          5
+        ],
+        "is_new": false,
+        "signal_count": 0,
+        "signal_urls": [],
+        "quiet_days": 1,
+        "carried": true
       }
     ]
   }
