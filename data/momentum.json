@@ -4144,22 +4144,25 @@
   },
   {
     "date": "2026-11-22",
-    "generated_at": "2026-11-22T05:05:15.972Z",
+    "generated_at": "2026-11-22T17:04:57.548Z",
     "trends": [
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
-        "momentum": 82,
+        "momentum": 83,
         "category": "accelerating",
-        "rationale": "Вчера тренд был на уровне 91; сегодня сигнал остаётся сильным, но смещён с автономных агентов к приватности и проверке AI-контуров: Signal ограничивает скриншоты, эксперимент с 2 млн секретов выявляет утечки, а Австралия предупреждает о рисках AI и ЦОД.",
+        "rationale": "Вчера тренд уже был сильным; сегодня он получил новые независимые сигналы через запреты банков на AI-агентов, ROGUE-AI для расследования инцидентов и SoK по LLM в уязвимостях.",
         "levels": [
-          6,
           8,
-          2
+          6,
+          3
         ],
         "is_new": false,
-        "signal_count": 3,
+        "signal_count": 5,
         "signal_urls": [
+          "https://www.wired.com/story/banks-are-cracking-down-on-ai-agents/",
+          "https://arxiv.org/abs/2611.26553v1",
+          "https://arxiv.org/abs/2611.26601v1",
           "https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance/",
           "https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/",
           "https://www.bloomberg.com/news/articles/2026-11-22/australia-spy-chief-warns-of-data-center-ai-risks-age-reports"
@@ -4169,82 +4172,112 @@
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 69,
+        "momentum": 72,
         "category": "accelerating",
-        "rationale": "Вчера было 84; сегодня регуляторный сигнал остаётся высоким, но без нового международного решения: Калифорния расширяет проверку Nvidia, Google меняет контроль данных Gemini, а иск по школьной AI-тревоге выводит ложные срабатывания в правовую плоскость. (Оценка модели 76: независимых источников 2, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
+        "rationale": "После утренних сигналов регулирование усилилось за счёт позиции губернаторов США о федеральных правилах с ролью штатов и банковского ограничения доступа AI-агентов к счетам.",
         "levels": [
           8,
-          6,
-          4
-        ],
-        "is_new": false,
-        "signal_count": 2,
-        "signal_urls": [
-          "https://www.bloomberg.com/news/articles/2026-11-21/california-nvidia-probe-covers-potential-criminal-law-violations",
-          "https://arstechnica.com/ai/2026/11/google-will-let-you-opt-out-of-ai-training-in-gemini-without-losing-your-history/",
-          "https://arstechnica.com/tech-policy/2026/11/traumatized-teens-sue-school-cops-after-doritos-bag-triggers-ai-gun-alert/"
-        ],
-        "quiet_days": 0,
-        "raw_momentum": 76
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 60,
-        "category": "accelerating",
-        "rationale": "Вчера было 75; сегодня сигнал слабее, но Microsoft прямо перемещает Office внутрь Copilot и говорит о постоянно включённых агентах, а Google переделывает поиск вокруг AI-истории. (Оценка модели 67: независимых источников 1, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
-        "levels": [
           5,
           3
         ],
         "is_new": false,
-        "signal_count": 1,
+        "signal_count": 3,
         "signal_urls": [
-          "https://arstechnica.com/gadgets/2026/11/microsoft-calls-copilot-the-new-os-for-work-at-ignite-keynote/",
-          "https://arstechnica.com/ai/2026/11/googles-latest-search-page-redesign-drops-the-search-button-adds-ai-sidebar/"
+          "https://www.bloomberg.com/news/articles/2026-11-22/governors-call-for-federal-ai-rules-without-sidelining-states",
+          "https://www.wired.com/story/banks-are-cracking-down-on-ai-agents/",
+          "https://www.bloomberg.com/news/articles/2026-11-21/california-nvidia-probe-covers-potential-criminal-law-violations",
+          "https://arstechnica.com/ai/2026/11/google-will-let-you-opt-out-of-ai-training-in-gemini-without-losing-your-history/",
+          "https://arstechnica.com/tech-policy/2026/11/traumatized-teens-sue-school-cops-after-doritos-bag-triggers-ai-gun-alert/"
         ],
-        "quiet_days": 0,
-        "raw_momentum": 67
+        "quiet_days": 0
       },
       {
         "id": "ai-market-repricing",
         "name": "Переоценка AI-активов",
-        "momentum": -60,
+        "momentum": -63,
         "category": "collapsing",
-        "rationale": "Вчера было -66; сегодня негативный сигнал слабее: TechCrunch противопоставляет отчётность Nvidia и призывы вернуть Дженсена Хуанга, а The Verge обсуждает, может ли Anthropic ставить безопасность выше финансовой логики после IPO.",
+        "rationale": "Негативный тренд получил новые подтверждения: Bloomberg пишет о хрупкости рынка при сбое AI-сделки, Tech Xplore — о бухгалтерской проверке Nvidia, 24/7 Wall St. — о нагрузке Anthropic.",
         "levels": [
           9,
-          5,
-          8
+          5
         ],
         "is_new": false,
-        "signal_count": 2,
+        "signal_count": 3,
         "signal_urls": [
+          "https://news.google.com/rss/articles/CBMirgFBVV95cUxPTnVJSXZOc19yY1dPSG12MGpNT29BU3g1X1c2TjliWWE4V0tGejk1cWdlRUJaZUI5bmhyT0RFTVZlWDNidmEwX01XYU1kT3ZVdFlVX2YzTGZqQnJEdlBVeEhZQTJXT2JmNkdWZ1J3b3FQeTh2N3VvWmJQNFMweEJpV3NhbEkxWGVQWUN4NmZsOXNHOHJWZE1VUUFXNHlRUHliakRwakRKbTl4ZDZYUUE?oc=5",
+          "https://news.google.com/rss/articles/CBMiigFBVV95cUxOck05c0F3QlZCdGM4bjlvV1RPeU0zS0JOZ3VpSU1NQXJ2NmxYUl9pOERCQlYtYWZqRmxIRmpBeGR3ZXl2MUtlX0ZsZ3RwU2FzUlp5cTM4V2U3UVhLNVlLRmhxU1dVMXJMQThObTlQUjJGZmpIMVhzejB1RG1aWlpYeDF0aGVDa21sTGc?oc=5",
+          "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOeS05cnd1cFpBR3lrT0NVdDBmWk9ySFNBbDVYblNCRy03c1NGSVdRd21ONXNVU1dpNnZPQWVGUlRWb01CYmlNNm1uOFRmOFF2ZEllckFRUnpaekhLVi04WWM0b3A0UXpGVmFUTHhYNHp1QlE1ZUFXQ2I2a1JjY3lJaHN1eHdiZUEyTGtreEhjU21OZWdVOWROQmxTa1p1NDdORUZfM0h2Mk81YzQzemRQcjlJZnc3RE9zRlF6d1BWZjBaeDk2aFFYcUtHUTBuNFBWNS1qOUZn?oc=5",
           "https://techcrunch.com/2026/11/21/a-tale-of-two-nvidias/",
           "https://www.theverge.com/podcast/1038701/anthropic-ipo-ai-safety-openai-nvidia-structure"
         ],
         "quiet_days": 0
       },
       {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 58,
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 60,
         "category": "accelerating",
-        "rationale": "Вчера было 55; сегодня сигнал слегка усилился за счёт трёх разных инфраструктурных фактов: Amazon близок к сделке Decart на $7,5 млрд, Meta пересматривает устойчивость из-за AI-ЦОД, а Австралия предупреждает о рисках ЦОД.",
+        "rationale": "Сигнал не ускорился резко относительно утра: Apple вынесла агентную конкуренцию в продуктовый цикл, а банки одновременно ограничили внешних агентов в финансовом доступе. (Оценка модели 61: независимых источников 2, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
         "levels": [
-          1,
-          2,
           5,
+          3,
           8
         ],
         "is_new": false,
-        "signal_count": 3,
+        "signal_count": 2,
         "signal_urls": [
+          "https://www.bloomberg.com/news/newsletters/2026-11-22/apple-s-ai-agent-war-early-2027-product-plans-and-iphone-duo-face-unlock-review",
+          "https://arstechnica.com/gadgets/2026/11/microsoft-calls-copilot-the-new-os-for-work-at-ignite-keynote/",
+          "https://arstechnica.com/ai/2026/11/googles-latest-search-page-redesign-drops-the-search-button-adds-ai-sidebar/"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 61
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 50,
+        "category": "accelerating",
+        "rationale": "Относительно утреннего значения сигнал стал более настороженным: FT сообщил о повышении цен AI-серверов до 45% после сделок, а рынок обсуждает хрупкость AI-сделки и нагрузку Anthropic.",
+        "levels": [
+          9,
+          5,
+          4
+        ],
+        "is_new": false,
+        "signal_count": 4,
+        "signal_urls": [
+          "https://www.ft.com/content/dd2a6594-6146-4ff1-ac8e-54749c1fc99f?syn-25a6b1a6=1",
+          "https://news.google.com/rss/articles/CBMirgFBVV95cUxPTnVJSXZOc19yY1dPSG12MGpNT29BU3g1X1c2TjliWWE4V0tGejk1cWdlRUJaZUI5bmhyT0RFTVZlWDNidmEwX01XYU1kT3ZVdFlVX2YzTGZqQnJEdlBVeEhZQTJXT2JmNkdWZ1J3b3FQeTh2N3VvWmJQNFMweEJpV3NhbEkxWGVQWUN4NmZsOXNHOHJWZE1VUUFXNHlRUHliakRwakRKbTl4ZDZYUUE?oc=5",
+          "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOeS05cnd1cFpBR3lrT0NVdDBmWk9ySFNBbDVYblNCRy03c1NGSVdRd21ONXNVU1dpNnZPQWVGUlRWb01CYmlNNm1uOFRmOFF2ZEllckFRUnpaekhLVi04WWM0b3A0UXpGVmFUTHhYNHp1QlE1ZUFXQ2I2a1JjY3lJaHN1eHdiZUEyTGtreEhjU21OZWdVOWROQmxTa1p1NDdORUZfM0h2Mk81YzQzemRQcjlJZnc3RE9zRlF6d1BWZjBaeDk2aFFYcUtHUTBuNFBWNS1qOUZn?oc=5",
           "https://www.ft.com/content/dc7749dc-0f40-44a6-80bc-7f747d383616?syn-25a6b1a6=1",
           "https://arstechnica.com/ai/2026/11/meta-reconsiders-2030-net-zero-goal-amid-record-emissions-from-ai-data-centers/",
           "https://www.bloomberg.com/news/articles/2026-11-22/australia-spy-chief-warns-of-data-center-ai-risks-age-reports"
         ],
         "quiet_days": 0
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера тренд был на границе ускорения; вечером появились новые госкооперации: Марокко обсуждает Oracle по облаку и AI, Ливия применяет AI для Agenda 2063, губернаторы США спорят о полномочиях. (Оценка модели 42: независимых источников 2, для «ускоряется» нужно от 3.)",
+        "levels": [
+          8,
+          2,
+          5
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://news.google.com/rss/articles/CBMixAFBVV95cUxQdGU2Xzl5SEhkbnJDRFpNYTliVS1wTjIxMGtJYzdKc3dlU3V5U0UtUU4wUFdPME1WTUJDX0NLLU1nTWE1ZVhWMFpSXzZ1QlBYOFFkX3V0Ykdad2dpWlFHLUQ3enZaUEl0akhyQ1hjVDkwNDBFN3hma0NERjduSmhpWTduUW9zSWpHNV9HVFlfZ2lFanJxaDV6MjlMWlloQ3hWNWV6OXFCOFFxb1RGdGVLRWJpblJRQUx5UWpROGxlSGJPY0ZD?oc=5",
+          "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQZEFoZlM1Z0xJaFJERFlLY2Q2bnpZaWdpRHFhWm1Zckh5bW55ZjZTOW10ZVoybmdXRVVrRHdjbGdIcDhxQTh6NFN6ZHdSM3oyd2s1eVctdDI2MXpxSTd0Y19LZ0t0SGZGZGFzQ3Y0ZWdBYWNOMkRLV2RuWWhQWUlNemVwMDkxZlJIVWs4OWR0M0o0NHpXNWNMbXpIS2EtNHltbkNhdXVLQ1pPNDFhamdsVFdFcHptLTFW?oc=5",
+          "https://www.bloomberg.com/news/articles/2026-11-22/governors-call-for-federal-ai-rules-without-sidelining-states",
+          "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPTldkbTlQSV94d1Y2ZVJfU0V3aG9vZ29hMXpwc05NS0dFaXJjUWdjakY4dG43TS1ISThFQkllell3bUJIYXBqYUxucjV6a3J0cTVDbkFDSng4Njk3TmliV29TdFJ3YjhCclRuTXpzN3lTVWRjVUNVQ0I1bWxDSmZQWnBiQ0g3QmI4ZzNHSm01YTV5RTF1b1kyeDNnTm9PQXBkcWZpTzlzdGhpZm5YTC14dFpWRnpJS2lPRHFWNXFIVE51ZUJRcW5oQ3J4ZkRybmtieGRhVW1UOTZTdw?oc=5",
+          "https://www.bloomberg.com/news/videos/2026-11-21/how-ai-is-reshaping-china-s-industrial-policy-video"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 42
       },
       {
         "id": "chip-export-control",
@@ -4307,38 +4340,21 @@
         "quiet_days": 0
       },
       {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 39,
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 36,
         "category": "emerging",
-        "rationale": "Сегодня появились независимые государственные сигналы: Дубай отчитался о 90+ AI-приложениях в 20 структурах, Австралия вынесла AI и ЦОД в контур нацбезопасности, а Bloomberg обсуждает AI в промышленной политике Китая.",
+        "rationale": "Относительно утра тренд слегка ослаб: новый явный сигнал один — Times of India описывает глобальное разделение AI-талантов между Китаем, США и Индией; FT добавляет общий дефицит внедрения технологий в Британии.",
         "levels": [
-          8,
-          2,
+          3,
+          7,
           5
         ],
         "is_new": false,
-        "signal_count": 2,
+        "signal_count": 3,
         "signal_urls": [
-          "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPTldkbTlQSV94d1Y2ZVJfU0V3aG9vZ29hMXpwc05NS0dFaXJjUWdjakY4dG43TS1ISThFQkllell3bUJIYXBqYUxucjV6a3J0cTVDbkFDSng4Njk3TmliV29TdFJ3YjhCclRuTXpzN3lTVWRjVUNVQ0I1bWxDSmZQWnBiQ0g3QmI4ZzNHSm01YTV5RTF1b1kyeDNnTm9PQXBkcWZpTzlzdGhpZm5YTC14dFpWRnpJS2lPRHFWNXFIVE51ZUJRcW5oQ3J4ZkRybmtieGRhVW1UOTZTdw?oc=5",
-          "https://www.bloomberg.com/news/videos/2026-11-21/how-ai-is-reshaping-china-s-industrial-policy-video"
-        ],
-        "quiet_days": 0
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 38,
-        "category": "emerging",
-        "rationale": "Вчера было 36; сегодня тренд немного усилился: HR Dive фиксирует разрыв AI-обучения между руководителями и работниками, а AI-сгенерированные резюме подрывают доверие к сигналам кандидатов.",
-        "levels": [
-          3,
-          5,
-          8
-        ],
-        "is_new": false,
-        "signal_count": 1,
-        "signal_urls": [
+          "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNZUQ2U2llUGZkMTZKcEUyd2NMY3VSa2ZUcjIxTTBIazJ5UUtqZktJUVViNktRWHNsNmR1WE5TenNlSjlULWl5NXBIb0NNR1lxVTNDRm9ReTlyZTd1SDRJMHZFc21JUXpRaEV0cUNkeG1rSXV3NE5DV1FwOEpwekZTQ1V2VnBSOUFTRVZ0MFg5aG1ZV2dseHIwdS1XSmxPY1FVaVUwRG1aZVhuYi1SdHlLamtNWk9qWEVyZnV2enZ5YUVVMnNGNFJ4dllJVUFJVER0ekVqa2J3Z2JuRWh1Y3ZJ0gHkAUFVX3lxTE5DeDRLRURUVWVKc09tOGlGdzc1SjlyNVBzaUwyUjVYLUtYblV3ZXVRTDVHQXdkTnZqVk1jaDNhVTl4eG02SEFrRkhOS05RNFRIc3hlVENWSFItN2pRYi15aGRHOTBmNTEzTzB1MGpFUFc0aFB6ZFd2WFIyTXJMclluT2VsN1VsZGZxMDJSQTZrRHIzZFozZE1NQUkzZlo2ZG5FZWliVlBsUnk4RXlCa2pmdVlKOE5jaVJhWnYwZjdycG54ZnJERTZsWnVhTGxNS2U0LWtITVVhanQ0ejByWS1nTkl5Ng?oc=5",
+          "https://www.ft.com/content/b89dbb74-af6c-492e-8d18-c0e83c64efd8?syn-25a6b1a6=1",
           "https://www.hrdive.com/news/executives-get-more-ai-training-than-other-workers-hurting-adoption/875395/",
           "https://www.hrdive.com/news/job-candidates-ai-usage-is-obscuring-their-viability-report-finds/875232/"
         ],
