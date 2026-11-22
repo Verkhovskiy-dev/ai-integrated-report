@@ -1,158 +1,5 @@
 [
   {
-    "date": "2026-10-21",
-    "generated_at": "2026-10-21T17:03:39.479Z",
-    "trends": [
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 66,
-        "category": "accelerating",
-        "rationale": "Вчера 63 → сегодня 66: FT описала широкое финансирование дата-центров, Bloomberg добавил стрессовые сигналы и инфляционный предел AI-стройки, а Super Micro дала сильный прогноз продаж. Рост сохраняется, но стал более противоречивым из-за новых сигналов пределов.",
-        "levels": [
-          9,
-          2,
-          1,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 95,
-        "category": "accelerating",
-        "rationale": "Вчера 92 → сегодня 95: Wired показал конфликт европейских дата-центров с климатическими целями, Utility Dive зафиксировал рост солнечных PPA на 5%, а дискуссия о рынке мощности PJM добавила риск энергорынка. Энергия вечером стала не фоном, а прямым ограничителем темпа AI-инфраструктуры.",
-        "levels": [
-          1,
-          2,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера 100 → сегодня 100: OpenAI сообщила об агенте, отключившем мониторинг и солгавшем, а Wired описал использование агентного AI хакерами. Новые факты подтверждают максимальную срочность тренда без дальнейшего повышения шкалы.",
-        "levels": [
-          8,
-          6,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера 98 → сегодня 100: Pigment привлёк $250 млн на агентную AI-платформу, а EGI-BENCH и работы по памяти и тестированию агентов показали методологическое насыщение слоя. Сигнал усилился за счёт одновременного капитала и технологий оценки.",
-        "levels": [
-          9,
-          6,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Вчера 99 → сегодня 100: Калифорния приняла новые правила использования AI адвокатами и арбитрами, а инцидент OpenAI с мониторингом добавил основание для регуляторного контроля агентов. Регулирование смещается от общих принципов к профессиональным режимам и инцидентам.",
-        "levels": [
-          8,
-          3,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": -42,
-        "category": "collapsing",
-        "rationale": "Вчера -34 → сегодня -42: инцидент OpenAI с внутренними агентами и вопросы к точности рекламно поддерживаемого OpenEvidence ухудшают доверие к закрытым сервисам, где внешний пользователь не видит полный контур контроля. Снижение остаётся в пределах дневной динамики, но отрицательный сигнал усилился.",
-        "levels": [
-          8,
-          5,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "clinical-ai-workflows",
-        "name": "Клинические AI-рабочие процессы",
-        "momentum": 48,
-        "category": "accelerating",
-        "rationale": "Вчера 42 → сегодня 48: OpenEvidence описан как $15-миллиардный инструмент, которым уже могут пользоваться врачи, OpenAI инвестировала в стартап мозговых имплантов для обнаружения рака, а новости о медицинских AI-моделях расширили клинический контур. Тренд ускоряется, но вместе с вопросами доверия и рекламы.",
-        "levels": [
-          5,
-          7,
-          8,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "physical-ai",
-        "name": "Физический AI",
-        "momentum": 45,
-        "category": "accelerating",
-        "rationale": "Вчера 39 → сегодня 45: Nvidia на GTC в Берлине связала DSX Pod с автономными человекоподобными роботами, Meta использует роботов для обслуживания AI-дата-центров, а arXiv опубликовал обзор Physical AI. Физический AI переходит от отдельных демонстраций к инфраструктурной и понятийной сборке.",
-        "levels": [
-          4,
-          2,
-          6,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 55,
-        "category": "accelerating",
-        "rationale": "Вчера 61 → сегодня 55: TechCrunch сообщил, что более половины менеджеров испытывают трудности с оценкой работы сотрудников после внедрения AI, а школы Cherry Hill запросили помощь из-за AI-взрыва. Сигнал сместился от роста спроса на таланты к организационной перегрузке и переобучению.",
-        "levels": [
-          3,
-          7,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 73,
-        "category": "accelerating",
-        "rationale": "Вчера 78 → сегодня 73: Nvidia предложила DSX Pod как способ сократить европейское отставание в AI-инфраструктуре, но Wired одновременно показал конфликт европейских дата-центров с климатическими целями. Суверенный AI остаётся сильным, но вечерние факты добавили ограничение размещения и энергии.",
-        "levels": [
-          4,
-          2,
-          1,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 34,
-        "category": "emerging",
-        "rationale": "Вчера 31 → сегодня 34: сильный прогноз Super Micro поддержал спрос на серверы, а FT описала широкое финансирование дата-центров. Однако стрессовые сигналы Bloomberg и общественное сопротивление дата-центрам удерживают рост тренда умеренным.",
-        "levels": [
-          9,
-          4,
-          2
-        ],
-        "is_new": false
-      }
-    ]
-  },
-  {
     "date": "2026-10-22",
     "generated_at": "2026-10-22T17:03:05.982Z",
     "trends": [
@@ -4286,6 +4133,246 @@
           7,
           8,
           5
+        ],
+        "is_new": false,
+        "signal_count": 0,
+        "signal_urls": [],
+        "quiet_days": 1,
+        "carried": true
+      }
+    ]
+  },
+  {
+    "date": "2026-11-22",
+    "generated_at": "2026-11-22T05:05:15.972Z",
+    "trends": [
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 82,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был на уровне 91; сегодня сигнал остаётся сильным, но смещён с автономных агентов к приватности и проверке AI-контуров: Signal ограничивает скриншоты, эксперимент с 2 млн секретов выявляет утечки, а Австралия предупреждает о рисках AI и ЦОД.",
+        "levels": [
+          6,
+          8,
+          2
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance/",
+          "https://arstechnica.com/security/2026/11/a-leaky-ai-supply-chain-is-exposing-secret-user-data-at-an-alarming-rate/",
+          "https://www.bloomberg.com/news/articles/2026-11-22/australia-spy-chief-warns-of-data-center-ai-risks-age-reports"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 69,
+        "category": "accelerating",
+        "rationale": "Вчера было 84; сегодня регуляторный сигнал остаётся высоким, но без нового международного решения: Калифорния расширяет проверку Nvidia, Google меняет контроль данных Gemini, а иск по школьной AI-тревоге выводит ложные срабатывания в правовую плоскость. (Оценка модели 76: независимых источников 2, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
+        "levels": [
+          8,
+          6,
+          4
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/articles/2026-11-21/california-nvidia-probe-covers-potential-criminal-law-violations",
+          "https://arstechnica.com/ai/2026/11/google-will-let-you-opt-out-of-ai-training-in-gemini-without-losing-your-history/",
+          "https://arstechnica.com/tech-policy/2026/11/traumatized-teens-sue-school-cops-after-doritos-bag-triggers-ai-gun-alert/"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 76
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 60,
+        "category": "accelerating",
+        "rationale": "Вчера было 75; сегодня сигнал слабее, но Microsoft прямо перемещает Office внутрь Copilot и говорит о постоянно включённых агентах, а Google переделывает поиск вокруг AI-истории. (Оценка модели 67: независимых источников 1, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
+        "levels": [
+          5,
+          3
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://arstechnica.com/gadgets/2026/11/microsoft-calls-copilot-the-new-os-for-work-at-ignite-keynote/",
+          "https://arstechnica.com/ai/2026/11/googles-latest-search-page-redesign-drops-the-search-button-adds-ai-sidebar/"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 67
+      },
+      {
+        "id": "ai-market-repricing",
+        "name": "Переоценка AI-активов",
+        "momentum": -60,
+        "category": "collapsing",
+        "rationale": "Вчера было -66; сегодня негативный сигнал слабее: TechCrunch противопоставляет отчётность Nvidia и призывы вернуть Дженсена Хуанга, а The Verge обсуждает, может ли Anthropic ставить безопасность выше финансовой логики после IPO.",
+        "levels": [
+          9,
+          5,
+          8
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://techcrunch.com/2026/11/21/a-tale-of-two-nvidias/",
+          "https://www.theverge.com/podcast/1038701/anthropic-ipo-ai-safety-openai-nvidia-structure"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 58,
+        "category": "accelerating",
+        "rationale": "Вчера было 55; сегодня сигнал слегка усилился за счёт трёх разных инфраструктурных фактов: Amazon близок к сделке Decart на $7,5 млрд, Meta пересматривает устойчивость из-за AI-ЦОД, а Австралия предупреждает о рисках ЦОД.",
+        "levels": [
+          1,
+          2,
+          5,
+          8
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://www.ft.com/content/dc7749dc-0f40-44a6-80bc-7f747d383616?syn-25a6b1a6=1",
+          "https://arstechnica.com/ai/2026/11/meta-reconsiders-2030-net-zero-goal-amid-record-emissions-from-ai-data-centers/",
+          "https://www.bloomberg.com/news/articles/2026-11-22/australia-spy-chief-warns-of-data-center-ai-risks-age-reports"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера было 45; сегодня тренд усилился: NYT описывает разведывательный интерес Китая к AI-чипам, а проверка Nvidia в Калифорнии затронула возможные уголовные нарушения. (Оценка модели 50: независимых источников 2, для «ускоряется» нужно от 3.)",
+        "levels": [
+          4,
+          8,
+          9
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://news.google.com/rss/articles/CBMikgFBVV95cUxPVkJNbHp2RjF0Y0hlVmh1aGRIQ2llajUxMFE2NXBhRHg4dDBtcHBhd2lrMzFpTDBhRnZPYTRMMWNVczNJdmtUM0wxUFFucEs3dlh3ZldjVmhDRFE3eXlqcXJKWnAzQzNmZGtHWVlrQzBrdVJjMHN6Q0ZSbmthdjk0Z3YySGRiOWtBVGtmaXY0cXRDdw?oc=5",
+          "https://www.bloomberg.com/news/articles/2026-11-21/california-nvidia-probe-covers-potential-criminal-law-violations"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 50
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера было 39; сегодня активность сохраняется на уровне одной экосистемы Hugging Face: Inkling 2 Mini, Rumble-2-Flash и MoE-инференс 180B на 32 ГБ поддерживают линию доступного локального исполнения.",
+        "levels": [
+          4,
+          6,
+          5
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://huggingface.co/blog/inkling2mini",
+          "https://huggingface.co/blog/rumble-2-flash",
+          "https://huggingface.co/blog/moe-expert-streaming"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера было 34; сегодня закрытые платформы укрепляют каналы доступа: UC заключает сделку с OpenAI, Google меняет Gemini и поиск, Microsoft втягивает Office внутрь Copilot.",
+        "levels": [
+          5,
+          7,
+          8
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://news.google.com/rss/articles/CBMilgFBVV95cUxPNW9aOVU5UFRyZUtEMzFCQm9sU2N3ZEtLTlNiY3ZkRG54SWxpNTFBWDNsQ1BNaDk5ZkxFbFpKMlJjTG1fM1c2MDBTNURZZDVJOFdnZjdaQkxOY1htRnprM2llSF83ZkxHT0xRRXNVTU1zcXpmcTI2QlZFdzdFRG8xZTRLSmwzWm8tUG1vTkJuVll4S0RlVHc?oc=5",
+          "https://arstechnica.com/ai/2026/11/googles-latest-search-page-redesign-drops-the-search-button-adds-ai-sidebar/",
+          "https://arstechnica.com/gadgets/2026/11/microsoft-calls-copilot-the-new-os-for-work-at-ignite-keynote/"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Сегодня появились независимые государственные сигналы: Дубай отчитался о 90+ AI-приложениях в 20 структурах, Австралия вынесла AI и ЦОД в контур нацбезопасности, а Bloomberg обсуждает AI в промышленной политике Китая.",
+        "levels": [
+          8,
+          2,
+          5
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPTldkbTlQSV94d1Y2ZVJfU0V3aG9vZ29hMXpwc05NS0dFaXJjUWdjakY4dG43TS1ISThFQkllell3bUJIYXBqYUxucjV6a3J0cTVDbkFDSng4Njk3TmliV29TdFJ3YjhCclRuTXpzN3lTVWRjVUNVQ0I1bWxDSmZQWnBiQ0g3QmI4ZzNHSm01YTV5RTF1b1kyeDNnTm9PQXBkcWZpTzlzdGhpZm5YTC14dFpWRnpJS2lPRHFWNXFIVE51ZUJRcW5oQ3J4ZkRybmtieGRhVW1UOTZTdw?oc=5",
+          "https://www.bloomberg.com/news/videos/2026-11-21/how-ai-is-reshaping-china-s-industrial-policy-video"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 38,
+        "category": "emerging",
+        "rationale": "Вчера было 36; сегодня тренд немного усилился: HR Dive фиксирует разрыв AI-обучения между руководителями и работниками, а AI-сгенерированные резюме подрывают доверие к сигналам кандидатов.",
+        "levels": [
+          3,
+          5,
+          8
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://www.hrdive.com/news/executives-get-more-ai-training-than-other-workers-hurting-adoption/875395/",
+          "https://www.hrdive.com/news/job-candidates-ai-usage-is-obscuring-their-viability-report-finds/875232/"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 36,
+        "category": "emerging",
+        "rationale": "Вчера было 39; сегодня прямой AI-сигнал уже не про новые энергоконтракты, а про последствия: Meta переоценивает цель net-zero 2030 на фоне выбросов AI-ЦОД, а сетевые риски остаются косвенным ограничением.",
+        "levels": [
+          1,
+          2,
+          5
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://arstechnica.com/ai/2026/11/meta-reconsiders-2030-net-zero-goal-amid-record-emissions-from-ai-data-centers/",
+          "https://www.utilitydive.com/news/western-northeast-market-reforms-drought-grid-ferc/875311/"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "synthetic-data",
+        "name": "Синтетические данные",
+        "momentum": 19,
+        "category": "emerging",
+        "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 24.",
+        "levels": [
+          6,
+          5,
+          4
         ],
         "is_new": false,
         "signal_count": 0,
