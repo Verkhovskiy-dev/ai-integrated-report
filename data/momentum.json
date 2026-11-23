@@ -4279,63 +4279,27 @@
   },
   {
     "date": "2026-11-23",
-    "generated_at": "2026-11-23T05:04:05.120Z",
+    "generated_at": "2026-11-23T17:05:13.258Z",
     "trends": [
-      {
-        "id": "ai-market-repricing",
-        "name": "Переоценка AI-активов",
-        "momentum": -70,
-        "category": "collapsing",
-        "rationale": "Вчера тренд был резко отрицательным; сегодня он усилился, потому что распродажа распространилась на Гонконг и развивающиеся рынки, а Bloomberg отдельно связал её с сомнениями в устойчивости AI-сделки.",
-        "levels": [
-          9
-        ],
-        "is_new": false,
-        "signal_count": 2,
-        "signal_urls": [
-          "https://www.bloomberg.com/news/articles/2026-11-23/emerging-market-stocks-set-to-erase-2026-gains-on-ai-selloff",
-          "https://news.google.com/rss/articles/CBMitgFBVV95cUxNMmR0TXdKQ21IYS1mVVVLMXo5SG92Tm50WG4wSXAwUURmMlNBQWh6OTVucDVzQmZhNGhHWGlEc0xoOXhPZnk4SVZ0OGh6b293dVBnNFdPaEhKS2E2OG1HdWlubDdLTl9vOEFJYnlra1Z3QzZlOW85Z1lndXdWSnE4dXZtOFFlQTJ5bmpPby1MSGk2enRCV2l1VExNS2haSlY4Z0gwMGxRdUdFeTdocnljeEc1aHRjUQ?oc=5",
-          "https://www.bloomberg.com/news/videos/2026-11-23/how-to-find-value-as-the-ai-trade-unravels-video"
-        ],
-        "quiet_days": 0
-      },
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
         "momentum": 68,
         "category": "accelerating",
-        "rationale": "Вчера тренд был очень сильным; сегодня он удержался за счёт OPCP как границы исполнения, ToRA для потоковых проверок безопасности и работы о целостности награды при red-teaming финансовых guardrail. (Оценка модели 84: независимых источников 1, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
+        "rationale": "После утреннего высокого уровня тренд удерживается: появились иск к xAI за дипфейки, работа о скрытых каналах веб-агентов и работа о целостности награды в red-teaming. (Оценка модели 70: независимых источников 2, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
         "levels": [
           6,
           8,
           4
         ],
         "is_new": false,
-        "signal_count": 1,
-        "signal_urls": [
-          "https://arxiv.org/abs/2611.26966",
-          "https://arxiv.org/abs/2611.26975",
-          "https://arxiv.org/abs/2611.26998"
-        ],
-        "quiet_days": 0,
-        "raw_momentum": 84
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 57,
-        "category": "accelerating",
-        "rationale": "Вчера тренд ускорялся; сегодня он слегка ослаб как формальное регулирование, но получил новый саморегуляторный сигнал через предложение OpenAI о лимитах и судебный сюжет о ложном AI-сигнале оружия в школе. (Оценка модели 70: независимых источников 2, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
-        "levels": [
-          8,
-          7,
-          3
-        ],
-        "is_new": false,
         "signal_count": 2,
         "signal_urls": [
-          "https://www.bloomberg.com/news/articles/2026-11-22/openai-chief-scientist-urges-industry-limits-on-ai-development",
-          "https://arstechnica.com/tech-policy/2026/11/traumatized-teens-sue-school-cops-after-doritos-bag-triggers-ai-gun-alert/"
+          "https://www.bloomberg.com/news/articles/2026-11-23/musk-s-xai-sued-by-virginia-oregon-over-deepfake-ai-porn-claims",
+          "https://arxiv.org/abs/2611.27046",
+          "https://arxiv.org/abs/2611.26998",
+          "https://arxiv.org/abs/2611.26966",
+          "https://arxiv.org/abs/2611.26975"
         ],
         "quiet_days": 0,
         "raw_momentum": 70
@@ -4343,17 +4307,19 @@
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
-        "momentum": 55,
+        "momentum": 58,
         "category": "accelerating",
-        "rationale": "Вчера тренд уже ускорялся; сегодня сигналы усилились через комментарий Westpac об инфляции от AI-инвестиций, ставки инвесторов на Anthropic и спор о стоимости мощности PJM из-за дата-центров.",
+        "rationale": "Относительно утреннего значения сигнал стал шире: к теме капитальных затрат добавились возможный долг гиперскейлеров, критика круговой AI-экономики и финансирование прикладного слоя Sierra.",
         "levels": [
           9,
-          2,
-          1
+          5,
+          2
         ],
         "is_new": false,
         "signal_count": 3,
         "signal_urls": [
+          "https://www.bloomberg.com/news/videos/2026-11-23/more-ai-debt-could-be-coming",
+          "https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/",
           "https://www.bloomberg.com/news/videos/2026-11-23/ai-investment-adding-to-inflation-jain-video",
           "https://techcrunch.com/2026/11/22/how-notable-capital-gic-and-baillie-gifford-bet-big-on-anthropic-before-its-ipo/",
           "https://www.utilitydive.com/news/ratepayer-advocates-pjm-market-monitor-capacity-auction/875165/"
@@ -4361,67 +4327,114 @@
         "quiet_days": 0
       },
       {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 57,
+        "category": "accelerating",
+        "rationale": "Вечерние события не дали скачка, но подтвердили текущий уровень: штаты судятся с xAI, Better Markets критикует банковскую AI-рамку OCC, а Южная Корея столкнулась с политическим кризисом вокруг AI-экзаменов.",
+        "levels": [
+          8,
+          7,
+          9
+        ],
+        "is_new": false,
+        "signal_count": 4,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/articles/2026-11-23/musk-s-xai-sued-by-virginia-oregon-over-deepfake-ai-porn-claims",
+          "https://news.google.com/rss/articles/CBMizgFBVV95cUxQUHNXcUY0anNsSHBsZWRBYURCQlUxNWRLYl96OHVWdjE3eXNQN3Rfc3FTenU4UG1uVF90ZjY2LWZrM2JzOEJHb3R3VThQVXhwRzYwZWFTTXQ1VnV3dDJjYkNsRzFDNTdfUHo1V3hOUjMzS0ZKM1FUdzNhbFJWVkVDS050ZkdkRWZwWmRqSjliVGM2RmhrUXFFYWJUV2R2VUpqVVpwN2VkVU1VTEpyNTFkVjVQeHoxaWsyS1NFSVZldllNYU5TNnBoYTZKV2VzUQ?oc=5",
+          "https://www.ft.com/content/d97f37d0-588e-488c-b10e-035900367aa4?syn-25a6b1a6=1",
+          "https://www.bloomberg.com/news/articles/2026-11-22/openai-chief-scientist-urges-industry-limits-on-ai-development",
+          "https://arstechnica.com/tech-policy/2026/11/traumatized-teens-sue-school-cops-after-doritos-bag-triggers-ai-gun-alert/"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-market-repricing",
+        "name": "Переоценка AI-активов",
+        "momentum": -55,
+        "category": "collapsing",
+        "rationale": "Утреннее падение частично ослаблено вечерним отскоком Nvidia и индексов после возвращения Хуанга, но материалы о долге и vendor financing показывают, что риск переоценки не исчез.",
+        "levels": [
+          9,
+          5
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/videos/2026-11-23/stocks-soar-as-huang-s-nvidia-return-fuels-ai-bets-video",
+          "https://www.ft.com/content/e49add11-3cc8-4edd-8daa-db8daaf994dd?syn-25a6b1a6=1",
+          "https://www.bloomberg.com/news/articles/2026-11-23/emerging-market-stocks-set-to-erase-2026-gains-on-ai-selloff",
+          "https://news.google.com/rss/articles/CBMitgFBVV95cUxNMmR0TXdKQ21IYS1mVVVLMXo5SG92Tm50WG4wSXAwUURmMlNBQWh6OTVucDVzQmZhNGhHWGlEc0xoOXhPZnk4SVZ0OGh6b293dVBnNFdPaEhKS2E2OG1HdWlubDdLTl9vOEFJYnlra1Z3QzZlOW85Z1lndXdWSnE4dXZtOFFlQTJ5bmpPby1MSGk2enRCV2l1VExNS2haSlY4Z0gwMGxRdUdFeTdocnljeEc1aHRjUQ?oc=5",
+          "https://www.bloomberg.com/news/videos/2026-11-23/how-to-find-value-as-the-ai-trade-unravels-video"
+        ],
+        "quiet_days": 0
+      },
+      {
         "id": "agentic-platforms",
         "name": "Агентные AI-платформы",
-        "momentum": 45,
+        "momentum": 50,
         "category": "accelerating",
-        "rationale": "Вчера тренд ускорялся; сегодня он получил методическое подкрепление через TOUMAII, OPCP и AstronautBench, а также продуктовый сигнал Copilot как рабочей агентной среды. (Оценка модели 62: независимых источников 2, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
+        "rationale": "Сигнал усилился: Walmart запустил живой Agent Gateway для Meta Muse, Hugging Face описал агентные оценки, а arXiv дал новые работы о человеко-AI командах и научных агентах.",
         "levels": [
-          6,
           5,
+          6,
           3
         ],
         "is_new": false,
-        "signal_count": 2,
+        "signal_count": 4,
         "signal_urls": [
+          "https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday",
+          "https://huggingface.co/blog/agentic-evals",
+          "https://arxiv.org/abs/2611.26663",
+          "https://arxiv.org/abs/2611.26782",
           "https://arxiv.org/abs/2611.26722",
           "https://arxiv.org/abs/2611.26966",
           "https://arxiv.org/abs/2611.26910",
           "https://arstechnica.com/gadgets/2026/11/microsoft-calls-copilot-the-new-os-for-work-at-ignite-keynote/"
         ],
-        "quiet_days": 0,
-        "raw_momentum": 62
-      },
-      {
-        "id": "chip-export-control",
-        "name": "Экспортный контроль чипов",
-        "momentum": 39,
-        "category": "emerging",
-        "rationale": "Вчера тренд был на границе ускорения; сегодня он усилился, потому что Bloomberg прямо связал новые правила США с риском для облачного бизнеса и дата-центров Юго-Восточной Азии, а ING указал на инвестиционную неопределённость. (Оценка модели 47: независимых источников 1, для «ускоряется» нужно от 3.)",
-        "levels": [
-          4,
-          2,
-          9
-        ],
-        "is_new": false,
-        "signal_count": 1,
-        "signal_urls": [
-          "https://www.bloomberg.com/news/videos/2026-11-23/us-ai-chip-curbs-test-southeast-asia-data-center-boom-video",
-          "https://www.bloomberg.com/news/features/2026-11-22/trump-s-ai-chip-crackdown-on-china-after-nvidia-crisis-squeezes-southeast-asia",
-          "https://www.bloomberg.com/news/videos/2026-11-23/ing-s-sareen-asia-ai-chip-demand-unlikely-to-crash-video"
-        ],
-        "quiet_days": 0,
-        "raw_momentum": 47
+        "quiet_days": 0
       },
       {
         "id": "ai-energy",
         "name": "Энергетика для AI",
         "momentum": 39,
         "category": "emerging",
-        "rationale": "Вчера тренд был emerging; сегодня он перешёл в ускорение благодаря трём независимым сигналам: Meta пересматривает net-zero, Google подписал 50-МВт геотермальный PPA, а Utility Dive описал дефицит сетевой мощности для AI. (Оценка модели 46: независимых источников 2, для «ускоряется» нужно от 3.)",
+        "rationale": "Тренд получил новые, но косвенные сигналы: New Jersey ускоряет VPP, а FERC одобрила ускорение очереди MISO на 125 ГВт генерации и хранения, что влияет на будущую энергоёмкую инфраструктуру.",
         "levels": [
           1,
-          2,
+          2
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.utilitydive.com/news/new-jersey-utilities-have-less-than-a-year-to-implement-virtual-power-plant/875482/",
+          "https://www.utilitydive.com/news/ferc-miso-interconnection-queue-study/875449/",
+          "https://arstechnica.com/ai/2026/11/meta-reconsiders-2030-net-zero-goal-amid-record-emissions-from-ai-data-centers/",
+          "https://www.utilitydive.com/news/the-grid-will-fall-short-of-ais-power-needs-6-resources-close-the-gap/874125/"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вечером тема не получила нового решения, но получила геополитические сигналы: FT связала Nvidia с отношениями США и Китая, а Bloomberg обсудил Huawei и DeepSeek в контексте технологической самостоятельности Китая.",
+        "levels": [
+          4,
+          8,
           9
         ],
         "is_new": false,
         "signal_count": 2,
         "signal_urls": [
-          "https://arstechnica.com/ai/2026/11/meta-reconsiders-2030-net-zero-goal-amid-record-emissions-from-ai-data-centers/",
-          "https://www.utilitydive.com/news/the-grid-will-fall-short-of-ais-power-needs-6-resources-close-the-gap/874125/"
+          "https://www.ft.com/content/28cb9178-ac22-44b9-99f5-d5f25a86d366?syn-25a6b1a6=1",
+          "https://www.bloomberg.com/news/videos/2026-11-23/odd-lots-can-huawei-challenge-nvidia-in-the-ai-arms-race",
+          "https://www.bloomberg.com/news/videos/2026-11-23/us-ai-chip-curbs-test-southeast-asia-data-center-boom-video",
+          "https://www.bloomberg.com/news/features/2026-11-22/trump-s-ai-chip-crackdown-on-china-after-nvidia-crisis-squeezes-southeast-asia",
+          "https://www.bloomberg.com/news/videos/2026-11-23/ing-s-sareen-asia-ai-chip-demand-unlikely-to-crash-video"
         ],
-        "quiet_days": 0,
-        "raw_momentum": 46
+        "quiet_days": 0
       },
       {
         "id": "open-weight-models",
@@ -4448,17 +4461,38 @@
         "name": "Рынок AI-талантов",
         "momentum": 37,
         "category": "emerging",
-        "rationale": "Вчера тренд был emerging; сегодня он поддержан двумя HR-сигналами: руководители получают больше AI-обучения, а AI-резюме ухудшают проверку кандидатов.",
+        "rationale": "Сигнал остался на прежнем уровне: Togo AI Lab обучает исследователей в Университете Кара, а публичная дискуссия о конце программистов поддерживает переописание инженерных компетенций.",
         "levels": [
           3,
-          7,
-          8
+          7
         ],
         "is_new": false,
-        "signal_count": 1,
+        "signal_count": 3,
         "signal_urls": [
+          "https://news.google.com/rss/articles/CBMiugFBVV95cUxPTE1DLUppZ3BIXzg4bXkwb1M2MU81UVEtbUdGeExwSVNJb0FaQjNsd0NHTnhiRkZUdjExaEVsRkVYVU5zLS1VZUJFQUs0R1lwaWdROXVDUVFBUmNLbXJNVHBOMGNfMDh6c0VQXy1rdVlFcjlNMU0xZVItZ1NqVnZrMFlhWTlZWHA5aXpKQmRXcGY0VE5MdV9RUFR3Y0ZUY1JpejdVNVpmT0k2UTFBa0RGeW90dmtiTU4xMkE?oc=5",
+          "https://www.wired.com/story/goodbye-world-the-end-of-programmers/",
           "https://www.hrdive.com/news/executives-get-more-ai-training-than-other-workers-hurting-adoption/875395/",
           "https://www.hrdive.com/news/job-candidates-ai-usage-is-obscuring-their-viability-report-finds/875232/"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-audit-trust",
+        "name": "Доверие и аудит AI-результатов",
+        "momentum": 32,
+        "category": "emerging",
+        "rationale": "Новый тренд поддержан несколькими независимыми сигналами: Grant Thornton предупредила о качестве AI-аудита, arXiv описал неподдержанные финансовые интерпретации LLM и Better Markets раскритиковала банковскую AI-рамку OCC.",
+        "levels": [
+          6,
+          8,
+          9
+        ],
+        "is_new": true,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://www.ft.com/content/13b9bee8-f7e4-4b02-ad78-2e358ff43240?syn-25a6b1a6=1",
+          "https://arxiv.org/abs/2611.26968",
+          "https://news.google.com/rss/articles/CBMizgFBVV95cUxQUHNXcUY0anNsSHBsZWRBYURCQlUxNWRLYl96OHVWdjE3eXNQN3Rfc3FTenU4UG1uVF90ZjY2LWZrM2JzOEJHb3R3VThQVXhwRzYwZWFTTXQ1VnV3dDJjYkNsRzFDNTdfUHo1V3hOUjMzS0ZKM1FUdzNhbFJWVkVDS050ZkdkRWZwWmRqSjliVGM2RmhrUXFFYWJUV2R2VUpqVVpwN2VkVU1VTEpyNTFkVjVQeHoxaWsyS1NFSVZldllNYU5TNnBoYTZKV2VzUQ?oc=5"
         ],
         "quiet_days": 0
       },
@@ -4485,16 +4519,18 @@
       {
         "id": "classic-saas",
         "name": "Классический SaaS под давлением AI",
-        "momentum": 24,
+        "momentum": 27,
         "category": "emerging",
-        "rationale": "Сегодня есть точечный, но сильный сигнал: Microsoft перенёс Word, Excel и PowerPoint внутрь Copilot и описывает его как новую рабочую операционную среду.",
+        "rationale": "Sierra с оценкой $30 млрд и Walmart Agent Gateway показывают давление агентных AI-интерфейсов на традиционные SaaS и розничные платформы, но сигнал остаётся прикладным, а не системным.",
         "levels": [
           5,
           3
         ],
         "is_new": false,
-        "signal_count": 1,
+        "signal_count": 3,
         "signal_urls": [
+          "https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/",
+          "https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday",
           "https://arstechnica.com/gadgets/2026/11/microsoft-calls-copilot-the-new-os-for-work-at-ignite-keynote/"
         ],
         "quiet_days": 0
