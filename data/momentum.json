@@ -1,141 +1,5 @@
 [
   {
-    "date": "2026-10-23",
-    "generated_at": "2026-10-23T17:03:09.046Z",
-    "trends": [
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Утром тренд уже был на 100; вечером добавились работы по агентной обвязке, Fig, самоулучшению агентов и материал FT о доверии к агентам в покупках. Значение остаётся на потолке, потому что новые сигналы расширяют агентность от продукта к методологии и институтам доверия.",
-        "levels": [
-          5,
-          6,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Утром тренд был на 100; вечером появились скрытые сообщения между диффузионными агентами, активное выявление поведения через Fig и предупреждение Bloomberg о быстром росте уязвимостей. Сигналы не дают оснований снижать напряжение.",
-        "levels": [
-          6,
-          8,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 100,
-        "category": "accelerating",
-        "rationale": "Утром было 95; вечером Пентагон выпустил закупочные указания по AI, Meta отложила условия после давления издателей, а суд не дал EPA закрыть иск о загрязнении дата-центра. Рост до 100 отражает одновременное движение в госзакупках, данных и экологическом праве.",
-        "levels": [
-          8,
-          5,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 80,
-        "category": "accelerating",
-        "rationale": "Утром было 76; вечером BlackRock связал AI-строительство со ставками, а Nscale получила трудовой иск на норвежской площадке. Импульс немного усилился, но сигналы уже больше про стоимость и ограничения реализации, чем про чистое расширение.",
-        "levels": [
-          9,
-          2,
-          3
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 89,
-        "category": "accelerating",
-        "rationale": "Утром было 86; вечером FT сообщила о задержке перезапуска реактора в Мичигане на фоне AI-спроса на энергию. Небольшой рост связан с тем, что энергетический дефицит получил конкретный объектный риск.",
-        "levels": [
-          1,
-          2,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 66,
-        "category": "accelerating",
-        "rationale": "Утром было 62; вечером WRAL связал увольнения с изменением корпоративных AI-расходов, Bloomberg обсудил использование AI японским рынком труда, а иск Nscale добавил трудовой конфликт на инфраструктурной площадке. Тренд усилился за счёт связи AI-бюджетов с занятостью.",
-        "levels": [
-          3,
-          5,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": 33,
-        "category": "emerging",
-        "rationale": "Утром было 28; вечером Ars Technica сообщила о выходе моделей OpenAI в Google Cloud и Antigravity. Закрытые модели получают новые каналы распространения через чужую облачную инфраструктуру.",
-        "levels": [
-          5,
-          4,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "clinical-ai-workflows",
-        "name": "Клинические AI-рабочие процессы",
-        "momentum": 72,
-        "category": "accelerating",
-        "rationale": "Утром было 66; вечером появились OpenEvidence как рекламный медицинский AI-стартап, многоагентное планирование протонной терапии и StochIKM для восстановления пациентских данных из публикаций. Тренд усилился, потому что клинический AI затронул одновременно врачебный интерфейс, планирование и доказательную базу.",
-        "levels": [
-          7,
-          6,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-market-repricing",
-        "name": "Переоценка AI-активов",
-        "momentum": -35,
-        "category": "decelerating",
-        "rationale": "Утром было -25; вечером Bloomberg дал новые сигналы через тезис о зависимости экономики США от AI, ранней стадии пузыря и влиянии AI-строительства на ставки. Более отрицательное значение отражает усиление рыночного сомнения, а не остановку инвестиций.",
-        "levels": [
-          9,
-          5,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-evaluation-harnesses",
-        "name": "Контуры оценивания AI-агентов",
-        "momentum": 36,
-        "category": "emerging",
-        "rationale": "Новый тренд поддержан несколькими независимыми сигналами: Agentic Harness Evolution описывает сбой масштабирования задач, Fig активно вызывает поведение многоагентных систем, GenXR-Bench оценивает кодовых агентов для XR, а рекурсивное самоулучшение оценивает правки до запуска. Это уже не единичные бенчмарки, а слой производственной оснастки для агентов.",
-        "levels": [
-          6,
-          4,
-          5
-        ],
-        "is_new": true
-      }
-    ]
-  },
-  {
     "date": "2026-10-24",
     "generated_at": "2026-10-24T17:02:57.561Z",
     "trends": [
@@ -4584,6 +4448,294 @@
         "signal_count": 0,
         "signal_urls": [],
         "quiet_days": 2,
+        "carried": true
+      }
+    ]
+  },
+  {
+    "date": "2026-11-24",
+    "generated_at": "2026-11-24T05:02:54.625Z",
+    "trends": [
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 60,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был ускоряющимся; сегодня Amazon покупает Decart за $7,5 млрд, Fujitsu продвигает Monaka, а Sunway/HPE укрепляют корпоративный суверенный AI.",
+        "levels": [
+          5,
+          4,
+          2,
+          9
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/",
+          "https://www.bloomberg.com/news/videos/2026-11-24/fujitsu-cto-on-ai-focus-outlook-video",
+          "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYWxDMkk1RlV6MkI4elVCS0VNMWs0N2IzN2pEdjZVS1owM2VFWm9BWF9EZ2hGVzhBLThUaHZRMXdUaW4tTFdrTUwzTWRqQ3AzeXpnUUUyTE4yRDlhUzhYMkF6SG5OT0Z2X3hoYXM2ZFozOVdOcW9md0RlWHZPcS1zZGZwb1RDbk1Celk2cXlwV2o0a2hLUEhRdUVLUDBWcW1BU2I3d2FfWkc?oc=5"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 53,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был очень сильным; сегодня он ослаблен по числу сигналов, но Naver и телекомы Южной Кореи прямо остановили агентов из-за ответственности. (Оценка модели 62: независимых источников 1, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
+        "levels": [
+          8,
+          3,
+          6
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qb1E0ekF2Y195b0JfWjJORHA3SVFxY3ZBcVJZa2dYMUw3bTFnUmxyX3FvdldNVFg5UEhpdHNRWE9DY0xDckR0YklqMTRISnNFdVJNOE0wWFlMT0ZDek9JRUhwV3hXRkhqZTFVTmYtdkZLWEdPcHdGX1B3VjdNVXM?oc=5"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 62
+      },
+      {
+        "id": "ai-market-repricing",
+        "name": "Переоценка AI-активов",
+        "momentum": -47,
+        "category": "collapsing",
+        "rationale": "Вчера тренд был резко отрицательным; сегодня негатив смягчён макросигналом Сингапура и китайскими венчурными ставками, но FT отдельно подчёркивает, что чипы не дёшевы.",
+        "levels": [
+          9,
+          5
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.ft.com/content/046984ab-9a7c-41fd-804c-fb356db28099?syn-25a6b1a6=1",
+          "https://www.bloomberg.com/news/articles/2026-11-24/singapore-raises-gdp-growth-outlook-to-around-6-on-ai-boom",
+          "https://www.bloomberg.com/news/articles/2026-11-23/the-chinese-ai-aspirants-drawing-big-bets-to-take-on-deepseek"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 42,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был сильным; сегодня он подкреплён не судебным спором, а международным сроком ООН, блокировкой агентов в Южной Корее и переносом чёрных списков на дата-центры. (Оценка модели 60: независимых источников 2, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
+        "levels": [
+          8,
+          2,
+          3
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNbVNBQl9aRURGZHBIc0xiTVRvOW9pWE0yaWdNVkZrNzJVZUtGb2luUUx2SzhCN1BQUXZzdFJLRDA4Q3FBVTg1WXZ0TkQ0S0EyOENRNi05NW50Y19RNkI5czBYMkQxX0NULW1nZUw1bENaYmk3ZVlGaFNJUUJxMUVjM0VERl90SzVDMm9qRHpzcjR1Q0lVVHZEWDh6c3RoRWs4NkI2eVBkZUXSAa4BQVVfeXFMUFFyTWlPTHRZcnY1QWNBZF85elMyeTRnQTFObnAwYUdDVnFYUDVGSEQyYm9CblpHcUpJMEJ1UmVBOHVqQ201VVFKOVVRNjBXakVValFUWi1DSTUxU294RjlHZ2toQTQ0Wm04Tm1YbFU4WTRlN25LLUQteE5MeFlhbG5PdzB2UWlsSmttRXNpY0hrdmJZaGZ1enNLczQ5d2JkaTFnYzNRV1c3UEgwemVB?oc=5",
+          "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qb1E0ekF2Y195b0JfWjJORHA3SVFxY3ZBcVJZa2dYMUw3bTFnUmxyX3FvdldNVFg5UEhpdHNRWE9DY0xDckR0YklqMTRISnNFdVJNOE0wWFlMT0ZDek9JRUhwV3hXRkhqZTFVTmYtdkZLWEdPcHdGX1B3VjdNVXM?oc=5",
+          "https://www.bloomberg.com/news/articles/2026-11-24/malaysia-tells-data-centers-to-cut-off-firms-on-us-blacklist"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 60
+      },
+      {
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера тренд был на верхней границе формирующегося; сегодня он расширился на Малайзию и структуры Alibaba/Megaspeed, но сигналов только два, поэтому ускорение ограничено.",
+        "levels": [
+          8,
+          5,
+          2
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/articles/2026-11-24/us-blacklists-alibaba-owned-company-in-setback-to-ai-ambitions",
+          "https://www.bloomberg.com/news/articles/2026-11-24/malaysia-tells-data-centers-to-cut-off-firms-on-us-blacklist"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера тренд был сильным; сегодня Claude Ship, Supertake и Google AI Mode показывают перенос агентов в код, финансы и персональные пользовательские сервисы. (Оценка модели 55: независимых источников 1, для «ускоряется» нужно от 3.)",
+        "levels": [
+          3,
+          5,
+          9
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+          "https://techcrunch.com/2026/11/23/supertake-raises-20m-to-let-ai-agents-turn-your-market-predictions-into-stock-portfolios/",
+          "https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 55
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера тренд был на границе ускорения; сегодня Mitsubishi, COP31 и материал о сетевой инженерной мощности дали три сигнала о ресурсных ограничениях AI-дата-центров. (Оценка модели 44: независимых источников 2, для «ускоряется» нужно от 3.)",
+        "levels": [
+          1,
+          2,
+          8
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.utilitydive.com/news/data-centers-mitsubishi-gas-turbines-earnings/875146/",
+          "https://www.theverge.com/science/1040497/ai-data-centers-electricity-un-climate-summit",
+          "https://www.utilitydive.com/spons/the-grids-hidden-bottleneck-engineering-capacity/874856/"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 44
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 36,
+        "category": "emerging",
+        "rationale": "Вчера тренд был умеренным; сегодня Fujitsu и Sunway/HPE дали два сигнала о суверенном AI как защищённой инфраструктуре для государства и предприятий.",
+        "levels": [
+          5,
+          2,
+          8
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/videos/2026-11-24/fujitsu-cto-on-ai-focus-outlook-video",
+          "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYWxDMkk1RlV6MkI4elVCS0VNMWs0N2IzN2pEdjZVS1owM2VFWm9BWF9EZ2hGVzhBLThUaHZRMXdUaW4tTFdrTUwzTWRqQ3AzeXpnUUUyTE4yRDlhUzhYMkF6SG5OT0Z2X3hoYXM2ZFozOVdOcW9md0RlWHZPcS1zZGZwb1RDbk1Celk2cXlwV2o0a2hLUEhRdUVLUDBWcW1BU2I3d2FfWkc?oc=5"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 36,
+        "category": "emerging",
+        "rationale": "Вчера тренд был формирующимся; сегодня сигнал уже не только о разработчиках, а о спросе на найм из-за AI за пределами технологического сектора.",
+        "levels": [
+          3,
+          5,
+          7
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://news.google.com/rss/articles/CBMidkFVX3lxTFBYNVRqbFlWdHA4dmxzeVRIeWFPOWpCVFlINVNicWJMMTZ0c2c4V0N3WWY5UkR5SHQySEVSWHRwRWpMQi12bVBnYjB0NndiWkFqck9uYkJvSDNISE1jWVlTRGdXeVBFUVpxUVNRelBmYTQzekVDdUE?oc=5"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 33,
+        "category": "emerging",
+        "rationale": "Вчера тренд был умеренным; сегодня закрытые экосистемы усилились через Claude Ship и персональный AI Mode Google с доступом к Drive и Wallet.",
+        "levels": [
+          5,
+          3,
+          8
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.theverge.com/ai-artificial-intelligence/1040134/anthropic-claude-ship-ai-pull-requests",
+          "https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "physical-ai",
+        "name": "Физический AI и робототехника",
+        "momentum": 30,
+        "category": "emerging",
+        "rationale": "Вчера тренд имел несколько сигналов; сегодня остался один свежий методический сигнал — RoboTrack для отслеживания точек в робототехнической манипуляции.",
+        "levels": [
+          6,
+          4,
+          3
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://huggingface.co/blog/allenai/robotrack"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 31,
+        "category": "emerging",
+        "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 39.",
+        "levels": [
+          4,
+          5,
+          2
+        ],
+        "is_new": false,
+        "signal_count": 0,
+        "signal_urls": [],
+        "quiet_days": 1,
+        "carried": true
+      },
+      {
+        "id": "ai-audit-trust",
+        "name": "Доверие и аудит AI-результатов",
+        "momentum": 26,
+        "category": "emerging",
+        "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 32.",
+        "levels": [
+          6,
+          8,
+          9
+        ],
+        "is_new": false,
+        "signal_count": 0,
+        "signal_urls": [],
+        "quiet_days": 1,
+        "carried": true
+      },
+      {
+        "id": "classic-saas",
+        "name": "Классический SaaS под давлением AI",
+        "momentum": 22,
+        "category": "emerging",
+        "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 27.",
+        "levels": [
+          5,
+          3
+        ],
+        "is_new": false,
+        "signal_count": 0,
+        "signal_urls": [],
+        "quiet_days": 1,
+        "carried": true
+      },
+      {
+        "id": "synthetic-data",
+        "name": "Синтетические данные",
+        "momentum": 12,
+        "category": "emerging",
+        "rationale": "Новых сигналов нет (дней подряд: 3); значение плавно снижается, вчера было 15.",
+        "levels": [
+          6,
+          5,
+          4
+        ],
+        "is_new": false,
+        "signal_count": 0,
+        "signal_urls": [],
+        "quiet_days": 3,
         "carried": true
       }
     ]
