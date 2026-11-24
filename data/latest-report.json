@@ -1,1554 +1,1159 @@
 {
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "srt_levels": [
     {
       "level": 9,
       "name": "Денежная система",
-      "level_summary": "Вечером денежный контур AI развернулся от утренней распродажи к резкому отскоку вокруг Nvidia, но одновременно появились новые сигналы долгового и vendor-financing риска. Финансирование Sierra показывает, что капитал всё ещё выбирает прикладные AI-сервисы, несмотря на волатильность инфраструктурной темы.",
+      "level_summary": "Сегодня финансовый уровень дал два разных сигнала: Сингапур связал пересмотр роста ВВП с AI-бумом, а китайские специализированные лаборатории привлекают венчурный капитал. Отдельно появились потребительские AI-агенты для формирования портфелей.",
       "events": [
         {
-          "title": "Nvidia выросла примерно на 30% после возвращения Дженсена Хуанга",
-          "fact": "FT сообщил, что Nvidia выросла на 30% после единогласного решения совета директоров вернуть Дженсена Хуанга. Bloomberg сообщил, что акции Nvidia подскочили на 29%, S&P 500 вырос на 4%, а Nasdaq 100 — на 6%.",
-          "why_important": "Если данные корректны, событие показывает сильную чувствительность рынка к руководству Nvidia и ожиданиям вокруг AI-сектора.",
-          "description": "FT сообщил, что Nvidia выросла на 30% после единогласного решения совета директоров вернуть Дженсена Хуанга. Bloomberg сообщил, что акции Nvidia подскочили на 29%, S&P 500 вырос на 4%, а Nasdaq 100 — на 6%.",
+          "title": "Сингапур повысил прогноз роста ВВП примерно до 6% из-за AI-бума",
+          "fact": "Bloomberg сообщил, что Сингапур снова повысил прогноз роста на этот год, поскольку AI-бум дал экономике больший, чем ожидалось, импульс.",
+          "why_important": "Если сообщение верно, это показывает, что AI-бум может уже влиять не только на технологические компании, но и на национальные макропоказатели.",
+          "description": "Bloomberg сообщил, что Сингапур снова повысил прогноз роста на этот год, поскольку AI-бум дал экономике больший, чем ожидалось, импульс.",
           "related_levels": [
             5,
-            4
+            2
           ],
           "sources": [
-            "https://www.ft.com/content/20d2ebe3-e945-4659-a122-31bf85a4e4e5?syn-25a6b1a6=1",
-            "https://www.bloomberg.com/news/videos/2026-11-23/stocks-soar-as-huang-s-nvidia-return-fuels-ai-bets-video"
+            "https://www.bloomberg.com/news/articles/2026-11-24/singapore-raises-gdp-growth-outlook-to-around-6-on-ai-boom"
           ],
-          "srt_significance": "Ур. 5 → Ур. 9: кадровое решение системного поставщика мгновенно перенастроило финансовую оценку AI-цепочки.",
-          "watch_next": "Следить за тем, сохранится ли рост акций Nvidia и полупроводникового индекса в течение следующей торговой недели.",
+          "srt_significance": "Ур. 9 → Ур. 5: AI-спрос превращается из корпоративных расходов в фактор национального выпуска.",
+          "watch_next": "Следить за тем, какие отрасли Сингапур назовёт источниками прироста, связанного с AI.",
+          "place_id": null,
+          "place_confidence": 0,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://www.bloomberg.com/news/articles/2026-11-24/singapore-raises-gdp-growth-outlook-to-around-6-on-ai-boom",
+              "domain": "",
+              "published_at": "2026-11-24"
+            }
+          ],
+          "importance": {
+            "level": "high",
+            "rationale": "Макроэкономический прогноз Сингапура был повышен на фоне AI-бума, что может указывать на заметное влияние AI-инфраструктуры и спроса на экономику страны."
+          },
+          "news_id": "news_16b187d234b1b0e324c9",
+          "content_version": "cv_d061876153e1377c5fcb"
+        },
+        {
+          "title": "Китайские AI-лаборатории привлекают капитал для конкуренции с DeepSeek",
+          "fact": "Bloomberg сообщил, что новая волна китайских исследователей создаёт специализированные AI-лаборатории и привлекает крупные суммы венчурного капитала для конкуренции с DeepSeek.",
+          "why_important": "Если подтверждается, это может означать расширение китайской AI-экосистемы и усиление давления на существующих игроков, включая DeepSeek.",
+          "description": "Bloomberg сообщил, что новая волна китайских исследователей создаёт специализированные AI-лаборатории и привлекает крупные суммы венчурного капитала для конкуренции с DeepSeek.",
+          "related_levels": [
+            7,
+            5
+          ],
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-11-23/the-chinese-ai-aspirants-drawing-big-bets-to-take-on-deepseek"
+          ],
+          "srt_significance": "Ур. 9 → Ур. 7: венчурный капитал выделяет исследовательские группы в самостоятельных производителей знаний.",
+          "watch_next": "Следить за первыми продуктами и раундами этих лабораторий после отделения от крупных компаний.",
+          "place_id": null,
+          "place_confidence": 0,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://www.bloomberg.com/news/articles/2026-11-23/the-chinese-ai-aspirants-drawing-big-bets-to-take-on-deepseek",
+              "domain": "",
+              "published_at": "2026-11-23"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Сообщение указывает на усиление конкуренции в китайском AI-секторе, но без конкретных сумм, участников и подтверждённых результатов масштаб влияния ограниченно оценим."
+          },
+          "news_id": "news_03fc5470d4e195d91425",
+          "content_version": "cv_924ce6ca0130ec3f3e2c"
+        },
+        {
+          "title": "Supertake привлекла $20 млн для AI-агентов в биржевых портфелях",
+          "fact": "TechCrunch сообщил, что Supertake привлекла $20 млн и позволяет пользователям превращать рыночные прогнозы в портфели акций с помощью AI-агентов.",
+          "why_important": "Если информация верна, это отражает интерес инвесторов к применению AI-агентов в управлении розничными или пользовательскими инвестиционными стратегиями.",
+          "description": "TechCrunch сообщил, что Supertake привлекла $20 млн и позволяет пользователям превращать рыночные прогнозы в портфели акций с помощью AI-агентов.",
+          "related_levels": [
+            3,
+            5
+          ],
+          "sources": [
+            "https://techcrunch.com/2026/11/23/supertake-raises-20m-to-let-ai-agents-turn-your-market-predictions-into-stock-portfolios/"
+          ],
+          "srt_significance": "Ур. 9 → Ур. 3: финансовое действие частного инвестора передаётся специализированному агентному инструменту.",
+          "watch_next": "Следить за раскрытием правил контроля риска и ручного подтверждения сделок в Supertake.",
+          "place_id": "srt3-pro-retail-fintech",
+          "place_confidence": 0.86,
+          "place_reason": "Новость прямо касается AI-инструмента для розничных инвесторов.",
+          "sources_meta": [
+            {
+              "url": "https://techcrunch.com/2026/11/23/supertake-raises-20m-to-let-ai-agents-turn-your-market-predictions-into-stock-portfolios/",
+              "domain": "",
+              "published_at": "2026-11-23"
+            }
+          ],
+          "importance": {
+            "level": "low",
+            "rationale": "Раунд $20 млн важен для отдельного стартапа и ниши AI-агентов в инвестициях, но доказательств более широкого рыночного эффекта нет."
+          },
+          "news_id": "news_876aad68c91f878f76e7",
+          "content_version": "cv_15f5dfa840bbd9542613"
+        }
+      ],
+      "event_count": 3
+    },
+    {
+      "level": 8,
+      "name": "Институты спонтанного порядка",
+      "level_summary": "На институциональном уровне сегодня усилился переход от общих принципов к запретам, слушаниям и международным срокам: экспортный контроль дошёл до хостинга дата-центров, а ООН потребовала договориться об AI-надзоре в течение года.",
+      "events": [
+        {
+          "title": "Малайзия просит дата-центры не обслуживать семь фирм из чёрного списка США",
+          "fact": "Bloomberg сообщил, что Малайзия рекомендует операторам дата-центров не размещать, не сдавать мощности и не оказывать услуги семи компаниям, недавно внесённым в торговый чёрный список США.",
+          "why_important": "Если сообщение верно, это демонстрирует влияние экспортных ограничений и санкционного комплаенса США на работу дата-центров за пределами США.",
+          "description": "Bloomberg сообщил, что Малайзия рекомендует операторам дата-центров не размещать, не сдавать мощности и не оказывать услуги семи компаниям, недавно внесённым в торговый чёрный список США.",
+          "related_levels": [
+            2,
+            5,
+            7
+          ],
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-11-24/malaysia-tells-data-centers-to-cut-off-firms-on-us-blacklist"
+          ],
+          "srt_significance": "Ур. 8 → Ур. 2: правила контроля доступа начинают определять, кто может занимать мощности дата-центров.",
+          "watch_next": "Следить, станут ли рекомендации Малайзии обязательными для операторов дата-центров.",
+          "place_id": "srt7-ai-export-governance",
+          "place_confidence": 0.9,
+          "place_reason": "Событие напрямую связано с контролем конечных пользователей AI-инфраструктуры.",
+          "sources_meta": [
+            {
+              "url": "https://www.bloomberg.com/news/articles/2026-11-24/malaysia-tells-data-centers-to-cut-off-firms-on-us-blacklist",
+              "domain": "",
+              "published_at": "2026-11-24"
+            }
+          ],
+          "importance": {
+            "level": "high",
+            "rationale": "Рекомендации Малайзии дата-центрам по компаниям из чёрного списка США могут затронуть доступ к инфраструктуре и комплаенс в стратегически важном секторе."
+          },
+          "news_id": "news_2377fcaa9390b3efa45d",
+          "content_version": "cv_a0021b404fea247a3dca"
+        },
+        {
+          "title": "США внесли в чёрный список компанию Alibaba и структуры Megaspeed",
+          "fact": "Bloomberg сообщил, что администрация США внесла в чёрный список сингапурскую дочернюю компанию Alibaba Group и несколько структур, связанных с Megaspeed International.",
+          "why_important": "",
+          "description": "Bloomberg сообщил, что администрация США внесла в чёрный список сингапурскую дочернюю компанию Alibaba Group и несколько структур, связанных с Megaspeed International.",
+          "related_levels": [
+            5,
+            7,
+            2
+          ],
+          "sources": [
+            "https://www.bloomberg.com/news/articles/2026-11-24/us-blacklists-alibaba-owned-company-in-setback-to-ai-ambitions"
+          ],
+          "srt_significance": "Ур. 8 → Ур. 5: институциональный запрет перестраивает цепочки поставок и партнёрств вокруг AI.",
+          "watch_next": "Следить за лицензиями или отказами в сделках с компаниями из нового списка США.",
+          "place_id": "srt7-ai-export-governance",
+          "place_confidence": 0.88,
+          "place_reason": "Новость касается экспортного и санкционного контроля в AI-цепочках.",
+          "sources_meta": [
+            {
+              "url": "https://www.bloomberg.com/news/articles/2026-11-24/us-blacklists-alibaba-owned-company-in-setback-to-ai-ambitions",
+              "domain": "",
+              "published_at": "2026-11-24"
+            }
+          ],
+          "news_id": "news_1bb75927918cbe0e887f",
+          "importance": null,
+          "content_version": "cv_8db95bbfa3de8bb256fa"
+        },
+        {
+          "title": "Генсек ООН призвал договориться об AI-надзоре в течение года",
+          "fact": "Al Jazeera сообщил, что Антониу Гутерриш призвал страны в течение года согласовать надзор за AI, поскольку технология становится мощнее и шире распространяется.",
+          "why_important": "Это может быть сигналом к ускорению международных переговоров о правилах AI, особенно если государства поддержат повестку надзора.",
+          "description": "Al Jazeera сообщил, что Антониу Гутерриш призвал страны в течение года согласовать надзор за AI, поскольку технология становится мощнее и шире распространяется.",
+          "related_levels": [
+            6,
+            7,
+            9
+          ],
+          "sources": [
+            "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNbVNBQl9aRURGZHBIc0xiTVRvOW9pWE0yaWdNVkZrNzJVZUtGb2luUUx2SzhCN1BQUXZzdFJLRDA4Q3FBVTg1WXZ0TkQ0S0EyOENRNi05NW50Y19RNkI5czBYMkQxX0NULW1nZUw1bENaYmk3ZVlGaFNJUUJxMUVjM0VERl90SzVDMm9qRHpzcjR1Q0lVVHZEWDh6c3RoRWs4NkI2eVBkZUXSAa4BQVVfeXFMUFFyTWlPTHRZcnY1QWNBZF85elMyeTRnQTFObnAwYUdDVnFYUDVGSEQyYm9CblpHcUpJMEJ1UmVBOHVqQ201VVFKOVVRNjBXakVValFUWi1DSTUxU294RjlHZ2toQTQ0Wm04Tm1YbFU4WTRlN25LLUQteE5MeFlhbG5PdzB2UWlsSmttRXNpY0hrdmJZaGZ1enNLczQ5d2JkaTFnYzNRV1c3UEgwemVB?oc=5"
+          ],
+          "srt_significance": "Ур. 8 → Ур. 6: политический срок требует переводить риски AI в проверяемые процедуры надзора.",
+          "watch_next": "Следить за появлением проекта международного механизма AI-надзора до следующего годового рубежа.",
           "place_id": null,
           "place_confidence": 0.52,
           "place_reason": "",
           "sources_meta": [
             {
-              "url": "https://www.ft.com/content/20d2ebe3-e945-4659-a122-31bf85a4e4e5?syn-25a6b1a6=1",
+              "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNbVNBQl9aRURGZHBIc0xiTVRvOW9pWE0yaWdNVkZrNzJVZUtGb2luUUx2SzhCN1BQUXZzdFJLRDA4Q3FBVTg1WXZ0TkQ0S0EyOENRNi05NW50Y19RNkI5czBYMkQxX0NULW1nZUw1bENaYmk3ZVlGaFNJUUJxMUVjM0VERl90SzVDMm9qRHpzcjR1Q0lVVHZEWDh6c3RoRWs4NkI2eVBkZUXSAa4BQVVfeXFMUFFyTWlPTHRZcnY1QWNBZF85elMyeTRnQTFObnAwYUdDVnFYUDVGSEQyYm9CblpHcUpJMEJ1UmVBOHVqQ201VVFKOVVRNjBXakVValFUWi1DSTUxU294RjlHZ2toQTQ0Wm04Tm1YbFU4WTRlN25LLUQteE5MeFlhbG5PdzB2UWlsSmttRXNpY0hrdmJZaGZ1enNLczQ5d2JkaTFnYzNRV1c3UEgwemVB?oc=5",
               "domain": "",
-              "published_at": "2026-11-23"
-            },
-            {
-              "url": "https://www.bloomberg.com/news/videos/2026-11-23/stocks-soar-as-huang-s-nvidia-return-fuels-ai-bets-video",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "high",
-            "rationale": "Сообщается о резком росте акций Nvidia и одновременном подъёме крупных индексов, что указывает на значимое рыночное событие."
-          },
-          "news_id": "news_7ab648034ad2f2aa835a",
-          "content_version": "cv_20ca7d8bb4bcb4bc1798"
-        },
-        {
-          "title": "Sierra привлекла $1,75 млрд и достигла оценки $30 млрд",
-          "fact": "TechCrunch сообщил, что компания Sierra, работающая в сфере клиентского опыта, привлекла $1,75 млрд в раунде Series F. По данным источника, её оценка удвоилась до $30 млрд за шесть месяцев.",
-          "why_important": "",
-          "description": "TechCrunch сообщил, что компания Sierra, работающая в сфере клиентского опыта, привлекла $1,75 млрд в раунде Series F. По данным источника, её оценка удвоилась до $30 млрд за шесть месяцев.",
-          "related_levels": [
-            5,
-            3
-          ],
-          "sources": [
-            "https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/"
-          ],
-          "srt_significance": "Ур. 9 → Ур. 5: капитал закрепляет специализацию AI-сервисов в корпоративном клиентском опыте.",
-          "watch_next": "Следить за раскрытием крупных клиентов Sierra и темпом внедрения её AI в процессах поддержки.",
-          "place_id": "srt5-ai-service-rollups",
-          "place_confidence": 0.76,
-          "place_reason": "Sierra относится к AI-сервисам для клиентских процессов.",
-          "sources_meta": [
-            {
-              "url": "https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "news_id": "news_f623141117fe3174a17c",
-          "importance": null,
-          "content_version": "cv_dfb1e6f8a2606ab13543"
-        },
-        {
-          "title": "Bloomberg: долговое финансирование AI-гиперскейлеров может ускориться",
-          "fact": "Bloomberg сообщил, что, по словам Robert Schiffman из Bloomberg Intelligence, возвращение Дженсена Хуанга может поддержать настроение в AI-экосистеме, но опасения по финансированию сохраняются. Он сказал, что выпуск долга гиперскейлерами может произойти раньше ожидаемого.",
-          "why_important": "",
-          "description": "Bloomberg сообщил, что, по словам Robert Schiffman из Bloomberg Intelligence, возвращение Дженсена Хуанга может поддержать настроение в AI-экосистеме, но опасения по финансированию сохраняются. Он сказал, что выпуск долга гиперскейлерами может произойти раньше ожидаемого.",
-          "related_levels": [
-            2,
-            5
-          ],
-          "sources": [
-            "https://www.bloomberg.com/news/videos/2026-11-23/more-ai-debt-could-be-coming"
-          ],
-          "srt_significance": "Ур. 9 → Ур. 2: долговой контур становится условием темпа расширения вычислительной инфраструктуры.",
-          "watch_next": "Следить за новыми выпусками облигаций гиперскейлеров, прямо связанными с AI-инфраструктурой.",
-          "place_id": "srt9-ai-infra-bonds",
-          "place_confidence": 0.82,
-          "place_reason": "Событие прямо касается возможного долга под AI-инфраструктуру.",
-          "sources_meta": [
-            {
-              "url": "https://www.bloomberg.com/news/videos/2026-11-23/more-ai-debt-could-be-coming",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "news_id": "news_4493775926be0c8a0d7e",
-          "importance": null,
-          "content_version": "cv_31a4ebd57a8230e1526f"
-        },
-        {
-          "title": "FT указала на риск круговой AI-экономики вокруг Nvidia",
-          "fact": "FT опубликовала материал о проблеме круговой AI-экономики и спросила, что произойдёт, если конструкция vendor financing Nvidia обрушится. Материал связывает риск с финансированием внутри AI-цепочки.",
-          "why_important": "Если такой риск материален, он может затронуть устойчивость спроса и финансирования в AI-экосистеме вокруг Nvidia.",
-          "description": "FT опубликовала материал о проблеме круговой AI-экономики и спросила, что произойдёт, если конструкция vendor financing Nvidia обрушится. Материал связывает риск с финансированием внутри AI-цепочки.",
-          "related_levels": [
-            5,
-            4
-          ],
-          "sources": [
-            "https://www.ft.com/content/e49add11-3cc8-4edd-8daa-db8daaf994dd?syn-25a6b1a6=1"
-          ],
-          "srt_significance": "Ур. 9 → Ур. 5: финансовые связи поставщика и клиентов становятся самостоятельным узлом разделения труда.",
-          "watch_next": "Следить за раскрытиями Nvidia о vendor financing и зависимых контрактах с покупателями AI-инфраструктуры.",
-          "place_id": "srt9-ai-revenue-audit",
-          "place_confidence": 0.74,
-          "place_reason": "Тема требует проверки контрактов, обязательств и признанной выручки.",
-          "sources_meta": [
-            {
-              "url": "https://www.ft.com/content/e49add11-3cc8-4edd-8daa-db8daaf994dd?syn-25a6b1a6=1",
-              "domain": "",
-              "published_at": "2026-11-23"
+              "published_at": "2026-11-24"
             }
           ],
           "importance": {
             "level": "medium",
-            "rationale": "Материал описывает потенциальный риск финансирования внутри AI-цепочки, но предоставленные данные не подтверждают наступление события или масштаб ущерба."
+            "rationale": "Призыв Генсека ООН указывает на политическое давление к международному AI-надзору, но сам по себе не является обязательным регулированием."
           },
-          "news_id": "news_44ae3032cd37d95cf1ae",
-          "content_version": "cv_e2d10b6e48f16e52a96a"
-        }
-      ],
-      "event_count": 4
-    },
-    {
-      "level": 8,
-      "name": "Институты спонтанного порядка",
-      "level_summary": "На уровне институтов доверия вечером усилились два конкретных контура: судебное давление на генерацию дипфейков и сомнения в качестве AI-аудита. Регулирование смещается от общих рамок к претензиям к конкретным продуктам и профессиональным проверкам.",
-      "events": [
-        {
-          "title": "Вирджиния и Орегон подали иск к xAI из-за дипфейк-порно",
-          "fact": "Bloomberg сообщил, что Вирджиния и Орегон подали иск к AI-компании Илона Маска. Штаты утверждают, что чатбот не имел необходимых защит от генерации сексуализированных изображений людей, включая детей, без согласия.",
-          "why_important": "Если претензии подтвердятся, дело может усилить давление на разработчиков AI по внедрению защит от дипфейков и вредного контента.",
-          "description": "Bloomberg сообщил, что Вирджиния и Орегон подали иск к AI-компании Илона Маска. Штаты утверждают, что чатбот не имел необходимых защит от генерации сексуализированных изображений людей, включая детей, без согласия.",
-          "related_levels": [
-            4,
-            7
-          ],
-          "sources": [
-            "https://www.bloomberg.com/news/articles/2026-11-23/musk-s-xai-sued-by-virginia-oregon-over-deepfake-ai-porn-claims",
-            "https://www.wired.com/story/states-sue-spacex-over-grok-deepfakes/"
-          ],
-          "srt_significance": "Ур. 8 → Ур. 4: правовая претензия к вредным выходам давит на архитектуру защит моделей.",
-          "watch_next": "Следить за требованиями суда к техническим мерам защиты, журналам запросов и ограничениям генерации изображений.",
-          "place_id": "srt7-automated-ip-defense",
-          "place_confidence": 0.64,
-          "place_reason": "Событие касается защиты цифровой личности от синтетических изображений.",
-          "sources_meta": [
-            {
-              "url": "https://www.bloomberg.com/news/articles/2026-11-23/musk-s-xai-sued-by-virginia-oregon-over-deepfake-ai-porn-claims",
-              "domain": "",
-              "published_at": "2026-11-23"
-            },
-            {
-              "url": "https://www.wired.com/story/states-sue-spacex-over-grok-deepfakes/",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "high",
-            "rationale": "Иск двух штатов к xAI по теме генерации сексуализированных изображений без согласия затрагивает существенные юридические, регуляторные и репутационные риски для AI-сервисов."
-          },
-          "news_id": "news_897c2129117592ac3aa8",
-          "content_version": "cv_056c0e53dcc7f840cf40"
+          "news_id": "news_428426ac6c66b91ea778",
+          "content_version": "cv_02574cdfff1dc9b09f20"
         },
         {
-          "title": "Grant Thornton предупредила о «гонке вниз» в AI-аудите",
-          "fact": "FT сообщил, что глава аудита Grant Thornton в Великобритании предупредил: чрезмерная зависимость от технологий в аудите может угрожать качеству проверок компаний.",
-          "why_important": "Если такая зависимость распространится, это может подорвать доверие к аудиторским заключениям и усилить внимание регуляторов к применению AI в профессиональных услугах.",
-          "description": "FT сообщил, что глава аудита Grant Thornton в Великобритании предупредил: чрезмерная зависимость от технологий в аудите может угрожать качеству проверок компаний.",
-          "related_levels": [
-            7,
-            9
-          ],
-          "sources": [
-            "https://www.ft.com/content/13b9bee8-f7e4-4b02-ad78-2e358ff43240?syn-25a6b1a6=1"
-          ],
-          "srt_significance": "Ур. 8 → Ур. 7: профессиональная норма аудита требует новых знаний о границах AI-проверок.",
-          "watch_next": "Следить за обновлениями аудиторских стандартов по использованию AI в проверках компаний.",
-          "place_id": "srt9-ai-revenue-audit",
-          "place_confidence": 0.67,
-          "place_reason": "Новость касается качества аудита компаний при использовании AI.",
-          "sources_meta": [
-            {
-              "url": "https://www.ft.com/content/13b9bee8-f7e4-4b02-ad78-2e358ff43240?syn-25a6b1a6=1",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Предупреждение руководителя аудита Grant Thornton касается качества корпоративных проверок при чрезмерном использовании AI, но не содержит факта о конкретном сбое или регуляторном действии."
-          },
-          "news_id": "news_0efb7557fe13aba9897a",
-          "content_version": "cv_104de18b980f6f33260a"
-        },
-        {
-          "title": "Better Markets раскритиковала AI-рамку OCC для банков",
-          "fact": "Better Markets опубликовала материал с утверждением, что новая AI-рамка OCC для банков оставляет заёмщиков без достаточной защиты и упускает ключевые аспекты управления рисками.",
-          "why_important": "Если критика обоснована, банки могут столкнуться с неопределённостью в управлении AI-рисками и рисками для прав заёмщиков.",
-          "description": "Better Markets опубликовала материал с утверждением, что новая AI-рамка OCC для банков оставляет заёмщиков без достаточной защиты и упускает ключевые аспекты управления рисками.",
-          "related_levels": [
-            9,
-            7
-          ],
-          "sources": [
-            "https://news.google.com/rss/articles/CBMizgFBVV95cUxQUHNXcUY0anNsSHBsZWRBYURCQlUxNWRLYl96OHVWdjE3eXNQN3Rfc3FTenU4UG1uVF90ZjY2LWZrM2JzOEJHb3R3VThQVXhwRzYwZWFTTXQ1VnV3dDJjYkNsRzFDNTdfUHo1V3hOUjMzS0ZKM1FUdzNhbFJWVkVDS050ZkdkRWZwWmRqSjliVGM2RmhrUXFFYWJUV2R2VUpqVVpwN2VkVU1VTEpyNTFkVjVQeHoxaWsyS1NFSVZldllNYU5TNnBoYTZKV2VzUQ?oc=5"
-          ],
-          "srt_significance": "Ур. 8 → Ур. 9: правила AI-риска в банках начинают влиять на доступ заёмщиков к финансовым решениям.",
-          "watch_next": "Следить за реакцией OCC и банков на критику требований к управлению AI-рисками.",
-          "place_id": "srt7-ai-financial-audit",
-          "place_confidence": 0.61,
-          "place_reason": "Событие касается контроля рисков финансовых AI-систем.",
-          "sources_meta": [
-            {
-              "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQUHNXcUY0anNsSHBsZWRBYURCQlUxNWRLYl96OHVWdjE3eXNQN3Rfc3FTenU4UG1uVF90ZjY2LWZrM2JzOEJHb3R3VThQVXhwRzYwZWFTTXQ1VnV3dDJjYkNsRzFDNTdfUHo1V3hOUjMzS0ZKM1FUdzNhbFJWVkVDS050ZkdkRWZwWmRqSjliVGM2RmhrUXFFYWJUV2R2VUpqVVpwN2VkVU1VTEpyNTFkVjVQeHoxaWsyS1NFSVZldllNYU5TNnBoYTZKV2VzUQ?oc=5",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Критика AI-рамки OCC касается банковского регулирования и защиты заёмщиков, но представлена как позиция Better Markets без подтверждённого регуляторного изменения или эффекта."
-          },
-          "news_id": "news_eade1646f43899965942",
-          "content_version": "cv_a5deafff8732b7a9704b"
-        },
-        {
-          "title": "TechCrunch: дата-центры стали центром критики Big Tech",
-          "fact": "TechCrunch опубликовал интервью с журналистом Paris Marx о его книге «Hyperscale» и о том, почему дата-центры находятся в центре негативной реакции на Big Tech.",
-          "why_important": "",
-          "description": "TechCrunch опубликовал интервью с журналистом Paris Marx о его книге «Hyperscale» и о том, почему дата-центры находятся в центре негативной реакции на Big Tech.",
-          "related_levels": [
-            2,
-            1
-          ],
-          "sources": [
-            "https://techcrunch.com/2026/11/22/why-data-centers-are-at-the-center-of-the-big-tech-backlash/"
-          ],
-          "srt_significance": "Ур. 8 → Ур. 2: общественная критика начинает влиять на пространственную организацию дата-центров.",
-          "watch_next": "Следить за локальными мораториями, слушаниями и судебными исками против новых дата-центров.",
-          "place_id": "srt8-ethical-dc-development",
-          "place_confidence": 0.73,
-          "place_reason": "Событие прямо связано с общественной оценкой девелопмента дата-центров.",
-          "sources_meta": [
-            {
-              "url": "https://techcrunch.com/2026/11/22/why-data-centers-are-at-the-center-of-the-big-tech-backlash/",
-              "domain": "",
-              "published_at": "2026-11-22"
-            }
-          ],
-          "news_id": "news_47b2738e2872fd88c166",
-          "importance": null,
-          "content_version": "cv_8e6b6b8bf4132c692034"
-        }
-      ],
-      "event_count": 4
-    },
-    {
-      "level": 7,
-      "name": "Институты производства знаний",
-      "level_summary": "Институты знания получили вечерние сигналы сразу в трёх местах: экзамены, университетская подготовка и медицинско-научные ожидания от AI. Изменение дня — не новый бенчмарк, а спор о том, какие знания и проверки остаются легитимными при массовом применении AI.",
-      "events": [
-        {
-          "title": "Министр Южной Кореи ушёл после слов об AI-списывании",
-          "fact": "FT сообщил, что 72-летний Choi Kyo-jin ушёл в отставку после комментариев о том, что он слишком стар, чтобы справиться с AI-списыванием на экзаменах. Его слова вызвали гнев из-за действий властей в отношении злоупотреблений на важных тестах.",
-          "why_important": "",
-          "description": "FT сообщил, что 72-летний Choi Kyo-jin ушёл в отставку после комментариев о том, что он слишком стар, чтобы справиться с AI-списыванием на экзаменах. Его слова вызвали гнев из-за действий властей в отношении злоупотреблений на важных тестах.",
+          "title": "Naver и телекомы Южной Кореи блокируют AI-агентов в кол-центрах",
+          "fact": "KED Global сообщил, что Naver и южнокорейские телекоммуникационные компании блокируют AI-агентов в кол-центрах из-за опасений ответственности.",
+          "why_important": "Это важно как пример того, что юридические риски могут замедлять внедрение AI в клиентском обслуживании даже при наличии технологической возможности.",
+          "description": "KED Global сообщил, что Naver и южнокорейские телекоммуникационные компании блокируют AI-агентов в кол-центрах из-за опасений ответственности.",
           "related_levels": [
             3,
-            8
+            5,
+            6
           ],
           "sources": [
-            "https://www.ft.com/content/d97f37d0-588e-488c-b10e-035900367aa4?syn-25a6b1a6=1"
+            "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qb1E0ekF2Y195b0JfWjJORHA3SVFxY3ZBcVJZa2dYMUw3bTFnUmxyX3FvdldNVFg5UEhpdHNRWE9DY0xDckR0YklqMTRISnNFdVJNOE0wWFlMT0ZDek9JRUhwV3hXRkhqZTFVTmYtdkZLWEdPcHdGX1B3VjdNVXM?oc=5"
           ],
-          "srt_significance": "Ур. 7 → Ур. 3: кризис экзаменов меняет способы подтверждения компетенций будущих работников.",
-          "watch_next": "Следить за новыми правилами Южной Кореи для экзаменов с учётом AI-инструментов.",
-          "place_id": null,
-          "place_confidence": 0,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://www.ft.com/content/d97f37d0-588e-488c-b10e-035900367aa4?syn-25a6b1a6=1",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "news_id": "news_8212f93c34a87b2ed79a",
-          "importance": null,
-          "content_version": "cv_89813c09cdd01ded266f"
-        },
-        {
-          "title": "Togo AI Lab обучает исследователей Университета Кара",
-          "fact": "Tech Review Africa сообщил, что Togo AI Lab обучает исследователей Университета Кара искусственному интеллекту.",
-          "why_important": "Если программа реализуется, она может способствовать развитию локальных AI-компетенций в академической среде.",
-          "description": "Tech Review Africa сообщил, что Togo AI Lab обучает исследователей Университета Кара искусственному интеллекту.",
-          "related_levels": [
-            3,
-            5
-          ],
-          "sources": [
-            "https://news.google.com/rss/articles/CBMiugFBVV95cUxPTE1DLUppZ3BIXzg4bXkwb1M2MU81UVEtbUdGeExwSVNJb0FaQjNsd0NHTnhiRkZUdjExaEVsRkVYVU5zLS1VZUJFQUs0R1lwaWdROXVDUVFBUmNLbXJNVHBOMGNfMDh6c0VQXy1rdVlFcjlNMU0xZVItZ1NqVnZrMFlhWTlZWHA5aXpKQmRXcGY0VE5MdV9RUFR3Y0ZUY1JpejdVNVpmT0k2UTFBa0RGeW90dmtiTU4xMkE?oc=5"
-          ],
-          "srt_significance": "Ур. 7 → Ур. 3: университетская подготовка расширяет локальный рынок AI-компетенций.",
-          "watch_next": "Следить за публикациями и прикладными проектами участников обучения в Университете Кара.",
-          "place_id": "srt3-ai-native-engineering-edu",
+          "srt_significance": "Ур. 8 → Ур. 3: нормы ответственности ограничивают передачу работы от операторов к AI-агентам.",
+          "watch_next": "Следить за правилами ответственности, после которых Naver и телекомы вернут агентов в кол-центры.",
+          "place_id": "srt6-structural-verification-services",
           "place_confidence": 0.62,
-          "place_reason": "Новость касается обучения исследователей AI-компетенциям.",
+          "place_reason": "Блокировка связана с непроверенными границами поведения агентов.",
           "sources_meta": [
             {
-              "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPTE1DLUppZ3BIXzg4bXkwb1M2MU81UVEtbUdGeExwSVNJb0FaQjNsd0NHTnhiRkZUdjExaEVsRkVYVU5zLS1VZUJFQUs0R1lwaWdROXVDUVFBUmNLbXJNVHBOMGNfMDh6c0VQXy1rdVlFcjlNMU0xZVItZ1NqVnZrMFlhWTlZWHA5aXpKQmRXcGY0VE5MdV9RUFR3Y0ZUY1JpejdVNVpmT0k2UTFBa0RGeW90dmtiTU4xMkE?oc=5",
+              "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qb1E0ekF2Y195b0JfWjJORHA3SVFxY3ZBcVJZa2dYMUw3bTFnUmxyX3FvdldNVFg5UEhpdHNRWE9DY0xDckR0YklqMTRISnNFdVJNOE0wWFlMT0ZDek9JRUhwV3hXRkhqZTFVTmYtdkZLWEdPcHdGX1B3VjdNVXM?oc=5",
               "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "low",
-            "rationale": "Факт указывает на локальную инициативу по обучению AI, но без масштаба, финансирования, числа участников или подтверждённых результатов."
-          },
-          "news_id": "news_31ffe131e8926d8c7238",
-          "content_version": "cv_f1214c7037f2b7422fdf"
-        },
-        {
-          "title": "Novartis отвергла ожидания AI-вылечить рак за 5–10 лет",
-          "fact": "FT сообщил, что CEO Novartis отверг надежды AI-индустрии на излечение рака за пять-десять лет. Комментарии последовали после амбициозных заявлений главы Anthropic и основателя DeepMind.",
-          "why_important": "",
-          "description": "FT сообщил, что CEO Novartis отверг надежды AI-индустрии на излечение рака за пять-десять лет. Комментарии последовали после амбициозных заявлений главы Anthropic и основателя DeepMind.",
-          "related_levels": [
-            5,
-            6
-          ],
-          "sources": [
-            "https://www.ft.com/content/1e5a9d70-221d-461d-ae03-dc235b1db340?syn-25a6b1a6=1"
-          ],
-          "srt_significance": "Ур. 7 → Ур. 5: научно-клиническая проверка ограничивает коммерческие обещания AI в фарме.",
-          "watch_next": "Следить за клиническими результатами AI-разработок лекарств, а не только за заявлениями лабораторий.",
-          "place_id": null,
-          "place_confidence": 0,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://www.ft.com/content/1e5a9d70-221d-461d-ae03-dc235b1db340?syn-25a6b1a6=1",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "news_id": "news_396aa165c120cc7d879d",
-          "importance": null,
-          "content_version": "cv_7017138d7df78fceca35"
-        },
-        {
-          "title": "Исследование связало доверие к AI-журналистике с эвристиками аудитории",
-          "fact": "Bioengineer.org сообщил о работе, согласно которой эвристические убеждения аудитории о машинах влияют на оценки достоверности в AI-журналистике.",
-          "why_important": "Если выводы подтверждены, они могут помочь СМИ и платформам понять, как аудитория оценивает материалы, созданные или поддержанные AI.",
-          "description": "Bioengineer.org сообщил о работе, согласно которой эвристические убеждения аудитории о машинах влияют на оценки достоверности в AI-журналистике.",
-          "related_levels": [
-            8,
-            6
-          ],
-          "sources": [
-            "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNcHZqVFlUcG9oSGV6cmktRnFKdXk2RllUWk8xY0lYdldKamo3dmZxc1NFZ0kyeWszQklPWllIcXJKSXRtdDh2X3JTdW5GVXVfSGk4VTNySHdxaktENWo1MUM4WmNoSlh4ekY1VUthbUtMaHdPdDRVZzROdlV0MERsTHduU1pwQzJDQnd6VTFGeHBWZTR5WWRhYW1RME1RTnhQZXY4RUdaSmt1UTh3czdpT201eS00a0hfQkVVdUhqdXA?oc=5"
-          ],
-          "srt_significance": "Ур. 7 → Ур. 8: знание о восприятии AI-контента перестраивает институты доверия к медиа.",
-          "watch_next": "Следить за методикой исследования и тем, повторяются ли выводы на других выборках аудитории.",
-          "place_id": null,
-          "place_confidence": 0.55,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNcHZqVFlUcG9oSGV6cmktRnFKdXk2RllUWk8xY0lYdldKamo3dmZxc1NFZ0kyeWszQklPWllIcXJKSXRtdDh2X3JTdW5GVXVfSGk4VTNySHdxaktENWo1MUM4WmNoSlh4ekY1VUthbUtMaHdPdDRVZzROdlV0MERsTHduU1pwQzJDQnd6VTFGeHBWZTR5WWRhYW1RME1RTnhQZXY4RUdaSmt1UTh3czdpT201eS00a0hfQkVVdUhqdXA?oc=5",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "low",
-            "rationale": "Сообщение касается исследовательского вывода о восприятии AI-журналистики, но без данных о масштабе исследования или практическом внедрении."
-          },
-          "news_id": "news_34f61e837d8beb43cf6f",
-          "content_version": "cv_b2c5045107332dadc49c"
-        }
-      ],
-      "event_count": 4
-    },
-    {
-      "level": 6,
-      "name": "Технологии производства знаний",
-      "level_summary": "На уровне технологий производства знаний вечер принёс концентрацию работ о проверяемости: оценки агентов, приватность веб-действий, целостность награды и неподдержанные финансовые интерпретации. Новое изменение — смещение от «лучше решает задачу» к «можно ли воспроизвести, ограничить и оспорить ход решения».",
-      "events": [
-        {
-          "title": "Hugging Face описал, как строить агентные оценки",
-          "fact": "Hugging Face опубликовал материал «How to build and maintain an agentic evaluation» о построении и сопровождении оценок для агентных систем.",
-          "why_important": "Если организация разрабатывает или закупает агентные системы, такие подходы к оценке могут помочь структурировать проверку качества, надежности и сопровождения.",
-          "description": "Hugging Face опубликовал материал «How to build and maintain an agentic evaluation» о построении и сопровождении оценок для агентных систем.",
-          "related_levels": [
-            5,
-            8
-          ],
-          "sources": [
-            "https://huggingface.co/blog/agentic-evals"
-          ],
-          "srt_significance": "Ур. 6 → Ур. 5: методики оценки становятся условием выпуска агентных продуктов в процессы.",
-          "watch_next": "Следить за примерами воспроизводимых наборов задач и метриками отказов в агентных оценках.",
-          "place_id": "srt6-structural-verification-services",
-          "place_confidence": 0.86,
-          "place_reason": "Материал прямо касается построения оценок агентных систем.",
-          "sources_meta": [
-            {
-              "url": "https://huggingface.co/blog/agentic-evals",
-              "domain": "",
-              "published_at": "2026-11-23"
+              "published_at": "2026-11-24"
             }
           ],
           "importance": {
             "level": "medium",
-            "rationale": "Материал касается практики оценки агентных систем, что может быть значимо для команд, внедряющих AI-агентов, но в фактах нет данных о новом продукте, стандарте или измеримом эффекте."
+            "rationale": "Решение Naver и южнокорейских телекомов блокировать AI-агентов в кол-центрах показывает практическое ограничение внедрения AI из-за рисков ответственности."
           },
-          "news_id": "news_00d52199bef25f9eda98",
-          "content_version": "cv_5ae59fc9e9e2dc22187e"
+          "news_id": "news_d35f83d8571515ad357b",
+          "content_version": "cv_b66f4b7f1072b330e4ad"
         },
         {
-          "title": "arXiv: два AI-партнёра по-разному влияют на мозговой штурм",
-          "fact": "В arXiv опубликована работа о том, как размер и формирование AI-команды влияют на продуктивность и разнообразие в человеко-AI мозговом штурме. Эксперимент сравнивал одного и двух AI-партнёров, а также калиброванное и пользовательское поведение, при N=168.",
-          "why_important": "Исследование может быть полезно для понимания того, как конфигурация AI-помощников влияет на совместную генерацию идей, если выводы подтвердятся в других условиях.",
-          "description": "В arXiv опубликована работа о том, как размер и формирование AI-команды влияют на продуктивность и разнообразие в человеко-AI мозговом штурме. Эксперимент сравнивал одного и двух AI-партнёров, а также калиброванное и пользовательское поведение, при N=168.",
+          "title": "Дженсен Хуанг должен дать показания в Сенате на следующей неделе",
+          "fact": "TechCrunch сообщил, что Дженсен Хуанг запланирован для публичных показаний в Сенате на следующей неделе после двухпартийных призывов обсудить связь скандала с предполагаемой китайской шпионкой.",
+          "why_important": "Это может быть важно из-за возможного усиления парламентского контроля и публичного внимания к обстоятельствам скандала, если слушания состоятся.",
+          "description": "TechCrunch сообщил, что Дженсен Хуанг запланирован для публичных показаний в Сенате на следующей неделе после двухпартийных призывов обсудить связь скандала с предполагаемой китайской шпионкой.",
           "related_levels": [
-            3,
-            5
-          ],
-          "sources": [
-            "https://arxiv.org/abs/2611.26663"
-          ],
-          "srt_significance": "Ур. 6 → Ур. 3: экспериментальная методика задаёт новые роли AI-участников в командной работе.",
-          "watch_next": "Следить за публикацией результатов по продуктивности и разнообразию идей для разных составов команд.",
-          "place_id": null,
-          "place_confidence": 0.58,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://arxiv.org/abs/2611.26663",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "low",
-            "rationale": "Это исследовательская публикация с ограниченным экспериментом N=168; факт указывает на академические результаты, но не на готовое решение или прямой рыночный эффект."
-          },
-          "news_id": "news_cd02a86f341630ad0633",
-          "content_version": "cv_c9167f979e6e17aa61f1"
-        },
-        {
-          "title": "ChatAtom автоматизирует молекулярную динамику через LLM-агентов",
-          "fact": "В arXiv опубликована работа ChatAtom о многоагентной LLM-системе для моделирования и визуализации молекулярной динамики. Авторы описывают задачу как экспертный рабочий процесс: дизайн симуляции, написание входных скриптов, запуск и анализ результатов.",
-          "why_important": "Если подход надежен, он может упростить выполнение специализированных научных рабочих процессов, где требуются несколько экспертных шагов и инструментов.",
-          "description": "В arXiv опубликована работа ChatAtom о многоагентной LLM-системе для моделирования и визуализации молекулярной динамики. Авторы описывают задачу как экспертный рабочий процесс: дизайн симуляции, написание входных скриптов, запуск и анализ результатов.",
-          "related_levels": [
-            7,
-            5
-          ],
-          "sources": [
-            "https://arxiv.org/abs/2611.26782"
-          ],
-          "srt_significance": "Ур. 6 → Ур. 7: агентная методика переносит часть экспертного научного процесса в инструментальную систему.",
-          "watch_next": "Следить за воспроизводимостью результатов ChatAtom на независимых задачах молекулярной динамики.",
-          "place_id": null,
-          "place_confidence": 0.57,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://arxiv.org/abs/2611.26782",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Работа описывает применение многоагентных LLM к экспертному научному процессу, что потенциально важно для R&D-автоматизации, но доказательств производственной зрелости или эффективности не приведено."
-          },
-          "news_id": "news_461a81e08dcc750a00d6",
-          "content_version": "cv_d08a66c1e28c5934da9a"
-        },
-        {
-          "title": "LLM добавляют неподдержанные причины в финансовые отчёты",
-          "fact": "В arXiv опубликована работа «Right Numbers, Wrong Story». Авторы пишут, что LLM-драфт финансового отчёта может корректно указать числа, но добавить суждения и причины, которых не было во входных данных.",
-          "why_important": "",
-          "description": "В arXiv опубликована работа «Right Numbers, Wrong Story». Авторы пишут, что LLM-драфт финансового отчёта может корректно указать числа, но добавить суждения и причины, которых не было во входных данных.",
-          "related_levels": [
-            9,
-            8
-          ],
-          "sources": [
-            "https://arxiv.org/abs/2611.26968"
-          ],
-          "srt_significance": "Ур. 6 → Ур. 9: методическая ошибка генерации превращается в риск финансовой отчётности.",
-          "watch_next": "Следить за метриками неподдержанного framing в корпоративных отчётах, созданных с помощью LLM.",
-          "place_id": "srt9-ai-revenue-audit",
-          "place_confidence": 0.79,
-          "place_reason": "Работа касается проверки AI-текстов в финансовой отчётности.",
-          "sources_meta": [
-            {
-              "url": "https://arxiv.org/abs/2611.26968",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "news_id": "news_b3dd5830b7fd0237d641",
-          "importance": null,
-          "content_version": "cv_5f7ab39cdf5b464d9c6a"
-        },
-        {
-          "title": "Reward Integrity проверяет награды при red-teaming LLM-защит",
-          "fact": "В arXiv опубликована работа о целостности награды в состязательном обучении с подкреплением для red-teaming защит LLM в финансовых сервисах. Авторы пишут, что видимые успехи могут возникать, когда атака опускает предписанные персональные данные или когда судья награды засчитывает ответ без нарушения целевой политики.",
-          "why_important": "Если выводы верны, часть метрик успешности атак и защит может отражать ошибки постановки награды, а не реальное улучшение или ухудшение безопасности LLM.",
-          "description": "В arXiv опубликована работа о целостности награды в состязательном обучении с подкреплением для red-teaming защит LLM в финансовых сервисах. Авторы пишут, что видимые успехи могут возникать, когда атака опускает предписанные персональные данные или когда судья награды засчитывает ответ без нарушения целевой политики.",
-          "related_levels": [
-            8,
+            5,
+            4,
             9
           ],
           "sources": [
-            "https://arxiv.org/abs/2611.26998"
+            "https://techcrunch.com/2026/11/23/jensen-huang-scheduled-to-testify-next-week-in-senate-following-reinstatement-as-nvidia-ceo/"
           ],
-          "srt_significance": "Ур. 6 → Ур. 8: качество метрики безопасности становится условием доверия к AI-ограждениям.",
-          "watch_next": "Следить за долей ложных успехов атак в публичных тестах LLM-защит для финансовых сервисов.",
-          "place_id": "srt6-structural-verification-services",
-          "place_confidence": 0.84,
-          "place_reason": "Работа проверяет корректность процедур испытания защит LLM.",
-          "sources_meta": [
-            {
-              "url": "https://arxiv.org/abs/2611.26998",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Работа затрагивает надежность red-teaming LLM-защит в финансовых сервисах, но доказательная база ограничена описанием arXiv-публикации без перепроверки."
-          },
-          "news_id": "news_91a05cc21f3ef9b6732b",
-          "content_version": "cv_00e9857bdebac82ce647"
-        },
-        {
-          "title": "Веб-действия LLM-агентов раскрывают приватный контекст",
-          "fact": "В arXiv опубликована работа о stateful privacy sniffing LLM-агентов через поведенческие скрытые каналы в веб-взаимодействиях. Авторы пишут, что действия агента зависят от приватного контекста пользователя, включая prompt, историю диалога, память и подключённые данные.",
-          "why_important": "Если механизм подтверждается, наблюдение за действиями веб-агента может раскрывать чувствительный пользовательский контекст даже без прямого доступа к prompt или памяти.",
-          "description": "В arXiv опубликована работа о stateful privacy sniffing LLM-агентов через поведенческие скрытые каналы в веб-взаимодействиях. Авторы пишут, что действия агента зависят от приватного контекста пользователя, включая prompt, историю диалога, память и подключённые данные.",
-          "related_levels": [
-            8,
-            5
-          ],
-          "sources": [
-            "https://arxiv.org/abs/2611.27046"
-          ],
-          "srt_significance": "Ур. 6 → Ур. 8: метод атаки требует новых норм приватности для агентных веб-действий.",
-          "watch_next": "Следить за появлением защит, скрывающих или рандомизирующих поведенческие следы веб-агентов.",
-          "place_id": "srt6-structural-verification-services",
-          "place_confidence": 0.77,
-          "place_reason": "Работа выявляет проверяемую уязвимость поведения LLM-агентов.",
-          "sources_meta": [
-            {
-              "url": "https://arxiv.org/abs/2611.27046",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "high",
-            "rationale": "Заявленная проблема касается утечки приватного контекста LLM-агентов через веб-действия, что потенциально существенно для приватности и безопасности агентных систем."
-          },
-          "news_id": "news_3710083a68f2cce5af6f",
-          "content_version": "cv_40580dfa761867c87f49"
-        },
-        {
-          "title": "Бенчмарк медицинского AI строят из практических рекомендаций",
-          "fact": "В arXiv опубликована работа о масштабируемой оценке медицинского AI с использованием evidence-based practice recommendations. Авторы предлагают автоматизированный конвейер, извлекающий открытые клинические управленческие задачи из рекомендаций.",
-          "why_important": "Если подход надежен, он может помочь строить более прикладные бенчмарки для медицинского AI, основанные на клинических рекомендациях, а не только на абстрактных тестах.",
-          "description": "В arXiv опубликована работа о масштабируемой оценке медицинского AI с использованием evidence-based practice recommendations. Авторы предлагают автоматизированный конвейер, извлекающий открытые клинические управленческие задачи из рекомендаций.",
-          "related_levels": [
-            7,
-            8
-          ],
-          "sources": [
-            "https://arxiv.org/abs/2611.27007"
-          ],
-          "srt_significance": "Ур. 6 → Ур. 7: клинические рекомендации превращаются в автоматизируемую инфраструктуру оценки AI.",
-          "watch_next": "Следить за покрытием заболеваний и стадий лечения в новом медицинском оценочном конвейере.",
-          "place_id": "srt6-structural-verification-services",
-          "place_confidence": 0.6,
-          "place_reason": "Работа описывает масштабируемую процедуру оценки медицинского AI.",
-          "sources_meta": [
-            {
-              "url": "https://arxiv.org/abs/2611.27007",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Работа предлагает подход к оценке медицинского AI на основе практических рекомендаций, что может быть значимо для валидации, но пока описано как исследовательская публикация."
-          },
-          "news_id": "news_d024ff698ac69c50b49f",
-          "content_version": "cv_fb77dfa5b170b3ccd1f6"
-        },
-        {
-          "title": "Оценочная осознанность LRM отделяется от отказов нейронным вмешательством",
-          "fact": "В arXiv опубликована работа о разделении вербализованной оценочной осознанности и отказов через вмешательство на уровне нейронов. Авторы пишут, что большие рассуждающие модели иногда распознают, что их оценивают.",
-          "why_important": "Если модели действительно распознают оценочные ситуации, результаты бенчмарков могут отличаться от поведения в обычном использовании, что усложняет интерпретацию тестов безопасности и качества.",
-          "description": "В arXiv опубликована работа о разделении вербализованной оценочной осознанности и отказов через вмешательство на уровне нейронов. Авторы пишут, что большие рассуждающие модели иногда распознают, что их оценивают.",
-          "related_levels": [
-            4,
-            8
-          ],
-          "sources": [
-            "https://arxiv.org/abs/2611.27032"
-          ],
-          "srt_significance": "Ур. 6 → Ур. 4: метод анализа поведения в тесте вскрывает внутренние механизмы рассуждающих моделей.",
-          "watch_next": "Следить за тем, повторяется ли эффект на других больших рассуждающих моделях и задачах безопасности.",
-          "place_id": "srt6-structural-verification-services",
-          "place_confidence": 0.72,
-          "place_reason": "Работа относится к проверке поведения моделей в оценочных условиях.",
-          "sources_meta": [
-            {
-              "url": "https://arxiv.org/abs/2611.27032",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Тема оценочной осознанности больших рассуждающих моделей важна для надежности тестирования, но данные ограничены заявлением авторов arXiv-работы."
-          },
-          "news_id": "news_4047c6e2125e3587275a",
-          "content_version": "cv_3d4b6c9eb089ca707f42"
-        },
-        {
-          "title": "Jev-атака меняет решения без изменения фактов во входе",
-          "fact": "В arXiv опубликована работа о fact-invariant manipulation и защите на основе происхождения данных в типизированных моделях решений. Авторы пишут, что TypeSafe Jev отвечает вероятностью, опцией или баллом, но входы могут включать внешний текст.",
-          "why_important": "Если описанный класс атак применим на практике, он может быть важен для организаций, использующих модели для оценок, скоринга или выбора опций, поскольку показывает риск изменения решения без изменения проверяемых фактов.",
-          "description": "В arXiv опубликована работа о fact-invariant manipulation и защите на основе происхождения данных в типизированных моделях решений. Авторы пишут, что TypeSafe Jev отвечает вероятностью, опцией или баллом, но входы могут включать внешний текст.",
-          "related_levels": [
-            5,
-            8
-          ],
-          "sources": [
-            "https://arxiv.org/abs/2611.27016"
-          ],
-          "srt_significance": "Ур. 6 → Ур. 5: проверка происхождения входов становится условием безопасной автоматизации решений.",
-          "watch_next": "Следить за реализациями provenance-защиты в типизированных AI-моделях решений.",
-          "place_id": "srt6-structural-verification-services",
-          "place_confidence": 0.81,
-          "place_reason": "Работа описывает атаку и защиту для проверяемых AI-решений.",
-          "sources_meta": [
-            {
-              "url": "https://arxiv.org/abs/2611.27016",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Тема затрагивает надежность AI/decision systems, но доказательная база в данном вводе ограничена описанием arXiv-работы, без подтвержденного внедрения или измеренного ущерба."
-          },
-          "news_id": "news_fcc3caa65c7619f93f64",
-          "content_version": "cv_414c1cfdf3ff552cb605"
-        }
-      ],
-      "event_count": 9
-    },
-    {
-      "level": 5,
-      "name": "Экономическое разделение труда между фирмами",
-      "level_summary": "Экономическое разделение труда вечером сдвинулось к реальным транзакционным агентам и потребительскому AI-каналу. Walmart и Meta показали агентный доступ к покупке, а розничные данные NRF дали сигнал, что спрос формируется не только в корпоративном контуре.",
-      "events": [
-        {
-          "title": "Walmart разрешил Meta Muse покупать товары через Sparky",
-          "fact": "The Verge сообщил, что Walmart позволит Meta Muse искать и покупать предложения Black Friday через AI-помощника Walmart Sparky. Это живая реализация Agent Gateway, который помогает AI-агентам находить товары без передачи платёжных данных.",
-          "why_important": "",
-          "description": "The Verge сообщил, что Walmart позволит Meta Muse искать и покупать предложения Black Friday через AI-помощника Walmart Sparky. Это живая реализация Agent Gateway, который помогает AI-агентам находить товары без передачи платёжных данных.",
-          "related_levels": [
-            6,
-            8
-          ],
-          "sources": [
-            "https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday"
-          ],
-          "srt_significance": "Ур. 5 → Ур. 6: торговая платформа требует протоколов агентного доступа и ограничения данных.",
-          "watch_next": "Следить за числом внешних агентов, подключённых к Walmart Agent Gateway, и правилами доступа к покупкам.",
-          "place_id": "srt3-ai-agent-orchestration",
-          "place_confidence": 0.68,
-          "place_reason": "Событие связано с оркестрацией AI-агента в покупательском процессе.",
-          "sources_meta": [
-            {
-              "url": "https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "news_id": "news_599ec3a9c12f02c6cc12",
-          "importance": null,
-          "content_version": "cv_53cab638937518dca077"
-        },
-        {
-          "title": "NRF: половина праздничных покупателей планирует использовать AI",
-          "fact": "National Retail Federation сообщил, что половина праздничных покупателей планирует использовать AI в этом сезоне.",
-          "why_important": "Если намерения покупателей реализуются, AI может стать заметным инструментом поиска, сравнения и выбора товаров в праздничный сезон, влияя на путь клиента.",
-          "description": "National Retail Federation сообщил, что половина праздничных покупателей планирует использовать AI в этом сезоне.",
-          "related_levels": [
-            3,
-            8
-          ],
-          "sources": [
-            "https://news.google.com/rss/articles/CBMifEFVX3lxTFBES1ViSjJobENsejBBZlRsQnpzY0s4TXhNbGhhUWFCSXhBazZIaWFtWHFieWhVbUYxS2diVlJodmFsenBHTUQ4cTNTUDVjVDBXVXRNWGYyUTVWdGZuS1hVZUU5V3ZqV0E3UU9KMEdtN2pxZHlNQURlb091Zlc?oc=5"
-          ],
-          "srt_significance": "Ур. 5 → Ур. 3: массовое использование AI покупателями меняет навыки и роли розничных команд.",
-          "watch_next": "Следить за долей реальных покупок, завершённых с участием AI-помощников, после праздничного сезона.",
+          "srt_significance": "Ур. 8 → Ур. 5: политический надзор вмешивается в управление ключевым поставщиком AI-цепочки.",
+          "watch_next": "Следить за повесткой слушаний и вопросами о расследовании экспортного контроля Nvidia.",
           "place_id": null,
           "place_confidence": 0.54,
           "place_reason": "",
           "sources_meta": [
             {
-              "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBES1ViSjJobENsejBBZlRsQnpzY0s4TXhNbGhhUWFCSXhBazZIaWFtWHFieWhVbUYxS2diVlJodmFsenBHTUQ4cTNTUDVjVDBXVXRNWGYyUTVWdGZuS1hVZUU5V3ZqV0E3UU9KMEdtN2pxZHlNQURlb091Zlc?oc=5",
+              "url": "https://techcrunch.com/2026/11/23/jensen-huang-scheduled-to-testify-next-week-in-senate-following-reinstatement-as-nvidia-ceo/",
               "domain": "",
               "published_at": "2026-11-23"
             }
           ],
           "importance": {
             "level": "medium",
-            "rationale": "Заявление указывает на заметный потребительский интерес к AI в праздничных покупках, но без методологии, выборки и фактического поведения это остается ограниченным индикатором намерений."
+            "rationale": "Публичные показания в Сенате по теме, вызвавшей двухпартийный интерес, могут усилить политическое и репутационное внимание, но исход остаётся неизвестным."
           },
-          "news_id": "news_cd16a61ebf510cf0f5b0",
-          "content_version": "cv_223f7cb3829e27fa1abc"
-        },
-        {
-          "title": "Paradromics использует Nvidia для обработки мозговых данных",
-          "fact": "Wired сообщил, что компания brain-computer interface Paradromics использует вычислительное оборудование и программное обеспечение Nvidia для обработки мозговых данных.",
-          "why_important": "",
-          "description": "Wired сообщил, что компания brain-computer interface Paradromics использует вычислительное оборудование и программное обеспечение Nvidia для обработки мозговых данных.",
-          "related_levels": [
-            4,
-            7
-          ],
-          "sources": [
-            "https://www.wired.com/story/nvidia-is-powering-brain-computer-interfaces-now/"
-          ],
-          "srt_significance": "Ур. 5 → Ур. 4: биоинтерфейсная цепочка опирается на вычислительный стек Nvidia как базовый слой.",
-          "watch_next": "Следить за тем, какие компоненты Nvidia используются Paradromics в реальной обработке мозговых сигналов.",
-          "place_id": "srt6-hmi-knowledge-interfaces",
-          "place_confidence": 0.71,
-          "place_reason": "Новость касается интерфейса человек-машина и обработки мозговых данных.",
-          "sources_meta": [
-            {
-              "url": "https://www.wired.com/story/nvidia-is-powering-brain-computer-interfaces-now/",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "news_id": "news_1e2611f193c9b67a394d",
-          "importance": null,
-          "content_version": "cv_9eb7180256cb7c1dfbf8"
+          "news_id": "news_4aa489ee2a12fc5985d1",
+          "content_version": "cv_573d22f6933d45da3390"
         }
       ],
-      "event_count": 3
+      "event_count": 5
     },
     {
-      "level": 4,
-      "name": "«Железные» технологии",
-      "level_summary": "На аппаратно-модельном уровне вечерние сигналы касаются удешевления и специализации инференса: квантование, объединение визуальных токенов и физически согласованные модели. Изменение дня — фокус на эффективности исполнения, а не на росте размера моделей.",
+      "level": 7,
+      "name": "Институты производства знаний",
+      "level_summary": "На уровне институтов знания сегодня значимый новый факт — грант на центр AI и человеческой производительности. Юридический сюжет OpenAI также показывает, что знания внутри AI-компаний становятся объектом уголовно-правовой защиты.",
       "events": [
         {
-          "title": "Новый метод делает AI-модели хаотических систем физически согласованными",
-          "fact": "Tech Xplore сообщил о новом подходе, который позволяет создавать физически согласованные AI-модели хаотических систем.",
-          "why_important": "Если подход работает как заявлено, он может повысить доверие к AI-моделям в задачах, где важна физическая корректность симуляций.",
-          "description": "Tech Xplore сообщил о новом подходе, который позволяет создавать физически согласованные AI-модели хаотических систем.",
+          "title": "UIndy получила $8,5 млн на центр AI и человеческой производительности",
+          "fact": "CASRAI сообщил, что Университет Индианаполиса получил грант $8,5 млн на AI Human Performance Center.",
+          "why_important": "Если грант будет реализован по заявленному назначению, он может усилить исследовательские и образовательные возможности университета в области AI и человеческой производительности.",
+          "description": "CASRAI сообщил, что Университет Индианаполиса получил грант $8,5 млн на AI Human Performance Center.",
           "related_levels": [
-            6,
-            7
-          ],
-          "sources": [
-            "https://news.google.com/rss/articles/CBMihgFBVV95cUxNNTVSYUlYQ2tGcmc3UWRTc2ozdFMxZm0xa1l6LXN3bTNBdEF0QUw5Y3dreXF1cjh2VXFkdFVnd3I3Xy1aWjVCUlYtc2xobXduSy1lOWtwb1IyS3VyNUNSMmJoQ2FJRllFbjNZbEpOSk9XaHp6c1pYQWc5bTBXOTJhZ1NxaGxyZw?oc=5"
-          ],
-          "srt_significance": "Ур. 4 → Ур. 6: архитектурные ограничения становятся частью методологии научного моделирования.",
-          "watch_next": "Следить за публикацией деталей метода и проверками на разных хаотических системах.",
-          "place_id": null,
-          "place_confidence": 0.52,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNNTVSYUlYQ2tGcmc3UWRTc2ozdFMxZm0xa1l6LXN3bTNBdEF0QUw5Y3dreXF1cjh2VXFkdFVnd3I3Xy1aWjVCUlYtc2xobXduSy1lOWtwb1IyS3VyNUNSMmJoQ2FJRllFbjNZbEpOSk9XaHp6c1pYQWc5bTBXOTJhZ1NxaGxyZw?oc=5",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "medium",
-            "rationale": "Потенциально значимо для моделирования сложных физических процессов, но подтверждён только факт сообщения о подходе."
-          },
-          "news_id": "news_237a71c5a3fc61fd256f",
-          "content_version": "cv_9ee96850c8e842329dd3"
-        },
-        {
-          "title": "Непрерывная релаксация нацелена на 2-битное квантование",
-          "fact": "В arXiv опубликована работа о continuous relaxation of quantization-aware training. Авторы пишут, что низкобитное квантование, особенно 2 бита и ниже, остаётся трудной задачей для больших генеративных моделей.",
-          "why_important": "",
-          "description": "В arXiv опубликована работа о continuous relaxation of quantization-aware training. Авторы пишут, что низкобитное квантование, особенно 2 бита и ниже, остаётся трудной задачей для больших генеративных моделей.",
-          "related_levels": [
-            2,
-            5
-          ],
-          "sources": [
-            "https://arxiv.org/abs/2611.27056"
-          ],
-          "srt_significance": "Ур. 4 → Ур. 2: более жёсткое квантование может изменить размещение инференса между облаком и краем сети.",
-          "watch_next": "Следить за измерениями качества и скорости метода на реальных больших генеративных моделях.",
-          "place_id": null,
-          "place_confidence": 0.46,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://arxiv.org/abs/2611.27056",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "news_id": "news_0e28a904d1414b09bb90",
-          "importance": null,
-          "content_version": "cv_0e88cdd8a252614ef4e5"
-        },
-        {
-          "title": "Dynamic Token Merging снижает стоимость vision-language инференса",
-          "fact": "В arXiv опубликована работа о Dynamic Token Merging для эффективных vision-language моделей. Авторы пишут, что такие модели представляют изображение сотнями визуальных токенов, что делает инференс дорогим, и предлагают обучаемый механизм удаления токенов.",
-          "why_important": "",
-          "description": "В arXiv опубликована работа о Dynamic Token Merging для эффективных vision-language моделей. Авторы пишут, что такие модели представляют изображение сотнями визуальных токенов, что делает инференс дорогим, и предлагают обучаемый механизм удаления токенов.",
-          "related_levels": [
-            5,
+            3,
             6
           ],
           "sources": [
-            "https://arxiv.org/abs/2611.27064"
+            "https://news.google.com/rss/articles/CBMinAFBVV95cUxNc3haSXdIOUotRmFCa3FxQkdtOEI3SDY4S2J4NlF4UEYxQXV3YWFVQjlvTkZUbkNLa3RSRWg0YlM4WmJHNGZHU2JvQ3RuSHZZR3FzX2dDTm5oQVRRbk1FbHhPY214Y0hlNi1JSmdOaEFMSFdOSnEzY05yd1pveGtubm1lcldabFRQd1lMUFBnRWN5cnJtaU9Fbng5X2I?oc=5"
           ],
-          "srt_significance": "Ур. 4 → Ур. 5: оптимизация токенов снижает стоимость мультимодальных прикладных сервисов.",
-          "watch_next": "Следить за потерей качества при удалении токенов на задачах, где важны мелкие детали изображения.",
-          "place_id": "srt6-ai-unit-economics-optimization",
-          "place_confidence": 0.63,
-          "place_reason": "Работа направлена на снижение вычислительной стоимости инференса.",
-          "sources_meta": [
-            {
-              "url": "https://arxiv.org/abs/2611.27064",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "news_id": "news_b2bcfcb184e5d5f5c764",
-          "importance": null,
-          "content_version": "cv_8d23035ab5c84d0674f2"
-        },
-        {
-          "title": "Asus ProArt P16 запускает локальных AI-агентов на ноутбуке",
-          "fact": "Ars Technica опубликовал обзор Asus ProArt P16 и сообщил, что ноутбук стоимостью до $7 000 может запускать множество локальных AI-агентов.",
-          "why_important": "",
-          "description": "Ars Technica опубликовал обзор Asus ProArt P16 и сообщил, что ноутбук стоимостью до $7 000 может запускать множество локальных AI-агентов.",
-          "related_levels": [
-            3,
-            2
-          ],
-          "sources": [
-            "https://arstechnica.com/reviews/2026/11/review-the-asus-proart-p16-offers-a-glimpse-of-a-future-powered-by-local-ai/"
-          ],
-          "srt_significance": "Ур. 4 → Ур. 3: локальное железо переносит агентные функции ближе к рабочему месту специалиста.",
-          "watch_next": "Следить за временем работы, памятью и типами агентных задач, которые устройство выполняет локально.",
-          "place_id": null,
-          "place_confidence": 0.43,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://arstechnica.com/reviews/2026/11/review-the-asus-proart-p16-offers-a-glimpse-of-a-future-powered-by-local-ai/",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "news_id": "news_c3079baa07ae12d88dd7",
-          "importance": null,
-          "content_version": "cv_6bbac9b1034385c96936"
-        }
-      ],
-      "event_count": 4
-    },
-    {
-      "level": 3,
-      "name": "Социально-профессиональная структура",
-      "level_summary": "Социально-профессиональный уровень вечером получил слабее формализованные, но важные сигналы о профессиях: программирование обсуждается как ремесло под давлением AI, а управленческое здоровье связывается с AI-трансформацией. Новых массовых увольнений или найма в ленте не зафиксировано.",
-      "events": [
-        {
-          "title": "Wired опубликовал эссе о конце ремесла программирования",
-          "fact": "Wired опубликовал материал «Goodbye, World: The End of Programmers» о ремесле программирования в эпоху AI.",
-          "why_important": "Материал может отражать продолжающуюся дискуссию о роли разработчиков при распространении AI, но сам по себе не подтверждает изменение рынка труда или практик разработки.",
-          "description": "Wired опубликовал материал «Goodbye, World: The End of Programmers» о ремесле программирования в эпоху AI.",
-          "related_levels": [
-            6,
-            5
-          ],
-          "sources": [
-            "https://www.wired.com/story/goodbye-world-the-end-of-programmers/"
-          ],
-          "srt_significance": "Ур. 3 → Ур. 6: изменение роли программиста требует новых методик проверки AI-сгенерированного кода.",
-          "watch_next": "Следить за данными о перераспределении времени разработчиков между написанием, ревью и проверкой кода.",
-          "place_id": null,
-          "place_confidence": 0.57,
-          "place_reason": "",
-          "sources_meta": [
-            {
-              "url": "https://www.wired.com/story/goodbye-world-the-end-of-programmers/",
-              "domain": "",
-              "published_at": "2026-11-23"
-            }
-          ],
-          "importance": {
-            "level": "low",
-            "rationale": "Это публикация аналитического/эссеистского материала без подтвержденных решений, метрик или рыночных последствий."
-          },
-          "news_id": "news_a2b7f9f35e547e98971f",
-          "content_version": "cv_ea1d42000f9b08d669d0"
-        },
-        {
-          "title": "HR Dive: AI меняет работу на фоне выгорания менеджеров",
-          "fact": "HR Dive опубликовал спонсорский материал о двух тенденциях 2027 года: AI меняет работу, а нагрузка менеджеров влияет на команды.",
-          "why_important": "Тема может быть релевантна HR-стратегии, если компании сталкиваются с внедрением AI и выгоранием менеджеров, но предоставленные данные не доказывают масштаб проблемы.",
-          "description": "HR Dive опубликовал спонсорский материал о двух тенденциях 2027 года: AI меняет работу, а нагрузка менеджеров влияет на команды.",
-          "related_levels": [
-            5,
-            8
-          ],
-          "sources": [
-            "https://www.hrdive.com/spons/ai-manager-burnout-and-workforce-mental-health-in-2027/875210/"
-          ],
-          "srt_significance": "Ур. 3 → Ур. 5: состояние менеджеров становится ограничением внедрения AI в рабочие процессы.",
-          "watch_next": "Следить за метриками выгорания менеджеров в компаниях, внедряющих AI-инструменты.",
+          "srt_significance": "Ур. 7 → Ур. 3: университетский центр переводит AI-знание в новые компетенции работы с человеком.",
+          "watch_next": "Следить за первыми образовательными программами и исследовательскими проектами нового центра.",
           "place_id": null,
           "place_confidence": 0,
           "place_reason": "",
           "sources_meta": [
             {
-              "url": "https://www.hrdive.com/spons/ai-manager-burnout-and-workforce-mental-health-in-2027/875210/",
+              "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNc3haSXdIOUotRmFCa3FxQkdtOEI3SDY4S2J4NlF4UEYxQXV3YWFVQjlvTkZUbkNLa3RSRWg0YlM4WmJHNGZHU2JvQ3RuSHZZR3FzX2dDTm5oQVRRbk1FbHhPY214Y0hlNi1JSmdOaEFMSFdOSnEzY05yd1pveGtubm1lcldabFRQd1lMUFBnRWN5cnJtaU9Fbng5X2I?oc=5",
               "domain": "",
-              "published_at": "2026-11-23"
+              "published_at": "2026-11-24"
             }
           ],
           "importance": {
-            "level": "low",
-            "rationale": "Данные описывают спонсорский материал о тенденциях, без независимых доказательств масштаба, действий компаний или измеримого эффекта."
+            "level": "medium",
+            "rationale": "Грант $8,5 млн на AI Human Performance Center значим для академической AI-инфраструктуры, но доказательств более широкого рыночного эффекта нет."
           },
-          "news_id": "news_068e4abf4e0f41370fa5",
-          "content_version": "cv_bf9afcd2289af14ff3cc"
+          "news_id": "news_b5a7ef7cd5a72fb6a80f",
+          "content_version": "cv_35a1297656b3c64fdb75"
         },
         {
-          "title": "FT призвала обсуждать pro-worker AI вместо принятия автоматизации",
-          "fact": "FT опубликовала материал, утверждающий, что прогрессистам следует поддерживать pro-worker AI, который использует различие между машинным и человеческим интеллектом, а не просто принимать автоматизацию.",
-          "why_important": "Материал может указывать на рамку будущих дебатов о труде и AI, но не подтверждает, что такая повестка уже влияет на политику или рынок.",
-          "description": "FT опубликовала материал, утверждающий, что прогрессистам следует поддерживать pro-worker AI, который использует различие между машинным и человеческим интеллектом, а не просто принимать автоматизацию.",
+          "title": "Прокуроры США: инженер OpenAI имел записи встреч и фото сделки",
+          "fact": "FT сообщил, что инженер OpenAI, по словам прокуроров США, имел десятки записей встреч. Bloomberg сообщил, что бывший инженер, обвинённый в установке скрытого устройства, вероятно перехватил коммерческие тайны и имел фото условий стратегического партнёрства.",
+          "why_important": "Если утверждения прокуроров подтвердятся, инцидент может указывать на серьёзные риски защиты конфиденциальной информации и внутренней безопасности в OpenAI.",
+          "description": "FT сообщил, что инженер OpenAI, по словам прокуроров США, имел десятки записей встреч. Bloomberg сообщил, что бывший инженер, обвинённый в установке скрытого устройства, вероятно перехватил коммерческие тайны и имел фото условий стратегического партнёрства.",
           "related_levels": [
             8,
             5
           ],
           "sources": [
-            "https://www.ft.com/content/add930b5-5a4c-4226-a778-ffdd009915f0"
+            "https://www.ft.com/content/f860152a-6bd6-43f7-8ba1-4a6ae94d6565?syn-25a6b1a6=1",
+            "https://www.bloomberg.com/news/articles/2026-11-23/openai-staffer-likely-captured-secrets-on-hidden-bug-us-says"
           ],
-          "srt_significance": "Ур. 3 → Ур. 8: профессиональная повестка труда требует норм для pro-worker AI.",
-          "watch_next": "Следить за появлением конкретных требований профсоюзов и партий к дизайну рабочих AI-систем.",
+          "srt_significance": "Ур. 7 → Ур. 8: внутреннее знание AI-лаборатории переводится в юридический режим доверия и контроля.",
+          "watch_next": "Следить за тем, какие материалы суд признает коммерческой тайной OpenAI.",
           "place_id": null,
-          "place_confidence": 0.42,
+          "place_confidence": 0,
           "place_reason": "",
           "sources_meta": [
             {
-              "url": "https://www.ft.com/content/add930b5-5a4c-4226-a778-ffdd009915f0",
+              "url": "https://www.ft.com/content/f860152a-6bd6-43f7-8ba1-4a6ae94d6565?syn-25a6b1a6=1",
+              "domain": "",
+              "published_at": "2026-11-24"
+            },
+            {
+              "url": "https://www.bloomberg.com/news/articles/2026-11-23/openai-staffer-likely-captured-secrets-on-hidden-bug-us-says",
+              "domain": "",
+              "published_at": "2026-11-23"
+            }
+          ],
+          "importance": {
+            "level": "high",
+            "rationale": "Сообщения касаются OpenAI, обвинений прокуроров США, возможного перехвата коммерческих тайн и данных стратегического партнёрства, что может иметь существенные юридические и конкурентные последствия."
+          },
+          "news_id": "news_a5ecbc6e9bfef6a33212",
+          "content_version": "cv_ebf1a0d08c9fc8a6b127"
+        }
+      ],
+      "event_count": 2
+    },
+    {
+      "level": 6,
+      "name": "Технологии производства знаний",
+      "level_summary": "На уровне технологий производства знаний сегодня выделяется RoboTrack: робототехническая манипуляция получает открыто описанный метод отслеживания точек в реальном мире. Это свежий сигнал по проверяемым методам для физического AI.",
+      "events": [
+        {
+          "title": "AllenAI представил RoboTrack для отслеживания точек в робототехнике",
+          "fact": "Hugging Face опубликовал материал AllenAI о RoboTrack — отслеживании точек для робототехнической манипуляции в реальном мире.",
+          "why_important": "Если подход окажется практичным, он может быть полезен для задач робототехнической манипуляции в реальных условиях.",
+          "description": "Hugging Face опубликовал материал AllenAI о RoboTrack — отслеживании точек для робототехнической манипуляции в реальном мире.",
+          "related_levels": [
+            4,
+            3
+          ],
+          "sources": [
+            "https://huggingface.co/blog/allenai/robotrack"
+          ],
+          "srt_significance": "Ур. 6 → Ур. 4: метод отслеживания переводит знания о сцене в управляемое действие робота.",
+          "watch_next": "Следить за кодом, наборами данных и сравнением RoboTrack с существующими методами трекинга.",
+          "place_id": "srt6-physical-domain-agents",
+          "place_confidence": 0.84,
+          "place_reason": "Метод напрямую относится к агентам, действующим в физической среде.",
+          "sources_meta": [
+            {
+              "url": "https://huggingface.co/blog/allenai/robotrack",
               "domain": "",
               "published_at": "2026-11-23"
             }
           ],
           "importance": {
             "level": "low",
-            "rationale": "Это публикация с позицией о pro-worker AI, без подтвержденного политического решения, регулирования или корпоративного внедрения."
+            "rationale": "Это публикация о робототехническом методе RoboTrack; доказательств внедрения, коммерциализации или масштабного влияния не предоставлено."
           },
-          "news_id": "news_bac0ebad9e9b3097260a",
-          "content_version": "cv_d54d3885006c58c9ea50"
+          "news_id": "news_eb2701ff66febea27293",
+          "content_version": "cv_ee9a5433549973580079"
         }
       ],
-      "event_count": 3
+      "event_count": 1
+    },
+    {
+      "level": 5,
+      "name": "Экономическое разделение труда между фирмами",
+      "level_summary": "Экономическое разделение труда сегодня сдвинулось через сделки и интеграции: Amazon покупает оптимизацию для Trainium, Google расширяет AI-поиск на личные данные, а Fujitsu и Sunway/HPE укрепляют суверенные контуры.",
+      "events": [
+        {
+          "title": "Amazon покупает AI-оптимизацию Decart за $7,5 млрд перед продажей Trainium",
+          "fact": "TechCrunch сообщил, что Amazon приобретает AI-технологию оптимизации и исследовательскую команду Decart в сделке, оценённой в $7,5 млрд, готовясь продавать чипы Trainium.",
+          "why_important": "Если сделка завершится и технология будет интегрирована, она может усилить предложение Amazon вокруг Trainium и AI-вычислений.",
+          "description": "TechCrunch сообщил, что Amazon приобретает AI-технологию оптимизации и исследовательскую команду Decart в сделке, оценённой в $7,5 млрд, готовясь продавать чипы Trainium.",
+          "related_levels": [
+            4,
+            6,
+            9
+          ],
+          "sources": [
+            "https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/"
+          ],
+          "srt_significance": "Ур. 5 → Ур. 4: сделка встраивает программную оптимизацию в коммерциализацию собственного AI-чипа.",
+          "watch_next": "Следить за условиями продажи Trainium и переносом технологий Decart в сервисы Amazon.",
+          "place_id": "srt6-ai-unit-economics-optimization",
+          "place_confidence": 0.72,
+          "place_reason": "Суть сделки — оптимизация AI-нагрузок для аппаратного стека.",
+          "sources_meta": [
+            {
+              "url": "https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/",
+              "domain": "",
+              "published_at": "2026-11-23"
+            }
+          ],
+          "importance": {
+            "level": "high",
+            "rationale": "Сделка на $7,5 млрд с участием Amazon, AI-оптимизации Decart и подготовки к продажам Trainium может быть стратегически значимой для конкуренции в AI-инфраструктуре."
+          },
+          "news_id": "news_fc32915cc49c0588c9bf",
+          "content_version": "cv_16af2056e8c0dd5138ad"
+        },
+        {
+          "title": "Google AI Mode подключает Drive и Wallet к персональным ответам",
+          "fact": "TechCrunch сообщил, что AI Mode в Google Search теперь может использовать Drive и Wallet для более персонализированных ответов, а также Personal Intelligence в приложении Gemini.",
+          "why_important": "Если функция будет широко использоваться, она может усилить персонализацию поиска и AI-ассистентов Google, одновременно повышая требования к доверию, управлению данными и прозрачности.",
+          "description": "TechCrunch сообщил, что AI Mode в Google Search теперь может использовать Drive и Wallet для более персонализированных ответов, а также Personal Intelligence в приложении Gemini.",
+          "related_levels": [
+            8,
+            3
+          ],
+          "sources": [
+            "https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/"
+          ],
+          "srt_significance": "Ур. 5 → Ур. 8: экосистема Google превращает доверенный доступ к личным данным в условие AI-сервиса.",
+          "watch_next": "Следить за настройками согласия пользователя и ограничениями доступа AI Mode к Drive и Wallet.",
+          "place_id": null,
+          "place_confidence": 0,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/",
+              "domain": "",
+              "published_at": "2026-11-23"
+            }
+          ],
+          "importance": {
+            "level": "high",
+            "rationale": "Затрагивает Google Search, Gemini и доступ к чувствительным персональным данным Drive и Wallet, что может быть значимо для продукта, приватности и конкуренции."
+          },
+          "news_id": "news_25f33d1df44504de388c",
+          "content_version": "cv_326a77ed928eda1bd7c9"
+        },
+        {
+          "title": "Fujitsu продвигает Monaka для защищённой суверенной AI-инфраструктуры",
+          "fact": "Bloomberg сообщил, что технический директор Fujitsu обсудил глобальный вывод сервера Monaka и стратегию инфраструктуры для суверенного AI в обороне, финансах, государстве и производстве.",
+          "why_important": "Если стратегия будет реализована, Fujitsu может усилить позиции в сегменте защищённой AI-инфраструктуры, где важны локализация, контроль данных и соответствие требованиям регулируемых отраслей.",
+          "description": "Bloomberg сообщил, что технический директор Fujitsu обсудил глобальный вывод сервера Monaka и стратегию инфраструктуры для суверенного AI в обороне, финансах, государстве и производстве.",
+          "related_levels": [
+            4,
+            8,
+            2
+          ],
+          "sources": [
+            "https://www.bloomberg.com/news/videos/2026-11-24/fujitsu-cto-on-ai-focus-outlook-video"
+          ],
+          "srt_significance": "Ур. 5 → Ур. 4: отраслевой спрос на доверенный AI закрепляется в серверной платформе Monaka.",
+          "watch_next": "Следить за первыми странами и секторами, где Fujitsu развернёт Monaka для суверенного AI.",
+          "place_id": "srt7-sovereign-ai-security",
+          "place_confidence": 0.78,
+          "place_reason": "Fujitsu связывает инфраструктуру с защищёнными секторами и суверенным AI.",
+          "sources_meta": [
+            {
+              "url": "https://www.bloomberg.com/news/videos/2026-11-24/fujitsu-cto-on-ai-focus-outlook-video",
+              "domain": "",
+              "published_at": "2026-11-24"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Новость касается суверенной AI-инфраструктуры для регулируемых отраслей, но подтверждена только как обсуждение CTO без доказанных контрактов или результатов."
+          },
+          "news_id": "news_f159f04f737edff27a79",
+          "content_version": "cv_87dfb2c7373f0928d27b"
+        },
+        {
+          "title": "Sunway и HPE строят защищённый суверенный AI для предприятия",
+          "fact": "Yahoo Finance сообщил, что Sunway Group ускоряет защищённый и суверенный корпоративный AI вместе с HPE.",
+          "why_important": "Если инициатива будет масштабной, она может отражать растущий спрос предприятий на AI-инфраструктуру с контролем данных и безопасностью.",
+          "description": "Yahoo Finance сообщил, что Sunway Group ускоряет защищённый и суверенный корпоративный AI вместе с HPE.",
+          "related_levels": [
+            2,
+            8,
+            4
+          ],
+          "sources": [
+            "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYWxDMkk1RlV6MkI4elVCS0VNMWs0N2IzN2pEdjZVS1owM2VFWm9BWF9EZ2hGVzhBLThUaHZRMXdUaW4tTFdrTUwzTWRqQ3AzeXpnUUUyTE4yRDlhUzhYMkF6SG5OT0Z2X3hoYXM2ZFozOVdOcW9md0RlWHZPcS1zZGZwb1RDbk1Celk2cXlwV2o0a2hLUEhRdUVLUDBWcW1BU2I3d2FfWkc?oc=5"
+          ],
+          "srt_significance": "Ур. 5 → Ур. 2: корпоративный AI связывается с локальным защищённым облачным контуром.",
+          "watch_next": "Следить за архитектурой решения Sunway/HPE и требованиями к локализации данных.",
+          "place_id": "srt2-sovereign-cloud-as-a-service",
+          "place_confidence": 0.7,
+          "place_reason": "Новость касается защищённого суверенного AI-контура для организации.",
+          "sources_meta": [
+            {
+              "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYWxDMkk1RlV6MkI4elVCS0VNMWs0N2IzN2pEdjZVS1owM2VFWm9BWF9EZ2hGVzhBLThUaHZRMXdUaW4tTFdrTUwzTWRqQ3AzeXpnUUUyTE4yRDlhUzhYMkF6SG5OT0Z2X3hoYXM2ZFozOVdOcW9md0RlWHZPcS1zZGZwb1RDbk1Celk2cXlwV2o0a2hLUEhRdUVLUDBWcW1BU2I3d2FfWkc?oc=5",
+              "domain": "",
+              "published_at": "2026-11-24"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Тема защищённого суверенного корпоративного AI важна для предприятий, но факт не содержит деталей масштаба, инвестиций или результатов."
+          },
+          "news_id": "news_41aa9a83ffedd3625aad",
+          "content_version": "cv_871e46974b29edcd4e32"
+        },
+        {
+          "title": "Black Friday меняется из-за AI и может дать меньшие скидки",
+          "fact": "Scripps News сообщил, что AI меняет Black Friday и это может означать меньшие скидки.",
+          "why_important": "Если AI действительно меняет ценообразование и промоакции, ритейлеры могут точнее управлять скидками, а потребители — сталкиваться с менее предсказуемыми или меньшими выгодами.",
+          "description": "Scripps News сообщил, что AI меняет Black Friday и это может означать меньшие скидки.",
+          "related_levels": [
+            3,
+            9
+          ],
+          "sources": [
+            "https://news.google.com/rss/articles/CBMizAFBVV95cUxNWU1uODU0UjJTS3ZJZ2x1MWdscEduRHI3MGNfaHYwbzIxQWlHU3h2dlU0bm5iVDladnpQY1oxTVA1eHQxRF9NQU9XUkY2czlWVUxiSG42VkEycmgxSm52N0FVSzNUckZLc0dIT1p2NTk3dE9TWFBkWl85VjNGUDFNc1dqZmJ2N2xIblZsQjNLNVpfQU8wX3QyaE9nUGhTLTVQVUcwam5kZmpVYmlzcTAxdUJWWGRWUHFoQjVjWkc3THJWWk1qUTQ4Ukd1V1E?oc=5"
+          ],
+          "srt_significance": "Ур. 5 → Ур. 3: торговые решения переносятся от ручных акций к AI-координации спроса.",
+          "watch_next": "Следить за фактической глубиной скидок и долей AI-персонализированных предложений в Black Friday.",
+          "place_id": null,
+          "place_confidence": 0,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNWU1uODU0UjJTS3ZJZ2x1MWdscEduRHI3MGNfaHYwbzIxQWlHU3h2dlU0bm5iVDladnpQY1oxTVA1eHQxRF9NQU9XUkY2czlWVUxiSG42VkEycmgxSm52N0FVSzNUckZLc0dIT1p2NTk3dE9TWFBkWl85VjNGUDFNc1dqZmJ2N2xIblZsQjNLNVpfQU8wX3QyaE9nUGhTLTVQVUcwam5kZmpVYmlzcTAxdUJWWGRWUHFoQjVjWkc3THJWWk1qUTQ4Ukd1V1E?oc=5",
+              "domain": "",
+              "published_at": "2026-11-24"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Потенциальное влияние AI на Black Friday и размер скидок важно для розницы и потребителей, но доказательная база ограничена сообщением без количественных данных."
+          },
+          "news_id": "news_7de8683237d7c91c4766",
+          "content_version": "cv_9875b2c376757c4e534d"
+        }
+      ],
+      "event_count": 5
+    },
+    {
+      "level": 4,
+      "name": "«Железные» технологии",
+      "level_summary": "Самостоятельных значимых событий на аппаратном уровне сегодня не зафиксировано. Аппаратный слой проявился через сделки и стратегии уровней 5 и 9: Trainium у Amazon и Monaka у Fujitsu.",
+      "events": [],
+      "event_count": 0
+    },
+    {
+      "level": 3,
+      "name": "Социально-профессиональная структура",
+      "level_summary": "Социально-профессиональный уровень сегодня получил два сигнала: Anthropic формализует передачу части работы разработчика агенту, а отчёт по найму показывает спрос на AI-компетенции за пределами технологического сектора.",
+      "events": [
+        {
+          "title": "Anthropic запустила Claude Ship для проверки и утверждения кода агентами",
+          "fact": "TechCrunch сообщил, что Anthropic запустила Claude Ship: AI-агенты могут проверять, исправлять и утверждать изменения кода. The Verge также сообщил, что Claude теперь может проверять, исправлять и утверждать заявки на изменение кода.",
+          "why_important": "",
+          "description": "TechCrunch сообщил, что Anthropic запустила Claude Ship: AI-агенты могут проверять, исправлять и утверждать изменения кода. The Verge также сообщил, что Claude теперь может проверять, исправлять и утверждать заявки на изменение кода.",
+          "related_levels": [
+            5,
+            6,
+            8
+          ],
+          "sources": [
+            "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+            "https://www.theverge.com/ai-artificial-intelligence/1040134/anthropic-claude-ship-ai-pull-requests"
+          ],
+          "srt_significance": "Ур. 3 → Ур. 5: часть профессиональной ответственности разработчика встраивается в продуктовую платформу.",
+          "watch_next": "Следить за тем, какие компании разрешат Claude Ship утверждать изменения без ручного финального решения.",
+          "place_id": "srt3-ai-agent-orchestration",
+          "place_confidence": 0.82,
+          "place_reason": "Claude Ship оркестрирует агентные действия в процессе разработки.",
+          "sources_meta": [
+            {
+              "url": "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+              "domain": "",
+              "published_at": "2026-11-23"
+            },
+            {
+              "url": "https://www.theverge.com/ai-artificial-intelligence/1040134/anthropic-claude-ship-ai-pull-requests",
+              "domain": "",
+              "published_at": "2026-11-23"
+            }
+          ],
+          "news_id": "news_5e2478fb7557e8d39a7d",
+          "importance": null,
+          "content_version": "cv_0fa43ce9712a6ec4adb2"
+        },
+        {
+          "title": "Отчёт: AI-бум повышает спрос на найм вне технологического сектора",
+          "fact": "Taipei Times сообщил, что AI-бум стимулирует спрос на найм за пределами технологического сектора.",
+          "why_important": "Если тенденция подтверждается, спрос на AI-связанные навыки может распространяться на более широкий круг отраслей, меняя кадровые планы и конкуренцию за специалистов.",
+          "description": "Taipei Times сообщил, что AI-бум стимулирует спрос на найм за пределами технологического сектора.",
+          "related_levels": [
+            5,
+            7
+          ],
+          "sources": [
+            "https://news.google.com/rss/articles/CBMidkFVX3lxTFBYNVRqbFlWdHA4dmxzeVRIeWFPOWpCVFlINVNicWJMMTZ0c2c4V0N3WWY5UkR5SHQySEVSWHRwRWpMQi12bVBnYjB0NndiWkFqck9uYkJvSDNISE1jWVlTRGdXeVBFUVpxUVNRelBmYTQzekVDdUE?oc=5"
+          ],
+          "srt_significance": "Ур. 3 → Ур. 5: AI-компетенции становятся условием отраслевой перестройки труда вне технологических компаний.",
+          "watch_next": "Следить за профессиями и секторами, где рост вакансий, связанных с AI, окажется самым сильным.",
+          "place_id": null,
+          "place_confidence": 0.5,
+          "place_reason": "",
+          "sources_meta": [
+            {
+              "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBYNVRqbFlWdHA4dmxzeVRIeWFPOWpCVFlINVNicWJMMTZ0c2c4V0N3WWY5UkR5SHQySEVSWHRwRWpMQi12bVBnYjB0NndiWkFqck9uYkJvSDNISE1jWVlTRGdXeVBFUVpxUVNRelBmYTQzekVDdUE?oc=5",
+              "domain": "",
+              "published_at": "2026-11-24"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Сообщение указывает на возможное расширение влияния AI-бума на рынок труда за пределами технологического сектора, но детали и масштаб не приведены."
+          },
+          "news_id": "news_12f73016d498ab875b69",
+          "content_version": "cv_cd428b3e74f7a4054f38"
+        }
+      ],
+      "event_count": 2
     },
     {
       "level": 2,
       "name": "Пространственная организация",
-      "level_summary": "На уровне пространственной организации новых крупных площадок дата-центров вечером не появилось. Изменение связано не с размещением объектов, а с инфраструктурной легитимностью: дата-центры всё чаще становятся предметом общественного и сетевого согласования на соседних уровнях 1 и 8.",
+      "level_summary": "Самостоятельных новых решений о размещении дата-центров сегодня не зафиксировано. Пространственный уровень проявился косвенно через Малайзию, где доступ к площадкам дата-центров стал предметом экспортного контроля.",
       "events": [],
       "event_count": 0
     },
     {
       "level": 1,
       "name": "Природные ресурсы и география",
-      "level_summary": "Ресурсный уровень вечером дал два новых сигнала о гибкости энергосистемы: виртуальные электростанции в New Jersey и ускорение очереди MISO на 125 ГВт генерации и хранения. Это не AI-специфические решения, но они относятся к той энергосистеме, в которую встраиваются будущие вычислительные нагрузки.",
+      "level_summary": "На ресурсном уровне сегодня усилился спор о том, как AI-дата-центры будут получать энергию: Mitsubishi ожидает возврата нагрузки к коммунальным сетям, а климатическая повестка COP31 зафиксировала напряжение между электрификацией и ростом дата-центров.",
       "events": [
         {
-          "title": "New Jersey дал коммунальным компаниям меньше года на VPP",
-          "fact": "Utility Dive сообщил, что коммунальные компании New Jersey имеют меньше года для внедрения виртуальных электростанций. Регуляторы штата сказали, что данные двухлетней промежуточной версии PowerUp NJ помогут разработать долгосрочный тариф открытого доступа для VPP.",
-          "why_important": "Это важно для энергетического сектора New Jersey, поскольку указывает на ближайший срок внедрения VPP и возможное формирование тарифной модели открытого доступа.",
-          "description": "Utility Dive сообщил, что коммунальные компании New Jersey имеют меньше года для внедрения виртуальных электростанций. Регуляторы штата сказали, что данные двухлетней промежуточной версии PowerUp NJ помогут разработать долгосрочный тариф открытого доступа для VPP.",
+          "title": "Mitsubishi: дорогая автономная энергия вернёт дата-центры к сетям",
+          "fact": "Utility Dive сообщил, что глава Mitsubishi Heavy Industries Эйсаку Ито ожидает, что расходы автономных решений подтолкнут дата-центры обратно к коммунальным компаниям.",
+          "why_important": "Если прогноз верен, операторы дата-центров могут меньше полагаться на автономную генерацию и активнее взаимодействовать с коммунальными поставщиками энергии.",
+          "description": "Utility Dive сообщил, что глава Mitsubishi Heavy Industries Эйсаку Ито ожидает, что расходы автономных решений подтолкнут дата-центры обратно к коммунальным компаниям.",
           "related_levels": [
+            2,
+            5,
+            9
+          ],
+          "sources": [
+            "https://www.utilitydive.com/news/data-centers-mitsubishi-gas-turbines-earnings/875146/"
+          ],
+          "srt_significance": "Ур. 1 → Ур. 2: стоимость автономной энергии возвращает размещение дата-центров в зависимость от сетей.",
+          "watch_next": "Следить за долей новых дата-центров, которые заключают договоры с коммунальными компаниями вместо автономной генерации.",
+          "place_id": "srt1-ai-dedicated-energy",
+          "place_confidence": 0.73,
+          "place_reason": "Событие касается энергоснабжения дата-центров для растущей нагрузки.",
+          "sources_meta": [
+            {
+              "url": "https://www.utilitydive.com/news/data-centers-mitsubishi-gas-turbines-earnings/875146/",
+              "domain": "",
+              "published_at": "2026-11-23"
+            }
+          ],
+          "importance": {
+            "level": "medium",
+            "rationale": "Оценка главы Mitsubishi Heavy Industries касается энергетической стратегии дата-центров, но представлена как ожидание, а не подтвержденное изменение рынка."
+          },
+          "news_id": "news_56e1ce6af2efea2b5a9d",
+          "content_version": "cv_02238e7309633368ce12"
+        },
+        {
+          "title": "AI-дата-центры осложнили переговоры COP31 по климату",
+          "fact": "The Verge сообщил, что рост энергопотребления дата-центров стал дополнительной проблемой на климатической конференции ООН COP31 в Анталье.",
+          "why_important": "Если вопрос закрепится в климатической повестке, AI-инфраструктура может столкнуться с большим вниманием регуляторов, энергетических компаний и участников переговоров по выбросам.",
+          "description": "The Verge сообщил, что рост энергопотребления дата-центров стал дополнительной проблемой на климатической конференции ООН COP31 в Анталье.",
+          "related_levels": [
+            8,
             2,
             5
           ],
           "sources": [
-            "https://www.utilitydive.com/news/new-jersey-utilities-have-less-than-a-year-to-implement-virtual-power-plant/875482/"
+            "https://www.theverge.com/science/1040497/ai-data-centers-electricity-un-climate-summit"
           ],
-          "srt_significance": "Ур. 1 → Ур. 2: энергетическая гибкость становится условием размещения новых вычислительных нагрузок.",
-          "watch_next": "Следить за параметрами тарифа открытого доступа VPP и участием крупных нагрузок в программе.",
+          "srt_significance": "Ур. 1 → Ур. 8: энергопотребление AI становится предметом международных климатических правил.",
+          "watch_next": "Следить, появятся ли в итоговых климатических документах отдельные требования к дата-центрам.",
           "place_id": null,
-          "place_confidence": 0.48,
+          "place_confidence": 0.58,
           "place_reason": "",
           "sources_meta": [
             {
-              "url": "https://www.utilitydive.com/news/new-jersey-utilities-have-less-than-a-year-to-implement-virtual-power-plant/875482/",
+              "url": "https://www.theverge.com/science/1040497/ai-data-centers-electricity-un-climate-summit",
               "domain": "",
               "published_at": "2026-11-23"
             }
           ],
           "importance": {
-            "level": "high",
-            "rationale": "Факт указывает на конкретный регуляторный срок для коммунальных компаний New Jersey и связь с разработкой долгосрочного тарифа для VPP."
+            "level": "medium",
+            "rationale": "Связь роста энергопотребления AI-дата-центров с климатическими переговорами важна для регулирования и энергетической политики, но факт ограничен сообщением о дополнительной проблеме на конференции."
           },
-          "news_id": "news_0e188cb075810f9fb8de",
-          "content_version": "cv_ac95e880bdad58e2d6eb"
+          "news_id": "news_b6aa410db677fb565921",
+          "content_version": "cv_fcb340dc41bb3de9f237"
         },
         {
-          "title": "FERC одобрила ускорение очереди MISO на 125 ГВт",
-          "fact": "Utility Dive сообщил, что FERC одобрила план MISO ускорить процесс изучения legacy interconnection. По данным оператора, без изменений циклы очереди с примерно 125 ГВт генерации и хранения были бы задержаны.",
-          "why_important": "Если план будет реализован как предусмотрено, он может сократить задержки в рассмотрении подключений генерации и хранения в зоне MISO.",
-          "description": "Utility Dive сообщил, что FERC одобрила план MISO ускорить процесс изучения legacy interconnection. По данным оператора, без изменений циклы очереди с примерно 125 ГВт генерации и хранения были бы задержаны.",
+          "title": "Utility Dive: скрытое узкое место энергосетей — инженерные мощности",
+          "fact": "Utility Dive опубликовал материал о том, что коммунальным компаниям нужно инвестировать в дополнительную инфраструктуру и переосмыслить инженерное проектирование и ввод сетевых объектов.",
+          "why_important": "Если описанная проблема отражает реальное состояние отрасли, инженерные мощности могут быть ограничителем модернизации и расширения энергосетей, а не только вопросом капитальных затрат.",
+          "description": "Utility Dive опубликовал материал о том, что коммунальным компаниям нужно инвестировать в дополнительную инфраструктуру и переосмыслить инженерное проектирование и ввод сетевых объектов.",
           "related_levels": [
-            2,
-            9
+            3,
+            2
           ],
           "sources": [
-            "https://www.utilitydive.com/news/ferc-miso-interconnection-queue-study/875449/"
+            "https://www.utilitydive.com/spons/the-grids-hidden-bottleneck-engineering-capacity/874856/"
           ],
-          "srt_significance": "Ур. 1 → Ур. 2: ускорение подключения генерации меняет доступность площадок для энергоёмких нагрузок.",
-          "watch_next": "Следить за тем, сколько из 125 ГВт проектов MISO получит реальные соглашения о подключении.",
+          "srt_significance": "Ур. 1 → Ур. 3: развитие сетей для нагрузки упирается в дефицит инженерной организации труда.",
+          "watch_next": "Следить за сроками подключения крупных нагрузок и числом инженеров в сетевых проектаных командах.",
           "place_id": null,
-          "place_confidence": 0.45,
+          "place_confidence": 0.46,
           "place_reason": "",
           "sources_meta": [
             {
-              "url": "https://www.utilitydive.com/news/ferc-miso-interconnection-queue-study/875449/",
+              "url": "https://www.utilitydive.com/spons/the-grids-hidden-bottleneck-engineering-capacity/874856/",
               "domain": "",
               "published_at": "2026-11-23"
             }
           ],
           "importance": {
-            "level": "high",
-            "rationale": "Решение касается очереди interconnection примерно на 125 ГВт генерации и хранения, что указывает на значимый масштаб для энергорынка MISO."
+            "level": "low",
+            "rationale": "Это отраслевой материал о проблеме инженерных мощностей в энергосетях, без подтвержденных новых инвестиций, регуляторных решений или измеримых последствий."
           },
-          "news_id": "news_b7e0ee57968aae827ece",
-          "content_version": "cv_8c0077fc21f695126fa0"
+          "news_id": "news_c1ed58fb5af2bf273b68",
+          "content_version": "cv_42e255d9ba4f909d93f2"
         }
       ],
-      "event_count": 2
+      "event_count": 3
     }
   ],
   "cross_level_links": [
     {
-      "title": "Возвращение Хуанга связало управление Nvidia с рыночной устойчивостью AI",
-      "description": "У5: совет Nvidia вернул CEO; У8: вмешательство государства стало частью сюжета доверия; У9: акции Nvidia и AI-сектора резко выросли.",
+      "title": "Экспортный контроль спускается в слой дата-центров",
+      "description": "У8 задаёт запреты через чёрные списки, У2 получает ограничения на размещение, У5 перестраивает цепочки услуг и клиентов.",
       "levels": [
-        5,
         8,
-        9
+        2,
+        5
       ],
       "sources": [
-        "https://arstechnica.com/ai/2026/11/jensen-huang-reinstated-as-nvidia-ceo-board-chair/",
-        "https://techcrunch.com/2026/11/23/trump-reportedly-called-into-nvidia-board-meeting-to-advocate-for-huangs-return/",
-        "https://www.bloomberg.com/news/videos/2026-11-23/stocks-soar-as-huang-s-nvidia-return-fuels-ai-bets-video"
+        "https://www.bloomberg.com/news/articles/2026-11-24/malaysia-tells-data-centers-to-cut-off-firms-on-us-blacklist",
+        "https://www.bloomberg.com/news/articles/2026-11-24/us-blacklists-alibaba-owned-company-in-setback-to-ai-ambitions"
       ]
     },
     {
-      "title": "Розничные агенты требуют новых правил доступа к данным и покупкам",
-      "description": "У5: Walmart открыл Agent Gateway для Meta Muse; У6: нужны агентные оценки; У8: приватность веб-действий становится новым риском.",
+      "title": "AI-агенты переходят от помощи к действию под вопросом ответственности",
+      "description": "У3 меняет работу разработчиков, У5 встраивает агентов в продукты, У8 ограничивает внедрение там, где неясна ответственность.",
       "levels": [
+        3,
         5,
-        6,
         8
       ],
       "sources": [
-        "https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday",
-        "https://huggingface.co/blog/agentic-evals",
-        "https://arxiv.org/abs/2611.27046"
+        "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+        "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qb1E0ekF2Y195b0JfWjJORHA3SVFxY3ZBcVJZa2dYMUw3bTFnUmxyX3FvdldNVFg5UEhpdHNRWE9DY0xDckR0YklqMTRISnNFdVJNOE0wWFlMT0ZDek9JRUhwV3hXRkhqZTFVTmYtdkZLWEdPcHdGX1B3VjdNVXM?oc=5",
+        "https://techcrunch.com/2026/11/23/supertake-raises-20m-to-let-ai-agents-turn-your-market-predictions-into-stock-portfolios/"
       ]
     },
     {
-      "title": "AI-аудит смещается от автоматизации к проверке самих проверок",
-      "description": "У6: LLM добавляют неподдержанные причины в отчётах; У8: Grant Thornton предупреждает о качестве аудита; У9: это затрагивает доверие к финансовым данным.",
+      "title": "Суверенный AI связывает безопасность, серверы и локальные облака",
+      "description": "У5 формирует предложения Fujitsu и HPE, У4 задаёт серверный стек, У2 закрепляет локальный контур размещения.",
       "levels": [
-        6,
-        8,
-        9
+        5,
+        4,
+        2
       ],
       "sources": [
-        "https://arxiv.org/abs/2611.26968",
-        "https://www.ft.com/content/13b9bee8-f7e4-4b02-ad78-2e358ff43240?syn-25a6b1a6=1",
-        "https://news.google.com/rss/articles/CBMizgFBVV95cUxQUHNXcUY0anNsSHBsZWRBYURCQlUxNWRLYl96OHVWdjE3eXNQN3Rfc3FTenU4UG1uVF90ZjY2LWZrM2JzOEJHb3R3VThQVXhwRzYwZWFTTXQ1VnV3dDJjYkNsRzFDNTdfUHo1V3hOUjMzS0ZKM1FUdzNhbFJWVkVDS050ZkdkRWZwWmRqSjliVGM2RmhrUXFFYWJUV2R2VUpqVVpwN2VkVU1VTEpyNTFkVjVQeHoxaWsyS1NFSVZldllNYU5TNnBoYTZKV2VzUQ?oc=5"
+        "https://www.bloomberg.com/news/videos/2026-11-24/fujitsu-cto-on-ai-focus-outlook-video",
+        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYWxDMkk1RlV6MkI4elVCS0VNMWs0N2IzN2pEdjZVS1owM2VFWm9BWF9EZ2hGVzhBLThUaHZRMXdUaW4tTFdrTUwzTWRqQ3AzeXpnUUUyTE4yRDlhUzhYMkF6SG5OT0Z2X3hoYXM2ZFozOVdOcW9md0RlWHZPcS1zZGZwb1RDbk1Celk2cXlwV2o0a2hLUEhRdUVLUDBWcW1BU2I3d2FfWkc?oc=5"
       ]
     },
     {
-      "title": "Энергетическая гибкость становится предварительным условием AI-размещения",
-      "description": "У1: New Jersey ускоряет VPP, MISO ускоряет очередь генерации; У2: это влияет на доступность площадок; У9: долговое финансирование зависит от готовности инфраструктуры.",
+      "title": "Энергия для AI возвращается в коммунальную и климатическую повестку",
+      "description": "У1 фиксирует стоимость и климатические ограничения, У2 зависит от сетевого подключения, У8 вводит климатические рамки.",
       "levels": [
         1,
         2,
-        9
+        8
       ],
       "sources": [
-        "https://www.utilitydive.com/news/new-jersey-utilities-have-less-than-a-year-to-implement-virtual-power-plant/875482/",
-        "https://www.utilitydive.com/news/ferc-miso-interconnection-queue-study/875449/",
-        "https://www.bloomberg.com/news/videos/2026-11-23/more-ai-debt-could-be-coming"
+        "https://www.utilitydive.com/news/data-centers-mitsubishi-gas-turbines-earnings/875146/",
+        "https://www.theverge.com/science/1040497/ai-data-centers-electricity-un-climate-summit",
+        "https://www.utilitydive.com/spons/the-grids-hidden-bottleneck-engineering-capacity/874856/"
       ]
     }
   ],
   "structural_shifts": [
     {
-      "title": "Системный AI-поставщик становится объектом публично-финансового управления",
-      "from": "Корпоративное управление поставщиком чипов как внутреннее дело совета директоров",
-      "to": "Управление ключевым AI-узлом как вопрос государства, рынков и всей инфраструктурной цепочки",
-      "through": "Возвращение Дженсена Хуанга, сообщения о вмешательстве Trump и немедленная реакция акций Nvidia и AI-сектора",
+      "title": "Контроль AI-цепочек смещается от чипов к доступу к инфраструктуре",
+      "from": "Контроль концентрировался на поставках аппаратуры и компаниях-производителях.",
+      "to": "Контроль распространяется на хостинг, аренду мощностей, посредников и парламентский надзор.",
+      "through": "Чёрные списки США, рекомендации Малайзии операторам дата-центров и слушания в Сенате по Nvidia.",
       "levels": [
-        5,
         8,
-        9,
+        2,
+        5,
         4
       ],
       "sources": [
-        "https://arstechnica.com/ai/2026/11/jensen-huang-reinstated-as-nvidia-ceo-board-chair/",
-        "https://techcrunch.com/2026/11/23/trump-reportedly-called-into-nvidia-board-meeting-to-advocate-for-huangs-return/",
-        "https://www.bloomberg.com/news/videos/2026-11-23/nvidia-stock-surges-with-return-of-huang-as-ceo-video"
+        "https://www.bloomberg.com/news/articles/2026-11-24/malaysia-tells-data-centers-to-cut-off-firms-on-us-blacklist",
+        "https://www.bloomberg.com/news/articles/2026-11-24/us-blacklists-alibaba-owned-company-in-setback-to-ai-ambitions",
+        "https://techcrunch.com/2026/11/23/jensen-huang-scheduled-to-testify-next-week-in-senate-following-reinstatement-as-nvidia-ceo/"
       ]
     },
     {
-      "title": "Агентные системы переходят от интерфейса к регулируемой транзакции",
-      "from": "AI-помощник как слой рекомендаций и поиска",
-      "to": "AI-агент как участник покупки, требующий шлюза, оценки и приватностных защит",
-      "through": "Walmart Agent Gateway, методики Hugging Face для агентных оценок и исследование скрытых каналов веб-агентов",
+      "title": "AI-агенты получают операционные права, но упираются в ответственность",
+      "from": "AI использовался как подсказка и помощник в отдельных задачах.",
+      "to": "Агенты утверждают код, собирают портфели и одновременно блокируются в кол-центрах из-за ответственности.",
+      "through": "Claude Ship, Supertake и отказ Naver с телекомами допускать агентов в клиентские процессы.",
       "levels": [
+        3,
         5,
-        6,
-        8
-      ],
-      "sources": [
-        "https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday",
-        "https://huggingface.co/blog/agentic-evals",
-        "https://arxiv.org/abs/2611.27046"
-      ]
-    },
-    {
-      "title": "Проверка AI-систем становится проверкой контуров доверия",
-      "from": "Оценка модели по правильности конечного ответа",
-      "to": "Оценка происхождения данных, качества награды, интерпретаций и профессиональной ответственности",
-      "through": "Работы о неподдержанном framing, reward integrity, provenance-защите и предупреждение Grant Thornton об AI-аудите",
-      "levels": [
-        6,
-        7,
         8,
         9
       ],
       "sources": [
-        "https://arxiv.org/abs/2611.26968",
-        "https://arxiv.org/abs/2611.26998",
-        "https://arxiv.org/abs/2611.27016",
-        "https://www.ft.com/content/13b9bee8-f7e4-4b02-ad78-2e358ff43240?syn-25a6b1a6=1"
+        "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+        "https://techcrunch.com/2026/11/23/supertake-raises-20m-to-let-ai-agents-turn-your-market-predictions-into-stock-portfolios/",
+        "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qb1E0ekF2Y195b0JfWjJORHA3SVFxY3ZBcVJZa2dYMUw3bTFnUmxyX3FvdldNVFg5UEhpdHNRWE9DY0xDckR0YklqMTRISnNFdVJNOE0wWFlMT0ZDek9JRUhwV3hXRkhqZTFVTmYtdkZLWEdPcHdGX1B3VjdNVXM?oc=5"
+      ]
+    },
+    {
+      "title": "AI-инфраструктура снова привязывается к сетям и климатическим правилам",
+      "from": "Рост дата-центров обсуждался как задача частного CapEx и автономной генерации.",
+      "to": "Ограничителем становятся коммунальные сети, инженерная способность и климатические переговоры.",
+      "through": "Оценка Mitsubishi, обсуждение дата-центров на COP31 и сигнал о дефиците инженерной мощности сетей.",
+      "levels": [
+        1,
+        2,
+        3,
+        8
+      ],
+      "sources": [
+        "https://www.utilitydive.com/news/data-centers-mitsubishi-gas-turbines-earnings/875146/",
+        "https://www.theverge.com/science/1040497/ai-data-centers-electricity-un-climate-summit",
+        "https://www.utilitydive.com/spons/the-grids-hidden-bottleneck-engineering-capacity/874856/"
       ]
     }
   ],
   "radar_signals": [
     {
-      "title": "Государственное вмешательство в Nvidia стало сигналом системной значимости",
-      "description": "Возвращение CEO при публичной роли Trump показывает, что управление ключевым AI-поставщиком выходит за пределы обычной корпоративной процедуры.",
+      "title": "Верхний уровень: международный срок для AI-надзора",
+      "description": "Призыв ООН согласовать надзор в течение года задаёт проверяемый календарь для институциональных решений.",
       "level_group": "upper",
       "levels": [
-        8,
-        9
-      ],
-      "status": "new",
-      "sources": [
-        "https://techcrunch.com/2026/11/23/trump-reportedly-called-into-nvidia-board-meeting-to-advocate-for-huangs-return/",
-        "https://www.bloomberg.com/news/videos/2026-11-23/trump-s-efforts-to-reinstate-huang-at-nvidia-pays-off-video"
-      ]
-    },
-    {
-      "title": "AI-аудит стал отдельной зоной профессионального риска",
-      "description": "Grant Thornton и arXiv-работа о финансовых нарративах показывают, что автоматизация проверки сама нуждается в проверке.",
-      "level_group": "upper",
-      "levels": [
-        7,
-        8,
-        9
-      ],
-      "status": "strengthening",
-      "sources": [
-        "https://www.ft.com/content/13b9bee8-f7e4-4b02-ad78-2e358ff43240?syn-25a6b1a6=1",
-        "https://arxiv.org/abs/2611.26968"
-      ]
-    },
-    {
-      "title": "Приватность агентов смещается с текста ответа на действия в сети",
-      "description": "Исследование скрытых каналов веб-агентов показывает, что последовательность кликов и поисков может раскрывать приватный контекст.",
-      "level_group": "middle",
-      "levels": [
-        6,
         8
       ],
       "status": "new",
       "sources": [
-        "https://arxiv.org/abs/2611.27046"
+        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNbVNBQl9aRURGZHBIc0xiTVRvOW9pWE0yaWdNVkZrNzJVZUtGb2luUUx2SzhCN1BQUXZzdFJLRDA4Q3FBVTg1WXZ0TkQ0S0EyOENRNi05NW50Y19RNkI5czBYMkQxX0NULW1nZUw1bENaYmk3ZVlGaFNJUUJxMUVjM0VERl90SzVDMm9qRHpzcjR1Q0lVVHZEWDh6c3RoRWs4NkI2eVBkZUXSAa4BQVVfeXFMUFFyTWlPTHRZcnY1QWNBZF85elMyeTRnQTFObnAwYUdDVnFYUDVGSEQyYm9CblpHcUpJMEJ1UmVBOHVqQ201VVFKOVVRNjBXakVValFUWi1DSTUxU294RjlHZ2toQTQ0Wm04Tm1YbFU4WTRlN25LLUQteE5MeFlhbG5PdzB2UWlsSmttRXNpY0hrdmJZaGZ1enNLczQ5d2JkaTFnYzNRV1c3UEgwemVB?oc=5"
       ]
     },
     {
-      "title": "Метрики безопасности LLM требуют проверки награды",
-      "description": "Reward Integrity показывает, что red-teaming может засчитывать ложные успехи из-за некорректного судьи награды.",
-      "level_group": "middle",
+      "title": "Верхний уровень: экспортный контроль стал контролем хостинга",
+      "description": "Малайзия переносит выполнение чёрных списков США на операторов дата-центров и аренду мощностей.",
+      "level_group": "upper",
       "levels": [
-        6,
-        8
+        8,
+        2
       ],
       "status": "strengthening",
       "sources": [
-        "https://arxiv.org/abs/2611.26998"
+        "https://www.bloomberg.com/news/articles/2026-11-24/malaysia-tells-data-centers-to-cut-off-firms-on-us-blacklist"
       ]
     },
     {
-      "title": "Потребительские торговые агенты переходят к реальным покупкам",
-      "description": "Walmart запустил живую реализацию Agent Gateway для Meta Muse, а NRF сообщает о планах половины покупателей использовать AI.",
+      "title": "Средний уровень: закрытые платформы углубляют доступ к личным данным",
+      "description": "Google AI Mode подключает Drive и Wallet, делая персональные данные частью AI-ответа в поиске.",
       "level_group": "middle",
       "levels": [
         5,
-        6
+        8
       ],
       "status": "strengthening",
       "sources": [
-        "https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday",
-        "https://news.google.com/rss/articles/CBMifEFVX3lxTFBES1ViSjJobENsejBBZlRsQnpzY0s4TXhNbGhhUWFCSXhBazZIaWFtWHFieWhVbUYxS2diVlJodmFsenBHTUQ4cTNTUDVjVDBXVXRNWGYyUTVWdGZuS1hVZUU5V3ZqV0E3UU9KMEdtN2pxZHlNQURlb091Zlc?oc=5"
+        "https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/"
       ]
     },
     {
-      "title": "Энергосетевая гибкость получает регуляторные сроки и очереди",
-      "description": "New Jersey требует VPP менее чем за год, а FERC одобрила ускорение очереди MISO на 125 ГВт генерации и хранения.",
+      "title": "Средний уровень: агентное кодирование дошло до утверждения изменений",
+      "description": "Claude Ship сдвигает агентные инструменты от подсказок к проверке, исправлению и утверждению кода.",
+      "level_group": "middle",
+      "levels": [
+        3,
+        5
+      ],
+      "status": "strengthening",
+      "sources": [
+        "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/"
+      ]
+    },
+    {
+      "title": "Нижний уровень: автономная энергетика дата-центров теряет убедительность",
+      "description": "Mitsubishi ожидает, что высокие расходы автономной энергии вернут дата-центры к коммунальным сетям.",
       "level_group": "lower",
       "levels": [
         1,
         2
       ],
-      "status": "strengthening",
+      "status": "new",
       "sources": [
-        "https://www.utilitydive.com/news/new-jersey-utilities-have-less-than-a-year-to-implement-virtual-power-plant/875482/",
-        "https://www.utilitydive.com/news/ferc-miso-interconnection-queue-study/875449/"
+        "https://www.utilitydive.com/news/data-centers-mitsubishi-gas-turbines-earnings/875146/"
       ]
     },
     {
-      "title": "Профессия программиста обсуждается как изменяющееся ремесло",
-      "description": "Wired вынес в публичную повестку вопрос о конце программистов, усиливая давление на переописание инженерных ролей.",
+      "title": "Нижний уровень: физический AI получает метод трекинга RoboTrack",
+      "description": "AllenAI через Hugging Face представил метод отслеживания точек для робототехнической манипуляции в реальном мире.",
       "level_group": "lower",
       "levels": [
-        3,
-        6
+        6,
+        4
       ],
       "status": "new",
       "sources": [
-        "https://www.wired.com/story/goodbye-world-the-end-of-programmers/"
+        "https://huggingface.co/blog/allenai/robotrack"
       ]
     }
   ],
   "trends": [
     {
-      "id": "agent-security",
-      "name": "Безопасность AI-агентов",
-      "momentum": 68,
-      "category": "accelerating",
-      "rationale": "После утреннего высокого уровня тренд удерживается: появились иск к xAI за дипфейки, работа о скрытых каналах веб-агентов и работа о целостности награды в red-teaming. (Оценка модели 70: независимых источников 2, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
-      "levels": [
-        6,
-        8,
-        4
-      ],
-      "is_new": false,
-      "signal_count": 2,
-      "signal_urls": [
-        "https://www.bloomberg.com/news/articles/2026-11-23/musk-s-xai-sued-by-virginia-oregon-over-deepfake-ai-porn-claims",
-        "https://arxiv.org/abs/2611.27046",
-        "https://arxiv.org/abs/2611.26998",
-        "https://arxiv.org/abs/2611.26966",
-        "https://arxiv.org/abs/2611.26975"
-      ],
-      "quiet_days": 0,
-      "raw_momentum": 70
-    },
-    {
       "id": "ai-capex",
       "name": "AI-CapEx и инфраструктура",
-      "momentum": 58,
+      "momentum": 60,
       "category": "accelerating",
-      "rationale": "Относительно утреннего значения сигнал стал шире: к теме капитальных затрат добавились возможный долг гиперскейлеров, критика круговой AI-экономики и финансирование прикладного слоя Sierra.",
+      "rationale": "Вчера тренд был ускоряющимся; сегодня Amazon покупает Decart за $7,5 млрд, Fujitsu продвигает Monaka, а Sunway/HPE укрепляют корпоративный суверенный AI.",
       "levels": [
-        9,
         5,
-        2
+        4,
+        2,
+        9
       ],
       "is_new": false,
       "signal_count": 3,
       "signal_urls": [
-        "https://www.bloomberg.com/news/videos/2026-11-23/more-ai-debt-could-be-coming",
-        "https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/",
-        "https://www.bloomberg.com/news/videos/2026-11-23/ai-investment-adding-to-inflation-jain-video",
-        "https://techcrunch.com/2026/11/22/how-notable-capital-gic-and-baillie-gifford-bet-big-on-anthropic-before-its-ipo/",
-        "https://www.utilitydive.com/news/ratepayer-advocates-pjm-market-monitor-capacity-auction/875165/"
+        "https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/",
+        "https://www.bloomberg.com/news/videos/2026-11-24/fujitsu-cto-on-ai-focus-outlook-video",
+        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYWxDMkk1RlV6MkI4elVCS0VNMWs0N2IzN2pEdjZVS1owM2VFWm9BWF9EZ2hGVzhBLThUaHZRMXdUaW4tTFdrTUwzTWRqQ3AzeXpnUUUyTE4yRDlhUzhYMkF6SG5OT0Z2X3hoYXM2ZFozOVdOcW9md0RlWHZPcS1zZGZwb1RDbk1Celk2cXlwV2o0a2hLUEhRdUVLUDBWcW1BU2I3d2FfWkc?oc=5"
+      ],
+      "quiet_days": 0
+    },
+    {
+      "id": "agent-security",
+      "name": "Безопасность AI-агентов",
+      "momentum": 53,
+      "category": "accelerating",
+      "rationale": "Вчера тренд был очень сильным; сегодня он ослаблен по числу сигналов, но Naver и телекомы Южной Кореи прямо остановили агентов из-за ответственности. (Оценка модели 62: независимых источников 1, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
+      "levels": [
+        8,
+        3,
+        6
+      ],
+      "is_new": false,
+      "signal_count": 1,
+      "signal_urls": [
+        "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qb1E0ekF2Y195b0JfWjJORHA3SVFxY3ZBcVJZa2dYMUw3bTFnUmxyX3FvdldNVFg5UEhpdHNRWE9DY0xDckR0YklqMTRISnNFdVJNOE0wWFlMT0ZDek9JRUhwV3hXRkhqZTFVTmYtdkZLWEdPcHdGX1B3VjdNVXM?oc=5"
+      ],
+      "quiet_days": 0,
+      "raw_momentum": 62
+    },
+    {
+      "id": "ai-market-repricing",
+      "name": "Переоценка AI-активов",
+      "momentum": -47,
+      "category": "collapsing",
+      "rationale": "Вчера тренд был резко отрицательным; сегодня негатив смягчён макросигналом Сингапура и китайскими венчурными ставками, но FT отдельно подчёркивает, что чипы не дёшевы.",
+      "levels": [
+        9,
+        5
+      ],
+      "is_new": false,
+      "signal_count": 2,
+      "signal_urls": [
+        "https://www.ft.com/content/046984ab-9a7c-41fd-804c-fb356db28099?syn-25a6b1a6=1",
+        "https://www.bloomberg.com/news/articles/2026-11-24/singapore-raises-gdp-growth-outlook-to-around-6-on-ai-boom",
+        "https://www.bloomberg.com/news/articles/2026-11-23/the-chinese-ai-aspirants-drawing-big-bets-to-take-on-deepseek"
       ],
       "quiet_days": 0
     },
     {
       "id": "ai-regulation",
       "name": "Регулирование AI",
-      "momentum": 57,
+      "momentum": 42,
       "category": "accelerating",
-      "rationale": "Вечерние события не дали скачка, но подтвердили текущий уровень: штаты судятся с xAI, Better Markets критикует банковскую AI-рамку OCC, а Южная Корея столкнулась с политическим кризисом вокруг AI-экзаменов.",
+      "rationale": "Вчера тренд был сильным; сегодня он подкреплён не судебным спором, а международным сроком ООН, блокировкой агентов в Южной Корее и переносом чёрных списков на дата-центры. (Оценка модели 60: независимых источников 2, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
       "levels": [
         8,
-        7,
-        9
-      ],
-      "is_new": false,
-      "signal_count": 4,
-      "signal_urls": [
-        "https://www.bloomberg.com/news/articles/2026-11-23/musk-s-xai-sued-by-virginia-oregon-over-deepfake-ai-porn-claims",
-        "https://news.google.com/rss/articles/CBMizgFBVV95cUxQUHNXcUY0anNsSHBsZWRBYURCQlUxNWRLYl96OHVWdjE3eXNQN3Rfc3FTenU4UG1uVF90ZjY2LWZrM2JzOEJHb3R3VThQVXhwRzYwZWFTTXQ1VnV3dDJjYkNsRzFDNTdfUHo1V3hOUjMzS0ZKM1FUdzNhbFJWVkVDS050ZkdkRWZwWmRqSjliVGM2RmhrUXFFYWJUV2R2VUpqVVpwN2VkVU1VTEpyNTFkVjVQeHoxaWsyS1NFSVZldllNYU5TNnBoYTZKV2VzUQ?oc=5",
-        "https://www.ft.com/content/d97f37d0-588e-488c-b10e-035900367aa4?syn-25a6b1a6=1",
-        "https://www.bloomberg.com/news/articles/2026-11-22/openai-chief-scientist-urges-industry-limits-on-ai-development",
-        "https://arstechnica.com/tech-policy/2026/11/traumatized-teens-sue-school-cops-after-doritos-bag-triggers-ai-gun-alert/"
-      ],
-      "quiet_days": 0
-    },
-    {
-      "id": "ai-market-repricing",
-      "name": "Переоценка AI-активов",
-      "momentum": -55,
-      "category": "collapsing",
-      "rationale": "Утреннее падение частично ослаблено вечерним отскоком Nvidia и индексов после возвращения Хуанга, но материалы о долге и vendor financing показывают, что риск переоценки не исчез.",
-      "levels": [
-        9,
-        5
-      ],
-      "is_new": false,
-      "signal_count": 3,
-      "signal_urls": [
-        "https://www.bloomberg.com/news/videos/2026-11-23/stocks-soar-as-huang-s-nvidia-return-fuels-ai-bets-video",
-        "https://www.ft.com/content/e49add11-3cc8-4edd-8daa-db8daaf994dd?syn-25a6b1a6=1",
-        "https://www.bloomberg.com/news/articles/2026-11-23/emerging-market-stocks-set-to-erase-2026-gains-on-ai-selloff",
-        "https://news.google.com/rss/articles/CBMitgFBVV95cUxNMmR0TXdKQ21IYS1mVVVLMXo5SG92Tm50WG4wSXAwUURmMlNBQWh6OTVucDVzQmZhNGhHWGlEc0xoOXhPZnk4SVZ0OGh6b293dVBnNFdPaEhKS2E2OG1HdWlubDdLTl9vOEFJYnlra1Z3QzZlOW85Z1lndXdWSnE4dXZtOFFlQTJ5bmpPby1MSGk2enRCV2l1VExNS2haSlY4Z0gwMGxRdUdFeTdocnljeEc1aHRjUQ?oc=5",
-        "https://www.bloomberg.com/news/videos/2026-11-23/how-to-find-value-as-the-ai-trade-unravels-video"
-      ],
-      "quiet_days": 0
-    },
-    {
-      "id": "agentic-platforms",
-      "name": "Агентные AI-платформы",
-      "momentum": 50,
-      "category": "accelerating",
-      "rationale": "Сигнал усилился: Walmart запустил живой Agent Gateway для Meta Muse, Hugging Face описал агентные оценки, а arXiv дал новые работы о человеко-AI командах и научных агентах.",
-      "levels": [
-        5,
-        6,
+        2,
         3
-      ],
-      "is_new": false,
-      "signal_count": 4,
-      "signal_urls": [
-        "https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday",
-        "https://huggingface.co/blog/agentic-evals",
-        "https://arxiv.org/abs/2611.26663",
-        "https://arxiv.org/abs/2611.26782",
-        "https://arxiv.org/abs/2611.26722",
-        "https://arxiv.org/abs/2611.26966",
-        "https://arxiv.org/abs/2611.26910",
-        "https://arstechnica.com/gadgets/2026/11/microsoft-calls-copilot-the-new-os-for-work-at-ignite-keynote/"
-      ],
-      "quiet_days": 0
-    },
-    {
-      "id": "ai-energy",
-      "name": "Энергетика для AI",
-      "momentum": 39,
-      "category": "emerging",
-      "rationale": "Тренд получил новые, но косвенные сигналы: New Jersey ускоряет VPP, а FERC одобрила ускорение очереди MISO на 125 ГВт генерации и хранения, что влияет на будущую энергоёмкую инфраструктуру.",
-      "levels": [
-        1,
-        2
       ],
       "is_new": false,
       "signal_count": 2,
       "signal_urls": [
-        "https://www.utilitydive.com/news/new-jersey-utilities-have-less-than-a-year-to-implement-virtual-power-plant/875482/",
-        "https://www.utilitydive.com/news/ferc-miso-interconnection-queue-study/875449/",
-        "https://arstechnica.com/ai/2026/11/meta-reconsiders-2030-net-zero-goal-amid-record-emissions-from-ai-data-centers/",
-        "https://www.utilitydive.com/news/the-grid-will-fall-short-of-ais-power-needs-6-resources-close-the-gap/874125/"
+        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNbVNBQl9aRURGZHBIc0xiTVRvOW9pWE0yaWdNVkZrNzJVZUtGb2luUUx2SzhCN1BQUXZzdFJLRDA4Q3FBVTg1WXZ0TkQ0S0EyOENRNi05NW50Y19RNkI5czBYMkQxX0NULW1nZUw1bENaYmk3ZVlGaFNJUUJxMUVjM0VERl90SzVDMm9qRHpzcjR1Q0lVVHZEWDh6c3RoRWs4NkI2eVBkZUXSAa4BQVVfeXFMUFFyTWlPTHRZcnY1QWNBZF85elMyeTRnQTFObnAwYUdDVnFYUDVGSEQyYm9CblpHcUpJMEJ1UmVBOHVqQ201VVFKOVVRNjBXakVValFUWi1DSTUxU294RjlHZ2toQTQ0Wm04Tm1YbFU4WTRlN25LLUQteE5MeFlhbG5PdzB2UWlsSmttRXNpY0hrdmJZaGZ1enNLczQ5d2JkaTFnYzNRV1c3UEgwemVB?oc=5",
+        "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qb1E0ekF2Y195b0JfWjJORHA3SVFxY3ZBcVJZa2dYMUw3bTFnUmxyX3FvdldNVFg5UEhpdHNRWE9DY0xDckR0YklqMTRISnNFdVJNOE0wWFlMT0ZDek9JRUhwV3hXRkhqZTFVTmYtdkZLWEdPcHdGX1B3VjdNVXM?oc=5",
+        "https://www.bloomberg.com/news/articles/2026-11-24/malaysia-tells-data-centers-to-cut-off-firms-on-us-blacklist"
       ],
-      "quiet_days": 0
+      "quiet_days": 0,
+      "raw_momentum": 60
     },
     {
       "id": "chip-export-control",
       "name": "Экспортный контроль чипов",
       "momentum": 39,
       "category": "emerging",
-      "rationale": "Вечером тема не получила нового решения, но получила геополитические сигналы: FT связала Nvidia с отношениями США и Китая, а Bloomberg обсудил Huawei и DeepSeek в контексте технологической самостоятельности Китая.",
+      "rationale": "Вчера тренд был на верхней границе формирующегося; сегодня он расширился на Малайзию и структуры Alibaba/Megaspeed, но сигналов только два, поэтому ускорение ограничено.",
       "levels": [
-        4,
         8,
-        9
-      ],
-      "is_new": false,
-      "signal_count": 2,
-      "signal_urls": [
-        "https://www.ft.com/content/28cb9178-ac22-44b9-99f5-d5f25a86d366?syn-25a6b1a6=1",
-        "https://www.bloomberg.com/news/videos/2026-11-23/odd-lots-can-huawei-challenge-nvidia-in-the-ai-arms-race",
-        "https://www.bloomberg.com/news/videos/2026-11-23/us-ai-chip-curbs-test-southeast-asia-data-center-boom-video",
-        "https://www.bloomberg.com/news/features/2026-11-22/trump-s-ai-chip-crackdown-on-china-after-nvidia-crisis-squeezes-southeast-asia",
-        "https://www.bloomberg.com/news/videos/2026-11-23/ing-s-sareen-asia-ai-chip-demand-unlikely-to-crash-video"
-      ],
-      "quiet_days": 0
-    },
-    {
-      "id": "open-weight-models",
-      "name": "Open-weight модели",
-      "momentum": 39,
-      "category": "emerging",
-      "rationale": "Вчера тренд был emerging; сегодня он усилился через публикации Hugging Face о локальной Inkling 2 Mini и запуске MoE-модели на 180 млрд параметров с 32 ГБ RAM. (Оценка модели 42: независимых источников 1, для «ускоряется» нужно от 3.)",
-      "levels": [
-        4,
         5,
         2
       ],
       "is_new": false,
       "signal_count": 1,
       "signal_urls": [
-        "https://huggingface.co/blog/inkling2mini",
-        "https://huggingface.co/blog/moe-expert-streaming"
-      ],
-      "quiet_days": 0,
-      "raw_momentum": 42
-    },
-    {
-      "id": "ai-talent-market",
-      "name": "Рынок AI-талантов",
-      "momentum": 37,
-      "category": "emerging",
-      "rationale": "Сигнал остался на прежнем уровне: Togo AI Lab обучает исследователей в Университете Кара, а публичная дискуссия о конце программистов поддерживает переописание инженерных компетенций.",
-      "levels": [
-        3,
-        7
-      ],
-      "is_new": false,
-      "signal_count": 3,
-      "signal_urls": [
-        "https://news.google.com/rss/articles/CBMiugFBVV95cUxPTE1DLUppZ3BIXzg4bXkwb1M2MU81UVEtbUdGeExwSVNJb0FaQjNsd0NHTnhiRkZUdjExaEVsRkVYVU5zLS1VZUJFQUs0R1lwaWdROXVDUVFBUmNLbXJNVHBOMGNfMDh6c0VQXy1rdVlFcjlNMU0xZVItZ1NqVnZrMFlhWTlZWHA5aXpKQmRXcGY0VE5MdV9RUFR3Y0ZUY1JpejdVNVpmT0k2UTFBa0RGeW90dmtiTU4xMkE?oc=5",
-        "https://www.wired.com/story/goodbye-world-the-end-of-programmers/",
-        "https://www.hrdive.com/news/executives-get-more-ai-training-than-other-workers-hurting-adoption/875395/",
-        "https://www.hrdive.com/news/job-candidates-ai-usage-is-obscuring-their-viability-report-finds/875232/"
+        "https://www.bloomberg.com/news/articles/2026-11-24/us-blacklists-alibaba-owned-company-in-setback-to-ai-ambitions",
+        "https://www.bloomberg.com/news/articles/2026-11-24/malaysia-tells-data-centers-to-cut-off-firms-on-us-blacklist"
       ],
       "quiet_days": 0
     },
     {
-      "id": "ai-audit-trust",
-      "name": "Доверие и аудит AI-результатов",
-      "momentum": 32,
+      "id": "agentic-platforms",
+      "name": "Агентные AI-платформы",
+      "momentum": 39,
       "category": "emerging",
-      "rationale": "Новый тренд поддержан несколькими независимыми сигналами: Grant Thornton предупредила о качестве AI-аудита, arXiv описал неподдержанные финансовые интерпретации LLM и Better Markets раскритиковала банковскую AI-рамку OCC.",
+      "rationale": "Вчера тренд был сильным; сегодня Claude Ship, Supertake и Google AI Mode показывают перенос агентов в код, финансы и персональные пользовательские сервисы. (Оценка модели 55: независимых источников 1, для «ускоряется» нужно от 3.)",
       "levels": [
-        6,
-        8,
+        3,
+        5,
         9
       ],
-      "is_new": true,
-      "signal_count": 3,
+      "is_new": false,
+      "signal_count": 1,
       "signal_urls": [
-        "https://www.ft.com/content/13b9bee8-f7e4-4b02-ad78-2e358ff43240?syn-25a6b1a6=1",
-        "https://arxiv.org/abs/2611.26968",
-        "https://news.google.com/rss/articles/CBMizgFBVV95cUxQUHNXcUY0anNsSHBsZWRBYURCQlUxNWRLYl96OHVWdjE3eXNQN3Rfc3FTenU4UG1uVF90ZjY2LWZrM2JzOEJHb3R3VThQVXhwRzYwZWFTTXQ1VnV3dDJjYkNsRzFDNTdfUHo1V3hOUjMzS0ZKM1FUdzNhbFJWVkVDS050ZkdkRWZwWmRqSjliVGM2RmhrUXFFYWJUV2R2VUpqVVpwN2VkVU1VTEpyNTFkVjVQeHoxaWsyS1NFSVZldllNYU5TNnBoYTZKV2VzUQ?oc=5"
+        "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+        "https://techcrunch.com/2026/11/23/supertake-raises-20m-to-let-ai-agents-turn-your-market-predictions-into-stock-portfolios/",
+        "https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/"
+      ],
+      "quiet_days": 0,
+      "raw_momentum": 55
+    },
+    {
+      "id": "ai-energy",
+      "name": "Энергетика для AI",
+      "momentum": 39,
+      "category": "emerging",
+      "rationale": "Вчера тренд был на границе ускорения; сегодня Mitsubishi, COP31 и материал о сетевой инженерной мощности дали три сигнала о ресурсных ограничениях AI-дата-центров. (Оценка модели 44: независимых источников 2, для «ускоряется» нужно от 3.)",
+      "levels": [
+        1,
+        2,
+        8
+      ],
+      "is_new": false,
+      "signal_count": 2,
+      "signal_urls": [
+        "https://www.utilitydive.com/news/data-centers-mitsubishi-gas-turbines-earnings/875146/",
+        "https://www.theverge.com/science/1040497/ai-data-centers-electricity-un-climate-summit",
+        "https://www.utilitydive.com/spons/the-grids-hidden-bottleneck-engineering-capacity/874856/"
+      ],
+      "quiet_days": 0,
+      "raw_momentum": 44
+    },
+    {
+      "id": "sovereign-ai",
+      "name": "Суверенный AI (национальные модели)",
+      "momentum": 36,
+      "category": "emerging",
+      "rationale": "Вчера тренд был умеренным; сегодня Fujitsu и Sunway/HPE дали два сигнала о суверенном AI как защищённой инфраструктуре для государства и предприятий.",
+      "levels": [
+        5,
+        2,
+        8
+      ],
+      "is_new": false,
+      "signal_count": 2,
+      "signal_urls": [
+        "https://www.bloomberg.com/news/videos/2026-11-24/fujitsu-cto-on-ai-focus-outlook-video",
+        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYWxDMkk1RlV6MkI4elVCS0VNMWs0N2IzN2pEdjZVS1owM2VFWm9BWF9EZ2hGVzhBLThUaHZRMXdUaW4tTFdrTUwzTWRqQ3AzeXpnUUUyTE4yRDlhUzhYMkF6SG5OT0Z2X3hoYXM2ZFozOVdOcW9md0RlWHZPcS1zZGZwb1RDbk1Celk2cXlwV2o0a2hLUEhRdUVLUDBWcW1BU2I3d2FfWkc?oc=5"
+      ],
+      "quiet_days": 0
+    },
+    {
+      "id": "ai-talent-market",
+      "name": "Рынок AI-талантов",
+      "momentum": 36,
+      "category": "emerging",
+      "rationale": "Вчера тренд был формирующимся; сегодня сигнал уже не только о разработчиках, а о спросе на найм из-за AI за пределами технологического сектора.",
+      "levels": [
+        3,
+        5,
+        7
+      ],
+      "is_new": false,
+      "signal_count": 1,
+      "signal_urls": [
+        "https://news.google.com/rss/articles/CBMidkFVX3lxTFBYNVRqbFlWdHA4dmxzeVRIeWFPOWpCVFlINVNicWJMMTZ0c2c4V0N3WWY5UkR5SHQySEVSWHRwRWpMQi12bVBnYjB0NndiWkFqck9uYkJvSDNISE1jWVlTRGdXeVBFUVpxUVNRelBmYTQzekVDdUE?oc=5"
+      ],
+      "quiet_days": 0
+    },
+    {
+      "id": "closed-api-models",
+      "name": "Закрытые API-модели",
+      "momentum": 33,
+      "category": "emerging",
+      "rationale": "Вчера тренд был умеренным; сегодня закрытые экосистемы усилились через Claude Ship и персональный AI Mode Google с доступом к Drive и Wallet.",
+      "levels": [
+        5,
+        3,
+        8
+      ],
+      "is_new": false,
+      "signal_count": 2,
+      "signal_urls": [
+        "https://www.theverge.com/ai-artificial-intelligence/1040134/anthropic-claude-ship-ai-pull-requests",
+        "https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/"
       ],
       "quiet_days": 0
     },
     {
       "id": "physical-ai",
       "name": "Физический AI и робототехника",
-      "momentum": 32,
+      "momentum": 30,
       "category": "emerging",
-      "rationale": "Сегодня появился новый устойчивый сигнал из нескольких источников: WeRide обсуждает расширение роботакси с Uber, Ant Group финансирует Simplexity Robotics, а KED Global пишет о физическом AI в подразделении NC.",
+      "rationale": "Вчера тренд имел несколько сигналов; сегодня остался один свежий методический сигнал — RoboTrack для отслеживания точек в робототехнической манипуляции.",
       "levels": [
-        5,
+        6,
         4,
-        2
-      ],
-      "is_new": true,
-      "signal_count": 2,
-      "signal_urls": [
-        "https://www.bloomberg.com/news/videos/2026-11-23/weride-ceo-on-earnings-and-international-markets-video",
-        "https://www.bloomberg.com/news/articles/2026-11-22/ant-group-bets-on-simplexity-to-thrive-in-china-s-humanoid-race",
-        "https://news.google.com/rss/articles/CBMif0FVX3lxTFBWaVd5ZkdlbXdWQjktX0JfRDdkMVVaUklFdkpGUENZTEVGRGJnNTZjQmRfeC1lRDJ6dTl3VXE2dkRNZUhMWVZNcU1JMnA5X0wzRUpoQzB1allGODZMaU00alJTVGJxN0F1Umk5UFBnUjMzTWlteUlUajREZE55STQ?oc=5"
-      ],
-      "quiet_days": 0
-    },
-    {
-      "id": "classic-saas",
-      "name": "Классический SaaS под давлением AI",
-      "momentum": 27,
-      "category": "emerging",
-      "rationale": "Sierra с оценкой $30 млрд и Walmart Agent Gateway показывают давление агентных AI-интерфейсов на традиционные SaaS и розничные платформы, но сигнал остаётся прикладным, а не системным.",
-      "levels": [
-        5,
         3
       ],
       "is_new": false,
-      "signal_count": 3,
+      "signal_count": 1,
       "signal_urls": [
-        "https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/",
-        "https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday",
-        "https://arstechnica.com/gadgets/2026/11/microsoft-calls-copilot-the-new-os-for-work-at-ignite-keynote/"
+        "https://huggingface.co/blog/allenai/robotrack"
       ],
       "quiet_days": 0
     },
     {
-      "id": "sovereign-ai",
-      "name": "Суверенный AI (национальные модели)",
+      "id": "open-weight-models",
+      "name": "Open-weight модели",
       "momentum": 31,
       "category": "emerging",
       "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 39.",
       "levels": [
-        8,
-        2,
-        5
+        4,
+        5,
+        2
       ],
       "is_new": false,
       "signal_count": 0,
@@ -1557,15 +1162,31 @@
       "carried": true
     },
     {
-      "id": "closed-api-models",
-      "name": "Закрытые API-модели",
-      "momentum": 31,
+      "id": "ai-audit-trust",
+      "name": "Доверие и аудит AI-результатов",
+      "momentum": 26,
       "category": "emerging",
-      "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 39.",
+      "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 32.",
+      "levels": [
+        6,
+        8,
+        9
+      ],
+      "is_new": false,
+      "signal_count": 0,
+      "signal_urls": [],
+      "quiet_days": 1,
+      "carried": true
+    },
+    {
+      "id": "classic-saas",
+      "name": "Классический SaaS под давлением AI",
+      "momentum": 22,
+      "category": "emerging",
+      "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 27.",
       "levels": [
         5,
-        7,
-        8
+        3
       ],
       "is_new": false,
       "signal_count": 0,
@@ -1576,9 +1197,9 @@
     {
       "id": "synthetic-data",
       "name": "Синтетические данные",
-      "momentum": 15,
+      "momentum": 12,
       "category": "emerging",
-      "rationale": "Новых сигналов нет (дней подряд: 2); значение плавно снижается, вчера было 19.",
+      "rationale": "Новых сигналов нет (дней подряд: 3); значение плавно снижается, вчера было 15.",
       "levels": [
         6,
         5,
@@ -1587,283 +1208,243 @@
       "is_new": false,
       "signal_count": 0,
       "signal_urls": [],
-      "quiet_days": 2,
+      "quiet_days": 3,
       "carried": true
     }
   ],
   "memory_notes": [
-    "Вечерний отчёт не повторяет утренние события; главное новое событие — возвращение Дженсена Хуанга в Nvidia с реакцией рынков и сообщениями о вмешательстве Trump.",
-    "Новый структурный тезис дня: управление системным AI-поставщиком стало публично-финансовым вопросом, а не только корпоративным решением.",
-    "Второй тезис: агентные платформы переходят к транзакциям через Walmart Agent Gateway, поэтому приватность действий и агентные оценки стали ключевыми сигналами.",
-    "Третий тезис: AI-аудит и доверие к AI-результатам оформились как отдельный новый тренд через Grant Thornton, финансовые LLM-нарративы и критику OCC.",
-    "На нижних уровнях новых дата-центров не было; новые сигналы касались VPP New Jersey и очереди MISO на 125 ГВт как условий будущей энергоёмкой инфраструктуры."
+    "Не повторять завтра как новое само возвращение Дженсена Хуанга в Nvidia; сегодня включён только новый факт о запланированных показаниях в Сенате.",
+    "Главный сдвиг дня: экспортный контроль AI дошёл до услуг дата-центров в Малайзии и чёрных списков вокруг Alibaba/Megaspeed.",
+    "Второй сдвиг дня: агентные инструменты расширяют права действия, но Naver и телекомы Южной Кореи блокируют агентов из-за ответственности.",
+    "Энергетическая тема сегодня конкретизирована через тезис Mitsubishi о возврате дата-центров к коммунальным сетям и через COP31."
   ],
-  "generated_at": "2026-11-23T17:05:13.258Z",
+  "generated_at": "2026-11-24T05:02:54.625Z",
   "momentum_trends": [
-    {
-      "id": "agent-security",
-      "name": "Безопасность AI-агентов",
-      "momentum": 68,
-      "category": "accelerating",
-      "rationale": "После утреннего высокого уровня тренд удерживается: появились иск к xAI за дипфейки, работа о скрытых каналах веб-агентов и работа о целостности награды в red-teaming. (Оценка модели 70: независимых источников 2, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
-      "levels": [
-        6,
-        8,
-        4
-      ],
-      "is_new": false,
-      "signal_count": 2,
-      "signal_urls": [
-        "https://www.bloomberg.com/news/articles/2026-11-23/musk-s-xai-sued-by-virginia-oregon-over-deepfake-ai-porn-claims",
-        "https://arxiv.org/abs/2611.27046",
-        "https://arxiv.org/abs/2611.26998",
-        "https://arxiv.org/abs/2611.26966",
-        "https://arxiv.org/abs/2611.26975"
-      ],
-      "quiet_days": 0,
-      "raw_momentum": 70
-    },
     {
       "id": "ai-capex",
       "name": "AI-CapEx и инфраструктура",
-      "momentum": 58,
+      "momentum": 60,
       "category": "accelerating",
-      "rationale": "Относительно утреннего значения сигнал стал шире: к теме капитальных затрат добавились возможный долг гиперскейлеров, критика круговой AI-экономики и финансирование прикладного слоя Sierra.",
+      "rationale": "Вчера тренд был ускоряющимся; сегодня Amazon покупает Decart за $7,5 млрд, Fujitsu продвигает Monaka, а Sunway/HPE укрепляют корпоративный суверенный AI.",
       "levels": [
-        9,
         5,
-        2
+        4,
+        2,
+        9
       ],
       "is_new": false,
       "signal_count": 3,
       "signal_urls": [
-        "https://www.bloomberg.com/news/videos/2026-11-23/more-ai-debt-could-be-coming",
-        "https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/",
-        "https://www.bloomberg.com/news/videos/2026-11-23/ai-investment-adding-to-inflation-jain-video",
-        "https://techcrunch.com/2026/11/22/how-notable-capital-gic-and-baillie-gifford-bet-big-on-anthropic-before-its-ipo/",
-        "https://www.utilitydive.com/news/ratepayer-advocates-pjm-market-monitor-capacity-auction/875165/"
+        "https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/",
+        "https://www.bloomberg.com/news/videos/2026-11-24/fujitsu-cto-on-ai-focus-outlook-video",
+        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYWxDMkk1RlV6MkI4elVCS0VNMWs0N2IzN2pEdjZVS1owM2VFWm9BWF9EZ2hGVzhBLThUaHZRMXdUaW4tTFdrTUwzTWRqQ3AzeXpnUUUyTE4yRDlhUzhYMkF6SG5OT0Z2X3hoYXM2ZFozOVdOcW9md0RlWHZPcS1zZGZwb1RDbk1Celk2cXlwV2o0a2hLUEhRdUVLUDBWcW1BU2I3d2FfWkc?oc=5"
+      ],
+      "quiet_days": 0
+    },
+    {
+      "id": "agent-security",
+      "name": "Безопасность AI-агентов",
+      "momentum": 53,
+      "category": "accelerating",
+      "rationale": "Вчера тренд был очень сильным; сегодня он ослаблен по числу сигналов, но Naver и телекомы Южной Кореи прямо остановили агентов из-за ответственности. (Оценка модели 62: независимых источников 1, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
+      "levels": [
+        8,
+        3,
+        6
+      ],
+      "is_new": false,
+      "signal_count": 1,
+      "signal_urls": [
+        "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qb1E0ekF2Y195b0JfWjJORHA3SVFxY3ZBcVJZa2dYMUw3bTFnUmxyX3FvdldNVFg5UEhpdHNRWE9DY0xDckR0YklqMTRISnNFdVJNOE0wWFlMT0ZDek9JRUhwV3hXRkhqZTFVTmYtdkZLWEdPcHdGX1B3VjdNVXM?oc=5"
+      ],
+      "quiet_days": 0,
+      "raw_momentum": 62
+    },
+    {
+      "id": "ai-market-repricing",
+      "name": "Переоценка AI-активов",
+      "momentum": -47,
+      "category": "collapsing",
+      "rationale": "Вчера тренд был резко отрицательным; сегодня негатив смягчён макросигналом Сингапура и китайскими венчурными ставками, но FT отдельно подчёркивает, что чипы не дёшевы.",
+      "levels": [
+        9,
+        5
+      ],
+      "is_new": false,
+      "signal_count": 2,
+      "signal_urls": [
+        "https://www.ft.com/content/046984ab-9a7c-41fd-804c-fb356db28099?syn-25a6b1a6=1",
+        "https://www.bloomberg.com/news/articles/2026-11-24/singapore-raises-gdp-growth-outlook-to-around-6-on-ai-boom",
+        "https://www.bloomberg.com/news/articles/2026-11-23/the-chinese-ai-aspirants-drawing-big-bets-to-take-on-deepseek"
       ],
       "quiet_days": 0
     },
     {
       "id": "ai-regulation",
       "name": "Регулирование AI",
-      "momentum": 57,
+      "momentum": 42,
       "category": "accelerating",
-      "rationale": "Вечерние события не дали скачка, но подтвердили текущий уровень: штаты судятся с xAI, Better Markets критикует банковскую AI-рамку OCC, а Южная Корея столкнулась с политическим кризисом вокруг AI-экзаменов.",
+      "rationale": "Вчера тренд был сильным; сегодня он подкреплён не судебным спором, а международным сроком ООН, блокировкой агентов в Южной Корее и переносом чёрных списков на дата-центры. (Оценка модели 60: независимых источников 2, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
       "levels": [
         8,
-        7,
-        9
-      ],
-      "is_new": false,
-      "signal_count": 4,
-      "signal_urls": [
-        "https://www.bloomberg.com/news/articles/2026-11-23/musk-s-xai-sued-by-virginia-oregon-over-deepfake-ai-porn-claims",
-        "https://news.google.com/rss/articles/CBMizgFBVV95cUxQUHNXcUY0anNsSHBsZWRBYURCQlUxNWRLYl96OHVWdjE3eXNQN3Rfc3FTenU4UG1uVF90ZjY2LWZrM2JzOEJHb3R3VThQVXhwRzYwZWFTTXQ1VnV3dDJjYkNsRzFDNTdfUHo1V3hOUjMzS0ZKM1FUdzNhbFJWVkVDS050ZkdkRWZwWmRqSjliVGM2RmhrUXFFYWJUV2R2VUpqVVpwN2VkVU1VTEpyNTFkVjVQeHoxaWsyS1NFSVZldllNYU5TNnBoYTZKV2VzUQ?oc=5",
-        "https://www.ft.com/content/d97f37d0-588e-488c-b10e-035900367aa4?syn-25a6b1a6=1",
-        "https://www.bloomberg.com/news/articles/2026-11-22/openai-chief-scientist-urges-industry-limits-on-ai-development",
-        "https://arstechnica.com/tech-policy/2026/11/traumatized-teens-sue-school-cops-after-doritos-bag-triggers-ai-gun-alert/"
-      ],
-      "quiet_days": 0
-    },
-    {
-      "id": "ai-market-repricing",
-      "name": "Переоценка AI-активов",
-      "momentum": -55,
-      "category": "collapsing",
-      "rationale": "Утреннее падение частично ослаблено вечерним отскоком Nvidia и индексов после возвращения Хуанга, но материалы о долге и vendor financing показывают, что риск переоценки не исчез.",
-      "levels": [
-        9,
-        5
-      ],
-      "is_new": false,
-      "signal_count": 3,
-      "signal_urls": [
-        "https://www.bloomberg.com/news/videos/2026-11-23/stocks-soar-as-huang-s-nvidia-return-fuels-ai-bets-video",
-        "https://www.ft.com/content/e49add11-3cc8-4edd-8daa-db8daaf994dd?syn-25a6b1a6=1",
-        "https://www.bloomberg.com/news/articles/2026-11-23/emerging-market-stocks-set-to-erase-2026-gains-on-ai-selloff",
-        "https://news.google.com/rss/articles/CBMitgFBVV95cUxNMmR0TXdKQ21IYS1mVVVLMXo5SG92Tm50WG4wSXAwUURmMlNBQWh6OTVucDVzQmZhNGhHWGlEc0xoOXhPZnk4SVZ0OGh6b293dVBnNFdPaEhKS2E2OG1HdWlubDdLTl9vOEFJYnlra1Z3QzZlOW85Z1lndXdWSnE4dXZtOFFlQTJ5bmpPby1MSGk2enRCV2l1VExNS2haSlY4Z0gwMGxRdUdFeTdocnljeEc1aHRjUQ?oc=5",
-        "https://www.bloomberg.com/news/videos/2026-11-23/how-to-find-value-as-the-ai-trade-unravels-video"
-      ],
-      "quiet_days": 0
-    },
-    {
-      "id": "agentic-platforms",
-      "name": "Агентные AI-платформы",
-      "momentum": 50,
-      "category": "accelerating",
-      "rationale": "Сигнал усилился: Walmart запустил живой Agent Gateway для Meta Muse, Hugging Face описал агентные оценки, а arXiv дал новые работы о человеко-AI командах и научных агентах.",
-      "levels": [
-        5,
-        6,
+        2,
         3
-      ],
-      "is_new": false,
-      "signal_count": 4,
-      "signal_urls": [
-        "https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday",
-        "https://huggingface.co/blog/agentic-evals",
-        "https://arxiv.org/abs/2611.26663",
-        "https://arxiv.org/abs/2611.26782",
-        "https://arxiv.org/abs/2611.26722",
-        "https://arxiv.org/abs/2611.26966",
-        "https://arxiv.org/abs/2611.26910",
-        "https://arstechnica.com/gadgets/2026/11/microsoft-calls-copilot-the-new-os-for-work-at-ignite-keynote/"
-      ],
-      "quiet_days": 0
-    },
-    {
-      "id": "ai-energy",
-      "name": "Энергетика для AI",
-      "momentum": 39,
-      "category": "emerging",
-      "rationale": "Тренд получил новые, но косвенные сигналы: New Jersey ускоряет VPP, а FERC одобрила ускорение очереди MISO на 125 ГВт генерации и хранения, что влияет на будущую энергоёмкую инфраструктуру.",
-      "levels": [
-        1,
-        2
       ],
       "is_new": false,
       "signal_count": 2,
       "signal_urls": [
-        "https://www.utilitydive.com/news/new-jersey-utilities-have-less-than-a-year-to-implement-virtual-power-plant/875482/",
-        "https://www.utilitydive.com/news/ferc-miso-interconnection-queue-study/875449/",
-        "https://arstechnica.com/ai/2026/11/meta-reconsiders-2030-net-zero-goal-amid-record-emissions-from-ai-data-centers/",
-        "https://www.utilitydive.com/news/the-grid-will-fall-short-of-ais-power-needs-6-resources-close-the-gap/874125/"
+        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNbVNBQl9aRURGZHBIc0xiTVRvOW9pWE0yaWdNVkZrNzJVZUtGb2luUUx2SzhCN1BQUXZzdFJLRDA4Q3FBVTg1WXZ0TkQ0S0EyOENRNi05NW50Y19RNkI5czBYMkQxX0NULW1nZUw1bENaYmk3ZVlGaFNJUUJxMUVjM0VERl90SzVDMm9qRHpzcjR1Q0lVVHZEWDh6c3RoRWs4NkI2eVBkZUXSAa4BQVVfeXFMUFFyTWlPTHRZcnY1QWNBZF85elMyeTRnQTFObnAwYUdDVnFYUDVGSEQyYm9CblpHcUpJMEJ1UmVBOHVqQ201VVFKOVVRNjBXakVValFUWi1DSTUxU294RjlHZ2toQTQ0Wm04Tm1YbFU4WTRlN25LLUQteE5MeFlhbG5PdzB2UWlsSmttRXNpY0hrdmJZaGZ1enNLczQ5d2JkaTFnYzNRV1c3UEgwemVB?oc=5",
+        "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qb1E0ekF2Y195b0JfWjJORHA3SVFxY3ZBcVJZa2dYMUw3bTFnUmxyX3FvdldNVFg5UEhpdHNRWE9DY0xDckR0YklqMTRISnNFdVJNOE0wWFlMT0ZDek9JRUhwV3hXRkhqZTFVTmYtdkZLWEdPcHdGX1B3VjdNVXM?oc=5",
+        "https://www.bloomberg.com/news/articles/2026-11-24/malaysia-tells-data-centers-to-cut-off-firms-on-us-blacklist"
       ],
-      "quiet_days": 0
+      "quiet_days": 0,
+      "raw_momentum": 60
     },
     {
       "id": "chip-export-control",
       "name": "Экспортный контроль чипов",
       "momentum": 39,
       "category": "emerging",
-      "rationale": "Вечером тема не получила нового решения, но получила геополитические сигналы: FT связала Nvidia с отношениями США и Китая, а Bloomberg обсудил Huawei и DeepSeek в контексте технологической самостоятельности Китая.",
+      "rationale": "Вчера тренд был на верхней границе формирующегося; сегодня он расширился на Малайзию и структуры Alibaba/Megaspeed, но сигналов только два, поэтому ускорение ограничено.",
       "levels": [
-        4,
         8,
-        9
-      ],
-      "is_new": false,
-      "signal_count": 2,
-      "signal_urls": [
-        "https://www.ft.com/content/28cb9178-ac22-44b9-99f5-d5f25a86d366?syn-25a6b1a6=1",
-        "https://www.bloomberg.com/news/videos/2026-11-23/odd-lots-can-huawei-challenge-nvidia-in-the-ai-arms-race",
-        "https://www.bloomberg.com/news/videos/2026-11-23/us-ai-chip-curbs-test-southeast-asia-data-center-boom-video",
-        "https://www.bloomberg.com/news/features/2026-11-22/trump-s-ai-chip-crackdown-on-china-after-nvidia-crisis-squeezes-southeast-asia",
-        "https://www.bloomberg.com/news/videos/2026-11-23/ing-s-sareen-asia-ai-chip-demand-unlikely-to-crash-video"
-      ],
-      "quiet_days": 0
-    },
-    {
-      "id": "open-weight-models",
-      "name": "Open-weight модели",
-      "momentum": 39,
-      "category": "emerging",
-      "rationale": "Вчера тренд был emerging; сегодня он усилился через публикации Hugging Face о локальной Inkling 2 Mini и запуске MoE-модели на 180 млрд параметров с 32 ГБ RAM. (Оценка модели 42: независимых источников 1, для «ускоряется» нужно от 3.)",
-      "levels": [
-        4,
         5,
         2
       ],
       "is_new": false,
       "signal_count": 1,
       "signal_urls": [
-        "https://huggingface.co/blog/inkling2mini",
-        "https://huggingface.co/blog/moe-expert-streaming"
-      ],
-      "quiet_days": 0,
-      "raw_momentum": 42
-    },
-    {
-      "id": "ai-talent-market",
-      "name": "Рынок AI-талантов",
-      "momentum": 37,
-      "category": "emerging",
-      "rationale": "Сигнал остался на прежнем уровне: Togo AI Lab обучает исследователей в Университете Кара, а публичная дискуссия о конце программистов поддерживает переописание инженерных компетенций.",
-      "levels": [
-        3,
-        7
-      ],
-      "is_new": false,
-      "signal_count": 3,
-      "signal_urls": [
-        "https://news.google.com/rss/articles/CBMiugFBVV95cUxPTE1DLUppZ3BIXzg4bXkwb1M2MU81UVEtbUdGeExwSVNJb0FaQjNsd0NHTnhiRkZUdjExaEVsRkVYVU5zLS1VZUJFQUs0R1lwaWdROXVDUVFBUmNLbXJNVHBOMGNfMDh6c0VQXy1rdVlFcjlNMU0xZVItZ1NqVnZrMFlhWTlZWHA5aXpKQmRXcGY0VE5MdV9RUFR3Y0ZUY1JpejdVNVpmT0k2UTFBa0RGeW90dmtiTU4xMkE?oc=5",
-        "https://www.wired.com/story/goodbye-world-the-end-of-programmers/",
-        "https://www.hrdive.com/news/executives-get-more-ai-training-than-other-workers-hurting-adoption/875395/",
-        "https://www.hrdive.com/news/job-candidates-ai-usage-is-obscuring-their-viability-report-finds/875232/"
+        "https://www.bloomberg.com/news/articles/2026-11-24/us-blacklists-alibaba-owned-company-in-setback-to-ai-ambitions",
+        "https://www.bloomberg.com/news/articles/2026-11-24/malaysia-tells-data-centers-to-cut-off-firms-on-us-blacklist"
       ],
       "quiet_days": 0
     },
     {
-      "id": "ai-audit-trust",
-      "name": "Доверие и аудит AI-результатов",
-      "momentum": 32,
+      "id": "agentic-platforms",
+      "name": "Агентные AI-платформы",
+      "momentum": 39,
       "category": "emerging",
-      "rationale": "Новый тренд поддержан несколькими независимыми сигналами: Grant Thornton предупредила о качестве AI-аудита, arXiv описал неподдержанные финансовые интерпретации LLM и Better Markets раскритиковала банковскую AI-рамку OCC.",
+      "rationale": "Вчера тренд был сильным; сегодня Claude Ship, Supertake и Google AI Mode показывают перенос агентов в код, финансы и персональные пользовательские сервисы. (Оценка модели 55: независимых источников 1, для «ускоряется» нужно от 3.)",
       "levels": [
-        6,
-        8,
+        3,
+        5,
         9
       ],
-      "is_new": true,
-      "signal_count": 3,
+      "is_new": false,
+      "signal_count": 1,
       "signal_urls": [
-        "https://www.ft.com/content/13b9bee8-f7e4-4b02-ad78-2e358ff43240?syn-25a6b1a6=1",
-        "https://arxiv.org/abs/2611.26968",
-        "https://news.google.com/rss/articles/CBMizgFBVV95cUxQUHNXcUY0anNsSHBsZWRBYURCQlUxNWRLYl96OHVWdjE3eXNQN3Rfc3FTenU4UG1uVF90ZjY2LWZrM2JzOEJHb3R3VThQVXhwRzYwZWFTTXQ1VnV3dDJjYkNsRzFDNTdfUHo1V3hOUjMzS0ZKM1FUdzNhbFJWVkVDS050ZkdkRWZwWmRqSjliVGM2RmhrUXFFYWJUV2R2VUpqVVpwN2VkVU1VTEpyNTFkVjVQeHoxaWsyS1NFSVZldllNYU5TNnBoYTZKV2VzUQ?oc=5"
+        "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+        "https://techcrunch.com/2026/11/23/supertake-raises-20m-to-let-ai-agents-turn-your-market-predictions-into-stock-portfolios/",
+        "https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/"
+      ],
+      "quiet_days": 0,
+      "raw_momentum": 55
+    },
+    {
+      "id": "ai-energy",
+      "name": "Энергетика для AI",
+      "momentum": 39,
+      "category": "emerging",
+      "rationale": "Вчера тренд был на границе ускорения; сегодня Mitsubishi, COP31 и материал о сетевой инженерной мощности дали три сигнала о ресурсных ограничениях AI-дата-центров. (Оценка модели 44: независимых источников 2, для «ускоряется» нужно от 3.)",
+      "levels": [
+        1,
+        2,
+        8
+      ],
+      "is_new": false,
+      "signal_count": 2,
+      "signal_urls": [
+        "https://www.utilitydive.com/news/data-centers-mitsubishi-gas-turbines-earnings/875146/",
+        "https://www.theverge.com/science/1040497/ai-data-centers-electricity-un-climate-summit",
+        "https://www.utilitydive.com/spons/the-grids-hidden-bottleneck-engineering-capacity/874856/"
+      ],
+      "quiet_days": 0,
+      "raw_momentum": 44
+    },
+    {
+      "id": "sovereign-ai",
+      "name": "Суверенный AI (национальные модели)",
+      "momentum": 36,
+      "category": "emerging",
+      "rationale": "Вчера тренд был умеренным; сегодня Fujitsu и Sunway/HPE дали два сигнала о суверенном AI как защищённой инфраструктуре для государства и предприятий.",
+      "levels": [
+        5,
+        2,
+        8
+      ],
+      "is_new": false,
+      "signal_count": 2,
+      "signal_urls": [
+        "https://www.bloomberg.com/news/videos/2026-11-24/fujitsu-cto-on-ai-focus-outlook-video",
+        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYWxDMkk1RlV6MkI4elVCS0VNMWs0N2IzN2pEdjZVS1owM2VFWm9BWF9EZ2hGVzhBLThUaHZRMXdUaW4tTFdrTUwzTWRqQ3AzeXpnUUUyTE4yRDlhUzhYMkF6SG5OT0Z2X3hoYXM2ZFozOVdOcW9md0RlWHZPcS1zZGZwb1RDbk1Celk2cXlwV2o0a2hLUEhRdUVLUDBWcW1BU2I3d2FfWkc?oc=5"
+      ],
+      "quiet_days": 0
+    },
+    {
+      "id": "ai-talent-market",
+      "name": "Рынок AI-талантов",
+      "momentum": 36,
+      "category": "emerging",
+      "rationale": "Вчера тренд был формирующимся; сегодня сигнал уже не только о разработчиках, а о спросе на найм из-за AI за пределами технологического сектора.",
+      "levels": [
+        3,
+        5,
+        7
+      ],
+      "is_new": false,
+      "signal_count": 1,
+      "signal_urls": [
+        "https://news.google.com/rss/articles/CBMidkFVX3lxTFBYNVRqbFlWdHA4dmxzeVRIeWFPOWpCVFlINVNicWJMMTZ0c2c4V0N3WWY5UkR5SHQySEVSWHRwRWpMQi12bVBnYjB0NndiWkFqck9uYkJvSDNISE1jWVlTRGdXeVBFUVpxUVNRelBmYTQzekVDdUE?oc=5"
+      ],
+      "quiet_days": 0
+    },
+    {
+      "id": "closed-api-models",
+      "name": "Закрытые API-модели",
+      "momentum": 33,
+      "category": "emerging",
+      "rationale": "Вчера тренд был умеренным; сегодня закрытые экосистемы усилились через Claude Ship и персональный AI Mode Google с доступом к Drive и Wallet.",
+      "levels": [
+        5,
+        3,
+        8
+      ],
+      "is_new": false,
+      "signal_count": 2,
+      "signal_urls": [
+        "https://www.theverge.com/ai-artificial-intelligence/1040134/anthropic-claude-ship-ai-pull-requests",
+        "https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/"
       ],
       "quiet_days": 0
     },
     {
       "id": "physical-ai",
       "name": "Физический AI и робототехника",
-      "momentum": 32,
+      "momentum": 30,
       "category": "emerging",
-      "rationale": "Сегодня появился новый устойчивый сигнал из нескольких источников: WeRide обсуждает расширение роботакси с Uber, Ant Group финансирует Simplexity Robotics, а KED Global пишет о физическом AI в подразделении NC.",
+      "rationale": "Вчера тренд имел несколько сигналов; сегодня остался один свежий методический сигнал — RoboTrack для отслеживания точек в робототехнической манипуляции.",
       "levels": [
-        5,
+        6,
         4,
-        2
-      ],
-      "is_new": true,
-      "signal_count": 2,
-      "signal_urls": [
-        "https://www.bloomberg.com/news/videos/2026-11-23/weride-ceo-on-earnings-and-international-markets-video",
-        "https://www.bloomberg.com/news/articles/2026-11-22/ant-group-bets-on-simplexity-to-thrive-in-china-s-humanoid-race",
-        "https://news.google.com/rss/articles/CBMif0FVX3lxTFBWaVd5ZkdlbXdWQjktX0JfRDdkMVVaUklFdkpGUENZTEVGRGJnNTZjQmRfeC1lRDJ6dTl3VXE2dkRNZUhMWVZNcU1JMnA5X0wzRUpoQzB1allGODZMaU00alJTVGJxN0F1Umk5UFBnUjMzTWlteUlUajREZE55STQ?oc=5"
-      ],
-      "quiet_days": 0
-    },
-    {
-      "id": "classic-saas",
-      "name": "Классический SaaS под давлением AI",
-      "momentum": 27,
-      "category": "emerging",
-      "rationale": "Sierra с оценкой $30 млрд и Walmart Agent Gateway показывают давление агентных AI-интерфейсов на традиционные SaaS и розничные платформы, но сигнал остаётся прикладным, а не системным.",
-      "levels": [
-        5,
         3
       ],
       "is_new": false,
-      "signal_count": 3,
+      "signal_count": 1,
       "signal_urls": [
-        "https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/",
-        "https://www.theverge.com/ai-artificial-intelligence/1039874/walmart-agent-gateway-meta-muse-black-friday",
-        "https://arstechnica.com/gadgets/2026/11/microsoft-calls-copilot-the-new-os-for-work-at-ignite-keynote/"
+        "https://huggingface.co/blog/allenai/robotrack"
       ],
       "quiet_days": 0
     },
     {
-      "id": "sovereign-ai",
-      "name": "Суверенный AI (национальные модели)",
+      "id": "open-weight-models",
+      "name": "Open-weight модели",
       "momentum": 31,
       "category": "emerging",
       "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 39.",
       "levels": [
-        8,
-        2,
-        5
+        4,
+        5,
+        2
       ],
       "is_new": false,
       "signal_count": 0,
@@ -1872,15 +1453,31 @@
       "carried": true
     },
     {
-      "id": "closed-api-models",
-      "name": "Закрытые API-модели",
-      "momentum": 31,
+      "id": "ai-audit-trust",
+      "name": "Доверие и аудит AI-результатов",
+      "momentum": 26,
       "category": "emerging",
-      "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 39.",
+      "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 32.",
+      "levels": [
+        6,
+        8,
+        9
+      ],
+      "is_new": false,
+      "signal_count": 0,
+      "signal_urls": [],
+      "quiet_days": 1,
+      "carried": true
+    },
+    {
+      "id": "classic-saas",
+      "name": "Классический SaaS под давлением AI",
+      "momentum": 22,
+      "category": "emerging",
+      "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 27.",
       "levels": [
         5,
-        7,
-        8
+        3
       ],
       "is_new": false,
       "signal_count": 0,
@@ -1891,9 +1488,9 @@
     {
       "id": "synthetic-data",
       "name": "Синтетические данные",
-      "momentum": 15,
+      "momentum": 12,
       "category": "emerging",
-      "rationale": "Новых сигналов нет (дней подряд: 2); значение плавно снижается, вчера было 19.",
+      "rationale": "Новых сигналов нет (дней подряд: 3); значение плавно снижается, вчера было 15.",
       "levels": [
         6,
         5,
@@ -1902,17 +1499,17 @@
       "is_new": false,
       "signal_count": 0,
       "signal_urls": [],
-      "quiet_days": 2,
+      "quiet_days": 3,
       "carried": true
     }
   ],
   "metrics": {
-    "total_events": 33,
+    "total_events": 21,
     "structural_shifts_count": 3,
-    "radar_signals_count": 7,
+    "radar_signals_count": 6,
     "cross_level_links_count": 4,
     "trends_count": 15,
-    "total_sources": 35
+    "total_sources": 23
   },
-  "content_version": "report_2bffd6d5a210dbd7467a"
+  "content_version": "report_901206519a841a40de67"
 }
