@@ -4454,23 +4454,48 @@
   },
   {
     "date": "2026-11-24",
-    "generated_at": "2026-11-24T05:02:54.625Z",
+    "generated_at": "2026-11-24T17:03:25.594Z",
     "trends": [
       {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
         "momentum": 60,
         "category": "accelerating",
-        "rationale": "Вчера тренд был ускоряющимся; сегодня Amazon покупает Decart за $7,5 млрд, Fujitsu продвигает Monaka, а Sunway/HPE укрепляют корпоративный суверенный AI.",
+        "rationale": "Вчера было 53; сегодня сигнал усилился из-за трёх независимых сообщений: ловушка Anthropic, 0-day с AI-агентами у Amazon и утечки данных агентами по данным SC Media.",
         "levels": [
-          5,
-          4,
-          2,
-          9
+          6,
+          8,
+          3
         ],
         "is_new": false,
         "signal_count": 3,
         "signal_urls": [
+          "https://www.wired.com/story/ai-agents-can-get-honeypotted-too-aw/",
+          "https://arstechnica.com/security/2026/11/amazon-says-hackers-ai-agents-found-and-exploited-0-day-with-little-human-input/",
+          "https://news.google.com/rss/articles/CBMiowFBVV95cUxNVWEyNkhEYVlPZE5zOWpoTlVjdXMzNGduMmRtNTE4RTJKZVg4ckNUTGJiOUJJc0liRWdRWng4ZHh2NjB1Q08wN2NLM1RfbVRtUU9oQ3FySF9fN1Q5Y2V6SlZKc3RNWGlsNWxKRkNqb0FZTVEzbzFvemJFU3BEQjRPTThfTllTSU9OUExMdUxwRmlKQkJwbVk5eGpwZEFuV2VHeWhn?oc=5",
+          "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qb1E0ekF2Y195b0JfWjJORHA3SVFxY3ZBcVJZa2dYMUw3bTFnUmxyX3FvdldNVFg5UEhpdHNRWE9DY0xDckR0YklqMTRISnNFdVJNOE0wWFlMT0ZDek9JRUhwV3hXRkhqZTFVTmYtdkZLWEdPcHdGX1B3VjdNVXM?oc=5"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 54,
+        "category": "accelerating",
+        "rationale": "Вчера было 60; сегодня сигнал стал менее однородным: есть CapEx-давление и энергетика для ЦОД, но также сообщения о трудностях перевода AI-пилотов в производство.",
+        "levels": [
+          9,
+          5,
+          2,
+          1
+        ],
+        "is_new": false,
+        "signal_count": 4,
+        "signal_urls": [
+          "https://techcrunch.com/2026/11/24/why-a-crusoe-investor-is-betting-on-solar-and-batteries-to-power-future-ai-data-centers/",
+          "https://www.bloomberg.com/news/videos/2026-11-24/why-ai-pilots-struggle-to-scale-video",
+          "https://techcrunch.com/2026/11/24/amazons-decart-acquisition-is-a-bet-on-using-software-to-narrow-the-gap-with-nvidia-in-the-ai-chip-race/",
+          "https://www.ft.com/content/74408261-9cb4-41ae-8d4f-3a1a9ce72930?syn-25a6b1a6=1",
           "https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/",
           "https://www.bloomberg.com/news/videos/2026-11-24/fujitsu-cto-on-ai-focus-outlook-video",
           "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYWxDMkk1RlV6MkI4elVCS0VNMWs0N2IzN2pEdjZVS1owM2VFWm9BWF9EZ2hGVzhBLThUaHZRMXdUaW4tTFdrTUwzTWRqQ3AzeXpnUUUyTE4yRDlhUzhYMkF6SG5OT0Z2X3hoYXM2ZFozOVdOcW9md0RlWHZPcS1zZGZwb1RDbk1Celk2cXlwV2o0a2hLUEhRdUVLUDBWcW1BU2I3d2FfWkc?oc=5"
@@ -4478,30 +4503,11 @@
         "quiet_days": 0
       },
       {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 53,
-        "category": "accelerating",
-        "rationale": "Вчера тренд был очень сильным; сегодня он ослаблен по числу сигналов, но Naver и телекомы Южной Кореи прямо остановили агентов из-за ответственности. (Оценка модели 62: независимых источников 1, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
-        "levels": [
-          8,
-          3,
-          6
-        ],
-        "is_new": false,
-        "signal_count": 1,
-        "signal_urls": [
-          "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qb1E0ekF2Y195b0JfWjJORHA3SVFxY3ZBcVJZa2dYMUw3bTFnUmxyX3FvdldNVFg5UEhpdHNRWE9DY0xDckR0YklqMTRISnNFdVJNOE0wWFlMT0ZDek9JRUhwV3hXRkhqZTFVTmYtdkZLWEdPcHdGX1B3VjdNVXM?oc=5"
-        ],
-        "quiet_days": 0,
-        "raw_momentum": 62
-      },
-      {
         "id": "ai-market-repricing",
         "name": "Переоценка AI-активов",
-        "momentum": -47,
+        "momentum": -54,
         "category": "collapsing",
-        "rationale": "Вчера тренд был резко отрицательным; сегодня негатив смягчён макросигналом Сингапура и китайскими венчурными ставками, но FT отдельно подчёркивает, что чипы не дёшевы.",
+        "rationale": "Вчера было -47; сегодня отрицательный сигнал усилился падением Anthropic ниже цены IPO и сообщениями Bloomberg о снижении Nvidia и Nasdaq 100 на фоне сомнений в AI-сделке.",
         "levels": [
           9,
           5
@@ -4509,6 +4515,9 @@
         "is_new": false,
         "signal_count": 2,
         "signal_urls": [
+          "https://www.bloomberg.com/news/videos/2026-11-24/anthropic-shares-fall-below-ipo-price-of-83-video",
+          "https://www.ft.com/content/c0cb932a-076e-4471-8009-91749fde5f47?syn-25a6b1a6=1",
+          "https://www.bloomberg.com/news/videos/2026-11-24/nvidia-remains-at-the-core-of-ai-growth-says-feinseth-video",
           "https://www.ft.com/content/046984ab-9a7c-41fd-804c-fb356db28099?syn-25a6b1a6=1",
           "https://www.bloomberg.com/news/articles/2026-11-24/singapore-raises-gdp-growth-outlook-to-around-6-on-ai-boom",
           "https://www.bloomberg.com/news/articles/2026-11-23/the-chinese-ai-aspirants-drawing-big-bets-to-take-on-deepseek"
@@ -4518,40 +4527,90 @@
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 42,
+        "momentum": 49,
         "category": "accelerating",
-        "rationale": "Вчера тренд был сильным; сегодня он подкреплён не судебным спором, а международным сроком ООН, блокировкой агентов в Южной Корее и переносом чёрных списков на дата-центры. (Оценка модели 60: независимых источников 2, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
+        "rationale": "Вчера было 42; сегодня регуляторный сигнал расширился от законов к школьным правилам, подростковым лентам, AI Act и январским приоритетам сенатора Хассен.",
         "levels": [
           8,
-          2,
+          7,
           3
         ],
         "is_new": false,
-        "signal_count": 2,
+        "signal_count": 3,
         "signal_urls": [
+          "https://news.google.com/rss/articles/CBMitgFBVV95cUxNdUVmWUJXNFJTclhUa3V5eXZPTzJjb0FIa1B1Q0UzYnRWVUlSdHctNUxJTDdLaHE2X3NDN0YtaGRrT2NQVWlCU21scWplZVNFWjJNZDhybUFwbXBxUTlYbUtFWFFmQmd6MEY2REZhanBUSHFUSXdpdE03a05zNGtNM3JJMVBTT2d3cVJpR1JPRGV4LXlJT3NTRUd2ZFladEhDNTBTSVZRSVJxenZfblIxc3pOUXBNUQ?oc=5",
+          "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQa3U3SVhQZEZzeDEzTi02MGRqMVpUaXBFNnotWVg1cHlRYVNKZjk5UDhHZUctbXFyWG82eWZOcGhHekVZS1dtcDVvMG8zbWRBNWxYMEl4cjBZZF95N3VWc01UcXR4NTVuV3JUekJWbkNHZzZmWVJhaFA1RkJkZWxWb2xBRkV4ZFdDNmQzNDUwazB6eWFGV3lQZU9YMHhJdVBLM2dGaF9NWEZwdEFMV2Nma3dzMWRXbjR1TzdRbHVqN1dFODg?oc=5",
+          "https://techcrunch.com/2026/11/24/pinterest-will-now-let-parents-limit-the-ai-generated-content-their-teens-see/",
+          "https://news.google.com/rss/articles/CBMia0FVX3lxTFBHdjUta3puUng4STNvQWRYYy1IdXE0SGtOUl9qSDhNVVBvdWFXQ1BzQmZpYlZEMlNkdlMzenZLcUhSRzFkamxjUlZpVWJYeDhLdGFmQXpqYlNrRThKUEl3UVZCV0VITEptNGdN?oc=5",
           "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNbVNBQl9aRURGZHBIc0xiTVRvOW9pWE0yaWdNVkZrNzJVZUtGb2luUUx2SzhCN1BQUXZzdFJLRDA4Q3FBVTg1WXZ0TkQ0S0EyOENRNi05NW50Y19RNkI5czBYMkQxX0NULW1nZUw1bENaYmk3ZVlGaFNJUUJxMUVjM0VERl90SzVDMm9qRHpzcjR1Q0lVVHZEWDh6c3RoRWs4NkI2eVBkZUXSAa4BQVVfeXFMUFFyTWlPTHRZcnY1QWNBZF85elMyeTRnQTFObnAwYUdDVnFYUDVGSEQyYm9CblpHcUpJMEJ1UmVBOHVqQ201VVFKOVVRNjBXakVValFUWi1DSTUxU294RjlHZ2toQTQ0Wm04Tm1YbFU4WTRlN25LLUQteE5MeFlhbG5PdzB2UWlsSmttRXNpY0hrdmJZaGZ1enNLczQ5d2JkaTFnYzNRV1c3UEgwemVB?oc=5",
           "https://news.google.com/rss/articles/CBMif0FVX3lxTE1qb1E0ekF2Y195b0JfWjJORHA3SVFxY3ZBcVJZa2dYMUw3bTFnUmxyX3FvdldNVFg5UEhpdHNRWE9DY0xDckR0YklqMTRISnNFdVJNOE0wWFlMT0ZDek9JRUhwV3hXRkhqZTFVTmYtdkZLWEdPcHdGX1B3VjdNVXM?oc=5",
           "https://www.bloomberg.com/news/articles/2026-11-24/malaysia-tells-data-centers-to-cut-off-firms-on-us-blacklist"
         ],
-        "quiet_days": 0,
-        "raw_momentum": 60
+        "quiet_days": 0
       },
       {
         "id": "chip-export-control",
         "name": "Экспортный контроль чипов",
         "momentum": 39,
         "category": "emerging",
-        "rationale": "Вчера тренд был на верхней границе формирующегося; сегодня он расширился на Малайзию и структуры Alibaba/Megaspeed, но сигналов только два, поэтому ускорение ограничено.",
+        "rationale": "Вчера было 39; сегодня сигнал усилили вопросы Конгресса к Хуангу, отдельная повестка слушания 3 декабря и призыв FT не ослаблять контроль чипов. (Оценка модели 46: независимых источников 2, для «ускоряется» нужно от 3.)",
         "levels": [
           8,
-          5,
-          2
+          4,
+          5
         ],
         "is_new": false,
-        "signal_count": 1,
+        "signal_count": 2,
         "signal_urls": [
+          "https://www.bloomberg.com/news/videos/2026-11-24/congressman-questions-huang-reinstatement-video",
+          "https://www.bloomberg.com/news/videos/2026-11-24/what-senator-mccormick-wants-to-hear-from-jensen-huang-video",
+          "https://www.ft.com/content/55a32e72-2cee-4a7f-874f-0936e2581a8a",
           "https://www.bloomberg.com/news/articles/2026-11-24/us-blacklists-alibaba-owned-company-in-setback-to-ai-ambitions",
           "https://www.bloomberg.com/news/articles/2026-11-24/malaysia-tells-data-centers-to-cut-off-firms-on-us-blacklist"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 46
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера было 39; сегодня тренд подтверждён ставкой на солнечную генерацию и накопители для AI-ЦОД, а также спором о стоимости передачи в SPP, но сигналов недостаточно для резкого ускорения.",
+        "levels": [
+          1,
+          2,
+          9
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://techcrunch.com/2026/11/24/why-a-crusoe-investor-is-betting-on-solar-and-batteries-to-power-future-ai-data-centers/",
+          "https://www.utilitydive.com/news/spp-decision-to-prevent-transmission-competition-escalates-electric-prices/874143/",
+          "https://www.utilitydive.com/news/data-centers-mitsubishi-gas-turbines-earnings/875146/",
+          "https://www.theverge.com/science/1040497/ai-data-centers-electricity-un-climate-summit",
+          "https://www.utilitydive.com/spons/the-grids-hidden-bottleneck-engineering-capacity/874856/"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера было 36; сегодня добавились сигналы о неравном доступе к AI-обучению, школьной автономии учителей и судебной защите практической подготовки иностранных студентов.",
+        "levels": [
+          3,
+          7,
+          8
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.hrdive.com/news/training-is-key-to-ai-adoption-but-is-still-hitting-roadblocks/875542/",
+          "https://www.hrdive.com/news/court-blocks-dhs-policy-limiting-international-student-training-opportuniti/875568/",
+          "https://news.google.com/rss/articles/CBMia0FVX3lxTFBHdjUta3puUng4STNvQWRYYy1IdXE0SGtOUl9qSDhNVVBvdWFXQ1BzQmZpYlZEMlNkdlMzenZLcUhSRzFkamxjUlZpVWJYeDhLdGFmQXpqYlNrRThKUEl3UVZCV0VITEptNGdN?oc=5",
+          "https://news.google.com/rss/articles/CBMidkFVX3lxTFBYNVRqbFlWdHA4dmxzeVRIeWFPOWpCVFlINVNicWJMMTZ0c2c4V0N3WWY5UkR5SHQySEVSWHRwRWpMQi12bVBnYjB0NndiWkFqck9uYkJvSDNISE1jWVlTRGdXeVBFUVpxUVNRelBmYTQzekVDdUE?oc=5"
         ],
         "quiet_days": 0
       },
@@ -4577,25 +4636,24 @@
         "raw_momentum": 55
       },
       {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 39,
+        "id": "ai-audit-trust",
+        "name": "Доверие и аудит AI-результатов",
+        "momentum": 38,
         "category": "emerging",
-        "rationale": "Вчера тренд был на границе ускорения; сегодня Mitsubishi, COP31 и материал о сетевой инженерной мощности дали три сигнала о ресурсных ограничениях AI-дата-центров. (Оценка модели 44: независимых источников 2, для «ускоряется» нужно от 3.)",
+        "rationale": "Вчера было 26; сегодня доверие стало практическим вопросом контента и знания: Photoshop в редакции, Tidal, Pinterest и 17-миллионнострочное AI-решение требуют проверки происхождения и результата.",
         "levels": [
-          1,
-          2,
-          8
+          8,
+          7,
+          6
         ],
         "is_new": false,
-        "signal_count": 2,
+        "signal_count": 3,
         "signal_urls": [
-          "https://www.utilitydive.com/news/data-centers-mitsubishi-gas-turbines-earnings/875146/",
-          "https://www.theverge.com/science/1040497/ai-data-centers-electricity-un-climate-summit",
-          "https://www.utilitydive.com/spons/the-grids-hidden-bottleneck-engineering-capacity/874856/"
+          "https://www.theverge.com/ai-artificial-intelligence/1041227/the-new-york-times-warns-photographers-not-to-update-photoshop-over-ai-features",
+          "https://techcrunch.com/2026/11/24/tidal-to-ban-and-remove-millions-of-ai-generated-tracks-as-ai-slop-inundates-music-streaming/",
+          "https://www.wired.com/story/ai-solved-maths-most-famous-problem/"
         ],
-        "quiet_days": 0,
-        "raw_momentum": 44
+        "quiet_days": 0
       },
       {
         "id": "sovereign-ai",
@@ -4617,20 +4675,22 @@
         "quiet_days": 0
       },
       {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 36,
+        "id": "physical-ai",
+        "name": "Физический AI и робототехника",
+        "momentum": 35,
         "category": "emerging",
-        "rationale": "Вчера тренд был формирующимся; сегодня сигнал уже не только о разработчиках, а о спросе на найм из-за AI за пределами технологического сектора.",
+        "rationale": "Вчера было 30; сегодня тренд поддержали тесты роботакси без водителя безопасности и публикация Nvidia о Sim2Real-процессе Microduck.",
         "levels": [
-          3,
-          5,
-          7
+          4,
+          6,
+          5
         ],
         "is_new": false,
-        "signal_count": 1,
+        "signal_count": 2,
         "signal_urls": [
-          "https://news.google.com/rss/articles/CBMidkFVX3lxTFBYNVRqbFlWdHA4dmxzeVRIeWFPOWpCVFlINVNicWJMMTZ0c2c4V0N3WWY5UkR5SHQySEVSWHRwRWpMQi12bVBnYjB0NndiWkFqck9uYkJvSDNISE1jWVlTRGdXeVBFUVpxUVNRelBmYTQzekVDdUE?oc=5"
+          "https://www.bloomberg.com/news/articles/2026-11-24/uber-nuro-to-start-driverless-testing-of-lucid-robotaxis-in-the-bay-area",
+          "https://huggingface.co/blog/nvidia/microduck-obstacle-avoidance",
+          "https://huggingface.co/blog/allenai/robotrack"
         ],
         "quiet_days": 0
       },
@@ -4654,24 +4714,6 @@
         "quiet_days": 0
       },
       {
-        "id": "physical-ai",
-        "name": "Физический AI и робототехника",
-        "momentum": 30,
-        "category": "emerging",
-        "rationale": "Вчера тренд имел несколько сигналов; сегодня остался один свежий методический сигнал — RoboTrack для отслеживания точек в робототехнической манипуляции.",
-        "levels": [
-          6,
-          4,
-          3
-        ],
-        "is_new": false,
-        "signal_count": 1,
-        "signal_urls": [
-          "https://huggingface.co/blog/allenai/robotrack"
-        ],
-        "quiet_days": 0
-      },
-      {
         "id": "open-weight-models",
         "name": "Open-weight модели",
         "momentum": 31,
@@ -4681,23 +4723,6 @@
           4,
           5,
           2
-        ],
-        "is_new": false,
-        "signal_count": 0,
-        "signal_urls": [],
-        "quiet_days": 1,
-        "carried": true
-      },
-      {
-        "id": "ai-audit-trust",
-        "name": "Доверие и аудит AI-результатов",
-        "momentum": 26,
-        "category": "emerging",
-        "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 32.",
-        "levels": [
-          6,
-          8,
-          9
         ],
         "is_new": false,
         "signal_count": 0,
