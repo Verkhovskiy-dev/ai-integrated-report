@@ -122,10 +122,10 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden xl:flex items-center gap-0.5 flex-1 justify-end min-w-0 overflow-x-auto">
-          {NAV_ITEMS.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeSection === item.id;
+          <nav className="hidden xl:flex items-center gap-0.5 flex-1 justify-end min-w-0 overflow-x-auto">
+            {NAV_ITEMS.map((item) => {
+              const Icon = item.icon;
+              const isActive = activeSection === item.id;
             if (item.id === "programs") {
               return (
                 <button
@@ -179,6 +179,18 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
+        </div>
+      </div>
+
+      {/* Subtitle - thin muted line below header */}
+      <div className="border-t border-border/20">
+        <div className="container py-1">
+          <p className="text-xs text-muted-foreground/80 leading-tight">
+            {locale === "en" 
+              ? "Strategic dashboard for executives and transformation leaders"
+              : "Дашборд для руководителей и лидеров трансформации"
+            }
+          </p>
         </div>
       </div>
 
