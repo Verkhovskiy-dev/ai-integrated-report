@@ -163,7 +163,35 @@ function vitePluginManusDebugCollector(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), emitEkenRouteRegistry()];
+/**
+ * Vite plugin to copy education data files to dist output
+ * - Copies education-report.json and education-live.json from /data to /dist/public/data
+ */
+function vitePluginCopyEducationData(): Plugin {
+  return {
+    name: "copy-education-data",
+    closeBundle() {
+      const dataDir = path.join(PROJECT_ROOT, "data");
+      const distDataDir = path.join(PROJECT_ROOT, "dist/public/data");
+
+      if (!fs.existsSync(distDataDir)) {
+        fs.mkdirSync(distDataDir, { recursive: true });
+      }
+
+      const filesToCopy = ["education-report.json", "education-live.json"];
+      for (const filename of filesToCopy) {
+        const srcPath = path.join(dataDir, filename);
+        const destPath = path.join(distDataDir, filename);
+
+        if (fs.existsSync(srcPath)) {
+          fs.copyFileSync(srcPath, destPath);
+        }
+      }
+    },
+  };
+}
+
+const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), emitEkenRouteRegistry(), vitePluginCopyEducationData()];
 
 export default defineConfig({
   plugins,
