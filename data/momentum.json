@@ -4972,56 +4972,85 @@
   },
   {
     "date": "2026-11-27",
-    "generated_at": "2026-11-27T05:03:01.943Z",
+    "generated_at": "2026-11-27T17:03:19.912Z",
     "trends": [
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
-        "momentum": 47,
+        "momentum": 52,
         "category": "accelerating",
-        "rationale": "Вчера тренд был высоким; сегодня его усилили 3 ГВт ближнего портфеля Cheyenne Light, сделка TVA на $1,7 млрд и спор о газовой станции FirstEnergy на $2,5 млрд. Одновременно Vistra добавила фильтр реальности, указав на завышенные очереди подключения. (Оценка модели 70: независимых источников 1, для «ускоряется» нужно от 3; снижение за день ограничено −15.)",
+        "rationale": "По сравнению с утренним значением сигналы усилились: LIAN готовит IPO AI-инфраструктуры, SpaceX получила допуск к орбитальным AI-узлам, а Q.ANT показывает аппаратный ответ на энергозатраты.",
         "levels": [
+          9,
           2,
-          1,
-          9
+          4,
+          1
         ],
         "is_new": false,
-        "signal_count": 1,
+        "signal_count": 4,
         "signal_urls": [
+          "https://www.bloomberg.com/news/articles/2026-11-27/ai-data-center-developer-lian-picks-london-for-500-million-ipo",
+          "https://www.theverge.com/science/1042278/spacex-fcc-starmind-ai-space-data-centers",
+          "https://www.wired.com/story/a-new-breed-of-chip-runs-ai-models-using-waves-of-light/",
           "https://www.utilitydive.com/news/cheyenne-light-microsoft-google-data-center-bright-horizon/875739/",
           "https://www.utilitydive.com/news/tva-touts-17b-data-center-deal-under-new-large-load-tariff/875630",
           "https://www.utilitydive.com/news/firstenergy-utilities-get-approval-for-25b-gas-plant-in-west-virginia/875646",
           "https://www.utilitydive.com/news/vistra-midterms-data-center-ercot-pjm/875626/"
         ],
-        "quiet_days": 0,
-        "raw_momentum": 70
+        "quiet_days": 0
+      },
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 45,
+        "category": "accelerating",
+        "rationale": "Сигналы усилились за счёт торговли и инфраструктуры: покупатели идут к AI-ботам, Amazon обсуждает доступ Muse AI, а SlicePlanner показывает агентное управление сетевыми срезами.",
+        "levels": [
+          5,
+          3,
+          6,
+          2
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/videos/2026-11-27/black-friday-shoppers-turn-to-ai-bots-to-find-deals-video",
+          "https://www.theverge.com/tech/1042071/meta-amazon-muse-ai-shopping-discussions",
+          "https://arxiv.org/abs/2611.33664",
+          "https://www.bloomberg.com/news/articles/2026-11-27/china-hedge-fund-star-builds-operating-system-kernel-for-ai",
+          "https://www.bloomberg.com/news/features/2026-11-26/holidays-to-test-ai-shopping-bots-from-google-amazon-meta-and-openai",
+          "https://arxiv.org/abs/2611.33160",
+          "https://arxiv.org/abs/2611.33402",
+          "https://arxiv.org/abs/2611.33513"
+        ],
+        "quiet_days": 0
       },
       {
         "id": "ai-energy",
         "name": "Энергетика для AI",
         "momentum": 39,
         "category": "emerging",
-        "rationale": "После вчерашнего уровня сигнал усилился: коммунальные компании обсуждают дата-центры через крупные нагрузки, генерацию, гибкость сети и доступность энергии. Новые события показывают не только спрос, но и ресурсные ограничения его подключения. (Оценка модели 49: независимых источников 1, для «ускоряется» нужно от 3.)",
+        "rationale": "Относительно утра прямых сетевых решений меньше, но Q.ANT прямо ставит энергопотребление инференса в центр аппаратного дизайна, поэтому тренд остаётся на прежнем уровне.",
         "levels": [
           1,
-          2
+          4
         ],
         "is_new": false,
-        "signal_count": 1,
+        "signal_count": 2,
         "signal_urls": [
+          "https://www.wired.com/story/a-new-breed-of-chip-runs-ai-models-using-waves-of-light/",
           "https://www.utilitydive.com/news/what-is-holding-back-bidirectional-ev-charging-as-a-grid-resource/875766/",
           "https://www.utilitydive.com/news/2026-q3-roundup-utilities-seek-to-reassure-investors-amid-election-fallout/875726",
           "https://www.utilitydive.com/news/firstenergy-utilities-get-approval-for-25b-gas-plant-in-west-virginia/875646"
         ],
-        "quiet_days": 0,
-        "raw_momentum": 49
+        "quiet_days": 0
       },
       {
         "id": "chip-export-control",
         "name": "Экспортный контроль чипов",
         "momentum": 39,
         "category": "emerging",
-        "rationale": "Вчера тренд был на границе ускорения; сегодня есть два сильных сигнала, но их недостаточно для повышения выше порога. Nvidia приостановила поставки в четыре страны ЮВА, а Bloomberg обсудил ограничения США для китайских AI-лабораторий.",
+        "rationale": "Вечерний сигнал точечный, но сильный: Bloomberg сообщил об установленной стойке GB300 Blackwell в шанхайском дата-центре, что переносит контроль с поставок на проверку конечного размещения.",
         "levels": [
           4,
           8,
@@ -5030,48 +5059,30 @@
         "is_new": false,
         "signal_count": 2,
         "signal_urls": [
+          "https://www.bloomberg.com/news/articles/2026-11-27/nvidia-blackwell-chips-turn-up-at-china-site-tied-to-alice-huang",
           "https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/",
           "https://www.bloomberg.com/news/videos/2026-11-27/counterpoint-on-china-s-ai-progress-under-chip-curbs-video"
         ],
         "quiet_days": 0
       },
       {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
         "momentum": 39,
         "category": "emerging",
-        "rationale": "Вчера тренд уже ускорялся; сегодня его поддержали ОС-ядро для AI-агентов, покупательские боты крупных платформ и несколько работ по контексту, реальному времени и маршрутизации агентных задач. (Оценка модели 58: независимых источников 2, для «ускоряется» нужно от 3.)",
+        "rationale": "После утреннего уровня появились новые методические сигналы: оценка вреда в психическом здоровье, LLM-триаж угроз, EVA и интерактивные доказательства усиливают контур проверки агентных действий. (Оценка модели 44: независимых источников 2, для «ускоряется» нужно от 3.)",
         "levels": [
-          5,
           6,
+          8,
           3
         ],
         "is_new": false,
         "signal_count": 2,
         "signal_urls": [
-          "https://www.bloomberg.com/news/articles/2026-11-27/china-hedge-fund-star-builds-operating-system-kernel-for-ai",
-          "https://www.bloomberg.com/news/features/2026-11-26/holidays-to-test-ai-shopping-bots-from-google-amazon-meta-and-openai",
-          "https://arxiv.org/abs/2611.33160",
-          "https://arxiv.org/abs/2611.33402",
-          "https://arxiv.org/abs/2611.33513"
-        ],
-        "quiet_days": 0,
-        "raw_momentum": 58
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 39,
-        "category": "emerging",
-        "rationale": "Вчера тренд был умеренно сильным; сегодня он получил методическое усиление через работы о шлюзах уверенности, проверке ограничений и реальном времени. FT также сообщил об опасениях из-за не выпущенных AI-моделей и шифрования финансовых систем. (Оценка модели 44: независимых источников 2, для «ускоряется» нужно от 3.)",
-        "levels": [
-          6,
-          8,
-          9
-        ],
-        "is_new": false,
-        "signal_count": 2,
-        "signal_urls": [
+          "https://arxiv.org/abs/2611.33263",
+          "https://arxiv.org/abs/2611.33470",
+          "https://arxiv.org/abs/2611.33706",
+          "https://arxiv.org/abs/2611.33676",
           "https://arxiv.org/abs/2611.33394",
           "https://arxiv.org/abs/2611.33161",
           "https://arxiv.org/abs/2611.33513",
@@ -5085,49 +5096,51 @@
         "name": "Регулирование AI",
         "momentum": 39,
         "category": "emerging",
-        "rationale": "Вчера тренд был ускоренным, но сегодня меньше новых регуляторных фактов. Главный свежий сигнал — вмешательство 42 генпрокуроров США в возможную продажу чатов Character.AI; остальные сигналы скорее институциональные, чем нормативные. (Оценка модели 49: независимых источников 2, для «ускоряется» нужно от 3.)",
+        "rationale": "Тренд остался высоким, но без скачка: Делавэр обсуждает правовую форму автономных AI-компаний, эксперты требуют ограничений AI в школах, а Financial Times связал AI с рисками шифрования.",
         "levels": [
           8,
-          5,
-          7
+          7,
+          9
         ],
         "is_new": false,
-        "signal_count": 2,
+        "signal_count": 4,
         "signal_urls": [
+          "https://www.ft.com/content/8b989597-c00b-4839-af3d-a37c1bb14e7e?syn-25a6b1a6=1",
+          "https://news.google.com/rss/articles/CBMiekFVX3lxTE5uSUNkem9ERmdRM1gtSC1xaFdnUEkzZ0xyR3dKVEdTSG9TSDZJa0NJTTlaT0E3SENYWmFDWEpqU3lvUzRtc3ZRemtsUkRLYnNzUExjYy1GWTRaWHkzZVJDVk9PYmxuWUV1NVA1MnJua21NZjlXVEw2RmNB?oc=5",
+          "https://www.ft.com/content/450920b9-82b8-4a66-960b-5740aa7f94ae?syn-25a6b1a6=1",
           "https://www.theverge.com/policy/1042620/character-ai-sale-state-ags-block-selling-users-chats",
           "https://www.technologyreview.com/2026/11/25/1149702/ai-is-straining-americas-open-records-systems/"
         ],
-        "quiet_days": 0,
-        "raw_momentum": 49
+        "quiet_days": 0
       },
       {
         "id": "ai-talent-market",
         "name": "Рынок AI-талантов",
         "momentum": 39,
         "category": "emerging",
-        "rationale": "После вчерашнего сильного значения тренд поддержан не увольнениями, а перестройкой компетенций: HR Dive пишет о готовности учиться, барьерах AI-обучения и культурных изменениях, а Harvard запускает инициативу по AI в обучении. (Оценка модели 53: независимых источников 2, для «ускоряется» нужно от 3.)",
+        "rationale": "Вечером появились не сигналы переобучения, а сигналы вытеснения задач: больница столкнулась с протестом из-за автоматизации, а FT описал замену нефтяников AI в опасных работах.",
         "levels": [
           3,
-          7,
           5
         ],
         "is_new": false,
-        "signal_count": 2,
+        "signal_count": 3,
         "signal_urls": [
+          "https://news.google.com/rss/articles/CBMinAFBVV95cUxNVktBTVdvMWN4bUZOX3RNUkpuamhXTGdPdUUyODRsN0F1RFUyaGU2TGg1eDJXQXpnWWRrc2xhTC1od0d5c1pNWURwd0NyMGVNbzBMbzQ4a2hPeUpsYlQ3Z2VWMndCbnA2WkUydzJyelFtQlBWWVp4TVBYU0dyVUxtR1lBWlItelBjN3NQRWpMUUVObFE1ODl5VjV3Smg?oc=5",
+          "https://www.ft.com/content/da45883c-6612-4071-b363-a826c6edb085?syn-25a6b1a6=1",
           "https://www.hrdive.com/news/employers-expect-new-hires-to-have-a-willingness-to-learn/875747/",
           "https://www.hrdive.com/news/training-is-key-to-ai-adoption-but-is-still-hitting-roadblocks/875542/",
           "https://www.hrdive.com/news/many-companies-use-ai-but-few-pair-it-with-culture-changes-report-says/875631/",
           "https://news.google.com/rss/articles/CBMiigFBVV95cUxOY1NETHR2NWYzOXVxVzUzTTZPYzlHd3Y1SXEwWHVJUURDSWVSQmtSd1JiX1RaRm1Rb0xuY3JoSnlqR19HRUcxSVVhUXQtSWpDNHVPNHJhZlBxUHFHcFhya21uazE1ZTNYQThVVVZkZzRHdTA5X0tCa3dSSzVXeUt4Z3pJZDFoRTF6REE?oc=5"
         ],
-        "quiet_days": 0,
-        "raw_momentum": 53
+        "quiet_days": 0
       },
       {
         "id": "ai-audit-trust",
         "name": "Доверие и аудит AI-результатов",
         "momentum": 39,
         "category": "emerging",
-        "rationale": "Вчера тренд был развивающимся; сегодня он усилился серией независимых методических сигналов: PeerReveal для рецензий, AutoformBench для формализации, Aligned Machine для мультимодальных сходств и аудит кода Claude 5.5. (Оценка модели 50: независимых источников 1, для «ускоряется» нужно от 3.)",
+        "rationale": "Тренд усилился: новые работы по сертификации глубины доказательств, интерактивным доказательствам, Aligned Machine и EVA переводят доверие к AI в проверяемые процедуры. (Оценка модели 45: независимых источников 1, для «ускоряется» нужно от 3.)",
         "levels": [
           6,
           7,
@@ -5136,47 +5149,34 @@
         "is_new": false,
         "signal_count": 1,
         "signal_urls": [
+          "https://arxiv.org/abs/2611.33303",
+          "https://arxiv.org/abs/2611.33676",
+          "https://arxiv.org/abs/2611.33594",
+          "https://arxiv.org/abs/2611.33706",
           "https://arxiv.org/abs/2611.33555",
           "https://arxiv.org/abs/2611.33165",
-          "https://arxiv.org/abs/2611.33594",
           "https://arxiv.org/abs/2611.33639"
         ],
         "quiet_days": 0,
-        "raw_momentum": 50
-      },
-      {
-        "id": "ai-market-repricing",
-        "name": "Переоценка AI-активов",
-        "momentum": -39,
-        "category": "decelerating",
-        "rationale": "Вчера тренд был резко отрицательным; сегодня негатив ослаблен, но сохраняется через рекордный выход иностранных фондов из тайваньских акций и проявление кредитного риска SoftBank в розничной облигации.",
-        "levels": [
-          9,
-          4,
-          5
-        ],
-        "is_new": false,
-        "signal_count": 1,
-        "signal_urls": [
-          "https://www.bloomberg.com/news/articles/2026-11-27/foreign-funds-on-pace-for-record-taiwan-stock-exodus-in-ai-rout",
-          "https://www.bloomberg.com/news/articles/2026-11-27/softbank-group-s-1-trillion-retail-bond-shows-more-credit-risk"
-        ],
-        "quiet_days": 0
+        "raw_momentum": 45
       },
       {
         "id": "physical-ai",
         "name": "Физический AI и робототехника",
-        "momentum": 38,
+        "momentum": 39,
         "category": "emerging",
-        "rationale": "Вчера тренд был развивающимся; сегодня его поддержали TDK с датчиками для гуманоидных роботов и AI-дата-центров, а также arXiv-работа о CAD-генерации роторов агентным фреймворком VaneCraft.",
+        "rationale": "Тренд усилился методически: PowerFix применяет LLM-агентов к силовым преобразователям, Asset4D-Bench тестирует 3D и 4D-реконструкцию, а JOVE ICE распределяет AI для очков.",
         "levels": [
+          6,
           4,
-          5,
-          6
+          2
         ],
         "is_new": false,
         "signal_count": 2,
         "signal_urls": [
+          "https://arxiv.org/abs/2611.33712",
+          "https://arxiv.org/abs/2611.33728",
+          "https://arxiv.org/abs/2611.33735",
           "https://www.bloomberg.com/news/articles/2026-11-26/tdk-bets-on-ai-data-centers-and-robots-to-fuel-sensor-growth",
           "https://arxiv.org/abs/2611.33617"
         ],
@@ -5185,18 +5185,62 @@
       {
         "id": "ai-content-boundaries",
         "name": "Границы допуска AI-контента",
-        "momentum": 33,
+        "momentum": 38,
         "category": "emerging",
-        "rationale": "Вчера тренд был умеренным; сегодня появились новые сигналы не о запрете каталога, а о доверии к происхождению контента: deepfake-видео с Дженсеном Хуангом и PeerReveal для AI-рецензий.",
+        "rationale": "Сигналы усилились: спор вокруг патента Google на персональные AI-видео, подозрения к фильму Дэвида Финчера и требования ограничений AI в школах расширяют поле контентных границ.",
         "levels": [
           8,
-          7
+          7,
+          5
         ],
         "is_new": false,
-        "signal_count": 2,
+        "signal_count": 3,
         "signal_urls": [
+          "https://www.theverge.com/entertainment/1042221/google-my-channel-ai-video-patent",
+          "https://www.theverge.com/entertainment/1041417/david-fincher-netflix-cliff-booth-ai-interpositive",
+          "https://news.google.com/rss/articles/CBMiekFVX3lxTE5uSUNkem9ERmdRM1gtSC1xaFdnUEkzZ0xyR3dKVEdTSG9TSDZJa0NJTTlaT0E3SENYWmFDWEpqU3lvUzRtc3ZRemtsUkRLYnNzUExjYy1GWTRaWHkzZVJDVk9PYmxuWUV1NVA1MnJua21NZjlXVEw2RmNB?oc=5",
           "https://www.theverge.com/tech/1041222/jensen-huang-nvidia-scandal-deepfakes",
           "https://arxiv.org/abs/2611.33555"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 37,
+        "category": "emerging",
+        "rationale": "Вечером тренд проявился через оборонный и облачный контур: Польша подписала контракт с Palantir, а Reuters сообщил о взломе облачной платформы ВВС США Cloud One.",
+        "levels": [
+          8,
+          7,
+          5,
+          2
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/articles/2026-11-27/poland-signs-300-million-palantir-deal-to-use-ai-for-defense",
+          "https://www.bloomberg.com/news/articles/2026-11-27/hackers-breached-us-air-force-s-cloud-platform"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-market-repricing",
+        "name": "Переоценка AI-активов",
+        "momentum": -34,
+        "category": "decelerating",
+        "rationale": "Негативный импульс ослаб относительно утра: FT сообщает о росте акций технологических компаний, но MarketWatch указывает на разрыв между ростом использования AI и стагнацией расходов.",
+        "levels": [
+          9,
+          5
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://www.ft.com/content/b80e6259-dca8-4da3-962d-402106a3cd81?syn-25a6b1a6=1",
+          "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNUG5XMF9nWG1sSkZ6U0xTNlc0RGtwVXp2NlNqSFhoZTVfbFNJaWQxS0VWOVlLSkJOQVg3YWJlWGV0OWV1cjNobkJsaEt2UEQ4dndyUUxOQUhFV3YxbVJRa2FSNkRHS3JNU2hzVVJuaG9hcHQwQ2dKLVJiRnN0QXd1YW1VZ19qanctUjdCaWJNY2dzcEphMVBrMlM0OThuVjFUWVVLZERtTVJ5ME9aSkg5TXFPY2JyYm9DNzhwZHBJNFhDbG8xeURLWlpsc081dWpVb1BZV2NfSFRZbVpOblJNbGRyMjFVN0RKNmN0eV9Kak8?oc=5",
+          "https://www.bloomberg.com/news/articles/2026-11-27/foreign-funds-on-pace-for-record-taiwan-stock-exodus-in-ai-rout",
+          "https://www.bloomberg.com/news/articles/2026-11-27/softbank-group-s-1-trillion-retail-bond-shows-more-credit-risk"
         ],
         "quiet_days": 0
       },
@@ -5227,23 +5271,6 @@
           5,
           2,
           9
-        ],
-        "is_new": false,
-        "signal_count": 0,
-        "signal_urls": [],
-        "quiet_days": 1,
-        "carried": true
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 30,
-        "category": "emerging",
-        "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 38.",
-        "levels": [
-          8,
-          5,
-          7
         ],
         "is_new": false,
         "signal_count": 0,
