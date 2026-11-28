@@ -1,178 +1,5 @@
 [
   {
-    "date": "2026-10-29",
-    "generated_at": "2026-10-29T17:02:41.402Z",
-    "trends": [
-      {
-        "id": "ai-capex",
-        "name": "AI-CapEx и инфраструктура",
-        "momentum": 82,
-        "category": "accelerating",
-        "rationale": "Вчера было 77, сегодня 82: AEP подняла инвестплан до $100 млрд, FirstEnergy увеличила портфель дата-центров до 26 ГВт, а Microsoft объяснила снижение CapEx задержками дата-центров.",
-        "levels": [
-          1,
-          2,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 74,
-        "category": "accelerating",
-        "rationale": "Вчера было 65, сегодня 74: AEP сообщила о 84 ГВт законтрактованных крупных нагрузок, FirstEnergy резервирует турбины, а BAAJA пытается разблокировать межрегиональную передачу.",
-        "levels": [
-          1,
-          2,
-          8
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agent-security",
-        "name": "Безопасность AI-агентов",
-        "momentum": 94,
-        "category": "accelerating",
-        "rationale": "Вчера было 92, сегодня 94: MIT Technology Review описал эпизоды выхода агентов из тестовой среды, а Wired вынес формальную верификацию в центр ответа на риски AI-кода.",
-        "levels": [
-          6,
-          8,
-          4
-        ],
-        "is_new": false
-      },
-      {
-        "id": "agentic-platforms",
-        "name": "Агентные AI-платформы",
-        "momentum": 88,
-        "category": "accelerating",
-        "rationale": "Вчера было 90, сегодня 88: Amazon и NYT расширяют агентные функции, но закрытие Copilot на телевизорах показывает, что не все каналы удерживаются.",
-        "levels": [
-          5,
-          4,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-regulation",
-        "name": "Регулирование AI",
-        "momentum": 95,
-        "category": "accelerating",
-        "rationale": "Вчера было 93, сегодня 95: Нью-Йорк получил новую инициативу безопасности и прозрачности AI, демократы Палаты представителей потребовали сохранить записи чат-ботов, а BAAJA усиливает федеральный рычаг по сетям.",
-        "levels": [
-          8,
-          2,
-          1
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 66,
-        "category": "accelerating",
-        "rationale": "Вчера было 59, сегодня 66: Microsoft предлагает выкупы около 60 тыс. сотрудников, в Мэне обсуждают влияние AI на рабочие места, а Dayforce фиксирует разрыв ожиданий работников и работодателей.",
-        "levels": [
-          3,
-          7,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "open-weight-models",
-        "name": "Open-weight модели",
-        "momentum": 52,
-        "category": "accelerating",
-        "rationale": "Вчера было 40, сегодня 52: Mistral заявила рывок Large 4 в open-weight гонке, а Hugging Face представил открытые модели для речи и решений на Apple-платформах.",
-        "levels": [
-          4,
-          5,
-          6
-        ],
-        "is_new": false
-      },
-      {
-        "id": "closed-api-models",
-        "name": "Закрытые API-модели",
-        "momentum": 41,
-        "category": "accelerating",
-        "rationale": "Вчера было 36, сегодня 41: Google выпустила Gemini 4 Carbon с улучшениями в кодировании, агентных задачах и кибербезопасности, но Ars Technica подчёркивает, что модель пока недоступна пользователям.",
-        "levels": [
-          4,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "classic-saas",
-        "name": "Классический SaaS под давлением AI",
-        "momentum": 40,
-        "category": "accelerating",
-        "rationale": "Вчера было 35, сегодня 40: Wabi привлекла $55 млн как агент для создания мини-приложений, а Dream заявляет атаку на строительный софт через AI-мировые модели.",
-        "levels": [
-          5,
-          9,
-          3
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 56,
-        "category": "accelerating",
-        "rationale": "Сегодняшний сигнал силён: Situational Awareness собирает деньги для ставки на Fluidstack, а расследование вокруг сингапурской AI-облачной компании показывает риски посредников в доступе к Nvidia-чипам.",
-        "levels": [
-          9,
-          8,
-          2
-        ],
-        "is_new": false
-      },
-      {
-        "id": "chip-export-control",
-        "name": "Экспортный контроль чипов",
-        "momentum": 47,
-        "category": "accelerating",
-        "rationale": "Сегодня TechCrunch сообщил о расследовании китайского шпионского сюжета вокруг Nvidia и о связи с обвинениями в незаконной продаже Nvidia-чипов в Китай.",
-        "levels": [
-          8,
-          4,
-          9
-        ],
-        "is_new": false
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 58,
-        "category": "accelerating",
-        "rationale": "Вчера было 51, сегодня 58: Канада и Nvidia участвуют в раунде Cohere при оценке $20,5 млрд, а Financial Times вынесла утверждение брюссельского представителя о конкурентоспособности ЕС против AI-гигантов США.",
-        "levels": [
-          9,
-          8,
-          5
-        ],
-        "is_new": false
-      },
-      {
-        "id": "ai-market-repricing",
-        "name": "Переоценка AI-активов",
-        "momentum": -48,
-        "category": "collapsing",
-        "rationale": "Вчера было -38, сегодня -48: падение Alphabet на $460 млрд и снижение Nasdaq 100 на фоне сомнений в отдаче AI-расходов усилили отрицательную переоценку.",
-        "levels": [
-          9,
-          5
-        ],
-        "is_new": false
-      }
-    ]
-  },
-  {
     "date": "2026-10-30",
     "generated_at": "2026-10-30T17:03:02.013Z",
     "trends": [
@@ -5310,6 +5137,318 @@
         "signal_count": 0,
         "signal_urls": [],
         "quiet_days": 3,
+        "carried": true
+      }
+    ]
+  },
+  {
+    "date": "2026-11-28",
+    "generated_at": "2026-11-28T05:03:39.801Z",
+    "trends": [
+      {
+        "id": "agentic-platforms",
+        "name": "Агентные AI-платформы",
+        "momentum": 52,
+        "category": "accelerating",
+        "rationale": "Вчера тренд ускорялся; сегодня его поддержали покупательские боты Google, Amazon, Meta и OpenAI, много-пользовательский голосовой бенчмарк μ-Bench и методический материал Hugging Face о многоагентных системах.",
+        "levels": [
+          5,
+          6,
+          3
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/features/2026-11-27/bots-de-compras-con-ia-amenazan-el-dominio-de-amazon-y-google",
+          "https://arxiv.org/abs/2611.34920v1",
+          "https://huggingface.co/blog/training-swarms"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-regulation",
+        "name": "Регулирование AI",
+        "momentum": 51,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был формирующимся; сегодня он усилился за счёт японской инициативы штрафов, пятилетнего запрета AI-игрушек в Нью-Йорке и вмешательства генпрокуроров в продажу чатов Character.AI.",
+        "levels": [
+          8,
+          5,
+          7
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://news.google.com/rss/articles/CBMilAFBVV95cUxNaXpMcEdaaDRhWS1Jek1FNE1oLU9lNzFNc3h1REUxRlQ0aEZ2UC1CUi0wLUtoa29xVnNhcG5POXRZT3FDZE9qT1pVc0xydmZzd1A3bmVUZHVsUHoxM3pocUdWb0dHbUhkLTFFWk1PZG5IaUk3RVFQbHJnZ2dGcE53cW91Uk1oeGs0aDdPYU9DTVk0aC0t?oc=5",
+          "https://techcrunch.com/2026/11/25/want-to-buy-your-kid-an-ai-toy-this-christmas-not-in-new-york/",
+          "https://www.theverge.com/policy/1042620/character-ai-sale-state-ags-block-selling-users-chats"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "agent-security",
+        "name": "Безопасность AI-агентов",
+        "momentum": 46,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был формирующимся; сегодня он усилился через работу о чувствительности оценки мониторов к атакующим политикам, сообщение Amazon о AI-агентах хакеров и обсуждение границ автономии агентов в науке.",
+        "levels": [
+          6,
+          8,
+          4
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://arxiv.org/abs/2611.34934v1",
+          "https://arstechnica.com/security/2026/11/amazon-says-hackers-ai-agents-found-and-exploited-0-day-with-little-human-input/",
+          "https://huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-content-boundaries",
+        "name": "Границы допуска AI-контента",
+        "momentum": 45,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был формирующимся; сегодня он усилился через запрет Tidal на полностью AI-сгенерированную музыку, удаление около 29 млн треков и запрет AI-игрушек с чат-ботами в Нью-Йорке.",
+        "levels": [
+          8,
+          5,
+          7
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://arstechnica.com/ai/2026/11/tidal-will-ban-fully-ai-generated-music-on-december-9/",
+          "https://www.theverge.com/entertainment/1041362/tidal-ai-music-ban",
+          "https://techcrunch.com/2026/11/25/want-to-buy-your-kid-an-ai-toy-this-christmas-not-in-new-york/"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-capex",
+        "name": "AI-CapEx и инфраструктура",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера тренд был ускоряющимся; сегодня сигналы усилились через сделки и ограничения физической готовности: Cheyenne Light описывает 3 ГВт ближайшего портфеля, TVA — сделку на $1,7 млрд, а TechCrunch — задержки строительства у нео-облаков. (Оценка модели 60: независимых источников 2, для «ускоряется» нужно от 3.)",
+        "levels": [
+          2,
+          1,
+          9
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.utilitydive.com/news/cheyenne-light-microsoft-google-data-center-bright-horizon/875739/",
+          "https://www.utilitydive.com/news/tva-touts-17b-data-center-deal-under-new-large-load-tariff/875630/",
+          "https://techcrunch.com/podcast/ai-data-centers-are-becoming-harder-to-build-and-neoclouds-are-feeling-it/"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 60
+      },
+      {
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера тренд был на верхней границе формирующегося; сегодня он усилился, потому что TVA оформила тариф крупной нагрузки, FirstEnergy получила одобрение газовой станции, а Cheyenne Light показала разрыв между текущим пиком и портфелем дата-центров. (Оценка модели 48: независимых источников 1, для «ускоряется» нужно от 3.)",
+        "levels": [
+          1,
+          2,
+          9
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://www.utilitydive.com/news/tva-touts-17b-data-center-deal-under-new-large-load-tariff/875630/",
+          "https://www.utilitydive.com/news/firstenergy-utilities-get-approval-for-25b-gas-plant-in-west-virginia/875646/",
+          "https://www.utilitydive.com/news/cheyenne-light-microsoft-google-data-center-bright-horizon/875739/"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 48
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера тренд был формирующимся; сегодня он усилился умеренно: SAP рассматривает 10 тыс. сокращений, HR Dive фиксирует барьеры AI-обучения, а спор OpenAI и Apple включает претензии к трудовым соглашениям. (Оценка модели 43: независимых источников 2, для «ускоряется» нужно от 3.)",
+        "levels": [
+          3,
+          5,
+          8
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/videos/2026-11-27/the-pulse-11-27-2026-video",
+          "https://www.hrdive.com/news/training-is-key-to-ai-adoption-but-is-still-hitting-roadblocks/875542/",
+          "https://www.bloomberg.com/news/articles/2026-11-27/openai-says-apple-pressured-suppliers-to-shun-its-devices"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 43
+      },
+      {
+        "id": "physical-ai",
+        "name": "Физический AI и робототехника",
+        "momentum": 39,
+        "category": "emerging",
+        "rationale": "Вчера тренд был формирующимся; сегодня он усилился за счёт Chery, которая обращается к роботам для полиции и ухода, и центра Cornell по робототехнике и AI для сельского хозяйства Нью-Йорка. (Оценка модели 42: независимых источников 2, для «ускоряется» нужно от 3.)",
+        "levels": [
+          5,
+          7,
+          4
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.ft.com/content/f83dd2dc-f51e-4151-9139-cf1918eb9d0a?syn-25a6b1a6=1",
+          "https://news.google.com/rss/articles/CBMimwJBVV95cUxONmUzb0duWTJJeXdzaGlPdXU3LWRsSjcwRV80Rkx0SG1OeWQ4RnhqT2ZxbkFoWVdEd1U0U2p0ZHJoV1g5cThjcTl5bWxSMi1pbVVCa0ZQV0dVYXlXX0dodXFJQlg4UFdzZVpQVEVXQkpWaGJ3NFpQN3dnQS1XNWs4TFV0WHF3ZmtTMTJQU1BoTlg1VXJGaXQ3Q0R2U0N1ekVtenByU3V2UE4ydklKOHhNT1hRSlg4cEltanlrYXQta0djYVZfc1ZEaHRuY1lURFhKU2dIMWhmV1dtV1Y1NXVrNElGMlJWWnpSa2h5TlUzVGJxd2N5YzhFUmNZRGdPWWVfMGhvaDlPOU5vU243bEcxWjdPLXBNY2szNTI4?oc=5"
+        ],
+        "quiet_days": 0,
+        "raw_momentum": 42
+      },
+      {
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": 37,
+        "category": "emerging",
+        "rationale": "Вчера тренд был формирующимся; сегодня прямой сигнал один, но значимый: Nvidia приостановила поставки серверов в четыре страны Юго-Восточной Азии на фоне усилий США не допустить AI-чипы в Китай.",
+        "levels": [
+          4,
+          2,
+          8
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "open-weight-models",
+        "name": "Open-weight модели",
+        "momentum": 34,
+        "category": "emerging",
+        "rationale": "Вчера тренд был формирующимся; сегодня он усилился без перехода в ускорение: Hugging Face выпустил панель llama.cpp для AMD, Nvidia описала открытые данные для Nemotron 3.5 Parse, а Inkling 2 Mini проверяется локально на одной RTX PRO 6000.",
+        "levels": [
+          4,
+          6,
+          5
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench",
+          "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
+          "https://huggingface.co/blog/inkling-2-mini-inference-hillclimb"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-market-repricing",
+        "name": "Переоценка AI-активов",
+        "momentum": -27,
+        "category": "decelerating",
+        "rationale": "Вчера тренд был отрицательным; сегодня он стал менее резким, но остаётся ниже нуля: S&P рассматривает понижение рейтинга Nvidia, тогда как State Street говорит о нормализации настроений в полупроводниках.",
+        "levels": [
+          9,
+          4
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://techcrunch.com/2026/11/25/sp-considers-nvidia-credit-downgrade-over-governance-and-key-man-risks/",
+          "https://www.bloomberg.com/news/videos/2026-11-27/chip-stocks-look-very-attractive-state-street-says-video"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "closed-api-models",
+        "name": "Закрытые API-модели",
+        "momentum": 25,
+        "category": "emerging",
+        "rationale": "Вчера тренд был формирующимся; сегодня его поддержал единый счётчик использования ChatGPT при объединении Chat и Work, а также судебный конфликт OpenAI с Apple вокруг поставщиков и трудовых ограничений.",
+        "levels": [
+          5,
+          9,
+          3
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://techcrunch.com/2026/11/25/openai-says-heavy-chatgpt-users-may-hit-limits-sooner-as-it-merges-chat-and-work/",
+          "https://www.ft.com/content/af599e07-d44c-4068-ab84-6ee3c85551d4?syn-25a6b1a6=1"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-audit-trust",
+        "name": "Доверие и аудит AI-результатов",
+        "momentum": 31,
+        "category": "emerging",
+        "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 39.",
+        "levels": [
+          6,
+          7,
+          8
+        ],
+        "is_new": false,
+        "signal_count": 0,
+        "signal_urls": [],
+        "quiet_days": 1,
+        "carried": true
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 30,
+        "category": "emerging",
+        "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 37.",
+        "levels": [
+          8,
+          7,
+          5,
+          2
+        ],
+        "is_new": false,
+        "signal_count": 0,
+        "signal_urls": [],
+        "quiet_days": 1,
+        "carried": true
+      },
+      {
+        "id": "ai-cloud-rental",
+        "name": "AI-облака и аренда вычислений",
+        "momentum": 25,
+        "category": "emerging",
+        "rationale": "Новых сигналов нет (дней подряд: 2); значение плавно снижается, вчера было 31.",
+        "levels": [
+          5,
+          2,
+          9
+        ],
+        "is_new": false,
+        "signal_count": 0,
+        "signal_urls": [],
+        "quiet_days": 2,
+        "carried": true
+      },
+      {
+        "id": "classic-saas",
+        "name": "Классический SaaS под давлением AI",
+        "momentum": 20,
+        "category": "emerging",
+        "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 25.",
+        "levels": [
+          5,
+          6
+        ],
+        "is_new": false,
+        "signal_count": 0,
+        "signal_urls": [],
+        "quiet_days": 1,
         "carried": true
       }
     ]
