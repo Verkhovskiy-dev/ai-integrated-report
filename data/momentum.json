@@ -5143,42 +5143,46 @@
   },
   {
     "date": "2026-11-28",
-    "generated_at": "2026-11-28T05:03:39.801Z",
+    "generated_at": "2026-11-28T17:03:20.449Z",
     "trends": [
       {
         "id": "agentic-platforms",
         "name": "Агентные AI-платформы",
-        "momentum": 52,
+        "momentum": 55,
         "category": "accelerating",
-        "rationale": "Вчера тренд ускорялся; сегодня его поддержали покупательские боты Google, Amazon, Meta и OpenAI, много-пользовательский голосовой бенчмарк μ-Bench и методический материал Hugging Face о многоагентных системах.",
+        "rationale": "Вчера тренд уже ускорялся; сегодня сигналы усилились за счёт Walmart Sparky, материала FT о входе агентов в крупный бизнес и публикации Hugging Face о мультиагентных системах.",
         "levels": [
+          3,
           5,
-          6,
-          3
+          6
         ],
         "is_new": false,
-        "signal_count": 3,
+        "signal_count": 4,
         "signal_urls": [
+          "https://www.bloomberg.com/news/videos/2026-11-28/walmart-leans-on-value-and-ai-for-holidays-video",
+          "https://www.ft.com/content/c9de05b8-0916-436a-87fc-40337067b0d2?syn-25a6b1a6=1",
+          "https://huggingface.co/blog/training-swarms",
           "https://www.bloomberg.com/news/features/2026-11-27/bots-de-compras-con-ia-amenazan-el-dominio-de-amazon-y-google",
-          "https://arxiv.org/abs/2611.34920v1",
-          "https://huggingface.co/blog/training-swarms"
+          "https://arxiv.org/abs/2611.34920v1"
         ],
         "quiet_days": 0
       },
       {
         "id": "ai-regulation",
         "name": "Регулирование AI",
-        "momentum": 51,
+        "momentum": 54,
         "category": "accelerating",
-        "rationale": "Вчера тренд был формирующимся; сегодня он усилился за счёт японской инициативы штрафов, пятилетнего запрета AI-игрушек в Нью-Йорке и вмешательства генпрокуроров в продажу чатов Character.AI.",
+        "rationale": "Вчера регулирование уже ускорялось; сегодня импульс усилили жалоба FCA по Muse, иск штатов к SpaceX из-за Grok и заявление прозрачности AI от UK IPO.",
         "levels": [
-          8,
-          5,
-          7
+          7,
+          8
         ],
         "is_new": false,
-        "signal_count": 3,
+        "signal_count": 5,
         "signal_urls": [
+          "https://www.wired.com/story/meta-refused-to-share-muse-for-testing-uk-financial-watchdog-complains/",
+          "https://arstechnica.com/tech-policy/2026/11/states-sue-spacex-to-stop-grok-from-generating-child-sex-images-revenge-porn/",
+          "https://news.google.com/rss/articles/CBMiowFBVV95cUxPTVZpRVpld05PcHR0NThvcEV1Tm0tU3U1NW1SUXNFcTFHZGxwbFJRLUVhMVV4ZlREWl96dlNXV2pHWFdsVmdIdXVHaTRHenF4X1VBTS10dkxlNGxLa205U21oV3o3dFdvQlhoWVF6aWtFX0Q5cHFNbmdOamljaHFRcWVrd1NqUDVoZU43ZkRDSGNJZ1ZVSUtOUGlhVHc3cF84end3?oc=5",
           "https://news.google.com/rss/articles/CBMilAFBVV95cUxNaXpMcEdaaDRhWS1Jek1FNE1oLU9lNzFNc3h1REUxRlQ0aEZ2UC1CUi0wLUtoa29xVnNhcG5POXRZT3FDZE9qT1pVc0xydmZzd1A3bmVUZHVsUHoxM3pocUdWb0dHbUhkLTFFWk1PZG5IaUk3RVFQbHJnZ2dGcE53cW91Uk1oeGs0aDdPYU9DTVk0aC0t?oc=5",
           "https://techcrunch.com/2026/11/25/want-to-buy-your-kid-an-ai-toy-this-christmas-not-in-new-york/",
           "https://www.theverge.com/policy/1042620/character-ai-sale-state-ags-block-selling-users-chats"
@@ -5188,19 +5192,20 @@
       {
         "id": "agent-security",
         "name": "Безопасность AI-агентов",
-        "momentum": 46,
+        "momentum": 51,
         "category": "accelerating",
-        "rationale": "Вчера тренд был формирующимся; сегодня он усилился через работу о чувствительности оценки мониторов к атакующим политикам, сообщение Amazon о AI-агентах хакеров и обсуждение границ автономии агентов в науке.",
+        "rationale": "Вчера тренд был ускоряющимся; сегодня его поддержали три независимых сигнала: отказ Meta от совместного тестирования Muse, ловушка Anthropic и сообщение Amazon о 0-day с участием AI-агентов.",
         "levels": [
           6,
-          8,
-          4
+          8
         ],
         "is_new": false,
-        "signal_count": 3,
+        "signal_count": 4,
         "signal_urls": [
-          "https://arxiv.org/abs/2611.34934v1",
+          "https://www.wired.com/story/meta-refused-to-share-muse-for-testing-uk-financial-watchdog-complains/",
+          "https://www.wired.com/story/ai-agents-can-get-honeypotted-too-aw/",
           "https://arstechnica.com/security/2026/11/amazon-says-hackers-ai-agents-found-and-exploited-0-day-with-little-human-input/",
+          "https://arxiv.org/abs/2611.34934v1",
           "https://huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents"
         ],
         "quiet_days": 0
@@ -5208,17 +5213,19 @@
       {
         "id": "ai-content-boundaries",
         "name": "Границы допуска AI-контента",
-        "momentum": 45,
+        "momentum": 49,
         "category": "accelerating",
-        "rationale": "Вчера тренд был формирующимся; сегодня он усилился через запрет Tidal на полностью AI-сгенерированную музыку, удаление около 29 млн треков и запрет AI-игрушек с чат-ботами в Нью-Йорке.",
+        "rationale": "Вчера тренд ускорялся; сегодня его поддержали иск штатов к Grok из-за запрещённых изображений и публичное позиционирование GTA VI как продукта без генеративного AI.",
         "levels": [
-          8,
           5,
-          7
+          7,
+          8
         ],
         "is_new": false,
-        "signal_count": 3,
+        "signal_count": 4,
         "signal_urls": [
+          "https://arstechnica.com/tech-policy/2026/11/states-sue-spacex-to-stop-grok-from-generating-child-sex-images-revenge-porn/",
+          "https://www.bloomberg.com/news/videos/2026-11-27/gta-vi-s-record-launch-makes-the-case-for-human-made-video",
           "https://arstechnica.com/ai/2026/11/tidal-will-ban-fully-ai-generated-music-on-december-9/",
           "https://www.theverge.com/entertainment/1041362/tidal-ai-music-ban",
           "https://techcrunch.com/2026/11/25/want-to-buy-your-kid-an-ai-toy-this-christmas-not-in-new-york/"
@@ -5228,65 +5235,26 @@
       {
         "id": "ai-capex",
         "name": "AI-CapEx и инфраструктура",
-        "momentum": 39,
-        "category": "emerging",
-        "rationale": "Вчера тренд был ускоряющимся; сегодня сигналы усилились через сделки и ограничения физической готовности: Cheyenne Light описывает 3 ГВт ближайшего портфеля, TVA — сделку на $1,7 млрд, а TechCrunch — задержки строительства у нео-облаков. (Оценка модели 60: независимых источников 2, для «ускоряется» нужно от 3.)",
+        "momentum": 44,
+        "category": "accelerating",
+        "rationale": "Вчера тренд был на границе ускорения; сегодня его усилили план армии США по AI-дата-центрам, интерес Google к мощностям SpaceX и аргумент MHI о стоимости автономной энергии для дата-центров.",
         "levels": [
-          2,
           1,
+          2,
+          5,
           9
         ],
         "is_new": false,
-        "signal_count": 2,
+        "signal_count": 4,
         "signal_urls": [
+          "https://news.google.com/rss/articles/CBMiigFBVV95cUxOWXlWbDM1V2p1VUllRVY2Z2ZEdDFSQ3Q4WndVb1pKd3VaXzM3ZnpIWUVyY3k5MnR2QTVrU3pZcjQ0aFV2VHRXWFB5dkxyMTZReWFoMTBQTFJNNS1oSENoY0w0c0tJYVVXSVRZbE16M0xDdjl6dkNsbUpzYzJfbXlYZDdpQVJIVk9OekE?oc=5",
+          "https://www.bloomberg.com/news/articles/2026-11-28/musk-says-google-interested-in-renting-more-compute-from-spacex",
+          "https://www.utilitydive.com/news/data-centers-mitsubishi-gas-turbines-earnings/875146/",
           "https://www.utilitydive.com/news/cheyenne-light-microsoft-google-data-center-bright-horizon/875739/",
           "https://www.utilitydive.com/news/tva-touts-17b-data-center-deal-under-new-large-load-tariff/875630/",
           "https://techcrunch.com/podcast/ai-data-centers-are-becoming-harder-to-build-and-neoclouds-are-feeling-it/"
         ],
-        "quiet_days": 0,
-        "raw_momentum": 60
-      },
-      {
-        "id": "ai-energy",
-        "name": "Энергетика для AI",
-        "momentum": 39,
-        "category": "emerging",
-        "rationale": "Вчера тренд был на верхней границе формирующегося; сегодня он усилился, потому что TVA оформила тариф крупной нагрузки, FirstEnergy получила одобрение газовой станции, а Cheyenne Light показала разрыв между текущим пиком и портфелем дата-центров. (Оценка модели 48: независимых источников 1, для «ускоряется» нужно от 3.)",
-        "levels": [
-          1,
-          2,
-          9
-        ],
-        "is_new": false,
-        "signal_count": 1,
-        "signal_urls": [
-          "https://www.utilitydive.com/news/tva-touts-17b-data-center-deal-under-new-large-load-tariff/875630/",
-          "https://www.utilitydive.com/news/firstenergy-utilities-get-approval-for-25b-gas-plant-in-west-virginia/875646/",
-          "https://www.utilitydive.com/news/cheyenne-light-microsoft-google-data-center-bright-horizon/875739/"
-        ],
-        "quiet_days": 0,
-        "raw_momentum": 48
-      },
-      {
-        "id": "ai-talent-market",
-        "name": "Рынок AI-талантов",
-        "momentum": 39,
-        "category": "emerging",
-        "rationale": "Вчера тренд был формирующимся; сегодня он усилился умеренно: SAP рассматривает 10 тыс. сокращений, HR Dive фиксирует барьеры AI-обучения, а спор OpenAI и Apple включает претензии к трудовым соглашениям. (Оценка модели 43: независимых источников 2, для «ускоряется» нужно от 3.)",
-        "levels": [
-          3,
-          5,
-          8
-        ],
-        "is_new": false,
-        "signal_count": 2,
-        "signal_urls": [
-          "https://www.bloomberg.com/news/videos/2026-11-27/the-pulse-11-27-2026-video",
-          "https://www.hrdive.com/news/training-is-key-to-ai-adoption-but-is-still-hitting-roadblocks/875542/",
-          "https://www.bloomberg.com/news/articles/2026-11-27/openai-says-apple-pressured-suppliers-to-shun-its-devices"
-        ],
-        "quiet_days": 0,
-        "raw_momentum": 43
+        "quiet_days": 0
       },
       {
         "id": "physical-ai",
@@ -5309,19 +5277,99 @@
         "raw_momentum": 42
       },
       {
-        "id": "chip-export-control",
-        "name": "Экспортный контроль чипов",
-        "momentum": 37,
+        "id": "ai-energy",
+        "name": "Энергетика для AI",
+        "momentum": 38,
         "category": "emerging",
-        "rationale": "Вчера тренд был формирующимся; сегодня прямой сигнал один, но значимый: Nvidia приостановила поставки серверов в четыре страны Юго-Восточной Азии на фоне усилий США не допустить AI-чипы в Китай.",
+        "rationale": "Вчера тренд был emerging; сегодня он не ускорился резко, но получил новый сигнал от MHI о том, что стоимость автономной энергии может вернуть дата-центры к коммунальным сетям.",
         "levels": [
-          4,
-          2,
-          8
+          1,
+          2
         ],
         "is_new": false,
         "signal_count": 1,
         "signal_urls": [
+          "https://www.utilitydive.com/news/data-centers-mitsubishi-gas-turbines-earnings/875146/",
+          "https://www.utilitydive.com/news/tva-touts-17b-data-center-deal-under-new-large-load-tariff/875630/",
+          "https://www.utilitydive.com/news/firstenergy-utilities-get-approval-for-25b-gas-plant-in-west-virginia/875646/",
+          "https://www.utilitydive.com/news/cheyenne-light-microsoft-google-data-center-bright-horizon/875739/"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-audit-trust",
+        "name": "Доверие и аудит AI-результатов",
+        "momentum": 38,
+        "category": "emerging",
+        "rationale": "Вчера тренд был emerging; сегодня его поддержали Cambridge по ограничениям AI в обучении, arXiv о лишних правках кодовых агентов и FT о проверке AI-поддержанных математических открытий.",
+        "levels": [
+          6,
+          7,
+          8
+        ],
+        "is_new": false,
+        "signal_count": 3,
+        "signal_urls": [
+          "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1zRXExTVdIVm9sWDR3aHVZUUs0emw2QXMwa1YtV0VTODdHczViV1RLT1MtcGJLeUljamNPZk1sd2VlYXhrbWhfUFlhUGhQZHZzbzN1dWxTOG45OTg?oc=5",
+          "https://arxiv.org/abs/2611.34875v1",
+          "https://www.ft.com/content/f27646d1-d8f2-4592-8d0e-bcce6c6da061?syn-25a6b1a6=1"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "sovereign-ai",
+        "name": "Суверенный AI (национальные модели)",
+        "momentum": 36,
+        "category": "emerging",
+        "rationale": "Вчера тренд был emerging; сегодня Sakana AI связала домашние модели с промышленной конкурентоспособностью Японии, а армия США добавила сигнал о суверенной площадке для AI-дата-центров.",
+        "levels": [
+          2,
+          5,
+          8
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://techcrunch.com/2026/11/28/sakana-ais-ceo-says-its-homegrown-models-are-about-more-than-japans-national-security/",
+          "https://news.google.com/rss/articles/CBMiigFBVV95cUxOWXlWbDM1V2p1VUllRVY2Z2ZEdDFSQ3Q4WndVb1pKd3VaXzM3ZnpIWUVyY3k5MnR2QTVrU3pZcjQ0aFV2VHRXWFB5dkxyMTZReWFoMTBQTFJNNS1oSENoY0w0c0tJYVVXSVRZbE16M0xDdjl6dkNsbUpzYzJfbXlYZDdpQVJIVk9OekE?oc=5"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-talent-market",
+        "name": "Рынок AI-талантов",
+        "momentum": 34,
+        "category": "emerging",
+        "rationale": "Вчера тренд был emerging; сегодня он получил более мягкий, но новый сигнал от HR Dive о том, что работодатели требуют готовности учиться и экспертизы в новых областях.",
+        "levels": [
+          3,
+          7
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.hrdive.com/news/employers-expect-new-hires-to-have-a-willingness-to-learn/875747/",
+          "https://www.bloomberg.com/news/videos/2026-11-27/the-pulse-11-27-2026-video",
+          "https://www.hrdive.com/news/training-is-key-to-ai-adoption-but-is-still-hitting-roadblocks/875542/",
+          "https://www.bloomberg.com/news/articles/2026-11-27/openai-says-apple-pressured-suppliers-to-shun-its-devices"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "chip-export-control",
+        "name": "Экспортный контроль чипов",
+        "momentum": 34,
+        "category": "emerging",
+        "rationale": "Вчера тренд был emerging из-за чипов и обходных поставок; сегодня прямых новых фактов о чипах меньше, но запрет Таиланда на химикаты для редкоземельной добычи добавил сырьевой ограничитель технологических цепочек.",
+        "levels": [
+          1,
+          4,
+          5
+        ],
+        "is_new": false,
+        "signal_count": 2,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/articles/2026-11-28/thailand-to-ban-export-of-chemicals-to-myanmar-rare-earth-mines",
           "https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/"
         ],
         "quiet_days": 0
@@ -5343,6 +5391,24 @@
           "https://huggingface.co/blog/ggml-org/llamacpp-amd-bench",
           "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
           "https://huggingface.co/blog/inkling-2-mini-inference-hillclimb"
+        ],
+        "quiet_days": 0
+      },
+      {
+        "id": "ai-cloud-rental",
+        "name": "AI-облака и аренда вычислений",
+        "momentum": 33,
+        "category": "emerging",
+        "rationale": "Вчера тренд был emerging; сегодня появился новый сигнал о том, что Google заинтересован в аренде большего объёма вычислительных мощностей у SpaceX, но деталей сделки пока нет.",
+        "levels": [
+          2,
+          5,
+          9
+        ],
+        "is_new": false,
+        "signal_count": 1,
+        "signal_urls": [
+          "https://www.bloomberg.com/news/articles/2026-11-28/musk-says-google-interested-in-renting-more-compute-from-spacex"
         ],
         "quiet_days": 0
       },
@@ -5382,58 +5448,6 @@
           "https://www.ft.com/content/af599e07-d44c-4068-ab84-6ee3c85551d4?syn-25a6b1a6=1"
         ],
         "quiet_days": 0
-      },
-      {
-        "id": "ai-audit-trust",
-        "name": "Доверие и аудит AI-результатов",
-        "momentum": 31,
-        "category": "emerging",
-        "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 39.",
-        "levels": [
-          6,
-          7,
-          8
-        ],
-        "is_new": false,
-        "signal_count": 0,
-        "signal_urls": [],
-        "quiet_days": 1,
-        "carried": true
-      },
-      {
-        "id": "sovereign-ai",
-        "name": "Суверенный AI (национальные модели)",
-        "momentum": 30,
-        "category": "emerging",
-        "rationale": "Новых сигналов нет (дней подряд: 1); значение плавно снижается, вчера было 37.",
-        "levels": [
-          8,
-          7,
-          5,
-          2
-        ],
-        "is_new": false,
-        "signal_count": 0,
-        "signal_urls": [],
-        "quiet_days": 1,
-        "carried": true
-      },
-      {
-        "id": "ai-cloud-rental",
-        "name": "AI-облака и аренда вычислений",
-        "momentum": 25,
-        "category": "emerging",
-        "rationale": "Новых сигналов нет (дней подряд: 2); значение плавно снижается, вчера было 31.",
-        "levels": [
-          5,
-          2,
-          9
-        ],
-        "is_new": false,
-        "signal_count": 0,
-        "signal_urls": [],
-        "quiet_days": 2,
-        "carried": true
       },
       {
         "id": "classic-saas",
